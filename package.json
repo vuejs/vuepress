@@ -1,0 +1,39 @@
+{
+  "name": "vuepress",
+  "version": "1.0.0",
+  "description": "Minimalistic doc generator with Vue component based layout system",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "node bin/vuepress"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuejs/vuepress.git"
+  },
+  "keywords": [
+    "documentation",
+    "vue",
+    "generator"
+  ],
+  "author": "Evan You",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vuejs/vuepress/issues"
+  },
+  "homepage": "https://github.com/vuejs/vuepress#readme",
+  "dependencies": {
+    "css-loader": "^0.28.11",
+    "file-loader": "^1.1.11",
+    "globby": "^8.0.1",
+    "markdown-it": "^8.4.1",
+    "mini-css-extract-plugin": "^0.4.0",
+    "url-loader": "^1.0.1",
+    "vue": "^2.5.16",
+    "vue-loader": "^15.0.0-beta.7",
+    "vue-markdown-loader": "^2.4.1",
+    "vue-server-renderer": "^2.5.16",
+    "vue-template-compiler": "^2.5.16",
+    "webpack": "^4.4.1",
+    "webpack-chain": "^4.5.0"
+  }
+}
