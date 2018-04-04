@@ -8,7 +8,7 @@
 export default {
   data () {
     return {
-      msg: 'hello'
+      msg: 'hello this is a dynamic demo'
     }
   }
 }

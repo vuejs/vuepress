@@ -2,3 +2,5 @@
 node_modules
 *.log
 .temp
+docs/_dist
+TODOs.md

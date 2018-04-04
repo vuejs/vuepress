@@ -1,11 +1,11 @@
 # Custom Layout
 
-VuePress uses Vue single file components for custom layouts. To use a custom layout, create a `_layout` directory under `docs`, and then create a `Layout.vue` file:
+VuePress uses Vue single file components for custom layouts. To use a custom layout, create a `_theme` directory under `docs`, and then create a `App.vue` file:
 
-```
+``` bash
 - docs
-  - _layout
-    - Layout.vue
+  - _theme
+    - App.vue
 ```
 
 From there it's the same as developing a normal Vue application. There are only a few special things to note:
