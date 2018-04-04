@@ -1,6 +1,12 @@
 const path = require('path')
-const { build } = require('../lib')
+const { serve, build } = require('../lib')
 
-build(path.resolve(__dirname, '../docs')).catch(err => {
-  console.log(err)
+const sourceDir = path.resolve(__dirname, '../docs')
+
+serve(sourceDir).catch(err => {
+  console.error(err)
 })
+
+// build(sourceDir).catch(err => {
+//   console.log(err)
+// })

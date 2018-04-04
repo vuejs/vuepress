@@ -5,7 +5,7 @@
         <router-link :to="page.path">{{ page.name }}</router-link>
       </li>
     </ul>
-    <Index v-if="$page.isIndex" />
+    <Index v-if="$page.path === '/index'" />
     <Page v-else />
   </div>
 </template>
