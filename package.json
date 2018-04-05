@@ -25,6 +25,19 @@
     "url": "https://github.com/vuejs/vuepress/issues"
   },
   "homepage": "https://github.com/vuejs/vuepress#readme",
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "lib/**/*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "test/**/*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
   "dependencies": {
     "autoprefixer": "^8.2.0",
     "buble": "^0.19.3",
@@ -65,6 +78,12 @@
     "webpack-serve": "^0.3.1",
     "webpackbar": "^2.6.1",
     "yaml-front-matter": "^4.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-plugin-vue-libs": "^2.1.0",
+    "lint-staged": "^7.0.4",
+    "yorkie": "^1.0.3"
   },
   "engines": {
     "node": ">=8"
