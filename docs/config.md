@@ -2,7 +2,9 @@
 
 ## `.vuepress/config.js`
 
-### baseUrl
+### base
+
+### title
 
 ### head
 

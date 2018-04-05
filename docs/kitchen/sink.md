@@ -45,3 +45,7 @@ var vm = new Vue({
 
 - Foo is {{ $page.frontmatter.foo }}
 - Bar is {{ $page.frontmatter.bar }}
+
+## Using Site Data
+
+<img :src="`${$site.base}logo.png`" alt="logo">

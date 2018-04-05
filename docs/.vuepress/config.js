@@ -1,5 +1,5 @@
 module.exports = {
-  data: {
-    title: 'VuePress'
-  }
+  base: '/vuepress/',
+  title: 'VuePress',
+  dest: 'vuepress'
 }
