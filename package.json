@@ -7,8 +7,8 @@
     "vuepress": "bin/vuepress.js"
   },
   "scripts": {
-    "dev": "node bin/vuepress dev",
-    "build": "node bin/vuepress build"
+    "dev": "node bin/vuepress dev docs",
+    "build": "node bin/vuepress build docs"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,7 @@
     "buble-loader": "^0.5.0",
     "chalk": "^2.3.2",
     "chokidar": "^2.0.3",
+    "commander": "^2.15.1",
     "connect-history-api-fallback": "^1.5.0",
     "copy-webpack-plugin": "^4.5.1",
     "css-loader": "^0.28.11",
@@ -64,5 +65,8 @@
     "webpack-serve": "^0.3.1",
     "webpackbar": "^2.6.1",
     "yaml-front-matter": "^4.0.0"
+  },
+  "engines": {
+    "node": ">=8"
   }
 }

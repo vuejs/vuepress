@@ -10,7 +10,10 @@ npm install -g vuepress
 echo "# Hello VuePress!" > index.md
 
 # start writing
-vuepress
+vuepress dev .
+
+# build
+vuepress build .
 ```
 
 ## Inside an Existing Project
