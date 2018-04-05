@@ -35,20 +35,4 @@ export default {
 </script>
 
 <style src="prismjs/themes/prism-tomorrow.css"></style>
-<style src="./nprogress.css"></style>
-<style>
-.theme-container {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-}
-
-pre[class*="language-"] {
-  line-height: 1.4;
-  border-radius: 5px;
-}
-
-pre[class*="language-"] code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
-  font-size: 14px;
-  -webkit-font-smoothing: antialiased;
-}
-</style>
+<style src="./styles.css"></style>

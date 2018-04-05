@@ -14,7 +14,7 @@ bar: 234
 const a = 123
 ```
 
-``` html
+``` html{2,10}
 <div id="example">
   <p>Original message: "{{ message }}"</p>
   <p>Computed reversed message: "{{ reversedMessage }}"</p>
@@ -36,10 +36,6 @@ var vm = new Vue({
 })
 </script>
 ```
-
-## Dynamic Component
-
-<demo-1 vue></demo-1>
 
 ## Interpolation
 

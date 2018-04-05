@@ -11,3 +11,7 @@
 ## Custom Containers
 
 ## Configuration
+
+## Syntax Highlighting
+
+Highlight lines
