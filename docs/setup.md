@@ -23,9 +23,12 @@ npm install -D vuepress
 mkdir docs
 # create a markdown file
 echo "# Hello VuePress!" > docs/index.md
+
+# start writing
+npx vuepress dev docs
 ```
 
-Add scripts to `package.json`:
+Or, add some scripts to `package.json`:
 
 ``` json
 {
@@ -36,7 +39,7 @@ Add scripts to `package.json`:
 }
 ```
 
-Start writing:
+Then you can start writing with:
 
 ``` bash
 npm run docs:dev
