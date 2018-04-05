@@ -1,6 +1,6 @@
 <template>
-  <div id="container">
-    <ul>
+  <div class="theme-container">
+    <ul class="nav">
       <li v-for="page in $site.pages">
         <router-link :to="page.path">{{ page.name }}</router-link>
       </li>

@@ -1,12 +1,23 @@
 const path = require('path')
+const chalk = require('chalk')
 const { serve, build } = require('../lib')
 
-const sourceDir = path.resolve(__dirname, '../docs')
+const sourceDir = path.resolve(process.cwd(), 'docs')
 
-serve(sourceDir).catch(err => {
-  console.error(err)
-})
+const command = process.argv.slice(2)[0]
 
-// build(sourceDir).catch(err => {
-//   console.log(err)
-// })
+if (command === 'build') {
+  wrapCommand(build)(sourceDir)
+}
+
+if (command === 'serve') {
+  wrapCommand(serve)(sourceDir)
+}
+
+function wrapCommand (fn) {
+  return (...args) => {
+    return fn(...args).catch(err => {
+      console.error(chalk.red(err.stack))
+    })
+  }
+}

@@ -1,0 +1,16 @@
+<html lang="{{ lang }}">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    {{{ userHeadTags }}}
+    {{{ renderResourceHints() }}}
+    {{{ renderStyles() }}}
+    <script>
+      window.VUEPRESS_DATA = {{{ JSON.stringify(siteData) }}}
+    </script>
+  </head>
+  <body>
+    <!--vue-ssr-outlet-->
+    {{{ renderScripts() }}}
+  </body>
+</html>
