@@ -22,8 +22,9 @@ program
   .command('build <targetDir>')
   .description('build dir as static site')
   .option('-d, --dest <outDir>', 'specify build output dir (default: .vuepress/dist)')
-  .action((dir, { outDir }) => {
-    wrapCommand(build)(path.resolve(dir), { outDir })
+  .option('--debug', 'build in development mode for debugging')
+  .action((dir, { debug, outDir }) => {
+    wrapCommand(build)(path.resolve(dir), { debug, outDir })
   })
 
 // output help information on unknown commands
