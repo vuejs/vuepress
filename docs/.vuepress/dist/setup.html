@@ -1,0 +1,36 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>VuePress | Setup</title>
+    
+    <link rel="preload" href="/_assets/js/app.5850f036.js" as="script"><link rel="preload" href="/_assets/css/styles.13ee9cc9.css" as="style">
+    <link rel="stylesheet" href="/_assets/css/styles.13ee9cc9.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><ul class="nav"><li><a href="/" class="router-link-active">/</a></li><li><a href="/config.html">/config.html</a></li><li><a href="/deploy.html">/deploy.html</a></li><li><a href="/markdown.html">/markdown.html</a></li><li><a href="/setup.html" class="router-link-exact-active router-link-active">/setup.html</a></li><li><a href="/theming.html">/theming.html</a></li><li><a href="/using-vue.html">/using-vue.html</a></li><li><a href="/kitchen/sink.html">/kitchen/sink.html</a></li></ul><div class="page"><div class="markdown"><h1 id="setup"><a href="#setup" aria-hidden="true" class="header-anchor">¶</a> Setup</h1><h2 id="quickstart"><a href="#quickstart" aria-hidden="true" class="header-anchor">¶</a> Quickstart</h2><pre class="language-bash"><code><span class="token comment"># install globally</span>
+<span class="token function">npm</span> <span class="token function">install</span> -g vuepress
+
+<span class="token comment"># create a markdown file</span>
+<span class="token keyword">echo</span> <span class="token string">&quot;# Hello VuePress!&quot;</span> <span class="token operator">&gt;</span> index.md
+
+<span class="token comment"># start writing</span>
+vuepress
+</code></pre><h2 id="inside-an-existing-project"><a href="#inside-an-existing-project" aria-hidden="true" class="header-anchor">¶</a> Inside an Existing Project</h2><pre class="language-bash"><code><span class="token comment"># install as a dependency</span>
+<span class="token function">npm</span> <span class="token function">install</span> -D vuepress
+
+<span class="token comment"># create a docs directory</span>
+<span class="token function">mkdir</span> docs
+<span class="token comment"># create a markdown file</span>
+<span class="token keyword">echo</span> <span class="token string">&quot;# Hello VuePress!&quot;</span> <span class="token operator">&gt;</span> docs/index.md
+</code></pre><p>Add scripts to <code>package.json</code>:</p><pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">&quot;scripts&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;docs:dev&quot;</span><span class="token operator">:</span> <span class="token string">&quot;vuepress dev docs&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;docs:build&quot;</span><span class="token operator">:</span> <span class="token string">&quot;vuepress build docs&quot;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><p>Start writing:</p><pre class="language-bash"><code><span class="token function">npm</span> run docs:dev
+</code></pre><p>To generate static assets, run:</p><pre class="language-bash"><code><span class="token function">npm</span> run docs:build
+</code></pre><p>By default the built files will be in <code>.vuepress/dist</code>. The files can be deployed to any static file server. See <a href="/deploy.html">Deployment Guide</a> for guides on deploying to popular services.</p></div></div></div></div>
+    <script src="/_assets/js/app.5850f036.js" defer></script>
+  </body>
+</html>
