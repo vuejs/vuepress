@@ -21,7 +21,9 @@ export default {
     nprogress.configure({ showSpinner: false })
 
     this.$router.beforeEach((to, from, next) => {
-      nprogress.start()
+      if (to.path !== from.path) {
+        nprogress.start()
+      }
       next()
     })
 
