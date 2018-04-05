@@ -1,11 +1,12 @@
-# Custom Layout
+# Custom Theme
 
-VuePress uses Vue single file components for custom layouts. To use a custom layout, create a `_theme` directory under `docs`, and then create a `App.vue` file:
+VuePress uses Vue single file components for custom themes. To use a custom layout, create a `.vuepress/theme` directory in your docs root, and then create a `Layout.vue` file:
 
 ``` bash
-- docs
-  - _theme
-    - App.vue
+.
+└── .vuepress
+    └── theme
+        └── Layout.vue
 ```
 
 From there it's the same as developing a normal Vue application. There are only a few special things to note:
@@ -19,3 +20,5 @@ The `Layout` component will be invoked once for every `.md` file in `docs`, and 
 ## Content Outlet
 
 The compiled content of the current `.md` file being rendered will be available as a special `<Content/>` global component. You will need to render it somewhere in your layout in order to display the content of the page.
+
+// TODO give an example

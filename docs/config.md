@@ -1,0 +1,3 @@
+# Configuration
+
+## `.vuepress/config.js`
