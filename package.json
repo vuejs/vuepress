@@ -26,15 +26,15 @@
   },
   "homepage": "https://github.com/vuejs/vuepress#readme",
   "dependencies": {
-    "@babel/core": "^7.0.0-beta.44",
-    "@vue/babel-preset-app": "^3.0.0-beta.6",
     "autoprefixer": "^8.2.0",
-    "babel-loader": "^8.0.0-beta.2",
+    "buble": "^0.19.3",
+    "buble-loader": "^0.5.0",
     "chalk": "^2.3.2",
     "chokidar": "^2.0.3",
     "connect-history-api-fallback": "^1.5.0",
     "copy-webpack-plugin": "^4.5.1",
     "css-loader": "^0.28.11",
+    "es6-promise": "^4.2.4",
     "file-loader": "^1.1.11",
     "globby": "^8.0.1",
     "html-webpack-plugin": "^3.2.0",
@@ -48,6 +48,7 @@
     "mini-css-extract-plugin": "^0.4.0",
     "mkdirp": "^0.5.1",
     "nprogress": "^0.2.0",
+    "object-assign": "^4.1.1",
     "postcss-loader": "^2.1.3",
     "prismjs": "^1.13.0",
     "rimraf": "^2.6.2",
@@ -63,8 +64,5 @@
     "webpack-serve": "^0.3.1",
     "webpackbar": "^2.6.1",
     "yaml-front-matter": "^4.0.0"
-  },
-  "browserslist": [
-    "> 1%"
-  ]
+  }
 }
