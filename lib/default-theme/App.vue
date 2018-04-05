@@ -2,7 +2,7 @@
   <div class="theme-container">
     <ul class="nav">
       <li v-for="page in $site.pages">
-        <router-link :to="page.path">{{ page.name }}</router-link>
+        <router-link :to="page.path">{{ page.path }}</router-link>
       </li>
     </ul>
     <Index v-if="$page.path === '/index'" />
