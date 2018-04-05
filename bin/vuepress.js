@@ -1,17 +1,17 @@
 const path = require('path')
 const chalk = require('chalk')
-const { serve, build } = require('../lib')
+const { dev, build } = require('../lib')
 
 const sourceDir = path.resolve(process.cwd(), 'docs')
 
 const command = process.argv.slice(2)[0]
 
-if (command === 'build') {
-  wrapCommand(build)(sourceDir)
+if (command === 'dev') {
+  wrapCommand(dev)(sourceDir)
 }
 
-if (command === 'serve') {
-  wrapCommand(serve)(sourceDir)
+if (command === 'build') {
+  wrapCommand(build)(sourceDir)
 }
 
 function wrapCommand (fn) {
