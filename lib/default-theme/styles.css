@@ -7,7 +7,7 @@ pre, pre[class*="language-"] {
   color: white;
   line-height: 1.4;
   border-radius: 5px;
-  padding: 1.25rem 1.575rem;
+  padding: 1.3rem 1.575rem;
   white-space: pre-wrap;
   word-break: break-word;
   overflow: auto;
@@ -23,11 +23,21 @@ pre code, pre[class*="language-"] code {
   background-color: #14161a;
   display: block;
   margin: 0 -1.575rem;
-  padding: 0 1.575rem;
+  padding: 0.2rem 1.575rem 0;
+}
+
+div.tip {
+  color: white;
+  background-color: green;
 }
 
 div.warning {
   background-color: yellow;
+}
+
+div.danger {
+  color: white;
+  background-color: red;
 }
 
 /*
