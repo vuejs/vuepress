@@ -56,23 +56,43 @@ Any `*.vue` file found in `.vuepress/components` are automatically registered as
 .
 └── .vuepress
     └── components
-        └── demo-1.vue
+        ├── demo-1.vue
+        └── OtherComponent.vue
 ```
 
-Inside any markdown file you can then use the component like so:
+Inside any markdown file you can then directly use the components (names are inferred from filenames):
 
 ``` markdown
-<div>
-  <demo-1/>
-</div>
+<demo-1/>
+<OtherComponent/>
 ```
 
+<demo-1></demo-1>
+
+<OtherComponent/>
+
 ::: warning
-Note **components must be nested inside a `<div>`**, because otherwise they'd be automatically wrapped inside a `<p>`, which can only contain inline elements. If your component contains block level elements (it mostly likely does), it will cause hydration mismatch in static builds.
+Make sure a custom component's names either contains a hyphen or is in PascalCase. Otherwise it will be treated as an inline element and wrapped inside a `<p>` tag, which will lead to hydration mismatch because `<p>` does not allow block elements to be placed inside it.
 :::
 
 ## Script & Style Hoisting
 
-(TODO)
-
 Sometimes you may need to apply some JavaScript or CSS only to the current page. In those case you can directly write root-level `<script>` or `<style>` blocks in the markdown file, and they will be hoisted out of the compiled HTML and used as the `<script>` and `<style>` blocks for the resulting Vue single-file component.
+
+<div id="inline-script-style-example"></div>
+
+<!-- <style>
+#inline-script-style-example {
+  color: #41b883;
+}
+</style>
+
+<script>
+export default {
+  mounted () {
+    document.getElementById('inline-script-style-example')
+      .textContent = 'Hello from inline script!'
+  }
+}
+</script>
+ -->

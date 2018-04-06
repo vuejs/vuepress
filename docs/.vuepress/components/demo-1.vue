@@ -1,14 +1,14 @@
 <template>
-  <div>
+  <p class="demo">
     {{ msg }}
-  </div>
+  </p>
 </template>
 
 <script>
 export default {
   data () {
     return {
-      msg: 'hello this is a dynamic demo'
+      msg: 'Hello this is <demo-1>'
     }
   }
 }

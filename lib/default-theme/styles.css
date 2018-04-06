@@ -40,6 +40,12 @@ div.danger {
   background-color: red;
 }
 
+p.demo {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
 /*
   Copied from nprogress since it doens't
   allow programmatic configuration of color
