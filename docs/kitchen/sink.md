@@ -3,6 +3,8 @@ foo: 123
 bar: 234
 ---
 
+# Kitchen Sink
+
 ## Relative Links
 
 - [Go home](../README.md)
@@ -14,7 +16,7 @@ bar: 234
 const a = 123
 ```
 
-``` html{2,10}
+``` html{2,10-13}
 <div id="example">
   <p>Original message: "{{ message }}"</p>
   <p>Computed reversed message: "{{ reversedMessage }}"</p>

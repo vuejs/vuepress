@@ -6,6 +6,8 @@
 
 ### title
 
+### description
+
 ### head
 
 ### port
@@ -14,7 +16,7 @@
 
 ### theme
 
-### data
+### themeConfig
 
 ### markdown
 

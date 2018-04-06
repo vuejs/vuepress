@@ -22,8 +22,12 @@ pre code, pre[class*="language-"] code {
 .highlighted-line {
   background-color: #14161a;
   display: block;
-  margin: 1px -1.575rem;
-  padding: 1px 1.575rem;
+  margin: 0 -1.575rem;
+  padding: 0 1.575rem;
+}
+
+div.warning {
+  background-color: yellow;
 }
 
 /*
