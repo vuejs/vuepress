@@ -70,7 +70,7 @@
     "rimraf": "^2.6.2",
     "url-loader": "^1.0.1",
     "vue": "^2.5.16",
-    "vue-loader": "^15.0.0-beta.7",
+    "vue-loader": "^15.0.0-rc.1",
     "vue-router": "^3.0.1",
     "vue-server-renderer": "^2.5.16",
     "vue-template-compiler": "^2.5.16",

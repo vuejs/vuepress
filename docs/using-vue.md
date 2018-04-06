@@ -79,10 +79,10 @@ Make sure a custom component's names either contains a hyphen or is in PascalCas
 
 Sometimes you may need to apply some JavaScript or CSS only to the current page. In those case you can directly write root-level `<script>` or `<style>` blocks in the markdown file, and they will be hoisted out of the compiled HTML and used as the `<script>` and `<style>` blocks for the resulting Vue single-file component.
 
-<div id="inline-script-style-example"></div>
+<div :class="$style.example"></div>
 
-<!-- <style>
-#inline-script-style-example {
+<style module>
+.example {
   color: #41b883;
 }
 </style>
@@ -90,9 +90,8 @@ Sometimes you may need to apply some JavaScript or CSS only to the current page.
 <script>
 export default {
   mounted () {
-    document.getElementById('inline-script-style-example')
+    document.querySelector(`.${this.$style.example}`)
       .textContent = 'Hello from inline script!'
   }
 }
 </script>
- -->
