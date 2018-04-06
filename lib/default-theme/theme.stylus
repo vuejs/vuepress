@@ -1,0 +1,55 @@
+.theme-container
+  font-family -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
+  padding 0 30px
+
+a
+  color #41b883
+  text-decoration none
+
+h1, h2, h3, h4, h5, h6
+  &:hover .header-anchor
+    opacity: 1
+
+a.header-anchor
+  font-size 0.8em
+  float left
+  padding-right 4px
+  margin-left -20px
+  margin-top 3px
+  opacity 0
+
+pre, pre[class*="language-"]
+  background-color #2d2d2d
+  color white
+  line-height 1.4
+  border-radius 5px
+  padding 1.3rem 1.575rem
+  white-space pre-wrap
+  word-break break-word
+  overflow auto
+  code
+    font-family source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace
+    font-size 14px
+    -webkit-font-smoothing antialiased
+
+.highlighted-line
+  background-color #14161a
+  display block
+  margin 0 -1.575rem
+  padding 0.2rem 1.575rem 0
+
+div
+  &.tip
+    color white
+    background-color green
+  &.warning
+    background-color yellow
+  &.danger
+    color white
+    background-color red
+
+p
+  &.demo
+    padding 1rem
+    border 1px solid #ddd
+    border-radius 4px

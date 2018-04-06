@@ -68,6 +68,8 @@
     "postcss-loader": "^2.1.3",
     "prismjs": "^1.13.0",
     "rimraf": "^2.6.2",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
     "url-loader": "^1.0.1",
     "vue": "^2.5.16",
     "vue-loader": "^15.0.0-rc.1",

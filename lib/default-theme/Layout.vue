@@ -34,5 +34,6 @@ export default {
 }
 </script>
 
+<style src="./nprogress.css"></style>
 <style src="prismjs/themes/prism-tomorrow.css"></style>
-<style src="./styles.css"></style>
+<style src="./theme.stylus" lang="stylus"></style>
