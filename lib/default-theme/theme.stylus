@@ -26,8 +26,8 @@ blockquote
 ul, ol
   padding-left 1.5em
 
-a
-  color #41b883
+a, p a code
+  color darken(#41b883, 5%)
   text-decoration none
 
 strong
@@ -95,7 +95,10 @@ pre, pre[class*="language-"]
   margin 0 -1.575rem
   padding 0.2rem 1.575rem 0
 
-div
+.custom-block
+  .custom-block-title
+    font-weight 600
+    text-transform uppercase
   &.tip, &.warning, &.danger
     padding .1em 1.4em
     border-left-width .5em
@@ -107,9 +110,15 @@ div
   &.warning
     background-color rgba(255,229,100,.3)
     border-color #ffe564
+    color darken(#ffe564, 70%)
+    .custom-block-title
+      color darken(#ffe564, 50%)
   &.danger
     background-color #ffe6e6
     border-color red
+    color darken(red, 70%)
+    .custom-block-title
+      color darken(red, 40%)
 
 p
   &.demo

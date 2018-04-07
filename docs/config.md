@@ -1,6 +1,6 @@
 # Configuration
 
-## .vuepress/config.js
+## Basic Config
 
 ### base
 
@@ -14,16 +14,26 @@
 
 ### dest
 
+## Theming
+
 ### theme
 
 ### themeConfig
 
-### markdown
+## Markdown
+
+### markdown.anchor
+
+### markdown.toc
+
+### markdown.config
+
+## webpack
 
 ### configureWebpack
 
 ### chainWebpack
 
-### evergreen
+## Browser Compatibility
 
-## Note on Browser Compatibility
+### evergreen

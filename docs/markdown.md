@@ -6,18 +6,21 @@ meta:
 
 # Markdown Extensions
 
+## Header Anchors
+
+Headers automatically get anchor links applied. Rendering of anchors can be configured using the [`markdown.anchor`](./config.md#markdownanchor) option.
+
 ## Links
 
 - Inbound links ending in `.md` or `.html` are converted to `<router-link>` for SPA navigation.
 
   - [Home](/)
-  - [Setup](./setup.md#quickstart)
+  - [Configuring Markdown](./config.md#markdown)
 
-- Outbound links automatically gets `target="_blank"`: [vuejs.org](https://vuejs.org)
+- Outbound links automatically gets `target="_blank"`:
 
-## Header Anchors
-
-Headers automatically get anchor links applied.
+  - [vuejs.org](https://vuejs.org)
+  - [VuePress on GitHub](https://github.com/vuejs/vuepress)
 
 ## YAML Front Matter
 
@@ -44,6 +47,18 @@ meta:
 ---
 ```
 
+## Emoji
+
+**Input**
+
+```
+:tada: :100:
+```
+
+**Output**
+
+:tada: :100:
+
 ## Table of Contents
 
 **Input**
@@ -55,6 +70,8 @@ meta:
 **Output**
 
 [[toc]]
+
+Rendering of TOC can be configured using the [`markdown.toc`](./config.md#markdowntoc) option.
 
 ## Custom Containers
 
@@ -70,7 +87,7 @@ This is a warning
 :::
 
 ::: danger
-This is a dangerous thing
+This is a dangerous warning
 :::
 ```
 
@@ -86,6 +103,18 @@ This is a warning
 
 ::: danger
 This is a dangerous thing
+:::
+
+You can also customize the title of the block:
+
+```
+::: danger STOP
+Danger zone, do not proceed
+:::
+```
+
+::: danger STOP
+Danger zone, do not proceed
 :::
 
 ## Line Highlighting in Code Blocks
@@ -115,18 +144,6 @@ export default {
   }
 }
 ```
-
-## Emoji
-
-**Input**
-
-```
-:tada: :100:
-```
-
-**Output**
-
-:tada: :100:
 
 ## Advanced Configuration
 
