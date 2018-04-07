@@ -1,3 +1,9 @@
+---
+meta:
+- name: keywords
+  content: static docs generator vue
+---
+
 # Markdown Extensions
 
 ## Links
