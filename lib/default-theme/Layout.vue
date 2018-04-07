@@ -1,10 +1,7 @@
 <template>
   <div class="theme-container">
-    <div>
-      {{ $site.themeConfig }}
-    </div>
-    <ul class="nav">
-      <li v-for="page in $site.pages">
+    <ul class="sidebar">
+      <li v-for="page in sortedPages">
         <router-link :to="page.path">
           {{ page.frontmatter.navTitle || page.title || page.path }}
         </router-link>
@@ -20,8 +17,37 @@ import nprogress from 'nprogress'
 import Index from './Index.vue'
 import Page from './Page.vue'
 
+function normalize (path) {
+  return path.replace(/\.(md|html)$/, '')
+}
+
+function findIndex (order, page) {
+  const pagePath = normalize(page.path)
+  for (let i = 0; i < order.length; i++) {
+    if (normalize(order[i]) === pagePath) {
+      return i
+    }
+  }
+  return Infinity
+}
+
 export default {
   components: { Index, Page },
+  computed: {
+    sortedPages () {
+      const pages = this.$site.pages
+      const order = this.$site.themeConfig.sidebar
+      if (!order) {
+        return pages
+      } else {
+        return pages.slice().sort((a, b) => {
+          const aIndex = findIndex(order, a)
+          const bIndex = findIndex(order, b)
+          return aIndex - bIndex
+        })
+      }
+    }
+  },
   mounted () {
     nprogress.configure({ showSpinner: false })
 

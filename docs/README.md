@@ -1,5 +1,5 @@
 ---
-navTitle: Intro
+navTitle: Getting Started
 ---
 
 # VuePress

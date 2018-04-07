@@ -9,10 +9,14 @@ module.exports = {
     ['link', { rel: 'icon', href: `${base}logo.png` }]
   ],
   themeConfig: {
-    nav: [
+    sidebar: [
       '/',
-      '/foo',
-      '/bar'
+      '/markdown',
+      '/assets',
+      '/using-vue',
+      '/config',
+      '/theming',
+      '/deploy'
     ]
   }
 }
