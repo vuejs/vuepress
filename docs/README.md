@@ -2,6 +2,18 @@
 
 > Minimalistic docs generator with Vue component based layout system
 
+## Why
+
+- Writing first: minimal setup, all you need is a markdown file.
+
+- Vue-powered: the layout system is a Vue app. It's also pre-rendered into static HTML. And you can register and use Vue components inside markdown content.
+
+- Flexible: develop with full power of webpack (hot-reload, pre-processors support), generate SEO-friendly static HTML, and works as an SPA after initial page load.
+
+- Optimized for docs: many built-in markdown extensions and default theme features for writing great documentation.
+
+- GitHub friendly: pages can link to each other using relative links that ends in `.md`, auto-generates GitHub link and page edit links if a repo is provided.
+
 ## Quickstart
 
 ``` bash
