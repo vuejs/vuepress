@@ -6,6 +6,16 @@
   font-size 16px
   color #2c3e50
 
+.markdown
+  max-width 800px
+  margin-left 300px
+  margin-bottom 30px
+
+.nav
+  position fixed
+  margin 0
+  top 30px
+
 blockquote
   font-size 1.25em
   color #999
