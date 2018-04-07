@@ -2,6 +2,8 @@
 
 ## Templating
 
+### Interpolation
+
 Each markdown file is first compiled into HTML and then passed on as a Vue component to `vue-loader`. This means you can use Vue-style interpolation in text:
 
 **Input**
@@ -14,6 +16,8 @@ Each markdown file is first compiled into HTML and then passed on as a Vue compo
 
 <pre><code>{{ 1 + 1 }}</code></pre>
 
+### Directives
+
 Directives also work:
 
 **Input**
@@ -25,6 +29,8 @@ Directives also work:
 **Output**
 
 <pre><code><span v-for="i in 3">{{ i }} </span></code></pre>
+
+### Access to Site & Page Data
 
 The compiled component does not have any private data but do have access to the [site metadata](./theming.md#site-and-page-metadata). For example:
 

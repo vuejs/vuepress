@@ -42,7 +42,7 @@ meta:
 
 **Input**
 
-``` markdown
+```
 [[toc]]
 ```
 
@@ -54,7 +54,7 @@ meta:
 
 **Input**
 
-``` markdown
+```
 ::: tip
 This is a tip
 :::
@@ -86,7 +86,7 @@ This is a dangerous thing
 
 **Input**
 
-```` markdown
+````
 ``` js{4}
 export default {
   data () {
@@ -114,7 +114,7 @@ export default {
 
 **Input**
 
-``` markdown
+```
 :tada: :100:
 ```
 

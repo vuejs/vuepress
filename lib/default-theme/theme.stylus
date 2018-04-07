@@ -1,22 +1,71 @@
 .theme-container
   font-family -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
+  -webkit-font-smoothing antialiased
+  -moz-osx-font-smoothing grayscale
   padding 0 30px
+  font-size 16px
+  color #2c3e50
+
+blockquote
+  font-size 1.25em
+  color #999
+  border-left .25em solid #dfe2e5
+  margin-left 0
+  padding-left 1em
+
+ul, ol
+  padding-left 1.5em
 
 a
   color #41b883
   text-decoration none
 
+strong
+  font-weight 600
+
 h1, h2, h3, h4, h5, h6
+  font-weight 600
+  line-height 1.25
+  &:not(:first-child)
+    margin-top 1.5em
   &:hover .header-anchor
     opacity: 1
 
+h1
+  font-size 2.3em
+
+h2
+  font-size 1.8em
+  padding-bottom .3em
+  border-bottom 1px solid #eaecef
+
+h3
+  font-size 1.4em
+
 a.header-anchor
-  font-size 0.8em
+  font-size 0.85em
   float left
-  padding-right 4px
-  margin-left -20px
-  margin-top 3px
+  margin-left -0.87em
+  padding-right 0.23em
+  margin-top 0.125em
   opacity 0
+
+code
+  font-family source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace
+
+p, ul, ol
+  line-height 1.5
+
+p, h1, h2, h3, h4, h5, h6
+  code
+    padding 0.2em 0.5em
+    margin 0
+    font-size 0.85em
+    background-color rgba(27,31,35,0.05)
+    border-radius 3px
+
+p code
+  color lighten(#2c3e50, 20%)
 
 pre, pre[class*="language-"]
   background-color #2d2d2d
@@ -28,9 +77,7 @@ pre, pre[class*="language-"]
   word-break break-word
   overflow auto
   code
-    font-family source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace
-    font-size 14px
-    -webkit-font-smoothing antialiased
+    font-size .88em
 
 .highlighted-line
   background-color #14161a
@@ -39,14 +86,20 @@ pre, pre[class*="language-"]
   padding 0.2rem 1.575rem 0
 
 div
+  &.tip, &.warning, &.danger
+    padding .1em 1.4em
+    border-left-width .5em
+    border-left-style solid
+    margin 1em 0
   &.tip
-    color white
-    background-color green
+    background-color #f1f3f5
+    border-color #42b983
   &.warning
-    background-color yellow
+    background-color rgba(255,229,100,.3)
+    border-color #ffe564
   &.danger
-    color white
-    background-color red
+    background-color #ffe6e6
+    border-color red
 
 p
   &.demo

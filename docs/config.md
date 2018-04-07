@@ -1,6 +1,6 @@
 # Configuration
 
-## `.vuepress/config.js`
+## .vuepress/config.js
 
 ### base
 
@@ -22,4 +22,4 @@
 
 ### evergreen
 
-## Browser Compatibility
+## Note on Browser Compatibility
