@@ -7,5 +7,12 @@ module.exports = {
   base,
   head: [
     ['link', { rel: 'icon', href: `${base}logo.png` }]
-  ]
+  ],
+  themeConfig: {
+    nav: [
+      '/',
+      '/foo',
+      '/bar'
+    ]
+  }
 }
