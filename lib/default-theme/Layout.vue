@@ -1,12 +1,14 @@
 <template>
   <div class="theme-container">
-    <ul class="sidebar">
-      <li v-for="page in sortedPages">
-        <router-link :to="page.path">
-          {{ page.frontmatter.navTitle || page.title || page.path }}
-        </router-link>
-      </li>
-    </ul>
+    <div class="sidebar">
+      <ul>
+        <li v-for="page in sortedPages">
+          <router-link :to="page.path">
+            {{ page.frontmatter.navTitle || page.title || page.path }}
+          </router-link>
+        </li>
+      </ul>
+    </div>
     <Index v-if="$page.path === '/index'" />
     <Page v-else />
   </div>

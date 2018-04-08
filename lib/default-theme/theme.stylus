@@ -1,20 +1,45 @@
-.theme-container
+body
   font-family -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
-  padding 0 30px
   font-size 16px
   color #2c3e50
 
-.markdown
-  max-width 800px
-  margin-left 300px
-  margin-bottom 30px
+.page
+  padding-left 300px
 
 .sidebar
+  width 300px
   position fixed
   margin 0
-  top 30px
+  top 0
+  left 0
+  bottom 0
+  padding 2em 0
+  box-sizing border-box
+  border-right 1px solid #eaecef
+  overflow-y scroll
+  ul
+    padding 0
+    margin 0
+    list-style-type none
+  a
+    display inline-block
+    color #2c3e50
+    border-left 4px solid transparent
+    padding 0.25em
+    padding-left 1.25em
+    &:hover
+      color darken(#41b883, 5%)
+    &.router-link-exact-active
+      font-weight 600
+      color darken(#41b883, 5%)
+      border-left-color darken(#41b883, 5%)
+
+.markdown
+  max-width 720px
+  margin 2em auto
+  padding 0 2em
 
 blockquote
   font-size 1.25em
@@ -64,7 +89,7 @@ code
   font-family source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace
 
 p, ul, ol
-  line-height 1.5
+  line-height 1.7
 
 p, h1, h2, h3, h4, h5, h6
   code
@@ -81,19 +106,19 @@ pre, pre[class*="language-"]
   background-color #2d2d2d
   color white
   line-height 1.4
-  border-radius 5px
-  padding 1.3rem 1.575rem
+  border-radius 6px
+  padding 1.4em 1.6em
   white-space pre-wrap
   word-break break-word
   overflow auto
   code
-    font-size .88em
+    font-size 0.85em
 
 .highlighted-line
   background-color #14161a
   display block
-  margin 0 -1.575rem
-  padding 0.2rem 1.575rem 0
+  margin 0 -1.6em
+  padding 0.2em 1.6em 0
 
 .custom-block
   .custom-block-title
@@ -105,7 +130,7 @@ pre, pre[class*="language-"]
     border-left-style solid
     margin 1em 0
   &.tip
-    background-color #f1f3f5
+    background-color #f3f5f7
     border-color #42b983
   &.warning
     background-color rgba(255,229,100,.3)
@@ -125,3 +150,27 @@ p
     padding 1rem
     border 1px solid #ddd
     border-radius 4px
+
+@media (max-width: 879px)
+  body
+    font-size 15px
+  .sidebar
+    font-size 14px
+    width 250px
+  .page
+    padding-left 250px
+  .markdown
+    margin 1.5em 0
+    padding 0 1.5em
+
+@media (max-width: 639px)
+  body
+    font-size 15px
+  .sidebar
+    width 275px
+    display none
+  .page
+    padding-left 0
+  .markdown
+    margin 1em 0
+    padding 0 1em

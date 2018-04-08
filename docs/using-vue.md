@@ -42,17 +42,31 @@ The compiled component does not have any private data but do have access to the 
 
 **Output**
 
-<pre><code>{{ $page }}</code></pre>
+``` json
+{
+  "path": "/using-vue.html",
+  "title": "Using Vue in Markdown",
+  "frontmatter": {}
+}
+```
 
 ## Escaping
 
 By default, fenced code blocks are automatically wrapped with `v-pre`. If you want to display raw mustaches or Vue-specific syntax inside inline code snippets or plain text, you need to wrap a paragraph with the `v-pre` custom container:
+
+**Input**
 
 ``` markdown
 ::: v-pre
 `{{ This will be displayed as-is }}`
 :::
 ```
+
+**Output**
+
+::: v-pre
+`{{ This will be displayed as-is }}`
+:::
 
 ## Using Components
 
@@ -77,7 +91,7 @@ Inside any markdown file you can then directly use the components (names are inf
 
 <OtherComponent/>
 
-::: warning
+::: warning IMPORTANT
 Make sure a custom component's names either contains a hyphen or is in PascalCase. Otherwise it will be treated as an inline element and wrapped inside a `<p>` tag, which will lead to hydration mismatch because `<p>` does not allow block elements to be placed inside it.
 :::
 

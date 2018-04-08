@@ -20,6 +20,8 @@
 
 ### themeConfig
 
+Also see [config options for the default theme](./default-theme.md).
+
 ## Markdown
 
 ### markdown.anchor

@@ -15,6 +15,7 @@ module.exports = {
       '/assets',
       '/using-vue',
       '/config',
+      '/default-theme',
       '/theming',
       '/deploy'
     ]
