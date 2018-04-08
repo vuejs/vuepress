@@ -9,15 +9,40 @@ module.exports = {
     ['link', { rel: 'icon', href: `${base}logo.png` }]
   ],
   themeConfig: {
+    // sidebar config
     sidebar: [
-      '/',
+      '/getting-started',
       '/markdown',
       '/assets',
       '/using-vue',
       '/config',
       '/default-theme',
       '/theming',
-      '/deploy'
-    ]
+      '/deploy',
+      // nesting
+      ['Nesting', [
+        '/markdown',
+        '/assets'
+      ]]
+    ],
+
+    // multi-category sidebar config
+
+    // sidebar: {
+    //   '*': [/* ... */],
+    //   '/guide/': [/* ... */],
+    //   '/tutorial/': [/* ... */],
+    //   '/api/': [/* ... */]
+    // },
+
+    // navbar config
+
+    // nav: [
+    //   {
+    //     title: 'Guide',
+    //     link: '/getting-started',
+    //   },
+    //   // ...
+    // ]
   }
 }

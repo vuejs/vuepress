@@ -31,13 +31,13 @@ body
     padding-left 1.25em
     &:hover
       color darken(#41b883, 5%)
-    &.router-link-exact-active
+    &.router-link-active
       font-weight 600
       color darken(#41b883, 5%)
       border-left-color darken(#41b883, 5%)
 
 .markdown
-  max-width 720px
+  max-width 760px
   margin 2em auto
   padding 0 2em
 
@@ -151,7 +151,7 @@ p
     border 1px solid #ddd
     border-radius 4px
 
-@media (max-width: 879px)
+@media (max-width: 959px)
   body
     font-size 15px
   .sidebar
@@ -163,7 +163,7 @@ p
     margin 1.5em 0
     padding 0 1.5em
 
-@media (max-width: 639px)
+@media (max-width: 719px)
   body
     font-size 15px
   .sidebar

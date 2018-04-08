@@ -2,10 +2,20 @@
   <div class="theme-container">
     <div class="sidebar">
       <ul>
-        <li v-for="page in sortedPages">
-          <router-link :to="page.path">
-            {{ page.frontmatter.navTitle || page.title || page.path }}
+        <li v-for="item in sidebarItems">
+          <router-link v-if="item.type === 'page'" :to="item.path">
+            {{ item.title || item.path }}
           </router-link>
+          <div class="sidebar-group" v-else-if="item.type === 'heading'">
+            <p class="sidebar-heading">{{ item.title }}</p>
+            <ul>
+              <li v-for="child in item.children">
+                <router-link v-if="child.type === 'page'" :to="child.path">
+                  {{ child.title || child.path }}
+                </router-link>
+              </li>
+            </ul>
+          </div>
         </li>
       </ul>
     </div>
@@ -18,36 +28,16 @@
 import nprogress from 'nprogress'
 import Index from './Index.vue'
 import Page from './Page.vue'
-
-function normalize (path) {
-  return path.replace(/\.(md|html)$/, '')
-}
-
-function findIndex (order, page) {
-  const pagePath = normalize(page.path)
-  for (let i = 0; i < order.length; i++) {
-    if (normalize(order[i]) === pagePath) {
-      return i
-    }
-  }
-  return Infinity
-}
+import resolveSidebar from './resolveSidebar'
 
 export default {
   components: { Index, Page },
   computed: {
-    sortedPages () {
-      const pages = this.$site.pages
-      const order = this.$site.themeConfig.sidebar
-      if (!order) {
-        return pages
-      } else {
-        return pages.slice().sort((a, b) => {
-          const aIndex = findIndex(order, a)
-          const bIndex = findIndex(order, b)
-          return aIndex - bIndex
-        })
-      }
+    sidebarItems () {
+      return resolveSidebar(
+        this.$route,
+        this.$site
+      )
     }
   },
   mounted () {
