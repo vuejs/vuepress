@@ -1,5 +1,8 @@
 @import './config.stylus'
 @import './nprogress.stylus'
+@import './code.stylus'
+@import './custom-blocks.stylus'
+@import './arrow.stylus'
 
 html, body
   padding 0
@@ -92,85 +95,11 @@ code
 p, ul, ol
   line-height 1.7
 
-p, h1, h2, h3, h4, h5, h6
-  code
-    color lighten($textColor, 20%)
-    padding 0.2rem 0.5rem
-    margin 0
-    font-size 0.85rem
-    background-color rgba(27,31,35,0.05)
-    border-radius 3px
-
-pre, pre[class*="language-"]
-  background-color $codeBgColor
-  color #fff
-  line-height 1.4
-  border-radius 6px
-  padding 1.25rem 1.5rem
-  white-space pre-wrap
-  word-break break-word
-  overflow auto
-  code
-    font-size 0.85rem
-
-.highlighted-line
-  background-color rgba(0, 0, 0, 66%)
-  display block
-  margin 0.1rem -1.8rem 0
-  padding 0.1rem 1.8rem
-
-.custom-block
-  .custom-block-title
-    font-weight 600
-    text-transform uppercase
-    margin-bottom -0.4rem
-  &.tip, &.warning, &.danger
-    padding .1rem 1.5rem
-    border-left-width .5rem
-    border-left-style solid
-    margin 1rem 0
-  &.tip
-    background-color #f3f5f7
-    border-color #42b983
-  &.warning
-    background-color rgba(255,229,100,.3)
-    border-color darken(#ffe564, 20%)
-    color darken(#ffe564, 70%)
-    .custom-block-title
-      color darken(#ffe564, 50%)
-  &.danger
-    background-color #ffe6e6
-    border-color darken(red, 20%)
-    color darken(red, 70%)
-    .custom-block-title
-      color darken(red, 40%)
-
 p
   &.demo
     padding 1rem 1.5rem
     border 1px solid #ddd
     border-radius 4px
-
-.arrow
-  display inline-block
-  width 0
-  height 0
-  &.up
-    border-left 4px solid transparent
-    border-right 4px solid transparent
-    border-bottom 6px solid $textColor
-  &.down
-    border-left 4px solid transparent
-    border-right 4px solid transparent
-    border-top 6px solid $textColor
-  &.right
-    border-top 4px solid transparent
-    border-bottom 4px solid transparent
-    border-left 6px solid $textColor
-  &.left
-    border-top 4px solid transparent
-    border-bottom 4px solid transparent
-    border-right 6px solid $textColor
 
 $mobileSidebarWidth = $sidebarWidth * 0.82
 

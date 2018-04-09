@@ -13,7 +13,7 @@ Each markdown file is first compiled into HTML and then passed on as a Vue compo
 
 **Input**
 
-``` markdown
+``` md
 {{ 1 + 1 }}
 ```
 
@@ -27,7 +27,7 @@ Directives also work:
 
 **Input**
 
-``` markdown
+``` md
 <span v-for="i in 3">{{ i }} </span>
 ```
 
@@ -41,7 +41,7 @@ The compiled component does not have any private data but do have access to the 
 
 **Input**
 
-``` markdown
+``` md
 {{ $page }}
 ```
 
@@ -61,7 +61,7 @@ By default, fenced code blocks are automatically wrapped with `v-pre`. If you wa
 
 **Input**
 
-``` markdown
+``` md
 ::: v-pre
 `{{ This will be displayed as-is }}`
 :::
@@ -87,7 +87,7 @@ Any `*.vue` file found in `.vuepress/components` are automatically registered as
 
 Inside any markdown file you can then directly use the components (names are inferred from filenames):
 
-``` markdown
+``` md
 <demo-1/>
 <OtherComponent/>
 ```
