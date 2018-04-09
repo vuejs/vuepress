@@ -1,3 +1,8 @@
+---
+prev: /
+next: /markdown
+---
+
 # Getting Started
 
 ## Quickstart

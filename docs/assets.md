@@ -1,3 +1,8 @@
+---
+prev: /markdown
+next: /using-vue
+---
+
 # Asset Handling
 
 ## Relative URLs

@@ -9,18 +9,19 @@ module.exports = {
     ['link', { rel: 'icon', href: `${base}logo.png` }]
   ],
   themeConfig: {
+    github: 'vuejs/vuepress',
     // sidebar config
     sidebar: [
       {
         title: 'Guide',
         children: [
-          ['/', 'Intro'],
+          '/',
           '/getting-started',
           '/markdown',
           '/assets',
           '/using-vue',
           '/default-theme',
-          '/theming',
+          '/custom-themes',
           '/deploy'
         ]
       },

@@ -1,6 +1,10 @@
 @import './config.stylus'
 @import './nprogress.stylus'
 
+html, body
+  padding 0
+  margin 0
+
 body
   font-family -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
   -webkit-font-smoothing antialiased
@@ -24,10 +28,21 @@ body
   border-right 1px solid $borderColor
   overflow-y scroll
 
-.markdown
-  max-width 760px
-  margin 2rem auto
+.content
+  max-width $contentWidth
+  margin 2rem auto 3rem
   padding 0 2rem
+  a:hover
+    text-decoration underline
+
+a
+  font-weight 500
+  color $accentColor
+  text-decoration none
+
+p a code
+  font-weight 400
+  color $accentColor
 
 blockquote
   font-size 1.25rem
@@ -38,10 +53,6 @@ blockquote
 
 ul, ol
   padding-left 1.2em
-
-a, p a code
-  color $accentColor
-  text-decoration none
 
 strong
   font-weight 600
@@ -55,15 +66,15 @@ h1, h2, h3, h4, h5, h6
     opacity: 1
 
 h1
-  font-size 2.3rem
+  font-size 2.2rem
 
 h2
-  font-size 1.8rem
+  font-size 1.65rem
   padding-bottom .3rem
   border-bottom 1px solid $borderColor
 
 h3
-  font-size 1.4rem
+  font-size 1.35rem
 
 a.header-anchor
   font-size 0.85em
@@ -72,6 +83,8 @@ a.header-anchor
   padding-right 0.23em
   margin-top 0.125em
   opacity 0
+  &:hover
+    text-decoration none
 
 code
   font-family source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace
@@ -81,14 +94,12 @@ p, ul, ol
 
 p, h1, h2, h3, h4, h5, h6
   code
+    color lighten($textColor, 20%)
     padding 0.2rem 0.5rem
     margin 0
     font-size 0.85rem
     background-color rgba(27,31,35,0.05)
     border-radius 3px
-
-p code
-  color lighten($textColor, 20%)
 
 pre, pre[class*="language-"]
   background-color $codeBgColor
@@ -172,7 +183,7 @@ $mobileSidebarWidth = $sidebarWidth * 0.82
     width $mobileSidebarWidth
   .page
     padding-left $mobileSidebarWidth
-  .markdown
+  .content
     margin 1.5rem 0
     padding 0 1.5rem
 
@@ -192,6 +203,6 @@ $mobileSidebarWidth = $sidebarWidth * 0.82
   pre, pre[class*="language-"]
     margin 0 -1.5rem
     border-radius 0
-  .markdown
+  .content
     margin 1rem 0
     padding 0 1rem

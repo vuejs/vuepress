@@ -15,7 +15,8 @@
 
 <script>
 import SidebarGroup from './SidebarGroup.vue'
-import SidebarLink, { isActive, normalize, ensureExt } from './SidebarLink.vue'
+import SidebarLink, { isActive } from './SidebarLink.vue'
+import { resolvePage } from './util'
 
 export default {
   components: { SidebarGroup, SidebarLink },
@@ -34,7 +35,7 @@ export default {
   },
   computed: {
     sidebarItems () {
-      return resolveSidebar(
+      return resolveSidebarItems(
         this.$route,
         this.$site
       )
@@ -66,18 +67,18 @@ function resolveOpenGroupIndex (route, items) {
   return -1
 }
 
-function resolveSidebar (route, site) {
+function resolveSidebarItems (route, site) {
   const { pages, themeConfig } = site
   const sidebarConfig = themeConfig.sidebar
   if (!sidebarConfig) {
     return pages.map(p => Object.assign({ page: 'type' }, p))
   } else {
-    const matchingConfig = resolveMatchingSidebar(route, sidebarConfig)
+    const matchingConfig = resolveMatchingSidebarConfig(route, sidebarConfig)
     return matchingConfig.map(item => resolveItem(item, pages))
   }
 }
 
-function resolveMatchingSidebar (route, sidebarConfig) {
+function resolveMatchingSidebarConfig (route, sidebarConfig) {
   if (Array.isArray(sidebarConfig)) {
     return sidebarConfig
   }
@@ -116,20 +117,6 @@ function resolveItem (item, pages, isNested) {
       collapsable: children.length && item.collapsable
     }
   }
-}
-
-function resolvePage (pages, rawPath) {
-  const path = normalize(rawPath)
-  for (let i = 0; i < pages.length; i++) {
-    if (normalize(pages[i].path) === path) {
-      return Object.assign({}, pages[i], {
-        type: 'page',
-        path: ensureExt(rawPath)
-      })
-    }
-  }
-  console.error(`[vuepress] No matching page found for sidebar item "${rawPath}"`)
-  return {}
 }
 </script>
 

@@ -1,13 +1,13 @@
 <script>
+import { normalize, ensureExt } from './util'
+
 export default {
   functional: true,
   props: ['item'],
   render (h, { parent: { $route }, props: { item }}) {
     return h('router-link', {
       props: {
-        to: item.path,
-        activeClass: '',
-        exactActiveClass: ''
+        to: item.path
       },
       class: {
         'sidebar-link': true,
@@ -19,10 +19,6 @@ export default {
   }
 }
 
-const hashRE = /#.*$/
-const extRE = /\.(md|html)$/
-const slashRE = /\/$/
-
 export function isActive (route, page) {
   const routePath = normalize(route.path)
   const pagePath = normalize(page.path)
@@ -32,27 +28,13 @@ export function isActive (route, page) {
     return routePath.indexOf(pagePath) === 0
   }
 }
-
-export function normalize (path) {
-  return path
-    .replace(hashRE, '')
-    .replace(extRE, '')
-}
-
-export function ensureExt (path) {
-  if (slashRE.test(path)) {
-    return path
-  }
-  const hashMatch = path.match(hashRE)
-  const hash = hashMatch ? hashMatch[0] : ''
-  return normalize(path) + '.html' + hash
-}
 </script>
 
 <style lang="stylus">
 @import './styles/config.stylus'
 
 a.sidebar-link
+  font-weight 400
   display inline-block
   color $textColor
   border-left 0.25rem solid transparent
