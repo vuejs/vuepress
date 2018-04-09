@@ -14,20 +14,21 @@ module.exports = {
       {
         title: 'Guide',
         children: [
+          ['/', 'Home'],
           '/getting-started',
           '/markdown',
           '/assets',
           '/using-vue',
-          '/config',
-          '/default-theme'
+          '/default-theme',
+          '/theming',
+          '/deploy'
         ]
       },
       {
-        title: 'API Reference',
+        title: 'Config Reference',
         children: [
-          ['/markdown#emoji', 'MMMMM'],
-          '/theming',
-          '/deploy'
+          '/config',
+          '/test/'
         ]
       }
     ],

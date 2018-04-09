@@ -7,9 +7,7 @@
     <transition name="sidebar-group" @enter="setHeight">
       <ul class="sidebar-group-items" ref="items" v-if="open">
         <li v-for="child in item.children">
-          <router-link v-if="child.type === 'page'" :to="child.path">
-            {{ child.title || child.path }}
-          </router-link>
+          <SidebarLink v-if="child.type === 'page'" :item="child"/>
         </li>
       </ul>
     </transition>
@@ -17,9 +15,12 @@
 </template>
 
 <script>
+import SidebarLink from './SidebarLink.vue'
+
 export default {
   name: 'SidebarGroup',
   props: ['item', 'first', 'open'],
+  components: { SidebarLink },
   mounted () {
     const { items } = this.$refs
     if (items) this.setHeight(items)

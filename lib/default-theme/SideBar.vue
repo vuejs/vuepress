@@ -2,9 +2,7 @@
   <div class="sidebar">
     <ul>
       <li v-for="(item, i) in sidebarItems">
-        <router-link v-if="item.type === 'page'" :to="item.path">
-          {{ item.title || item.path }}
-        </router-link>
+        <SidebarLink v-if="item.type === 'page'" :item="item"/>
         <SidebarGroup v-else-if="item.type === 'group'"
           :item="item"
           :first="i === 0"
@@ -17,9 +15,10 @@
 
 <script>
 import SidebarGroup from './SidebarGroup.vue'
+import SidebarLink, { isActive, normalize, ensureExt } from './SidebarLink.vue'
 
 export default {
-  components: { SidebarGroup },
+  components: { SidebarGroup, SidebarLink },
   data () {
     return {
       openGroupIndex: 0
@@ -42,6 +41,9 @@ export default {
   methods: {
     toggleGroup (index) {
       this.openGroupIndex = index === this.openGroupIndex ? -1 : index
+    },
+    isActive (page) {
+      return isActive(this.$route, page)
     }
   }
 }
@@ -49,16 +51,10 @@ export default {
 function resolveOpenGroupIndex (route, items) {
   for (let i = 0; i < items.length; i++) {
     const item = items[i]
-    if (item.type === 'group' && item.children.some(c => isActive(route, c.path))) {
+    if (item.type === 'group' && item.children.some(c => isActive(route, c))) {
       return i
     }
   }
-}
-
-function isActive (route, path) {
-  // TODO refine
-  const routePath = route.path
-  return routePath.indexOf(path) === 0
 }
 
 function resolveSidebar (route, site) {
@@ -98,7 +94,7 @@ function resolveItem (item, pages, isNested) {
     })
   } else {
     if (isNested) {
-      throw new Error(
+      console.error(
         '[vuepress] Nested sidebar groups are not supported. ' +
         'Consider using navbar + categories instead.'
       )
@@ -123,46 +119,15 @@ function resolvePage (pages, rawPath) {
       })
     }
   }
-}
-
-const hashRE = /#.*$/
-const extRE = /\.(md|html)$/
-const slashRE = /\/$/
-
-function normalize (path) {
-  return path
-    .replace(hashRE, '')
-    .replace(extRE, '')
-}
-
-function ensureExt (path) {
-  if (slashRE.test(path)) {
-    return path
-  }
-  const hashMatch = path.match(hashRE)
-  const hash = hashMatch ? hashMatch[0] : ''
-  return normalize(path) + '.html' + hash
+  console.error(`[vuepress] No matching page found for sidebar item "${rawPath}"`)
+  return {}
 }
 </script>
 
 <style lang="stylus">
-@import './styles/config.stylus'
-
 .sidebar
   ul
     padding 0
     margin 0
     list-style-type none
-  a
-    display inline-block
-    color $textColor
-    border-left 0.25rem solid transparent
-    padding 0.25rem
-    padding-left 1.25rem
-    &:hover
-      color $accentColor
-    &.router-link-active
-      font-weight 600
-      color $accentColor
-      border-left-color $accentColor
 </style>
