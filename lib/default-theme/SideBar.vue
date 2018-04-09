@@ -44,10 +44,13 @@ export default {
   },
   methods: {
     refreshIndex () {
-      this.openGroupIndex = resolveOpenGroupIndex(
+      const index = resolveOpenGroupIndex(
         this.$route,
         this.sidebarItems
       )
+      if (index > -1) {
+        this.openGroupIndex = index
+      }
     },
     toggleGroup (index) {
       this.openGroupIndex = index === this.openGroupIndex ? -1 : index

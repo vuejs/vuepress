@@ -1,4 +1,6 @@
+const path = require('path')
 const base = process.env.GH ? '/vuepress/' : '/'
+const { extractHeaders } = require('../../lib/userUtils')
 
 module.exports = {
   title: 'VuePress',
@@ -28,22 +30,10 @@ module.exports = {
       },
       {
         title: 'Config Reference',
-        children: [
-          '/config#base',
-          '/config#title',
-          '/config#description',
-          '/config#head',
-          '/config#port',
-          '/config#dest',
-          '/config#theme',
-          '/config#themeConfig',
-          '/config#markdownanchor',
-          '/config#markdowntoc',
-          '/config#markdownconfig',
-          '/config#configureWebpack',
-          '/config#chainWebpack',
-          '/config#evergreen'
-        ]
+        children: extractHeaders(
+          path.resolve(__dirname, '../config.md'),
+          ['h3']
+        ).map(({ title, slug }) => [`/config#${slug}`, title])
       }
     ],
 

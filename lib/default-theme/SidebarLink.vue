@@ -1,5 +1,5 @@
 <script>
-import { normalize, ensureExt } from './util'
+import { normalize, getHash, ensureExt } from './util'
 
 export default {
   functional: true,
@@ -20,6 +20,11 @@ export default {
 }
 
 export function isActive (route, page) {
+  const routeHash = route.hash
+  const linkHash = getHash(page.path)
+  if (linkHash && routeHash !== linkHash) {
+    return false
+  }
   const routePath = normalize(route.path)
   const pagePath = normalize(page.path)
   if (routePath === '/' || pagePath === '/') {
