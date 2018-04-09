@@ -1,0 +1,6 @@
+$textColor = #2c3e50
+$accentColor = darken(#41b883, 5%)
+$borderColor = #eaecef
+$codeBgColor = #282c34
+$sidebarWidth = 20rem
+$contentWidth = 760px

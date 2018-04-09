@@ -1,58 +1,46 @@
+@import './config.stylus'
+@import './nprogress.stylus'
+
 body
   font-family -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
   font-size 16px
-  color #2c3e50
+  color $textColor
 
 .page
-  padding-left 300px
+  padding-left $sidebarWidth
 
 .sidebar
-  width 300px
+  font-size 15px
+  width $sidebarWidth
   position fixed
   margin 0
   top 0
   left 0
   bottom 0
-  padding 2em 0
+  padding 2rem 0
   box-sizing border-box
-  border-right 1px solid #eaecef
+  border-right 1px solid $borderColor
   overflow-y scroll
-  ul
-    padding 0
-    margin 0
-    list-style-type none
-  a
-    display inline-block
-    color #2c3e50
-    border-left 4px solid transparent
-    padding 0.25em
-    padding-left 1.25em
-    &:hover
-      color darken(#41b883, 5%)
-    &.router-link-active
-      font-weight 600
-      color darken(#41b883, 5%)
-      border-left-color darken(#41b883, 5%)
 
 .markdown
   max-width 760px
-  margin 2em auto
-  padding 0 2em
+  margin 2rem auto
+  padding 0 2rem
 
 blockquote
-  font-size 1.25em
+  font-size 1.25rem
   color #999
-  border-left .25em solid #dfe2e5
+  border-left .25rem solid #dfe2e5
   margin-left 0
-  padding-left 1em
+  padding-left 1rem
 
 ul, ol
-  padding-left 1.5em
+  padding-left 1.5rem
 
 a, p a code
-  color darken(#41b883, 5%)
+  color $accentColor
   text-decoration none
 
 strong
@@ -62,20 +50,20 @@ h1, h2, h3, h4, h5, h6
   font-weight 600
   line-height 1.25
   &:not(:first-child)
-    margin-top 1.5em
+    margin-top 1.5rem
   &:hover .header-anchor
     opacity: 1
 
 h1
-  font-size 2.3em
+  font-size 2.3rem
 
 h2
-  font-size 1.8em
-  padding-bottom .3em
-  border-bottom 1px solid #eaecef
+  font-size 1.8rem
+  padding-bottom .3rem
+  border-bottom 1px solid $borderColor
 
 h3
-  font-size 1.4em
+  font-size 1.4rem
 
 a.header-anchor
   font-size 0.85em
@@ -93,42 +81,43 @@ p, ul, ol
 
 p, h1, h2, h3, h4, h5, h6
   code
-    padding 0.2em 0.5em
+    padding 0.2rem 0.5rem
     margin 0
-    font-size 0.85em
+    font-size 0.85rem
     background-color rgba(27,31,35,0.05)
     border-radius 3px
 
 p code
-  color lighten(#2c3e50, 20%)
+  color lighten($textColor, 20%)
 
 pre, pre[class*="language-"]
-  background-color #2d2d2d
-  color white
+  background-color $codeBgColor
+  color #fff
   line-height 1.4
   border-radius 6px
-  padding 1.4em 1.6em
+  padding 1.25rem 1.5rem
   white-space pre-wrap
   word-break break-word
   overflow auto
   code
-    font-size 0.85em
+    font-size 0.85rem
 
 .highlighted-line
-  background-color #14161a
+  background-color rgba(0, 0, 0, 66%)
   display block
-  margin 0 -1.6em
-  padding 0.2em 1.6em 0
+  margin 0.1rem -1.8rem 0
+  padding 0.1rem 1.8rem
 
 .custom-block
   .custom-block-title
     font-weight 600
     text-transform uppercase
+    margin-bottom -0.4rem
   &.tip, &.warning, &.danger
-    padding .1em 1.4em
-    border-left-width .5em
+    padding .1rem 1.5rem
+    border-left-width .5rem
     border-left-style solid
-    margin 1em 0
+    margin 1rem 0
   &.tip
     background-color #f3f5f7
     border-color #42b983
@@ -147,30 +136,41 @@ pre, pre[class*="language-"]
 
 p
   &.demo
-    padding 1rem
+    padding 1rem 1.5rem
     border 1px solid #ddd
     border-radius 4px
 
+$mobileSidebarWidth = $sidebarWidth * 0.82
+
+// narrow desktop / iPad
 @media (max-width: 959px)
   body
     font-size 15px
   .sidebar
     font-size 14px
-    width 250px
+    width $mobileSidebarWidth
   .page
-    padding-left 250px
+    padding-left $mobileSidebarWidth
   .markdown
-    margin 1.5em 0
-    padding 0 1.5em
+    margin 1.5rem 0
+    padding 0 1.5rem
 
+// wide mobile
 @media (max-width: 719px)
   body
     font-size 15px
   .sidebar
-    width 275px
+    font-size 14px
+    width $mobileSidebarWidth
     display none
   .page
     padding-left 0
   .markdown
-    margin 1em 0
-    padding 0 1em
+    margin 1rem 0
+    padding 0 1rem
+
+// narrow mobile
+@media (max-width: 419px)
+  pre, pre[class*="language-"]
+    margin 0 -1.5rem
+    border-radius 0
