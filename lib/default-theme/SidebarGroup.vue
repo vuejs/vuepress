@@ -4,7 +4,10 @@
       <span>{{ item.title }}</span>
       <span class="arrow" :class="open ? 'up' : 'down'"></span>
     </p>
-    <transition name="sidebar-group" @enter="setHeight">
+    <transition name="sidebar-group"
+      @enter="setHeight"
+      @after-enter="unsetHeight"
+      @before-leave="setHeight">
       <ul class="sidebar-group-items" ref="items" v-if="open">
         <li v-for="child in item.children">
           <SidebarLink v-if="child.type === 'page'" :item="child"/>
@@ -21,14 +24,13 @@ export default {
   name: 'SidebarGroup',
   props: ['item', 'first', 'open'],
   components: { SidebarLink },
-  mounted () {
-    const { items } = this.$refs
-    if (items) this.setHeight(items)
-  },
   methods: {
     setHeight (items) {
       // explicitly set height so that it can be transitioned
       items.style.height = items.scrollHeight + 'px'
+    },
+    unsetHeight (items) {
+      items.style.height = ''
     }
   }
 }
@@ -47,7 +49,7 @@ export default {
   cursor pointer
   font-size 1.1em
   font-weight bold
-  text-transform uppercase
+  // text-transform uppercase
   padding-left 1.5rem
   margin-top 0
   margin-bottom 0.5rem

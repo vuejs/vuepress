@@ -25,10 +25,12 @@ export default {
     }
   },
   created () {
-    this.openGroupIndex = resolveOpenGroupIndex(
-      this.$route,
-      this.sidebarItems
-    )
+    this.refreshIndex()
+  },
+  watch: {
+    '$route' () {
+      this.refreshIndex()
+    }
   },
   computed: {
     sidebarItems () {
@@ -39,6 +41,12 @@ export default {
     }
   },
   methods: {
+    refreshIndex () {
+      this.openGroupIndex = resolveOpenGroupIndex(
+        this.$route,
+        this.sidebarItems
+      )
+    },
     toggleGroup (index) {
       this.openGroupIndex = index === this.openGroupIndex ? -1 : index
     },
@@ -55,6 +63,7 @@ function resolveOpenGroupIndex (route, items) {
       return i
     }
   }
+  return -1
 }
 
 function resolveSidebar (route, site) {

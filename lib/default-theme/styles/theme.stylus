@@ -186,12 +186,12 @@ $mobileSidebarWidth = $sidebarWidth * 0.82
     display none
   .page
     padding-left 0
-  .markdown
-    margin 1rem 0
-    padding 0 1rem
 
 // narrow mobile
 @media (max-width: 419px)
   pre, pre[class*="language-"]
     margin 0 -1.5rem
     border-radius 0
+  .markdown
+    margin 1rem 0
+    padding 0 1rem

@@ -14,7 +14,7 @@ module.exports = {
       {
         title: 'Guide',
         children: [
-          ['/', 'Home'],
+          ['/', 'Intro'],
           '/getting-started',
           '/markdown',
           '/assets',
