@@ -14,6 +14,7 @@ module.exports = {
     sidebar: [
       {
         title: 'Guide',
+        collapsable: false,
         children: [
           '/',
           '/getting-started',
@@ -28,8 +29,20 @@ module.exports = {
       {
         title: 'Config Reference',
         children: [
-          '/config',
-          '/test/'
+          '/config#base',
+          '/config#title',
+          '/config#description',
+          '/config#head',
+          '/config#port',
+          '/config#dest',
+          '/config#theme',
+          '/config#themeConfig',
+          '/config#markdownanchor',
+          '/config#markdowntoc',
+          '/config#markdownconfig',
+          '/config#configureWebpack',
+          '/config#chainWebpack',
+          '/config#evergreen'
         ]
       }
     ],

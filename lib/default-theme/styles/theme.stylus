@@ -31,7 +31,7 @@ body
 .content
   max-width $contentWidth
   margin 2rem auto 3rem
-  padding 0 2rem
+  padding 0 2.5rem
   a:hover
     text-decoration underline
 
@@ -184,8 +184,8 @@ $mobileSidebarWidth = $sidebarWidth * 0.82
   .page
     padding-left $mobileSidebarWidth
   .content
-    margin 1.5rem 0
-    padding 0 1.5rem
+    margin 2rem auto
+    padding 0 2rem
 
 // wide mobile
 @media (max-width: 719px)
@@ -204,5 +204,5 @@ $mobileSidebarWidth = $sidebarWidth * 0.82
     margin 0 -1.5rem
     border-radius 0
   .content
-    margin 1rem 0
-    padding 0 1rem
+    margin 1.5rem auto
+    padding 0 1.5rem

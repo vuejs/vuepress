@@ -1,14 +1,16 @@
 <template>
-  <div class="sidebar-group" :class="{ first }">
+  <div class="sidebar-group" :class="{ first, collapsable }">
     <p class="sidebar-heading" :class="{ open }" @click="$emit('toggle')">
       <span>{{ item.title }}</span>
-      <span class="arrow" :class="open ? 'up' : 'down'"></span>
+      <span class="arrow"
+        v-if="collapsable"
+        :class="open ? 'up' : 'down'"></span>
     </p>
     <transition name="sidebar-group"
       @enter="setHeight"
       @after-enter="unsetHeight"
       @before-leave="setHeight">
-      <ul class="sidebar-group-items" ref="items" v-if="open">
+      <ul class="sidebar-group-items" ref="items" v-if="open || !collapsable">
         <li v-for="child in item.children">
           <SidebarLink v-if="child.type === 'page'" :item="child"/>
         </li>
@@ -22,7 +24,7 @@ import SidebarLink from './SidebarLink.vue'
 
 export default {
   name: 'SidebarGroup',
-  props: ['item', 'first', 'open'],
+  props: ['item', 'first', 'open', 'collapsable'],
   components: { SidebarLink },
   methods: {
     setHeight (items) {
@@ -42,6 +44,10 @@ export default {
     margin-top 1em
   .sidebar-group
     padding-left 0.5em
+  &:not(.collapsable)
+    .sidebar-heading
+      cursor auto
+      color inherit
 
 .sidebar-heading
   color #999
@@ -57,7 +63,7 @@ export default {
     color inherit
   .arrow
     position relative
-    top -0.15em
+    top -0.12em
     left 0.5em
   &:.open .arrow
     top -0.18em

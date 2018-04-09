@@ -7,6 +7,7 @@
           :item="item"
           :first="i === 0"
           :open="i === openGroupIndex"
+          :collapsable="item.collapsable"
           @toggle="toggleGroup(i)" />
       </li>
     </ul>
@@ -114,7 +115,7 @@ function resolveItem (item, pages, isNested) {
       type: 'group',
       title: item.title,
       children: children.map(child => resolveItem(child, pages, true)),
-      collapsable: children.length && item.collapsable
+      collapsable: item.collapsable !== false
     }
   }
 }
