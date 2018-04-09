@@ -5,38 +5,77 @@
         <router-link v-if="item.type === 'page'" :to="item.path">
           {{ item.title || item.path }}
         </router-link>
-        <div v-else-if="item.type === 'heading'"
-          class="sidebar-group"
-          :class="{ first: i === 0 }">
-          <p class="sidebar-heading">{{ item.title }}</p>
-          <ul>
-            <li v-for="child in item.children">
-              <router-link v-if="child.type === 'page'" :to="child.path">
-                {{ child.title || child.path }}
-              </router-link>
-            </li>
-          </ul>
-        </div>
+        <SidebarGroup v-else-if="item.type === 'group'"
+          :item="item"
+          :first="i === 0"
+          :open="i === openGroupIndex"
+          @toggle="toggleGroup(i)" />
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+import SidebarGroup from './SidebarGroup.vue'
+
+export default {
+  components: { SidebarGroup },
+  data () {
+    return {
+      openGroupIndex: 0
+    }
+  },
+  created () {
+    this.openGroupIndex = resolveOpenGroupIndex(
+      this.$route,
+      this.sidebarItems
+    )
+  },
+  computed: {
+    sidebarItems () {
+      return resolveSidebar(
+        this.$route,
+        this.$site
+      )
+    }
+  },
+  methods: {
+    toggleGroup (index) {
+      this.openGroupIndex = index === this.openGroupIndex ? -1 : index
+    }
+  }
+}
+
+function resolveOpenGroupIndex (route, items) {
+  for (let i = 0; i < items.length; i++) {
+    const item = items[i]
+    if (item.type === 'group' && item.children.some(c => isActive(route, c.path))) {
+      return i
+    }
+  }
+}
+
+function isActive (route, path) {
+  // TODO refine
+  const routePath = route.path
+  return routePath.indexOf(path) === 0
+}
+
 function resolveSidebar (route, site) {
   const { pages, themeConfig } = site
   const sidebarConfig = themeConfig.sidebar
   if (!sidebarConfig) {
-    return pages
+    return pages.map(p => Object.assign({ page: 'type' }, p))
   } else {
-    const matchingConfig = Array.isArray(sidebarConfig)
-      ? sidebarConfig
-      : resolveMatchingSidebar(route, sidebarConfig)
-    return matchingConfig.map(item => resolveItem(item, site.pages))
+    const matchingConfig = resolveMatchingSidebar(route, sidebarConfig)
+    return matchingConfig.map(item => resolveItem(item, pages))
   }
 }
 
 function resolveMatchingSidebar (route, sidebarConfig) {
+  if (Array.isArray(sidebarConfig)) {
+    return sidebarConfig
+  }
   for (const base in sidebarConfig) {
     if (ensureEndingSlash(route.path).indexOf(base) === 0) {
       return sidebarConfig[base]
@@ -50,7 +89,7 @@ function ensureEndingSlash (path) {
     : path + '/'
 }
 
-function resolveItem (item, pages) {
+function resolveItem (item, pages, isNested) {
   if (typeof item === 'string') {
     return resolvePage(pages, item)
   } else if (Array.isArray(item)) {
@@ -58,11 +97,17 @@ function resolveItem (item, pages) {
       title: item[1]
     })
   } else {
+    if (isNested) {
+      throw new Error(
+        '[vuepress] Nested sidebar groups are not supported. ' +
+        'Consider using navbar + categories instead.'
+      )
+    }
     const children = item.children || []
     return {
-      type: 'heading',
+      type: 'group',
       title: item.title,
-      children: children.map(child => resolveItem(child, pages)),
+      children: children.map(child => resolveItem(child, pages, true)),
       collapsable: children.length && item.collapsable
     }
   }
@@ -98,17 +143,6 @@ function ensureExt (path) {
   const hash = hashMatch ? hashMatch[0] : ''
   return normalize(path) + '.html' + hash
 }
-
-export default {
-  computed: {
-    sidebarItems () {
-      return resolveSidebar(
-        this.$route,
-        this.$site
-      )
-    }
-  }
-}
 </script>
 
 <style lang="stylus">
@@ -131,13 +165,4 @@ export default {
       font-weight 600
       color $accentColor
       border-left-color $accentColor
-  .sidebar-group:not(.first)
-    margin-top 1.5rem
-  .sidebar-heading
-    font-size 1.1em
-    font-weight bold
-    text-transform uppercase
-    padding-left 1.5rem
-    margin-top 0
-    margin-bottom 0.5rem
 </style>

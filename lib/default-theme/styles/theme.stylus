@@ -37,7 +37,7 @@ blockquote
   padding-left 1rem
 
 ul, ol
-  padding-left 1.5rem
+  padding-left 1.2em
 
 a, p a code
   color $accentColor
@@ -123,13 +123,13 @@ pre, pre[class*="language-"]
     border-color #42b983
   &.warning
     background-color rgba(255,229,100,.3)
-    border-color #ffe564
+    border-color darken(#ffe564, 20%)
     color darken(#ffe564, 70%)
     .custom-block-title
       color darken(#ffe564, 50%)
   &.danger
     background-color #ffe6e6
-    border-color red
+    border-color darken(red, 20%)
     color darken(red, 70%)
     .custom-block-title
       color darken(red, 40%)
@@ -139,6 +139,27 @@ p
     padding 1rem 1.5rem
     border 1px solid #ddd
     border-radius 4px
+
+.arrow
+  display inline-block
+  width 0
+  height 0
+  &.up
+    border-left 4px solid transparent
+    border-right 4px solid transparent
+    border-bottom 6px solid $textColor
+  &.down
+    border-left 4px solid transparent
+    border-right 4px solid transparent
+    border-top 6px solid $textColor
+  &.right
+    border-top 4px solid transparent
+    border-bottom 4px solid transparent
+    border-left 6px solid $textColor
+  &.left
+    border-top 4px solid transparent
+    border-bottom 4px solid transparent
+    border-right 6px solid $textColor
 
 $mobileSidebarWidth = $sidebarWidth * 0.82
 

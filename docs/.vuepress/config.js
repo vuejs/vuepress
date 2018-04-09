@@ -11,19 +11,25 @@ module.exports = {
   themeConfig: {
     // sidebar config
     sidebar: [
-      '/getting-started',
-      '/markdown',
-      '/assets',
-      '/using-vue',
-      '/config',
-      '/default-theme',
-      '/theming',
-      '/deploy',
-      // nesting
-      ['Nesting', [
-        '/markdown',
-        '/assets'
-      ]]
+      {
+        title: 'Guide',
+        children: [
+          '/getting-started',
+          '/markdown',
+          '/assets',
+          '/using-vue',
+          '/config',
+          '/default-theme'
+        ]
+      },
+      {
+        title: 'API Reference',
+        children: [
+          ['/markdown#emoji', 'MMMMM'],
+          '/theming',
+          '/deploy'
+        ]
+      }
     ],
 
     // multi-category sidebar config
