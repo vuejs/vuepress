@@ -1,0 +1,38 @@
+@import './config.stylus'
+
+$mobileSidebarWidth = $sidebarWidth * 0.82
+
+// narrow desktop / iPad
+@media (max-width: 959px)
+  body
+    font-size 15px
+  .sidebar
+    font-size 14px
+    width $mobileSidebarWidth
+  .page
+    padding-left $mobileSidebarWidth
+  .content
+    margin 2rem auto
+    padding 0 2rem
+
+// wide mobile
+@media (max-width: 719px)
+  .sidebar
+    transform translateX(-100%)
+  .page
+    padding-left 0
+  .theme-container
+    transition transform .2s ease
+    &.sidebar-open
+      transform translateX($mobileSidebarWidth)
+
+// narrow mobile
+@media (max-width: 419px)
+  pre, pre[class*="language-"]
+    margin 0 -1.5rem
+    border-radius 0
+  .content
+    margin 1.5rem auto
+    padding 0 1.5rem
+  .page-nav
+    font-size 14px

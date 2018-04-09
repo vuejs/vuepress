@@ -20,6 +20,7 @@ body
 
 .sidebar
   font-size 15px
+  background-color #fff
   width $sidebarWidth
   position fixed
   margin 0
@@ -33,10 +34,13 @@ body
 
 .content
   max-width $contentWidth
-  margin 2rem auto 3rem
-  padding 0 2.5rem
+  margin 0 auto
+  padding 2rem 2.5rem
   a:hover
     text-decoration underline
+  h1, h2, h3, h4, h5, h6
+    &:first-child
+      margin-top 0
 
 a
   font-weight 500
@@ -48,7 +52,7 @@ p a code
   color $accentColor
 
 blockquote
-  font-size 1.25rem
+  font-size 1.2rem
   color #999
   border-left .25rem solid #dfe2e5
   margin-left 0
@@ -101,37 +105,4 @@ p
     border 1px solid #ddd
     border-radius 4px
 
-$mobileSidebarWidth = $sidebarWidth * 0.82
-
-// narrow desktop / iPad
-@media (max-width: 959px)
-  body
-    font-size 15px
-  .sidebar
-    font-size 14px
-    width $mobileSidebarWidth
-  .page
-    padding-left $mobileSidebarWidth
-  .content
-    margin 2rem auto
-    padding 0 2rem
-
-// wide mobile
-@media (max-width: 719px)
-  body
-    font-size 15px
-  .sidebar
-    font-size 14px
-    width $mobileSidebarWidth
-    display none
-  .page
-    padding-left 0
-
-// narrow mobile
-@media (max-width: 419px)
-  pre, pre[class*="language-"]
-    margin 0 -1.5rem
-    border-radius 0
-  .content
-    margin 1.5rem auto
-    padding 0 1.5rem
+@import './mobile.stylus'

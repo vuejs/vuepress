@@ -39,7 +39,10 @@ export default {
 @import './styles/config.stylus'
 
 .page-nav.content
+  padding-top 0
+  min-height 2.2rem
   p
+    margin 0
     border-top 1px solid $borderColor
     padding-top 1rem
   .next

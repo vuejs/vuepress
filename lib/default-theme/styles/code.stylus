@@ -81,3 +81,6 @@ pre[class="language-java"]:before
 
 pre[class="language-c"]:before
   content "c"
+
+pre[class="language-bash"]:before
+  content "sh"

@@ -51,4 +51,6 @@ a.sidebar-link
     font-weight 600
     color $accentColor
     border-left-color $accentColor
+  .sidebar-group &
+    padding-left 2rem
 </style>

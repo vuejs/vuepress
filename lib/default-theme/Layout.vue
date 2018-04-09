@@ -1,19 +1,17 @@
 <template>
   <div class="theme-container">
     <Sidebar/>
-    <Index v-if="$page.path === '/index'" />
-    <Page v-else />
+    <Page/>
   </div>
 </template>
 
 <script>
 import nprogress from 'nprogress'
-import Index from './Index.vue'
 import Page from './Page.vue'
 import Sidebar from './Sidebar.vue'
 
 export default {
-  components: { Index, Page, Sidebar },
+  components: { Page, Sidebar },
   mounted () {
     nprogress.configure({ showSpinner: false })
 
