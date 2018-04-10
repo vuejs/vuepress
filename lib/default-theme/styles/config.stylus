@@ -5,7 +5,7 @@ $borderColor = #eaecef
 $codeBgColor = #282c34
 
 // layout
-$navbarHeight = 3.5rem
+$navbarHeight = 3.6rem
 $sidebarWidth = 20rem
 $contentWidth = 740px
 

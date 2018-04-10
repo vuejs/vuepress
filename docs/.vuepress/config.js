@@ -11,6 +11,7 @@ module.exports = {
     ['link', { rel: 'icon', href: `${base}logo.png` }]
   ],
   themeConfig: {
+    logo: 'logo.png',
     github: 'vuejs/vuepress',
     // sidebar config
     sidebar: [

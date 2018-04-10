@@ -5,7 +5,7 @@ next: /getting-started
 
 # VuePress
 
-> Minimalistic docs generator with Vue component based layout system
+> VuePress is a minimalistic docs generator with a Vue component based layout system.
 
 ## Why
 

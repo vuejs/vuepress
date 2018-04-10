@@ -19,7 +19,7 @@
     display block
     width 24px
     height 24px
-    background url('./menu.png')
+    background url('./assets/menu.png')
     background-size 24px
 
 @media (max-width: $MQMobile)
