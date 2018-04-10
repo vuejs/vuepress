@@ -1,6 +1,7 @@
 <template>
   <div class="sidebar">
     <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
+    <NavLinks/>
     <ul>
       <li v-for="(item, i) in sidebarItems">
         <SidebarLink v-if="item.type === 'page'" :item="item"/>
@@ -19,10 +20,11 @@
 import SidebarGroup from './SidebarGroup.vue'
 import SidebarLink, { isActive } from './SidebarLink.vue'
 import SidebarButton from './SidebarButton.vue'
+import NavLinks from './NavLinks.vue'
 import { resolvePage } from './util'
 
 export default {
-  components: { SidebarGroup, SidebarLink, SidebarButton },
+  components: { SidebarGroup, SidebarLink, SidebarButton, NavLinks },
   data () {
     return {
       openGroupIndex: 0
@@ -127,9 +129,27 @@ function resolveItem (item, pages, isNested) {
 </script>
 
 <style lang="stylus">
+@import './styles/config.stylus'
+
 .sidebar
   ul
     padding 0
     margin 0
     list-style-type none
+  a
+    display block
+  .nav-links
+    display none
+    border-bottom 1px solid $borderColor
+    padding 0.5rem 0 0.75rem 0
+    margin-bottom 1rem
+    a
+      font-weight 600
+      font-size 1.1em
+      padding 0.5rem 0 0.5rem 1.5rem
+
+@media (max-width: $MQMobile)
+  .sidebar
+    .nav-links
+      display block
 </style>

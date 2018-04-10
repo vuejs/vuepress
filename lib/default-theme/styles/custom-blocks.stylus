@@ -1,7 +1,6 @@
 .custom-block
   .custom-block-title
     font-weight 600
-    text-transform uppercase
     margin-bottom -0.4rem
   &.tip, &.warning, &.danger
     padding .1rem 1.5rem

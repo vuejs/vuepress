@@ -4,20 +4,26 @@
     <router-link to="/">
       <img class="logo"
         v-if="$site.themeConfig.logo"
-        :src="$site.base + $site.themeConfig.logo">
-      <span class="site-name" v-if="$site.title">{{ $site.title }}</span>
+        :src="$site.themeConfig.logo">
+      <span class="site-name"
+        v-if="$site.title"
+        :class="{ 'can-hide': $site.themeConfig.logo }">
+        {{ $site.title }}
+      </span>
     </router-link>
-    <!-- search box -->
-    <!-- user links -->
-    <!-- github link -->
+    <div class="links">
+      <!-- search box -->
+      <NavLinks class="can-hide"/>
+    </div>
   </div>
 </template>
 
 <script>
 import SidebarButton from './SidebarButton.vue'
+import NavLinks from './NavLinks.vue'
 
 export default {
-  components: { SidebarButton }
+  components: { SidebarButton, NavLinks }
 }
 </script>
 
@@ -25,19 +31,34 @@ export default {
 @import './styles/config.stylus'
 
 .navbar
-  padding 0.8rem 1.5rem
-  span, a, img
+  padding 0.7rem 1.5rem
+  line-height 2rem
+  a, span, img
     vertical-align middle
     display inline-block
+  a
+    font-weight 600
+    &:hover
+      text-decoration underline
+  .logo
+    display inline-block
+    height 2rem
+    min-width 2rem
+    margin-right 0.8rem
+  .site-name
+    font-size 1.3rem
+    font-weight 600
+    color $textColor
+    position relative
+    top -0.125rem
+  .links
+    float right
+    a:not(:last-child)
+      margin-right 1.5rem
 
-.logo
-  display inline-block
-  height 1.8rem
-  min-width 1.8rem
-  margin-right 0.8rem
-
-.site-name
-  font-size 1.2rem
-  font-weight 600
-  color $textColor
+@media (max-width: $MQMobile)
+  .navbar
+    padding-left 4rem
+    .can-hide
+      display none
 </style>

@@ -11,8 +11,8 @@ module.exports = {
     ['link', { rel: 'icon', href: `${base}logo.png` }]
   ],
   themeConfig: {
-    logo: 'logo.png',
-    github: 'vuejs/vuepress',
+    logo: `${base}logo.png`,
+    repo: 'vuejs/vuepress',
     // sidebar config
     sidebar: [
       {
@@ -49,12 +49,16 @@ module.exports = {
 
     // navbar config
 
-    // nav: [
-    //   {
-    //     title: 'Guide',
-    //     link: '/getting-started',
-    //   },
-    //   // ...
-    // ]
+    nav: [
+      {
+        text: 'Guide',
+        link: '/',
+      },
+      {
+        text: 'Config Reference',
+        link: '/config'
+      }
+      // ...
+    ]
   }
 }
