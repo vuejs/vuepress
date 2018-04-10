@@ -1,5 +1,6 @@
 <template>
   <div class="theme-container">
+    <!-- <Navbar/> -->
     <Sidebar/>
     <Page/>
   </div>
@@ -7,11 +8,12 @@
 
 <script>
 import nprogress from 'nprogress'
+import Navbar from './Navbar.vue'
 import Page from './Page.vue'
 import Sidebar from './Sidebar.vue'
 
 export default {
-  components: { Page, Sidebar },
+  components: { Page, Sidebar, Navbar },
   mounted () {
     nprogress.configure({ showSpinner: false })
 

@@ -1,6 +1,6 @@
 const path = require('path')
 const base = process.env.GH ? '/vuepress/' : '/'
-const { extractHeaders } = require('../../lib/userUtils')
+const { extractHeaders } = require('../../lib')
 
 module.exports = {
   title: 'VuePress',

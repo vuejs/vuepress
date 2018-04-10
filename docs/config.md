@@ -30,7 +30,9 @@ Also see [config options for the default theme](./default-theme.md).
 
 ### markdown.config
 
-## webpack
+## Build Pipeline
+
+### postcss
 
 ### configureWebpack
 
