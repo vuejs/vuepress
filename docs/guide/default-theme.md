@@ -1,6 +1,6 @@
 ---
-prev: /using-vue
-next: /custom-themes
+prev: ./using-vue
+next: ./custom-themes
 ---
 
 # Default Theme Configuration

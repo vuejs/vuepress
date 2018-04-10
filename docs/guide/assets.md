@@ -1,6 +1,6 @@
 ---
-prev: /markdown
-next: /using-vue
+prev: ./markdown
+next: ./using-vue
 ---
 
 # Asset Handling

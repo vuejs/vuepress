@@ -25,11 +25,11 @@ export default {
   computed: {
     prev () {
       const prev = this.$page.frontmatter.prev
-      return prev && resolvePage(this.$site.pages, prev)
+      return prev && resolvePage(this.$site.pages, prev, this.$route.path)
     },
     next () {
       const next = this.$page.frontmatter.next
-      return next && resolvePage(this.$site.pages, next)
+      return next && resolvePage(this.$site.pages, next, this.$route.path)
     }
   }
 }

@@ -1,6 +1,6 @@
 ---
-prev: /assets
-next: /default-theme
+prev: ./assets
+next: ./default-theme
 ---
 
 # Using Vue in Markdown

@@ -19,6 +19,8 @@ export default {
   }
 }
 
+const endingSlashRE = /\/$/
+
 export function isActive (route, page) {
   const routeHash = route.hash
   const linkHash = getHash(page.path)
@@ -27,7 +29,7 @@ export function isActive (route, page) {
   }
   const routePath = normalize(route.path)
   const pagePath = normalize(page.path)
-  if (routePath === '/' || pagePath === '/') {
+  if (endingSlashRE.test(routePath) || endingSlashRE.test(pagePath)) {
     return routePath === pagePath
   } else {
     return routePath.indexOf(pagePath) === 0

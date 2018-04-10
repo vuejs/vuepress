@@ -82,7 +82,9 @@ function resolveSidebarItems (route, site) {
     return pages.map(p => Object.assign({ page: 'type' }, p))
   } else {
     const matchingConfig = resolveMatchingSidebarConfig(route, sidebarConfig)
-    return matchingConfig.map(item => resolveItem(item, pages))
+    return matchingConfig
+      ? matchingConfig.map(item => resolveItem(item, pages))
+      : []
   }
 }
 

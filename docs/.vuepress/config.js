@@ -13,52 +13,42 @@ module.exports = {
   themeConfig: {
     logo: `${base}logo.png`,
     repo: 'vuejs/vuepress',
-    // sidebar config
-    sidebar: [
-      {
-        title: 'Guide',
-        collapsable: false,
-        children: [
-          '/',
-          '/getting-started',
-          '/markdown',
-          '/assets',
-          '/using-vue',
-          '/default-theme',
-          '/custom-themes',
-          '/deploy'
-        ]
-      },
-      {
-        title: 'Config Reference',
-        children: extractHeaders(
-          path.resolve(__dirname, '../config.md'),
-          ['h3']
-        ).map(({ title, slug }) => [`/config#${slug}`, title])
-      }
-    ],
-
-    // multi-category sidebar config
-
-    // sidebar: {
-    //   '*': [/* ... */],
-    //   '/guide/': [/* ... */],
-    //   '/tutorial/': [/* ... */],
-    //   '/api/': [/* ... */]
-    // },
-
-    // navbar config
-
     nav: [
       {
         text: 'Guide',
-        link: '/',
+        link: '/guide/',
       },
       {
         text: 'Config Reference',
-        link: '/config'
+        link: '/config/'
       }
-      // ...
-    ]
+    ],
+    sidebar: {
+      '/guide': [
+        {
+          title: 'Guide',
+          collapsable: false,
+          children: [
+            '/guide/',
+            '/guide/markdown',
+            '/guide/assets',
+            '/guide/using-vue',
+            '/guide/default-theme',
+            '/guide/custom-themes',
+            '/guide/deploy'
+          ]
+        }
+      ],
+      '/config': [
+        {
+          title: 'Config Reference',
+          collapsable: false,
+          children: extractHeaders(
+            path.resolve(__dirname, '../config/README.md'),
+            ['h3']
+          ).map(({ title, slug }) => [`/config/#${slug}`, title])
+        }
+      ]
+    }
   }
 }

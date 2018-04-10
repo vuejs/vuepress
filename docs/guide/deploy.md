@@ -1,6 +1,5 @@
 ---
-prev: /custom-themes
-next: /config
+prev: ./custom-themes
 ---
 
 # Deploying

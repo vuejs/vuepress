@@ -1,6 +1,5 @@
 ---
-title: Intro
-next: /getting-started
+title: Home
 ---
 
 # VuePress

@@ -1,6 +1,6 @@
 ---
-prev: /default-theme
-next: /deploy
+prev: ./default-theme
+next: ./deploy
 ---
 
 # Custom Themes

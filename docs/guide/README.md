@@ -1,6 +1,5 @@
 ---
-prev: /
-next: /markdown
+next: ./markdown
 ---
 
 # Getting Started

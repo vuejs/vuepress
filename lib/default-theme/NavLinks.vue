@@ -19,11 +19,9 @@
 </template>
 
 <script>
-import OutboundLink from './icons/OutboundLink.vue'
 import { ensureExt } from './util'
 
 export default {
-  components: { OutboundLink },
   computed: {
     userLinks () {
       return (this.$site.themeConfig.nav || []).map(item => ({
