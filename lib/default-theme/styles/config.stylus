@@ -1,6 +1,15 @@
+// colors
 $textColor = #2c3e50
 $accentColor = darken(#41b883, 5%)
 $borderColor = #eaecef
 $codeBgColor = #282c34
+
+// layout
+$navbarHeight = 3.5rem
 $sidebarWidth = 20rem
-$contentWidth = 720px
+$contentWidth = 740px
+
+// responsive breakpoints
+$MQNarrow = 959px
+$MQMobile = 719px
+$MQMobileNarrow = 419px

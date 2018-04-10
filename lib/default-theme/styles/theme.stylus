@@ -18,16 +18,28 @@ body
 .page
   padding-left $sidebarWidth
 
+.navbar
+  position fixed
+  z-index 10
+  top 0
+  left 0
+  right 0
+  height $navbarHeight
+  background-color #fff
+  box-sizing border-box
+  border-bottom 1px solid $borderColor
+
 .sidebar
   font-size 15px
   background-color #fff
   width $sidebarWidth
   position fixed
+  z-index 20
   margin 0
-  top 0
+  top $navbarHeight
   left 0
   bottom 0
-  padding 2rem 0
+  padding 1.5rem 0
   box-sizing border-box
   border-right 1px solid $borderColor
   overflow-y scroll
@@ -38,9 +50,6 @@ body
   padding 2rem 2.5rem
   a:hover
     text-decoration underline
-  h1, h2, h3, h4, h5, h6
-    &:first-child
-      margin-top 0
 
 a
   font-weight 500
@@ -67,8 +76,12 @@ strong
 h1, h2, h3, h4, h5, h6
   font-weight 600
   line-height 1.25
-  &:not(:first-child)
-    margin-top 1.5rem
+  margin-top (0.5rem - $navbarHeight)
+  padding-top ($navbarHeight + 1rem)
+  margin-bottom 0
+  .content &
+    &:first-child
+      margin-top -1.5rem
   &:hover .header-anchor
     opacity: 1
 

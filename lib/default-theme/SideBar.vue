@@ -1,5 +1,6 @@
 <template>
   <div class="sidebar">
+    <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
     <ul>
       <li v-for="(item, i) in sidebarItems">
         <SidebarLink v-if="item.type === 'page'" :item="item"/>
@@ -17,10 +18,11 @@
 <script>
 import SidebarGroup from './SidebarGroup.vue'
 import SidebarLink, { isActive } from './SidebarLink.vue'
+import SidebarButton from './SidebarButton.vue'
 import { resolvePage } from './util'
 
 export default {
-  components: { SidebarGroup, SidebarLink },
+  components: { SidebarGroup, SidebarLink, SidebarButton },
   data () {
     return {
       openGroupIndex: 0

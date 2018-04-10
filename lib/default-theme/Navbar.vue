@@ -1,19 +1,13 @@
 <template>
   <div class="navbar">
-    Yo Nav
+    <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
   </div>
 </template>
 
-<style lang="stylus">
-@import './styles/config.stylus'
+<script>
+import SidebarButton from './SidebarButton.vue'
 
-.navbar
-  position fixed
-  top 0
-  left 0
-  right 0
-  height 3rem
-  z-index 10
-  background-color #fff
-  border-bottom 1px solid $borderColor
-</style>
+export default {
+  components: { SidebarButton }
+}
+</script>
