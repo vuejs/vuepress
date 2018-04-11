@@ -125,6 +125,18 @@ p
     border 1px solid #ddd
     border-radius 4px
 
+table
+  border-collapse collapse
+
+tr
+  border-top 1px solid #dfe2e5
+  &:nth-child(2)
+    background-color #f6f8fa
+
+th, td
+  border 1px solid #dfe2e5
+  padding .6em 1em
+
 .custom-layout
   padding-top $navbarHeight
 
