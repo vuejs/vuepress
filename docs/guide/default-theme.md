@@ -9,7 +9,7 @@ next: ./custom-themes
 
 ## Logo
 
-## GitHub Repo
+## GitHub Repo & Edit Links
 
 ## Sidebar
 

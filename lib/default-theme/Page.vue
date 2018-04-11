@@ -1,6 +1,9 @@
 <template>
   <div class="page">
     <Content :custom="false"/>
+    <div class="content edit-link" v-if="editLink">
+      <a :href="editLink" target="_blank">Edit this page</a>
+    </div>
     <div class="content page-nav" v-if="prev || next">
       <p class="inner">
         <span v-if="prev" class="prev">
@@ -19,7 +22,7 @@
 </template>
 
 <script>
-import { resolvePage } from './util'
+import { resolvePage, normalize, outboundRE, endingSlashRE } from './util'
 
 export default {
   computed: {
@@ -30,6 +33,23 @@ export default {
     next () {
       const next = this.$page.frontmatter.next
       return next && resolvePage(this.$site.pages, next, this.$route.path)
+    },
+    editLink () {
+      const {
+        repo,
+        editLinks,
+        docsDir = '',
+        docsBranch = 'master'
+      } = this.$site.themeConfig
+
+      const path = normalize(this.$page.path) + '.md'
+
+      if (repo && editLinks !== false) {
+        const base = outboundRE.test(repo)
+          ? repo
+          : `https://github.com/${repo}`
+        return base.replace(endingSlashRE, '') + `/edit/${docsBranch}/${docsDir}${path}`
+      }
     }
   }
 }
@@ -37,6 +57,15 @@ export default {
 
 <style lang="stylus">
 @import './styles/config.stylus'
+
+.edit-link
+  padding-top 0 !important
+  padding-bottom 0 !important
+  a
+    color lighten($textColor, 25%)
+    text-decoration underline
+    &:hover
+      color $accentColor
 
 .page-nav.content
   min-height 2.2rem

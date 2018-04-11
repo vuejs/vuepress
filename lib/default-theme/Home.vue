@@ -19,6 +19,9 @@
       </div>
     </div>
     <Content custom/>
+    <div class="footer" v-if="data.footer">
+      {{ data.footer }}
+    </div>
   </div>
 </template>
 
@@ -92,6 +95,11 @@ export default {
       color lighten($textColor, 10%)
     p
       color lighten($textColor, 25%)
+  .footer
+    padding 2.5rem
+    border-top 1px solid $borderColor
+    text-align center
+    color lighten($textColor, 25%)
 
 @media (max-width: $MQMobile)
   .home

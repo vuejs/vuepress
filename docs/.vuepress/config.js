@@ -13,7 +13,7 @@ module.exports = {
   themeConfig: {
     logo: `${base}logo.png`,
     repo: 'vuejs/vuepress',
-    editBase: 'https://github.com/vuejs/vuepress/tree/master/docs',
+    docsDir: 'docs',
     nav: [
       {
         text: 'Guide',
