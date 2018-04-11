@@ -20,7 +20,7 @@
 
 ### themeConfig
 
-Also see [config options for the default theme](./default-theme.md).
+Also see [config options for the default theme](../guide/default-theme.md).
 
 ## Markdown
 

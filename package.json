@@ -55,6 +55,7 @@
     "globby": "^8.0.1",
     "html-webpack-plugin": "^3.2.0",
     "koa-connect": "^2.0.1",
+    "koa-mount": "^3.0.0",
     "koa-static": "^4.0.2",
     "loader-utils": "^1.1.0",
     "markdown-it": "^8.4.1",

@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="hero">
-      <img v-if="data.heroImage" :src="data.heroImage">
+      <img v-if="data.heroImage" :src="$withBase(data.heroImage)">
       <h1>{{ data.heroText || $site.title }}</h1>
       <p class="description">
         {{ data.tagline || $site.description }}

@@ -4,7 +4,7 @@
     <router-link to="/">
       <img class="logo"
         v-if="$site.themeConfig.logo"
-        :src="$site.themeConfig.logo">
+        :src="$withBase($site.themeConfig.logo)">
       <span class="site-name"
         v-if="$site.title"
         :class="{ 'can-hide': $site.themeConfig.logo }">

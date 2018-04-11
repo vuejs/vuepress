@@ -35,7 +35,7 @@ export default {
 
   created () {
     if (this.$ssrContext) {
-      this.$ssrContext.title = getTitle(this.$page)
+      this.$ssrContext.title = getTitle(this.$site, this.$page)
       this.$ssrContext.lang = getLang(this.$page)
     }
   },
@@ -44,7 +44,7 @@ export default {
     // update title / meta tags
     this.currentMetaTags = []
     const updateMeta = () => {
-      document.title = getTitle(this.$page)
+      document.title = getTitle(this.$site, this.$page)
       document.documentElement.lang = getLang(this.$page)
       this.currentMetaTags = updateMetaTags(this.$page, this.currentMetaTags)
     }

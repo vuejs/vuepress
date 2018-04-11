@@ -9,10 +9,10 @@ module.exports = {
   dest: 'vuepress',
   base,
   head: [
-    ['link', { rel: 'icon', href: `${base}logo.png` }]
+    ['link', { rel: 'icon', href: `/logo.png` }]
   ],
   themeConfig: {
-    logo: `${base}logo.png`,
+    logo: `/logo.png`,
     repo: 'vuejs/vuepress',
     docsDir: 'docs',
     nav: [
