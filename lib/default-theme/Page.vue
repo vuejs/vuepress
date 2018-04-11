@@ -45,13 +45,18 @@ export default {
         docsBranch = 'master'
       } = this.$site.themeConfig
 
-      const path = normalize(this.$page.path) + '.md'
+      let path = normalize(this.$page.path)
+      if (endingSlashRE.test(path)) {
+        path += 'README.md'
+      } else {
+        path += '.md'
+      }
 
-      if (repo && editLinks !== false) {
+      if (repo && editLinks) {
         const base = outboundRE.test(repo)
           ? repo
           : `https://github.com/${repo}`
-        return base.replace(endingSlashRE, '') + `/edit/${docsBranch}/${docsDir}${path}`
+        return `${base}/edit/${docsBranch}/${docsDir}${path}`.replace(/\/+/g, '/')
       }
     }
   }
@@ -63,7 +68,6 @@ export default {
 
 .edit-link
   padding-top 0 !important
-  padding-bottom 0 !important
   a
     color lighten($textColor, 25%)
     margin-right 0.25rem
@@ -71,6 +75,7 @@ export default {
 .page-nav.content
   min-height 2.2rem
   padding-bottom 2rem
+  padding-top 0.5rem !important
   .inner
     margin-top 0 !important
     border-top 1px solid $borderColor

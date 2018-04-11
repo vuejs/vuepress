@@ -1,12 +1,13 @@
 <template>
   <div class="theme-container"
     :class="{
+      'no-navbar': !shouldShowNavbar,
       'sidebar-open': isSidebarOpen,
-      'no-sidebar': $page.frontmatter.home || $page.frontmatter.sidebar === false
+      'no-sidebar': !shouldShowSidebar
     }"
     @touchstart="onTouchStart"
     @touchend="onTouchEnd">
-    <Navbar @toggle-sidebar="toggleSidebar"/>
+    <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar"/>
     <Sidebar @toggle-sidebar="toggleSidebar"/>
     <div class="custom-layout" v-if="$page.frontmatter.layout">
       <component :is="$page.frontmatter.layout"/>
@@ -30,6 +31,27 @@ export default {
   data () {
     return {
       isSidebarOpen: false
+    }
+  },
+
+  computed: {
+    shouldShowNavbar () {
+      const { themeConfig } = this.$site
+      return (
+        this.$site.title ||
+        themeConfig.logo ||
+        themeConfig.repo ||
+        themeConfig.nav
+      )
+    },
+    shouldShowSidebar () {
+      const { themeConfig } = this.$site
+      const { frontmatter } = this.$page
+      return (
+        themeConfig.sidebar &&
+        !frontmatter.home &&
+        frontmatter.sidebar !== false
+      )
     }
   },
 

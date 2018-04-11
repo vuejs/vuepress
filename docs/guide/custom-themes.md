@@ -1,5 +1,5 @@
 ---
-prev: ./default-theme
+prev: ./using-vue
 next: ./deploy
 ---
 

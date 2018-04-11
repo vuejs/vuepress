@@ -14,6 +14,7 @@ module.exports = {
   themeConfig: {
     logo: `/logo.png`,
     repo: 'vuejs/vuepress',
+    editLinks: true,
     docsDir: 'docs',
     nav: [
       {
@@ -23,6 +24,10 @@ module.exports = {
       {
         text: 'Config Reference',
         link: '/config/'
+      },
+      {
+        text: 'Default Theme Config',
+        link: '/default-theme-config/'
       }
     ],
     sidebar: {
@@ -36,7 +41,6 @@ module.exports = {
             'markdown',
             'assets',
             'using-vue',
-            'default-theme',
             'custom-themes',
             'deploy'
           ]

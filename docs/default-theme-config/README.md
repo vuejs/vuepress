@@ -1,9 +1,4 @@
----
-prev: ./using-vue
-next: ./custom-themes
----
-
-# Default Theme Configuration
+# Default Theme Config
 
 ## Accent Color
 

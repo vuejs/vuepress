@@ -48,6 +48,7 @@ export default {
     position relative
     top -0.125rem
   .links
+    font-size 0.95rem
     float right
     a:not(:last-child)
       margin-right 1.5rem

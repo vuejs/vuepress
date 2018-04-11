@@ -52,6 +52,12 @@ body
     margin-top $navbarHeight
   a:hover
     text-decoration underline
+  p.demo
+    padding 1rem 1.5rem
+    border 1px solid #ddd
+    border-radius 4px
+  img
+    max-width $contentWidth
 
 .content.custom
   padding 0
@@ -119,12 +125,6 @@ code
 p, ul, ol
   line-height 1.7
 
-p
-  &.demo
-    padding 1rem 1.5rem
-    border 1px solid #ddd
-    border-radius 4px
-
 table
   border-collapse collapse
   margin 1rem 0
@@ -141,9 +141,17 @@ th, td
 .custom-layout
   padding-top $navbarHeight
 
+.theme-container.no-navbar
+  .content:not(.custom)
+    h1, h2, h3, h4, h5, h6
+      margin-top 1.5rem
+      padding-top 0
+
 @media (min-width: ($MQMobile + 1px))
   .theme-container.no-sidebar
     .sidebar
       display none
+    .page
+      padding-left 0
 
 @import './mobile.stylus'

@@ -57,9 +57,8 @@ export default {
 
 @media (min-width: $MQMobile)
   .nav-links a
-    &:hover:not(.router-link-active)
-      color $textColor
     &:hover, &.router-link-active
+      color $textColor
       margin-bottom -2px
-      border-bottom 2px solid lighten($accentColor, 10%)
+      border-bottom 2px solid lighten($accentColor, 5%)
 </style>
