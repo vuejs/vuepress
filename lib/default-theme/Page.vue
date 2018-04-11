@@ -3,6 +3,7 @@
     <Content :custom="false"/>
     <div class="content edit-link" v-if="editLink">
       <a :href="editLink" target="_blank">Edit this page</a>
+      <OutboundLink/>
     </div>
     <div class="content page-nav" v-if="prev || next">
       <p class="inner">
@@ -22,9 +23,11 @@
 </template>
 
 <script>
+import OutboundLink from './OutboundLink.vue'
 import { resolvePage, normalize, outboundRE, endingSlashRE } from './util'
 
 export default {
+  components: { OutboundLink },
   computed: {
     prev () {
       const prev = this.$page.frontmatter.prev
@@ -63,9 +66,7 @@ export default {
   padding-bottom 0 !important
   a
     color lighten($textColor, 25%)
-    text-decoration underline
-    &:hover
-      color $accentColor
+    margin-right 0.25rem
 
 .page-nav.content
   min-height 2.2rem
