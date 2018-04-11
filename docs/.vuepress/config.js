@@ -32,6 +32,7 @@ module.exports = {
           collapsable: false,
           children: [
             '',
+            'getting-started',
             'markdown',
             'assets',
             'using-vue',

@@ -9,14 +9,18 @@ next: ./custom-themes
 
 ## Logo
 
-## GitHub Repo & Edit Links
+## Navbar
+
+### nav
 
 ## Sidebar
 
-## Navbar
+### sidebar
 
-## Simple CSS Overrides
+### sidebarDepth
+
+## GitHub Repo & Edit Links
 
 ## Search
 
-## Ads
+## Simple CSS Override

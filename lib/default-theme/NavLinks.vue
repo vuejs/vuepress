@@ -3,8 +3,7 @@
     <!-- user links -->
     <router-link v-for="item in userLinks"
       :to="item.link"
-      :key="item.link"
-      :class="{ active: isActive($route, item.link) }">
+      :key="item.link">
       {{ item.text }}
     </router-link>
     <!-- github link -->
@@ -53,14 +52,14 @@ export default {
   color inherit
   font-weight 500
   line-height 1.5
-  &:hover, &.active
+  &:hover, &.router-link-active
     color $accentColor
 
 @media (min-width: $MQMobile)
   .nav-links a
-    &:hover:not(.active)
+    &:hover:not(.router-link-active)
       color $textColor
-    &:hover, &.active
+    &:hover, &.router-link-active
       margin-bottom -2px
       border-bottom 2px solid lighten($accentColor, 10%)
 </style>
