@@ -1,3 +1,4 @@
+const fs = require('fs')
 const path = require('path')
 const base = process.env.GH ? '/vuepress/' : '/'
 const { extractHeaders } = require('../../lib')
@@ -25,29 +26,29 @@ module.exports = {
       }
     ],
     sidebar: {
-      '/guide': [
+      '/guide/': [
         {
           title: 'Guide',
           collapsable: false,
           children: [
-            '/guide/',
-            '/guide/markdown',
-            '/guide/assets',
-            '/guide/using-vue',
-            '/guide/default-theme',
-            '/guide/custom-themes',
-            '/guide/deploy'
+            '',
+            'markdown',
+            'assets',
+            'using-vue',
+            'default-theme',
+            'custom-themes',
+            'deploy'
           ]
         }
       ],
-      '/config': [
+      '/config/': [
         {
           title: 'Config Reference',
           collapsable: false,
           children: extractHeaders(
-            path.resolve(__dirname, '../config/README.md'),
+            fs.readFileSync(path.resolve(__dirname, '../config/README.md'), 'utf-8'),
             ['h3']
-          ).map(({ title, slug }) => [`/config/#${slug}`, title])
+          ).map(({ title, slug }) => [`#${slug}`, title])
         }
       ]
     }

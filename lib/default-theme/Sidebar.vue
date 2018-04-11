@@ -81,22 +81,29 @@ function resolveSidebarItems (route, site) {
   if (!sidebarConfig) {
     return pages.map(p => Object.assign({ page: 'type' }, p))
   } else {
-    const matchingConfig = resolveMatchingSidebarConfig(route, sidebarConfig)
-    return matchingConfig
-      ? matchingConfig.map(item => resolveItem(item, pages))
+    const { base, config } = resolveMatchingSidebarConfig(route, sidebarConfig)
+    return config
+      ? config.map(item => resolveItem(item, pages, base))
       : []
   }
 }
 
 function resolveMatchingSidebarConfig (route, sidebarConfig) {
   if (Array.isArray(sidebarConfig)) {
-    return sidebarConfig
+    return {
+      base: '/',
+      config: sidebarConfig
+    }
   }
   for (const base in sidebarConfig) {
     if (ensureEndingSlash(route.path).indexOf(base) === 0) {
-      return sidebarConfig[base]
+      return {
+        base,
+        config: sidebarConfig[base]
+      }
     }
   }
+  return {}
 }
 
 function ensureEndingSlash (path) {
@@ -105,11 +112,11 @@ function ensureEndingSlash (path) {
     : path + '/'
 }
 
-function resolveItem (item, pages, isNested) {
+function resolveItem (item, pages, base, isNested) {
   if (typeof item === 'string') {
-    return resolvePage(pages, item)
+    return resolvePage(pages, item, base)
   } else if (Array.isArray(item)) {
-    return Object.assign(resolvePage(pages, item[0]), {
+    return Object.assign(resolvePage(pages, item[0], base), {
       title: item[1]
     })
   } else {
@@ -123,7 +130,7 @@ function resolveItem (item, pages, isNested) {
     return {
       type: 'group',
       title: item.title,
-      children: children.map(child => resolveItem(child, pages, true)),
+      children: children.map(child => resolveItem(child, pages, base, true)),
       collapsable: item.collapsable !== false
     }
   }
