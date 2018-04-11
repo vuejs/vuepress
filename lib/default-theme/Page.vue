@@ -1,8 +1,8 @@
 <template>
   <div class="page">
-    <Content/>
+    <Content :custom="false"/>
     <div class="content page-nav" v-if="prev || next">
-      <p>
+      <p class="inner">
         <span v-if="prev" class="prev">
           ← <router-link v-if="prev" class="prev" :to="prev.path">
             {{ prev.title || prev.path }}
@@ -39,10 +39,10 @@ export default {
 @import './styles/config.stylus'
 
 .page-nav.content
-  padding-top 0
   min-height 2.2rem
-  p
-    margin 0
+  padding-bottom 2rem
+  .inner
+    margin-top 0 !important
     border-top 1px solid $borderColor
     padding-top 1rem
   .next

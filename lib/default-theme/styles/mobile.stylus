@@ -11,7 +11,7 @@ $mobileSidebarWidth = $sidebarWidth * 0.82
     width $mobileSidebarWidth
   .page
     padding-left $mobileSidebarWidth
-  .content
+  .content:not(.custom)
     padding 2rem
 
 // wide mobile
@@ -30,7 +30,7 @@ $mobileSidebarWidth = $sidebarWidth * 0.82
 // narrow mobile
 @media (max-width: $MQMobileNarrow)
   pre, pre[class*="language-"]
-    margin 0 -1.5rem
+    margin 0.85rem -1.5rem
     border-radius 0
-  .content
+  .content:not(.custom)
     padding 1.5rem

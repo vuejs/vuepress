@@ -1,7 +1,10 @@
 <template>
   <div class="nav-links">
     <!-- user links -->
-    <router-link v-for="item in userLinks" :to="item.link">
+    <router-link v-for="item in userLinks"
+      :to="item.link"
+      :key="item.link"
+      :class="{ active: isActive($route, item.link) }">
       {{ item.text }}
     </router-link>
     <!-- github link -->
@@ -19,7 +22,7 @@
 </template>
 
 <script>
-import { ensureExt } from './util'
+import { isActive, ensureExt } from './util'
 
 export default {
   computed: {
@@ -37,14 +40,27 @@ export default {
           : `https://github.com/${repo}`
       }
     }
+  },
+  methods: {
+    isActive
   }
 }
 </script>
 
 <style lang="stylus">
-.github-link .icon
-  color #aaa
-  display inline-block
-  position relative
-  top .1rem
+@import './styles/config.stylus'
+
+.nav-links
+  a
+    color inherit
+    font-weight 500
+    line-height 1.5
+    &:hover, &.active
+      margin-bottom -2px
+      border-bottom 2px solid lighten($accentColor, 10%)
+  .github-link .icon
+    color #aaa
+    display inline-block
+    position relative
+    top .1rem
 </style>

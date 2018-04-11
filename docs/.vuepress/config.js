@@ -4,7 +4,7 @@ const { extractHeaders } = require('../../lib')
 
 module.exports = {
   title: 'VuePress',
-  description: 'Minimalistic docs generator with Vue component based layout system',
+  description: 'Vue-powered Static Site Generator',
   dest: 'vuepress',
   base,
   head: [
@@ -13,6 +13,7 @@ module.exports = {
   themeConfig: {
     logo: `${base}logo.png`,
     repo: 'vuejs/vuepress',
+    editBase: 'https://github.com/vuejs/vuepress/tree/master/docs',
     nav: [
       {
         text: 'Guide',

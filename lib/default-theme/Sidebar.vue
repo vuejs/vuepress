@@ -18,10 +18,10 @@
 
 <script>
 import SidebarGroup from './SidebarGroup.vue'
-import SidebarLink, { isActive } from './SidebarLink.vue'
+import SidebarLink from './SidebarLink.vue'
 import SidebarButton from './SidebarButton.vue'
 import NavLinks from './NavLinks.vue'
-import { resolvePage } from './util'
+import { resolvePage, isActive } from './util'
 
 export default {
   components: { SidebarGroup, SidebarLink, SidebarButton, NavLinks },
@@ -60,7 +60,7 @@ export default {
       this.openGroupIndex = index === this.openGroupIndex ? -1 : index
     },
     isActive (page) {
-      return isActive(this.$route, page)
+      return isActive(this.$route, page.path)
     }
   }
 }
@@ -68,7 +68,7 @@ export default {
 function resolveOpenGroupIndex (route, items) {
   for (let i = 0; i < items.length; i++) {
     const item = items[i]
-    if (item.type === 'group' && item.children.some(c => isActive(route, c))) {
+    if (item.type === 'group' && item.children.some(c => isActive(route, c.path))) {
       return i
     }
   }

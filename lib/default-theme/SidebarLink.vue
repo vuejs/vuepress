@@ -1,5 +1,5 @@
 <script>
-import { normalize, getHash, ensureExt } from './util'
+import { isActive } from './util'
 
 export default {
   functional: true,
@@ -13,26 +13,9 @@ export default {
         'sidebar-link': true,
         // use custom active class matching logic
         // due to edge case of paths ending with / + hash
-        active: isActive($route, item)
+        active: isActive($route, item.path)
       }
     }, [item.title || item.path])
-  }
-}
-
-const endingSlashRE = /\/$/
-
-export function isActive (route, page) {
-  const routeHash = route.hash
-  const linkHash = getHash(page.path)
-  if (linkHash && routeHash !== linkHash) {
-    return false
-  }
-  const routePath = normalize(route.path)
-  const pagePath = normalize(page.path)
-  if (endingSlashRE.test(routePath) || endingSlashRE.test(pagePath)) {
-    return routePath === pagePath
-  } else {
-    return routePath.indexOf(pagePath) === 0
   }
 }
 </script>

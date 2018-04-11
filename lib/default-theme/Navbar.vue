@@ -36,10 +36,6 @@ export default {
   a, span, img
     vertical-align middle
     display inline-block
-  a
-    font-weight 600
-    &:hover
-      text-decoration underline
   .logo
     display inline-block
     height 2rem

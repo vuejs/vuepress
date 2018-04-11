@@ -1,4 +1,4 @@
-# Configuration
+# Config Reference
 
 ## Basic Config
 

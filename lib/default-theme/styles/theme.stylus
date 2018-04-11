@@ -44,7 +44,7 @@ body
   border-right 1px solid $borderColor
   overflow-y scroll
 
-.content
+.content:not(.custom)
   max-width $contentWidth
   margin 0 auto
   padding 2rem 2.5rem
@@ -52,6 +52,10 @@ body
     margin-top $navbarHeight
   a:hover
     text-decoration underline
+
+.content.custom
+  padding 0
+  margin 0
 
 a
   font-weight 500
@@ -78,12 +82,13 @@ strong
 h1, h2, h3, h4, h5, h6
   font-weight 600
   line-height 1.25
-  margin-top (0.5rem - $navbarHeight)
-  padding-top ($navbarHeight + 1rem)
-  margin-bottom 0
-  .content &
+  .content:not(.custom) &
+    margin-top (0.5rem - $navbarHeight)
+    padding-top ($navbarHeight + 1rem)
+    margin-bottom 0
     &:first-child
       margin-top -1.5rem
+      margin-bottom 1rem
   &:hover .header-anchor
     opacity: 1
 
@@ -119,5 +124,13 @@ p
     padding 1rem 1.5rem
     border 1px solid #ddd
     border-radius 4px
+
+.custom-layout
+  padding-top $navbarHeight
+
+@media (min-width: ($MQMobile + 1px))
+  .theme-container.no-sidebar
+    .sidebar
+      display none
 
 @import './mobile.stylus'

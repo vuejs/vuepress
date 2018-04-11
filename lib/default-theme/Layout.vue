@@ -1,30 +1,57 @@
 <template>
   <div class="theme-container"
-    :class="{ 'sidebar-open': isSidebarOpen }"
+    :class="{
+      'sidebar-open': isSidebarOpen,
+      'no-sidebar': $page.frontmatter.home || $page.frontmatter.sidebar === false
+    }"
     @touchstart="onTouchStart"
     @touchend="onTouchEnd">
     <Navbar @toggle-sidebar="toggleSidebar"/>
     <Sidebar @toggle-sidebar="toggleSidebar"/>
-    <Page/>
+    <div class="custom-layout" v-if="$page.frontmatter.layout">
+      <component :is="$page.frontmatter.layout"/>
+    </div>
+    <Home v-else-if="$page.frontmatter.home"/>
+    <Page v-else/>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
 import nprogress from 'nprogress'
+import Home from './Home.vue'
 import Navbar from './Navbar.vue'
 import Page from './Page.vue'
 import Sidebar from './Sidebar.vue'
-import { pathToComponentName } from '../app/util'
+import { pathToComponentName, getTitle, getLang } from '../app/util'
 
 export default {
-  components: { Page, Sidebar, Navbar },
+  components: { Home, Page, Sidebar, Navbar },
   data () {
     return {
       isSidebarOpen: false
     }
   },
+
+  created () {
+    if (this.$ssrContext) {
+      this.$ssrContext.title = getTitle(this.$page)
+      this.$ssrContext.lang = getLang(this.$page)
+    }
+  },
+
   mounted () {
+    // update title / meta tags
+    this.currentMetaTags = []
+    const updateMeta = () => {
+      document.title = getTitle(this.$page)
+      document.documentElement.lang = getLang(this.$page)
+      this.currentMetaTags = updateMetaTags(this.$page, this.currentMetaTags)
+    }
+    this.$watch('$page', updateMeta)
+    updateMeta()
+
+    // configure progress bar
     nprogress.configure({ showSpinner: false })
 
     this.$router.beforeEach((to, from, next) => {
@@ -39,6 +66,11 @@ export default {
       this.isSidebarOpen = false
     })
   },
+
+  beforeDestroy () {
+    updateMetaTags(null, this.currentMetaTags)
+  },
+
   methods: {
     toggleSidebar (to) {
       this.isSidebarOpen = typeof to === 'boolean' ? to : !this.isSidebarOpen
@@ -61,6 +93,25 @@ export default {
         }
       }
     }
+  }
+}
+
+function updateMetaTags (page, current) {
+  if (current) {
+    current.forEach(c => {
+      document.head.removeChild(c)
+    })
+  }
+  const data = page && page.frontmatter.meta
+  if (data) {
+    return data.map(m => {
+      const tag = document.createElement('meta')
+      Object.keys(m).forEach(key => {
+        tag.setAttribute(key, m[key])
+      })
+      document.head.appendChild(tag)
+      return tag
+    })
   }
 }
 </script>
