@@ -49,11 +49,17 @@ export default {
 <style lang="stylus">
 @import './styles/config.stylus'
 
-.nav-links
-  a
-    color inherit
-    font-weight 500
-    line-height 1.5
+.nav-links a
+  color inherit
+  font-weight 500
+  line-height 1.5
+  &:hover, &.active
+    color $accentColor
+
+@media (min-width: $MQMobile)
+  .nav-links a
+    &:hover:not(.active)
+      color $textColor
     &:hover, &.active
       margin-bottom -2px
       border-bottom 2px solid lighten($accentColor, 10%)
