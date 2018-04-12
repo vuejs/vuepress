@@ -1,5 +1,5 @@
 <template>
-  <div class="navbar">
+  <header class="navbar">
     <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
     <router-link to="/">
       <img class="logo"
@@ -12,18 +12,19 @@
       </span>
     </router-link>
     <div class="links">
-      <!-- search box -->
+      <SearchBox/>
       <NavLinks class="can-hide"/>
     </div>
-  </div>
+  </header>
 </template>
 
 <script>
 import SidebarButton from './SidebarButton.vue'
+import SearchBox from './SearchBox.vue'
 import NavLinks from './NavLinks.vue'
 
 export default {
-  components: { SidebarButton, NavLinks }
+  components: { SidebarButton, NavLinks, SearchBox }
 }
 </script>
 
@@ -33,6 +34,7 @@ export default {
 .navbar
   padding 0.7rem 1.5rem
   line-height 2rem
+  position relative
   a, span, img
     vertical-align middle
     display inline-block
@@ -48,10 +50,10 @@ export default {
     position relative
     top -0.125rem
   .links
-    font-size 0.95rem
-    float right
-    a:not(:last-child)
-      margin-right 1.5rem
+    font-size 0.9rem
+    position absolute
+    right 1.5rem
+    top 0.7rem
 
 @media (max-width: $MQMobile)
   .navbar

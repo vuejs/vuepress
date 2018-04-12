@@ -20,7 +20,7 @@ body
 
 .navbar
   position fixed
-  z-index 10
+  z-index 20
   top 0
   left 0
   right 0
@@ -34,7 +34,7 @@ body
   background-color #fff
   width $sidebarWidth
   position fixed
-  z-index 20
+  z-index 10
   margin 0
   top $navbarHeight
   left 0

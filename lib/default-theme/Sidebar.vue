@@ -1,6 +1,5 @@
 <template>
   <div class="sidebar">
-    <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
     <NavLinks/>
     <ul>
       <li v-for="(item, i) in sidebarItems">
@@ -19,12 +18,11 @@
 <script>
 import SidebarGroup from './SidebarGroup.vue'
 import SidebarLink from './SidebarLink.vue'
-import SidebarButton from './SidebarButton.vue'
 import NavLinks from './NavLinks.vue'
 import { resolvePage, isActive } from './util'
 
 export default {
-  components: { SidebarGroup, SidebarLink, SidebarButton, NavLinks },
+  components: { SidebarGroup, SidebarLink, NavLinks },
   data () {
     return {
       openGroupIndex: 0

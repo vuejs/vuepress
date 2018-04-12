@@ -8,6 +8,10 @@ next: ./getting-started
 
 ## Todo Features
 
+### PWA Support
+
+### Algolia DocSearch Integration
+
 ## Why Not ...?
 
 ### Nuxt / NuxtDoc

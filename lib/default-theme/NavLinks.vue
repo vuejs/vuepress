@@ -1,5 +1,5 @@
 <template>
-  <div class="nav-links">
+  <nav class="nav-links">
     <!-- user links -->
     <router-link v-for="item in userLinks"
       :to="item.link"
@@ -14,7 +14,7 @@
       Github
       <OutboundLink/>
     </a>
-  </div>
+  </nav>
 </template>
 
 <script>
@@ -48,12 +48,19 @@ export default {
 <style lang="stylus">
 @import './styles/config.stylus'
 
-.nav-links a
-  color inherit
-  font-weight 500
-  line-height 1.5
-  &:hover, &.router-link-active
-    color $accentColor
+.nav-links
+  display inline-block
+  a
+    color inherit
+    font-weight 500
+    line-height 1.25rem
+    margin-left 1.5rem
+    &:hover, &.router-link-active
+      color $accentColor
+
+@media (max-width: $MQMobile)
+  .nav-links a
+    margin-left 0
 
 @media (min-width: $MQMobile)
   .nav-links a

@@ -49,12 +49,23 @@ module.exports = {
         {
           title: 'Config Reference',
           collapsable: false,
-          children: extractHeaders(
-            fs.readFileSync(path.resolve(__dirname, '../config/README.md'), 'utf-8'),
-            ['h3']
-          ).map(({ title, slug }) => [`#${slug}`, title])
+          children: genSidebar('config/README.md')
+        }
+      ],
+      '/default-theme-config/': [
+        {
+          title: 'Default Theme Config',
+          collapsable: false,
+          children: genSidebar('default-theme-config/README.md')
         }
       ]
     }
   }
+}
+
+function genSidebar (file) {
+  return extractHeaders(
+    fs.readFileSync(path.resolve(__dirname, '../', file), 'utf-8'),
+    ['h3']
+  ).map(({ title, slug }) => [`#${slug}`, title])
 }
