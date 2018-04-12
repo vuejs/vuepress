@@ -1,6 +1,6 @@
 // colors
+@import '../../app/.temp/accent.stylus' // generated from user config
 $textColor = #2c3e50
-$accentColor = darken(#41b883, 5%)
 $borderColor = #eaecef
 $codeBgColor = #282c34
 

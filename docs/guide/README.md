@@ -10,6 +10,8 @@ next: ./getting-started
 
 ### PWA Support
 
+### Dropdown Items in Navbar
+
 ### Algolia DocSearch Integration
 
 ## Why Not ...?
