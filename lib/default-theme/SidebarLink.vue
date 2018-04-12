@@ -1,5 +1,5 @@
 <script>
-import { isActive } from './util'
+import { isActive, hashRE } from './util'
 
 export default {
   functional: true,
@@ -11,7 +11,7 @@ export default {
     const link = renderLink(h, item.path, item.title || item.path, active)
     const configDepth = $site.themeConfig.sidebarDepth
     const maxDepth = configDepth == null ? 1 : configDepth
-    if (active && item.headers) {
+    if (active && item.headers && !hashRE.test(item.path)) {
       const children = groupHeaders(item.headers)
       return [link, renderChildren(h, children, item.path, $route, maxDepth)]
     } else {
