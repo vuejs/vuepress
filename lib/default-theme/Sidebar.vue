@@ -151,6 +151,7 @@ function resolveItem (item, pages, base, isNested) {
     padding 0.5rem 0 0.75rem 0
     margin-bottom 1rem
     a
+      display block
       font-weight 600
       font-size 1.1em
       padding 0.5rem 0 0.5rem 1.5rem

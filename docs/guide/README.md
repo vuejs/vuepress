@@ -23,6 +23,7 @@ Each markdown file is compiled into HTML with [markdown-it](https://github.com/m
 - [Vue-powered custom theme system](./custom-thems)
 - A default theme with:
   - Responsive layout
+  - Optional Homepage
   - Simple out-of-the-box header-based search
   - Customizable navbar and sidebar
   - Auto-generated GitHub link and page edit links

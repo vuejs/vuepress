@@ -1,5 +1,5 @@
 <template>
-  <nav class="nav-links">
+  <nav class="nav-links" v-if="userLinks.length && githubLink">
     <!-- user links -->
     <router-link v-for="item in userLinks"
       :to="item.link"
