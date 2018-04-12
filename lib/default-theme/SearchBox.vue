@@ -36,7 +36,7 @@ export default {
   computed: {
     showSuggestions () {
       return (
-        this.focused &&
+        // this.focused &&
         this.suggestions &&
         this.suggestions.length
       )
@@ -143,20 +143,21 @@ export default {
     top 1.5rem
     border 1px solid darken($borderColor, 10%)
     border-radius 6px
-    padding 0.4rem 0
+    padding 0.4rem
     list-style-type none
   .suggestion
     line-height 1.4
-    padding 0.4rem 1rem
+    padding 0.4rem 0.6rem
+    border-radius 4px
     a
-      color lighten($textColor, 20%)
+      color lighten($textColor, 35%)
       .page-title
         font-weight 600
       .header
         font-size 0.9em
         margin-left 0.25em
     &.focused
-      background-color $lighten($textColor, 50%)
+      background-color #f3f4f5
       a
         color $accentColor
 
