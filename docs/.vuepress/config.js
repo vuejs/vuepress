@@ -12,7 +12,6 @@ module.exports = {
     ['link', { rel: 'icon', href: `/logo.png` }]
   ],
   themeConfig: {
-    logo: `/logo.png`,
     repo: 'vuejs/vuepress',
     editLinks: true,
     docsDir: 'docs',

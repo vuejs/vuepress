@@ -50,7 +50,7 @@ export default {
   .hero
     text-align center
     img
-      max-height 15rem
+      max-height 280px
       display block
       margin 3rem auto 1.5rem
     h1
@@ -113,7 +113,7 @@ export default {
   .home
     .hero
       img
-        max-height 10rem
+        max-height 210px
         margin 2rem auto 1.2rem
       h1
         font-size 2rem
