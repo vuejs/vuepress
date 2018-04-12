@@ -64,7 +64,7 @@ export default {
 </script>
 
 <style lang="stylus">
-@import './styles/config.stylus'
+@import './styles/config.styl'
 
 .edit-link
   padding-top 0 !important

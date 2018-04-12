@@ -46,7 +46,7 @@ export default {
 </script>
 
 <style lang="stylus">
-@import './styles/config.stylus'
+@import './styles/config.styl'
 
 .nav-links
   display inline-block

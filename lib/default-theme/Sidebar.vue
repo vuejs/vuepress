@@ -136,7 +136,7 @@ function resolveItem (item, pages, base, isNested) {
 </script>
 
 <style lang="stylus">
-@import './styles/config.stylus'
+@import './styles/config.styl'
 
 .sidebar
   ul
@@ -144,7 +144,7 @@ function resolveItem (item, pages, base, isNested) {
     margin 0
     list-style-type none
   a
-    display block
+    display inline-block
   .nav-links
     display none
     border-bottom 1px solid $borderColor

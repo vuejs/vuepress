@@ -1,21 +1,31 @@
 # Default Theme Config
 
-## Accent Color
+## Simple CSS Override
 
-## Logo
+If you wish to apply simple overrides to the styling of the default theme, you can create an `.vuepress/override.styl` file. This is a [Stylus](http://stylus-lang.com/) file but you can use normal CSS syntax as well.
 
-## Navbar
+There are a few color variables you can tweak:
+
+``` stylus
+// showing default values
+$accentColor = #3eaf7c
+$textColor = #2c3e50
+$borderColor = #eaecef
+$codeBgColor = #282c34
+```
+
+## Options Reference
+
+### logo
 
 ### nav
-
-## Sidebar
 
 ### sidebar
 
 ### sidebarDepth
 
-## GitHub Repo & Edit Links
+### editLinks
 
-## Search
+### docsDir
 
-## Simple CSS Override
+### docsBranch

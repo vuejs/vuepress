@@ -6,6 +6,8 @@ next: ./markdown
 
 ## Global Installation
 
+If you just want to play around with VuePress, you can install it globally:
+
 ``` bash
 # install globally
 npm install -g vuepress
@@ -21,6 +23,8 @@ vuepress build .
 ```
 
 ## Inside an Existing Project
+
+If you have an existing project and would like to keep documentation inside the project, you should install VuePress as a local dependency. This setup also allows you to use CI or services like Netlify for automatic deployment on push.
 
 ``` bash
 # install as a local dependency
@@ -62,9 +66,16 @@ By default the built files will be in `.vuepress/dist`, which can be configured 
 
 ## Basic Configurations
 
-### Title and Description
+Right now our page is pretty minimal, and the user has no way to navigate around the site. To customize your site, let's first create a `.vuepress` directory inside your docs directory. This is where all VuePress-specific files will be placed in.
 
-### Logo
+The essential file for configuring a VuePress site is `.vuepress/config.js`, which simply exports a JavaScript object:
+
+``` js
+module.exports = {
+  title: 'Hello VuePress',
+  description: 'Just playing around'
+}
+```
 
 ### Navbar Links
 

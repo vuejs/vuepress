@@ -29,7 +29,7 @@ export default {
 </script>
 
 <style lang="stylus">
-@import './styles/config.stylus'
+@import './styles/config.styl'
 
 .navbar
   padding 0.7rem 1.5rem
