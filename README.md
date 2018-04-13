@@ -10,9 +10,9 @@ https://vuepress.vuejs.org/
 
 ## Features
 
-- [Built-in markdown extensions](https://vuepress.vuejs.org/guide/markdown.md) optimized for technical documentation
-- [Ability to leverage Vue inside markdown files](https://vuepress.vuejs.org/using-vue.md)
-- [Vue-powered custom theme system](https://vuepress.vuejs.org/custom-themes)
+- [Built-in markdown extensions](https://vuepress.vuejs.org/guide/markdown.html) optimized for technical documentation
+- [Ability to leverage Vue inside markdown files](https://vuepress.vuejs.org/guide/using-vue.html)
+- [Vue-powered custom theme system](https://vuepress.vuejs.org/guide/custom-themes.html)
 - PWA Support
 - Google Analytics Integration
 - A default theme with:
