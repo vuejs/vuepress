@@ -48,9 +48,11 @@ export default {
       const { themeConfig } = this.$site
       const { frontmatter } = this.$page
       return (
-        themeConfig.sidebar &&
-        !frontmatter.home &&
-        frontmatter.sidebar !== false
+        frontmatter.sidebar === 'auto' || (
+          themeConfig.sidebar &&
+          !frontmatter.home &&
+          frontmatter.sidebar !== false
+        )
       )
     }
   },

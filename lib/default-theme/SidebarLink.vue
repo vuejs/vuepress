@@ -8,15 +8,15 @@ export default {
     // use custom active class matching logic
     // due to edge case of paths ending with / + hash
     const selfActive = isActive($route, item.path)
-    // for sidebar: self pages, a hash link should be active if one of its child
+    // for sidebar: auto pages, a hash link should be active if one of its child
     // matches
-    const active = item.type === 'self'
+    const active = item.type === 'auto'
       ? selfActive || item.children.some(c => isActive($route, item.basePath + '#' + c.slug))
       : selfActive
     const link = renderLink(h, item.path, item.title || item.path, active)
     const configDepth = $page.frontmatter.sidebarDepth || $site.themeConfig.sidebarDepth
     const maxDepth = configDepth == null ? 1 : configDepth
-    if (item.type === 'self') {
+    if (item.type === 'auto') {
       return [link, renderChildren(h, item.children, item.basePath, $route, maxDepth)]
     } else if (active && item.headers && !hashRE.test(item.path)) {
       const children = groupHeaders(item.headers)

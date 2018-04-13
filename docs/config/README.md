@@ -1,5 +1,5 @@
 ---
-sidebar: self
+sidebar: auto
 ---
 
 # Config Reference

@@ -76,7 +76,7 @@ function resolveOpenGroupIndex (route, items) {
 
 function resolveSidebarItems (page, route, site) {
   const pageSidebarConfig = page.frontmatter.sidebar
-  if (pageSidebarConfig === 'self') {
+  if (pageSidebarConfig === 'auto') {
     return resolveHeaders(page)
   }
   const { pages, themeConfig } = site
@@ -98,7 +98,7 @@ function resolveHeaders (page) {
     collapsable: false,
     title: page.title,
     children: headers.map(h => ({
-      type: 'self',
+      type: 'auto',
       title: h.title,
       basePath: page.path,
       path: page.path + '#' + h.slug,

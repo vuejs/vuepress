@@ -1,8 +1,12 @@
 ---
-sidebar: self
+sidebar: auto
 ---
 
 # Default Theme Config
+
+::: tip
+All options listed on this page apply to the default theme only. If you are using a custom theme, the options may be different.
+:::
 
 ## Navbar Links
 
@@ -79,9 +83,9 @@ module.exports = {
 
 Sidebar groups are collapsable by default. You can force a group to be always open with `collapsable: false`.
 
-### Multi Category Sidebars
+### Multiple Sidebars
 
-If you wish to display different sidebars for different group of pages, you will first need to organize your pages into directories:
+If you wish to display different sidebars for different group of pages, first organize your pages into directories:
 
 ```
 .
@@ -118,6 +122,16 @@ module.exports = {
     }
   }
 }
+```
+
+### Auto Sidebar for Single Pages
+
+If you wish to automatically generate a sidebar that contains only the header links for the current page, you can use YAML frontmatter on that page:
+
+``` md
+---
+sidebar: auto
+---
 ```
 
 ## Homepage
