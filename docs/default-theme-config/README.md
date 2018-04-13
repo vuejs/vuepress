@@ -1,5 +1,5 @@
 ---
-sidebarDepth: 2
+sidebar: self
 ---
 
 # Default Theme Config

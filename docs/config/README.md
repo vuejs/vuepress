@@ -1,3 +1,7 @@
+---
+sidebar: self
+---
+
 # Config Reference
 
 ## Basic Config

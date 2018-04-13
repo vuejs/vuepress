@@ -7,11 +7,18 @@ export default {
   render (h, { parent: { $page, $site, $route }, props: { item }}) {
     // use custom active class matching logic
     // due to edge case of paths ending with / + hash
-    const active = isActive($route, item.path)
+    const selfActive = isActive($route, item.path)
+    // for sidebar: self pages, a hash link should be active if one of its child
+    // matches
+    const active = item.type === 'self'
+      ? selfActive || item.children.some(c => isActive($route, item.basePath + '#' + c.slug))
+      : selfActive
     const link = renderLink(h, item.path, item.title || item.path, active)
     const configDepth = $page.frontmatter.sidebarDepth || $site.themeConfig.sidebarDepth
     const maxDepth = configDepth == null ? 1 : configDepth
-    if (active && item.headers && !hashRE.test(item.path)) {
+    if (item.type === 'self') {
+      return [link, renderChildren(h, item.children, item.basePath, $route, maxDepth)]
+    } else if (active && item.headers && !hashRE.test(item.path)) {
       const children = groupHeaders(item.headers)
       return [link, renderChildren(h, children, item.path, $route, maxDepth)]
     } else {
@@ -34,7 +41,7 @@ function renderLink (h, to, text, active) {
   }, text)
 }
 
-function groupHeaders (headers) {
+export function groupHeaders (headers) {
   // group h3s under h2
   headers = headers.map(h => Object.assign({}, h))
   let lastH2

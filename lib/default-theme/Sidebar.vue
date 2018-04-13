@@ -3,13 +3,13 @@
     <NavLinks/>
     <ul class="sidebar-links" v-if="sidebarItems.length">
       <li v-for="(item, i) in sidebarItems">
-        <SidebarLink v-if="item.type === 'page'" :item="item"/>
-        <SidebarGroup v-else-if="item.type === 'group'"
+        <SidebarGroup v-if="item.type === 'group'"
           :item="item"
           :first="i === 0"
           :open="i === openGroupIndex"
           :collapsable="item.collapsable"
-          @toggle="toggleGroup(i)" />
+          @toggle="toggleGroup(i)"/>
+        <SidebarLink v-else :item="item"/>
       </li>
     </ul>
   </div>
@@ -17,7 +17,7 @@
 
 <script>
 import SidebarGroup from './SidebarGroup.vue'
-import SidebarLink from './SidebarLink.vue'
+import SidebarLink, { groupHeaders } from './SidebarLink.vue'
 import NavLinks from './NavLinks.vue'
 import { resolvePage, isActive } from './util'
 
@@ -39,6 +39,7 @@ export default {
   computed: {
     sidebarItems () {
       return resolveSidebarItems(
+        this.$page,
         this.$route,
         this.$site
       )
@@ -73,17 +74,37 @@ function resolveOpenGroupIndex (route, items) {
   return -1
 }
 
-function resolveSidebarItems (route, site) {
+function resolveSidebarItems (page, route, site) {
+  const pageSidebarConfig = page.frontmatter.sidebar
+  if (pageSidebarConfig === 'self') {
+    return resolveHeaders(page)
+  }
   const { pages, themeConfig } = site
   const sidebarConfig = themeConfig.sidebar
   if (!sidebarConfig) {
-    return pages.map(p => Object.assign({ page: 'type' }, p))
+    return pages.map(p => Object.assign({ type: 'page' }, p))
   } else {
     const { base, config } = resolveMatchingSidebarConfig(route, sidebarConfig)
     return config
       ? config.map(item => resolveItem(item, pages, base))
       : []
   }
+}
+
+function resolveHeaders (page) {
+  const headers = groupHeaders(page.headers || [])
+  return [{
+    type: 'group',
+    collapsable: false,
+    title: page.title,
+    children: headers.map(h => ({
+      type: 'self',
+      title: h.title,
+      basePath: page.path,
+      path: page.path + '#' + h.slug,
+      children: h.children || []
+    }))
+  }]
 }
 
 function resolveMatchingSidebarConfig (route, sidebarConfig) {

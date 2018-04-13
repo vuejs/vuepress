@@ -12,7 +12,7 @@
       @before-leave="setHeight">
       <ul class="sidebar-group-items" ref="items" v-if="open || !collapsable">
         <li v-for="child in item.children">
-          <SidebarLink v-if="child.type === 'page'" :item="child"/>
+          <SidebarLink :item="child"/>
         </li>
       </ul>
     </transition>
