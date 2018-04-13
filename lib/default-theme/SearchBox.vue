@@ -2,6 +2,7 @@
   <div class="search-box">
     <input
       @input="query = $event.target.value"
+      aria-label="Search"
       :value="query"
       autocomplete="off"
       spellcheck="false"
