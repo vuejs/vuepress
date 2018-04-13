@@ -111,6 +111,8 @@ export default {
 
 @media (max-width: $MQMobileNarrow)
   .home
+    padding-left 1.5rem
+    padding-right 1.5rem
     .hero
       img
         max-height 210px
