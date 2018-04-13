@@ -8,6 +8,7 @@ module.exports = {
   head: [
     ['link', { rel: 'icon', href: `/logo.png` }]
   ],
+  pwa: true,
   themeConfig: {
     repo: 'vuejs/vuepress',
     editLinks: true,

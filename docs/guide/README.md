@@ -17,6 +17,8 @@ Each markdown file is compiled into HTML with [markdown-it](https://github.com/m
 - [Built-in markdown extensions](./markdown.md) optimized for technical documentation
 - [Ability to leverage Vue inside markdown files](./using-vue.md)
 - [Vue-powered custom theme system](./custom-themes)
+- PWA Support
+- Google Analytics Integration
 - A default theme with:
   - Responsive layout
   - Optional Homepage
@@ -30,7 +32,6 @@ VuePress is still a work in progress. There are a few things that it currently d
 
 - Dropdown Items in Navbar
 - Multi-Language Support
-- PWA Support
 - Algolia DocSearch Integration
 - Blogging support
 

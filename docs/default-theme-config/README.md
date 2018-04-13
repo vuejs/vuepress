@@ -8,6 +8,27 @@ sidebar: auto
 All options listed on this page apply to the default theme only. If you are using a custom theme, the options may be different.
 :::
 
+## Homepage
+
+The default theme provides a homepage layout (which is used on [the homepage of this very website](/)). To use it, specify `home: true` plus some other metadata in your root `README.md`'s YAML front matter. This is the actual data used on this site:
+
+``` yaml
+---
+home: true
+heroImage: /hero.png
+actionText: Get Started →
+actionLink: /guide/
+features:
+- title: Simplicity First
+  details: Minimal setup with markdown-centered project structure helps you focus on writing.
+- title: Vue-Powered
+  details: Enjoy the dev experience of Vue + webpack, use Vue components in markdown, and develop custom themes with Vue.
+- title: Performant
+  details: VuePress generates pre-rendered static HTML for each page, and runs as an SPA once a page is loaded.
+footer: MIT Licensed | Copyright © 2018-present Evan You
+---
+```
+
 ## Navbar Links
 
 You can add links to the navbar via `themeConfig.nav`:
@@ -134,7 +155,18 @@ sidebar: auto
 ---
 ```
 
-## Homepage
+Any additional content after the front matter will be parsed as normal markdown and rendered after the features section.
+
+## Prev / Next Links
+
+Prev and next links are automatically inferred based on the sidebar order of the active page. You can also explicitly overwrite or disable them using YAML front matter:
+
+``` yaml
+---
+prev: ./some-other-page
+next: false
+---
+```
 
 ## GitHub Repo and Edit Links
 
