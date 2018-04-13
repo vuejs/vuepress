@@ -1,8 +1,3 @@
----
-prev: ./markdown
-next: ./custom-themes
----
-
 # Using Vue in Markdown
 
 ## DOM Access Restrictions

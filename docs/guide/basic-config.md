@@ -1,9 +1,3 @@
----
-prev: ./getting-started
-next: ./assets
-sidebarDepth: 2
----
-
 # Configuration
 
 ## Config File

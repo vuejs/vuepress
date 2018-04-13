@@ -1,8 +1,3 @@
----
-prev: ./
-next: ./basic-config
----
-
 # Getting Started
 
 ## Global Installation

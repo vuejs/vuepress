@@ -1,8 +1,3 @@
----
-prev: ./using-vue
-next: ./deploy
----
-
 # Custom Themes
 
 VuePress uses Vue single file components for custom themes. To use a custom layout, create a `.vuepress/theme` directory in your docs root, and then create a `Layout.vue` file:

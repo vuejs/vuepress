@@ -1,8 +1,8 @@
 <template>
   <div class="sidebar">
     <NavLinks/>
-    <ul class="sidebar-links" v-if="sidebarItems.length">
-      <li v-for="(item, i) in sidebarItems">
+    <ul class="sidebar-links" v-if="items.length">
+      <li v-for="(item, i) in items">
         <SidebarGroup v-if="item.type === 'group'"
           :item="item"
           :first="i === 0"
@@ -19,10 +19,11 @@
 import SidebarGroup from './SidebarGroup.vue'
 import SidebarLink, { groupHeaders } from './SidebarLink.vue'
 import NavLinks from './NavLinks.vue'
-import { resolvePage, isActive } from './util'
+import { isActive, resolveSidebarItems } from './util'
 
 export default {
   components: { SidebarGroup, SidebarLink, NavLinks },
+  props: ['items'],
   data () {
     return {
       openGroupIndex: 0
@@ -36,20 +37,11 @@ export default {
       this.refreshIndex()
     }
   },
-  computed: {
-    sidebarItems () {
-      return resolveSidebarItems(
-        this.$page,
-        this.$route,
-        this.$site
-      )
-    }
-  },
   methods: {
     refreshIndex () {
       const index = resolveOpenGroupIndex(
         this.$route,
-        this.sidebarItems
+        this.items
       )
       if (index > -1) {
         this.openGroupIndex = index
@@ -72,87 +64,6 @@ function resolveOpenGroupIndex (route, items) {
     }
   }
   return -1
-}
-
-function resolveSidebarItems (page, route, site) {
-  const pageSidebarConfig = page.frontmatter.sidebar
-  if (pageSidebarConfig === 'auto') {
-    return resolveHeaders(page)
-  }
-  const { pages, themeConfig } = site
-  const sidebarConfig = themeConfig.sidebar
-  if (!sidebarConfig) {
-    return pages.map(p => Object.assign({ type: 'page' }, p))
-  } else {
-    const { base, config } = resolveMatchingSidebarConfig(route, sidebarConfig)
-    return config
-      ? config.map(item => resolveItem(item, pages, base))
-      : []
-  }
-}
-
-function resolveHeaders (page) {
-  const headers = groupHeaders(page.headers || [])
-  return [{
-    type: 'group',
-    collapsable: false,
-    title: page.title,
-    children: headers.map(h => ({
-      type: 'auto',
-      title: h.title,
-      basePath: page.path,
-      path: page.path + '#' + h.slug,
-      children: h.children || []
-    }))
-  }]
-}
-
-function resolveMatchingSidebarConfig (route, sidebarConfig) {
-  if (Array.isArray(sidebarConfig)) {
-    return {
-      base: '/',
-      config: sidebarConfig
-    }
-  }
-  for (const base in sidebarConfig) {
-    if (ensureEndingSlash(route.path).indexOf(base) === 0) {
-      return {
-        base,
-        config: sidebarConfig[base]
-      }
-    }
-  }
-  return {}
-}
-
-function ensureEndingSlash (path) {
-  return /(\.html|\/)$/.test(path)
-    ? path
-    : path + '/'
-}
-
-function resolveItem (item, pages, base, isNested) {
-  if (typeof item === 'string') {
-    return resolvePage(pages, item, base)
-  } else if (Array.isArray(item)) {
-    return Object.assign(resolvePage(pages, item[0], base), {
-      title: item[1]
-    })
-  } else {
-    if (isNested) {
-      console.error(
-        '[vuepress] Nested sidebar groups are not supported. ' +
-        'Consider using navbar + categories instead.'
-      )
-    }
-    const children = item.children || []
-    return {
-      type: 'group',
-      title: item.title,
-      children: children.map(child => resolveItem(child, pages, base, true)),
-      collapsable: item.collapsable !== false
-    }
-  }
 }
 </script>
 

@@ -1,8 +1,3 @@
----
-prev: ./basic-config
-next: ./markdown
----
-
 # Asset Handling
 
 ## Relative URLs

@@ -1,6 +1,4 @@
 ---
-prev: ./assets
-next: ./using-vue
 meta:
 - name: keywords
   content: static docs generator vue

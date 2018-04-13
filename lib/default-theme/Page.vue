@@ -28,14 +28,27 @@ import { resolvePage, normalize, outboundRE, endingSlashRE } from './util'
 
 export default {
   components: { OutboundLink },
+  props: ['sidebarItems'],
   computed: {
     prev () {
       const prev = this.$page.frontmatter.prev
-      return prev && resolvePage(this.$site.pages, prev, this.$route.path)
+      if (prev === false) {
+        return
+      } else if (prev) {
+        return resolvePage(this.$site.pages, prev, this.$route.path)
+      } else {
+        return resolvePrev(this.$page, this.sidebarItems)
+      }
     },
     next () {
       const next = this.$page.frontmatter.next
-      return next && resolvePage(this.$site.pages, next, this.$route.path)
+      if (next === false) {
+        return
+      } else if (next) {
+        return resolvePage(this.$site.pages, next, this.$route.path)
+      } else {
+        return resolveNext(this.$page, this.sidebarItems)
+      }
     },
     editLink () {
       const {
@@ -63,6 +76,31 @@ export default {
           path
         )
       }
+    }
+  }
+}
+
+function resolvePrev (page, items) {
+  return find(page, items, -1)
+}
+
+function resolveNext (page, items) {
+  return find(page, items, 1)
+}
+
+function find (page, items, offset) {
+  const res = []
+  items.forEach(item => {
+    if (item.type === 'group') {
+      res.push(...item.children || [])
+    } else {
+      res.push(item)
+    }
+  })
+  for (let i = 0; i < res.length; i++) {
+    const cur = res[i]
+    if (cur.type === 'page' && cur.path === page.path) {
+      return res[i + offset]
     }
   }
 }

@@ -8,12 +8,12 @@
     @touchstart="onTouchStart"
     @touchend="onTouchEnd">
     <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar"/>
-    <Sidebar @toggle-sidebar="toggleSidebar"/>
+    <Sidebar :items="sidebarItems" @toggle-sidebar="toggleSidebar"/>
     <div class="custom-layout" v-if="$page.frontmatter.layout">
       <component :is="$page.frontmatter.layout"/>
     </div>
     <Home v-else-if="$page.frontmatter.home"/>
-    <Page v-else/>
+    <Page v-else :sidebar-items="sidebarItems"/>
   </div>
 </template>
 
@@ -25,6 +25,7 @@ import Navbar from './Navbar.vue'
 import Page from './Page.vue'
 import Sidebar from './Sidebar.vue'
 import { pathToComponentName, getTitle, getLang } from '../app/util'
+import { resolveSidebarItems } from './util'
 
 export default {
   components: { Home, Page, Sidebar, Navbar },
@@ -53,6 +54,13 @@ export default {
           !frontmatter.home &&
           frontmatter.sidebar !== false
         )
+      )
+    },
+    sidebarItems () {
+      return resolveSidebarItems(
+        this.$page,
+        this.$route,
+        this.$site
       )
     }
   },
