@@ -10,14 +10,14 @@ meta:
 
 ## Header Anchors
 
-Headers automatically get anchor links applied. Rendering of anchors can be configured using the [`markdown.anchor`](./config.md#markdownanchor) option.
+Headers automatically get anchor links applied. Rendering of anchors can be configured using the [`markdown.anchor`](../config/#markdownanchor) option.
 
 ## Links
 
 - Inbound links ending in `.md` or `.html` are converted to `<router-link>` for SPA navigation.
 
   - [Home](/)
-  - [Configuring Markdown](./config.md#markdown)
+  - [Configuring Markdown](../config/#markdown)
 
 - Outbound links automatically gets `target="_blank"`:
 
@@ -93,7 +93,7 @@ meta:
 
 [[toc]]
 
-Rendering of TOC can be configured using the [`markdown.toc`](./config.md#markdowntoc) option.
+Rendering of TOC can be configured using the [`markdown.toc`](../config/#markdowntoc) option.
 
 ## Custom Containers
 
