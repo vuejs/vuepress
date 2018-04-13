@@ -1,6 +1,8 @@
 <template>
   <div class="search-box">
-    <input v-model="query"
+    <input
+      @input="query = $event.target.value"
+      :value="query"
       autocomplete="off"
       spellcheck="false"
       @focus="focused = true"

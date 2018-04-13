@@ -155,10 +155,12 @@ function resolveItem (item, pages, base, isNested) {
       font-size 1.1em
       padding 0.5rem 0 0.5rem 1.5rem
   .sidebar-links
-    margin-top 1rem
+    margin-top 1.5rem
 
 @media (max-width: $MQMobile)
   .sidebar
     .nav-links
       display block
+    .sidebar-links
+      margin-top 1rem
 </style>

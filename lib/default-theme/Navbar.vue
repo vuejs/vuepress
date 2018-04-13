@@ -45,10 +45,10 @@ export default {
     margin-right 0.8rem
   .site-name
     font-size 1.3rem
+    line-height 2rem
     font-weight 600
     color $textColor
     position relative
-    top -0.125rem
   .links
     font-size 0.9rem
     position absolute

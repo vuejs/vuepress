@@ -39,7 +39,6 @@ body
   top $navbarHeight
   left 0
   bottom 0
-  padding 1.5rem 0
   box-sizing border-box
   border-right 1px solid $borderColor
   overflow-y scroll
@@ -88,13 +87,15 @@ strong
 h1, h2, h3, h4, h5, h6
   font-weight 600
   line-height 1.25
-  .content:not(.custom) &
+  .content:not(.custom) > &
     margin-top (0.5rem - $navbarHeight)
     padding-top ($navbarHeight + 1rem)
     margin-bottom 0
     &:first-child
       margin-top -1.5rem
       margin-bottom 1rem
+      + p
+        margin-top 2rem
   &:hover .header-anchor
     opacity: 1
 
