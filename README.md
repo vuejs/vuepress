@@ -1,5 +1,7 @@
 <p align="center">
-  <img width="280" src="https://github.com/vuejs/vuepress/blob/master/docs/.vuepress/public/hero.png" alt="logo">
+  <a href="https://vuepress.vuejs.org/" target="_blank">
+    <img width="280" src="https://github.com/vuejs/vuepress/blob/master/docs/.vuepress/public/hero.png" alt="logo">
+  </a>
 </p>
 
 # VuePress
