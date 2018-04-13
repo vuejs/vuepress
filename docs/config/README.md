@@ -70,15 +70,25 @@ Specify the output directory for `vuepress build`.
 
 Provide the Google Analytics ID to enable integration.
 
-### pwa
+### serviceWorker
 
 - Type: `boolean`
 - Default: `false`
 
-Set to `true` to enable PWA support. VuePress will automatically generate and register a service worker that caches the content for offline use in production.
+If set to `true`, VuePress will automatically generate and register a service worker that caches the content for offline use (only enabled in production).
 
-::: warning
-Only enable this if you are able to deploy your site with SSL, since service worker can only be registered under HTTPs URLs.
+If developing a custom theme, the `Layout.vue` component will also be emitting the following events:
+
+- `sw-ready`
+- `sw-cached`
+- `sw-updated`
+- `sw-offline`
+- `sw-error`
+
+::: tip PWA NOTES
+The `serviceWorker` option only handles the service worker. To make your site fully PWA-compliant, you will need to provide the Web App Manifest and icons in `.vuepress/public`. For more details, see [MDN docs about the Web App Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest).
+
+Also, only enable this if you are able to deploy your site with SSL, since service worker can only be registered under HTTPs URLs.
 :::
 
 ## Theming
