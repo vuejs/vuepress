@@ -10,6 +10,7 @@
       @keyup.down="onDown">
     <ul class="suggestions"
       v-if="showSuggestions"
+      :class="{ 'align-right': alignRight }"
       @mouseleave="unfocus">
       <li class="suggestion" v-for="(s, i) in suggestions"
         :class="{ focused: i === focusIndex }"
@@ -73,6 +74,12 @@ export default {
         }
       }
       return res
+    },
+    // make suggestions align right when there are not enough items
+    alignRight () {
+      const navCount = (this.$site.themeConfig.nav || []).length
+      const repo = this.$site.repo ? 1 : 0
+      return navCount + repo <= 2
     }
   },
   methods: {
@@ -145,6 +152,8 @@ export default {
     border-radius 6px
     padding 0.4rem
     list-style-type none
+    &.align-right
+      right 0
   .suggestion
     line-height 1.4
     padding 0.4rem 0.6rem
@@ -168,12 +177,16 @@ export default {
     position relative
     left 1rem
     &:focus
-      left 0.5rem
+      left 0
       width 10rem
 
 @media (max-width: $MQMobile)
   .search-box
     margin-right 0
     .suggestions
-      right -0.5rem
+      right 0
+
+@media (max-width: $MQMobileNarrow)
+  .search-box .suggestions
+    width calc(100vw - 4rem)
 </style>
