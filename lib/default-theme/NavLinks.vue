@@ -10,7 +10,8 @@
     <a v-if="githubLink"
       :href="githubLink"
       class="github-link"
-      target="_blank">
+      target="_blank"
+      rel="noopener">
       Github
       <OutboundLink/>
     </a>
