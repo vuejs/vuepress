@@ -56,7 +56,12 @@ export default {
         const base = outboundRE.test(repo)
           ? repo
           : `https://github.com/${repo}`
-        return `${base}/edit/${docsBranch}/${docsDir}${path}`.replace(/\/+/g, '/')
+        return (
+          base.replace(endingSlashRE, '') +
+          `/edit/${docsBranch}/` +
+          docsDir.replace(endingSlashRE, '') +
+          path
+        )
       }
     }
   }
