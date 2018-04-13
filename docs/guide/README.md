@@ -20,7 +20,7 @@ Each markdown file is compiled into HTML with [markdown-it](https://github.com/m
 
 - [Built-in markdown extensions](./markdown.md) optimized for technical documentation
 - [Ability to leverage Vue inside markdown files](./using-vue.md)
-- [Vue-powered custom theme system](./custom-thems)
+- [Vue-powered custom theme system](./custom-themes)
 - A default theme with:
   - Responsive layout
   - Optional Homepage
