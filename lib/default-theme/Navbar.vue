@@ -12,7 +12,7 @@
       </span>
     </router-link>
     <div class="links">
-      <SearchBox/>
+      <SearchBox v-if="$site.themeConfig.search !== false"/>
       <NavLinks class="can-hide"/>
     </div>
   </header>

@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar">
     <NavLinks/>
-    <ul>
+    <ul class="sidebar-links" v-if="sidebarItems.length">
       <li v-for="(item, i) in sidebarItems">
         <SidebarLink v-if="item.type === 'page'" :item="item"/>
         <SidebarGroup v-else-if="item.type === 'group'"
@@ -149,12 +149,13 @@ function resolveItem (item, pages, base, isNested) {
     display none
     border-bottom 1px solid $borderColor
     padding 0.5rem 0 0.75rem 0
-    margin-bottom 1rem
     a
       display block
       font-weight 600
       font-size 1.1em
       padding 0.5rem 0 0.5rem 1.5rem
+  .sidebar-links
+    margin-top 1rem
 
 @media (max-width: $MQMobile)
   .sidebar

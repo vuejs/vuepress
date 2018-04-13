@@ -20,6 +20,8 @@ $codeBgColor = #282c34
 
 ### nav
 
+### search
+
 ### sidebar
 
 ### sidebarDepth
