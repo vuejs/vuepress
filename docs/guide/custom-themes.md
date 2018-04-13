@@ -7,11 +7,11 @@ next: ./deploy
 
 VuePress uses Vue single file components for custom themes. To use a custom layout, create a `.vuepress/theme` directory in your docs root, and then create a `Layout.vue` file:
 
-``` bash
+```
 .
-└── .vuepress
-    └── theme
-        └── Layout.vue
+└─ .vuepress
+   └─ theme
+      └─ Layout.vue
 ```
 
 From there it's the same as developing a normal Vue application. It is entirely up to you how to organize your theme.

@@ -79,10 +79,10 @@ Any `*.vue` file found in `.vuepress/components` are automatically registered as
 
 ```
 .
-└── .vuepress
-    └── components
-        ├── demo-1.vue
-        └── OtherComponent.vue
+└─ .vuepress
+   └─ components
+      ├─ demo-1.vue
+      └─ OtherComponent.vue
 ```
 
 Inside any markdown file you can then directly use the components (names are inferred from filenames):
