@@ -1,10 +1,35 @@
 ---
+prev: ./getting-started
+next: ./assets
 sidebarDepth: 2
 ---
 
-# Default Theme Config
+# Site Configurations
 
-## Navbar Links
+## Config File
+
+Without any configuration, the page is pretty minimal, and the user has no way to navigate around the site. To customize your site, let's first create a `.vuepress` directory inside your docs directory. This is where all VuePress-specific files will be placed in.
+
+The essential file for configuring a VuePress site is `.vuepress/config.js`, which should export a JavaScript object:
+
+``` js
+module.exports = {
+  title: 'Hello VuePress',
+  description: 'Just playing around'
+}
+```
+
+If you've got the dev server running, you should see the page now has a header with the title and a search box. VuePress comes with built-in headers-based search - it automatically builds a simple search index from the title, `h2` and `h3` headers from all the pages.
+
+Consult the [Config Reference](../config/) for a full list of options.
+
+## Theme Configuration
+
+::: tip NOTE
+Configurations below are applicable to the default theme only. If you are using a custom theme, the theme config options may be different.
+:::
+
+### Navbar Links
 
 You can add links to the navbar via `themeConfig.nav`:
 
@@ -21,7 +46,7 @@ module.exports = {
 }
 ```
 
-## Sidebar
+### Sidebar
 
 To enable the sidebar, use `themeConfig.sidebar`. The basic configuration expects an Array of links:
 
@@ -120,11 +145,9 @@ module.exports = {
 }
 ```
 
-## Homepage
+### Homepage
 
-## GitHub Repo and Edit Links
-
-Providing `themeConfig.repo` auto generates a GitHub link in the navbar and "Edit this page" links at the bottom of each page.
+### GitHub Repo and Edit Links
 
 ``` js
 // .vuepress/config.js
@@ -135,14 +158,12 @@ module.exports = {
     // if your docs are not at the root of the repo
     docsDir: 'docs',
     // optional, defaults to master
-    docsBranch: 'master',
-    // defaults to true, set to false to disable
-    editLinks: true
+    docsBranch: 'master'
   }
 }
 ```
 
-## Simple CSS Override
+### Simple CSS Override
 
 If you wish to apply simple overrides to the styling of the default theme, you can create an `.vuepress/override.styl` file. This is a [Stylus](http://stylus-lang.com/) file but you can use normal CSS syntax as well.
 

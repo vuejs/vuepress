@@ -1,9 +1,13 @@
 ---
-prev: ./assets
+prev: ./markdown
 next: ./custom-themes
 ---
 
 # Using Vue in Markdown
+
+## DOM Access Restrictions
+
+Because VuePress applications are server-rendered in Node.js when generating static builds, any Vue usage must conform to the [universal code requirements](https://ssr.vuejs.org/en/universal.html). In short, make sure to only access Browser / DOM APIs in `beforeMounted` or `mounted` hooks.
 
 ## Templating
 

@@ -4,12 +4,12 @@ import { isActive, hashRE } from './util'
 export default {
   functional: true,
   props: ['item'],
-  render (h, { parent: { $site, $route }, props: { item }}) {
+  render (h, { parent: { $page, $site, $route }, props: { item }}) {
     // use custom active class matching logic
     // due to edge case of paths ending with / + hash
     const active = isActive($route, item.path)
     const link = renderLink(h, item.path, item.title || item.path, active)
-    const configDepth = $site.themeConfig.sidebarDepth
+    const configDepth = $page.frontmatter.sidebarDepth || $site.themeConfig.sidebarDepth
     const maxDepth = configDepth == null ? 1 : configDepth
     if (active && item.headers && !hashRE.test(item.path)) {
       const children = groupHeaders(item.headers)

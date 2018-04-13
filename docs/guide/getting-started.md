@@ -1,5 +1,6 @@
 ---
-next: ./markdown
+prev: ./
+next: ./basic-config
 ---
 
 # Getting Started
@@ -63,20 +64,3 @@ npm run docs:build
 ```
 
 By default the built files will be in `.vuepress/dist`, which can be configured via the `dest` field in `.vuepress/config.js`. The built files can be deployed to any static file server. See [Deployment Guide](./deploy.md) for guides on deploying to popular services.
-
-## Basic Configurations
-
-Right now our page is pretty minimal, and the user has no way to navigate around the site. To customize your site, let's first create a `.vuepress` directory inside your docs directory. This is where all VuePress-specific files will be placed in.
-
-The essential file for configuring a VuePress site is `.vuepress/config.js`, which simply exports a JavaScript object:
-
-``` js
-module.exports = {
-  title: 'Hello VuePress',
-  description: 'Just playing around'
-}
-```
-
-### Navbar Links
-
-### Sidebar

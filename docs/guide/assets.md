@@ -1,23 +1,30 @@
 ---
-prev: ./markdown
-next: ./using-vue
+prev: ./basic-config
+next: ./markdown
 ---
 
 # Asset Handling
 
 ## Relative URLs
 
-Since your markdown files are compiled into Vue components via webpack, you can safely reference any asset using relative paths on your file system:
+All markdown files are compiled into Vue components and processed by webpack, therefore you can and **should prefer** referencing any asset using relative URLs:
 
 ``` md
-![logo][./logo.png]
+![An image][./image.png]
 ```
 
-This would work the same way as if you are referencing it inside a `*.vue` file template. The image will be processed with `url-loader` and `file-loader`, and copied to appropriate locations in the generated static build.
+This would work the same way as in `*.vue` file templates. The image will be processed with `url-loader` and `file-loader`, and copied to appropriate locations in the generated static build.
+
+In addition, you can use the `~` prefix to explicitly indicate this is a webpack module request, allowing you to reference files with webpack aliases or from npm dependencies:
+
+``` md
+![Iamge from alias][~@assets/image.png]
+![Iamge from dependency][~some-dependency/image.png]
+```
 
 ## Public Files
 
-Sometimes you may need to provide some static assets that are not directly referenced in any of your markdown or theme components - for example, favicons and PWA icons. In such cases you can put them inside `.vuepress/public` and they will be copied to the root of the generated directory.
+Sometimes you may need to provide static assets that are not directly referenced in any of your markdown or theme components - for example, favicons and PWA icons. In such cases you can put them inside `.vuepress/public` and they will be copied to the root of the generated directory.
 
 ## Base URL
 
@@ -25,8 +32,10 @@ If your site is deployed to a non-root URL, you will need to set the `base` opti
 
 With a base URL, if you want to reference an image in `.vuepress/public`, you'd have to use URLs like `/bar/image.png`. However, this is brittle if you ever decide to change the `base` later. To help with that, VuePress provides a built-in helper `$withBase` (injected onto Vue's prototype) that generates the correct path:
 
-``` md
+``` vue
 <img :src="$withBase('/foo.png')" alt="foo">
 ```
 
-In addition, if a `base` is set, all asset URLs in `.vuepress/config.js` will get the base automatically prepended as well.
+Note you can use the above syntax not only in theme components, but in your markdown files as well.
+
+In addition, if a `base` is set, it is automatically prepended to all asset URLs in `.vuepress/config.js` options.

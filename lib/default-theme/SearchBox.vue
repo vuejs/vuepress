@@ -39,7 +39,7 @@ export default {
   computed: {
     showSuggestions () {
       return (
-        // this.focused &&
+        this.focused &&
         this.suggestions &&
         this.suggestions.length
       )

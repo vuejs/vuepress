@@ -1,5 +1,6 @@
 const fs = require('fs')
 const path = require('path')
+const yaml = require('yaml-front-matter')
 const base = process.env.GH ? '/vuepress/' : '/'
 const { extractHeaders } = require('../../lib')
 
@@ -37,8 +38,9 @@ module.exports = {
           children: [
             '',
             'getting-started',
-            'markdown',
+            'basic-config',
             'assets',
+            'markdown',
             'using-vue',
             'custom-themes',
             'deploy'
@@ -49,23 +51,24 @@ module.exports = {
         {
           title: 'Config Reference',
           collapsable: false,
-          children: genSidebar('config/README.md')
+          children: genSidebar('config/README.md', 'h3')
         }
       ],
       '/default-theme-config/': [
         {
           title: 'Default Theme Config',
           collapsable: false,
-          children: genSidebar('default-theme-config/README.md')
+          children: genSidebar('default-theme-config/README.md', 'h2')
         }
       ]
     }
   }
 }
 
-function genSidebar (file) {
+function genSidebar (file, include) {
+  const content = fs.readFileSync(path.resolve(__dirname, '../', file), 'utf-8')
   return extractHeaders(
-    fs.readFileSync(path.resolve(__dirname, '../', file), 'utf-8'),
-    ['h3']
+    yaml.loadFront(content).__content,
+    include
   ).map(({ title, slug }) => [`#${slug}`, title])
 }
