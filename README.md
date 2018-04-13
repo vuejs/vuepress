@@ -13,12 +13,12 @@ https://vuepress.vuejs.org/
 - [Built-in markdown extensions](https://vuepress.vuejs.org/guide/markdown.html) optimized for technical documentation
 - [Ability to leverage Vue inside markdown files](https://vuepress.vuejs.org/guide/using-vue.html)
 - [Vue-powered custom theme system](https://vuepress.vuejs.org/guide/custom-themes.html)
-- PWA Support
+- Service Worker Integration
 - Google Analytics Integration
 - A default theme with:
   - Responsive layout
   - Optional Homepage
-  - Simple out-of-the-box header-based search
+  - Automatic basic typeahead search
   - Customizable navbar and sidebar
   - Auto-generated GitHub link and page edit links
 
