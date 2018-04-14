@@ -4,8 +4,8 @@
     <div class="nav-item" v-for="item in userLinks" :key="item.link">
       <div
         v-if="item.type === 'dropdown'"
-        class="nav-dropdown-wrapper">
-        <span>{{ item.text }}</span>
+        class="dropdown-wrapper">
+        <span class="dropdown-title">{{ item.text }}</span>
         <span class="arrow"></span>
         <ul class="nav-dropdown">
           <li
@@ -76,22 +76,21 @@ export default {
     margin-left 1.5rem
     font-weight 500
     line-height 2rem
-    .nav-dropdown-wrapper
+    .dropdown-wrapper
       cursor pointer
-      padding-right 15px
+      padding-right 15
+      &:hover .nav-dropdown
+          display block
       .arrow
-        display: inline-block;
-        vertical-align: middle;
-        margin-top: -1px;
-        margin-left: 6px;
-        width: 0;
-        height: 0;
-        border-left: 4px solid transparent;
-        border-right: 4px solid transparent;
-        border-top: 5px solid #ccc;
-      &:hover
-        .nav-dropdown
-          display: block
+        display inline-block
+        vertical-align middle
+        margin-top -1px
+        margin-left 6px
+        width 0
+        height 0
+        border-left 4px solid transparent
+        border-right 4px solid transparent
+        border-top 5px solid #ccc
       .nav-dropdown
         li
           color inherit
@@ -100,19 +99,21 @@ export default {
           a
             position relative
             border-bottom: none
+            font-weight 400
             &.router-link-active
               color: $accentColor
               &:after
                 content: ""
                 width: 0
                 height: 0
-                border-left: 5px solid $accentColor
-                border-top: 3px solid transparent
-                border-bottom: 3px solid transparent
-                position: absolute
-                top: calc(50% - 3px)
-                left: -10px
+                border-left 5px solid $accentColor
+                border-top 4px solid transparent
+                border-bottom 4px solid transparent
+                position absolute
+                top calc(50% - 3px)
+                left -10px
             &:hover
+              margin-bottom 0
               color $accentColor
   .github-link
     margin-left 1.5rem
@@ -133,19 +134,19 @@ export default {
         margin-bottom -2px
         border-bottom 2px solid lighten($accentColor, 5%)
     .nav-dropdown
-      display: none
-      box-sizing: border-box;
-      max-height: calc(100vh - 2.7rem)
-      overflow-y: auto
-      position: absolute
-      top: 100%
-      right: 0
-      background-color: #fff
-      padding: 10px 0
-      border: 1px solid #ddd
-      border-bottom-color: #ccc
-      text-align: left
-      border-radius: 0.25rem
-      white-space: nowrap
+      display none
+      box-sizing border-box;
+      max-height calc(100vh - 2.7rem)
+      overflow-y auto
+      position absolute
+      top 100%
+      right 0
+      background-color #fff
+      padding 10px 0
+      border 1px solid #ddd
+      border-bottom-color #ccc
+      text-align left
+      border-radius 0.25rem
+      white-space nowrap
       margin 0
 </style>

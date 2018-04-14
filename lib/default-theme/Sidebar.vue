@@ -81,14 +81,19 @@ function resolveOpenGroupIndex (route, items) {
     display none
     border-bottom 1px solid $borderColor
     padding 0.5rem 0 0.75rem 0
-    .nav-item, .github-link, .nav-dropdown > li
+    .nav-item, .github-link
       display block
       line-height 1.25rem
       font-weight 600
       font-size 1.1em
       padding 0.5rem 0 0.5rem 1.5rem
-    .nav-item .nav-dropdown-wrapper .nav-dropdown > li
-      padding-top 10px
+    .nav-item .dropdown-wrapper
+      .dropdown-title
+        display inline-block
+        margin-bottom 5px
+      .nav-dropdown li
+        font-size 15px
+        line-height 1.7rem
   .sidebar-links
     margin-top 1.5rem
 
