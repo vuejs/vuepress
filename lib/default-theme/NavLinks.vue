@@ -44,7 +44,7 @@ export default {
       return (this.$site.themeConfig.nav || []).map(({ text, link, type, items }) => ({
         text,
         type,
-        link: link ? ensureExt(link) : void 0,
+        link: link ? ensureExt(link) : null,
         items: (items || []).map(({ text, link }) => ({ text, link: ensureExt(link) }))
       }))
     },
@@ -98,26 +98,26 @@ export default {
         li
           color inherit
           line-height 1.7rem
-          padding: 0 1.5rem 0 1.25rem
+          padding 0 1.5rem 0 1.25rem
           a
             position relative
-            border-bottom: none
+            border-bottom none
             font-weight 400
+            &:hover
+              margin-bottom 0
+              color $accentColor
             &.router-link-active
-              color: $accentColor
-              &:after
-                content: ""
-                width: 0
-                height: 0
+              color $accentColor
+              &::after
+                content ""
+                width 0
+                height 0
                 border-left 5px solid $accentColor
                 border-top 4px solid transparent
                 border-bottom 4px solid transparent
                 position absolute
                 top calc(50% - 3px)
                 left -10px
-            &:hover
-              margin-bottom 0
-              color $accentColor
   .github-link
     margin-left 1.5rem
 

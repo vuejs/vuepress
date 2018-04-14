@@ -48,7 +48,7 @@ module.exports = {
 }
 ```
 
-The item in `themeConfig.nav` could also be a dropdown menu:
+Those links can also be dropdown menus, add nested items via `items`:
 
 ```js
 module.exports = {
