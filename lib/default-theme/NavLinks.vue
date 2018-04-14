@@ -87,7 +87,6 @@ export default {
     font-weight 500
     line-height 2rem
     .dropdown-wrapper
-      cursor pointer
       &:hover .nav-dropdown
           display block
       .arrow
