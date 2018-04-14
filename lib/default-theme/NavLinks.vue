@@ -39,9 +39,18 @@ import { isActive, ensureExt } from './util'
 
 export default {
   components: { OutboundLink, NavLink },
+  created() {
+    console.log(this.$locale)
+  },
   computed: {
+    nav() {
+      if (Array.isArray(this.$site.themeConfig.nav)) {
+        return this.$site.themeConfig.nav
+      }
+      return this.$site.themeConfig.nav[this.$locale]
+    },
     userLinks () {
-      return (this.$site.themeConfig.nav || []).map(({ text, link, type, items }) => ({
+      return (this.nav || []).map(({ text, link, type, items }) => ({
         text,
         type,
         link: link ? ensureExt(link) : null,
@@ -49,7 +58,7 @@ export default {
       }))
     },
     githubLink () {
-      const { repo } = this.$site.themeConfig
+      const { repo } = this.nav
       if (repo) {
         return /^https?:/.test(repo)
           ? repo

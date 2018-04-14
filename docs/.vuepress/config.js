@@ -1,5 +1,10 @@
 const base = process.env.GH ? '/vuepress/' : '/'
 
+const langs = [
+  { text: 'English', link: '/' },
+  { text: '简体中文', link: '/zh/' },
+]
+
 module.exports = {
   title: 'VuePress',
   description: 'Vue-powered Static Site Generator',
@@ -16,20 +21,42 @@ module.exports = {
     repo: 'vuejs/vuepress',
     editLinks: true,
     docsDir: 'docs',
-    nav: [
-      {
-        text: 'Guide',
-        link: '/guide/',
-      },
-      {
-        text: 'Config Reference',
-        link: '/config/'
-      },
-      {
-        text: 'Default Theme Config',
-        link: '/default-theme-config/'
-      }
-    ],
+    nav: {
+      default: [
+        {
+          text: 'Guide',
+          link: '/guide/',
+        },
+        {
+          text: 'Config Reference',
+          link: '/config/'
+        },
+        {
+          text: 'Default Theme Config',
+          link: '/default-theme-config/'
+        },
+        {
+          text: 'Languages', type: 'dropdown', items: langs
+        }
+      ],
+      zh: [
+        {
+          text: '指导',
+          link: 'zh/guide/',
+        },
+        {
+          text: '配置',
+          link: 'zh/config/'
+        },
+        {
+          text: '默认主题配置',
+          link: 'zh/default-theme-config/'
+        },
+        {
+          text: '选择语言', type: 'dropdown', items: langs
+        }
+      ]
+    },
     sidebar: {
       '/guide/': [
         {
