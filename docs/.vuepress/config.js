@@ -27,20 +27,15 @@ module.exports = {
         link: '/default-theme-config/'
       },
       {
-        text: 'Dropdown Test',
+        text: 'Links',
         type: 'dropdown',
         items: [
           {
-            text: 'item1',
-            link: '/dropdown-test/'
-          },
-          {
-            text: 'item1',
-            link: '/dropdown-test/'
+            text: 'Vue',
+            link: 'https://vuejs.org/',
           }
         ],
-        link: '/dropdown-test/'
-      },
+      }
     ],
     sidebar: {
       '/guide/': [

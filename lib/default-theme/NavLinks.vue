@@ -3,23 +3,19 @@
     <!-- user links -->
     <div class="nav-item" v-for="item in userLinks" :key="item.link">
       <div
-          v-if="item.type === 'dropdown'"
-          class="nav-dropdown-wrapper">
+        v-if="item.type === 'dropdown'"
+        class="nav-dropdown-wrapper">
         <span>{{ item.text }}</span>
+        <span class="arrow"></span>
         <ul class="nav-dropdown">
-          <li v-for="subItem in item.items">
-            <router-link
-                :to="subItem.link">
-              {{ subItem.text }}
-            </router-link>
+          <li
+            v-for="subItem in item.items"
+            :key="subItem.link">
+            <nav-link  :item="subItem"></nav-link>
           </li>
         </ul>
       </div>
-      <router-link
-          v-else
-          :to="item.link">
-        {{ item.text }}
-      </router-link>
+      <nav-link v-else :item="item"></nav-link>
     </div>
     <!-- github link -->
     <a v-if="githubLink"
@@ -35,16 +31,17 @@
 
 <script>
 import OutboundLink from './OutboundLink.vue'
+import NavLink from './NavLink.vue'
 import { isActive, ensureExt } from './util'
 
 export default {
-  components: { OutboundLink },
+  components: { OutboundLink, NavLink },
   computed: {
     userLinks () {
       return (this.$site.themeConfig.nav || []).map(({ text, link, type, items }) => ({
         text,
         type,
-        link: ensureExt(link),
+        link: link ? ensureExt(link) : void 0,
         items: (items || []).map(({ text, link }) => ({ text, link: ensureExt(link) }))
       }))
     },
@@ -73,8 +70,6 @@ export default {
     color inherit
     &:hover, &.router-link-active
       color $accentColor
-  .github-link
-    margin-left 1.5rem
   .nav-item
     position relative
     display inline-block
@@ -84,46 +79,58 @@ export default {
     .nav-dropdown-wrapper
       cursor pointer
       padding-right 15px
-      &:after
-        content: ''
-        position absolute
-        right: 0px
-        top: calc(50% - 2px)
-        display block
-        border-left: 4px solid transparent
-        border-right: 4px solid transparent
-        border-top: 5px solid #ccc
+      .arrow
+        display: inline-block;
+        vertical-align: middle;
+        margin-top: -1px;
+        margin-left: 6px;
+        width: 0;
+        height: 0;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-top: 5px solid #ccc;
       &:hover
         .nav-dropdown
           display: block
       .nav-dropdown
-        display: none
-        box-sizing: border-box;
-        max-height: calc(100vh - 2.7rem)
-        overflow-y: auto
-        position: absolute
-        top: 100%
-        right: 0
-        background-color: #fff
-        padding: 10px 0
-        border: 1px solid #ddd
-        border-bottom-color: #ccc
-        text-align: left
-        border-radius: 0.25rem
-        white-space: nowrap
-        margin 0
         & > li
+          color inherit
           line-height 1.7rem
-          padding: 0 1.5rem 0 1.25rem;
+          padding: 0 1.5rem 0 1.25rem
+          &:hover
+            color $accentColor
+  .github-link
+    margin-left 1.5rem
 
 @media (max-width: $MQMobile)
-  .nav-links a
-    margin-left 0
+  .nav-links
+    .nav-item
+      display block
+      margin-left 0
+    .github-link
+      margin-left 0
 
 @media (min-width: $MQMobile)
-  .nav-links a
-    &:hover, &.router-link-active
-      color $textColor
-      margin-bottom -2px
-      border-bottom 2px solid lighten($accentColor, 5%)
+  .nav-links
+    a
+      &:hover, &.router-link-active
+        color $textColor
+        margin-bottom -2px
+        border-bottom 2px solid lighten($accentColor, 5%)
+    .nav-dropdown
+      display: none
+      box-sizing: border-box;
+      max-height: calc(100vh - 2.7rem)
+      overflow-y: auto
+      position: absolute
+      top: 100%
+      right: 0
+      background-color: #fff
+      padding: 10px 0
+      border: 1px solid #ddd
+      border-bottom-color: #ccc
+      text-align: left
+      border-radius: 0.25rem
+      white-space: nowrap
+      margin 0
 </style>
