@@ -2,16 +2,15 @@
   <router-link
     class="router-link"
     :to="item.link"
-    v-if="!isExternal(item.link)">
-    {{ item.text }}
-  </router-link>
+    v-if="!isExternal(item.link)"
+    exact
+  >{{ item.text }}</router-link>
   <a
     v-else
     :href="item.link"
     target="_blank"
-    class="router-link">
-    {{ item.text }}
-  </a>
+    class="router-link"
+  >{{ item.text }}</a>
 </template>
 
 <script>
@@ -22,12 +21,8 @@
         required: true
       }
     },
-    mixins: [
-      {
-        methods: {
-          isExternal
-        }
-      }
-    ]
+    methods: {
+      isExternal
+    }
   }
 </script>
