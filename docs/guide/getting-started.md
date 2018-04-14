@@ -32,7 +32,7 @@ mkdir docs
 echo "# Hello VuePress!" > docs/README.md
 
 # start writing
-npx vuepress dev docs
+npm vuepress dev docs
 ```
 
 Or, add some scripts to `package.json`:
