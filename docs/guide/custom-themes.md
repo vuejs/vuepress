@@ -1,5 +1,9 @@
 # Custom Themes
 
+::: tip
+Theme components are subject to the same [browser API access restrictions](./using-vue.md#browser-api-access-restrictions).
+:::
+
 VuePress uses Vue single file components for custom themes. To use a custom layout, create a `.vuepress/theme` directory in your docs root, and then create a `Layout.vue` file:
 
 ```
