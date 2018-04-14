@@ -28,7 +28,6 @@ module.exports = {
       },
       {
         text: 'Links',
-        type: 'dropdown',
         items: [
           {
             text: 'Vue',
