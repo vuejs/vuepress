@@ -12,7 +12,7 @@
       class="github-link"
       target="_blank"
       rel="noopener">
-      Github
+      GitHub
       <OutboundLink/>
     </a>
   </nav>
