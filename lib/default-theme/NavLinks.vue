@@ -93,12 +93,27 @@ export default {
         .nav-dropdown
           display: block
       .nav-dropdown
-        & > li
+        li
           color inherit
           line-height 1.7rem
           padding: 0 1.5rem 0 1.25rem
-          &:hover
-            color $accentColor
+          a
+            position relative
+            border-bottom: none
+            &.router-link-active
+              color: $accentColor
+              &:after
+                content: ""
+                width: 0
+                height: 0
+                border-left: 5px solid $accentColor
+                border-top: 3px solid transparent
+                border-bottom: 3px solid transparent
+                position: absolute
+                top: calc(50% - 3px)
+                left: -10px
+            &:hover
+              color $accentColor
   .github-link
     margin-left 1.5rem
 

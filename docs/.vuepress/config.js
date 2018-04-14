@@ -33,8 +33,20 @@ module.exports = {
           {
             text: 'Vue',
             link: 'https://vuejs.org/',
-          }
-        ],
+          },
+          {
+            text: 'Vue-Router',
+            link: 'https://router.vuejs.org/en/',
+          },
+          {
+            text: 'Vue-CLI',
+            link: 'https://github.com/vuejs/vue-cli/blob/dev/docs/README.md',
+          },
+          {
+            text: 'Vue-Press',
+            link: '/',
+          },
+        ]
       }
     ],
     sidebar: {
