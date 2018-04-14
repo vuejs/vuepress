@@ -11,19 +11,19 @@ program
   .usage('<command> [options]')
 
 program
-  .command('dev <targetDir>')
+  .command('dev [targetDir]')
   .description('start development server')
   .option('-p, --port <port>', 'use specified port (default: 8080)')
-  .action((dir, { port }) => {
+  .action((dir = '.', { port }) => {
     wrapCommand(dev)(path.resolve(dir), { port })
   })
 
 program
-  .command('build <targetDir>')
+  .command('build [targetDir]')
   .description('build dir as static site')
   .option('-d, --dest <outDir>', 'specify build output dir (default: .vuepress/dist)')
   .option('--debug', 'build in development mode for debugging')
-  .action((dir, { debug, outDir }) => {
+  .action((dir = '.', { debug, outDir }) => {
     wrapCommand(build)(path.resolve(dir), { debug, outDir })
   })
 
