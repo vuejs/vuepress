@@ -167,7 +167,7 @@ export default {
 
 ## Advanced Configuration
 
-VuePress uses [markdown-it]() as the markdown renderer. A lot of the extensions above are implemented via custom plugins. You can further customize the `markdown-it` instance using the `markdown` option in `.vuepress/config.js`:
+VuePress uses [markdown-it](https://github.com/markdown-it/markdown-it) as the markdown renderer. A lot of the extensions above are implemented via custom plugins. You can further customize the `markdown-it` instance using the `markdown` option in `.vuepress/config.js`:
 
 ``` js
 module.exports = {
