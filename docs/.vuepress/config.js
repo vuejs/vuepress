@@ -38,16 +38,16 @@ module.exports = {
       ],
       zh: [
         {
-          text: '指导',
+          text: '指南',
           link: '/zh/guide/',
         },
         {
           text: '配置',
-          link: '/zh/config/'
+          link: '/config/'
         },
         {
           text: '默认主题配置',
-          link: '/zh/default-theme-config/'
+          link: '/default-theme-config/'
         },
         {
           text: '选择语言', type: 'dropdown', items: langs
@@ -73,7 +73,7 @@ module.exports = {
       ],
       '/zh/guide/': [
         {
-          title: '指导',
+          title: '指南',
           collapsable: false,
           children: [
             '',
