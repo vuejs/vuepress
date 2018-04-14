@@ -29,6 +29,8 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 ---
 ```
 
+Any additional content after the front matter will be parsed as normal markdown and rendered after the features section.
+
 ## Navbar Links
 
 You can add links to the navbar via `themeConfig.nav`:
@@ -147,15 +149,23 @@ module.exports = {
 
 ### Auto Sidebar for Single Pages
 
-If you wish to automatically generate a sidebar that contains only the header links for the current page, you can use YAML frontmatter on that page:
+If you wish to automatically generate a sidebar that contains only the header links for the current page, you can use YAML front matter on that page:
 
-``` md
+``` yaml
 ---
 sidebar: auto
 ---
 ```
 
-Any additional content after the front matter will be parsed as normal markdown and rendered after the features section.
+### Disabling the Sidebar
+
+You can disable the sidebar on a specific page with YAML front matter:
+
+``` yaml
+---
+sidebar: false
+---
+```
 
 ## Prev / Next Links
 
@@ -201,3 +211,15 @@ $textColor = #2c3e50
 $borderColor = #eaecef
 $codeBgColor = #282c34
 ```
+
+## Custom Layout for Specific Pages
+
+By default the content of each `*.md` file is rendered in a `<div class="page">` container, along with the sidebar, auto-generated edit links and prev/next links. If you wish to use a completely custom component in place of the page (while only keeping the navbar), you can again specify the component to use using YAML front matter:
+
+``` yaml
+---
+layout: SpecialLayout
+---
+```
+
+This will render `.vuepress/components/SpecialLayout/vue` for the given page.
