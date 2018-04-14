@@ -47,6 +47,79 @@ module.exports = {
             link: '/',
           },
         ]
+      },
+      {
+        text: 'Ecosystem',
+        items: [
+          {
+            text: 'Help',
+            items: [
+              {
+                text: 'Forum',
+                link: 'https://forum.vuejs.org/'
+              },
+              {
+                text: 'Chat',
+                link: 'https://chat.vuejs.org/'
+              }
+            ]
+          },
+          {
+            text: 'Tooling',
+            items: [
+              {
+                text: 'Devtools',
+                link: 'https://github.com/vuejs/vue-devtools'
+              },
+              {
+                text: 'Webpack Template',
+                link: 'https://vuejs-templates.github.io/webpack'
+              },
+              {
+                text: 'Vue Loader',
+                link: 'https://vue-loader.vuejs.org'
+              }
+            ]
+          },
+          {
+            text: 'News',
+            items: [
+              {
+                text: 'Weekly News',
+                link: 'https://news.vuejs.org'
+              },
+              {
+                text: 'Roadmap',
+                link: 'https://github.com/vuejs/roadmap'
+              },
+              {
+                text: 'Twitter',
+                link: 'https://twitter.com/vuejs'
+              },
+              {
+                text: 'Blog',
+                link: 'https://medium.com/the-vue-point'
+              },
+              {
+                text: 'Jobs',
+                link: 'https://vuejobs.com/?ref=vuejs'
+              }
+            ]
+          },
+          {
+            text: 'Resource Lists',
+            items: [
+              {
+                text: 'Vue Curated',
+                link: 'ttps://curated.vuejs.org/'
+              },
+              {
+                text: 'Awesome Vue',
+                link: 'https://github.com/vuejs/awesome-vue'
+              }
+            ]
+          }
+        ]
       }
     ],
     sidebar: {
