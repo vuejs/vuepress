@@ -26,7 +26,7 @@ Headers automatically get anchor links applied. Rendering of anchors can be conf
 
 [YAML front matter](https://jekyllrb.com/docs/frontmatter/) is supported out of the box:
 
-```
+``` yaml
 ---
 title: Blogging Like a Hacker
 lang: en-US
@@ -37,7 +37,7 @@ The data will be available to the rest of the page, plus all custom and theming 
 
 `title` and `lang` will be automatically set on the current page. In addition you can specify extra meta tags to be injected:
 
-```
+``` yaml
 ---
 meta:
   - name: description
