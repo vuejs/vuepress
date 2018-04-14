@@ -103,8 +103,8 @@ export default {
             position relative
             border-bottom none
             font-weight 400
+            margin-bottom 0
             &:hover
-              margin-bottom 0
               color $accentColor
             &.router-link-active
               color $accentColor
