@@ -42,15 +42,15 @@ module.exports = {
       zh: [
         {
           text: '指导',
-          link: 'zh/guide/',
+          link: '/zh/guide/',
         },
         {
           text: '配置',
-          link: 'zh/config/'
+          link: '/zh/config/'
         },
         {
           text: '默认主题配置',
-          link: 'zh/default-theme-config/'
+          link: '/zh/default-theme-config/'
         },
         {
           text: '选择语言', type: 'dropdown', items: langs
