@@ -25,7 +25,22 @@ module.exports = {
       {
         text: 'Default Theme Config',
         link: '/default-theme-config/'
-      }
+      },
+      {
+        text: 'Dropdown Test',
+        type: 'dropdown',
+        items: [
+          {
+            text: 'item1',
+            link: '/dropdown-test/'
+          },
+          {
+            text: 'item1',
+            link: '/dropdown-test/'
+          }
+        ],
+        link: '/dropdown-test/'
+      },
     ],
     sidebar: {
       '/guide/': [
