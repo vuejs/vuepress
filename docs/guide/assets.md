@@ -13,8 +13,8 @@ This would work the same way as in `*.vue` file templates. The image will be pro
 In addition, you can use the `~` prefix to explicitly indicate this is a webpack module request, allowing you to reference files with webpack aliases or from npm dependencies:
 
 ``` md
-![Iamge from alias][~@assets/image.png]
-![Iamge from dependency][~some-dependency/image.png]
+![Image from alias][~@assets/image.png]
+![Image from dependency][~some-dependency/image.png]
 ```
 
 ## Public Files
