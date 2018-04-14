@@ -1,7 +1,10 @@
 <template>
   <nav class="nav-links" v-if="userLinks.length || githubLink">
     <!-- user links -->
-    <div class="nav-item" v-for="item in userLinks" :key="item.link">
+    <div
+      class="nav-item"
+      v-for="item in userLinks"
+      :key="item.link">
       <div
         v-if="item.type === 'dropdown'"
         class="dropdown-wrapper">
@@ -11,7 +14,7 @@
           <li
             v-for="subItem in item.items"
             :key="subItem.link">
-            <nav-link  :item="subItem"></nav-link>
+            <nav-link :item="subItem"></nav-link>
           </li>
         </ul>
       </div>
@@ -120,10 +123,7 @@ export default {
 
 @media (max-width: $MQMobile)
   .nav-links
-    .nav-item
-      display block
-      margin-left 0
-    .github-link
+    .nav-item, .github-link
       margin-left 0
 
 @media (min-width: $MQMobile)
