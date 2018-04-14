@@ -15,9 +15,6 @@ module.exports = {
   ],
   serviceWorker: true,
   themeConfig: {
-    translations: [
-      { text: '简体中文', link: '/zh/' }
-    ],
     repo: 'vuejs/vuepress',
     editLinks: true,
     docsDir: 'docs',
@@ -61,6 +58,22 @@ module.exports = {
       '/guide/': [
         {
           title: 'Guide',
+          collapsable: false,
+          children: [
+            '',
+            'getting-started',
+            'basic-config',
+            'assets',
+            'markdown',
+            'using-vue',
+            'custom-themes',
+            'deploy'
+          ]
+        }
+      ],
+      '/zh/guide/': [
+        {
+          title: '指导',
           collapsable: false,
           children: [
             '',
