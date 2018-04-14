@@ -10,6 +10,9 @@ module.exports = {
   ],
   serviceWorker: true,
   themeConfig: {
+    translations: [
+      { text: '简体中文', link: '/zh/' }
+    ],
     repo: 'vuejs/vuepress',
     editLinks: true,
     docsDir: 'docs',
@@ -25,28 +28,6 @@ module.exports = {
       {
         text: 'Default Theme Config',
         link: '/default-theme-config/'
-      },
-      {
-        text: 'Links',
-        type: 'dropdown',
-        items: [
-          {
-            text: 'Vue',
-            link: 'https://vuejs.org/',
-          },
-          {
-            text: 'Vue-Router',
-            link: 'https://router.vuejs.org/en/',
-          },
-          {
-            text: 'Vue-CLI',
-            link: 'https://github.com/vuejs/vue-cli/blob/dev/docs/README.md',
-          },
-          {
-            text: 'Vue-Press',
-            link: '/',
-          },
-        ]
       }
     ],
     sidebar: {
