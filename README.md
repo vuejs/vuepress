@@ -35,6 +35,13 @@ VuePress is still a work in progress. There are a few things that it currently d
 
 Contributions are welcome!
 
+## Development
+
+``` bash
+npm install
+npm run dev # serves VuePress' own docs with itself
+```
+
 ## License
 
 MIT
