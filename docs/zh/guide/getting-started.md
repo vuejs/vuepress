@@ -59,4 +59,4 @@ npm run docs:dev
 npm run docs:build
 ```
 
-默认情况下，生成的文件将会放在 `.vuepress/dist` 中，你可以通过 `.vuepress/config.js` 中的 `dest` 字段来配置它。生成的文件可以部署到任意的静态文件服务器，参考 [部署指南](./deploy.md) 来了解如何部署到一些常见的服务器上。
+默认情况下，文件将会被生成在 `.vuepress/dist`，当然，你也可以通过 `.vuepress/config.js` 中的 `dest` 字段来修改，生成的文件可以部署到任意的静态文件服务器上，参考 [部署指南](./deploy.md) 来了解更多。

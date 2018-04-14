@@ -39,9 +39,6 @@ import { isActive, ensureExt } from './util'
 
 export default {
   components: { OutboundLink, NavLink },
-  created() {
-    console.log(this.$locale)
-  },
   computed: {
     nav() {
       if (Array.isArray(this.$site.themeConfig.nav)) {
