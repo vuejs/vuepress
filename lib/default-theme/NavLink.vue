@@ -3,6 +3,7 @@
     class="router-link"
     :to="item.link"
     v-if="!isExternal(item.link)"
+    exact
   >{{ item.text }}</router-link>
   <a
     v-else
