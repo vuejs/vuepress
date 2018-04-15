@@ -46,8 +46,8 @@ module.exports = {
           link: '/zh/config/'
         },
         {
-          text: '默认主题配置',
-          link: '/default-theme-config/'
+          text: '默认主题',
+          link: '/zh/default-theme-config/'
         },
         {
           text: '选择语言', type: 'dropdown', items: langs
