@@ -127,9 +127,9 @@ export default {
                 top calc(50% - 3px)
                 left 10px
           &:first-child h4
-            margin-top: 0;
-            padding-top: 0;
-            border-top: 0;
+            margin-top 0
+            padding-top 0
+            border-top 0
           & > h4
             margin 0.45rem 0 0
             border-top 1px solid #eee
