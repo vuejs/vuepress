@@ -83,7 +83,7 @@ module.exports = {
             'markdown',
             'using-vue',
             'custom-themes',
-            // 'deploy'
+            'deploy'
           ]
         }
       ]
