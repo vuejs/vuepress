@@ -1,12 +1,21 @@
 <template>
   <nav class="nav-links" v-if="userLinks.length || githubLink">
     <!-- user links -->
-    <router-link v-for="item in userLinks"
-      :to="item.link"
-      :key="item.link"
-      :exact="item.link === '/'">
-      {{ item.text }}
-    </router-link>
+    <template v-for="item in userLinks">
+      <a v-if="item.isOutbound"
+        :href="item.link"
+        target="_blank"
+        rel="noopener noreferrer">
+        {{ item.text }}
+      </a>
+      <router-link
+        v-else
+        :to="item.link"
+        :key="item.link"
+        :exact="item.link === '/'">
+        {{ item.text }}
+      </router-link>
+    </template>
     <!-- github link -->
     <a v-if="githubLink"
       :href="githubLink"
@@ -21,7 +30,7 @@
 
 <script>
 import OutboundLink from './OutboundLink.vue'
-import { isActive, ensureExt } from './util'
+import { isActive, ensureExt, outboundRE } from './util'
 
 export default {
   components: { OutboundLink },
@@ -29,7 +38,8 @@ export default {
     userLinks () {
       return (this.$site.themeConfig.nav || []).map(item => ({
         text: item.text,
-        link: ensureExt(item.link)
+        link: ensureExt(item.link),
+        isOutbound: outboundRE.test(item.link)
       }))
     },
     githubLink () {
