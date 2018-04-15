@@ -4,7 +4,7 @@
     <router-link v-for="item in userLinks"
       :to="item.link"
       :key="item.link"
-      exact>
+      :exact="item.link === '/'">
       {{ item.text }}
     </router-link>
     <!-- github link -->
