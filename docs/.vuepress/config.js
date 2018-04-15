@@ -80,7 +80,7 @@ module.exports = {
             'getting-started',
             'basic-config',
             'assets',
-            // 'markdown',
+            'markdown',
             // 'using-vue',
             // 'custom-themes',
             // 'deploy'
