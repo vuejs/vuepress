@@ -9,7 +9,7 @@ If you just want to play around with VuePress, you can install it globally:
 npm install -g vuepress
 
 # create a markdown file
-echo "# Hello VuePress" > README.md
+echo # Hello VuePress > README.md
 
 # start writing
 vuepress dev
@@ -29,7 +29,7 @@ npm install -D vuepress
 # create a docs directory
 mkdir docs
 # create a markdown file
-echo "# Hello VuePress!" > docs/README.md
+echo # Hello VuePress > docs/README.md
 
 # start writing
 npx vuepress dev docs
