@@ -50,6 +50,7 @@
     "connect-history-api-fallback": "^1.5.0",
     "copy-webpack-plugin": "^4.5.1",
     "css-loader": "^0.28.11",
+    "diacritics": "^1.3.0",
     "es6-promise": "^4.2.4",
     "escape-html": "^1.0.3",
     "file-loader": "^1.1.11",
