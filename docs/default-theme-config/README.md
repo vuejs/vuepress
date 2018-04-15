@@ -222,4 +222,4 @@ layout: SpecialLayout
 ---
 ```
 
-This will render `.vuepress/components/SpecialLayout/vue` for the given page.
+This will render `.vuepress/components/SpecialLayout.vue` for the given page.
