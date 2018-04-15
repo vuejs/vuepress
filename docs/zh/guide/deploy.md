@@ -1,6 +1,6 @@
 # 部署
 
-下述的指南，假定你将文档放置在项目的 `docs` 目录中，并使用默认的构建输出位置。
+下述的指南，将假定你将文档放置在项目的 `docs` 目录中，并使用默认的构建输出位置。
 
 ## GitHub Pages
 
@@ -8,10 +8,10 @@
 2. 在你的项目中运行:
 
 ``` bash
-# build
+# 构建静态文件
 vuepress build docs
 
-# 导航到你 build 输出的的目录
+# 切换到你的输出目录
 cd docs/.vuepress/dist
 
 git init
@@ -42,4 +42,4 @@ git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
   - **Build Command:** `npm run build-docs` 或者 `yarn build-docs`
   - **Publish directory:** `docs/.vuepress/dist`
 
-3. 点击 deploy 按钮!
+3. 点击 deploy 按钮！

@@ -25,7 +25,7 @@ sidebar: auto
 - 类型: `string`
 - 默认值: `undefined`
 
-网站的标题，它将会被用作所有页面标题的前缀，同时，默认主题它将显示在 navbar 上。
+网站的标题，它将会被用作所有页面标题的前缀，同时，默认主题下，它将显示在导航栏（navbar）上。
 
 ### description
 
@@ -108,7 +108,7 @@ module.exports = {
 
 **也可以参考:**
 
-- [默认主题配置](../default-theme-config/)。
+- [默认主题](../default-theme-config/)。
 
 ## Markdown
 

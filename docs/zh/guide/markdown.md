@@ -8,7 +8,7 @@ meta:
 
 ## Header Anchors
 
-所有的标题将会自动地应用 anchor 链接，anchor 的渲染可以通过 [`markdown.anchor`](../config/#markdownanchor) 来配置
+所有的标题将会自动地应用 anchor 链接，anchor 的渲染可以通过 [`markdown.anchor`](../config/#markdownanchor) 来配置。
 
 ## 链接
 
@@ -33,9 +33,9 @@ lang: en-US
 ---
 ```
 
-这些数据可以在当前页的正文部分中使用，在所有的自定义或主体组件中，它作为 `$page` 来访问。
+这些数据可以在当前页的正文中使用，在任意的自定义或主题组件中，它可以通过 `$page` 来访问。
 
-`title` 和 `lang` 的 meta 将会被自动地注入到当前的页面，当然你可以指定一些额外需要注入的 meta：
+`title` 和 `lang` 的 meta 将会被自动地注入到当前的页面中，当然你也可以指定一些额外需要注入的 meta：
 
 ``` yaml
 ---
@@ -167,7 +167,7 @@ export default {
 
 ## 进阶配置
 
-VuePress 使用 [markdown-it](https://github.com/markdown-it/markdown-it) 来渲染 Markdown，上述大多数的拓展也都是通过自定义的插件实现的。想要进一步的话，你可以通过 `.vuepress/config.js` 选项，来自定义当前的 `markdown-it` 实例：
+VuePress 使用 [markdown-it](https://github.com/markdown-it/markdown-it) 来渲染 Markdown，上述大多数的拓展也都是通过自定义的插件实现的。想要进一步的话，你可以通过 `.vuepress/config.js` 的 `markdown` 选项，来自定义当前的 `markdown-it` 实例：
 
 ``` js
 module.exports = {

@@ -2,15 +2,15 @@
 
 ## Relative URLs
 
-所有的 Markdown 文件将会被 webpack 编译成 Vue 组件，因此你可以，并且**应该更倾向于**使用相对路径来引用所有的静态资源：
+所有的 Markdown 文件都会被 webpack 编译成 Vue 组件，因此你可以，并且**应该更倾向于**使用相对路径来引用所有的静态资源：
 
 ``` md
 ![An image](./image.png)
 ```
 
-同样地，在 `*.vue` 文件的模板中将一样的方式工作，图片将会被 `url-loader` 和 `file-loader` 处理，在运行生成静态文件的构建任务时，文件会被复制到正确的位置。
+同样地，这在 `*.vue` 文件的模板中一样可以工作，图片将会被 `url-loader` 和 `file-loader` 处理，在运行生成静态文件的构建任务时，文件会被复制到正确的位置。
 
-除此之外，你也使用 `-` 前缀来明确地指出这是一个 webpack 的模块请求，这将允许你通过 webpack 别名来引用文件或者 npm 的依赖：
+除此之外，你也使用 `~` 前缀来明确地指出这是一个 webpack 的模块请求，这将允许你通过 webpack 别名来引用文件或者 npm 的依赖：
 
 ``` md
 ![Image from alias](~@alias/image.png)
@@ -47,4 +47,4 @@ module.exports = {
 
 值得一提的是，你不仅可以在你组件中使用上述的语法，在 Markdown 文件中亦是如此。
 
-补充一句，一个 `base` 路径一旦被设置，它将会自动地作为前缀插入到所有 `.vuepress/config.js` 中的资源路径中。
+补充一句，一个 `base` 路径一旦被设置，它将会自动地作为前缀插入到 `.vuepress/config.js` 中所有以 `/` 开始的资源路径中。
