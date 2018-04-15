@@ -6,7 +6,7 @@
       v-for="item in userLinks"
       :key="item.link">
       <div
-        v-if="item.type === 'dropdown'"
+        v-if="item.type === 'links'"
         class="dropdown-wrapper">
         <span class="dropdown-title">{{ item.text }}</span>
         <span class="arrow"></span>
@@ -14,7 +14,15 @@
           <li
             v-for="subItem in item.items"
             :key="subItem.link">
-            <nav-link :item="subItem"></nav-link>
+            <h4 v-if="subItem.type === 'links'">{{ subItem.text }}</h4>
+            <ul v-if="subItem.type === 'links'">
+              <li
+                v-for="childSubItem in subItem.items"
+                :key="childSubItem.link">
+                <nav-link :item="childSubItem"></nav-link>
+              </li>
+            </ul>
+            <nav-link v-else :item="subItem"></nav-link>
           </li>
         </ul>
       </div>
@@ -26,7 +34,7 @@
       class="github-link"
       target="_blank"
       rel="noopener">
-      Github
+      GitHub
       <OutboundLink/>
     </a>
   </nav>
@@ -35,7 +43,7 @@
 <script>
 import OutboundLink from './OutboundLink.vue'
 import NavLink from './NavLink.vue'
-import { isActive, ensureExt } from './util'
+import { isActive, resolveNavLinkItem } from './util'
 
 export default {
   components: { OutboundLink, NavLink },
@@ -47,11 +55,10 @@ export default {
       return this.$site.themeConfig.nav[this.$locale]
     },
     userLinks () {
-      return (this.nav || []).map(({ text, link, type, items }) => ({
-        text,
-        type,
-        link: link ? ensureExt(link) : null,
-        items: (items || []).map(({ text, link }) => ({ text, link: ensureExt(link) }))
+      return (this.nav || []).map((link => {
+        return Object.assign(resolveNavLinkItem(link), {
+          items: (link.items || []).map(resolveNavLinkItem)
+        })
       }))
     },
     githubLink () {
@@ -86,8 +93,6 @@ export default {
     font-weight 500
     line-height 2rem
     .dropdown-wrapper
-      cursor pointer
-      padding-right 15
       &:hover .nav-dropdown
           display block
       .arrow
@@ -104,12 +109,15 @@ export default {
         li
           color inherit
           line-height 1.7rem
-          padding 0 1.5rem 0 1.25rem
           a
+            display block
+            height 1.7rem
+            line-height 1.7rem
             position relative
             border-bottom none
             font-weight 400
             margin-bottom 0
+            padding 0 1.5rem 0 1.25rem
             &:hover
               color $accentColor
             &.router-link-active
@@ -123,7 +131,18 @@ export default {
                 border-bottom 4px solid transparent
                 position absolute
                 top calc(50% - 3px)
-                left -10px
+                left 10px
+          &:first-child h4
+            margin-top 0
+            padding-top 0
+            border-top 0
+          & > h4
+            margin 0.45rem 0 0
+            border-top 1px solid #eee
+            padding 0.45rem 1.5rem 0 1.25rem
+          & > ul
+            padding 0
+            list-style none
   .github-link
     margin-left 1.5rem
 

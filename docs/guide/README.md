@@ -16,7 +16,7 @@ Each markdown file is compiled into HTML with [markdown-it](https://github.com/m
 
 - [Built-in markdown extensions](./markdown.md) optimized for technical documentation
 - [Ability to leverage Vue inside markdown files](./using-vue.md)
-- [Vue-powered custom theme system](./custom-themes)
+- [Vue-powered custom theme system](./custom-themes.md)
 - PWA Support
 - Google Analytics Integration
 - A default theme with:

@@ -14,7 +14,9 @@ export default {
       ? selfActive || item.children.some(c => isActive($route, item.basePath + '#' + c.slug))
       : selfActive
     const link = renderLink(h, item.path, item.title || item.path, active)
-    const configDepth = $page.frontmatter.sidebarDepth || $site.themeConfig.sidebarDepth
+    const configDepth = $page.frontmatter.sidebarDepth != null
+      ? $page.frontmatter.sidebarDepth
+      : $site.themeConfig.sidebarDepth
     const maxDepth = configDepth == null ? 1 : configDepth
     if (item.type === 'auto') {
       return [link, renderChildren(h, item.children, item.basePath, $route, maxDepth)]
@@ -47,7 +49,7 @@ function renderChildren (h, children, path, route, maxDepth, depth = 1) {
     const active = isActive(route, path + '#' + c.slug)
     return h('li', { class: 'sidebar-sub-header' }, [
       renderLink(h, '#' + c.slug, c.title, active),
-      ...renderChildren(h, c.children, path, route, maxDepth, depth + 1)
+      renderChildren(h, c.children, path, route, maxDepth, depth + 1)
     ])
   }))
 }

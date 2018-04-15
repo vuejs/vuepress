@@ -5,7 +5,7 @@
 All markdown files are compiled into Vue components and processed by webpack, therefore you can and **should prefer** referencing any asset using relative URLs:
 
 ``` md
-![An image][./image.png]
+![An image](./image.png)
 ```
 
 This would work the same way as in `*.vue` file templates. The image will be processed with `url-loader` and `file-loader`, and copied to appropriate locations in the generated static build.
@@ -13,8 +13,22 @@ This would work the same way as in `*.vue` file templates. The image will be pro
 In addition, you can use the `~` prefix to explicitly indicate this is a webpack module request, allowing you to reference files with webpack aliases or from npm dependencies:
 
 ``` md
-![Image from alias][~@assets/image.png]
-![Image from dependency][~some-dependency/image.png]
+![Image from alias](~@alias/image.png)
+![Image from dependency](~some-dependency/image.png)
+```
+
+webpack aliases can be configured via [configureWebpack](/config/#configurewebpack) in `.vuepress/config.js`. Example:
+
+``` js
+module.exports = {
+  configurewebpack: {
+    resolve: {
+      alias: {
+        '@alias': 'path/to/some/dir'
+      }
+    }
+  }
+}
 ```
 
 ## Public Files

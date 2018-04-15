@@ -56,7 +56,6 @@ module.exports = {
     nav: [
       {
         text: 'Languages', 
-        type: 'dropdown', 
         items: [
           { text: 'Chinese', link: '/language/chinese' },
           { text: 'Japanese', link: '/language/japanese' }

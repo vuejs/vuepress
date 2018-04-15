@@ -20,11 +20,11 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 npm install -g vuepress
 
 # create a markdown file
-echo "# Hello VuePress!" > README.md
+echo "# Hello VuePress" > README.md
 
 # start writing
-vuepress dev .
+vuepress dev
 
 # build to static files
-vuepress build .
+vuepress build
 ```
