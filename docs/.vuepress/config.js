@@ -82,7 +82,7 @@ module.exports = {
             'assets',
             'markdown',
             'using-vue',
-            // 'custom-themes',
+            'custom-themes',
             // 'deploy'
           ]
         }
