@@ -90,11 +90,12 @@ function resolveOpenGroupIndex (route, items) {
     .nav-item .dropdown-wrapper
       .dropdown-title
         display inline-block
-        margin-bottom 8px
+        margin-bottom 0.5rem
       .nav-dropdown
-        li, h4
+        li a, h4
           font-size 15px
-          line-height 1.7rem
+          height 2rem
+          line-height 2rem
         h4
           border-top 0
           margin-top 0
