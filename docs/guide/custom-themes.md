@@ -79,3 +79,7 @@ module.exports = {
 ```
 
 VuePress will attempt to locate and use `node_modules/vuepress-theme-awesome/Layout.vue`.
+
+## Customizing the Default Theme
+
+The `vuepress eject [targetDir]` command will copy the default theme source code into `.vuepress/theme` to allow complete customization. Note, however, once you eject, you are on your own and won't be receiving future updates or bug fixes to the default theme even if you upgrade VuePress.

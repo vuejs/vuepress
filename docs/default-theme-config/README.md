@@ -31,6 +31,8 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 
 Any additional content after the front matter will be parsed as normal markdown and rendered after the features section.
 
+If you want to use a completely custom homepage layout, you can also use a [Custom Layout](#custom-layout-for-specific-pages).
+
 ## Navbar Links
 
 You can add links to the navbar via `themeConfig.nav`:
@@ -223,3 +225,7 @@ layout: SpecialLayout
 ```
 
 This will render `.vuepress/components/SpecialLayout.vue` for the given page.
+
+## Ejecting
+
+You can copy the default theme source code into `.vuepress/theme` to fully customize the theme using the `vuepress eject [targetDir]` command. Note, however, once you eject, you are on your own and won't be receiving future updates or bug fixes to the default theme even if you upgrade VuePress.
