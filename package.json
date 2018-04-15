@@ -75,6 +75,7 @@
     "prismjs": "^1.13.0",
     "register-service-worker": "^1.2.0",
     "rimraf": "^2.6.2",
+    "semver": "^5.5.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "url-loader": "^1.0.1",
