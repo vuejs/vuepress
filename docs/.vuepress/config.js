@@ -81,7 +81,7 @@ module.exports = {
             'basic-config',
             'assets',
             'markdown',
-            // 'using-vue',
+            'using-vue',
             // 'custom-themes',
             // 'deploy'
           ]
