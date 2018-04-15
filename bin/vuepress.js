@@ -38,6 +38,17 @@ program
     wrapCommand(build)(path.resolve(dir), { debug, outDir })
   })
 
+program
+  .command('eject [targetDir]')
+  .description('copy the default theme into .vuepress/theme for customization.')
+  .action(async (dir = '.') => {
+    const { copy } = require('fs-extra')
+    const source = path.resolve(__dirname, '../lib/default-theme')
+    const target = path.resolve(dir, '.vuepress/theme')
+    await copy(source, target)
+    console.log(`Copied default theme into ${chalk.cyan(target)}.`)
+  })
+
 // output help information on unknown commands
 program
   .arguments('<command>')
