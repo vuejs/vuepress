@@ -8,7 +8,7 @@ VuePress 由两部分组成：一个是由 Vue 驱动的极简主题系统带来
 
 事实上，一个 VuePress 网站是一个由 [Vue](http://vuejs.org/)、[Vue Router](https://github.com/vuejs/vue-router) 和 [Webpack](http://webpack.js.org/) 驱动的单页应用。如果你以前使用过 Vue 的话，当你在开发一个自定义主题的时候，你将会回到曾经那非常熟悉的开发体验，你甚至可以使用 Vue DevTools 去调试你的自定义主题。
 
-在构建过程中，我们创建了一个服务端渲染（SSR）版本的应用，同时在访问每一个路由的时候会渲染对应的HTML，这种做法的灵感来源于 [Nuxt](https://nuxtjs.org/) 的 `nuxt generate` 命令，以及其他的一些项目，如 [Gatsby](https://www.gatsbyjs.org/).
+在构建过程中，我们创建了一个服务端渲染（SSR）版本的应用，同时在访问每一个路由的时候会渲染对应的HTML，这种做法的灵感来源于 [Nuxt](https://nuxtjs.org/) 的 `nuxt generate` 命令，以及其他的一些项目，如 [Gatsby](https://www.gatsbyjs.org/)。
 
 ## 特性
 
@@ -17,7 +17,7 @@ VuePress 由两部分组成：一个是由 Vue 驱动的极简主题系统带来
 - [Vue 驱动的自定义主题系统](./custom-themes)
 - 支持 PWA
 - 集成了 Google Analytics
-- 一个默认的主题包含:
+- 一个默认的主题包含：
   - 响应式布局
   - 可选的主页
   - 简洁的开箱即用的标题搜索

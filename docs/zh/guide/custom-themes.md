@@ -37,7 +37,7 @@ VuePress 使用单文件组件来构建自定义主题。想要开发一个自�
 }
 ```
 
-`title`, `description` 和 `base` 会从对应的 `.vuepress/config.js` 分别复制过来，`pages` 是一个包含了每个页面元数据对象的数据，包括它的路径、页面标题（明确地通过 YAML frontmatter 指定，或者通过该页面的第一个标题取到），以及所有源文件中的 YAML frontmatter 的数据。
+`title`, `description` 和 `base` 会从 `.vuepress/config.js` 中对应的的字段复制过来，而 `pages` 是一个包含了每个页面元数据对象的数据，包括它的路径、页面标题（明确地通过 `YAML frontmatter` 指定，或者通过该页面的第一个标题取到），以及所有源文件中的 `YAML frontmatter` 的数据。
 
 下面的这个对象是你正在看的这个页面的 `$page` 的值：
 
@@ -50,13 +50,13 @@ VuePress 使用单文件组件来构建自定义主题。想要开发一个自�
 }
 ```
 
-如果用户在 `.vuepress/config.js` 配置了 `themeConfig`，你将可以通过 `$site.themeConfig` 访问到它，你可以使用它来允许用户对你的主题自定义一些行为 —— 比如，制定目录以及页面的顺序，你也可以结合 `$site.pages` 来动态地构建导航链接。
+如果用户在 `.vuepress/config.js` 配置了 `themeConfig`，你将可以通过 `$site.themeConfig` 访问到它。如此一来，你可以通过它来对用户开放一些自定义主题的配置 —— 比如指定目录或者页面的顺序，你也可以结合 `$site.pages` 来动态地构建导航链接。
 
-最后，别忘了，作为 Vue Router API 的一部分，`this.$route` 和 `this.$router` 同样可用。
+最后，别忘了，作为 Vue Router API 的一部分，`this.$route` 和 `this.$router` 同样可以使用。
 
 ## 获取渲染内容
 
-当前的 `.md` 文件渲染的内容，可以作为特别的全局组件 `<Content/>` 来使用，你可能想它显示在页面中的某个地方，一个最简单的主题，可以是一个唯一的 `Layout.vue` 组件，并包含以下内容：
+当前的 `.md` 文件渲染的内容，可以作为一个独特的全局组件 `<Content/>` 来使用，你可能想要它显示在页面中的某个地方。一个最简单的主题，可以是一个唯一的 `Layout.vue` 组件，并包含以下内容：
 
 ``` html
 <template>
@@ -66,11 +66,11 @@ VuePress 使用单文件组件来构建自定义主题。想要开发一个自�
 </template>
 ```
 
-## 使用 Dependency 中的主题
+## 使用来自 npm 的主题
 
-主题可以以 Vue 单文件组件的格式、以 `vuepress-theme-xxx` 的名称发布到 npm 上。
+主题可以以 Vue 单文件组件的格式，并以 `vuepress-theme-xxx` 的名称发布到 npm 上。
 
-想要使用一个来自 npm dependency 的主题，需要在 `.vuepress/config.js` 完善 `theme` 选项：
+如果想使用一个来自 npm 的主题，你需要在 `.vuepress/config.js` 补充 `theme` 选项：
 
 ``` js
 module.exports = {

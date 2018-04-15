@@ -2,7 +2,7 @@
 
 ## 浏览器的 API 访问限制
 
-当你在开发一个 VuePress 应用时，由于所有的页面都是通过 Node.js 服务端渲染的，因此任意的 Vue 使用都应当遵循 [编写通用代码](https://ssr.vuejs.org/zh/universal.html) 的要求。简而言之，请确保只在 `beforeMounted` 或者 `mounted` 访问浏览器 / DOM的 API。
+当你在开发一个 VuePress 应用时，由于所有的页面都是通过 Node.js 服务端渲染的，因此任意的 Vue 使用都应当遵循 [编写通用代码](https://ssr.vuejs.org/zh/universal.html) 的要求。简而言之，请确保只在 `beforeMounted` 或者 `mounted` 访问浏览器 / DOM 的 API。
 
 如果你正在使用，或者测试一个对于 SSR 不怎么友好的组件（比如包含了自定义指令），你可以将他们包裹在内置的 `<ClientOnly>` 指令中：
 
@@ -12,7 +12,7 @@
 </ClientOnly>
 ```
 
-请注意，这并不能解决在**导入**时，这些组件或者库不能访问浏览器 API 的问题 —— 为了使用上述假定仅能运行在浏览器环境下的代码，你需要在正确的生命周期钩子中**动态导入**它们：
+请注意，这并不能解决在**导入**时，这些组件或者库不能访问浏览器 API 的问题 —— 为了使用上述假定的仅能运行在浏览器环境下的代码，你需要在合适的生命周期钩子中**动态导入**它们：
 
 ``` vue
 <script>
@@ -106,7 +106,7 @@ export default {
       └─ OtherComponent.vue
 ```
 
-你可以直接使用这些组件在任意的 Markdown 文件中（组件名通过文件名拿到）：
+你可以直接使用这些组件在任意的 Markdown 文件中（组件名是通过文件名取到的）：
 
 ``` md
 <demo-1/>
@@ -123,7 +123,7 @@ export default {
 
 ## 脚本和样式提升
 
-有时，你可以只想在当前页面应用一些 JavaScript 或者 CSS，在这种情况下，你可以直接在 Markdown 文件中使用原生的 `<script>` 或者 `<style>` 标签，它们将会从编译后的 HTML 文件中提取出来，并以 `<script>` 和 `<style>` 块注入生成的 Vue 单文件组件中：
+有时，你可以只想在当前页面应用一些 JavaScript 或者 CSS，在这种情况下，你可以直接在 Markdown 文件中使用原生的 `<script>` 或者 `<style>` 标签，它们将会从编译后的 HTML 文件中提取出来，并以 `<script>` 和 `<style>` 块的形式注入到生成的 Vue 单文件组件中：
 
 <p class="demo" :class="$style.example"></p>
 
