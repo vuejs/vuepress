@@ -78,5 +78,5 @@ module.exports = {
 }
 ```
 
-VuePress 将会尝试去找到并使用位于 `node_modules/vuepress-theme-awesome/Layout.vue` 的主题组件。
+VuePress 将会尝试去加载并使用位于 `node_modules/vuepress-theme-awesome/Layout.vue` 的主题组件。
  

@@ -43,7 +43,7 @@ module.exports = {
         },
         {
           text: '配置',
-          link: '/config/'
+          link: '/zh/config/'
         },
         {
           text: '默认主题配置',
