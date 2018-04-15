@@ -10,7 +10,7 @@
     "dev": "node bin/vuepress dev docs",
     "build": "node bin/vuepress build docs",
     "lint": "eslint bin lib test",
-    "deploy-gh": "GH=1 yarn build && bash scripts/deploy-gh.sh"
+    "prepublishOnly": "conventional-changelog -p angular -r 2 -i CHANGELOG.md -s"
   },
   "repository": {
     "type": "git",
@@ -93,6 +93,7 @@
     "yaml-front-matter": "^4.0.0"
   },
   "devDependencies": {
+    "conventional-changelog": "^1.1.23",
     "eslint": "^4.19.1",
     "eslint-plugin-vue-libs": "^2.1.0",
     "lint-staged": "^7.0.4",
