@@ -30,7 +30,7 @@ export default {
 
 ### 插值
 
-每一个 Markdown 文件将首先被编译成 HTML，接着作为一个一个 Vue 组件传入 `vue-loader`，这意味着你可以在文本中使用 Vue 风格的插值：
+每一个 Markdown 文件将首先被编译成 HTML，接着作为一个 Vue 组件传入 `vue-loader`，这意味着你可以在文本中使用 Vue 风格的插值：
 
 **Input**
 

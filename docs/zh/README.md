@@ -13,7 +13,7 @@ features:
 footer: MIT Licensed | Copyright © 2018-present Evan You
 ---
 
-### 像 1, 2, 3 一样容易
+### 像数 1, 2, 3 一样容易
 
 ``` bash
 # 安装
