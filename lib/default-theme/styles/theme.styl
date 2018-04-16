@@ -41,7 +41,7 @@ body
   bottom 0
   box-sizing border-box
   border-right 1px solid $borderColor
-  overflow-y scroll
+  overflow-y auto
 
 .content:not(.custom)
   max-width $contentWidth
@@ -56,7 +56,7 @@ body
     border 1px solid #ddd
     border-radius 4px
   img
-    max-width $contentWidth
+    max-width 100%
 
 .content.custom
   padding 0
@@ -70,6 +70,13 @@ a
 p a code
   font-weight 400
   color $accentColor
+
+kbd
+  background #eee
+  border solid 0.15rem #ddd
+  border-bottom solid 0.25rem #ddd
+  border-radius 0.15rem
+  padding 0 0.15em
 
 blockquote
   font-size 1.2rem
@@ -120,7 +127,7 @@ a.header-anchor
   &:hover
     text-decoration none
 
-code
+code, kbd
   font-family source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace
 
 p, ul, ol
