@@ -232,6 +232,24 @@ $borderColor = #eaecef
 $codeBgColor = #282c34
 ```
 
+## Custom Page Class
+
+Sometimes, you may need to add a unique class for a specific page so that you can target content on that page only in custom CSS. You can add a class to the theme container div with `pageClass` in `YAML front matter`:
+
+``` yaml
+---
+pageClass: custom-page-class
+---
+```
+
+Then you can write CSS targeting that page only:
+
+``` css
+.theme-container.custom-page-class {
+  /* page-specific rules */
+}
+```
+
 ## Custom Layout for Specific Pages
 
 By default the content of each `*.md` file is rendered in a `<div class="page">` container, along with the sidebar, auto-generated edit links and prev/next links. If you wish to use a completely custom component in place of the page (while only keeping the navbar), you can again specify the component to use using `YAML front matter`:
