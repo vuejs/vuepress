@@ -50,17 +50,35 @@ module.exports = {
 }
 ```
 
-These links can also be dropdown menus if you provide nested items via `items`:
+These links can also be dropdown menus if you provide an array of `items` instead of a `link`:
 
 ```js
 module.exports = {
   themeConfig: {
     nav: [
       {
-        text: 'Languages', 
+        text: 'Languages',
         items: [
           { text: 'Chinese', link: '/language/chinese' },
           { text: 'Japanese', link: '/language/japanese' }
+        ]
+      }
+    ]
+  }
+}
+```
+
+In addition, you can have sub groups inside a dropdown by having nested items:
+
+```js
+module.exports = {
+  themeConfig: {
+    nav: [
+      {
+        text: 'Languages',
+        items: [
+          { text: 'Group1', items: [/*  */] },
+          { text: 'Group2', items: [/*  */] }
         ]
       }
     ]
