@@ -50,7 +50,7 @@ module.exports = {
 }
 ```
 
-Those links can also be dropdown menus, add nested items via `items`:
+These links can also be dropdown menus if you provide nested items via `items`:
 
 ```js
 module.exports = {
