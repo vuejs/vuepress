@@ -10,7 +10,7 @@ All options listed on this page apply to the default theme only. If you are usin
 
 ## Homepage
 
-The default theme provides a homepage layout (which is used on [the homepage of this very website](/)). To use it, specify `home: true` plus some other metadata in your root `README.md`'s YAML front matter. This is the actual data used on this site:
+The default theme provides a homepage layout (which is used on [the homepage of this very website](/)). To use it, specify `home: true` plus some other metadata in your root `README.md`'s [YAML front matter](../guide/markdown.html#yaml-front-matter). This is the actual data used on this site:
 
 ``` yaml
 ---
@@ -29,7 +29,7 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 ---
 ```
 
-Any additional content after the front matter will be parsed as normal markdown and rendered after the features section.
+Any additional content after the `YAML front matter` will be parsed as normal markdown and rendered after the features section.
 
 If you want to use a completely custom homepage layout, you can also use a [Custom Layout](#custom-layout-for-specific-pages).
 
@@ -67,13 +67,13 @@ module.exports = {
 }
 ```
 
-You can omit the `.md` extension, and paths ending with `/` are inferred as `*/README.md`. The text for the link is automatically inferred (either from the first header in the page or explicit title in YAML frontmatter). If you wish to explicitly specify the link text, use an Array in form of `[link, text]`.
+You can omit the `.md` extension, and paths ending with `/` are inferred as `*/README.md`. The text for the link is automatically inferred (either from the first header in the page or explicit title in `YAML front matter`). If you wish to explicitly specify the link text, use an Array in form of `[link, text]`.
 
 ### Nested Header Links
 
 The sidebar automatically displays links for headers in the current active page, nested under the link for the page itself. You can customize this behavior using `themeConfig.sidebarDepth`. The default depth is `1`, which extracts the `h2` headers. Setting it to `0` disables the header links, and the max value is `2` which extracts both `h2` and `h3` headers.
 
-A page can also override this value in using YAML frontmatter:
+A page can also override this value in using `YAML front matter`:
 
 ``` md
 ---
@@ -151,7 +151,7 @@ module.exports = {
 
 ### Auto Sidebar for Single Pages
 
-If you wish to automatically generate a sidebar that contains only the header links for the current page, you can use YAML front matter on that page:
+If you wish to automatically generate a sidebar that contains only the header links for the current page, you can use `YAML front matter` on that page:
 
 ``` yaml
 ---
@@ -161,7 +161,7 @@ sidebar: auto
 
 ### Disabling the Sidebar
 
-You can disable the sidebar on a specific page with YAML front matter:
+You can disable the sidebar on a specific page with `YAML front matter`:
 
 ``` yaml
 ---
@@ -171,7 +171,7 @@ sidebar: false
 
 ## Prev / Next Links
 
-Prev and next links are automatically inferred based on the sidebar order of the active page. You can also explicitly overwrite or disable them using YAML front matter:
+Prev and next links are automatically inferred based on the sidebar order of the active page. You can also explicitly overwrite or disable them using `YAML front matter`:
 
 ``` yaml
 ---
@@ -216,7 +216,7 @@ $codeBgColor = #282c34
 
 ## Custom Layout for Specific Pages
 
-By default the content of each `*.md` file is rendered in a `<div class="page">` container, along with the sidebar, auto-generated edit links and prev/next links. If you wish to use a completely custom component in place of the page (while only keeping the navbar), you can again specify the component to use using YAML front matter:
+By default the content of each `*.md` file is rendered in a `<div class="page">` container, along with the sidebar, auto-generated edit links and prev/next links. If you wish to use a completely custom component in place of the page (while only keeping the navbar), you can again specify the component to use using `YAML front matter`:
 
 ``` yaml
 ---
