@@ -28,3 +28,7 @@ vuepress dev
 # build to static files
 vuepress build
 ```
+
+::: warning NODE VERSION
+Please make sure your version of Node.js is greater than 8.
+:::
