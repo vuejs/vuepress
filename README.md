@@ -36,6 +36,8 @@ Contributions are welcome!
 
 ## Development
 
+> Please make sure your version of Node.js is greater than 8.
+
 ``` bash
 yarn
 yarn dev # serves VuePress' own docs with itself
