@@ -110,7 +110,7 @@ module.exports = {
             items: [
               {
                 text: 'Vue Curated',
-                link: 'ttps://curated.vuejs.org/'
+                link: 'https://curated.vuejs.org/'
               },
               {
                 text: 'Awesome Vue',
