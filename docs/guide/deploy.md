@@ -33,14 +33,14 @@ You can run this script in your CI setup to enable automatic deployment on each 
 ``` json
 {
   "scripts": {
-    "build-docs": "vuepress build docs"
+    "docs:build": "vuepress build docs"
   }
 }
 ```
 
 2. On Netlify, setup up a new project from GitHub with the following settings:
 
-  - **Build Command:** `npm run build-docs` or `yarn build-docs`
+  - **Build Command:** `npm run docs:build` or `yarn docs:build`
   - **Publish directory:** `docs/.vuepress/dist`
 
 3. Hit the deploy button!
