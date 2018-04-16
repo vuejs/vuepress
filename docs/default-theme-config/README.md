@@ -180,17 +180,6 @@ next: false
 ---
 ```
 
-
-## Additional Page Class
-
-Sometimes, you may need to add a unique class on different pages which can help you to apply different styles based on different page, you can actualize it with `YAML front matter`:
-
-``` yaml
----
-pageClass: custom-page-class
----
-```
-
 ## GitHub Repo and Edit Links
 
 Providing `themeConfig.repo` auto generates a GitHub link in the navbar and "Edit this page" links at the bottom of each page.
@@ -223,6 +212,24 @@ $accentColor = #3eaf7c
 $textColor = #2c3e50
 $borderColor = #eaecef
 $codeBgColor = #282c34
+```
+
+## Custom Page Class
+
+Sometimes, you may need to add a unique class for a specific page so that you can target content on that page only in custom CSS. You can add a class to the theme container div with `pageClass` in `YAML front matter`:
+
+``` yaml
+---
+pageClass: custom-page-class
+---
+```
+
+Then you can write CSS targeting that page only:
+
+``` css
+.theme-container.custom-page-class {
+  /* page-specific rules */
+}
 ```
 
 ## Custom Layout for Specific Pages
