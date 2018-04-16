@@ -1,6 +1,6 @@
 <template>
   <router-link
-    class="router-link"
+    class="nav-link"
     :to="link"
     v-if="!isExternal(link)"
     :exact="link === '/'"
@@ -9,7 +9,7 @@
     v-else
     :href="link"
     target="_blank"
-    class="router-link"
+    class="nav-link"
     rel="noopener noreferrer"
   >{{ item.text }}</a>
 </template>
