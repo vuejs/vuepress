@@ -187,7 +187,7 @@ Sometimes, you may need to add a unique class on different pages which can help 
 
 ``` yaml
 ---
-class: custum-page
+pageClass: custom-page-class
 ---
 ```
 
