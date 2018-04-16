@@ -21,7 +21,7 @@ webpack aliases can be configured via [configureWebpack](/config/#configurewebpa
 
 ``` js
 module.exports = {
-  configurewebpack: {
+  configureWebpack: {
     resolve: {
       alias: {
         '@alias': 'path/to/some/dir'
