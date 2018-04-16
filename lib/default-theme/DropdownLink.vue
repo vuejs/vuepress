@@ -32,7 +32,7 @@
     components: { NavLink },
     data() {
       return {
-        open: true
+        open: false
       }
     },
     props: {
