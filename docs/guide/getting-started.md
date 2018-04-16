@@ -29,7 +29,7 @@ npm install -D vuepress
 # create a docs directory
 mkdir docs
 # create a markdown file
-echo # Hello VuePress > docs/README.md
+echo '# Hello VuePress' > docs/README.md
 
 # start writing
 npx vuepress dev docs
