@@ -6,14 +6,15 @@ const requiredVersion = require('../package.json').engines.node
 
 if (!semver.satisfies(process.version, requiredVersion)) {
   console.log(chalk.red(
-    `You are using Node ${process.version}, but VuePress ` +
-    `requires Node ${requiredVersion}.\nPlease upgrade your Node version.`
+    `\n[vuepress] minimum Node version not met:` +
+    `\nYou are using Node ${process.version}, but VuePress ` +
+    `requires Node ${requiredVersion}.\nPlease upgrade your Node version.\n`
   ))
   process.exit(1)
 }
 
 const path = require('path')
-const { dev, build } = require('../lib')
+const { dev, build, eject } = require('../lib')
 
 const program = require('commander')
 
@@ -41,17 +42,8 @@ program
 program
   .command('eject [targetDir]')
   .description('copy the default theme into .vuepress/theme for customization.')
-  .action(async (dir = '.') => {
-    const fs = require('fs-extra')
-    const source = path.resolve(__dirname, '../lib/default-theme')
-    const target = path.resolve(dir, '.vuepress/theme')
-    await fs.copy(source, target)
-    // remove the import to default theme override
-    const styleConfig = path.resolve(target, 'styles/config.styl')
-    const content = await fs.readFile(styleConfig, 'utf-8')
-    const transformed = content.split('\n').slice(0, -2).join('\n')
-    await fs.writeFile(styleConfig, transformed)
-    console.log(`Copied default theme into ${chalk.cyan(target)}.`)
+  .action((dir = '.') => {
+    wrapCommand(eject)(path.resolve(dir))
   })
 
 // output help information on unknown commands
