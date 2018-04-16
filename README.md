@@ -37,8 +37,8 @@ Contributions are welcome!
 ## Development
 
 ``` bash
-npm install
-npm run dev # serves VuePress' own docs with itself
+yarn
+yarn dev # serves VuePress' own docs with itself
 ```
 
 ## License

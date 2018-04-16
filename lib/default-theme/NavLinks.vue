@@ -12,11 +12,13 @@
         <span class="arrow"></span>
         <ul class="nav-dropdown">
           <li
+            class="dropdown-item"
             v-for="subItem in item.items"
             :key="subItem.link">
             <h4 v-if="subItem.type === 'links'">{{ subItem.text }}</h4>
-            <ul v-if="subItem.type === 'links'">
+            <ul class="dropdown-subitem-wrapper" v-if="subItem.type === 'links'">
               <li
+                class="dropdown-subitem"
                 v-for="childSubItem in subItem.items"
                 :key="childSubItem.link">
                 <nav-link :item="childSubItem"></nav-link>
@@ -42,8 +44,8 @@
 
 <script>
 import OutboundLink from './OutboundLink.vue'
-import NavLink from './NavLink.vue'
 import { isActive, resolveNavLinkItem } from './util'
+import NavLink from './NavLink.vue'
 
 export default {
   components: { OutboundLink, NavLink },
@@ -106,9 +108,18 @@ export default {
         border-right 4px solid transparent
         border-top 5px solid #ccc
       .nav-dropdown
-        li
+        .dropdown-item
           color inherit
           line-height 1.7rem
+          h4
+            margin 0.45rem 0 0
+            border-top 1px solid #eee
+            padding 0.45rem 1.5rem 0 1.25rem
+          .dropdown-subitem-wrapper
+            padding 0
+            list-style none
+            .dropdown-subitem
+              font-size 0.9em
           a
             display block
             height 1.7rem
@@ -136,13 +147,6 @@ export default {
             margin-top 0
             padding-top 0
             border-top 0
-          & > h4
-            margin 0.45rem 0 0
-            border-top 1px solid #eee
-            padding 0.45rem 1.5rem 0 1.25rem
-          & > ul
-            padding 0
-            list-style none
   .github-link
     margin-left 1.5rem
 

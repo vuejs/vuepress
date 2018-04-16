@@ -113,19 +113,26 @@ Provide config options to the used theme. The options will vary depending on the
 
 ## Markdown
 
+### markdown.slugify
+
+- Type: `Function`
+- Default: [source](https://github.com/vuejs/vuepress/blob/master/lib/markdown/slugify.js)
+
+Function for transforming header texts into slugs. This affects the ids/links generated for header anchors, table of contents and sidebar links.
+
 ### markdown.anchor
 
 - Type: `Object`
 - Default: `{ permalink: true, permalinkBefore: true, permalinkSymbol: '#' }`
 
-Options for [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor).
+Options for [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor). (Note: prefer `markdown.slugify` if you want to customize header ids.)
 
 ### markdown.toc
 
 - Type: `Object`
 - Default: `{ includeLevel: [2, 3] }`
 
-Options for [markdown-it-table-of-contents](https://github.com/Oktavilla/markdown-it-table-of-contents).
+Options for [markdown-it-table-of-contents](https://github.com/Oktavilla/markdown-it-table-of-contents). (Note: prefer `markdown.slugify` if you want to customize header ids.)
 
 ### markdown.config
 
