@@ -3,13 +3,14 @@
     class="router-link"
     :to="link"
     v-if="!isExternal(link)"
-    exact
+    :exact="link === '/'"
   >{{ item.text }}</router-link>
   <a
     v-else
     :href="link"
     target="_blank"
     class="router-link"
+    rel="noopener noreferrer"
   >{{ item.text }}</a>
 </template>
 

@@ -42,7 +42,7 @@
 
 <script>
 import OutboundLink from './OutboundLink.vue'
-import { isActive, ensureExt, resolveNavLinkItem, outboundRE } from './util'
+import { isActive, resolveNavLinkItem } from './util'
 import NavLink from './NavLink.vue'
 
 export default {
