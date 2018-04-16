@@ -1,10 +1,6 @@
 <template>
   <div class="theme-container"
-    :class="{
-      'no-navbar': !shouldShowNavbar,
-      'sidebar-open': isSidebarOpen,
-      'no-sidebar': !shouldShowSidebar
-    }"
+    :class="extraClasses"
     @touchstart="onTouchStart"
     @touchend="onTouchEnd">
     <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar"/>
@@ -63,6 +59,15 @@ export default {
         this.$route,
         this.$site
       )
+    },
+    extraClasses() {
+      const { frontmatter } = this.$page || {}
+      const customClass = frontmatter.class
+      return [{
+        'no-navbar': !this.shouldShowNavbar,
+        'sidebar-open': this.isSidebarOpen,
+        'no-sidebar': !this.shouldShowSidebar,
+      }, customClass]
     }
   },
 
