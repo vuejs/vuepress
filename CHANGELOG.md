@@ -1,3 +1,13 @@
+<a name="0.4.2"></a>
+## [0.4.2](https://github.com/vuejs/vuepress/compare/v0.4.1...v0.4.2) (2018-04-16)
+
+
+### Bug Fixes
+
+* proper minimum node version warning ([eb07685](https://github.com/vuejs/vuepress/commit/eb07685))
+
+
+
 <a name="0.4.1"></a>
 ## [0.4.1](https://github.com/vuejs/vuepress/compare/v0.4.0...v0.4.1) (2018-04-16)
 
