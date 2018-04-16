@@ -1,6 +1,6 @@
 <template>
   <div class="theme-container"
-    :class="extraClasses"
+    :class="pageClass"
     @touchstart="onTouchStart"
     @touchend="onTouchEnd">
     <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar"/>
@@ -60,7 +60,7 @@ export default {
         this.$site
       )
     },
-    extraClasses() {
+    pageClass() {
       const { frontmatter } = this.$page || {}
       const customClass = frontmatter.class
       return [{
