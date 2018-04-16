@@ -180,6 +180,17 @@ next: false
 ---
 ```
 
+
+## Additional Page Class
+
+Sometimes, you may need to add a unique class on different pages which can help you to apply different styles based on different page, you can actualize it with `YAML front matter`:
+
+``` yaml
+---
+class: custum-page
+---
+```
+
 ## GitHub Repo and Edit Links
 
 Providing `themeConfig.repo` auto generates a GitHub link in the navbar and "Edit this page" links at the bottom of each page.
