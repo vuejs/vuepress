@@ -50,6 +50,24 @@ module.exports = {
 }
 ```
 
+These links can also be dropdown menus if you provide nested items via `items`:
+
+```js
+module.exports = {
+  themeConfig: {
+    nav: [
+      {
+        text: 'Languages', 
+        items: [
+          { text: 'Chinese', link: '/language/chinese' },
+          { text: 'Japanese', link: '/language/japanese' }
+        ]
+      }
+    ]
+  }
+}
+```
+
 ## Sidebar
 
 To enable the sidebar, use `themeConfig.sidebar`. The basic configuration expects an Array of links:
