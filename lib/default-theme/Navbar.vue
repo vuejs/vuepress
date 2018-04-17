@@ -1,7 +1,7 @@
 <template>
   <header class="navbar">
     <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
-    <router-link :to="$homepage">
+    <router-link :to="$basepath">
       <img class="logo"
         v-if="$site.themeConfig.logo"
         :src="$withBase($site.themeConfig.logo)">

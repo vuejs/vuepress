@@ -12,13 +12,12 @@ module.exports = {
   ],
   title: {
     '/': 'VuePress',
-    '/zh/': '中文 VuePress'
+    '/zh/': 'VuePress'
   },
   description: {
-    '/': 'English description',
-    '/zh/': '中文 description'
+    '/': 'Vue-powered Static Site Generator',
+    '/zh/': 'Vue 驱动的静态网站生成器'
   },
-  description: 'Vue-powered Static Site Generator',
   dest: 'vuepress',
   base,
   head: [
@@ -30,7 +29,7 @@ module.exports = {
     editLinks: true,
     docsDir: 'docs',
     nav: {
-      default: [
+      '/': [
         {
           text: 'Guide',
           link: '/guide/',
@@ -47,7 +46,7 @@ module.exports = {
           text: 'Languages', type: 'dropdown', items: langs
         }
       ],
-      zh: [
+      '/zh/': [
         {
           text: '指南',
           link: '/zh/guide/',

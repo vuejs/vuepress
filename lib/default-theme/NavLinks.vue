@@ -35,7 +35,7 @@ export default {
       if (Array.isArray(this.$site.themeConfig.nav)) {
         return this.$site.themeConfig.nav
       }
-      return this.$site.themeConfig.nav[this.$locale]
+      return this.$site.themeConfig.nav[this.$basepath]
     },
     userLinks () {
       return (this.nav || []).map((link => {
