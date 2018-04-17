@@ -152,7 +152,6 @@ function updateMetaTags (meta, current) {
     })
   }
   if (meta) {
-    console.log(meta)
     return meta.map(m => {
       const tag = document.createElement('meta')
       Object.keys(m).forEach(key => {

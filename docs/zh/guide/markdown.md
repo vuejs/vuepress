@@ -14,8 +14,8 @@ meta:
 
 - 内部的、并以 `.md` or `.html` 结尾的链接，将会被转换成 `<router-link>` 用于 SPA 导航。
 
-  - [Home](/)
-  - [Configuring Markdown](../config/#markdown)
+  - [首页](/zh/)
+  - [Markdown 的配置](../config/#markdown)
 
 - 外部的链接将会被自动地设置为  `target="_blank"`:
 
@@ -24,7 +24,7 @@ meta:
 
 ## YAML Front Matter
 
-提供了对 [YAML front matter](https://jekyllrb.com/docs/frontmatter/) 开箱即用的支持:
+VuePress 提供了对 [YAML front matter](https://jekyllrb.com/docs/frontmatter/) 开箱即用的支持:
 
 ``` yaml
 ---
@@ -79,7 +79,7 @@ meta:
 
 :tada: :100:
 
-## Table of Contents
+## 目录
 
 **Input**
 
@@ -91,7 +91,7 @@ meta:
 
 [[toc]]
 
-TOC 的渲染可以通过  [`markdown.toc`](../config/#markdowntoc) 选项来配置。
+目录（Table of Contents）的渲染可以通过  [`markdown.toc`](../config/#markdowntoc) 选项来配置。
 
 ## 自定义容器
 
@@ -167,7 +167,7 @@ export default {
 
 ## 进阶配置
 
-VuePress 使用 [markdown-it](https://github.com/markdown-it/markdown-it) 来渲染 Markdown，上述大多数的拓展也都是通过自定义的插件实现的。想要进一步的话，你可以通过 `.vuepress/config.js` 的 `markdown` 选项，来自定义当前的 `markdown-it` 实例：
+VuePress 使用 [markdown-it](https://github.com/markdown-it/markdown-it) 来渲染 Markdown，上述大多数的拓展也都是通过自定义的插件实现的。想要进一步的话，你可以通过 `.vuepress/config.js` 的 `markdown` 选项，来对当前的 `markdown-it` 实例做一些自定义的配置：
 
 ``` js
 module.exports = {

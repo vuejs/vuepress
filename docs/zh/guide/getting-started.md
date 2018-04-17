@@ -20,7 +20,7 @@ vuepress build .
 
 ## 现有项目
 
-如果你想在一个现有项目中使用 VuePress，同时想要保留项目已有中的文档，此时你应该将 VuePress 作为本地依赖。下述的安装流程，你同样可以使用持续集成工具，或者一些开源服务，如 Netlify，来帮助你在每次更新代码时自动部署。
+如果你想在一个现有项目中使用 VuePress，同时想要在该项目中保存文档，此时你应该将 VuePress 作为本地依赖。下述的安装流程，你同样可以使用持续集成工具，或者一些开源服务，如 Netlify，来帮助你在每次更新代码时自动部署。
 
 ``` bash
 # 将 VuePress 作为一个本地依赖安装
@@ -51,13 +51,13 @@ npx vuepress dev docs
 }
 ```
 
-于是你就可以这样开始你的写作了:
+于是，你就可以这样开始你的写作了:
 
 ``` bash
 yarn docs:dev # 或者：npm run docs:dev
 ```
 
-要生成静态资源时，则运行：
+要生成静态资源时，运行：
 
 ``` bash
 yarn docs:build # 或者：npm run docs:build

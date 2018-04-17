@@ -4,7 +4,7 @@
 主题组件受到同样的 [浏览器的 API 访问限制](./using-vue.md#browser-api-access-restrictions)。
 :::
 
-VuePress 使用单文件组件来构建自定义主题。想要开发一个自定义主题，首先在你的文档根目录新建一个 `.vuepress/theme` 文件夹，然后新建一个 `Layout.vue` 文件：
+VuePress 使用单文件组件来构建自定义主题。想要开发一个自定义主题，首先在你的文档根目录新建一个 `.vuepress/theme` 文件夹，然后再创建一个 `Layout.vue` 文件：
 
 ```
 .
@@ -24,7 +24,7 @@ VuePress 使用单文件组件来构建自定义主题。想要开发一个自�
 ``` json
 {
   "title": "VuePress",
-  "description": "Vue-powered Static Site Generator",
+  "description": "Vue 驱动的静态网站生成器",
   "base": "/",
   "pages": [
     {
@@ -37,7 +37,7 @@ VuePress 使用单文件组件来构建自定义主题。想要开发一个自�
 }
 ```
 
-`title`, `description` 和 `base` 会从 `.vuepress/config.js` 中对应的的字段复制过来，而 `pages` 是一个包含了每个页面元数据对象的数据，包括它的路径、页面标题（明确地通过 [YAML front matter](./markdown.html#yaml-front-matter) 指定，或者通过该页面的第一个标题取到），以及所有源文件中的 `YAML front matter` 的数据。
+`title`, `description` 和 `base` 会从 `.vuepress/config.js` 中对应的的字段复制过来，而 `pages` 是一个包含了每个页面元数据对象的数据，包括它的路径、页面标题（明确地通过 [YAML front matter](./markdown.md#yaml-front-matter) 指定，或者通过该页面的第一个标题取到），以及所有源文件中的 `YAML front matter` 的数据。
 
 下面的这个对象是你正在看的这个页面的 `$page` 的值：
 

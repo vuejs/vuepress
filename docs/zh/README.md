@@ -20,7 +20,7 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 yarn global add vuepress # 或者：npm install -g vuepress
 
 # 新建一个 markdown 文件
-echo "# Hello VuePress!" > README.md
+echo '# Hello VuePress!' > README.md
 
 # 开始写作
 vuepress dev .
@@ -30,5 +30,5 @@ vuepress build .
 ```
 
 ::: warning NODE VERSION
-请确保你的 Node.js 的版本大于 8。
+请确保你 Node.js 的版本大于 8。
 :::

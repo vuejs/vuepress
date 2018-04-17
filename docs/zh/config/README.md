@@ -90,7 +90,7 @@ module.exports = {
 当然，仅仅只在你的网站部署后能用 SSL 的时候开启它，因为 service worker 只能在 HTTPs 的链接下注册。
 :::
 
-## Theming
+## 主题
 
 ### theme
 
@@ -143,7 +143,7 @@ module.exports = {
 }
 ```
 
-## Build Pipeline
+## 构建流程
 
 ### postcss
 
@@ -184,7 +184,7 @@ module.exports = {
 }
 ```
 
-## Browser Compatibility
+## 浏览器兼容性
 
 ### evergreen
 
