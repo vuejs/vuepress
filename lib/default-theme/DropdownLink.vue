@@ -15,37 +15,37 @@
             class="dropdown-subitem"
             v-for="childSubItem in subItem.items"
             :key="childSubItem.link">
-            <nav-link :item="childSubItem"></nav-link>
+            <NavLink :item="childSubItem"/>
           </li>
         </ul>
-        <nav-link v-else :item="subItem"></nav-link>
+        <NavLink v-else :item="subItem"/>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-  import { isExternal, ensureExt } from './util'
-  import NavLink from './NavLink.vue'
+import { isExternal, ensureExt } from './util'
+import NavLink from './NavLink.vue'
 
-  export default {
-    components: { NavLink },
-    data() {
-      return {
-        open: false
-      }
-    },
-    props: {
-      item: {
-        required: true
-      }
-    },
-    methods: {
-      toggle() {
-        this.open = !this.open
-      }
+export default {
+  components: { NavLink },
+  data() {
+    return {
+      open: false
+    }
+  },
+  props: {
+    item: {
+      required: true
+    }
+  },
+  methods: {
+    toggle() {
+      this.open = !this.open
     }
   }
+}
 </script>
 
 <style lang="stylus">

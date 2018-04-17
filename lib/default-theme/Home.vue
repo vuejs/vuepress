@@ -7,9 +7,7 @@
         {{ data.tagline || $site.description }}
       </p>
       <p class="action" v-if="data.actionText && data.actionLink">
-        <router-link class="action-button" :to="ensureExt(data.actionLink)">
-          {{ data.actionText }}
-        </router-link>
+        <NavLink class="action-button" :item="actionLink"/>
       </p>
     </div>
     <div class="features">
@@ -26,15 +24,19 @@
 </template>
 
 <script>
-import { ensureExt } from './util'
+import NavLink from './NavLink.vue'
 
 export default {
-  methods: {
-    ensureExt
-  },
+  components: { NavLink },
   computed: {
     data () {
       return this.$page.frontmatter
+    },
+    actionLink () {
+      return {
+        link: this.data.actionLink,
+        text: this.data.actionText
+      }
     }
   }
 }
