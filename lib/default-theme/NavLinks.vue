@@ -48,6 +48,7 @@ export default {
             if (lang.lang === this.$lang) {
               link = currentLink
             } else {
+              // Try to tay on the same page
               link = currentLink.replace(this.$langConfig.path, lang.path)
               // fallback to homepage
               if (!routes.find(route => route.path === link)) {
