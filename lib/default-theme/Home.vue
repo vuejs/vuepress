@@ -10,7 +10,7 @@
         <NavLink class="action-button" :item="actionLink"/>
       </p>
     </div>
-    <div class="features">
+    <div class="features" v-if="data.features && data.features.length">
       <div class="feature" v-for="feature in data.features">
         <h2>{{ feature.title }}</h2>
         <p>{{ feature.details }}</p>
