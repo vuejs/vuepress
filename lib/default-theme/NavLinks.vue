@@ -37,12 +37,25 @@ export default {
     },
     nav() {
       if (this.$site.langs && this.$site.langs.length) {
+        let currentLink = this.$page.path
+        const routes = this.$router.options.routes
         const languageDropdown = {
           text: this.$langConfig.selectText,
-          items: this.$site.langs.map(lang => ({
-            text: lang.label,
-            link: lang.path
-          }))
+          items: this.$site.langs.map(lang => {
+            const text = lang.label
+            let link
+            // Stay on the current page
+            if (lang.lang === this.$lang) {
+              link = currentLink
+            } else {
+              link = currentLink.replace(this.$langConfig.path, lang.path)
+              // fallback to homepage
+              if (!routes.find(route => route.path === link)) {
+                link = lang.path
+              }
+            }
+            return { text, link }
+          })
         }
         return [...this.userNav, languageDropdown]
       }
