@@ -1,10 +1,5 @@
 const base = process.env.GH ? '/vuepress/' : '/'
 
-const langs = [
-  { text: 'English', link: '/' },
-  { text: '简体中文', link: '/zh/' },
-]
-
 module.exports = {
   langs: [
     { lang: 'en', label: 'English', path: '/', selectText: 'Languages' },
@@ -41,9 +36,6 @@ module.exports = {
         {
           text: 'Default Theme Config',
           link: '/default-theme-config/'
-        },
-        {
-          text: 'Languages', type: 'dropdown', items: langs
         }
       ],
       '/zh/': [
@@ -58,9 +50,6 @@ module.exports = {
         {
           text: '默认主题',
           link: '/zh/default-theme-config/'
-        },
-        {
-          text: '选择语言', type: 'dropdown', items: langs
         }
       ]
     },

@@ -29,11 +29,24 @@ import NavLink from './NavLink.vue'
 export default {
   components: { OutboundLink, NavLink, DropdownLink },
   computed: {
-    nav() {
+    userNav() {
       if (Array.isArray(this.$site.themeConfig.nav)) {
         return this.$site.themeConfig.nav
       }
       return this.$site.themeConfig.nav[this.$basepath]
+    },
+    nav() {
+      if (this.$site.langs && this.$site.langs.length) {
+        const languageDropdown = {
+          text: this.$langConfig.selectText,
+          items: this.$site.langs.map(lang => ({
+            text: lang.label,
+            link: lang.path
+          }))
+        }
+        return [...this.userNav, languageDropdown]
+      }
+      return this.userNav
     },
     userLinks () {
       return (this.nav || []).map((link => {
@@ -43,7 +56,7 @@ export default {
       }))
     },
     githubLink () {
-      const { repo } = this.nav
+      const { repo } = this.$site.themeConfig
       if (repo) {
         return /^https?:/.test(repo)
           ? repo
