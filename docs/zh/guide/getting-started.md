@@ -6,7 +6,7 @@
 
 ``` bash
 # 安装
-npm install -g vuepress
+yarn global add vuepress # 或者：npm install -g vuepress
 
 # 新建一个 markdown 文件
 echo "# Hello VuePress!" > README.md
@@ -24,7 +24,7 @@ vuepress build .
 
 ``` bash
 # 将 VuePress 作为一个本地依赖安装
-npm install -D vuepress
+yarn add -D vuepress # 或者：npm install -D vuepress
 
 # 新建一个 docs 文件夹
 mkdir docs
@@ -36,7 +36,11 @@ echo "# Hello VuePress!" > docs/README.md
 npx vuepress dev docs
 ```
 
-你也可以在 `package.json` 加上一些 npm 脚本:
+::: warning
+当你想要将 VuePress 安装到一个现存的项目中，并且这个项目已经有了 webpack 3.x 作为依赖时，推荐使用 [Yarn](https://yarnpkg.com/en/) 而不是 npm，因为在这种情形下，npm 会生成错误的依赖树。 
+:::
+
+接着，你可以在 `package.json` 加一些脚本:
 
 ``` json
 {
@@ -50,13 +54,13 @@ npx vuepress dev docs
 于是你就可以这样开始你的写作了:
 
 ``` bash
-npm run docs:dev
+yarn docs:dev # 或者：npm run docs:dev
 ```
 
-要生成静态资源时，运行：
+要生成静态资源时，则运行：
 
 ``` bash
-npm run docs:build
+yarn docs:build # 或者：npm run docs:build
 ```
 
 默认情况下，文件将会被生成在 `.vuepress/dist`，当然，你也可以通过 `.vuepress/config.js` 中的 `dest` 字段来修改，生成的文件可以部署到任意的静态文件服务器上，参考 [部署](./deploy.md) 来了解更多。

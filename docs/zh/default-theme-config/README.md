@@ -10,7 +10,7 @@ sidebar: auto
 
 ## Homepage
 
-默认的主题提供了一个 homepage 的布局 (用于 [这个网站的主页](/zh/))。想要使用它，需要在你的根级 `README.md` 的 YAML front matter 指定 `home: true`。以下是这个网站实际使用的数据：
+默认的主题提供了一个 homepage 的布局 (用于 [这个网站的主页](/zh/))。想要使用它，需要在你的根级 `README.md` 的 [YAML front matter](../guide/markdown.html#yaml-front-matter) 指定 `home: true`。以下是这个网站实际使用的数据：
 
 ``` yaml
 ---
@@ -29,11 +29,11 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 ---
 ```
 
-任何 `YAML frontmatter` 之后额外的内容将会以普通的 markdown 被渲染，并插入到 `features` 的后面。
+任何 `YAML front matter` 之后额外的内容将会以普通的 markdown 被渲染，并插入到 `features` 的后面。
 
 ## Navbar Links
 
-你可以通过 `themeConfig.nav` 增加一个导航链接:
+你可以通过 `themeConfig.nav` 增加一些导航链接:
 
 ``` js
 // .vuepress/config.js
@@ -48,17 +48,32 @@ module.exports = {
 }
 ```
 
-这些链接同样可以是下拉菜单，通过 `items` 来增加嵌套的链接：
+当你提供了一个 `items` 数组而不是一个单一的 `link` 时，它将会显示以 `下拉列表` 的方式显示：
+
+```js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+    nav: [
+      { text: 'Home', link: '/' },
+      { text: 'Guide', link: '/guide/' },
+      { text: 'External', link: 'https://google.com' },
+    ]
+  }
+}
+```
+
+此外，你还可以通过嵌套的 `items` 来在 `下拉列表` 中设置分组：
 
 ```js
 module.exports = {
   themeConfig: {
     nav: [
       {
-        text: 'Languages', 
+        text: 'Languages',
         items: [
-          { text: 'Chinese', link: '/language/chinese' },
-          { text: 'Japanese', link: '/language/japanese' }
+          { text: 'Group1', items: [/*  */] },
+          { text: 'Group2', items: [/*  */] }
         ]
       }
     ]
@@ -83,13 +98,13 @@ module.exports = {
 }
 ```
 
-你可以省略 `.md` 拓展名，同时以 `/` 结尾的路径将会被视为 `*/README.md`，这个链接的文字将会被自动获取到（无论你是声明为页面的第一个 header，还是明确地在 `YAML frontmatter` 中指定页面的标题）。如果你想要显示地指定链接的文字，使用一个格式为 `[link, text]` 的数组。
+你可以省略 `.md` 拓展名，同时以 `/` 结尾的路径将会被视为 `*/README.md`，这个链接的文字将会被自动获取到（无论你是声明为页面的第一个 header，还是明确地在 `YAML front matter` 中指定页面的标题）。如果你想要显示地指定链接的文字，使用一个格式为 `[link, text]` 的数组。
 
 ### Nested Header Links
 
 默认情况下，侧边栏（sidebar）会自动地显示由当前页面标的题（headers）组成的的链接，并按照页面本身的结构进行嵌套，你可以通过 `themeConfig.sidebarDepth` 来修改它的行为。默认的深度是 `1`，它将提取到 `h2` 的标题，设置成 `0` 将会禁用标题（headers）链接，同时，最大的深度为 `2`，它将同时提取 `h2` 和 `h3` 标题。
 
-也可以使用 `YAML frontmatter` 来为某个页面重写此值：
+也可以使用 `YAML front matter` 来为某个页面重写此值：
 
 ``` md
 ---
@@ -232,7 +247,7 @@ $codeBgColor = #282c34
 
 ## Custom Layout for Specific Pages
 
-默认情况下，每个 `*.md` 文件将会被渲染在一个 `<div class="page">` 容器中，同时还有侧边栏（sidebar）、自动生成的编辑链接，以及上一篇 / 下一篇文章的链接。如果你想要使用一个完全自定义的组件来代替当前的页面（而只保留导航栏），你可以再次使用 `YAML frontmatter` 来指定这个组件。
+默认情况下，每个 `*.md` 文件将会被渲染在一个 `<div class="page">` 容器中，同时还有侧边栏（sidebar）、自动生成的编辑链接，以及上一篇 / 下一篇文章的链接。如果你想要使用一个完全自定义的组件来代替当前的页面（而只保留导航栏），你可以再次使用 `YAML front matter` 来指定这个组件。
 
 ``` yaml
 ---

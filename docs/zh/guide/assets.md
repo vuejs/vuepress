@@ -21,7 +21,7 @@ Webpack 的别名可以通过 `.vuepress/config.js` 中 [configureWebpack](/zh/c
 
 ``` js
 module.exports = {
-  configurewebpack: {
+  configureWebpack: {
     resolve: {
       alias: {
         '@alias': 'path/to/some/dir'
