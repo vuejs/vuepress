@@ -72,6 +72,7 @@ export default {
       this.$ssrContext.lang = this.$lang
       this.$ssrContext.description = this.$description
     }
+
   },
 
   mounted () {
@@ -80,7 +81,14 @@ export default {
     const updateMeta = () => {
       document.title = getTitle(this.$title, this.$page)
       document.documentElement.lang = this.$lang
-      this.currentMetaTags = updateMetaTags(this.$page, this.currentMetaTags)
+      const meta = [
+        {
+          name: 'description',
+          content: this.$description
+        },
+        ...(this.$page.frontmatter.meta || [])
+      ]
+      this.currentMetaTags = updateMetaTags(meta, this.currentMetaTags)
     }
     this.$watch('$page', updateMeta)
     updateMeta()
@@ -130,15 +138,15 @@ export default {
   }
 }
 
-function updateMetaTags (page, current) {
+function updateMetaTags (meta, current) {
   if (current) {
     current.forEach(c => {
       document.head.removeChild(c)
     })
   }
-  const data = page && page.frontmatter.meta
-  if (data) {
-    return data.map(m => {
+  if (meta) {
+    console.log(meta)
+    return meta.map(m => {
       const tag = document.createElement('meta')
       Object.keys(m).forEach(key => {
         tag.setAttribute(key, m[key])
