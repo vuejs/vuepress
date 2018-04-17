@@ -26,8 +26,9 @@ program
   .command('dev [targetDir]')
   .description('start development server')
   .option('-p, --port <port>', 'use specified port (default: 8080)')
-  .action((dir = '.', { port }) => {
-    wrapCommand(dev)(path.resolve(dir), { port })
+  .option('-h, --host <host>', 'use specified host (default: 0.0.0.0)')
+  .action((dir = '.', { host, port }) => {
+    wrapCommand(dev)(path.resolve(dir), { host, port })
   })
 
 program
@@ -35,7 +36,8 @@ program
   .description('build dir as static site')
   .option('-d, --dest <outDir>', 'specify build output dir (default: .vuepress/dist)')
   .option('--debug', 'build in development mode for debugging')
-  .action((dir = '.', { debug, outDir }) => {
+  .action((dir = '.', { debug, dest }) => {
+    const outDir = dest ? path.resolve(dest) : null
     wrapCommand(build)(path.resolve(dir), { debug, outDir })
   })
 

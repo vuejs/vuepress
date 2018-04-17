@@ -5,10 +5,8 @@
       class="nav-item"
       v-for="item in userLinks"
       :key="item.link">
-      <dropdown-link
-        v-if="item.type === 'links'"
-        :item="item"></dropdown-link>
-      <nav-link v-else :item="item"></nav-link>
+      <DropdownLink v-if="item.type === 'links'" :item="item"/>
+      <NavLink v-else :item="item"/>
     </div>
     <!-- github link -->
     <a v-if="githubLink"

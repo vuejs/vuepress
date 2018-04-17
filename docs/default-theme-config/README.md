@@ -50,17 +50,35 @@ module.exports = {
 }
 ```
 
-These links can also be dropdown menus if you provide nested items via `items`:
+These links can also be dropdown menus if you provide an array of `items` instead of a `link`:
 
 ```js
 module.exports = {
   themeConfig: {
     nav: [
       {
-        text: 'Languages', 
+        text: 'Languages',
         items: [
           { text: 'Chinese', link: '/language/chinese' },
           { text: 'Japanese', link: '/language/japanese' }
+        ]
+      }
+    ]
+  }
+}
+```
+
+In addition, you can have sub groups inside a dropdown by having nested items:
+
+```js
+module.exports = {
+  themeConfig: {
+    nav: [
+      {
+        text: 'Languages',
+        items: [
+          { text: 'Group1', items: [/*  */] },
+          { text: 'Group2', items: [/*  */] }
         ]
       }
     ]
@@ -230,6 +248,24 @@ $accentColor = #3eaf7c
 $textColor = #2c3e50
 $borderColor = #eaecef
 $codeBgColor = #282c34
+```
+
+## Custom Page Class
+
+Sometimes, you may need to add a unique class for a specific page so that you can target content on that page only in custom CSS. You can add a class to the theme container div with `pageClass` in `YAML front matter`:
+
+``` yaml
+---
+pageClass: custom-page-class
+---
+```
+
+Then you can write CSS targeting that page only:
+
+``` css
+.theme-container.custom-page-class {
+  /* page-specific rules */
+}
 ```
 
 ## Custom Layout for Specific Pages

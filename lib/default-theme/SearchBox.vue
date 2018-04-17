@@ -190,6 +190,9 @@ export default {
       right 0
 
 @media (max-width: $MQMobileNarrow)
-  .search-box .suggestions
-    width calc(100vw - 4rem)
+  .search-box
+    .suggestions
+      width calc(100vw - 4rem)
+    input:focus
+      width 8rem
 </style>

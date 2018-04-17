@@ -8,27 +8,29 @@
   <a
     v-else
     :href="link"
-    target="_blank"
     class="nav-link"
-    rel="noopener noreferrer"
+    :target="isMailto(link) ? null : '_blank'"
+    :rel="isMailto(link) ? null : 'noopener noreferrer'"
   >{{ item.text }}</a>
 </template>
 
 <script>
-  import { isExternal, ensureExt } from './util'
-  export default {
-    props: {
-      item: {
-        required: true
-      }
-    },
-    computed: {
-      link() {
-        return ensureExt(this.item.link)
-      }
-    },
-    methods: {
-      isExternal
+import { isExternal, isMailto, ensureExt } from './util'
+
+export default {
+  props: {
+    item: {
+      required: true
     }
+  },
+  computed: {
+    link() {
+      return ensureExt(this.item.link)
+    }
+  },
+  methods: {
+    isExternal,
+    isMailto
   }
+}
 </script>
