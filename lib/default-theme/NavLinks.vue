@@ -38,7 +38,7 @@ export default {
       return this.$site.themeConfig.nav[this.$locale]
     },
     userLinks () {
-      return (this.$site.themeConfig.nav || []).map((link => {
+      return (this.nav || []).map((link => {
         return Object.assign(resolveNavLinkItem(link), {
           items: (link.items || []).map(resolveNavLinkItem)
         })

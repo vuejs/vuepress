@@ -68,8 +68,8 @@ export default {
 
   created () {
     if (this.$ssrContext) {
-      this.$ssrContext.title = getTitle(this.$site, this.$page)
-      this.$ssrContext.lang = getLang(this.$page)
+      this.$ssrContext.title = getTitle(this.$title, this.$page)
+      this.$ssrContext.lang = this.$lang
     }
   },
 
@@ -77,8 +77,8 @@ export default {
     // update title / meta tags
     this.currentMetaTags = []
     const updateMeta = () => {
-      document.title = getTitle(this.$site, this.$page)
-      document.documentElement.lang = getLang(this.$page)
+      document.title = getTitle(this.$title, this.$page)
+      document.documentElement.lang = this.$lang
       this.currentMetaTags = updateMetaTags(this.$page, this.currentMetaTags)
     }
     this.$watch('$page', updateMeta)

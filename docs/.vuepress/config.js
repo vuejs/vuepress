@@ -6,7 +6,18 @@ const langs = [
 ]
 
 module.exports = {
-  title: 'VuePress',
+  langs: [
+    { lang: 'en', label: 'English', path: '/', selectText: 'Languages' },
+    { lang: 'zh-CN', label: '简体中文', path: '/zh/', selectText: '选择语言' }
+  ],
+  title: {
+    '/': 'VuePress',
+    '/zh/': '中文 VuePress'
+  },
+  description: {
+    '/': 'English description',
+    '/zh/': '中文 description'
+  },
   description: 'Vue-powered Static Site Generator',
   dest: 'vuepress',
   base,

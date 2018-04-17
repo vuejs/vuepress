@@ -1,14 +1,14 @@
 <template>
   <header class="navbar">
     <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
-    <router-link to="/">
+    <router-link :to="$homepage">
       <img class="logo"
         v-if="$site.themeConfig.logo"
         :src="$withBase($site.themeConfig.logo)">
       <span class="site-name"
         v-if="$site.title"
         :class="{ 'can-hide': $site.themeConfig.logo }">
-        {{ $site.title }}
+        {{ $title }}
       </span>
     </router-link>
     <div class="links">
