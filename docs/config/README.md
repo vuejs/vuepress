@@ -49,6 +49,13 @@ module.exports = {
 }
 ```
 
+### host
+
+- Type: `string`
+- Default: `'0.0.0.0'`
+
+Specify the host to use for the dev server.
+
 ### port
 
 - Type: `number`
