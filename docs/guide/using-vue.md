@@ -96,7 +96,7 @@ By default, fenced code blocks are automatically wrapped with `v-pre`. If you wa
 
 ## Using Components
 
-Any `*.vue` file found in `.vuepress/components` are automatically registered as [global](https://vuejs.org/v2/guide/components-registration.html#Global-Registration) [async](https://vuejs.org/v2/guide/components-dynamic-async.html#Async-Components) components. For example:
+Any `*.vue` files found in `.vuepress/components` are automatically registered as [global](https://vuejs.org/v2/guide/components-registration.html#Global-Registration) [async](https://vuejs.org/v2/guide/components-dynamic-async.html#Async-Components) components. For example:
 
 ```
 .
