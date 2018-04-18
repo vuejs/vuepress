@@ -92,11 +92,9 @@ export default {
   },
   methods: {
     getPageLocalePath (page) {
-      const { locales } = this.$site
-      for (let i = 0; i < locales.length; i++) {
-        const localePath = locales[i].path
+      for (const localePath in this.$site.locales || {}) {
         if (localePath !== '/' && page.path.indexOf(localePath) === 0) {
-          return locales[i].path
+          return localePath
         }
       }
       return '/'
