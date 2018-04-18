@@ -12,7 +12,7 @@ If you are using or demoing components that are not SSR friendly (for example co
 </ClientOnly>
 ```
 
-Note this does not fix components or libraries that access Browser APIs **on import** - in order to use code that assumes a browser environment on import, you need to perform a dynamic import in the proper lifecycle hook:
+Note this does not fix components or libraries that access Browser APIs **on import** - in order to use code that assumes a browser environment on import, you need to dynamically import them in proper lifecycle hooks:
 
 ``` vue
 <script>
