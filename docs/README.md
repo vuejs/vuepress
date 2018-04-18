@@ -29,6 +29,6 @@ vuepress dev
 vuepress build
 ```
 
-::: warning NODE VERSION
-Please make sure your version of Node.js is greater than 8.
+::: warning COMPATIBILITY NOTE
+VuePress requires Node.js >= 8.
 :::

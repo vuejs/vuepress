@@ -1,5 +1,9 @@
 # Getting Started
 
+::: warning COMPATIBILITY NOTE
+VuePress requires Node.js >= 8.
+:::
+
 ## Global Installation
 
 If you just want to play around with VuePress, you can install it globally:
