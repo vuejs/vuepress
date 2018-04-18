@@ -65,6 +65,9 @@ module.exports = {
     sidebar: {
       '/guide/': genSidebarConfig('Guide'),
       '/zh/guide/': genSidebarConfig('指南')
+    },
+    editLinkText: {
+      '/zh/': '在 GitHub 上编辑此页'
     }
   }
 }
@@ -82,6 +85,7 @@ function genSidebarConfig (title) {
         'markdown',
         'using-vue',
         'custom-themes',
+        'i18n',
         'deploy'
       ]
     }

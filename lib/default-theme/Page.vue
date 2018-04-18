@@ -2,7 +2,7 @@
   <div class="page">
     <Content :custom="false"/>
     <div class="content edit-link" v-if="editLink">
-      <a :href="editLink" target="_blank" rel="noopener noreferrer">Edit this page</a>
+      <a :href="editLink" target="_blank" rel="noopener noreferrer">{{ editLinkText }}</a>
       <OutboundLink/>
     </div>
     <div class="content page-nav" v-if="prev || next">
@@ -75,6 +75,17 @@ export default {
           docsDir.replace(endingSlashRE, '') +
           path
         )
+      }
+    },
+    editLinkText () {
+      const defualtValue = `Edit this page`
+      const { editLinkText } = this.$site.themeConfig
+      if (!editLinkText) {
+        return defualtValue
+      } else if (typeof editLinkText === 'string') {
+        return editLinkText
+      } else if (typeof editLinkText === 'object') {
+        return editLinkText[this.$localePath] || defualtValue
       }
     }
   }
