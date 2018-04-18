@@ -22,15 +22,48 @@
 
 <script>
 import OutboundLink from './OutboundLink.vue'
+import DropdownLink from './DropdownLink.vue'
 import { isActive, resolveNavLinkItem } from './util'
 import NavLink from './NavLink.vue'
-import DropdownLink from './DropdownLink.vue'
 
 export default {
   components: { OutboundLink, NavLink, DropdownLink },
   computed: {
+    userNav () {
+      if (Array.isArray(this.$site.themeConfig.nav)) {
+        return this.$site.themeConfig.nav
+      }
+      return this.$site.themeConfig.nav[this.$basepath]
+    },
+    nav () {
+      if (this.$site.langs && this.$site.langs.length) {
+        let currentLink = this.$page.path
+        const routes = this.$router.options.routes
+        const languageDropdown = {
+          text: this.$langConfig.selectText,
+          items: this.$site.langs.map(lang => {
+            const text = lang.label
+            let link
+            // Stay on the current page
+            if (lang.lang === this.$lang) {
+              link = currentLink
+            } else {
+              // Try to stay on the same page
+              link = currentLink.replace(this.$langConfig.path, lang.path)
+              // fallback to homepage
+              if (!routes.some(route => route.path === link)) {
+                link = lang.path
+              }
+            }
+            return { text, link }
+          })
+        }
+        return [...this.userNav, languageDropdown]
+      }
+      return this.userNav
+    },
     userLinks () {
-      return (this.$site.themeConfig.nav || []).map((link => {
+      return (this.nav || []).map((link => {
         return Object.assign(resolveNavLinkItem(link), {
           items: (link.items || []).map(resolveNavLinkItem)
         })

@@ -75,18 +75,27 @@ export default {
 
   created () {
     if (this.$ssrContext) {
-      this.$ssrContext.title = getTitle(this.$site, this.$page)
-      this.$ssrContext.lang = getLang(this.$page)
+      this.$ssrContext.title = getTitle(this.$title, this.$page)
+      this.$ssrContext.lang = this.$lang
+      this.$ssrContext.description = this.$page.description || this.$description
     }
+
   },
 
   mounted () {
     // update title / meta tags
     this.currentMetaTags = []
     const updateMeta = () => {
-      document.title = getTitle(this.$site, this.$page)
-      document.documentElement.lang = getLang(this.$page)
-      this.currentMetaTags = updateMetaTags(this.$page, this.currentMetaTags)
+      document.title = getTitle(this.$title, this.$page)
+      document.documentElement.lang = this.$lang
+      const meta = [
+        {
+          name: 'description',
+          content: this.$description
+        },
+        ...(this.$page.frontmatter.meta || [])
+      ]
+      this.currentMetaTags = updateMetaTags(meta, this.currentMetaTags)
     }
     this.$watch('$page', updateMeta)
     updateMeta()
@@ -136,15 +145,14 @@ export default {
   }
 }
 
-function updateMetaTags (page, current) {
+function updateMetaTags (meta, current) {
   if (current) {
     current.forEach(c => {
       document.head.removeChild(c)
     })
   }
-  const data = page && page.frontmatter.meta
-  if (data) {
-    return data.map(m => {
+  if (meta) {
+    return meta.map(m => {
       const tag = document.createElement('meta')
       Object.keys(m).forEach(key => {
         tag.setAttribute(key, m[key])
