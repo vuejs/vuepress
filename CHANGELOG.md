@@ -1,3 +1,23 @@
+<a name="0.7.0"></a>
+# [0.7.0](https://github.com/vuejs/vuepress/compare/v0.6.1...v0.7.0) (2018-04-18)
+
+
+### Bug Fixes
+
+* disable typographer in markdown-it (close [#139](https://github.com/vuejs/vuepress/issues/139)) ([be42da5](https://github.com/vuejs/vuepress/commit/be42da5))
+* ensure runnable when no locales are provided ([a25d86c](https://github.com/vuejs/vuepress/commit/a25d86c))
+* fix yarn global install (fix [#102](https://github.com/vuejs/vuepress/issues/102)) ([1130318](https://github.com/vuejs/vuepress/commit/1130318))
+* handle links with encoded hash ([f0a1a00](https://github.com/vuejs/vuepress/commit/f0a1a00))
+* search for locales ([4cf1232](https://github.com/vuejs/vuepress/commit/4cf1232))
+
+
+### Features
+
+* adjust i18n config + documentation ([bccddbf](https://github.com/vuejs/vuepress/commit/bccddbf))
+* i18n for edit link text ([6f5bac0](https://github.com/vuejs/vuepress/commit/6f5bac0))
+
+
+
 <a name="0.6.1"></a>
 ## [0.6.1](https://github.com/vuejs/vuepress/compare/v0.6.0...v0.6.1) (2018-04-18)
 
