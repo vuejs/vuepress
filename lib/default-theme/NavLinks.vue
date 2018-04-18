@@ -36,13 +36,14 @@ export default {
       return []
     },
     nav () {
-      if (this.$site.langs) {
+      const { locales } = this.$site
+      if (locales) {
         let currentLink = this.$page.path
         const routes = this.$router.options.routes
         const languageDropdown = {
-          text: this.$langConfig.selectText,
-          items: Object.keys(this.$site.langs).map(path => {
-            const locale = this.$site.langs[path]
+          text: this.$localeConfig.selectText,
+          items: Object.keys(locales).map(path => {
+            const locale = locales[path]
             const text = locale.label
             let link
             // Stay on the current page
@@ -50,7 +51,7 @@ export default {
               link = currentLink
             } else {
               // Try to stay on the same page
-              link = currentLink.replace(this.$langConfig.path, path)
+              link = currentLink.replace(this.$localeConfig.path, path)
               // fallback to homepage
               if (!routes.some(route => route.path === link)) {
                 link = path

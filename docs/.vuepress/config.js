@@ -1,6 +1,6 @@
 module.exports = {
   dest: 'vuepress',
-  langs: {
+  locales: {
     '/': {
       lang: 'en-US',
       label: 'English',
