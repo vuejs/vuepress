@@ -4,7 +4,7 @@
 
 Because VuePress applications are server-rendered in Node.js when generating static builds, any Vue usage must conform to the [universal code requirements](https://ssr.vuejs.org/en/universal.html). In short, make sure to only access Browser / DOM APIs in `beforeMounted` or `mounted` hooks.
 
-If you are using or demoing a component that is not SSR friendly (for example containing custom directives), you can wrap them inside the built-in `<ClientOnly>` component:
+If you are using or demoing components that are not SSR friendly (for example containing custom directives), you can wrap them inside the built-in `<ClientOnly>` component:
 
 ``` md
 <ClientOnly>
@@ -58,7 +58,7 @@ Directives also work:
 
 ### Access to Site & Page Data
 
-The compiled component does not have any private data but do have access to the [site metadata](./custom-themes.md#site-and-page-metadata). For example:
+The compiled component does not have any private data but does have access to the [site metadata](./custom-themes.md#site-and-page-metadata). For example:
 
 **Input**
 
@@ -96,7 +96,7 @@ By default, fenced code blocks are automatically wrapped with `v-pre`. If you wa
 
 ## Using Components
 
-Any `*.vue` file found in `.vuepress/components` are automatically registered as global async components. For example:
+Any `*.vue` files found in `.vuepress/components` are automatically registered as [global](https://vuejs.org/v2/guide/components-registration.html#Global-Registration), [async](https://vuejs.org/v2/guide/components-dynamic-async.html#Async-Components) components. For example:
 
 ```
 .
@@ -118,7 +118,7 @@ Inside any markdown file you can then directly use the components (names are inf
 <OtherComponent/>
 
 ::: warning IMPORTANT
-Make sure a custom component's names either contains a hyphen or is in PascalCase. Otherwise it will be treated as an inline element and wrapped inside a `<p>` tag, which will lead to hydration mismatch because `<p>` does not allow block elements to be placed inside it.
+Make sure a custom component's name either contains a hyphen or is in PascalCase. Otherwise it will be treated as an inline element and wrapped inside a `<p>` tag, which will lead to hydration mismatch because `<p>` does not allow block elements to be placed inside it.
 :::
 
 ## Script & Style Hoisting
