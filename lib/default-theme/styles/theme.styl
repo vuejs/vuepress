@@ -29,6 +29,15 @@ body
   box-sizing border-box
   border-bottom 1px solid $borderColor
 
+.sidebar-mask
+  position fixed
+  z-index 9
+  top 0
+  left 0
+  width 100vw
+  height 100vh
+  display none
+
 .sidebar
   font-size 15px
   background-color #fff
@@ -153,11 +162,16 @@ th, td
 .custom-layout
   padding-top $navbarHeight
 
-.theme-container.no-navbar
-  .content:not(.custom)
-    h1, h2, h3, h4, h5, h6
-      margin-top 1.5rem
-      padding-top 0
+.theme-container
+  &.sidebar-open
+    .sidebar-mask
+      display: block
+  &.no-navbar
+    .content:not(.custom)
+      h1, h2, h3, h4, h5, h6
+        margin-top 1.5rem
+        padding-top 0
+
 
 @media (min-width: ($MQMobile + 1px))
   .theme-container.no-sidebar
