@@ -32,27 +32,28 @@ export default {
     userNav () {
       const { nav } = this.$site.themeConfig
       if (Array.isArray(nav)) return nav
-      if (typeof nav === 'object') return nav[this.$basepath]
+      if (typeof nav === 'object') return nav[this.$localePath]
       return []
     },
     nav () {
-      if (this.$site.langs && this.$site.langs.length) {
+      if (this.$site.langs) {
         let currentLink = this.$page.path
         const routes = this.$router.options.routes
         const languageDropdown = {
           text: this.$langConfig.selectText,
-          items: this.$site.langs.map(lang => {
-            const text = lang.label
+          items: Object.keys(this.$site.langs).map(path => {
+            const locale = this.$site.langs[path]
+            const text = locale.label
             let link
             // Stay on the current page
-            if (lang.lang === this.$lang) {
+            if (locale.lang === this.$lang) {
               link = currentLink
             } else {
               // Try to stay on the same page
-              link = currentLink.replace(this.$langConfig.path, lang.path)
+              link = currentLink.replace(this.$langConfig.path, path)
               // fallback to homepage
               if (!routes.some(route => route.path === link)) {
-                link = lang.path
+                link = path
               }
             }
             return { text, link }

@@ -1,12 +1,12 @@
 <template>
   <header class="navbar">
     <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
-    <router-link :to="$basepath" class="home-link">
+    <router-link :to="$localePath" class="home-link">
       <img class="logo"
         v-if="$site.themeConfig.logo"
         :src="$withBase($site.themeConfig.logo)">
       <span class="site-name"
-        v-if="$site.title"
+        v-if="$title"
         :class="{ 'can-hide': $site.themeConfig.logo }">
         {{ $title }}
       </span>

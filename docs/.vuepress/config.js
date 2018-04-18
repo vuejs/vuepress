@@ -1,16 +1,20 @@
 module.exports = {
   dest: 'vuepress',
-  langs: [
-    { lang: 'en', label: 'English', path: '/', selectText: 'Languages' },
-    { lang: 'zh-CN', label: '简体中文', path: '/zh/', selectText: '选择语言' }
-  ],
-  title: {
-    '/': 'VuePress',
-    '/zh/': 'VuePress'
-  },
-  description: {
-    '/': 'Vue-powered Static Site Generator',
-    '/zh/': 'Vue 驱动的静态网站生成器'
+  langs: {
+    '/': {
+      lang: 'en-US',
+      label: 'English',
+      selectText: 'Languages',
+      title: 'VuePress',
+      description: 'Vue-powered Static Site Generator'
+    },
+    '/zh/': {
+      lang: 'zh-CN',
+      label: '简体中文',
+      selectText: '选择语言',
+      title: 'VuePress',
+      description: 'Vue 驱动的静态网站生成器'
+    }
   },
   head: [
     ['link', { rel: 'icon', href: `/logo.png` }],

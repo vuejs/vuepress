@@ -53,7 +53,7 @@ export default {
 
       const max = 5
       const { pages } = this.$site
-      const localePath = this.$basepath
+      const localePath = this.$localePath
       const matches = item => (
         item.title &&
         item.title.toLowerCase().indexOf(query) > -1
