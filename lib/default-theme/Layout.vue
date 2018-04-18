@@ -48,17 +48,16 @@ export default {
       return (
         !frontmatter.layout &&
         !frontmatter.home &&
-        frontmatter.sidebar !== false && (
-          frontmatter.sidebar === 'auto' ||
-          themeConfig.sidebar
-        )
+        frontmatter.sidebar !== false &&
+        this.sidebarItems.length
       )
     },
     sidebarItems () {
       return resolveSidebarItems(
         this.$page,
         this.$route,
-        this.$site
+        this.$site,
+        this.$localePath
       )
     },
     pageClasses() {

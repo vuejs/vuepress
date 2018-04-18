@@ -3,15 +3,11 @@ module.exports = {
   locales: {
     '/': {
       lang: 'en-US',
-      label: 'English',
-      selectText: 'Languages',
       title: 'VuePress',
       description: 'Vue-powered Static Site Generator'
     },
     '/zh/': {
       lang: 'zh-CN',
-      label: '简体中文',
-      selectText: '选择语言',
       title: 'VuePress',
       description: 'Vue 驱动的静态网站生成器'
     }
@@ -32,42 +28,51 @@ module.exports = {
     repo: 'vuejs/vuepress',
     editLinks: true,
     docsDir: 'docs',
-    nav: {
-      '/': [
-        {
-          text: 'Guide',
-          link: '/guide/',
-        },
-        {
-          text: 'Config Reference',
-          link: '/config/'
-        },
-        {
-          text: 'Default Theme Config',
-          link: '/default-theme-config/'
+    locales: {
+      '/': {
+        label: 'English',
+        selectText: 'Languages',
+        editLinkText: 'Edit this page on GitHub',
+        nav: [
+          {
+            text: 'Guide',
+            link: '/guide/',
+          },
+          {
+            text: 'Config Reference',
+            link: '/config/'
+          },
+          {
+            text: 'Default Theme Config',
+            link: '/default-theme-config/'
+          }
+        ],
+        sidebar: {
+          '/guide/': genSidebarConfig('Guide')
         }
-      ],
-      '/zh/': [
-        {
-          text: '指南',
-          link: '/zh/guide/',
-        },
-        {
-          text: '配置',
-          link: '/zh/config/'
-        },
-        {
-          text: '默认主题',
-          link: '/zh/default-theme-config/'
+      },
+      '/zh/': {
+        label: '简体中文',
+        selectText: '选择语言',
+        editLinkText: '在 GitHub 上编辑此页',
+        nav: [
+          {
+            text: '指南',
+            link: '/zh/guide/',
+          },
+          {
+            text: '配置',
+            link: '/zh/config/'
+          },
+          {
+            text: '默认主题',
+            link: '/zh/default-theme-config/'
+          }
+        ],
+        sidebar: {
+          '/zh/guide/': genSidebarConfig('指南')
         }
-      ]
-    },
-    sidebar: {
-      '/guide/': genSidebarConfig('Guide'),
-      '/zh/guide/': genSidebarConfig('指南')
-    },
-    editLinkText: {
-      '/zh/': '在 GitHub 上编辑此页'
+      }
     }
   }
 }

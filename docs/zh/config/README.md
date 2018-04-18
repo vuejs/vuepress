@@ -97,6 +97,13 @@ module.exports = {
 当然，仅仅只在你的网站部署后能用 SSL 的时候开启它，因为 service worker 只能在 HTTPs 的链接下注册。
 :::
 
+### locales
+
+- 类型: `{ [path: string]: Object }`
+- 默认值: `undefined`
+
+提供多语言支持的语言配置。具体细节请查看 [多语言支持](../guide/i18n.md)。
+
 ## 主题
 
 ### theme

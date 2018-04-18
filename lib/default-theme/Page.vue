@@ -78,15 +78,11 @@ export default {
       }
     },
     editLinkText () {
-      const defualtValue = `Edit this page`
-      const { editLinkText } = this.$site.themeConfig
-      if (!editLinkText) {
-        return defualtValue
-      } else if (typeof editLinkText === 'string') {
-        return editLinkText
-      } else if (typeof editLinkText === 'object') {
-        return editLinkText[this.$localePath] || defualtValue
-      }
+      return (
+        this.$themeLocaleConfig.editLinkText ||
+        this.$site.themeConfig.editLinkText ||
+        `Edit this page`
+      )
     }
   }
 }
