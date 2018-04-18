@@ -1,6 +1,5 @@
-const base = process.env.GH ? '/vuepress/' : '/'
-
 module.exports = {
+  dest: 'vuepress',
   langs: [
     { lang: 'en', label: 'English', path: '/', selectText: 'Languages' },
     { lang: 'zh-CN', label: '简体中文', path: '/zh/', selectText: '选择语言' }
@@ -13,8 +12,6 @@ module.exports = {
     '/': 'Vue-powered Static Site Generator',
     '/zh/': 'Vue 驱动的静态网站生成器'
   },
-  dest: 'vuepress',
-  base,
   head: [
     ['link', { rel: 'icon', href: `/logo.png` }]
   ],
@@ -54,38 +51,27 @@ module.exports = {
       ]
     },
     sidebar: {
-      '/guide/': [
-        {
-          title: 'Guide',
-          collapsable: false,
-          children: [
-            '',
-            'getting-started',
-            'basic-config',
-            'assets',
-            'markdown',
-            'using-vue',
-            'custom-themes',
-            'deploy'
-          ]
-        }
-      ],
-      '/zh/guide/': [
-        {
-          title: '指南',
-          collapsable: false,
-          children: [
-            '',
-            'getting-started',
-            'basic-config',
-            'assets',
-            'markdown',
-            'using-vue',
-            'custom-themes',
-            'deploy'
-          ]
-        }
-      ]
+      '/guide/': genSidebarConfig('Guide'),
+      '/zh/guide/': genSidebarConfig('指南')
     }
   }
+}
+
+function genSidebarConfig (title) {
+  return [
+    {
+      title,
+      collapsable: false,
+      children: [
+        '',
+        'getting-started',
+        'basic-config',
+        'assets',
+        'markdown',
+        'using-vue',
+        'custom-themes',
+        'deploy'
+      ]
+    }
+  ]
 }
