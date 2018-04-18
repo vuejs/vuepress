@@ -30,10 +30,10 @@ export default {
   components: { OutboundLink, NavLink, DropdownLink },
   computed: {
     userNav () {
-      if (Array.isArray(this.$site.themeConfig.nav)) {
-        return this.$site.themeConfig.nav
-      }
-      return this.$site.themeConfig.nav[this.$basepath]
+      const { nav } = this.$site.themeConfig
+      if (Array.isArray(nav)) return nav
+      if (typeof nav === 'object') return nav[this.$basepath]
+      return []
     },
     nav () {
       if (this.$site.langs && this.$site.langs.length) {
