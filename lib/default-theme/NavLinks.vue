@@ -13,7 +13,7 @@
       :href="githubLink"
       class="github-link"
       target="_blank"
-      rel="noopener">
+      rel="noopener noreferrer">
       GitHub
       <OutboundLink/>
     </a>

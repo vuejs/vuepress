@@ -2,7 +2,7 @@
   <div class="page">
     <Content :custom="false"/>
     <div class="content edit-link" v-if="editLink">
-      <a :href="editLink" target="_blank">Edit this page</a>
+      <a :href="editLink" target="_blank" rel="noopener noreferrer">Edit this page</a>
       <OutboundLink/>
     </div>
     <div class="content page-nav" v-if="prev || next">
