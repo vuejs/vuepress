@@ -29,6 +29,6 @@ vuepress dev .
 vuepress build .
 ```
 
-::: warning NODE VERSION
-请确保你 Node.js 的版本大于 8。
+::: warning 注意
+请确保你的 Node.js 版本 >= 8。
 :::

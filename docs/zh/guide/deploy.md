@@ -5,6 +5,7 @@
 ## GitHub Pages
 
 1. 将 `.vuepress/config.js` 的 `base` 设置成你仓库的名字，举个例子，如果你的仓库是 `https://github.com/foo/bar`, 部署的页面将会通过 `https://foo.github.io/bar` 来访问，此时，你应该将 `base` 设置为 `"/bar/"`。
+
 2. 在你的项目中运行:
 
 ``` bash

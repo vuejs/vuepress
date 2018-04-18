@@ -1,6 +1,6 @@
 # 自定义主题
 
-::: tip
+::: tip 提示
 主题组件受到同样的 [浏览器的 API 访问限制](./using-vue.md#browser-api-access-restrictions)。
 :::
 
@@ -13,7 +13,7 @@ VuePress 使用单文件组件来构建自定义主题。想要开发一个自�
       └─ Layout.vue
 ```
 
-从这里开始，就和开发一个平时的 Vue 应用一样了，这完全取决于你如何组织你的主题。
+从这里开始，就和开发一个平时的 Vue 应用一样了，如何组织你的主题完全取决于你。
 
 ## 网站和页面的元数据
 
@@ -44,7 +44,7 @@ VuePress 使用单文件组件来构建自定义主题。想要开发一个自�
 ``` json
 {
   "path": "/custom-themes.html",
-  "title": "Custom Themes",
+  "title": "自定义主题",
   "headers": [/* ... */],
   "frontmatter": {}
 }
@@ -79,4 +79,4 @@ module.exports = {
 ```
 
 VuePress 将会尝试去加载并使用位于 `node_modules/vuepress-theme-awesome/Layout.vue` 的主题组件。
- 
+
