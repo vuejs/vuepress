@@ -29,13 +29,13 @@ import NavLink from './NavLink.vue'
 export default {
   components: { OutboundLink, NavLink, DropdownLink },
   computed: {
-    userNav() {
+    userNav () {
       if (Array.isArray(this.$site.themeConfig.nav)) {
         return this.$site.themeConfig.nav
       }
       return this.$site.themeConfig.nav[this.$basepath]
     },
-    nav() {
+    nav () {
       if (this.$site.langs && this.$site.langs.length) {
         let currentLink = this.$page.path
         const routes = this.$router.options.routes
@@ -51,7 +51,7 @@ export default {
               // Try to stay on the same page
               link = currentLink.replace(this.$langConfig.path, lang.path)
               // fallback to homepage
-              if (!routes.find(route => route.path === link)) {
+              if (!routes.some(route => route.path === link)) {
                 link = lang.path
               }
             }
