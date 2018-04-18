@@ -49,6 +49,13 @@ module.exports = {
 }
 ```
 
+### host
+
+- Type: `string`
+- Default: `'0.0.0.0'`
+
+指定用于 dev server 的主机名。
+
 ### port
 
 - 类型: `number`
