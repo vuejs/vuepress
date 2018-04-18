@@ -77,7 +77,7 @@ export default {
     if (this.$ssrContext) {
       this.$ssrContext.title = getTitle(this.$title, this.$page)
       this.$ssrContext.lang = this.$lang
-      this.$ssrContext.description = this.$description
+      this.$ssrContext.description = this.$page.description || this.$description
     }
 
   },
