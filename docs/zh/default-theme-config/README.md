@@ -221,7 +221,7 @@ module.exports = {
   themeConfig: {
     // 假定是 GitHub. 同时也可以是一个完整的 GitLab URL
     repo: 'vuejs/vuepress',
-    // 你的文档的地址
+    // 可选的，你的文档库的地址，如果没提供就会使用项目库的地址
     docsRepo: 'vuejs/vuepress',
     // 当你的文档不是仓库的根目录时需要设置
     docsDir: 'docs',
