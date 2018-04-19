@@ -81,7 +81,7 @@ function genSidebarConfig (title) {
   return [
     {
       title,
-      collapsable: true,
+      collapsable: false,
       children: [
         '',
         'getting-started',
