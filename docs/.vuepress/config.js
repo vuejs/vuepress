@@ -1,5 +1,10 @@
 module.exports = {
   dest: 'vuepress',
+  sitemap: {
+    filename: 'sitemap.txt',
+    domain: 'http://test.com'
+  },
+  base:'/base-doc/',
   langs: [
     { lang: 'en', label: 'English', path: '/', selectText: 'Languages' },
     { lang: 'zh-CN', label: '简体中文', path: '/zh/', selectText: '选择语言' }
