@@ -10,6 +10,11 @@ module.exports = {
       lang: 'zh-CN',
       title: 'VuePress',
       description: 'Vue 驱动的静态网站生成器'
+    },
+    '/ko/': {
+      lang: 'ko-KR',
+      title: 'VuePress',
+      description: 'Vue 기반 정적 웹 사이트 빌더'
     }
   },
   head: [
@@ -71,6 +76,28 @@ module.exports = {
         ],
         sidebar: {
           '/zh/guide/': genSidebarConfig('指南')
+        }
+      },
+      '/ko/': {
+        label: '한국어',
+        selectText: '언어선택',
+        editLinkText: 'Edit this page on GitHub',
+        nav: [
+          {
+            text: '가이드',
+            link: '/ko/guide/',
+          },
+          {
+            text: '구성 참조',
+            link: '/ko/config/'
+          },
+          {
+            text: '기본 테마 구성',
+            link: '/ko/default-theme-config/'
+          }
+        ],
+        sidebar: {
+          '/ko/guide/': genSidebarConfig('Guide')
         }
       }
     }
