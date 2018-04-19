@@ -57,6 +57,8 @@ export default {
 .dropdown-wrapper
   .dropdown-title
     display block
+    &:hover
+      border-color transparent
     .arrow
       vertical-align middle
       margin-top -1px
