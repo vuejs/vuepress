@@ -4,32 +4,35 @@
       <span class="title">{{ item.text }}</span>
       <span class="arrow"></span>
     </a>
-    <ul class="nav-dropdown">
-      <li
+    <DropdownTransition>
+      <ul class="nav-dropdown" v-show="open">
+        <li
         class="dropdown-item"
         v-for="subItem in item.items"
         :key="subItem.link">
-        <h4 v-if="subItem.type === 'links'">{{ subItem.text }}</h4>
-        <ul class="dropdown-subitem-wrapper" v-if="subItem.type === 'links'">
-          <li
+          <h4 v-if="subItem.type === 'links'">{{ subItem.text }}</h4>
+          <ul class="dropdown-subitem-wrapper" v-if="subItem.type === 'links'">
+            <li
             class="dropdown-subitem"
             v-for="childSubItem in subItem.items"
             :key="childSubItem.link">
-            <NavLink :item="childSubItem"/>
-          </li>
-        </ul>
-        <NavLink v-else :item="subItem"/>
-      </li>
-    </ul>
+              <NavLink :item="childSubItem"/>
+            </li>
+          </ul>
+          <NavLink v-else :item="subItem"/>
+        </li>
+      </ul>
+    </DropdownTransition>
   </div>
 </template>
 
 <script>
 import { isExternal, ensureExt } from './util'
 import NavLink from './NavLink.vue'
+import DropdownTransition from './DropdownTransition.vue'
 
 export default {
-  components: { NavLink },
+  components: { NavLink, DropdownTransition },
   data() {
     return {
       open: false
@@ -114,9 +117,10 @@ export default {
         border-top 4px solid transparent
         border-bottom 4px solid transparent
         border-left 5px solid #ccc
-      .nav-dropdown
-        display none
     .nav-dropdown
+      // only has transition at desktop.
+      transition height .1s ease-out
+      overflow hidden
       .dropdown-item
         h4
           border-top 0
@@ -133,7 +137,8 @@ export default {
 @media (min-width: $MQMobile)
   .dropdown-wrapper
     &:hover .nav-dropdown
-      display block
+      // override the inline style.
+      display block!important
     .nav-dropdown
       display none
       box-sizing border-box;
