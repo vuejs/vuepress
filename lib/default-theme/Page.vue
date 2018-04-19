@@ -58,7 +58,7 @@ export default {
         docsBranch = 'master'
       } = this.$site.themeConfig
       
-      let docsRepo = this.$site.themeConfig.docsRepo || repo
+      const docsRepo = this.$site.themeConfig.docsRepo || repo
       let path = normalize(this.$page.path)
       if (endingSlashRE.test(path)) {
         path += 'README.md'
