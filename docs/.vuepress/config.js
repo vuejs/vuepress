@@ -58,9 +58,10 @@ module.exports = {
     sidebar: {
       '/guide/': genSidebarConfig('Guide'),
       '/zh/guide/': genSidebarConfig('指南')
-    }
+    },
   }
 }
+
 
 function genSidebarConfig (title) {
   return [
