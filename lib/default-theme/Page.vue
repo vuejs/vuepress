@@ -52,12 +52,14 @@ export default {
     },
     editLink () {
       const {
+        repo,
         docsRepo,
         editLinks,
         docsDir = '',
         docsBranch = 'master'
       } = this.$site.themeConfig
-
+      
+      docsRepo = docsRepo || repo
       let path = normalize(this.$page.path)
       if (endingSlashRE.test(path)) {
         path += 'README.md'
