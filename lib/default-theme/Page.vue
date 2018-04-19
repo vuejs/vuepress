@@ -66,7 +66,7 @@ export default {
       }
 
       if (docsRepo && editLinks) {
-        const base = outboundRE.test(docRepo)
+        const base = outboundRE.test(docsRepo)
           ? docsRepo
           : `https://github.com/${docsRepo}`
         return (
