@@ -2,7 +2,7 @@
   <div class="page">
     <Content :custom="false"/>
     <div class="content edit-link" v-if="editLink">
-      <a :href="editLink" target="_blank" rel="noopener noreferrer">Edit this page</a>
+      <a :href="editLink" target="_blank" rel="noopener noreferrer">{{ editLinkText }}</a>
       <OutboundLink/>
     </div>
     <div class="content page-nav" v-if="prev || next">
@@ -76,6 +76,13 @@ export default {
           path
         )
       }
+    },
+    editLinkText () {
+      return (
+        this.$themeLocaleConfig.editLinkText ||
+        this.$site.themeConfig.editLinkText ||
+        `Edit this page`
+      )
     }
   }
 }

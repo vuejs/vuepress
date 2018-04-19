@@ -98,6 +98,13 @@ The `serviceWorker` option only handles the service worker. To make your site fu
 Also, only enable this if you are able to deploy your site with SSL, since service worker can only be registered under HTTPs URLs.
 :::
 
+### locales
+
+- Type: `{ [path: string]: Object }`
+- Default: `undefined`
+
+Specify locales for i18n support. For more details, see the guide on [Internationalization](../guide/i18n.md).
+
 ## Theming
 
 ### theme

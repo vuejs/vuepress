@@ -81,19 +81,20 @@ function resolveOpenGroupIndex (route, items) {
     display none
     border-bottom 1px solid $borderColor
     padding 0.5rem 0 0.75rem 0
+    a
+      font-weight 600
     .nav-item, .github-link
       display block
       line-height 1.25rem
-      font-weight 600
       font-size 1.1em
       padding 0.5rem 0 0.5rem 1.5rem
   .sidebar-links
-    margin-top 1.5rem
+    padding 1.5rem 0
 
 @media (max-width: $MQMobile)
   .sidebar
     .nav-links
       display block
     .sidebar-links
-      margin-top 1rem
+      padding 1rem 0
 </style>

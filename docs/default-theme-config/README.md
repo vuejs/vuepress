@@ -231,7 +231,9 @@ module.exports = {
     // optional, defaults to master
     docsBranch: 'master',
     // defaults to true, set to false to disable
-    editLinks: true
+    editLinks: true,
+    // custom text for edit link. Defaults to "Edit this page"
+    editLinkText: 'Help us improve this page!'
   }
 }
 ```

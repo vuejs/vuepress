@@ -4,6 +4,7 @@
     @touchstart="onTouchStart"
     @touchend="onTouchEnd">
     <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar"/>
+    <div class="sidebar-mask" @click="toggleSidebar(false)"></div>
     <Sidebar :items="sidebarItems" @toggle-sidebar="toggleSidebar"/>
     <div class="custom-layout" v-if="$page.frontmatter.layout">
       <component :is="$page.frontmatter.layout"/>
@@ -47,17 +48,16 @@ export default {
       return (
         !frontmatter.layout &&
         !frontmatter.home &&
-        frontmatter.sidebar !== false && (
-          frontmatter.sidebar === 'auto' ||
-          themeConfig.sidebar
-        )
+        frontmatter.sidebar !== false &&
+        this.sidebarItems.length
       )
     },
     sidebarItems () {
       return resolveSidebarItems(
         this.$page,
         this.$route,
-        this.$site
+        this.$site,
+        this.$localePath
       )
     },
     pageClasses() {

@@ -53,6 +53,7 @@ export default {
 
       const max = 5
       const { pages } = this.$site
+      const localePath = this.$localePath
       const matches = item => (
         item.title &&
         item.title.toLowerCase().indexOf(query) > -1
@@ -61,6 +62,10 @@ export default {
       for (let i = 0; i < pages.length; i++) {
         if (res.length >= max) break
         const p = pages[i]
+        // filter out results that do not match current locale
+        if (this.getPageLocalePath(p) !== localePath) {
+          continue
+        }
         if (matches(p)) {
           res.push(p)
         } else if (p.headers) {
@@ -86,8 +91,13 @@ export default {
     }
   },
   methods: {
-    onClick () {
-      console.log('clicked')
+    getPageLocalePath (page) {
+      for (const localePath in this.$site.locales || {}) {
+        if (localePath !== '/' && page.path.indexOf(localePath) === 0) {
+          return localePath
+        }
+      }
+      return '/'
     },
     onUp () {
       if (this.showSuggestions) {

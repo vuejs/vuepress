@@ -30,29 +30,29 @@ export default {
   components: { OutboundLink, NavLink, DropdownLink },
   computed: {
     userNav () {
-      if (Array.isArray(this.$site.themeConfig.nav)) {
-        return this.$site.themeConfig.nav
-      }
-      return this.$site.themeConfig.nav[this.$basepath]
+      return this.$themeLocaleConfig.nav || this.$site.themeConfig.nav || []
     },
     nav () {
-      if (this.$site.langs && this.$site.langs.length) {
+      const { locales } = this.$site
+      if (locales) {
         let currentLink = this.$page.path
         const routes = this.$router.options.routes
+        const themeLocales = this.$site.themeConfig.locales || {}
         const languageDropdown = {
-          text: this.$langConfig.selectText,
-          items: this.$site.langs.map(lang => {
-            const text = lang.label
+          text: this.$themeLocaleConfig.selectText || 'Languages',
+          items: Object.keys(locales).map(path => {
+            const locale = locales[path]
+            const text = themeLocales[path] && themeLocales[path].label || locale.lang
             let link
             // Stay on the current page
-            if (lang.lang === this.$lang) {
+            if (locale.lang === this.$lang) {
               link = currentLink
             } else {
               // Try to stay on the same page
-              link = currentLink.replace(this.$langConfig.path, lang.path)
+              link = currentLink.replace(this.$localeConfig.path, path)
               // fallback to homepage
               if (!routes.some(route => route.path === link)) {
-                link = lang.path
+                link = path
               }
             }
             return { text, link }
