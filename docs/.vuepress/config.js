@@ -1,5 +1,8 @@
 module.exports = {
   dest: 'vuepress',
+  sitemap: {
+    domain: 'https://vuepress.vuejs.org'
+  },
   locales: {
     '/': {
       lang: 'en-US',
