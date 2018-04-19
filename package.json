@@ -1,114 +1,103 @@
 {
-  "name": "vuepress",
-  "version": "0.6.0",
-  "description": "Minimalistic doc generator with Vue component based layout system",
-  "main": "lib/index.js",
-  "bin": {
-    "vuepress": "bin/vuepress.js"
-  },
-  "scripts": {
-    "dev": "node bin/vuepress dev docs",
-    "build": "node bin/vuepress build docs",
-    "lint": "eslint bin lib test",
-    "prepublishOnly": "conventional-changelog -p angular -r 2 -i CHANGELOG.md -s"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vuejs/vuepress.git"
-  },
-  "keywords": [
-    "documentation",
-    "vue",
-    "generator"
-  ],
-  "author": "Evan You",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/vuejs/vuepress/issues"
-  },
-  "homepage": "https://github.com/vuejs/vuepress#readme",
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "lib/**/*.js": [
-      "eslint --fix",
-      "git add"
-    ],
-    "test/**/*.js": [
-      "eslint --fix",
-      "git add"
-    ]
-  },
-  "dependencies": {
-    "autoprefixer": "^8.2.0",
-    "buble": "^0.19.3",
-    "buble-loader": "^0.5.0",
-    "chalk": "^2.3.2",
-    "chokidar": "^2.0.3",
-    "commander": "^2.15.1",
-    "connect-history-api-fallback": "^1.5.0",
-    "copy-webpack-plugin": "^4.5.1",
-    "css-loader": "^0.28.11",
-    "diacritics": "^1.3.0",
-    "es6-promise": "^4.2.4",
-    "escape-html": "^1.0.3",
-    "file-loader": "^1.1.11",
-    "fs-extra": "^5.0.0",
-    "globby": "^8.0.1",
-    "js-yaml": "^3.11.0",
-    "koa-connect": "^2.0.1",
-    "koa-mount": "^3.0.0",
-    "koa-static": "^4.0.2",
-    "loader-utils": "^1.1.0",
-    "lru-cache": "^4.1.2",
-    "markdown-it": "^8.4.1",
-    "markdown-it-anchor": "^4.0.0",
-    "markdown-it-container": "^2.0.0",
-    "markdown-it-emoji": "^1.4.0",
-    "markdown-it-table-of-contents": "^0.3.3",
-    "mini-css-extract-plugin": "^0.4.0",
-    "nprogress": "^0.2.0",
-    "object-assign": "^4.1.1",
-    "optimize-css-assets-webpack-plugin": "^4.0.0",
-    "portfinder": "^1.0.13",
-    "postcss-loader": "^2.1.3",
-    "prismjs": "^1.13.0",
-    "register-service-worker": "^1.2.0",
-    "semver": "^5.5.0",
-    "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.2",
-    "url-loader": "^1.0.1",
-    "vue": "^2.5.16",
-    "vue-loader": "^15.0.0-rc.1",
-    "vue-router": "^3.0.1",
-    "vue-server-renderer": "^2.5.16",
-    "vue-template-compiler": "^2.5.16",
-    "vuepress-html-webpack-plugin": "^3.2.0",
-    "webpack": "^4.5.0",
-    "webpack-chain": "^4.6.0",
-    "webpack-merge": "^4.1.2",
-    "webpack-serve": "^0.3.1",
-    "webpackbar": "^2.6.1",
-    "workbox-build": "^3.1.0",
-    "yaml-front-matter": "^4.0.0"
-  },
-  "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.4",
-    "babel-plugin-syntax-dynamic-import": "^6.18.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.6.1",
-    "conventional-changelog": "^1.1.23",
-    "eslint": "^4.19.1",
-    "eslint-plugin-vue-libs": "^2.1.0",
-    "lint-staged": "^7.0.4",
-    "yorkie": "^1.0.3"
-  },
-  "engines": {
-    "node": ">=8"
-  },
-  "browserslist": [
-    ">1%"
-  ]
+	"name": "vuepress",
+	"version": "0.6.0",
+	"description": "Minimalistic doc generator with Vue component based layout system",
+	"main": "lib/index.js",
+	"bin": {
+		"vuepress": "bin/vuepress.js"
+	},
+	"scripts": {
+		"dev": "node bin/vuepress dev docs",
+		"build": "node bin/vuepress build docs",
+		"lint": "eslint bin lib test",
+		"prepublishOnly": "conventional-changelog -p angular -r 2 -i CHANGELOG.md -s"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/vuejs/vuepress.git"
+	},
+	"keywords": [ "documentation", "vue", "generator" ],
+	"author": "Evan You",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/vuejs/vuepress/issues"
+	},
+	"homepage": "https://github.com/vuejs/vuepress#readme",
+	"gitHooks": {
+		"pre-commit": "lint-staged"
+	},
+	"lint-staged": {
+		"lib/**/*.js": [ "eslint --fix", "git add" ],
+		"test/**/*.js": [ "eslint --fix", "git add" ]
+	},
+	"dependencies": {
+		"autoprefixer": "^8.2.0",
+		"babel-core": "^6.26.0",
+		"babel-loader": "^7.1.4",
+		"babel-plugin-syntax-dynamic-import": "^6.18.0",
+		"babel-plugin-transform-regenerator": "^6.26.0",
+		"babel-plugin-transform-runtime": "^6.23.0",
+		"babel-preset-env": "^1.6.1",
+		"buble": "^0.19.3",
+		"buble-loader": "^0.5.0",
+		"chalk": "^2.3.2",
+		"chokidar": "^2.0.3",
+		"commander": "^2.15.1",
+		"connect-history-api-fallback": "^1.5.0",
+		"copy-webpack-plugin": "^4.5.1",
+		"css-loader": "^0.28.11",
+		"diacritics": "^1.3.0",
+		"es6-promise": "^4.2.4",
+		"escape-html": "^1.0.3",
+		"file-loader": "^1.1.11",
+		"fs-extra": "^5.0.0",
+		"globby": "^8.0.1",
+		"js-yaml": "^3.11.0",
+		"koa-connect": "^2.0.1",
+		"koa-mount": "^3.0.0",
+		"koa-static": "^4.0.2",
+		"loader-utils": "^1.1.0",
+		"lru-cache": "^4.1.2",
+		"markdown-it": "^8.4.1",
+		"markdown-it-anchor": "^4.0.0",
+		"markdown-it-container": "^2.0.0",
+		"markdown-it-emoji": "^1.4.0",
+		"markdown-it-table-of-contents": "^0.3.3",
+		"mini-css-extract-plugin": "^0.4.0",
+		"nprogress": "^0.2.0",
+		"object-assign": "^4.1.1",
+		"optimize-css-assets-webpack-plugin": "^4.0.0",
+		"portfinder": "^1.0.13",
+		"postcss-loader": "^2.1.3",
+		"prismjs": "^1.13.0",
+		"register-service-worker": "^1.2.0",
+		"semver": "^5.5.0",
+		"stylus": "^0.54.5",
+		"stylus-loader": "^3.0.2",
+		"url-loader": "^1.0.1",
+		"vue": "^2.5.16",
+		"vue-loader": "^15.0.0-rc.1",
+		"vue-router": "^3.0.1",
+		"vue-server-renderer": "^2.5.16",
+		"vue-template-compiler": "^2.5.16",
+		"vuepress-html-webpack-plugin": "^3.2.0",
+		"webpack": "^4.5.0",
+		"webpack-chain": "^4.6.0",
+		"webpack-merge": "^4.1.2",
+		"webpack-serve": "^0.3.1",
+		"webpackbar": "^2.6.1",
+		"workbox-build": "^3.1.0",
+		"yaml-front-matter": "^4.0.0"
+	},
+	"devDependencies": {
+		"conventional-changelog": "^1.1.23",
+		"eslint": "^4.19.1",
+		"eslint-plugin-vue-libs": "^2.1.0",
+		"lint-staged": "^7.0.4",
+		"yorkie": "^1.0.3"
+	},
+	"engines": {
+		"node": ">=8"
+	},
+	"browserslist": [ ">1%" ]
 }
