@@ -52,7 +52,7 @@ export default {
     },
     editLink () {
       const {
-        repo,
+        docRepo,
         editLinks,
         docsDir = '',
         docsBranch = 'master'
@@ -65,10 +65,10 @@ export default {
         path += '.md'
       }
 
-      if (repo && editLinks) {
-        const base = outboundRE.test(repo)
-          ? repo
-          : `https://github.com/${repo}`
+      if (docRepo && editLinks) {
+        const base = outboundRE.test(docRepo)
+          ? docRepo
+          : `https://github.com/${docRepo}`
         return (
           base.replace(endingSlashRE, '') +
           `/edit/${docsBranch}/` +
