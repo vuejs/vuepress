@@ -2,7 +2,7 @@
   <div class="dropdown-wrapper" :class="{ open }">
     <a class="dropdown-title" @click="toggle">
       <span class="title">{{ item.text }}</span>
-      <span class="arrow"></span>
+      <span class="arrow" :class="open ? 'down' : 'right'"></span>
     </a>
     <DropdownTransition>
       <ul class="nav-dropdown" v-show="open">
@@ -58,15 +58,9 @@ export default {
   .dropdown-title
     display block
     .arrow
-      display inline-block
       vertical-align middle
       margin-top -1px
       margin-left 0.4rem
-      width 0
-      height 0
-      border-left 4px solid transparent
-      border-right 4px solid transparent
-      border-top 5px solid #ccc
   .nav-dropdown
     .dropdown-item
       color inherit
@@ -112,13 +106,7 @@ export default {
   .dropdown-wrapper
     &.open .dropdown-title
       margin-bottom 0.5rem
-    &:not(.open)
-      .dropdown-title .arrow
-        border-top 4px solid transparent
-        border-bottom 4px solid transparent
-        border-left 5px solid #ccc
     .nav-dropdown
-      // only has transition at desktop.
       transition height .1s ease-out
       overflow hidden
       .dropdown-item
@@ -138,9 +126,17 @@ export default {
   .dropdown-wrapper
     &:hover .nav-dropdown
       // override the inline style.
-      display block!important
+      display block !important
+    .dropdown-title .arrow
+      // make the arrow always down at desktop
+      border-left 4px solid transparent
+      border-right 4px solid transparent
+      border-top 6px solid $arrowBgColor
+      border-bottom 0
     .nav-dropdown
       display none
+      // Avoid height shaked by clicking
+      height auto !important
       box-sizing border-box;
       max-height calc(100vh - 2.7rem)
       overflow-y auto

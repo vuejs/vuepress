@@ -4,7 +4,7 @@
       <span>{{ item.title }}</span>
       <span class="arrow"
         v-if="collapsable"
-        :class="open ? 'up' : 'down'"></span>
+        :class="open ? 'down' : 'right'"></span>
     </p>
     <DropdownTransition>
       <ul class="sidebar-group-items" ref="items" v-if="open || !collapsable">
@@ -23,16 +23,7 @@ import DropdownTransition from './DropdownTransition.vue'
 export default {
   name: 'SidebarGroup',
   props: ['item', 'first', 'open', 'collapsable'],
-  components: { SidebarLink, DropdownTransition },
-  methods: {
-    setHeight (items) {
-      // explicitly set height so that it can be transitioned
-      items.style.height = items.scrollHeight + 'px'
-    },
-    unsetHeight (items) {
-      items.style.height = ''
-    }
-  }
+  components: { SidebarLink, DropdownTransition }
 }
 </script>
 
