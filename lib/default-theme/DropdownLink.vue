@@ -132,6 +132,7 @@ export default {
 
 @media (min-width: $MQMobile)
   .dropdown-wrapper
+    height 1.8rem
     &:hover .nav-dropdown
       display block
     .nav-dropdown
@@ -143,7 +144,7 @@ export default {
       top 100%
       right 0
       background-color #fff
-      padding 10px 0
+      padding 0.6rem 0
       border 1px solid #ddd
       border-bottom-color #ccc
       text-align left

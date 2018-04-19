@@ -90,7 +90,7 @@ export default {
 .nav-links
   display inline-block
   a
-    line-height 1.25rem
+    line-height 1.4rem
     color inherit
     &:hover, &.router-link-active
       color $accentColor
@@ -99,7 +99,6 @@ export default {
     position relative
     display inline-block
     margin-left 1.5rem
-    font-weight 500
     line-height 2rem
   .github-link
     margin-left 1.5rem
@@ -110,10 +109,11 @@ export default {
       margin-left 0
 
 @media (min-width: $MQMobile)
-  .nav-links
-    a
-      &:hover, &.router-link-active
-        color $textColor
-        margin-bottom -2px
-        border-bottom 2px solid lighten($accentColor, 5%)
+  .nav-links a
+    &:hover, &.router-link-active
+      color $textColor
+  .nav-item > a
+    &:hover, &.router-link-active
+      margin-bottom -2px
+      border-bottom 2px solid #42b983
 </style>
