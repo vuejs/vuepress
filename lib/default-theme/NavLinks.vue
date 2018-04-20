@@ -34,7 +34,7 @@ export default {
     },
     nav () {
       const { locales } = this.$site
-      if (locales) {
+      if (locales && Object.keys(locales).length > 1) {
         let currentLink = this.$page.path
         const routes = this.$router.options.routes
         const themeLocales = this.$site.themeConfig.locales || {}
