@@ -1,7 +1,8 @@
 module.exports = {
   dest: 'vuepress',
   sitemap: {
-    domain: 'https://vuepress.vuejs.org'
+    domain: 'https://vuepress.vuejs.org',
+    filename: 'test.xml'
   },
   locales: {
     '/': {

@@ -198,6 +198,12 @@ module.exports = {
   }
 }
 ```
+### sitemap
+
+- Type: `Object`
+- Default: `undefined`
+
+Defined sitemap option
 
 ## Browser Compatibility
 
