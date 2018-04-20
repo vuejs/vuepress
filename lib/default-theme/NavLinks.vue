@@ -78,8 +78,10 @@ export default {
       }
     },
     repoLabel () {
-      if (!this.repoLink) return;
-      if (this.$site.themeConfig.repoLabel) return this.$site.themeConfig.repoLabel
+      if (!this.repoLink) return
+      if (this.$site.themeConfig.repoLabel) {
+        return this.$site.themeConfig.repoLabel
+      }
 
       const repoHost = this.repoLink.match(/^https?:\/\/[^/]+/)[0]
       const platforms = ['GitHub', 'GitLab', 'Bitbucket']
