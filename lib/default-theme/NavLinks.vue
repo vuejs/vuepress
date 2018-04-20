@@ -1,5 +1,5 @@
 <template>
-  <nav class="nav-links" v-if="userLinks.length || githubLink">
+  <nav class="nav-links" v-if="userLinks.length || repoLink">
     <!-- user links -->
     <div
       class="nav-item"
@@ -8,13 +8,13 @@
       <DropdownLink v-if="item.type === 'links'" :item="item"/>
       <NavLink v-else :item="item"/>
     </div>
-    <!-- github link -->
-    <a v-if="githubLink"
-      :href="githubLink"
-      class="github-link"
+    <!-- repo link -->
+    <a v-if="repoLink"
+      :href="repoLink"
+      class="repo-link"
       target="_blank"
       rel="noopener noreferrer">
-      GitHub
+      {{ repoLabel }}
       <OutboundLink/>
     </a>
   </nav>
@@ -69,14 +69,20 @@ export default {
         })
       }))
     },
-    githubLink () {
+    repoLink () {
       const { repo } = this.$site.themeConfig
       if (repo) {
         return /^https?:/.test(repo)
           ? repo
           : `https://github.com/${repo}`
       }
-    }
+    },
+    repoLabel () {
+      const repoHost = this.repoLink.match(/^https?:\/\/[^/]+/)[0] || 'github'
+      return ['GitHub', 'GitLab', 'Bitbucket'].find(platform => {
+        return repoHost.toLowerCase().includes(platform.toLowerCase())
+      });
+    },
   },
   methods: {
     isActive
