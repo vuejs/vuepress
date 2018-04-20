@@ -4,11 +4,11 @@ The following guides assumes you are placing your docs inside the `docs` directo
 
 ## GitHub Pages
 
-1. Set `base` in `.vuepress/config.js` to your repository's name. 
+1. Set correct `base` in `.vuepress/config.js`. 
 
-   If you are deploying to `https://<USERNAME>.github.io`, set `base` to `"/"`.
+   If you are deploying to `https://<USERNAME>.github.io/`, you can omit `base` as it defaults to `"/"`.
 
-   If your are deploying to `https://<USERNAME>.github.io/<REPO>`, (i.e. your repository is at `https://github.com/<USERNAME>/REPO>`), set `base` to `"/<REPO>/"`.
+   If your are deploying to `https://<USERNAME>.github.io/<REPO>/`, (i.e. your repository is at `https://github.com/<USERNAME>/REPO>`), set `base` to `"/<REPO>/"`.
 
 2. Inside your project, create `deploy.sh` with the following content (with highlighted lines uncommented appropriately) and run it to deploy:
 
