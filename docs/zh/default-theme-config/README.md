@@ -4,8 +4,8 @@ sidebar: auto
 
 # 默认主题
 
-::: tip
-所有列在这一页的选项仅对默认的主题生效。如果你在使用一个自定义主题，选项可能会有不同。
+::: tip 提示
+本页所列的选项仅对默认主题生效。如果你在使用一个自定义主题，选项可能会有不同。
 :::
 
 ## 首页
@@ -226,7 +226,9 @@ module.exports = {
     // 可选的, 默认是  master
     docsBranch: 'master',
     // 默认是 true, 设置为 false 来禁用
-    editLinks: true
+    editLinks: true,
+    // 默认为 "Edit this page"
+    editLinkText: '帮助我们改善此页面！'
   }
 }
 ```

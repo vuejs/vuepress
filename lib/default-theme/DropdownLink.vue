@@ -1,9 +1,9 @@
 <template>
   <div class="dropdown-wrapper" :class="{ open }">
-    <div class="dropdown-title" @click="toggle">
+    <a class="dropdown-title" @click="toggle">
       <span class="title">{{ item.text }}</span>
       <span class="arrow"></span>
-    </div>
+    </a>
     <ul class="nav-dropdown">
       <li
         class="dropdown-item"
@@ -53,6 +53,7 @@ export default {
 
 .dropdown-wrapper
   .dropdown-title
+    display block
     .arrow
       display inline-block
       vertical-align middle
