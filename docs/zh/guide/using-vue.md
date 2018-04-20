@@ -122,24 +122,17 @@ export default {
 :::
 
 
-## 在组件中使用预处理器
+## 使用预处理器
 
-VuePress 对这些预处理器已经内置相关的 webpack 配置：`sass`、`scss`、`less`、`stylus` 和 `pug`，因此你可以直接使用它们。
+VuePress 对以下预处理器已经内置相关的 webpack 配置：`sass`、`scss`、`less`、`stylus` 和 `pug`。要使用它们你只需要在项目中安装对应的依赖即可。例如，要使用 `sass`，需要安装：
 
-假设你是一个 `sass` 和 `pug` 的用户，你只需要在你的项目中安装必要的依赖：
-
- ```bash
- yarn add sass-loader node-sass -D # for sass
- yarn add pug-plain-loader pug -D  # for pug
- ```
+```bash
+yarn add sass-loader node-sass -D # for sass
+```
  
-然后你就可以在你的组件中，通过设置正确的 `lang` 来使用它们了：
+然后你就可以在 Markdown 或是主题组件中使用如下代码：
 
 ```vue
-<template lang="pug">
-  p.title Hello, Pug
-</template>
-
 <style lang="sass">
   .title
     font-size: 20px
@@ -147,9 +140,9 @@ VuePress 对这些预处理器已经内置相关的 webpack 配置：`sass`、`s
 ```
 
 ::: tip
-  需要指出的是，如果你是一个 `stylus` 用户，你并不需要在你的项目中安装 `stylus` 和 `stylus-loader`，因为 VuePress 已经内置了它们。
+需要指出的是，如果你是一个 `stylus` 用户，你并不需要在你的项目中安装 `stylus` 和 `stylus-loader`，因为 VuePress 已经内置了它们。
   
-  对于那些没有内置的预处理器，除了安装对应的依赖，你还需要 [拓展内部的 Webpack 配置](../config/#configurewebpack)。
+对于那些没有内置的预处理器，除了安装对应的依赖，你还需要 [拓展内部的 Webpack 配置](../config/#configurewebpack)。
 :::
 
 
