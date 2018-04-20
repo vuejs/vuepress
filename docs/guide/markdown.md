@@ -44,8 +44,6 @@ Given the following directory structure:
 ```
 
 ```md
-<!-- Assuming you are writing in your root README.md file -->
-
 [Home](/) <!-- Sends the user to the root README.md -->
 [foo](/foo/) <!-- Sends the user to index.html of directory foo -->
 [foo heading anchor](/foo/#heading) <!-- Anchors user to a heading in the foo README file -->
