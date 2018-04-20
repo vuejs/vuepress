@@ -2,34 +2,37 @@
   <div class="dropdown-wrapper" :class="{ open }">
     <a class="dropdown-title" @click="toggle">
       <span class="title">{{ item.text }}</span>
-      <span class="arrow"></span>
+      <span class="arrow" :class="open ? 'down' : 'right'"></span>
     </a>
-    <ul class="nav-dropdown">
-      <li
+    <DropdownTransition>
+      <ul class="nav-dropdown" v-show="open">
+        <li
         class="dropdown-item"
         v-for="subItem in item.items"
         :key="subItem.link">
-        <h4 v-if="subItem.type === 'links'">{{ subItem.text }}</h4>
-        <ul class="dropdown-subitem-wrapper" v-if="subItem.type === 'links'">
-          <li
+          <h4 v-if="subItem.type === 'links'">{{ subItem.text }}</h4>
+          <ul class="dropdown-subitem-wrapper" v-if="subItem.type === 'links'">
+            <li
             class="dropdown-subitem"
             v-for="childSubItem in subItem.items"
             :key="childSubItem.link">
-            <NavLink :item="childSubItem"/>
-          </li>
-        </ul>
-        <NavLink v-else :item="subItem"/>
-      </li>
-    </ul>
+              <NavLink :item="childSubItem"/>
+            </li>
+          </ul>
+          <NavLink v-else :item="subItem"/>
+        </li>
+      </ul>
+    </DropdownTransition>
   </div>
 </template>
 
 <script>
 import { isExternal, ensureExt } from './util'
 import NavLink from './NavLink.vue'
+import DropdownTransition from './DropdownTransition.vue'
 
 export default {
-  components: { NavLink },
+  components: { NavLink, DropdownTransition },
   data() {
     return {
       open: false
@@ -54,16 +57,12 @@ export default {
 .dropdown-wrapper
   .dropdown-title
     display block
+    &:hover
+      border-color transparent
     .arrow
-      display inline-block
       vertical-align middle
       margin-top -1px
       margin-left 0.4rem
-      width 0
-      height 0
-      border-left 4px solid transparent
-      border-right 4px solid transparent
-      border-top 5px solid #ccc
   .nav-dropdown
     .dropdown-item
       color inherit
@@ -109,14 +108,9 @@ export default {
   .dropdown-wrapper
     &.open .dropdown-title
       margin-bottom 0.5rem
-    &:not(.open)
-      .dropdown-title .arrow
-        border-top 4px solid transparent
-        border-bottom 4px solid transparent
-        border-left 5px solid #ccc
-      .nav-dropdown
-        display none
     .nav-dropdown
+      transition height .1s ease-out
+      overflow hidden
       .dropdown-item
         h4
           border-top 0
@@ -134,9 +128,18 @@ export default {
   .dropdown-wrapper
     height 1.8rem
     &:hover .nav-dropdown
-      display block
+      // override the inline style.
+      display block !important
+    .dropdown-title .arrow
+      // make the arrow always down at desktop
+      border-left 4px solid transparent
+      border-right 4px solid transparent
+      border-top 6px solid $arrowBgColor
+      border-bottom 0
     .nav-dropdown
       display none
+      // Avoid height shaked by clicking
+      height auto !important
       box-sizing border-box;
       max-height calc(100vh - 2.7rem)
       overflow-y auto
