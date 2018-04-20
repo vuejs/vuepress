@@ -121,34 +121,27 @@ Inside any markdown file you can then directly use the components (names are inf
 Make sure a custom component's name either contains a hyphen or is in PascalCase. Otherwise it will be treated as an inline element and wrapped inside a `<p>` tag, which will lead to hydration mismatch because `<p>` does not allow block elements to be placed inside it.
 :::
 
-### Using pre-processors at components
+### Using Pre-processors
 
-VuePress has built-in webpack config for those pre-processors: `sass`, `scss`, `less`, `stylus` and `pug` so that you can use them directly. 
+VuePress has built-in webpack config for the following pre-processors: `sass`, `scss`, `less`, `stylus` and `pug`. All you need to do is installing the corresposnding dependencies. For example, to enable `sass`, install the following in your project:
+ 
+```bash
+yarn add sass-loader node-sass -D
+```
 
-Suppose you are a `sass` and `pug` user, you only need to install the essential dependencies at your project:
- 
- ```bash
- yarn add sass-loader node-sass -D # for sass
- yarn add pug-plain-loader pug -D  # for pug
- ```
- 
-So you can use them at your custom Vue component via setting the correct `lang`:
+Now you can use the following in markdown and theme components:
 
 ```vue
-<template lang="pug">
-  p.title Hello, Pug
-</template>
-
 <style lang="sass">
-  .title
-    font-size: 20px
+.title
+  font-size: 20px
 </style>
 ```
 
 ::: tip
-  Note that if are a `stylus` user, you don't need to install `stylus` and `stylus-loader` in your project, since VuePress have those modules built-in already. 
+If you are a Stylus user, you don't need to install `stylus` and `stylus-loader` in your project because VuePress uses Stylus internally.
   
-  For those pre-processors that are not built-in, In addition to installing the necessary dependencies, you also need to [extend the internal webpack config](../config/#configurewebpack).
+For pre-processors that do not have built-in webpack config support, you will need to [extend the internal webpack config](../config/#configurewebpack) in addition to installing the necessary dependencies.
 :::
 
 ## Script & Style Hoisting
