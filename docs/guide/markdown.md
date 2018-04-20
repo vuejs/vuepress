@@ -26,6 +26,32 @@ If you want to link to another markdown file within a directory, remember to:
 
 1.  Append it with either `.html` or `.md`
 2.  Make sure the case matches since the path is case-sensitive
+#### Example
+
+Given the following directory structure:
+
+```
+.
+├─ README.md
+├─ foo
+│  ├─ README.md
+│  ├─ one.md
+│  └─ two.md
+└─ bar
+   ├─ README.md
+   ├─ three.md
+   └─ four.md
+```
+
+```md
+<!-- Assuming you are writing in your root README.md file -->
+
+[Home](/) <!-- Sends the user to the root README.md -->
+[foo](/foo/) <!-- Sends the user to index.html of directory foo -->
+[foo heading anchor](/foo/#heading) <!-- Anchors user to a heading in the foo README file -->
+[foo - one](/foo/one.html) <!-- You can append .html -->
+[foo - two](/foo/two.md) <!-- Or you can append .md -->
+```
 
 ### External Links
 
