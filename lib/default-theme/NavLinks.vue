@@ -1,5 +1,5 @@
 <template>
-  <nav class="nav-links" v-if="userLinks.length || githubLink">
+  <nav class="nav-links" v-if="userLinks.length || repoLink">
     <!-- user links -->
     <div
       class="nav-item"
@@ -8,13 +8,13 @@
       <DropdownLink v-if="item.type === 'links'" :item="item"/>
       <NavLink v-else :item="item"/>
     </div>
-    <!-- github link -->
-    <a v-if="githubLink"
-      :href="githubLink"
-      class="github-link"
+    <!-- repo link -->
+    <a v-if="repoLink"
+      :href="repoLink"
+      class="repo-link"
       target="_blank"
       rel="noopener noreferrer">
-      GitHub
+      {{ repoLabel }}
       <OutboundLink/>
     </a>
   </nav>
@@ -69,14 +69,31 @@ export default {
         })
       }))
     },
-    githubLink () {
+    repoLink () {
       const { repo } = this.$site.themeConfig
       if (repo) {
         return /^https?:/.test(repo)
           ? repo
           : `https://github.com/${repo}`
       }
-    }
+    },
+    repoLabel () {
+      if (!this.repoLink) return
+      if (this.$site.themeConfig.repoLabel) {
+        return this.$site.themeConfig.repoLabel
+      }
+
+      const repoHost = this.repoLink.match(/^https?:\/\/[^/]+/)[0]
+      const platforms = ['GitHub', 'GitLab', 'Bitbucket']
+      for (let i = 0; i < platforms.length; i++) {
+        const platform = platforms[i]
+        if (new RegExp(platform, 'i').test(repoHost)) {
+          return platform
+        }
+      }
+
+      return 'Source'
+    },
   },
   methods: {
     isActive
@@ -100,12 +117,12 @@ export default {
     display inline-block
     margin-left 1.5rem
     line-height 2rem
-  .github-link
+  .repo-link
     margin-left 1.5rem
 
 @media (max-width: $MQMobile)
   .nav-links
-    .nav-item, .github-link
+    .nav-item, .repo-link
       margin-left 0
 
 @media (min-width: $MQMobile)

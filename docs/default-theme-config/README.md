@@ -216,7 +216,7 @@ next: false
 ---
 ```
 
-## GitHub Repo and Edit Links
+## Git Repo and Edit Links
 
 Providing `themeConfig.repo` auto generates a GitHub link in the navbar and "Edit this page" links at the bottom of each page.
 
@@ -226,6 +226,9 @@ module.exports = {
   themeConfig: {
     // Assumes GitHub. Can also be a full GitLab url.
     repo: 'vuejs/vuepress',
+    // Customising the header label
+    // Defaults to "GitHub"/"GitLab"/"Bitbucket" depending on `themeConfig.repo`
+    repoLabel: 'Contribute!',
     // if your docs are not at the root of the repo
     docsDir: 'docs',
     // optional, defaults to master
