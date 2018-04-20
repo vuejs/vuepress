@@ -12,10 +12,22 @@ Headers automatically get anchor links applied. Rendering of anchors can be conf
 
 ## Links
 
-- Inbound links ending in `.md` or `.html` are converted to `<router-link>` for SPA navigation.
+### Internal Links
 
-  - [Home](/)
-  - [Configuring Markdown](../config/#markdown)
+Inbound links ending in `.md` or `.html` are converted to `<router-link>` for SPA navigation.
+
+Each sub-directory in your static site should contain a `README.md`. It will automatically be converted to `index.html`.
+
+::: tip
+When writing the relative path to a directory's `index.html`, don't forget to close it off with a `/`, otherwise you will get a 404 (e.g., `/about` vs. `/about/`)
+:::
+
+If you want to link to another markdown file within a directory, remember to:
+
+1.  Append it with either `.html` or `.md`
+2.  Make sure the case matches since the path is case-sensitive
+
+### External Links
 
 - Outbound links automatically gets `target="_blank"`:
 
