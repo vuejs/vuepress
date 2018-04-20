@@ -78,6 +78,8 @@ export default {
       }
     },
     repoLabel () {
+      if (this.$site.themeConfig.repoLabel) return this.$site.themeConfig.repoLabel
+
       const repoHost = this.repoLink.match(/^https?:\/\/[^/]+/)[0] || 'github'
       return ['GitHub', 'GitLab', 'Bitbucket'].find(platform => {
         return repoHost.toLowerCase().includes(platform.toLowerCase())
