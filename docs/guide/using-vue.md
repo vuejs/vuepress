@@ -125,17 +125,23 @@ Make sure a custom component's name either contains a hyphen or is in PascalCase
 
 VuePress has built-in webpack config for the following pre-processors: `sass`, `scss`, `less`, `stylus` and `pug`. All you need to do is installing the corresposnding dependencies. For example, to enable `sass`, install the following in your project:
  
-```bash
-yarn add sass-loader node-sass -D
+``` bash
+yarn add -D sass-loader node-sass
 ```
 
 Now you can use the following in markdown and theme components:
 
-```vue
+``` vue
 <style lang="sass">
 .title
   font-size: 20px
 </style>
+```
+
+Using `<template lang="pug">` requires installing `pug` and `pug-plain-loader`:
+
+``` bash
+yarn add -D pug pug-plain-loader
 ```
 
 ::: tip
