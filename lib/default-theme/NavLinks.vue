@@ -108,12 +108,12 @@ export default {
     display inline-block
     margin-left 1.5rem
     line-height 2rem
-  .github-link
+  .repo-link
     margin-left 1.5rem
 
 @media (max-width: $MQMobile)
   .nav-links
-    .nav-item, .github-link
+    .nav-item, .repo-link
       margin-left 0
 
 @media (min-width: $MQMobile)
