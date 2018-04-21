@@ -27,8 +27,8 @@ export default {
 <style lang="stylus">
 @import './styles/config.styl'
 
+// TODO align with styles/config.styl
 $border = #ddd
-// colors
 $dark   = #2c3e50
 $medium = #34495e
 $light  = #7f8c8d
