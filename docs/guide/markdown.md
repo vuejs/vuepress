@@ -19,7 +19,15 @@ Inbound links ending in `.md` or `.html` are converted to `<router-link>` for SP
 Each sub-directory in your static site should contain a `README.md`. It will automatically be converted to `index.html`.
 
 ::: tip
-When writing the relative path to a directory's `index.html`, don't forget to close it off with a `/`, otherwise you will get a 404 (e.g., `/about` vs. `/about/`)
+When writing the relative path to a directory's `index.html`, don't forget to close it off with a `/`, otherwise you will get a 404.
+
+```
+# You'll get a 404
+/about 
+
+# This is correect
+/about/
+```
 :::
 
 If you want to link to another markdown file within a directory, remember to:
