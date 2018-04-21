@@ -21,12 +21,12 @@ Each sub-directory in your static site should contain a `README.md`. It will aut
 ::: tip
 When writing the relative path to a directory's `index.html`, don't forget to close it off with a `/`, otherwise you will get a 404.
 
-```
-# You'll get a 404
-/about 
+```md
+<!-- You'll get a 404 -->
+[About Page](/about)
 
-# This is correect
-/about/
+<!-- This is correct -->
+[About Page](/about/)
 ```
 :::
 
