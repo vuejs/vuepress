@@ -15,7 +15,6 @@ export default {
       docsearch = docsearch.default
       docsearch(Object.assign(this.options, {
         inputSelector: '#algolia-search-input',
-        debug: true,
         autocompleteOptions: {
           openOnFocus: true
         }
