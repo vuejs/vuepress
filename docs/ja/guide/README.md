@@ -4,48 +4,48 @@ VuePressは2つの部分から成り立っています: Vue駆動のテーマシ
 
 VuePressによって生成されるページは、ローディングパフォーマンスとSEO対策のため、それぞれ事前描画された静的HTMLを持ちます。一回ページがロードされれば、Vueはその静的コンテンツをSingle-Page Application(SPA)に変えてしまいます。ユーザーが別のページへ向かうと、追加のページがオンデマンドで取得されます。
 
-## How It Works
+## どう動くのか
 
-A VuePress site is in fact an SPA powered by [Vue](http://vuejs.org/), [Vue Router](https://github.com/vuejs/vue-router) and [webpack](http://webpack.js.org/). If you've used Vue before, you will notice the familiar development experience when you are writing or developing custom themes (you can even use Vue DevTools to debug your custom theme!).
+実のところ、VuePressで製作されたサイトは[Vue](http://vuejs.org/)・[Vue Router](https://github.com/vuejs/vue-router)・[webpack](http://webpack.js.org/)で構成されたSPAです。もしもあなたがVueを使ったことがあるなら、VuePressで執筆したりカスタムテーマを開発するとき、似た開発体験を得ることができることに気が付くでしょう(カスタムテーマをデバッグする時にもVue DevToolsが使えます！)。
 
-During the build, we create a server-rendered version of the app and render the corresponding HTML by virtually visiting each route. This approach is inspired by [Nuxt](https://nuxtjs.org/)'s `nuxt generate` command and other projects like [Gatsby](https://www.gatsbyjs.org/).
+ビルドを通じ、VuePressは対応するHTMLを擬似的に描画・ルーティングするサーバーレンダリングバージョンを作ります。このアプローチは[Nuxt](https://nuxtjs.org/)の`nuxt generate`コマンドや[Gatsby](https://www.gatsbyjs.org/)などの他のプロジェクトにインスパイアされたものです。
 
-Each markdown file is compiled into HTML with [markdown-it](https://github.com/markdown-it/markdown-it) and then processed as the template of a Vue component. This allows you to directly use Vue inside your markdown files and is great when you need to embed dynamic content.
+それぞれのMarkdownファイルは[markdown-it](https://github.com/markdown-it/markdown-it)によってHTMLにコンパイルされ、Vueコンポーネントのテンプレートとして処理されます。VueをMarkdownから直接使用することができるので、動的コンテンツを埋め込むことができます。
 
-## Features
+## 機能
 
-- [Built-in markdown extensions](./markdown.md) optimized for technical documentation
-- [Ability to leverage Vue inside markdown files](./using-vue.md)
-- [Vue-powered custom theme system](./custom-themes.md)
-- Automatic Service Worker generation
-- Google Analytics Integration
-- Multi-language support
-- A default theme with:
-  - Responsive layout
-  - Optional Homepage
-  - Simple out-of-the-box header-based search
-  - Customizable navbar and sidebar
-  - Auto-generated GitHub link and page edit links
+- 技術資料のために最適化された[ビルトインのMarkdown拡張](./markdown.md)
+- [Markdownファイル内からVueを利用する](./using-vue.md)
+- [Vue駆動カスタムテーマシステム](./custom-themes.md)
+- 自動でService Worker生成
+- Google Analytics対応
+- 多言語サポート
+- デフォルトテーマ
+  - レスポンシブ
+  - ホームページ(任意)
+  - すぐに使えるシンプルなヘッダ検索ボックス
+  - カスタマイズできるnavbarとsidebar
+  - GitHubへのページ編集リンクを自動で生成
 
 ## Todo
 
-VuePress is still a work in progress. There are a few things that it currently does not support but are planned:
+VuePressは未だ発展中のプロジェクトです。計画されているものの未だ現在サポートされていない機能があります:
 
-- Algolia DocSearch Integration
-- Blogging support
+- Algolia DocSearch対応
+- ブログ機能
 
-Contributions are welcome!
+貢献をお願いします！
 
-## Why Not ...?
+## なぜVuePressなのか
 
 ### Nuxt
 
-Nuxt is capable of doing what VuePress does, but it is designed for building applications. VuePress is focused on content-centric static sites and provides features tailored for technical documentation out of the box.
+Nuxtでは、VuePressがやろうとすることの全てが可能です。しかし、Nuxtはアプリケーションを作るためにデザインされているものです。VuePressはコンテンツを中心とする静的サイトに主眼を置いており、技術資料のための機能をすぐに提供できます。
 
 ### Docsify / Docute
 
-Both are great projects and also Vue-powered. Except they are both completely runtime-driven and therefore not SEO-friendly. If you don't care about SEO and don't want to mess with installing dependencies, these are still great choices.
+これらはVue駆動の素晴らしいプロジェクトです。しかしながらこれらは完全にruntime-drivenであり、SEOフレンドリーではありません。もしもあなたがSEOのことを考慮する必要がなかったり、余計な依存関係を増やして混乱したくなければ、これらは良い選択肢でしょう。
 
 ### Hexo
 
-Hexo has been serving the Vue docs well - in fact, we are probably still a long way to go from migrating away from it for our main site. The biggest problem is that its theming system is very static and string-based - we really want to leverage Vue for both the layout and the interactivity. Also, Hexo's markdown rendering isn't the most flexible to configure.
+Vue.jsのドキュメントはHexoで提供されており、とても良く機能しています - 実は。私たちのサイトをHexoから離れるのは長い道程が必要でしょう。最も大きな問題はHexoのテーマシステムが非常に静的な上、文字列ベースになっていることです。私たちは本当にVueをレイアウトとインタラクティビティの両面で活用したいのです。また、HexoのMarkdownはそこまで設定が柔軟ではありません。
