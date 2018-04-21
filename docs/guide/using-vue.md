@@ -103,7 +103,9 @@ Any `*.vue` files found in `.vuepress/components` are automatically registered a
 └─ .vuepress
    └─ components
       ├─ demo-1.vue
-      └─ OtherComponent.vue
+      ├─ OtherComponent.vue
+      └─ Foo
+         └─ Bar.vue
 ```
 
 Inside any markdown file you can then directly use the components (names are inferred from filenames):
@@ -111,11 +113,14 @@ Inside any markdown file you can then directly use the components (names are inf
 ``` md
 <demo-1/>
 <OtherComponent/>
+<Foo-Bar/>
 ```
 
 <demo-1></demo-1>
 
 <OtherComponent/>
+
+<Foo-Bar/>
 
 ::: warning IMPORTANT
 Make sure a custom component's name either contains a hyphen or is in PascalCase. Otherwise it will be treated as an inline element and wrapped inside a `<p>` tag, which will lead to hydration mismatch because `<p>` does not allow block elements to be placed inside it.
