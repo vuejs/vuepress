@@ -55,7 +55,8 @@ export default {
         repo,
         editLinks,
         docsDir = '',
-        docsBranch = 'master'
+        docsBranch = 'master',
+        docsRepo = repo
       } = this.$site.themeConfig
 
       let path = normalize(this.$page.path)
@@ -65,10 +66,10 @@ export default {
         path += '.md'
       }
 
-      if (repo && editLinks) {
-        const base = outboundRE.test(repo)
-          ? repo
-          : `https://github.com/${repo}`
+      if (docsRepo && editLinks) {
+        const base = outboundRE.test(docsRepo)
+          ? docsRepo
+          : `https://github.com/${docsRepo}`
         return (
           base.replace(endingSlashRE, '') +
           `/edit/${docsBranch}/` +
