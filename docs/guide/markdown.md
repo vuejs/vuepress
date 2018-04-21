@@ -79,6 +79,8 @@ meta:
 
 :tada: :100:
 
+A list of all emojis available can be found [here](https://github.com/markdown-it/markdown-it-emoji/blob/master/lib/data/full.json).
+
 ## Table of Contents
 
 **Input**

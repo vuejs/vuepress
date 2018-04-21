@@ -36,10 +36,11 @@ export default {
     shouldShowNavbar () {
       const { themeConfig } = this.$site
       return (
-        this.$site.title ||
+        this.$title ||
         themeConfig.logo ||
         themeConfig.repo ||
-        themeConfig.nav
+        themeConfig.nav ||
+        this.$themeLocaleConfig.nav
       )
     },
     shouldShowSidebar () {
