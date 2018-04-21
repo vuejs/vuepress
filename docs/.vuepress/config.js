@@ -10,6 +10,11 @@ module.exports = {
       lang: 'zh-CN',
       title: 'VuePress',
       description: 'Vue 驱动的静态网站生成器'
+    },
+    '/ja/': {
+      lang: 'ja-JP',
+      title: 'VuePress',
+      description: 'Vue駆動の静的サイトジェネレータ'
     }
   },
   head: [
@@ -71,6 +76,28 @@ module.exports = {
         ],
         sidebar: {
           '/zh/guide/': genSidebarConfig('指南')
+        }
+      },
+      '/ja/': {
+        label: '日本語',
+        selectText: '言語',
+        editLinkText: 'このページをGitHubで編集',
+        nav: [
+          {
+            text: 'ガイド',
+            link: '/ja/guide/',
+          },
+          {
+            text: '設定リファレンス',
+            link: '/ja/config/'
+          },
+          {
+            text: 'デフォルトテーマの設定',
+            link: '/ja/default-theme-config/'
+          }
+        ],
+        sidebar: {
+          '/ja/guide/': genSidebarConfig('ガイド')
         }
       }
     }
