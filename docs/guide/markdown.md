@@ -34,6 +34,7 @@ If you want to link to another markdown file within a directory, remember to:
 
 1.  Append it with either `.html` or `.md`
 2.  Make sure the case matches since the path is case-sensitive
+
 #### Example
 
 Given the following directory structure:
