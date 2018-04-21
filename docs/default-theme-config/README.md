@@ -226,7 +226,7 @@ module.exports = {
   themeConfig: {
     // Assumes GitHub. Can also be a full GitLab url.
     repo: 'vuejs/vuepress',
-    // Optional, your docs repo address, fallback to repo when it's not given.
+    // Optional, your docs repo address, defaults to `themeConfig.repo`.
     docsRepo: 'vuejs/vuepress',
     // Customising the header label
     // Defaults to "GitHub"/"GitLab"/"Bitbucket" depending on `themeConfig.repo`
