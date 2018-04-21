@@ -146,44 +146,60 @@ Sidebar groups are collapsable by default. You can force a group to be always op
 
 ### Multiple Sidebars
 
-If you wish to display different sidebars for different group of pages, first organize your pages into directories:
+If you wish to display different sidebars for different sections of content, first organize your pages into directories for each desired section:
 
 ```
 .
 ├─ README.md
-├─ foo
+├─ contact.md
+├─ about.md
+├─ foo/
 │  ├─ README.md
 │  ├─ one.md
 │  └─ two.md
-└─ bar
+└─ bar/
    ├─ README.md
    ├─ three.md
    └─ four.md
 ```
 
-Then, with the following sidebar config:
+Then, update your configuration to define your sidebar for each section.
 
 ``` js
 // .vuepress/config.js
 module.exports = {
   themeConfig: {
     sidebar: {
-      // sidebar for pages under /foo/
       '/foo/': [
-        '',
-        'one',
-        'two'
+        '',     /* /foo/ */
+        'one',  /* /foo/one.html */
+        'two'   /* /foo/two.html */
       ],
-      // sidebar for pages under /bar/
+
       '/bar/': [
-        '',
-        'three',
-        'four'
+        '',      /* /bar/ */
+        'three', /* /bar/three.html */
+        'four'   /* /bar/four.html */
+      ],
+
+      // fallback
+      '/': [
+        '',        /* / */
+        'contact', /* /contact.html */
+        'about'    /* /about.html */
       ]
     }
   }
 }
 ```
+
+::: warning
+Make sure to define the fallback configuration last.
+
+VuePress checks each sidebar config from top to bottom. If the fallback configuration was first, VuePress would incorrectly match `/foo/` or `/bar/four.html` because they both start with `/`.
+:::
+
+
 
 ### Auto Sidebar for Single Pages
 
