@@ -11,7 +11,7 @@
     <!-- repo link -->
     <a v-if="repoLink"
       :href="repoLink"
-      class="repo-link"
+      class="repo-link github-link"
       target="_blank"
       rel="noopener noreferrer">
       {{ repoLabel }}
