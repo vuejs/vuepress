@@ -229,13 +229,16 @@ module.exports = {
     // Customising the header label
     // Defaults to "GitHub"/"GitLab"/"Bitbucket" depending on `themeConfig.repo`
     repoLabel: 'Contribute!',
-    // if your docs are not at the root of the repo
+    // If your docs are placed at a different repo
+    // Default to `themeConfig.repo`
+    docsRepo: 'vuejs/vuejs.org',
+    // If your docs are not at the root of the repo
     docsDir: 'docs',
-    // optional, defaults to master
+    // Optional, defaults to master
     docsBranch: 'master',
-    // defaults to true, set to false to disable
+    // Defaults to true, set to false to disable
     editLinks: true,
-    // custom text for edit link. Defaults to "Edit this page"
+    // Custom text for edit link. Defaults to "Edit this page"
     editLinkText: 'Help us improve this page!'
   }
 }
