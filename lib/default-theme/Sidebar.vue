@@ -83,7 +83,7 @@ function resolveOpenGroupIndex (route, items) {
     padding 0.5rem 0 0.75rem 0
     a
       font-weight 600
-    .nav-item, .github-link
+    .nav-item, .repo-link
       display block
       line-height 1.25rem
       font-size 1.1em
