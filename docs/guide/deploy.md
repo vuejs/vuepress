@@ -62,3 +62,44 @@ cd -
   - **Publish directory:** `docs/.vuepress/dist`
 
 3. Hit the deploy button!
+
+## Google Firebase
+
+1. Make sure you have [firebase-tools](https://www.npmjs.com/package/firebase-tools) installed
+
+2. Inside your project, create `deploy.sh` with the following content and run it to deploy:
+```bash{27}
+#!/usr/bin/env sh
+set -e
+
+# build
+vuepress build docs
+
+# navigate into the build output directory
+cd .vuepress/dist
+
+# create firebase.json
+echo 'creating firebase.json...'
+echo '{
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}' > firebase.json
+
+# create .firebaserc
+echo 'creating .firebaserc...'
+echo '{
+  "projects": {
+    "default": "<YOUR_FIREBASE_ID>"
+  }
+}' > .firebaserc
+
+firebase deploy
+
+cd -
+```
