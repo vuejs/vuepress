@@ -47,12 +47,6 @@ module.exports = {
             link: '/default-theme-config/'
           }
         ],
-        algolia: {
-          appId: 'BH4D9OD16A',
-          apiKey: '85cc3221c9f23bfbaa4e3913dd7625ea',
-          indexName: 'vuejs',
-          algoliaOptions: { facetFilters: ["version:v2"] }
-        },
         sidebar: {
           '/guide/': genSidebarConfig('Guide')
         }
@@ -61,12 +55,6 @@ module.exports = {
         label: '简体中文',
         selectText: '选择语言',
         editLinkText: '在 GitHub 上编辑此页',
-        algolia: {
-          appId: 'BH4D9OD16A',
-          apiKey: '5638280abff9d207417bb03be05f0b25',
-          indexName: 'vuejs_cn2',
-          algoliaOptions: { facetFilters: ["version:v2"] }
-        },
         nav: [
           {
             text: '指南',
