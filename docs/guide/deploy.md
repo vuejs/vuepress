@@ -1,6 +1,18 @@
-
 # Deploying
-The following guides assumes you are placing your docs inside the `docs` directory of your project and using the default build output location.
+
+The following guides are based on a few shared assumptions:
+
+- You are placing your docs inside the `docs` directory of your project;
+- You are using the default build output location (`.vuepress/dist`);
+- VuePress is installed as a local dependency in your project, and you have setup the following npm scripts:
+
+``` json
+{
+  "scripts": {
+    "docs:build": "vuepress build docs"
+  }
+}
+```
 
 ## GitHub Pages
 
@@ -23,7 +35,7 @@ You can also run this script in your CI setup to enable automatic deployment on 
 set -e
 
 # build
-vuepress build docs
+npm run docs:build
 
 # navigate into the build output directory
 cd docs/.vuepress/dist
@@ -46,26 +58,16 @@ cd -
 
 ## Netlify
 
-1. Make sure you have npm scripts for building your docs:
-
-``` json
-{
-  "scripts": {
-    "docs:build": "vuepress build docs"
-  }
-}
-```
-
-2. On Netlify, setup up a new project from GitHub with the following settings:
+1. On Netlify, setup up a new project from GitHub with the following settings:
 
   - **Build Command:** `npm run docs:build` or `yarn docs:build`
   - **Publish directory:** `docs/.vuepress/dist`
 
-3. Hit the deploy button!
+2. Hit the deploy button!
 
 ## Google Firebase
 
-1. Make sure you have [firebase-tools](https://www.npmjs.com/package/firebase-tools) installed
+1. Make sure you have [firebase-tools](https://www.npmjs.com/package/firebase-tools) installed.
 
 2. Create `firebase.json` and `.firebaserc` at the root of your project with the following content:
 
@@ -88,4 +90,4 @@ cd -
    }
    ```
 
-3. After running `yarn docs:build` or `npm run docs:build`, deploy with the command `firebase deploy`
+3. After running `yarn docs:build` or `npm run docs:build`, deploy with the command `firebase deploy`.

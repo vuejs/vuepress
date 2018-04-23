@@ -51,8 +51,8 @@ export default {
         return
       }
 
-      const max = 5
-      const { pages } = this.$site
+      const { pages, themeConfig } = this.$site
+      const max = themeConfig.searchMaxSuggestions || 5
       const localePath = this.$localePath
       const matches = item => (
         item.title &&

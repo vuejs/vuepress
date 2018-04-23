@@ -166,6 +166,34 @@ module.exports = {
 
 [postcss-loader](https://github.com/postcss/postcss-loader) 的选项，请注意，指定这个值，将会覆盖内置的 autoprefixer，所以你需要自己将它加进去。
 
+### stylus
+
+- Type: `Object`
+- Default: `{ preferPathResolver: 'webpack' }`
+
+[stylus-loader](https://github.com/shama/stylus-loader) 的选项。
+
+### scss
+
+- Type: `Object`
+- Default: `{}`
+
+加载 `*.scss` 文件的 [sass-loader](https://github.com/postcss/postcss-loader) 的选项。
+
+### sass
+
+- Type: `Object`
+- Default: `{ indentedSyntax: true }`
+
+加载 `*.sass` 文件的 [sass-loader](https://github.com/postcss/postcss-loader) 的选项。
+
+### less
+
+- Type: `Object`
+- Default: `{}`
+
+[less-loader](https://github.com/webpack-contrib/less-loader) 的选项。
+
 ### configureWebpack
 
 - 类型: `Object | Function`
