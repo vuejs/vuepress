@@ -289,6 +289,8 @@ pageClass: custom-page-class
 Then you can write CSS targeting that page only:
 
 ``` css
+/* .vuepress/override.styl */
+
 .theme-container.custom-page-class {
   /* page-specific rules */
 }
