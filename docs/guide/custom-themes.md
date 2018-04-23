@@ -66,6 +66,20 @@ The compiled content of the current `.md` file being rendered will be available 
 </template>
 ```
 
+## Theme Level Enhancements
+
+Themes can extend the Vue app that VuePress uses by exposing an `index.js` file at the root of the theme. The file should `export default` a hook function which will receive an object containing some app level values. You can use this hook to install additional Vue plugins, register global components, or add additional router hooks:
+
+``` js
+export default ({
+  Vue, // the version of Vue being used in the VuePress app
+  options, // the options for the root Vue instance
+  router // the router instance for the app
+}) => {
+  // ...apply enhancements to the app
+}
+```
+
 ## Using Theme from a Dependency
 
 Themes can be published on npm in raw Vue SFC format as `vuepress-theme-xxx`.

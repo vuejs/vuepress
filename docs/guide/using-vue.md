@@ -121,6 +121,35 @@ Inside any markdown file you can then directly use the components (names are inf
 Make sure a custom component's name either contains a hyphen or is in PascalCase. Otherwise it will be treated as an inline element and wrapped inside a `<p>` tag, which will lead to hydration mismatch because `<p>` does not allow block elements to be placed inside it.
 :::
 
+### Using Pre-processors
+
+VuePress has built-in webpack config for the following pre-processors: `sass`, `scss`, `less`, `stylus` and `pug`. All you need to do is installing the corresposnding dependencies. For example, to enable `sass`, install the following in your project:
+ 
+``` bash
+yarn add -D sass-loader node-sass
+```
+
+Now you can use the following in markdown and theme components:
+
+``` vue
+<style lang="sass">
+.title
+  font-size: 20px
+</style>
+```
+
+Using `<template lang="pug">` requires installing `pug` and `pug-plain-loader`:
+
+``` bash
+yarn add -D pug pug-plain-loader
+```
+
+::: tip
+If you are a Stylus user, you don't need to install `stylus` and `stylus-loader` in your project because VuePress uses Stylus internally.
+  
+For pre-processors that do not have built-in webpack config support, you will need to [extend the internal webpack config](../config/#configurewebpack) in addition to installing the necessary dependencies.
+:::
+
 ## Script & Style Hoisting
 
 Sometimes you may need to apply some JavaScript or CSS only to the current page. In those cases you can directly write root-level `<script>` or `<style>` blocks in the markdown file, and they will be hoisted out of the compiled HTML and used as the `<script>` and `<style>` blocks for the resulting Vue single-file component.

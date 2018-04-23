@@ -17,6 +17,7 @@ https://vuepress.vuejs.org/
 - [Vue-powered custom theme system](https://vuepress.vuejs.org/guide/custom-themes.html)
 - Service Worker Integration
 - Google Analytics Integration
+- Multi-Language Support
 - A default theme with:
   - Responsive layout
   - Optional Homepage
@@ -28,7 +29,6 @@ https://vuepress.vuejs.org/
 
 VuePress is still a work in progress. There are a few things that it currently does not support but are planned:
 
-- Multi-Language Support
 - Algolia DocSearch Integration
 - Blogging support
 
