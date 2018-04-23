@@ -58,15 +58,18 @@ export default {
         docsBranch = 'master',
         docsRepo = repo
       } = this.$site.themeConfig
+      const source = this.$page.frontmatter.source
 
-      let path = normalize(this.$page.path)
-      if (endingSlashRE.test(path)) {
-        path += 'README.md'
-      } else {
-        path += '.md'
-      }
+      if (source && editLinks) {
+        return source.replace('/blob/', '/edit/')
+      } else if (docsRepo && editLinks) {
+        let path = normalize(this.$page.path)
+        if (endingSlashRE.test(path)) {
+          path += 'README.md'
+        } else {
+          path += '.md'
+        }
 
-      if (docsRepo && editLinks) {
         const base = outboundRE.test(docsRepo)
           ? docsRepo
           : `https://github.com/${docsRepo}`

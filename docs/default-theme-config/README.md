@@ -219,6 +219,7 @@ next: false
 ## Git Repo and Edit Links
 
 Providing `themeConfig.repo` auto generates a GitHub link in the navbar and "Edit this page" links at the bottom of each page.
+You can override the generated URL of the edit link for a particular page with a `source` attribute in the front matter.
 
 ``` js
 // .vuepress/config.js
