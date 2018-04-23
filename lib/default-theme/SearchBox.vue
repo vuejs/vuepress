@@ -51,8 +51,8 @@ export default {
         return
       }
 
-      const max = this.searchBoxConfig.suggestionsMax
-      const { pages } = this.$site
+      const { pages, themeConfig } = this.$site
+      const max = themeConfig.searchMaxSuggestions || 5
       const localePath = this.$localePath
       const matches = item => (
         item.title &&
@@ -88,9 +88,6 @@ export default {
       const navCount = (this.$site.themeConfig.nav || []).length
       const repo = this.$site.repo ? 1 : 0
       return navCount + repo <= 2
-    },
-    searchBoxConfig () {
-      return Object.assign({ suggestionsMax: 5 }, this.$site.themeConfig.searchBox)
     }
   },
   methods: {
