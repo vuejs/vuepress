@@ -1,9 +1,3 @@
----
-meta:
-- name: keywords
-  content: static docs generator vue
----
-
 # Markdown Extensions
 
 ## Header Anchors
@@ -67,7 +61,7 @@ Given the following directory structure:
   - [vuejs.org](https://vuejs.org)
   - [VuePress on GitHub](https://github.com/vuejs/vuepress)
 
-## YAML Front Matter
+## Front Matter
 
 [YAML front matter](https://jekyllrb.com/docs/frontmatter/) is supported out of the box:
 
@@ -89,6 +83,30 @@ meta:
     content: hello
   - name: keywords
     content: super duper SEO
+---
+```
+
+### Alternative Front Matter Formats
+
+In addition, VuePress also supports JSON or [TOML](https://github.com/toml-lang/toml) front matter.
+
+JSON front matter needs to start and end in curly braces:
+
+```
+---
+{
+  "title": "Blogging Like a Hacker",
+  "lang": "en-US"
+}
+---
+```
+
+TOML front matter needs to be explicitly marked as TOML:
+
+```
+---toml
+title = "Blogging Like a Hacker"
+lang = "en-US"
 ---
 ```
 

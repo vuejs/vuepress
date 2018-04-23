@@ -1,9 +1,3 @@
----
-meta:
-- name: keywords
-  content: static docs generator vue
----
-
 # Markdown 拓展
 
 ## Header Anchors
@@ -22,7 +16,7 @@ meta:
   - [vuejs.org](https://vuejs.org)
   - [VuePress on GitHub](https://github.com/vuejs/vuepress)
 
-## YAML Front Matter
+## Front Matter
 
 VuePress 提供了对 [YAML front matter](https://jekyllrb.com/docs/frontmatter/) 开箱即用的支持:
 
@@ -44,6 +38,30 @@ meta:
     content: hello
   - name: keywords
     content: super duper SEO
+---
+```
+
+### 其他格式的 Front Matter
+
+除了 YAML 之外，VuePress 也支持 JSON 或者 [TOML](https://github.com/toml-lang/toml) 格式的 front matter。
+
+JSON front matter 需要以花括号开头和结尾：
+
+```
+---
+{
+  "title": "Blogging Like a Hacker",
+  "lang": "en-US"
+}
+---
+```
+
+TOML front matter 需要显式地标注为 TOML：
+
+```
+---toml
+title = "Blogging Like a Hacker"
+lang = "en-US"
 ---
 ```
 
