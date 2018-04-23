@@ -77,7 +77,7 @@ export default {
     .algolia-docsearch-footer
       border-color $borderColor
     .ds-cursor .algolia-docsearch-suggestion--content
-      background-color #e7edf3!important
+      background-color #e7edf3 !important
       color $textColor
 
 @media (min-width: $MQMobile)
@@ -95,15 +95,18 @@ export default {
           width 100%
           vertical-align top
         .ds-dropdown-menu
-          min-width 515px!important
+          min-width 515px !important
 
 @media (max-width: $MQMobile)
   .algolia-search-wrapper
+    .ds-dropdown-menu
+      min-width calc(100vw - 4rem) !important
+      max-width calc(100vw - 4rem) !important
     .algolia-docsearch-suggestion--wrapper
-      padding 5px 7px 5px 5px!important
+      padding 5px 7px 5px 5px !important
     .algolia-docsearch-suggestion--subcategory-column
-      padding 0!important
-      background white!important
+      padding 0 !important
+      background white !important
     .algolia-docsearch-suggestion--subcategory-column-text:after
       content " > "
       font-size 10px
@@ -112,10 +115,5 @@ export default {
       width 5px
       margin -3px 3px 0
       vertical-align middle
-
-@media (max-width: $MQMobileNarrow)
-  .ds-dropdown-menu
-    min-width 320px!important
-    max-width 320px!important
 
 </style>
