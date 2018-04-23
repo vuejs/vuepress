@@ -68,7 +68,7 @@ The compiled content of the current `.md` file being rendered will be available 
 
 ## Theme Level Enhancements
 
-Themes can extend the Vue app that VuePress uses by creating a `index.js` file in the root of the theme. The file should `export default` a hook function which will receive an object containing some app level values. You can use this hook to install additional Vue plugins, register global components, or add additional router hooks:
+Themes can extend the Vue app that VuePress uses by exposing an `index.js` file at the root of the theme. The file should `export default` a hook function which will receive an object containing some app level values. You can use this hook to install additional Vue plugins, register global components, or add additional router hooks:
 
 ``` js
 export default ({
