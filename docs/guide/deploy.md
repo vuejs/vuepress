@@ -24,10 +24,6 @@ The following guides are based on a few shared assumptions:
 
 2. Inside your project, create `deploy.sh` with the following content (with highlighted lines uncommented appropriately) and run it to deploy:
 
-::: tip
-You can also run this script in your CI setup to enable automatic deployment on each push.
-:::
-
 ``` bash{13,20,23}
 #!/usr/bin/env sh
 
@@ -56,17 +52,21 @@ git commit -m 'deploy'
 cd -
 ```
 
+::: tip
+You can also run the above script in your CI setup to enable automatic deployment on each push.
+:::
+
 ## GitLab Pages and GitLab CI
 
-1. Set correct `base` in `docs/.vuepress/config.js`. 
+1. Set correct `base` in `docs/.vuepress/config.js`.
 
    If you are deploying to `https://<USERNAME or GROUP>.gitlab.io/`, you can omit `base` as it defaults to `"/"`.
 
    If your are deploying to `https://<USERNAME or GROUP>.gitlab.io/<REPO>/`, (i.e. your repository is at `https://gitlab.com/<USERNAME>/REPO>`), set `base` to `"/<REPO>/"`.
- 
+
 2. Set `dest` in `.vuepress/config.js` to `public`.
 
-3. Create a file called `.gitlab-ci.yml` in the root of your project with the content below. This will build and deploy your site whenever you make changes to your content. 
+3. Create a file called `.gitlab-ci.yml` in the root of your project with the content below. This will build and deploy your site whenever you make changes to your content.
 
 ```
 image: node:9.11.1
@@ -85,7 +85,7 @@ pages:
   only:
   - master
 ```
-   
+
 
 ## Netlify
 

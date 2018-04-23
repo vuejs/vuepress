@@ -6,15 +6,52 @@
 
 ## 链接
 
-- 内部的、并以 `.md` or `.html` 结尾的链接，将会被转换成 `<router-link>` 用于 SPA 导航。
+### 内部链接
 
-  - [首页](/zh/)
-  - [Markdown 的配置](../config/#markdown)
+内部的、并以 `.md` or `.html` 结尾的链接，将会被转换成 `<router-link>` 用于 SPA 导航。
 
-- 外部的链接将会被自动地设置为  `target="_blank"`:
+站内的每一个子文件夹都应当有一个 `README.md` 文件，它会被自动编译为 `index.html`。
 
-  - [vuejs.org](https://vuejs.org)
-  - [VuePress on GitHub](https://github.com/vuejs/vuepress)
+::: tip
+在链接到一个文件夹的 `index.html` 时，确保你的链接以 `/` 结尾，否则该链接将导致 404。比如，用 `/config/` 而不是 `/config`。
+:::
+
+如果你想要链接到另一个 markdown 文件：
+
+1. 确保链接以 `.html` 或 `.md` 结尾；
+2. 确保路径大小写正确，因为路径的匹配是大小写敏感的。
+
+#### 示例
+
+以如下的文件结构为例：
+
+```
+.
+├─ README.md
+├─ foo
+│  ├─ README.md
+│  ├─ one.md
+│  └─ two.md
+└─ bar
+   ├─ README.md
+   ├─ three.md
+   └─ four.md
+```
+
+```md
+[Home](/) <!-- 跳转到根部的 README.md -->
+[foo](/foo/) <!-- 跳转到 foo 文件夹的 index.html -->
+[foo heading anchor](/foo/#heading) <!-- 跳转到 foo/index.html 的特定 anchor 位置 -->
+[foo - one](/foo/one.html) <!-- 具体文件可以使用 .html 结尾 -->
+[foo - two](/foo/two.md) <!-- 也可以用 .md -->
+```
+
+### 外部链接
+
+外部的链接将会被自动地设置为  `target="_blank"`:
+
+- [vuejs.org](https://vuejs.org)
+- [VuePress on GitHub](https://github.com/vuejs/vuepress)
 
 ## Front Matter
 

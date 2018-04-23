@@ -149,11 +149,13 @@ module.exports = {
 ```
 .
 ├─ README.md
-├─ foo
+├─ contact.md
+├─ about.md
+├─ foo/
 │  ├─ README.md
 │  ├─ one.md
 │  └─ two.md
-└─ bar
+└─ bar/
    ├─ README.md
    ├─ three.md
    └─ four.md
@@ -166,22 +168,32 @@ module.exports = {
 module.exports = {
   themeConfig: {
     sidebar: {
-      // sidebar for pages under /foo/
       '/foo/': [
-        '',
-        'one',
-        'two'
+        '',     /* /foo/ */
+        'one',  /* /foo/one.html */
+        'two'   /* /foo/two.html */
       ],
-      // sidebar for pages under /bar/
+
       '/bar/': [
-        '',
-        'three',
-        'four'
+        '',      /* /bar/ */
+        'three', /* /bar/three.html */
+        'four'   /* /bar/four.html */
+      ],
+
+      // fallback
+      '/': [
+        '',        /* / */
+        'contact', /* /contact.html */
+        'about'    /* /about.html */
       ]
     }
   }
 }
 ```
+
+::: warning
+确保 fallback 侧边栏被最后定义。VuePress 会按顺序遍历侧边栏配置来寻找匹配的配置。
+:::
 
 ### 自动生成侧栏
 
@@ -202,6 +214,38 @@ sidebar: auto
 sidebar: false
 ---
 ```
+
+## 搜索框
+
+### 内置搜索
+
+你可以通过设置 `themeConfig.search: false` 来禁用默认的搜索框，或是通过 `themeConfig.searchMaxSuggestions` 来调整默认搜索框显示的搜索结果数量：
+
+``` js
+module.exports = {
+  themeConfig: {
+    search: false,
+    searchMaxSuggestions: 10
+  }
+}
+```
+
+### Algolia 搜索
+
+你可以通过 `themeConfig.algolia` 选项来用 [Algolia DocSearch](https://community.algolia.com/docsearch/) 替换内置的搜索框。要启用 Algolia 搜索，你需要至少提供 `apiKey` 和 `indexName`：
+
+```js
+module.exports = {
+  themeConfig: {
+    algolia: {
+      apiKey: '<API_KEY>',
+      indexName: '<INDEX_NAME>'
+    }
+  }
+}
+```
+
+更多选项请参考 [Algolia DocSearch 的文档](https://github.com/algolia/docsearch#docsearch-options)。
 
 ## 上 / 下一篇链接
 
@@ -227,7 +271,7 @@ module.exports = {
     // 自定义仓库链接文字。默认从 `themeConfig.repo` 中自动推断为
     // "GitHub"/"GitLab"/"Bitbucket" 其中之一，或是 "Source"。
     repoLabel: '查看源码',
-    
+
     // 以下为可选的编辑链接选项
 
     // 假如你的文档仓库和项目本身不在一个仓库：

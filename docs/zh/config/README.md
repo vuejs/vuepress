@@ -97,24 +97,6 @@ module.exports = {
 当然，仅仅只在你的网站部署后能用 SSL 的时候开启它，因为 service worker 只能在 HTTPs 的链接下注册。
 :::
 
-### algolia
-
-- 类型: `Object`
-- 默认值: `undefined`
-
-使用 `algolia` 选项可以让你用 [algolia docsearch](https://github.com/algolia/docsearch) 取代默认的基于 headers 的搜索 。为了使其生效，你必须提供至少 `apiKey` 和 `indexName` 这两个选项：
-
-```js
-module.exports = {
-  algolia: {
-    apiKey: '<API_KEY>',
-    indexName: '<INDEX_NAME>'
-  }
-}
-```
-
-其他可用的选项请参考 [docsearch options](https://github.com/algolia/docsearch#docsearch-options)。
-
 ### locales
 
 - 类型: `{ [path: string]: Object }`

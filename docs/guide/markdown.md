@@ -13,15 +13,7 @@ Inbound links ending in `.md` or `.html` are converted to `<router-link>` for SP
 Each sub-directory in your static site should contain a `README.md`. It will automatically be converted to `index.html`.
 
 ::: tip
-When writing the relative path to a directory's `index.html`, don't forget to close it off with a `/`, otherwise you will get a 404.
-
-```md
-<!-- You'll get a 404 -->
-[About Page](/about)
-
-<!-- This is correct -->
-[About Page](/about/)
-```
+When writing the relative path to a directory's `index.html`, don't forget to close it off with a `/`, otherwise you will get a 404. For example, use `/config/` instead of `/config`.
 :::
 
 If you want to link to another markdown file within a directory, remember to:
@@ -56,10 +48,10 @@ Given the following directory structure:
 
 ### External Links
 
-- Outbound links automatically gets `target="_blank"`:
+Outbound links automatically gets `target="_blank"`:
 
-  - [vuejs.org](https://vuejs.org)
-  - [VuePress on GitHub](https://github.com/vuejs/vuepress)
+- [vuejs.org](https://vuejs.org)
+- [VuePress on GitHub](https://github.com/vuejs/vuepress)
 
 ## Front Matter
 

@@ -199,8 +199,6 @@ Make sure to define the fallback configuration last.
 VuePress checks each sidebar config from top to bottom. If the fallback configuration was first, VuePress would incorrectly match `/foo/` or `/bar/four.html` because they both start with `/`.
 :::
 
-
-
 ### Auto Sidebar for Single Pages
 
 If you wish to automatically generate a sidebar that contains only the header links for the current page, you can use `YAML front matter` on that page:
@@ -220,6 +218,38 @@ You can disable the sidebar on a specific page with `YAML front matter`:
 sidebar: false
 ---
 ```
+
+## Search Box
+
+### Built-in Search
+
+You can disable the built-in search box with `themeConfig.search: false`, and customize how many suggestions to be shown with `themeConfig.searchMaxSuggestions`:
+
+``` js
+module.exports = {
+  themeConfig: {
+    search: false,
+    searchMaxSuggestions: 10
+  }
+}
+```
+
+### Algolia Search
+
+The `themeConfig.algolia` option allows you to use [Algolia DocSearch](https://community.algolia.com/docsearch/) to replace the simple built-in search. To enable it, you need to provide at least `apiKey` and `indexName`:
+
+```js
+module.exports = {
+  themeConfig: {
+    algolia: {
+      apiKey: '<API_KEY>',
+      indexName: '<INDEX_NAME>'
+    }
+  }
+}
+```
+
+For more options, refer to [Algolia DocSearch's documentation](https://github.com/algolia/docsearch#docsearch-options).
 
 ## Prev / Next Links
 
@@ -245,9 +275,9 @@ module.exports = {
     // Customising the header label
     // Defaults to "GitHub"/"GitLab"/"Bitbucket" depending on `themeConfig.repo`
     repoLabel: 'Contribute!',
-    
+
     // Optional options for generating "Edit this page" link
- 
+
     // if your docs are in a different repo from your main project:
     docsRepo: 'vuejs/vuepress',
     // if your docs are not at the root of the repo:
