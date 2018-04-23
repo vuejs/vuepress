@@ -28,12 +28,6 @@ module.exports = {
     repo: 'vuejs/vuepress',
     editLinks: true,
     docsDir: 'docs',
-    algolia: {
-      appId: 'BH4D9OD16A',
-      apiKey: '85cc3221c9f23bfbaa4e3913dd7625ea',
-      indexName: 'vuejs',
-      algoliaOptions: { facetFilters: ["version:v2"] }
-    },
     locales: {
       '/': {
         label: 'English',
