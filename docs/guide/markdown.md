@@ -12,10 +12,55 @@ Headers automatically get anchor links applied. Rendering of anchors can be conf
 
 ## Links
 
-- Inbound links ending in `.md` or `.html` are converted to `<router-link>` for SPA navigation.
+### Internal Links
 
-  - [Home](/)
-  - [Configuring Markdown](../config/#markdown)
+Inbound links ending in `.md` or `.html` are converted to `<router-link>` for SPA navigation.
+
+Each sub-directory in your static site should contain a `README.md`. It will automatically be converted to `index.html`.
+
+::: tip
+When writing the relative path to a directory's `index.html`, don't forget to close it off with a `/`, otherwise you will get a 404.
+
+```md
+<!-- You'll get a 404 -->
+[About Page](/about)
+
+<!-- This is correct -->
+[About Page](/about/)
+```
+:::
+
+If you want to link to another markdown file within a directory, remember to:
+
+1.  Append it with either `.html` or `.md`
+2.  Make sure the case matches since the path is case-sensitive
+
+#### Example
+
+Given the following directory structure:
+
+```
+.
+├─ README.md
+├─ foo
+│  ├─ README.md
+│  ├─ one.md
+│  └─ two.md
+└─ bar
+   ├─ README.md
+   ├─ three.md
+   └─ four.md
+```
+
+```md
+[Home](/) <!-- Sends the user to the root README.md -->
+[foo](/foo/) <!-- Sends the user to index.html of directory foo -->
+[foo heading anchor](/foo/#heading) <!-- Anchors user to a heading in the foo README file -->
+[foo - one](/foo/one.html) <!-- You can append .html -->
+[foo - two](/foo/two.md) <!-- Or you can append .md -->
+```
+
+### External Links
 
 - Outbound links automatically gets `target="_blank"`:
 
