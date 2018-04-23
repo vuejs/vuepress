@@ -41,6 +41,8 @@ export default {
   computed: {
     shouldShowNavbar () {
       const { themeConfig } = this.$site
+      const { frontmatter } = this.$page
+      if (frontmatter.navbar === false) return false
       return (
         this.$title ||
         themeConfig.logo ||
