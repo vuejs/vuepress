@@ -103,7 +103,7 @@ Also, only enable this if you are able to deploy your site with SSL, since servi
 - Type: `Object`
 - Default: `undefined`
 
-Using `algolia` option allows you to disable the default built-in headers-based search and leverage the [algolia docsearch](https://github.com/algolia/docsearch), to enable this search, You have to provide at least `apiKey` and `indexName`:
+Using `algolia` option allows you to leverage [algolia docsearch](https://github.com/algolia/docsearch) to displace the default built-in headers-based search, to enable this search, you have to provide at least `apiKey` and `indexName`:
 
 ```js
 module.exports = {

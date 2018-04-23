@@ -102,7 +102,7 @@ module.exports = {
 - 类型: `Object`
 - 默认值: `undefined`
 
-使用 `algolia` 选项可以让你禁用掉默认的基于 headers 的搜索，从而使用 [algolia docsearch](https://github.com/algolia/docsearch)。为了使其生效，你必须提供至少 `apiKey` 和 `indexName` 这两个选项：
+使用 `algolia` 选项可以让你用 [algolia docsearch](https://github.com/algolia/docsearch) 取代默认的基于 headers 的搜索 。为了使其生效，你必须提供至少 `apiKey` 和 `indexName` 这两个选项：
 
 ```js
 module.exports = {
@@ -113,7 +113,7 @@ module.exports = {
 }
 ```
 
-其他可用的选项可以参考 [docsearch options](https://github.com/algolia/docsearch#docsearch-options)。
+其他可用的选项请参考 [docsearch options](https://github.com/algolia/docsearch#docsearch-options)。
 
 ### locales
 
