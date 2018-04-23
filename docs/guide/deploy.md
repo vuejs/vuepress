@@ -88,4 +88,4 @@ cd -
    }
    ```
 
-3. Deploy with the command `firebase deploy`
+3. After running `yarn docs:build` or `npm run docs:build`, deploy with the command `firebase deploy`
