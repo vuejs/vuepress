@@ -56,6 +56,37 @@ git commit -m 'deploy'
 cd -
 ```
 
+## GitLab Pages and GitLab CI
+
+1. Set correct `base` in `docs/.vuepress/config.js`. 
+
+   If you are deploying to `https://<USERNAME or GROUP>.gitlab.io/`, you can omit `base` as it defaults to `"/"`.
+
+   If your are deploying to `https://<USERNAME or GROUP>.gitlab.io/<REPO>/`, (i.e. your repository is at `https://gitlab.com/<USERNAME>/REPO>`), set `base` to `"/<REPO>/"`.
+ 
+2. Set `dest` in `.vuepress/config.js` to `public`.
+
+3. Create a file called `.gitlab-ci.yml` in the root of your project with the content below. This will build and deploy your site whenever you make changes to your content. 
+
+```
+image: node:9.11.1
+
+pages:
+  cache:
+    paths:
+    - node_modules/
+
+  script:
+  - npm install
+  - npm run docs:build
+  artifacts:
+    paths:
+    - public
+  only:
+  - master
+```
+   
+
 ## Netlify
 
 1. On Netlify, setup up a new project from GitHub with the following settings:
