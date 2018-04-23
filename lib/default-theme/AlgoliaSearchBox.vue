@@ -8,16 +8,14 @@
 export default {
   props: ['options'],
   mounted () {
+    console.log(this.options)
     Promise.all([
       import(/* webpackChunkName: "docsearch" */ 'docsearch.js/dist/cdn/docsearch.min.js'),
       import(/* webpackChunkName: "docsearch" */ 'docsearch.js/dist/cdn/docsearch.min.css')
     ]).then(([docsearch]) => {
       docsearch = docsearch.default
       docsearch(Object.assign(this.options, {
-        inputSelector: '#algolia-search-input',
-        autocompleteOptions: {
-          openOnFocus: true
-        }
+        inputSelector: '#algolia-search-input'
       }))
     })
   }
@@ -27,24 +25,11 @@ export default {
 <style lang="stylus">
 @import './styles/config.styl'
 
-// TODO align with styles/config.styl
-$border = #ddd
-$dark   = #2c3e50
-$medium = #34495e
-$light  = #7f8c8d
-$green  = #42b983
-$border = #dddddd
-$codebg = #f8f8f8
-$red = #ff6666
-$info = #1C90F3
-
 .algolia-search-wrapper
   & > span
     vertical-align middle
   .algolia-autocomplete
     line-height normal
-    & > input:first-child
-      display none
     .ds-dropdown-menu
       background-color #fff
       border 1px solid #999
@@ -61,16 +46,16 @@ $info = #1C90F3
       .ds-suggestions
         margin-top 0
       .ds-suggestion
-        border-bottom 1px solid $border
+        border-bottom 1px solid $borderColor
     .algolia-docsearch-suggestion--highlight
       color #2c815b
     .algolia-docsearch-suggestion
-      border-color $border
+      border-color $borderColor
       padding 0
       .algolia-docsearch-suggestion--category-header
         padding 5px 10px
         margin-top 0
-        background $green
+        background $accentColor
         color #fff
         font-weight 600
         .algolia-docsearch-suggestion--highlight
@@ -80,21 +65,21 @@ $info = #1C90F3
       .algolia-docsearch-suggestion--title
         font-weight 600
         margin-bottom 0
-        color $dark
+        color $textColor
       .algolia-docsearch-suggestion--subcategory-column
         vertical-align top
         padding 5px 7px 5px 5px
-        border-color $border
+        border-color $borderColor
         background #f1f3f5
         &:after
           display none
       .algolia-docsearch-suggestion--subcategory-column-text
         color #555
     .algolia-docsearch-footer
-      border-color $border
+      border-color $borderColor
     .ds-cursor .algolia-docsearch-suggestion--content
       background-color #e7edf3!important
-      color $dark
+      color $textColor
 
 @media (min-width: $MQMobile)
   .algolia-search-wrapper
