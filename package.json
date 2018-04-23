@@ -56,6 +56,7 @@
     "file-loader": "^1.1.11",
     "fs-extra": "^5.0.0",
     "globby": "^8.0.1",
+    "gray-matter": "^4.0.1",
     "js-yaml": "^3.11.0",
     "koa-connect": "^2.0.1",
     "koa-mount": "^3.0.0",
@@ -91,8 +92,7 @@
     "webpack-merge": "^4.1.2",
     "webpack-serve": "^0.3.1",
     "webpackbar": "^2.6.1",
-    "workbox-build": "^3.1.0",
-    "yaml-front-matter": "^4.0.0"
+    "workbox-build": "^3.1.0"
   },
   "devDependencies": {
     "conventional-changelog": "^1.1.23",
