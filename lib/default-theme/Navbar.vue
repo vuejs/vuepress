@@ -33,7 +33,6 @@ export default {
       return algolia && algolia.appId && algolia.apiKey && algolia.indexName
     },
     isSearch() {
-      console.log(this.isAlgoliaSearch)
       return !this.isAlgoliaSearch && this.$site.themeConfig.search !== false
     }
   }
