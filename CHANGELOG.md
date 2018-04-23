@@ -1,3 +1,13 @@
+<a name="0.8.3"></a>
+## [0.8.3](https://github.com/vuejs/vuepress/compare/v0.8.2...v0.8.3) (2018-04-23)
+
+
+### Bug Fixes
+
+* always write override.style ([9861deb](https://github.com/vuejs/vuepress/commit/9861deb))
+
+
+
 <a name="0.8.2"></a>
 ## [0.8.2](https://github.com/vuejs/vuepress/compare/v0.8.1...v0.8.2) (2018-04-23)
 
