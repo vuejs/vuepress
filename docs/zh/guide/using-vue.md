@@ -103,7 +103,9 @@ export default {
 └─ .vuepress
    └─ components
       ├─ demo-1.vue
-      └─ OtherComponent.vue
+      ├─ OtherComponent.vue
+      └─ Foo
+         └─ Bar.vue
 ```
 
 你可以直接使用这些组件在任意的 Markdown 文件中（组件名是通过文件名取到的）：
@@ -111,11 +113,14 @@ export default {
 ``` md
 <demo-1/>
 <OtherComponent/>
+<Foo-Bar/>
 ```
 
 <demo-1></demo-1>
 
 <OtherComponent/>
+
+<Foo-Bar/>
 
 ::: warning 重要！
 请确保一个自定义组件的名字包含连接符或者是 PascalCase，否则，它将会被视为一个内联元素，并被包裹在一个 `<p>` 标签中，这将会导致 HTML 渲染紊乱，因为 HTML 标准规定， `<p>` 标签中不允许放置任何块级元素。
