@@ -302,6 +302,26 @@ $borderColor = #eaecef
 $codeBgColor = #282c34
 ```
 
+## 自定义页面类
+
+有时候你可能需要为特定页面添加一个 CSS 类名，以方便针对该页面添加一些专门的 CSS。这种情况下你可以在该页面的 YAML front matter 中声明一个 `pageClass`：
+
+``` yaml
+---
+pageClass: custom-page-class
+---
+```
+
+然后你就可以写专门针对该页面的 CSS 了：
+
+``` css
+/* .vuepress/override.styl */
+
+.theme-container.custom-page-class {
+  /* 特定页面的 CSS */
+}
+```
+
 ## 特定页面的自定义布局
 
 默认情况下，每个 `*.md` 文件将会被渲染在一个 `<div class="page">` 容器中，同时还有侧边栏、自动生成的编辑链接，以及上 / 下一篇文章的链接。如果你想要使用一个完全自定义的组件来代替当前的页面（而只保留导航栏），你可以再次使用 `YAML front matter` 来指定这个组件。
