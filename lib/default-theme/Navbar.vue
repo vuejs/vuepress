@@ -12,7 +12,7 @@
       </span>
     </router-link>
     <div class="links">
-      <AlgoliaSearchBox v-if="isAlgoliaSearch" :options="$site.themeConfig.algolia"/>
+      <AlgoliaSearchBox v-if="isAlgoliaSearch" :options="algolia"/>
       <SearchBox v-if="isSearch"/>
       <NavLinks class="can-hide"/>
     </div>
@@ -28,8 +28,11 @@ import NavLinks from './NavLinks.vue'
 export default {
   components: { SidebarButton, NavLinks, SearchBox, AlgoliaSearchBox },
   computed: {
+    algolia () {
+      return this.$themeLocaleConfig.algolia || this.$site.themeConfig.algolia || {}
+    },
     isAlgoliaSearch () {
-      const { algolia } = this.$site.themeConfig
+      const algolia = this.algolia
       return algolia && algolia.appId && algolia.apiKey && algolia.indexName
     },
     isSearch() {
