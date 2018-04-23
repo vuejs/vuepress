@@ -129,5 +129,5 @@ export default {
   .nav-item > a
     &:hover, &.router-link-active
       margin-bottom -2px
-      border-bottom 2px solid #42b983
+      border-bottom 2px solid $accentColor
 </style>
