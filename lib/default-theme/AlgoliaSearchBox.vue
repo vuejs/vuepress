@@ -8,7 +8,6 @@
 export default {
   props: ['options'],
   mounted () {
-    console.log(this.options)
     Promise.all([
       import(/* webpackChunkName: "docsearch" */ 'docsearch.js/dist/cdn/docsearch.min.js'),
       import(/* webpackChunkName: "docsearch" */ 'docsearch.js/dist/cdn/docsearch.min.css')
