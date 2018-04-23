@@ -46,7 +46,7 @@ cd -
 
 ## GitLab Pages and GitLab CI
 
-1. Set correct `base` in `.vuepress/config.js`. 
+1. Set correct `base` in `docs/.vuepress/config.js`. 
 
    If you are deploying to `https://<USERNAME or GROUP>.gitlab.io/`, you can omit `base` as it defaults to `"/"`.
 
@@ -59,16 +59,19 @@ cd -
 ```
 image: node:9.11.1
 
-before_script:
-  - npm install -g npx
-
 pages:
+  cache:
+    paths:
+    - node_modules/
+
   script:
-  - npm install -D vuepress
-  - npx vuepress build docs
+  - npm install
+  - npm run docs:build
   artifacts:
     paths:
     - public
+  only:
+  - master
 ```
    
 
