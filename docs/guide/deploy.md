@@ -16,7 +16,7 @@ The following guides are based on a few shared assumptions:
 
 ## GitHub Pages
 
-1. Set correct `base` in `.vuepress/config.js`.
+1. Set correct `base` in `docs/.vuepress/config.js`.
 
    If you are deploying to `https://<USERNAME>.github.io/`, you can omit `base` as it defaults to `"/"`.
 
@@ -64,3 +64,30 @@ cd -
   - **Publish directory:** `docs/.vuepress/dist`
 
 2. Hit the deploy button!
+
+## Google Firebase
+
+1. Make sure you have [firebase-tools](https://www.npmjs.com/package/firebase-tools) installed.
+
+2. Create `firebase.json` and `.firebaserc` at the root of your project with the following content:
+
+   `firebase.json`:
+   ```json
+   {
+     "hosting": {
+       "public": "./docs/.vuepress/dist",
+       "ignore": []
+     }
+   }
+   ```
+
+   `.firebaserc`:
+   ```js
+   {
+     "projects": {
+       "default": "<YOUR_FIREBASE_ID>"
+     }
+   }
+   ```
+
+3. After running `yarn docs:build` or `npm run docs:build`, deploy with the command `firebase deploy`.
