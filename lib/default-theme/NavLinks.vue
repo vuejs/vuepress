@@ -23,7 +23,7 @@
 <script>
 import OutboundLink from './OutboundLink.vue'
 import DropdownLink from './DropdownLink.vue'
-import { isActive, resolveNavLinkItem } from './util'
+import { resolveNavLinkItem } from './util'
 import NavLink from './NavLink.vue'
 
 export default {
@@ -94,9 +94,6 @@ export default {
 
       return 'Source'
     },
-  },
-  methods: {
-    isActive
   }
 }
 </script>
