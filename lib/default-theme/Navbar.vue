@@ -28,11 +28,8 @@ import NavLinks from './NavLinks.vue'
 export default {
   components: { SidebarButton, NavLinks, SearchBox, AlgoliaSearchBox },
   computed: {
-    algolia () {
-      return this.$themeLocaleConfig.algolia || this.$site.themeConfig.algolia || {}
-    },
     isAlgoliaSearch () {
-      const algolia = this.algolia
+      const algolia = this.$themeLocaleConfig.algolia || this.$site.themeConfig.algolia || {}
       return algolia && algolia.apiKey && algolia.indexName
     }
   }
