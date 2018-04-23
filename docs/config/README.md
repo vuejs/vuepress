@@ -105,6 +105,22 @@ Also, only enable this if you are able to deploy your site with SSL, since servi
 
 Specify locales for i18n support. For more details, see the guide on [Internationalization](../guide/i18n.md).
 
+### sitemap
+
+- Type: `Object`
+- Default: `undefined`
+
+Specify sitemap option
+
+```javascript
+sitemap: {
+  //domain is required, you need specify where domain host files
+  domain: 'https://vuepress.vuejs.org',
+  //filename (optionnal), sitemap name file. by default sitemap.txt. You can enabled sitemap xml format just with xml extension (e.g sitemap.xml)
+  filename: 'mysitemap.txt'
+}
+```
+
 ## Theming
 
 ### theme
