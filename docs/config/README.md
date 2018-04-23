@@ -98,6 +98,24 @@ The `serviceWorker` option only handles the service worker. To make your site fu
 Also, only enable this if you are able to deploy your site with SSL, since service worker can only be registered under HTTPs URLs.
 :::
 
+### algolia
+
+- Type: `Object`
+- Default: `undefined`
+
+Using `algolia` option allows you to disable the default built-in headers-based search and leverage the [algolia docsearch](https://github.com/algolia/docsearch), to enable this search, You have to provide at least `apiKey` and `indexName`:
+
+```js
+module.exports = {
+  algolia: {
+    apiKey: '<API_KEY>',
+    indexName: '<INDEX_NAME>'
+  }
+}
+```
+
+Rest available options refer to [docsearch options](https://github.com/algolia/docsearch#docsearch-options). 
+
 ### locales
 
 - Type: `{ [path: string]: Object }`
