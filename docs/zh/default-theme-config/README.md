@@ -214,7 +214,7 @@ next: false
 ---
 ```
 
-## Github 和编辑链接
+## Git 仓库和编辑链接
 
 当你提供了 `themeConfig.repo` 选项，将会自动在每个页面的导航栏生成生成一个 GitHub 链接，以及在页面的底部生成一个 `"Edit this page"` 链接。
 
@@ -224,10 +224,18 @@ module.exports = {
   themeConfig: {
     // 假定是 GitHub. 同时也可以是一个完整的 GitLab URL
     repo: 'vuejs/vuepress',
-    // 当你的文档不是仓库的根目录时需要设置
-    docsDir: 'docs',
-    // 可选的, 默认是  master
-    docsBranch: 'master',
+    // 自定义仓库链接文字。默认从 `themeConfig.repo` 中自动推断为
+    // "GitHub"/"GitLab"/"Bitbucket" 其中之一，或是 "Source"。
+    repoLabel: '查看源码',
+    
+    // 以下为可选的编辑链接选项
+
+    // 假如你的文档仓库和项目本身不在一个仓库：
+    docsRepo: 'vuejs/vuepress',
+    // 假如文档不是放在仓库的根目录下：
+    docsDir: 'docs',
+    // 假如文档放在一个特定的分支下：
+    docsBranch: 'master',
     // 默认是 true, 设置为 false 来禁用
     editLinks: true,
     // 默认为 "Edit this page"
