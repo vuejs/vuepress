@@ -174,6 +174,34 @@ module.exports = {
 
 Options for [postcss-loader](https://github.com/postcss/postcss-loader). Note specifying this value will overwrite autoprefixer and you will need to include it yourself.
 
+### stylus
+
+- Type: `Object`
+- Default: `{ preferPathResolver: 'webpack' }`
+
+Options for [stylus-loader](https://github.com/shama/stylus-loader).
+
+### scss
+
+- Type: `Object`
+- Default: `{}`
+
+Options for [sass-loader](https://github.com/postcss/postcss-loader) to load `*.scss` files.
+
+### sass
+
+- Type: `Object`
+- Default: `{ indentedSyntax: true }`
+
+Options for [sass-loader](https://github.com/webpack-contrib/sass-loader) to load `*.sass` files.
+
+### less
+
+- Type: `Object`
+- Default: `{}`
+
+Options for [less-loader](https://github.com/webpack-contrib/less-loader).
+
 ### configureWebpack
 
 - Type: `Object | Function`
