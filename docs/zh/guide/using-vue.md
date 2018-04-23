@@ -121,6 +121,37 @@ export default {
 请确保一个自定义组件的名字包含连接符或者是 PascalCase，否则，它将会被视为一个内联元素，并被包裹在一个 `<p>` 标签中，这将会导致 HTML 渲染紊乱，因为 HTML 标准规定， `<p>` 标签中不允许放置任何块级元素。
 :::
 
+
+## 使用预处理器
+
+VuePress 对以下预处理器已经内置相关的 webpack 配置：`sass`、`scss`、`less`、`stylus` 和 `pug`。要使用它们你只需要在项目中安装对应的依赖即可。例如，要使用 `sass`，需要安装：
+
+```bash
+yarn add -D sass-loader node-sass
+```
+ 
+然后你就可以在 Markdown 或是组件中使用如下代码：
+
+```vue
+<style lang="sass">
+  .title
+    font-size: 20px
+</style>
+```
+
+要在组件中使用 `<template lang="pug">`，则需要安装 `pug` 和 `pug-plain-loader`:
+
+```bash
+yarn add -D pug pug-plain-loader
+```
+
+::: tip
+需要指出的是，如果你是一个 `stylus` 用户，你并不需要在你的项目中安装 `stylus` 和 `stylus-loader`，因为 VuePress 已经内置了它们。
+  
+对于那些没有内置的预处理器，除了安装对应的依赖，你还需要 [拓展内部的 Webpack 配置](../config/#configurewebpack)。
+:::
+
+
 ## 脚本和样式提升
 
 有时，你可以只想在当前页面应用一些 JavaScript 或者 CSS，在这种情况下，你可以直接在 Markdown 文件中使用原生的 `<script>` 或者 `<style>` 标签，它们将会从编译后的 HTML 文件中提取出来，并作为生成的 Vue 单文件组件的 `<script>` 和 `<style>` 标签。
