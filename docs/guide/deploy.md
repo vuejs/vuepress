@@ -1,10 +1,10 @@
-# Deploying
 
+# Deploying
 The following guides assumes you are placing your docs inside the `docs` directory of your project and using the default build output location.
 
 ## GitHub Pages
 
-1. Set correct `base` in `.vuepress/config.js`. 
+1. Set correct `base` in `docs/.vuepress/config.js`.
 
    If you are deploying to `https://<USERNAME>.github.io/`, you can omit `base` as it defaults to `"/"`.
 
@@ -73,12 +73,8 @@ cd -
    ```json
    {
      "hosting": {
-       "public": "./.vuepress/dist",
-       "ignore": [
-         "firebase.json",
-         "**/.*",
-         "**/node_modules/**"
-       ]
+       "public": "./docs/.vuepress/dist",
+       "ignore": []
      }
    }
    ```
