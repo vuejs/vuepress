@@ -4,3 +4,4 @@ node_modules
 .temp
 vuepress
 TODOs.md
+.idea/
