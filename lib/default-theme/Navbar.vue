@@ -6,9 +6,9 @@
         v-if="$site.themeConfig.logo"
         :src="$withBase($site.themeConfig.logo)">
       <span class="site-name"
-        v-if="$title"
+        v-if="$siteTitle"
         :class="{ 'can-hide': $site.themeConfig.logo }">
-        {{ $title }}
+        {{ $siteTitle }}
       </span>
     </router-link>
     <div class="links">
