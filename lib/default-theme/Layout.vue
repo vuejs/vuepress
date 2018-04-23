@@ -21,7 +21,7 @@ import Home from './Home.vue'
 import Navbar from './Navbar.vue'
 import Page from './Page.vue'
 import Sidebar from './Sidebar.vue'
-import { pathToComponentName, getTitle, getLang } from '@app/util'
+import { pathToComponentName } from '@app/util'
 import { resolveSidebarItems } from './util'
 
 export default {
@@ -76,7 +76,7 @@ export default {
 
   created () {
     if (this.$ssrContext) {
-      this.$ssrContext.title = getTitle(this.$title, this.$page)
+      this.$ssrContext.title = this.$title
       this.$ssrContext.lang = this.$lang
       this.$ssrContext.description = this.$page.description || this.$description
     }
@@ -87,7 +87,7 @@ export default {
     // update title / meta tags
     this.currentMetaTags = []
     const updateMeta = () => {
-      document.title = getTitle(this.$title, this.$page)
+      document.title = this.$title
       document.documentElement.lang = this.$lang
       const meta = [
         {
