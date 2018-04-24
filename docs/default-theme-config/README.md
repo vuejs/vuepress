@@ -35,7 +35,7 @@ If you want to use a completely custom homepage layout, you can also use a [Cust
 
 ## Navbar
 
-Head navigation bar may contains your page title, [Search Box](#search-box), [Navbar Links](#navbar-links), [Languages](/guide/i18n.html#internationalization) and [Repository link](/default-theme-config/#git-repo-and-edit-links) - all of it depends on your configuration.
+The Navbar may contain your page title, [Search Box](#search-box), [Navbar Links](#navbar-links), [Languages](/guide/i18n.html#internationalization) and [Repository link](/default-theme-config/#git-repo-and-edit-links) - all of them depends on your configuration.
 
 ### Navbar Links
 
@@ -90,9 +90,9 @@ module.exports = {
 }
 ```
 
-### Disabling the Navbar
+### Disable the Navbar
 
-You can disable the navbar on a specific page with `YAML front matter`:
+You can disable the navbar for a specific page via `YAML front matter`:
 
 ``` yaml
 ---
