@@ -2,7 +2,7 @@
   <div class="page">
     <Content :custom="false"/>
     <div class="content edit-link" v-if="editLink">
-      <a :href="editLink" target="_blank" rel="noopener noreferrer">Edit this page</a>
+      <a :href="editLink" target="_blank" rel="noopener noreferrer">{{ editLinkText }}</a>
       <OutboundLink/>
     </div>
     <div class="content page-nav" v-if="prev || next">
@@ -19,6 +19,7 @@
         </span>
       </p>
     </div>
+    <slot name="bottom"/>
   </div>
 </template>
 
@@ -55,7 +56,8 @@ export default {
         repo,
         editLinks,
         docsDir = '',
-        docsBranch = 'master'
+        docsBranch = 'master',
+        docsRepo = repo
       } = this.$site.themeConfig
 
       let path = normalize(this.$page.path)
@@ -65,10 +67,10 @@ export default {
         path += '.md'
       }
 
-      if (repo && editLinks) {
-        const base = outboundRE.test(repo)
-          ? repo
-          : `https://github.com/${repo}`
+      if (docsRepo && editLinks) {
+        const base = outboundRE.test(docsRepo)
+          ? docsRepo
+          : `https://github.com/${docsRepo}`
         return (
           base.replace(endingSlashRE, '') +
           `/edit/${docsBranch}/` +
@@ -76,6 +78,13 @@ export default {
           path
         )
       }
+    },
+    editLinkText () {
+      return (
+        this.$themeLocaleConfig.editLinkText ||
+        this.$site.themeConfig.editLinkText ||
+        `Edit this page`
+      )
     }
   }
 }

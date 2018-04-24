@@ -4,8 +4,8 @@ sidebar: auto
 
 # 默认主题
 
-::: tip
-所有列在这一页的选项仅对默认的主题生效。如果你在使用一个自定义主题，选项可能会有不同。
+::: tip 提示
+本页所列的选项仅对默认主题生效。如果你在使用一个自定义主题，选项可能会有不同。
 :::
 
 ## 首页
@@ -51,13 +51,16 @@ module.exports = {
 当你提供了一个 `items` 数组而不是一个单一的 `link` 时，它将会显示以 `下拉列表` 的方式显示：
 
 ```js
-// .vuepress/config.js
 module.exports = {
   themeConfig: {
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Guide', link: '/guide/' },
-      { text: 'External', link: 'https://google.com' },
+      {
+        text: 'Languages',
+        items: [
+          { text: 'Chinese', link: '/language/chinese' },
+          { text: 'Japanese', link: '/language/japanese' }
+        ]
+      }
     ]
   }
 }
@@ -146,11 +149,13 @@ module.exports = {
 ```
 .
 ├─ README.md
-├─ foo
+├─ contact.md
+├─ about.md
+├─ foo/
 │  ├─ README.md
 │  ├─ one.md
 │  └─ two.md
-└─ bar
+└─ bar/
    ├─ README.md
    ├─ three.md
    └─ four.md
@@ -163,22 +168,32 @@ module.exports = {
 module.exports = {
   themeConfig: {
     sidebar: {
-      // sidebar for pages under /foo/
       '/foo/': [
-        '',
-        'one',
-        'two'
+        '',     /* /foo/ */
+        'one',  /* /foo/one.html */
+        'two'   /* /foo/two.html */
       ],
-      // sidebar for pages under /bar/
+
       '/bar/': [
-        '',
-        'three',
-        'four'
+        '',      /* /bar/ */
+        'three', /* /bar/three.html */
+        'four'   /* /bar/four.html */
+      ],
+
+      // fallback
+      '/': [
+        '',        /* / */
+        'contact', /* /contact.html */
+        'about'    /* /about.html */
       ]
     }
   }
 }
 ```
+
+::: warning
+确保 fallback 侧边栏被最后定义。VuePress 会按顺序遍历侧边栏配置来寻找匹配的配置。
+:::
 
 ### 自动生成侧栏
 
@@ -200,6 +215,38 @@ sidebar: false
 ---
 ```
 
+## 搜索框
+
+### 内置搜索
+
+你可以通过设置 `themeConfig.search: false` 来禁用默认的搜索框，或是通过 `themeConfig.searchMaxSuggestions` 来调整默认搜索框显示的搜索结果数量：
+
+``` js
+module.exports = {
+  themeConfig: {
+    search: false,
+    searchMaxSuggestions: 10
+  }
+}
+```
+
+### Algolia 搜索
+
+你可以通过 `themeConfig.algolia` 选项来用 [Algolia DocSearch](https://community.algolia.com/docsearch/) 替换内置的搜索框。要启用 Algolia 搜索，你需要至少提供 `apiKey` 和 `indexName`：
+
+```js
+module.exports = {
+  themeConfig: {
+    algolia: {
+      apiKey: '<API_KEY>',
+      indexName: '<INDEX_NAME>'
+    }
+  }
+}
+```
+
+更多选项请参考 [Algolia DocSearch 的文档](https://github.com/algolia/docsearch#docsearch-options)。
+
 ## 上 / 下一篇链接
 
 上一篇和下一篇文章的链接将会自动地根据当前页面的侧边栏的顺序来获取。你也可以使用 `YAML front matter` 来明确地重写或者禁用它：
@@ -211,7 +258,7 @@ next: false
 ---
 ```
 
-## Github 和编辑链接
+## Git 仓库和编辑链接
 
 当你提供了 `themeConfig.repo` 选项，将会自动在每个页面的导航栏生成生成一个 GitHub 链接，以及在页面的底部生成一个 `"Edit this page"` 链接。
 
@@ -221,12 +268,22 @@ module.exports = {
   themeConfig: {
     // 假定是 GitHub. 同时也可以是一个完整的 GitLab URL
     repo: 'vuejs/vuepress',
-    // 当你的文档不是仓库的根目录时需要设置
-    docsDir: 'docs',
-    // 可选的, 默认是  master
-    docsBranch: 'master',
+    // 自定义仓库链接文字。默认从 `themeConfig.repo` 中自动推断为
+    // "GitHub"/"GitLab"/"Bitbucket" 其中之一，或是 "Source"。
+    repoLabel: '查看源码',
+
+    // 以下为可选的编辑链接选项
+
+    // 假如你的文档仓库和项目本身不在一个仓库：
+    docsRepo: 'vuejs/vuepress',
+    // 假如文档不是放在仓库的根目录下：
+    docsDir: 'docs',
+    // 假如文档放在一个特定的分支下：
+    docsBranch: 'master',
     // 默认是 true, 设置为 false 来禁用
-    editLinks: true
+    editLinks: true,
+    // 默认为 "Edit this page"
+    editLinkText: '帮助我们改善此页面！'
   }
 }
 ```
@@ -243,6 +300,26 @@ $accentColor = #3eaf7c
 $textColor = #2c3e50
 $borderColor = #eaecef
 $codeBgColor = #282c34
+```
+
+## 自定义页面类
+
+有时候你可能需要为特定页面添加一个 CSS 类名，以方便针对该页面添加一些专门的 CSS。这种情况下你可以在该页面的 YAML front matter 中声明一个 `pageClass`：
+
+``` yaml
+---
+pageClass: custom-page-class
+---
+```
+
+然后你就可以写专门针对该页面的 CSS 了：
+
+``` css
+/* .vuepress/override.styl */
+
+.theme-container.custom-page-class {
+  /* 特定页面的 CSS */
+}
 ```
 
 ## 特定页面的自定义布局

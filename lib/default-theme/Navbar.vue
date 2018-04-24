@@ -1,18 +1,19 @@
 <template>
   <header class="navbar">
     <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
-    <router-link :to="$basepath" class="home-link">
+    <router-link :to="$localePath" class="home-link">
       <img class="logo"
         v-if="$site.themeConfig.logo"
         :src="$withBase($site.themeConfig.logo)">
       <span class="site-name"
-        v-if="$site.title"
+        v-if="$siteTitle"
         :class="{ 'can-hide': $site.themeConfig.logo }">
-        {{ $title }}
+        {{ $siteTitle }}
       </span>
     </router-link>
     <div class="links">
-      <SearchBox v-if="$site.themeConfig.search !== false"/>
+      <AlgoliaSearchBox v-if="isAlgoliaSearch" :options="algolia"/>
+      <SearchBox v-else-if="$site.themeConfig.search !== false"/>
       <NavLinks class="can-hide"/>
     </div>
   </header>
@@ -20,11 +21,18 @@
 
 <script>
 import SidebarButton from './SidebarButton.vue'
+import AlgoliaSearchBox from '@AlgoliaSearchBox'
 import SearchBox from './SearchBox.vue'
 import NavLinks from './NavLinks.vue'
 
 export default {
-  components: { SidebarButton, NavLinks, SearchBox }
+  components: { SidebarButton, NavLinks, SearchBox, AlgoliaSearchBox },
+  computed: {
+    isAlgoliaSearch () {
+      const algolia = this.$themeLocaleConfig.algolia || this.$site.themeConfig.algolia || {}
+      return algolia && algolia.apiKey && algolia.indexName
+    }
+  }
 }
 </script>
 

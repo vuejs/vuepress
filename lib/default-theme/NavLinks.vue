@@ -1,5 +1,5 @@
 <template>
-  <nav class="nav-links" v-if="userLinks.length || githubLink">
+  <nav class="nav-links" v-if="userLinks.length || repoLink">
     <!-- user links -->
     <div
       class="nav-item"
@@ -8,13 +8,13 @@
       <DropdownLink v-if="item.type === 'links'" :item="item"/>
       <NavLink v-else :item="item"/>
     </div>
-    <!-- github link -->
-    <a v-if="githubLink"
-      :href="githubLink"
-      class="github-link"
+    <!-- repo link -->
+    <a v-if="repoLink"
+      :href="repoLink"
+      class="repo-link"
       target="_blank"
       rel="noopener noreferrer">
-      GitHub
+      {{ repoLabel }}
       <OutboundLink/>
     </a>
   </nav>
@@ -23,36 +23,36 @@
 <script>
 import OutboundLink from './OutboundLink.vue'
 import DropdownLink from './DropdownLink.vue'
-import { isActive, resolveNavLinkItem } from './util'
+import { resolveNavLinkItem } from './util'
 import NavLink from './NavLink.vue'
 
 export default {
   components: { OutboundLink, NavLink, DropdownLink },
   computed: {
     userNav () {
-      const { nav } = this.$site.themeConfig
-      if (Array.isArray(nav)) return nav
-      if (typeof nav === 'object') return nav[this.$basepath]
-      return []
+      return this.$themeLocaleConfig.nav || this.$site.themeConfig.nav || []
     },
     nav () {
-      if (this.$site.langs && this.$site.langs.length) {
+      const { locales } = this.$site
+      if (locales && Object.keys(locales).length > 1) {
         let currentLink = this.$page.path
         const routes = this.$router.options.routes
+        const themeLocales = this.$site.themeConfig.locales || {}
         const languageDropdown = {
-          text: this.$langConfig.selectText,
-          items: this.$site.langs.map(lang => {
-            const text = lang.label
+          text: this.$themeLocaleConfig.selectText || 'Languages',
+          items: Object.keys(locales).map(path => {
+            const locale = locales[path]
+            const text = themeLocales[path] && themeLocales[path].label || locale.lang
             let link
             // Stay on the current page
-            if (lang.lang === this.$lang) {
+            if (locale.lang === this.$lang) {
               link = currentLink
             } else {
               // Try to stay on the same page
-              link = currentLink.replace(this.$langConfig.path, lang.path)
+              link = currentLink.replace(this.$localeConfig.path, path)
               // fallback to homepage
               if (!routes.some(route => route.path === link)) {
-                link = lang.path
+                link = path
               }
             }
             return { text, link }
@@ -69,17 +69,31 @@ export default {
         })
       }))
     },
-    githubLink () {
+    repoLink () {
       const { repo } = this.$site.themeConfig
       if (repo) {
         return /^https?:/.test(repo)
           ? repo
           : `https://github.com/${repo}`
       }
-    }
-  },
-  methods: {
-    isActive
+    },
+    repoLabel () {
+      if (!this.repoLink) return
+      if (this.$site.themeConfig.repoLabel) {
+        return this.$site.themeConfig.repoLabel
+      }
+
+      const repoHost = this.repoLink.match(/^https?:\/\/[^/]+/)[0]
+      const platforms = ['GitHub', 'GitLab', 'Bitbucket']
+      for (let i = 0; i < platforms.length; i++) {
+        const platform = platforms[i]
+        if (new RegExp(platform, 'i').test(repoHost)) {
+          return platform
+        }
+      }
+
+      return 'Source'
+    },
   }
 }
 </script>
@@ -90,7 +104,7 @@ export default {
 .nav-links
   display inline-block
   a
-    line-height 1.25rem
+    line-height 1.4rem
     color inherit
     &:hover, &.router-link-active
       color $accentColor
@@ -99,21 +113,21 @@ export default {
     position relative
     display inline-block
     margin-left 1.5rem
-    font-weight 500
     line-height 2rem
-  .github-link
+  .repo-link
     margin-left 1.5rem
 
 @media (max-width: $MQMobile)
   .nav-links
-    .nav-item, .github-link
+    .nav-item, .repo-link
       margin-left 0
 
 @media (min-width: $MQMobile)
-  .nav-links
-    a
-      &:hover, &.router-link-active
-        color $textColor
-        margin-bottom -2px
-        border-bottom 2px solid lighten($accentColor, 5%)
+  .nav-links a
+    &:hover, &.router-link-active
+      color $textColor
+  .nav-item > a
+    &:hover, &.router-link-active
+      margin-bottom -2px
+      border-bottom 2px solid lighten($accentColor, 8%)
 </style>

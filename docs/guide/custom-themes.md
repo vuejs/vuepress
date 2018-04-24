@@ -54,6 +54,10 @@ If the user provided `themeConfig` in `.vuepress/config.js`, it will also be ava
 
 Finally, don't forget that `this.$route` and `this.$router` are also available as part of Vue Router's API.
 
+## Content Excerpt
+
+If a markdown file contains a `<!-- more -->` comment, any content above the comment will be extracted and exposed as `$page.excerpt`. If you are building custom theme for blogging, this data can be used to render a post list with excerpts.
+
 ## Content Outlet
 
 The compiled content of the current `.md` file being rendered will be available as a special `<Content/>` global component. You will need to render it somewhere in your layout in order to display the content of the page. The simplest theme can be just a single `Layout.vue` component with the following content:
@@ -64,6 +68,21 @@ The compiled content of the current `.md` file being rendered will be available 
     <Content/>
   </div>
 </template>
+```
+
+## App Level Enhancements
+
+Themes can enhance the Vue app that VuePress uses by exposing an `enhanceApp.js` file at the root of the theme. The file should `export default` a hook function which will receive an object containing some app level values. You can use this hook to install additional Vue plugins, register global components, or add additional router hooks:
+
+``` js
+export default ({
+  Vue, // the version of Vue being used in the VuePress app
+  options, // the options for the root Vue instance
+  router, // the router instance for the app
+  siteData // site metadata
+}) => {
+  // ...apply enhancements to the app
+}
 ```
 
 ## Using Theme from a Dependency

@@ -54,6 +54,10 @@ VuePress 使用单文件组件来构建自定义主题。想要开发一个自�
 
 最后，别忘了，作为 Vue Router API 的一部分，`this.$route` 和 `this.$router` 同样可以使用。
 
+## 内容摘抄
+
+如果一个 markdown 文件中有一个 `<!-- more -->` 注释，则该注释之前的内容会被抓取并暴露在 `$page.excerpt` 属性中。如果你在开发一个博客主题，你可以用这个属性来渲染一个带摘抄的文章列表。
+
 ## 获取渲染内容
 
 当前的 `.md` 文件渲染的内容，可以作为一个独特的全局组件 `<Content/>` 来使用，你可能想要它显示在页面中的某个地方。一个最简单的主题，可以是一个唯一的 `Layout.vue` 组件，并包含以下内容：
@@ -64,6 +68,21 @@ VuePress 使用单文件组件来构建自定义主题。想要开发一个自�
     <Content/>
   </div>
 </template>
+```
+
+## 应用配置
+
+自定义主题也可以通过主题根目录下的 `enhanceApp.js` 文件来对 VuePress 应用进行拓展配置。这个文件应当 `export default` 一个钩子函数，并接受一个包含了一些应用级别属性的对象作为参数。你可以使用这个钩子来安装一些附加的 Vue 插件、注册全局组件，或者增加额外的路由钩子等：
+
+```js
+export default ({
+  Vue, // VuePress 正在使用的 Vue 构造函数
+  options, // 附加到根实例的一些选项
+  router, // 当前应用的路由实例
+  siteData // 站点元数据
+}) => {
+  // ...做一些其他的应用级别的优化
+}
 ```
 
 ## 使用来自 npm 的主题
@@ -80,3 +99,6 @@ module.exports = {
 
 VuePress 将会尝试去加载并使用位于 `node_modules/vuepress-theme-awesome/Layout.vue` 的主题组件。
 
+## 修改默认主题
+
+你可以使用 `vuepress eject [targetDir]` 这个命令来将默认主题的源码复制到 `.vuepress/theme` 文件夹下，从而可以对默认主题进行任意的修改。需要注意的是一旦 eject，即使升级 VuePress 你也无法再获得 VuePress 对默认主题的更新。

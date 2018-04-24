@@ -146,44 +146,58 @@ Sidebar groups are collapsable by default. You can force a group to be always op
 
 ### Multiple Sidebars
 
-If you wish to display different sidebars for different group of pages, first organize your pages into directories:
+If you wish to display different sidebars for different sections of content, first organize your pages into directories for each desired section:
 
 ```
 .
 ├─ README.md
-├─ foo
+├─ contact.md
+├─ about.md
+├─ foo/
 │  ├─ README.md
 │  ├─ one.md
 │  └─ two.md
-└─ bar
+└─ bar/
    ├─ README.md
    ├─ three.md
    └─ four.md
 ```
 
-Then, with the following sidebar config:
+Then, update your configuration to define your sidebar for each section.
 
 ``` js
 // .vuepress/config.js
 module.exports = {
   themeConfig: {
     sidebar: {
-      // sidebar for pages under /foo/
       '/foo/': [
-        '',
-        'one',
-        'two'
+        '',     /* /foo/ */
+        'one',  /* /foo/one.html */
+        'two'   /* /foo/two.html */
       ],
-      // sidebar for pages under /bar/
+
       '/bar/': [
-        '',
-        'three',
-        'four'
+        '',      /* /bar/ */
+        'three', /* /bar/three.html */
+        'four'   /* /bar/four.html */
+      ],
+
+      // fallback
+      '/': [
+        '',        /* / */
+        'contact', /* /contact.html */
+        'about'    /* /about.html */
       ]
     }
   }
 }
 ```
+
+::: warning
+Make sure to define the fallback configuration last.
+
+VuePress checks each sidebar config from top to bottom. If the fallback configuration was first, VuePress would incorrectly match `/foo/` or `/bar/four.html` because they both start with `/`.
+:::
 
 ### Auto Sidebar for Single Pages
 
@@ -205,6 +219,38 @@ sidebar: false
 ---
 ```
 
+## Search Box
+
+### Built-in Search
+
+You can disable the built-in search box with `themeConfig.search: false`, and customize how many suggestions to be shown with `themeConfig.searchMaxSuggestions`:
+
+``` js
+module.exports = {
+  themeConfig: {
+    search: false,
+    searchMaxSuggestions: 10
+  }
+}
+```
+
+### Algolia Search
+
+The `themeConfig.algolia` option allows you to use [Algolia DocSearch](https://community.algolia.com/docsearch/) to replace the simple built-in search. To enable it, you need to provide at least `apiKey` and `indexName`:
+
+```js
+module.exports = {
+  themeConfig: {
+    algolia: {
+      apiKey: '<API_KEY>',
+      indexName: '<INDEX_NAME>'
+    }
+  }
+}
+```
+
+For more options, refer to [Algolia DocSearch's documentation](https://github.com/algolia/docsearch#docsearch-options).
+
 ## Prev / Next Links
 
 Prev and next links are automatically inferred based on the sidebar order of the active page. You can also explicitly overwrite or disable them using `YAML front matter`:
@@ -216,7 +262,7 @@ next: false
 ---
 ```
 
-## GitHub Repo and Edit Links
+## Git Repo and Edit Links
 
 Providing `themeConfig.repo` auto generates a GitHub link in the navbar and "Edit this page" links at the bottom of each page.
 
@@ -226,12 +272,22 @@ module.exports = {
   themeConfig: {
     // Assumes GitHub. Can also be a full GitLab url.
     repo: 'vuejs/vuepress',
-    // if your docs are not at the root of the repo
+    // Customising the header label
+    // Defaults to "GitHub"/"GitLab"/"Bitbucket" depending on `themeConfig.repo`
+    repoLabel: 'Contribute!',
+
+    // Optional options for generating "Edit this page" link
+
+    // if your docs are in a different repo from your main project:
+    docsRepo: 'vuejs/vuepress',
+    // if your docs are not at the root of the repo:
     docsDir: 'docs',
-    // optional, defaults to master
+    // if your docs are in a specific branch (defaults to 'master'):
     docsBranch: 'master',
     // defaults to true, set to false to disable
-    editLinks: true
+    editLinks: true,
+    // custom text for edit link. Defaults to "Edit this page"
+    editLinkText: 'Help us improve this page!'
   }
 }
 ```
@@ -263,6 +319,8 @@ pageClass: custom-page-class
 Then you can write CSS targeting that page only:
 
 ``` css
+/* .vuepress/override.styl */
+
 .theme-container.custom-page-class {
   /* page-specific rules */
 }

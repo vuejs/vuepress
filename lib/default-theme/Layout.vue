@@ -5,12 +5,18 @@
     @touchend="onTouchEnd">
     <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar"/>
     <div class="sidebar-mask" @click="toggleSidebar(false)"></div>
-    <Sidebar :items="sidebarItems" @toggle-sidebar="toggleSidebar"/>
+    <Sidebar :items="sidebarItems" @toggle-sidebar="toggleSidebar">
+      <slot name="sidebar-top" slot="top"/>
+      <slot name="sidebar-bottom" slot="bottom"/>
+    </Sidebar>
     <div class="custom-layout" v-if="$page.frontmatter.layout">
       <component :is="$page.frontmatter.layout"/>
     </div>
     <Home v-else-if="$page.frontmatter.home"/>
-    <Page v-else :sidebar-items="sidebarItems"/>
+    <Page v-else :sidebar-items="sidebarItems">
+      <slot name="page-top" slot="top"/>
+      <slot name="page-bottom" slot="bottom"/>
+    </Page>
   </div>
 </template>
 
@@ -21,7 +27,7 @@ import Home from './Home.vue'
 import Navbar from './Navbar.vue'
 import Page from './Page.vue'
 import Sidebar from './Sidebar.vue'
-import { pathToComponentName, getTitle, getLang } from '@app/util'
+import { pathToComponentName } from '@app/util'
 import { resolveSidebarItems } from './util'
 
 export default {
@@ -36,10 +42,11 @@ export default {
     shouldShowNavbar () {
       const { themeConfig } = this.$site
       return (
-        this.$site.title ||
+        this.$title ||
         themeConfig.logo ||
         themeConfig.repo ||
-        themeConfig.nav
+        themeConfig.nav ||
+        this.$themeLocaleConfig.nav
       )
     },
     shouldShowSidebar () {
@@ -48,17 +55,16 @@ export default {
       return (
         !frontmatter.layout &&
         !frontmatter.home &&
-        frontmatter.sidebar !== false && (
-          frontmatter.sidebar === 'auto' ||
-          themeConfig.sidebar
-        )
+        frontmatter.sidebar !== false &&
+        this.sidebarItems.length
       )
     },
     sidebarItems () {
       return resolveSidebarItems(
         this.$page,
         this.$route,
-        this.$site
+        this.$site,
+        this.$localePath
       )
     },
     pageClasses() {
@@ -76,7 +82,7 @@ export default {
 
   created () {
     if (this.$ssrContext) {
-      this.$ssrContext.title = getTitle(this.$title, this.$page)
+      this.$ssrContext.title = this.$title
       this.$ssrContext.lang = this.$lang
       this.$ssrContext.description = this.$page.description || this.$description
     }
@@ -87,7 +93,7 @@ export default {
     // update title / meta tags
     this.currentMetaTags = []
     const updateMeta = () => {
-      document.title = getTitle(this.$title, this.$page)
+      document.title = this.$title
       document.documentElement.lang = this.$lang
       const meta = [
         {

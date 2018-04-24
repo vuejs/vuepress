@@ -51,9 +51,9 @@ export default {
         return
       }
 
-      const max = 5
-      const { pages } = this.$site
-      const localePath = this.$basepath
+      const { pages, themeConfig } = this.$site
+      const max = themeConfig.searchMaxSuggestions || 5
+      const localePath = this.$localePath
       const matches = item => (
         item.title &&
         item.title.toLowerCase().indexOf(query) > -1
@@ -92,11 +92,9 @@ export default {
   },
   methods: {
     getPageLocalePath (page) {
-      const { langs } = this.$site
-      for (let i = 0; i < langs.length; i++) {
-        const localePath = langs[i].path
+      for (const localePath in this.$site.locales || {}) {
         if (localePath !== '/' && page.path.indexOf(localePath) === 0) {
-          return langs[i].path
+          return localePath
         }
       }
       return '/'

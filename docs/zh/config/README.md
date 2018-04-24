@@ -97,6 +97,13 @@ module.exports = {
 当然，仅仅只在你的网站部署后能用 SSL 的时候开启它，因为 service worker 只能在 HTTPs 的链接下注册。
 :::
 
+### locales
+
+- 类型: `{ [path: string]: Object }`
+- 默认值: `undefined`
+
+提供多语言支持的语言配置。具体细节请查看 [多语言支持](../guide/i18n.md)。
+
 ## 主题
 
 ### theme
@@ -158,6 +165,34 @@ module.exports = {
 - 默认值: `{ plugins: [require('autoprefixer')] }`
 
 [postcss-loader](https://github.com/postcss/postcss-loader) 的选项，请注意，指定这个值，将会覆盖内置的 autoprefixer，所以你需要自己将它加进去。
+
+### stylus
+
+- Type: `Object`
+- Default: `{ preferPathResolver: 'webpack' }`
+
+[stylus-loader](https://github.com/shama/stylus-loader) 的选项。
+
+### scss
+
+- Type: `Object`
+- Default: `{}`
+
+加载 `*.scss` 文件的 [sass-loader](https://github.com/postcss/postcss-loader) 的选项。
+
+### sass
+
+- Type: `Object`
+- Default: `{ indentedSyntax: true }`
+
+加载 `*.sass` 文件的 [sass-loader](https://github.com/postcss/postcss-loader) 的选项。
+
+### less
+
+- Type: `Object`
+- Default: `{}`
+
+[less-loader](https://github.com/webpack-contrib/less-loader) 的选项。
 
 ### configureWebpack
 
