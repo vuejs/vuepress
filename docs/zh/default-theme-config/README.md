@@ -33,7 +33,11 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 
 ## 导航栏
 
-你可以通过 `themeConfig.nav` 增加一些导航链接:
+导航栏可能包含你的页面标题、[搜索框](#搜索框)、 [导航栏链接](#导航栏链接)、[多语言切换](../guide/i18n.md)、[仓库链接](#git-仓库和编辑链接)，它们均取决于你的配置。
+
+### 导航栏链接
+
+你可以通过 `themeConfig.nav` 增加一些导航栏链接:
 
 ``` js
 // .vuepress/config.js
@@ -82,6 +86,16 @@ module.exports = {
     ]
   }
 }
+```
+
+### 禁用导航栏
+
+你可以通过 `YAML front matter` 来禁用掉某个指定页面的导航栏：
+
+``` yaml
+---
+navbar: false
+---
 ```
 
 ## 侧边栏

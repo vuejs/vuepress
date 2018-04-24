@@ -35,7 +35,7 @@ If you want to use a completely custom homepage layout, you can also use a [Cust
 
 ## Navbar
 
-The Navbar may contain your page title, [Search Box](#search-box), [Navbar Links](#navbar-links), [Languages](/guide/i18n.html#internationalization) and [Repository link](/default-theme-config/#git-repo-and-edit-links) - all of them depends on your configuration.
+The Navbar may contain yourg  page title, [Search Box](#search-box), [Navbar Links](#navbar-links), [Languages](../guide/i18n.md) and [Repository Link](#git-repo-and-edit-links), all of them depends on your configuration.
 
 ### Navbar Links
 
