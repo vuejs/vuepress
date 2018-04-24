@@ -92,6 +92,17 @@ module.exports = {
 
 ### Disable the Navbar
 
+To disable the navbar globally, use `themeConfig.navbar`.
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+    navbar: false
+  }
+}
+```
+
 You can disable the navbar for a specific page via `YAML front matter`:
 
 ``` yaml
