@@ -33,7 +33,11 @@ Any additional content after the `YAML front matter` will be parsed as normal ma
 
 If you want to use a completely custom homepage layout, you can also use a [Custom Layout](#custom-layout-for-specific-pages).
 
-## Navbar Links
+## Navbar
+
+The Navbar may contain your page title, [Search Box](#search-box), [Navbar Links](#navbar-links), [Languages](/guide/i18n.html#internationalization) and [Repository link](/default-theme-config/#git-repo-and-edit-links) - all of them depends on your configuration.
+
+### Navbar Links
 
 You can add links to the navbar via `themeConfig.nav`:
 
@@ -84,6 +88,16 @@ module.exports = {
     ]
   }
 }
+```
+
+### Disable the Navbar
+
+You can disable the navbar for a specific page via `YAML front matter`:
+
+``` yaml
+---
+navbar: false
+---
 ```
 
 ## Sidebar
