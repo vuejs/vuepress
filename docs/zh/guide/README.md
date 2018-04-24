@@ -29,7 +29,6 @@ VuePress 由两部分组成：一部分是支持用 Vue 开发主题的极简静
 
 VuePress 仍然处于开发中，这里有一些目前还不支持、但已经在计划中的特性：
 
-- Algolia DocSearch 的集成
 - 博客系统
 
 我们欢迎你为 VuePress 的开发作出贡献。

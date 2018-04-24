@@ -1,6 +1,7 @@
 <template>
   <div class="sidebar">
     <NavLinks/>
+    <slot name="top"/>
     <ul class="sidebar-links" v-if="items.length">
       <li v-for="(item, i) in items">
         <SidebarGroup v-if="item.type === 'group'"
@@ -12,6 +13,7 @@
         <SidebarLink v-else :item="item"/>
       </li>
     </ul>
+    <slot name="bottom"/>
   </div>
 </template>
 

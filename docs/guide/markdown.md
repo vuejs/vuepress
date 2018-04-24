@@ -1,9 +1,3 @@
----
-meta:
-- name: keywords
-  content: static docs generator vue
----
-
 # Markdown Extensions
 
 ## Header Anchors
@@ -19,15 +13,7 @@ Inbound links ending in `.md` or `.html` are converted to `<router-link>` for SP
 Each sub-directory in your static site should contain a `README.md`. It will automatically be converted to `index.html`.
 
 ::: tip
-When writing the relative path to a directory's `index.html`, don't forget to close it off with a `/`, otherwise you will get a 404.
-
-```md
-<!-- You'll get a 404 -->
-[About Page](/about)
-
-<!-- This is correct -->
-[About Page](/about/)
-```
+When writing the relative path to a directory's `index.html`, don't forget to close it off with a `/`, otherwise you will get a 404. For example, use `/config/` instead of `/config`.
 :::
 
 If you want to link to another markdown file within a directory, remember to:
@@ -62,12 +48,12 @@ Given the following directory structure:
 
 ### External Links
 
-- Outbound links automatically gets `target="_blank"`:
+Outbound links automatically gets `target="_blank"`:
 
-  - [vuejs.org](https://vuejs.org)
-  - [VuePress on GitHub](https://github.com/vuejs/vuepress)
+- [vuejs.org](https://vuejs.org)
+- [VuePress on GitHub](https://github.com/vuejs/vuepress)
 
-## YAML Front Matter
+## Front Matter
 
 [YAML front matter](https://jekyllrb.com/docs/frontmatter/) is supported out of the box:
 
@@ -89,6 +75,30 @@ meta:
     content: hello
   - name: keywords
     content: super duper SEO
+---
+```
+
+### Alternative Front Matter Formats
+
+In addition, VuePress also supports JSON or [TOML](https://github.com/toml-lang/toml) front matter.
+
+JSON front matter needs to start and end in curly braces:
+
+```
+---
+{
+  "title": "Blogging Like a Hacker",
+  "lang": "en-US"
+}
+---
+```
+
+TOML front matter needs to be explicitly marked as TOML:
+
+```
+---toml
+title = "Blogging Like a Hacker"
+lang = "en-US"
 ---
 ```
 

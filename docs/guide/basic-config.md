@@ -17,6 +17,10 @@ If you've got the dev server running, you should see the page now has a header w
 
 Consult the [Config Reference](../config/) for a full list of options.
 
+::: tip Alternative Config Formats
+You can also use YAML (`.vuepress/config.yml`) or TOML (`.vuepress/config.toml`) formats for the configuration file.
+:::
+
 ## Theme Configuration
 
 A VuePress theme is responsible for all the layout and interactivity details of your site. VuePress ships with a default theme (you are looking at it right now) which is designed for technical documentation. It exposes a number of options that allow you to customize the navbar, sidebar and homepage, etc. For details, check out the [Default Theme Config](../default-theme-config/) page.
@@ -31,7 +35,8 @@ Since the VuePress app is a standard Vue app, you can apply app-level enhancemen
 export default ({
   Vue, // the version of Vue being used in the VuePress app
   options, // the options for the root Vue instance
-  router // the router instance for the app
+  router, // the router instance for the app
+  siteData // site metadata
 }) => {
   // ...apply enhancements to the app
 }

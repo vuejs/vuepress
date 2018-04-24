@@ -70,6 +70,21 @@ VuePress 使用单文件组件来构建自定义主题。想要开发一个自�
 </template>
 ```
 
+## 应用配置
+
+自定义主题也可以通过主题根目录下的 `enhanceApp.js` 文件来对 VuePress 应用进行拓展配置。这个文件应当 `export default` 一个钩子函数，并接受一个包含了一些应用级别属性的对象作为参数。你可以使用这个钩子来安装一些附加的 Vue 插件、注册全局组件，或者增加额外的路由钩子等：
+
+```js
+export default ({
+  Vue, // VuePress 正在使用的 Vue 构造函数
+  options, // 附加到根实例的一些选项
+  router, // 当前应用的路由实例
+  siteData // 站点元数据
+}) => {
+  // ...做一些其他的应用级别的优化
+}
+```
+
 ## 使用来自 npm 的主题
 
 主题可以以 Vue 单文件组件的格式，并以 `vuepress-theme-xxx` 的名称发布到 npm 上。
@@ -84,3 +99,6 @@ module.exports = {
 
 VuePress 将会尝试去加载并使用位于 `node_modules/vuepress-theme-awesome/Layout.vue` 的主题组件。
 
+## 修改默认主题
+
+你可以使用 `vuepress eject [targetDir]` 这个命令来将默认主题的源码复制到 `.vuepress/theme` 文件夹下，从而可以对默认主题进行任意的修改。需要注意的是一旦 eject，即使升级 VuePress 你也无法再获得 VuePress 对默认主题的更新。

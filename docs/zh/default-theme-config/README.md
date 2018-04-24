@@ -33,7 +33,11 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 
 ## 导航栏
 
-你可以通过 `themeConfig.nav` 增加一些导航链接:
+导航栏可能包含你的页面标题、[搜索框](#搜索框)、 [导航栏链接](#导航栏链接)、[多语言切换](../guide/i18n.md)、[仓库链接](#git-仓库和编辑链接)，它们均取决于你的配置。
+
+### 导航栏链接
+
+你可以通过 `themeConfig.nav` 增加一些导航栏链接:
 
 ``` js
 // .vuepress/config.js
@@ -82,6 +86,16 @@ module.exports = {
     ]
   }
 }
+```
+
+### 禁用导航栏
+
+你可以通过 `YAML front matter` 来禁用掉某个指定页面的导航栏：
+
+``` yaml
+---
+navbar: false
+---
 ```
 
 ## 侧边栏
@@ -149,11 +163,13 @@ module.exports = {
 ```
 .
 ├─ README.md
-├─ foo
+├─ contact.md
+├─ about.md
+├─ foo/
 │  ├─ README.md
 │  ├─ one.md
 │  └─ two.md
-└─ bar
+└─ bar/
    ├─ README.md
    ├─ three.md
    └─ four.md
@@ -166,22 +182,32 @@ module.exports = {
 module.exports = {
   themeConfig: {
     sidebar: {
-      // sidebar for pages under /foo/
       '/foo/': [
-        '',
-        'one',
-        'two'
+        '',     /* /foo/ */
+        'one',  /* /foo/one.html */
+        'two'   /* /foo/two.html */
       ],
-      // sidebar for pages under /bar/
+
       '/bar/': [
-        '',
-        'three',
-        'four'
+        '',      /* /bar/ */
+        'three', /* /bar/three.html */
+        'four'   /* /bar/four.html */
+      ],
+
+      // fallback
+      '/': [
+        '',        /* / */
+        'contact', /* /contact.html */
+        'about'    /* /about.html */
       ]
     }
   }
 }
 ```
+
+::: warning
+确保 fallback 侧边栏被最后定义。VuePress 会按顺序遍历侧边栏配置来寻找匹配的配置。
+:::
 
 ### 自动生成侧栏
 
@@ -202,6 +228,38 @@ sidebar: auto
 sidebar: false
 ---
 ```
+
+## 搜索框
+
+### 内置搜索
+
+你可以通过设置 `themeConfig.search: false` 来禁用默认的搜索框，或是通过 `themeConfig.searchMaxSuggestions` 来调整默认搜索框显示的搜索结果数量：
+
+``` js
+module.exports = {
+  themeConfig: {
+    search: false,
+    searchMaxSuggestions: 10
+  }
+}
+```
+
+### Algolia 搜索
+
+你可以通过 `themeConfig.algolia` 选项来用 [Algolia DocSearch](https://community.algolia.com/docsearch/) 替换内置的搜索框。要启用 Algolia 搜索，你需要至少提供 `apiKey` 和 `indexName`：
+
+```js
+module.exports = {
+  themeConfig: {
+    algolia: {
+      apiKey: '<API_KEY>',
+      indexName: '<INDEX_NAME>'
+    }
+  }
+}
+```
+
+更多选项请参考 [Algolia DocSearch 的文档](https://github.com/algolia/docsearch#docsearch-options)。
 
 ## 上 / 下一篇链接
 
@@ -227,7 +285,7 @@ module.exports = {
     // 自定义仓库链接文字。默认从 `themeConfig.repo` 中自动推断为
     // "GitHub"/"GitLab"/"Bitbucket" 其中之一，或是 "Source"。
     repoLabel: '查看源码',
-    
+
     // 以下为可选的编辑链接选项
 
     // 假如你的文档仓库和项目本身不在一个仓库：
@@ -258,6 +316,26 @@ $borderColor = #eaecef
 $codeBgColor = #282c34
 ```
 
+## 自定义页面类
+
+有时候你可能需要为特定页面添加一个 CSS 类名，以方便针对该页面添加一些专门的 CSS。这种情况下你可以在该页面的 YAML front matter 中声明一个 `pageClass`：
+
+``` yaml
+---
+pageClass: custom-page-class
+---
+```
+
+然后你就可以写专门针对该页面的 CSS 了：
+
+``` css
+/* .vuepress/override.styl */
+
+.theme-container.custom-page-class {
+  /* 特定页面的 CSS */
+}
+```
+
 ## 特定页面的自定义布局
 
 默认情况下，每个 `*.md` 文件将会被渲染在一个 `<div class="page">` 容器中，同时还有侧边栏、自动生成的编辑链接，以及上 / 下一篇文章的链接。如果你想要使用一个完全自定义的组件来代替当前的页面（而只保留导航栏），你可以再次使用 `YAML front matter` 来指定这个组件。
@@ -268,4 +346,4 @@ layout: SpecialLayout
 ---
 ```
 
-这将会为当前的页面渲染 `.vuepress/components/SpecialLayout/vue` 布局。
+这将会为当前的页面渲染 `.vuepress/components/SpecialLayout.vue` 布局。

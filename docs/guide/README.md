@@ -31,7 +31,6 @@ Each markdown file is compiled into HTML with [markdown-it](https://github.com/m
 
 VuePress is still a work in progress. There are a few things that it currently does not support but are planned:
 
-- Algolia DocSearch Integration
 - Blogging support
 
 Contributions are welcome!

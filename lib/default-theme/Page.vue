@@ -19,6 +19,7 @@
         </span>
       </p>
     </div>
+    <slot name="bottom"/>
   </div>
 </template>
 
