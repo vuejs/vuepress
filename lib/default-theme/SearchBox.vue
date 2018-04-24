@@ -140,7 +140,7 @@ export default {
   position relative
   margin-right 0.5rem
   input
-    cursor pointer
+    cursor text
     width 10rem
     color lighten($textColor, 25%)
     display inline-block
