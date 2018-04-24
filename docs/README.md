@@ -13,19 +13,19 @@ features:
 footer: MIT Licensed | Copyright © 2018-present Evan You
 ---
 
-### As Easy as 1, 2, 3
+### As Easy as 1, 2, 3, 4
 
 ``` bash
-# install
+# 1 install
 yarn global add vuepress # OR npm install -g vuepress
 
-# create a markdown file
+# 2 create a markdown file
 echo '# Hello VuePress' > README.md
 
-# start writing
+# 3 start writing
 vuepress dev
 
-# build to static files
+# 4 build to static files
 vuepress build
 ```
 
