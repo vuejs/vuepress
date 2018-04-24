@@ -16,7 +16,7 @@ module.exports = {
     [
       require('./vuepress-plugin-custom-domain'),
       {
-        domain: 'www.v2js.com'
+        domain: 'www.vuejs.org'
       }
     ]
   ],
