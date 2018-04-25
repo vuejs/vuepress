@@ -35,7 +35,7 @@ If you want to use a completely custom homepage layout, you can also use a [Cust
 
 ## Navbar
 
-The Navbar may contain yourg  page title, [Search Box](#search-box), [Navbar Links](#navbar-links), [Languages](../guide/i18n.md) and [Repository Link](#git-repo-and-edit-links), all of them depends on your configuration.
+The Navbar may contain your page title, [Search Box](#search-box), [Navbar Links](#navbar-links), [Languages](../guide/i18n.md) and [Repository Link](#git-repo-and-edit-links), all of them depends on your configuration.
 
 ### Navbar Links
 
@@ -91,6 +91,17 @@ module.exports = {
 ```
 
 ### Disable the Navbar
+
+To disable the navbar globally, use `themeConfig.navbar`.
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+    navbar: false
+  }
+}
+```
 
 You can disable the navbar for a specific page via `YAML front matter`:
 
