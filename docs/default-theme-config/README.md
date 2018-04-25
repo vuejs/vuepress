@@ -92,7 +92,7 @@ module.exports = {
 
 ### Disable the Navbar
 
-To disable the navbar globally, use `themeConfig.navbar`.
+To disable the navbar globally, use `themeConfig.navbar`:
 
 ``` js
 // .vuepress/config.js

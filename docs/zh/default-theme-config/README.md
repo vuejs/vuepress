@@ -90,7 +90,18 @@ module.exports = {
 
 ### 禁用导航栏
 
-你可以通过 `YAML front matter` 来禁用掉某个指定页面的导航栏：
+你可以使用 `themeConfig.navbar` 来禁用所有页面的导航栏：
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+    navbar: false
+  }
+}
+```
+
+你也可以通过 `YAML front matter` 来禁用某个指定页面的导航栏：
 
 ``` yaml
 ---
