@@ -171,6 +171,7 @@ export default {
     line-height 1.4
     padding 0.4rem 0.6rem
     border-radius 4px
+    cursor pointer
     a
       color lighten($textColor, 35%)
       .page-title
