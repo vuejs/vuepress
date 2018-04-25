@@ -10,6 +10,11 @@ module.exports = {
       lang: 'zh-CN',
       title: 'VuePress',
       description: 'Vue 驱动的静态网站生成器'
+    },
+    '/fr/': {
+      lang: 'fr-CA',
+      title: 'VuePress',
+      description: 'Générateur de site statique alimenté par Vue'
     }
   },
   head: [
@@ -44,7 +49,7 @@ module.exports = {
             link: '/config/'
           },
           {
-            text: 'Default Theme Config',
+            text: 'Configuration par défaut du thème',
             link: '/default-theme-config/'
           }
         ],
@@ -72,6 +77,28 @@ module.exports = {
         ],
         sidebar: {
           '/zh/guide/': genSidebarConfig('指南')
+        }
+      },
+      '/fr/': {
+        label: 'Français',
+        selectText: 'Langages',
+        editLinkText: 'Modifier cette page sur GitHub',
+        nav: [
+          {
+            text: 'Guide',
+            link: '/fr/guide/',
+          },
+          {
+            text: 'Référence de configuration',
+            link: '/fr/config/'
+          },
+          {
+            text: 'Configuration par défaut du thème',
+            link: '/fr/default-theme-config/'
+          }
+        ],
+        sidebar: {
+          '/fr/guide/': genSidebarConfig('Guide')
         }
       }
     }
