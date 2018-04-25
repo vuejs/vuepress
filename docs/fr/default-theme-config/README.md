@@ -194,7 +194,7 @@ module.exports = {
 }
 ```
 
-::: warning
+::: warning AVERTISSEMENT
 Assurez-vous de définir la configuration de secours en dernier.
 
 VuePress vérifie chaque configuration de la barre latérale de haut en bas. Si la configuration de secour était la première, VuePress ne correspondrait pas correctement `/foo/` ou `/bar/four.html` car ils commencent tous deux par `/`.
