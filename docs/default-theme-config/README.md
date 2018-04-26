@@ -260,7 +260,7 @@ module.exports = {
 ```
 
 ::: tip
-Built-in Search only support title search now. If your need full text search, use [Algolia Search](#algolia-search) or build your own theme.
+Built-in Search only builds index from the title, `h2` and `h3` headers, if your need full text search, you can use [Algolia Search](#algolia-search).
 :::
 
 ### Algolia Search
