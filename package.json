@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "node bin/vuepress dev docs",
     "build": "node bin/vuepress build docs",
-    "lint": "eslint bin lib test",
+    "lint": "eslint --fix --ext .js,.vue bin/ lib/ test/",
     "prepublishOnly": "conventional-changelog -p angular -r 2 -i CHANGELOG.md -s"
   },
   "repository": {
@@ -31,11 +31,7 @@
     "pre-commit": "lint-staged"
   },
   "lint-staged": {
-    "lib/**/*.js": [
-      "eslint --fix",
-      "git add"
-    ],
-    "test/**/*.js": [
+    "*.{js,vue}": [
       "eslint --fix",
       "git add"
     ]
@@ -98,7 +94,7 @@
   "devDependencies": {
     "conventional-changelog": "^1.1.23",
     "eslint": "^4.19.1",
-    "eslint-plugin-vue-libs": "^2.1.0",
+    "eslint-plugin-vue-libs": "^3.0.0",
     "lint-staged": "^7.0.4",
     "vuepress-theme-vue": "^1.0.0",
     "yorkie": "^1.0.3"
