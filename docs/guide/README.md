@@ -48,3 +48,7 @@ Both are great projects and also Vue-powered. Except they are both completely ru
 ### Hexo
 
 Hexo has been serving the Vue docs well - in fact, we are probably still a long way to go from migrating away from it for our main site. The biggest problem is that its theming system is very static and string-based - we really want to leverage Vue for both the layout and the interactivity. Also, Hexo's markdown rendering isn't the most flexible to configure.
+
+### Gitbook
+
+We've been using Gitbook for most of our sub project docs. The primary problem with Gitbook is that its development reload performance is intolerable with a large amount of files. The default theme also has a pretty limiting navigation structure, and the theming system is, again, not Vue based. The team behind GitBook is also more focused on turning it into a commercial product rather than an open-source tool.
