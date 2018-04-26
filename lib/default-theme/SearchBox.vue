@@ -184,17 +184,40 @@ export default {
       a
         color $accentColor
 
-@media (max-width: $MQNarrow)
+@media (max-width: $MQMobile)
   .search-box
+    margin-right 0
+    display inline-block
+    input
+      position relative
+      left 1rem
+      cursor pointer
+      width 0
+      border-color transparent
+      background-color white
+      z-index 10
+      &:focus
+        cursor text
+        width 10rem
+
+@media (min-width: $MQMobile) and (max-width: $MQNarrow)
+  .search-box
+    position relative
+    display inline-block
+    width 30px
+    height 23px
+    margin-right 0
     input
       cursor pointer
       width 0
       border-color transparent
-      position relative
-      left 1rem
+      position absolute
+      background-color white
+      z-index 10
+      left 0
+      top: 0
       &:focus
         cursor text
-        left 0
         width 10rem
 
 @media (max-width: $MQNarrow) and (min-width: $MQMobile)
