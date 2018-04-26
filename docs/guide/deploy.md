@@ -68,7 +68,7 @@ You can also run the above script in your CI setup to enable automatic deploymen
 
 3. Create a file called `.gitlab-ci.yml` in the root of your project with the content below. This will build and deploy your site whenever you make changes to your content.
 
-```yaml
+``` yaml
 image: node:9.11.1
 
 pages:

@@ -137,7 +137,7 @@ yarn add -D sass-loader node-sass
  
 然后你就可以在 Markdown 或是组件中使用如下代码：
 
-```vue
+``` vue
 <style lang="sass">
   .title
     font-size: 20px

@@ -67,7 +67,7 @@ cd -
 2. 在 `.vuepress/config.js` 中将 `dest` 设置为 `public`。
 3. 在你项目的根目录下创建一个名为 `.gitlab-ci.yml` 的文件，无论何时你提交了更改，它都会帮助你自动构建和部署：
 
-```yaml
+``` yaml
 image: node:9.11.1
 
 pages:
