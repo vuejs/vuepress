@@ -259,6 +259,10 @@ module.exports = {
 }
 ```
 
+::: tip
+Built-in Search only support title search now. If your need full text search, use [Algolia Search](#algolia-search) or build your own theme.
+:::
+
 ### Algolia Search
 
 The `themeConfig.algolia` option allows you to use [Algolia DocSearch](https://community.algolia.com/docsearch/) to replace the simple built-in search. To enable it, you need to provide at least `apiKey` and `indexName`:
