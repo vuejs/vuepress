@@ -19,9 +19,9 @@
 
 <script>
 import SidebarGroup from './SidebarGroup.vue'
-import SidebarLink, { groupHeaders } from './SidebarLink.vue'
+import SidebarLink from './SidebarLink.vue'
 import NavLinks from './NavLinks.vue'
-import { isActive, resolveSidebarItems } from './util'
+import { isActive } from './util'
 
 export default {
   components: { SidebarGroup, SidebarLink, NavLinks },

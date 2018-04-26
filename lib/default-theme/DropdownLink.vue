@@ -27,13 +27,12 @@
 </template>
 
 <script>
-import { isExternal, ensureExt } from './util'
 import NavLink from './NavLink.vue'
 import DropdownTransition from './DropdownTransition.vue'
 
 export default {
   components: { NavLink, DropdownTransition },
-  data() {
+  data () {
     return {
       open: false
     }
@@ -44,7 +43,7 @@ export default {
     }
   },
   methods: {
-    toggle() {
+    toggle () {
       this.open = !this.open
     }
   }

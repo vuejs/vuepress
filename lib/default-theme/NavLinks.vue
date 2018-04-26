@@ -35,7 +35,7 @@ export default {
     nav () {
       const { locales } = this.$site
       if (locales && Object.keys(locales).length > 1) {
-        let currentLink = this.$page.path
+        const currentLink = this.$page.path
         const routes = this.$router.options.routes
         const themeLocales = this.$site.themeConfig.locales || {}
         const languageDropdown = {
@@ -63,11 +63,11 @@ export default {
       return this.userNav
     },
     userLinks () {
-      return (this.nav || []).map((link => {
+      return (this.nav || []).map(link => {
         return Object.assign(resolveNavLinkItem(link), {
           items: (link.items || []).map(resolveNavLinkItem)
         })
-      }))
+      })
     },
     repoLink () {
       const { repo } = this.$site.themeConfig
@@ -93,7 +93,7 @@ export default {
       }
 
       return 'Source'
-    },
+    }
   }
 }
 </script>

@@ -24,7 +24,7 @@ export default {
     }
   },
   computed: {
-    link() {
+    link () {
       return ensureExt(this.item.link)
     }
   },

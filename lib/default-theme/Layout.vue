@@ -56,7 +56,6 @@ export default {
       )
     },
     shouldShowSidebar () {
-      const { themeConfig } = this.$site
       const { frontmatter } = this.$page
       return (
         !frontmatter.layout &&
@@ -73,13 +72,13 @@ export default {
         this.$localePath
       )
     },
-    pageClasses() {
+    pageClasses () {
       const userPageClass = this.$page.frontmatter.pageClass
       return [
         {
           'no-navbar': !this.shouldShowNavbar,
           'sidebar-open': this.isSidebarOpen,
-          'no-sidebar': !this.shouldShowSidebar,
+          'no-sidebar': !this.shouldShowSidebar
         },
         userPageClass
       ]
@@ -92,7 +91,6 @@ export default {
       this.$ssrContext.lang = this.$lang
       this.$ssrContext.description = this.$page.description || this.$description
     }
-
   },
 
   mounted () {

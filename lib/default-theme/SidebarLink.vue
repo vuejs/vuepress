@@ -34,7 +34,7 @@ function renderLink (h, to, text, active) {
     props: {
       to,
       activeClass: '',
-      exactActiveClass: '',
+      exactActiveClass: ''
     },
     class: {
       active,
