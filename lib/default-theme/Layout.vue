@@ -158,9 +158,28 @@ export default {
         }
       }
     },
-    onScroll: throttle(() => {
-      setActiveHash()
-    }, 200)
+    onScroll: throttle(function () {
+      this.setActiveHash()
+    }, 200),
+    setActiveHash () {
+      const anchors = gatherHeaderAnchors()
+
+      const scrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
+
+      for (let i = 0; i < anchors.length; i++) {
+        const anchor = anchors[i]
+        const nextAnchor = anchors[i + 1]
+
+        const isActive = i === 0 && scrollTop === 0 ||
+          (scrollTop >= anchor.parentElement.offsetTop + 10 &&
+            (typeof nextAnchor === 'undefined' || scrollTop < nextAnchor.parentElement.offsetTop - 10))
+
+        if (isActive && this.$route.hash !== anchor.hash) {
+          this.$router.replace(anchor.hash)
+          return
+        }
+      }
+    }
   }
 }
 
@@ -182,31 +201,11 @@ function updateMetaTags (meta, current) {
   }
 }
 
-function setActiveHash () {
-  const anchors = gatherHeaderAnchors()
-
-  const scrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
-
-  for (let i = 0; i < anchors.length; i++) {
-    const anchor = anchors[i]
-    const nextAnchor = anchors[i + 1]
-
-    const isActive = i === 0 && scrollTop === 0 ||
-      (scrollTop >= anchor.parentElement.offsetTop + 10 &&
-        (typeof nextAnchor === 'undefined' || scrollTop < nextAnchor.parentElement.offsetTop - 10))
-
-    if (isActive && window.location.hash !== anchor.hash) {
-      window.location.hash = anchor.hash
-      return
-    }
-  }
-}
-
 function gatherHeaderAnchors () {
   const sidebarLinks = Array.from(document.querySelectorAll('.sidebar-group-items a.sidebar-link'))
 
   const anchors = Array.from(document.querySelectorAll('a.header-anchor'))
-    .filter(x => sidebarLinks.map(x => x.hash).includes(x.hash))
+    .filter(x => sidebarLinks.map(x => x.hash).some(hash => hash === x.hash))
 
   return anchors
 }
