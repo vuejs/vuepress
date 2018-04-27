@@ -162,8 +162,7 @@ export default {
       this.setActiveHash()
     }, 200),
     setActiveHash () {
-      const anchors = gatherHeaderAnchors()
-
+      const anchors = document.querySelectorAll('.header-anchor')
       const scrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
 
       for (let i = 0; i < anchors.length; i++) {
@@ -172,7 +171,7 @@ export default {
 
         const isActive = i === 0 && scrollTop === 0 ||
           (scrollTop >= anchor.parentElement.offsetTop + 10 &&
-            (typeof nextAnchor === 'undefined' || scrollTop < nextAnchor.parentElement.offsetTop - 10))
+            (!nextAnchor || scrollTop < nextAnchor.parentElement.offsetTop - 10))
 
         if (isActive && this.$route.hash !== anchor.hash) {
           this.$router.replace(anchor.hash)
@@ -199,15 +198,6 @@ function updateMetaTags (meta, current) {
       return tag
     })
   }
-}
-
-function gatherHeaderAnchors () {
-  const sidebarLinks = Array.from(document.querySelectorAll('.sidebar-group-items a.sidebar-link'))
-
-  const anchors = Array.from(document.querySelectorAll('a.header-anchor'))
-    .filter(x => sidebarLinks.map(x => x.hash).some(hash => hash === x.hash))
-
-  return anchors
 }
 </script>
 
