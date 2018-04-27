@@ -111,7 +111,7 @@ module.exports = {
 - 类型: `string`
 - 默认值: `undefined`
 
-当你使用自定义主题的时候，需要指定它。当值为 `"foo"` 时，VuePress 将会尝试去加载位于 `node_modules/vuepress-theme-awesome/Layout.vue` 的主题组件。
+当你使用自定义主题的时候，需要指定它。当值为 `"foo"` 时，VuePress 将会尝试去加载位于 `node_modules/vuepress-theme-foo/Layout.vue` 的主题组件。
 
 ### themeConfig
 
