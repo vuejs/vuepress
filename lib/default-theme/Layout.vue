@@ -165,7 +165,7 @@ export default {
       const sidebarLinks = [].slice.call(document.querySelectorAll('.sidebar-link'))
       const anchors = [].slice.call(document.querySelectorAll('.header-anchor'))
         .filter(anchor => sidebarLinks.some(sidebarLink => sidebarLink.hash === anchor.hash))
-        
+
       const scrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
 
       for (let i = 0; i < anchors.length; i++) {

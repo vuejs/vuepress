@@ -28,6 +28,8 @@ This is the value of `$site` of this very website:
   "base": "/",
   "pages": [
     {
+      "birthtimeMs": 1524773182000,
+      "mtimeMs": 1524773182000,
       "path": "/",
       "title": "VuePress",
       "frontmatter": {}
@@ -43,7 +45,9 @@ This is the `$page` object for this page you are looking at:
 
 ``` json
 {
-  "path": "/custom-themes.html",
+  "birthtimeMs": 1524846768000,
+  "mtimeMs": 1524846768000,
+  "path": "/guide/custom-themes.html",
   "title": "Custom Themes",
   "headers": [/* ... */],
   "frontmatter": {}
@@ -53,6 +57,10 @@ This is the `$page` object for this page you are looking at:
 If the user provided `themeConfig` in `.vuepress/config.js`, it will also be available as `$site.themeConfig`. You can use this to allow users to customize behavior of your theme - for example, specifying categories and page order. You can then use these data together with `$site.pages` to dynamically construct navigation links.
 
 Finally, don't forget that `this.$route` and `this.$router` are also available as part of Vue Router's API.
+
+::: tip
+  `birthtimeMs` and `mtimeMs` is respectively `the time of file creation` and `the last time this file was modified`, For more details, refer to [Node.js documentation](https://nodejs.org/dist/latest/docs/api/fs.html#fs_stat_time_values)
+:::
 
 ## Content Excerpt
 
