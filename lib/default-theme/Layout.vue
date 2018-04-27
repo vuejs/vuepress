@@ -160,7 +160,7 @@ export default {
     },
     onScroll: throttle(function () {
       this.setActiveHash()
-    }, 200),
+    }, 300),
     setActiveHash () {
       const anchors = document.querySelectorAll('.header-anchor')
       const scrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
