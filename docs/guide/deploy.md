@@ -22,7 +22,7 @@ The following guides are based on a few shared assumptions:
 
    If your are deploying to `https://<USERNAME>.github.io/<REPO>/`, (i.e. your repository is at `https://github.com/<USERNAME>/REPO>`), set `base` to `"/<REPO>/"`.
 
-2. Inside your project, create `deploy.sh` with the following content (with highlighted lines uncommented appropriately). In the terminal/Cmd run deploy.sh (for example: sh deploy.sh).
+2. Inside your project, create `deploy.sh` with the following content (with highlighted lines uncommented appropriately). In the terminal/Cmd run deploy.sh (for example: `sh deploy.sh`).
 
 ``` bash{13,20,23}
 #!/usr/bin/env sh
