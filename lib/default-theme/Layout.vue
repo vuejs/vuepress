@@ -29,6 +29,7 @@ import Page from './Page.vue'
 import Sidebar from './Sidebar.vue'
 import { pathToComponentName } from '@app/util'
 import { resolveSidebarItems } from './util'
+import throttle from 'lodash.throttle'
 
 export default {
   components: { Home, Page, Sidebar, Navbar },
@@ -111,6 +112,8 @@ export default {
     this.$watch('$page', updateMeta)
     updateMeta()
 
+    window.addEventListener('scroll', this.onScroll)
+
     // configure progress bar
     nprogress.configure({ showSpinner: false })
 
@@ -129,6 +132,8 @@ export default {
 
   beforeDestroy () {
     updateMetaTags(null, this.currentMetaTags)
+
+    window.removeEventListener('scroll', this.onScroll)
   },
 
   methods: {
@@ -150,6 +155,30 @@ export default {
           this.toggleSidebar(true)
         } else {
           this.toggleSidebar(false)
+        }
+      }
+    },
+    onScroll: throttle(function () {
+      this.setActiveHash()
+    }, 300),
+    setActiveHash () {
+      const sidebarLinks = [].slice.call(document.querySelectorAll('.sidebar-link'))
+      const anchors = [].slice.call(document.querySelectorAll('.header-anchor'))
+        .filter(anchor => sidebarLinks.some(sidebarLink => sidebarLink.hash === anchor.hash))
+        
+      const scrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
+
+      for (let i = 0; i < anchors.length; i++) {
+        const anchor = anchors[i]
+        const nextAnchor = anchors[i + 1]
+
+        const isActive = i === 0 && scrollTop === 0 ||
+          (scrollTop >= anchor.parentElement.offsetTop + 10 &&
+            (!nextAnchor || scrollTop < nextAnchor.parentElement.offsetTop - 10))
+
+        if (isActive && this.$route.hash !== anchor.hash) {
+          this.$router.replace(anchor.hash)
+          return
         }
       }
     }
