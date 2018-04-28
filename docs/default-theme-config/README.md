@@ -321,7 +321,7 @@ module.exports = {
 }
 ```
 
-You can also hide the edit link on specific pages via `YAML front matter`:
+You can also hide the edit link on a specific page via `YAML front matter`:
 
 ``` yaml
 ---
