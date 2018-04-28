@@ -52,6 +52,9 @@ export default {
       }
     },
     editLink () {
+      if(this.$page.frontmatter.editLink === false) {
+        return
+      }
       const {
         repo,
         editLinks,
@@ -59,7 +62,6 @@ export default {
         docsBranch = 'master',
         docsRepo = repo
       } = this.$site.themeConfig
-      const hideEditLink = this.$page.frontmatter.editLink === false
 
       let path = normalize(this.$page.path)
       if (endingSlashRE.test(path)) {
@@ -68,7 +70,7 @@ export default {
         path += '.md'
       }
 
-      if (docsRepo && editLinks && !hideEditLink) {
+      if (docsRepo && editLinks) {
         const base = outboundRE.test(docsRepo)
           ? docsRepo
           : `https://github.com/${docsRepo}`
