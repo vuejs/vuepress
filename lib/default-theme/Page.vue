@@ -52,7 +52,7 @@ export default {
       }
     },
     editLink () {
-      if(this.$page.frontmatter.editLink === false) {
+      if (this.$page.frontmatter.editLink === false) {
         return
       }
       const {
