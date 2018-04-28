@@ -12,14 +12,12 @@
     </div>
     <div class="features" v-if="data.features && data.features.length">
       <div class="feature" v-for="feature in data.features">
-        <h2>{{ feature.title }}</h2>
-        <p>{{ feature.details }}</p>
+        <h2 v-html="feature.title"></h2>
+        <p v-html="feature.details"></p>
       </div>
     </div>
     <Content custom/>
-    <div class="footer" v-if="data.footer">
-      {{ data.footer }}
-    </div>
+    <div v-html="data.footer" class="footer" v-if="data.footer"></div>
   </div>
 </template>
 
