@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <Content :custom="false"/>
+    <Content :custom="$page.frontmatter.home === 'custom'"/>
     <div class="content edit-link" v-if="editLink">
       <a :href="editLink" target="_blank" rel="noopener noreferrer">{{ editLinkText }}</a>
       <OutboundLink/>

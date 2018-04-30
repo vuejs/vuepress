@@ -12,7 +12,7 @@
     <div class="custom-layout" v-if="$page.frontmatter.layout">
       <component :is="$page.frontmatter.layout"/>
     </div>
-    <Home v-else-if="$page.frontmatter.home"/>
+    <Home v-else-if="$page.frontmatter.home === true"/>
     <Page v-else :sidebar-items="sidebarItems">
       <slot name="page-top" slot="top"/>
       <slot name="page-bottom" slot="bottom"/>
@@ -30,6 +30,8 @@ import Sidebar from './Sidebar.vue'
 import { pathToComponentName } from '@app/util'
 import { resolveSidebarItems } from './util'
 import throttle from 'lodash.throttle'
+
+Vue.component('Home', Home)
 
 export default {
   components: { Home, Page, Sidebar, Navbar },
@@ -165,7 +167,7 @@ export default {
       const sidebarLinks = [].slice.call(document.querySelectorAll('.sidebar-link'))
       const anchors = [].slice.call(document.querySelectorAll('.header-anchor'))
         .filter(anchor => sidebarLinks.some(sidebarLink => sidebarLink.hash === anchor.hash))
-        
+
       const scrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
 
       for (let i = 0; i < anchors.length; i++) {
