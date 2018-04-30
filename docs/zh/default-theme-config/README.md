@@ -52,7 +52,7 @@ module.exports = {
 }
 ```
 
-当你提供了一个 `items` 数组而不是一个单一的 `link` 时，它将会显示以 `下拉列表` 的方式显示：
+当你提供了一个 `items` 数组而不是一个单一的 `link` 时，它显示的将是 `下拉列表` ：
 
 ```js
 module.exports = {
