@@ -215,7 +215,7 @@ export default {
       background-color white
       z-index 10
       left 0
-      top: 0
+      top 0
       &:focus
         cursor text
         width 10rem
