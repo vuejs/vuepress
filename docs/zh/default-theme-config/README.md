@@ -317,6 +317,14 @@ module.exports = {
 }
 ```
 
+你可以通过 `YAML front matter` 来禁用指定页面的编辑链接：
+
+``` yaml
+---
+editLink: false
+---
+```
+
 ## 简单的 CSS 覆盖
 
 如果你只是希望应用一些简单的 overrides 到默认主题的样式上，你可以创建一个 `.vuepress/override.styl` 文件，这是一个 [Stylus](http://stylus-lang.com/) 文件，但是你仍然可以使用普通的 CSS 语法。
