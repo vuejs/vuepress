@@ -199,6 +199,8 @@ export default {
       &:focus
         cursor text
         width 10rem
+    suggestions:
+      rigt 0
 
 @media (min-width: $MQMobile) and (max-width: $MQNarrow)
   .search-box
@@ -224,12 +226,6 @@ export default {
   .search-box
     .suggestions
       left 0
-
-@media (max-width: $MQMobile)
-  .search-box
-    margin-right 0
-    .suggestions
-      right 0
 
 @media (max-width: $MQMobileNarrow)
   .search-box
