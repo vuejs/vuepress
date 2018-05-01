@@ -52,7 +52,7 @@ module.exports = {
 }
 ```
 
-当你提供了一个 `items` 数组而不是一个单一的 `link` 时，它将会显示以 `下拉列表` 的方式显示：
+当你提供了一个 `items` 数组而不是一个单一的 `link` 时，它将显示为一个 `下拉列表` ：
 
 ```js
 module.exports = {
@@ -315,6 +315,14 @@ module.exports = {
     editLinkText: '帮助我们改善此页面！'
   }
 }
+```
+
+你可以通过 `YAML front matter` 来禁用指定页面的编辑链接：
+
+``` yaml
+---
+editLink: false
+---
 ```
 
 ## 简单的 CSS 覆盖
