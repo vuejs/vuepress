@@ -28,8 +28,7 @@ This is the value of `$site` of this very website:
   "base": "/",
   "pages": [
     {
-      "birthtimeMs": 1524773182000,
-      "mtimeMs": 1524773182000,
+      "lastModified": 1524027677,
       "path": "/",
       "title": "VuePress",
       "frontmatter": {}
@@ -45,8 +44,7 @@ This is the `$page` object for this page you are looking at:
 
 ``` json
 {
-  "birthtimeMs": 1524846768000,
-  "mtimeMs": 1524846768000,
+  "lastModified": 1524847549,
   "path": "/guide/custom-themes.html",
   "title": "Custom Themes",
   "headers": [/* ... */],
@@ -59,7 +57,7 @@ If the user provided `themeConfig` in `.vuepress/config.js`, it will also be ava
 Finally, don't forget that `this.$route` and `this.$router` are also available as part of Vue Router's API.
 
 ::: tip
-  `birthtimeMs` and `mtimeMs` is respectively `the time of file creation` and `the last time this file was modified`, For more details, refer to [Node.js documentation](https://nodejs.org/dist/latest/docs/api/fs.html#fs_stat_time_values)
+  `lastModified` is the UNIX timestamp of this file's last git commit, so please ensure you have installed git.
 :::
 
 ## Content Excerpt
