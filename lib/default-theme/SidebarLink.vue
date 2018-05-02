@@ -19,16 +19,11 @@ export default {
       : $site.themeConfig.sidebarDepth
     const maxDepth = configDepth == null ? 1 : configDepth
     
-    if (item.frontmatter.sidebar === 'auto') {
-      const children = groupHeaders(item.headers)
-      return [link, renderChildren(h, children, item.path, $route, maxDepth)]
-    }
-    
     if (item.type === 'auto') {
       return [link, renderChildren(h, item.children, item.basePath, $route, maxDepth)]
     } else if (active && item.headers && !hashRE.test(item.path)) {
       const children = groupHeaders(item.headers)
-      return [link, renderChildren(h, children, item.path, $route, maxDepth)]
+      return item.frontmatter.sidebar === 'auto' ? [link, renderChildren(h, children, item.path, $route, 3)] : [link, renderChildren(h, children, item.path, $route, maxDepth)]
     } else {
       return link
     }
