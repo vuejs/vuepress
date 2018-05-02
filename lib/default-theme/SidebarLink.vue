@@ -22,7 +22,7 @@ export default {
       return [link, renderChildren(h, item.children, item.basePath, $route, maxDepth)]
     } else if (active && item.headers && !hashRE.test(item.path)) {
       const children = groupHeaders(item.headers)
-      return [link, renderChildren(h, children, item.path, $route, maxDepth)]
+      return item.frontmatter.sidebar === 'auto' ? [link, renderChildren(h, children, item.path, $route, 3)] : [link, renderChildren(h, children, item.path, $route, maxDepth)]
     } else {
       return link
     }
