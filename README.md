@@ -44,4 +44,4 @@ yarn dev # serves VuePress' own docs with itself
 
 ## License
 
-[MIT](https://github.com/vuejs/vuepress/blob/master/LICENSE)
+[MIT](./LICENSE)
