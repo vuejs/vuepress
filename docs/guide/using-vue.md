@@ -128,7 +128,7 @@ Make sure a custom component's name either contains a hyphen or is in PascalCase
 
 ### Using Pre-processors
 
-VuePress has built-in webpack config for the following pre-processors: `sass`, `scss`, `less`, `stylus` and `pug`. All you need to do is installing the corresposnding dependencies. For example, to enable `sass`, install the following in your project:
+VuePress has built-in webpack config for the following pre-processors: `sass`, `scss`, `less`, `stylus` and `pug`. All you need to do is installing the corresponding dependencies. For example, to enable `sass`, install the following in your project:
  
 ``` bash
 yarn add -D sass-loader node-sass
