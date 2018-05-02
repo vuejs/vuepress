@@ -167,10 +167,14 @@ th, td
     .sidebar-mask
       display: block
   &.no-navbar
-    .content:not(.custom)
+    .content:not(.custom) >
       h1, h2, h3, h4, h5, h6
         margin-top 1.5rem
         padding-top 0
+    .sidebar
+      top 0
+    .custom-layout
+      padding-top 0
 
 
 @media (min-width: ($MQMobile + 1px))
