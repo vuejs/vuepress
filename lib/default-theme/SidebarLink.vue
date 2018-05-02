@@ -18,7 +18,6 @@ export default {
       ? $page.frontmatter.sidebarDepth
       : $site.themeConfig.sidebarDepth
     const maxDepth = configDepth == null ? 1 : configDepth
-    
     if (item.type === 'auto') {
       return [link, renderChildren(h, item.children, item.basePath, $route, maxDepth)]
     } else if (active && item.headers && !hashRE.test(item.path)) {
