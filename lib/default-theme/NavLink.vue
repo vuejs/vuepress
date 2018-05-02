@@ -9,13 +9,13 @@
     v-else
     :href="link"
     class="nav-link"
-    :target="isMailto(link) ? null : '_blank'"
-    :rel="isMailto(link) ? null : 'noopener noreferrer'"
+    :target="isMailto(link) || isTel(link) ? null : '_blank'"
+    :rel="isMailto(link) || isTel(link) ? null : 'noopener noreferrer'"
   >{{ item.text }}</a>
 </template>
 
 <script>
-import { isExternal, isMailto, ensureExt } from './util'
+import { isExternal, isMailto, isTel, ensureExt } from './util'
 
 export default {
   props: {
@@ -30,7 +30,8 @@ export default {
   },
   methods: {
     isExternal,
-    isMailto
+    isMailto,
+    isTel
   }
 }
 </script>
