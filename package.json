@@ -101,7 +101,7 @@
     "yorkie": "^1.0.3"
   },
   "engines": {
-    "node": ">=8"
+    "node": ">=8.10"
   },
   "browserslist": [
     ">1%"
