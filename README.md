@@ -4,6 +4,14 @@
   </a>
 </p>
 
+<div align="center">
+
+**[Web Site](https://vuepress.vuejs.org/) |
+[Latest Guide](https://vuepress.vuejs.org/guide/) |
+[GitHub](https://github.com/vuejs/vuepress/)**
+
+</div>
+
 # VuePress
 
 > Minimalistic docs generator with Vue component based layout system
@@ -15,14 +23,13 @@ https://vuepress.vuejs.org/
 - [Built-in markdown extensions](https://vuepress.vuejs.org/guide/markdown.html) optimized for technical documentation
 - [Ability to leverage Vue inside markdown files](https://vuepress.vuejs.org/guide/using-vue.html)
 - [Vue-powered custom theme system](https://vuepress.vuejs.org/guide/custom-themes.html)
-- [Service Worker Integration](https://vuepress.vuejs.org/config/#serviceworker)
-- [Google Analytics Integration](https://vuepress.vuejs.org/config/#ga)
-- [Multi-Language Support](https://vuepress.vuejs.org/guide/i18n.html)
+- Service Worker Integration
+- Google Analytics Integration
+- Multi-Language Support
 - A default theme with:
   - Responsive layout
   - Optional Homepage
-  - [Automatic basic typeahead search](https://vuepress.vuejs.org/default-theme-config/#built-in-search)
-  - [Algolia Search](https://vuepress.vuejs.org/default-theme-config/#algolia-search)
+  - Automatic basic typeahead search
   - Customizable navbar and sidebar
   - Auto-generated GitHub link and page edit links
 
