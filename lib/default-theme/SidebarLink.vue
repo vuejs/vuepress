@@ -19,7 +19,7 @@ export default {
       : $site.themeConfig.sidebarDepth
     const maxDepth = configDepth == null ? 1 : configDepth
     if (item.type === 'auto') {
-      return [link, renderChildren(h, item.children, item.basePath, $route, maxDepth)]
+      return [link, renderChildren(h, item.children, item.basePath, $route, 3)]
     } else if (active && item.headers && !hashRE.test(item.path)) {
       const children = groupHeaders(item.headers)
       return [link, renderChildren(h, children, item.path, $route, maxDepth)]
