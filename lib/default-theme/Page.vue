@@ -18,6 +18,7 @@
           </router-link> →
         </span>
       </p>
+      <div class="last-updated">{{ $localeConfig.lastUpdated || 'Last Updated' }}: {{ lastUpdated }}</div>
     </div>
     <slot name="bottom"/>
   </div>
@@ -31,6 +32,9 @@ export default {
   components: { OutboundLink },
   props: ['sidebarItems'],
   computed: {
+    lastUpdated () {
+      return new Date(this.$page.lastUpdated).toLocaleString(this.$localeConfig.lang)
+    },
     prev () {
       const prev = this.$page.frontmatter.prev
       if (prev === false) {
@@ -140,4 +144,9 @@ function find (page, items, offset) {
     padding-top 1rem
   .next
     float right
+  .last-updated
+    color $arrowBgColor
+    text-align center
+    font-size 0.9em
+    margin-bottom .5rem
 </style>

@@ -4,12 +4,14 @@ module.exports = {
     '/': {
       lang: 'en-US',
       title: 'VuePress',
-      description: 'Vue-powered Static Site Generator'
+      description: 'Vue-powered Static Site Generator',
+      lastUpdated: 'Last Updated'
     },
     '/zh/': {
       lang: 'zh-CN',
       title: 'VuePress',
-      description: 'Vue 驱动的静态网站生成器'
+      description: 'Vue 驱动的静态网站生成器',
+      lastUpdated: '上次更新'
     }
   },
   head: [
