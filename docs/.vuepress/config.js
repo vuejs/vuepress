@@ -12,6 +12,14 @@ module.exports = {
       description: 'Vue 驱动的静态网站生成器'
     }
   },
+  plugins: [
+    [
+      require('./vuepress-plugin-custom-domain'),
+      {
+        domain: 'www.vuejs.org'
+      }
+    ]
+  ],
   head: [
     ['link', { rel: 'icon', href: `/logo.png` }],
     ['link', { rel: 'manifest', href: '/manifest.json' }],
