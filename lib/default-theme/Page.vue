@@ -142,6 +142,7 @@ function find (page, items, offset) {
     margin-top 0 !important
     border-top 1px solid $borderColor
     padding-top 1rem
+    overflow auto // clear float
   .next
     float right
   .last-updated
