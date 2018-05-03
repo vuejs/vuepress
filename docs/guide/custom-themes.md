@@ -28,6 +28,7 @@ This is the value of `$site` of this very website:
   "base": "/",
   "pages": [
     {
+      "lastModified": 1524027677,
       "path": "/",
       "title": "VuePress",
       "frontmatter": {}
@@ -43,7 +44,8 @@ This is the `$page` object for this page you are looking at:
 
 ``` json
 {
-  "path": "/custom-themes.html",
+  "lastModified": 1524847549,
+  "path": "/guide/custom-themes.html",
   "title": "Custom Themes",
   "headers": [/* ... */],
   "frontmatter": {}
@@ -53,6 +55,10 @@ This is the `$page` object for this page you are looking at:
 If the user provided `themeConfig` in `.vuepress/config.js`, it will also be available as `$site.themeConfig`. You can use this to allow users to customize behavior of your theme - for example, specifying categories and page order. You can then use these data together with `$site.pages` to dynamically construct navigation links.
 
 Finally, don't forget that `this.$route` and `this.$router` are also available as part of Vue Router's API.
+
+::: tip
+  `lastModified` is the UNIX timestamp of this file's last git commit, so please ensure you have git installed.
+:::
 
 ## Content Excerpt
 
