@@ -278,7 +278,7 @@ module.exports = {
 
 ## 最近更新
 
-你可以通过 `themeConfig.lastUpdated` 选项来获取每个文件最后一次 `git commit` 的 UNIX 时间戳(ms)，同时它将以合适的日期格式显示在每一页的底部：
+你可以通过 `themeConfig.lastUpdated` 选项来获取每个文件最后一次 `git` 提交的 UNIX 时间戳(ms)，同时它将以合适的日期格式显示在每一页的底部：
 
 ``` js
 module.exports = {
@@ -291,7 +291,7 @@ module.exports = {
 请注意，`themeConfig.lastUpdated` 默认是关闭的，如果给定一个字符串，它将会作为前缀显示（默认值是：`Last Updated`）。
 
 ::: warning 使用须知
-  由于 `lastUpdated` 是基于 `git` 的, 所以你只能在一个基于 `git` 的项目启用它。
+  由于 `lastUpdated` 是基于 `git` 的, 所以你只能在一个基于 `git` 的项目中启用它。
 :::
 
 ## 上 / 下一篇链接

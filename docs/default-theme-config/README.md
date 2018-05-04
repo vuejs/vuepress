@@ -282,7 +282,7 @@ For more options, refer to [Algolia DocSearch's documentation](https://github.co
 
 ## Last Updated
 
-The `themeConfig.lastUpdated` option allows you to get the UNIX timestamp(ms) of each file's last `git` commit, and it will also display at the bottom of each page with with a appropriate format:
+The `themeConfig.lastUpdated` option allows you to get the UNIX timestamp(ms) of each file's last `git` commit, and it will also display at the bottom of each page with a appropriate format:
 
 ``` js
 module.exports = {
