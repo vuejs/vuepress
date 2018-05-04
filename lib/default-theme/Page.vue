@@ -18,7 +18,7 @@
           </router-link> →
         </span>
       </p>
-      <div class="last-updated">{{ $localeConfig.lastUpdated || 'Last Updated' }}: {{ lastUpdated }}</div>
+      <div v-if="lastUpdated" class="last-updated">{{ lastUpdatedText }}: {{ lastUpdated }}</div>
     </div>
     <slot name="bottom"/>
   </div>
@@ -33,7 +33,18 @@ export default {
   props: ['sidebarItems'],
   computed: {
     lastUpdated () {
-      return new Date(this.$page.lastUpdated).toLocaleString(this.$localeConfig.lang)
+      if (this.$page.lastUpdated) {
+        return new Date(this.$page.lastUpdated).toLocaleString(this.$lang)
+      }
+    },
+    lastUpdatedText () {
+      if (typeof this.$themeLocaleConfig.lastUpdated === 'string') {
+        return this.$themeLocaleConfig.lastUpdated
+      }
+      if (typeof this.$site.themeConfig.lastUpdated === 'string') {
+        return this.$site.themeConfig.lastUpdated
+      }
+      return 'Last Updated'
     },
     prev () {
       const prev = this.$page.frontmatter.prev
