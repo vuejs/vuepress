@@ -131,7 +131,7 @@ export default {
 
 VuePress 对以下预处理器已经内置相关的 webpack 配置：`sass`、`scss`、`less`、`stylus` 和 `pug`。要使用它们你只需要在项目中安装对应的依赖即可。例如，要使用 `sass`，需要安装：
 
-```bash
+``` bash
 yarn add -D sass-loader node-sass
 ```
  
@@ -146,7 +146,7 @@ yarn add -D sass-loader node-sass
 
 要在组件中使用 `<template lang="pug">`，则需要安装 `pug` 和 `pug-plain-loader`:
 
-```bash
+``` bash
 yarn add -D pug pug-plain-loader
 ```
 
