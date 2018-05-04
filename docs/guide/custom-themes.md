@@ -57,7 +57,7 @@ If the user provided `themeConfig` in `.vuepress/config.js`, it will also be ava
 Finally, don't forget that `this.$route` and `this.$router` are also available as part of Vue Router's API.
 
 ::: tip
-  `lastUpdated` is the UNIX timestamp of this file's last git commit, For details, refer to [Last Updated](../default-theme-config/#last-updated).
+  `lastUpdated` is the UNIX timestamp of this file's last git commit, for more details, refer to [Last Updated](../default-theme-config/#last-updated).
 
 :::
 
