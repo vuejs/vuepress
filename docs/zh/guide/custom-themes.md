@@ -28,6 +28,7 @@ VuePress 使用单文件组件来构建自定义主题。想要开发一个自�
   "base": "/",
   "pages": [
     {
+      "lastModified": 1524027677,
       "path": "/",
       "title": "VuePress",
       "frontmatter": {}
@@ -43,6 +44,7 @@ VuePress 使用单文件组件来构建自定义主题。想要开发一个自�
 
 ``` json
 {
+  "lastModified": 1524847549,
   "path": "/custom-themes.html",
   "title": "自定义主题",
   "headers": [/* ... */],
@@ -53,6 +55,10 @@ VuePress 使用单文件组件来构建自定义主题。想要开发一个自�
 如果用户在 `.vuepress/config.js` 配置了 `themeConfig`，你将可以通过 `$site.themeConfig` 访问到它。如此一来，你可以通过它来对用户开放一些自定义主题的配置 —— 比如指定目录或者页面的顺序，你也可以结合 `$site.pages` 来动态地构建导航链接。
 
 最后，别忘了，作为 Vue Router API 的一部分，`this.$route` 和 `this.$router` 同样可以使用。
+
+::: tip 提示
+  `lastModified` 是这个文件最后一次 git 提交的 unix 时间戳，所以请确保你已经安装了 git。
+:::
 
 ## 内容摘抄
 

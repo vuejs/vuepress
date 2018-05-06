@@ -1,7 +1,13 @@
 <p align="center">
   <a href="https://vuepress.vuejs.org/" target="_blank">
-    <img width="280" src="https://github.com/vuejs/vuepress/blob/master/docs/.vuepress/public/hero.png" alt="logo">
+    <img width="280" src="https://raw.githubusercontent.com/vuejs/vuepress/master/docs/.vuepress/public/hero.png" alt="logo">
   </a>
+</p>
+
+<p align="center">
+  <a href="https://npmcharts.com/compare/vuepress?minimal=true"><img src="https://img.shields.io/npm/dm/vuepress.svg" alt="Downloads"></a>
+  <a href="https://www.npmjs.com/package/vuepress"><img src="https://img.shields.io/npm/v/vuepress.svg" alt="Version"></a>
+  <a href="https://www.npmjs.com/package/vuepress"><img src="https://img.shields.io/npm/l/vuepress.svg" alt="License"></a>
 </p>
 
 # VuePress
@@ -15,13 +21,14 @@ https://vuepress.vuejs.org/
 - [Built-in markdown extensions](https://vuepress.vuejs.org/guide/markdown.html) optimized for technical documentation
 - [Ability to leverage Vue inside markdown files](https://vuepress.vuejs.org/guide/using-vue.html)
 - [Vue-powered custom theme system](https://vuepress.vuejs.org/guide/custom-themes.html)
-- Service Worker Integration
-- Google Analytics Integration
-- Multi-Language Support
+- [Service Worker Integration](https://vuepress.vuejs.org/config/#serviceworker)
+- [Google Analytics Integration](https://vuepress.vuejs.org/config/#ga)
+- [Multi-Language Support](https://vuepress.vuejs.org/guide/i18n.html)
 - A default theme with:
   - Responsive layout
   - Optional Homepage
-  - Automatic basic typeahead search
+  - [Automatic basic typeahead search](https://vuepress.vuejs.org/default-theme-config/#built-in-search)
+  - [Algolia Search](https://vuepress.vuejs.org/default-theme-config/#algolia-search)
   - Customizable navbar and sidebar
   - Auto-generated GitHub link and page edit links
 
@@ -44,4 +51,4 @@ yarn dev # serves VuePress' own docs with itself
 
 ## License
 
-MIT
+[MIT](https://github.com/vuejs/vuepress/blob/master/LICENSE)

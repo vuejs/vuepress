@@ -321,6 +321,14 @@ module.exports = {
 }
 ```
 
+You can also hide the edit link on a specific page via `YAML front matter`:
+
+``` yaml
+---
+editLink: false
+---
+```
+
 ## Simple CSS Override
 
 If you wish to apply simple overrides to the styling of the default theme, you can create an `.vuepress/override.styl` file. This is a [Stylus](http://stylus-lang.com/) file but you can use normal CSS syntax as well.

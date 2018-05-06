@@ -28,6 +28,7 @@ import Navbar from './Navbar.vue'
 import Page from './Page.vue'
 import Sidebar from './Sidebar.vue'
 import { pathToComponentName } from '@app/util'
+import store from '@app/store'
 import { resolveSidebarItems } from './util'
 import throttle from 'lodash.throttle'
 
@@ -165,7 +166,7 @@ export default {
       const sidebarLinks = [].slice.call(document.querySelectorAll('.sidebar-link'))
       const anchors = [].slice.call(document.querySelectorAll('.header-anchor'))
         .filter(anchor => sidebarLinks.some(sidebarLink => sidebarLink.hash === anchor.hash))
-        
+
       const scrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
 
       for (let i = 0; i < anchors.length; i++) {
@@ -177,7 +178,13 @@ export default {
             (!nextAnchor || scrollTop < nextAnchor.parentElement.offsetTop - 10))
 
         if (isActive && this.$route.hash !== anchor.hash) {
-          this.$router.replace(anchor.hash)
+          store.disableScrollBehavior = true
+          this.$router.replace(anchor.hash, () => {
+            // execute after scrollBehavior handler.
+            this.$nextTick(() => {
+              store.disableScrollBehavior = false
+            })
+          })
           return
         }
       }
