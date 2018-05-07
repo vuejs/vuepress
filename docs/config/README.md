@@ -127,6 +127,13 @@ Provide config options to the used theme. The options will vary depending on the
 
 ## Markdown
 
+
+### markdown.link
+- Type: `Object`
+- Default: `{ blank: true }`
+
+Setting `markdown.link.blank` to `false` will cause all external links to open in the same window.
+
 ### markdown.slugify
 
 - Type: `Function`
