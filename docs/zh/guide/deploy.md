@@ -120,3 +120,13 @@ pages:
    ```
 
 3. 在执行了 `yarn docs:build` 或 `npm run docs:build` 后, 使用 `firebase deploy` 指令来部署。
+
+## Surge
+
+1. 首先，假设你已经安装了 [surge](https://www.npmjs.com/package/surge)；
+
+2. 运行 `yarn docs:build` 或者 `npm run docs:build`；
+
+3. 想要使用 surge 来部署，你可以运行： `surge docs/.vuepress/dist`；
+
+你也可以通过 `surge docs/.vuepress/dist yourdomain.com` 来部署到 [自定义域名](http://surge.sh/help/adding-a-custom-domain)。
