@@ -134,6 +134,13 @@ Provide config options to the used theme. The options will vary depending on the
 
 Function for transforming header texts into slugs. This affects the ids/links generated for header anchors, table of contents and sidebar links.
 
+### markdown.externalLinks
+
+- Type: `Object`
+- Default: `{ target: '_blank', rel: 'noopener noreferrer' }`
+
+The key and value pair will be added to `<a>` tags that points to an external link. The default option will open external links in a new window.
+
 ### markdown.anchor
 
 - Type: `Object`
