@@ -48,10 +48,12 @@ Given the following directory structure:
 
 ### External Links
 
-Outbound links automatically gets `target="_blank"`:
+Outbound links automatically gets `target="_blank" rel="noopener noreferrer"`:
 
 - [vuejs.org](https://vuejs.org)
 - [VuePress on GitHub](https://github.com/vuejs/vuepress)
+
+You could alter this this behavior by setting `config.markdown.link.blank = false`. See more [here](/config/#markdown-link).
 
 ## Front Matter
 
