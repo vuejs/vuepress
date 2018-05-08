@@ -133,6 +133,13 @@ module.exports = {
 
 [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor) 的选项。
 
+### markdown.externalLinks
+
+- Type: `Object`
+- Default: `{ target: '_blank', rel: 'noopener noreferrer' }`
+
+这个键值对将会作为特性被增加到是外部链接的 `<a>` 标签上，默认的选项将会在新窗口中打开一个该外部链接。
+
 ### markdown.toc
 
 - 类型: `Object`

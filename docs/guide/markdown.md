@@ -53,7 +53,7 @@ Outbound links automatically gets `target="_blank" rel="noopener noreferrer"`:
 - [vuejs.org](https://vuejs.org)
 - [VuePress on GitHub](https://github.com/vuejs/vuepress)
 
-You can customize the attributes added to external links by setting `config.markdown.externalLinks`. See more [here](/config/#markdown-externalLinks).
+You can customize the attributes added to external links by setting [config.markdown.externalLinks](../config/#markdown-externallinks).
 
 ## Front Matter
 
