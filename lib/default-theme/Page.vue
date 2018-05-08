@@ -151,6 +151,7 @@ function find (page, items, offset) {
     margin-bottom .5rem
     float right
     font-weight 500
+    font-size .9em
     .prefix
       color lighten($textColor, 25%)
     .time
