@@ -4,6 +4,10 @@
     <div class="content edit-link" v-if="editLink">
       <a :href="editLink" target="_blank" rel="noopener noreferrer">{{ editLinkText }}</a>
       <OutboundLink/>
+      <div v-if="lastUpdated" class="last-updated">
+        <span class="prefix">{{ lastUpdatedText }}: </span>
+        <span class="time">{{ lastUpdated }}</span>
+      </div>
     </div>
     <div class="content page-nav" v-if="prev || next">
       <p class="inner">
@@ -18,7 +22,6 @@
           </router-link> →
         </span>
       </p>
-      <div v-if="lastUpdated" class="last-updated">{{ lastUpdatedText }}: {{ lastUpdated }}</div>
     </div>
     <slot name="bottom"/>
   </div>
@@ -144,6 +147,14 @@ function find (page, items, offset) {
   a
     color lighten($textColor, 25%)
     margin-right 0.25rem
+  .last-updated
+    margin-bottom .5rem
+    float right
+    font-weight 500
+    .prefix
+      color lighten($textColor, 25%)
+    .time
+      color #aaa
 
 .page-nav.content
   padding-top 1rem !important
@@ -156,9 +167,12 @@ function find (page, items, offset) {
     overflow auto // clear float
   .next
     float right
-  .last-updated
-    color $arrowBgColor
-    text-align center
-    font-size 0.9em
-    margin-bottom .5rem
+
+@media (max-width: $MQMobile)
+  .edit-link.content .last-updated
+    float none
+    text-align left
+    margin-top 1rem
+    font-size .8em
+
 </style>
