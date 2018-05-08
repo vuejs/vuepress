@@ -111,7 +111,7 @@ pages:
    ```
 
    `.firebaserc`:
-   ```js
+   ``` js
    {
      "projects": {
        "default": "<YOUR_FIREBASE_ID>"

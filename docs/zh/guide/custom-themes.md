@@ -28,7 +28,7 @@ VuePress 使用单文件组件来构建自定义主题。想要开发一个自�
   "base": "/",
   "pages": [
     {
-      "lastModified": 1524027677,
+      "lastUpdated": 1524027677000,
       "path": "/",
       "title": "VuePress",
       "frontmatter": {}
@@ -44,7 +44,7 @@ VuePress 使用单文件组件来构建自定义主题。想要开发一个自�
 
 ``` json
 {
-  "lastModified": 1524847549,
+  "lastUpdated": 1524847549000,
   "path": "/custom-themes.html",
   "title": "自定义主题",
   "headers": [/* ... */],
@@ -57,7 +57,7 @@ VuePress 使用单文件组件来构建自定义主题。想要开发一个自�
 最后，别忘了，作为 Vue Router API 的一部分，`this.$route` 和 `this.$router` 同样可以使用。
 
 ::: tip 提示
-  `lastModified` 是这个文件最后一次 git 提交的 unix 时间戳，所以请确保你已经安装了 git。
+  `lastUpdated` 是这个文件最后一次 git 提交的 UNIX 时间戳，更多细节请参考：[最近更新](../default-theme-config/#最近更新)。
 :::
 
 ## 内容摘抄
@@ -80,7 +80,7 @@ VuePress 使用单文件组件来构建自定义主题。想要开发一个自�
 
 自定义主题也可以通过主题根目录下的 `enhanceApp.js` 文件来对 VuePress 应用进行拓展配置。这个文件应当 `export default` 一个钩子函数，并接受一个包含了一些应用级别属性的对象作为参数。你可以使用这个钩子来安装一些附加的 Vue 插件、注册全局组件，或者增加额外的路由钩子等：
 
-```js
+``` js
 export default ({
   Vue, // VuePress 正在使用的 Vue 构造函数
   options, // 附加到根实例的一些选项
