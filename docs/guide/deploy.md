@@ -154,7 +154,7 @@ heroku login
    }
    ```
 
-5. Deploying Your Site
+5. Set up your heroku git remote
 
 ``` bash
 # version change
@@ -167,7 +167,11 @@ heroku apps:create my-static-site-example
 
 # set buildpack for static sites
 heroku buildpacks:set https://github.com/heroku/heroku-buildpack-static.git
+```
 
+6. Deploying Your Site
+
+``` bash
 # publish site
 git push heroku master
 
