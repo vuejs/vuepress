@@ -77,7 +77,7 @@ export default {
         return (
           base.replace(endingSlashRE, '') +
           `/edit/${docsBranch}` +
-          (docsDir !== '' ? '/' + docsDir.replace(endingSlashRE, '') : '') +
+          (docsDir ? '/' + docsDir.replace(endingSlashRE, '') : '') +
           path
         )
       }
