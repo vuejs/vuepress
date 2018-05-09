@@ -88,14 +88,15 @@ pre[class="language-bash"]:before
 
 .content pre[line-number-mode]
   padding-left 3rem
-
-.line-wrapper
-  position  relative
-
-.line-number
-  user-select none
-  position  absolute
-  left -3rem
-  width 3rem
-  text-align center
-  color #888
+  .highlighted-line
+    margin 0 -1.5rem 0 -3rem
+    padding 0 1.5rem 0 3rem
+  .line-wrapper
+    position  relative
+  .line-number
+    user-select none
+    position  absolute
+    left -3rem
+    width 3rem
+    text-align center
+    color #888
