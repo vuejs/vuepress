@@ -147,12 +147,12 @@ heroku login
 
 4. Create a file called `static.json` in the root of your project with the content below. This is the configuration of your site. see more at [heroku-buildpack-static](https://github.com/heroku/heroku-buildpack-static).
 
-  `static.json`:
-   ```json
-   {
-     "root": "./docs/.vuepress/dist"
-   }
-   ```
+`static.json`:
+```json
+{
+  "root": "./docs/.vuepress/dist"
+}
+```
 
 5. Set up your heroku git remote
 
