@@ -97,6 +97,9 @@ export default {
       color lighten($textColor, 10%)
     p
       color lighten($textColor, 25%)
+  .content
+    img
+      max-width 100%
   .footer
     padding 2.5rem
     border-top 1px solid $borderColor
