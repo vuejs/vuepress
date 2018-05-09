@@ -1,5 +1,6 @@
 <template>
   <div class="page">
+    <ScrollToTop/>
     <Content :custom="false"/>
     <div class="content edit-link" v-if="editLink">
       <a :href="editLink" target="_blank" rel="noopener noreferrer">{{ editLinkText }}</a>
@@ -29,10 +30,14 @@
 
 <script>
 import OutboundLink from './OutboundLink.vue'
+import ScrollToTop from './ScrollToTop.vue'
 import { resolvePage, normalize, outboundRE, endingSlashRE } from './util'
 
 export default {
-  components: { OutboundLink },
+  components: {
+    OutboundLink,
+    ScrollToTop
+  },
   props: ['sidebarItems'],
   computed: {
     lastUpdated () {
