@@ -60,6 +60,7 @@
     "koa-mount": "^3.0.0",
     "koa-static": "^4.0.2",
     "loader-utils": "^1.1.0",
+    "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",
     "lru-cache": "^4.1.2",
     "markdown-it": "^8.4.1",
