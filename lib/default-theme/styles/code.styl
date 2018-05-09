@@ -86,17 +86,21 @@ pre[class="language-c"]:before
 pre[class="language-bash"]:before
   content "sh"
 
+$lineNumberWrapperWidth = 3rem
+
 .content pre[line-number-mode]
-  padding-left 3rem
+  padding-left $lineNumberWrapperWidth
+  vertical-align middle
   .highlighted-line
-    margin 0 -1.5rem 0 -3rem
-    padding 0 1.5rem 0 3rem
+    margin 0 -1.5rem 0 $lineNumberWrapperWidth
+    padding 0 1.5rem 0 $lineNumberWrapperWidth
   .line-wrapper
+    user-select none
+    display inline-block
     position  relative
   .line-number
-    user-select none
-    position  absolute
-    left -3rem
-    width 3rem
+    position absolute
+    left - $lineNumberWrapperWidth
+    width $lineNumberWrapperWidth
     text-align center
-    color #888
+    color rgba(255, 255, 255, 0.4)
