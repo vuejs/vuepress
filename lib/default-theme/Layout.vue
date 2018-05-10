@@ -87,14 +87,6 @@ export default {
     }
   },
 
-  created () {
-    if (this.$ssrContext) {
-      this.$ssrContext.title = this.$title
-      this.$ssrContext.lang = this.$lang
-      this.$ssrContext.description = this.$page.description || this.$description
-    }
-  },
-
   mounted () {
     // update title / meta tags
     this.currentMetaTags = []
