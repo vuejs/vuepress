@@ -4,7 +4,7 @@
 Theme components are subject to the same [browser API access restrictions](./using-vue.md#browser-api-access-restrictions).
 :::
 
-VuePress uses Vue single file components for custom themes. To use a custom layout, create a `.vuepress/theme` directory in your docs root, and then create a `Layout.vue` file:
+VuePress uses Vue single file components for custom themes. To use a custom layout, create a `.vuepress/theme` directory in your docs root (i.e. the root of your Vuepress `sourceDir`), and then create a `Layout.vue` file:
 
 ```
 .
@@ -17,7 +17,7 @@ From there it's the same as developing a normal Vue application. It is entirely 
 
 ## Site and Page Metadata
 
-The `Layout` component will be invoked once for every `.md` file in `docs`, and the metadata for the entire site and that specific page will be exposed respectively as `this.$site` and `this.$page` properties which are injected into every component in the app.
+The `Layout` component will be invoked once for every `.md` file in your `sourceDir` (except `.vuepress` directory), and the metadata for the entire site and that specific page will be exposed respectively as `this.$site` and `this.$page` properties which are injected into every component in the app.
 
 This is the value of `$site` of this very website:
 
