@@ -92,7 +92,7 @@
     "vue-server-renderer": "^2.5.16",
     "vue-template-compiler": "^2.5.16",
     "vuepress-html-webpack-plugin": "^3.2.0",
-    "webpack": "^4.5.0",
+    "webpack": "^4.8.1",
     "webpack-chain": "^4.6.0",
     "webpack-merge": "^4.1.2",
     "webpack-serve": "^0.3.1",
