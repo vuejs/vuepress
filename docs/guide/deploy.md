@@ -132,3 +132,49 @@ pages:
 3. Deploy to surge, by typing `surge docs/.vuepress/dist`.
 
 You can also deploy to a [custom domain](http://surge.sh/help/adding-a-custom-domain) by adding `surge docs/.vuepress/dist yourdomain.com`.
+
+## Heroku
+
+1. First install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
+
+2. Heroku Account – [sign up here](https://signup.heroku.com).
+
+3. Run heroku login in your terminal or command prompt and fill in your Heroku credentials.
+
+``` bash
+heroku login
+```
+
+4. Create a file called `static.json` in the root of your project with the content below. This is the configuration of your site. see more at [heroku-buildpack-static](https://github.com/heroku/heroku-buildpack-static).
+
+`static.json`:
+```json
+{
+  "root": "./docs/.vuepress/dist"
+}
+```
+
+5. Set up your heroku git remote
+
+``` bash
+# version change
+git init
+git add .
+git commit -m "My site ready for deployment."
+
+# created app heroku (personalize name for the app)
+heroku apps:create my-static-site-example
+
+# set buildpack for static sites
+heroku buildpacks:set https://github.com/heroku/heroku-buildpack-static.git
+```
+
+6. Deploying Your Site
+
+``` bash
+# publish site
+git push heroku master
+
+# open site for visualize result
+heroku open
+```
