@@ -31,6 +31,61 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 
 Any additional content after the `YAML front matter` will be parsed as normal markdown and rendered after the features section.
 
+### Custom Homepage
+
+In internal, homepage is rendered by a component called `Home`, and the default theme has registered the `Home` component as a global component. To use it, you need to set `home: custom` at `YAML front matter` first.
+
+To customize the default homepage, you also need to know its composition:
+
+1. Hero
+2. Features
+3. Additional Content
+4. Footer
+
+Among them, `hero`, `features`, `footer` are [named slots](https://vuejs.org/v2/guide/components-slots.html#Named-Slots) while `additional content` is the default slot that serves as a catch-all outlet for any unmatched content:
+
+``` md
+---
+home: custom
+---
+
+<Home>
+
+  <slot slot="hero"> 
+    <h1> I am <b>Custom</b> Hero </h1>
+  </slot>
+
+  <slot slot="features"> 
+    <h1> I am <b>Custom</b> features </h1>
+  </slot>
+
+  # Content
+
+  I am `additional` content
+
+  <slot slot="footer"> 
+    I am <b>Custom</b> footer
+  </slot>
+
+</Home>
+```
+
+::: warning SYNTAX
+  When using Vue's `slot` at markdown, there should be at least one blank line after the component's opening tag, and the same before the component's closing tag. 
+:::
+
+In addition, there are two extra slots for you to custom the `title` and `description` at homepage:
+
+``` md
+  <slot slot="title"> 
+    I am <b>custom</b> title
+  </slot>
+  
+  <slot slot="description"> 
+    I am <b>custom</b> description
+  </slot>
+```
+
 If you want to use a completely custom homepage layout, you can also use a [Custom Layout](#custom-layout-for-specific-pages).
 
 ## Navbar

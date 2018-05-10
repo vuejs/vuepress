@@ -12,7 +12,7 @@
     <div class="custom-layout" v-if="$page.frontmatter.layout">
       <component :is="$page.frontmatter.layout"/>
     </div>
-    <Home v-else-if="$page.frontmatter.home"/>
+    <Home v-else-if="$page.frontmatter.home === true"/>
     <Page v-else :sidebar-items="sidebarItems">
       <slot name="page-top" slot="top"/>
       <slot name="page-bottom" slot="bottom"/>
@@ -31,6 +31,8 @@ import { pathToComponentName } from '@app/util'
 import store from '@app/store'
 import { resolveSidebarItems } from './util'
 import throttle from 'lodash.throttle'
+
+Vue.component('Home', Home)
 
 export default {
   components: { Home, Page, Sidebar, Navbar },

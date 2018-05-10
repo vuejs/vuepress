@@ -31,6 +31,63 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 
 任何 `YAML front matter` 之后额外的内容将会以普通的 markdown 被渲染，并插入到 `features` 的后面。
 
+### 自定义首页
+
+在内部，首页实际上是由一个名为 `Home` 的组件渲染的，VuePress 已经将 `Home` 注册到全局。想要使用它，首先你需要在 `YAML front matter` 中设置 `home: custom`。
+
+为了自定义默认的首页，你也需要了解一下它的组成部分：
+
+1. Hero
+2. Features
+3. Additional Content
+4. Footer
+
+其中, `hero`, `features`, `footer` 是 [具名插槽](https://cn.vuejs.org/v2/guide/components-slots.html#%E5%85%B7%E5%90%8D%E6%8F%92%E6%A7%BD), 而 `additional content` 是默认插槽，它会作为所有未匹配到插槽的内容的统一出口：
+
+``` md
+---
+home: custom
+---
+
+<Home>
+
+  <slot slot="hero"> 
+    <h1> I am <b>Custom</b> Hero </h1>
+  </slot>
+
+  <slot slot="features"> 
+    <h1> I am <b>Custom</b> features </h1>
+  </slot>
+
+  # Content
+
+  I am `additional` content
+
+  <slot slot="footer"> 
+    I am <b>Custom</b> footer
+  </slot>
+
+</Home>
+```
+
+::: warning 语法
+  当在 markdown 中使用 Vue 的 `插槽` 时，在组件标签开合之后，以及闭合之前都必须至少保留一个空行。
+:::
+
+此外，还有两个额外的插槽可以让你自定义首页的 `title` 和 `description`：
+
+``` md
+  <slot slot="title"> 
+    I am <b>custom</b> title
+  </slot>
+  
+  <slot slot="description"> 
+    I am <b>custom</b> description
+  </slot>
+```
+
+如果你想自定义一个完全不同的首页，你可以使用 [特定页面的自定义布局](#特定页面的自定义布局)。
+
 ## 导航栏
 
 导航栏可能包含你的页面标题、[搜索框](#搜索框)、 [导航栏链接](#导航栏链接)、[多语言切换](../guide/i18n.md)、[仓库链接](#git-仓库和编辑链接)，它们均取决于你的配置。

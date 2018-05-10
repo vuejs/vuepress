@@ -1,5 +1,5 @@
 ---
-home: true
+home: custom
 heroImage: /hero.png
 actionText: Get Started →
 actionLink: /guide/
@@ -13,22 +13,30 @@ features:
 footer: MIT Licensed | Copyright © 2018-present Evan You
 ---
 
-### As Easy as 1, 2, 3
+<Home>
 
-``` bash
-# install
-yarn global add vuepress # OR npm install -g vuepress
+  <slot slot="description">
+    <i>Vue</i>-powered Static Site Generator
+  </slot>
+  
+  ### As Easy as 1, 2, 3
+  
+  ``` bash
+  # install
+  yarn global add vuepress # OR npm install -g vuepress
+  
+  # create a markdown file
+  echo '# Hello VuePress' > README.md
 
-# create a markdown file
-echo '# Hello VuePress' > README.md
+  # start writing
+  vuepress dev
 
-# start writing
-vuepress dev
+  # build to static files
+  vuepress build
+  ```
 
-# build to static files
-vuepress build
-```
+  ::: warning COMPATIBILITY NOTE
+  VuePress requires Node.js >= 8.
+  :::
 
-::: warning COMPATIBILITY NOTE
-VuePress requires Node.js >= 8.
-:::
+</Home>
