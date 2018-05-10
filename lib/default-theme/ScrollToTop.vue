@@ -15,26 +15,33 @@ export default {
     }
   },
 
-  data: () => ({
-    show: false
-  }),
+  data () {
+    return {
+      scrollTop: this.getScrollTop()
+    }
+  },
 
   mounted () {
     window.addEventListener('scroll', debounce(() => {
-      this.show = this.shouldShow()
+      this.scrollTop = this.getScrollTop()
     }, 100))
   },
 
   methods: {
-    shouldShow () {
-      const scrollTop = window.pageYOffset ||
+    getScrollTop () {
+      return window.pageYOffset ||
         document.documentElement.scrollTop ||
         document.body.scrollTop || 0
-      return scrollTop > this.threshold
     },
     scrollToTop () {
       window.scrollTo(0, 0)
-      this.show = false
+      this.scrollTop = 0
+    }
+  },
+
+  computed: {
+    show () {
+      return this.scrollTop > this.threshold
     }
   }
 }
