@@ -17,15 +17,16 @@ Each markdown file is compiled into HTML with [markdown-it](https://github.com/m
 - [Built-in markdown extensions](./markdown.md) optimized for technical documentation
 - [Ability to leverage Vue inside markdown files](./using-vue.md)
 - [Vue-powered custom theme system](./custom-themes.md)
-- Automatic Service Worker generation
-- Google Analytics Integration
-- Multi-language support
+- [Automatic Service Worker generation](/config/#serviceworker)
+- [Google Analytics Integration](/config/#ga)
+- [Multi-language support](./i18n.md)
 - A default theme with:
   - Responsive layout
-  - Optional Homepage
-  - Simple out-of-the-box header-based search
+  - [Optional Homepage](/default-theme-config/#homepage)
+  - [Simple out-of-the-box header-based search](/default-theme-config/#built-in-search)
+  - [Algolia Search](/default-theme-config/#algolia-search)
   - Customizable navbar and sidebar
-  - Auto-generated GitHub link and page edit links
+  - [Auto-generated GitHub link and page edit links](/default-theme-config/#git-repo-and-edit-links)
 
 ## Todo
 

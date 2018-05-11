@@ -26,11 +26,11 @@ https://vuepress.vuejs.org/
 - [Multi-Language Support](https://vuepress.vuejs.org/guide/i18n.html)
 - A default theme with:
   - Responsive layout
-  - Optional Homepage
-  - [Automatic basic typeahead search](https://vuepress.vuejs.org/default-theme-config/#built-in-search)
+  - [Optional Homepage](https://vuepress.vuejs.org/default-theme-config/#homepage)
+  - [Simple out-of-the-box header-based search](https://vuepress.vuejs.org/default-theme-config/#built-in-search)
   - [Algolia Search](https://vuepress.vuejs.org/default-theme-config/#algolia-search)
   - Customizable navbar and sidebar
-  - Auto-generated GitHub link and page edit links
+  - [Auto-generated GitHub link and page edit links](https://vuepress.vuejs.org/default-theme-config/#git-repo-and-edit-links)
 
 ## Todo Features
 
