@@ -78,7 +78,7 @@ The compiled component does not have any private data but does have access to th
 
 ### Interpolation in Code Blocks
 
-By default, Vuepress will add `v-pre` directive to the code block to avoid it being compiled by Vue. If you really want to use interpolation in code blocks, add `:v` after the language identifier, or just use `:v` as the language identifier. For example:
+By default, Vuepress will add `v-pre` directive to code blocks to avoid it being compiled by Vue. If you really want to use interpolation in code blocks, add `:v` after the language identifier, or just use `:v` as the language identifier. For example:
 
 **Input**
 
