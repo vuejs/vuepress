@@ -76,6 +76,38 @@ The compiled component does not have any private data but does have access to th
 }
 ```
 
+### Interpolation in Code Blocks
+
+By default, Vuepress will add `v-pre` directive to the code block to avoid it being compiled by Vue. If you really want to use interpolation in code blocks, add `:v` after the language identifier, or just use `:v` as the language identifier. For example:
+
+**Input**
+
+```` md
+``` vue:v
+{{ 1 + 1 }}
+```
+````
+
+```` md
+``` :v
+{{ 1 + 2 }}
+```
+````
+
+**Output**
+
+``` vue:v
+{{ 1 + 1 }}
+```
+
+``` :v
+{{ 1 + 2 }}
+```
+
+::: warning IMPORTANT
+For some language identifiers, the highlighter will add extra `<span>` tag around `{` and `}`, in which cases `:v` won't work. Suggest to use `:v` after `text`, `md`, `vue`, `html` or use it alone.
+:::
+
 ## Escaping
 
 By default, fenced code blocks are automatically wrapped with `v-pre`. If you want to display raw mustaches or Vue-specific syntax inside inline code snippets or plain text, you need to wrap a paragraph with the `v-pre` custom container:
