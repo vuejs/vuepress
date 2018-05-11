@@ -94,7 +94,7 @@ module.exports = {
 
 ::: tip PWA NOTES
 `serviceWorker` 选项仅仅用来控制 service worker，为了让你的网站完全地兼容 PWA，你需要在 `.vuepress/public` 提供 Manifest 和 icons，更多细节，请参见 [MDN docs about the Web App Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest).
-此外，只有在您能够使用SSL部署您的站点时才能启用此功能，因为service worker只能在HTTPs URL下注册。
+此外，只有您能够使用 SSL 部署您的站点时才能启用此功能，因为 service worker 只能在 HTTPs 的 URL 下注册。
 :::
 
 ### locales
