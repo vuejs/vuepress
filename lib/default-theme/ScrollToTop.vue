@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div v-if="show" class="go-to-top" @click="scrollToTop">⬆</div>
+    <div v-if="show" class="go-to-top" @click="scrollToTop"></div>
   </transition>
 </template>
 
@@ -50,21 +50,31 @@ export default {
 <style lang="stylus" scoped>
 @import './styles/config.styl'
 
-$iconSize = 2.3rem
+$iconSize = 1.5rem
 
 .go-to-top
   cursor pointer
-  font-size $iconSize
-  border 1px solid $textColor
-  border-radius 0.2rem
   position fixed
-  bottom 3rem
-  right 3rem
+  bottom 1rem
+  right 1rem
   text-align center
   line-height $iconSize
   width $iconSize
-  background white
+  height $iconSize
+  color $accentColor
   z-index 1
+  &::before
+    content ''
+    display block
+    height "calc(%s / 2 - 3px)" % $iconSize
+    width "calc(%s / 2 - 3px)" % $iconSize
+    border-top currentColor 3px solid
+    border-left currentColor 3px solid
+    position absolute
+    transform translateY(-33%) rotate(45deg)
+    transform-origin 0 0
+    left 50%
+    top 50%
 
 @media (max-width: $MQNarrow)
   .go-to-top
