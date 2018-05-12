@@ -1,23 +1,24 @@
 <template>
-  <router-link
-    class="nav-link"
+  <router-link class="nav-link"
     :to="link"
     v-if="!isExternal(link)"
-    :exact="link === '/'"
-  >{{ item.text }}</router-link>
-  <a
-    v-else
+    :exact="link === '/'">{{ item.text }}</router-link>
+  <a v-else
     :href="link"
     class="nav-link"
     :target="isMailto(link) || isTel(link) ? null : '_blank'"
-    :rel="isMailto(link) || isTel(link) ? null : 'noopener noreferrer'"
-  >{{ item.text }}</a>
+    :rel="isMailto(link) || isTel(link) ? null : 'noopener noreferrer'">
+    {{ item.text }}
+    <OutboundLink/>
+  </a>
 </template>
 
 <script>
 import { isExternal, isMailto, isTel, ensureExt } from './util'
+import OutboundLink from './OutboundLink.vue'
 
 export default {
+  components: { OutboundLink },
   props: {
     item: {
       required: true
