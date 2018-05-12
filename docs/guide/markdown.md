@@ -150,7 +150,7 @@ A list of all emojis available can be found [here](https://github.com/markdown-i
 
 [[toc]]
 
-Rendering of TOC can be configured using the [`markdown.toc`](../config/#markdowntoc) option.
+Rendering of TOC can be configured using the [`markdown.toc`](../config/#markdown-toc) option.
 
 ## Custom Containers
 
