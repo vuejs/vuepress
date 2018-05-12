@@ -26,6 +26,7 @@ module.exports = {
   serviceWorker: true,
   theme: 'vue',
   themeConfig: {
+    showScrollToTop: true,
     repo: 'vuejs/vuepress',
     editLinks: true,
     docsDir: 'docs',

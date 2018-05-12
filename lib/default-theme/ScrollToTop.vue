@@ -1,5 +1,5 @@
 <template>
-  <transition name="fade">
+  <transition name="fade" v-if="$site.themeConfig.showScrollToTop">
     <div v-if="show" class="go-to-top" @click="scrollToTop"></div>
   </transition>
 </template>
@@ -61,8 +61,10 @@ $iconSize = 2rem
   line-height $iconSize
   width $iconSize
   height $iconSize
-  color $accentColor
+  color $textColor
   z-index 1
+  &:hover
+    color $accentColor
   &::before
     content ''
     display block
@@ -81,7 +83,7 @@ $iconSize = 2rem
     display none
 
 .fade-enter-active, .fade-leave-active
-  transition opacity .3s
+  transition opacity 0.3s
 
 .fade-enter, .fade-leave-to
   opacity 0
