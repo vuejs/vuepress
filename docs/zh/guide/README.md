@@ -15,15 +15,16 @@ VuePress 由两部分组成：一部分是支持用 Vue 开发主题的极简静
 - 为技术文档而优化的 [内置 Markdown 拓展](./markdown.md)
 - [在 Markdown 文件中使用 Vue 组件的能力](./using-vue.md)
 - [Vue 驱动的自定义主题系统](./custom-themes.md)
-- 自动生成 Service Worker
-- Google Analytics 集成
-- 多语言支持
+- [自动生成 Service Worker](../config/#serviceworker)
+- [Google Analytics 集成](../config/#ga)
+- [多语言支持](./i18n.md)
 - 默认主题包含：
   - 响应式布局
-  - 可选的主页
-  - 简洁的开箱即用的标题搜索
-  - 可以自定义的导航栏（navbar）和侧边栏（sidebar）
-  - 自动生成的 GitHub 链接和页面的编辑链接
+  - [可选的主页](../default-theme-config/#首页)
+  - [简洁的开箱即用的标题搜索](../default-theme-config/#内置搜索)
+  - [Algolia 搜索](../default-theme-config/#algolia-搜索)
+  - 可自定义的[导航栏](../default-theme-config/#导航栏) 和[侧边栏](../default-theme-config/#侧边栏)
+  - [自动生成的 GitHub 链接和页面的编辑链接](../default-theme-config/#git-仓库和编辑链接)
 
 ## Todo
 
