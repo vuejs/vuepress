@@ -50,7 +50,7 @@ export default {
 <style lang="stylus" scoped>
 @import './styles/config.styl'
 
-$iconSize = 1.5rem
+$iconSize = 2rem
 
 .go-to-top
   cursor pointer
@@ -68,8 +68,8 @@ $iconSize = 1.5rem
     display block
     height "calc(%s / 2 - 3px)" % $iconSize
     width "calc(%s / 2 - 3px)" % $iconSize
-    border-top currentColor 3px solid
-    border-left currentColor 3px solid
+    border-top currentColor 5px solid
+    border-left currentColor 5px solid
     position absolute
     transform translateY(-33%) rotate(45deg)
     transform-origin 0 0
