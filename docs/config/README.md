@@ -44,7 +44,7 @@ Extra tags to be injected to the page HTML `<head>`. Each tag can be specified i
 ``` js
 module.exports = {
   head: [
-    ['link', { rel: 'icon', href: `/logo.png` }]
+    ['link', { rel: 'icon', href: '/logo.png' }]
   ]
 }
 ```
