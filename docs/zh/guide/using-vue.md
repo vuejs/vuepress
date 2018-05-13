@@ -40,7 +40,7 @@ export default {
 
 **Output**
 
-<pre><code>{{ 1 + 1 }}</code></pre>
+<div class="language-text"><pre><code>{{ 1 + 1 }}</code></pre></div>
 
 ### 指令
 
@@ -54,7 +54,7 @@ export default {
 
 **Output**
 
-<pre><code><span v-for="i in 3">{{ i }} </span></code></pre>
+<div class="language-text"><pre><code><span v-for="i in 3">{{ i }} </span></code></pre></div>
 
 ### 访问网站以及页面的数据
 
