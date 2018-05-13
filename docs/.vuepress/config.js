@@ -25,9 +25,6 @@ module.exports = {
   ],
   serviceWorker: true,
   theme: 'vue',
-  markdown: {
-    lineNumbers: true
-  },
   themeConfig: {
     repo: 'vuejs/vuepress',
     editLinks: true,
