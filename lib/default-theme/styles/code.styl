@@ -30,7 +30,8 @@ div[class*="language-"]
     user-select none
     padding-top 1.3rem
     position absolute
-    z-index 0
+    top 0
+    left 0
     width 100%
     line-height 1.4
     .highlighted
@@ -45,61 +46,106 @@ div[class*="language-"]
     right 1em
     font-size 0.75rem
     color rgba(255, 255, 255, 0.4)
+  &:not(.line-numbers-mode)
+    .line-numbers-wrapper
+      display none
+  &.line-numbers-mode
+    .highlight-lines .highlighted
+        position relative
+        &:before
+          content ' '
+          position absolute
+          z-index 3
+          left 0
+          top 0
+          display block
+          width $lineNumbersWrapperWidth
+          height 100%
+          background-color rgba(0, 0, 0, 66%)
+    pre
+      padding-left $lineNumbersWrapperWidth + 1 rem
+      vertical-align middle
+    .line-numbers-wrapper
+      position absolute
+      top 0
+      width $lineNumbersWrapperWidth
+      text-align center
+      color rgba(255, 255, 255, 0.3)
+      padding 1.25rem 0
+      line-height 1.4
+      br
+        user-select none
+      .line-number
+        position relative
+        z-index 4
+        user-select none
+        font-size 0.85em
+    &::after
+      content ''
+      position absolute
+      z-index 2
+      top 0
+      left 0
+      width $lineNumbersWrapperWidth
+      height 100%
+      border-radius 6px 0 0 6px
+      border-right 1px solid rgba(0, 0, 0, 66%)
+      background-color $codeBgColor
 
-div[class="language-js"], div[class="language-javascript"]
+div[class*="language-js"], div[class*="language-javascript"]
   &:before
     content "js"
 
-div[class="language-ts"], div[class="language-typescript"]
+div[class*="language-ts"], div[class*="language-typescript"]
   &:before
     content "ts"
 
-div[class="language-html"], div[class="language-markup"]
+div[class*="language-html"], div[class*="language-markup"]
   &:before
     content "html"
 
-div[class="language-markdown"], div[class="language-md"]
+div[class*="language-markdown"], div[class*="language-md"]
   &:before
     content "md"
 
-div[class="language-vue"]:before
+div[class*="language-vue"]:before
   content "vue"
 
-div[class="language-css"]:before
+div[class*="language-css"]:before
   content "css"
 
-div[class="language-sass"]:before
+div[class*="language-sass"]:before
   content "sass"
 
-div[class="language-less"]:before
+div[class*="language-less"]:before
   content "less"
 
-div[class="language-scss"]:before
+div[class*="language-scss"]:before
   content "scss"
 
-div[class="language-stylus"]:before
+div[class*="language-stylus"]:before
   content "stylus"
 
-div[class="language-json"]:before
+div[class*="language-json"]:before
   content "json"
 
-div[class="language-ruby"]:before
+div[class*="language-ruby"]:before
   content "rb"
 
-div[class="language-python"]:before
+div[class*="language-python"]:before
   content "py"
 
-div[class="language-go"]:before
+div[class*="language-go"]:before
   content "go"
 
-div[class="language-java"]:before
+div[class*="language-java"]:before
   content "java"
 
-div[class="language-c"]:before
+div[class*="language-c"]:before
   content "c"
 
-div[class="language-bash"]:before
+div[class*="language-bash"]:before
   content "sh"
 
-div[class="language-yaml"]:before
+div[class*="language-yaml"]:before
   content "yaml"
