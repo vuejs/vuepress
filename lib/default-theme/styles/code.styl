@@ -21,18 +21,26 @@
       padding 0
       background-color transparent
       border-radius 0
-  .highlighted-line
-    background-color rgba(0, 0, 0, 66%)
-    display block
-    margin 0 -1.5rem
-    padding 0 1.5rem
 
 div[class*="language-"]
   position relative
   background-color $codeBgColor
   border-radius 6px
+  .highlight-lines
+    user-select none
+    padding-top 1.3rem
+    position absolute
+    z-index 0
+    width 100%
+    line-height 1.4
+    .highlighted
+      background-color rgba(0, 0, 0, 66%)
+  pre
+    position relative
+    z-index 1
   &::before
     position absolute
+    z-index 3
     top 0.8em
     right 1em
     font-size 0.75rem
