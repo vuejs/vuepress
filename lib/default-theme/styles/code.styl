@@ -1,5 +1,7 @@
 @require './config'
 
+$lineNumberWrapperWidth = 3.5rem
+
 .content
   code
     color lighten($textColor, 20%)
@@ -37,6 +39,26 @@ div[class*="language-"]
     right 1em
     font-size 0.75rem
     color rgba(255, 255, 255, 0.4)
+  &[line-numbers-mode]
+    position relative
+    pre
+      padding-left $lineNumberWrapperWidth
+      vertical-align middle
+    .line-numbers-wrapper
+      position absolute
+      background-color $codeBgColor
+      width $lineNumberWrapperWidth
+      border-radius 6px
+      text-align center
+      color rgba(255, 255, 255, 0.4)
+      padding 1.25rem 0
+      top 0
+      line-height 1.4
+      br
+        user-select none
+      .line-number
+        user-select none
+        font-size 0.85em
 
 div[class="language-js"], div[class="language-javascript"]
   &:before
@@ -91,22 +113,3 @@ div[class="language-bash"]:before
 
 div[class="language-yaml"]:before
   content "yaml"
-
-$lineNumberWrapperWidth = 3rem
-
-.content pre[line-number-mode]
-  padding-left $lineNumberWrapperWidth
-  vertical-align middle
-  .highlighted-line
-    margin 0 -1.5rem 0 $lineNumberWrapperWidth
-    padding 0 1.5rem 0 $lineNumberWrapperWidth
-  .line-wrapper
-    user-select none
-    display inline-block
-    position  relative
-  .line-number
-    position absolute
-    left - $lineNumberWrapperWidth
-    width $lineNumberWrapperWidth
-    text-align center
-    color rgba(255, 255, 255, 0.4)
