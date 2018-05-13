@@ -7437,9 +7437,9 @@ webpack-merge@^4.1.2:
   dependencies:
     lodash "^4.17.5"
 
-webpack-serve@^0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/webpack-serve/-/webpack-serve-0.3.1.tgz#a91a99d013a70d2c15df2d12c5d31a8842c033ba"
+webpack-serve@0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/webpack-serve/-/webpack-serve-0.3.2.tgz#9cfd823dd570438d8cf362e70586bc54af1f0c92"
   dependencies:
     "@shellscape/koa-static" "^4.0.4"
     chalk "^2.3.0"
