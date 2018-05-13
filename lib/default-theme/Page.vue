@@ -28,11 +28,9 @@
 </template>
 
 <script>
-import OutboundLink from './OutboundLink.vue'
 import { resolvePage, normalize, outboundRE, endingSlashRE } from './util'
 
 export default {
-  components: { OutboundLink },
   props: ['sidebarItems'],
   computed: {
     lastUpdated () {

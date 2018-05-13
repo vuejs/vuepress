@@ -21,13 +21,12 @@
 </template>
 
 <script>
-import OutboundLink from './OutboundLink.vue'
 import DropdownLink from './DropdownLink.vue'
 import { resolveNavLinkItem } from './util'
 import NavLink from './NavLink.vue'
 
 export default {
-  components: { OutboundLink, NavLink, DropdownLink },
+  components: { NavLink, DropdownLink },
   computed: {
     userNav () {
       return this.$themeLocaleConfig.nav || this.$site.themeConfig.nav || []
