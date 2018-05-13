@@ -44,7 +44,7 @@ sidebar: auto
 ``` js
 module.exports = {
   head: [
-    ['link', { rel: 'icon', href: `/logo.png` }]
+    ['link', { rel: 'icon', href: '/logo.png' }]
   ]
 }
 ```
