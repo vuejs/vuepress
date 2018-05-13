@@ -100,24 +100,24 @@ pages:
 
 2. 在你项目的根目录下创建 `firebase.json` 和 `.firebaserc`，并包含以下内容：
 
-   `firebase.json`:
-   ```json
-   {
-     "hosting": {
-       "public": "./docs/.vuepress/dist",
-       "ignore": []
-     }
-   }
-   ```
+`firebase.json`:
+```json
+{
+ "hosting": {
+   "public": "./docs/.vuepress/dist",
+   "ignore": []
+ }
+}
+```
 
-   `.firebaserc`:
-   ``` js
-   {
-     "projects": {
-       "default": "<YOUR_FIREBASE_ID>"
-     }
-   }
-   ```
+`.firebaserc`:
+``` js
+{
+ "projects": {
+   "default": "<YOUR_FIREBASE_ID>"
+ }
+}
+```
 
 3. 在执行了 `yarn docs:build` 或 `npm run docs:build` 后, 使用 `firebase deploy` 指令来部署。
 
