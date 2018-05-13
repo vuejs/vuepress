@@ -1,7 +1,5 @@
 @require './config'
 
-$lineNumberWrapperWidth = 3.5rem
-
 .content
   code
     color lighten($textColor, 20%)
@@ -42,12 +40,12 @@ div[class*="language-"]
   &[line-numbers-mode]
     position relative
     pre
-      padding-left $lineNumberWrapperWidth
+      padding-left $lineNumbersWrapperWidth
       vertical-align middle
     .line-numbers-wrapper
       position absolute
       background-color $codeBgColor
-      width $lineNumberWrapperWidth
+      width $lineNumbersWrapperWidth
       border-radius 6px
       text-align center
       color rgba(255, 255, 255, 0.4)
