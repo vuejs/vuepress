@@ -1,5 +1,5 @@
 <script>
-import { isActive, hashRE, groupHeaders } from './util'
+import { isActive, hashRE, groupHeaders, getUrlSafePath } from './util'
 
 export default {
   functional: true,
@@ -32,7 +32,7 @@ export default {
 function renderLink (h, to, text, active) {
   return h('router-link', {
     props: {
-      to,
+      to: getUrlSafePath(to),
       activeClass: '',
       exactActiveClass: ''
     },
