@@ -148,7 +148,7 @@ lang = "en-US"
 
 [[toc]]
 
-目录（Table of Contents）的渲染可以通过  [`markdown.toc`](../config/#markdowntoc) 选项来配置。
+目录（Table of Contents）的渲染可以通过  [`markdown.toc`](../config/#markdown-toc) 选项来配置。
 
 ## 自定义容器
 
