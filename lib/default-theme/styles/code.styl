@@ -46,20 +46,11 @@ div[class*="language-"]
     right 1em
     font-size 0.75rem
     color rgba(255, 255, 255, 0.4)
-  &[line-numbers-mode]
-    &::after
-      content ''
-      position absolute
-      z-index 2
-      top 0
-      left 0
-      width $lineNumbersWrapperWidth
-      height 100%
-      border-radius 6px 0 0 6px
-      border-right 1px solid rgba(0, 0, 0, 66%)
-      background-color $codeBgColor
-    .highlight-lines
-      .highlighted
+  &:not(.line-numbers-mode)
+    .line-numbers-wrapper
+      display none
+  &.line-numbers-mode
+    .highlight-lines .highlighted
         position relative
         &:before
           content ' '
@@ -89,6 +80,17 @@ div[class*="language-"]
         z-index 4
         user-select none
         font-size 0.85em
+    &::after
+      content ''
+      position absolute
+      z-index 2
+      top 0
+      left 0
+      width $lineNumbersWrapperWidth
+      height 100%
+      border-radius 6px 0 0 6px
+      border-right 1px solid rgba(0, 0, 0, 66%)
+      background-color $codeBgColor
 
 div[class="language-js"], div[class="language-javascript"]
   &:before
