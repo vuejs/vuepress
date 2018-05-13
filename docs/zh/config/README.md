@@ -126,6 +126,13 @@ module.exports = {
 
 ## Markdown
 
+### markdown.lineNumbers
+
+- 类型: `boolean`
+- 默认值: `undefined`
+
+是否在每个代码块的左侧显示行号。
+
 ### markdown.anchor
 
 - 类型: `Object`

@@ -127,6 +127,13 @@ Provide config options to the used theme. The options will vary depending on the
 
 ## Markdown
 
+### markdown.lineNumbers
+
+- Type: `boolean`
+- Default: `undefined`
+
+Whether to show line numbers to the left of each code blocks.
+
 ### markdown.slugify
 
 - Type: `Function`
