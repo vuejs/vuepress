@@ -41,3 +41,16 @@ export default ({
   // ...apply enhancements to the app
 }
 ```
+
+For example, if you would like to hook up [vue-analytics](https://github.com/MatteoGabriele/vue-analytics) for Google Analytics tracking, load `vue-analytics` as a project dependency, and then add this to `.vuepress/enhanceApp.js`:
+
+``` js
+import VueAnalytics from 'vue-analytics'
+
+export default ({ Vue, options, router, siteData }) => {
+    Vue.use(VueAnalytics, {
+        id: 'UA-XXX-X',
+        router
+    })
+}
+```
