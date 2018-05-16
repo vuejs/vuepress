@@ -102,23 +102,81 @@ pages:
 
 2. Create `firebase.json` and `.firebaserc` at the root of your project with the following content:
 
-   `firebase.json`:
-   ```json
-   {
-     "hosting": {
-       "public": "./docs/.vuepress/dist",
-       "ignore": []
-     }
-   }
-   ```
+`firebase.json`:
+```json
+{
+ "hosting": {
+   "public": "./docs/.vuepress/dist",
+   "ignore": []
+ }
+}
+```
 
-   `.firebaserc`:
-   ```js
-   {
-     "projects": {
-       "default": "<YOUR_FIREBASE_ID>"
-     }
-   }
-   ```
+`.firebaserc`:
+```js
+{
+ "projects": {
+   "default": "<YOUR_FIREBASE_ID>"
+ }
+}
+```
 
 3. After running `yarn docs:build` or `npm run docs:build`, deploy with the command `firebase deploy`.
+
+## Surge
+
+1. First install [surge](https://www.npmjs.com/package/surge), if you haven't already.
+
+2. Run `yarn docs:build` or `npm run docs:build`.
+
+3. Deploy to surge, by typing `surge docs/.vuepress/dist`.
+
+You can also deploy to a [custom domain](http://surge.sh/help/adding-a-custom-domain) by adding `surge docs/.vuepress/dist yourdomain.com`.
+
+## Heroku
+
+1. First install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
+
+2. Create a Heroku account [here](https://signup.heroku.com).
+
+3. Run `heroku login` and fill in your Heroku credentials:
+  
+ ``` bash
+ heroku login
+ ```
+
+4. Create a file called `static.json` in the root of your project with the content below:
+
+ `static.json`:
+ ```json
+ {
+   "root": "./docs/.vuepress/dist"
+ }
+ ```
+
+This is the configuration of your site. see more at [heroku-buildpack-static](https://github.com/heroku/heroku-buildpack-static).
+
+5. Set up your Heroku git remote:
+
+``` bash
+# version change
+git init
+git add .
+git commit -m "My site ready for deployment."
+
+# creates a new app with a specified name
+heroku apps:create example
+
+# set buildpack for static sites
+heroku buildpacks:set https://github.com/heroku/heroku-buildpack-static.git
+```
+
+6. Deploying Your Site
+
+``` bash
+# publish site
+git push heroku master
+
+# opens a browser to view the Dashboard version of Heroku CI
+heroku open
+```

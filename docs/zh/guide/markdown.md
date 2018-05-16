@@ -38,7 +38,7 @@
    └─ four.md
 ```
 
-```md
+``` md
 [Home](/) <!-- 跳转到根部的 README.md -->
 [foo](/foo/) <!-- 跳转到 foo 文件夹的 index.html -->
 [foo heading anchor](/foo/#heading) <!-- 跳转到 foo/index.html 的特定 anchor 位置 -->
@@ -48,10 +48,12 @@
 
 ### 外部链接
 
-外部的链接将会被自动地设置为  `target="_blank"`:
+外部的链接将会被自动地设置为  `target="_blank" rel="noopener noreferrer"`:
 
 - [vuejs.org](https://vuejs.org)
 - [VuePress on GitHub](https://github.com/vuejs/vuepress)
+
+你可以自定义通过配置 [config.markdown.externalLinks](../config/#markdown-externallinks) 来自定义外部链接的特性。
 
 ## Front Matter
 
@@ -146,7 +148,7 @@ lang = "en-US"
 
 [[toc]]
 
-目录（Table of Contents）的渲染可以通过  [`markdown.toc`](../config/#markdowntoc) 选项来配置。
+目录（Table of Contents）的渲染可以通过  [`markdown.toc`](../config/#markdown-toc) 选项来配置。
 
 ## 自定义容器
 

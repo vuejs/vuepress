@@ -100,23 +100,82 @@ pages:
 
 2. 在你项目的根目录下创建 `firebase.json` 和 `.firebaserc`，并包含以下内容：
 
-   `firebase.json`:
-   ```json
-   {
-     "hosting": {
-       "public": "./docs/.vuepress/dist",
-       "ignore": []
-     }
-   }
-   ```
+`firebase.json`:
+```json
+{
+ "hosting": {
+   "public": "./docs/.vuepress/dist",
+   "ignore": []
+ }
+}
+```
 
-   `.firebaserc`:
-   ```js
-   {
-     "projects": {
-       "default": "<YOUR_FIREBASE_ID>"
-     }
-   }
-   ```
+`.firebaserc`:
+``` js
+{
+ "projects": {
+   "default": "<YOUR_FIREBASE_ID>"
+ }
+}
+```
 
 3. 在执行了 `yarn docs:build` 或 `npm run docs:build` 后, 使用 `firebase deploy` 指令来部署。
+
+## Surge
+
+1. 首先，假设你已经安装了 [surge](https://www.npmjs.com/package/surge)；
+
+2. 运行 `yarn docs:build` 或者 `npm run docs:build`；
+
+3. 想要使用 surge 来部署，你可以运行： `surge docs/.vuepress/dist`；
+
+你也可以通过 `surge docs/.vuepress/dist yourdomain.com` 来部署到 [自定义域名](http://surge.sh/help/adding-a-custom-domain)。
+
+
+## Heroku
+
+1. 首先安装 [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)；
+
+2. [在这里](https://signup.heroku.com) 注册一个 Heroku 账号；
+
+3. 运行 `heroku login` 并填写你的 Heroku 证书：
+
+ ``` bash
+ heroku login
+ ```
+
+4. 在你的项目根目录中，创建一个名为 `static.json` 的文件，并包含下述内容：
+
+`static.json`:
+```json
+{
+"root": "./docs/.vuepress/dist"
+}
+```
+
+这里是你项目的配置，请参考 [heroku-buildpack-static](https://github.com/heroku/heroku-buildpack-static) 了解更多。
+    
+5. 配置 Heroku 的 git 远程仓库：
+
+``` bash
+# 版本变化
+git init
+git add .
+git commit -m "My site ready for deployment."
+
+# 以指定的名称创建一个新的 heroku 应用
+heroku apps:create example
+
+# 为静态网站设置构建包
+heroku buildpacks:set https://github.com/heroku/heroku-buildpack-static.git
+```
+  
+6. 部署你的网站：
+  
+``` bash
+# 发布网站
+git push heroku master
+
+# 打开浏览器查看 Helku CI 的 dashboard
+heroku open
+```

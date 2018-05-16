@@ -48,10 +48,12 @@ Given the following directory structure:
 
 ### External Links
 
-Outbound links automatically gets `target="_blank"`:
+Outbound links automatically gets `target="_blank" rel="noopener noreferrer"`:
 
 - [vuejs.org](https://vuejs.org)
 - [VuePress on GitHub](https://github.com/vuejs/vuepress)
+
+You can customize the attributes added to external links by setting [config.markdown.externalLinks](../config/#markdown-externallinks).
 
 ## Front Matter
 
@@ -148,7 +150,7 @@ A list of all emojis available can be found [here](https://github.com/markdown-i
 
 [[toc]]
 
-Rendering of TOC can be configured using the [`markdown.toc`](../config/#markdowntoc) option.
+Rendering of TOC can be configured using the [`markdown.toc`](../config/#markdown-toc) option.
 
 ## Custom Containers
 

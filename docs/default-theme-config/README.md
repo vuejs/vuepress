@@ -267,7 +267,7 @@ Built-in Search only builds index from the title, `h2` and `h3` headers, if you 
 
 The `themeConfig.algolia` option allows you to use [Algolia DocSearch](https://community.algolia.com/docsearch/) to replace the simple built-in search. To enable it, you need to provide at least `apiKey` and `indexName`:
 
-```js
+``` js
 module.exports = {
   themeConfig: {
     algolia: {
@@ -279,6 +279,24 @@ module.exports = {
 ```
 
 For more options, refer to [Algolia DocSearch's documentation](https://github.com/algolia/docsearch#docsearch-options).
+
+## Last Updated
+
+The `themeConfig.lastUpdated` option allows you to get the UNIX timestamp(ms) of each file's last `git` commit, and it will also display at the bottom of each page with a appropriate format:
+
+``` js
+module.exports = {
+  themeConfig: {
+    lastUpdated: 'Last Updated', // string | boolean
+  }
+}
+```
+
+Note that it's `off` by default. If given `string`, it will be displayed as a prefix (default value: `Last Updated`).
+
+::: warning
+  Since `lastUpdated` is based on `git`, so you can only use it in a `git` repository.
+:::
 
 ## Prev / Next Links
 
@@ -313,7 +331,7 @@ module.exports = {
     docsDir: 'docs',
     // if your docs are in a specific branch (defaults to 'master'):
     docsBranch: 'master',
-    // defaults to true, set to false to disable
+    // defaults to false, set to true to enable
     editLinks: true,
     // custom text for edit link. Defaults to "Edit this page"
     editLinkText: 'Help us improve this page!'

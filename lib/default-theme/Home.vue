@@ -83,7 +83,7 @@ export default {
     display flex
     flex-wrap wrap
     align-items flex-start
-    align-content strech
+    align-content stretch
     justify-content space-between
   .feature
     flex-grow 1
