@@ -62,7 +62,7 @@ You can also run the above script in your CI setup to enable automatic deploymen
 
    If you are deploying to `https://<USERNAME or GROUP>.gitlab.io/`, you can omit `base` as it defaults to `"/"`.
 
-   If your are deploying to `https://<USERNAME or GROUP>.gitlab.io/<REPO>/`, (i.e. your repository is at `https://gitlab.com/<USERNAME>/<REPO>`), set `base` to `"/<REPO>/"`.
+   If you are deploying to `https://<USERNAME or GROUP>.gitlab.io/<REPO>/`, (i.e. your repository is at `https://gitlab.com/<USERNAME>/<REPO>`), set `base` to `"/<REPO>/"`.
 
 2. Set `dest` in `.vuepress/config.js` to `public`.
 
