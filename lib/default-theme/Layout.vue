@@ -150,9 +150,9 @@ export default {
           (scrollTop >= anchor.parentElement.offsetTop + 10 &&
             (!nextAnchor || scrollTop < nextAnchor.parentElement.offsetTop - 10))
 
-        if (isActive && this.$route.hash !== anchor.hash) {
+        if (isActive && decodeURIComponent(this.$route.hash) !== decodeURIComponent(anchor.hash)) {
           store.disableScrollBehavior = true
-          this.$router.replace(anchor.hash, () => {
+          this.$router.replace(decodeURIComponent(anchor.hash), () => {
             // execute after scrollBehavior handler.
             this.$nextTick(() => {
               store.disableScrollBehavior = false
