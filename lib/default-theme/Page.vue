@@ -29,13 +29,11 @@
 </template>
 
 <script>
-import OutboundLink from './OutboundLink.vue'
 import ScrollToTop from './ScrollToTop.vue'
 import { resolvePage, normalize, outboundRE, endingSlashRE } from './util'
 
 export default {
   components: {
-    OutboundLink,
     ScrollToTop
   },
   props: ['sidebarItems'],

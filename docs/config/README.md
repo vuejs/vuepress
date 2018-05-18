@@ -44,7 +44,7 @@ Extra tags to be injected to the page HTML `<head>`. Each tag can be specified i
 ``` js
 module.exports = {
   head: [
-    ['link', { rel: 'icon', href: `/logo.png` }]
+    ['link', { rel: 'icon', href: '/logo.png' }]
   ]
 }
 ```
@@ -126,6 +126,13 @@ Provide config options to the used theme. The options will vary depending on the
 - [Default Theme Configuration](../default-theme-config/).
 
 ## Markdown
+
+### markdown.lineNumbers
+
+- Type: `boolean`
+- Default: `undefined`
+
+Whether to show line numbers to the left of each code blocks.
 
 ### markdown.slugify
 

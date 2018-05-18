@@ -40,7 +40,7 @@ Each markdown file is first compiled into HTML and then passed on as a Vue compo
 
 **Output**
 
-<pre><code>{{ 1 + 1 }}</code></pre>
+<div class="language-text"><pre><code>{{ 1 + 1 }}</code></pre></div>
 
 ### Directives
 
@@ -54,7 +54,7 @@ Directives also work:
 
 **Output**
 
-<pre><code><span v-for="i in 3">{{ i }} </span></code></pre>
+<div class="language-text"><pre><code><span v-for="i in 3">{{ i }} </span></code></pre></div>
 
 ### Access to Site & Page Data
 
