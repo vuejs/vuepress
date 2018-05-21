@@ -27,7 +27,6 @@ import Home from './Home.vue'
 import Navbar from './Navbar.vue'
 import Page from './Page.vue'
 import Sidebar from './Sidebar.vue'
-import { pathToComponentName } from '@app/util'
 import store from '@app/store'
 import { resolveSidebarItems } from './util'
 import throttle from 'lodash.throttle'
@@ -94,7 +93,7 @@ export default {
     nprogress.configure({ showSpinner: false })
 
     this.$router.beforeEach((to, from, next) => {
-      if (to.path !== from.path && !Vue.component(pathToComponentName(this.$site.pages, to.path))) {
+      if (to.path !== from.path && !Vue.component(to.name)) {
         nprogress.start()
       }
       next()
