@@ -15,6 +15,8 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 
 ### As Easy as 1, 2, 3
 
+[尤](./尤.md)
+
 ``` bash
 # install
 yarn global add vuepress # OR npm install -g vuepress

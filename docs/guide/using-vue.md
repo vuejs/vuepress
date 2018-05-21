@@ -1,4 +1,4 @@
-# Using Vue in Markdown
+# Using `Vue` in __Markdown__
 
 ## Browser API Access Restrictions
 
