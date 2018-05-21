@@ -15,7 +15,7 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 
 ### As Easy as 1, 2, 3
 
-[尤](./尤.md)
+- [尤](./尤.md)
 
 ``` bash
 # install
