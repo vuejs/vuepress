@@ -1,6 +1,5 @@
 .DS_Store
 node_modules
 *.log
-.temp
 vuepress
 TODOs.md
