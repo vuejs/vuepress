@@ -10,7 +10,8 @@
     "dev": "node bin/vuepress dev docs",
     "build": "node bin/vuepress build docs",
     "lint": "eslint --fix --ext .js,.vue bin/ lib/ test/",
-    "prepublishOnly": "conventional-changelog -p angular -r 2 -i CHANGELOG.md -s"
+    "prepublishOnly": "conventional-changelog -p angular -r 2 -i CHANGELOG.md -s",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,22 @@
     "*.{js,vue}": [
       "eslint --fix",
       "git add"
+    ]
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "vue"
+    ],
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/lib/$1"
+    },
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
+    },
+    "snapshotSerializers": [
+      "<rootDir>/node_modules/jest-serializer-vue"
     ]
   },
   "dependencies": {
@@ -100,10 +117,16 @@
     "workbox-build": "^3.1.0"
   },
   "devDependencies": {
+    "@vue/test-utils": "^1.0.0-beta.16",
+    "babel-jest": "^22.4.4",
     "conventional-changelog": "^1.1.23",
     "eslint": "^4.19.1",
+    "eslint-plugin-jest": "^21.15.1",
     "eslint-plugin-vue-libs": "^3.0.0",
+    "jest": "^22.4.4",
+    "jest-serializer-vue": "^1.0.0",
     "lint-staged": "^7.0.4",
+    "vue-jest": "^2.6.0",
     "vuepress-theme-vue": "^1.0.2",
     "yorkie": "^1.0.3"
   },
