@@ -1,6 +1,6 @@
 import { mount, RouterLinkStub } from '@vue/test-utils'
 import NavLink from '@/default-theme/NavLink.vue'
-import localVue from '../utils/localVue'
+import localVue from '../localVue'
 
 describe('NavLink.vue', () => {
   it('renders nav link with internal link', () => {
