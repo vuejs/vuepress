@@ -1,9 +1,9 @@
 import { mount, RouterLinkStub } from '@vue/test-utils'
+import { modeTestRunner } from '../util'
 import NavLink from '@/default-theme/NavLink.vue'
-import localVue from '../localVue'
 
-describe('NavLink.vue', () => {
-  it('renders nav link with internal link', () => {
+function test (mode, localVue) {
+  it(`$${mode} - renders nav link with internal link`, () => {
     const item = {
       link: '/',
       text: 'VuePress'
@@ -18,7 +18,7 @@ describe('NavLink.vue', () => {
     expect(wrapper.html()).toMatchSnapshot()
   })
 
-  it('renders nav link with external link', () => {
+  it(`$${mode} - renders nav link with external link`, () => {
     const item = {
       link: 'http://vuejs.org/',
       text: 'Vue'
@@ -29,4 +29,6 @@ describe('NavLink.vue', () => {
     })
     expect(wrapper.html()).toMatchSnapshot()
   })
-})
+}
+
+modeTestRunner('NavLink', test)
