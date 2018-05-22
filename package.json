@@ -11,7 +11,7 @@
     "build": "node bin/vuepress build docs",
     "lint": "eslint --fix --ext .js,.vue bin/ lib/ test/",
     "prepublishOnly": "conventional-changelog -p angular -r 2 -i CHANGELOG.md -s",
-    "test": "jest"
+    "test": "node test/prepare.js && jest"
   },
   "repository": {
     "type": "git",
