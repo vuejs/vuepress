@@ -142,6 +142,18 @@ sidebarDepth: 2
 ---
 ```
 
+### Active Header Links
+
+By default, the nested header links and the hash in the URL are updated as the user scrolls to view the different sections of the page. This behavior can be disabled with the following theme config:
+
+``` js
+module.exports = {
+  themeConfig: {
+    disableActiveHash: true, // boolean
+  }
+}
+```
+
 ### Sidebar Groups
 
 You can divide sidebar links into multiple groups by using objects:
