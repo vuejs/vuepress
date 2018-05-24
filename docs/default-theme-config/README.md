@@ -149,10 +149,14 @@ By default, the nested header links and the hash in the URL are updated as the u
 ``` js
 module.exports = {
   themeConfig: {
-    disableActiveHash: true, // boolean
+    activeHeaderLinks: false, // Default: true
   }
 }
 ```
+
+::: tip 
+  It is worth mentioning that when you disable this option, the corresponding script of this functionality will not be loaded. This is a small point in our performance optimization.
+:::
 
 ### Sidebar Groups
 
