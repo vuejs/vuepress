@@ -1,9 +1,11 @@
 <template>
   <div class="page">
     <Content :custom="false"/>
-    <div class="content edit-link" v-if="editLink">
-      <a :href="editLink" target="_blank" rel="noopener noreferrer">{{ editLinkText }}</a>
-      <OutboundLink/>
+    <div class="content edit-link">
+      <template v-if="editLink">
+        <a :href="editLink" target="_blank" rel="noopener noreferrer">{{ editLinkText }}</a>
+        <OutboundLink/>
+      </template>
       <div v-if="lastUpdated" class="last-updated">
         <span class="prefix">{{ lastUpdatedText }}: </span>
         <span class="time">{{ lastUpdated }}</span>
@@ -146,6 +148,7 @@ function find (page, items, offset) {
     color lighten($textColor, 25%)
     margin-right 0.25rem
   .last-updated
+    margin-top: 0 !important
     margin-bottom .5rem
     float right
     font-weight 500
