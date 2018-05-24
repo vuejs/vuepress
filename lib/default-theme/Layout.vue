@@ -136,6 +136,10 @@ export default {
       this.setActiveHash()
     }, 300),
     setActiveHash () {
+      if (this.$site.themeConfig.disableActiveHash) {
+        return
+      }
+
       const sidebarLinks = [].slice.call(document.querySelectorAll('.sidebar-link'))
       const anchors = [].slice.call(document.querySelectorAll('.header-anchor'))
         .filter(anchor => sidebarLinks.some(sidebarLink => sidebarLink.hash === anchor.hash))
