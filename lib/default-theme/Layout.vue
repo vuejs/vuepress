@@ -27,7 +27,6 @@ import Home from './Home.vue'
 import Navbar from './Navbar.vue'
 import Page from './Page.vue'
 import Sidebar from './Sidebar.vue'
-import { pathToComponentName } from '@app/util'
 import { resolveSidebarItems } from './util'
 
 export default {
@@ -86,11 +85,13 @@ export default {
   },
 
   mounted () {
+    window.addEventListener('scroll', this.onScroll)
+
     // configure progress bar
     nprogress.configure({ showSpinner: false })
 
     this.$router.beforeEach((to, from, next) => {
-      if (to.path !== from.path && !Vue.component(pathToComponentName(to.path))) {
+      if (to.path !== from.path && !Vue.component(to.name)) {
         nprogress.start()
       }
       next()
