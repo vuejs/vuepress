@@ -159,12 +159,13 @@ module.exports = {
 - 类型: `Function`
 - 默认值: `undefined`
 
-一个用来对当前的 [markdown-it](https://github.com/markdown-it/markdown-it) 实例应用额外的插件的函数，举例如下：
+一个用于修改当前的 [markdown-it](https://github.com/markdown-it/markdown-it) 实例的默认配置，或者应用额外的插件的函数，举例如下：
 
 ``` js
 module.exports = {
   markdown: {
     config: md => {
+      md.set({ breaks: true })
       md.use(require('markdown-it-xxx'))
     }
   }
