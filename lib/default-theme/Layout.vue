@@ -28,9 +28,7 @@ import Navbar from './Navbar.vue'
 import Page from './Page.vue'
 import Sidebar from './Sidebar.vue'
 import { pathToComponentName } from '@app/util'
-import store from '@app/store'
 import { resolveSidebarItems } from './util'
-import throttle from 'lodash.throttle'
 
 export default {
   components: { Home, Page, Sidebar, Navbar },
@@ -88,8 +86,6 @@ export default {
   },
 
   mounted () {
-    window.addEventListener('scroll', this.onScroll)
-
     // configure progress bar
     nprogress.configure({ showSpinner: false })
 
@@ -104,10 +100,6 @@ export default {
       nprogress.done()
       this.isSidebarOpen = false
     })
-  },
-
-  beforeDestroy () {
-    window.removeEventListener('scroll', this.onScroll)
   },
 
   methods: {
@@ -129,40 +121,6 @@ export default {
           this.toggleSidebar(true)
         } else {
           this.toggleSidebar(false)
-        }
-      }
-    },
-    onScroll: throttle(function () {
-      this.setActiveHash()
-    }, 300),
-    setActiveHash () {
-      if (this.$site.themeConfig.disableActiveHash) {
-        return
-      }
-
-      const sidebarLinks = [].slice.call(document.querySelectorAll('.sidebar-link'))
-      const anchors = [].slice.call(document.querySelectorAll('.header-anchor'))
-        .filter(anchor => sidebarLinks.some(sidebarLink => sidebarLink.hash === anchor.hash))
-
-      const scrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
-
-      for (let i = 0; i < anchors.length; i++) {
-        const anchor = anchors[i]
-        const nextAnchor = anchors[i + 1]
-
-        const isActive = i === 0 && scrollTop === 0 ||
-          (scrollTop >= anchor.parentElement.offsetTop + 10 &&
-            (!nextAnchor || scrollTop < nextAnchor.parentElement.offsetTop - 10))
-
-        if (isActive && decodeURIComponent(this.$route.hash) !== decodeURIComponent(anchor.hash)) {
-          store.disableScrollBehavior = true
-          this.$router.replace(decodeURIComponent(anchor.hash), () => {
-            // execute after scrollBehavior handler.
-            this.$nextTick(() => {
-              store.disableScrollBehavior = false
-            })
-          })
-          return
         }
       }
     }
