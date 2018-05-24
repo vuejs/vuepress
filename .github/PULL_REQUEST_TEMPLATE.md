@@ -26,6 +26,14 @@ If yes, please describe the impact and migration path for existing applications:
 
 - [ ] When resolving a specific issue, it's referenced in the PR's title (e.g. `fix #xxx[,#xxx]`, where "xxx" is the issue number)
 
+You have tested in the following browsers: (Providing a detailed version will be better.)
+
+- [ ] Chrome
+- [ ] Firefox
+- [ ] Safari
+- [ ] Edge
+- [ ] IE
+
 If adding a **new feature**, the PR's description includes:
 
 - [ ] A convincing reason for adding this feature
