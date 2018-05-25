@@ -1,3 +1,13 @@
+<a name="0.10.0"></a>
+# [0.10.0](https://github.com/vuejs/vuepress/compare/v0.9.1...v0.10.0) (2018-05-25)
+
+
+### Features
+
+* upgrade to babel 7 + use [@vue](https://github.com/vue)/babel-preset-app ([c43c73d](https://github.com/vuejs/vuepress/commit/c43c73d))
+
+
+
 <a name="0.9.1"></a>
 ## [0.9.1](https://github.com/vuejs/vuepress/compare/v0.9.0...v0.9.1) (2018-05-25)
 
