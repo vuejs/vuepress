@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`lineNumbers should lineNumbers work with highlightLines 1`] = `
+<!--beforebegin-->
+<div class="language-js line-numbers-mode">
+  <!--afterbegin-->
+  <div class="highlight-lines">
+    <div class="highlighted">&nbsp;</div>
+    <br>
+  </div><pre v-pre class="language-js"><code><span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+  <div class="line-numbers-wrapper"><span class="line-number">1</span>
+    <br>
+  </div>
+  <!--beforeend-->
+</div>
+<!--afterend-->
+`;
+
+exports[`lineNumbers should render lineNumbers 1`] = `
+<!--beforebegin-->
+<div class="language-js line-numbers-mode">
+  <!--afterbegin--><pre v-pre class="language-js"><code><span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+  <div class="line-numbers-wrapper"><span class="line-number">1</span>
+    <br>
+  </div>
+  <!--beforeend-->
+</div>
+<!--afterend-->
+`;
