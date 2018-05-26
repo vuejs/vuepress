@@ -7,11 +7,8 @@ exports[`lineNumbers should lineNumbers work with highlightLines 1`] = `
   <div class="highlight-lines">
     <div class="highlighted">&nbsp;</div>
     <br>
-  </div><pre v-pre class="language-js"><code><span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
-  <div class="line-numbers-wrapper"><span class="line-number">1</span>
-    <br>
-  </div>
+  </div>new Vue()
+  <div class="line-numbers-wrapper"></div>
   <!--beforeend-->
 </div>
 <!--afterend-->
@@ -20,11 +17,9 @@ exports[`lineNumbers should lineNumbers work with highlightLines 1`] = `
 exports[`lineNumbers should render lineNumbers 1`] = `
 <!--beforebegin-->
 <div class="language-js line-numbers-mode">
-  <!--afterbegin--><pre v-pre class="language-js"><code><span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <!--afterbegin--><pre><code class="language-js">new Vue()
 </code></pre>
-  <div class="line-numbers-wrapper"><span class="line-number">1</span>
-    <br>
-  </div>
+  <div class="line-numbers-wrapper"></div>
   <!--beforeend-->
 </div>
 <!--afterend-->

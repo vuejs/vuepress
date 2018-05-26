@@ -5,11 +5,7 @@ import path from 'path'
 const cache = LRU({ max: 1000 })
 
 export function Md () {
-  const md = require('markdown-it')({
-    html: true,
-    highlight: require('@/markdown/highlight.js')
-  })
-  return md
+  return require('markdown-it')()
 }
 
 export async function getFragment (name) {

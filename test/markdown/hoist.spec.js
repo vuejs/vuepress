@@ -2,8 +2,9 @@ import { Md, getFragment } from './util'
 import hoist from '@/markdown/hoist.js'
 import { dataReturnable } from '@/markdown/index.js'
 
-const md = Md()
-const mdH = Md().use(hoist)
+const md = Md().set({ html: true })
+const mdH = Md().set({ html: true }).use(hoist)
+
 dataReturnable(mdH)
 
 describe('hoist', () => {
