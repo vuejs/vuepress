@@ -1,8 +1,7 @@
 import { createLocalVue } from '@vue/test-utils'
-import Router from 'vue-router'
-import OutboundLink from '@/default-theme/OutboundLink.vue'
 import dataMixin from '@/app/dataMixin'
-import ComponentStub from './ComponentStub.vue'
+import Router from 'vue-router'
+import { mockComponent } from './hoc'
 import { siteData as i18nSiteData } from './.temp/siteData-i18n'
 import { siteData as simpleSiteData } from './.temp/siteData-simple'
 
@@ -14,12 +13,14 @@ export function getLocalVueByMode (mode) {
   const localVue = createLocalVue()
   localVue.use(Router)
 
-  localVue.component('OutboundLink', OutboundLink)
-  // 1. register page component in root route.
-  localVue.component(i18nSiteData.pages[0].key, ComponentStub)
-  localVue.component(simpleSiteData.pages[0].key, ComponentStub)
+  // register global component
+  localVue.component('OutboundLink', mockComponent('outbound-link'))
 
-  // 2. data mixin
+  // register page component in root route.
+  localVue.component(i18nSiteData.pages[0].key, mockComponent('page-component'))
+  localVue.component(simpleSiteData.pages[0].key, mockComponent('page-component'))
+
+  // data mixin
   if (mode === 'i18n') {
     localVue.mixin(dataMixin(i18nSiteData))
   } else {
