@@ -10,7 +10,8 @@
     "dev": "node bin/vuepress dev docs",
     "build": "node bin/vuepress build docs",
     "lint": "eslint --fix --ext .js,.vue bin/ lib/ test/",
-    "prepublishOnly": "conventional-changelog -p angular -r 2 -i CHANGELOG.md -s"
+    "prepublishOnly": "conventional-changelog -p angular -r 2 -i CHANGELOG.md -s",
+    "test": "node test/prepare.js && jest --config test/jest.config.js"
   },
   "repository": {
     "type": "git",
@@ -37,10 +38,10 @@
     ]
   },
   "dependencies": {
-    "autoprefixer": "^8.2.0",
     "@babel/core": "7.0.0-beta.47",
-    "babel-loader": "8.0.0-beta.3",
     "@vue/babel-preset-app": "3.0.0-beta.11",
+    "autoprefixer": "^8.2.0",
+    "babel-loader": "8.0.0-beta.3",
     "cache-loader": "^1.2.2",
     "chalk": "^2.3.2",
     "chokidar": "^2.0.3",
@@ -94,10 +95,17 @@
     "workbox-build": "^3.1.0"
   },
   "devDependencies": {
+    "@vue/test-utils": "^1.0.0-beta.16",
+    "babel-core": "^7.0.0-0",
+    "babel-jest": "^23.0.0",
     "conventional-changelog-cli": "^1.3.22",
     "eslint": "^4.19.1",
+    "eslint-plugin-jest": "^21.15.1",
     "eslint-plugin-vue-libs": "^3.0.0",
+    "jest": "^23.0.0",
+    "jest-serializer-vue": "^1.0.0",
     "lint-staged": "^7.0.4",
+    "vue-jest": "^2.6.0",
     "vuepress-theme-vue": "^1.0.2",
     "yorkie": "^1.0.3"
   },

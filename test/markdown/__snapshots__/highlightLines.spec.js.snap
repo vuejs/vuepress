@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`highlightLines highlight multiple lines 1`] = `
+<div class="highlight-lines">
+  <div class="highlighted">&nbsp;</div>
+  <div class="highlighted">&nbsp;</div>
+  <br>
+  <div class="highlighted">&nbsp;</div>
+  <div class="highlighted">&nbsp;</div>
+  <br>
+  <br>
+</div>const app = new Vue({ render, router }) app.$mount('#app')
+`;
+
+exports[`highlightLines highlight single line 1`] = `
+<div class="highlight-lines">
+  <div class="highlighted">&nbsp;</div>
+  <br>
+</div>new Vue()
+`;
