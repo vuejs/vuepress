@@ -1,5 +1,3 @@
 <template>
-  <div vuepress-stub>
-    <slot></slot>
-  </div>
+  <div></div>
 </template>

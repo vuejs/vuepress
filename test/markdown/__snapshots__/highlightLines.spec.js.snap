@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`highlightLines highlight multiple lines 1`] = `
+<div class="highlight-lines">
+  <div class="highlighted">&nbsp;</div>
+  <div class="highlighted">&nbsp;</div>
+  <br>
+  <div class="highlighted">&nbsp;</div>
+  <div class="highlighted">&nbsp;</div>
+  <br>
+  <br>
+</div><pre v-pre class="language-js"><code><span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  render<span class="token punctuation">,</span>
+  router
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+app<span class="token punctuation">.</span><span class="token function">$mount</span><span class="token punctuation">(</span><span class="token string">'#app'</span><span class="token punctuation">)</span>
+</code></pre>
+`;
+
+exports[`highlightLines highlight single line 1`] = `
+<div class="highlight-lines">
+  <div class="highlighted">&nbsp;</div>
+  <br>
+</div><pre v-pre class="language-js"><code><span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+`;
