@@ -3,6 +3,8 @@
 <!-- PULL REQUEST TEMPLATE -->
 <!-- (Update "[ ]" to "[x]" to check a box) -->
 
+**Summary**
+
 **What kind of change does this PR introduce?** (check at least one)
 
 - [ ] Bugfix
@@ -38,6 +40,7 @@ If adding a **new feature**, the PR's description includes:
 
 - [ ] A convincing reason for adding this feature
 - [ ] Related documents have been updated
+- [ ] Related tests have been updated
 
 To avoid wasting your time, it's best to open a **feature request issue** first and wait for approval before working on it.
 
