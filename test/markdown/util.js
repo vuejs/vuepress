@@ -13,4 +13,3 @@ export async function getFragment (name) {
   const content = await fs.readFile(target, 'utf-8')
   return content
 }
-
