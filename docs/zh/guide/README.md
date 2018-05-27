@@ -17,6 +17,7 @@ VuePress 由两部分组成：一部分是支持用 Vue 开发主题的极简静
 - [Vue 驱动的自定义主题系统](./custom-themes.md)
 - [自动生成 Service Worker](../config/#serviceworker)
 - [Google Analytics 集成](../config/#ga)
+- [基于 Git 的 “最后更新时间”](../default-theme-config/README.md#最后更新时间)
 - [多语言支持](./i18n.md)
 - 默认主题包含：
   - 响应式布局

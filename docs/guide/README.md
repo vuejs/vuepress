@@ -19,6 +19,7 @@ Each markdown file is compiled into HTML with [markdown-it](https://github.com/m
 - [Vue-powered custom theme system](./custom-themes.md)
 - [Automatic Service Worker generation](../config/#serviceworker)
 - [Google Analytics Integration](../config/#ga)
+- ["Last Updated" based on Git](../default-theme-config/README.md#last-updated)
 - [Multi-language support](./i18n.md)
 - A default theme with:
   - Responsive layout
