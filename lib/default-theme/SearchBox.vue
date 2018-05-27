@@ -118,8 +118,8 @@ export default {
       }
     },
     go (i) {
-      if(!this.showSuggestions) {
-        return;
+      if (!this.showSuggestions) {
+        return
       }
       this.$router.push(this.suggestions[i].path)
       this.query = ''
