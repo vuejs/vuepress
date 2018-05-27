@@ -902,6 +902,28 @@
     "@webassemblyjs/wast-parser" "1.4.3"
     long "^3.2.0"
 
+"@webpack-contrib/config-loader@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@webpack-contrib/config-loader/-/config-loader-1.1.1.tgz#e9a18096ef37fa88ad714a027fcf51a823fd00af"
+  dependencies:
+    "@webpack-contrib/schema-utils" "^1.0.0-beta.0"
+    cosmiconfig "^5.0.2"
+    loud-rejection "^1.6.0"
+    merge-options "^1.0.1"
+    resolve "^1.6.0"
+    webpack-log "^1.1.2"
+
+"@webpack-contrib/schema-utils@^1.0.0-beta.0":
+  version "1.0.0-beta.0"
+  resolved "https://registry.yarnpkg.com/@webpack-contrib/schema-utils/-/schema-utils-1.0.0-beta.0.tgz#bf9638c9464d177b48209e84209e23bee2eb4f65"
+  dependencies:
+    ajv "^6.1.0"
+    ajv-keywords "^3.1.0"
+    chalk "^2.3.2"
+    strip-ansi "^4.0.0"
+    text-table "^0.2.0"
+    webpack-log "^1.1.2"
+
 JSONStream@^1.0.4:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/JSONStream/-/JSONStream-1.3.2.tgz#c102371b6ec3a7cf3b847ca00c20bb0fce4c6dea"
@@ -2346,6 +2368,14 @@ cosmiconfig@^4.0.0:
     js-yaml "^3.9.0"
     parse-json "^4.0.0"
     require-from-string "^2.0.1"
+
+cosmiconfig@^5.0.2:
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/cosmiconfig/-/cosmiconfig-5.0.5.tgz#a809e3c2306891ce17ab70359dc8bdf661fe2cd0"
+  dependencies:
+    is-directory "^0.3.1"
+    js-yaml "^3.9.0"
+    parse-json "^4.0.0"
 
 create-ecdh@^4.0.0:
   version "4.0.3"
@@ -5068,14 +5098,14 @@ koa-static@^4.0.2:
     debug "^3.1.0"
     koa-send "^4.1.3"
 
-koa-webpack@^3.0.1:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/koa-webpack/-/koa-webpack-3.0.2.tgz#5a0604d476ec5ab3f12f02fd5bf8406a77b49ed2"
+koa-webpack@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/koa-webpack/-/koa-webpack-4.0.0.tgz#1d9b83c109db106d8ef65db376f910a45ba964c7"
   dependencies:
     app-root-path "^2.0.1"
     merge-options "^1.0.0"
     webpack-dev-middleware "^3.0.0"
-    webpack-hot-client "^2.0.0"
+    webpack-hot-client "^3.0.0"
     webpack-log "^1.1.1"
 
 koa@^2.4.1:
@@ -5537,7 +5567,21 @@ meow@^4.0.0:
     redent "^2.0.0"
     trim-newlines "^2.0.0"
 
-merge-options@^1.0.0:
+meow@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/meow/-/meow-5.0.0.tgz#dfc73d63a9afc714a5e371760eb5c88b91078aa4"
+  dependencies:
+    camelcase-keys "^4.0.0"
+    decamelize-keys "^1.0.0"
+    loud-rejection "^1.0.0"
+    minimist-options "^3.0.1"
+    normalize-package-data "^2.3.4"
+    read-pkg-up "^3.0.0"
+    redent "^2.0.0"
+    trim-newlines "^2.0.0"
+    yargs-parser "^10.0.0"
+
+merge-options@^1.0.0, merge-options@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/merge-options/-/merge-options-1.0.1.tgz#2a64b24457becd4e4dc608283247e94ce589aa32"
   dependencies:
@@ -7833,7 +7877,7 @@ text-extensions@^1.0.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/text-extensions/-/text-extensions-1.7.0.tgz#faaaba2625ed746d568a23e4d0aacd9bf08a8b39"
 
-text-table@~0.2.0:
+text-table@^0.2.0, text-table@~0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
 
@@ -8232,9 +8276,9 @@ uuid@^3.1.0:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.2.1.tgz#12c528bb9d58d0b9265d9a2f6f0fe8be17ff1f14"
 
-v8-compile-cache@^1.1.0:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/v8-compile-cache/-/v8-compile-cache-1.1.2.tgz#8d32e4f16974654657e676e0e467a348e89b0dc4"
+v8-compile-cache@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/v8-compile-cache/-/v8-compile-cache-2.0.0.tgz#526492e35fc616864284700b7043e01baee09f0a"
 
 validate-npm-package-license@^3.0.1:
   version "3.0.3"
@@ -8420,12 +8464,13 @@ webpack-dev-middleware@^3.0.0:
     url-join "^4.0.0"
     webpack-log "^1.0.1"
 
-webpack-hot-client@^2.0.0, webpack-hot-client@^2.2.0:
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/webpack-hot-client/-/webpack-hot-client-2.2.2.tgz#4a97c513fc22d132573a0cb66ba7f525ff5fc036"
+webpack-hot-client@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/webpack-hot-client/-/webpack-hot-client-3.0.0.tgz#b714f257a264001275bc1491741685779cde12f2"
   dependencies:
     json-stringify-safe "^5.0.1"
     loglevelnext "^1.0.2"
+    strip-ansi "^4.0.0"
     uuid "^3.1.0"
     webpack-log "^1.1.1"
     ws "^4.0.0"
@@ -8445,32 +8490,33 @@ webpack-merge@^4.1.2:
   dependencies:
     lodash "^4.17.5"
 
-webpack-serve@^0.3.2:
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/webpack-serve/-/webpack-serve-0.3.2.tgz#9cfd823dd570438d8cf362e70586bc54af1f0c92"
+webpack-serve@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/webpack-serve/-/webpack-serve-1.0.2.tgz#cd7f040cac63300e8fff79f1d45aa2f3e5825492"
   dependencies:
     "@shellscape/koa-static" "^4.0.4"
+    "@webpack-contrib/config-loader" "^1.1.1"
     chalk "^2.3.0"
     clipboardy "^1.2.2"
-    cosmiconfig "^4.0.0"
+    cosmiconfig "^5.0.2"
     debug "^3.1.0"
     find-up "^2.1.0"
     get-port "^3.2.0"
     import-local "^1.0.0"
     killable "^1.0.0"
     koa "^2.4.1"
-    koa-webpack "^3.0.1"
+    koa-webpack "^4.0.0"
     lodash "^4.17.5"
     loud-rejection "^1.6.0"
-    meow "^4.0.0"
+    meow "^5.0.0"
     nanobus "^4.3.1"
     opn "^5.1.0"
     resolve "^1.6.0"
     time-fix-plugin "^2.0.0"
     update-notifier "^2.3.0"
     url-join "3.0.0"
-    v8-compile-cache "^1.1.0"
-    webpack-hot-client "^2.2.0"
+    v8-compile-cache "^2.0.0"
+    webpack-hot-client "^3.0.0"
     webpack-log "^1.1.2"
 
 webpack-sources@^1.0.1, webpack-sources@^1.1.0:
@@ -8759,6 +8805,12 @@ yallist@^2.1.2:
 yallist@^3.0.0, yallist@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-3.0.2.tgz#8452b4bb7e83c7c188d8041c1a837c773d6d8bb9"
+
+yargs-parser@^10.0.0:
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-10.0.0.tgz#c737c93de2567657750cb1f2c00be639fd19c994"
+  dependencies:
+    camelcase "^4.1.0"
 
 yargs-parser@^9.0.2:
   version "9.0.2"
