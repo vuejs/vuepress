@@ -17,17 +17,17 @@ Each markdown file is compiled into HTML with [markdown-it](https://github.com/m
 - [Built-in markdown extensions](./markdown.md) optimized for technical documentation
 - [Ability to leverage Vue inside markdown files](./using-vue.md)
 - [Vue-powered custom theme system](./custom-themes.md)
-- [Automatic Service Worker generation](../config/#serviceworker)
-- [Google Analytics Integration](../config/#ga)
+- [Automatic Service Worker generation](../config/README.md#serviceworker)
+- [Google Analytics Integration](../config/README.md#ga)
 - ["Last Updated" based on Git](../default-theme-config/README.md#last-updated)
 - [Multi-language support](./i18n.md)
 - A default theme with:
   - Responsive layout
-  - [Optional Homepage](../default-theme-config/#homepage)
-  - [Simple out-of-the-box header-based search](../default-theme-config/#built-in-search)
-  - [Algolia Search](../default-theme-config/#algolia-search)
-  - Customizable [navbar](../default-theme-config/#navbar) and [sidebar](../default-theme-config/#sidebar)
-  - [Auto-generated GitHub link and page edit links](../default-theme-config/#git-repo-and-edit-links)
+  - [Optional Homepage](../default-theme-config/README.md#homepage)
+  - [Simple out-of-the-box header-based search](../default-theme-config/README.md#built-in-search)
+  - [Algolia Search](../default-theme-config/README.md#algolia-search)
+  - Customizable [navbar](../default-theme-config/README.md#navbar) and [sidebar](../default-theme-config/README.md#sidebar)
+  - [Auto-generated GitHub link and page edit links](../default-theme-config/README.md#git-repo-and-edit-links)
 
 ## Todo
 

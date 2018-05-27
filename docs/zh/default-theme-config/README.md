@@ -10,7 +10,7 @@ sidebar: auto
 
 ## 首页
 
-默认的主题提供了一个首页（Homepage）的布局 (用于 [这个网站的主页](/zh/))。想要使用它，需要在你的根级 `README.md` 的 [YAML front matter](../guide/markdown.md#yaml-front-matter) 指定 `home: true`。以下是这个网站实际使用的数据：
+默认的主题提供了一个首页（Homepage）的布局 (用于 [这个网站的主页](../README.md))。想要使用它，需要在你的根级 `README.md` 的 [YAML front matter](../guide/markdown.md#front-matter) 指定 `home: true`。以下是这个网站实际使用的数据：
 
 ``` yaml
 ---

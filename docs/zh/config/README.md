@@ -17,7 +17,7 @@ sidebar: auto
 
 **Also see:**
 
-- [Base URL](../guide/assets.md#base-url)
+- [Base URL](../guide/assets.md#基础路径)
 - [部署指南 > Github Pages](../guide/deploy.md#github-pages)
 
 ### title
@@ -122,7 +122,7 @@ module.exports = {
 
 **也可以参考:**
 
-- [默认主题](../default-theme-config/)。
+- [默认主题](../default-theme-config/README.md)。
 
 ## Markdown
 

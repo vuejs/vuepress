@@ -123,7 +123,7 @@ Provide config options to the used theme. The options will vary depending on the
 
 **Also see:**
 
-- [Default Theme Configuration](../default-theme-config/).
+- [Default Theme Configuration](../default-theme-config/README.md).
 
 ## Markdown
 

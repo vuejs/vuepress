@@ -24,7 +24,7 @@ module.exports = {
 
 If you've got the dev server running, you should see the page now has a header with the title and a search box. VuePress comes with built-in headers-based search - it automatically builds a simple search index from the title, `h2` and `h3` headers from all the pages.
 
-Consult the [Config Reference](../config/) for a full list of options.
+Consult the [Config Reference](../config/README.md) for a full list of options.
 
 ::: tip Alternative Config Formats
 You can also use YAML (`.vuepress/config.yml`) or TOML (`.vuepress/config.toml`) formats for the configuration file.
@@ -32,7 +32,7 @@ You can also use YAML (`.vuepress/config.yml`) or TOML (`.vuepress/config.toml`)
 
 ## Theme Configuration
 
-A VuePress theme is responsible for all the layout and interactivity details of your site. VuePress ships with a default theme (you are looking at it right now) which is designed for technical documentation. It exposes a number of options that allow you to customize the navbar, sidebar and homepage, etc. For details, check out the [Default Theme Config](../default-theme-config/) page.
+A VuePress theme is responsible for all the layout and interactivity details of your site. VuePress ships with a default theme (you are looking at it right now) which is designed for technical documentation. It exposes a number of options that allow you to customize the navbar, sidebar and homepage, etc. For details, check out the [Default Theme Config](../default-theme-config/README.md) page.
 
 If you wish to develop a custom theme, see [Custom Themes](./custom-themes.md).
 
