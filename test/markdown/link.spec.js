@@ -2,11 +2,15 @@ import { Md } from './util'
 import link from '@/markdown/link.js'
 import { dataReturnable } from '@/markdown/index.js'
 
-const mdL = Md().use(link)
+const mdL = Md().use(link, {
+  target: '_blank',
+  rel: 'noopener noreferrer'
+})
+
 dataReturnable(mdL)
 
-const asserts = {
-  // abosolute path usage
+const internalLinkAsserts = {
+  // START abosolute path usage
   '/': '/',
 
   '/foo/': '/foo/',
@@ -14,8 +18,9 @@ const asserts = {
 
   '/foo/two.md': '/foo/two.html',
   '/foo/two.html': '/foo/two.html',
+  // END abosolute path usage
 
-  // relative path usage
+  // START relative path usage
   'README.md': './',
   './README.md': './',
 
@@ -39,15 +44,29 @@ const asserts = {
 
   '../foo/one.md': './../foo/one.html',
   '../foo/one.md#hash': './../foo/one.html#hash'
+  // END relative path usage
 }
+
+const externalLinks = [
+  '[vue](https://vuejs.org/)',
+  '[vue](http://vuejs.org/)',
+  '[some **link** with `code`](https://google.com)' // #496
+]
 
 describe('link', () => {
   test('should convert internal links to router links correctly', () => {
-    for (const before in asserts) {
+    for (const before in internalLinkAsserts) {
       const input = `[${before}](${before})`
       const output = mdL.render(input)
       const after = getCompiledLink(output)
-      expect(after).toBe(asserts[before])
+      expect(after).toBe(internalLinkAsserts[before])
+    }
+  })
+
+  test('should render external links correctly', () => {
+    for (const link of externalLinks) {
+      const { html } = mdL.render(link)
+      expect(html).toMatchSnapshot()
     }
   })
 })
