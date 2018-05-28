@@ -146,7 +146,7 @@ function find (page, items, offset) {
 .page-edit
   @extend $wrapper
   padding-top 1rem
-  padding-bottom .5rem
+  padding-bottom 1rem
   overflow auto
   .edit-link
     display inline-block
