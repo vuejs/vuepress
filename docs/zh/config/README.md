@@ -77,6 +77,10 @@ module.exports = {
 
 提供一个 Google Analytics ID 来使 GA 生效。
 
+::: tip 提示
+请留意 [GDPR (2018年欧盟数据保护规则改革)](https://ec.europa.eu/commission/priorities/justice-and-fundamental-rights/data-protection/2018-reform-eu-data-protection-rules_en), 在合适或者需要的情况下，考虑将 Google Analytics 设置为[匿名化的 IP](https://support.google.com/analytics/answer/2763052?hl=zh-Hans)。
+:::
+
 ### serviceWorker
 
 - 类型: `boolean`
