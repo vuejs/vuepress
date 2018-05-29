@@ -14,6 +14,13 @@ exports[`containers tip 1`] = `
 </div>
 `;
 
+exports[`containers tip-override 1`] = `
+<div class="tip custom-block">
+  <p class="custom-block-title">提示</p>
+  <p>I am a tip</p>
+</div>
+`;
+
 exports[`containers v-pre 1`] = `
 <div v-pre>
   <p>I am a v-pre</p>

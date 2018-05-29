@@ -4,7 +4,7 @@ import containers from '@/markdown/containers.js'
 const mdC = Md().use(containers)
 
 describe('containers', () => {
-  const containerLabels = ['tip', 'warning', 'danger', 'v-pre']
+  const containerLabels = ['tip', 'tip-override', 'warning', 'danger', 'v-pre']
   containerLabels.forEach(label => {
     test(label, async () => {
       const input = await getFragment(`container-${label}`)
