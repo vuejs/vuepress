@@ -95,7 +95,7 @@ export default {
             border-top 3px solid transparent
             border-bottom 3px solid transparent
             position absolute
-            top calc(50% - 2px)
+            top calc(50% - 5px)
             left 9px
       &:first-child h4
         margin-top 0
