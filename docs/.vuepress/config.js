@@ -27,7 +27,7 @@ module.exports = {
   theme: 'vue',
   plugins: [
     [
-      require('../../lib/plugins/vuepress-plugin-last-updated/index'),
+      require('../../lib/plugins/vuepress-plugin-last-updated/index')
     ]
   ],
   themeConfig: {
