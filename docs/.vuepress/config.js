@@ -26,9 +26,7 @@ module.exports = {
   serviceWorker: true,
   theme: 'vue',
   plugins: [
-    [
-      require('../../lib/plugins/vuepress-plugin-last-updated/index')
-    ]
+    require('../../packages/vuepress-plugin-last-updated/index')
   ],
   themeConfig: {
     repo: 'vuejs/vuepress',
