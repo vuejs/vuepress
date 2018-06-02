@@ -109,6 +109,13 @@ Also, only enable this if you are able to deploy your site with SSL, since servi
 
 Specify locales for i18n support. For more details, see the guide on [Internationalization](../guide/i18n.md).
 
+### shouldPrefetch
+
+- Type: `Function`
+- Default: `() => true`
+
+A function to control what files should have `<link rel="preload">` resource hints generated. See [shouldPrefetch](https://ssr.vuejs.org/api/#shouldprefetch).
+
 ## Theming
 
 ### theme

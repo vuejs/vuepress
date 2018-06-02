@@ -108,6 +108,13 @@ module.exports = {
 
 提供多语言支持的语言配置。具体细节请查看 [多语言支持](../guide/i18n.md)。
 
+### shouldPrefetch
+
+- 类型: `Function`
+- 默认值: `() => true`
+
+一个函数，用来控制对于哪些文件，是需要生成 `<link rel="prefetch">` 资源提示的。请参考 [shouldPrefetch](https://ssr.vuejs.org/zh/api/#shouldpreload)。
+
 ## 主题
 
 ### theme
