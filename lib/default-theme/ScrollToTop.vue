@@ -1,6 +1,15 @@
 <template>
   <transition name="fade" v-if="$site.themeConfig.showScrollToTop">
-    <div v-if="show" class="go-to-top" @click="scrollToTop"></div>
+    <svg v-if="show"
+      class="go-to-top"
+      @click="scrollToTop"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 261.9 226.7">
+      <g transform="matrix(1.3333333,0,0,-1.3333333,0,400) translate(178.0626,235.0086)">
+        <path fill="currentColor" d="M-138.8-105L-79.9-3L-21-105h39.3L-79.9,65l-98.2-170H-138.8z"/>
+      </g>
+    </svg>
   </transition>
 </template>
 
@@ -34,7 +43,7 @@ export default {
         document.body.scrollTop || 0
     },
     scrollToTop () {
-      window.scrollTo(0, 0)
+      window.scrollTo({ top: 0, behavior: 'smooth' })
       this.scrollTop = 0
     }
   },
@@ -55,28 +64,13 @@ $iconSize = 2rem
 .go-to-top
   cursor pointer
   position fixed
-  bottom 1rem
-  right 1rem
-  text-align center
-  line-height $iconSize
+  bottom 2rem
+  right 2.5rem
   width $iconSize
-  height $iconSize
-  color $textColor
+  color  lighten($accentColor, 30%)
   z-index 1
   &:hover
     color $accentColor
-  &::before
-    content ''
-    display block
-    height "calc(%s / 2 - 3px)" % $iconSize
-    width "calc(%s / 2 - 3px)" % $iconSize
-    border-top currentColor 5px solid
-    border-left currentColor 5px solid
-    position absolute
-    transform translateY(-33%) rotate(45deg)
-    transform-origin 0 0
-    left 50%
-    top 50%
 
 @media (max-width: $MQNarrow)
   .go-to-top
