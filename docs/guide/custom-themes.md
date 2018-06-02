@@ -38,7 +38,7 @@ This is the value of `$site` of this very website:
 }
 ```
 
-`title`, `description` and `base` are copied from respective fields in `.vuepress/config.js`. `pages` contains an array of metadata objects for each page, including its path, page title (explicitly specified in [YAML front matter](./markdown.html#yaml-front-matter) or inferred from the first header on the page), and any YAML front matter data in that file.
+`title`, `description` and `base` are copied from respective fields in `.vuepress/config.js`. `pages` contains an array of metadata objects for each page, including its path, page title (explicitly specified in [YAML front matter](./markdown.md#front-matter) or inferred from the first header on the page), and any YAML front matter data in that file.
 
 This is the `$page` object for this page you are looking at:
 
@@ -57,7 +57,7 @@ If the user provided `themeConfig` in `.vuepress/config.js`, it will also be ava
 Finally, don't forget that `this.$route` and `this.$router` are also available as part of Vue Router's API.
 
 ::: tip
-  `lastUpdated` is the UNIX timestamp of this file's last git commit, for more details, refer to [Last Updated](../default-theme-config/#last-updated).
+  `lastUpdated` is the UNIX timestamp of this file's last git commit, for more details, refer to [Last Updated](../default-theme-config/README.md#last-updated).
 
 :::
 

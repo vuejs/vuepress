@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`lineNumbers should lineNumbers work with highlightLines 1`] = `
+<!--beforebegin-->
+<div class="language-js line-numbers-mode">
+  <!--afterbegin-->
+  <div class="highlight-lines">
+    <div class="highlighted">&nbsp;</div>
+    <br>
+  </div>new Vue()
+  <div class="line-numbers-wrapper"></div>
+  <!--beforeend-->
+</div>
+<!--afterend-->
+`;
+
+exports[`lineNumbers should render lineNumbers 1`] = `
+<!--beforebegin-->
+<div class="language-js line-numbers-mode">
+  <!--afterbegin--><pre><code class="language-js">new Vue()
+</code></pre>
+  <div class="line-numbers-wrapper"></div>
+  <!--beforeend-->
+</div>
+<!--afterend-->
+`;

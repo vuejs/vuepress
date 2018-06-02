@@ -152,7 +152,7 @@ yarn add -D pug pug-plain-loader
 ::: tip
 If you are a Stylus user, you don't need to install `stylus` and `stylus-loader` in your project because VuePress uses Stylus internally.
   
-For pre-processors that do not have built-in webpack config support, you will need to [extend the internal webpack config](../config/#configurewebpack) in addition to installing the necessary dependencies.
+For pre-processors that do not have built-in webpack config support, you will need to [extend the internal webpack config](../config/README.md#configurewebpack) in addition to installing the necessary dependencies.
 :::
 
 ## Script & Style Hoisting

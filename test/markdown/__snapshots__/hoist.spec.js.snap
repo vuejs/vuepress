@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`hoist Should keep script and style when not using hoist 1`] = `
+<h1>H1</h1>
+<script src="vue.js"></script>
+<style>
+  .vue {
+    font-size: 16px;
+  }
+</style>
+<h2>H2</h2>
+`;
+
+exports[`hoist Should miss script and style when using hoist 1`] = `
+<h1>H1</h1>
+<h2>H2</h2>
+`;
+
+exports[`hoist Should miss script and style when using hoist 2`] = `
+Object {
+  "hoistedTags": Array [
+    <script src="vue.js"></script>,
+    <style>
+  .vue {
+    font-size: 16px;
+  }
+</style>,
+  ],
+}
+`;

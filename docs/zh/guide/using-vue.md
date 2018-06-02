@@ -58,7 +58,7 @@ export default {
 
 ### 访问网站以及页面的数据
 
-编译后的组件没有私有数据，但可以访问 [网站的元数据](./custom-themes.md#site-and-page-metadata)，举例来说：
+编译后的组件没有私有数据，但可以访问 [网站的元数据](./custom-themes.md#网站和页面的元数据)，举例来说：
 
 **Input**
 
@@ -153,7 +153,7 @@ yarn add -D pug pug-plain-loader
 ::: tip
 需要指出的是，如果你是一个 `stylus` 用户，你并不需要在你的项目中安装 `stylus` 和 `stylus-loader`，因为 VuePress 已经内置了它们。
   
-对于那些没有内置的预处理器，除了安装对应的依赖，你还需要 [拓展内部的 Webpack 配置](../config/#configurewebpack)。
+对于那些没有内置的预处理器，除了安装对应的依赖，你还需要 [拓展内部的 Webpack 配置](../config/README.md#configurewebpack)。
 :::
 
 
