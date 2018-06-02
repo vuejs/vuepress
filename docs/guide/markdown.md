@@ -226,6 +226,8 @@ export default {
 
 ## Import Code Snippets <Badge text="Experimental" type="warn"/> <Badge text="0.0.11+" type="tip"/>
 
+You can import code snippets from existing files via following syntax:
+
 **Input**
 
 ```
@@ -235,6 +237,11 @@ export default {
 **Output**
 
 <<< @/test/markdown/fragments/snippet.js{2}
+
+::: tip
+  Since the import of the code snippets will be executed before webpack compilation, so you can't use the path alias in webpack. the default value of `@` is `process.cwd()`.
+:::
+
 
 ## Advanced Configuration
 
