@@ -222,6 +222,24 @@ export default {
 }
 ```
 
+## 导入代码段 <Badge text="Experimental" type="warn"/> <Badge text="0.11.0+" type="tip"/>
+
+你可以通过下述的语法导入已经存在的文件中的代码段：
+
+**Input**
+
+```
+<<< @/test/markdown/fragments/snippet.js{2}
+```
+
+**Output**
+
+<<< @/test/markdown/fragments/snippet.js{2}
+
+::: tip 注意
+  由于代码段的导入将在 webpack 编译之前执行，因此你无法使用 webpack 中的路径别名，此处的 `@` 默认值是 `process.cwd()`。
+:::
+
 ## 进阶配置
 
 VuePress 使用 [markdown-it](https://github.com/markdown-it/markdown-it) 来渲染 Markdown，上述大多数的拓展也都是通过自定义的插件实现的。想要进一步的话，你可以通过 `.vuepress/config.js` 的 `markdown` 选项，来对当前的 `markdown-it` 实例做一些自定义的配置：
