@@ -116,6 +116,13 @@ Specify locales for i18n support. For more details, see the guide on [Internatio
 
 A function to control what files should have `<link rel="preload">` resource hints generated. See [shouldPrefetch](https://ssr.vuejs.org/api/#shouldprefetch).
 
+### ym
+
+- Type: `number`
+- Default: `undefined`
+
+Provide the Yandex.Metrica to enable integration.
+
 ## Theming
 
 ### theme
