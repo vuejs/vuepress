@@ -5,7 +5,7 @@
 </template>
 
 <script>
-export default {
+module.exports = {
   data () {
     return {
       msg: 'Hello this is <demo-1>'
