@@ -30,5 +30,5 @@ vuepress build
 ```
 
 ::: warning ПРИМЕЧАНИЕ СОВМЕСТИМОСТИ
-VuePress требует Node.js >= 8.
+VuePress для работы требуется Node.js >= 8.
 :::
