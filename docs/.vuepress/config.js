@@ -10,6 +10,11 @@ module.exports = {
       lang: 'zh-CN',
       title: 'VuePress',
       description: 'Vue 驱动的静态网站生成器'
+    },
+    '/ru/': {
+      lang: 'ru',
+      title: 'VuePress',
+      description: 'Генератор статических сайтов на Vue'
     }
   },
   head: [
@@ -74,6 +79,29 @@ module.exports = {
         ],
         sidebar: {
           '/zh/guide/': genSidebarConfig('指南')
+        }
+      },
+      '/ru/': {
+        label: 'Русский',
+        selectText: 'Languages',
+        editLinkText: 'Изменить эту страницу на GitHub',
+        lastUpdated: 'Последнее обновление',
+        nav: [
+          {
+            text: 'Руководство',
+            link: '/ru/guide/',
+          },
+          {
+            text: 'Конфигурация',
+            link: '/ru/config/'
+          },
+          {
+            text: 'Настройки стандартной темы',
+            link: '/ru/default-theme-config/'
+          }
+        ],
+        sidebar: {
+          '/ru/guide/': genSidebarConfig('Руководство')
         }
       }
     }
