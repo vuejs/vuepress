@@ -17,7 +17,7 @@ sidebar: auto
 
 **Смотри также:**
 
-- [Базовый URL](../guide/assets.md#base-url)
+- [Базовый URL](../guide/assets.md#базовый-url)
 - [Публикация > Github Pages](../guide/deploy.md#github-pages)
 
 ### title

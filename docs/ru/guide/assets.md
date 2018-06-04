@@ -17,7 +17,7 @@
 ![Картинка из зависимости](~some-dependency/image.png)
 ```
 
-Псевдонимы webpack можно настроить с помощью [configureWebpack](/config/README.md#configurewebpack) в `.vuepress/config.js`. Например:
+Псевдонимы webpack можно настроить с помощью [configureWebpack](../config/README.md#configurewebpack) в `.vuepress/config.js`. Например:
 
 ``` js
 module.exports = {
