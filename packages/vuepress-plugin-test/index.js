@@ -1,5 +1,13 @@
 const path = require('path')
 
+class SimpleLogPlugin {
+  apply (compiler) {
+    compiler.hooks.done.tap('simple-log', function () {
+      console.log('\n\nDone!')
+    })
+  }
+}
+
 module.exports = (options, context) => ({
   name: 'test',
 
@@ -17,8 +25,36 @@ module.exports = (options, context) => ({
     path.resolve(__dirname, 'enhanceApp.js')
   ],
 
-  chainWebpack (config) {
-    console.log('chainWebpack')
-  }
+  chainWebpack (config, isServer) {
+    if (isServer) {
+      config
+        .plugin('copy')
+        .tap(args => {
+          args[0].push({
+            from: path.resolve(context.sourceDir, '.vuepress/images'),
+            to: path.resolve(context.outDir, 'images')
+          })
+          return args
+        })
+    }
+    config
+      .plugin('simple-log')
+      .use(SimpleLogPlugin)
+  },
 
+  extendMarkdown (md) {
+    // md.use()
+  },
+
+  enhanceDevServer (app) {
+    const path = require('path')
+    const mount = require('koa-mount')
+    const serveStatic = require('koa-static')
+    const imagePublicPath = path.resolve(context.sourceDir, '.vuepress/images')
+    app.use(mount(path.join(context.publicPath, 'images'), serveStatic(imagePublicPath)))
+  },
+
+  async generated () {
+    console.log('generated')
+  }
 })
