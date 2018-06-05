@@ -18,7 +18,7 @@ module.exports = (options, context) => ({
   ],
 
   chainWebpack (config) {
-    console.log(config)
+    console.log('chainWebpack')
   }
 
 })
