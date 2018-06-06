@@ -18,14 +18,12 @@ async function resolveComponents (componentDir) {
 module.exports = (options, context) => ({
   name: 'register-global-components',
 
-  async dynamicClientCode () {
+  async dynamicClientModules () {
     const { baseDirs } = options
-    // const { sourceDir } = context
 
     function genImport (baseDir, file) {
       const name = fileToComponentName(file)
       const absolutePath = path.resolve(baseDir, file)
-      // const baseDir = path.resolve(sourceDir, '.vuepress/components')
       const code = `Vue.component(${JSON.stringify(name)}, () => import(${JSON.stringify(absolutePath)}))`
       return code
     }
@@ -33,9 +31,12 @@ module.exports = (options, context) => ({
     let code = ''
     for (const baseDir of baseDirs) {
       const files = await resolveComponents(baseDir) || []
-      code += files.map(file => genImport(baseDir, file)).join('\n') + '\n\n'
+      code += files.map(file => genImport(baseDir, file)).join('\n') + '\n'
     }
 
-    return `import Vue from 'vue'\n` + code
+    return {
+      name: 'global-components.js',
+      content: `import Vue from 'vue'\n` + code
+    }
   }
 })
