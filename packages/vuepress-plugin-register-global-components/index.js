@@ -18,7 +18,7 @@ async function resolveComponents (componentDir) {
 module.exports = (options, context) => ({
   name: 'register-global-components',
 
-  async dynamicClientModules () {
+  async clientDynamicModules () {
     const { baseDirs } = options
 
     function genImport (baseDir, file) {
