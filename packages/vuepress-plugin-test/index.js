@@ -60,6 +60,10 @@ module.exports = (options, context) => ({
     console.log('generated')
   },
 
+  updated () {
+    console.log('updated')
+  },
+
   additionalPages () {
     return [
       {
