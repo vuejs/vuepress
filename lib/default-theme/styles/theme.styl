@@ -3,6 +3,8 @@
 @require './code'
 @require './custom-blocks'
 @require './arrow'
+@require './wrapper'
+@require './toc'
 
 html, body
   padding 0
@@ -53,9 +55,7 @@ body
   overflow-y auto
 
 .content:not(.custom)
-  max-width $contentWidth
-  margin 0 auto
-  padding 2rem 2.5rem
+  @extend $wrapper
   > *:first-child
     margin-top $navbarHeight
   a:hover
@@ -151,6 +151,8 @@ hr
 table
   border-collapse collapse
   margin 1rem 0
+  display: block
+  overflow-x: auto
 
 tr
   border-top 1px solid #dfe2e5
@@ -169,8 +171,7 @@ th, td
     .sidebar-mask
       display: block
   &.no-navbar
-    .content:not(.custom) >
-      h1, h2, h3, h4, h5, h6
+    .content:not(.custom) > h1, h2, h3, h4, h5, h6
         margin-top 1.5rem
         padding-top 0
     .sidebar

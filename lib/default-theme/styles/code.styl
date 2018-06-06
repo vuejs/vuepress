@@ -94,34 +94,34 @@ div[class*="language-"]
 
 
 for lang in js ts html md vue css sass scss less stylus go java c sh yaml
-  div{'[class*="language-' + lang + '"]'}
+  div{'[class~="language-' + lang + '"]'}
     &:before
       content ('' + lang)
 
-div[class*="language-javascript"]
+div[class~="language-javascript"]
   &:before
     content "js"
 
-div[class*="language-typescript"]
+div[class~="language-typescript"]
   &:before
     content "ts"
 
-div[class*="language-markup"]
+div[class~="language-markup"]
   &:before
     content "html"
 
-div[class*="language-markdown"]
+div[class~="language-markdown"]
   &:before
     content "md"
 
-div[class*="language-json"]:before
+div[class~="language-json"]:before
   content "json"
 
-div[class*="language-ruby"]:before
+div[class~="language-ruby"]:before
   content "rb"
 
-div[class*="language-python"]:before
+div[class~="language-python"]:before
   content "py"
 
-div[class*="language-bash"]:before
+div[class~="language-bash"]:before
   content "sh"

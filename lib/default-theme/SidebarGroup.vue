@@ -45,7 +45,7 @@ export default {
   font-size 1.1em
   font-weight bold
   // text-transform uppercase
-  padding-left 1.5rem
+  padding 0 1.5rem
   margin-top 0
   margin-bottom 0.5rem
   &.open, &:hover

@@ -2,7 +2,7 @@
 
 ## Browser API Access Restrictions
 
-Because VuePress applications are server-rendered in Node.js when generating static builds, any Vue usage must conform to the [universal code requirements](https://ssr.vuejs.org/en/universal.html). In short, make sure to only access Browser / DOM APIs in `beforeMounted` or `mounted` hooks.
+Because VuePress applications are server-rendered in Node.js when generating static builds, any Vue usage must conform to the [universal code requirements](https://ssr.vuejs.org/en/universal.html). In short, make sure to only access Browser / DOM APIs in `beforeMount` or `mounted` hooks.
 
 If you are using or demoing components that are not SSR friendly (for example containing custom directives), you can wrap them inside the built-in `<ClientOnly>` component:
 
@@ -152,7 +152,7 @@ yarn add -D pug pug-plain-loader
 ::: tip
 If you are a Stylus user, you don't need to install `stylus` and `stylus-loader` in your project because VuePress uses Stylus internally.
   
-For pre-processors that do not have built-in webpack config support, you will need to [extend the internal webpack config](../config/#configurewebpack) in addition to installing the necessary dependencies.
+For pre-processors that do not have built-in webpack config support, you will need to [extend the internal webpack config](../config/README.md#configurewebpack) in addition to installing the necessary dependencies.
 :::
 
 ## Script & Style Hoisting

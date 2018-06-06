@@ -10,7 +10,7 @@ sidebar: auto
 
 ## 首页
 
-默认的主题提供了一个首页（Homepage）的布局 (用于 [这个网站的主页](/zh/))。想要使用它，需要在你的根级 `README.md` 的 [YAML front matter](../guide/markdown.md#yaml-front-matter) 指定 `home: true`。以下是这个网站实际使用的数据：
+默认的主题提供了一个首页（Homepage）的布局 (用于 [这个网站的主页](../README.md))。想要使用它，需要在你的根级 `README.md` 的 [YAML front matter](../guide/markdown.md#front-matter) 指定 `home: true`。以下是这个网站实际使用的数据：
 
 ``` yaml
 ---
@@ -139,6 +139,23 @@ module.exports = {
 sidebarDepth: 2
 ---
 ```
+
+### 活动的标题链接
+
+默认情况下，当用户通过滚动查看页面的不同部分时，嵌套的标题链接和 URL 中的 Hash 值会实时更新，这个行为可以通过以下的配置来禁用：
+
+``` js
+module.exports = {
+  themeConfig: {
+    activeHeaderLinks: false, // 默认值：true
+  }
+}
+```
+
+::: tip 
+值得一提的是，当你禁用此选项时，此功能的相应脚本将不会被加载，这是我们性能优化的一个小点。
+:::
+
 
 ### 侧边栏分组
 
@@ -276,7 +293,7 @@ module.exports = {
 
 更多选项请参考 [Algolia DocSearch 的文档](https://github.com/algolia/docsearch#docsearch-options)。
 
-## 最近更新
+## 最后更新时间
 
 你可以通过 `themeConfig.lastUpdated` 选项来获取每个文件最后一次 `git` 提交的 UNIX 时间戳(ms)，同时它将以合适的日期格式显示在每一页的底部：
 

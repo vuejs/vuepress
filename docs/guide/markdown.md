@@ -2,7 +2,7 @@
 
 ## Header Anchors
 
-Headers automatically get anchor links applied. Rendering of anchors can be configured using the [`markdown.anchor`](../config/#markdownanchor) option.
+Headers automatically get anchor links applied. Rendering of anchors can be configured using the [`markdown.anchor`](../config/README.md#markdown-anchor) option.
 
 ## Links
 
@@ -53,7 +53,7 @@ Outbound links automatically gets `target="_blank" rel="noopener noreferrer"`:
 - [vuejs.org](https://vuejs.org)
 - [VuePress on GitHub](https://github.com/vuejs/vuepress)
 
-You can customize the attributes added to external links by setting [config.markdown.externalLinks](../config/#markdown-externallinks).
+You can customize the attributes added to external links by setting [config.markdown.externalLinks](../config/README.md#markdown-externallinks).
 
 ## Front Matter
 
@@ -150,7 +150,7 @@ A list of all emojis available can be found [here](https://github.com/markdown-i
 
 [[toc]]
 
-Rendering of TOC can be configured using the [`markdown.toc`](../config/#markdown-toc) option.
+Rendering of TOC can be configured using the [`markdown.toc`](../config/README.md#markdown-toc) option.
 
 ## Custom Containers
 
@@ -223,6 +223,25 @@ export default {
   }
 }
 ```
+
+## Import Code Snippets <Badge text="Experimental" type="warn"/> <Badge text="0.11.0+" type="tip"/>
+
+You can import code snippets from existing files via following syntax:
+
+**Input**
+
+```
+<<< @/test/markdown/fragments/snippet.js{2}
+```
+
+**Output**
+
+<<< @/test/markdown/fragments/snippet.js{2}
+
+::: tip
+  Since the import of the code snippets will be executed before webpack compilation, so you can't use the path alias in webpack. the default value of `@` is `process.cwd()`.
+:::
+
 
 ## Advanced Configuration
 
