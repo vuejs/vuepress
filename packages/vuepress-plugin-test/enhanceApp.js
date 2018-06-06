@@ -1,3 +1,3 @@
-export default function (Vue) {
-  Vue.use(/**/)
+export default function ({ Vue }) {
+  console.warn('[vuepress-plugin-test] enhancing !!!')
 }
