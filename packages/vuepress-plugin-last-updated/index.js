@@ -1,10 +1,7 @@
-const path = require('path')
 const spawn = require('cross-spawn')
 
 module.exports = options => ({
   name: 'last-updated',
-
-  client: path.resolve(__dirname, 'client.js'),
 
   extendPageData ({ filepath }) {
     return {
