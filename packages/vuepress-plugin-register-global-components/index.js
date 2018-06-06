@@ -15,10 +15,12 @@ async function resolveComponents (componentDir) {
   return (await globby(['**/*.vue'], { cwd: componentDir }))
 }
 
+const FILE_NAME = 'global-components.js'
+
 module.exports = (options, context) => ({
   name: 'register-global-components',
 
-  async clientDynamicModules () {
+  async ready () {
     const { baseDirs } = options
 
     function genImport (baseDir, file) {
@@ -33,10 +35,15 @@ module.exports = (options, context) => ({
       const files = await resolveComponents(baseDir) || []
       code += files.map(file => genImport(baseDir, file)).join('\n') + '\n'
     }
+    code = `import Vue from 'vue'\n` + code
+    context.registrationModulePath = await context.writeTemp(FILE_NAME, code)
+  },
 
+  async clientDynamicModules () {
+    const code = `import '${context.registrationModulePath}'`
     return {
-      name: 'global-components.js',
-      content: `import Vue from 'vue'\n` + code
+      name: FILE_NAME,
+      content: code
     }
   }
 })
