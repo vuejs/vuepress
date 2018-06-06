@@ -58,5 +58,14 @@ module.exports = (options, context) => ({
 
   async generated () {
     console.log('generated')
+  },
+
+  additionalPages () {
+    return [
+      {
+        route: '/readme/',
+        path: path.resolve(__dirname, '../../README.md')
+      }
+    ]
   }
 })
