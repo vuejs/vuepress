@@ -1,1 +1,3 @@
-export default function () {}
+export default function (Vue) {
+  Vue.use(/**/)
+}

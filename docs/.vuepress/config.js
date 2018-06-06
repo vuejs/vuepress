@@ -1,6 +1,4 @@
-const lastUpdatedPlugin = require('../../packages/vuepress-plugin-last-updated')
 const testPlugin = require('../../packages/vuepress-plugin-test')
-const enhanceApp = require('../../packages/vuepree-plugin-enhance-app')
 
 module.exports = {
   dest: 'vuepress',
@@ -30,14 +28,12 @@ module.exports = {
   serviceWorker: true,
   theme: 'vue',
   plugins: [
-    lastUpdatedPlugin,
     [
       testPlugin,
       {
 
       }
-    ],
-    enhanceApp
+    ]
   ],
   themeConfig: {
     repo: 'vuejs/vuepress',
