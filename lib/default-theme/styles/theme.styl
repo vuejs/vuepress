@@ -22,7 +22,7 @@ body
 
 .navbar
   position fixed
-  z-index 20
+  z-index 8
   top 0
   left 0
   right 0
@@ -38,7 +38,8 @@ body
   left 0
   width 100vw
   height 100vh
-  display none
+  transition visibility .3s, background-color .3s
+  visibility hidden
 
 .sidebar
   font-size 15px
@@ -169,7 +170,8 @@ th, td
 .theme-container
   &.sidebar-open
     .sidebar-mask
-      display: block
+      visibility visible
+      //background-color rgba(0, 0, 0, .75)
   &.no-navbar
     .content:not(.custom) > h1, h2, h3, h4, h5, h6
         margin-top 1.5rem
