@@ -14,17 +14,20 @@ $mobileSidebarWidth = $sidebarWidth * 0.82
 @media (max-width: $MQMobile)
   .sidebar
     top 0
+    bottom unset
+    height 100%
     padding-top .5rem
     box-shadow 0 0 10px rgba(0,0,0,0.2)
     transition transform 0.4s cubic-bezier(0.4, 0, 0, 1)
-    transform translateX(-105%)
+    transform translate3d(-105%, 0, 0)
     backface-visibility hidden
+
   .page
     padding-left 0
   .theme-container
     &.sidebar-open
       .sidebar
-        transform translateX(0)
+        transform translate3d(0, 0, 0)
     &.no-navbar
       .sidebar
         padding-top: 0
