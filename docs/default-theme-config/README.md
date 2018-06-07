@@ -250,6 +250,30 @@ sidebar: auto
 ---
 ```
 
+You can also enable it in all pages by using config:
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+    sidebar: 'auto'
+  }
+}
+```
+
+In [multi-language](../guide/i18n.md) mode, you can also apply it to a specific locale:
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+     '/': {
+       sidebar: 'auto'
+     }
+  }
+}
+```
+
 ### Disabling the Sidebar
 
 You can disable the sidebar on a specific page with `YAML front matter`:
