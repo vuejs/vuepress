@@ -1,6 +1,5 @@
 <template>
   <div class="sidebar">
-    <slot name="header"/>
     <NavLinks/>
     <slot name="top"/>
     <ul class="sidebar-links" v-if="items.length">
