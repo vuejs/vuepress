@@ -27,17 +27,16 @@ select VERSION in patch minor major "Specific Version"
       NEW_VERSION=$(node -p "require('./package.json').version")
       echo Releasing ${NEW_VERSION} ...
 
+      # npm release
+      npm publish
+      echo "✅ released to npm"
+
       # github release
-      npm run prepublishOnly
       git add CHANGELOG.md
       git commit -m "chore: changelog"
       git push
       git push origin refs/tags/v${NEW_VERSION}
       echo "✅ released to Github"
-
-      # npm release
-      npm publish
-      echo "✅ released to npm"
     else
       echo Cancelled
     fi
