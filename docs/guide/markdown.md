@@ -224,7 +224,7 @@ export default {
 }
 ```
 
-## Import Code Snippets <Badge text="Experimental" type="warn"/> <Badge text="0.11.0+" type="tip"/>
+## Import Code Snippets <Badge text="Experimental" type="warn"/> <Badge text="0.10.1+" type="tip"/>
 
 You can import code snippets from existing files via following syntax:
 
