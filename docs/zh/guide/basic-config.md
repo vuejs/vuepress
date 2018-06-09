@@ -5,12 +5,12 @@
 如果没有任何配置，这个网站将会是非常局限的，用户也无法在你的网站上自由导航。为了更好地自定义你的网站，让我们首先在你的文档目录下创建一个 `.vuepress` 目录，所有 VuePress 相关的文件都将会被放在这里。你的项目结构可能是这样：
 
 ```
-cwd
-├─── docs
-│   ├── README.md
-│   └── .vuepress
-│       └── config.js
-└── package.json
+.
+├─ docs
+│  ├─ README.md
+│  └─ .vuepress
+│     └─ config.js
+└─ package.json
 ```
 
 一个 VuePress 网站必要的配置文件是 `.vuepress/config.js`，它应该导出一个 JavaScript 对象：
