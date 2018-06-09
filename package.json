@@ -1,6 +1,6 @@
 {
   "name": "vuepress",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "Minimalistic doc generator with Vue component based layout system",
   "main": "lib/index.js",
   "bin": {
@@ -11,6 +11,7 @@
     "build": "node bin/vuepress build docs",
     "lint": "eslint --fix --ext .js,.vue bin/ lib/ test/",
     "prepublishOnly": "conventional-changelog -p angular -r 2 -i CHANGELOG.md -s",
+    "release": "/bin/bash scripts/release.sh",
     "test": "node test/prepare.js && jest --config test/jest.config.js"
   },
   "repository": {
@@ -60,6 +61,7 @@
     "js-yaml": "^3.11.0",
     "koa-connect": "^2.0.1",
     "koa-mount": "^3.0.0",
+    "koa-range": "^0.3.0",
     "koa-static": "^4.0.2",
     "loader-utils": "^1.1.0",
     "lodash.throttle": "^4.1.1",

@@ -222,7 +222,7 @@ export default {
 }
 ```
 
-## 导入代码段 <Badge text="Experimental" type="warn"/> <Badge text="0.11.0+" type="tip"/>
+## 导入代码段 <Badge text="Experimental" type="warn"/> <Badge text="0.10.1+" type="tip"/>
 
 你可以通过下述的语法导入已经存在的文件中的代码段：
 
