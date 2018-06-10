@@ -18,20 +18,39 @@ https://vuepress.vuejs.org/
 
 ## Features
 
-- [Built-in markdown extensions](https://vuepress.vuejs.org/guide/markdown.html) optimized for technical documentation
-- [Ability to leverage Vue inside markdown files](https://vuepress.vuejs.org/guide/using-vue.html)
-- [Vue-powered custom theme system](https://vuepress.vuejs.org/guide/custom-themes.html)
-- [Service Worker Integration](https://vuepress.vuejs.org/config/#serviceworker)
-- [Google Analytics Integration](https://vuepress.vuejs.org/config/#ga)
-- ["Last Updated" based on Git](https://vuepress.vuejs.org/default-theme-config/#last-updated)
-- [Multi-Language Support](https://vuepress.vuejs.org/guide/i18n.html)
-- A default theme with:
-  - Responsive layout
-  - [Optional Homepage](https://vuepress.vuejs.org/default-theme-config/#homepage)
-  - [Simple out-of-the-box header-based search](https://vuepress.vuejs.org/default-theme-config/#built-in-search)
-  - [Algolia Search](https://vuepress.vuejs.org/default-theme-config/#algolia-search)
-  - Customizable navbar and sidebar
-  - [Auto-generated GitHub link and page edit links](https://vuepress.vuejs.org/default-theme-config/#git-repo-and-edit-links)
+**Built-in markdown extensions**
+
+* [Table of Contents](https://vuepress.vuejs.org/guide/markdown.html#table-of-contents)
+* [Custom Containers](https://vuepress.vuejs.org/guide/markdown.html#custom-containers)
+* [Line Highlighting](https://vuepress.vuejs.org/guide/markdown.html#line-highlighting-in-code-blocks)
+* [line Numbers](https://vuepress.vuejs.org/config/#markdown-linenumbers)
+* [Import Code Snippets](https://vuepress.vuejs.org/guide/markdown.html#import-code-snippets)
+
+**Using Vue in Markdown**
+
+* [Templating](https://vuepress.vuejs.org/guide/using-vue.html#templating)
+* [Using Components](https://vuepress.vuejs.org/guide/using-vue.html#using-components)
+
+**Vue-powered custom theme system**
+
+* [Metadata](https://vuepress.vuejs.org/guide/custom-themes.html#site-and-page-metadata)
+* [Content Excerpt](https://vuepress.vuejs.org/guide/custom-themes.html#content-excerpt)
+
+**Default theme**
+
+* Responsive layout
+* [Optional Homepage](https://vuepress.vuejs.org/default-theme-config/#homepage)
+* [Simple out-of-the-box header-based search](https://vuepress.vuejs.org/default-theme-config/#built-in-search)
+* [Algolia Search](https://vuepress.vuejs.org/default-theme-config/#algolia-search)
+* Customizable [navbar](https://vuepress.vuejs.org/default-theme-config/#navbar) and [sidebar](https://vuepress.vuejs.org/default-theme-config/#sidebar)
+* [Auto-generated GitHub link and page edit links](https://vuepress.vuejs.org/default-theme-config/#git-repo-and-edit-links)
+
+**Miscellaneous**
+
+* [Multi-Language Support](https://vuepress.vuejs.org/guide/i18n.html)
+* [Service Worker](https://vuepress.vuejs.org/config/#serviceworker)
+* [Google Analytics](https://vuepress.vuejs.org/config/#ga)
+* [Last Updated](https://vuepress.vuejs.org/default-theme-config/#last-updated)
 
 ## Showcase
 
