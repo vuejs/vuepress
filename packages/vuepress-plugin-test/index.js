@@ -71,5 +71,12 @@ module.exports = (options, context) => ({
         path: path.resolve(__dirname, '../../README.md')
       }
     ]
+  },
+
+  clientDynamicModules () {
+    return {
+      name: 'constans.js',
+      content: `export const SOURCE_DIR = '${context.sourceDir}'`
+    }
   }
 })
