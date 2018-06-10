@@ -144,6 +144,10 @@ module.exports = {
 
 是否在每个代码块的左侧显示行号。
 
+**Also see:**
+
+- [行号](../guide/markdown.md#行号)
+
 ### markdown.anchor
 
 - 类型: `Object`

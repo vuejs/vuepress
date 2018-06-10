@@ -23,7 +23,7 @@ https://vuepress.vuejs.org/
 * [Table of Contents](https://vuepress.vuejs.org/guide/markdown.html#table-of-contents)
 * [Custom Containers](https://vuepress.vuejs.org/guide/markdown.html#custom-containers)
 * [Line Highlighting](https://vuepress.vuejs.org/guide/markdown.html#line-highlighting-in-code-blocks)
-* [line Numbers](https://vuepress.vuejs.org/config/#markdown-linenumbers)
+* [Line Numbers](https://vuepress.vuejs.org/guide/markdown.html#line-numbers)
 * [Import Code Snippets](https://vuepress.vuejs.org/guide/markdown.html#import-code-snippets)
 
 **Using Vue in Markdown**
