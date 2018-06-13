@@ -272,9 +272,19 @@ module.exports = {
 
 You can import code snippets from existing files via following syntax:
 
+``` md
+<<< @/filepath
+```
+
+It also supports [line highlighting](#line-highlighting-in-code-blocks):
+
+``` md
+<<< @/filepath{highlightLines} 
+```
+
 **Input**
 
-```
+``` md
 <<< @/test/markdown/fragments/snippet.js{2}
 ```
 

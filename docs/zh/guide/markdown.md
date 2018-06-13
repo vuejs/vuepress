@@ -270,6 +270,16 @@ module.exports = {
 
 你可以通过下述的语法导入已经存在的文件中的代码段：
 
+``` md
+<<< @/filepath
+```
+
+它也支持 [行高亮](#代码块中的行高亮)：
+
+``` md
+<<< @/filepath{highlightLines} 
+```
+
 **Input**
 
 ```
