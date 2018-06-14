@@ -21,8 +21,6 @@ export default {
 </script>
 
 <style lang="stylus">
-@import '../../default-theme/styles/config.styl'
-
 .badge
   display inline-block
   font-size 14px
@@ -40,7 +38,7 @@ export default {
   &.tip, &.green
     background-color #42b983
   &.error
-    background-color #DA5961 //#f66
+    background-color #DA5961
   &.warning, &.warn, &.yellow
     background-color darken(#ffe564, 35%)
 </style>
