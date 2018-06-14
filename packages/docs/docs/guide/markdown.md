@@ -263,6 +263,18 @@ It also supports [line highlighting](#line-highlighting-in-code-blocks):
 :::
 
 
+## Plugins
+
+VuePress uses [markdown-it](https://github.com/markdown-it/markdown-it) as the markdown renderer. You can further customize the `markdown-it` instance using the `markdown.plugins` option in `.vuepress/config.js`. The `markdown-it-` prefix is optional and can omit in the list.
+
+``` js
+module.exports = {
+  markdown: {
+    plugins: ['ins', 'mark']
+  }
+}
+```
+
 ## Advanced Configuration
 
 VuePress uses [markdown-it](https://github.com/markdown-it/markdown-it) as the markdown renderer. A lot of the extensions above are implemented via custom plugins. You can further customize the `markdown-it` instance using the `markdown` option in `.vuepress/config.js`:
