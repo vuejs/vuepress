@@ -145,6 +145,10 @@ Provide config options to the used theme. The options will vary depending on the
 
 Whether to show line numbers to the left of each code blocks.
 
+**Also see:**
+
+- [Line Numbers](../guide/markdown.md#line-numbers)
+
 ### markdown.slugify
 
 - Type: `Function`
@@ -212,7 +216,7 @@ Options for [stylus-loader](https://github.com/shama/stylus-loader).
 - Type: `Object`
 - Default: `{}`
 
-Options for [sass-loader](https://github.com/postcss/postcss-loader) to load `*.scss` files.
+Options for [sass-loader](https://github.com/webpack-contrib/sass-loader) to load `*.scss` files.
 
 ### sass
 

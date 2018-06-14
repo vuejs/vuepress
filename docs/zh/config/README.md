@@ -15,7 +15,7 @@ sidebar: auto
 
 `base` 将会自动地作为前缀插入到所有以 `/` 开始的其他选项的链接中，所以你只需要指定一次。
 
-**Also see:**
+**参考:**
 
 - [Base URL](../guide/assets.md#基础路径)
 - [部署指南 > Github Pages](../guide/deploy.md#github-pages)
@@ -143,6 +143,10 @@ module.exports = {
 - 默认值: `undefined`
 
 是否在每个代码块的左侧显示行号。
+
+**参考:**
+
+- [行号](../guide/markdown.md#行号)
 
 ### markdown.anchor
 

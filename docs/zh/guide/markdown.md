@@ -222,9 +222,63 @@ export default {
 }
 ```
 
-## 导入代码段 <Badge text="Experimental" type="warn"/> <Badge text="0.10.1+" type="tip"/>
+## 行号
+
+你可以通过配置来为每个代码块显示行号：
+
+``` js
+module.exports = {
+  markdown: {
+    lineNumbers: true
+  }
+}  
+```
+
+<!-- TODO Support line numbers for specific fence block -->
+
+- 示例:
+
+<picture>
+  <source srcset="/line-numbers-desktop.png" media="(min-width: 719px)">
+  <img class="line-numbers-desktop-snap" alt="Image">
+</picture>
+
+<picture>
+  <source srcset="/line-numbers-mobile.gif" media="(max-width: 719px)">
+  <img class="line-numbers-mobile-snap" alt="Image">
+</picture>
+
+<style>
+  @media screen and (min-width:  719px) {
+    .line-numbers-mobile-snap {
+       display: none;
+    }
+  }
+  @media screen and (max-width:  719px) {
+    .line-numbers-desktop-snap {
+       display: none;
+    }
+    .line-numbers-mobile-snap {
+      max-width: none!important;
+      margin: 0 -1.5rem;
+      width: 100vw;
+    }
+  }
+</style>
+
+## 导入代码段 <Badge text="beta" type="warn"/> <Badge text="0.10.1+" type="tip"/>
 
 你可以通过下述的语法导入已经存在的文件中的代码段：
+
+``` md
+<<< @/filepath
+```
+
+它也支持 [行高亮](#代码块中的行高亮)：
+
+``` md
+<<< @/filepath{highlightLines} 
+```
 
 **Input**
 
