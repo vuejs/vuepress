@@ -216,7 +216,7 @@ Options for [stylus-loader](https://github.com/shama/stylus-loader).
 - Type: `Object`
 - Default: `{}`
 
-Options for [sass-loader](https://github.com/postcss/postcss-loader) to load `*.scss` files.
+Options for [sass-loader](https://github.com/webpack-contrib/sass-loader) to load `*.scss` files.
 
 ### sass
 
