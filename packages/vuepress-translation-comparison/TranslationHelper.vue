@@ -20,9 +20,6 @@ export default {
       currentPath: '/'
     }
   },
-  created () {
-    console.log(this.key)
-  },
   computed: {
     key () {
       return this.currentPage.key
