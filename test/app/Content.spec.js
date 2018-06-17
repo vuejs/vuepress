@@ -1,4 +1,4 @@
-import Content from '@/app/Content.js'
+import Content from '@/app/components/Content'
 import { mount } from '@vue/test-utils'
 import { getRouter, modeTestRunner } from '../util'
 
