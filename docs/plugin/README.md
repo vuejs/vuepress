@@ -10,10 +10,10 @@ Plugins usually add global-level functionality to VuePress. There is no strictly
 
 1. Extend the data generated at compile time. e.g. `the last updated time of each file`.
 2. Generate extra files before or after compilation. e.g. `PWA support`.
-3. Add some extra pages.
-4. Add some global UI. e.g. `back to top`.
+3. Add extra pages. e.g. [vuepress-plugin-i18n-ui](https://github.com/ulivz/vuepress-plugin-i18n-ui)
+4. Inject global UI. e.g. `back to top`.
 
-A plugin should export a `plain object`(`#1`). If the plugin needs to take options, it can be a function that exports a plain object(`#2`). The function will be called with the plugin's options as the first argument, along with plugin's context which provides some compile-time context.
+A plugin should export a `plain object`(`#1`). If the plugin needs to take options, it can be a function that exports a plain object(`#2`). The function will be called with the plugin's options as the first argument, along with [plugin context](#plugin-context) which provides some compile-time context.
 
 ``` js
 // #1
@@ -78,6 +78,21 @@ module.exports = {
 - Default: undefined
 
 The name of the plugin.
+
+### enable
+
+- Type: `boolean`
+- Default: true
+
+Configure whether to enable this plugin. e.g. if you want to enable a plugin only in development mode:
+
+``` js
+module.exports = (options, context) => {
+  return {
+    enable: !context.isProd
+  }
+}
+```
 
 ### chainWebpack
 
@@ -252,18 +267,18 @@ module.exports = {
 }
 ````
 
+## Plugin Context
+
+```
+module.exports = (options, context) => {
+  return {
+    enable: !context.isProd
+  }
+}
+```
 
 
-
-
-
-
-
-
-
-在正式介绍插件之前，我们需要花一些时间来了解 VuePress 的基本工作原理。
-
-## Lifecycle Diagram
+## Lifecycle
 
 首先，我们都知道 VuePress 有两个主要指令：
 
@@ -275,6 +290,16 @@ vuepress build
 dev 和 build 的工作过程大抵相同，他们的基本工作流程如下:
 
 ![image](/plugin.png)
+
+
+
+
+
+
+
+在正式介绍插件之前，我们需要花一些时间来了解 VuePress 的基本工作原理。
+
+
 
 
 
