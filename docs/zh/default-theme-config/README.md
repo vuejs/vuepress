@@ -247,6 +247,30 @@ sidebar: auto
 ---
 ```
 
+你也可以通过配置来在所有页面中启用它：
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+    sidebar: 'auto'
+  }
+}
+```
+
+在 [多语言](../guide/i18n.md) 模式下, 你也可以将其应用到某一特定的语言下：
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+     '/zh/': {
+       sidebar: 'auto'
+     }
+  }
+}
+```
+
 ### 禁用侧边栏
 
 你可以通过 `YAML front matter` 来禁用指定页面的侧边栏：

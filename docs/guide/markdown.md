@@ -224,6 +224,79 @@ export default {
 }
 ```
 
+## Line Numbers
+
+You can enable line numbers for each code blocks via config:
+
+``` js
+module.exports = {
+  markdown: {
+    lineNumbers: true
+  }
+}  
+```
+
+<!-- TODO Support line numbers for specific fence block -->
+
+- Demo:
+
+<picture>
+  <source srcset="/line-numbers-desktop.png" media="(min-width: 719px)">
+  <img class="line-numbers-desktop-snap" alt="Image">
+</picture>
+
+<picture>
+  <source srcset="/line-numbers-mobile.gif" media="(max-width: 719px)">
+  <img class="line-numbers-mobile-snap" alt="Image">
+</picture>
+
+<style>
+  @media screen and (min-width:  719px) {
+    .line-numbers-mobile-snap {
+       display: none;
+    }
+  }
+  @media screen and (max-width:  719px) {
+    .line-numbers-desktop-snap {
+       display: none;
+    }
+    .line-numbers-mobile-snap {
+      max-width: none!important;
+      margin: 0 -1.5rem;
+      width: 100vw;
+    }
+  }
+</style>
+
+## Import Code Snippets <Badge text="beta" type="warn"/> <Badge text="0.10.1+" type="tip"/>
+
+You can import code snippets from existing files via following syntax:
+
+``` md
+<<< @/filepath
+```
+
+It also supports [line highlighting](#line-highlighting-in-code-blocks):
+
+``` md
+<<< @/filepath{highlightLines} 
+```
+
+**Input**
+
+``` md
+<<< @/test/markdown/fragments/snippet.js{2}
+```
+
+**Output**
+
+<<< @/test/markdown/fragments/snippet.js{2}
+
+::: tip
+  Since the import of the code snippets will be executed before webpack compilation, you can't use the path alias in webpack. The default value of `@` is `process.cwd()`.
+:::
+
+
 ## Advanced Configuration
 
 VuePress uses [markdown-it](https://github.com/markdown-it/markdown-it) as the markdown renderer. A lot of the extensions above are implemented via custom plugins. You can further customize the `markdown-it` instance using the `markdown` option in `.vuepress/config.js`:
