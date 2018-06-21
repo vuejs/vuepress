@@ -1,13 +1,12 @@
 <template>
   <transition name="fade" v-if="$site.themeConfig.showScrollToTop">
     <svg v-if="show"
-      class="go-to-top"
-      @click="scrollToTop"
-      version="1.1"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 261.9 226.7">
-      <g transform="matrix(1.3333333,0,0,-1.3333333,0,400) translate(178.0626,235.0086)">
-        <path fill="currentColor" d="M-138.8-105L-79.9-3L-21-105h39.3L-79.9,65l-98.2-170H-138.8z"/>
+         class="go-to-top"
+         @click="scrollToTop"
+         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49.484 28.284">
+      <g transform="translate(-229 -126.358)">
+        <rect fill="currentColor" width="35" height="5" rx="2" transform="translate(229 151.107) rotate(-45)"/>
+        <rect fill="currentColor" width="35" height="5" rx="2" transform="translate(274.949 154.642) rotate(-135)"/>
       </g>
     </svg>
   </transition>
