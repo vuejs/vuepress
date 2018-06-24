@@ -1,4 +1,4 @@
-import store from '@app/store'
+import Vue from 'vue'
 import throttle from 'lodash.throttle'
 
 export default {
@@ -29,11 +29,11 @@ export default {
           (!nextAnchor || scrollTop < nextAnchor.parentElement.offsetTop - 10))
 
         if (isActive && decodeURIComponent(this.$route.hash) !== decodeURIComponent(anchor.hash)) {
-          store.disableScrollBehavior = true
+          Vue.$store.disableScrollBehavior = true
           this.$router.replace(decodeURIComponent(anchor.hash), () => {
             // execute after scrollBehavior handler.
             this.$nextTick(() => {
-              store.disableScrollBehavior = false
+              Vue.$store.disableScrollBehavior = false
             })
           })
           return
