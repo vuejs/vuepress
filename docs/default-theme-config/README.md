@@ -149,7 +149,7 @@ The sidebar only displays links for headers in the current active page. You can 
 ``` js
 module.exports = {
   themeConfig: {
-    displayAllHeaders: true, // Default: false
+    displayAllHeaders: true // Default: false
   }
 }
 ```
