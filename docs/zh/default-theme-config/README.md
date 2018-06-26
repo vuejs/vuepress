@@ -130,7 +130,7 @@ module.exports = {
 
 ### 嵌套的标题链接
 
-默认情况下，侧边栏会自动地显示由当前页面标的题（headers）组成的的链接，并按照页面本身的结构进行嵌套，你可以通过 `themeConfig.sidebarDepth` 来修改它的行为。默认的深度是 `1`，它将提取到 `h2` 的标题，设置成 `0` 将会禁用标题（headers）链接，同时，最大的深度为 `2`，它将同时提取 `h2` 和 `h3` 标题。
+默认情况下，侧边栏会自动地显示由当前页面的标题（headers）组成的链接，并按照页面本身的结构进行嵌套，你可以通过 `themeConfig.sidebarDepth` 来修改它的行为。默认的深度是 `1`，它将提取到 `h2` 的标题，设置成 `0` 将会禁用标题（headers）链接，同时，最大的深度为 `2`，它将同时提取 `h2` 和 `h3` 标题。
 
 也可以使用 `YAML front matter` 来为某个页面重写此值：
 
@@ -138,6 +138,18 @@ module.exports = {
 ---
 sidebarDepth: 2
 ---
+```
+
+### 显示所有页面的标题链接
+
+默认情况下，侧边栏只会显示由当前活动页面的标题（headers）组成的链接，你可以设置 `themeConfig.displayAllHeaders` 来显示所有页面的标题链接：
+
+``` js
+module.exports = {
+  themeConfig: {
+    displayAllHeaders: true // 默认值：false
+  }
+}
 ```
 
 ### 活动的标题链接
