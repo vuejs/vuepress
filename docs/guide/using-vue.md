@@ -180,7 +180,11 @@ export default {
 
 ### OutboundLink <Badge text="stable"/>
 
-It(<OutboundLink/>) is used to indicate that this is an external link. In VuePress this component have been followed by every external link.
+It(<OutboundLink/>) is used to indicate that this is an external link. In VuePress this component have been followed by each external link.
+
+**Also see:**
+
+- [Config > markdown.externalLinkSymbol](../config/README.md#markdown-externallinksymbol) 
 
 ### ClientOnly <Badge text="stable"/>
 

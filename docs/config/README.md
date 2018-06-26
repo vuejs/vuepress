@@ -163,6 +163,17 @@ Function for transforming header texts into slugs. This affects the ids/links ge
 
 The key and value pair will be added to `<a>` tags that points to an external link. The default option will open external links in a new window.
 
+### markdown.externalLinkSymbol
+
+- Type: `boolean`
+- Default: `true`
+
+By default (<OutboundLink/>) will be followed by each external link, you can disable it via setting this option to `false`.
+
+**Also see:**
+
+- [Built-In Components > OutboundLink](../guide/using-vue.md#outboundlink) 
+
 ### markdown.anchor
 
 - Type: `Object`

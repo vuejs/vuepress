@@ -162,6 +162,17 @@ module.exports = {
 
 这个键值对将会作为特性被增加到是外部链接的 `<a>` 标签上，默认的选项将会在新窗口中打开一个该外部链接。
 
+### markdown.externalLinkSymbol
+
+- Type: `boolean`
+- Default: `true`
+
+默认情况下，(<OutboundLink/>) 会紧跟在每一个外部链接后面，你可以通过将这个选项配置成 `false` 来禁用。
+
+**Also see:**
+
+- [内置的组件 > OutboundLink](../guide/using-vue.md#outboundlink) 
+
 ### markdown.toc
 
 - 类型: `Object`

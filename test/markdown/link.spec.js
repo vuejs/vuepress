@@ -2,12 +2,19 @@ import { Md } from './util'
 import link from '@/markdown/link.js'
 import { dataReturnable } from '@/markdown/index.js'
 
-const mdL = Md().use(link, {
+const externalAttrs = {
   target: '_blank',
   rel: 'noopener noreferrer'
-})
+}
 
-dataReturnable(mdL)
+function getLinkedMarkdown (externalLinkSymbol) {
+  return dataReturnable(
+    Md().use(link, {
+      externalLinkSymbol,
+      externalAttrs
+    })
+  )
+}
 
 const internalLinkAsserts = {
   // START abosolute path usage
@@ -55,17 +62,27 @@ const externalLinks = [
 
 describe('link', () => {
   test('should convert internal links to router links correctly', () => {
+    const md = getLinkedMarkdown(true)
     for (const before in internalLinkAsserts) {
       const input = `[${before}](${before})`
-      const output = mdL.render(input)
+      const output = md.render(input)
       const after = getCompiledLink(output)
       expect(after).toBe(internalLinkAsserts[before])
     }
   })
 
   test('should render external links correctly', () => {
+    const md = getLinkedMarkdown(true)
     for (const link of externalLinks) {
-      const { html } = mdL.render(link)
+      const { html } = md.render(link)
+      expect(html).toMatchSnapshot()
+    }
+  })
+
+  test('should render external links correctly - disable symbol', () => {
+    const md = getLinkedMarkdown(false)
+    for (const link of externalLinks) {
+      const { html } = md.render(link)
       expect(html).toMatchSnapshot()
     }
   })

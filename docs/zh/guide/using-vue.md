@@ -184,6 +184,10 @@ export default {
 
 (<OutboundLink/>) 用来表明当前是一个外部链接。在 VuePress 中这个组件会紧跟在每一个外部链接后面。
 
+**Also see:**
+
+- [配置 > markdown.externalLinkSymbol](../config/README.md#markdown-externallinksymbol) 
+
 ### ClientOnly <Badge text="stable"/>
 
 参考 [浏览器的 API 访问限制](#浏览器的-api-访问限制)。
