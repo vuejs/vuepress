@@ -62,7 +62,7 @@ module.exports = {
 
 ### Use plugins from npm
 
-A plugin can be published on npm in `CommonJS` format as `vuepress-plugin-xxx` <Badge type='tip' text='R'/>. Then you can use it like this:
+A plugin can be published on npm in `CommonJS` format as `vuepress-plugin-xxx`. Then you can use it like this:
 
 ``` js
 module.exports = {
@@ -271,11 +271,48 @@ module.exports = {
 
 ```
 module.exports = (options, context) => {
-  return {
-    enable: !context.isProd
-  }
+  // ...
 }
 ```
+
+### context.isProd
+
+- Type: `boolean`
+
+Whether vuepress run in production environment mode.
+
+### context.sourceDir
+
+- Type: `string`
+
+Root path of the docs.
+
+### context.outDir
+
+- Type: `string`
+
+Output path.
+
+### context.themePath
+
+- Type: `string`
+
+The path of the currently active theme.
+
+### context.publicPath
+
+- Type: `string`
+
+See: [base](../config/README.md#base).
+
+### context.resolve
+
+- Type: `Function`
+
+### context.writeTemp
+
+- Type: `Function`
+
 
 
 ## Lifecycle
