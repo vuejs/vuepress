@@ -4,6 +4,8 @@ sidebar: auto
 
 # Config Reference
 
+<Bit/>
+
 ## Basic Config
 
 ### base

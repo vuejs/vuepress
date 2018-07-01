@@ -4,6 +4,8 @@ sidebar: auto
 
 # Default Theme Config
 
+<Bit/>
+
 ::: tip
 All options listed on this page apply to the default theme only. If you are using a custom theme, the options may be different.
 :::
@@ -166,7 +168,7 @@ module.exports = {
 }
 ```
 
-::: tip 
+::: tip
   It is worth mentioning that when you disable this option, the corresponding script of this functionality will not be loaded. This is a small point in our performance optimization.
 :::
 
