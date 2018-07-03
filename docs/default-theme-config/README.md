@@ -144,7 +144,7 @@ sidebarDepth: 2
 ---
 ```
 
-### Displaying Header Links of All Pages
+### Displaying Header Links of All Pages <Badge text="0.11.0+"/>
 
 The sidebar only displays links for headers in the current active page. You can display all header links for every page with `themeConfig.displayAllHeaders: false`:
 
