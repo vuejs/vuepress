@@ -132,18 +132,37 @@ module.exports = {
 
 ### enhanceAppFiles
 
-- Type: `Array|Function`
+- Type: 
+
+``` typescript
+type enhanceAppFilesMeta = Array<string | { name: string, content: string }>
+type enhanceAppFiles = enhanceAppFilesMeta | (() => enhanceAppFilesMeta)
+```
+
 - Default: `undefined`
 
-This option accepts an array containing the file paths, or a function that returns this array, which allow you to do some [App Level Enhancements](../guide/basic-config.md#theme-configuration).
-
-The file can `export default` a hook function which will work like `.vuepress/enhanceApp.js`, or any valid client side code snippets.
+This option accepts an array containing the file paths, or a function that returns this array, which allows you to do some [App Level Enhancements](../guide/basic-config.md#theme-configuration).
 
 ``` js
 module.exports = {
   enhanceAppFiles: [
     path.resolve(__dirname, 'client.js')
   ]
+}
+```
+
+The file can `export default` a hook function which will work like `.vuepress/enhanceApp.js`, or any client side code snippets.
+
+It's worth mentioning that in order for plugin developers to be able to do more things at compile time, this option also supports dynamic code:
+
+``` js
+module.exports = (option, context) => {
+  return {
+    enhanceAppFiles: [{
+      name: 'dynamic-code',
+      content: `export default ({ Vue }) => { Vue.mixin('$source', '${context.sourceDir}') }`
+    }]
+  }
 }
 ```
 

@@ -23,13 +23,10 @@ module.exports = (options, context) => ({
     }
   },
 
-  enhanceAppFiles: [
-    path.resolve(__dirname, 'enhanceApp.js'),
-    {
-      name: 'app.js',
-      content: 'console.log("app")'
-    }
-  ],
+  enhanceAppFiles: [{
+    name: 'dynamic-code',
+    content: `export default ({ Vue }) => { Vue.prototype.$sourceDir = () => '${context.sourceDir}' }`
+  }],
 
   chainWebpack (config, isServer) {
     if (isServer) {
