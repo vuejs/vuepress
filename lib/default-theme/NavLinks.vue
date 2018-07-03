@@ -108,7 +108,6 @@ export default {
     &:hover, &.router-link-active
       color $accentColor
   .nav-item
-    cursor pointer
     position relative
     display inline-block
     margin-left 1.5rem

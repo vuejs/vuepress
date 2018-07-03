@@ -58,6 +58,10 @@ module.exports = {
           {
             text: 'Default Theme Config',
             link: '/default-theme-config/'
+          },
+          {
+            text: 'Changelog',
+            link: 'https://github.com/vuejs/vuepress/blob/master/CHANGELOG.md'
           }
         ],
         sidebar: {
@@ -81,6 +85,10 @@ module.exports = {
           {
             text: '默认主题',
             link: '/zh/default-theme-config/'
+          },
+          {
+            text: 'Changelog',
+            link: 'https://github.com/vuejs/vuepress/blob/master/CHANGELOG.md'
           }
         ],
         sidebar: {

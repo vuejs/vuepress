@@ -4,6 +4,8 @@ sidebar: auto
 
 # Default Theme Config
 
+<Bit/>
+
 ::: tip
 All options listed on this page apply to the default theme only. If you are using a custom theme, the options may be different.
 :::
@@ -142,6 +144,18 @@ sidebarDepth: 2
 ---
 ```
 
+### Displaying Header Links of All Pages <Badge text="0.11.0+"/>
+
+The sidebar only displays links for headers in the current active page. You can display all header links for every page with `themeConfig.displayAllHeaders: true`:
+
+``` js
+module.exports = {
+  themeConfig: {
+    displayAllHeaders: true // Default: false
+  }
+}
+```
+
 ### Active Header Links
 
 By default, the nested header links and the hash in the URL are updated as the user scrolls to view the different sections of the page. This behavior can be disabled with the following theme config:
@@ -154,7 +168,7 @@ module.exports = {
 }
 ```
 
-::: tip 
+::: tip
   It is worth mentioning that when you disable this option, the corresponding script of this functionality will not be loaded. This is a small point in our performance optimization.
 :::
 

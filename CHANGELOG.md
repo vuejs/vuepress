@@ -1,3 +1,22 @@
+<a name="0.10.2"></a>
+## [0.10.2](https://github.com/vuejs/vuepress/compare/v0.10.1...v0.10.2) (2018-06-20)
+
+
+### Bug Fixes
+
+* build cannot exit (close: [#580](https://github.com/vuejs/vuepress/issues/580)) ([fa473a7](https://github.com/vuejs/vuepress/commit/fa473a7))
+* duplicate description meta (close: [#565](https://github.com/vuejs/vuepress/issues/565)) ([de35315](https://github.com/vuejs/vuepress/commit/de35315))
+* edit page from Bitbucket ([#569](https://github.com/vuejs/vuepress/issues/569)) ([5479d6e](https://github.com/vuejs/vuepress/commit/5479d6e))
+* multiple markdown tokens in header text ([#564](https://github.com/vuejs/vuepress/issues/564)) ([ec330f0](https://github.com/vuejs/vuepress/commit/ec330f0))
+* setting HMR port (close: [#582](https://github.com/vuejs/vuepress/issues/582)) ([#586](https://github.com/vuejs/vuepress/issues/586)) ([64bb80d](https://github.com/vuejs/vuepress/commit/64bb80d))
+
+
+### Features
+
+* refine Badge's API ([d68199d](https://github.com/vuejs/vuepress/commit/d68199d))
+
+
+
 <a name="0.10.1"></a>
 ## [0.10.1](https://github.com/vuejs/vuepress/compare/v0.10.0...v0.10.1) (2018-06-08)
 
