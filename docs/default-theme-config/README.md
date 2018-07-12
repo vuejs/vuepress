@@ -419,6 +419,39 @@ $borderColor = #eaecef
 $codeBgColor = #282c34
 ```
 
+### Existing issues <Badge text="< 0.12.0" type='error'/>
+
+In order to override the default variables mentioned above, `override.styl` will be imported at the end of the `config.styl` in default theme, and this file will be used by multiple files, so once you wrote styles here, your style will be duplicated by multiple times. See [#637](https://github.com/vuejs/vuepress/issues/637).
+
+In fact, `style constants override` and `styles override` are two things, the former should be executed before any CSS is compiled, while the latter should be generated at the end of the CSS bundle, which has the highest priority. 
+
+### Migrate your styles to `style.styl` <Badge text="0.12.0+"/>
+
+Start from `0.12.0`, we split `override.styl` into two APIs: `override.styl` and `style.styl`:
+
+If you wrote styles at `override.styl` in the past, e.g.
+
+``` stylus
+// override.styl
+$textColor = red // style constants override
+
+#my-style {} // styles override or custom styles.
+```
+
+You'll need to separate the style part to `style.styl`:
+
+``` stylus
+// override.styl
+// SHOULD ONLY focus on style constants override.
+$textColor = red
+```
+
+``` stylus
+// style.styl
+// SHOULD focus on styles override or your custom styles.
+#my-style {}
+```
+
 ## Custom Page Class
 
 Sometimes, you may need to add a unique class for a specific page so that you can target content on that page only in custom CSS. You can add a class to the theme container div with `pageClass` in `YAML front matter`:
