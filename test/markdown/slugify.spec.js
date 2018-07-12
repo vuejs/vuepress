@@ -9,8 +9,8 @@ const mdS = Md().use(anchor, {
   permalinkSymbol: '#'
 })
 
-const slugifyAsserts = {
-  /* markdown: id */
+const asserts = {
+  /* header: slug */
   '# a b': 'a-b',
   '# a-b': 'a-b',
   '# `<a>`': 'a',
@@ -19,14 +19,14 @@ const slugifyAsserts = {
 }
 
 describe('slugify', () => {
-  test('should convert headers correctly', () => {
-    for (const input in slugifyAsserts) {
+  test('should convert headers to slug correctly', () => {
+    for (const input in asserts) {
       const output = mdS.render(input)
-      expect(getHeading(output)).toBe(slugifyAsserts[input])
+      expect(getSlug(output)).toBe(asserts[input])
     }
   })
 })
 
-function getHeading (output) {
+function getSlug (output) {
   return output.match(/id=\\?"([^"]*)\\?"/)[1]
 }
