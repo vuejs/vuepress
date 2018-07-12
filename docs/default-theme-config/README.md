@@ -333,7 +333,7 @@ module.exports = {
 ```
 
 ::: warning Note
-Unlike the built-in VuePress search engine which works out of the box, [Algolia DocSearch](https://community.algolia.com/docsearch/) requires you to submit your site to them for indexing before it starts working. 
+Unlike the [built-in search](#built-in-search) engine which works out of the box, [Algolia DocSearch](https://community.algolia.com/docsearch/) requires you to submit your site to them for indexing before it starts working. 
 :::
 
 For more options, refer to [Algolia DocSearch's documentation](https://github.com/algolia/docsearch#docsearch-options).

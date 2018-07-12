@@ -314,7 +314,7 @@ module.exports = {
 
 ### Algolia 搜索
 
-你可以通过 `themeConfig.algolia` 选项来用 [Algolia DocSearch](https://community.algolia.com/docsearch/) 替换内置的搜索框。要启用 Algolia 搜索，你需要至少提供 `apiKey` 和 `indexName`：
+你可以通过 `themeConfig.algolia` 选项来用 [Algolia 搜索](https://community.algolia.com/docsearch/) 替换内置的搜索框。要启用 Algolia 搜索，你需要至少提供 `apiKey` 和 `indexName`：
 
 ```js
 module.exports = {
@@ -326,6 +326,10 @@ module.exports = {
   }
 }
 ```
+
+::: warning 注意
+不同于开箱即用的 [内置搜索](#内置搜索)，[Algolia 搜索](https://community.algolia.com/docsearch/) 需要你在使用之前将你的网站提交给它们用于创建索引。
+:::
 
 更多选项请参考 [Algolia DocSearch 的文档](https://github.com/algolia/docsearch#docsearch-options)。
 
