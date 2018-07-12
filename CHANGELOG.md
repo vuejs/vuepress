@@ -1,3 +1,20 @@
+<a name="0.12.0"></a>
+# [0.12.0](https://github.com/vuejs/vuepress/compare/v0.11.0...v0.12.0) (2018-07-12)
+
+
+### Bug Fixes
+
+* npm audit vulnerability (close: [#493](https://github.com/vuejs/vuepress/issues/493))([#641](https://github.com/vuejs/vuepress/issues/641)) ([8dde5d8](https://github.com/vuejs/vuepress/commit/8dde5d8))
+* wrong sidebar slugs and anchor link at content (close: [#645](https://github.com/vuejs/vuepress/issues/645)) ([c2eaff3](https://github.com/vuejs/vuepress/commit/c2eaff3))
+
+
+### Features
+
+* version data layer ([0c5b752](https://github.com/vuejs/vuepress/commit/0c5b752))
+* **$default-theme:** new file-level API: style.styl. ([2f53f2f](https://github.com/vuejs/vuepress/commit/2f53f2f))
+
+
+
 <a name="0.11.0"></a>
 # [0.11.0](https://github.com/vuejs/vuepress/compare/v0.10.2...v0.11.0) (2018-07-08)
 
