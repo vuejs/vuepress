@@ -414,6 +414,35 @@ $borderColor = #eaecef
 $codeBgColor = #282c34
 ```
 
+### 低版本存在的问题 <Badge text="< 0.12.0" type='error'/>
+
+为了 override 上述提及的 [Stylus](http://stylus-lang.com/) 默认样式常量，`override.styl` 将会在默认主题的 `config.styl` 的末尾被导入。但是，由于 `config.styl` 可能会被多个文件导入，所以，一旦你在这里写样式，你的样式将会被重复多次。参考： [#637](https://github.com/vuejs/vuepress/issues/637)。
+
+### 将你的样式迁移到 `style.styl` <Badge text="0.12.0+"/>
+
+事实上，`stylus 常量的 override` 应该在编译所有 Stylus 文件之前完成；而用户额外的 CSS 样式由应该被生成在最终样式文件的末尾。因此这两项职责不应该由同一个 stylus 文件来完成。
+
+从 `0.12.0` 开始，我们将 `override.styl` 拆分为两个 API：`override.styl` 和 `style.styl`。如果你过去在 `override.styl` 中书写了样式，如：
+
+``` stylus
+// override.styl
+$textColor = red // stylus 常量的 override
+
+#my-style {} // 你的样式
+```
+
+你将需要将你的样式部分分离到 `style.styl`:
+
+``` stylus
+// override.styl，应该仅仅包含 stylus 常量的 override
+$textColor = red
+```
+
+``` stylus
+// style.styl，你的样式
+#my-style {}
+```
+
 ## 自定义页面类
 
 有时候你可能需要为特定页面添加一个 CSS 类名，以方便针对该页面添加一些专门的 CSS。这种情况下你可以在该页面的 YAML front matter 中声明一个 `pageClass`：
