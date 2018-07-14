@@ -4,6 +4,8 @@ sidebar: auto
 
 # Config Reference
 
+<Bit/>
+
 ## Basic Config
 
 ### base
@@ -109,6 +111,13 @@ Also, only enable this if you are able to deploy your site with SSL, since servi
 
 Specify locales for i18n support. For more details, see the guide on [Internationalization](../guide/i18n.md).
 
+### shouldPrefetch
+
+- Type: `Function`
+- Default: `() => true`
+
+A function to control what files should have `<link rel="preload">` resource hints generated. See [shouldPrefetch](https://ssr.vuejs.org/api/#shouldprefetch).
+
 ## Theming
 
 ### theme
@@ -137,6 +146,10 @@ Provide config options to the used theme. The options will vary depending on the
 - Default: `undefined`
 
 Whether to show line numbers to the left of each code blocks.
+
+**Also see:**
+
+- [Line Numbers](../guide/markdown.md#line-numbers)
 
 ### markdown.slugify
 
@@ -205,7 +218,7 @@ Options for [stylus-loader](https://github.com/shama/stylus-loader).
 - Type: `Object`
 - Default: `{}`
 
-Options for [sass-loader](https://github.com/postcss/postcss-loader) to load `*.scss` files.
+Options for [sass-loader](https://github.com/webpack-contrib/sass-loader) to load `*.scss` files.
 
 ### sass
 

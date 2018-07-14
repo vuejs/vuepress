@@ -4,6 +4,8 @@ sidebar: auto
 
 # Default Theme Config
 
+<Bit/>
+
 ::: tip
 All options listed on this page apply to the default theme only. If you are using a custom theme, the options may be different.
 :::
@@ -142,6 +144,18 @@ sidebarDepth: 2
 ---
 ```
 
+### Displaying Header Links of All Pages <Badge text="0.11.0+"/>
+
+The sidebar only displays links for headers in the current active page. You can display all header links for every page with `themeConfig.displayAllHeaders: true`:
+
+``` js
+module.exports = {
+  themeConfig: {
+    displayAllHeaders: true // Default: false
+  }
+}
+```
+
 ### Active Header Links
 
 By default, the nested header links and the hash in the URL are updated as the user scrolls to view the different sections of the page. This behavior can be disabled with the following theme config:
@@ -250,6 +264,30 @@ sidebar: auto
 ---
 ```
 
+You can also enable it in all pages by using config:
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+    sidebar: 'auto'
+  }
+}
+```
+
+In [multi-language](../guide/i18n.md) mode, you can also apply it to a specific locale:
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+     '/': {
+       sidebar: 'auto'
+     }
+  }
+}
+```
+
 ### Disabling the Sidebar
 
 You can disable the sidebar on a specific page with `YAML front matter`:
@@ -293,6 +331,10 @@ module.exports = {
   }
 }
 ```
+
+::: warning Note
+Unlike the [built-in search](#built-in-search) engine which works out of the box, [Algolia DocSearch](https://community.algolia.com/docsearch/) requires you to submit your site to them for indexing before it starts working. 
+:::
 
 For more options, refer to [Algolia DocSearch's documentation](https://github.com/algolia/docsearch#docsearch-options).
 
@@ -400,6 +442,35 @@ $accentColor = #3eaf7c
 $textColor = #2c3e50
 $borderColor = #eaecef
 $codeBgColor = #282c34
+```
+
+### Existing issues <Badge text="< 0.12.0" type='error'/>
+
+In order to override the default variables mentioned above, `override.styl` will be imported at the end of the `config.styl` in default theme, and this file will be used by multiple files, so once you wrote styles here, your style would be duplicated by multiple times. See [#637](https://github.com/vuejs/vuepress/issues/637).
+
+### Migrate your styles to `style.styl` <Badge text="0.12.0+"/>
+
+In fact, The `stylus constants override` should be completed before all Stylus files are compiled; and the `user's additional CSS styles` should be generated at the end of the final style file. Therefore, these two duties should not be completed by the same stylus file.
+
+Start from `0.12.0`, we split `override.styl` into two APIs: `override.styl` and `style.styl`. If you wrote styles at `override.styl` in the past, e.g.
+
+``` stylus
+// override.styl
+$textColor = red // stylus constants override
+
+#my-style {} // your extra styles.
+```
+
+You'll need to separate the style part to `style.styl`:
+
+``` stylus
+// override.styl, SHOULD ONLY contain "stylus constants override".
+$textColor = red
+```
+
+``` stylus
+// style.styl, your extra styles
+#my-style {}
 ```
 
 ## Custom Page Class

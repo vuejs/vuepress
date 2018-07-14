@@ -130,7 +130,7 @@ module.exports = {
 
 ### 嵌套的标题链接
 
-默认情况下，侧边栏会自动地显示由当前页面标的题（headers）组成的的链接，并按照页面本身的结构进行嵌套，你可以通过 `themeConfig.sidebarDepth` 来修改它的行为。默认的深度是 `1`，它将提取到 `h2` 的标题，设置成 `0` 将会禁用标题（headers）链接，同时，最大的深度为 `2`，它将同时提取 `h2` 和 `h3` 标题。
+默认情况下，侧边栏会自动地显示由当前页面的标题（headers）组成的链接，并按照页面本身的结构进行嵌套，你可以通过 `themeConfig.sidebarDepth` 来修改它的行为。默认的深度是 `1`，它将提取到 `h2` 的标题，设置成 `0` 将会禁用标题（headers）链接，同时，最大的深度为 `2`，它将同时提取 `h2` 和 `h3` 标题。
 
 也可以使用 `YAML front matter` 来为某个页面重写此值：
 
@@ -138,6 +138,18 @@ module.exports = {
 ---
 sidebarDepth: 2
 ---
+```
+
+### 显示所有页面的标题链接 <Badge text="0.11.0+"/>
+
+默认情况下，侧边栏只会显示由当前活动页面的标题（headers）组成的链接，你可以将 `themeConfig.displayAllHeaders` 设置为 `true` 来显示所有页面的标题链接：
+
+``` js
+module.exports = {
+  themeConfig: {
+    displayAllHeaders: true // 默认值：false
+  }
+}
 ```
 
 ### 活动的标题链接
@@ -247,6 +259,30 @@ sidebar: auto
 ---
 ```
 
+你也可以通过配置来在所有页面中启用它：
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+    sidebar: 'auto'
+  }
+}
+```
+
+在 [多语言](../guide/i18n.md) 模式下, 你也可以将其应用到某一特定的语言下：
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+     '/zh/': {
+       sidebar: 'auto'
+     }
+  }
+}
+```
+
 ### 禁用侧边栏
 
 你可以通过 `YAML front matter` 来禁用指定页面的侧边栏：
@@ -278,7 +314,7 @@ module.exports = {
 
 ### Algolia 搜索
 
-你可以通过 `themeConfig.algolia` 选项来用 [Algolia DocSearch](https://community.algolia.com/docsearch/) 替换内置的搜索框。要启用 Algolia 搜索，你需要至少提供 `apiKey` 和 `indexName`：
+你可以通过 `themeConfig.algolia` 选项来用 [Algolia 搜索](https://community.algolia.com/docsearch/) 替换内置的搜索框。要启用 Algolia 搜索，你需要至少提供 `apiKey` 和 `indexName`：
 
 ```js
 module.exports = {
@@ -290,6 +326,10 @@ module.exports = {
   }
 }
 ```
+
+::: warning 注意
+不同于开箱即用的 [内置搜索](#内置搜索)，[Algolia 搜索](https://community.algolia.com/docsearch/) 需要你在使用之前将你的网站提交给它们用于创建索引。
+:::
 
 更多选项请参考 [Algolia DocSearch 的文档](https://github.com/algolia/docsearch#docsearch-options)。
 
@@ -372,6 +412,35 @@ $accentColor = #3eaf7c
 $textColor = #2c3e50
 $borderColor = #eaecef
 $codeBgColor = #282c34
+```
+
+### 低版本存在的问题 <Badge text="< 0.12.0" type='error'/>
+
+为了 override 上述提及的 [Stylus](http://stylus-lang.com/) 默认样式常量，`override.styl` 将会在默认主题的 `config.styl` 的末尾被导入。但是，由于 `config.styl` 可能会被多个文件导入，所以，一旦你在这里写样式，你的样式将会被重复多次。参考： [#637](https://github.com/vuejs/vuepress/issues/637)。
+
+### 将你的样式迁移到 `style.styl` <Badge text="0.12.0+"/>
+
+事实上，`stylus 常量的 override` 应该在编译所有 Stylus 文件之前完成；而用户额外的 CSS 样式由应该被生成在最终样式文件的末尾。因此这两项职责不应该由同一个 stylus 文件来完成。
+
+从 `0.12.0` 开始，我们将 `override.styl` 拆分为两个 API：`override.styl` 和 `style.styl`。如果你过去在 `override.styl` 中书写了样式，如：
+
+``` stylus
+// override.styl
+$textColor = red // stylus 常量的 override
+
+#my-style {} // 你的样式
+```
+
+你将需要将你的样式部分分离到 `style.styl`:
+
+``` stylus
+// override.styl，应该仅仅包含 stylus 常量的 override
+$textColor = red
+```
+
+``` stylus
+// style.styl，你的样式
+#my-style {}
 ```
 
 ## 自定义页面类

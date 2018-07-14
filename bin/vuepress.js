@@ -103,6 +103,7 @@ function wrapCommand (fn) {
   return (...args) => {
     return fn(...args).catch(err => {
       console.error(chalk.red(err.stack))
+      process.exitCode = 1
     })
   }
 }
