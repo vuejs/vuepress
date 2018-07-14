@@ -17,6 +17,7 @@
       <slot name="page-top" slot="top"/>
       <slot name="page-bottom" slot="bottom"/>
     </Page>
+    <SWUpdatePopup :updateEvent="swUpdateEvent" />
   </div>
 </template>
 
@@ -27,13 +28,15 @@ import Home from './Home.vue'
 import Navbar from './Navbar.vue'
 import Page from './Page.vue'
 import Sidebar from './Sidebar.vue'
+import SWUpdatePopup from './SWUpdatePopup.vue'
 import { resolveSidebarItems } from './util'
 
 export default {
-  components: { Home, Page, Sidebar, Navbar },
+  components: { Home, Page, Sidebar, Navbar, SWUpdatePopup },
   data () {
     return {
-      isSidebarOpen: false
+      isSidebarOpen: false,
+      swUpdateEvent: null
     }
   },
 
@@ -101,6 +104,8 @@ export default {
       nprogress.done()
       this.isSidebarOpen = false
     })
+
+    this.$on('sw-updated', this.onSWUpdated)
   },
 
   methods: {
@@ -124,6 +129,9 @@ export default {
           this.toggleSidebar(false)
         }
       }
+    },
+    onSWUpdated (e) {
+      this.swUpdateEvent = e
     }
   }
 }

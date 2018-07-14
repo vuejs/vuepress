@@ -356,6 +356,31 @@ Note that it's `off` by default. If given `string`, it will be displayed as a pr
   Since `lastUpdated` is based on `git`, so you can only use it in a `git` repository.
 :::
 
+## Service Workers
+
+The `themeConfig.serviceWorker` option allows you to configure about service workers.
+
+### Popup UI to refresh contents
+
+The `themeConfig.serviceWorker.updatePopup` option enables the popup to refresh contents. The popup will be shown when the site is updated (the service worker is updated). It provides `refresh` button to allow users to refresh contents immediately.
+
+::: tip NOTE
+If without the `refresh` button, the new service worker will be active after all clients are closed.
+This means that visitors cannot see new contents until they close all tabs of your site.
+
+But the `refresh` button activates the new service worker immediately.
+:::
+
+``` js
+module.exports = {
+  themeConfig: {
+    serviceWorker {
+      updatePopup: true | {message: "New content is available.", buttonText: "Refresh"}
+    }
+  }
+}
+```
+
 ## Prev / Next Links
 
 Prev and next links are automatically inferred based on the sidebar order of the active page. You can also explicitly overwrite or disable them using `YAML front matter`:
