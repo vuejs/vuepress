@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`link should render external links correctly 1`] = `
+<p>
+  <a href="https://vuejs.org/" target="_blank" rel="noopener noreferrer">vue
+    <OutboundLink/>
+  </a>
+</p>
+`;
+
+exports[`link should render external links correctly 2`] = `
+<p>
+  <a href="http://vuejs.org/" target="_blank" rel="noopener noreferrer">vue
+    <OutboundLink/>
+  </a>
+</p>
+`;
+
+exports[`link should render external links correctly 3`] = `
+<p>
+  <a href="https://google.com" target="_blank" rel="noopener noreferrer">some <strong>link</strong> with <code>code</code>
+    <OutboundLink/>
+  </a>
+</p>
+`;

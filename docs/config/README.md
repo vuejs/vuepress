@@ -4,6 +4,8 @@ sidebar: auto
 
 # Config Reference
 
+<Bit/>
+
 ## Basic Config
 
 ### base
@@ -77,6 +79,10 @@ Specify the output directory for `vuepress build`.
 
 Provide the Google Analytics ID to enable integration.
 
+::: tip
+Please be aware of [GDPR (2018 reform of EU data protection rules)](https://ec.europa.eu/commission/priorities/justice-and-fundamental-rights/data-protection/2018-reform-eu-data-protection-rules_en) and consider setting Google Analytics to [anonymize IPs](https://support.google.com/analytics/answer/2763052?hl=en) where appropriate and/or needed.
+:::
+
 ### serviceWorker
 
 - Type: `boolean`
@@ -130,7 +136,7 @@ Provide config options to the used theme. The options will vary depending on the
 
 **Also see:**
 
-- [Default Theme Configuration](../default-theme-config/).
+- [Default Theme Configuration](../default-theme-config/README.md).
 
 ## Markdown
 
@@ -140,6 +146,10 @@ Provide config options to the used theme. The options will vary depending on the
 - Default: `undefined`
 
 Whether to show line numbers to the left of each code blocks.
+
+**Also see:**
+
+- [Line Numbers](../guide/markdown.md#line-numbers)
 
 ### markdown.slugify
 
@@ -208,7 +218,7 @@ Options for [stylus-loader](https://github.com/shama/stylus-loader).
 - Type: `Object`
 - Default: `{}`
 
-Options for [sass-loader](https://github.com/postcss/postcss-loader) to load `*.scss` files.
+Options for [sass-loader](https://github.com/webpack-contrib/sass-loader) to load `*.scss` files.
 
 ### sass
 

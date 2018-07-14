@@ -54,6 +54,7 @@ export default {
 @import './styles/config.styl'
 
 .dropdown-wrapper
+  cursor pointer
   .dropdown-title
     display block
     &:hover
@@ -95,7 +96,7 @@ export default {
             border-top 3px solid transparent
             border-bottom 3px solid transparent
             position absolute
-            top calc(1rem - 2px)
+            top calc(50% - 2px)
             left 9px
       &:first-child h4
         margin-top 0

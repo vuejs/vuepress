@@ -4,13 +4,15 @@ sidebar: auto
 
 # Default Theme Config
 
+<Bit/>
+
 ::: tip
 All options listed on this page apply to the default theme only. If you are using a custom theme, the options may be different.
 :::
 
 ## Homepage
 
-The default theme provides a homepage layout (which is used on [the homepage of this very website](/)). To use it, specify `home: true` plus some other metadata in your root `README.md`'s [YAML front matter](../guide/markdown.html#yaml-front-matter). This is the actual data used on this site:
+The default theme provides a homepage layout (which is used on [the homepage of this very website](../README.md)). To use it, specify `home: true` plus some other metadata in your root `README.md`'s [YAML front matter](../guide/markdown.md#front-matter). This is the actual data used on this site:
 
 ``` yaml
 ---
@@ -142,6 +144,18 @@ sidebarDepth: 2
 ---
 ```
 
+### Displaying Header Links of All Pages <Badge text="0.11.0+"/>
+
+The sidebar only displays links for headers in the current active page. You can display all header links for every page with `themeConfig.displayAllHeaders: true`:
+
+``` js
+module.exports = {
+  themeConfig: {
+    displayAllHeaders: true // Default: false
+  }
+}
+```
+
 ### Active Header Links
 
 By default, the nested header links and the hash in the URL are updated as the user scrolls to view the different sections of the page. This behavior can be disabled with the following theme config:
@@ -154,7 +168,7 @@ module.exports = {
 }
 ```
 
-::: tip 
+::: tip
   It is worth mentioning that when you disable this option, the corresponding script of this functionality will not be loaded. This is a small point in our performance optimization.
 :::
 
@@ -250,6 +264,30 @@ sidebar: auto
 ---
 ```
 
+You can also enable it in all pages by using config:
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+    sidebar: 'auto'
+  }
+}
+```
+
+In [multi-language](../guide/i18n.md) mode, you can also apply it to a specific locale:
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+     '/': {
+       sidebar: 'auto'
+     }
+  }
+}
+```
+
 ### Disabling the Sidebar
 
 You can disable the sidebar on a specific page with `YAML front matter`:
@@ -293,6 +331,10 @@ module.exports = {
   }
 }
 ```
+
+::: warning Note
+Unlike the [built-in search](#built-in-search) engine which works out of the box, [Algolia DocSearch](https://community.algolia.com/docsearch/) requires you to submit your site to them for indexing before it starts working. 
+:::
 
 For more options, refer to [Algolia DocSearch's documentation](https://github.com/algolia/docsearch#docsearch-options).
 
@@ -375,6 +417,39 @@ $accentColor = #3eaf7c
 $textColor = #2c3e50
 $borderColor = #eaecef
 $codeBgColor = #282c34
+```
+
+### Existing issues <Badge text="< 0.12.0" type='error'/>
+
+In order to override the default variables mentioned above, `override.styl` will be imported at the end of the `config.styl` in default theme, and this file will be used by multiple files, so once you wrote styles here, your style will be duplicated by multiple times. See [#637](https://github.com/vuejs/vuepress/issues/637).
+
+In fact, `style constants override` and `styles override` are two things, the former should be executed before any CSS is compiled, while the latter should be generated at the end of the CSS bundle, which has the highest priority. 
+
+### Migrate your styles to `style.styl` <Badge text="0.12.0+"/>
+
+Start from `0.12.0`, we split `override.styl` into two APIs: `override.styl` and `style.styl`:
+
+If you wrote styles at `override.styl` in the past, e.g.
+
+``` stylus
+// override.styl
+$textColor = red // style constants override
+
+#my-style {} // styles override or custom styles.
+```
+
+You'll need to separate the style part to `style.styl`:
+
+``` stylus
+// override.styl
+// SHOULD ONLY focus on style constants override.
+$textColor = red
+```
+
+``` stylus
+// style.styl
+// SHOULD focus on styles override or your custom styles.
+#my-style {}
 ```
 
 ## Custom Page Class

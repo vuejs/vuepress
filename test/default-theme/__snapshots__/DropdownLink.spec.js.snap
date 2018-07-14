@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DropdownLink $i18n - renders dropdown link. 1`] = `
+<div class="dropdown-wrapper">
+  <a class="dropdown-title"><span class="title">VuePress</span> <span class="arrow right"></span></a>
+  <ul class="nav-dropdown" style="display: none;" name="dropdown">
+    <li class="dropdown-item">
+      <!---->
+      <a class="nav-link">Guide</a>
+    </li>
+    <li class="dropdown-item">
+      <!---->
+      <a class="nav-link">Config Reference</a>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`DropdownLink $simple - renders dropdown link. 1`] = `
+<div class="dropdown-wrapper">
+  <a class="dropdown-title"><span class="title">VuePress</span> <span class="arrow right"></span></a>
+  <ul class="nav-dropdown" style="display: none;" name="dropdown">
+    <li class="dropdown-item">
+      <!---->
+      <a class="nav-link">Guide</a>
+    </li>
+    <li class="dropdown-item">
+      <!---->
+      <a class="nav-link">Config Reference</a>
+    </li>
+  </ul>
+</div>
+`;

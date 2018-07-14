@@ -2,7 +2,7 @@
 
 ## 浏览器的 API 访问限制
 
-当你在开发一个 VuePress 应用时，由于所有的页面在生成静态 HTML 时都需要通过 Node.js 服务端渲染，因此所有的 Vue 相关代码都应当遵循 [编写通用代码](https://ssr.vuejs.org/zh/universal.html) 的要求。简而言之，请确保只在 `beforeMounted` 或者 `mounted` 访问浏览器 / DOM 的 API。
+当你在开发一个 VuePress 应用时，由于所有的页面在生成静态 HTML 时都需要通过 Node.js 服务端渲染，因此所有的 Vue 相关代码都应当遵循 [编写通用代码](https://ssr.vuejs.org/zh/universal.html) 的要求。简而言之，请确保只在 `beforeMount` 或者 `mounted` 访问浏览器 / DOM 的 API。
 
 如果你正在使用，或者需要展示一个对于 SSR 不怎么友好的组件（比如包含了自定义指令），你可以将它们包裹在内置的 `<ClientOnly>` 组件中：
 
@@ -58,7 +58,7 @@ export default {
 
 ### 访问网站以及页面的数据
 
-编译后的组件没有私有数据，但可以访问 [网站的元数据](./custom-themes.md#site-and-page-metadata)，举例来说：
+编译后的组件没有私有数据，但可以访问 [网站的元数据](./custom-themes.md#网站和页面的元数据)，举例来说：
 
 **Input**
 
@@ -153,7 +153,7 @@ yarn add -D pug pug-plain-loader
 ::: tip
 需要指出的是，如果你是一个 `stylus` 用户，你并不需要在你的项目中安装 `stylus` 和 `stylus-loader`，因为 VuePress 已经内置了它们。
   
-对于那些没有内置的预处理器，除了安装对应的依赖，你还需要 [拓展内部的 Webpack 配置](../config/#configurewebpack)。
+对于那些没有内置的预处理器，除了安装对应的依赖，你还需要 [拓展内部的 Webpack 配置](../config/README.md#configurewebpack)。
 :::
 
 
@@ -177,3 +177,49 @@ export default {
   }
 }
 </script>
+
+## 内置的组件
+
+### OutboundLink <Badge text="stable"/>
+
+(<OutboundLink/>) 用来表明当前是一个外部链接。在 VuePress 中这个组件会紧跟在每一个外部链接后面。
+
+### ClientOnly <Badge text="stable"/>
+
+参考 [浏览器的 API 访问限制](#浏览器的-api-访问限制)。
+
+### Content <Badge text="beta" type="warn"/>
+
+- **Props**:
+
+  - `custom` - boolean
+
+- **用法**：   
+  
+
+当前的 `.md` 文件渲染的内容，当你在使用 [自定义布局](../default-theme-config/README.md#特定页面的自定义布局) 时，它将非常有用。
+   
+``` vue
+<Content/>
+```
+
+**参考:** 
+
+- [自定义主题 > 获取渲染内容](./custom-themes.md#获取渲染内容)
+
+  
+### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/>
+
+- **Props**:
+
+   - `text` - string
+   - `type` - string, 可选值： `"tip"|"warn"|"error"`，默认值是： `"tip"`
+   - `vertical` - string, 可选值： `"top"|"middle"`，默认值是： `"top"`
+
+- **Usage**:
+
+你可以在标题文本的末尾，使用这个组件来为某些 API 添加一些状态：
+   
+``` md
+### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/>
+```  

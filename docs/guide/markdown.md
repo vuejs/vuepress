@@ -2,7 +2,7 @@
 
 ## Header Anchors
 
-Headers automatically get anchor links applied. Rendering of anchors can be configured using the [`markdown.anchor`](../config/#markdownanchor) option.
+Headers automatically get anchor links applied. Rendering of anchors can be configured using the [`markdown.anchor`](../config/README.md#markdown-anchor) option.
 
 ## Links
 
@@ -53,7 +53,7 @@ Outbound links automatically gets `target="_blank" rel="noopener noreferrer"`:
 - [vuejs.org](https://vuejs.org)
 - [VuePress on GitHub](https://github.com/vuejs/vuepress)
 
-You can customize the attributes added to external links by setting [config.markdown.externalLinks](../config/#markdown-externallinks).
+You can customize the attributes added to external links by setting [config.markdown.externalLinks](../config/README.md#markdown-externallinks).
 
 ## Front Matter
 
@@ -150,7 +150,7 @@ A list of all emojis available can be found [here](https://github.com/markdown-i
 
 [[toc]]
 
-Rendering of TOC can be configured using the [`markdown.toc`](../config/#markdown-toc) option.
+Rendering of TOC can be configured using the [`markdown.toc`](../config/README.md#markdown-toc) option.
 
 ## Custom Containers
 
@@ -223,6 +223,79 @@ export default {
   }
 }
 ```
+
+## Line Numbers
+
+You can enable line numbers for each code blocks via config:
+
+``` js
+module.exports = {
+  markdown: {
+    lineNumbers: true
+  }
+}  
+```
+
+<!-- TODO Support line numbers for specific fence block -->
+
+- Demo:
+
+<picture>
+  <source srcset="/line-numbers-desktop.png" media="(min-width: 719px)">
+  <img class="line-numbers-desktop-snap" alt="Image">
+</picture>
+
+<picture>
+  <source srcset="/line-numbers-mobile.gif" media="(max-width: 719px)">
+  <img class="line-numbers-mobile-snap" alt="Image">
+</picture>
+
+<style>
+  @media screen and (min-width:  719px) {
+    .line-numbers-mobile-snap {
+       display: none;
+    }
+  }
+  @media screen and (max-width:  719px) {
+    .line-numbers-desktop-snap {
+       display: none;
+    }
+    .line-numbers-mobile-snap {
+      max-width: none!important;
+      margin: 0 -1.5rem;
+      width: 100vw;
+    }
+  }
+</style>
+
+## Import Code Snippets <Badge text="beta" type="warn"/> <Badge text="0.10.1+" type="tip"/>
+
+You can import code snippets from existing files via following syntax:
+
+``` md
+<<< @/filepath
+```
+
+It also supports [line highlighting](#line-highlighting-in-code-blocks):
+
+``` md
+<<< @/filepath{highlightLines} 
+```
+
+**Input**
+
+``` md
+<<< @/test/markdown/fragments/snippet.js{2}
+```
+
+**Output**
+
+<<< @/test/markdown/fragments/snippet.js{2}
+
+::: tip
+  Since the import of the code snippets will be executed before webpack compilation, you can't use the path alias in webpack. The default value of `@` is `process.cwd()`.
+:::
+
 
 ## Advanced Configuration
 

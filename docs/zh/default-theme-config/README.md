@@ -10,7 +10,7 @@ sidebar: auto
 
 ## 首页
 
-默认的主题提供了一个首页（Homepage）的布局 (用于 [这个网站的主页](/zh/))。想要使用它，需要在你的根级 `README.md` 的 [YAML front matter](../guide/markdown.md#yaml-front-matter) 指定 `home: true`。以下是这个网站实际使用的数据：
+默认的主题提供了一个首页（Homepage）的布局 (用于 [这个网站的主页](../README.md))。想要使用它，需要在你的根级 `README.md` 的 [YAML front matter](../guide/markdown.md#front-matter) 指定 `home: true`。以下是这个网站实际使用的数据：
 
 ``` yaml
 ---
@@ -130,7 +130,7 @@ module.exports = {
 
 ### 嵌套的标题链接
 
-默认情况下，侧边栏会自动地显示由当前页面标的题（headers）组成的的链接，并按照页面本身的结构进行嵌套，你可以通过 `themeConfig.sidebarDepth` 来修改它的行为。默认的深度是 `1`，它将提取到 `h2` 的标题，设置成 `0` 将会禁用标题（headers）链接，同时，最大的深度为 `2`，它将同时提取 `h2` 和 `h3` 标题。
+默认情况下，侧边栏会自动地显示由当前页面的标题（headers）组成的链接，并按照页面本身的结构进行嵌套，你可以通过 `themeConfig.sidebarDepth` 来修改它的行为。默认的深度是 `1`，它将提取到 `h2` 的标题，设置成 `0` 将会禁用标题（headers）链接，同时，最大的深度为 `2`，它将同时提取 `h2` 和 `h3` 标题。
 
 也可以使用 `YAML front matter` 来为某个页面重写此值：
 
@@ -138,6 +138,18 @@ module.exports = {
 ---
 sidebarDepth: 2
 ---
+```
+
+### 显示所有页面的标题链接 <Badge text="0.11.0+"/>
+
+默认情况下，侧边栏只会显示由当前活动页面的标题（headers）组成的链接，你可以将 `themeConfig.displayAllHeaders` 设置为 `true` 来显示所有页面的标题链接：
+
+``` js
+module.exports = {
+  themeConfig: {
+    displayAllHeaders: true // 默认值：false
+  }
+}
 ```
 
 ### 活动的标题链接
@@ -247,6 +259,30 @@ sidebar: auto
 ---
 ```
 
+你也可以通过配置来在所有页面中启用它：
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+    sidebar: 'auto'
+  }
+}
+```
+
+在 [多语言](../guide/i18n.md) 模式下, 你也可以将其应用到某一特定的语言下：
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+     '/zh/': {
+       sidebar: 'auto'
+     }
+  }
+}
+```
+
 ### 禁用侧边栏
 
 你可以通过 `YAML front matter` 来禁用指定页面的侧边栏：
@@ -278,7 +314,7 @@ module.exports = {
 
 ### Algolia 搜索
 
-你可以通过 `themeConfig.algolia` 选项来用 [Algolia DocSearch](https://community.algolia.com/docsearch/) 替换内置的搜索框。要启用 Algolia 搜索，你需要至少提供 `apiKey` 和 `indexName`：
+你可以通过 `themeConfig.algolia` 选项来用 [Algolia 搜索](https://community.algolia.com/docsearch/) 替换内置的搜索框。要启用 Algolia 搜索，你需要至少提供 `apiKey` 和 `indexName`：
 
 ```js
 module.exports = {
@@ -291,9 +327,13 @@ module.exports = {
 }
 ```
 
+::: warning 注意
+不同于开箱即用的 [内置搜索](#内置搜索)，[Algolia 搜索](https://community.algolia.com/docsearch/) 需要你在使用之前将你的网站提交给它们用于创建索引。
+:::
+
 更多选项请参考 [Algolia DocSearch 的文档](https://github.com/algolia/docsearch#docsearch-options)。
 
-## 最近更新
+## 最后更新时间
 
 你可以通过 `themeConfig.lastUpdated` 选项来获取每个文件最后一次 `git` 提交的 UNIX 时间戳(ms)，同时它将以合适的日期格式显示在每一页的底部：
 

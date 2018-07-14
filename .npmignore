@@ -1,9 +1,18 @@
+# Basic
 *.log
 .temp
 vuepress
-TODOs.md
 art
-test
 docs
 .eslintrc.js
 yarn.lock
+TODOs.md
+.github
+.idea
+
+# CI related
+scripts
+
+# Test related
+test
+.babelrc
