@@ -455,8 +455,8 @@ In fact, The `stylus constants override` should be completed before all Stylus f
 Start from `0.12.0`, we split `override.styl` into two APIs: `override.styl` and `style.styl`. If you wrote styles at `override.styl` in the past, e.g.
 
 ``` stylus
-// override.styl
-$textColor = red // stylus constants override
+// .vuepress/override.styl
+$textColor = red // stylus constants override.
 
 #my-style {} // your extra styles.
 ```
@@ -464,12 +464,12 @@ $textColor = red // stylus constants override
 You'll need to separate the style part to `style.styl`:
 
 ``` stylus
-// override.styl, SHOULD ONLY contain "stylus constants override".
+// .vuepress/override.styl, SHOULD ONLY contain "stylus constants override".
 $textColor = red
 ```
 
 ``` stylus
-// style.styl, your extra styles
+// .vuepress/style.styl, your extra styles.
 #my-style {}
 ```
 

@@ -420,12 +420,12 @@ $codeBgColor = #282c34
 
 ### 将你的样式迁移到 `style.styl` <Badge text="0.12.0+"/>
 
-事实上，`stylus 常量的 override` 应该在编译所有 Stylus 文件之前完成；而用户额外的 CSS 样式由应该被生成在最终样式文件的末尾。因此这两项职责不应该由同一个 stylus 文件来完成。
+事实上，`stylus 常量的 override` 应该在编译所有 Stylus 文件之前完成；而用户额外的 CSS 样式应该生成在最终样式文件的末尾。因此，这两项职责不应该由同一个 stylus 文件来完成。
 
 从 `0.12.0` 开始，我们将 `override.styl` 拆分为两个 API：`override.styl` 和 `style.styl`。如果你过去在 `override.styl` 中书写了样式，如：
 
 ``` stylus
-// override.styl
+// .vuepress/override.styl
 $textColor = red // stylus 常量的 override
 
 #my-style {} // 你的样式
@@ -434,12 +434,12 @@ $textColor = red // stylus 常量的 override
 你将需要将你的样式部分分离到 `style.styl`:
 
 ``` stylus
-// override.styl，应该仅仅包含 stylus 常量的 override
+// .vuepress/override.styl，应该仅仅包含 stylus 常量的 override
 $textColor = red
 ```
 
 ``` stylus
-// style.styl，你的样式
+// .vuepress/style.styl，你的样式
 #my-style {}
 ```
 
