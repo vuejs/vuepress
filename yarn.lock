@@ -7921,6 +7921,10 @@ tunnel-agent@^0.6.0:
   dependencies:
     safe-buffer "^5.0.1"
 
+turbocolor@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/turbocolor/-/turbocolor-2.2.0.tgz#9e6c9536e014b4214baef6a87fec4ede1d660b6f"
+
 tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   version "0.14.5"
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-0.14.5.tgz#5ae68177f192d4456269d108afa93ff8743f4f64"

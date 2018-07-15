@@ -44,7 +44,7 @@
     "autoprefixer": "^8.2.0",
     "babel-loader": "8.0.0-beta.3",
     "cache-loader": "^1.2.2",
-    "chalk": "^2.3.2",
+    "turbocolor": "^2.2.0",
     "chokidar": "^2.0.3",
     "commander": "^2.15.1",
     "connect-history-api-fallback": "^1.5.0",

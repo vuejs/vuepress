@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-const chalk = require('chalk')
+const tc = require('turbocolor')
 const semver = require('semver')
 const requiredVersion = require('../package.json').engines.node
 
 if (!semver.satisfies(process.version, requiredVersion)) {
-  console.log(chalk.red(
+  console.log(tc.red(
     `\n[vuepress] minimum Node version not met:` +
     `\nYou are using Node ${process.version}, but VuePress ` +
     `requires Node ${requiredVersion}.\nPlease upgrade your Node version.\n`
@@ -53,14 +53,14 @@ program
   .arguments('<command>')
   .action((cmd) => {
     program.outputHelp()
-    console.log(`  ` + chalk.red(`Unknown command ${chalk.yellow(cmd)}.`))
+    console.log(`  ` + tc.red(`Unknown command ${tc.yellow(cmd)}.`))
     console.log()
   })
 
 // add some useful info on help
 program.on('--help', () => {
   console.log()
-  console.log(`  Run ${chalk.cyan(`vuepress <command> --help`)} for detailed usage of given command.`)
+  console.log(`  Run ${tc.cyan(`vuepress <command> --help`)} for detailed usage of given command.`)
   console.log()
 })
 
@@ -73,23 +73,23 @@ const enhanceErrorMessages = (methodName, log) => {
       return
     }
     this.outputHelp()
-    console.log(`  ` + chalk.red(log(...args)))
+    console.log(`  ` + tc.red(log(...args)))
     console.log()
     process.exit(1)
   }
 }
 
 enhanceErrorMessages('missingArgument', argName => {
-  return `Missing required argument ${chalk.yellow(`<${argName}>`)}.`
+  return `Missing required argument ${tc.yellow(`<${argName}>`)}.`
 })
 
 enhanceErrorMessages('unknownOption', optionName => {
-  return `Unknown option ${chalk.yellow(optionName)}.`
+  return `Unknown option ${tc.yellow(optionName)}.`
 })
 
 enhanceErrorMessages('optionMissingArgument', (option, flag) => {
-  return `Missing required argument for option ${chalk.yellow(option.flags)}` + (
-    flag ? `, got ${chalk.yellow(flag)}` : ``
+  return `Missing required argument for option ${tc.yellow(option.flags)}` + (
+    flag ? `, got ${tc.yellow(flag)}` : ``
   )
 })
 
@@ -102,7 +102,7 @@ if (!process.argv.slice(2).length) {
 function wrapCommand (fn) {
   return (...args) => {
     return fn(...args).catch(err => {
-      console.error(chalk.red(err.stack))
+      console.error(tc.red(err.stack))
       process.exitCode = 1
     })
   }
