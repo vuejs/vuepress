@@ -18,7 +18,7 @@ select VERSION in patch minor major "Specific Version"
       read -p "Release $VERSION - are you sure? (y/n) " -n 1 -r
       echo
 
-      if [[ $REPLY =~ ^[Yy]$ ]]; then
+      if [[ $REPLY =~ ^[Yy]$ || -z $REPLY ]]; then
         # pre release task
         npm run lint
         npm run test
