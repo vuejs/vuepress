@@ -374,7 +374,7 @@ But the `refresh` button activates the new service worker immediately.
 ``` js
 module.exports = {
   themeConfig: {
-    serviceWorker {
+    serviceWorker: {
       updatePopup: true | {message: "New content is available.", buttonText: "Refresh"}
     }
   }
