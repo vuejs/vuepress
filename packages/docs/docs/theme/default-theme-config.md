@@ -195,6 +195,12 @@ module.exports = {
 
 Sidebar groups are collapsable by default. You can force a group to be always open with `collapsable: false`.
 
+When a group is open, other groups at the same level will be automatically closed. You can isolate a group's open status with `isolated: true`. And then you can config its initial open status with `initialIsolatedOpen: true`.
+
+You can config a group's sidebarDepth with `sidebarDepth: 2`.
+
+You can nest sidebar groups.
+
 ### Multiple Sidebars
 
 If you wish to display different sidebars for different sections of content, first organize your pages into directories for each desired section:
@@ -329,7 +335,7 @@ module.exports = {
 ```
 
 ::: warning Note
-Unlike the [built-in search](#built-in-search) engine which works out of the box, [Algolia DocSearch](https://community.algolia.com/docsearch/) requires you to submit your site to them for indexing before it starts working. 
+Unlike the [built-in search](#built-in-search) engine which works out of the box, [Algolia DocSearch](https://community.algolia.com/docsearch/) requires you to submit your site to them for indexing before it starts working.
 :::
 
 For more options, refer to [Algolia DocSearch's documentation](https://github.com/algolia/docsearch#docsearch-options).

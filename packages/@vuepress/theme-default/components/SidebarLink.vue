@@ -4,9 +4,15 @@ import { isActive, hashRE, groupHeaders } from '../util'
 export default {
   functional: true,
 
-  props: ['item'],
+  props: ['item', 'sidebarDepth'],
 
-  render (h, { parent: { $page, $site, $route }, props: { item }}) {
+  render (
+    h,
+    {
+      parent: { $page, $site, $route },
+      props: { item, sidebarDepth }
+    }
+  ) {
     // use custom active class matching logic
     // due to edge case of paths ending with / + hash
     const selfActive = isActive($route, item.path)
@@ -16,10 +22,17 @@ export default {
       ? selfActive || item.children.some(c => isActive($route, item.basePath + '#' + c.slug))
       : selfActive
     const link = renderLink(h, item.path, item.title || item.path, active)
-    const configDepth = $page.frontmatter.sidebarDepth != null
-      ? $page.frontmatter.sidebarDepth
-      : $site.themeConfig.sidebarDepth
+
+    let configDepth
+    if ($page.frontmatter.sidebarDepth != null) {
+      configDepth = $page.frontmatter.sidebarDepth
+    } else if (sidebarDepth != null) {
+      configDepth = sidebarDepth
+    } else {
+      configDepth = $site.themeConfig.sidebarDepth
+    }
     const maxDepth = configDepth == null ? 1 : configDepth
+
     const displayAllHeaders = !!$site.themeConfig.displayAllHeaders
     if (item.type === 'auto') {
       return [link, renderChildren(h, item.children, item.basePath, $route, maxDepth)]

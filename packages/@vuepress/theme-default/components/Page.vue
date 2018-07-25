@@ -182,7 +182,7 @@ function find (page, items, offset) {
   const res = []
   items.forEach(item => {
     if (item.type === 'group') {
-      res.push(...item.children || [])
+      res.push(...item.descendants || [])
     } else {
       res.push(item)
     }

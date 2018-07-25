@@ -207,26 +207,30 @@ function ensureEndingSlash (path) {
     : path + '/'
 }
 
-function resolveItem (item, pages, base, isNested) {
+function resolveItem (item, pages, base, groupDepth = 1) {
   if (typeof item === 'string') {
     return resolvePage(pages, item, base)
   } else if (Array.isArray(item)) {
     return Object.assign(resolvePage(pages, item[0], base), {
       title: item[1]
     })
-  } else {
-    if (isNested) {
-      console.error(
-        '[vuepress] Nested sidebar groups are not supported. ' +
-        'Consider using navbar + categories instead.'
-      )
-    }
-    const children = item.children || []
+  } else if (Array.isArray(item.children)) {
+    const descendants = []
+    const children = item.children.map(child => {
+      const resolvedItem = resolveItem(child, pages, base, groupDepth + 1)
+      ;[].push.apply(descendants, resolvedItem.descendants || [resolvedItem])
+      return resolvedItem
+    })
     return {
       type: 'group',
       title: item.title,
-      children: children.map(child => resolveItem(child, pages, base, true)),
-      collapsable: item.collapsable !== false
+      children,
+      descendants,
+      collapsable: item.collapsable !== false,
+      isolated: item.isolated === true,
+      initialIsolatedOpen: item.initialIsolatedOpen === true,
+      sidebarDepth: item.sidebarDepth,
+      groupDepth
     }
   }
 }
