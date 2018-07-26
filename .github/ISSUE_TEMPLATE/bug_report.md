@@ -19,6 +19,8 @@ about: Create a report to help us improve
 
 <!-- If you are reporting a bug that can ONLY be reproduced on your repository, PLEASE provide this repo link. That takes guessing work out of the way and saves us time. -->
 
+<!-- If your repo isn't public, you can use this boilerplate to create a proper reproduction repo quickly: https://github.com/ulivz/template-vuepress -->
+
 #### What is expected?
 
 #### What is actually happening?
