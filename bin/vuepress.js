@@ -27,8 +27,9 @@ program
   .description('start development server')
   .option('-p, --port <port>', 'use specified port (default: 8080)')
   .option('-h, --host <host>', 'use specified host (default: 0.0.0.0)')
-  .action((dir = '.', { host, port }) => {
-    wrapCommand(dev)(path.resolve(dir), { host, port })
+  .option('--debug', 'start development server in debug mode')
+  .action((dir = '.', { host, port, debug }) => {
+    wrapCommand(dev)(path.resolve(dir), { host, port, debug })
   })
 
 program
