@@ -1,10 +1,13 @@
 <template>
-    <transition name="sw-update-popup">
-        <div v-if="enabled" class="sw-update-popup">
-            {{message}}<br>
-            <button @click="reload">{{buttonText}}</button>
-        </div>
-    </transition>
+  <transition name="sw-update-popup">
+    <div
+      v-if="enabled"
+      class="sw-update-popup"
+    >
+      {{message}}<br>
+      <button @click="reload">{{buttonText}}</button>
+    </div>
+  </transition>
 </template>
 
 <script>
