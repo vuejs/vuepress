@@ -10,6 +10,7 @@
         class="logo"
         v-if="$site.themeConfig.logo"
         :src="$withBase($site.themeConfig.logo)"
+        :alt="$siteTitle"
       >
       <span
         class="site-name"
