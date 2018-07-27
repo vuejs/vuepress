@@ -1,19 +1,32 @@
 <template>
-  <nav class="nav-links" v-if="userLinks.length || repoLink">
+  <nav
+    class="nav-links"
+    v-if="userLinks.length || repoLink"
+  >
     <!-- user links -->
     <div
       class="nav-item"
       v-for="item in userLinks"
-      :key="item.link">
-      <DropdownLink v-if="item.type === 'links'" :item="item"/>
-      <NavLink v-else :item="item"/>
+      :key="item.link"
+    >
+      <DropdownLink
+        v-if="item.type === 'links'"
+        :item="item"
+      />
+      <NavLink
+        v-else
+        :item="item"
+      />
     </div>
+
     <!-- repo link -->
-    <a v-if="repoLink"
+    <a
+      v-if="repoLink"
       :href="repoLink"
       class="repo-link"
       target="_blank"
-      rel="noopener noreferrer">
+      rel="noopener noreferrer"
+    >
       {{ repoLabel }}
       <OutboundLink/>
     </a>
@@ -27,10 +40,12 @@ import NavLink from './NavLink.vue'
 
 export default {
   components: { NavLink, DropdownLink },
+
   computed: {
     userNav () {
       return this.$themeLocaleConfig.nav || this.$site.themeConfig.nav || []
     },
+
     nav () {
       const { locales } = this.$site
       if (locales && Object.keys(locales).length > 1) {
@@ -61,6 +76,7 @@ export default {
       }
       return this.userNav
     },
+
     userLinks () {
       return (this.nav || []).map(link => {
         return Object.assign(resolveNavLinkItem(link), {
@@ -68,6 +84,7 @@ export default {
         })
       })
     },
+
     repoLink () {
       const { repo } = this.$site.themeConfig
       if (repo) {
@@ -76,6 +93,7 @@ export default {
           : `https://github.com/${repo}`
       }
     },
+
     repoLabel () {
       if (!this.repoLink) return
       if (this.$site.themeConfig.repoLabel) {

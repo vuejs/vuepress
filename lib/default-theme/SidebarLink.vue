@@ -3,7 +3,9 @@ import { isActive, hashRE, groupHeaders } from './util'
 
 export default {
   functional: true,
+
   props: ['item'],
+
   render (h, { parent: { $page, $site, $route }, props: { item }}) {
     // use custom active class matching logic
     // due to edge case of paths ending with / + hash
