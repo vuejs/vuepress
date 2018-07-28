@@ -89,7 +89,7 @@ pages:
 
 1. 在 Netlify 中, 创建一个新的 Github 项目，使用以下设置：
 
-  - **Build Command:** `npm run build-docs` 或者 `yarn build-docs`
+  - **Build Command:** `npm run build:docs` 或者 `yarn build:docs`
   - **Publish directory:** `docs/.vuepress/dist`
 
 2. 点击 deploy 按钮！

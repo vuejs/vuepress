@@ -20,7 +20,7 @@ export default {
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 @import '../../default-theme/styles/config.styl'
 
 .badge

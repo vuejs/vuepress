@@ -1,6 +1,7 @@
 import {
   parseHeaders,
-  removeTailHtml
+  removeTailHtml,
+  deeplyParseHeaders
 } from '@/util/parseHeaders'
 
 describe('parseHeaders', () => {
@@ -32,6 +33,14 @@ describe('parseHeaders', () => {
   })
 
   test('should remove tail html correctly', () => {
-    expect(removeTailHtml('# H1 <div></div>>')).toBe('# H1')
+    expect(removeTailHtml('# H1 <Comp></Comp>')).toBe('# H1')
+    expect(removeTailHtml('# H1 <Comp a="b"></Comp>')).toBe('# H1')
+    expect(removeTailHtml('# H1 <Comp/>')).toBe('# H1')
+    expect(removeTailHtml('# H1 <Comp a="b"/>')).toBe('# H1')
+  })
+
+  test('should deeplyParseHeaders transformed as expected', () => {
+    expect(deeplyParseHeaders('# `H1` <Comp></Comp>')).toBe('# H1')
+    expect(deeplyParseHeaders('# *H1* <Comp/>')).toBe('# H1')
   })
 })

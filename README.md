@@ -44,13 +44,14 @@ https://vuepress.vuejs.org/
 * [Algolia Search](https://vuepress.vuejs.org/default-theme-config/#algolia-search)
 * Customizable [navbar](https://vuepress.vuejs.org/default-theme-config/#navbar) and [sidebar](https://vuepress.vuejs.org/default-theme-config/#sidebar)
 * [Auto-generated GitHub link and page edit links](https://vuepress.vuejs.org/default-theme-config/#git-repo-and-edit-links)
+* [PWA: Popup UI to refresh contents](https://vuepress.vuejs.org/default-theme-config/#popup-ui-to-refresh-contents)
+* [Last Updated](https://vuepress.vuejs.org/default-theme-config/#last-updated)
 
 **Miscellaneous**
 
 * [Multi-Language Support](https://vuepress.vuejs.org/guide/i18n.html)
 * [Service Worker](https://vuepress.vuejs.org/config/#serviceworker)
 * [Google Analytics](https://vuepress.vuejs.org/config/#ga)
-* [Last Updated](https://vuepress.vuejs.org/default-theme-config/#last-updated)
 
 ## Showcase
 

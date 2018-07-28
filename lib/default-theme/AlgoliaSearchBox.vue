@@ -1,15 +1,23 @@
 <template>
-  <form id="search-form" class="algolia-search-wrapper search-box">
-    <input id="algolia-search-input" class="search-query">
+  <form
+    id="search-form"
+    class="algolia-search-wrapper search-box"
+  >
+    <input
+      id="algolia-search-input"
+      class="search-query"
+    >
   </form>
 </template>
 
 <script>
 export default {
   props: ['options'],
+
   mounted () {
     this.initialize()
   },
+
   methods: {
     initialize () {
       Promise.all([
@@ -24,6 +32,7 @@ export default {
       })
     }
   },
+
   watch: {
     options (newValue) {
       this.$el.innerHTML = '<input id="algolia-search-input" class="search-query">'
