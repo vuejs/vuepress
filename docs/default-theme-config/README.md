@@ -356,26 +356,32 @@ Note that it's `off` by default. If given `string`, it will be displayed as a pr
   Since `lastUpdated` is based on `git`, you can only use it in a `git` repository. As well, since the timestamp used comes from the git commit, it will display only after a first commit for a given page, and update only on subsequent commits of that page.
 :::
 
-## Service Workers
+## Service Worker
 
-The `themeConfig.serviceWorker` option allows you to configure about service workers.
+The `themeConfig.serviceWorker` option allows you to configure about service worker.
 
-### Popup UI to refresh contents
+::: tip
+Please do not confuse this option with [Config > serviceWorker](../config/README.md#serviceworker), [Config > serviceWorker](../config/README.md#serviceworker) is **site-level**, while this option is **theme-level**.
+:::
 
-The `themeConfig.serviceWorker.updatePopup` option enables the popup to refresh contents. The popup will be shown when the site is updated (the service worker is updated). It provides `refresh` button to allow users to refresh contents immediately.
+### Popup UI to refresh contents <Badge text="0.13.0+"/>
+
+The `themeConfig.serviceWorker.updatePopup` option enables the popup to refresh contents. The popup will be shown when the site is updated (i.e. service worker is updated). It provides `refresh` button to allow users to refresh contents immediately.
 
 ::: tip NOTE
-If without the `refresh` button, the new service worker will be active after all clients are closed.
-This means that visitors cannot see new contents until they close all tabs of your site.
-
-But the `refresh` button activates the new service worker immediately.
+If without the `refresh` button, the new service worker will be active after all [clients](https://developer.mozilla.org/en-US/docs/Web/API/Clients) are closed. This means that visitors cannot see new contents until they close all tabs of your site. But the `refresh` button activates the new service worker immediately.
 :::
 
 ``` js
 module.exports = {
   themeConfig: {
     serviceWorker: {
-      updatePopup: true | {message: "New content is available.", buttonText: "Refresh"}
+      updatePopup: true // Boolean | Object, default to undefined.
+      // If set to true, the default text config will be: 
+      // updatePopup: { 
+      //    message: "New content is available.", 
+      //    buttonText: "Refresh" 
+      // }
     }
   }
 }
