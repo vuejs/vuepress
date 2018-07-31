@@ -364,7 +364,7 @@ The `themeConfig.serviceWorker` option allows you to configure about service wor
 Please do not confuse this option with [Config > serviceWorker](../config/README.md#serviceworker), [Config > serviceWorker](../config/README.md#serviceworker) is **site-level**, while this option is **theme-level**.
 :::
 
-### Popup UI to refresh contents <Badge text="0.13.0+"/>
+### Popup UI to refresh contents <Badge text="0.13.0+"/> <Badge text="beta" type="warn"/>
 
 The `themeConfig.serviceWorker.updatePopup` option enables the popup to refresh contents. The popup will be shown when the site is updated (i.e. service worker is updated). It provides `refresh` button to allow users to refresh contents immediately.
 
