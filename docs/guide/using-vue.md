@@ -78,34 +78,39 @@ The compiled component does not have any private data but does have access to th
 
 ### Interpolation in Code Blocks
 
-By default, Vuepress will add `v-pre` directive to code blocks to avoid it being compiled by Vue. If you really want to use interpolation in code blocks, add `:v` after the language identifier, or just use `:v` as the language identifier. For example:
+By default, Vuepress will add `v-pre` directive to code blocks to avoid it being compiled by Vue. If you really want to use interpolation in code blocks, add `{no-v-pre}` after the language identifier, or just use `{no-v-pre}` as the language identifier. For example:
 
 **Input**
 
 ```` md
-``` vue:v
-{{ 1 + 1 }}
+``` vue{no-v-pre}
+<div class="with-syntax-highlighting">
+  Current Time: {{ (new Date()).toLocaleString() }}
+</div>
 ```
 ````
 
 ```` md
-``` :v
+``` {no-v-pre}
 {{ 1 + 2 }}
 ```
 ````
 
 **Output**
 
-``` vue:v
-{{ 1 + 1 }}
+``` vue{no-v-pre}
+<div class="with-syntax-highlighting">
+  Current Time: {{ (new Date()).toUTCString() }}
+</div>
 ```
 
-``` :v
+``` {no-v-pre}
 {{ 1 + 2 }}
 ```
 
 ::: warning IMPORTANT
-For some language identifiers, the highlighter will add extra `<span>` tag around `{` and `}`, in which cases `:v` won't work. Suggest to use `:v` after `text`, `md`, `vue`, `html` or use it alone.
+For some languages, the highlighter will add extra `<span>` tag around `{` and `}`, in which cases `{no-v-pre}` won't work. If you use `{no-v-pre}` with those languages, Vuepress will disable syntax highlighting when compiling that code block. If you need syntax highlighting anyway, you have to process it youself in your client code for now.  
+Currently, `{no-v-pre}` and syntax highlighting only works with `md`, `markdown`, `vue`, `html`, `markup`.
 :::
 
 ## Escaping
