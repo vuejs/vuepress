@@ -1,0 +1,6 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`no-v-pre should not have v-pre with {no-v-pre} 1`] = `
+<pre class="language-vue"><code>{{ 1 + 1 }}
+</code></pre>
+`;
