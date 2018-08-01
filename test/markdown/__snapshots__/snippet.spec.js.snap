@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snippet import snippet 1`] = `
+<pre><code class="language-js">export default function () {
+  // ..
+}
+</code></pre>
+`;
+
+exports[`snippet import snippet with highlight multiple lines 1`] = `
+<div class="highlight-lines">
+  <div class="highlighted">&nbsp;</div>
+  <div class="highlighted">&nbsp;</div>
+  <div class="highlighted">&nbsp;</div>
+  <br>
+</div>export default function () { // .. }
+`;
+
+exports[`snippet import snippet with highlight single line 1`] = `
+<div class="highlight-lines">
+  <div class="highlighted">&nbsp;</div>
+  <br>
+  <div class="highlighted">&nbsp;</div>
+  <br>
+</div>export default function () { // .. }
+`;

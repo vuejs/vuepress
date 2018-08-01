@@ -89,7 +89,7 @@ pages:
 
 1. 在 Netlify 中, 创建一个新的 Github 项目，使用以下设置：
 
-  - **Build Command:** `npm run build-docs` 或者 `yarn build-docs`
+  - **Build Command:** `npm run build:docs` 或者 `yarn build:docs`
   - **Publish directory:** `docs/.vuepress/dist`
 
 2. 点击 deploy 按钮！
@@ -100,24 +100,24 @@ pages:
 
 2. 在你项目的根目录下创建 `firebase.json` 和 `.firebaserc`，并包含以下内容：
 
-   `firebase.json`:
-   ```json
-   {
-     "hosting": {
-       "public": "./docs/.vuepress/dist",
-       "ignore": []
-     }
-   }
-   ```
+`firebase.json`:
+```json
+{
+ "hosting": {
+   "public": "./docs/.vuepress/dist",
+   "ignore": []
+ }
+}
+```
 
-   `.firebaserc`:
-   ``` js
-   {
-     "projects": {
-       "default": "<YOUR_FIREBASE_ID>"
-     }
-   }
-   ```
+`.firebaserc`:
+``` js
+{
+ "projects": {
+   "default": "<YOUR_FIREBASE_ID>"
+ }
+}
+```
 
 3. 在执行了 `yarn docs:build` 或 `npm run docs:build` 后, 使用 `firebase deploy` 指令来部署。
 

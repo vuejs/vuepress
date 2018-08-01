@@ -35,6 +35,12 @@ module.exports = {
         selectText: 'Languages',
         editLinkText: 'Edit this page on GitHub',
         lastUpdated: 'Last Updated',
+        serviceWorker: {
+          updatePopup: {
+            message: "New content is available.",
+            buttonText: "Refresh"
+          }
+        },
         nav: [
           {
             text: 'Guide',
@@ -47,6 +53,10 @@ module.exports = {
           {
             text: 'Default Theme Config',
             link: '/default-theme-config/'
+          },
+          {
+            text: 'Changelog',
+            link: 'https://github.com/vuejs/vuepress/blob/master/CHANGELOG.md'
           }
         ],
         sidebar: {
@@ -58,6 +68,12 @@ module.exports = {
         selectText: '选择语言',
         editLinkText: '在 GitHub 上编辑此页',
         lastUpdated: '上次更新',
+        serviceWorker: {
+          updatePopup: {
+            message: "发现新内容可用",
+            buttonText: "刷新"
+          }
+        },
         nav: [
           {
             text: '指南',
@@ -70,6 +86,10 @@ module.exports = {
           {
             text: '默认主题',
             link: '/zh/default-theme-config/'
+          },
+          {
+            text: 'Changelog',
+            link: 'https://github.com/vuejs/vuepress/blob/master/CHANGELOG.md'
           }
         ],
         sidebar: {

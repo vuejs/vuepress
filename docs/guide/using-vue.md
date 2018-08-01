@@ -2,7 +2,7 @@
 
 ## Browser API Access Restrictions
 
-Because VuePress applications are server-rendered in Node.js when generating static builds, any Vue usage must conform to the [universal code requirements](https://ssr.vuejs.org/en/universal.html). In short, make sure to only access Browser / DOM APIs in `beforeMounted` or `mounted` hooks.
+Because VuePress applications are server-rendered in Node.js when generating static builds, any Vue usage must conform to the [universal code requirements](https://ssr.vuejs.org/en/universal.html). In short, make sure to only access Browser / DOM APIs in `beforeMount` or `mounted` hooks.
 
 If you are using or demoing components that are not SSR friendly (for example containing custom directives), you can wrap them inside the built-in `<ClientOnly>` component:
 
@@ -40,7 +40,7 @@ Each markdown file is first compiled into HTML and then passed on as a Vue compo
 
 **Output**
 
-<pre><code>{{ 1 + 1 }}</code></pre>
+<div class="language-text"><pre><code>{{ 1 + 1 }}</code></pre></div>
 
 ### Directives
 
@@ -54,7 +54,7 @@ Directives also work:
 
 **Output**
 
-<pre><code><span v-for="i in 3">{{ i }} </span></code></pre>
+<div class="language-text"><pre><code><span v-for="i in 3">{{ i }} </span></code></pre></div>
 
 ### Access to Site & Page Data
 
@@ -184,7 +184,7 @@ yarn add -D pug pug-plain-loader
 ::: tip
 If you are a Stylus user, you don't need to install `stylus` and `stylus-loader` in your project because VuePress uses Stylus internally.
   
-For pre-processors that do not have built-in webpack config support, you will need to [extend the internal webpack config](../config/#configurewebpack) in addition to installing the necessary dependencies.
+For pre-processors that do not have built-in webpack config support, you will need to [extend the internal webpack config](../config/README.md#configurewebpack) in addition to installing the necessary dependencies.
 :::
 
 ## Script & Style Hoisting
@@ -207,3 +207,48 @@ export default {
   }
 }
 </script>
+
+## Built-In Components
+
+### OutboundLink <Badge text="stable"/>
+
+It(<OutboundLink/>) is used to indicate that this is an external link. In VuePress this component have been followed by every external link.
+
+### ClientOnly <Badge text="stable"/>
+
+See [Browser API Access Restrictions](#browser-api-access-restrictions).
+
+### Content <Badge text="beta" type="warn"/>
+
+- **Props**:
+
+  - `custom` - boolean
+
+- **Usage**：   
+   
+The compiled content of the current `.md` file being rendered. This will be very useful when you use [Custom Layout](../default-theme-config/README.md#custom-layout-for-specific-pages).
+
+``` vue
+<Content/>
+```
+
+**Also see:** 
+
+- [Custom Themes > Content Outlet](./custom-themes.md#content-outlet)
+
+  
+### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/>
+
+- **Props**:
+
+   - `text` - string
+   - `type` - string, optional value: `"tip"|"warn"|"error"`, defaults to `"tip"`.
+   - `vertical` - string, optional value: `"top"|"middle"`, defaults to `"top"`.
+
+- **Usage**:
+
+You can use this component at the end of header text to add some status for some API:
+   
+``` md
+### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/>
+```   

@@ -1,13 +1,27 @@
 <template>
-  <div class="sidebar-group" :class="{ first, collapsable }">
-    <p class="sidebar-heading" :class="{ open }" @click="$emit('toggle')">
+  <div
+    class="sidebar-group"
+    :class="{ first, collapsable }"
+  >
+    <p
+      class="sidebar-heading"
+      :class="{ open }"
+      @click="$emit('toggle')"
+    >
       <span>{{ item.title }}</span>
-      <span class="arrow"
+      <span
+        class="arrow"
         v-if="collapsable"
-        :class="open ? 'down' : 'right'"></span>
+        :class="open ? 'down' : 'right'">
+      </span>
     </p>
+
     <DropdownTransition>
-      <ul class="sidebar-group-items" ref="items" v-if="open || !collapsable">
+      <ul
+        ref="items"
+        class="sidebar-group-items"
+        v-if="open || !collapsable"
+      >
         <li v-for="child in item.children">
           <SidebarLink :item="child"/>
         </li>
@@ -45,7 +59,7 @@ export default {
   font-size 1.1em
   font-weight bold
   // text-transform uppercase
-  padding-left 1.5rem
+  padding 0 1.5rem
   margin-top 0
   margin-bottom 0.5rem
   &.open, &:hover

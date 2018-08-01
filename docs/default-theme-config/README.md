@@ -4,13 +4,15 @@ sidebar: auto
 
 # Default Theme Config
 
+<Bit/>
+
 ::: tip
 All options listed on this page apply to the default theme only. If you are using a custom theme, the options may be different.
 :::
 
 ## Homepage
 
-The default theme provides a homepage layout (which is used on [the homepage of this very website](/)). To use it, specify `home: true` plus some other metadata in your root `README.md`'s [YAML front matter](../guide/markdown.html#yaml-front-matter). This is the actual data used on this site:
+The default theme provides a homepage layout (which is used on [the homepage of this very website](../README.md)). To use it, specify `home: true` plus some other metadata in your root `README.md`'s [YAML front matter](../guide/markdown.md#front-matter). This is the actual data used on this site:
 
 ``` yaml
 ---
@@ -142,6 +144,34 @@ sidebarDepth: 2
 ---
 ```
 
+### Displaying Header Links of All Pages <Badge text="0.11.0+"/>
+
+The sidebar only displays links for headers in the current active page. You can display all header links for every page with `themeConfig.displayAllHeaders: true`:
+
+``` js
+module.exports = {
+  themeConfig: {
+    displayAllHeaders: true // Default: false
+  }
+}
+```
+
+### Active Header Links
+
+By default, the nested header links and the hash in the URL are updated as the user scrolls to view the different sections of the page. This behavior can be disabled with the following theme config:
+
+``` js
+module.exports = {
+  themeConfig: {
+    activeHeaderLinks: false, // Default: true
+  }
+}
+```
+
+::: tip
+  It is worth mentioning that when you disable this option, the corresponding script of this functionality will not be loaded. This is a small point in our performance optimization.
+:::
+
 ### Sidebar Groups
 
 You can divide sidebar links into multiple groups by using objects:
@@ -234,6 +264,30 @@ sidebar: auto
 ---
 ```
 
+You can also enable it in all pages by using config:
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+    sidebar: 'auto'
+  }
+}
+```
+
+In [multi-language](../guide/i18n.md) mode, you can also apply it to a specific locale:
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+     '/': {
+       sidebar: 'auto'
+     }
+  }
+}
+```
+
 ### Disabling the Sidebar
 
 You can disable the sidebar on a specific page with `YAML front matter`:
@@ -278,6 +332,10 @@ module.exports = {
 }
 ```
 
+::: warning Note
+Unlike the [built-in search](#built-in-search) engine which works out of the box, [Algolia DocSearch](https://community.algolia.com/docsearch/) requires you to submit your site to them for indexing before it starts working. 
+:::
+
 For more options, refer to [Algolia DocSearch's documentation](https://github.com/algolia/docsearch#docsearch-options).
 
 ## Last Updated
@@ -295,8 +353,39 @@ module.exports = {
 Note that it's `off` by default. If given `string`, it will be displayed as a prefix (default value: `Last Updated`).
 
 ::: warning
-  Since `lastUpdated` is based on `git`, so you can only use it in a `git` repository.
+  Since `lastUpdated` is based on `git`, you can only use it in a `git` repository. As well, since the timestamp used comes from the git commit, it will display only after a first commit for a given page, and update only on subsequent commits of that page.
 :::
+
+## Service Worker
+
+The `themeConfig.serviceWorker` option allows you to configure about service worker.
+
+::: tip
+Please do not confuse this option with [Config > serviceWorker](../config/README.md#serviceworker), [Config > serviceWorker](../config/README.md#serviceworker) is **site-level**, while this option is **theme-level**.
+:::
+
+### Popup UI to refresh contents <Badge text="0.13.0+"/> <Badge text="beta" type="warn"/>
+
+The `themeConfig.serviceWorker.updatePopup` option enables the popup to refresh contents. The popup will be shown when the site is updated (i.e. service worker is updated). It provides `refresh` button to allow users to refresh contents immediately.
+
+::: tip NOTE
+If without the `refresh` button, the new service worker will be active after all [clients](https://developer.mozilla.org/en-US/docs/Web/API/Clients) are closed. This means that visitors cannot see new contents until they close all tabs of your site. But the `refresh` button activates the new service worker immediately.
+:::
+
+``` js
+module.exports = {
+  themeConfig: {
+    serviceWorker: {
+      updatePopup: true // Boolean | Object, default to undefined.
+      // If set to true, the default text config will be: 
+      // updatePopup: { 
+      //    message: "New content is available.", 
+      //    buttonText: "Refresh" 
+      // }
+    }
+  }
+}
+```
 
 ## Prev / Next Links
 
@@ -359,6 +448,35 @@ $accentColor = #3eaf7c
 $textColor = #2c3e50
 $borderColor = #eaecef
 $codeBgColor = #282c34
+```
+
+### Existing issues <Badge text="< 0.12.0" type='error'/>
+
+In order to override the default variables mentioned above, `override.styl` will be imported at the end of the `config.styl` in default theme, and this file will be used by multiple files, so once you wrote styles here, your style would be duplicated by multiple times. See [#637](https://github.com/vuejs/vuepress/issues/637).
+
+### Migrate your styles to `style.styl` <Badge text="0.12.0+"/>
+
+In fact, The `stylus constants override` should be completed before all Stylus files are compiled; and the `user's additional CSS styles` should be generated at the end of the final style file. Therefore, these two duties should not be completed by the same stylus file.
+
+Start from `0.12.0`, we split `override.styl` into two APIs: `override.styl` and `style.styl`. If you wrote styles at `override.styl` in the past, e.g.
+
+``` stylus
+// .vuepress/override.styl
+$textColor = red // stylus constants override.
+
+#my-style {} // your extra styles.
+```
+
+You'll need to separate the style part to `style.styl`:
+
+``` stylus
+// .vuepress/override.styl, SHOULD ONLY contain "stylus constants override".
+$textColor = red
+```
+
+``` stylus
+// .vuepress/style.styl, your extra styles.
+#my-style {}
 ```
 
 ## Custom Page Class

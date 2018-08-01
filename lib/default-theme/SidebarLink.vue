@@ -3,7 +3,9 @@ import { isActive, hashRE, groupHeaders } from './util'
 
 export default {
   functional: true,
+
   props: ['item'],
+
   render (h, { parent: { $page, $site, $route }, props: { item }}) {
     // use custom active class matching logic
     // due to edge case of paths ending with / + hash
@@ -18,9 +20,10 @@ export default {
       ? $page.frontmatter.sidebarDepth
       : $site.themeConfig.sidebarDepth
     const maxDepth = configDepth == null ? 1 : configDepth
+    const displayAllHeaders = !!$site.themeConfig.displayAllHeaders
     if (item.type === 'auto') {
       return [link, renderChildren(h, item.children, item.basePath, $route, maxDepth)]
-    } else if (active && item.headers && !hashRE.test(item.path)) {
+    } else if ((active || displayAllHeaders) && item.headers && !hashRE.test(item.path)) {
       const children = groupHeaders(item.headers)
       return [link, renderChildren(h, children, item.path, $route, maxDepth)]
     } else {
@@ -48,7 +51,7 @@ function renderChildren (h, children, path, route, maxDepth, depth = 1) {
   return h('ul', { class: 'sidebar-sub-headers' }, children.map(c => {
     const active = isActive(route, path + '#' + c.slug)
     return h('li', { class: 'sidebar-sub-header' }, [
-      renderLink(h, '#' + c.slug, c.title, active),
+      renderLink(h, path + '#' + c.slug, c.title, active),
       renderChildren(h, c.children, path, route, maxDepth, depth + 1)
     ])
   }))

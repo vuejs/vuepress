@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`containers danger 1`] = `
+<div class="danger custom-block">
+  <p class="custom-block-title">WARNING</p>
+  <p>I am a danger</p>
+</div>
+`;
+
+exports[`containers tip 1`] = `
+<div class="tip custom-block">
+  <p class="custom-block-title">TIP</p>
+  <p>I am a tip</p>
+</div>
+`;
+
+exports[`containers tip-override 1`] = `
+<div class="tip custom-block">
+  <p class="custom-block-title">提示</p>
+  <p>I am a tip</p>
+</div>
+`;
+
+exports[`containers v-pre 1`] = `
+<div v-pre>
+  <p>I am a v-pre</p>
+</div>
+`;
+
+exports[`containers warning 1`] = `
+<div class="warning custom-block">
+  <p class="custom-block-title">WARNING</p>
+  <p>I am a warning</p>
+</div>
+`;

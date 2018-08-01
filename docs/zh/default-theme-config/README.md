@@ -10,7 +10,7 @@ sidebar: auto
 
 ## 首页
 
-默认的主题提供了一个首页（Homepage）的布局 (用于 [这个网站的主页](/zh/))。想要使用它，需要在你的根级 `README.md` 的 [YAML front matter](../guide/markdown.md#yaml-front-matter) 指定 `home: true`。以下是这个网站实际使用的数据：
+默认的主题提供了一个首页（Homepage）的布局 (用于 [这个网站的主页](../README.md))。想要使用它，需要在你的根级 `README.md` 的 [YAML front matter](../guide/markdown.md#front-matter) 指定 `home: true`。以下是这个网站实际使用的数据：
 
 ``` yaml
 ---
@@ -130,7 +130,7 @@ module.exports = {
 
 ### 嵌套的标题链接
 
-默认情况下，侧边栏会自动地显示由当前页面标的题（headers）组成的的链接，并按照页面本身的结构进行嵌套，你可以通过 `themeConfig.sidebarDepth` 来修改它的行为。默认的深度是 `1`，它将提取到 `h2` 的标题，设置成 `0` 将会禁用标题（headers）链接，同时，最大的深度为 `2`，它将同时提取 `h2` 和 `h3` 标题。
+默认情况下，侧边栏会自动地显示由当前页面的标题（headers）组成的链接，并按照页面本身的结构进行嵌套，你可以通过 `themeConfig.sidebarDepth` 来修改它的行为。默认的深度是 `1`，它将提取到 `h2` 的标题，设置成 `0` 将会禁用标题（headers）链接，同时，最大的深度为 `2`，它将同时提取 `h2` 和 `h3` 标题。
 
 也可以使用 `YAML front matter` 来为某个页面重写此值：
 
@@ -139,6 +139,35 @@ module.exports = {
 sidebarDepth: 2
 ---
 ```
+
+### 显示所有页面的标题链接 <Badge text="0.11.0+"/>
+
+默认情况下，侧边栏只会显示由当前活动页面的标题（headers）组成的链接，你可以将 `themeConfig.displayAllHeaders` 设置为 `true` 来显示所有页面的标题链接：
+
+``` js
+module.exports = {
+  themeConfig: {
+    displayAllHeaders: true // 默认值：false
+  }
+}
+```
+
+### 活动的标题链接
+
+默认情况下，当用户通过滚动查看页面的不同部分时，嵌套的标题链接和 URL 中的 Hash 值会实时更新，这个行为可以通过以下的配置来禁用：
+
+``` js
+module.exports = {
+  themeConfig: {
+    activeHeaderLinks: false, // 默认值：true
+  }
+}
+```
+
+::: tip 
+值得一提的是，当你禁用此选项时，此功能的相应脚本将不会被加载，这是我们性能优化的一个小点。
+:::
+
 
 ### 侧边栏分组
 
@@ -230,6 +259,30 @@ sidebar: auto
 ---
 ```
 
+你也可以通过配置来在所有页面中启用它：
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+    sidebar: 'auto'
+  }
+}
+```
+
+在 [多语言](../guide/i18n.md) 模式下, 你也可以将其应用到某一特定的语言下：
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+     '/zh/': {
+       sidebar: 'auto'
+     }
+  }
+}
+```
+
 ### 禁用侧边栏
 
 你可以通过 `YAML front matter` 来禁用指定页面的侧边栏：
@@ -261,7 +314,7 @@ module.exports = {
 
 ### Algolia 搜索
 
-你可以通过 `themeConfig.algolia` 选项来用 [Algolia DocSearch](https://community.algolia.com/docsearch/) 替换内置的搜索框。要启用 Algolia 搜索，你需要至少提供 `apiKey` 和 `indexName`：
+你可以通过 `themeConfig.algolia` 选项来用 [Algolia 搜索](https://community.algolia.com/docsearch/) 替换内置的搜索框。要启用 Algolia 搜索，你需要至少提供 `apiKey` 和 `indexName`：
 
 ```js
 module.exports = {
@@ -274,9 +327,13 @@ module.exports = {
 }
 ```
 
+::: warning 注意
+不同于开箱即用的 [内置搜索](#内置搜索)，[Algolia 搜索](https://community.algolia.com/docsearch/) 需要你在使用之前将你的网站提交给它们用于创建索引。
+:::
+
 更多选项请参考 [Algolia DocSearch 的文档](https://github.com/algolia/docsearch#docsearch-options)。
 
-## 最近更新
+## 最后更新时间
 
 你可以通过 `themeConfig.lastUpdated` 选项来获取每个文件最后一次 `git` 提交的 UNIX 时间戳(ms)，同时它将以合适的日期格式显示在每一页的底部：
 
@@ -293,6 +350,37 @@ module.exports = {
 ::: warning 使用须知
   由于 `lastUpdated` 是基于 `git` 的, 所以你只能在一个基于 `git` 的项目中启用它。
 :::
+
+## Service Worker
+
+`themeConfig.serviceWorker` 允许你去配置 Service Worker。
+
+::: tip 提示
+请不要将本选项与 [Config > serviceWorker](../config/README.md#serviceworker) 混淆，[Config > serviceWorker](../config/README.md#serviceworker) 是网站级别的配置，而本选项是主题级别的配置。
+:::
+
+### 刷新内容的弹窗 <Badge text="0.13.0+"/> <Badge text="beta" type="warn"/>
+
+开启 `themeConfig.serviceWorker.updatePopup` 选项，将开启一个能够刷新内容的弹窗。当网站更新（即 Service Worker 更新）时，它会提供一个 `refresh` 按钮，允许用户立刻刷新内容。
+
+::: tip 提示
+如果没有 `refresh` 按钮，新的 service worker 将在所有的 [clients](https://developer.mozilla.org/en-US/docs/Web/API/Clients) 关闭后才会处于活动状态。这意味着访问者在关闭你网站的所有标签之前将无法看到新内容。但是，`refresh` 按钮可以立即激活新的 Service Worker。
+:::
+
+``` js
+module.exports = {
+  themeConfig: {
+    serviceWorker: {
+      updatePopup: true // Boolean | Object, 默认值是 undefined.
+      // 如果设置为 true, 默认的文本配置将是: 
+      // updatePopup: { 
+      //    message: "New content is available.", 
+      //    buttonText: "Refresh" 
+      // }
+    }
+  }
+}
+```
 
 ## 上 / 下一篇链接
 
@@ -355,6 +443,35 @@ $accentColor = #3eaf7c
 $textColor = #2c3e50
 $borderColor = #eaecef
 $codeBgColor = #282c34
+```
+
+### 低版本存在的问题 <Badge text="< 0.12.0" type='error'/>
+
+为了 override 上述提及的 [Stylus](http://stylus-lang.com/) 默认样式常量，`override.styl` 将会在默认主题的 `config.styl` 的末尾被导入。但是，由于 `config.styl` 可能会被多个文件导入，所以，一旦你在这里写样式，你的样式将会被重复多次。参考： [#637](https://github.com/vuejs/vuepress/issues/637)。
+
+### 将你的样式迁移到 `style.styl` <Badge text="0.12.0+"/>
+
+事实上，`stylus 常量的 override` 应该在编译所有 Stylus 文件之前完成；而用户额外的 CSS 样式应该生成在最终样式文件的末尾。因此，这两项职责不应该由同一个 stylus 文件来完成。
+
+从 `0.12.0` 开始，我们将 `override.styl` 拆分为两个 API：`override.styl` 和 `style.styl`。如果你过去在 `override.styl` 中书写了样式，如：
+
+``` stylus
+// .vuepress/override.styl
+$textColor = red // stylus 常量的 override
+
+#my-style {} // 你的样式
+```
+
+你将需要将你的样式部分分离到 `style.styl`:
+
+``` stylus
+// .vuepress/override.styl，应该仅仅包含 stylus 常量的 override
+$textColor = red
+```
+
+``` stylus
+// .vuepress/style.styl，你的样式
+#my-style {}
 ```
 
 ## 自定义页面类

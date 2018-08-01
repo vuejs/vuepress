@@ -4,6 +4,8 @@ sidebar: auto
 
 # Config Reference
 
+<Bit/>
+
 ## Basic Config
 
 ### base
@@ -44,7 +46,7 @@ Extra tags to be injected to the page HTML `<head>`. Each tag can be specified i
 ``` js
 module.exports = {
   head: [
-    ['link', { rel: 'icon', href: `/logo.png` }]
+    ['link', { rel: 'icon', href: '/logo.png' }]
   ]
 }
 ```
@@ -77,6 +79,10 @@ Specify the output directory for `vuepress build`.
 
 Provide the Google Analytics ID to enable integration.
 
+::: tip
+Please be aware of [GDPR (2018 reform of EU data protection rules)](https://ec.europa.eu/commission/priorities/justice-and-fundamental-rights/data-protection/2018-reform-eu-data-protection-rules_en) and consider setting Google Analytics to [anonymize IPs](https://support.google.com/analytics/answer/2763052?hl=en) where appropriate and/or needed.
+:::
+
 ### serviceWorker
 
 - Type: `boolean`
@@ -105,6 +111,13 @@ Also, only enable this if you are able to deploy your site with SSL, since servi
 
 Specify locales for i18n support. For more details, see the guide on [Internationalization](../guide/i18n.md).
 
+### shouldPrefetch
+
+- Type: `Function`
+- Default: `() => true`
+
+A function to control what files should have `<link rel="preload">` resource hints generated. See [shouldPrefetch](https://ssr.vuejs.org/api/#shouldprefetch).
+
 ## Theming
 
 ### theme
@@ -123,9 +136,20 @@ Provide config options to the used theme. The options will vary depending on the
 
 **Also see:**
 
-- [Default Theme Configuration](../default-theme-config/).
+- [Default Theme Configuration](../default-theme-config/README.md).
 
 ## Markdown
+
+### markdown.lineNumbers
+
+- Type: `boolean`
+- Default: `undefined`
+
+Whether to show line numbers to the left of each code blocks.
+
+**Also see:**
+
+- [Line Numbers](../guide/markdown.md#line-numbers)
 
 ### markdown.slugify
 
@@ -160,12 +184,13 @@ Options for [markdown-it-table-of-contents](https://github.com/Oktavilla/markdow
 - Type: `Function`
 - Default: `undefined`
 
-A function to apply additional plugins to the [markdown-it](https://github.com/markdown-it/markdown-it) instance used to render source files. Example:
+A function to modify default config or apply additional plugins to the [markdown-it](https://github.com/markdown-it/markdown-it) instance used to render source files. Example:
 
 ``` js
 module.exports = {
   markdown: {
     config: md => {
+      md.set({ breaks: true })
       md.use(require('markdown-it-xxx'))
     }
   }
@@ -193,7 +218,7 @@ Options for [stylus-loader](https://github.com/shama/stylus-loader).
 - Type: `Object`
 - Default: `{}`
 
-Options for [sass-loader](https://github.com/postcss/postcss-loader) to load `*.scss` files.
+Options for [sass-loader](https://github.com/webpack-contrib/sass-loader) to load `*.scss` files.
 
 ### sass
 
