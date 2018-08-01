@@ -85,14 +85,14 @@ By default, Vuepress will add `v-pre` directive to code blocks to avoid it being
 ```` md
 ``` vue{no-v-pre}
 <div class="with-syntax-highlighting">
-  Current Time: {{ (new Date()).toLocaleString() }}
+  One plus two equals: {{ 1 + 2 }}
 </div>
 ```
 ````
 
 ```` md
 ``` {no-v-pre}
-{{ 1 + 2 }}
+One plus two equals: {{ 1 + 2 }}
 ```
 ````
 
@@ -100,12 +100,12 @@ By default, Vuepress will add `v-pre` directive to code blocks to avoid it being
 
 ``` vue{no-v-pre}
 <div class="with-syntax-highlighting">
-  Current Time: {{ (new Date()).toUTCString() }}
+  One plus two equals: {{ 1 + 2 }}
 </div>
 ```
 
 ``` {no-v-pre}
-{{ 1 + 2 }}
+One plus two equals: {{ 1 + 2 }}
 ```
 
 ::: warning IMPORTANT
