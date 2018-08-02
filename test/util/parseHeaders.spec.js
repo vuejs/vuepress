@@ -1,6 +1,7 @@
 import {
   parseHeaders,
   removeTailHtml,
+  removeLeadingHtml,
   deeplyParseHeaders
 } from '@/util/parseHeaders'
 
@@ -39,8 +40,20 @@ describe('parseHeaders', () => {
     expect(removeTailHtml('# H1 <Comp a="b"/>')).toBe('# H1')
   })
 
+  test('should strip leading html correctly', () => {
+    expect(removeLeadingHtml('# <Comp/> H1')).toBe('# H1')
+    expect(removeLeadingHtml('# <Comp></Comp> H1')).toBe('# H1')
+    expect(removeLeadingHtml('#<Comp></Comp> H1')).toBe('# H1')
+    expect(removeLeadingHtml('# `<Comp/>` H1')).toBe('# <code><Comp></code> H1')
+    expect(removeLeadingHtml('#`<Comp/>` H1')).toBe('# <code><Comp></code> H1')
+  })
+
   test('should deeplyParseHeaders transformed as expected', () => {
     expect(deeplyParseHeaders('# `H1` <Comp></Comp>')).toBe('# H1')
     expect(deeplyParseHeaders('# *H1* <Comp/>')).toBe('# H1')
+    expect(deeplyParseHeaders('# *H1* <Badge text="test"/>')).toBe('# H1')
+    expect(deeplyParseHeaders('# `<Comp/>` `H1`')).toBe('# <code><Comp></code> H1')
+    expect(deeplyParseHeaders('# <Comp/> `H1` <Comp/>')).toBe('# H1')
+    expect(deeplyParseHeaders('# `<Comp/>` `H1` `<Comp/>`')).toBe('# <code><Comp></code> H1 <code><Comp></code>')
   })
 })
