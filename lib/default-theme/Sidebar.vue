@@ -9,7 +9,7 @@
           :item="item"
           :first="i === 0"
           :open="i === openGroupIndex"
-          :collapsable="item.collapsable"
+          :collapsable="item.collapsable || item.collapsible"
           @toggle="toggleGroup(i)"
         />
         <SidebarLink v-else :item="item"/>
