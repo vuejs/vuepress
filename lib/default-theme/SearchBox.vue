@@ -4,6 +4,7 @@
       @input="query = $event.target.value"
       aria-label="Search"
       :value="query"
+      :class="{ 'focused': focused }"
       autocomplete="off"
       spellcheck="false"
       @focus="focused = true"
@@ -156,7 +157,7 @@ export default {
 .search-box
   display inline-block
   position relative
-  margin-right 0.5rem
+  margin-right 1rem
   input
     cursor text
     width 10rem
@@ -209,7 +210,6 @@ export default {
       width 0
       border-color transparent
       position relative
-      left 1rem
       &:focus
         cursor text
         left 0
@@ -223,6 +223,8 @@ export default {
 @media (max-width: $MQMobile)
   .search-box
     margin-right 0
+    input
+      left 1rem
     .suggestions
       right 0
 
