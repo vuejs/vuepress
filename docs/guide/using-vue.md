@@ -139,7 +139,7 @@ The HTML wrapped by `<code>` will be displayed as is, only the HTML that is not 
 
 ::: tip
 
-The output HTML is accomplish by [markdown-it](https://github.com/markdown-it/markdown-it), while the parsed header is done by VuePress, and used for the [sidebar](../default-theme-config/README.md#sidebar) and the document title.
+The output HTML is accomplished by [markdown-it](https://github.com/markdown-it/markdown-it), while the parsed headers are done by VuePress, and used for the [sidebar](../default-theme-config/README.md#sidebar) and the document title.
 :::
 
 ## Using Pre-processors
