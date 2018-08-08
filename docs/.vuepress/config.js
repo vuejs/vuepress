@@ -3,7 +3,7 @@ module.exports = {
   locales: {
     '/': {
       lang: 'en-US',
-      title: 'VuePress123123',
+      title: 'VuePress',
       description: 'Vue-powered Static Site Generator'
     },
     '/zh/': {
@@ -54,14 +54,6 @@ module.exports = {
           {
             text: 'Config Reference',
             link: '/config/'
-          },
-          {
-            text: 'Default Theme Config',
-            link: '/default-theme-config/'
-          },
-          {
-            text: 'Default Theme Config',
-            link: '/default-theme-config/'
           },
           {
             text: 'Default Theme Config',
