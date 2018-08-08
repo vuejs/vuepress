@@ -29,6 +29,11 @@ module.exports = {
     repo: 'vuejs/vuepress',
     editLinks: true,
     docsDir: 'docs',
+    // #697 Provided by the official algolia team.
+    algolia: {
+      apiKey: '3a539aab83105f01761a137c61004d85',
+      indexName: 'vuepress'
+    },
     locales: {
       '/': {
         label: 'English',

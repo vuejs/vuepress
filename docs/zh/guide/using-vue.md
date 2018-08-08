@@ -126,6 +126,20 @@ export default {
 请确保一个自定义组件的名字包含连接符或者是 PascalCase，否则，它将会被视为一个内联元素，并被包裹在一个 `<p>` 标签中，这将会导致 HTML 渲染紊乱，因为 HTML 标准规定， `<p>` 标签中不允许放置任何块级元素。
 :::
 
+### 在标题中使用组件
+
+你可以在标题中使用 Vue 组件，但是请留意以下两种方式的不同：
+
+| Markdown | 输出的 HTML | 解析后的标题 |
+|--------|-------------|----------------|
+| <pre v-pre><code> # text &lt;Tag/&gt; </code></pre> | `<h1>text <Tag/></h1>` | `text` |
+| <pre v-pre><code> # text \`&lt;Tag/&gt;\` </code></pre> | `<h1>text <code>&lt;Tag/&gt;</code></h1>` | `text <Tag/>` |
+
+被 `<code>` 包装的 HTML 将按原样显示，只有未被包装的 HTML 才会被 Vue 解析。
+
+::: tip
+输出的 HTML 由 [markdown-it](https://github.com/markdown-it/markdown-it) 完成。而解析后的标题由 VuePress 完成，用于[侧边栏](../default-theme-config/README.md#侧边栏)以及文档的标题。
+:::
 
 ## 使用预处理器
 
@@ -218,8 +232,12 @@ export default {
 
 - **Usage**:
 
-你可以在标题文本的末尾，使用这个组件来为某些 API 添加一些状态：
+你可以在标题中，使用这个组件来为某些 API 添加一些状态：
    
 ``` md
 ### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/>
 ```  
+
+**参考:** 
+
+- [在标题中使用组件](#在标题中使用组件)

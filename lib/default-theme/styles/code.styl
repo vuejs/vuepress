@@ -95,7 +95,7 @@ div[class*="language-"]
       background-color $codeBgColor
 
 
-for lang in js ts html md vue css sass scss less stylus go java c sh yaml
+for lang in $codeLang
   div{'[class~="language-' + lang + '"]'}
     &:before
       content ('' + lang)
