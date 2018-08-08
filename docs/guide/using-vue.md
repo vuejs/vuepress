@@ -215,7 +215,7 @@ The compiled content of the current `.md` file being rendered. This will be very
 
 - **Usage**:
 
-You can use this component at the end of header text to add some status for some API:
+You can use this component in header to add some status for some API:
    
 ``` md
 ### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/>

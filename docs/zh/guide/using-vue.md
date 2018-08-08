@@ -218,7 +218,7 @@ export default {
 
 - **Usage**:
 
-你可以在标题文本的末尾，使用这个组件来为某些 API 添加一些状态：
+你可以在标题中，使用这个组件来为某些 API 添加一些状态：
    
 ``` md
 ### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/>
