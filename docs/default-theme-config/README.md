@@ -489,14 +489,14 @@ pageClass: custom-page-class
 ---
 ```
 
-Then you can write CSS targeting that page only:
+Then you can write Stylus targeting that page only:
 
-``` css
+``` stylus
 /* .vuepress/override.styl */
 
-.theme-container.custom-page-class {
+.theme-container.custom-page-class 
   /* page-specific rules */
-}
+
 ```
 
 ## Custom Layout for Specific Pages
