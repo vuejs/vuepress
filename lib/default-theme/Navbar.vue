@@ -23,8 +23,8 @@
     <div
       class="links"
       :style="{
-          'max-width': linksWrapMaxWidth + 'px'
-        }"
+        'max-width': linksWrapMaxWidth + 'px'
+      }"
     >
       <AlgoliaSearchBox
         v-if="isAlgoliaSearch"
@@ -52,12 +52,17 @@ export default {
   },
 
   mounted () {
+    const MOBILE_DESKTOP_BREAKPOINT = 719 // refer to config.styl
     const handleLinksWrapWidth = () => {
-      this.linksWrapMaxWidth =
-        this.$el.offsetWidth -
-        parseInt(css(this.$el, 'paddingLeft')) -
-        parseInt(css(this.$el, 'paddingRight')) -
-        this.$refs.siteName.offsetWidth
+      if (document.documentElement.clientWidth < MOBILE_DESKTOP_BREAKPOINT) {
+        this.linksWrapMaxWidth = null
+      } else {
+        this.linksWrapMaxWidth =
+          this.$el.offsetWidth -
+          parseInt(css(this.$el, 'paddingLeft')) -
+          parseInt(css(this.$el, 'paddingRight')) -
+          this.$refs.siteName.offsetWidth
+      }
     }
     handleLinksWrapWidth()
     window.addEventListener('resize', handleLinksWrapWidth, false)
@@ -108,7 +113,6 @@ $navbar-horizontal-padding = 1.5rem
     padding-left 1.5rem
     box-sizing border-box
     background-color white
-    max-width "calc(100% - %s)" % ($navbar-horizontal-padding)
     white-space nowrap
     font-size 0.9rem
     position absolute

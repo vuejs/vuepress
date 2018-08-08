@@ -1,4 +1,4 @@
-# Introduction <Badge text="beta" type="warn"/>
+# Introduction
 
 <Bit/>
 
