@@ -126,7 +126,23 @@ Inside any markdown file you can then directly use the components (names are inf
 Make sure a custom component's name either contains a hyphen or is in PascalCase. Otherwise it will be treated as an inline element and wrapped inside a `<p>` tag, which will lead to hydration mismatch because `<p>` does not allow block elements to be placed inside it.
 :::
 
-### Using Pre-processors
+### Using Components In Headers
+
+You can use Vue components in the headers, but note the difference between the following two ways:
+
+| markdown | Output HTML | Parsed Header |
+|--------|-------------|----------------|
+| <pre v-pre><code> # text &lt;Tag/&gt; </code></pre> | `<h1>text <Tag/></h1>` | `text` |
+| <pre v-pre><code> # text \`&lt;Tag/&gt;\` </code></pre> | `<h1>text <code>&lt;Tag/&gt;</code></h1>` | `text <Tag/>` |
+
+The HTML wrapped by `<code>` will be displayed as is, only the HTML that is not wrapped will be parsed by Vue.
+
+::: tip
+
+The output HTML is accomplished by [markdown-it](https://github.com/markdown-it/markdown-it), while the parsed headers are done by VuePress, and used for the [sidebar](../default-theme-config/README.md#sidebar) and the document title.
+:::
+
+## Using Pre-processors
 
 VuePress has built-in webpack config for the following pre-processors: `sass`, `scss`, `less`, `stylus` and `pug`. All you need to do is installing the corresponding dependencies. For example, to enable `sass`, install the following in your project:
  
@@ -215,8 +231,12 @@ The compiled content of the current `.md` file being rendered. This will be very
 
 - **Usage**:
 
-You can use this component at the end of header text to add some status for some API:
+You can use this component in header to add some status for some API:
    
 ``` md
 ### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/>
 ```   
+
+**Also see:** 
+
+- [Using Components In Headers](#using-components-in-headers)

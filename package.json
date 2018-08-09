@@ -1,6 +1,6 @@
 {
   "name": "vuepress",
-  "version": "0.13.0",
+  "version": "0.14.1",
   "description": "Minimalistic doc generator with Vue component based layout system",
   "main": "lib/index.js",
   "bin": {
@@ -108,7 +108,7 @@
     "jest-serializer-vue": "^1.0.0",
     "lint-staged": "^7.0.4",
     "vue-jest": "^2.6.0",
-    "vuepress-theme-vue": "^1.0.2",
+    "vuepress-theme-vue": "^1.1.0",
     "yorkie": "^1.0.3"
   },
   "engines": {

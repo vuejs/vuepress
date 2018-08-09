@@ -1,3 +1,44 @@
+<a name="0.14.1"></a>
+## [0.14.1](https://github.com/vuejs/vuepress/compare/v0.14.0...v0.14.1) (2018-08-09)
+
+
+### Bug Fixes
+
+* **$default-theme:** default search box line wrap ([03c812b](https://github.com/vuejs/vuepress/commit/03c812b))
+* **$default-theme:** navbar's regression - siteName null check ([02a4713](https://github.com/vuejs/vuepress/commit/02a4713))
+
+
+
+<a name="0.14.0"></a>
+# [0.14.0](https://github.com/vuejs/vuepress/compare/v0.13.1...v0.14.0) (2018-08-08)
+
+
+### Bug Fixes
+
+* **$default-theme:** algolia search doesn't work well at i18n mode ([e8a6ab1](https://github.com/vuejs/vuepress/commit/e8a6ab1))
+* **$default-theme:** navbar's messy layout at narrow screen ([#714](https://github.com/vuejs/vuepress/issues/714)) ([3e1da57](https://github.com/vuejs/vuepress/commit/3e1da57))
+* **$default-theme:** set alias "collapsible" to "collapsable" (close: [#705](https://github.com/vuejs/vuepress/issues/705)) ([#706](https://github.com/vuejs/vuepress/issues/706)) ([ad66fa8](https://github.com/vuejs/vuepress/commit/ad66fa8))
+* **$build:** skip format data.head if not exist while loading toml config ([#707](https://github.com/vuejs/vuepress/issues/707)) ([bb48a77](https://github.com/vuejs/vuepress/commit/bb48a77))
+
+
+### Features
+
+* **core:** support writing HTML(Vue) anywhere in the header. ([#711](https://github.com/vuejs/vuepress/issues/711)) ([885496e](https://github.com/vuejs/vuepress/commit/885496e))
+* **$webpack:** display host url at dev HMR log ([2e8d69c](https://github.com/vuejs/vuepress/commit/2e8d69c))
+
+
+
+<a name="0.13.1"></a>
+## [0.13.1](https://github.com/vuejs/vuepress/compare/v0.13.0...v0.13.1) (2018-08-01)
+
+
+### Bug Fixes
+
+* **core:** normalize override file path in windows ([#692](https://github.com/vuejs/vuepress/issues/692)) (close: [#642](https://github.com/vuejs/vuepress/issues/642)) ([9537c2c](https://github.com/vuejs/vuepress/commit/9537c2c))
+* **$default-theme:** `py` lang label doesn't display in code block ([#690](https://github.com/vuejs/vuepress/issues/690)) ([88b65cc](https://github.com/vuejs/vuepress/commit/88b65cc))
+
+
+
 <a name="0.13.0"></a>
 # [0.13.0](https://github.com/vuejs/vuepress/compare/v0.12.0...v0.13.0) (2018-07-28)
 

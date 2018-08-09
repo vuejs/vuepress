@@ -359,7 +359,7 @@ module.exports = {
 请不要将本选项与 [Config > serviceWorker](../config/README.md#serviceworker) 混淆，[Config > serviceWorker](../config/README.md#serviceworker) 是网站级别的配置，而本选项是主题级别的配置。
 :::
 
-### 刷新内容的弹窗 <Badge text="0.13.0+"/>
+### 刷新内容的弹窗 <Badge text="0.13.0+"/> <Badge text="beta" type="warn"/>
 
 开启 `themeConfig.serviceWorker.updatePopup` 选项，将开启一个能够刷新内容的弹窗。当网站更新（即 Service Worker 更新）时，它会提供一个 `refresh` 按钮，允许用户立刻刷新内容。
 
