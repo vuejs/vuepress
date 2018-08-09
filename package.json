@@ -1,6 +1,6 @@
 {
   "name": "vuepress",
-  "version": "0.14.0",
+  "version": "0.14.1",
   "description": "Minimalistic doc generator with Vue component based layout system",
   "main": "lib/index.js",
   "bin": {
