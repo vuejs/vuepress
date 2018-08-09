@@ -192,6 +192,7 @@ export default {
     border-radius 4px
     cursor pointer
     a
+      white-space normal
       color lighten($textColor, 35%)
       .page-title
         font-weight 600
