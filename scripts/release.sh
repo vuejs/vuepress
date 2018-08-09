@@ -29,6 +29,7 @@ select VERSION in patch minor major "Specific Version"
         echo Releasing ${NEW_VERSION} ...
 
         # npm release
+        npm whoami
         npm publish
         echo "✅ Released to npm."
 
