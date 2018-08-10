@@ -1,5 +1,5 @@
-const testPlugin = require('../../@vuepress/plugin-test/index')
-const translationComparisonPlugin = require('../../../../vuepress-plugin-translation-ui/src/index')
+const testPlugin = require('../../../@vuepress/plugin-test/index')
+const translationComparisonPlugin = require('../../../../../vuepress-plugin-translation-ui/src/index')
 
 module.exports = {
   dest: 'vuepress',

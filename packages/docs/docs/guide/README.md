@@ -16,13 +16,13 @@ Each markdown file is compiled into HTML with [markdown-it](https://github.com/m
 
 ## Features
 
-- [Built-in markdown extensions](./markdown.md) optimized for technical documentation
-- [Ability to leverage Vue inside markdown files](./using-vue.md)
-- [Vue-powered custom theme system](./custom-themes.md)
+- [Built-in markdown extensions](markdown.md) optimized for technical documentation
+- [Ability to leverage Vue inside markdown files](using-vue.md)
+- [Vue-powered custom theme system](custom-themes.md)
 - [Automatic Service Worker generation](../config/README.md#serviceworker)
 - [Google Analytics Integration](../config/README.md#ga)
 - ["Last Updated" based on Git](../default-theme-config/README.md#last-updated)
-- [Multi-language support](./i18n.md)
+- [Multi-language support](i18n.md)
 - A default theme with:
   - Responsive layout
   - [Optional Homepage](../default-theme-config/README.md#homepage)

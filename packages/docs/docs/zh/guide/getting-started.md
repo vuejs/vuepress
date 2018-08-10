@@ -67,4 +67,4 @@ yarn docs:dev # 或者：npm run docs:dev
 yarn docs:build # 或者：npm run docs:build
 ```
 
-默认情况下，文件将会被生成在 `.vuepress/dist`，当然，你也可以通过 `.vuepress/config.js` 中的 `dest` 字段来修改，生成的文件可以部署到任意的静态文件服务器上，参考 [部署](./deploy.md) 来了解更多。
+默认情况下，文件将会被生成在 `.vuepress/dist`，当然，你也可以通过 `.vuepress/config.js` 中的 `dest` 字段来修改，生成的文件可以部署到任意的静态文件服务器上，参考 [部署](deploy.md) 来了解更多。

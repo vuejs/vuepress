@@ -42,6 +42,8 @@ module.exports = async function resolveOptions (sourceDir) {
   let themeLayoutPath = null
   let themeNotFoundPath = null
 
+  console.log(useDefaultTheme)
+  console.log(siteConfig)
   if (useDefaultTheme) {
     // use default theme
     themePath = defaultThemePath
@@ -51,6 +53,7 @@ module.exports = async function resolveOptions (sourceDir) {
     // resolve theme Layout
     if (siteConfig.theme) {
       // use external theme
+      // backward-compatible
       try {
         themeLayoutPath = require.resolve(`vuepress-theme-${siteConfig.theme}/Layout.vue`, {
           paths: [

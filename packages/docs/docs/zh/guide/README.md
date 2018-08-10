@@ -12,13 +12,13 @@ VuePress 由两部分组成：一部分是支持用 Vue 开发主题的极简静
 
 ## 特性
 
-- 为技术文档而优化的 [内置 Markdown 拓展](./markdown.md)
-- [在 Markdown 文件中使用 Vue 组件的能力](./using-vue.md)
-- [Vue 驱动的自定义主题系统](./custom-themes.md)
+- 为技术文档而优化的 [内置 Markdown 拓展](markdown.md)
+- [在 Markdown 文件中使用 Vue 组件的能力](using-vue.md)
+- [Vue 驱动的自定义主题系统](custom-themes.md)
 - [自动生成 Service Worker](../config/README.md#serviceworker)
 - [Google Analytics 集成](../config/README.md#ga)
 - [基于 Git 的 “最后更新时间”](../default-theme-config/README.md#最后更新时间)
-- [多语言支持](./i18n.md)
+- [多语言支持](i18n.md)
 - 默认主题包含：
   - 响应式布局
   - [可选的主页](../default-theme-config/README.md#首页)
