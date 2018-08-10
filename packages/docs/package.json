@@ -1,0 +1,28 @@
+{
+  "private": true,
+  "name": "docs",
+  "description": "docs of VuePress",
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuejs/vuepress.git"
+  },
+  "keywords": [
+    "documentation",
+    "vue",
+    "generator"
+  ],
+  "author": "Evan You",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vuejs/vuepress/issues"
+  },
+  "homepage": "https://github.com/vuejs/vuepress#readme",
+  "devDependencies": {
+    "@vuepress/core": "^1.0.0",
+    "@vuepress/theme-default": "^1.0.0"
+  }
+}
