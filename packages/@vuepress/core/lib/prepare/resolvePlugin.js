@@ -2,10 +2,9 @@ const path = require('path')
 const Plugin = require('../plugin-api/index')
 const PluginContext = require('../plugin-api/context')
 
-const lastUpdatedPlugin = require('../../../plugin-last-updated/index')
-const enhanceAppPlugin = require('../../../plugin-enhance-app/index')
-const registerGlobalComponentsPlugin = require('../../../plugin-register-global-components/index')
-const activeHeaderLinksPlugin = require('../../../plugin-active-header-links/index')
+const lastUpdatedPlugin = require('@vuepress/plugin-last-updated')
+const enhanceAppPlugin = require('@vuepress/plugin-enhance-app')
+const registerGlobalComponentsPlugin = require('@vuepress/plugin-register-global-components')
 
 module.exports = function (options) {
   const { siteConfig, themeConfig, sourceDir, themePath, themePlugins } = options
@@ -24,12 +23,6 @@ module.exports = function (options) {
         path.resolve(themePath, 'components')
       ]
     })
-
-  // whether to use active header links
-  const { activeHeaderLinks = true } = themeConfig
-  if (activeHeaderLinks) {
-    plugin.use(activeHeaderLinksPlugin)
-  }
 
   // whether to use last updated
   const shouldUseLastUpdated = (

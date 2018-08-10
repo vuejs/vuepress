@@ -1,4 +1,4 @@
-const testPlugin = require('../../../@vuepress/plugin-test/index')
+const testPlugin = require('@vuepress/plugin-test')
 
 module.exports = {
   dest: 'vuepress',

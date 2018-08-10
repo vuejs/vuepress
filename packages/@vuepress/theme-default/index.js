@@ -1,11 +1,13 @@
 const path = require('path')
-const plugin = require('./plugin')
+const themePlugin = require('./plugin')
+const activeHeaderLinksPlugin = require('@vuepress/plugin-active-header-links')
 
 // Theme API.
 module.exports = {
   layout: path.resolve(__dirname, 'src/Layout.vue'),
   notFound: path.resolve(__dirname, 'src/NotFound.vue'),
   plugins: [
-    plugin
+    themePlugin,
+    activeHeaderLinksPlugin
   ]
 }

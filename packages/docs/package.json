@@ -23,6 +23,7 @@
   "homepage": "https://github.com/vuejs/vuepress#readme",
   "devDependencies": {
     "@vuepress/core": "^1.0.0",
-    "@vuepress/theme-default": "^1.0.0"
+    "@vuepress/theme-default": "^1.0.0",
+    "@vuepress/plugin-test": "^1.0.0"
   }
 }
