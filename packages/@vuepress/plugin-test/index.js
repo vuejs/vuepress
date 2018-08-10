@@ -69,7 +69,7 @@ module.exports = (options, context) => ({
     return [
       {
         route: '/readme/',
-        path: path.resolve(__dirname, '../../README.md')
+        path: path.resolve(__dirname, '../../../README.md')
       }
     ]
   },

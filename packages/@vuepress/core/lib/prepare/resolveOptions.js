@@ -6,6 +6,15 @@ const loadConfig = require('./loadConfig')
 const { sort } = require('./util')
 
 module.exports = async function resolveOptions (sourceDir) {
+  function requireResolve (target) {
+    return require.resolve(target, {
+      paths: [
+        path.resolve(__dirname, '../../node_modules'),
+        path.resolve(sourceDir)
+      ]
+    })
+  }
+
   const vuepressDir = path.resolve(sourceDir, '.vuepress')
   const siteConfig = loadConfig(vuepressDir)
 
@@ -33,53 +42,47 @@ module.exports = async function resolveOptions (sourceDir) {
     : path.resolve(sourceDir, '.vuepress/dist')
 
   // resolve theme
-  const useDefaultTheme = (
-    !siteConfig.theme &&
-    !fs.existsSync(path.resolve(vuepressDir, 'theme'))
-  )
-  const defaultThemePath = path.resolve(__dirname, '../default-theme')
+  const localThemePath = path.resolve(vuepressDir, 'theme')
+  const useLocalTheme = fs.existsSync(localThemePath)
   let themePath = null
   let themeLayoutPath = null
   let themeNotFoundPath = null
+  let themeIndexFile = null
+  let themePlugins = []
 
-  console.log(useDefaultTheme)
-  console.log(siteConfig)
-  if (useDefaultTheme) {
-    // use default theme
-    themePath = defaultThemePath
-    themeLayoutPath = path.resolve(defaultThemePath, 'Layout.vue')
-    themeNotFoundPath = path.resolve(defaultThemePath, 'NotFound.vue')
-  } else {
-    // resolve theme Layout
-    if (siteConfig.theme) {
-      // use external theme
-      // backward-compatible
-      try {
-        themeLayoutPath = require.resolve(`vuepress-theme-${siteConfig.theme}/Layout.vue`, {
-          paths: [
-            path.resolve(__dirname, '../../node_modules'),
-            path.resolve(sourceDir)
-          ]
-        })
-        themePath = path.dirname(themeLayoutPath)
-      } catch (e) {
-        throw new Error(`[vuepress] Failed to load custom theme "${
-          siteConfig.theme
-        }". File vuepress-theme-${siteConfig.theme}/Layout.vue does not exist.`)
-      }
-    } else {
-      // use custom theme
-      themePath = path.resolve(vuepressDir, 'theme')
-      themeLayoutPath = path.resolve(themePath, 'Layout.vue')
-      if (!fs.existsSync(themeLayoutPath)) {
-        throw new Error(`[vuepress] Cannot resolve Layout.vue file in .vuepress/theme.`)
-      }
+  if (useLocalTheme) {
+    // use local custom theme
+    themePath = localThemePath
+    themeLayoutPath = path.resolve(localThemePath, 'Layout.vue')
+    themeNotFoundPath = path.resolve(localThemePath, 'NotFound.vue')
+    if (!fs.existsSync(themeLayoutPath)) {
+      throw new Error(`[vuepress] Cannot resolve Layout.vue file in .vuepress/theme.`)
     }
-
-    // resolve theme NotFound
-    themeNotFoundPath = path.resolve(themePath, 'NotFound.vue')
     if (!fs.existsSync(themeNotFoundPath)) {
-      themeNotFoundPath = path.resolve(defaultThemePath, 'NotFound.vue')
+      throw new Error(`[vuepress] Cannot resolve NotFound.vue file in .vuepress/theme.`)
+    }
+  } else if (siteConfig.theme) {
+    // use external theme
+    try {
+      // backward-compatible 0.x.x.
+      themeLayoutPath = requireResolve(`vuepress-theme-${siteConfig.theme}/Layout.vue`)
+      themePath = path.dirname(themeLayoutPath)
+      themeNotFoundPath = path.resolve(themeLayoutPath, 'NotFound.vue')
+    } catch (e) {
+      try {
+        themeIndexFile = requireResolve(`vuepress-theme-${siteConfig.theme}/index.js`)
+      } catch (e) {
+        try {
+          themeIndexFile = requireResolve(`@vuepress/theme-${siteConfig.theme}`)
+          themePath = path.dirname(themeIndexFile)
+          themeIndexFile = require(themeIndexFile)
+          themeLayoutPath = themeIndexFile.layout
+          themeNotFoundPath = themeIndexFile.notFound
+          themePlugins = themeIndexFile.plugins
+        } catch (e) {
+          throw new Error(`[vuepress] Failed to load custom theme "${siteConfig.theme}". File vuepress-theme-${siteConfig.theme}/Layout.vue does not exist.`)
+        }
+      }
     }
   }
 
@@ -118,7 +121,7 @@ module.exports = async function resolveOptions (sourceDir) {
     themePath,
     themeLayoutPath,
     themeNotFoundPath,
-    useDefaultTheme,
+    themePlugins,
     isAlgoliaSearch,
     markdown
   }

@@ -26,7 +26,7 @@ module.exports = async function prepare (sourceDir, isProd) {
 
   await plugin.hooks.ready.run()
 
-  // 4. Apply plugin options to extend markdown.
+  // 4. apply plugin options to extend markdown.
   plugin.options.extendMarkdown.run(markdown)
   plugin.options.clientDynamicModules.run()
 

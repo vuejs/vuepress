@@ -58,6 +58,9 @@ module.exports = async function ({
   // resolve additional pagesData
   const additionalPagesData = await Promise.all(
     plugin.options.additionalPages.values.map(async ({ route: routePath, path: filepath }) => {
+      if (!fs.existsSync(filepath)) {
+        throw new Error(`[vuepress] Cannot resolve additional page: ${filepath}`)
+      }
       return getPageData({ filepath, routePath })
     })
   )
