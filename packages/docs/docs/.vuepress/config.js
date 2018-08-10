@@ -28,7 +28,8 @@ module.exports = {
   serviceWorker: true,
   theme: 'default',
   plugins: [
-    testPlugin
+    testPlugin,
+    'translation-ui',
   ],
   themeConfig: {
     repo: 'vuejs/vuepress',

@@ -3,7 +3,7 @@ module.exports = (options = {}, {
   resolve
 }) => ({
   name: 'i18n-ui',
-  // Only use this plugin at development mode.
+  // This plugin will be enabled only at development mode.
   enabled: !isProd,
   enhanceAppFiles: [
     resolve(__dirname, 'client.js')
