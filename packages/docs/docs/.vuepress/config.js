@@ -1,5 +1,4 @@
 const testPlugin = require('../../../@vuepress/plugin-test/index')
-const translationComparisonPlugin = require('../../../../../vuepress-plugin-translation-ui/src/index')
 
 module.exports = {
   dest: 'vuepress',
@@ -29,8 +28,7 @@ module.exports = {
   serviceWorker: true,
   theme: 'default',
   plugins: [
-    testPlugin,
-    translationComparisonPlugin
+    testPlugin
   ],
   themeConfig: {
     repo: 'vuejs/vuepress',

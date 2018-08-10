@@ -8,13 +8,14 @@ const registerGlobalComponentsPlugin = require('../../../plugin-register-global-
 const activeHeaderLinksPlugin = require('../../../plugin-active-header-links/index')
 
 module.exports = function (options) {
-  const { siteConfig, themeConfig, sourceDir, themePath } = options
+  const { siteConfig, themeConfig, sourceDir, themePath, themePlugins } = options
   const pluginContext = new PluginContext(options)
   const plugin = new Plugin(pluginContext)
 
   plugin
     // user plugin
     .useByConfigs(siteConfig.plugins)
+    .useByConfigs(themePlugins)
     // built-in plugins
     .use(enhanceAppPlugin)
     .use(registerGlobalComponentsPlugin, {

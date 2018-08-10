@@ -44,10 +44,6 @@ module.exports = function createBaseConfig ({
       .set('@app', path.resolve(__dirname, '../app'))
       .set('@temp', path.resolve(__dirname, '../app/.temp'))
       .set('@dynamic', path.resolve(__dirname, '../app/.temp/dynamic-modules'))
-      .set('@default-theme', path.resolve(__dirname, '../default-theme'))
-      .set('@AlgoliaSearchBox', isAlgoliaSearch
-        ? path.resolve(__dirname, '../default-theme/AlgoliaSearchBox.vue')
-        : path.resolve(__dirname, './noopModule.js'))
       .end()
     .extensions
       .merge(['.js', '.jsx', '.vue', '.json', '.styl'])

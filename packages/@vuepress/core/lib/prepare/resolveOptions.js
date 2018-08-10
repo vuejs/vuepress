@@ -89,13 +89,6 @@ module.exports = async function resolveOptions (sourceDir) {
   // resolve theme config
   const themeConfig = siteConfig.themeConfig || {}
 
-  // resolve algolia
-  const isAlgoliaSearch = (
-    themeConfig.algolia ||
-    Object.keys(siteConfig.locales && themeConfig.locales || {})
-      .some(base => themeConfig.locales[base].algolia)
-  )
-
   // resolve markdown
   const markdown = createMarkdown(siteConfig)
 
@@ -122,7 +115,6 @@ module.exports = async function resolveOptions (sourceDir) {
     themeLayoutPath,
     themeNotFoundPath,
     themePlugins,
-    isAlgoliaSearch,
     markdown
   }
 

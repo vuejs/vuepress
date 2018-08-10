@@ -5,10 +5,12 @@ export default {
   mounted () {
     window.addEventListener('scroll', this.onScroll)
   },
+
   methods: {
     onScroll: throttle(function () {
       this.setActiveHash()
     }, 300),
+
     setActiveHash () {
       const sidebarLinks = [].slice.call(document.querySelectorAll('.sidebar-link'))
       const anchors = [].slice.call(document.querySelectorAll('.header-anchor'))
@@ -41,6 +43,7 @@ export default {
       }
     }
   },
+
   beforeDestroy () {
     window.removeEventListener('scroll', this.onScroll)
   }

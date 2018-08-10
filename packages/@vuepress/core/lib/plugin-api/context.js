@@ -30,6 +30,14 @@ class PluginContext {
   get publicPath () {
     return this._options.publicPath
   }
+
+  get themeConfig () {
+    return this._options.themeConfig
+  }
+
+  get siteConfig () {
+    return this._options.siteConfig
+  }
 }
 
 Object.assign(PluginContext.prototype, {
