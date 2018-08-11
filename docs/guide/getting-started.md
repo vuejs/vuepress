@@ -64,3 +64,9 @@ yarn docs:build # Or npm run docs:build
 ```
 
 By default the built files will be in `.vuepress/dist`, which can be configured via the `dest` field in `.vuepress/config.js`. The built files can be deployed to any static file server. See [Deployment Guide](./deploy.md) for guides on deploying to popular services.
+
+The `dest` command in `.vuepress/config.js` can also specify the pdf file name of the export site. You can use the `vuepress export pdf` to export the site as a PDF file.
+
+::: warning
+Before use `vuepress export` command is that your project starts the dev command. If the application port is not in the default 8080, you need to manually specify the port, such as `vuepress export pdf 8082`.
+:::

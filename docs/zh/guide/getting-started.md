@@ -68,3 +68,9 @@ yarn docs:build # 或者：npm run docs:build
 ```
 
 默认情况下，文件将会被生成在 `.vuepress/dist`，当然，你也可以通过 `.vuepress/config.js` 中的 `dest` 字段来修改，生成的文件可以部署到任意的静态文件服务器上，参考 [部署](./deploy.md) 来了解更多。
+
+`.vuepress/config.js` 中的 `dest` 字段还可以指定导出站点的 pdf 文件名称，可以使用 `vuepress export pdf` 进行导出站点为 PDF 文件操作。
+
+::: warning
+`vuepress export` 命令的使用前提是你的项目启动了 dev 命令，如果应用端口不在默认的 8080 的话，需要手动指定端口，如 `vuepress export pdf 8082`。
+:::
