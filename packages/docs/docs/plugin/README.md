@@ -340,24 +340,9 @@ See: [base](../config/README.md#base).
 
 ## Lifecycle
 
-首先，我们都知道 VuePress 有两个主要指令：
-
-``` bash
-vuepress dev
-vuepress build
-```
-
-dev 和 build 的工作过程大抵相同，他们的基本工作流程如下:
-
 ![image](/plugin.png)
 
-
-
-
-
-
-
-在正式介绍插件之前，我们需要花一些时间来了解 VuePress 的基本工作原理。
+- TODO
 
 
 

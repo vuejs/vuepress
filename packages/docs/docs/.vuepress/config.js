@@ -59,6 +59,10 @@ module.exports = {
             link: '/plugin/'
           },
           {
+            text: 'Theme',
+            link: '/theme/'
+          },
+          {
             text: 'Default Theme Config',
             link: '/default-theme-config/'
           },
