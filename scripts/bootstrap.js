@@ -27,7 +27,7 @@ files.forEach(pkg => {
       },
       'repository': {
         'type': 'git',
-        'url': 'git+https://github.com/vuejs/vue-cli.git'
+        'url': 'git+https://github.com/vuejs/vuepress.git'
       },
       'keywords': [
         'documentation',

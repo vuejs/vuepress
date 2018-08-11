@@ -2,7 +2,7 @@
   "name": "vuepress",
   "version": "1.0.0",
   "description": "Minimalistic doc generator with Vue component based layout system",
-  "main": "index.js",
+  "main": "vuepress.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vuejs/vuepress.git"
@@ -21,15 +21,6 @@
     "url": "https://github.com/vuejs/vuepress/issues"
   },
   "homepage": "https://github.com/vuejs/vuepress#readme",
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,vue}": [
-      "eslint --fix",
-      "git add"
-    ]
-  },
   "dependencies": {
     "@vuepress/core": "^1.0.0",
     "@vuepress/cli": "^1.0.0",

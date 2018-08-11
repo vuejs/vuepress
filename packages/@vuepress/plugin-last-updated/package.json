@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vuejs/vue-cli.git"
+    "url": "git+https://github.com/vuejs/vuepress.git"
   },
   "keywords": [
     "documentation",
@@ -21,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/vuejs/vuepress/issues"
   },
-  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/plugin-last-updated#readme"
+  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/plugin-last-updated#readme",
   "dependencies": {
     "cross-spawn": "^6.0.5"
   }

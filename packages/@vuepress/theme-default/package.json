@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Default theme for VuePress",
   "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vuejs/vuepress.git"
@@ -10,6 +13,7 @@
   "keywords": [
     "documentation",
     "vue",
+    "vuepress",
     "generator"
   ],
   "author": "Evan You",
@@ -17,19 +21,12 @@
   "bugs": {
     "url": "https://github.com/vuejs/vuepress/issues"
   },
-  "homepage": "https://github.com/vuejs/vuepress#readme",
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,vue}": [
-      "eslint --fix",
-      "git add"
-    ]
-  },
+  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/theme-default#readme",
   "dependencies": {
     "@vuepress/plugin-active-header-links": "1.0.0",
     "docsearch.js": "^2.5.2",
-    "nprogress": "^0.2.0"
+    "nprogress": "^0.2.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2"
   }
 }
