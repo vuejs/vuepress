@@ -52,8 +52,9 @@ program
 program
   .command('export [extension] [targetDir]')
   .description('export site to file.')
-  .action((ext = 'pdf', dir = '.') => {
-    wrapCommand(siteExport)(ext, path.resolve(dir))
+  .option('-p, --port <port>', 'provide dev port (default: 8080)')
+  .action((ext = 'pdf', dir = '.', { port = 8080 }) => {
+    wrapCommand(siteExport)(ext, path.resolve(dir), port)
   })
 
 // output help information on unknown commands
