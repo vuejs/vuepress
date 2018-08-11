@@ -84,6 +84,8 @@ module.exports = async function resolveOptions (sourceDir) {
         }
       }
     }
+  } else {
+    throw new Error(`[vuepress] You must specify a theme, or create a local custom theme. \n For more details, refer to https://vuepress.vuejs.org/guide/custom-themes.html#custom-themes. \n`)
   }
 
   // resolve theme config
