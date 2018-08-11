@@ -4,6 +4,6 @@ require('@vuepress/cli').bootstrap({
   theme: 'default',
   plugins: [
     'test',
-    'translation-ui'
+    'i18n-ui'
   ]
 })

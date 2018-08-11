@@ -1,7 +1,7 @@
 {
   "name": "@vuepress/plugin-i18n-ui",
   "version": "1.0.0",
-  "description": "translation-ui plugin for vuepress",
+  "description": "i18n-ui plugin for vuepress",
   "main": "index.js",
   "publishConfig": {
     "access": "public"
