@@ -14,7 +14,7 @@ if (!semver.satisfies(process.version, requiredVersion)) {
 }
 
 const path = require('path')
-const { dev, build, eject } = require('../lib')
+const { dev, build, eject, siteExport } = require('../lib')
 
 const program = require('commander')
 
@@ -47,6 +47,13 @@ program
   .description('copy the default theme into .vuepress/theme for customization.')
   .action((dir = '.') => {
     wrapCommand(eject)(path.resolve(dir))
+  })
+
+program
+  .command('export [extension] [targetDir]')
+  .description('export site to file.')
+  .action((ext = 'pdf', dir = '.') => {
+    wrapCommand(siteExport)(ext, path.resolve(dir))
   })
 
 // output help information on unknown commands

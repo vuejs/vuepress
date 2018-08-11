@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "node bin/vuepress dev docs",
     "build": "node bin/vuepress build docs",
+    "export": "node bin/vuepress export pdf docs",
     "lint": "eslint --fix --ext .js,.vue bin/ lib/ test/",
     "prepublishOnly": "conventional-changelog -p angular -r 2 -i CHANGELOG.md -s",
     "release": "/bin/bash scripts/release.sh",
@@ -53,6 +54,7 @@
     "css-loader": "^0.28.11",
     "diacritics": "^1.3.0",
     "docsearch.js": "^2.5.2",
+    "easy-pdf-merge": "^0.1.3",
     "escape-html": "^1.0.3",
     "file-loader": "^1.1.11",
     "fs-extra": "^5.0.0",
@@ -77,6 +79,7 @@
     "portfinder": "^1.0.13",
     "postcss-loader": "^2.1.5",
     "prismjs": "^1.13.0",
+    "puppeteer": "^1.7.0",
     "register-service-worker": "^1.4.1",
     "semver": "^5.5.0",
     "stylus": "^0.54.5",
