@@ -19,22 +19,32 @@ module.exports = (options, context) => ({
   name: 'register-global-components',
 
   async enhanceAppFiles () {
-    const { baseDirs } = options
+    const { componentsDir = [], components = [] } = options
+    const baseDirs = Array.isArray(componentsDir) ? componentsDir : [componentsDir]
+
+    function importCode (name, absolutePath) {
+      `Vue.component(${JSON.stringify(name)}, () => import(${JSON.stringify(absolutePath)}))`
+    }
 
     function genImport (baseDir, file) {
       const name = fileToComponentName(file)
       const absolutePath = path.resolve(baseDir, file)
-      const code = `Vue.component(${JSON.stringify(name)}, () => import(${JSON.stringify(absolutePath)}))`
+      const code = importCode(name, absolutePath)
       return code
     }
 
     let code = ''
+
+    // 1. Register components in specified directories
     for (const baseDir of baseDirs) {
       const files = await resolveComponents(baseDir) || []
       code += files.map(file => genImport(baseDir, file)).join('\n') + '\n'
     }
+
+    // 2. Register named components.
+    code = components.map(({ name, path: absolutePath }) => importCode(name, absolutePath))
+
     code = `import Vue from 'vue'\n` + code + '\n'
-    // context.registrationModulePath = await context.writeTemp(FILE_NAME, code)
 
     return [
       {

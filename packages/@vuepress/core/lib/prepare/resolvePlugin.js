@@ -4,7 +4,7 @@ const PluginContext = require('../plugin-api/context')
 
 const lastUpdatedPlugin = require('@vuepress/plugin-last-updated')
 const enhanceAppPlugin = require('@vuepress/plugin-enhance-app')
-const registerGlobalComponentsPlugin = require('@vuepress/plugin-register-global-components')
+const registerGlobalComponentsPlugin = require('@vuepress/plugin-register-components')
 
 module.exports = function (options) {
   const { siteConfig, themeConfig, sourceDir, themePath, themePlugins, cliPlugins } = options
@@ -19,7 +19,7 @@ module.exports = function (options) {
     // built-in plugins
     .use(enhanceAppPlugin)
     .use(registerGlobalComponentsPlugin, {
-      baseDirs: [
+      componentsDir: [
         path.resolve(sourceDir, '.vuepress/components'),
         path.resolve(themePath, 'components')
       ]

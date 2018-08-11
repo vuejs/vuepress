@@ -1,5 +1,5 @@
 {
-  "name": "@vuepress/plugin-register-global-components",
+  "name": "@vuepress/plugin-register-components",
   "version": "1.0.0",
   "description": "register-global-components plugin for vuepress",
   "main": "index.js",
@@ -21,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/vuejs/vuepress/issues"
   },
-  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/plugin-register-global-components#readme",
+  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/plugin-register-components#readme",
   "dependencies": {
     "fs-extra": "^5.0.0",
     "globby": "^8.0.1"
