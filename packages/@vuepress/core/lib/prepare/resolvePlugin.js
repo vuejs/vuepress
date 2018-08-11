@@ -7,12 +7,13 @@ const enhanceAppPlugin = require('@vuepress/plugin-enhance-app')
 const registerGlobalComponentsPlugin = require('@vuepress/plugin-register-global-components')
 
 module.exports = function (options) {
-  const { siteConfig, themeConfig, sourceDir, themePath, themePlugins } = options
+  const { siteConfig, themeConfig, sourceDir, themePath, themePlugins, cliPlugins } = options
   const pluginContext = new PluginContext(options)
   const plugin = new Plugin(pluginContext)
 
   plugin
     // user plugin
+    .useByConfigs(cliPlugins)
     .useByConfigs(siteConfig.plugins)
     .useByConfigs(themePlugins)
     // built-in plugins

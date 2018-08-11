@@ -4,7 +4,6 @@ const yamlParser = require('js-yaml')
 const tomlParser = require('toml')
 
 module.exports = function loadConfig (vuepressDir, bustCache = true) {
-  console.log(vuepressDir)
   const configPath = path.resolve(vuepressDir, 'config.js')
   const configYmlPath = path.resolve(vuepressDir, 'config.yml')
   const configTomlPath = path.resolve(vuepressDir, 'config.toml')

@@ -104,7 +104,7 @@ module.exports = class Plugin {
     clientRootMixin,
     additionalPages
   }) {
-    logger.tip(`\nApply plugin ${chalk.cyan(name)}...`)
+    logger.tip(`\nApply plugin ${chalk.gray(name)}...`)
 
     this
       .registerHook(HOOK.READY, ready, name, [Function])

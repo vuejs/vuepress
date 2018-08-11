@@ -8,9 +8,13 @@ const { writeTemp } = require('./util')
 const logger = require('../util/logger')
 const chalk = require('chalk')
 
-module.exports = async function prepare (sourceDir, isProd) {
+module.exports = async function prepare ({
+  sourceDir,
+  isProd,
+  cliOptions
+}) {
   // 1. load options
-  const options = await resolveOptions(sourceDir)
+  const options = await resolveOptions(sourceDir, cliOptions)
   options.isProd = isProd
   const { markdown } = options
 
