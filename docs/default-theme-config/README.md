@@ -476,6 +476,7 @@ $textColor = red
 
 ``` stylus
 // .vuepress/style.styl, your extra styles.
+// variables from config.styl can be used here
 #my-style {}
 ```
 
