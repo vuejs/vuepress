@@ -10,7 +10,7 @@ Plugins usually add global-level functionality to VuePress. There is no strictly
 
 1. Extend the data generated at compile time. e.g. `the last updated time of each file`.
 2. Generate extra files before or after compilation. e.g. `PWA support`.
-3. Add extra pages. e.g. [vuepress-plugin-i18n-ui](https://github.com/ulivz/vuepress-plugin-i18n-ui)
+3. Add extra pages. e.g. [@vuepress/plugin-i18n-ui](https://github.com/vuejs/vuepress/tree/next/packages/%40vuepress/plugin-i18n-ui)
 4. Inject global UI. e.g. `back to top`.
 
 A plugin should export a `plain object`(`#1`). If the plugin needs to take options, it can be a function that exports a plain object(`#2`). The function will be called with the plugin's options as the first argument, along with [plugin context](#plugin-context) which provides some compile-time context.
@@ -62,13 +62,17 @@ module.exports = {
 
 ### Use plugins from npm
 
-A plugin can be published on npm in `CommonJS` format as `vuepress-plugin-xxx`. Then you can use it like this:
+A plugin should be published on npm in `CommonJS` format as `vuepress-plugin-xxx` or `@vuepress/plugin-xxx`. Then you can use it like this:
 
 ``` js
 module.exports = {
   plugins: [ 'xxx' /* also can be full name. */ ]
 }
 ```
+
+::: tip
+The plugin whose name starts with `@vuepress/plugin-` is the official plugin.
+:::
 
 ## Options
 
