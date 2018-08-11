@@ -21,5 +21,9 @@
   "bugs": {
     "url": "https://github.com/vuejs/vuepress/issues"
   },
-  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/plugin-register-global-components#readme"
+  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/plugin-register-global-components#readme",
+  "dependencies": {
+    "fs-extra": "^5.0.0",
+    "globby": "^8.0.1"
+  }
 }

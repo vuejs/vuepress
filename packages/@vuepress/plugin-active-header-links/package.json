@@ -16,6 +16,9 @@
     "vuepress",
     "generator"
   ],
+  "dependencies": {
+    "lodash.throttle": "^4.1.1"
+  },
   "author": "Evan You",
   "license": "MIT",
   "bugs": {
