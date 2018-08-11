@@ -1,22 +1,58 @@
 <template>
-  <div class="theme-container"
+  <div
+    class="theme-container"
     :class="pageClasses"
     @touchstart="onTouchStart"
-    @touchend="onTouchEnd">
-    <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar"/>
-    <div class="sidebar-mask" @click="toggleSidebar(false)"></div>
-    <Sidebar :items="sidebarItems" @toggle-sidebar="toggleSidebar">
-      <slot name="sidebar-top" slot="top"/>
-      <slot name="sidebar-bottom" slot="bottom"/>
+    @touchend="onTouchEnd"
+  >
+    <Navbar
+      v-if="shouldShowNavbar"
+      @toggle-sidebar="toggleSidebar"
+    />
+
+    <div
+      class="sidebar-mask"
+      @click="toggleSidebar(false)"
+    ></div>
+
+    <Sidebar
+      :items="sidebarItems"
+      @toggle-sidebar="toggleSidebar"
+    >
+      <slot
+        name="sidebar-top"
+        slot="top"
+      />
+      <slot
+        name="sidebar-bottom"
+        slot="bottom"
+      />
     </Sidebar>
-    <div class="custom-layout" v-if="$page.frontmatter.layout">
+
+    <div
+      class="custom-layout"
+      v-if="$page.frontmatter.layout"
+    >
       <component :is="$page.frontmatter.layout"/>
     </div>
+
     <Home v-else-if="$page.frontmatter.home"/>
-    <Page v-else :sidebar-items="sidebarItems">
-      <slot name="page-top" slot="top"/>
-      <slot name="page-bottom" slot="bottom"/>
+
+    <Page
+      v-else
+      :sidebar-items="sidebarItems"
+    >
+      <slot
+        name="page-top"
+        slot="top"
+      />
+      <slot
+        name="page-bottom"
+        slot="bottom"
+      />
     </Page>
+
+    <SWUpdatePopup :updateEvent="swUpdateEvent"/>
   </div>
 </template>
 
@@ -27,13 +63,16 @@ import Home from './Home.vue'
 import Navbar from './Navbar.vue'
 import Page from './Page.vue'
 import Sidebar from './Sidebar.vue'
+import SWUpdatePopup from './SWUpdatePopup.vue'
 import { resolveSidebarItems } from './util'
 
 export default {
-  components: { Home, Page, Sidebar, Navbar },
+  components: { Home, Page, Sidebar, Navbar, SWUpdatePopup },
+
   data () {
     return {
-      isSidebarOpen: false
+      isSidebarOpen: false,
+      swUpdateEvent: null
     }
   },
 
@@ -54,6 +93,7 @@ export default {
         this.$themeLocaleConfig.nav
       )
     },
+
     shouldShowSidebar () {
       const { frontmatter } = this.$page
       return (
@@ -63,6 +103,7 @@ export default {
         this.sidebarItems.length
       )
     },
+
     sidebarItems () {
       return resolveSidebarItems(
         this.$page,
@@ -71,6 +112,7 @@ export default {
         this.$localePath
       )
     },
+
     pageClasses () {
       const userPageClass = this.$page.frontmatter.pageClass
       return [
@@ -101,12 +143,15 @@ export default {
       nprogress.done()
       this.isSidebarOpen = false
     })
+
+    this.$on('sw-updated', this.onSWUpdated)
   },
 
   methods: {
     toggleSidebar (to) {
       this.isSidebarOpen = typeof to === 'boolean' ? to : !this.isSidebarOpen
     },
+
     // side swipe
     onTouchStart (e) {
       this.touchStart = {
@@ -114,6 +159,7 @@ export default {
         y: e.changedTouches[0].clientY
       }
     },
+
     onTouchEnd (e) {
       const dx = e.changedTouches[0].clientX - this.touchStart.x
       const dy = e.changedTouches[0].clientY - this.touchStart.y
@@ -124,6 +170,10 @@ export default {
           this.toggleSidebar(false)
         }
       }
+    },
+
+    onSWUpdated (e) {
+      this.swUpdateEvent = e
     }
   }
 }

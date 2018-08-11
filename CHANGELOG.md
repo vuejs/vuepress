@@ -1,18 +1,65 @@
+<a name="0.13.1"></a>
+## [0.13.1](https://github.com/vuejs/vuepress/compare/v0.13.0...v0.13.1) (2018-08-01)
+
+
+### Bug Fixes
+
+* normalize override file path in windows ([#692](https://github.com/vuejs/vuepress/issues/692)) (close: [#642](https://github.com/vuejs/vuepress/issues/642)) ([9537c2c](https://github.com/vuejs/vuepress/commit/9537c2c))
+* py lang label doesn't display in code block ([#690](https://github.com/vuejs/vuepress/issues/690)) ([88b65cc](https://github.com/vuejs/vuepress/commit/88b65cc))
+
+
+
+<a name="0.13.0"></a>
+# [0.13.0](https://github.com/vuejs/vuepress/compare/v0.12.0...v0.13.0) (2018-07-28)
+
+
+### Bug Fixes
+
+* **$seo:** Avoid duplicate `description meta` at runtime. (close: [#665](https://github.com/vuejs/vuepress/issues/665)) ([b207a5f](https://github.com/vuejs/vuepress/commit/b207a5f))
+* **$default-theme:** Scoped styles of `Badge` component (close: [#653](https://github.com/vuejs/vuepress/issues/653)) ([#657](https://github.com/vuejs/vuepress/issues/657)) ([9b602f2](https://github.com/vuejs/vuepress/commit/9b602f2))
+* **$build:** set `babelrc: false` in babel-loader options ([#644](https://github.com/vuejs/vuepress/issues/644)) ([c500201](https://github.com/vuejs/vuepress/commit/c500201)) ([@posva](https://github.com/posva))
+* **$build:** exclude dest folder from pageFiles (close: [#654](https://github.com/vuejs/vuepress/issues/654)) ([#655](https://github.com/vuejs/vuepress/issues/655)) ([c1fe692](https://github.com/vuejs/vuepress/commit/c1fe692))
+* **$build:** markdown config should be included in `cache-loader` identifier ([0ad1a45](https://github.com/vuejs/vuepress/commit/0ad1a45))
+* **$markdown:** cannot highlight external python file (`.py`) correctly (close: [#660](https://github.com/vuejs/vuepress/issues/660)) ([2a33075](https://github.com/vuejs/vuepress/commit/2a33075))
+* **$markdown:** missing space between `italics` and `bold` (close: [#661](https://github.com/vuejs/vuepress/issues/661)) ([7730ee1](https://github.com/vuejs/vuepress/commit/7730ee1))
+   1. `markdown-it` compiler will intendedly reserve this space between some inline elements, but `preserveWhitespace: false` will remove them. (Ref: [vue-template-compiler#options](https://github.com/vuejs/vue/tree/dev/packages/vue-template-compiler#options))
+   2. **Performance Impact**: Size of whole assets of vuepress documentation:
+      - Before (1952 kb)
+      - After (1960 kb)
+
+### Features
+
+* **$cli:** debug flag at dev mode ([231da6a](https://github.com/vuejs/vuepress/commit/231da6a))
+* **$default-theme:** transform `Badge` into async component ([de9a51b](https://github.com/vuejs/vuepress/commit/de9a51b))
+* **$default-theme**(**$pwa**): `themeConfig.serviceWorker.updatePopup` option (close: [#453](https://github.com/vuejs/vuepress/issues/453)) ([#533](https://github.com/vuejs/vuepress/issues/533)) ([14dbd1e](https://github.com/vuejs/vuepress/commit/14dbd1e)) ([@mysticatea](https://github.com/mysticatea))
+   ``` js
+   module.exports = {
+     themeConfig: {
+       serviceWorker: {
+         updatePopup: true
+       }
+     }
+   }
+   ```
+
+
+
 <a name="0.12.0"></a>
 # [0.12.0](https://github.com/vuejs/vuepress/compare/v0.11.0...v0.12.0) (2018-07-12)
 
 
 ### Bug Fixes
 
-* npm audit vulnerability (close: [#493](https://github.com/vuejs/vuepress/issues/493))([#641](https://github.com/vuejs/vuepress/issues/641)) ([8dde5d8](https://github.com/vuejs/vuepress/commit/8dde5d8))
-* wrong sidebar slugs and anchor link at content (close: [#645](https://github.com/vuejs/vuepress/issues/645)) ([c2eaff3](https://github.com/vuejs/vuepress/commit/c2eaff3))
+* **$build** npm audit vulnerability (close: [#493](https://github.com/vuejs/vuepress/issues/493))([#641](https://github.com/vuejs/vuepress/issues/641)) ([8dde5d8](https://github.com/vuejs/vuepress/commit/8dde5d8))
+* **$markdown**: wrong sidebar slugs and anchor link at content (close: [#645](https://github.com/vuejs/vuepress/issues/645)) ([c2eaff3](https://github.com/vuejs/vuepress/commit/c2eaff3))
 
 
 ### Features
 
-* version data layer ([0c5b752](https://github.com/vuejs/vuepress/commit/0c5b752))
-* **$default-theme:** new file-level API: style.styl. ([2f53f2f](https://github.com/vuejs/vuepress/commit/2f53f2f))
-
+* **$core:**: version data layer ([0c5b752](https://github.com/vuejs/vuepress/commit/0c5b752))
+* **$default-theme:** new file-level API: `style.styl`. ([2f53f2f](https://github.com/vuejs/vuepress/commit/2f53f2f))
+  1. Fixed overriding css variable doesn't work at `0.11.0` (close: [#639](https://github.com/vuejs/vuepress/issues/639))
+  2. Split `override.styl` into two APIs: `override.styl` and `style.styl`, the former will focus on ONLY the stylus constants override, while the latter will focus on styles override or custom styles. See also: https://vuepress.vuejs.org/default-theme-config/#simple-css-override.
 
 
 <a name="0.11.0"></a>

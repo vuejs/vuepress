@@ -351,6 +351,37 @@ module.exports = {
   由于 `lastUpdated` 是基于 `git` 的, 所以你只能在一个基于 `git` 的项目中启用它。
 :::
 
+## Service Worker
+
+`themeConfig.serviceWorker` 允许你去配置 Service Worker。
+
+::: tip 提示
+请不要将本选项与 [Config > serviceWorker](../config/README.md#serviceworker) 混淆，[Config > serviceWorker](../config/README.md#serviceworker) 是网站级别的配置，而本选项是主题级别的配置。
+:::
+
+### 刷新内容的弹窗 <Badge text="0.13.0+"/> <Badge text="beta" type="warn"/>
+
+开启 `themeConfig.serviceWorker.updatePopup` 选项，将开启一个能够刷新内容的弹窗。当网站更新（即 Service Worker 更新）时，它会提供一个 `refresh` 按钮，允许用户立刻刷新内容。
+
+::: tip 提示
+如果没有 `refresh` 按钮，新的 service worker 将在所有的 [clients](https://developer.mozilla.org/en-US/docs/Web/API/Clients) 关闭后才会处于活动状态。这意味着访问者在关闭你网站的所有标签之前将无法看到新内容。但是，`refresh` 按钮可以立即激活新的 Service Worker。
+:::
+
+``` js
+module.exports = {
+  themeConfig: {
+    serviceWorker: {
+      updatePopup: true // Boolean | Object, 默认值是 undefined.
+      // 如果设置为 true, 默认的文本配置将是: 
+      // updatePopup: { 
+      //    message: "New content is available.", 
+      //    buttonText: "Refresh" 
+      // }
+    }
+  }
+}
+```
+
 ## 上 / 下一篇链接
 
 上一篇和下一篇文章的链接将会自动地根据当前页面的侧边栏的顺序来获取。你也可以使用 `YAML front matter` 来明确地重写或者禁用它：
@@ -412,6 +443,35 @@ $accentColor = #3eaf7c
 $textColor = #2c3e50
 $borderColor = #eaecef
 $codeBgColor = #282c34
+```
+
+### 低版本存在的问题 <Badge text="< 0.12.0" type='error'/>
+
+为了 override 上述提及的 [Stylus](http://stylus-lang.com/) 默认样式常量，`override.styl` 将会在默认主题的 `config.styl` 的末尾被导入。但是，由于 `config.styl` 可能会被多个文件导入，所以，一旦你在这里写样式，你的样式将会被重复多次。参考： [#637](https://github.com/vuejs/vuepress/issues/637)。
+
+### 将你的样式迁移到 `style.styl` <Badge text="0.12.0+"/>
+
+事实上，`stylus 常量的 override` 应该在编译所有 Stylus 文件之前完成；而用户额外的 CSS 样式应该生成在最终样式文件的末尾。因此，这两项职责不应该由同一个 stylus 文件来完成。
+
+从 `0.12.0` 开始，我们将 `override.styl` 拆分为两个 API：`override.styl` 和 `style.styl`。如果你过去在 `override.styl` 中书写了样式，如：
+
+``` stylus
+// .vuepress/override.styl
+$textColor = red // stylus 常量的 override
+
+#my-style {} // 你的样式
+```
+
+你将需要将你的样式部分分离到 `style.styl`:
+
+``` stylus
+// .vuepress/override.styl，应该仅仅包含 stylus 常量的 override
+$textColor = red
+```
+
+``` stylus
+// .vuepress/style.styl，你的样式
+#my-style {}
 ```
 
 ## 自定义页面类
