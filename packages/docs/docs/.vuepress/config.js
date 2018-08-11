@@ -1,5 +1,3 @@
-const testPlugin = require('@vuepress/plugin-test')
-
 module.exports = {
   dest: 'vuepress',
   locales: {
@@ -26,11 +24,6 @@ module.exports = {
     ['meta', { name: 'msapplication-TileColor', content: '#000000' }]
   ],
   serviceWorker: true,
-  theme: 'default',
-  plugins: [
-    testPlugin,
-    'translation-ui',
-  ],
   themeConfig: {
     repo: 'vuejs/vuepress',
     editLinks: true,

@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "Minimalistic doc generator with Vue component based layout system",
   "main": "lib/index.js",
-  "bin": {
-    "vuepress": "bin/vuepress.js"
-  },
   "scripts": {
     "lint": "eslint --fix --ext .js,.vue bin/ lib/ test/",
     "prepublishOnly": "conventional-changelog -p angular -r 2 -i CHANGELOG.md -s",

@@ -1,8 +1,18 @@
-#!/usr/bin/env node
-
 const chalk = require('chalk')
 const semver = require('semver')
-const requiredVersion = require('../package.json').engines.node
+
+try {
+  require.resolve('@vuepress/core')
+} catch (err) {
+  console.log(chalk.red(
+    `\n[vuepress] @vuepress/cli ` +
+    `requires @vuepress/core to be installed.\n`
+  ))
+  process.exit(1)
+}
+
+const pkg = require('@vuepress/core/package.json')
+const requiredVersion = pkg.engines.node
 
 if (!semver.satisfies(process.version, requiredVersion)) {
   console.log(chalk.red(
@@ -14,12 +24,12 @@ if (!semver.satisfies(process.version, requiredVersion)) {
 }
 
 const path = require('path')
-const { dev, build, eject } = require('../lib')
+const { dev, build, eject } = require('@vuepress/core')
 
 const program = require('commander')
 
 program
-  .version(require('../package.json').version)
+  .version(pkg.version)
   .usage('<command> [options]')
 
 program
@@ -94,17 +104,19 @@ enhanceErrorMessages('optionMissingArgument', (option, flag) => {
   )
 })
 
-program.parse(process.argv)
-
-if (!process.argv.slice(2).length) {
-  program.outputHelp()
-}
-
 function wrapCommand (fn) {
   return (...args) => {
     return fn(...args).catch(err => {
       console.error(chalk.red(err.stack))
       process.exitCode = 1
     })
+  }
+}
+
+exports.program = program
+exports.bootstrap = function () {
+  program.parse(process.argv)
+  if (!process.argv.slice(2).length) {
+    program.outputHelp()
   }
 }
