@@ -1,6 +1,7 @@
 const path = require('path')
 const themePlugin = require('./plugin')
 const activeHeaderLinksPlugin = require('@vuepress/plugin-active-header-links')
+const googleAnalyticsPlugin = require('@vuepress/plugin-google-analytics')
 
 // Theme API.
 module.exports = {
@@ -8,6 +9,7 @@ module.exports = {
   notFound: path.resolve(__dirname, 'src/NotFound.vue'),
   plugins: [
     themePlugin,
-    activeHeaderLinksPlugin
+    activeHeaderLinksPlugin,
+    googleAnalyticsPlugin
   ]
 }
