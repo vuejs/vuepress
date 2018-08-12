@@ -37,7 +37,7 @@ A plugin module should use `CommonJS` instead of ES6's `export default` because 
 
 ## Using a plugin
 
-You can use plugins by do some configuration at `.vuepress/config.js`:
+You can use plugins by doing some configuration at `.vuepress/config.js`:
 
 ``` js
 module.exports = {
@@ -47,7 +47,59 @@ module.exports = {
 }
 ```
 
-When you want to pass in some options to it:
+### Use plugins from a dependency
+
+A plugin can be published on npm in `CommonJS` format as `vuepress-plugin-xxx`. then you can use it:
+
+``` js
+module.exports = {
+  plugins: [ 'vuepress-plugin-xx' ]
+}
+```
+
+### Plugin Shorthand
+
+If you prefix the plugin with `vuepress-plugin-`, you can use a shorthand to leave out that prefix:
+
+``` js
+module.exports = {
+  plugins: [ 'xxx' ]
+}
+```
+
+Same with:
+
+``` js
+module.exports = {
+  plugins: [ 'vuepress-plugin-xxx' ]
+}
+```
+
+This also works with [Scoped Packages](https://docs.npmjs.com/misc/scope):
+
+``` js
+module.exports = {
+  plugins: [ '@org/plugin-xxx' ]
+}
+```
+
+Shorthand:
+
+``` js
+module.exports = {
+  plugins: [ '@org/xxx' ]
+}
+```
+
+::: warning Note
+The plugin whose name starts with `@vuepress/plugin-` is an officially maintained plugin.
+:::
+
+### Plugin options
+
+#### Babel Style
+
+Plugins can have options specified by wrapping the name and an options object in an array inside your config:
 
 ``` js
 module.exports = {
@@ -60,18 +112,43 @@ module.exports = {
 }
 ```
 
-### Use plugins from npm
+Since this style is consistent with [babel's Plugin/Preset Options](https://babeljs.io/docs/en/plugins#plugin-preset-options), we call it `Babel Style`.
 
-A plugin should be published on npm in `CommonJS` format as `vuepress-plugin-xxx` or `@vuepress/plugin-xxx`. Then you can use it like this:
+#### Object Style
+
+VuePress also provides a simpler way to use plugins from a dependency:
 
 ``` js
 module.exports = {
-  plugins: [ 'xxx' /* also can be full name. */ ]
+  plugins: {
+    'xxx': { /* options */ }    
+  }
 }
 ```
 
-::: tip
-The plugin whose name starts with `@vuepress/plugin-` is the official plugin.
+::: warning Note
+The plugin will be disabled when you explicitly pass a false.
+
+- babel style
+
+``` js
+module.exports = {
+  plugins: [ 
+    [ 'xxx', false ] // disabled.
+  ]
+}
+```
+
+- object style
+
+``` js
+module.exports = {
+  plugins: {
+    'xxx': false // disabled.
+  }
+}
+```
+
 :::
 
 ## Options
