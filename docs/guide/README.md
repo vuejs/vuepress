@@ -30,6 +30,7 @@ Each markdown file is compiled into HTML with [markdown-it](https://github.com/m
   - [Algolia Search](../default-theme-config/README.md#algolia-search)
   - Customizable [navbar](../default-theme-config/README.md#navbar) and [sidebar](../default-theme-config/README.md#sidebar)
   - [Auto-generated GitHub link and page edit links](../default-theme-config/README.md#git-repo-and-edit-links)
+- Export site to PDF file
 
 ## Todo
 

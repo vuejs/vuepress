@@ -26,6 +26,7 @@ VuePress 由两部分组成：一部分是支持用 Vue 开发主题的极简静
   - [Algolia 搜索](../default-theme-config/README.md#algolia-搜索)
   - 可自定义的[导航栏](../default-theme-config/README.md#导航栏) 和[侧边栏](../default-theme-config/README.md#侧边栏)
   - [自动生成的 GitHub 链接和页面的编辑链接](../default-theme-config/README.md#git-仓库和编辑链接)
+- 导出站点为 PDF 文件
 
 ## Todo
 
