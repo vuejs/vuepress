@@ -12,6 +12,7 @@ const EXTEND_MARKDOWN = 'extendMarkdown'
 const CLIENT_DYNAMIC_MODULES = 'clientDynamicModules'
 const CLIENT_ROOT_MIXIN = 'clientRootMixin'
 const ADDITIONAL_PAGES = 'additionalPages'
+const GLOBAL_UI_COMPONENTS = 'globalUIComponents'
 
 const HOOK = {
   READY,
@@ -29,7 +30,8 @@ const OPTION = {
   EXTEND_MARKDOWN,
   CLIENT_DYNAMIC_MODULES,
   CLIENT_ROOT_MIXIN,
-  ADDITIONAL_PAGES
+  ADDITIONAL_PAGES,
+  GLOBAL_UI_COMPONENTS
 }
 
 exports.HOOK = HOOK

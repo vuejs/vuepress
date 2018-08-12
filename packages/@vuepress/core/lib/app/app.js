@@ -4,6 +4,7 @@ import dataMixin from './dataMixin'
 import { routes } from '@temp/routes'
 import { siteData } from '@temp/siteData'
 import appEnhancers from '@temp/app-enhancers.js'
+import globalUIComponents from '@dynamic/global-ui.js'
 
 // generated from user config
 import('@temp/style.styl')
@@ -96,7 +97,8 @@ export function createApp () {
       router,
       render (h) {
         return h('div', { attrs: { id: 'app' }}, [
-          h('router-view', { ref: 'layout' })
+          h('router-view', { ref: 'layout' }),
+          h('div', { class: 'global-ui' }, globalUIComponents.map(component => h(component)))
         ])
       }
     })

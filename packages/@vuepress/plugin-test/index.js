@@ -11,6 +11,12 @@ class SimpleLogPlugin {
 module.exports = (options, context) => ({
   name: 'test',
 
+  // TODO
+  // globalComponents: ['BackTIoTop'],
+
+  // Usually used to construct a global UI, e.g. back to top.
+  globalUIComponents: ['BackToTop'],
+
   clientRootMixin: path.resolve(__dirname, 'mixin.js'),
 
   async ready () {
@@ -23,10 +29,13 @@ module.exports = (options, context) => ({
     }
   },
 
-  enhanceAppFiles: [{
-    name: 'dynamic-code',
-    content: `export default ({ Vue }) => { Vue.prototype.$sourceDir = () => '${context.sourceDir}' }`
-  }],
+  enhanceAppFiles: [
+    path.resolve(__dirname, 'enhanceApp.js'),
+    {
+      name: 'dynamic-code',
+      content: `export default ({ Vue }) => { Vue.prototype.$sourceDir = () => '${context.sourceDir}' }`
+    }
+  ],
 
   chainWebpack (config, isServer) {
     if (isServer) {

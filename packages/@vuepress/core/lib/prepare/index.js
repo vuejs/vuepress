@@ -33,6 +33,7 @@ module.exports = async function prepare ({
   // 4. apply plugin options to extend markdown.
   plugin.options.extendMarkdown.run(markdown)
   plugin.options.clientDynamicModules.run()
+  plugin.options.globalUIComponents.run()
 
   // 5. generate routes code
   const routesCode = await genRoutesFile(options)

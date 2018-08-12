@@ -102,7 +102,8 @@ module.exports = class Plugin {
     generated,
     clientDynamicModules,
     clientRootMixin,
-    additionalPages
+    additionalPages,
+    globalUIComponents
   }) {
     logger.tip(`\nApply plugin ${chalk.gray(name)}...`)
 
@@ -122,5 +123,6 @@ module.exports = class Plugin {
       .registerOption(OPTION.CLIENT_DYNAMIC_MODULES, clientDynamicModules, name, [Function])
       .registerOption(OPTION.CLIENT_ROOT_MIXIN, clientRootMixin, name, [String])
       .registerOption(OPTION.ADDITIONAL_PAGES, additionalPages, name, [Function, Array])
+      .registerOption(OPTION.GLOBAL_UI_COMPONENTS, globalUIComponents, name, [String, Array])
   }
 }

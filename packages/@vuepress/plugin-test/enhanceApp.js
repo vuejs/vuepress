@@ -1,3 +1,5 @@
+import BackToTop from './BackToTop'
+
 export default function ({ Vue }) {
-  console.warn('[vuepress-plugin-test] enhancing !!!')
+  Vue.component('BackToTop', BackToTop)
 }

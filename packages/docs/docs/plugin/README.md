@@ -277,7 +277,6 @@ module.exports = {
 ```
 
 ``` js
-
 module.exports = {
   additionalPages () {
     return [
@@ -288,7 +287,35 @@ module.exports = {
     ]
   }
 }
-````
+```
+
+### globalUIComponents
+
+- Type: `Array|String`
+- Default: `undefined`
+
+You might want to inject some global UI fixed somewhere on the page, e.g. `back-to-top`, `popup`. In VuePress, **a global UI is a Vue component**, you can define the component's name(s) in the plugin, e.g.
+
+``` js
+module.exports = {
+  globalUIComponents: [
+    'Component-1',
+    'Component-2'
+  ]
+}
+```
+
+Then, VuePress will automatically inject these components behind the theme container:
+
+```html
+<div id="app">
+  <div class="theme-container"> ... </div>
+  <div class="global-ui">
+    <Component-1/>
+    <Component-2/>
+</div>
+</div>
+```
 
 ## Plugin Context
 
