@@ -10,6 +10,6 @@ module.exports = {
 }
 ```
 
-## Plugin Options
+## Options
 
 No options for now.

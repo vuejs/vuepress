@@ -4,7 +4,9 @@
 
 > Note that this plugin has been included in the core.
 
-## transformer
+## Options
+
+### transformer
 
 - Type: `function`
 - Default: `undefined`
