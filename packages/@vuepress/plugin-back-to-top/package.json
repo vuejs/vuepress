@@ -1,0 +1,28 @@
+{
+  "name": "@vuepress/plugin-back-to-top",
+  "version": "1.0.0",
+  "description": "back-to-top plugin for vuepress",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuejs/vuepress.git"
+  },
+  "keywords": [
+    "documentation",
+    "vue",
+    "vuepress",
+    "generator"
+  ],
+  "author": "Evan You",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vuejs/vuepress/issues"
+  },
+  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/back-to-top#readme",
+  "dependencies": {
+    "lodash.debounce": "^4.0.8"
+  }
+}

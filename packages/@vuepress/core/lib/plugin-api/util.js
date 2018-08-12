@@ -17,9 +17,9 @@ exports.resolvePlugin = function (pluginRaw) {
           ? pluginRaw
           : `@vuepress/plugin-${pluginRaw}`
         )
-      } catch (e) {
+      } catch (err2) {
         console.error(chalk.red(logger.error(`\n[vuepress] Cannot resolve plugin: ${pluginRaw}\n`, false)))
-        throw new Error(err)
+        throw new Error(err2)
       }
     }
   }
