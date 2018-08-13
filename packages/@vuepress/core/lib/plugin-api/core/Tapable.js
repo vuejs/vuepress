@@ -5,7 +5,7 @@ module.exports = class Tapable {
   }
 
   /**
-   * set value with name.
+   * Set value with name.
    * @param {string} name
    * @param {any} value
    */
@@ -17,7 +17,7 @@ module.exports = class Tapable {
   }
 
   /**
-   * get values.
+   * Get values.
    * @returns {Array<T>}
    */
   get values () {
@@ -25,7 +25,7 @@ module.exports = class Tapable {
   }
 
   /**
-   * execute in serial
+   * When T is function, eecute all functions in serial
    * @param args
    * @returns {Promise.<void>}
    */
@@ -36,7 +36,7 @@ module.exports = class Tapable {
   }
 
   /**
-   * execute in parallel
+   * When T is function, eecute all functions in parallel
    * @param args
    * @returns {Promise.<void>}
    */

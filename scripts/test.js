@@ -12,8 +12,6 @@ if (args.p) {
   rawArgs.splice(i, 2)
 }
 
-console.log(regex)
-
 ;(async () => {
   const jestArgs = [
     '--env', 'node',
