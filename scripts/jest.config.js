@@ -11,6 +11,10 @@ module.exports = {
     'js',
     'vue'
   ],
+  testPathIgnorePatterns: [
+    'test.js',
+    path.resolve(__dirname, '../test')
+  ],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/lib/$1'
   },

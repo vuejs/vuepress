@@ -17,7 +17,7 @@
     "lint": "eslint --fix packages/**/*.js packages/**/*.vue packages/**/bin/*",
     "prepublishOnly": "conventional-changelog -p angular -r 2 -i CHANGELOG.md -s",
     "release": "/bin/bash scripts/release.sh",
-    "test": "node test/prepare.js && jest --config test/jest.config.js"
+    "test": "node scripts/test.js"
   },
   "repository": {
     "type": "git",
@@ -51,12 +51,13 @@
     "eslint": "^4.19.1",
     "eslint-plugin-jest": "^21.15.1",
     "eslint-plugin-vue-libs": "^3.0.0",
+    "execa": "^0.10.0",
     "jest": "^23.0.0",
     "jest-serializer-vue": "^1.0.0",
     "lerna": "^2.11.0",
     "lint-staged": "^7.0.4",
+    "minimist": "^1.2.0",
     "vue-jest": "^2.6.0",
-    "vuepress-theme-vue": "^1.1.0",
     "yorkie": "^1.0.3"
   },
   "engines": {
