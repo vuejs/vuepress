@@ -6998,9 +6998,9 @@ regexpu-core@^4.1.3, regexpu-core@^4.1.4:
     unicode-match-property-ecmascript "^1.0.4"
     unicode-match-property-value-ecmascript "^1.0.2"
 
-register-service-worker@^1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/register-service-worker/-/register-service-worker-1.4.1.tgz#4b4c9b4200fc697942c6ae7d611349587b992b2f"
+register-service-worker@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/register-service-worker/-/register-service-worker-1.5.1.tgz#4f91d8915f6019b083433b83ffe4bfd6f976f342"
 
 registry-auth-token@^3.0.1:
   version "3.3.2"
