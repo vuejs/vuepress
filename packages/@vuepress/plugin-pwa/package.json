@@ -1,0 +1,28 @@
+{
+  "name": "@vuepress/plugin-pwa",
+  "version": "1.0.0",
+  "description": "pwa plugin for vuepress",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuejs/vuepress.git"
+  },
+  "keywords": [
+    "documentation",
+    "vue",
+    "vuepress",
+    "generator"
+  ],
+  "dependencies": {
+    "register-service-worker": "^1.4.1"
+  },
+  "author": "Evan You",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vuejs/vuepress/issues"
+  },
+  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/plugin-pwa#readme"
+}

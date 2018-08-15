@@ -277,8 +277,6 @@ module.exports = function createBaseConfig ({
   config
     .plugin('injections')
     .use(require('webpack/lib/DefinePlugin'), [{
-      BASE_URL: JSON.stringify(siteConfig.base || '/'),
-      SW_ENABLED: !!siteConfig.serviceWorker,
       VUEPRESS_VERSION: JSON.stringify(require('../../package.json').version),
       LAST_COMMIT_HASH: JSON.stringify(getLastCommitHash())
     }])

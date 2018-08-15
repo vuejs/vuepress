@@ -23,7 +23,6 @@ module.exports = {
     ['meta', { name: 'msapplication-TileImage', content: '/icons/msapplication-icon-144x144.png' }],
     ['meta', { name: 'msapplication-TileColor', content: '#000000' }]
   ],
-  serviceWorker: true,
   themeConfig: {
     repo: 'vuejs/vuepress',
     editLinks: true,
@@ -39,12 +38,6 @@ module.exports = {
         selectText: 'Languages',
         editLinkText: 'Edit this page on GitHub',
         lastUpdated: 'Last Updated',
-        serviceWorker: {
-          updatePopup: {
-            message: "New content is available.",
-            buttonText: "Refresh"
-          }
-        },
         nav: [
           {
             text: 'Guide',
@@ -80,12 +73,6 @@ module.exports = {
         selectText: '选择语言',
         editLinkText: '在 GitHub 上编辑此页',
         lastUpdated: '上次更新',
-        serviceWorker: {
-          updatePopup: {
-            message: "发现新内容可用",
-            buttonText: "刷新"
-          }
-        },
         nav: [
           {
             text: '指南',
@@ -111,7 +98,21 @@ module.exports = {
     }
   },
   plugins: {
-    '@vuepress/back-to-top': true
+    '@vuepress/back-to-top': true,
+    '@vuepress/pwa': {
+      serviceWorker: true,
+      updatePopup: {
+        // It will don't depends on the VuePress i18n implementation
+        '/': {
+          message: "New content is available.",
+          buttonText: "Refresh"
+        },
+        '/zh/': {
+          message: "发现新内容可用",
+          buttonText: "刷新"
+        }
+      }
+    }
   }
 }
 

@@ -72,7 +72,6 @@
     "portfinder": "^1.0.13",
     "postcss-loader": "^2.1.5",
     "prismjs": "^1.13.0",
-    "register-service-worker": "^1.4.1",
     "toml": "^2.3.3",
     "url-loader": "^1.0.1",
     "vue": "^2.5.16",

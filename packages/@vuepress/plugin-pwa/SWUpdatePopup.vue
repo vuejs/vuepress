@@ -4,19 +4,26 @@
       v-if="enabled"
       class="sw-update-popup"
     >
-      {{message}}<br>
-      <button @click="reload">{{buttonText}}</button>
+      {{ message }}<br>
+      <button @click="reload">{{ buttonText }}</button>
     </div>
   </transition>
 </template>
 
 <script>
+/* global SW_UPDATE_POPUP */
+import event from './event'
+
 export default {
-  props: {
-    updateEvent: {
-      type: Object,
-      default: null
+  data () {
+    return {
+      config: SW_UPDATE_POPUP,
+      updateEvent: null
     }
+  },
+
+  created () {
+    event.$on('sw-updated', this.onSWUpdated)
   },
 
   computed: {
@@ -46,6 +53,10 @@ export default {
   },
 
   methods: {
+    onSWUpdated (e) {
+      this.updateEvent = e
+    },
+
     reload () {
       if (this.updateEvent) {
         this.updateEvent.skipWaiting().then(() => {
@@ -59,7 +70,7 @@ export default {
 </script>
 
 <style lang="stylus">
-@import './styles/config.styl'
+@import '../theme-default/src/styles/config.styl'
 
 .sw-update-popup
   position fixed
