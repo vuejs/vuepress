@@ -75,7 +75,11 @@ module.exports = class Plugin {
     additionalPages,
     globalUIComponents
   }) {
-    logger.tip(`\nApply plugin ${chalk.gray(pluginName)}...`)
+    if (shortcut) {
+      logger.tip(`\nApply plugin ${chalk.magenta(shortcut)} ${chalk.gray(`(i.e. "${pluginName}")`)} ...`)
+    } else {
+      logger.tip(`\nApply plugin ${chalk.magenta(pluginName)} ...`)
+    }
 
     this
       .registerOption(PLUGIN_OPTION_MAP.READY.key, ready, pluginName)

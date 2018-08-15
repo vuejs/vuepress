@@ -25,9 +25,11 @@ exports.resolvePlugin = function (pluginRaw) {
   let name
   let config
   let shortcut
+  let isLocal = false
   if (typeof pluginRaw === 'function' || typeof pluginRaw === 'object') {
     config = pluginRaw
     name = shortcut = pluginRaw.name || `anonymous-${++anonymousPluginIdx}`
+    isLocal = true
   } else if (typeof pluginRaw === 'string') {
     try {
       shortcut = pluginRaw.startsWith('vuepress-plugin-') ? pluginRaw.slice(16) : pluginRaw
@@ -58,7 +60,7 @@ exports.resolvePlugin = function (pluginRaw) {
       }
     }
   }
-  return { config, name, shortcut }
+  return { config, name, shortcut, isLocal }
 }
 
 /**
@@ -69,7 +71,7 @@ exports.resolvePlugin = function (pluginRaw) {
  * @param {Object} pluginOptions
  * @param {Object} pluginContext
  */
-exports.hydratePlugin = function ({ config, name, shortcut }, pluginOptions, pluginContext) {
+exports.hydratePlugin = function ({ config, name, shortcut, isLocal }, pluginOptions, pluginContext) {
   const { valid, warnMsg } = assertTypes(pluginOptions, [Object, Boolean])
   if (!valid) {
     logger.warn(
@@ -88,7 +90,13 @@ exports.hydratePlugin = function ({ config, name, shortcut }, pluginOptions, plu
     // but also own the inheritance context.
     config = config(pluginOptions, Object.create(pluginContext))
   }
-  return Object.assign(config, { name, shortcut, enabled })
+  // respect name in local plugin config
+  name = isLocal && config.name || name
+  return Object.assign(config, {
+    name,
+    shortcut: isLocal ? null : shortcut,
+    enabled
+  })
 }
 
 /**
