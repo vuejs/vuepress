@@ -1,8 +1,6 @@
 const path = require('path')
 
 module.exports = (options = {}, context) => ({
-  name: 'google-analytics',
-
   ready () {
     const { siteConfig = {}} = context
     const ga = options.ga || siteConfig.ga
