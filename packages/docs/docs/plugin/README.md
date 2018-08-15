@@ -8,10 +8,10 @@ sidebar: auto
 
 Plugins usually add global-level functionality to VuePress. There is no strictly defined scope for a plugin - there are typically several types of plugins you can write:
 
-1. Extend the data generated at compile time. e.g. `the last updated time of each file`.
+1. Extend the data generated at compile time. e.g. [@vuepress/plugin-last-updated](https://github.com/vuejs/vuepress/tree/next/packages/@vuepress/plugin-last-updated).
 2. Generate extra files before or after compilation. e.g. `PWA support`.
-3. Add extra pages. e.g. [@vuepress/plugin-i18n-ui](https://github.com/vuejs/vuepress/tree/next/packages/%40vuepress/plugin-i18n-ui)
-4. Inject global UI. e.g. `back to top`.
+3. Add extra pages. e.g. [@vuepress/plugin-i18n-ui](https://github.com/vuejs/vuepress/tree/next/packages/@vuepress/plugin-i18n-ui)
+4. Inject global UI. e.g. [@vuepress/plugin-back-to-top](https://github.com/vuejs/vuepress/tree/next/packages/%40vuepress/plugin-back-to-top).
 
 A plugin should export a `plain object`(`#1`). If the plugin needs to take options, it can be a function that exports a plain object(`#2`). The function will be called with the plugin's options as the first argument, along with [plugin context](#plugin-context) which provides some compile-time context.
 
@@ -79,7 +79,7 @@ This also works with [Scoped Packages](https://docs.npmjs.com/misc/scope):
 
 ``` js
 module.exports = {
-  plugins: [ '@org/plugin-xxx' ]
+  plugins: [ '@org/vuepress-plugin-xxx', '@vuepress/plugin-xxx' ]
 }
 ```
 
@@ -87,7 +87,7 @@ Shorthand:
 
 ``` js
 module.exports = {
-  plugins: [ '@org/xxx' ]
+  plugins: [ '@org/xxx', '@vuepress/xxx' ]
 }
 ```
 
