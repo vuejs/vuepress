@@ -25,7 +25,7 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
   // setup watchers to update options and dynamically generated files
   const update = () => {
     options.plugin.options.updated.run()
-    prepare(sourceDir).catch(err => {
+    prepare({ sourceDir, cliOptions, isProd: false }).catch(err => {
       console.error(logger.error(chalk.red(err.stack), false))
     })
   }
