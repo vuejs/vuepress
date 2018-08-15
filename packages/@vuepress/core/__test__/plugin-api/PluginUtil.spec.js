@@ -29,8 +29,18 @@ describe('resolvePlugin', () => {
   test('shoould resolve local plugin as expected.', () => {
     const plugin1 = () => {}
     const plugin2 = {}
-    expect(resolvePlugin(plugin1)).toEqual({ name: 'plugin1', shortcut: 'plugin1', config: plugin1 })
-    expect(resolvePlugin(plugin2)).toEqual({ name: 'anonymous-1', shortcut: 'anonymous-1', config: plugin2 })
+    expect(resolvePlugin(plugin1)).toEqual({
+      name: 'plugin1',
+      shortcut: 'plugin1',
+      config: plugin1,
+      isLocal: true
+    })
+    expect(resolvePlugin(plugin2)).toEqual({
+      name: 'anonymous-1',
+      shortcut: 'anonymous-1',
+      config: plugin2,
+      isLocal: true
+    })
   })
 
   test('shoould resolve fullname usage correctly.', () => {
@@ -66,7 +76,7 @@ describe('resolvePlugin', () => {
   })
 
   test('shoould return null when plugin cannot be resolved.', () => {
-    expect(resolvePlugin('c')).toEqual({ name: 'c', shortcut: 'c', config: null })
+    expect(resolvePlugin('c')).toEqual({ name: 'c', shortcut: 'c', config: null, isLocal: false })
   })
 })
 
@@ -100,6 +110,16 @@ describe('hydratePlugin', () => {
     expect(hydratedPlugin.enhanceAppFiles).toBe('file')
     expect(config.mock.calls).toHaveLength(1)
     expect(config.mock.calls[0][0]).toBe(pluginOptions)
+    expect(Object.getPrototypeOf(config.mock.calls[0][1])).toBe(pluginContext)
+  })
+
+  test('shoould hydrate functional plugin correctly - options defaults to \'{}\'.', () => {
+    const config = jest.fn(() => ({ enhanceAppFiles: 'file' }))
+    const plugin = { name: 'a', shortcut: 'a', config }
+    const pluginOptions = undefined
+    const pluginContext = {}
+    hydratePlugin(plugin, pluginOptions, pluginContext)
+    expect(config.mock.calls[0][0]).toEqual({})
     expect(Object.getPrototypeOf(config.mock.calls[0][1])).toBe(pluginContext)
   })
 })

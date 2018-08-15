@@ -72,12 +72,15 @@ exports.resolvePlugin = function (pluginRaw) {
  * @param {Object} pluginContext
  */
 exports.hydratePlugin = function ({ config, name, shortcut, isLocal }, pluginOptions, pluginContext) {
+  console.log(pluginOptions)
   const { valid, warnMsg } = assertTypes(pluginOptions, [Object, Boolean])
   if (!valid) {
-    logger.warn(
-      `[${chalk.gray(shortcut)}] ` +
-      `Invalid value for "pluginOptions" ${chalk.cyan(name)}: ${warnMsg}`
-    )
+    if (pluginOptions !== undefined) {
+      logger.warn(
+        `[${chalk.gray(shortcut)}] ` +
+        `Invalid value for "pluginOptions" ${chalk.cyan(name)}: ${warnMsg}`
+      )
+    }
     pluginOptions = {}
   }
   let enabled = true

@@ -11,6 +11,10 @@ class PluginContext {
     })
   }
 
+  get base () {
+    return this._options.siteConfig.base
+  }
+
   get isProd () {
     return this._options.isProd
   }
