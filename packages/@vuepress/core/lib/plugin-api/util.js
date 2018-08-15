@@ -72,7 +72,6 @@ exports.resolvePlugin = function (pluginRaw) {
  * @param {Object} pluginContext
  */
 exports.hydratePlugin = function ({ config, name, shortcut, isLocal }, pluginOptions, pluginContext) {
-  console.log(pluginOptions)
   const { valid, warnMsg } = assertTypes(pluginOptions, [Object, Boolean])
   if (!valid) {
     if (pluginOptions !== undefined) {
