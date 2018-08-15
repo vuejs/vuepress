@@ -1,1 +1,1 @@
-module.exports = 'vuepress-plugin-b'
+module.exports = {}

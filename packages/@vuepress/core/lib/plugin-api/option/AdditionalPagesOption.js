@@ -1,6 +1,6 @@
-const Tapable = require('../core/Tapable')
+const Option = require('../Option')
 
-module.exports = class AdditionalPagesOption extends Tapable {
+module.exports = class AdditionalPagesOption extends Option {
   tap (pluginName, value) {
     if (typeof value === 'function') {
       value = value()

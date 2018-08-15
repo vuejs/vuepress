@@ -15,7 +15,7 @@ module.exports = (options, context) => ({
   // globalComponents: ['BackTIoTop'],
 
   // Usually used to construct a global UI, e.g. back to top.
-  globalUIComponents: ['BackToTop'],
+  // globalUIComponents: ['BackToTop'],
 
   clientRootMixin: path.resolve(__dirname, 'mixin.js'),
 

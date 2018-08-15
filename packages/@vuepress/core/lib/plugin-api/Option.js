@@ -1,4 +1,4 @@
-module.exports = class Tapable {
+module.exports = class Option {
   constructor (key) {
     this.key = key
     this.items = [] // Array<{ value: T, name: string }>

@@ -1,33 +1,24 @@
 const chalk = require('chalk')
-const Hook = require('./core/Hook')
-const instantiateAPI = require('./option/instantiateOption')
 const logger = require('../util/logger')
-const { resolvePlugin, inferPluginName } = require('./util')
+const instantiateOption = require('./option/instantiateOption')
+const { resolvePlugin, hydratePlugin, normalizePluginsConfig } = require('./util')
 const { assertTypes } = require('../util/shared')
-const { HOOK, OPTION } = require('./constants')
+const { PLUGIN_OPTION_MAP } = require('./constants')
 
 module.exports = class Plugin {
   constructor (context) {
-    this.hooks = {}
     this.options = {}
     this._pluginContext = context
-    this.extendHooks(Object.values(HOOK))
-    this.extendOptions(Object.values(OPTION))
+    this.initializeOptions(PLUGIN_OPTION_MAP)
   }
 
-  use (pluginRaw, pluginOptions) {
+  use (pluginRaw, pluginOptions = {}) {
     let plugin = resolvePlugin(pluginRaw)
-    if (typeof plugin === 'function') {
-      // 'Object.create' here is to give each plugin a separate context,
-      // but also own the inheritance context.
-      plugin = plugin(pluginOptions, Object.create(this._pluginContext))
+    if (!plugin.config) {
+      console.warn(`[vuepress] cannot resolve plugin "${pluginRaw}"`)
+      return
     }
-
-    plugin = Object.assign({
-      enabled: true,
-      name: inferPluginName(pluginRaw, plugin)
-    }, plugin)
-
+    plugin = hydratePlugin(plugin, pluginOptions, this._pluginContext)
     if (plugin.enabled) {
       this.applyPlugin(plugin)
     } else {
@@ -36,60 +27,39 @@ module.exports = class Plugin {
     return this
   }
 
-  useByConfigs (pluginConfigs) {
-    if (!Array.isArray(pluginConfigs)) {
-      pluginConfigs = []
-    }
-    pluginConfigs.forEach(pluginConfigs => {
-      pluginConfigs = Array.isArray(pluginConfigs)
-        ? pluginConfigs
-        : [pluginConfigs]
-      const [pluginRaw, pluginOptions] = pluginConfigs
+  useByPluginsConfig (pluginsConfig) {
+    pluginsConfig = normalizePluginsConfig(pluginsConfig)
+    pluginsConfig.forEach(([pluginRaw, pluginOptions]) => {
       this.use(pluginRaw, pluginOptions)
     })
     return this
   }
 
-  extendHooks (hooks) {
-    hooks.forEach(hook => {
-      this.hooks[hook] = new Hook(hook)
+  initializeOptions () {
+    Object.keys(PLUGIN_OPTION_MAP).forEach(key => {
+      const option = PLUGIN_OPTION_MAP[key]
+      this.options[option.name] = instantiateOption(option.name)
     })
   }
 
-  extendOptions (options) {
-    options.forEach(api => {
-      this.options[api] = instantiateAPI(api)
-    })
-  }
-
-  registerHook (name, hook, pluginName, types) {
-    const { valid, warnMsg } = assertTypes(hook, types)
+  registerOption (key, value, pluginName) {
+    const option = PLUGIN_OPTION_MAP[key]
+    const types = option.types
+    const { valid, warnMsg } = assertTypes(value, types)
     if (valid) {
-      this.hooks[name].tap(pluginName, hook)
-    } else if (hook !== undefined) {
+      this.options[option.name].tap(pluginName, value)
+    } else if (value !== undefined) {
       logger.warn(
         `${chalk.gray(`[vuepress-plugin-${pluginName}]`)} ` +
-        `Invalid value for "hook" ${chalk.cyan(name)}: ${warnMsg}`
-      )
-    }
-    return this
-  }
-
-  registerOption (name, api, pluginName, types) {
-    const { valid, warnMsg } = assertTypes(api, types)
-    if (valid) {
-      this.options[name].tap(pluginName, api)
-    } else if (api !== undefined) {
-      logger.warn(
-        `${chalk.gray(`[vuepress-plugin-${pluginName}]`)} ` +
-        `Invalid value for "option" ${chalk.cyan(name)}: ${warnMsg}`
+        `Invalid value for "option" ${chalk.cyan(option.name)}: ${warnMsg}`
       )
     }
     return this
   }
 
   applyPlugin ({
-    name,
+    name: pluginName,
+    shortcut,
     chainWebpack,
     enhanceDevServer,
     extendMarkdown,
@@ -105,24 +75,22 @@ module.exports = class Plugin {
     additionalPages,
     globalUIComponents
   }) {
-    logger.tip(`\nApply plugin ${chalk.gray(name)}...`)
+    logger.tip(`\nApply plugin ${chalk.gray(pluginName)}...`)
 
     this
-      .registerHook(HOOK.READY, ready, name, [Function])
-      .registerHook(HOOK.COMPILED, compiled, name, [Function])
-      .registerHook(HOOK.UPDATED, updated, name, [Function])
-      .registerHook(HOOK.GENERATED, generated, name, [Function])
-
-    this
-      .registerOption(OPTION.CHAIN_WEBPACK, chainWebpack, name, [Function])
-      .registerOption(OPTION.ENHANCE_DEV_SERVER, enhanceDevServer, name, [Function])
-      .registerOption(OPTION.EXTEND_MARKDOWN, extendMarkdown, name, [Function])
-      .registerOption(OPTION.EXTEND_PAGE_DATA, extendPageData, name, [Function])
-      .registerOption(OPTION.ENHANCE_APP_FILES, enhanceAppFiles, name, [Array, Function])
-      .registerOption(OPTION.OUT_FILES, outFiles, name, [Object])
-      .registerOption(OPTION.CLIENT_DYNAMIC_MODULES, clientDynamicModules, name, [Function])
-      .registerOption(OPTION.CLIENT_ROOT_MIXIN, clientRootMixin, name, [String])
-      .registerOption(OPTION.ADDITIONAL_PAGES, additionalPages, name, [Function, Array])
-      .registerOption(OPTION.GLOBAL_UI_COMPONENTS, globalUIComponents, name, [String, Array])
+      .registerOption(PLUGIN_OPTION_MAP.READY.key, ready, pluginName)
+      .registerOption(PLUGIN_OPTION_MAP.COMPILED.key, compiled, pluginName)
+      .registerOption(PLUGIN_OPTION_MAP.UPDATED.key, updated, pluginName)
+      .registerOption(PLUGIN_OPTION_MAP.GENERATED.key, generated, pluginName)
+      .registerOption(PLUGIN_OPTION_MAP.CHAIN_WEBPACK.key, chainWebpack, pluginName)
+      .registerOption(PLUGIN_OPTION_MAP.ENHANCE_DEV_SERVER.key, enhanceDevServer, pluginName)
+      .registerOption(PLUGIN_OPTION_MAP.EXTEND_MARKDOWN.key, extendMarkdown, pluginName)
+      .registerOption(PLUGIN_OPTION_MAP.EXTEND_PAGE_DATA.key, extendPageData, pluginName)
+      .registerOption(PLUGIN_OPTION_MAP.ENHANCE_APP_FILES.key, enhanceAppFiles, pluginName)
+      .registerOption(PLUGIN_OPTION_MAP.OUT_FILES.key, outFiles, pluginName)
+      .registerOption(PLUGIN_OPTION_MAP.CLIENT_DYNAMIC_MODULES.key, clientDynamicModules, pluginName)
+      .registerOption(PLUGIN_OPTION_MAP.CLIENT_ROOT_MIXIN.key, clientRootMixin, pluginName)
+      .registerOption(PLUGIN_OPTION_MAP.ADDITIONAL_PAGES.key, additionalPages, pluginName)
+      .registerOption(PLUGIN_OPTION_MAP.GLOBAL_UI_COMPONENTS.key, globalUIComponents, pluginName)
   }
 }

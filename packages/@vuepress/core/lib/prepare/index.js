@@ -21,6 +21,7 @@ module.exports = async function prepare ({
   // 2. resolve plugin
   const plugin = resolvePlugin(options)
   options.plugin = plugin
+  const pluginOptions = plugin.options
 
   // 3. resolve siteData
   // SiteData must be resolved after the plugin initialization
@@ -28,12 +29,12 @@ module.exports = async function prepare ({
   options.siteData = await resolveSiteData(options)
   Object.freeze(options)
 
-  await plugin.hooks.ready.run()
+  await pluginOptions.ready.run()
 
   // 4. apply plugin options to extend markdown.
-  plugin.options.extendMarkdown.run(markdown)
-  plugin.options.clientDynamicModules.run()
-  plugin.options.globalUIComponents.run()
+  pluginOptions.extendMarkdown.run(markdown)
+  pluginOptions.clientDynamicModules.run()
+  pluginOptions.globalUIComponents.run()
 
   // 5. generate routes code
   const routesCode = await genRoutesFile(options)
@@ -60,7 +61,7 @@ module.exports = async function prepare ({
     )
   }
 
-  await plugin.options.enhanceAppFiles.run()
+  await pluginOptions.enhanceAppFiles.run()
 
   return options
 }

@@ -24,7 +24,7 @@ module.exports = {
     ['meta', { name: 'msapplication-TileColor', content: '#000000' }]
   ],
   serviceWorker: true,
-  plugins: ['back-to-top'],
+  plugins: ['@vuepress/back-to-top'],
   themeConfig: {
     repo: 'vuejs/vuepress',
     editLinks: true,

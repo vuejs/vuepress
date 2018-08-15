@@ -3,26 +3,26 @@ const ExtendPageDataOption = require('./ExtendPageDataOption')
 const ClientDynamicModulesOption = require('./ClientDynamicModulesOption')
 const AdditionalPagesOption = require('./AdditionalPagesOption')
 const GlobalUIComponentsOption = require('./GlobalUIComponentsOption')
-const Tapable = require('../core/Tapable')
-const { OPTION } = require('../constants')
+const Option = require('../Option')
+const { PLUGIN_OPTION_MAP } = require('../constants')
 
 module.exports = function instantiateOption (name) {
   switch (name) {
-  case OPTION.ENHANCE_APP_FILES:
+  case PLUGIN_OPTION_MAP.ENHANCE_APP_FILES.name:
     return new EnhanceAppFilesOption(name)
 
-  case OPTION.EXTEND_PAGE_DATA:
+  case PLUGIN_OPTION_MAP.EXTEND_PAGE_DATA.name:
     return new ExtendPageDataOption(name)
 
-  case OPTION.CLIENT_DYNAMIC_MODULES:
+  case PLUGIN_OPTION_MAP.CLIENT_DYNAMIC_MODULES.name:
     return new ClientDynamicModulesOption(name)
 
-  case OPTION.ADDITIONAL_PAGES:
+  case PLUGIN_OPTION_MAP.ADDITIONAL_PAGES.name:
     return new AdditionalPagesOption(name)
 
-  case OPTION.GLOBAL_UI_COMPONENTS:
+  case PLUGIN_OPTION_MAP.GLOBAL_UI_COMPONENTS.name:
     return new GlobalUIComponentsOption(name)
 
-  default: return new Tapable(name)
+  default: return new Option(name)
   }
 }

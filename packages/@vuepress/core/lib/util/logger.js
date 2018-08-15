@@ -55,3 +55,4 @@ logger.debug = function (msg) {
 
 module.exports = logger
 module.exports.getLoggerFn = getLoggerFn
+module.exports.isDebug = isDebug

@@ -94,7 +94,7 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
     )
   }
 
-  await options.plugin.hooks.generated.run()
+  await options.plugin.options.generated.run()
 
   // DONE.
   const relativeDir = path.relative(process.cwd(), outDir)

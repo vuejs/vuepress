@@ -3,7 +3,7 @@
 require('@vuepress/cli').bootstrap({
   theme: 'default',
   plugins: [
-    'test',
-    'i18n-ui'
+    '@vuepress/test',
+    '@vuepress/i18n-ui'
   ]
 })

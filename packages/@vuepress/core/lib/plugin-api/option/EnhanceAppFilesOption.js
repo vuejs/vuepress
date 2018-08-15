@@ -1,11 +1,11 @@
 const fs = require('fs-extra')
 const chalk = require('chalk')
-const Tapable = require('../core/Tapable')
+const Option = require('../Option')
 const { writeTemp } = require('../../prepare/util')
 const { pathsToModuleCode } = require('../../prepare/codegen')
 const logger = require('../../util/logger')
 
-module.exports = class EnhanceAppFilesOption extends Tapable {
+module.exports = class EnhanceAppFilesOption extends Option {
   /**
    * In fact, we can quickly implement support for function parameters
    * by overriding 'tap', but 'tap' will be executed immediately

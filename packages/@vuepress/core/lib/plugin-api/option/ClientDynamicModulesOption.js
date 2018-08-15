@@ -1,7 +1,7 @@
-const Tapable = require('../core/Tapable')
+const Option = require('../Option')
 const { writeTemp } = require('../../prepare/util')
 
-module.exports = class ClientDynamicModulesOption extends Tapable {
+module.exports = class ClientDynamicModulesOption extends Option {
   async run () {
     for (const item of this.items) {
       const { value: fn, name: pluginName } = item

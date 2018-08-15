@@ -1,38 +1,28 @@
-const READY = 'ready'
-const COMPILED = 'compiled'
-const UPDATED = 'updated'
-const GENERATED = 'generated'
-
-const CHAIN_WEBPACK = 'chainWebpack'
-const ENHANCE_DEV_SERVER = 'enhanceDevServer'
-const ENHANCE_APP_FILES = 'enhanceAppFiles'
-const OUT_FILES = 'outFiles'
-const EXTEND_PAGE_DATA = 'extendPageData'
-const EXTEND_MARKDOWN = 'extendMarkdown'
-const CLIENT_DYNAMIC_MODULES = 'clientDynamicModules'
-const CLIENT_ROOT_MIXIN = 'clientRootMixin'
-const ADDITIONAL_PAGES = 'additionalPages'
-const GLOBAL_UI_COMPONENTS = 'globalUIComponents'
-
-const HOOK = {
-  READY,
-  COMPILED,
-  UPDATED,
-  GENERATED
+const PLUGIN_OPTION_META_MAP = {
+  // hooks
+  READY: { name: 'ready', types: [Function] },
+  COMPILED: { name: 'compiled', types: [Function] },
+  UPDATED: { name: 'updated', types: [Function] },
+  GENERATED: { name: 'generated', types: [Function] },
+  // options
+  CHAIN_WEBPACK: { name: 'chainWebpack', types: [Function] },
+  ENHANCE_DEV_SERVER: { name: 'enhanceDevServer', types: [Function] },
+  ENHANCE_APP_FILES: { name: 'enhanceAppFiles', types: [Array, Function] },
+  OUT_FILES: { name: 'outFiles', types: [Object] },
+  EXTEND_PAGE_DATA: { name: 'extendPageData', types: [Function] },
+  EXTEND_MARKDOWN: { name: 'extendMarkdown', types: [Function] },
+  CLIENT_DYNAMIC_MODULES: { name: 'clientDynamicModules', types: [Function] },
+  CLIENT_ROOT_MIXIN: { name: 'clientRootMixin', types: [String] },
+  ADDITIONAL_PAGES: { name: 'additionalPages', types: [Function, Array] },
+  GLOBAL_UI_COMPONENTS: { name: 'globalUIComponents', types: [String, Array] }
 }
 
-const OPTION = {
-  CHAIN_WEBPACK,
-  ENHANCE_DEV_SERVER,
-  ENHANCE_APP_FILES,
-  OUT_FILES,
-  EXTEND_PAGE_DATA,
-  EXTEND_MARKDOWN,
-  CLIENT_DYNAMIC_MODULES,
-  CLIENT_ROOT_MIXIN,
-  ADDITIONAL_PAGES,
-  GLOBAL_UI_COMPONENTS
-}
+const PLUGIN_OPTION_MAP = {}
+Object.keys(PLUGIN_OPTION_META_MAP).forEach(key => {
+  PLUGIN_OPTION_MAP[key] = Object.assign({ key }, PLUGIN_OPTION_META_MAP[key])
+})
 
-exports.HOOK = HOOK
-exports.OPTION = OPTION
+const OPTION_NAMES = Object.keys(PLUGIN_OPTION_META_MAP).map(key => PLUGIN_OPTION_META_MAP[key].name)
+
+exports.PLUGIN_OPTION_MAP = PLUGIN_OPTION_MAP
+exports.OPTION_NAMES = OPTION_NAMES

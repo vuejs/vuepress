@@ -13,9 +13,9 @@ module.exports = function (options) {
 
   plugin
     // user plugin
-    .useByConfigs(cliPlugins)
-    .useByConfigs(siteConfig.plugins)
-    .useByConfigs(themePlugins)
+    .useByPluginsConfig(cliPlugins)
+    .useByPluginsConfig(siteConfig.plugins)
+    .useByPluginsConfig(themePlugins)
     // built-in plugins
     .use(enhanceAppPlugin)
     .use(registerGlobalComponentsPlugin, {
