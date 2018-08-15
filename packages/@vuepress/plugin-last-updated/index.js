@@ -1,8 +1,6 @@
 const spawn = require('cross-spawn')
 
 module.exports = (options = {}, context) => ({
-  name: 'last-updated',
-
   extendPageData ({ filepath }) {
     const { transformer } = options
     const timestamp = getGitLastUpdatedTimeStamp(filepath)

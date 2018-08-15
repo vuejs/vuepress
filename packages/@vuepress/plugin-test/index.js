@@ -9,8 +9,6 @@ class SimpleLogPlugin {
 }
 
 module.exports = (options, context) => ({
-  name: 'test',
-
   // TODO
   // globalComponents: ['BackTIoTop'],
 

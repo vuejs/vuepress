@@ -16,8 +16,6 @@ async function resolveComponents (componentDir) {
 }
 
 module.exports = (options, context) => ({
-  name: 'register-global-components',
-
   async enhanceAppFiles () {
     const { componentsDir = [], components = [] } = options
     const baseDirs = Array.isArray(componentsDir) ? componentsDir : [componentsDir]

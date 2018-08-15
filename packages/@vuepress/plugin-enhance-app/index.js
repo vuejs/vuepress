@@ -1,8 +1,6 @@
 const path = require('path')
 
 module.exports = (options, context) => ({
-  name: 'enhance-app',
-
   enhanceAppFiles: () => {
     const { sourceDir, themePath } = context
     const enhanceAppPath = path.resolve(sourceDir, '.vuepress/enhanceApp.js')
