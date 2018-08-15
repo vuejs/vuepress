@@ -58,27 +58,32 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
-  // TODO use pure CSS so that it can be used not only in default theme.
-  $iconSize = 2rem
-  .go-to-top
-    cursor pointer
-    position fixed
-    bottom 2rem
-    right 2.5rem
-    width $iconSize
-    color lighten(#3eaf7c, 30%)
-    z-index 1
-    &:hover
-      color #3eaf7c
+<style scoped>
+.go-to-top {
+  cursor: pointer;
+  position: fixed;
+  bottom: 2rem;
+  right: 2.5rem;
+  width: 2rem;
+  color: #72cda4;
+  z-index: 1;
+}
 
-  @media (max-width: 959px)
-    .go-to-top
-      display none
+.go-to-top:hover {
+  color: #3eaf7c;
+}
 
-  .fade-enter-active, .fade-leave-active
-    transition opacity 0.3s
+@media (max-width: 959px) {
+  .go-to-top {
+    display: none;
+  }
+}
 
-  .fade-enter, .fade-leave-to
-    opacity 0
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.3s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
 </style>
