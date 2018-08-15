@@ -22,7 +22,7 @@ module.exports = class Plugin {
     if (plugin.enabled) {
       this.applyPlugin(plugin)
     } else {
-      logger.debug(`\n${chalk.gray(`[vuepress-plugin-${plugin.name}]`)} disabled.`)
+      logger.debug(`\n${chalk.gray(`[${plugin.name}]`)} disabled.`)
     }
     return this
   }

@@ -58,7 +58,7 @@ module.exports = class EnhanceAppFilesOption extends Option {
           )
         } else {
           logger.debug(
-            chalk.gray(`[vuepress-plugin-${pluginName}] `) +
+            chalk.gray(`[${pluginName}] `) +
             `${chalk.cyan(filepath)} Not Found.`
           )
         }
