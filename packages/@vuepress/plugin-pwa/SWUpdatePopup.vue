@@ -13,11 +13,12 @@
 <script>
 /* global SW_UPDATE_POPUP */
 import event from './event'
+import { normalizeConfig } from '@app/util'
 
 export default {
   data () {
     return {
-      config: SW_UPDATE_POPUP,
+      rawPopupConfig: SW_UPDATE_POPUP,
       updateEvent: null
     }
   },
@@ -28,13 +29,7 @@ export default {
 
   computed: {
     popupConfig () {
-      for (const config of [this.$themeLocaleConfig, this.$site.themeConfig]) {
-        const sw = config.serviceWorker
-        if (sw && sw.updatePopup) {
-          return typeof sw.updatePopup === 'object' ? sw.updatePopup : {}
-        }
-      }
-      return null
+      return normalizeConfig(this, this.rawPopupConfig)
     },
 
     enabled () {

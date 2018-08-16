@@ -13,6 +13,22 @@ If set to `true`, VuePress will automatically generate and register a service wo
 
 ### updatePopup
 
+- Type: `boolean|popupConfig`
+- Default: `undefined`
+
+```typescript
+interface normalPopupConfig {
+	message: string; // defaults to 'New content is available.'
+	buttonText: string; // defaults to 'Refresh'
+}
+
+interface localedPopupConfig {
+  [localePath: string]: normalPopupConfig
+}
+
+type popupConfig = normalPopupConfig | localedPopupConfig
+```
+
 This option enables the popup to refresh contents. The popup will be shown when the site is updated (i.e. service worker is updated). It provides `refresh` button to allow users to refresh contents immediately.
 
 > If without the `refresh` button, the new service worker will be active after all [clients](https://developer.mozilla.org/en-US/docs/Web/API/Clients) are closed. This means that visitors cannot see new contents until they close all tabs of your site. But the `refresh` button activates the new service worker immediately.

@@ -15,10 +15,9 @@ module.exports = (options, context) => ({
 
     config.resolve
       .alias
-      .set('@default-theme', path.resolve('.'))
-      .set('@AlgoliaSearchBox', isAlgoliaSearch
-        ? path.resolve(__dirname, './src/AlgoliaSearchBox.vue')
-        : path.resolve(__dirname, './noopModule.js'))
-      .end()
+        .set('@default-theme', path.resolve('.'))
+        .set('@AlgoliaSearchBox', isAlgoliaSearch
+          ? path.resolve(__dirname, 'src/AlgoliaSearchBox.vue')
+          : path.resolve(__dirname, 'noopModule.js'))
   }
 })

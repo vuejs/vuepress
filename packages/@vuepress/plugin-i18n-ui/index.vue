@@ -17,12 +17,18 @@
     <div class="helper-content">
       <div id="left">
         <transition name="slide-left">
-          <Content :page-key="key"/>
+          <Content
+            v-if="currentPageComponent"
+            :page-key="key"
+          />
         </transition>
       </div>
       <div id="right">
         <transition name="slide-left">
-          <Content :page-key="rightKey"/>
+          <Content
+            v-if="rightPageComponent"
+            :page-key="rightKey"
+          />
         </transition>
       </div>
     </div>
@@ -30,17 +36,21 @@
 </template>
 
 <script>
-import { findPageForPath } from '@app/util'
+import { findPageForPath, registerComponent } from '@app/util'
 
 export default {
   data () {
     return {
-      currentPagePath: '/'
+      currentPagePath: '/',
+      currentPageComponent: null,
+      rightPageComponent: null
     }
   },
 
   mounted () {
     syncScroll()
+    this.loadComponent(this.key, 'currentPageComponent')
+    this.loadComponent(this.rightKey, 'rightPageComponent')
   },
 
   computed: {
@@ -85,6 +95,23 @@ export default {
   methods: {
     handlePageChange (e) {
       this.currentPagePath = e.target.value
+    },
+
+    loadComponent (key, flag) {
+      this[flag] = null
+      registerComponent(key).then(() => {
+        this[flag] = true
+      })
+    }
+  },
+
+  watch: {
+    key (newValue) {
+      this.loadComponent(newValue, 'currentPageComponent')
+    },
+
+    rightKey (newValue) {
+      this.loadComponent(newValue, 'rightPageComponent')
     }
   }
 }

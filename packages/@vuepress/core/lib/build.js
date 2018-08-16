@@ -77,21 +77,6 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
   readline.clearLine(process.stdout, 0)
   readline.cursorTo(process.stdout, 0)
 
-  if (options.siteConfig.serviceWorker) {
-    logger.wait('\nGenerating service worker...')
-    const wbb = require('workbox-build')
-    await wbb.generateSW({
-      swDest: path.resolve(outDir, 'service-worker.js'),
-      globDirectory: outDir,
-      globPatterns: ['**\/*.{js,css,html,png,jpg,jpeg,gif,svg,woff,woff2,eot,ttf,otf}']
-    })
-    await fs.writeFile(
-      path.resolve(outDir, 'service-worker.js'),
-      await fs.readFile(path.resolve(__dirname, 'service-worker/skip-waiting.js'), 'utf8'),
-      { flag: 'a' }
-    )
-  }
-
   await options.plugin.options.generated.apply()
 
   // DONE.

@@ -23,7 +23,6 @@ export function findPageForPath (pages, path) {
 
 export function registerComponent (key) {
   return loadComponent(key).then(comp => {
-    console.log(comp.default)
     Vue.component(key, comp.default)
     return comp.default
   })

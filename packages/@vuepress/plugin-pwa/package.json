@@ -17,7 +17,8 @@
     "generator"
   ],
   "dependencies": {
-    "register-service-worker": "^1.4.1"
+    "register-service-worker": "^1.5.2",
+    "@vuepress/shared-utils": "^1.0.0"
   },
   "author": "Evan You",
   "license": "MIT",

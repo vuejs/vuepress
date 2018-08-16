@@ -36,15 +36,16 @@ module.exports = (options, context) => ({
   ],
 
   chainWebpack (config, isServer) {
-    if (isServer) {
+    const { publicDir } = context
+    if (isServer && publicDir) {
       config
         .plugin('copy')
-        .tap(args => {
-          args[0].push({
+        .tap(([options]) => {
+          options.push({
             from: path.resolve(context.sourceDir, '.vuepress/images'),
             to: path.resolve(context.outDir, 'images')
           })
-          return args
+          return options
         })
     }
     config
