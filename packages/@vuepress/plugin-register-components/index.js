@@ -21,7 +21,7 @@ module.exports = (options, context) => ({
     const baseDirs = Array.isArray(componentsDir) ? componentsDir : [componentsDir]
 
     function importCode (name, absolutePath) {
-      `Vue.component(${JSON.stringify(name)}, () => import(${JSON.stringify(absolutePath)}))`
+      return `Vue.component(${JSON.stringify(name)}, () => import(${JSON.stringify(absolutePath)}))`
     }
 
     function genImport (baseDir, file) {
@@ -39,8 +39,8 @@ module.exports = (options, context) => ({
       code += files.map(file => genImport(baseDir, file)).join('\n') + '\n'
     }
 
-    // 2. Register named components.
-    code = components.map(({ name, path: absolutePath }) => importCode(name, absolutePath))
+    // 2. Register named componepackages/docs/docs/.vuepress/componentsnts.
+    code += components.map(({ name, path: absolutePath }) => importCode(name, absolutePath))
 
     code = `import Vue from 'vue'\n` + code + '\n'
 
