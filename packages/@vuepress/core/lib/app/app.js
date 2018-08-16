@@ -47,7 +47,7 @@ Vue.prototype.$withBase = function (path) {
   }
 }
 
-export function createApp () {
+export function createApp (isServer) {
   const router = new Router({
     base: siteData.base,
     mode: 'history',
@@ -85,7 +85,7 @@ export function createApp () {
   try {
     appEnhancers.forEach(enhancer => {
       if (typeof enhancer === 'function') {
-        enhancer({ Vue, options, router, siteData })
+        enhancer({ Vue, options, router, siteData, isServer })
       }
     })
   } catch (e) {

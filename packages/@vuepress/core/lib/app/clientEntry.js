@@ -2,7 +2,7 @@
 
 import { createApp } from './app'
 
-const { app, router } = createApp()
+const { app, router } = createApp(false /* isServer */)
 
 window.__VUEPRESS_VERSION__ = {
   version: VUEPRESS_VERSION,
