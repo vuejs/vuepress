@@ -27,11 +27,12 @@ export default {
 
   data () {
     return {
-      scrollTop: this.getScrollTop()
+      scrollTop: null
     }
   },
 
   mounted () {
+    this.scrollTop = this.getScrollTop()
     window.addEventListener('scroll', debounce(() => {
       this.scrollTop = this.getScrollTop()
     }, 100))
