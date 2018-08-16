@@ -110,7 +110,7 @@ exports.normalizePluginsConfig = function (pluginsConfig) {
   if (!valid) {
     logger.warn(
       `[${chalk.gray('config')}] ` +
-      `Invalid value for "plugin" value ${chalk.cyan(name)}: ${warnMsg}`
+      `Invalid value for "plugin" field : ${warnMsg}`
     )
     pluginsConfig = []
   }
