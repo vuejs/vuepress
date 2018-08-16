@@ -1,6 +1,5 @@
-const fs = require('fs-extra')
+const { fs, globby } = require('@vuepress/shared-utils')
 const path = require('path')
-const globby = require('globby')
 
 function fileToComponentName (file) {
   return file

@@ -1,5 +1,5 @@
 const path = require('path')
-const fs = require('fs-extra')
+const { fs } = require('@vuepress/shared-utils')
 
 const tempPath = path.resolve(__dirname, '../app/.temp')
 fs.ensureDirSync(tempPath)

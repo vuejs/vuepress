@@ -1,6 +1,4 @@
-const chalk = require('chalk')
-const { isDebug } = require('../util/logger')
-const logger = require('../util/logger')
+const { logger, chalk, env } = require('@vuepress/shared-utils')
 const { assertTypes } = require('../util/shared')
 
 const SCOPE_PACKAGE_RE = /^@(.*)\/(.*)/
@@ -52,7 +50,7 @@ exports.resolvePlugin = function (pluginRaw) {
           throw new Error(`[vuepress] Invalid plugin usage ${pluginRaw}.`)
         }
       } catch (err2) {
-        if (isDebug) {
+        if (env.isDebug) {
           console.error(err2)
         }
         name = shortcut = pluginRaw

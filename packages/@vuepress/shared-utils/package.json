@@ -1,7 +1,7 @@
 {
-  "name": "@vuepress/plugin-register-components",
+  "name": "@vuepress/shared-utils",
   "version": "1.0.0",
-  "description": "register-global-components plugin for vuepress",
+  "description": "shared-utils for vuepress",
   "main": "index.js",
   "publishConfig": {
     "access": "public"
@@ -16,13 +16,15 @@
     "vuepress",
     "generator"
   ],
+  "dependencies": {
+    "chalk": "^2.3.2",
+    "fs-extra": "^5.0.0",
+    "globby": "^8.0.1"
+  },
   "author": "Evan You",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/vuejs/vuepress/issues"
   },
-  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/plugin-register-components#readme",
-  "dependencies": {
-    "@vuepress/shared-utils": "^1.0.0"
-  }
+  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/shared-utils#readme"
 }

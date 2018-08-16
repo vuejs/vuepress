@@ -1,5 +1,4 @@
-const chalk = require('chalk')
-const logger = require('../util/logger')
+const { logger, chalk } = require('@vuepress/shared-utils')
 const instantiateOption = require('./option/instantiateOption')
 const { resolvePlugin, hydratePlugin, normalizePluginsConfig } = require('./util')
 const { assertTypes } = require('../util/shared')

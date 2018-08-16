@@ -1,4 +1,4 @@
-const fs = require('fs-extra')
+const { fs } = require('@vuepress/shared-utils')
 const path = require('path')
 const yamlParser = require('js-yaml')
 const tomlParser = require('toml')

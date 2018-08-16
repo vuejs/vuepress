@@ -1,14 +1,12 @@
 module.exports = async function build (sourceDir, cliOptions = {}) {
   process.env.NODE_ENV = 'production'
 
-  const fs = require('fs-extra')
   const path = require('path')
-  const chalk = require('chalk')
   const webpack = require('webpack')
   const readline = require('readline')
   const escape = require('escape-html')
 
-  const logger = require('./util/logger')
+  const { chalk, fs, logger } = require('@vuepress/shared-utils')
   const prepare = require('./prepare/index')
   const createClientConfig = require('./webpack/createClientConfig')
   const createServerConfig = require('./webpack/createServerConfig')

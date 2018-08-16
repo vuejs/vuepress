@@ -1,4 +1,5 @@
 const chalk = require('chalk')
+const env = require('./env')
 
 const logger = {}
 
@@ -45,14 +46,12 @@ for (const type in logTypes) {
 }
 
 const debugFn = getLoggerFn('magenta', 'DEBUG')
-const isDebug = process.argv.indexOf('--debug') !== -1 || process.argv.indexOf('--verbose') !== -1
 
 logger.debug = function (msg) {
-  if (isDebug) {
+  if (env.isDebug) {
     debugFn(msg)
   }
 }
 
 module.exports = logger
 module.exports.getLoggerFn = getLoggerFn
-module.exports.isDebug = isDebug

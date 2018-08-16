@@ -1,12 +1,10 @@
 const path = require('path')
-const fs = require('fs-extra')
 const resolveOptions = require('./resolveOptions')
 const resolveSiteData = require('./resolveSiteData')
 const resolvePlugin = require('./resolvePlugin')
 const { genRoutesFile } = require('./codegen')
 const { writeTemp } = require('./util')
-const logger = require('../util/logger')
-const chalk = require('chalk')
+const { fs, chalk, logger } = require('@vuepress/shared-utils')
 
 module.exports = async function prepare ({
   sourceDir,

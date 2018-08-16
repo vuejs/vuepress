@@ -1,4 +1,4 @@
-const chalk = require('chalk')
+const { chalk } = require('@vuepress/shared-utils')
 const semver = require('semver')
 
 try {

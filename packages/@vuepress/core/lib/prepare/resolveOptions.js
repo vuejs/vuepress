@@ -1,11 +1,8 @@
 const path = require('path')
-const chalk = require('chalk')
-const fs = require('fs-extra')
-const globby = require('globby')
 const createMarkdown = require('../markdown/index')
 const loadConfig = require('./loadConfig')
 const { sort } = require('./util')
-const logger = require('../util/logger')
+const { chalk, fs, logger, globby } = require('@vuepress/shared-utils')
 
 module.exports = async function resolveOptions (sourceDir, cliOptions) {
   function requireResolve (target) {

@@ -1,7 +1,5 @@
 module.exports = async function dev (sourceDir, cliOptions = {}) {
-  const fs = require('fs')
   const path = require('path')
-  const chalk = require('chalk')
   const webpack = require('webpack')
   const chokidar = require('chokidar')
   const serve = require('webpack-serve')
@@ -12,7 +10,7 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
   const history = require('connect-history-api-fallback')
 
   const prepare = require('./prepare/index')
-  const logger = require('./util/logger')
+  const { chalk, fs, logger } = require('@vuepress/shared-utils')
   const HeadPlugin = require('./webpack/HeadPlugin')
   const DevLogPlugin = require('./webpack/DevLogPlugin')
   const createClientConfig = require('./webpack/createClientConfig')

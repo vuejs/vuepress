@@ -1,7 +1,5 @@
-const fs = require('fs-extra')
 const path = require('path')
-const chalk = require('chalk')
-const logger = require('./util/logger')
+const { chalk, fs, logger } = require('@vuepress/shared-utils')
 
 module.exports = async (dir) => {
   const source = path.resolve(__dirname, 'default-theme')

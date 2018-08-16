@@ -1,4 +1,4 @@
-const fs = require('fs-extra')
+const { fs } = require('@vuepress/shared-utils')
 const path = require('path')
 const { encodePath, fileToPath } = require('./util')
 const {

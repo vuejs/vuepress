@@ -1,5 +1,4 @@
-const chalk = require('chalk')
-const logger = require('../util/logger')
+const { chalk, logger } = require('@vuepress/shared-utils')
 
 module.exports = class DevLogPlugin {
   constructor (options) {
