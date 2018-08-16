@@ -2,7 +2,6 @@ const path = require('path')
 const resolveOptions = require('./resolveOptions')
 const resolveSiteData = require('./resolveSiteData')
 const resolvePlugin = require('./resolvePlugin')
-const { genRoutesFile } = require('./codegen')
 const { writeTemp } = require('./util')
 const { fs, chalk, logger } = require('@vuepress/shared-utils')
 
@@ -18,6 +17,7 @@ module.exports = async function prepare ({
 
   // 2. resolve plugin
   const plugin = resolvePlugin(options)
+  plugin.use(require('../plugins/routes'))
   options.plugin = plugin
   const pluginOptions = plugin.options
 
@@ -33,10 +33,6 @@ module.exports = async function prepare ({
   pluginOptions.extendMarkdown.syncApply(markdown)
   await pluginOptions.clientDynamicModules.apply()
   await pluginOptions.globalUIComponents.apply()
-
-  // 5. generate routes code
-  const routesCode = await genRoutesFile(options)
-  await writeTemp('routes.js', routesCode)
 
   // 6. generate siteData
   const dataCode = `export const siteData = ${JSON.stringify(options.siteData, null, 2)}`

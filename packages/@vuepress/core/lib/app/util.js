@@ -1,3 +1,6 @@
+import Vue from 'vue'
+import { loadComponent } from '@dynamic/async-component'
+
 export function injectMixins (options, mixins) {
   if (!options.mixins) {
     options.mixins = []
@@ -16,6 +19,14 @@ export function findPageForPath (pages, path) {
     path: '',
     frontmatter: {}
   }
+}
+
+export function registerComponent (key) {
+  return loadComponent(key).then(comp => {
+    console.log(comp.default)
+    Vue.component(key, comp.default)
+    return comp.default
+  })
 }
 
 /**

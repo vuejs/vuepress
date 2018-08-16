@@ -1,6 +1,3 @@
-const path = require('path')
-const { writeTemp } = require('./util')
-
 exports.pathsToModuleCode = function (files) {
   let index = 0
   let code = ''
@@ -21,10 +18,7 @@ exports.pathsToModuleCode = function (files) {
   return code
 }
 
-exports.genRoutesFile = async function ({
-  siteData: { pages },
-  plugin
-}) {
+exports.genRoutesFile = async function (pages) {
   function genRoute ({ path: pagePath, filePath, key: componentName }) {
     let code = `
   {
@@ -32,10 +26,7 @@ exports.genRoutesFile = async function ({
     path: ${JSON.stringify(pagePath)},
     component: ThemeLayout,
     beforeEnter: (to, from, next) => {
-      import(${JSON.stringify(filePath)}).then(comp => {
-        Vue.component(${JSON.stringify(componentName)}, comp.default)
-        next()
-      })
+      registerComponent(${JSON.stringify(componentName)}).then(() => next())
     }
   }`
 
@@ -65,24 +56,21 @@ exports.genRoutesFile = async function ({
     component: ThemeNotFound
   }`
 
-  // TODO move it to a single file?
-  const builtInRootMixins = [
-    path.resolve(__dirname, '../app/root-mixins/updateMeta.js')
-  ]
-  const rootMixins = [
-    ...builtInRootMixins,
-    ...plugin.options.clientRootMixin.values
-  ]
-  await writeTemp('root-mixins.js', exports.pathsToModuleCode(rootMixins))
-
   return (
-    `import Vue from 'vue'\n` +
     `import ThemeLayout from '@themeLayout'\n` +
     `import ThemeNotFound from '@themeNotFound'\n` +
-    `import { injectMixins, loadComponent } from '@app/util'\n` +
-    `import rootMixins from '@temp/root-mixins'\n\n` +
+    `import { injectMixins, registerComponent } from '@app/util'\n` +
+    `import rootMixins from '@dynamic/root-mixins'\n\n` +
     `injectMixins(ThemeLayout, rootMixins)\n` +
     `injectMixins(ThemeNotFound, rootMixins)\n\n` +
     `export const routes = [${pages.map(genRoute).join(',')}${notFoundRoute}\n]`
   )
+}
+
+exports.genImportAsyncComponentFile = function (pages) {
+  return `export function loadComponent (key) {
+  switch (key) {
+${pages.map(({ key, filePath }) => `    case "${key}": return import("${filePath}");`).join('\n')}
+  }
+}`
 }

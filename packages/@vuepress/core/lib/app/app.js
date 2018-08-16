@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import dataMixin from './dataMixin'
-import { routes } from '@temp/routes'
+import { routes } from '@dynamic/routes'
 import { siteData } from '@temp/siteData'
 import appEnhancers from '@temp/app-enhancers.js'
 import globalUIComponents from '@dynamic/global-ui.js'

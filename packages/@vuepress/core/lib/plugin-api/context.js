@@ -46,6 +46,14 @@ class PluginContext {
   get siteConfig () {
     return this._options.siteConfig
   }
+
+  get siteData () {
+    return this._options.siteData
+  }
+
+  get self () {
+    return this._options.self
+  }
 }
 
 Object.assign(PluginContext.prototype, {

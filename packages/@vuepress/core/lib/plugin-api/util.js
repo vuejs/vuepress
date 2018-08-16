@@ -69,7 +69,7 @@ exports.resolvePlugin = function (pluginRaw) {
  * @param {Object} pluginOptions
  * @param {Object} pluginContext
  */
-exports.hydratePlugin = function ({ config, name, shortcut, isLocal }, pluginOptions, pluginContext) {
+exports.hydratePlugin = function ({ config, name, shortcut, isLocal }, pluginOptions, pluginContext, self) {
   const { valid, warnMsg } = assertTypes(pluginOptions, [Object, Boolean])
   if (!valid) {
     if (pluginOptions !== undefined) {
@@ -88,7 +88,7 @@ exports.hydratePlugin = function ({ config, name, shortcut, isLocal }, pluginOpt
   if (typeof config === 'function') {
     // 'Object.create' here is to give each plugin a separate context,
     // but also own the inheritance context.
-    config = config(pluginOptions, Object.create(pluginContext))
+    config = config(pluginOptions, Object.create(pluginContext), self)
   }
   // respect name in local plugin config
   name = isLocal && config.name || name

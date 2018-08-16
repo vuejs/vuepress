@@ -15,9 +15,9 @@ module.exports = class Plugin {
     let plugin = resolvePlugin(pluginRaw)
     if (!plugin.config) {
       console.warn(`[vuepress] cannot resolve plugin "${pluginRaw}"`)
-      return
+      return this
     }
-    plugin = hydratePlugin(plugin, pluginOptions, this._pluginContext)
+    plugin = hydratePlugin(plugin, pluginOptions, this._pluginContext, this)
     if (plugin.enabled) {
       this.applyPlugin(plugin)
     } else {
