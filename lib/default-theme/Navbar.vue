@@ -15,9 +15,9 @@
       <span
         ref="siteName"
         class="site-name"
-        v-if="$siteTitle"
+        v-if="$site.themeConfig.navbarTitle !== false && $siteTitle"
         :class="{ 'can-hide': $site.themeConfig.logo }"
-      >{{ $siteTitle }}</span>
+      >{{ $site.themeConfig.navbarTitle || $siteTitle }}</span>
     </router-link>
 
     <div
