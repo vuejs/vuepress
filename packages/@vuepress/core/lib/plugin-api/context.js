@@ -23,6 +23,10 @@ class PluginContext {
     return this._options.sourceDir
   }
 
+  get publicDir () {
+    path.resolve(this.sourceDir, '.vuepress/public')
+  }
+
   get outDir () {
     return this._options.outDir
   }
