@@ -17,7 +17,7 @@ module.exports = class EnhanceAppFilesOption extends Option {
    * the current plugin context, then return it with a function and
    * assign it to enhanceAppFiles.
    */
-  async beforeRun () {
+  async beforeApply () {
     const items = this.items
     this.items = []
     for (const { name, value } of items) {
@@ -30,8 +30,8 @@ module.exports = class EnhanceAppFilesOption extends Option {
     }
   }
 
-  async run (...args) {
-    await this.beforeRun()
+  async apply (...args) {
+    await this.beforeApply()
     const manifest = []
     let moduleId = 0
     let injectedCode = ''

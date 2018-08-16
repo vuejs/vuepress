@@ -2,7 +2,7 @@ const Option = require('../Option')
 const { writeTemp } = require('../../prepare/util')
 
 module.exports = class ClientDynamicModulesOption extends Option {
-  async run () {
+  async apply () {
     for (const item of this.items) {
       const { value: fn, name: pluginName } = item
       let modules = await fn()

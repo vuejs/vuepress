@@ -29,12 +29,12 @@ module.exports = async function prepare ({
   options.siteData = await resolveSiteData(options)
   Object.freeze(options)
 
-  await pluginOptions.ready.run()
+  await pluginOptions.ready.apply()
 
   // 4. apply plugin options to extend markdown.
-  pluginOptions.extendMarkdown.run(markdown)
-  pluginOptions.clientDynamicModules.run()
-  pluginOptions.globalUIComponents.run()
+  pluginOptions.extendMarkdown.syncApply(markdown)
+  await pluginOptions.clientDynamicModules.apply()
+  await pluginOptions.globalUIComponents.apply()
 
   // 5. generate routes code
   const routesCode = await genRoutesFile(options)
@@ -61,7 +61,7 @@ module.exports = async function prepare ({
     )
   }
 
-  await pluginOptions.enhanceAppFiles.run()
+  await pluginOptions.enhanceAppFiles.apply()
 
   return options
 }

@@ -24,7 +24,7 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
 
   // setup watchers to update options and dynamically generated files
   const update = () => {
-    options.plugin.options.updated.run()
+    options.plugin.options.updated.syncApply()
     prepare({ sourceDir, cliOptions, isProd: false }).catch(err => {
       console.error(logger.error(chalk.red(err.stack), false))
     })
@@ -111,7 +111,7 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
     add: app => {
       // apply plugin options to extend dev server.
       const { plugin } = options
-      plugin.options.enhanceDevServer.run(app)
+      plugin.options.enhanceDevServer.syncApply(app)
 
       const userPublic = path.resolve(sourceDir, '.vuepress/public')
 

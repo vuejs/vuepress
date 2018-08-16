@@ -1,4 +1,4 @@
-module.exports = class Option {
+class Option {
   constructor (key) {
     this.key = key
     this.items = [] // Array<{ value: T, name: string }>
@@ -25,22 +25,35 @@ module.exports = class Option {
   }
 
   /**
-   * When T is function, eecute all functions in serial
-   * @param args
-   * @returns {Promise.<void>}
+   * Synchronous running
+   * @param {Array<Function>} args
    */
-  async run (...args) {
+  syncApply (...args) {
+    for (const fn of this.values) {
+      fn(...args)
+    }
+  }
+
+  /**
+   * Asynchronous serial running
+   * @param args
+   * @param {Array<AsyncFunction>} args
+   */
+  async asyncApply (...args) {
     for (const fn of this.values) {
       await fn(...args)
     }
   }
 
   /**
-   * When T is function, eecute all functions in parallel
+   * Asynchronous serial running
    * @param args
-   * @returns {Promise.<void>}
+   * @param {Array<AsyncFunction>} args
    */
-  async parallelRun (...args) {
+  async parallelApply (...args) {
     return await Promise.all(this.values.map(fn => fn(...args)))
   }
 }
+
+Option.prototype.apply = Option.prototype.asyncApply
+module.exports = Option
