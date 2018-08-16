@@ -29,7 +29,6 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
 
   let clientConfig = createClientConfig(options, cliOptions).toConfig()
   let serverConfig = createServerConfig(options, cliOptions).toConfig()
-  console.log('4')
 
   // apply user config...
   const userConfig = options.siteConfig.configureWebpack
