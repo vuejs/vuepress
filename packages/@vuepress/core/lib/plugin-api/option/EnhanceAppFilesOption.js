@@ -37,11 +37,11 @@ module.exports = class EnhanceAppFilesOption extends Option {
     let injectedCode = ''
 
     // 1. write enhance app files.
-    for (const { value: filepath, name: pluginName } of this.items) {
+    for (const { value: filePath, name: pluginName } of this.items) {
       let destPath
 
-      if (typeof filepath === 'object') {
-        const { name, content } = filepath
+      if (typeof filePath === 'object') {
+        const { name, content } = filePath
         if (content.includes('export default') || content.includes('module.exports')) {
           destPath = await writeTemp(`app-enhancers/${name}.js`, content)
         } else {
@@ -51,15 +51,15 @@ module.exports = class EnhanceAppFilesOption extends Option {
  */\n${content}\n\n`
         }
       } else {
-        if (fs.existsSync(filepath)) {
+        if (fs.existsSync(filePath)) {
           destPath = await writeTemp(
             `app-enhancers/enhancer-${moduleId++}.js`,
-            `export { default } from '${(filepath)}'`
+            `export { default } from '${(filePath)}'`
           )
         } else {
           logger.debug(
             chalk.gray(`[${pluginName}] `) +
-            `${chalk.cyan(filepath)} Not Found.`
+            `${chalk.cyan(filePath)} Not Found.`
           )
         }
       }

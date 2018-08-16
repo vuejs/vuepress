@@ -6,7 +6,7 @@ exports.pathsToModuleCode = function (files) {
   let code = ''
 
   code += files
-    .map(filepath => `import m${index++} from ${JSON.stringify(filepath)}`)
+    .map(filePath => `import m${index++} from ${JSON.stringify(filePath)}`)
     .join('\n')
 
   code += '\n\nexport default [\n'
@@ -25,12 +25,18 @@ exports.genRoutesFile = async function ({
   siteData: { pages },
   plugin
 }) {
-  function genRoute ({ path: pagePath, key: componentName }, index) {
+  function genRoute ({ path: pagePath, filePath, key: componentName }) {
     let code = `
   {
     name: ${JSON.stringify(componentName)},
     path: ${JSON.stringify(pagePath)},
-    component: ThemeLayout
+    component: ThemeLayout,
+    beforeEnter: (to, from, next) => {
+      import(${JSON.stringify(filePath)}).then(comp => {
+        Vue.component(${JSON.stringify(componentName)}, comp.default)
+        next()
+      })
+    }
   }`
 
     const dncodedPath = decodeURIComponent(pagePath)
@@ -77,7 +83,6 @@ exports.genRoutesFile = async function ({
     `import rootMixins from '@temp/root-mixins'\n\n` +
     `injectMixins(ThemeLayout, rootMixins)\n` +
     `injectMixins(ThemeNotFound, rootMixins)\n\n` +
-    `${pages.map(({ filepath, key }) => `Vue.component('${key}', () => import('${filepath}'))`).join('\n')}\n\n` +
     `export const routes = [${pages.map(genRoute).join(',')}${notFoundRoute}\n]`
   )
 }

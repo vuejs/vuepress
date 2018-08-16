@@ -16,12 +16,12 @@ module.exports = async function ({
   themeConfig,
   publicPath
 }) {
-  async function getPageData ({ filepath, routePath, base }) {
+  async function getPageData ({ filePath, routePath, base }) {
     const key = 'v-' + Math.random().toString(16).slice(2)
-    const data = { key, path: routePath, filepath }
+    const data = { key, path: routePath, filePath }
 
-    const content = await fs.readFile(filepath, 'utf-8')
-    await plugin.options.extendPageData.apply({ data, filepath, routePath, base, key, content })
+    const content = await fs.readFile(filePath, 'utf-8')
+    await plugin.options.extendPageData.apply({ data, filePath, routePath, base, key, content })
 
     // extract yaml frontmatter
     const frontmatter = parseFrontmatter(content)
@@ -50,18 +50,18 @@ module.exports = async function ({
 
   // resolve pagesData
   const pagesData = await Promise.all(pageFiles.map(async (base) => {
-    const filepath = path.resolve(sourceDir, base)
+    const filePath = path.resolve(sourceDir, base)
     const routePath = encodePath(fileToPath(base))
-    return getPageData({ filepath, routePath, base })
+    return getPageData({ filePath, routePath, base })
   }))
 
   // resolve additional pagesData
   const additionalPagesData = await Promise.all(
-    plugin.options.additionalPages.values.map(async ({ route: routePath, path: filepath }) => {
-      if (!fs.existsSync(filepath)) {
-        throw new Error(`[vuepress] Cannot resolve additional page: ${filepath}`)
+    plugin.options.additionalPages.values.map(async ({ route: routePath, path: filePath }) => {
+      if (!fs.existsSync(filePath)) {
+        throw new Error(`[vuepress] Cannot resolve additional page: ${filePath}`)
       }
-      return getPageData({ filepath, routePath })
+      return getPageData({ filePath, routePath })
     })
   )
 

@@ -129,17 +129,17 @@ module.exports = function createBaseConfig ({
     config.module
       .rule('js')
         .test(/\.js$/)
-        .exclude.add(filepath => {
+        .exclude.add(filePath => {
           // Always transpile lib directory
-          if (filepath.startsWith(libDir)) {
+          if (filePath.startsWith(libDir)) {
             return false
           }
           // always transpile js in vue files
-          if (/\.vue\.js$/.test(filepath)) {
+          if (/\.vue\.js$/.test(filePath)) {
             return false
           }
           // Don't transpile node_modules
-          return /node_modules/.test(filepath)
+          return /node_modules/.test(filePath)
         }).end()
         .use('cache-loader')
           .loader('cache-loader')
