@@ -2,8 +2,7 @@ const path = require('path')
 const resolveOptions = require('./resolveOptions')
 const resolveSiteData = require('./resolveSiteData')
 const resolvePlugin = require('./resolvePlugin')
-const { writeTemp } = require('./util')
-const { fs, chalk, logger } = require('@vuepress/shared-utils')
+const { fs, chalk, logger, writeTemp } = require('@vuepress/shared-utils')
 
 module.exports = async function prepare ({
   sourceDir,

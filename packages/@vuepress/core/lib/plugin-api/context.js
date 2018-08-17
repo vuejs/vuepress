@@ -1,5 +1,5 @@
 const path = require('path')
-const { writeTemp } = require('../prepare/util')
+const { writeTemp } = require('@vuepress/shared-utils')
 
 class PluginContext {
   constructor (options) {

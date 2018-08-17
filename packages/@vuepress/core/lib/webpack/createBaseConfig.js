@@ -42,8 +42,8 @@ module.exports = function createBaseConfig ({
       .set('@themeNotFound', themeNotFoundPath)
       .set('@source', sourceDir)
       .set('@app', path.resolve(__dirname, '../app'))
-      .set('@temp', path.resolve(__dirname, '../app/.temp'))
-      .set('@dynamic', path.resolve(__dirname, '../app/.temp/dynamic-modules'))
+      .set('@temp', process.env.VUEPRESS_TEMP_PATH)
+      .set('@dynamic', path.resolve(process.env.VUEPRESS_TEMP_PATH, 'dynamic'))
       .end()
     .extensions
       .merge(['.js', '.jsx', '.vue', '.json', '.styl'])

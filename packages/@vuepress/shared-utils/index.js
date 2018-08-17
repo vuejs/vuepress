@@ -1,5 +1,6 @@
 exports.logger = require('./lib/logger')
 exports.env = require('./lib/env')
+exports.writeTemp = require('./lib/writeTemp')
 exports.chalk = require('chalk')
 exports.fs = require('fs-extra')
 exports.globby = require('globby')

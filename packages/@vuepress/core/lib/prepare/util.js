@@ -1,31 +1,3 @@
-const path = require('path')
-const { fs } = require('@vuepress/shared-utils')
-
-const tempPath = path.resolve(__dirname, '../app/.temp')
-fs.ensureDirSync(tempPath)
-
-const tempCache = new Map()
-exports.writeTemp = async function (file, content) {
-  const destPath = path.join(tempPath, file)
-  await fs.ensureDir(path.parse(destPath).dir)
-  // cache write to avoid hitting the dist if it didn't change
-  const cached = tempCache.get(file)
-  if (cached !== content) {
-    await fs.writeFile(destPath, content)
-    tempCache.set(file, content)
-  }
-  return destPath
-}
-
-exports.writeEnhanceTemp = async function (destName, srcPath) {
-  await exports.writeTemp(
-    destName,
-    fs.existsSync(srcPath)
-      ? `export { default } from ${JSON.stringify(srcPath)}`
-      : `export default function () {}`
-  )
-}
-
 const indexRE = /(^|.*\/)(index|readme)\.md$/i
 const extRE = /\.(vue|md)$/
 
