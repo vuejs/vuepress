@@ -1,15 +1,66 @@
-const { genRoutesFile, genImportAsyncComponentFile } = require('./codegen')
-
-module.exports = (options, context, self) => ({
+module.exports = (options, context) => ({
   name: '@vuepress/internal-routes',
 
+  // @dynamic/routes
   async clientDynamicModules () {
     const routesCode = await genRoutesFile(context.siteData.pages)
-    const importAsyncComponentCode = genImportAsyncComponentFile(context.siteData.pages)
-
     return [
-      { name: 'routes.js', content: routesCode },
-      { name: 'async-component.js', content: importAsyncComponentCode }
+      { name: 'routes.js', content: routesCode }
     ]
   }
 })
+
+/**
+ * Generate routes meta data file.
+ * @param pages
+ * @returns {Promise<string>}
+ */
+async function genRoutesFile (pages) {
+  function genRoute ({ path: pagePath, filePath, key: componentName }) {
+    let code = `
+  {
+    name: ${JSON.stringify(componentName)},
+    path: ${JSON.stringify(pagePath)},
+    component: ThemeLayout,
+    beforeEnter: (to, from, next) => {
+      registerComponent(${JSON.stringify(componentName)}).then(() => next())
+    }
+  }`
+
+    const dncodedPath = decodeURIComponent(pagePath)
+    if (dncodedPath !== pagePath) {
+      code += `,
+  {
+    path: ${JSON.stringify(dncodedPath)},
+    redirect: ${JSON.stringify(pagePath)}
+  }`
+    }
+
+    if (/\/$/.test(pagePath)) {
+      code += `,
+  {
+    path: ${JSON.stringify(pagePath + 'index.html')},
+    redirect: ${JSON.stringify(pagePath)}
+  }`
+    }
+
+    return code
+  }
+
+  const notFoundRoute = `,
+  {
+    path: '*',
+    component: ThemeNotFound
+  }`
+
+  return (
+    `import ThemeLayout from '@themeLayout'\n` +
+    `import ThemeNotFound from '@themeNotFound'\n` +
+    `import { injectMixins, registerComponent } from '@app/util'\n` +
+    `import rootMixins from '@dynamic/root-mixins'\n\n` +
+    `injectMixins(ThemeLayout, rootMixins)\n` +
+    `injectMixins(ThemeNotFound, rootMixins)\n\n` +
+    `export const routes = [${pages.map(genRoute).join(',')}${notFoundRoute}\n]`
+  )
+}
+
