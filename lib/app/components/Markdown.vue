@@ -28,6 +28,10 @@ export default {
     }) || {}
     if (Vue.component(page.name) != null) {
       this.componentName = page.name
+    } else {
+      page.beforeEnter(0, 0, () => {
+        this.componentName = page.name
+      })
     }
   }
 }
