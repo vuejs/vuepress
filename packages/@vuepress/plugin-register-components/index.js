@@ -38,7 +38,7 @@ module.exports = (options, context) => ({
       code += files.map(file => genImport(baseDir, file)).join('\n') + '\n'
     }
 
-    // 2. Register named componepackages/docs/docs/.vuepress/componentsnts.
+    // 2. Register named components.
     code += components.map(({ name, path: absolutePath }) => importCode(name, absolutePath))
 
     code = `import Vue from 'vue'\n` + code + '\n'

@@ -1,12 +1,19 @@
 <template>
   <transition name="sw-update-popup">
-    <div
-      v-if="enabled"
-      class="sw-update-popup"
+    <slot
+      :reload="reload"
+      :enabled="enabled"
+      :message="message"
+      :buttonText="buttonText"
     >
-      {{ message }}<br>
-      <button @click="reload">{{ buttonText }}</button>
-    </div>
+      <div
+        v-if="enabled"
+        class="sw-update-popup"
+      >
+        {{ message }}<br>
+        <button @click="reload">{{ buttonText }}</button>
+      </div>
+    </slot>
   </transition>
 </template>
 
@@ -64,28 +71,30 @@ export default {
 }
 </script>
 
-<style lang="stylus">
-@import '../theme-default/src/styles/config.styl'
+<style scoped>
+.sw-update-popup {
+  position: fixed;
+  right: 1em;
+  bottom: 1em;
+  padding: 1em;
+  border: 1px solid #3eaf7c;
+  border-radius: 3px;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
 
-.sw-update-popup
-  position fixed
-  right 1em
-  bottom 1em
-  padding 1em
-  border 1px solid $accentColor
-  border-radius 3px
-  background #fff
-  box-shadow 0 4px 16px rgba(0, 0, 0, 0.5)
-  text-align center
+.sw-update-popup > button {
+  margin-top: 0.5em;
+  padding: 0.25em 2em;
+}
 
-  button
-    margin-top 0.5em
-    padding 0.25em 2em
+.sw-update-popup-enter-active, .sw-update-popup-leave-active {
+  transition: opacity 0.3s, transform 0.3s;
+}
 
-.sw-update-popup-enter-active, .sw-update-popup-leave-active
-  transition opacity 0.3s, transform 0.3s
-
-.sw-update-popup-enter, .sw-update-popup-leave-to
-  opacity 0
-  transform translate(0, 50%) scale(0.5)
+.sw-update-popup-enter, .sw-update-popup-leave-to {
+  opacit: 0;
+  transform: translate(0, 50%) scale(0.5);
+}
 </style>

@@ -33,6 +33,17 @@ This option enables the popup to refresh contents. The popup will be shown when 
 
 > If without the `refresh` button, the new service worker will be active after all [clients](https://developer.mozilla.org/en-US/docs/Web/API/Clients) are closed. This means that visitors cannot see new contents until they close all tabs of your site. But the `refresh` button activates the new service worker immediately.
 
+### popupComponent
+
+- Type: `string`
+- Default: `undefined`
+
+A custom component to replace the default popup component. 
+
+**Also see:** 
+
+- [Customize the SW-Update Popup UI](#customize-the-sw-update-popup-ui)
+
 ## Migration from 0.x.x
 
 Now that we have plugin API, all features' options that are in plugin's areas will become plugin options.
@@ -109,3 +120,65 @@ module.exports = {
 +  }
 ```
     
+## Customize the SW-Update Popup UI
+
+The default sw-update popup component provides a default slot which gives you the ability to fully control the appearence of the popup.
+
+First, you need to create a global component (e.g. `MySWUpdatePopup`) at `.vuepress/components`. A simple component created based on the default component is as follows:
+
+```vue
+<template>
+  <SWUpdatePopup>
+    <div
+      slot-scope="{ enabled, reload, message, buttonText }"
+      class="my-sw-update-popup">
+      {{ message }}<br>
+      <button @click="reload">{{ buttonText }}</button>
+    </div>
+  </SWUpdatePopup>
+</template>
+
+<script>
+import SWUpdatePopup from '@vuepress/plugin-pwa/lib/SWUpdatePopup.vue'
+
+export default {
+  components: { SWUpdatePopup }
+}
+</script>
+
+<style>
+.my-sw-update-popup {
+  text-align: right;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #fff;
+  font-size: 20px;
+  padding: 10px;
+  border: 5px solid #3eaf7c;
+}
+
+.my-sw-update-popup button {
+  border: 1px solid #fefefe;
+}
+</style>
+```
+
+Then, update your plugin:
+
+``` diff
+module.exports = {
+   plugins: {
+    '@vuepress/pwa': {
+       serviceWorker: true,
++      popupComponent: 'MySWUpdatePopup',
+       updatePopup: true
+     }
+  }
+}
+``` 
+
+**Also see:** 
+
+- [VuePress > Using Components](https://vuepress.vuejs.org/guide/using-vue.html#using-components)
+- [Vue > Scoped Slots](https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots)
