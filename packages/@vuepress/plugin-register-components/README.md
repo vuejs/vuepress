@@ -44,7 +44,7 @@ module.exports = {
         components: [
           {
             name: 'V-Card',
-            path: 'somepath/components/card.vue'
+            path: 'path/to/card.vue'
           }
         ]
       }
