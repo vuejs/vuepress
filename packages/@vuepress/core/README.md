@@ -1,8 +1,9 @@
 # @vuepress/core
 
-> core for vuepress
+## APIs
 
-``` bash
-cd packages/@vuepress/core
-yarn link
-```
+### core.dev
+
+### core.build
+
+### core.eject
