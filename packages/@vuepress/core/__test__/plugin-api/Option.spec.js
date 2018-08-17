@@ -32,7 +32,7 @@ describe('Option', () => {
     expect(option.values).toEqual(['a-1', 'a-2', 'b'])
   })
 
-  test('should \'run\' work', async () => {
+  test('should \'apply\' work', async () => {
     const option = new Option('option')
     const handler1 = jest.fn()
     const handler2 = jest.fn()
@@ -40,7 +40,7 @@ describe('Option', () => {
     option.tap('plugin-a', handler1)
     option.tap('plugin-b', handler2)
 
-    await option.run(1, 2)
+    await option.apply(1, 2)
     expect(handler1.mock.calls).toHaveLength(1)
     expect(handler2.mock.calls).toHaveLength(1)
     expect(handler1.mock.calls[0][0]).toBe(1)
@@ -49,7 +49,7 @@ describe('Option', () => {
     expect(handler2.mock.calls[0][1]).toBe(2)
   })
 
-  test('should \'parallelRun\' work', async () => {
+  test('should \'parallelApply\' work', async () => {
     const option = new Option('option')
     const handler1 = jest.fn()
     const handler2 = jest.fn()
@@ -57,7 +57,7 @@ describe('Option', () => {
     option.tap('plugin-a', handler1)
     option.tap('plugin-b', handler2)
 
-    await option.parallelRun(1, 2)
+    await option.parallelApply(1, 2)
     expect(handler1.mock.calls).toHaveLength(1)
     expect(handler2.mock.calls).toHaveLength(1)
     expect(handler1.mock.calls[0][0]).toBe(1)
