@@ -1,3 +1,5 @@
+/* global VUEPRESS_TEMP_PATH */
+
 import Vue from 'vue'
 import { findPageForPath } from './util'
 
@@ -12,7 +14,7 @@ export default function dataMixin (siteData) {
   Vue.$store = store
 
   if (module.hot) {
-    module.hot.accept('./.temp/siteData', () => {
+    module.hot.accept(VUEPRESS_TEMP_PATH + '/siteData.js', () => {
       prepare(siteData)
       store.siteData = siteData
     })

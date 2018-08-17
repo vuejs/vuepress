@@ -1,3 +1,4 @@
+/* global VUEPRESS_TEMP_PATH */
 import Vue from 'vue'
 import Router from 'vue-router'
 import dataMixin from './dataMixin'
@@ -17,7 +18,7 @@ import ClientOnly from './components/ClientOnly'
 // suggest dev server restart on base change
 if (module.hot) {
   const prevBase = siteData.base
-  module.hot.accept('./.temp/siteData', () => {
+  module.hot.accept(VUEPRESS_TEMP_PATH + '/siteData.js', () => {
     if (siteData.base !== prevBase) {
       window.alert(
         `[vuepress] Site base has changed. ` +
