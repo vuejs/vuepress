@@ -101,17 +101,7 @@ module.exports = {
     '@vuepress/back-to-top': true,
     '@vuepress/pwa': {
       serviceWorker: true,
-      updatePopup: {
-        // It will don't depends on the VuePress i18n implementation
-        '/': {
-          message: "New content is available.",
-          buttonText: "Refresh"
-        },
-        '/zh/': {
-          message: "发现新内容可用",
-          buttonText: "刷新"
-        }
-      }
+      updatePopup: true
     }
   }
 }

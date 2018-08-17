@@ -18,8 +18,8 @@ If set to `true`, VuePress will automatically generate and register a service wo
 
 ```typescript
 interface normalPopupConfig {
-	message: string; // defaults to 'New content is available.'
-	buttonText: string; // defaults to 'Refresh'
+  message: string; // defaults to 'New content is available.'
+  buttonText: string; // defaults to 'Refresh'
 }
 
 interface localedPopupConfig {
@@ -119,6 +119,21 @@ module.exports = {
 +    }
 +  }
 ```
+
+It's worth mentioning that the PWA plugin has above i18n built in, so if you want to use the default i18n directly, you can abbreviate the above configuration as:
+
+```js
+module.exports = {
+  plugins: {
+    '@vuepress/pwa': {
+      serviceWorker: true,
+      updatePopup: true
+    }
+  }
+}
+```
+
+Feel free to submit PRs to improve the default [i18n configuration](https://github.com/vuejs/vuepress/blob/next/packages/%40vuepress/plugin-pwa/lib/i18n.js).
     
 ## Customize the SW-Update Popup UI
 

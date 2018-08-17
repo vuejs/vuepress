@@ -21,6 +21,7 @@
 /* global SW_UPDATE_POPUP */
 import event from './event'
 import { normalizeConfig } from '@app/util'
+import { popupConfig as defaultPopupConfig } from './i18n'
 
 export default {
   data () {
@@ -32,6 +33,9 @@ export default {
 
   created () {
     event.$on('sw-updated', this.onSWUpdated)
+    if (SW_UPDATE_POPUP === true) {
+      this.rawPopupConfig = defaultPopupConfig
+    }
   },
 
   computed: {
@@ -45,12 +49,12 @@ export default {
 
     message () {
       const c = this.popupConfig
-      return (c && c.message) || 'New content is available.'
+      return (c && c.message) || defaultPopupConfig['/'].message
     },
 
     buttonText () {
       const c = this.popupConfig
-      return (c && c.buttonText) || 'Refresh'
+      return (c && c.buttonText) || defaultPopupConfig['/'].buttonText
     }
   },
 
