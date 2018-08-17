@@ -2,8 +2,8 @@
 
 ## APIs
 
-### core.dev
+### dev(sourceDir, options)
 
-### core.build
+### build(sourceDir, options)
 
-### core.eject
+### eject(targetDir)

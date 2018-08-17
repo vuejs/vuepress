@@ -2,7 +2,13 @@ const path = require('path')
 const { chalk, fs, logger } = require('@vuepress/shared-utils')
 
 module.exports = async (dir) => {
-  const source = path.resolve(__dirname, 'default-theme')
+  try {
+    require.resolve('@vuepress/theme-default')
+  } catch (err) {
+    console.log(chalk.red(`\n[vuepress] cannot find '@vuepress/theme-default'\n`))
+    process.exit(1)
+  }
+  const source = require.resolve('@vuepress/theme-default')
   const target = path.resolve(dir, '.vuepress/theme')
   await fs.copy(source, target)
   // remove the import to default theme override
