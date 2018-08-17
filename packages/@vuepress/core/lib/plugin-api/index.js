@@ -8,7 +8,26 @@ module.exports = class Plugin {
   constructor (context) {
     this.options = {}
     this._pluginContext = context
+    this._pluginQuene = []
     this.initializeOptions(PLUGIN_OPTION_MAP)
+  }
+
+  get enabledPlugins () {
+    return this._pluginQuene.filter(({ enabled }) => enabled)
+  }
+
+  get disabledPlugins () {
+    return this._pluginQuene.filter(({ enabled }) => !enabled)
+  }
+
+  apply () {
+    this._pluginQuene.forEach(plugin => {
+      if (plugin.enabled) {
+        this.applyPlugin(plugin)
+      } else {
+        logger.debug(`\n${chalk.gray(`[${plugin.name}]`)} disabled.`)
+      }
+    })
   }
 
   use (pluginRaw, pluginOptions = {}) {
@@ -18,11 +37,8 @@ module.exports = class Plugin {
       return this
     }
     plugin = hydratePlugin(plugin, pluginOptions, this._pluginContext, this)
-    if (plugin.enabled) {
-      this.applyPlugin(plugin)
-    } else {
-      logger.debug(`\n${chalk.gray(`[${plugin.name}]`)} disabled.`)
-    }
+    this._pluginQuene.push(plugin)
+
     return this
   }
 

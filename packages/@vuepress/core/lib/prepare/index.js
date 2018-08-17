@@ -1,8 +1,9 @@
 const path = require('path')
 const resolveOptions = require('./resolveOptions')
 const resolveSiteData = require('./resolveSiteData')
-const resolvePlugin = require('./resolvePlugin')
 const { fs, chalk, logger, writeTemp } = require('@vuepress/shared-utils')
+const Plugin = require('../plugin-api/index')
+const PluginContext = require('../plugin-api/context')
 
 module.exports = async function prepare ({
   sourceDir,
@@ -12,11 +13,37 @@ module.exports = async function prepare ({
   // 1. load options
   const options = await resolveOptions(sourceDir, cliOptions)
   options.isProd = isProd
-  const { markdown } = options
 
-  // 2. resolve plugin
-  const plugin = resolvePlugin(options)
-  plugin.use(require('../plugins/routes'))
+  // 2. apply plugins
+  const { siteConfig, themeConfig, themePath, themePlugins, cliPlugins, markdown } = options
+  const pluginContext = new PluginContext(options)
+  const plugin = new Plugin(pluginContext)
+
+  const shouldUseLastUpdated = (
+    themeConfig.lastUpdated ||
+    Object.keys(siteConfig.locales && themeConfig.locales || {})
+      .some(base => themeConfig.locales[base].lastUpdated)
+  )
+
+  plugin
+    // internl core plugins
+    .use(require('../plugins/routes'))
+    // user plugin
+    .useByPluginsConfig(cliPlugins)
+    .useByPluginsConfig(siteConfig.plugins)
+    .useByPluginsConfig(themePlugins)
+    // built-in plugins
+    .use('@vuepress/enhance-app')
+    .use('@vuepress/last-updated', shouldUseLastUpdated)
+    .use('@vuepress/register-components', {
+      componentsDir: [
+        path.resolve(sourceDir, '.vuepress/components'),
+        path.resolve(themePath, 'components')
+      ]
+    })
+
+  plugin.apply()
+
   options.plugin = plugin
   const pluginOptions = plugin.options
 

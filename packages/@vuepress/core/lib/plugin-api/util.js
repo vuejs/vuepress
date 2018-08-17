@@ -95,7 +95,8 @@ exports.hydratePlugin = function ({ config, name, shortcut, isLocal }, pluginOpt
   return Object.assign(config, {
     name,
     shortcut: isLocal ? null : shortcut,
-    enabled
+    enabled,
+    $$options: pluginOptions /* used for test */
   })
 }
 
