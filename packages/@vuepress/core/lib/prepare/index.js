@@ -30,12 +30,12 @@ module.exports = async function prepare ({
     .use(require('../internal-plugins/routes'))
     .use(require('../internal-plugins/root-mixins'))
     .use(require('../internal-plugins/import-async-component'))
+    .use(require('../internal-plugins/enhance-app'))
     // user plugin
     .useByPluginsConfig(cliPlugins)
     .useByPluginsConfig(siteConfig.plugins)
     .useByPluginsConfig(themePlugins)
     // built-in plugins
-    .use('@vuepress/enhance-app')
     .use('@vuepress/last-updated', shouldUseLastUpdated)
     .use('@vuepress/register-components', {
       componentsDir: [

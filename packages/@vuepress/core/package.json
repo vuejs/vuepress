@@ -38,7 +38,6 @@
     "@vue/babel-preset-app": "3.0.0-beta.11",
     "@vuepress/shared-utils": "^1.0.0",
     "@vuepress/plugin-last-updated": "^1.0.0",
-    "@vuepress/plugin-enhance-app": "^1.0.0",
     "@vuepress/plugin-register-components": "^1.0.0",
     "autoprefixer": "^8.2.0",
     "babel-loader": "8.0.0-beta.3",
