@@ -24,7 +24,6 @@
   "dependencies": {
     "@vuepress/core": "^1.0.0",
     "@vuepress/cli": "^1.0.0",
-    "@vuepress/theme-default": "^1.0.0",
-    "@vuepress/plugin-i18n-ui": "^1.0.0"
+    "@vuepress/theme-default": "^1.0.0"
   }
 }

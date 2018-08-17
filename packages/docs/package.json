@@ -24,6 +24,7 @@
   "devDependencies": {
     "vuepress": "^1.0.0",
     "@vuepress/plugin-back-to-top": "^1.0.0",
-    "@vuepress/plugin-pwa": "^1.0.0"
+    "@vuepress/plugin-pwa": "^1.0.0",
+    "@vuepress/plugin-i18n-ui": "^1.0.0"
   }
 }
