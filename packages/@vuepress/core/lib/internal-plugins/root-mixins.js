@@ -7,7 +7,7 @@ module.exports = (options, context, self) => ({
   // @dynamic/root-mixins
   async clientDynamicModules () {
     const builtInRootMixins = [
-      path.resolve(__dirname, '../../app/root-mixins/updateMeta.js')
+      path.resolve(__dirname, '../app/root-mixins/updateMeta.js')
     ]
 
     const rootMixins = [
