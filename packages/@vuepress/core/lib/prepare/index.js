@@ -27,7 +27,7 @@ module.exports = async function prepare ({
 
   plugin
     // internl core plugins
-    .use(require('../plugins/routes'))
+    .use(require('../internal-plugins/routes'))
     // user plugin
     .useByPluginsConfig(cliPlugins)
     .useByPluginsConfig(siteConfig.plugins)

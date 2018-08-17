@@ -1,6 +1,11 @@
 const Option = require('../Option')
-const { pathsToModuleCode } = require('../../plugins/routes/codegen')
-const { fs, chalk, logger, writeTemp } = require('@vuepress/shared-utils')
+const {
+  fs,
+  chalk,
+  logger,
+  writeTemp,
+  codegen: { pathsToModuleCode }
+} = require('@vuepress/shared-utils')
 
 module.exports = class EnhanceAppFilesOption extends Option {
   /**

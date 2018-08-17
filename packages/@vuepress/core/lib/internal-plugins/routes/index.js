@@ -1,5 +1,6 @@
 const path = require('path')
-const { genRoutesFile, pathsToModuleCode, genImportAsyncComponentFile } = require('./codegen')
+const { codegen: { pathsToModuleCode }} = require('@vuepress/shared-utils')
+const { genRoutesFile, genImportAsyncComponentFile } = require('./codegen')
 
 module.exports = (options, context, self) => ({
   name: '@vuepress/internal-routes',
