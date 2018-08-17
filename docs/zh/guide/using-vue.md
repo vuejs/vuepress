@@ -241,3 +241,19 @@ export default {
 **参考:** 
 
 - [在标题中使用组件](#在标题中使用组件)
+
+### Markdown <Badge text="beta" type="warn"/>
+
+- **Props**:
+
+  - `src` - string
+
+- **用法**：   
+  
+通过这个组件，可以将项目中其它的 markdown 内容引入到当前的 markdown 中来，只需要指定 src 这个 prop 就可以。
+
+它的限制是：src 必须是以 [base](../config/#base) 为基础路径的相对路径,如 `/zh/guide/assets`，`/guide/assets` 等。
+   
+``` vue
+<Markdown src="/zh/guide/assets"/>
+```

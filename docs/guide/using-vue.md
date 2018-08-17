@@ -240,3 +240,19 @@ You can use this component in header to add some status for some API:
 **Also see:** 
 
 - [Using Components In Headers](#using-components-in-headers)
+
+### Markdown <Badge text="beta" type="warn"/>
+
+- **Props**:
+
+  - `src` - string
+
+- **Usage**：   
+  
+With this component, you can reference other markdown content from the project into the current markdown. You only need to specify the src prop.
+
+The limitation is that src must be a relative path to the path based on [base](../config/#base), such as `/zh/guide/assets`,`/guide/assets` and so on.
+   
+``` vue
+<Markdown src="/zh/guide/assets"/>
+```
