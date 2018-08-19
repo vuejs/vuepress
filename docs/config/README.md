@@ -197,6 +197,13 @@ module.exports = {
 }
 ```
 
+### markdown.enableCbCopy
+
+- Type: `boolean`
+- Default: `undefined`
+
+Whether to show icon to copy the code snippet into the clipboard.
+
 ## Build Pipeline
 
 ### postcss
