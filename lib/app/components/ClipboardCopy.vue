@@ -1,13 +1,23 @@
-
-<template functional>
-  <svg class="icon copy-clipboard" style="width:24px;height:24px" viewBox="0 0 24 24">
-    <path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z" />
-</svg>
-</template>
-
 <style lang="stylus">
-.icon.copy-clipboard
-  color #aaa
-  display inline-block
-  cursor pointer
+  .code-copy
+    color #aaa
+    display inline-block
+    cursor pointer
+  div[class*="language-"] pre .code-copy
+      position absolute
+      z-index 1000
+      top 35px
+      right 5px
+      width 20px
+      height 30px
+      content url(./copy.svg)
+      opacity 0
+  div[class*="language-"] pre:hover .code-copy
+    opacity 1
 </style>
+
+<script>
+export default {
+  name: 'ClipboardCopy'
+}
+</script>
