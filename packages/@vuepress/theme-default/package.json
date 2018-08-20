@@ -26,7 +26,6 @@
     "@vuepress/plugin-active-header-links": "1.0.0",
     "docsearch.js": "^2.5.2",
     "nprogress": "^0.2.0",
-    "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.2"
+    "@vuepress/plugin-stylus": "^1.0.0"
   }
 }

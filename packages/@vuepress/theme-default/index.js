@@ -7,6 +7,7 @@ module.exports = {
   notFound: path.resolve(__dirname, 'src/NotFound.vue'),
   plugins: [
     themePlugin,
-    '@vuepress/active-header-links'
+    '@vuepress/active-header-links',
+    '@vuepress/stylus'
   ]
 }
