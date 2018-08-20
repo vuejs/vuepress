@@ -1,7 +1,6 @@
 const path = require('path')
 const resolveOptions = require('./resolveOptions')
 const resolveSiteData = require('./resolveSiteData')
-const { fs, chalk, logger, writeTemp } = require('@vuepress/shared-utils')
 const Plugin = require('../plugin-api/index')
 const PluginContext = require('../plugin-api/context')
 
@@ -32,6 +31,7 @@ module.exports = async function prepare ({
     .use(require('../internal-plugins/importAsyncComponent'))
     .use(require('../internal-plugins/enhanceApp'))
     .use(require('../internal-plugins/siteData'))
+    .use(require('../internal-plugins/overrideCSS'))
     // user plugin
     .useByPluginsConfig(cliPlugins)
     .useByPluginsConfig(siteConfig.plugins)
@@ -62,23 +62,6 @@ module.exports = async function prepare ({
   pluginOptions.extendMarkdown.syncApply(markdown)
   await pluginOptions.clientDynamicModules.apply()
   await pluginOptions.globalUIComponents.apply()
-
-  // 7. handle user override
-  const overridePath = path.resolve(sourceDir, '.vuepress/override.styl').replace(/[\\]+/g, '/')
-  const hasUserOverride = fs.existsSync(overridePath)
-  await writeTemp('override.styl', hasUserOverride ? `@import(${JSON.stringify(overridePath)})` : ``)
-
-  const stylePath = path.resolve(sourceDir, '.vuepress/style.styl').replace(/[\\]+/g, '/')
-  const hasUserStyle = fs.existsSync(stylePath)
-  await writeTemp('style.styl', hasUserStyle ? `@import(${JSON.stringify(stylePath)})` : ``)
-
-  // Temporary tip, will be removed at next release.
-  if (hasUserOverride && !hasUserStyle) {
-    logger.tip(
-      `${chalk.magenta('override.styl')} has been split into 2 APIs, we recommend you upgrade to continue.\n` +
-      `      See: ${chalk.magenta('https://vuepress.vuejs.org/default-theme-config/#simple-css-override')}`
-    )
-  }
 
   await pluginOptions.enhanceAppFiles.apply()
 
