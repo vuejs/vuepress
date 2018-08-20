@@ -28,9 +28,9 @@ module.exports = async function prepare ({
   plugin
     // internl core plugins
     .use(require('../internal-plugins/routes'))
-    .use(require('../internal-plugins/root-mixins'))
-    .use(require('../internal-plugins/import-async-component'))
-    .use(require('../internal-plugins/enhance-app'))
+    .use(require('../internal-plugins/rootMixins'))
+    .use(require('../internal-plugins/importAsyncComponent'))
+    .use(require('../internal-plugins/enhanceApp'))
     // user plugin
     .useByPluginsConfig(cliPlugins)
     .useByPluginsConfig(siteConfig.plugins)
