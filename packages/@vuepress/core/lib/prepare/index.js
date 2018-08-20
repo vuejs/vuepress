@@ -31,6 +31,7 @@ module.exports = async function prepare ({
     .use(require('../internal-plugins/rootMixins'))
     .use(require('../internal-plugins/importAsyncComponent'))
     .use(require('../internal-plugins/enhanceApp'))
+    .use(require('../internal-plugins/siteData'))
     // user plugin
     .useByPluginsConfig(cliPlugins)
     .useByPluginsConfig(siteConfig.plugins)
@@ -61,10 +62,6 @@ module.exports = async function prepare ({
   pluginOptions.extendMarkdown.syncApply(markdown)
   await pluginOptions.clientDynamicModules.apply()
   await pluginOptions.globalUIComponents.apply()
-
-  // 6. generate siteData
-  const dataCode = `export const siteData = ${JSON.stringify(options.siteData, null, 2)}`
-  await writeTemp('siteData.js', dataCode)
 
   // 7. handle user override
   const overridePath = path.resolve(sourceDir, '.vuepress/override.styl').replace(/[\\]+/g, '/')

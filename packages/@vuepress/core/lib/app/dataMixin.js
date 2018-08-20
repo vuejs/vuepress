@@ -14,7 +14,7 @@ export default function dataMixin (siteData) {
   Vue.$store = store
 
   if (module.hot) {
-    module.hot.accept(VUEPRESS_TEMP_PATH + '/siteData.js', () => {
+    module.hot.accept(VUEPRESS_TEMP_PATH + '/dynamic/siteData.js', () => {
       prepare(siteData)
       store.siteData = siteData
     })

@@ -3,7 +3,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import dataMixin from './dataMixin'
 import { routes } from '@dynamic/routes'
-import { siteData } from '@temp/siteData'
+import { siteData } from '@dynamic/siteData'
 import appEnhancers from '@temp/app-enhancers.js'
 import globalUIComponents from '@dynamic/global-ui.js'
 
@@ -18,7 +18,7 @@ import ClientOnly from './components/ClientOnly'
 // suggest dev server restart on base change
 if (module.hot) {
   const prevBase = siteData.base
-  module.hot.accept(VUEPRESS_TEMP_PATH + '/siteData.js', () => {
+  module.hot.accept(VUEPRESS_TEMP_PATH + '/dynamic/siteData.js', () => {
     if (siteData.base !== prevBase) {
       window.alert(
         `[vuepress] Site base has changed. ` +
