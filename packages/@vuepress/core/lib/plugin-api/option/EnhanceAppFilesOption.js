@@ -48,7 +48,7 @@ module.exports = class EnhanceAppFilesOption extends Option {
           destPath = await writeTemp(`app-enhancers/${name}.js`, content)
         } else {
           injectedCode += `/*
- * injected by vuepress-plugin-${pluginName} 
+ * injected by "${pluginName}"
  * file name: ${name}
  */\n${content}\n\n`
         }

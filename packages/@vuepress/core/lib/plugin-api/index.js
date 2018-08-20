@@ -69,7 +69,7 @@ module.exports = class Plugin {
       this.options[option.name].tap(pluginName, value)
     } else if (value !== undefined) {
       logger.warn(
-        `${chalk.gray(`[vuepress-plugin-${pluginName}]`)} ` +
+        `${chalk.gray(pluginName)} ` +
         `Invalid value for "option" ${chalk.cyan(option.name)}: ${warnMsg}`
       )
     }
