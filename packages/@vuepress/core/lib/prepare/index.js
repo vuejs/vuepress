@@ -17,6 +17,8 @@ module.exports = async function prepare ({
   const { siteConfig, themeConfig, themePath, themePlugins, cliPlugins, markdown } = options
   const pluginContext = new PluginContext(options)
   const plugin = new Plugin(pluginContext)
+  options.plugin = plugin
+  const pluginOptions = plugin.options
 
   const shouldUseLastUpdated = (
     themeConfig.lastUpdated ||
@@ -44,25 +46,20 @@ module.exports = async function prepare ({
         path.resolve(themePath, 'components')
       ]
     })
-
-  plugin.apply()
-
-  options.plugin = plugin
-  const pluginOptions = plugin.options
+    .apply()
 
   // 3. resolve siteData
   // SiteData must be resolved after the plugin initialization
   // because plugins can be able to extend the sitedata.
   options.siteData = await resolveSiteData(options)
-  Object.freeze(options)
 
+  // 4. ready hook, user can do some options transformation here.
   await pluginOptions.ready.apply()
 
-  // 4. apply plugin options to extend markdown.
+  // 5. apply plugin options
   pluginOptions.extendMarkdown.syncApply(markdown)
   await pluginOptions.clientDynamicModules.apply()
   await pluginOptions.globalUIComponents.apply()
-
   await pluginOptions.enhanceAppFiles.apply()
 
   return options
