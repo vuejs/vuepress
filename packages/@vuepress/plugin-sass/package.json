@@ -1,0 +1,33 @@
+{
+  "name": "@vuepress/plugin-sass",
+  "version": "1.0.0",
+  "description": "sass plugin for vuepress",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuejs/vuepress.git"
+  },
+  "keywords": [
+    "documentation",
+    "vue",
+    "vuepress",
+    "generator"
+  ],
+  "dependencies": {
+    "@vuepress/shared-utils": "^1.0.0",
+    "node-sass": "^4.9.3",
+    "sass-loader": "^7.1.0",
+    "postcss-loader": "^2.1.5",
+    "mini-css-extract-plugin": "^0.4.1",
+    "autoprefixer": "^8.2.0"
+  },
+  "author": "Evan You",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vuejs/vuepress/issues"
+  },
+  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/plugin-sass#readme"
+}

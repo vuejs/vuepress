@@ -205,26 +205,7 @@ module.exports = function createBaseConfig ({
 
   createCSSRule({ lang: 'css', test: /\.css$/, config, isProd, isServer, postcssOptions })
   createCSSRule({ lang: 'postcss', test: /\.p(ost)?css$/, config, isProd, isServer, postcssOptions })
-  createCSSRule({
-    config,
-    isProd,
-    isServer,
-    postcssOptions,
-    lang: 'scss',
-    test: /\.scss$/,
-    loader: 'sass-loader',
-    options: siteConfig.scss
-  })
-  createCSSRule({
-    config,
-    isProd,
-    isServer,
-    postcssOptions,
-    lang: 'sass',
-    test: /\.sass/,
-    loader: 'sass-loader',
-    options: Object.assign({ indentedSyntax: true }, siteConfig.sass)
-  })
+
   createCSSRule({
     config,
     isProd,
