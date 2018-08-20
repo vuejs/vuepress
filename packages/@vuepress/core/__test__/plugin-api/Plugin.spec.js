@@ -52,4 +52,20 @@ describe('Plugin', () => {
       expect(plugin.enabledPlugins[0].$$options).toBe(pluginOptions)
     })
   })
+
+  test('make sure the namesake plugin is only executed once.', () => {
+    const pluginOptions1 = {}
+    const pluginOptions2 = {}
+    const pluginOptions3 = {}
+    const pluginsConfig = [
+      ['a', pluginOptions1],
+      ['a', pluginOptions2],
+      ['a', pluginOptions3]
+    ]
+    const plugin = new Plugin()
+    plugin.useByPluginsConfig(pluginsConfig)
+    expect(plugin.enabledPlugins).toHaveLength(1)
+    // using the last one
+    expect(plugin.enabledPlugins[0].$$options).toBe(pluginOptions3)
+  })
 })
