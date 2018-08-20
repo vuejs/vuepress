@@ -200,51 +200,53 @@ module.exports = function createBaseConfig ({
           name: `assets/fonts/[name].[hash:8].[ext]`
         })
 
-  function createCSSRule (lang, test, loader, options) {
-    const baseRule = config.module.rule(lang).test(test)
-    const modulesRule = baseRule.oneOf('modules').resourceQuery(/module/)
-    const normalRule = baseRule.oneOf('normal')
+  const { webpack: { createCSSRule }} = require('@vuepress/shared-utils')
+  const postcssOptions = siteConfig.postcss
 
-    applyLoaders(modulesRule, true)
-    applyLoaders(normalRule, false)
-
-    function applyLoaders (rule, modules) {
-      if (!isServer) {
-        if (isProd) {
-          rule.use('extract-css-loader').loader(CSSExtractPlugin.loader)
-        } else {
-          rule.use('vue-style-loader').loader('vue-style-loader')
-        }
-      }
-
-      rule.use('css-loader')
-        .loader(isServer ? 'css-loader/locals' : 'css-loader')
-        .options({
-          modules,
-          localIdentName: `[local]_[hash:base64:8]`,
-          importLoaders: 1,
-          sourceMap: !isProd
-        })
-
-      rule.use('postcss-loader').loader('postcss-loader').options(Object.assign({
-        plugins: [require('autoprefixer')],
-        sourceMap: !isProd
-      }, siteConfig.postcss))
-
-      if (loader) {
-        rule.use(loader).loader(loader).options(options)
-      }
-    }
-  }
-
-  createCSSRule('css', /\.css$/)
-  createCSSRule('postcss', /\.p(ost)?css$/)
-  createCSSRule('scss', /\.scss$/, 'sass-loader', siteConfig.scss)
-  createCSSRule('sass', /\.sass$/, 'sass-loader', Object.assign({ indentedSyntax: true }, siteConfig.sass))
-  createCSSRule('less', /\.less$/, 'less-loader', siteConfig.less)
-  createCSSRule('stylus', /\.styl(us)?$/, 'stylus-loader', Object.assign({
-    preferPathResolver: 'webpack'
-  }, siteConfig.stylus))
+  createCSSRule({ lang: 'css', test: /\.css$/, config, isProd, isServer, postcssOptions })
+  createCSSRule({ lang: 'postcss', test: /\.p(ost)?css$/, config, isProd, isServer, postcssOptions })
+  createCSSRule({
+    config,
+    isProd,
+    isServer,
+    postcssOptions,
+    lang: 'scss',
+    test: /\.scss$/,
+    loader: 'sass-loader',
+    options: siteConfig.scss
+  })
+  createCSSRule({
+    config,
+    isProd,
+    isServer,
+    postcssOptions,
+    lang: 'sass',
+    test: /\.sass/,
+    loader: 'sass-loader',
+    options: Object.assign({ indentedSyntax: true }, siteConfig.sass)
+  })
+  createCSSRule({
+    config,
+    isProd,
+    isServer,
+    postcssOptions,
+    lang: 'less',
+    test: /\.less/,
+    loader: 'less-loader',
+    options: siteConfig.less
+  })
+  createCSSRule({
+    config,
+    isProd,
+    isServer,
+    postcssOptions,
+    lang: 'stylus',
+    test: /\.styl(us)?$/,
+    loader: 'stylus-loader',
+    options: Object.assign({
+      preferPathResolver: 'webpack'
+    }, siteConfig.stylus)
+  })
 
   config
     .plugin('vue-loader')
