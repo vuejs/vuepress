@@ -92,7 +92,7 @@ exports.hydratePlugin = function ({ config, name, shortcut, isLocal }, pluginOpt
   }
   // respect name in local plugin config
   name = isLocal && config.name || name
-  return Object.assign(config, {
+  return Object.assign({}, config, {
     name,
     shortcut: isLocal ? null : shortcut,
     enabled,
