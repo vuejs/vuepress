@@ -32,11 +32,10 @@ module.exports = class EnhanceAppFilesOption extends Option {
     }
   }
 
-  async apply (...args) {
+  async apply () {
     await this.beforeApply()
     const manifest = []
     let moduleId = 0
-    let injectedCode = ''
 
     // 1. write enhance app files.
     for (const { value: filePath, name: pluginName } of this.items) {
@@ -45,12 +44,9 @@ module.exports = class EnhanceAppFilesOption extends Option {
       if (typeof filePath === 'object') {
         const { name, content } = filePath
         if (content.includes('export default') || content.includes('module.exports')) {
-          destPath = await writeTemp(`app-enhancers/${name}.js`, content)
+          destPath = await writeTemp(`app-enhancers/${name}`, content)
         } else {
-          injectedCode += `/*
- * injected by "${pluginName}"
- * file name: ${name}
- */\n${content}\n\n`
+          destPath = await writeTemp(`app-enhancers/${name}`, content + '\nexport default {}')
         }
       } else {
         if (fs.existsSync(filePath)) {
@@ -69,12 +65,6 @@ module.exports = class EnhanceAppFilesOption extends Option {
         manifest.push(destPath)
       }
     }
-
-    const injectedCodeDestPath = await writeTemp(
-      `app-enhancers/inject.js`,
-      injectedCode + 'export default {}\n'
-    )
-    manifest.push(injectedCodeDestPath)
 
     // 2. write entry file.
     await writeTemp('app-enhancers.js', pathsToModuleCode(manifest))
