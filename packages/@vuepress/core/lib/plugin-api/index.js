@@ -37,12 +37,13 @@ module.exports = class Plugin {
       return this
     }
     plugin = hydratePlugin(plugin, pluginOptions, this._pluginContext, this)
-    const duplicateIndex = this._pluginQuene.findIndex(({ name }) => name === plugin.name)
-    if (duplicateIndex !== -1) {
-      this._pluginQuene.splice(duplicateIndex, 1)
+    if (plugin.multiple !== true) {
+      const duplicateIndex = this._pluginQuene.findIndex(({ name }) => name === plugin.name)
+      if (duplicateIndex !== -1) {
+        this._pluginQuene.splice(duplicateIndex, 1)
+      }
     }
     this._pluginQuene.push(plugin)
-
     return this
   }
 

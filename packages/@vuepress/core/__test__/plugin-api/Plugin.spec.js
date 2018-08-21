@@ -1,4 +1,5 @@
 jest.mock('vuepress-plugin-a')
+jest.mock('vuepress-plugin-b')
 jest.mock('@org/vuepress-plugin-a')
 
 const Plugin = require('../../lib/plugin-api/index')
@@ -67,5 +68,20 @@ describe('Plugin', () => {
     expect(plugin.enabledPlugins).toHaveLength(1)
     // using the last one
     expect(plugin.enabledPlugins[0].$$options).toBe(pluginOptions3)
+  })
+
+  test('a "multuple" plugin can be applied multuple times.', () => {
+    const pluginOptions1 = { a: 1 }
+    const pluginOptions2 = { b: 1 }
+    const pluginsConfig = [
+      ['b', pluginOptions1],
+      ['b', pluginOptions2]
+    ]
+    const plugin = new Plugin()
+    plugin.useByPluginsConfig(pluginsConfig)
+    expect(plugin.enabledPlugins).toHaveLength(2)
+    // using the last one
+    expect(plugin.enabledPlugins[0].$$options).toBe(pluginOptions1)
+    expect(plugin.enabledPlugins[1].$$options).toBe(pluginOptions2)
   })
 })
