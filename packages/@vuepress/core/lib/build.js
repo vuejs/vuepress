@@ -77,7 +77,7 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
   readline.clearLine(process.stdout, 0)
   readline.cursorTo(process.stdout, 0)
 
-  await options.plugin.options.generated.apply()
+  await options.pluginAPI.options.generated.apply()
 
   // DONE.
   const relativeDir = path.relative(process.cwd(), outDir)

@@ -65,7 +65,7 @@ module.exports = function createClientConfig (options, cliOptions) {
     options.siteConfig.chainWebpack(config, false /* isServer */)
   }
 
-  options.plugin.options.chainWebpack.syncApply(config, false /* isServer */)
+  options.pluginAPI.options.chainWebpack.syncApply(config, false /* isServer */)
 
   return config
 }

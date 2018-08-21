@@ -2,16 +2,16 @@ jest.mock('vuepress-plugin-a')
 jest.mock('vuepress-plugin-b')
 jest.mock('@org/vuepress-plugin-a')
 
-const Plugin = require('../../lib/plugin-api/index')
+const PluginAPI = require('../../lib/plugin-api/index')
 const { PLUGIN_OPTION_MAP } = require('../../lib/plugin-api/constants')
 
 describe('Plugin', () => {
   test('should \'registerOption\' work.', () => {
-    const plugin = new Plugin()
+    const api = new PluginAPI()
     const readyHandler = () => {}
-    plugin.registerOption(PLUGIN_OPTION_MAP.READY.key, readyHandler)
-    expect(plugin.options.ready.values).toHaveLength(1)
-    expect(plugin.options.ready.values[0]).toBe(readyHandler)
+    api.registerOption(PLUGIN_OPTION_MAP.READY.key, readyHandler)
+    expect(api.options.ready.values).toHaveLength(1)
+    expect(api.options.ready.values[0]).toBe(readyHandler)
   })
 
   test('should \'useByPluginsConfig\' work.', () => {
@@ -21,11 +21,11 @@ describe('Plugin', () => {
       [['a', true]],
       { a: true }
     ].forEach(pluginsConfig => {
-      const plugin = new Plugin()
-      plugin.useByPluginsConfig(pluginsConfig)
-      expect(plugin.enabledPlugins).toHaveLength(1)
-      expect(plugin.enabledPlugins[0].name).toBe('vuepress-plugin-a')
-      expect(plugin.disabledPlugins).toHaveLength(0)
+      const api = new PluginAPI()
+      api.useByPluginsConfig(pluginsConfig)
+      expect(api.enabledPlugins).toHaveLength(1)
+      expect(api.enabledPlugins[0].name).toBe('vuepress-plugin-a')
+      expect(api.disabledPlugins).toHaveLength(0)
     })
   })
 
@@ -34,11 +34,11 @@ describe('Plugin', () => {
       [['a', false]],
       { a: false }
     ].forEach(pluginsConfig => {
-      const plugin = new Plugin()
-      plugin.useByPluginsConfig(pluginsConfig)
-      expect(plugin.enabledPlugins).toHaveLength(0)
-      expect(plugin.disabledPlugins).toHaveLength(1)
-      expect(plugin.disabledPlugins[0].name).toBe('vuepress-plugin-a')
+      const api = new PluginAPI()
+      api.useByPluginsConfig(pluginsConfig)
+      expect(api.enabledPlugins).toHaveLength(0)
+      expect(api.disabledPlugins).toHaveLength(1)
+      expect(api.disabledPlugins[0].name).toBe('vuepress-plugin-a')
     })
   })
 
@@ -48,9 +48,9 @@ describe('Plugin', () => {
       [['a', pluginOptions]],
       { a: pluginOptions }
     ].forEach(pluginsConfig => {
-      const plugin = new Plugin()
-      plugin.useByPluginsConfig(pluginsConfig)
-      expect(plugin.enabledPlugins[0].$$options).toBe(pluginOptions)
+      const api = new PluginAPI()
+      api.useByPluginsConfig(pluginsConfig)
+      expect(api.enabledPlugins[0].$$options).toBe(pluginOptions)
     })
   })
 
@@ -63,11 +63,11 @@ describe('Plugin', () => {
       ['a', pluginOptions2],
       ['a', pluginOptions3]
     ]
-    const plugin = new Plugin()
-    plugin.useByPluginsConfig(pluginsConfig)
-    expect(plugin.enabledPlugins).toHaveLength(1)
+    const api = new PluginAPI()
+    api.useByPluginsConfig(pluginsConfig)
+    expect(api.enabledPlugins).toHaveLength(1)
     // using the last one
-    expect(plugin.enabledPlugins[0].$$options).toBe(pluginOptions3)
+    expect(api.enabledPlugins[0].$$options).toBe(pluginOptions3)
   })
 
   test('a "multuple" plugin can be applied multuple times.', () => {
@@ -77,11 +77,11 @@ describe('Plugin', () => {
       ['b', pluginOptions1],
       ['b', pluginOptions2]
     ]
-    const plugin = new Plugin()
-    plugin.useByPluginsConfig(pluginsConfig)
-    expect(plugin.enabledPlugins).toHaveLength(2)
+    const api = new PluginAPI()
+    api.useByPluginsConfig(pluginsConfig)
+    expect(api.enabledPlugins).toHaveLength(2)
     // using the last one
-    expect(plugin.enabledPlugins[0].$$options).toBe(pluginOptions1)
-    expect(plugin.enabledPlugins[1].$$options).toBe(pluginOptions2)
+    expect(api.enabledPlugins[0].$$options).toBe(pluginOptions1)
+    expect(api.enabledPlugins[1].$$options).toBe(pluginOptions2)
   })
 })

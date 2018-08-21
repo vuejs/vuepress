@@ -10,7 +10,7 @@ const {
 module.exports = async function ({
   sourceDir,
   pageFiles,
-  plugin,
+  pluginAPI,
   markdown,
   siteConfig,
   themeConfig,
@@ -21,7 +21,7 @@ module.exports = async function ({
     const data = { key, path: routePath, filePath }
 
     const content = await fs.readFile(filePath, 'utf-8')
-    await plugin.options.extendPageData.apply({ data, filePath, routePath, base, key, content })
+    await pluginAPI.options.extendPageData.apply({ data, filePath, routePath, base, key, content })
 
     // extract yaml frontmatter
     const frontmatter = parseFrontmatter(content)
@@ -57,7 +57,7 @@ module.exports = async function ({
 
   // resolve additional pagesData
   const additionalPagesData = await Promise.all(
-    plugin.options.additionalPages.values.map(async ({ route: routePath, path: filePath }) => {
+    pluginAPI.options.additionalPages.values.map(async ({ route: routePath, path: filePath }) => {
       if (!fs.existsSync(filePath)) {
         throw new Error(`[vuepress] Cannot resolve additional page: ${filePath}`)
       }

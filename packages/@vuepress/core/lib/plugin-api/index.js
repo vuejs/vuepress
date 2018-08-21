@@ -4,7 +4,7 @@ const { resolvePlugin, hydratePlugin, normalizePluginsConfig } = require('./util
 const { assertTypes } = require('../util/shared')
 const { PLUGIN_OPTION_MAP } = require('./constants')
 
-module.exports = class Plugin {
+module.exports = class PluginAPI {
   constructor (context) {
     this.options = {}
     this._pluginContext = context

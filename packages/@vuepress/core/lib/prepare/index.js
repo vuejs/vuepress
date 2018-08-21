@@ -1,7 +1,7 @@
 const path = require('path')
 const resolveOptions = require('./resolveOptions')
 const resolveSiteData = require('./resolveSiteData')
-const Plugin = require('../plugin-api/index')
+const PluginAPI = require('../plugin-api/index')
 const PluginContext = require('../plugin-api/context')
 
 module.exports = async function prepare ({
@@ -16,9 +16,8 @@ module.exports = async function prepare ({
   // 2. apply plugins
   const { siteConfig, themeConfig, themePath, themePlugins, cliPlugins, markdown } = options
   const pluginContext = new PluginContext(options)
-  const plugin = new Plugin(pluginContext)
-  options.plugin = plugin
-  const pluginOptions = plugin.options
+  const pluginAPI = new PluginAPI(pluginContext)
+  options.pluginAPI = pluginAPI
 
   const shouldUseLastUpdated = (
     themeConfig.lastUpdated ||
@@ -26,7 +25,7 @@ module.exports = async function prepare ({
       .some(base => themeConfig.locales[base].lastUpdated)
   )
 
-  plugin
+  pluginAPI
     // internl core plugins
     .use(require('../internal-plugins/routes'))
     .use(require('../internal-plugins/rootMixins'))
@@ -54,13 +53,13 @@ module.exports = async function prepare ({
   options.siteData = await resolveSiteData(options)
 
   // 4. ready hook, user can do some options transformation here.
-  await pluginOptions.ready.apply()
+  await pluginAPI.options.ready.apply()
 
   // 5. apply plugin options
-  pluginOptions.extendMarkdown.syncApply(markdown)
-  await pluginOptions.clientDynamicModules.apply()
-  await pluginOptions.globalUIComponents.apply()
-  await pluginOptions.enhanceAppFiles.apply()
+  pluginAPI.options.extendMarkdown.syncApply(markdown)
+  await pluginAPI.options.clientDynamicModules.apply()
+  await pluginAPI.options.globalUIComponents.apply()
+  await pluginAPI.options.enhanceAppFiles.apply()
 
   return options
 }
