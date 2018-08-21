@@ -14,7 +14,14 @@ async function resolveComponents (componentDir) {
   return (await globby(['**/*.vue'], { cwd: componentDir }))
 }
 
+// Since this plugin can ben used by multiple times, we need to
+// give each generated files a uid or the previous file would be
+// overwritten.
+let moduleId = 0
+
 module.exports = (options, context) => ({
+  multiple: true,
+
   async enhanceAppFiles () {
     const { componentsDir = [], components = [] } = options
     const baseDirs = Array.isArray(componentsDir) ? componentsDir : [componentsDir]
@@ -45,7 +52,7 @@ module.exports = (options, context) => ({
 
     return [
       {
-        name: 'global-components.js',
+        name: `global-components-${++moduleId}.js`,
         content: code
       }
     ]
