@@ -4,9 +4,7 @@ module.exports = (options, context) => ({
   // @dynamic/routes
   async clientDynamicModules () {
     const routesCode = await genRoutesFile(context.siteData.pages)
-    return [
-      { name: 'routes.js', content: routesCode }
-    ]
+    return { name: 'routes.js', content: routesCode, dirname: 'internal' }
   }
 })
 
@@ -57,7 +55,7 @@ async function genRoutesFile (pages) {
     `import ThemeLayout from '@themeLayout'\n` +
     `import ThemeNotFound from '@themeNotFound'\n` +
     `import { injectMixins, registerComponent } from '@app/util'\n` +
-    `import rootMixins from '@dynamic/root-mixins'\n\n` +
+    `import rootMixins from '@internal/root-mixins'\n\n` +
     `injectMixins(ThemeLayout, rootMixins)\n` +
     `injectMixins(ThemeNotFound, rootMixins)\n\n` +
     `export const routes = [${pages.map(genRoute).join(',')}${notFoundRoute}\n]`

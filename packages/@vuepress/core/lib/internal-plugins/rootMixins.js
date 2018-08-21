@@ -16,8 +16,6 @@ module.exports = (options, context, self) => ({
     ]
 
     const rootMixinsCode = pathsToModuleCode(rootMixins)
-    return [
-      { name: 'root-mixins.js', content: rootMixinsCode }
-    ]
+    return { name: 'root-mixins.js', content: rootMixinsCode, dirname: 'internal' }
   }
 })

@@ -67,6 +67,6 @@ module.exports = class EnhanceAppFilesOption extends Option {
     }
 
     // 2. write entry file.
-    await writeTemp('app-enhancers.js', pathsToModuleCode(manifest))
+    await writeTemp('internal/app-enhancers.js', pathsToModuleCode(manifest))
   }
 }

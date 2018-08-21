@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { loadComponent } from '@dynamic/async-component'
+import { loadComponent } from '@internal/async-component'
 
 export function injectMixins (options, mixins) {
   if (!options.mixins) {
