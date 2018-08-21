@@ -145,7 +145,7 @@ Provide config options to the used theme. The options will vary depending on the
 - Type: `boolean`
 - Default: `undefined`
 
-Whether to show line numbers to the left of each code blocks.
+Whether to show line numbers to the left of each code block.
 
 **Also see:**
 
@@ -163,7 +163,7 @@ Function for transforming header texts into slugs. This affects the ids/links ge
 - Type: `Object`
 - Default: `{ target: '_blank', rel: 'noopener noreferrer' }`
 
-The key and value pair will be added to `<a>` tags that points to an external link. The default option will open external links in a new window.
+A key and value pair that will be added to `<a>` tags that point to an external link. The default option will open external links in a new window.
 
 ### markdown.anchor
 
