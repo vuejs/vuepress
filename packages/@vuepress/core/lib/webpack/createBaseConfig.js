@@ -236,6 +236,18 @@ module.exports = function createBaseConfig ({
     loader: 'less-loader',
     options: siteConfig.less
   })
+  createCSSRule({
+    config,
+    isProd,
+    isServer,
+    postcssOptions,
+    lang: 'stylus',
+    test: /\.styl(us)?$/,
+    loader: 'stylus-loader',
+    options: Object.assign({
+      preferPathResolver: 'webpack'
+    }, siteConfig.stylus)
+  })
 
   config
     .plugin('vue-loader')
