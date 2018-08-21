@@ -207,6 +207,17 @@ module.exports = function createBaseConfig ({
   createCSSRule({ lang: 'css', test: /\.css$/, config, isProd, isServer, postcssOptions })
   createCSSRule({ lang: 'postcss', test: /\.p(ost)?css$/, config, isProd, isServer, postcssOptions })
 
+  createCSSRule({
+    config,
+    isProd,
+    isServer,
+    postcssOptions,
+    lang: 'less',
+    test: /\.less/,
+    loader: 'less-loader',
+    options: siteConfig.less
+  })
+
   config
     .plugin('vue-loader')
     .use(VueLoaderPlugin)
