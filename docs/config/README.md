@@ -132,7 +132,7 @@ Specify this to use a custom theme. With the value of `"foo"`, VuePress will att
 - Type: `Object`
 - Default: `{}`
 
-Provide config options to the used theme. The options will vary depending on the theme you are using.
+Provides config options to the current theme. The options will vary depending on the theme you are using.
 
 **Also see:**
 
@@ -163,7 +163,7 @@ Function for transforming header texts into slugs. This affects the ids/links ge
 - Type: `Object`
 - Default: `{ target: '_blank', rel: 'noopener noreferrer' }`
 
-A key and value pair that will be added to `<a>` tags that point to an external link. The default option will open external links in a new window.
+A key/value pair added to `<a>` tags that point to an external link. The default option will open external links in a new window.
 
 ### markdown.anchor
 
