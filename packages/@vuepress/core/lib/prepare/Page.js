@@ -24,8 +24,8 @@ module.exports = class Page {
 
   async process (markdown) {
     this.key = 'v-' + Math.random().toString(16).slice(2)
-    this.content = await fs.readFile(this._filePath, 'utf-8')
-    const frontmatter = parseFrontmatter(this.content)
+    this._content = await fs.readFile(this._filePath, 'utf-8')
+    const frontmatter = parseFrontmatter(this._content)
 
     // infer title
     const title = inferTitle(frontmatter)
