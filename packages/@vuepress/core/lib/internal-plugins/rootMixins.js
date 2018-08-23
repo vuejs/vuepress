@@ -1,7 +1,7 @@
 const path = require('path')
 const { codegen: { pathsToModuleCode }} = require('@vuepress/shared-utils')
 
-module.exports = (options, context, self) => ({
+module.exports = (options, context, api) => ({
   name: '@vuepress/internal-root-mixins',
 
   // @dynamic/root-mixins
@@ -12,7 +12,7 @@ module.exports = (options, context, self) => ({
 
     const rootMixins = [
       ...builtInRootMixins,
-      ...self.options.clientRootMixin.values
+      ...api.options.clientRootMixin.values
     ]
 
     const rootMixinsCode = pathsToModuleCode(rootMixins)
