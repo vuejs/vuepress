@@ -62,7 +62,7 @@ export default {
     },
 
     isActive (page) {
-      return isActive(this.$route, page.path)
+      return isActive(this.$route, page.regularPath)
     }
   }
 }
