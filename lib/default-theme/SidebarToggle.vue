@@ -1,7 +1,7 @@
 <template>
   <div
     class="sidebar__toggle"
-    v-if="!isMobile() && !isToggleHidden">
+    v-if="!isToggleHidden">
     <span class="arrow"
       :class="[isSidebarHidden ? 'right' : 'left']"/>
     <span class="sidebar__toggle-label" @click="toggleSidebar()">
@@ -53,20 +53,6 @@ export default {
 
       this.isSidebarHidden = !this.isSidebarHidden
     },
-    isMobile () {
-      if (navigator.userAgent.match(/Android/i) ||
-        navigator.userAgent.match(/webOS/i) ||
-        navigator.userAgent.match(/iPhone/i) ||
-        navigator.userAgent.match(/iPad/i) ||
-        navigator.userAgent.match(/iPod/i) ||
-        navigator.userAgent.match(/BlackBerry/i) ||
-        navigator.userAgent.match(/Windows Phone/i)
-      ) {
-        return true
-      } else {
-        return false
-      }
-    }
   },
   mounted () {
     this.getSidebarToggleLabels()
