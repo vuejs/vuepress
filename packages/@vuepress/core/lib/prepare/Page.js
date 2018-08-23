@@ -11,18 +11,18 @@ const {
 module.exports = class Page {
   constructor (filePath, {
     relative,
-    routePath
+    permalink
   }) {
     this._filePath = filePath
     if (relative) {
       this._routePath = encodeURI(fileToPath(relative))
-    } else {
-      this._routePath = encodeURI(routePath)
+    } else if (permalink) {
+      this._routePath = encodeURI(permalink)
     }
     this.path = this._routePath
   }
 
-  async process (markdown) {
+  async process (markdown, i18n) {
     this.key = 'v-' + Math.random().toString(16).slice(2)
     this._content = await fs.readFile(this._filePath, 'utf-8')
     const frontmatter = parseFrontmatter(this._content)
@@ -49,6 +49,10 @@ module.exports = class Page {
       const { html } = markdown.render(frontmatter.excerpt)
       this.excerpt = html
     }
+
+    // resolve i18n
+    i18n.setSSRContext(this)
+    this._i18n = i18n
   }
 
   get filename () {

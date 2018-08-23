@@ -6,6 +6,7 @@ const { sort } = require('./util')
 const { fs, logger, chalk } = require('@vuepress/shared-utils')
 
 const Page = require('./Page')
+const I18n = require('./I18n')
 const PluginAPI = require('../plugin-api/index')
 
 module.exports = class AppContext {
@@ -33,6 +34,7 @@ module.exports = class AppContext {
     this.markdown = createMarkdown(this.siteConfig)
     this.pluginAPI = new PluginAPI(this)
     this.pages = [] // Array<Page>
+    this.I18nConstructor = I18n(null)
   }
 
   /**
@@ -77,7 +79,7 @@ module.exports = class AppContext {
       .use(require('../internal-plugins/importAsyncComponent'))
       .use(require('../internal-plugins/enhanceApp'))
       .use(require('../internal-plugins/overrideCSS'))
-      .use(require('../internal-plugins/data-mixins'))
+      .use(require('../internal-plugins/i18nTemp'))
       // user plugin
       .useByPluginsConfig(this._options.plugins)
       .useByPluginsConfig(this.siteConfig.plugins)
@@ -147,7 +149,7 @@ module.exports = class AppContext {
    */
   async addPage (filePath, { relative, permalink }) {
     const page = new Page(filePath, { relative, permalink })
-    await page.process(this.markdown)
+    await page.process(this.markdown, new this.I18nConstructor((this.getSiteData.bind(this))))
     await this.pluginAPI.options.extendPageData.apply(page)
     this.pages.push(page)
   }
