@@ -71,5 +71,17 @@ exports.getPermalink = function ({
       .replace(/:slug/, slug)
       .replace(/:regular/, regularPath)
 
-  return link.replace(/^\/?/, '/')
+  return ensureLeadingSlash(
+    ensureEndingSlash(link)
+  )
+}
+
+function ensureLeadingSlash (path) {
+  return path.replace(/^\/?/, '/')
+}
+
+function ensureEndingSlash (path) {
+  return /(\.html|\/)$/.test(path)
+    ? path
+    : path + '/'
 }
