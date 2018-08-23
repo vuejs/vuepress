@@ -21,7 +21,6 @@ module.exports = async function ({
     const data = { key, path: routePath, filePath }
 
     const content = await fs.readFile(filePath, 'utf-8')
-    await pluginAPI.options.extendPageData.apply({ data, filePath, routePath, base, key, content })
 
     // extract yaml frontmatter
     const frontmatter = parseFrontmatter(content)
@@ -45,6 +44,8 @@ module.exports = async function ({
       const { html } = markdown.render(frontmatter.excerpt)
       data.excerpt = html
     }
+
+    await pluginAPI.options.extendPageData.apply(data)
     return data
   }
 
