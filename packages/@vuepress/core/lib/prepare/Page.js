@@ -1,7 +1,7 @@
 const path = require('path')
 const slugify = require('../markdown/slugify')
 const { fs } = require('@vuepress/shared-utils')
-const { encodePath, fileToPath } = require('./util')
+const { fileToPath } = require('./util')
 const {
   inferTitle,
   extractHeaders,
@@ -15,9 +15,9 @@ module.exports = class Page {
   }) {
     this._filePath = filePath
     if (relative) {
-      this._routePath = encodePath(fileToPath(relative))
+      this._routePath = encodeURI(fileToPath(relative))
     } else {
-      this._routePath = routePath
+      this._routePath = encodeURI(routePath)
     }
     this.path = this._routePath
   }

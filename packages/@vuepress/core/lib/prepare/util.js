@@ -24,7 +24,3 @@ exports.sort = function (arr) {
     return 0
   })
 }
-
-exports.encodePath = function (userpath) {
-  return userpath.split('/').map(item => encodeURIComponent(item)).join('/')
-}
