@@ -1,25 +1,30 @@
-// This file would be used at both client and server side.
+/* global VUEPRESS_TEMP_PATH */
 
-function findPageForPath (pages, path) {
-  for (let i = 0; i < pages.length; i++) {
-    const page = pages[i]
-    if (page.path === path) {
-      return page
+import Vue from 'vue'
+import { findPageForPath } from './util'
+
+export default function dataMixin (siteData) {
+  prepare(siteData)
+  const store = new Vue({
+    data: {
+      siteData,
+      disableScrollBehavior: false
     }
-  }
-  return {
-    path: '',
-    frontmatter: {}
-  }
-}
+  })
+  Vue.$store = store
 
-module.exports = function dataMixin (siteData, route) {
+  if (module.hot) {
+    module.hot.accept(VUEPRESS_TEMP_PATH + '/internal/siteData.js', () => {
+      prepare(siteData)
+      store.siteData = siteData
+    })
+  }
+
   return {
     computed: {
       $site () {
-        return siteData
+        return store.siteData
       },
-
       $localeConfig () {
         const { locales = {}} = this.$site
         let targetLang
@@ -33,11 +38,9 @@ module.exports = function dataMixin (siteData, route) {
         }
         return targetLang || defaultLang || {}
       },
-
       $siteTitle () {
         return this.$localeConfig.title || this.$site.title || ''
       },
-
       $title () {
         const page = this.$page
         const siteTitle = this.$siteTitle
@@ -51,7 +54,6 @@ module.exports = function dataMixin (siteData, route) {
             : siteTitle
           : selfTitle || 'VuePress'
       },
-
       $description () {
         // #565 hoist description from meta
         if (this.$page.frontmatter.meta) {
@@ -60,26 +62,30 @@ module.exports = function dataMixin (siteData, route) {
         }
         return this.$page.frontmatter.description || this.$localeConfig.description || this.$site.description || ''
       },
-
       $lang () {
         return this.$page.frontmatter.lang || this.$localeConfig.lang || 'en-US'
       },
-
       $localePath () {
         return this.$localeConfig.path || '/'
       },
-
       $themeLocaleConfig () {
         return (this.$site.themeConfig.locales || {})[this.$localePath] || {}
       },
-
       $page () {
         return findPageForPath(
           this.$site.pages,
-          route && route.path || this.$route.path
+          this.$route.path
         )
       }
     }
   }
 }
 
+function prepare (siteData) {
+  if (siteData.locales) {
+    Object.keys(siteData.locales).forEach(path => {
+      siteData.locales[path].path = path
+    })
+  }
+  Object.freeze(siteData)
+}
