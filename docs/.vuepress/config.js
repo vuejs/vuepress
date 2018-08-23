@@ -1,5 +1,6 @@
 module.exports = {
   dest: 'vuepress',
+  host: '0.0.0.0',
   locales: {
     '/': {
       lang: 'en-US',
@@ -65,6 +66,10 @@ module.exports = {
           }
         ],
         sidebar: {
+          toggle: {
+            hideText: 'Hide sidebar',
+            showText: 'Show sidebar'
+          },
           '/guide/': genSidebarConfig('Guide')
         }
       },
@@ -98,6 +103,10 @@ module.exports = {
           }
         ],
         sidebar: {
+          toggle: {
+            hideText: '隐藏边栏',
+            showText: '显示侧边栏'
+          },
           '/zh/guide/': genSidebarConfig('指南')
         }
       }

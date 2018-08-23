@@ -16,17 +16,19 @@
       </li>
     </ul>
     <slot name="bottom"/>
+    <SidebarToggle/>
   </div>
 </template>
 
 <script>
 import SidebarGroup from './SidebarGroup.vue'
 import SidebarLink from './SidebarLink.vue'
+import SidebarToggle from './SidebarToggle.vue'
 import NavLinks from './NavLinks.vue'
 import { isActive } from './util'
 
 export default {
-  components: { SidebarGroup, SidebarLink, NavLinks },
+  components: { SidebarGroup, SidebarLink, SidebarToggle, NavLinks },
 
   props: ['items'],
 

@@ -41,6 +41,7 @@
     <Page
       v-else
       :sidebar-items="sidebarItems"
+      ref="page"
     >
       <slot
         name="page-top"
