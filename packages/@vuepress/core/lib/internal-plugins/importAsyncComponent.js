@@ -1,7 +1,7 @@
 function genImportAsyncComponentFile (pages) {
   return `export function loadComponent (key) {
   switch (key) {
-${pages.map(({ key, filePath }) => `    case "${key}": return import("${filePath}");`).join('\n')}
+${pages.map(({ key, _filePath }) => `    case "${key}": return import("${_filePath}");`).join('\n')}
   }
 }`
 }
@@ -11,7 +11,7 @@ module.exports = (options, context) => ({
 
   // @internal/async-component
   async clientDynamicModules () {
-    const importAsyncComponentCode = genImportAsyncComponentFile(context.siteData.pages)
+    const importAsyncComponentCode = genImportAsyncComponentFile(context.pages)
     return {
       name: 'async-component.js',
       content: importAsyncComponentCode,

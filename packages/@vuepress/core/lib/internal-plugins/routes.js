@@ -3,7 +3,7 @@ module.exports = (options, context) => ({
 
   // @internal/routes
   async clientDynamicModules () {
-    const routesCode = await genRoutesFile(context.siteData.pages)
+    const routesCode = await genRoutesFile(context.pages)
     return { name: 'routes.js', content: routesCode, dirname: 'internal' }
   }
 })
@@ -14,11 +14,15 @@ module.exports = (options, context) => ({
  * @returns {Promise<string>}
  */
 async function genRoutesFile (pages) {
-  function genRoute ({ path: pagePath, filePath, key: componentName }) {
+  function genRoute ({
+    path: pagePath,
+    key: componentName,
+    frontmatter = {}
+  }) {
     let code = `
   {
     name: ${JSON.stringify(componentName)},
-    path: ${JSON.stringify(pagePath)},
+    path: ${JSON.stringify(frontmatter.permalink || pagePath)},
     component: ThemeLayout,
     beforeEnter: (to, from, next) => {
       registerComponent(${JSON.stringify(componentName)}).then(() => next())

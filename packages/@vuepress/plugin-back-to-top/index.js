@@ -1,6 +1,8 @@
+const path = require('path')
+
 module.exports = (options, context) => ({
   enhanceAppFiles: [
-    context.resolve(__dirname, 'client.js')
+    path.resolve(__dirname, 'client.js')
   ],
 
   globalUIComponents: 'BackToTop'

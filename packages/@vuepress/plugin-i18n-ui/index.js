@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = (pluginOptions = {}, context) => ({
   name: 'i18n-ui',
 
@@ -5,14 +7,14 @@ module.exports = (pluginOptions = {}, context) => ({
   enabled: !context.isProd,
 
   enhanceAppFiles: [
-    context.resolve(__dirname, 'client.js')
+    path.resolve(__dirname, 'client.js')
   ],
 
   additionalPages: [
     {
       override: false,
-      route: pluginOptions.route || '/i18n/',
-      path: context.resolve(__dirname, 'index.md')
+      permalink: pluginOptions.route || '/i18n/',
+      path: path.resolve(__dirname, 'index.md')
     }
   ]
 })
