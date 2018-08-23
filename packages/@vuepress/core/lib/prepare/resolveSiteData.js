@@ -38,9 +38,9 @@ module.exports = async function ({
     if (headers.length) {
       data.headers = headers
     }
-    if (Object.keys(frontmatter.data).length) {
-      data.frontmatter = frontmatter.data
-    }
+
+    data.frontmatter = frontmatter.data
+
     if (frontmatter.excerpt) {
       const { html } = markdown.render(frontmatter.excerpt)
       data.excerpt = html

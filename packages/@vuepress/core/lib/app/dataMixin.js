@@ -82,11 +82,6 @@ export default function dataMixin (siteData) {
 }
 
 function prepare (siteData) {
-  siteData.pages.forEach(page => {
-    if (!page.frontmatter) {
-      page.frontmatter = {}
-    }
-  })
   if (siteData.locales) {
     Object.keys(siteData.locales).forEach(path => {
       siteData.locales[path].path = path
