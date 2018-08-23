@@ -81,7 +81,7 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
   .use(DevLogPlugin, [{
     port,
     displayHost,
-    publicPath: options.publicPath
+    publicPath: options.base
   }])
 
   config = config.toConfig()
@@ -118,7 +118,7 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
 
       // respect base when serving static files...
       if (fs.existsSync(userPublic)) {
-        app.use(mount(options.publicPath, serveStatic(userPublic)))
+        app.use(mount(options.base, serveStatic(userPublic)))
       }
 
       app.use(convert(history({

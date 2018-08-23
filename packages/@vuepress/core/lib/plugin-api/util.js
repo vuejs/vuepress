@@ -107,11 +107,14 @@ exports.hydratePlugin = function ({ config, name, shortcut, isLocal }, pluginOpt
 exports.normalizePluginsConfig = function (pluginsConfig) {
   const { valid, warnMsg } = assertTypes(pluginsConfig, [Object, Array])
   if (!valid) {
-    logger.warn(
-      `[${chalk.gray('config')}] ` +
-      `Invalid value for "plugin" field : ${warnMsg}`
-    )
+    if (pluginsConfig !== undefined) {
+      logger.warn(
+        `[${chalk.gray('config')}] ` +
+        `Invalid value for "plugin" field : ${warnMsg}`
+      )
+    }
     pluginsConfig = []
+    return pluginsConfig
   }
   if (Array.isArray(pluginsConfig)) {
     pluginsConfig = pluginsConfig.map(item => {

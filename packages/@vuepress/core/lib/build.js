@@ -65,12 +65,12 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
 
   // render pages
   logger.wait('Rendering static HTML...')
-  for (const page of options.siteData.pages) {
+  for (const page of options.pages) {
     await renderPage(page)
   }
 
   // if the user does not have a custom 404.md, generate the theme's default
-  if (!options.siteData.pages.some(p => p.path === '/404.html')) {
+  if (!options.pages.some(p => p.path === '/404.html')) {
     await renderPage({ path: '/404.html' })
   }
 

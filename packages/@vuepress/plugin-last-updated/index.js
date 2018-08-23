@@ -1,9 +1,9 @@
 const spawn = require('cross-spawn')
 
 module.exports = (options = {}, context) => ({
-  extendPageData ({ filePath }) {
+  extendPageData ({ _filePath }) {
     const { transformer } = options
-    const timestamp = getGitLastUpdatedTimeStamp(filePath)
+    const timestamp = getGitLastUpdatedTimeStamp(_filePath)
     const lastUpdated = typeof transformer === 'function' ? transformer(timestamp) : timestamp
     return { lastUpdated }
   }

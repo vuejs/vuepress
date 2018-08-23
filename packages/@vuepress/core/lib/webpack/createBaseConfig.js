@@ -2,14 +2,12 @@ const path = require('path')
 
 module.exports = function createBaseConfig ({
   siteConfig,
-  siteData,
   sourceDir,
   outDir,
-  publicPath,
+  base: publicPath,
   themePath,
   themeLayoutPath,
   themeNotFoundPath,
-  isAlgoliaSearch,
   markdown
 }, { debug } = {}, isServer) {
   const Config = require('webpack-chain')
