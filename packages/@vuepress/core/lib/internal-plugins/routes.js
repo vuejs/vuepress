@@ -1,7 +1,7 @@
 module.exports = (options, context) => ({
   name: '@vuepress/internal-routes',
 
-  // @dynamic/routes
+  // @internal/routes
   async clientDynamicModules () {
     const routesCode = await genRoutesFile(context.siteData.pages)
     return { name: 'routes.js', content: routesCode, dirname: 'internal' }
