@@ -1,7 +1,7 @@
 /* global VUEPRESS_TEMP_PATH */
 import Vue from 'vue'
 import Router from 'vue-router'
-import dataMixin from './dataMixin'
+import dataMixin from '../data-mixins/client'
 import { routes } from '@internal/routes'
 import { siteData } from '@internal/siteData'
 import appEnhancers from '@internal/app-enhancers'

@@ -33,6 +33,7 @@ module.exports = async function prepare ({
     .use(require('../internal-plugins/enhanceApp'))
     .use(require('../internal-plugins/siteData'))
     .use(require('../internal-plugins/overrideCSS'))
+    .use(require('../internal-plugins/data-mixins'))
     // user plugin
     .useByPluginsConfig(cliPlugins)
     .useByPluginsConfig(siteConfig.plugins)
