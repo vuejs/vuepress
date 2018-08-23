@@ -1,6 +1,5 @@
 module.exports = {
   dest: 'vuepress',
-  host: '0.0.0.0',
   locales: {
     '/': {
       lang: 'en-US',
