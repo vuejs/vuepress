@@ -1,17 +1,15 @@
 jest.mock('vuepress-plugin-a')
 jest.mock('@org/vuepress-plugin-a')
 
-const {
+import {
   resolvePlugin,
   hydratePlugin,
   resolveScopePackage
-} = require('../../lib/plugin-api/util')
+} from '../../lib/plugin-api/util'
 
 function resolveMockModule (name) {
   return require(`../../../../../__mocks__/${name}`)
 }
-
-// const Plugin = require('../../lib/plugin-api/index')
 
 describe('resolvePlugin', () => {
   test('should resolve scope packages correctly.', () => {

@@ -1,7 +1,4 @@
-// TODO change to ES6 import
-// https://github.com/facebook/jest/issues/6835
-
-const Option = require('../../lib/plugin-api/Option')
+import Option from '../../lib/plugin-api/Option'
 
 describe('Option', () => {
   test('shoould option record the key', () => {
