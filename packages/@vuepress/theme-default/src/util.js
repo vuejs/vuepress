@@ -59,10 +59,10 @@ export function resolvePage (pages, rawPath, base) {
   }
   const path = normalize(rawPath)
   for (let i = 0; i < pages.length; i++) {
-    if (normalize(pages[i].path) === path) {
+    if (normalize(pages[i].regularPath) === path) {
       return Object.assign({}, pages[i], {
         type: 'page',
-        path: ensureExt(rawPath)
+        path: ensureExt(pages[i].path)
       })
     }
   }
@@ -108,7 +108,14 @@ function resolvePath (relative, base, append) {
   return stack.join('/')
 }
 
-export function resolveSidebarItems (page, route, site, localePath) {
+/**
+ * @param { Page } page
+ * @param { string } regularPath
+ * @param { SiteData } site
+ * @param { string } localePath
+ * @returns { SidebarGroup }
+ */
+export function resolveSidebarItems (page, regularPath, site, localePath) {
   const { pages, themeConfig } = site
 
   const localeConfig = localePath && themeConfig.locales
@@ -124,13 +131,17 @@ export function resolveSidebarItems (page, route, site, localePath) {
   if (!sidebarConfig) {
     return []
   } else {
-    const { base, config } = resolveMatchingConfig(route, sidebarConfig)
+    const { base, config } = resolveMatchingConfig(regularPath, sidebarConfig)
     return config
       ? config.map(item => resolveItem(item, pages, base))
       : []
   }
 }
 
+/**
+ * @param { Page } page
+ * @returns { SidebarGroup }
+ */
 function resolveHeaders (page) {
   const headers = groupHeaders(page.headers || [])
   return [{
@@ -167,7 +178,12 @@ export function resolveNavLinkItem (linkItem) {
   })
 }
 
-export function resolveMatchingConfig (route, config) {
+/**
+ * @param { Route } route
+ * @param { Array<string|string[]> | Array<SidebarGroup> | [link: string]: SidebarConfig } config
+ * @returns { base: string, config: SidebarConfig }
+ */
+export function resolveMatchingConfig (regularPath, config) {
   if (Array.isArray(config)) {
     return {
       base: '/',
@@ -175,7 +191,7 @@ export function resolveMatchingConfig (route, config) {
     }
   }
   for (const base in config) {
-    if (ensureEndingSlash(route.path).indexOf(base) === 0) {
+    if (ensureEndingSlash(regularPath).indexOf(base) === 0) {
       return {
         base,
         config: config[base]

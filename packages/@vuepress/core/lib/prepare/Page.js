@@ -1,7 +1,7 @@
 const path = require('path')
 const slugify = require('../markdown/slugify')
 const { fs } = require('@vuepress/shared-utils')
-const { fileToPath } = require('./util')
+const { fileToPath, getPermalink } = require('./util')
 const {
   inferTitle,
   extractHeaders,
@@ -19,10 +19,10 @@ module.exports = class Page {
     } else if (permalink) {
       this._routePath = encodeURI(permalink)
     }
-    this.path = this._routePath
+    this.regularPath = this.path = this._routePath
   }
 
-  async process (markdown, i18n) {
+  async process (markdown, permalinkPattern, i18n) {
     this.key = 'v-' + Math.random().toString(16).slice(2)
     this._content = await fs.readFile(this._filePath, 'utf-8')
     const frontmatter = parseFrontmatter(this._content)
@@ -53,6 +53,18 @@ module.exports = class Page {
     // resolve i18n
     i18n.setSSRContext(this)
     this._i18n = i18n
+
+    this.permalink = getPermalink({
+      pattern: this.frontmatter.permalink || permalinkPattern,
+      slug: this.slug,
+      date: this.frontmatter.date,
+      localePath: i18n.$localePath,
+      regularPath: this.regularPath
+    })
+
+    if (this.permalink) {
+      this.path = this.permalink
+    }
   }
 
   get filename () {

@@ -149,7 +149,11 @@ module.exports = class AppContext {
    */
   async addPage (filePath, { relative, permalink }) {
     const page = new Page(filePath, { relative, permalink })
-    await page.process(this.markdown, new this.I18nConstructor((this.getSiteData.bind(this))))
+    await page.process(
+      this.markdown,
+      this.siteConfig.permalink,
+      new this.I18nConstructor((this.getSiteData.bind(this))),
+    )
     await this.pluginAPI.options.extendPageData.apply(page)
     this.pages.push(page)
   }

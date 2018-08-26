@@ -17,12 +17,12 @@ async function genRoutesFile (pages) {
   function genRoute ({
     path: pagePath,
     key: componentName,
-    frontmatter = {}
+    regularPath
   }) {
     let code = `
   {
     name: ${JSON.stringify(componentName)},
-    path: ${JSON.stringify(frontmatter.permalink || pagePath)},
+    path: ${JSON.stringify(pagePath)},
     component: ThemeLayout,
     beforeEnter: (to, from, next) => {
       registerComponent(${JSON.stringify(componentName)}).then(() => next())
@@ -42,6 +42,14 @@ async function genRoutesFile (pages) {
       code += `,
   {
     path: ${JSON.stringify(pagePath + 'index.html')},
+    redirect: ${JSON.stringify(pagePath)}
+  }`
+    }
+
+    if (regularPath !== pagePath) {
+      code += `,
+  {
+    path: ${JSON.stringify(regularPath)},
     redirect: ${JSON.stringify(pagePath)}
   }`
     }

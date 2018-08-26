@@ -1,3 +1,8 @@
+---
+permalink: :year/:month/:day/:slug
+date: 2018-08-15 11:22:33
+---
+
 # Asset Handling
 
 ## Relative URLs
