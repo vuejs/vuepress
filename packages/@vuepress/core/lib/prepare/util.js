@@ -26,13 +26,13 @@ exports.sort = function (arr) {
 }
 
 // e.g.
-// filename: docs/_posts/evanyou.md
+// filename: docs/_posts/evan you.md
 // content: # yyx 990803
 // date: 2018-08-14 11:22:33
-// :year/:month/:day/:slug/ => 2018/08/14/yyx-990803/
-// :year-:month-:day-:slug/ => 2018-08-14-yyx-990803/
+// :year/:month/:day/:slug/ => 2018/08/14/evan-you/
+// :year-:month-:day-:slug/ => 2018-08-14-evan-you/
 // :year/:month/:day/:title/ => 2018/08/14/yyx 990803/
-// :year/:month/:day/:original/ => 2018/08/14/_posts/evanyou.html
+// :year/:month/:day/:original/ => 2018/08/14/_posts/evan you.html
 
 exports.getPermalink = function ({
   pattern,
