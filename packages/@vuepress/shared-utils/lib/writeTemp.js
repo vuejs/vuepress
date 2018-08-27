@@ -5,8 +5,7 @@ if (!process.env.VUEPRESS_TEMP_PATH) {
   process.env.VUEPRESS_TEMP_PATH = path.resolve(__dirname, '../.temp')
 }
 
-const tempPath = process.env.VUEPRESS_TEMP_PATH
-fs.ensureDirSync(tempPath)
+fs.ensureDirSync(process.env.VUEPRESS_TEMP_PATH)
 
 const tempCache = new Map()
 
@@ -17,7 +16,7 @@ const tempCache = new Map()
  * @returns {Promise<*|string>}
  */
 async function writeTemp (file, content) {
-  const destPath = path.join(tempPath, file)
+  const destPath = path.join(process.env.VUEPRESS_TEMP_PATH, file)
   await fs.ensureDir(path.parse(destPath).dir)
   // cache write to avoid hitting the dist if it didn't change
   const cached = tempCache.get(file)
