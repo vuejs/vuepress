@@ -1,11 +1,11 @@
 const path = require('path')
-const { writeTemp, fs, logger, chalk } = require('@vuepress/shared-utils')
+const { fs, logger, chalk } = require('@vuepress/shared-utils')
 
 module.exports = (options, context) => ({
   name: '@vuepress/internal-override-css',
 
   async ready () {
-    const { sourceDir } = context
+    const { sourceDir, writeTemp } = context
 
     const overridePath = path.resolve(sourceDir, '.vuepress/override.styl').replace(/[\\]+/g, '/')
     const hasUserOverride = fs.existsSync(overridePath)

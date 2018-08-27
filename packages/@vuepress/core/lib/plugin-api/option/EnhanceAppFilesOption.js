@@ -3,7 +3,6 @@ const {
   fs,
   chalk,
   logger,
-  writeTemp,
   codegen: { pathsToModuleCode }
 } = require('@vuepress/shared-utils')
 
@@ -32,7 +31,7 @@ module.exports = class EnhanceAppFilesOption extends Option {
     }
   }
 
-  async apply () {
+  async apply (context) {
     await this.beforeApply()
     const manifest = []
     let moduleId = 0
@@ -44,13 +43,13 @@ module.exports = class EnhanceAppFilesOption extends Option {
       if (typeof filePath === 'object') {
         const { name, content } = filePath
         if (content.includes('export default') || content.includes('module.exports')) {
-          destPath = await writeTemp(`app-enhancers/${name}`, content)
+          destPath = await context.writeTemp(`app-enhancers/${name}`, content)
         } else {
-          destPath = await writeTemp(`app-enhancers/${name}`, content + '\nexport default {}')
+          destPath = await context.writeTemp(`app-enhancers/${name}`, content + '\nexport default {}')
         }
       } else {
         if (fs.existsSync(filePath)) {
-          destPath = await writeTemp(
+          destPath = await context.writeTemp(
             `app-enhancers/enhancer-${moduleId++}.js`,
             `export { default } from '${(filePath)}'`
           )
@@ -67,6 +66,6 @@ module.exports = class EnhanceAppFilesOption extends Option {
     }
 
     // 2. write entry file.
-    await writeTemp('internal/app-enhancers.js', pathsToModuleCode(manifest))
+    await context.writeTemp('internal/app-enhancers.js', pathsToModuleCode(manifest))
   }
 }

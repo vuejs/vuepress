@@ -42,19 +42,21 @@ exports.bootstrap = function ({
     .description('start development server')
     .option('-p, --port <port>', 'use specified port (default: 8080)')
     .option('-h, --host <host>', 'use specified host (default: 0.0.0.0)')
+    .option('-t, --temp <temp>', 'set the directory of the temporary file')
     .option('--debug', 'start development server in debug mode')
-    .action((dir = '.', { host, port, debug }) => {
-      wrapCommand(dev)(path.resolve(dir), { host, port, debug, plugins, theme })
+    .action((dir = '.', { host, port, debug, temp }) => {
+      wrapCommand(dev)(path.resolve(dir), { host, port, debug, plugins, theme, temp })
     })
 
   program
     .command('build [targetDir]')
     .description('build dir as static site')
     .option('-d, --dest <outDir>', 'specify build output dir (default: .vuepress/dist)')
+    .option('-t, --temp <temp>', 'set the directory of the temporary file')
     .option('--debug', 'build in development mode for debugging')
-    .action((dir = '.', { debug, dest }) => {
+    .action((dir = '.', { debug, dest, temp }) => {
       const outDir = dest ? path.resolve(dest) : null
-      wrapCommand(build)(path.resolve(dir), { debug, outDir, plugins, theme })
+      wrapCommand(build)(path.resolve(dir), { debug, outDir, plugins, theme, temp })
     })
 
   program

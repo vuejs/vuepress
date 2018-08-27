@@ -1,8 +1,7 @@
 const Option = require('../Option')
-const { writeTemp } = require('@vuepress/shared-utils')
 
 module.exports = class ClientDynamicModulesOption extends Option {
-  async apply () {
+  async apply (context) {
     for (const item of this.items) {
       const { value: fn, name: pluginName } = item
       let modules = await fn()
@@ -10,7 +9,7 @@ module.exports = class ClientDynamicModulesOption extends Option {
         modules = [modules]
       }
       for (const { name, content, dirname } of modules) {
-        await writeTemp(
+        await context.writeTemp(
           `${dirname || 'dynamic'}/${name}`,
           `
 /**

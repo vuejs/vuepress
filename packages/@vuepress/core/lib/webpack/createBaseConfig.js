@@ -8,7 +8,8 @@ module.exports = function createBaseConfig ({
   themePath,
   themeLayoutPath,
   themeNotFoundPath,
-  markdown
+  markdown,
+  tempPath
 }, { debug } = {}, isServer) {
   const Config = require('webpack-chain')
   const { VueLoaderPlugin } = require('vue-loader')
@@ -40,9 +41,9 @@ module.exports = function createBaseConfig ({
       .set('@themeNotFound', themeNotFoundPath)
       .set('@source', sourceDir)
       .set('@app', path.resolve(__dirname, '../app'))
-      .set('@temp', process.env.VUEPRESS_TEMP_PATH)
-      .set('@dynamic', path.resolve(process.env.VUEPRESS_TEMP_PATH, 'dynamic'))
-      .set('@internal', path.resolve(process.env.VUEPRESS_TEMP_PATH, 'internal'))
+      .set('@temp', tempPath)
+      .set('@dynamic', path.resolve(tempPath, 'dynamic'))
+      .set('@internal', path.resolve(tempPath, 'internal'))
       .end()
     .extensions
       .merge(['.js', '.jsx', '.vue', '.json', '.styl'])
@@ -277,7 +278,7 @@ module.exports = function createBaseConfig ({
     .plugin('injections')
     .use(require('webpack/lib/DefinePlugin'), [{
       VUEPRESS_VERSION: JSON.stringify(require('../../package.json').version),
-      VUEPRESS_TEMP_PATH: JSON.stringify(process.env.VUEPRESS_TEMP_PATH),
+      VUEPRESS_TEMP_PATH: JSON.stringify(tempPath),
       LAST_COMMIT_HASH: JSON.stringify(getLastCommitHash())
     }])
 

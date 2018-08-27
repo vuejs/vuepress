@@ -18,13 +18,13 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
   const { frontmatterEmitter } = require('./webpack/markdownLoader')
 
   logger.wait('\nExtracting site metadata...')
-  const { theme, plugins } = cliOptions
-  const options = await prepare(sourceDir, { theme, plugins, isProd: false })
+  const { theme, plugins, temp } = cliOptions
+  const options = await prepare(sourceDir, { theme, plugins, temp, isProd: false })
 
   // setup watchers to update options and dynamically generated files
   const update = () => {
     options.pluginAPI.options.updated.syncApply()
-    prepare(sourceDir, { theme, plugins, isProd: false }).catch(err => {
+    prepare(sourceDir, { theme, plugins, temp, isProd: false }).catch(err => {
       console.error(logger.error(chalk.red(err.stack), false))
     })
   }

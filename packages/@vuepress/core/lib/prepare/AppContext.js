@@ -1,9 +1,8 @@
 const path = require('path')
 const createMarkdown = require('../markdown/index')
 const loadConfig = require('./loadConfig')
-const { globby } = require('@vuepress/shared-utils')
 const { sort } = require('./util')
-const { fs, logger, chalk } = require('@vuepress/shared-utils')
+const { fs, logger, chalk, globby } = require('@vuepress/shared-utils')
 
 const Page = require('./Page')
 const I18n = require('./I18n')
@@ -17,12 +16,18 @@ module.exports = class AppContext {
    *  isProd: boolean,
    *  plugins: pluginsConfig,
    *  theme: themeNameConfig
+   *  temp: string
    * }} options
    */
   constructor (sourceDir, options) {
     this.sourceDir = sourceDir
     this._options = options
     this.isProd = options.isProd
+
+    const { tempPath, writeTemp } = createTemp(options.temp)
+    this.tempPath = tempPath
+    this.writeTemp = writeTemp
+
     this.vuepressDir = path.resolve(sourceDir, '.vuepress')
     this.siteConfig = loadConfig(this.vuepressDir)
     this.base = this.siteConfig.base || '/'
@@ -53,9 +58,9 @@ module.exports = class AppContext {
 
     await this.pluginAPI.options.ready.apply()
     this.pluginAPI.options.extendMarkdown.syncApply(this.markdown)
-    await this.pluginAPI.options.clientDynamicModules.apply()
-    await this.pluginAPI.options.globalUIComponents.apply()
-    await this.pluginAPI.options.enhanceAppFiles.apply()
+    await this.pluginAPI.options.clientDynamicModules.apply(this)
+    await this.pluginAPI.options.globalUIComponents.apply(this)
+    await this.pluginAPI.options.enhanceAppFiles.apply(this)
   }
 
   /**
@@ -253,3 +258,40 @@ module.exports = class AppContext {
   }
 }
 
+/**
+ * Create a dynamic temp utility context that allow to lanuch
+ * multiple apps with isolated context at the same time.
+ * @param tempPath
+ * @returns {{
+ *  writeTemp: (function(file: string, content: string): string),
+ *  tempPath: string
+ * }}
+ */
+function createTemp (tempPath) {
+  if (!tempPath) {
+    tempPath = path.resolve(__dirname, '../../.temp')
+  } else {
+    tempPath = path.resolve(tempPath)
+  }
+
+  if (!fs.existsSync(tempPath)) {
+    fs.ensureDirSync(tempPath)
+  }
+
+  logger.tip(`Temp directory: ${chalk.gray(tempPath)}`)
+  const tempCache = new Map()
+
+  async function writeTemp (file, content) {
+    const destPath = path.join(tempPath, file)
+    await fs.ensureDir(path.parse(destPath).dir)
+    // cache write to avoid hitting the dist if it didn't change
+    const cached = tempCache.get(file)
+    if (cached !== content) {
+      await fs.writeFile(destPath, content)
+      tempCache.set(file, content)
+    }
+    return destPath
+  }
+
+  return { writeTemp, tempPath }
+}
