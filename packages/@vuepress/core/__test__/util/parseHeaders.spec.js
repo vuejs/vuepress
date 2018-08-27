@@ -2,7 +2,7 @@ import {
   parseHeaders,
   removeNonCodeWrappedHTML,
   deeplyParseHeaders
-} from '@/util/parseHeaders'
+} from '../../lib/util/parseHeaders'
 
 describe('parseHeaders', () => {
   test('should unescape html', () => {

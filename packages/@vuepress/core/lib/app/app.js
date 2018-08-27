@@ -6,6 +6,7 @@ import { routes } from '@internal/routes'
 import { siteData } from '@internal/siteData'
 import appEnhancers from '@internal/app-enhancers'
 import globalUIComponents from '@internal/global-ui'
+import I18n from '@internal/i18n'
 
 // generated from user config
 import('@temp/style.styl')
@@ -31,7 +32,7 @@ if (module.hot) {
 Vue.config.productionTip = false
 Vue.use(Router)
 // mixin for exposing $site and $page
-Vue.mixin(dataMixin(siteData))
+Vue.mixin(dataMixin(I18n, siteData))
 // component for rendering markdown content and setting title etc.
 Vue.component('Content', Content)
 Vue.component('OutboundLink', OutboundLink)

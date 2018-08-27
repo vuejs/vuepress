@@ -10,7 +10,7 @@ const Component = {
 // When the child component is a pure presentation component,
 // we want to be able to display a sub-component with minimal info,
 // rather than stubbing it directly.
-export function mockComponent (name) {
+module.exports = function mockComponent (name) {
   return {
     render (h) {
       return h(Component, { props: { name }})

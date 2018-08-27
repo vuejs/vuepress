@@ -1,9 +1,8 @@
 /* global VUEPRESS_TEMP_PATH */
 
 import Vue from 'vue'
-import I18n from '@internal/i18n'
 
-export default function dataMixin (siteData) {
+export default function dataMixin (I18n, siteData) {
   prepare(siteData)
   const store = new Vue({
     data: {

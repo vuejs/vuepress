@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DropdownLink $i18n - renders dropdown link. 1`] = `
+exports[`DropdownLink $docs-i18n - renders dropdown link. 1`] = `
 <div class="dropdown-wrapper">
   <a class="dropdown-title"><span class="title">VuePress</span> <span class="arrow right"></span></a>
   <ul class="nav-dropdown" style="display: none;" name="dropdown">
@@ -16,7 +16,7 @@ exports[`DropdownLink $i18n - renders dropdown link. 1`] = `
 </div>
 `;
 
-exports[`DropdownLink $simple - renders dropdown link. 1`] = `
+exports[`DropdownLink $docs-simple - renders dropdown link. 1`] = `
 <div class="dropdown-wrapper">
   <a class="dropdown-title"><span class="title">VuePress</span> <span class="arrow right"></span></a>
   <ul class="nav-dropdown" style="display: none;" name="dropdown">

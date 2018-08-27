@@ -1,6 +1,7 @@
-import Content from '@/app/components/Content'
+import Content from '../../lib/app/components/Content'
 import { mount } from '@vue/test-utils'
-import { getRouter, modeTestRunner } from '../util'
+import modeTestRunner from '@vuepress/test-utils/modeTestRunner'
+import getRouter from '@vuepress/test-utils/getRouter'
 
 function test (mode, localVue) {
   it(`${mode} - add custom class by default.`, () => {

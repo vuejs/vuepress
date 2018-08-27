@@ -1,6 +1,6 @@
 import { mount, RouterLinkStub } from '@vue/test-utils'
-import { modeTestRunner } from '../util'
-import NavLink from '@/default-theme/NavLink.vue'
+import modeTestRunner from '@vuepress/test-utils/modeTestRunner'
+import NavLink from '../../src/NavLink.vue'
 
 function test (mode, localVue) {
   it(`$${mode} - renders nav link with internal link`, () => {

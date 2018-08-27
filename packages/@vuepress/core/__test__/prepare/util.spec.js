@@ -1,7 +1,4 @@
-import {
-  isIndexFile,
-  fileToPath
-} from '@/prepare/util.js'
+import { isIndexFile, fileToPath } from '../../lib/prepare/util.js'
 
 describe('prepare - util', () => {
   test('isIndexFile', () => {

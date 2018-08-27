@@ -1,6 +1,6 @@
 import { mount, RouterLinkStub } from '@vue/test-utils'
-import DropdownLink from '@/default-theme/DropdownLink.vue'
-import { modeTestRunner } from '../util'
+import DropdownLink from '../../src/DropdownLink.vue'
+import modeTestRunner from '@vuepress/test-utils/modeTestRunner'
 
 function test (mode, localVue) {
   it(`$${mode} - renders dropdown link.`, () => {
