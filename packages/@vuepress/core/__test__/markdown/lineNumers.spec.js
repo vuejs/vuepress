@@ -1,7 +1,7 @@
 import { Md, getFragment } from './util'
-import preWrapper from '@/markdown/preWrapper.js'
-import lineNumbers from '@/markdown/lineNumbers.js'
-import highlightLines from '@/markdown/highlightLines.js'
+import preWrapper from '../../lib/markdown/preWrapper.js'
+import lineNumbers from '../../lib/markdown/lineNumbers.js'
+import highlightLines from '../../lib/markdown/highlightLines.js'
 
 // lineNumbers must be chained after preWrapper.
 // since lineNumbers needs to add extra stateful class to its block wrapper.

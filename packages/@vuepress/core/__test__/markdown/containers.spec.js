@@ -1,5 +1,5 @@
 import { Md, getFragment } from './util'
-import containers from '@/markdown/containers.js'
+import containers from '../../lib/markdown/containers.js'
 
 const mdC = Md().use(containers)
 

@@ -1,6 +1,6 @@
 import { Md, getFragment } from './util'
-import snippet from '@/markdown/snippet.js'
-import highlightLines from '@/markdown/highlightLines.js'
+import snippet from '../../lib/markdown/snippet.js'
+import highlightLines from '../../lib/markdown/highlightLines.js'
 
 const md = Md().use(snippet)
 const mdH = Md().use(snippet).use(highlightLines)

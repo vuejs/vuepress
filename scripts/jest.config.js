@@ -15,18 +15,6 @@ module.exports = {
     'test.js',
     path.resolve(__dirname, '../test')
   ],
-  // projects: [
-  //   '<rootDir>/packages/@vuepress/*',
-  //   {
-  //     displayName: 'test',
-  //     verbose: true,
-  //     runner: 'jest',
-  //     testURL: 'http://localhost/',
-  //     testMatch: [
-  //       '<rootDir>/packages/@vuepress/*.js'
-  //     ]
-  //   }
-  // ],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1'
   },
