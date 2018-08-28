@@ -1,3 +1,12 @@
+<a name="0.14.2"></a>
+## [0.14.2](https://github.com/vuejs/vuepress/compare/v0.14.1...v0.14.2) (2018-08-14)
+
+
+### Bug Fixes
+
+* SW-update popup only shows up on first page reload (close: [#677](https://github.com/vuejs/vuepress/issues/677)) ([6d8f813](https://github.com/vuejs/vuepress/commit/6d8f813))
+
+
 <a name="0.14.1"></a>
 ## [0.14.1](https://github.com/vuejs/vuepress/compare/v0.14.0...v0.14.1) (2018-08-09)
 
