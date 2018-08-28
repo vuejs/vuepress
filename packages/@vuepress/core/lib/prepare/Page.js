@@ -1,12 +1,7 @@
 const path = require('path')
 const slugify = require('../markdown/slugify')
-const { fs } = require('@vuepress/shared-utils')
-const { fileToPath, getPermalink } = require('./util')
-const {
-  inferTitle,
-  extractHeaders,
-  parseFrontmatter
-} = require('../util/index')
+const { fs, fileToPath, parseFrontmatter, getPermalink } = require('@vuepress/shared-utils')
+const { inferTitle, extractHeaders } = require('../util/index')
 
 module.exports = class Page {
   constructor (filePath, {

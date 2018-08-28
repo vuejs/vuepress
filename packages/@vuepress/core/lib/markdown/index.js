@@ -11,7 +11,7 @@ const emoji = require('markdown-it-emoji')
 const anchor = require('markdown-it-anchor')
 const toc = require('markdown-it-table-of-contents')
 const _slugify = require('./slugify')
-const { parseHeaders } = require('../util/parseHeaders')
+const { parseHeaders } = require('@vuepress/shared-utils')
 
 module.exports = ({ markdown = {}} = {}) => {
   // allow user config slugify

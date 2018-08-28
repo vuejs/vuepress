@@ -1,37 +1,6 @@
-import {
-  parseHeaders,
-  removeNonCodeWrappedHTML,
-  deeplyParseHeaders
-} from '../../lib/util/parseHeaders'
+import deeplyParseHeaders, { removeNonCodeWrappedHTML } from '../lib/deeplyParseHeaders'
 
-describe('parseHeaders', () => {
-  test('should unescape html', () => {
-    const input = '&lt;div&gt;'
-    expect(parseHeaders(input)).toBe('<div>')
-  })
-
-  test('should remove markdown tokens correctly', () => {
-    const asserts = {
-      // #238
-      '[vue](vuejs.org)': 'vue',
-      '`vue`': 'vue',
-      '*vue*': 'vue',
-      '**vue**': 'vue',
-      '***vue***': 'vue',
-      '_vue_': 'vue',
-      '\\_vue\\_': '_vue_',
-      '\\*vue\\*': '*vue*',
-
-      // #564 For multiple markdown tokens
-      '`a` and `b`': 'a and b',
-      '***bold and italic***': 'bold and italic',
-      '**bold** and *italic*': 'bold and italic'
-    }
-    Object.keys(asserts).forEach(input => {
-      expect(parseHeaders(input)).toBe(asserts[input])
-    })
-  })
-
+describe('deeplyParseHeaders', () => {
   test('should remove non-code-wrapped html correctly', () => {
     const asserts = {
       // Remove tail html

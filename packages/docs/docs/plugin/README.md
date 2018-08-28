@@ -511,10 +511,6 @@ The path of the currently active theme.
 
 See: [base](../config/README.md#base).
 
-### context.resolve
-
-- Type: `Function`
-
 ### context.writeTemp
 
 - Type: `Function`

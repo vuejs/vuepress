@@ -1,16 +1,5 @@
 const chalk = require('chalk')
 
-/**
- * Build functional pipeline.
- */
-exports.compose = (...processors) => {
-  if (processors.length === 0) return input => input
-  if (processors.length === 1) return processors[0]
-  return processors.reduce((prev, next) => {
-    return (...args) => next(prev(...args))
-  })
-}
-
 exports.isObject = obj => obj !== null && typeof obj === 'object'
 
 /**

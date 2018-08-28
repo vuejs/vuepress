@@ -1,4 +1,4 @@
-const { deeplyParseHeaders } = require('./parseHeaders')
+const { deeplyParseHeaders } = require('@vuepress/shared-utils')
 
 exports.normalizeHeadTag = function (tag) {
   if (typeof tag === 'string') {
@@ -38,19 +38,6 @@ exports.inferTitle = function (frontmatter) {
   if (match) {
     return deeplyParseHeaders(match[1])
   }
-}
-
-exports.parseFrontmatter = function (content) {
-  const matter = require('gray-matter')
-  const toml = require('toml')
-
-  return matter(content, {
-    excerpt_separator: '<!-- more -->',
-    engines: {
-      toml: toml.parse.bind(toml),
-      excerpt: false
-    }
-  })
 }
 
 const LRU = require('lru-cache')

@@ -1,5 +1,4 @@
-const { logger, chalk, env } = require('@vuepress/shared-utils')
-const { assertTypes } = require('../util/shared')
+const { logger, chalk, env, datatypes: { assertTypes }} = require('@vuepress/shared-utils')
 
 const SCOPE_PACKAGE_RE = /^@(.*)\/(.*)/
 let anonymousPluginIdx = 0

@@ -1,7 +1,6 @@
-const { logger, chalk } = require('@vuepress/shared-utils')
+const { logger, chalk, datatypes: { assertTypes }} = require('@vuepress/shared-utils')
 const instantiateOption = require('./option/instantiateOption')
 const { resolvePlugin, hydratePlugin, normalizePluginsConfig } = require('./util')
-const { assertTypes } = require('../util/shared')
 const { PLUGIN_OPTION_MAP } = require('./constants')
 
 module.exports = class PluginAPI {

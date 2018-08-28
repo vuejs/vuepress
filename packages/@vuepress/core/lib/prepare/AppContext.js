@@ -1,8 +1,7 @@
 const path = require('path')
 const createMarkdown = require('../markdown/index')
 const loadConfig = require('./loadConfig')
-const { sort } = require('./util')
-const { fs, logger, chalk, globby } = require('@vuepress/shared-utils')
+const { fs, logger, chalk, globby, sort } = require('@vuepress/shared-utils')
 
 const Page = require('./Page')
 const I18n = require('./I18n')
