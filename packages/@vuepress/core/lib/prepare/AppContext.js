@@ -199,7 +199,7 @@ module.exports = class AppContext {
         throw new Error(`[vuepress] Cannot resolve Layout.vue file in .vuepress/theme.`)
       }
       if (!fs.existsSync(themeNotFoundPath)) {
-        throw new Error(`[vuepress] Cannot resolve NotFound.vue file in .vuepress/theme.`)
+        themeNotFoundPath = path.resolve(__dirname, '../app/components/NotFound.vue')
       }
     } else if (theme) {
       // use external theme
