@@ -4,7 +4,7 @@ sidebar: auto
 
 # Plugins
 
-## Writing a Plugin 
+## Writing a Plugin
 
 Plugins usually add global-level functionality to VuePress. There is no strictly defined scope for a plugin - there are typically several types of plugins you can write:
 
@@ -521,11 +521,6 @@ See: [base](../config/README.md#base).
 
 A utility for writing temporary files to tempPath.
 
-## Lifecycle
-
-![image](/plugin.png)
-
-- TODO
 
 
 

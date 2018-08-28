@@ -58,7 +58,6 @@ Finally, don't forget that `this.$route` and `this.$router` are also available a
 
 ::: tip
   `lastUpdated` is the UNIX timestamp of this file's last git commit, for more details, refer to [Last Updated](../default-theme-config/README.md#last-updated).
-
 :::
 
 ## Content Excerpt
