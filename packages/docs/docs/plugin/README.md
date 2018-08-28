@@ -9,11 +9,11 @@ sidebar: auto
 Plugins usually add global-level functionality to VuePress. There is no strictly defined scope for a plugin - there are typically several types of plugins you can write:
 
 1. Extend the data generated at compile time. e.g. [@vuepress/plugin-last-updated](https://github.com/vuejs/vuepress/tree/next/packages/@vuepress/plugin-last-updated).
-2. Generate extra files before or after compilation. e.g. `PWA support`.
+2. Generate extra files before or after compilation. e.g. [@vuepress/plugin-pwa](https://github.com/vuejs/vuepress/tree/next/packages/%40vuepress/plugin-pwa)
 3. Add extra pages. e.g. [@vuepress/plugin-i18n-ui](https://github.com/vuejs/vuepress/tree/next/packages/@vuepress/plugin-i18n-ui)
 4. Inject global UI. e.g. [@vuepress/plugin-back-to-top](https://github.com/vuejs/vuepress/tree/next/packages/%40vuepress/plugin-back-to-top).
 
-A plugin should export a `plain object`(`#1`). If the plugin needs to take options, it can be a function that exports a plain object(`#2`). The function will be called with the plugin's options as the first argument, along with [plugin context](#plugin-context) which provides some compile-time context.
+A plugin should export a `plain object`(`#1`). If the plugin needs to take options, it can be a function that exports a plain object(`#2`). The function will be called with the plugin's options as the first argument, along with [context](#plugin-context) which provides some compile-time metadata.
 
 ``` js
 // #1
@@ -32,7 +32,7 @@ module.exports = (options, context) => {
 ```
 
 ::: tip
-A plugin module should use `CommonJS` instead of ES6's `export default` because the VuePress plugin runs on the Node side.
+A VuePress plugin module should leverage `CommonJS` instead of `ES module` because VuePress plugins runs on the Node side.
 :::
 
 ## Using a plugin
@@ -127,9 +127,9 @@ module.exports = {
 ```
 
 ::: warning Note
-The plugin will be disabled when you explicitly pass a false.
+The plugin will be disabled when you explicitly pass a `false`.
 
-- babel style
+- Babel style
 
 ``` js
 module.exports = {
@@ -139,7 +139,7 @@ module.exports = {
 }
 ```
 
-- object style
+- Object style
 
 ``` js
 module.exports = {
@@ -158,19 +158,34 @@ module.exports = {
 - Type: `string`
 - Default: undefined
 
-The name of the plugin.
+The name of the plugin. 
 
-### enable
+Internally, vuepress will use the plugin's package name as the plugin name. When your plugin is a local plugin (i.e. use a pure plugin function directly), please be sure to configure this option, that is good for debug tracking.
+
+```js
+module.exports = {
+  plugins: [
+    [
+      (pluginOptions, context) => ({
+        name: 'my-xxx-plugin'
+        // ... the rest of options
+      })
+    ]
+  ]
+}
+```
+
+### enabled
 
 - Type: `boolean`
 - Default: true
 
 Configure whether to enable this plugin. e.g. if you want to enable a plugin only in development mode:
 
-``` js
+```js
 module.exports = (options, context) => {
   return {
-    enable: !context.isProd
+    enabled: !context.isProd
   }
 }
 ```
@@ -182,17 +197,58 @@ module.exports = (options, context) => {
 
 Modify the internal webpack config with [webpack-chain](https://github.com/mozilla-neutrino/webpack-chain).
 
+```js
+module.exports = {
+  chainWebpack (config, isServer) {
+    // config is an instance of ChainableConfig
+  }
+}
+```
+
+::: tip
+Since VuePress is a Vue SSR based application, there will be two webpack configurations, `isServer` is used to determine whether the current webpack config is applied to the server or client. 
+
+**Also see:** 
+
+- [Vue SSR > Build Configuration](https://ssr.vuejs.org/guide/build-config.html)
+:::
+
 ### enhanceDevServer
 
 - Type: `Function`
 - Default: undefined
 
+Enhance the underlying [Koa](https://github.com/koajs/koa) app.
+
 ``` js
 module.exports = {
-  enhanceDevServer(app) {
+  enhanceDevServer (app) {
     // app: poa instance
   }
 }
+```
+
+A simple plugin to create a sub public directory is as follows:
+
+```js
+const path = require('path')
+
+module.exports = (options, context) => ({
+  // For development
+  enhanceDevServer (app) {
+    const mount = require('koa-mount')
+    const serveStatic = require('koa-static')
+    // The context object can be used to pass information on different plugin options
+    context.imagesAssetsPath = path.resolve(context.sourceDir, '.vuepress/images')
+    app.use(mount(path.join(context.publicPath, 'images'), serveStatic(context.imagesAssetsPath)))
+  },
+  
+  // For productions
+  async generated () {
+    const { fs } = require('@vuepress/shared-utils')
+    await fs.copy(context.imagesAssetsPath, path.resolve(context.outDir, 'images'))
+  }
+})
 ```
 
 ### extendMarkdown
@@ -202,7 +258,7 @@ module.exports = {
 
 A function to modify default config or apply additional plugins to the [markdown-it](https://github.com/markdown-it/markdown-it) instance used to render source files. Example:
 
-``` js
+```js
 module.exports = {
   extendMarkdown: md => {
     md.set({ breaks: true })
@@ -257,11 +313,12 @@ A function that exports a plain object which will be merged into each page's dat
 ``` js
 module.exports = {
   extendPageData ({ 
-    base,      // file's relative path
-    filepath,  // file's absolute path
-    routePath, // url to access this file (client side)
-    content,   // file's raw content
-    key,       // file's key
+    _filePath,   // file's absolute path
+    _i18n,       // access the client global mixins at build time, e.g _i18n.$localePath.
+    content,     // file's raw content string
+    key,         // file's hash key
+    regularPath, // current page's default link (follow the file hierarchy)
+    path,        // current page's permalink
   }) {
     return {
       // ...
@@ -269,6 +326,10 @@ module.exports = {
   }
 }
 ```
+
+::: warning Note
+These fields starting with an `_` means you can only access them during build time.
+:::
 
 e.g.
 
@@ -309,12 +370,18 @@ Then you can use this module at client side code by:
 import { SOURCE_DIR } from '@dynamic/constans'
 ```
 
+::: tip Q & A
+**Q**: Both `clientDynamicModules` and `enhanceAppFiles` can generate dynamic javascript code during build time, so what is the difference between the two?
+
+**A**: The files generated by `clientDynamicModules` needs to be imported as `@dynamic/xxx` by the consumers themselves. But all the files generated by `enhanceAppFiles` will be loaded automatically when the APP is initialized on the client side.
+:::
+
 ### clientRootMixin
 
 - Type: `String`
 - Default: `undefined`
 
-A path to the mixin file which allow you to control the life cycle of APP's root component.
+A path to the mixin file which allow you to control the life cycle of root component.
 
 ``` js
 // plugin's entry
@@ -394,9 +461,15 @@ Then, VuePress will automatically inject these components behind the theme conta
 </div>
 ```
 
-## Plugin Context
+## Context
 
-```
+Starting with VuePress 1.x.x, VuePress provides an `AppContext` object that stores all the state of the current app and can be accessed through the plugin API. 
+
+::: warning Note
+Context of each plugin is a isolated context, they just inherit from the same app context.
+:::
+
+```js
 module.exports = (options, context) => {
   // ...
 }
@@ -412,7 +485,13 @@ Whether vuepress run in production environment mode.
 
 - Type: `string`
 
-Root path of the docs.
+Root directory where the documents are located.
+
+### context.tempPath
+
+- Type: `string`
+
+Root directory where the temporary files are located.
 
 ### context.outDir
 
@@ -426,7 +505,7 @@ Output path.
 
 The path of the currently active theme.
 
-### context.publicPath
+### context.base
 
 - Type: `string`
 
@@ -440,7 +519,7 @@ See: [base](../config/README.md#base).
 
 - Type: `Function`
 
-
+A utility for writing temporary files to tempPath.
 
 ## Lifecycle
 
