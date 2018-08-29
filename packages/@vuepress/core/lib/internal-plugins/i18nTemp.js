@@ -11,7 +11,7 @@ module.exports = () => ({
 
   // @internal/i18n
   async clientDynamicModules () {
-    const i18nCommonjsModule = await fs.readFile(path.resolve(__dirname, '../prepare/i18n.js'), 'utf-8')
+    const i18nCommonjsModule = await fs.readFile(path.resolve(__dirname, '../prepare/I18n.js'), 'utf-8')
     const i18nEsModule = i18nCommonjsModule.replace('module.exports =', 'export default')
     return { name: 'i18n.js', content: i18nEsModule, dirname: 'internal' }
   }
