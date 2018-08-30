@@ -3,8 +3,8 @@
   "name": "docs",
   "description": "docs of VuePress",
   "scripts": {
-    "dev": "vuepress dev docs",
-    "build": "vuepress build docs"
+    "dev": "vuepress dev docs --temp .temp",
+    "build": "vuepress build docs --temp .temp"
   },
   "repository": {
     "type": "git",
