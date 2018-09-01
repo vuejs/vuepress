@@ -3,12 +3,6 @@
   "version": "1.0.0",
   "description": "Minimalistic doc generator with Vue component based layout system",
   "main": "lib/index.js",
-  "scripts": {
-    "lint": "eslint --fix --ext .js,.vue bin/ lib/ test/",
-    "prepublishOnly": "conventional-changelog -p angular -r 2 -i CHANGELOG.md -s",
-    "release": "/bin/bash scripts/release.sh",
-    "test": "node test/prepare.js && jest --config test/jest.config.js"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vuejs/vuepress.git"
@@ -24,15 +18,6 @@
     "url": "https://github.com/vuejs/vuepress/issues"
   },
   "homepage": "https://github.com/vuejs/vuepress#readme",
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,vue}": [
-      "eslint --fix",
-      "git add"
-    ]
-  },
   "dependencies": {
     "@babel/core": "7.0.0-beta.47",
     "@vue/babel-preset-app": "3.0.0-beta.11",
