@@ -7,6 +7,13 @@ exports.isObject = obj => obj !== null && typeof obj === 'object'
  */
 const _toString = Object.prototype.toString
 
+const getObjectType = x => _toString.call(x).slice(8, -1)
+const isOfType = type => x => typeof x === type // eslint-disable-line valid-typeof
+const isObjectOfType = type => x => getObjectType(x) === type
+exports.isFunction = isOfType('function')
+exports.isString = isOfType('string')
+exports.isPlainObject = isObjectOfType('Object')
+
 exports.toRawType = value => _toString.call(value).slice(8, -1)
 
 exports.getType = function (fn) {
