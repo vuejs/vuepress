@@ -1,7 +1,11 @@
-const { logger, chalk, datatypes: { assertTypes }} = require('@vuepress/shared-utils')
 const instantiateOption = require('./option/instantiateOption')
-const { resolvePlugin, hydratePlugin, normalizePluginsConfig } = require('./util')
+const { hydratePlugin, normalizePluginsConfig } = require('./util')
 const { PLUGIN_OPTION_MAP } = require('./constants')
+const {
+  shortcutPackageResolver: { resolvePlugin },
+  datatypes: { assertTypes },
+  logger, chalk
+} = require('@vuepress/shared-utils')
 
 module.exports = class PluginAPI {
   constructor (context) {
@@ -31,7 +35,7 @@ module.exports = class PluginAPI {
 
   use (pluginRaw, pluginOptions = {}) {
     let plugin = resolvePlugin(pluginRaw)
-    if (!plugin.config) {
+    if (!plugin.module) {
       console.warn(`[vuepress] cannot resolve plugin "${pluginRaw}"`)
       return this
     }

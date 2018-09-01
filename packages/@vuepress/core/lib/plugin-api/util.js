@@ -1,74 +1,14 @@
-const { logger, chalk, env, datatypes: { assertTypes }} = require('@vuepress/shared-utils')
-
-const SCOPE_PACKAGE_RE = /^@(.*)\/(.*)/
-let anonymousPluginIdx = 0
-
-exports.resolveScopePackage = function (name) {
-  if (SCOPE_PACKAGE_RE.test(name)) {
-    return {
-      org: RegExp.$1,
-      name: RegExp.$2
-    }
-  }
-  return null
-}
-
-/**
- * Resolve plugin config, name, and shortcut.
- * @param pluginRaw
- * @returns {{config: Function|Object, name: string, shortcut: string}}
- */
-exports.resolvePlugin = function (pluginRaw) {
-  let name
-  let config
-  let shortcut
-  let isLocal = false
-  if (typeof pluginRaw === 'function' || typeof pluginRaw === 'object') {
-    config = pluginRaw
-    name = shortcut = pluginRaw.name || `anonymous-${++anonymousPluginIdx}`
-    isLocal = true
-  } else if (typeof pluginRaw === 'string') {
-    try {
-      shortcut = pluginRaw.startsWith('vuepress-plugin-') ? pluginRaw.slice(16) : pluginRaw
-      name = `vuepress-plugin-${shortcut}`
-      config = require(name)
-    } catch (err) {
-      const pkg = exports.resolveScopePackage(pluginRaw)
-      try {
-        if (pkg) {
-          if (pkg.org === 'vuepress') {
-            shortcut = pkg.name.startsWith('plugin-') ? pkg.name.slice(7) : pkg.name
-            name = `@vuepress/plugin-${shortcut}`
-          } else {
-            shortcut = pkg.name.startsWith('vuepress-plugin-') ? pkg.name.slice(16) : pkg.name
-            name = `@${pkg.org}/vuepress-plugin-${shortcut}`
-          }
-          shortcut = `@${pkg.org}/${shortcut}`
-          config = require(name)
-        } else {
-          throw new Error(`[vuepress] Invalid plugin usage ${pluginRaw}.`)
-        }
-      } catch (err2) {
-        if (env.isDebug) {
-          console.error(err2)
-        }
-        name = shortcut = pluginRaw
-        config = null
-      }
-    }
-  }
-  return { config, name, shortcut, isLocal }
-}
+const { logger, chalk, datatypes: { assertTypes }} = require('@vuepress/shared-utils')
 
 /**
  * Hydrates your plugin config, options and context.
- * @param {Function | Object} config
+ * @param {Function | Object} module
  * @param {String} name
  * @param {String} hortcut
  * @param {Object} pluginOptions
  * @param {Object} pluginContext
  */
-exports.hydratePlugin = function ({ config, name, shortcut, isLocal }, pluginOptions, pluginContext, self) {
+exports.hydratePlugin = function ({ module: config, name, shortcut, isLocal }, pluginOptions, pluginContext, self) {
   const { valid, warnMsg } = assertTypes(pluginOptions, [Object, Boolean])
   if (!valid) {
     if (pluginOptions !== undefined) {
