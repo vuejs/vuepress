@@ -13,6 +13,7 @@ exports.sort = require('./lib/sort')
 exports.ensureLeadingSlash = require('./lib/ensureLeadingSlash')
 exports.ensureEndingSlash = require('./lib/ensureEndingSlash')
 exports.getPermalink = require('./lib/getPermalink')
+exports.shortcutPackageResolver = require('./lib/shortcutPackageResolver')
 
 exports.chalk = require('chalk')
 exports.fs = require('fs-extra')
