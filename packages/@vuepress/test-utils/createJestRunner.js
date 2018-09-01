@@ -3,11 +3,9 @@ const rawArgs = process.argv.slice(2)
 
 module.exports = function createJestRunner (jestArgs) {
   return async function () {
-    console.log(`running jest with args: ${jestArgs.join(' ')}`)
-    await execa('jest', [
-      ...jestArgs,
-      ...rawArgs
-    ], {
+    const args = [...jestArgs, ...rawArgs]
+    console.log(`running jest with args: ${args.join(' ')}`)
+    await execa('jest', args, {
       stdio: 'inherit'
     })
   }
