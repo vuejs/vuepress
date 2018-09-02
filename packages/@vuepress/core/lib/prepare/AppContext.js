@@ -1,6 +1,7 @@
 const path = require('path')
 const createMarkdown = require('../markdown/index')
 const loadConfig = require('./loadConfig')
+const loadTheme = require('./loadTheme')
 const { fs, logger, chalk, globby, sort } = require('@vuepress/shared-utils')
 
 const Page = require('./Page')
@@ -87,7 +88,7 @@ module.exports = class AppContext {
       // user plugin
       .useByPluginsConfig(this._options.plugins)
       .useByPluginsConfig(this.siteConfig.plugins)
-      .useByPluginsConfig(this.themeplugins)
+      .useByPluginsConfig(this.themePlugins)
       // built-in plugins
       .use('@vuepress/last-updated', shouldUseLastUpdated)
       .use('@vuepress/register-components', {
@@ -168,70 +169,7 @@ module.exports = class AppContext {
    */
   async resolveTheme () {
     const theme = this.siteConfig.theme || this._options.theme
-    const requireResolve = (target) => {
-      return require.resolve(target, {
-        paths: [
-          path.resolve(__dirname, '../../node_modules'),
-          path.resolve(this.sourceDir)
-        ]
-      })
-    }
-
-    // resolve theme
-    const localThemePath = path.resolve(this.vuepressDir, 'theme')
-    const useLocalTheme = await fs.exists(localThemePath)
-
-    let themePath = null
-    let themeLayoutPath = null
-    let themeNotFoundPath = null
-    let themeIndexFile = null
-    let themePlugins = []
-
-    if (useLocalTheme) {
-      logger.tip(`\nApply theme located at ${localThemePath}...`)
-
-      // use local custom theme
-      themePath = localThemePath
-      themeLayoutPath = path.resolve(localThemePath, 'Layout.vue')
-      themeNotFoundPath = path.resolve(localThemePath, 'NotFound.vue')
-      if (!fs.existsSync(themeLayoutPath)) {
-        throw new Error(`[vuepress] Cannot resolve Layout.vue file in .vuepress/theme.`)
-      }
-      if (!fs.existsSync(themeNotFoundPath)) {
-        themeNotFoundPath = path.resolve(__dirname, '../app/components/NotFound.vue')
-      }
-    } else if (theme) {
-      // use external theme
-      try {
-        // backward-compatible 0.x.x.
-        themeLayoutPath = requireResolve(`vuepress-theme-${theme}/Layout.vue`)
-        themePath = path.dirname(themeLayoutPath)
-        themeNotFoundPath = path.resolve(themeLayoutPath, 'NotFound.vue')
-      } catch (e) {
-        try {
-          themeIndexFile = requireResolve(`vuepress-theme-${theme}/index.js`)
-        } catch (e) {
-          try {
-            themeIndexFile = requireResolve(`@vuepress/theme-${theme}`)
-            themePath = path.dirname(themeIndexFile)
-            themeIndexFile = require(themeIndexFile)
-            themeLayoutPath = themeIndexFile.layout
-            themeNotFoundPath = themeIndexFile.notFound
-            themePlugins = themeIndexFile.plugins
-          } catch (e) {
-            throw new Error(`[vuepress] Failed to load custom theme "${theme}". File vuepress-theme-${theme}/Layout.vue does not exist.`)
-          }
-        }
-      }
-      logger.tip(`\nApply theme ${chalk.gray(theme)}`)
-    } else {
-      throw new Error(`[vuepress] You must specify a theme, or create a local custom theme. \n For more details, refer to https://vuepress.vuejs.org/guide/custom-themes.html#custom-themes. \n`)
-    }
-
-    this.themePath = themePath
-    this.themeLayoutPath = themeLayoutPath
-    this.themeNotFoundPath = themeNotFoundPath
-    this.themeplugins = themePlugins
+    Object.assign(this, (await loadTheme(theme, this.sourceDir, this.vuepressDir)))
   }
 
   /**

@@ -5,7 +5,7 @@ const { docsModes } = require('./meta')
 async function prepareForTest () {
   await Promise.all(docsModes.map(async ({ docsPath, docsTempPath }) => {
     await fs.ensureDir(docsTempPath)
-    await prepare(docsPath, { theme: 'default', temp: docsTempPath })
+    await prepare(docsPath, { theme: '@vuepress/default', temp: docsTempPath })
   }))
 }
 

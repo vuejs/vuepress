@@ -6,14 +6,21 @@ jest.mock('vuepress-theme-a')
 jest.mock('@org/vuepress-theme-a')
 jest.mock('@vuepress/theme-a')
 
+import path from 'path'
 import {
   resolveTheme,
   resolvePlugin,
   resolveScopePackage
 } from '../lib/shortcutPackageResolver'
 
+const MOCK_RELATIVE = '../../../../__mocks__'
+
+function loadMockModule (name) {
+  return require(`${MOCK_RELATIVE}/${name}`)
+}
+
 function resolveMockModule (name) {
-  return require(`../../../../__mocks__/${name}`)
+  return path.resolve(__dirname, `${MOCK_RELATIVE}/${name}`)
 }
 
 test('should resolve scope packages correctly.', () => {
@@ -47,16 +54,15 @@ describe('resolvePlugin', () => {
   })
 
   test('shoould resolve fullname usage correctly.', () => {
-    console.log(resolvePlugin())
     let plugin = resolvePlugin('vuepress-plugin-a')
     expect(plugin.name).toBe('vuepress-plugin-a')
     expect(plugin.shortcut).toBe('a')
-    expect(plugin.module).toBe(resolveMockModule('vuepress-plugin-a'))
+    expect(plugin.module).toBe(loadMockModule('vuepress-plugin-a'))
 
     plugin = resolvePlugin('@org/vuepress-plugin-a')
     expect(plugin.name).toBe('@org/vuepress-plugin-a')
     expect(plugin.shortcut).toBe('@org/a')
-    expect(plugin.module).toBe(resolveMockModule('@org/vuepress-plugin-a'))
+    expect(plugin.module).toBe(loadMockModule('@org/vuepress-plugin-a'))
   })
 
   test('shoould resolve shortcut usage correctly.', () => {
@@ -64,19 +70,19 @@ describe('resolvePlugin', () => {
     let plugin = resolvePlugin('a')
     expect(plugin.name).toBe('vuepress-plugin-a')
     expect(plugin.shortcut).toBe('a')
-    expect(plugin.module).toBe(resolveMockModule('vuepress-plugin-a'))
+    expect(plugin.module).toBe(loadMockModule('vuepress-plugin-a'))
 
     // scope packages
     plugin = resolvePlugin('@org/a')
     expect(plugin.name).toBe('@org/vuepress-plugin-a')
     expect(plugin.shortcut).toBe('@org/a')
-    expect(plugin.module).toBe(resolveMockModule('@org/vuepress-plugin-a'))
+    expect(plugin.module).toBe(loadMockModule('@org/vuepress-plugin-a'))
 
     // special case for @vuepress package
     plugin = resolvePlugin('@vuepress/a')
     expect(plugin.name).toBe('@vuepress/plugin-a')
     expect(plugin.shortcut).toBe('@vuepress/a')
-    expect(plugin.module).toBe(resolveMockModule('@vuepress/plugin-a'))
+    expect(plugin.module).toBe(loadMockModule('@vuepress/plugin-a'))
   })
 
   test('shoould return null when plugin cannot be resolved.', () => {

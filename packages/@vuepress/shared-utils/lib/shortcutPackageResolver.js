@@ -1,4 +1,5 @@
 const { isDebug } = require('./env')
+const { resolveModule, loadModule } = require('./module')
 const {
   isString,
   assertTypes
@@ -15,7 +16,8 @@ const SCOPE_PACKAGE_RE = /^@(.*)\/(.*)/
 function shortcutPackageResolver (
   type = 'plugin',
   org = 'vuepress',
-  allowedTypes = [String]
+  allowedTypes = [String],
+  load = false
 ) {
   let anonymousPluginIdx = 0
   const NON_SCOPE_PREFIX = `${org}-${type}-`
@@ -23,7 +25,7 @@ function shortcutPackageResolver (
   const SHORT_PREFIX_SLICE_LENGTH = type.length + 1
   const FULL_PREFIX_SLICE_LENGTH = SHORT_PREFIX_SLICE_LENGTH + org.length + 1
 
-  return function (req) {
+  return function (req, cwd) {
     let _module
     let name
     let shortcut
@@ -44,7 +46,7 @@ function shortcutPackageResolver (
           ? req.slice(FULL_PREFIX_SLICE_LENGTH)
           : req
         name = `${NON_SCOPE_PREFIX}${shortcut}`
-        _module = require(name)
+        _module = load ? loadModule(name, cwd) : resolveModule(name, cwd)
       } catch (err) {
         const pkg = module.exports.resolveScopePackage(req)
         try {
@@ -62,7 +64,7 @@ function shortcutPackageResolver (
               name = `@${pkg.org}/${NON_SCOPE_PREFIX}${shortcut}`
             }
             shortcut = `@${pkg.org}/${shortcut}`
-            _module = require(name)
+            _module = load ? loadModule(name, cwd) : resolveModule(name, cwd)
           } else {
             throw new Error(`Invalid ${type} usage ${req}.`)
           }
@@ -91,7 +93,7 @@ module.exports.resolveScopePackage = function resolveScopePackage (name) {
   return null
 }
 module.exports.resolvePlugin = shortcutPackageResolver(
-  'plugin', 'vuepress', [String, Function, Object]
+  'plugin', 'vuepress', [String, Function, Object], true /* load module */
 )
 module.exports.resolveTheme = shortcutPackageResolver(
   'theme', 'vuepress', [String]
