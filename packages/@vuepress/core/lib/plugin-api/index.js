@@ -4,6 +4,7 @@ const { PLUGIN_OPTION_MAP } = require('./constants')
 const {
   shortcutPackageResolver: { resolvePlugin },
   datatypes: { assertTypes },
+  env: { isDebug },
   logger, chalk
 } = require('@vuepress/shared-utils')
 
@@ -98,9 +99,10 @@ module.exports = class PluginAPI {
     additionalPages,
     globalUIComponents
   }) {
+    const isInternalPlugin = pluginName.startsWith('@vuepress/internal-')
     if (shortcut) {
-      logger.tip(`\nApply plugin ${chalk.magenta(shortcut)} ${chalk.gray(`(i.e. "${pluginName}")`)} ...`)
-    } else {
+      logger.tip(`\nApply plugin ${chalk.magenta(shortcut)} ${chalk.gray(`(i.e. "${pluginName}")`)} ...`, !isInternalPlugin)
+    } else if (!isInternalPlugin || isDebug) {
       logger.tip(`\nApply plugin ${chalk.magenta(pluginName)} ...`)
     }
 
