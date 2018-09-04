@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import { resolvePage, normalize, outboundRE, endingSlashRE } from './util'
+import { resolvePage, normalize, outboundRE, endingSlashRE } from '../layouts/util'
 
 export default {
   props: ['sidebarItems'],
@@ -195,8 +195,8 @@ function find (page, items, offset) {
 </script>
 
 <style lang="stylus">
-@import './styles/config.styl'
-@require './styles/wrapper.styl'
+@import '../styles/config.styl'
+@require '../styles/wrapper.styl'
 
 .page
   padding-bottom 2rem

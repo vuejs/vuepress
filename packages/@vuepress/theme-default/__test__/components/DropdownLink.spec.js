@@ -1,5 +1,5 @@
 import { mount, RouterLinkStub } from '@vue/test-utils'
-import DropdownLink from '../../src/DropdownLink.vue'
+import DropdownLink from '../../components/DropdownLink.vue'
 import modeTestRunner from '@vuepress/test-utils/modeTestRunner'
 
 function test (mode, localVue) {

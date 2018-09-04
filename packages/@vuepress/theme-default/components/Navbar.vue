@@ -86,7 +86,7 @@ function css (el, property) {
 </script>
 
 <style lang="stylus">
-@import './styles/config.styl'
+@import '../styles/config.styl'
 
 $navbar-vertical-padding = 0.7rem
 $navbar-horizontal-padding = 1.5rem

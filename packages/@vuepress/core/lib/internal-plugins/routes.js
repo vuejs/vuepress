@@ -1,19 +1,35 @@
-module.exports = (options, context) => ({
+module.exports = (options, ctx) => ({
   name: '@vuepress/internal-routes',
 
   // @internal/routes
   async clientDynamicModules () {
-    const routesCode = await genRoutesFile(context.pages)
-    return { name: 'routes.js', content: routesCode, dirname: 'internal' }
+    const code = importCode() + routesCode(ctx.pages)
+    return { name: 'routes.js', content: code, dirname: 'internal' }
   }
 })
 
 /**
- * Generate routes meta data file.
- * @param pages
- * @returns {Promise<string>}
+ * Import utilities
+ * @returns {string}
  */
-async function genRoutesFile (pages) {
+function importCode () {
+  return `
+import { injectComponentOption, registerComponent } from '@app/util'
+import rootMixins from '@internal/root-mixins'
+import components from '@internal/layout-components'
+import LayoutDistributor from '@app/components/LayoutDistributor.vue'
+
+injectComponentOption(LayoutDistributor, 'mixins', rootMixins)
+injectComponentOption(LayoutDistributor, 'components', components)
+`
+}
+
+/**
+ * Get Vue routes code.
+ * @param {array} pages
+ * @returns {string}
+ */
+function routesCode (pages) {
   function genRoute ({
     path: pagePath,
     key: componentName,
@@ -23,7 +39,7 @@ async function genRoutesFile (pages) {
   {
     name: ${JSON.stringify(componentName)},
     path: ${JSON.stringify(pagePath)},
-    component: ThemeLayout,
+    component: LayoutDistributor,
     beforeEnter: (to, from, next) => {
       registerComponent(${JSON.stringify(componentName)}).then(() => next())
     }
@@ -60,16 +76,10 @@ async function genRoutesFile (pages) {
   const notFoundRoute = `,
   {
     path: '*',
-    component: ThemeNotFound
+    component: LayoutDistributor
   }`
 
   return (
-    `import ThemeLayout from '@themeLayout'\n` +
-    `import ThemeNotFound from '@themeNotFound'\n` +
-    `import { injectMixins, registerComponent } from '@app/util'\n` +
-    `import rootMixins from '@internal/root-mixins'\n\n` +
-    `injectMixins(ThemeLayout, rootMixins)\n` +
-    `injectMixins(ThemeNotFound, rootMixins)\n\n` +
     `export const routes = [${pages.map(genRoute).join(',')}${notFoundRoute}\n]`
   )
 }

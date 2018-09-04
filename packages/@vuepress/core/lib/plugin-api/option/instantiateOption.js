@@ -1,5 +1,4 @@
 const EnhanceAppFilesOption = require('./EnhanceAppFilesOption')
-const ExtendPageDataOption = require('./ExtendPageDataOption')
 const ClientDynamicModulesOption = require('./ClientDynamicModulesOption')
 const AdditionalPagesOption = require('./AdditionalPagesOption')
 const GlobalUIComponentsOption = require('./GlobalUIComponentsOption')
@@ -10,9 +9,6 @@ module.exports = function instantiateOption (name) {
   switch (name) {
   case PLUGIN_OPTION_MAP.ENHANCE_APP_FILES.name:
     return new EnhanceAppFilesOption(name)
-
-  case PLUGIN_OPTION_MAP.EXTEND_PAGE_DATA.name:
-    return new ExtendPageDataOption(name)
 
   case PLUGIN_OPTION_MAP.CLIENT_DYNAMIC_MODULES.name:
     return new ClientDynamicModulesOption(name)

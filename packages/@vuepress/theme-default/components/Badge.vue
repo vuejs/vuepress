@@ -21,7 +21,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-@import '../src/styles/config.styl'
+@import '../styles/config.styl'
 
 .badge
   display inline-block

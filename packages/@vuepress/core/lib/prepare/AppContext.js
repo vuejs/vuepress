@@ -52,9 +52,11 @@ module.exports = class AppContext {
     this.resolvePlugins()
 
     await this.resolvePages()
-    await this.pluginAPI.options.additionalPages.values.map(async ({ path, permalink }) => {
-      await this.addPage(path, { permalink })
-    })
+    await Promise.all(
+      this.pluginAPI.options.additionalPages.values.map(async ({ path, permalink }) => {
+        await this.addPage(path, { permalink })
+      })
+    )
 
     await this.pluginAPI.options.ready.apply()
     this.pluginAPI.options.extendMarkdown.syncApply(this.markdown)
@@ -85,6 +87,7 @@ module.exports = class AppContext {
       .use(require('../internal-plugins/enhanceApp'))
       .use(require('../internal-plugins/overrideCSS'))
       .use(require('../internal-plugins/i18nTemp'))
+      .use(require('../internal-plugins/layouts'))
       // user plugin
       .useByPluginsConfig(this._options.plugins)
       .useByPluginsConfig(this.siteConfig.plugins)
@@ -153,13 +156,16 @@ module.exports = class AppContext {
    * @returns { Promise<void> }
    */
   async addPage (filePath, { relative, permalink }) {
-    const page = new Page(filePath, { relative, permalink })
+    const page = new Page(filePath, {
+      relative,
+      permalink,
+      permalinkPattern: this.siteConfig.permalink
+    })
     await page.process(
       this.markdown,
-      this.siteConfig.permalink,
       new this.I18nConstructor((this.getSiteData.bind(this))),
+      this.pluginAPI.options.extendPageData.items
     )
-    await this.pluginAPI.options.extendPageData.apply(page)
     this.pages.push(page)
   }
 
@@ -184,6 +190,7 @@ module.exports = class AppContext {
    * }}
    */
   getSiteData () {
+    console.log('2')
     return {
       title: this.siteConfig.title || '',
       description: this.siteConfig.description || '',

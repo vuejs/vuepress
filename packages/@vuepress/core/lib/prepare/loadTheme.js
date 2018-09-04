@@ -13,8 +13,6 @@ module.exports = async function loadTheme (theme, sourceDir, vuepressDir) {
     (await fs.exists(localThemePath)) && ((await fs.readdir(localThemePath)).length > 0)
 
   let themePath = null         // Mandatory
-  let themeLayoutPath = null   // Mandatory
-  let themeNotFoundPath = null // Optional
   let themeIndexFile = null    // Optional
   let themePlugins = []        // Optional
   let themeName
@@ -40,33 +38,51 @@ module.exports = async function loadTheme (theme, sourceDir, vuepressDir) {
   try {
     themeIndexFile = require(themePath)
   } catch (error) {
-    console.log(error)
     themeIndexFile = {}
   }
 
   // handle theme api
-  const { layout, notFound, plugins } = themeIndexFile
+  const { plugins, layoutDir = useLocalTheme ? '.' : 'layouts' } = themeIndexFile
   themePlugins = plugins
-  themeLayoutPath = layout
-    ? path.resolve(themePath, layout)
-    : path.resolve(themePath, 'Layout.vue')
 
-  themeNotFoundPath = notFound
-    ? path.resolve(themePath, notFound)
-    : path.resolve(themePath, 'NotFound.vue')
+  const layoutDirPath = path.resolve(themePath, layoutDir)
 
-  if (!fs.existsSync(themeLayoutPath)) {
-    throw new Error(`[vuepress] Cannot resolve Layout.vue file in \n ${themeLayoutPath}`)
+  // normalize component name
+  const getComponentName = filename => {
+    filename = filename.slice(0, -4)
+    if (filename === '404') {
+      filename = 'NotFound'
+    }
+    return filename
   }
 
-  if (!fs.existsSync(themeNotFoundPath)) {
-    themeNotFoundPath = path.resolve(__dirname, '../app/components/NotFound.vue')
+  // built-in named layout or not.
+  const isInternal = componentName => componentName === 'Layout' ||
+    componentName === 'NotFound'
+
+  const layoutComponentMap = fs.readdirSync(layoutDirPath)
+    .filter(filename => filename.endsWith('.vue'))
+    .reduce((map, filename) => {
+      const componentName = getComponentName(filename)
+      const componentPath = path.resolve(layoutDirPath, filename)
+      map[componentName] = { filename, componentName, path: componentPath }
+      if (isInternal(componentName)) {
+        map[componentName].isInternal = true
+      }
+      return map
+    }, {})
+
+  if (!fs.existsSync(layoutComponentMap.Layout.path)) {
+    throw new Error(`[vuepress] Cannot resolve Layout.vue file in \n ${layoutComponentMap.Layout.path}`)
+  }
+
+  if (!fs.existsSync(layoutComponentMap.NotFound.path)) {
+    layoutComponentMap['404'].path = path.resolve(__dirname, '../app/components/NotFound.vue')
   }
 
   return {
     themePath,
-    themeLayoutPath,
-    themeNotFoundPath,
+    layoutComponentMap,
     themeIndexFile,
     themePlugins,
     themeName,

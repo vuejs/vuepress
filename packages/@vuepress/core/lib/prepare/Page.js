@@ -1,12 +1,16 @@
 const path = require('path')
 const slugify = require('../markdown/slugify')
-const { fs, fileToPath, parseFrontmatter, getPermalink } = require('@vuepress/shared-utils')
 const { inferTitle, extractHeaders } = require('../util/index')
+const {
+  fs, fileToPath, parseFrontmatter, getPermalink,
+  datatypes: { isPlainObject }
+} = require('@vuepress/shared-utils')
 
 module.exports = class Page {
   constructor (filePath, {
     relative,
-    permalink
+    permalink,
+    permalinkPattern
   }) {
     this._filePath = filePath
     if (relative) {
@@ -15,22 +19,23 @@ module.exports = class Page {
       this._routePath = encodeURI(permalink)
     }
     this.regularPath = this.path = this._routePath
+    this._permalinkPattern = permalinkPattern
   }
 
-  async process (markdown, permalinkPattern, i18n) {
+  async process (markdown, i18n, enhancers) {
     this.key = 'v-' + Math.random().toString(16).slice(2)
     this._content = await fs.readFile(this._filePath, 'utf-8')
-    const frontmatter = parseFrontmatter(this._content)
+    this._frontmatterMeta = parseFrontmatter(this._content)
 
     // infer title
-    const title = inferTitle(frontmatter)
+    const title = inferTitle(this._frontmatterMeta)
     if (title) {
       this.title = title
     }
 
     // headers
     const headers = extractHeaders(
-      frontmatter.content,
+      this._frontmatterMeta.content,
       ['h2', 'h3'],
       markdown
     )
@@ -38,10 +43,26 @@ module.exports = class Page {
       this.headers = headers
     }
 
-    this.frontmatter = frontmatter.data
+    for (const { name: pluginName, value: enhancer } of enhancers) {
+      let response
+      try {
+        response = enhancer(this)
+      } catch (error) {
+        throw new Error(`[${pluginName}] excuete extendPageData failed.`)
+      }
+      if (isPlainObject(response)) {
+        Object.keys(response).forEach(key => {
+          if (!this[key]) {
+            this[key] = response[key]
+          }
+        })
+      }
+    }
 
-    if (frontmatter.excerpt) {
-      const { html } = markdown.render(frontmatter.excerpt)
+    this.frontmatter = this._frontmatterMeta.data
+
+    if (this._frontmatterMeta.excerpt) {
+      const { html } = markdown.render(this._frontmatterMeta.excerpt)
       this.excerpt = html
     }
 
@@ -49,16 +70,16 @@ module.exports = class Page {
     i18n.setSSRContext(this)
     this._i18n = i18n
 
-    this.permalink = getPermalink({
-      pattern: this.frontmatter.permalink || permalinkPattern,
+    this._permalink = getPermalink({
+      pattern: this.frontmatter.permalink || this._permalinkPattern,
       slug: this.slug,
       date: this.frontmatter.date,
       localePath: i18n.$localePath,
       regularPath: this.regularPath
     })
 
-    if (this.permalink) {
-      this.path = this.permalink
+    if (this._permalink) {
+      this.path = this._permalink
     }
   }
 

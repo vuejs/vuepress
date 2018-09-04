@@ -1,11 +1,28 @@
 import Vue from 'vue'
 import { loadComponent } from '@internal/async-component'
 
-export function injectMixins (options, mixins) {
-  if (!options.mixins) {
-    options.mixins = []
+/**
+ * Inject option to Vue SFC
+ * @param {object} options
+ * @param {string} key
+ * @param {any} value
+ */
+export function injectComponentOption (options, key, value) {
+  const arrayInject = () => {
+    if (!options[key]) options[key] = []
+    options[key].push(...value)
   }
-  options.mixins.push(...mixins)
+  const objectInject = () => {
+    if (!options[key]) options[key] = {}
+    Object.assign(options[key], value)
+  }
+  // const primitiveInject = () => options[key] = value
+
+  switch (key) {
+  case 'components': objectInject(); break
+  case 'mixins': arrayInject(); break
+  default: throw new Error('Unknown option name.')
+  }
 }
 
 export function findPageForPath (pages, path) {

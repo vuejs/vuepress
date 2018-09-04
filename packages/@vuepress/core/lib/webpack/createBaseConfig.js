@@ -6,8 +6,6 @@ module.exports = function createBaseConfig ({
   outDir,
   base: publicPath,
   themePath,
-  themeLayoutPath,
-  themeNotFoundPath,
   markdown,
   tempPath
 }, { debug } = {}, isServer) {
@@ -37,8 +35,6 @@ module.exports = function createBaseConfig ({
     .set('symlinks', true)
     .alias
       .set('@theme', themePath)
-      .set('@themeLayout', themeLayoutPath)
-      .set('@themeNotFound', themeNotFoundPath)
       .set('@source', sourceDir)
       .set('@app', path.resolve(__dirname, '../app'))
       .set('@temp', tempPath)
