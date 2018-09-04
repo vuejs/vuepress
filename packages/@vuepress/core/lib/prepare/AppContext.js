@@ -87,7 +87,7 @@ module.exports = class AppContext {
       .use(require('../internal-plugins/enhanceApp'))
       .use(require('../internal-plugins/overrideCSS'))
       .use(require('../internal-plugins/i18nTemp'))
-      .use(require('../internal-plugins/layouts'))
+      .use(require('../internal-plugins/layoutComponents'))
       // user plugin
       .useByPluginsConfig(this._options.plugins)
       .useByPluginsConfig(this.siteConfig.plugins)
@@ -190,7 +190,6 @@ module.exports = class AppContext {
    * }}
    */
   getSiteData () {
-    console.log('2')
     return {
       title: this.siteConfig.title || '',
       description: this.siteConfig.description || '',

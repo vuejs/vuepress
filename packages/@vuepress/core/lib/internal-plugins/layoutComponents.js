@@ -3,7 +3,7 @@ module.exports = (options, ctx) => {
   const componentNames = Object.keys(layoutComponentMap)
 
   return {
-    name: '@vuepress/internal-layout',
+    name: '@vuepress/internal-layout-components',
 
     async clientDynamicModules () {
       const code = `export default {\n${componentNames
