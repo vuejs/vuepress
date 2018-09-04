@@ -1,5 +1,6 @@
 module.exports = function createClientConfig (options, cliOptions) {
   const path = require('path')
+  const safeParser = require('postcss-safe-parser')
   const WebpackBar = require('webpackbar')
   const createBaseConfig = require('./createBaseConfig')
 
@@ -44,7 +45,7 @@ module.exports = function createClientConfig (options, cliOptions) {
       .use(require('optimize-css-assets-webpack-plugin'), [{
         canPrint: false,
         cssProcessorOptions: {
-          safe: true,
+          parser: safeParser,
           autoprefixer: { disable: true },
           mergeLonghand: false
         }
