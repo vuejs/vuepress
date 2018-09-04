@@ -51,7 +51,7 @@ module.exports = class EnhanceAppFilesOption extends Option {
         if (fs.existsSync(filePath)) {
           destPath = await context.writeTemp(
             `app-enhancers/enhancer-${moduleId++}.js`,
-            `export { default } from '${(filePath)}'`
+            `export { default } from ${JSON.stringify(filePath)}`
           )
         } else {
           logger.debug(

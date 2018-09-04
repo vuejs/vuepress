@@ -1,7 +1,7 @@
 function genImportAsyncComponentFile (pages) {
   return `export function loadComponent (key) {
   switch (key) {
-${pages.map(({ key, _filePath }) => `    case "${key}": return import("${_filePath}");`).join('\n')}
+${pages.map(({ key, _filePath }) => `    case ${JSON.stringify(key)}: return import(${JSON.stringify(_filePath)});`).join('\n')}
   }
 }`
 }
