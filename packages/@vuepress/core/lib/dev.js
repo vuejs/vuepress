@@ -48,7 +48,7 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
     '.vuepress/config.js',
     '.vuepress/config.yml',
     '.vuepress/config.toml'
-  ], {
+  ].concat(options.siteConfig.watch || []), {
     cwd: sourceDir,
     ignoreInitial: true
   })
