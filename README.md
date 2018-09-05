@@ -51,7 +51,7 @@ https://vuepress.vuejs.org/
 
 * [Multi-Language Support](https://vuepress.vuejs.org/guide/i18n.html)
 * [Service Worker](https://vuepress.vuejs.org/config/#serviceworker)
-* [Google Analytics](https://vuepress.vuejs.org/config/#ga)
+* [Google Analytics, with privacy setting](https://vuepress.vuejs.org/config/#ga)
 
 ## Showcase
 
