@@ -1,0 +1,30 @@
+{
+  "name": "@vuepress/shared-utils",
+  "version": "1.0.0",
+  "description": "shared-utils for vuepress",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuejs/vuepress.git"
+  },
+  "keywords": [
+    "documentation",
+    "vue",
+    "vuepress",
+    "generator"
+  ],
+  "dependencies": {
+    "chalk": "^2.3.2",
+    "fs-extra": "^5.0.0",
+    "globby": "^8.0.1"
+  },
+  "author": "Evan You",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vuejs/vuepress/issues"
+  },
+  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/shared-utils#readme"
+}
