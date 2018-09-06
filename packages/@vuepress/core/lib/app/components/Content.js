@@ -1,3 +1,6 @@
+import Vue from 'vue'
+import components from '@internal/page-components'
+
 export default {
   functional: true,
 
@@ -10,7 +13,9 @@ export default {
   },
 
   render (h, { parent, props, data }) {
-    return h(props.pageKey || parent.$page.key, {
+    const pageKey = props.pageKey || parent.$page.key
+    Vue.component(pageKey, components[pageKey])
+    return h(pageKey, {
       class: [props.custom ? 'custom' : '', data.class, data.staticClass],
       style: data.style
     })

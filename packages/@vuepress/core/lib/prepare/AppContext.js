@@ -83,11 +83,11 @@ module.exports = class AppContext {
       .use(require('../internal-plugins/siteData'))
       .use(require('../internal-plugins/routes'))
       .use(require('../internal-plugins/rootMixins'))
-      .use(require('../internal-plugins/importAsyncComponent'))
       .use(require('../internal-plugins/enhanceApp'))
       .use(require('../internal-plugins/overrideCSS'))
       .use(require('../internal-plugins/i18nTemp'))
       .use(require('../internal-plugins/layoutComponents'))
+      .use(require('../internal-plugins/pageComponents'))
       // user plugin
       .useByPluginsConfig(this._options.plugins)
       .useByPluginsConfig(this.siteConfig.plugins)

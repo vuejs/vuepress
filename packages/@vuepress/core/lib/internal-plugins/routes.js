@@ -40,9 +40,6 @@ function routesCode (pages) {
     name: ${JSON.stringify(componentName)},
     path: ${JSON.stringify(pagePath)},
     component: LayoutDistributor,
-    beforeEnter: (to, from, next) => {
-      registerComponent(${JSON.stringify(componentName)}).then(() => next())
-    }
   }`
 
     const dncodedPath = decodeURIComponent(pagePath)
