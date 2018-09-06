@@ -1,6 +1,13 @@
 {
-  "lerna": "2.5.1",
+  "lerna": "2.11.0",
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "commands": {
+    "publish": {
+      "conventionalCommits": true,
+      "message": "chore: publish",
+      "ignore": ["docs"]
+    }
+  }
 }
