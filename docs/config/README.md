@@ -74,13 +74,25 @@ Specify the output directory for `vuepress build`.
 
 ### ga
 
-- Type: `string`
+- Type: `string | { id: string, anonymizeIp: boolean }`
 - Default: `undefined`
 
-Provide the Google Analytics ID to enable integration.
+Provide the Google Analytics ID as a string to enable integration.
+
+<Badge text="0.14.3+"/> You can also use an object to enable IP anonymization:
+
+``` js
+module.exports = {
+  // …
+  ga: {
+    id: 'UA-XXXX-X',
+    anonymizeIp: true // false by default for backwards compatibility
+  }
+}
+```
 
 ::: tip
-Please be aware of [GDPR (2018 reform of EU data protection rules)](https://ec.europa.eu/commission/priorities/justice-and-fundamental-rights/data-protection/2018-reform-eu-data-protection-rules_en) and consider setting Google Analytics to [anonymize IPs](https://support.google.com/analytics/answer/2763052?hl=en) where appropriate and/or needed.
+Consider setting Google Analytics to [anonymize IPs](https://support.google.com/analytics/answer/2763052?hl=en) using `anonymizeIp: true` setting, to protect user privacy and comply with [GDPR (2018 reform of EU data protection rules)](https://ec.europa.eu/commission/priorities/justice-and-fundamental-rights/data-protection/2018-reform-eu-data-protection-rules_en).
 :::
 
 ### serviceWorker
