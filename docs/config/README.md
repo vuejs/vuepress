@@ -79,7 +79,7 @@ Specify the output directory for `vuepress build`.
 
 Provide the Google Analytics ID as a string to enable integration.
 
-You can also use an object to enable IP anonymization:
+<Badge text="0.14.3+"/> You can also use an object to enable IP anonymization:
 
 ``` js
 module.exports = {
