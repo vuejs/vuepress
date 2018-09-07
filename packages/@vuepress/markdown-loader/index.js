@@ -100,8 +100,9 @@ module.exports = function (src) {
 
   const res = (
     `<template>\n` +
-      `<div class="content">${html}</div>\n` +
+      `<ContentSlotsDistributor :slot-key="slotKey">${html}</ContentSlotsDistributor>\n` +
     `</template>\n` +
+    `<script>export default { props: ['slot-key'] }</script>` +
     (hoistedTags || []).join('\n') +
     `\n${dataBlockString}\n`
   )

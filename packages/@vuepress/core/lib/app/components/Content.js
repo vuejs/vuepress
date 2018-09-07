@@ -22,7 +22,9 @@ export default {
       return h(pageKey, {
         class: [data.class, data.staticClass],
         style: data.style,
-        slot: props.slot || 'default'
+        props: {
+          slotKey: props.slot || 'default'
+        }
       })
     }
     return h('')
