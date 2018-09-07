@@ -14,7 +14,7 @@ module.exports = (options, ctx) => ({
  */
 function importCode () {
   return `
-import { injectComponentOption, registerComponent } from '@app/util'
+import { injectComponentOption } from '@app/util'
 import rootMixins from '@internal/root-mixins'
 import components from '@internal/layout-components'
 import LayoutDistributor from '@app/components/LayoutDistributor.vue'

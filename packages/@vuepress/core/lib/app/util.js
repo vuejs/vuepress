@@ -1,6 +1,3 @@
-import Vue from 'vue'
-import { loadComponent } from '@internal/async-component'
-
 /**
  * Inject option to Vue SFC
  * @param {object} options
@@ -36,13 +33,6 @@ export function findPageForPath (pages, path) {
     path: '',
     frontmatter: {}
   }
-}
-
-export function registerComponent (key) {
-  return loadComponent(key).then(comp => {
-    Vue.component(key, comp.default)
-    return comp.default
-  })
 }
 
 /**
