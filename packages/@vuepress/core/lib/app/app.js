@@ -13,6 +13,7 @@ import('@temp/style.styl')
 
 // built-in components
 import Content from './components/Content'
+import ContentSlotsDistributor from './components/ContentSlotsDistributor'
 import OutboundLink from './components/OutboundLink.vue'
 import ClientOnly from './components/ClientOnly'
 
@@ -35,6 +36,7 @@ Vue.use(Router)
 Vue.mixin(dataMixin(I18n, siteData))
 // component for rendering markdown content and setting title etc.
 Vue.component('Content', Content)
+Vue.component('ContentSlotsDistributor', ContentSlotsDistributor)
 Vue.component('OutboundLink', OutboundLink)
 // component for client-only content
 Vue.component('ClientOnly', ClientOnly)

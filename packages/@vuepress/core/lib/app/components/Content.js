@@ -9,7 +9,8 @@ export default {
       type: Boolean,
       default: true
     },
-    pageKey: String
+    pageKey: String,
+    slot: String
   },
 
   render (h, { parent, props, data }) {
@@ -17,7 +18,10 @@ export default {
     Vue.component(pageKey, components[pageKey])
     return h(pageKey, {
       class: [props.custom ? 'custom' : '', data.class, data.staticClass],
-      style: data.style
+      style: data.style,
+      props: {
+        target: props.slot || 'default'
+      }
     })
   }
 }

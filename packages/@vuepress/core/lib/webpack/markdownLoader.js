@@ -83,8 +83,9 @@ module.exports = function (src) {
 
   const res = (
     `<template>\n` +
-      `<div class="content">${html}</div>\n` +
+      `<ContentSlotsDistributor :target="target">${html}</ContentSlotsDistributor>\n` +
     `</template>\n` +
+    `<script>export default { props: ['target'] }</script>` +
     (hoistedTags || []).join('\n')
   )
   cache.set(key, res)
