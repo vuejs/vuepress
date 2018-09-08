@@ -16,12 +16,11 @@ export default {
   render (h, { parent, props, data }) {
     const pageKey = props.pageKey || parent.$page.key
     Vue.component(pageKey, components[pageKey])
+
     return h(pageKey, {
       class: [props.custom ? 'custom' : '', data.class, data.staticClass],
       style: data.style,
-      props: {
-        target: props.slot || 'default'
-      }
+      slot: props.slot || 'default'
     })
   }
 }

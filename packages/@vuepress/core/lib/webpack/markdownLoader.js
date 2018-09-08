@@ -83,7 +83,7 @@ module.exports = function (src) {
 
   const res = (
     `<template>\n` +
-      `<ContentSlotsDistributor :target="target">${html}</ContentSlotsDistributor>\n` +
+      `<div class="content">${html}</div>\n` +
     `</template>\n` +
     `<script>export default { props: ['target'] }</script>` +
     (hoistedTags || []).join('\n')
