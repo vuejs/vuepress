@@ -12,9 +12,8 @@ module.exports = (pluginOptions = {}, context) => ({
 
   additionalPages: [
     {
-      override: false,
-      permalink: pluginOptions.route || '/i18n/',
-      path: path.resolve(__dirname, 'index.md')
+      filePath: path.resolve(__dirname, 'index.md'),
+      permalink: pluginOptions.permalink || '/i18n/'
     }
   ]
 })

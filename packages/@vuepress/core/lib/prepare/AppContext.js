@@ -54,7 +54,7 @@ module.exports = class AppContext {
     await this.resolvePages()
     await Promise.all(
       this.pluginAPI.options.additionalPages.values.map(async ({ path, permalink }) => {
-        await this.addPage(path, { permalink })
+        await this.addPage({ filePath: path, permalink })
       })
     )
 
@@ -143,30 +143,22 @@ module.exports = class AppContext {
 
     await Promise.all(pageFiles.map(async (relative) => {
       const filePath = path.resolve(this.sourceDir, relative)
-      await this.addPage(filePath, { relative })
+      await this.addPage({ filePath, relative })
     }))
   }
 
   /**
    * Add a page
-   * @param { string } filePath
-   * @param { string } relative relative path of source markdown file.
-   * @param { string } permalink the URL (excluding the domain name)
-   *                   for your pages, posts.
    * @returns { Promise<void> }
    */
-  async addPage (filePath, { relative, permalink }) {
-    const page = new Page({
-      filePath,
-      relative,
-      permalink,
-      permalinkPattern: this.siteConfig.permalink
+  async addPage (options) {
+    options.permalinkPattern = this.siteConfig.permalink
+    const page = new Page(options)
+    await page.process({
+      markdown: this.markdown,
+      i18n: new this.I18nConstructor((this.getSiteData.bind(this))),
+      enhancers: this.pluginAPI.options.extendPageData.items
     })
-    await page.process(
-      this.markdown,
-      new this.I18nConstructor((this.getSiteData.bind(this))),
-      this.pluginAPI.options.extendPageData.items
-    )
     this.pages.push(page)
   }
 
