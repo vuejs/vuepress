@@ -34,6 +34,10 @@ module.exports = (store /* null in server side */) => class I18n {
     return store.siteData
   }
 
+  get $themeConfig () {
+    return this.$site.themeConfig
+  }
+
   get $localeConfig () {
     const { locales = {}} = this.$site
     let targetLang
