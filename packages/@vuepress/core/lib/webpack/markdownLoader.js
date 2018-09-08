@@ -29,7 +29,7 @@ module.exports = function (src) {
   const content = frontmatter.content
 
   if (!isProd && !isServer) {
-    const inferredTitle = inferTitle(frontmatter)
+    const inferredTitle = inferTitle(frontmatter.data, frontmatter.content)
     const headers = extractHeaders(content, ['h2', 'h3'], markdown)
     delete frontmatter.content
 
