@@ -1,6 +1,7 @@
 {
   "private": true,
   "name": "docs",
+  "version": "1.0.0",
   "description": "docs of VuePress",
   "scripts": {
     "dev": "vuepress dev docs --temp .temp",
