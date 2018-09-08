@@ -7,41 +7,58 @@ const {
 } = require('@vuepress/shared-utils')
 
 module.exports = class Page {
-  constructor (filePath, {
+  constructor ({
+    filePath,
+    title,
     relative,
     permalink,
     permalinkPattern
   }) {
     this._filePath = filePath
+
     if (relative) {
       this._routePath = encodeURI(fileToPath(relative))
     } else if (permalink) {
       this._routePath = encodeURI(permalink)
     }
+
+    this.key = 'v-' + Math.random().toString(16).slice(2)
     this.regularPath = this.path = this._routePath
+    this.title = title
     this._permalinkPattern = permalinkPattern
   }
 
   async process (markdown, i18n, enhancers) {
-    this.key = 'v-' + Math.random().toString(16).slice(2)
     this._content = await fs.readFile(this._filePath, 'utf-8')
-    this._frontmatterMeta = parseFrontmatter(this._content)
+    const { excerpt, data, content } = parseFrontmatter(this._content)
+    this._strippedContent = content
+    this.frontmatter = data
 
     // infer title
-    const title = inferTitle(this._frontmatterMeta)
+    const title = inferTitle(this.frontmatter, this._strippedContent)
     if (title) {
       this.title = title
     }
 
     // headers
     const headers = extractHeaders(
-      this._frontmatterMeta.content,
+      this._strippedContent,
       ['h2', 'h3'],
       markdown
     )
     if (headers.length) {
       this.headers = headers
     }
+
+    if (excerpt) {
+      const { html } = markdown.render(excerpt)
+      this.excerpt = html
+    }
+
+    // resolve i18n
+    i18n.setSSRContext(this)
+    this._i18n = i18n
+    this._localePath = i18n.$localePath
 
     for (const { name: pluginName, value: enhancer } of enhancers) {
       let response
@@ -59,22 +76,11 @@ module.exports = class Page {
       }
     }
 
-    this.frontmatter = this._frontmatterMeta.data
-
-    if (this._frontmatterMeta.excerpt) {
-      const { html } = markdown.render(this._frontmatterMeta.excerpt)
-      this.excerpt = html
-    }
-
-    // resolve i18n
-    i18n.setSSRContext(this)
-    this._i18n = i18n
-
     this._permalink = getPermalink({
       pattern: this.frontmatter.permalink || this._permalinkPattern,
       slug: this.slug,
       date: this.frontmatter.date,
-      localePath: i18n.$localePath,
+      localePath: this._localePath,
       regularPath: this.regularPath
     })
 

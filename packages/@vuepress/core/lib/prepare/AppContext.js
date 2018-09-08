@@ -156,7 +156,8 @@ module.exports = class AppContext {
    * @returns { Promise<void> }
    */
   async addPage (filePath, { relative, permalink }) {
-    const page = new Page(filePath, {
+    const page = new Page({
+      filePath,
       relative,
       permalink,
       permalinkPattern: this.siteConfig.permalink

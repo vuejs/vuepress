@@ -3,16 +3,14 @@ const path = require('path')
 module.exports = (options, ctx) => ({
   extendPageData (pageCtx) {
     const {
-      _frontmatterMeta     // result of parseFrontmatter
-      // type: { data: FrontMatterObject, content: rest content }
-
+      frontmatter: rawFrontmatter
       // _filePath,        // file's absolute path
       // _content,         // file's raw content string
+      // _localePath       // '/' or '/zh/'
       // key,              // file's hash key
       // regularPath       // current page's default link (follow the file hierarchy)
     } = pageCtx
 
-    const { data: rawFrontmatter } = _frontmatterMeta
     const { layoutComponentMap } = ctx
     const { pageEnhancers = [] } = options
     const isLayoutExists = name => layoutComponentMap[name] !== undefined

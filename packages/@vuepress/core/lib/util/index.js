@@ -27,14 +27,14 @@ exports.applyUserWebpackConfig = function (userConfig, config, isServer) {
   return config
 }
 
-exports.inferTitle = function (frontmatter) {
-  if (frontmatter.data.home) {
+exports.inferTitle = function (frontmatter, strippedContent) {
+  if (frontmatter.home) {
     return 'Home'
   }
-  if (frontmatter.data.title) {
-    return deeplyParseHeaders(frontmatter.data.title)
+  if (frontmatter.title) {
+    return deeplyParseHeaders(frontmatter.title)
   }
-  const match = frontmatter.content.trim().match(/^#+\s+(.*)/)
+  const match = strippedContent.trim().match(/^#+\s+(.*)/)
   if (match) {
     return deeplyParseHeaders(match[1])
   }
