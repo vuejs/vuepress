@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = (options, ctx) => ({
   extendPageData (pageCtx) {
     const {
@@ -16,14 +18,23 @@ module.exports = (options, ctx) => ({
     const isLayoutExists = name => layoutComponentMap[name] !== undefined
     const getLayout = name => isLayoutExists(name) ? name : 'Layout'
 
+    const isDirectChild = regularPath => path.parse(regularPath).dir === '/'
     const enhancers = [
       {
-        when: ({ regularPath }) => regularPath === '/category/',
+        when: ({ regularPath }) => isDirectChild(regularPath),
+        frontmatter: { layout: getLayout('Page') }
+      },
+      {
+        when: ({ regularPath }) => regularPath === '/category.html',
         frontmatter: { layout: getLayout('Category') }
       },
       {
-        when: ({ regularPath }) => regularPath === '/tags/',
+        when: ({ regularPath }) => regularPath === '/tags.html',
         frontmatter: { layout: getLayout('Tag') }
+      },
+      {
+        when: ({ regularPath }) => regularPath === '/',
+        frontmatter: { layout: getLayout('Layout') }
       },
       {
         when: ({ regularPath }) => regularPath.startsWith('/_posts/'),

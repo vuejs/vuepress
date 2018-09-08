@@ -1,7 +1,7 @@
 {
   "name": "@vuepress/plugin-blog",
   "version": "1.0.0",
-  "description": "theme plugin for vuepress",
+  "description": "blog plugin for vuepress",
   "main": "index.js",
   "publishConfig": {
     "access": "public"
