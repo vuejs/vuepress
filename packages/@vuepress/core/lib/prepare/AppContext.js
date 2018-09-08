@@ -219,6 +219,8 @@ function createTemp (tempPath) {
 
   if (!fs.existsSync(tempPath)) {
     fs.ensureDirSync(tempPath)
+  } else {
+    fs.emptyDirSync(tempPath)
   }
 
   logger.tip(`Temp directory: ${chalk.gray(tempPath)}`)
