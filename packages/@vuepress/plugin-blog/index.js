@@ -16,21 +16,22 @@ module.exports = (options, ctx) => ({
     const { layoutComponentMap } = ctx
     const { pageEnhancers = [] } = options
     const isLayoutExists = name => layoutComponentMap[name] !== undefined
-    const getLayout = name => isLayoutExists(name) ? name : 'Layout'
+    const getLayout = (name, fallback) => isLayoutExists(name) ? name : fallback
 
     const isDirectChild = regularPath => path.parse(regularPath).dir === '/'
     const enhancers = [
       {
         when: ({ regularPath }) => isDirectChild(regularPath),
-        frontmatter: { layout: getLayout('Page') }
+        frontmatter: { layout: getLayout('Page', 'Layout') },
+        data: { type: 'page' }
       },
       {
         when: ({ regularPath }) => regularPath === '/category.html',
-        frontmatter: { layout: getLayout('Category') }
+        frontmatter: { layout: getLayout('Category', 'Page') }
       },
       {
         when: ({ regularPath }) => regularPath === '/tags.html',
-        frontmatter: { layout: getLayout('Tag') }
+        frontmatter: { layout: getLayout('Tag', 'Page') }
       },
       {
         when: ({ regularPath }) => regularPath === '/',
@@ -39,19 +40,22 @@ module.exports = (options, ctx) => ({
       {
         when: ({ regularPath }) => regularPath.startsWith('/_posts/'),
         frontmatter: {
-          layout: getLayout('Post'),
+          layout: getLayout('Post', 'Page'),
           permalink: '/:year/:month/:day/:slug'
-        }
+        },
+        data: { type: 'post' }
       },
       ...pageEnhancers
     ]
 
     enhancers.forEach(({
       when,
+      data = {},
       frontmatter = {}
     }) => {
       if (when(pageCtx)) {
         Object.assign(rawFrontmatter, frontmatter)
+        Object.assign(pageCtx, data)
       }
     })
   }
