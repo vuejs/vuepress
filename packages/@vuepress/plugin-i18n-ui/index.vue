@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import { findPageForPath, registerComponent } from '@app/util'
+import { findPageForPath } from '@app/util'
 
 export default {
   data () {
@@ -95,25 +95,9 @@ export default {
   methods: {
     handlePageChange (e) {
       this.currentPagePath = e.target.value
-    },
-
-    loadComponent (key, flag) {
-      this[flag] = null
-      registerComponent(key).then(() => {
-        this[flag] = true
-      })
-    }
-  },
-
-  watch: {
-    key (newValue) {
-      this.loadComponent(newValue, 'currentPageComponent')
-    },
-
-    rightKey (newValue) {
-      this.loadComponent(newValue, 'rightPageComponent')
     }
   }
+
 }
 
 function syncScroll () {

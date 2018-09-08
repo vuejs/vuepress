@@ -1,6 +1,5 @@
 const path = require('path')
 
-module.exports = (options, context) => ({
-  enable: context.isDev,
+module.exports = {
   clientRootMixin: path.resolve(__dirname, 'mixin.js')
-})
+}
