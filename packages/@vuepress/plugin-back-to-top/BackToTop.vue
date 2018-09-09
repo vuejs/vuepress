@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
     <svg
-      v-if="show"
+      v-show="show"
       class="go-to-top"
       @click="scrollToTop"
       xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49.484 28.284"
