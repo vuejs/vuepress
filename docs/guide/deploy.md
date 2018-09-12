@@ -9,7 +9,7 @@ The following guides are based on a few shared assumptions:
 ``` json
 {
   "scripts": {
-    "docs:build": "vuepress build docs"
+    "docs:build": "vuepress build"
   }
 }
 ```
