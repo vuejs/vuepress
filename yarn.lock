@@ -6998,9 +6998,9 @@ regexpu-core@^4.1.3, regexpu-core@^4.1.4:
     unicode-match-property-ecmascript "^1.0.4"
     unicode-match-property-value-ecmascript "^1.0.2"
 
-register-service-worker@^1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/register-service-worker/-/register-service-worker-1.4.1.tgz#4b4c9b4200fc697942c6ae7d611349587b992b2f"
+register-service-worker@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/register-service-worker/-/register-service-worker-1.5.1.tgz#4f91d8915f6019b083433b83ffe4bfd6f976f342"
 
 registry-auth-token@^3.0.1:
   version "3.3.2"
@@ -8345,9 +8345,9 @@ vuepress-html-webpack-plugin@^3.2.0:
     toposort "^1.0.0"
     util.promisify "1.0.0"
 
-vuepress-theme-vue@^1.0.2:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/vuepress-theme-vue/-/vuepress-theme-vue-1.0.3.tgz#8465434401bc99325de53ba038e1eed2d2ec84b9"
+vuepress-theme-vue@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/vuepress-theme-vue/-/vuepress-theme-vue-1.1.0.tgz#8b109e3db8cad7b18459f4d77076808110c2bcaa"
 
 w3c-hr-time@^1.0.1:
   version "1.0.1"

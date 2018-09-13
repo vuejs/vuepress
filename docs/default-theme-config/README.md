@@ -136,7 +136,7 @@ You can omit the `.md` extension, and paths ending with `/` are inferred as `*/R
 
 The sidebar automatically displays links for headers in the current active page, nested under the link for the page itself. You can customize this behavior using `themeConfig.sidebarDepth`. The default depth is `1`, which extracts the `h2` headers. Setting it to `0` disables the header links, and the max value is `2` which extracts both `h2` and `h3` headers.
 
-A page can also override this value in using `YAML front matter`:
+A page can also override this value via `YAML front matter`:
 
 ``` md
 ---
@@ -302,7 +302,7 @@ sidebar: false
 
 ### Built-in Search
 
-You can disable the built-in search box with `themeConfig.search: false`, and customize how many suggestions to be shown with `themeConfig.searchMaxSuggestions`:
+You can disable the built-in search box with `themeConfig.search: false`, and customize how many suggestions will be shown with `themeConfig.searchMaxSuggestions`:
 
 ``` js
 module.exports = {
@@ -340,7 +340,7 @@ For more options, refer to [Algolia DocSearch's documentation](https://github.co
 
 ## Last Updated
 
-The `themeConfig.lastUpdated` option allows you to get the UNIX timestamp(ms) of each file's last `git` commit, and it will also display at the bottom of each page with a appropriate format:
+The `themeConfig.lastUpdated` option allows you to get the UNIX timestamp(ms) of each file's last `git` commit, and it will also display at the bottom of each page in an appropriate format:
 
 ``` js
 module.exports = {
@@ -350,15 +350,15 @@ module.exports = {
 }
 ```
 
-Note that it's `off` by default. If given `string`, it will be displayed as a prefix (default value: `Last Updated`).
+Note that it's `off` by default. If given a `string`, it will be displayed as a prefix (default value: `Last Updated`).
 
 ::: warning
-  Since `lastUpdated` is based on `git`, you can only use it in a `git` repository. As well, since the timestamp used comes from the git commit, it will display only after a first commit for a given page, and update only on subsequent commits of that page.
+  Since `lastUpdated` is based on `git`, you can only use it in a `git` repository. Also, since the timestamp used comes from the git commit, it will display only after a first commit for a given page, and update only on subsequent commits of that page.
 :::
 
 ## Service Worker
 
-The `themeConfig.serviceWorker` option allows you to configure about service worker.
+The `themeConfig.serviceWorker` option allows you to configure the service worker.
 
 ::: tip
 Please do not confuse this option with [Config > serviceWorker](../config/README.md#serviceworker), [Config > serviceWorker](../config/README.md#serviceworker) is **site-level**, while this option is **theme-level**.
@@ -366,7 +366,7 @@ Please do not confuse this option with [Config > serviceWorker](../config/README
 
 ### Popup UI to refresh contents <Badge text="0.13.0+"/> <Badge text="beta" type="warn"/>
 
-The `themeConfig.serviceWorker.updatePopup` option enables the popup to refresh contents. The popup will be shown when the site is updated (i.e. service worker is updated). It provides `refresh` button to allow users to refresh contents immediately.
+The `themeConfig.serviceWorker.updatePopup` option enables a popup to refresh site content. The popup will be shown when the site is updated (i.e. service worker is updated). It provides a `refresh` button to allow users to refresh contents immediately.
 
 ::: tip NOTE
 If without the `refresh` button, the new service worker will be active after all [clients](https://developer.mozilla.org/en-US/docs/Web/API/Clients) are closed. This means that visitors cannot see new contents until they close all tabs of your site. But the `refresh` button activates the new service worker immediately.
