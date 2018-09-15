@@ -30,7 +30,8 @@
     >
       <div
         class="feature"
-        v-for="feature in data.features"
+        v-for="(feature, index) in data.features"
+        :key="index"
       >
         <h2>{{ feature.title }}</h2>
         <p>{{ feature.details }}</p>
