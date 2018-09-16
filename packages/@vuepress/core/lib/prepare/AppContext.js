@@ -48,6 +48,7 @@ module.exports = class AppContext {
    */
   async process () {
     this.normalizeHeadTagUrls()
+    this.resolveTemplates()
     await this.resolveTheme()
     this.resolvePlugins()
 
@@ -122,6 +123,30 @@ module.exports = class AppContext {
         }
       })
     }
+  }
+
+  /**
+   * Make template configurable
+   */
+  resolveTemplates () {
+    let { ssrTemplate, devTemplate } = this.siteConfig
+    const templateDir = path.resolve(this.vuepressDir, 'templates')
+    if (!devTemplate) {
+      devTemplate = path.resolve(templateDir, 'dev.html')
+      if (!fs.existsSync(devTemplate)) {
+        devTemplate = path.resolve(__dirname, '../app/index.dev.html')
+      }
+    }
+    if (!ssrTemplate) {
+      ssrTemplate = path.resolve(templateDir, 'ssr.html')
+      if (!fs.existsSync(ssrTemplate)) {
+        ssrTemplate = path.resolve(__dirname, '../app/index.ssr.html')
+      }
+    }
+    logger.debug('SSR Template File: ' + chalk.gray(ssrTemplate))
+    logger.debug('DEV Template File: ' + chalk.gray(devTemplate))
+    this.devTemplate = devTemplate
+    this.ssrTemplate = ssrTemplate
   }
 
   /**

@@ -65,7 +65,7 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
     // using a fork of html-webpack-plugin to avoid it requiring webpack
     // internals from an incompatible version.
     .use(require('vuepress-html-webpack-plugin'), [{
-      template: path.resolve(__dirname, 'app/index.dev.html')
+      template: options.devTemplate
     }])
 
   config

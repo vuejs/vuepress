@@ -25,6 +25,7 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
     return console.error(logger.error(chalk.red('Unexpected option: outDir cannot be set to the current working directory.\n'), false))
   }
   await fs.remove(outDir)
+  logger.debug('Dist directory: ' + chalk.gray(path.resolve(outDir)))
 
   let clientConfig = createClientConfig(options, cliOptions).toConfig()
   let serverConfig = createServerConfig(options, cliOptions).toConfig()
@@ -56,7 +57,7 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
     runInNewContext: false,
     inject: false,
     shouldPrefetch: options.siteConfig.shouldPrefetch || (() => true),
-    template: await fs.readFile(path.resolve(__dirname, 'app/index.ssr.html'), 'utf-8')
+    template: await fs.readFile(options.ssrTemplate, 'utf-8')
   })
 
   // pre-render head tags from user config
