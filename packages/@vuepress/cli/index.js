@@ -43,9 +43,11 @@ exports.bootstrap = function ({
     .option('-p, --port <port>', 'use specified port (default: 8080)')
     .option('-h, --host <host>', 'use specified host (default: 0.0.0.0)')
     .option('-t, --temp <temp>', 'set the directory of the temporary file')
+    .option('-c, --cache <cache>', 'set the directory of cache')
+    .option('--no-cache', 'clean the cache before build')
     .option('--debug', 'start development server in debug mode')
-    .action((dir = '.', { host, port, debug, temp }) => {
-      wrapCommand(dev)(path.resolve(dir), { host, port, debug, plugins, theme, temp })
+    .action((dir = '.', { host, port, debug, temp, cache }) => {
+      wrapCommand(dev)(path.resolve(dir), { host, port, debug, temp, cache, plugins, theme })
     })
 
   program
@@ -53,10 +55,12 @@ exports.bootstrap = function ({
     .description('build dir as static site')
     .option('-d, --dest <outDir>', 'specify build output dir (default: .vuepress/dist)')
     .option('-t, --temp <temp>', 'set the directory of the temporary file')
+    .option('-c, --cache <cache>', 'set the directory of cache')
+    .option('--no-cache', 'clean the cache before build')
     .option('--debug', 'build in development mode for debugging')
-    .action((dir = '.', { debug, dest, temp }) => {
+    .action((dir = '.', { debug, dest, temp, cache }) => {
       const outDir = dest ? path.resolve(dest) : null
-      wrapCommand(build)(path.resolve(dir), { debug, outDir, plugins, theme, temp })
+      wrapCommand(build)(path.resolve(dir), { debug, outDir, plugins, theme, temp, cache })
     })
 
   program

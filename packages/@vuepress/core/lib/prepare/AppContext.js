@@ -19,12 +19,12 @@ module.exports = class AppContext {
    *  temp: string
    * }} options
    */
-  constructor (sourceDir, options) {
+  constructor (sourceDir, cliOptions = {}, isProd) {
     this.sourceDir = sourceDir
-    this._options = options
-    this.isProd = options.isProd
+    this.cliOptions = cliOptions
+    this.isProd = isProd
 
-    const { tempPath, writeTemp } = createTemp(options.temp)
+    const { tempPath, writeTemp } = createTemp(cliOptions.temp)
     this.tempPath = tempPath
     this.writeTemp = writeTemp
 
@@ -90,7 +90,7 @@ module.exports = class AppContext {
       .use(require('../internal-plugins/layoutComponents'))
       .use(require('../internal-plugins/pageComponents'))
       // user plugin
-      .useByPluginsConfig(this._options.plugins)
+      .useByPluginsConfig(this.cliOptions.plugins)
       .useByPluginsConfig(this.siteConfig.plugins)
       .useByPluginsConfig(this.themePlugins)
       // built-in plugins
@@ -192,7 +192,7 @@ module.exports = class AppContext {
    * @returns { Promise<void> }
    */
   async resolveTheme () {
-    const theme = this.siteConfig.theme || this._options.theme
+    const theme = this.siteConfig.theme || this.cliOptions.theme
     Object.assign(this, (await loadTheme(theme, this.sourceDir, this.vuepressDir)))
   }
 

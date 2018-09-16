@@ -1,4 +1,5 @@
 const path = require('path')
+const { fs, logger, chalk } = require('@vuepress/shared-utils')
 
 module.exports = function createBaseConfig ({
   siteConfig,
@@ -7,8 +8,12 @@ module.exports = function createBaseConfig ({
   base: publicPath,
   themePath,
   markdown,
-  tempPath
-}, { debug } = {}, isServer) {
+  tempPath,
+  cliOptions: {
+    debug,
+    cache
+  }
+}, isServer) {
   const Config = require('webpack-chain')
   const { VueLoaderPlugin } = require('vue-loader')
   const CSSExtractPlugin = require('mini-css-extract-plugin')
@@ -61,7 +66,17 @@ module.exports = function createBaseConfig ({
   config.module
     .noParse(/^(vue|vue-router|vuex|vuex-router-sync)$/)
 
-  const cacheDirectory = path.resolve(__dirname, '../../node_modules/.cache/vuepress')
+  let cacheDirectory
+  if (cache && typeof cache === 'string') {
+    cacheDirectory = path.resolve(cache)
+  } else {
+    cacheDirectory = path.resolve(__dirname, '../../node_modules/.cache/vuepress')
+  }
+  logger.debug('Cache directory: ' + chalk.gray(cacheDirectory))
+  if (!cache) {
+    logger.tip('\nClean cache...\n')
+    fs.emptyDirSync(cacheDirectory)
+  }
   const cacheIdentifier = JSON.stringify({
     vuepress: require('../../package.json').version,
     'cache-loader': require('cache-loader').version,

@@ -14,8 +14,7 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
   const { normalizeHeadTag, applyUserWebpackConfig } = require('./util/index')
 
   logger.wait('\nExtracting site metadata...')
-  const { theme, plugins, temp } = cliOptions
-  const options = await prepare(sourceDir, { theme, plugins, temp, isProd: true })
+  const options = await prepare(sourceDir, cliOptions, true /* isProd */)
   if (cliOptions.outDir) {
     options.outDir = cliOptions.outDir
   }

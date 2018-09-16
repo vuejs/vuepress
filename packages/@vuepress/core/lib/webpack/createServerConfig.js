@@ -1,4 +1,4 @@
-module.exports = function createServerConfig (options, cliOptions) {
+module.exports = function createServerConfig (ctx) {
   const fs = require('fs')
   const path = require('path')
   const WebpackBar = require('webpackbar')
@@ -6,8 +6,8 @@ module.exports = function createServerConfig (options, cliOptions) {
   const VueSSRServerPlugin = require('vue-server-renderer/server-plugin')
   const CopyPlugin = require('copy-webpack-plugin')
 
-  const config = createBaseConfig(options, cliOptions, true /* isServer */)
-  const { sourceDir, outDir } = options
+  const config = createBaseConfig(ctx, true /* isServer */)
+  const { sourceDir, outDir } = ctx
 
   config
     .target('node')
@@ -40,7 +40,7 @@ module.exports = function createServerConfig (options, cliOptions) {
       ]])
   }
 
-  if (!cliOptions.debug) {
+  if (!ctx.cliOptions.debug) {
     config
       .plugin('bar')
       .use(WebpackBar, [{
@@ -50,11 +50,11 @@ module.exports = function createServerConfig (options, cliOptions) {
       }])
   }
 
-  if (options.siteConfig.chainWebpack) {
-    options.siteConfig.chainWebpack(config, true /* isServer */)
+  if (ctx.siteConfig.chainWebpack) {
+    ctx.siteConfig.chainWebpack(config, true /* isServer */)
   }
 
-  options.pluginAPI.options.chainWebpack.syncApply(config, true /* isServer */)
+  ctx.pluginAPI.options.chainWebpack.syncApply(config, true /* isServer */)
 
   return config
 }

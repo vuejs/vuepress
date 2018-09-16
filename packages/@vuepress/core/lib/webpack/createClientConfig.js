@@ -1,9 +1,9 @@
-module.exports = function createClientConfig (options, cliOptions) {
+module.exports = function createClientConfig (ctx) {
   const path = require('path')
   const WebpackBar = require('webpackbar')
   const createBaseConfig = require('./createBaseConfig')
 
-  const config = createBaseConfig(options, cliOptions)
+  const config = createBaseConfig(ctx)
 
   config
     .entry('app')
@@ -51,7 +51,7 @@ module.exports = function createClientConfig (options, cliOptions) {
       }])
   }
 
-  if (!cliOptions.debug) {
+  if (!ctx.cliOptions.debug) {
     config
       .plugin('bar')
       .use(WebpackBar, [{
@@ -61,11 +61,11 @@ module.exports = function createClientConfig (options, cliOptions) {
       }])
   }
 
-  if (options.siteConfig.chainWebpack) {
-    options.siteConfig.chainWebpack(config, false /* isServer */)
+  if (ctx.siteConfig.chainWebpack) {
+    ctx.siteConfig.chainWebpack(config, false /* isServer */)
   }
 
-  options.pluginAPI.options.chainWebpack.syncApply(config, false /* isServer */)
+  ctx.pluginAPI.options.chainWebpack.syncApply(config, false /* isServer */)
 
   return config
 }
