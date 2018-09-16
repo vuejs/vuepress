@@ -3,7 +3,8 @@ const {
   fs,
   chalk,
   logger,
-  codegen: { pathsToModuleCode }
+  codegen: { pathsToModuleCode },
+  datatypes: { isPlainObject }
 } = require('@vuepress/shared-utils')
 
 module.exports = class EnhanceAppFilesOption extends Option {
@@ -36,30 +37,55 @@ module.exports = class EnhanceAppFilesOption extends Option {
     const manifest = []
     let moduleId = 0
 
+    async function writeEnhancer (name, content, hasDefaultExport = true) {
+      return await context.writeTemp(
+        `app-enhancers/${name}.js`,
+        hasDefaultExport
+          ? content
+          : content + '\nexport default {}'
+      )
+    }
+
     // 1. write enhance app files.
-    for (const { value: filePath, name: pluginName } of this.items) {
+    for (const { value: enhanceAppFile, name: pluginName } of this.items) {
       let destPath
 
-      if (typeof filePath === 'object') {
-        const { name, content } = filePath
-        if (content.includes('export default') || content.includes('module.exports')) {
-          destPath = await context.writeTemp(`app-enhancers/${name}`, content)
+      // 1.1 dynamic code
+      if (isPlainObject(enhanceAppFile)) {
+        const { content } = enhanceAppFile
+        let { name } = enhanceAppFile
+        name = name.replace(/.js$/, '')
+
+        if (hasDefaultExport(content)) {
+          destPath = await writeEnhancer(name, content)
         } else {
-          destPath = await context.writeTemp(`app-enhancers/${name}`, content + '\nexport default {}')
+          destPath = await writeEnhancer(name, content, false /* do not contain default export*/)
         }
+        // 1.2 local file
       } else {
-        if (fs.existsSync(filePath)) {
-          destPath = await context.writeTemp(
-            `app-enhancers/enhancer-${moduleId++}.js`,
-            `export { default } from ${JSON.stringify(filePath)}`
-          )
+        if (fs.existsSync(enhanceAppFile)) {
+          const content = await fs.readFile(enhanceAppFile, 'utf-8')
+
+          if (hasDefaultExport(content)) {
+            destPath = await writeEnhancer(
+              moduleId++,
+              `export { default } from ${JSON.stringify(enhanceAppFile)}`
+            )
+          } else {
+            destPath = await writeEnhancer(
+              moduleId++,
+              `import ${JSON.stringify(enhanceAppFile)}`,
+              false /* do not contain default export*/
+            )
+          }
         } else {
           logger.debug(
             chalk.gray(`[${pluginName}] `) +
-            `${chalk.cyan(filePath)} Not Found.`
+            `${chalk.cyan(enhanceAppFile)} Not Found.`
           )
         }
       }
+
       if (destPath) {
         manifest.push(destPath)
       }
@@ -68,4 +94,8 @@ module.exports = class EnhanceAppFilesOption extends Option {
     // 2. write entry file.
     await context.writeTemp('internal/app-enhancers.js', pathsToModuleCode(manifest))
   }
+}
+
+function hasDefaultExport (content) {
+  return content.includes('export default') || content.includes('module.exports')
 }
