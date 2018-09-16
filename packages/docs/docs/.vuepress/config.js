@@ -1,5 +1,5 @@
 module.exports = {
-  dest: 'vuepress',
+  dest: '../../vuepress',
   locales: {
     '/': {
       lang: 'en-US',
@@ -103,7 +103,8 @@ module.exports = {
     '@vuepress/pwa': {
       serviceWorker: true,
       updatePopup: true
-    }
+    },
+    '@vuepress/plugin-medium-zoom': true
   }
 }
 
