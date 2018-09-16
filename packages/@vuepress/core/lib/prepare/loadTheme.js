@@ -27,6 +27,8 @@ module.exports = async function loadTheme (theme, sourceDir, vuepressDir) {
     const { module: modulePath, name, shortcut } = resolveTheme(theme, sourceDir)
     if (modulePath.endsWith('.js') || modulePath.endsWith('.vue')) {
       themePath = path.parse(modulePath).dir
+    } else {
+      themePath = modulePath
     }
     themeName = name
     themeShortcut = shortcut
