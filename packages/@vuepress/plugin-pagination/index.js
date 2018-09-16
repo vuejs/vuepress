@@ -10,14 +10,6 @@ function getIntervallers (max, interval) {
   })
 }
 
-function withBase (base, path) {
-  if (path.charAt(0) === '/') {
-    return base + path.slice(1)
-  } else {
-    return path
-  }
-}
-
 module.exports = (options, ctx) => ({
   enhanceAppFiles: [
     path.resolve(__dirname, 'enhanceApp.js')
@@ -32,7 +24,7 @@ module.exports = (options, ctx) => ({
       return prevTime - nextTime > 0 ? -1 : 1
     })
 
-    const { pages, base } = ctx
+    const { pages } = ctx
     const posts = pages.filter(postsFilter)
     const {
       perPagePosts = 10,
@@ -41,12 +33,11 @@ module.exports = (options, ctx) => ({
       layout = 'Layout'
     } = options
 
-    const normalizedfirstPagePath = withBase(base, firstPagePath)
     const intervallers = getIntervallers(posts.length, perPagePosts)
     const pagination = {
       paginationPages: intervallers.map((interval, index) => {
         const path = index === 0
-          ? normalizedfirstPagePath
+          ? firstPagePath
           : `/${paginationDir}/${index + 1}/`
         return { path, interval }
       }),
@@ -56,6 +47,9 @@ module.exports = (options, ctx) => ({
 
     ctx.pagination = pagination
     pagination.paginationPages.forEach(({ path }) => {
+      if (path === '/') {
+        return
+      }
       ctx.addPage({
         permalink: path,
         frontmatter: { layout }
