@@ -4,3 +4,4 @@ node_modules
 .temp
 TODOs.md
 packages/docs/vuepress/
+packages/blog-example
