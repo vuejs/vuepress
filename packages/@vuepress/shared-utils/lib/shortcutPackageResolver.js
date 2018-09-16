@@ -1,3 +1,6 @@
+const fs = require('fs')
+const path = require('path')
+const chalk = require('chalk')
 const { isDebug } = require('./env')
 const { resolveModule, loadModule } = require('./module')
 const {
@@ -35,12 +38,20 @@ function shortcutPackageResolver (
     if (!valid) {
       throw new Error(`Invalid value for "${type}": ${warnMsg}`)
     }
-
     if (!isString(req)) {
       _module = req
       name = shortcut = req.name || `anonymous-${++anonymousPluginIdx}`
       isLocal = true
+    } else if (fs.existsSync(req)) {
+      // local package.
+      const dirname = path.parse(req).name
+      shortcut = dirname.startsWith(NON_SCOPE_PREFIX)
+        ? dirname.slice(FULL_PREFIX_SLICE_LENGTH)
+        : dirname
+      name = `${NON_SCOPE_PREFIX}${shortcut}`
+      _module = load ? require(req) : req
     } else {
+      // dep package.
       try {
         shortcut = req.startsWith(NON_SCOPE_PREFIX)
           ? req.slice(FULL_PREFIX_SLICE_LENGTH)
@@ -66,7 +77,7 @@ function shortcutPackageResolver (
             shortcut = `@${pkg.org}/${shortcut}`
             _module = load ? loadModule(name, cwd) : resolveModule(name, cwd)
           } else {
-            throw new Error(`Invalid ${type} usage ${req}.`)
+            throw new Error(`Invalid ${type} usage "${chalk.cyan(req)}".`)
           }
         } catch (err2) {
           if (isDebug) {
