@@ -23,7 +23,7 @@ export default context => new Promise((resolve, reject) => {
     ...getComponentArr(pageComponents),
     ...getComponentArr(layoutComponents)
   ].map(({ name, loadFn }) => {
-    return loadFn.then(comp => {
+    return loadFn().then(comp => {
       Vue.component(name, comp.default)
     })
   })
