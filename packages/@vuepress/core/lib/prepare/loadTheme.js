@@ -10,7 +10,7 @@ module.exports = async function loadTheme (theme, sourceDir, vuepressDir) {
   // resolve theme
   const localThemePath = path.resolve(vuepressDir, 'theme')
   const useLocalTheme =
-    (await fs.exists(localThemePath)) && ((await fs.readdir(localThemePath)).length > 0)
+    fs.existsSync(localThemePath) && (fs.readdirSync(localThemePath)).length > 0
 
   let themePath = null         // Mandatory
   let themeIndexFile = null    // Optional
