@@ -15,6 +15,7 @@ module.exports = class Page {
    */
   constructor ({
     path,
+    meta,
     title,
     content,
     filePath,
@@ -24,6 +25,7 @@ module.exports = class Page {
     permalinkPattern
   }) {
     this.title = title
+    this._meta = meta
     this._filePath = filePath
     this._content = content
     this._permalink = permalink

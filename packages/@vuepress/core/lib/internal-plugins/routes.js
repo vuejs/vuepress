@@ -33,13 +33,14 @@ function routesCode (pages) {
   function genRoute ({
     path: pagePath,
     key: componentName,
-    regularPath
+    regularPath,
+    _meta
   }) {
     let code = `
   {
     name: ${JSON.stringify(componentName)},
     path: ${JSON.stringify(pagePath)},
-    component: LayoutDistributor,
+    component: LayoutDistributor,${_meta ? `\n    meta: ${JSON.stringify(_meta)}` : ''}
   }`
 
     const dncodedPath = decodeURIComponent(pagePath)
