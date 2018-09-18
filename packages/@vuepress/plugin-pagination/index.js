@@ -12,7 +12,7 @@ function getIntervallers (max, interval) {
 
 module.exports = (options, ctx) => ({
   enhanceAppFiles: [
-    path.resolve(__dirname, 'enhanceApp.js')
+    path.resolve(__dirname, 'clientPlugin.js')
   ],
 
   ready () {

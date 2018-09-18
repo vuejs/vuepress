@@ -24,8 +24,6 @@ class Pagination {
     this._paginationPages = paginationPages
     this._currentPage = paginationPages[this.paginationIndex]
     this._posts = pages.filter(postsFilter).sort(postsSorter)
-
-    console.log(this)
   }
 
   get length () {
@@ -58,12 +56,7 @@ class Pagination {
   }
 }
 
-export default ({
-  Vue,     // the version of Vue being used in the VuePress app
-  options, // the options for the root Vue instance
-  router,  // the router instance for the app
-  siteData // site metadata
-}) => {
+export default ({ Vue }) => {
   Vue.mixin({
     computed: {
       $pagination () {
