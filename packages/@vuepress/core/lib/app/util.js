@@ -35,6 +35,19 @@ export function findPageForPath (pages, path) {
   }
 }
 
+export function findPageByKey (pages, key) {
+  for (let i = 0; i < pages.length; i++) {
+    const page = pages[i]
+    if (page.key === key) {
+      return page
+    }
+  }
+  return {
+    path: '',
+    frontmatter: {}
+  }
+}
+
 /**
  * Normalize config.
  * This utility is mainly for plugin developers. For some
