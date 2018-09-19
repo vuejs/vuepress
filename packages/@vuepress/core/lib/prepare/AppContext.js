@@ -2,7 +2,7 @@ const path = require('path')
 const createMarkdown = require('../markdown/index')
 const loadConfig = require('./loadConfig')
 const loadTheme = require('./loadTheme')
-const { fs, logger, chalk, globby, sort } = require('@vuepress/shared-utils')
+const { fs, logger, chalk, globby, sort, datatypes: { isFunction }} = require('@vuepress/shared-utils')
 
 const Page = require('./Page')
 const I18n = require('./I18n')
@@ -30,6 +30,10 @@ module.exports = class AppContext {
 
     this.vuepressDir = path.resolve(sourceDir, '.vuepress')
     this.siteConfig = loadConfig(this.vuepressDir)
+    if (isFunction(this.siteConfig)) {
+      this.siteConfig = this.siteConfig(this)
+    }
+
     this.base = this.siteConfig.base || '/'
     this.themeConfig = this.siteConfig.themeConfig || {}
     this.outDir = this.siteConfig.dest
@@ -81,6 +85,7 @@ module.exports = class AppContext {
 
     this.pluginAPI
       // internl core plugins
+      .use(Object.assign({}, siteConfig, { name: '@vuepress/internal-site-config' }))
       .use(require('../internal-plugins/siteData'))
       .use(require('../internal-plugins/routes'))
       .use(require('../internal-plugins/rootMixins'))
