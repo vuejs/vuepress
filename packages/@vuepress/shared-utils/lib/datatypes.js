@@ -12,6 +12,7 @@ const isOfType = type => x => typeof x === type // eslint-disable-line valid-typ
 const isObjectOfType = type => x => getObjectType(x) === type
 exports.isFunction = isOfType('function')
 exports.isString = isOfType('string')
+exports.isBoolean = isOfType('boolean')
 exports.isPlainObject = isObjectOfType('Object')
 
 exports.toRawType = value => _toString.call(value).slice(8, -1)

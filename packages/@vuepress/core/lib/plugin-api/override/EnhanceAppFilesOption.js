@@ -1,4 +1,11 @@
-const Option = require('../Option')
+
+'use strict'
+
+/**
+ * Module dependencies.
+ */
+
+const AsyncOption = require('../abstract/AsyncOption')
 const {
   fs,
   chalk,
@@ -7,38 +14,19 @@ const {
   datatypes: { isPlainObject }
 } = require('@vuepress/shared-utils')
 
-module.exports = class EnhanceAppFilesOption extends Option {
-  /**
-   * In fact, we can quickly implement support for function parameters
-   * by overriding 'tap', but 'tap' will be executed immediately
-   * when the plugin is initialized so that we cannot get the dynamic
-   * returned value.
-   *
-   * A useful use case for 'dynamic return value' is that the user can
-   * write a dynamic file in the 'ready' hook, and add the dest path to
-   * the current plugin context, then return it with a function and
-   * assign it to enhanceAppFiles.
-   */
-  async beforeApply () {
-    const items = this.items
-    this.items = []
-    for (const { name, value } of items) {
-      if (typeof value === 'function') {
-        const res = await value()
-        this.tap(name, res)
-      } else {
-        this.tap(name, value)
-      }
-    }
-  }
+/**
+ * enhanceAppFiles option.
+ */
 
-  async apply (context) {
-    await this.beforeApply()
+module.exports = class EnhanceAppFilesOption extends AsyncOption {
+  async apply (ctx) {
+    await super.asyncApply()
+
     const manifest = []
     let moduleId = 0
 
     async function writeEnhancer (name, content, hasDefaultExport = true) {
-      return await context.writeTemp(
+      return await ctx.writeTemp(
         `app-enhancers/${name}.js`,
         hasDefaultExport
           ? content
@@ -47,7 +35,7 @@ module.exports = class EnhanceAppFilesOption extends Option {
     }
 
     // 1. write enhance app files.
-    for (const { value: enhanceAppFile, name: pluginName } of this.items) {
+    for (const { value: enhanceAppFile, name: pluginName } of this.appliedItems) {
       let destPath
 
       // 1.1 dynamic code
@@ -92,7 +80,7 @@ module.exports = class EnhanceAppFilesOption extends Option {
     }
 
     // 2. write entry file.
-    await context.writeTemp('internal/app-enhancers.js', pathsToModuleCode(manifest))
+    await ctx.writeTemp('internal/app-enhancers.js', pathsToModuleCode(manifest))
   }
 }
 

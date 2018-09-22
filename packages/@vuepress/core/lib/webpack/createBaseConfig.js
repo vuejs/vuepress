@@ -12,7 +12,8 @@ module.exports = function createBaseConfig ({
   cliOptions: {
     debug,
     cache
-  }
+  },
+  pluginAPI
 }, isServer) {
   const Config = require('webpack-chain')
   const { VueLoaderPlugin } = require('vue-loader')
@@ -292,6 +293,8 @@ module.exports = function createBaseConfig ({
       VUEPRESS_TEMP_PATH: JSON.stringify(tempPath),
       LAST_COMMIT_HASH: JSON.stringify(getLastCommitHash())
     }])
+
+  pluginAPI.options.define.apply(config)
 
   return config
 }

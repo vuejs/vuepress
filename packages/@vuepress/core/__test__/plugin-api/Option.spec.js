@@ -1,66 +1,90 @@
-import Option from '../../lib/plugin-api/Option'
+import Option from '../../lib/plugin-api/abstract/Option'
 
 describe('Option', () => {
-  test('shoould option record the key', () => {
+  test('key', () => {
     const option = new Option('option')
     expect(option.key).toBe('option')
   })
 
-  test('should \'tap\' work', () => {
+  test('add', () => {
     const option = new Option('option')
-    option.tap('plugin-a', 'a')
-    option.tap('plugin-b', 'b')
+    option.add('plugin-a', 'a')
+    option.add('plugin-b', 'b')
+
     expect(option.items).toEqual([
       { value: 'a', name: 'plugin-a' },
       { value: 'b', name: 'plugin-b' }
     ])
+
     expect(option.values).toEqual(['a', 'b'])
   })
 
-  test('should \'tap\' resolve array value', () => {
+  test('add - resolve array', () => {
     const option = new Option('option')
-    option.tap('plugin-a', ['a-1', 'a-2'])
-    option.tap('plugin-b', 'b')
+    option.add('plugin-a', ['a-1', 'a-2'])
+    option.add('plugin-b', 'b')
+
     expect(option.items).toEqual([
       { value: 'a-1', name: 'plugin-a' },
       { value: 'a-2', name: 'plugin-a' },
       { value: 'b', name: 'plugin-b' }
     ])
-    expect(option.values).toEqual(['a-1', 'a-2', 'b'])
   })
 
-  test('should \'apply\' work', async () => {
+  test('delete', () => {
+    const option = new Option('option')
+    option.add('plugin-a', ['a-1', 'a-2'])
+    option.add('plugin-b', 'b')
+
+    option.delete('plugin-a')
+
+    expect(option.items).toEqual([
+      { value: 'b', name: 'plugin-b' }
+    ])
+  })
+
+  test('clear', () => {
+    const option = new Option('option')
+    option.add('plugin-a', ['a-1', 'a-2'])
+
+    option.clear()
+
+    expect(option.items).toEqual([])
+  })
+
+  test('syncApply', () => {
     const option = new Option('option')
     const handler1 = jest.fn()
     const handler2 = jest.fn()
 
-    option.tap('plugin-a', handler1)
-    option.tap('plugin-b', handler2)
+    option.add('plugin-a', handler1)
+    option.add('plugin-b', handler2)
 
-    await option.apply(1, 2)
+    option.syncApply('p1', 'p2')
     expect(handler1.mock.calls).toHaveLength(1)
     expect(handler2.mock.calls).toHaveLength(1)
-    expect(handler1.mock.calls[0][0]).toBe(1)
-    expect(handler1.mock.calls[0][1]).toBe(2)
-    expect(handler2.mock.calls[0][0]).toBe(1)
-    expect(handler2.mock.calls[0][1]).toBe(2)
+    expect(handler1.mock.calls[0][0]).toBe('p1')
+    expect(handler1.mock.calls[0][1]).toBe('p2')
+    expect(handler2.mock.calls[0][0]).toBe('p1')
+    expect(handler2.mock.calls[0][1]).toBe('p2')
   })
 
-  test('should \'parallelApply\' work', async () => {
+  test('appliedItems', () => {
     const option = new Option('option')
-    const handler1 = jest.fn()
-    const handler2 = jest.fn()
+    const fn1 = () => 'fn1'
+    const fn2 = () => 'fn2'
+    const handler1 = jest.fn(fn1)
+    const handler2 = jest.fn(fn2)
 
-    option.tap('plugin-a', handler1)
-    option.tap('plugin-b', handler2)
+    option.add('plugin-a', handler1)
+    option.add('plugin-b', handler2)
 
-    await option.parallelApply(1, 2)
-    expect(handler1.mock.calls).toHaveLength(1)
-    expect(handler2.mock.calls).toHaveLength(1)
-    expect(handler1.mock.calls[0][0]).toBe(1)
-    expect(handler1.mock.calls[0][1]).toBe(2)
-    expect(handler2.mock.calls[0][0]).toBe(1)
-    expect(handler2.mock.calls[0][1]).toBe(2)
+    option.syncApply(1, 2)
+
+    expect(option.appliedItems).toEqual([
+      { value: 'fn1', name: 'plugin-a' },
+      { value: 'fn2', name: 'plugin-b' }
+    ])
   })
 })
 
