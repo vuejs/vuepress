@@ -61,6 +61,19 @@ class AsyncOption extends Option {
     })
     return items
   }
+
+  /**
+   * Process a value via a pipeline.
+   * @param input
+   * @returns {*}
+   */
+
+  async pipeline (input) {
+    for (const fn of this.values) {
+      input = await fn(input)
+    }
+    return input
+  }
 }
 
 AsyncOption.prototype.apply = AsyncOption.prototype.asyncApply

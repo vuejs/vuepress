@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-const { logger, chalk, datatypes: { isFunction }} = require('@vuepress/shared-utils')
+const { logger, chalk, compose, datatypes: { isFunction }} = require('@vuepress/shared-utils')
 
 /**
  * Expose Option.
@@ -99,6 +99,17 @@ class Option {
       }
     }
     this.appliedItems = items
+  }
+
+  /**
+   * Process a value via a pipeline.
+   * @param input
+   * @returns {*}
+   */
+
+  pipeline (input) {
+    const fn = compose(this.values)
+    return fn(input)
   }
 }
 
