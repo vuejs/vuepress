@@ -40,7 +40,6 @@ module.exports = class AppContext {
       ? path.resolve(this.siteConfig.dest)
       : path.resolve(sourceDir, '.vuepress/dist')
 
-    this.markdown = createMarkdown(this.siteConfig)
     this.pluginAPI = new PluginAPI(this)
     this.pages = [] // Array<Page>
     this.I18nConstructor = I18n(null)
@@ -52,6 +51,7 @@ module.exports = class AppContext {
    */
   async process () {
     this.normalizeHeadTagUrls()
+    this.markdown = createMarkdown(this.siteConfig)
     this.resolveTemplates()
     await this.resolveTheme()
     this.resolvePlugins()
