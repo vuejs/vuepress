@@ -295,6 +295,7 @@ module.exports = function createBaseConfig ({
     }])
 
   pluginAPI.options.define.apply(config)
+  pluginAPI.options.alias.apply(config)
 
   return config
 }

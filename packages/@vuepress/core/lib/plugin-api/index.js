@@ -156,7 +156,8 @@ module.exports = class PluginAPI {
     clientRootMixin,
     additionalPages,
     globalUIComponents,
-    define
+    define,
+    alias
   }) {
     const isInternalPlugin = pluginName.startsWith('@vuepress/internal-')
     if (shortcut) {
@@ -181,5 +182,6 @@ module.exports = class PluginAPI {
       .registerOption(PLUGIN_OPTION_MAP.ADDITIONAL_PAGES.key, additionalPages, pluginName)
       .registerOption(PLUGIN_OPTION_MAP.GLOBAL_UI_COMPONENTS.key, globalUIComponents, pluginName)
       .registerOption(PLUGIN_OPTION_MAP.DEFINE.key, define, pluginName)
+      .registerOption(PLUGIN_OPTION_MAP.ALIAS.key, alias, pluginName)
   }
 }

@@ -17,7 +17,8 @@ const PLUGIN_OPTION_META_MAP = {
   CLIENT_ROOT_MIXIN: { name: 'clientRootMixin', types: [String] },
   ADDITIONAL_PAGES: { name: 'additionalPages', types: [Function, Array] },
   GLOBAL_UI_COMPONENTS: { name: 'globalUIComponents', types: [String, Array] },
-  DEFINE: { name: 'define', types: [Function, Object] }
+  DEFINE: { name: 'define', types: [Function, Object] },
+  ALIAS: { name: 'alias', types: [Function, Object] }
 }
 
 const PLUGIN_OPTION_MAP = {}
