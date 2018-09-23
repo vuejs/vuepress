@@ -11,69 +11,69 @@ const Option = require('./Option')
  * Expose Asynchronous Option.
  */
 
-class AsyncOption extends Option {}
+class AsyncOption extends Option {
+  /**
+   * Asynchronous serial running
+   * @param args
+   * @param {Array<AsyncFunction>} args
+   */
 
-/**
- * Asynchronous serial running
- * @param args
- * @param {Array<AsyncFunction>} args
- */
-
-AsyncOption.prototype.asyncApply = async function (...args) {
-  const items = []
-  for (const { name, value } of this.items) {
-    try {
-      items.push({
-        name,
-        value: isFunction(value)
-          ? await value(...args)
-          : value
-      })
-    } catch (error) {
-      logger.error(`${chalk.cyan(name)} apply ${chalk.cyan(this.key)} failed.`)
-      throw error
+  async asyncApply (...args) {
+    const items = []
+    for (const { name, value } of this.items) {
+      try {
+        items.push({
+          name,
+          value: isFunction(value)
+            ? await value(...args)
+            : value
+        })
+      } catch (error) {
+        logger.error(`${chalk.cyan(name)} apply ${chalk.cyan(this.key)} failed.`)
+        throw error
+      }
     }
+    this.appliedItems = items
   }
-  this.appliedItems = items
-}
 
-/**
- * Asynchronous serial running
- * @param args
- * @param {Array<AsyncFunction>} args
- */
+  /**
+   * Asynchronous serial running
+   * @param args
+   * @param {Array<AsyncFunction>} args
+   */
 
-AsyncOption.prototype.parallelApply = async function (...args) {
-  const items = []
-  await Promise.all(this.items.map(async ({ name, value }) => {
-    try {
-      items.push({
-        name,
-        value: isFunction(value)
-          ? await value(...args)
-          : value
-      })
-    } catch (error) {
-      logger.error(`${chalk.cyan(name)} apply ${chalk.cyan(this.key)} failed.`)
+  async parallelApply (...args) {
+    const items = []
+    await Promise.all(this.items.map(async ({ name, value }) => {
+      try {
+        items.push({
+          name,
+          value: isFunction(value)
+            ? await value(...args)
+            : value
+        })
+      } catch (error) {
+        logger.error(`${chalk.cyan(name)} apply ${chalk.cyan(this.key)} failed.`)
+        throw error
+      }
+    })).catch(error => {
       throw error
-    }
-  })).catch(error => {
-    throw error
-  })
-  return items
-}
-
-/**
- * Process a value via a pipeline.
- * @param input
- * @returns {*}
- */
-
-AsyncOption.prototype.pipeline = async function (input) {
-  for (const fn of this.values) {
-    input = await fn(input)
+    })
+    return items
   }
-  return input
+
+  /**
+   * Process a value via a pipeline.
+   * @param input
+   * @returns {*}
+   */
+
+  async pipeline (input) {
+    for (const fn of this.values) {
+      input = await fn(input)
+    }
+    return input
+  }
 }
 
 AsyncOption.prototype.apply = AsyncOption.prototype.asyncApply
