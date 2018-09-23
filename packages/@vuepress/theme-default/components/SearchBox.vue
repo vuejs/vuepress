@@ -152,7 +152,7 @@ export default {
 </script>
 
 <style lang="stylus">
-@import '../styles/config.styl'
+@import '~@app/style/config'
 
 .search-box
   display inline-block

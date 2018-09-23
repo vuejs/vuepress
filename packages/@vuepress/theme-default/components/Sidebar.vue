@@ -79,7 +79,7 @@ function resolveOpenGroupIndex (route, items) {
 </script>
 
 <style lang="stylus">
-@import '../styles/config.styl'
+@import '~@app/style/config'
 
 .sidebar
   ul

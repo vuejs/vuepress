@@ -116,7 +116,7 @@ export default {
 </script>
 
 <style lang="stylus">
-@import '../styles/config.styl'
+@import '~@app/style/config'
 
 .nav-links
   display inline-block
