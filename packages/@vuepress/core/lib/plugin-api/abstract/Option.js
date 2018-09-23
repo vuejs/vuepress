@@ -84,21 +84,25 @@ class Option {
    */
 
   syncApply (...args) {
-    const items = []
-    for (const { name, value } of this.items) {
+    const rawItems = this.items
+    this.items = []
+    this.appliedItems = this.items
+
+    for (const { name, value } of rawItems) {
       try {
-        items.push({
+        this.add(
           name,
-          value: isFunction(value)
+          isFunction(value)
             ? value(...args)
             : value
-        })
+        )
       } catch (error) {
         logger.error(`${chalk.cyan(name)} apply ${chalk.cyan(this.key)} failed.`)
         throw error
       }
     }
-    this.appliedItems = items
+
+    this.items = rawItems
   }
 
   /**

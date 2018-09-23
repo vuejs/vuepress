@@ -19,21 +19,25 @@ class AsyncOption extends Option {
    */
 
   async asyncApply (...args) {
-    const items = []
-    for (const { name, value } of this.items) {
+    const rawItems = this.items
+    this.items = []
+    this.appliedItems = this.items
+
+    for (const { name, value } of rawItems) {
       try {
-        items.push({
+        this.add(
           name,
-          value: isFunction(value)
+          isFunction(value)
             ? await value(...args)
             : value
-        })
+        )
       } catch (error) {
         logger.error(`${chalk.cyan(name)} apply ${chalk.cyan(this.key)} failed.`)
         throw error
       }
     }
-    this.appliedItems = items
+
+    this.items = rawItems
   }
 
   /**
@@ -43,15 +47,18 @@ class AsyncOption extends Option {
    */
 
   async parallelApply (...args) {
-    const items = []
-    await Promise.all(this.items.map(async ({ name, value }) => {
+    const rawItems = this.items
+    this.items = []
+    this.appliedItems = this.items
+
+    await Promise.all(rawItems.map(async ({ name, value }) => {
       try {
-        items.push({
+        this.add(
           name,
-          value: isFunction(value)
+          isFunction(value)
             ? await value(...args)
             : value
-        })
+        )
       } catch (error) {
         logger.error(`${chalk.cyan(name)} apply ${chalk.cyan(this.key)} failed.`)
         throw error
@@ -59,7 +66,8 @@ class AsyncOption extends Option {
     })).catch(error => {
       throw error
     })
-    return items
+
+    this.items = rawItems
   }
 
   /**
