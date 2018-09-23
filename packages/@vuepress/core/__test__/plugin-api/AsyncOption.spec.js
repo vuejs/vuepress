@@ -1,4 +1,4 @@
-import AsyncOption from '../../lib/plugin-api/abstract/AsyncOption'
+const AsyncOption = require('../../lib/plugin-api/abstract/AsyncOption')
 
 describe('AsyncOption', () => {
   test('parallelApply', async () => {
@@ -12,7 +12,7 @@ describe('AsyncOption', () => {
     // TODO for now, if a class extends from another class.
     // the original methods in that class will be lost.
 
-    // await option.parallelApply(1, 2)
+    await option.parallelApply(1, 2)
     // expect(handler1.mock.calls).toHaveLength(1)
     // expect(handler2.mock.calls).toHaveLength(1)
     // expect(handler1.mock.calls[0][0]).toBe(1)
