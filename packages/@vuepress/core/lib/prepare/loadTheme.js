@@ -74,12 +74,18 @@ module.exports = async function loadTheme (theme, sourceDir, vuepressDir) {
       return map
     }, {})
 
-  if (!fs.existsSync(layoutComponentMap.Layout.path)) {
+  if (!layoutComponentMap.Layout && !fs.existsSync(layoutComponentMap.Layout.path)) {
     throw new Error(`[vuepress] Cannot resolve Layout.vue file in \n ${layoutComponentMap.Layout.path}`)
   }
 
-  if (!fs.existsSync(layoutComponentMap.NotFound.path)) {
-    layoutComponentMap['404'].path = path.resolve(__dirname, '../app/components/NotFound.vue')
+  // use default 404 component.
+  if (!layoutComponentMap.NotFound || !fs.existsSync(layoutComponentMap.NotFound.path)) {
+    layoutComponentMap['404'] = {
+      filename: 'Layout.vue',
+      componentName: 'NotFound',
+      path: path.resolve(__dirname, '../app/components/NotFound.vue'),
+      isInternal: true
+    }
   }
 
   return {
