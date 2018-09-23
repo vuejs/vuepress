@@ -1,3 +1,5 @@
+'use strict'
+
 // Temporarily hacked dev build
 
 var isJS = function (file) { return /\.js(\?[^.]+)?$/.test(file) }

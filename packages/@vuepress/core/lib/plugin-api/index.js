@@ -23,12 +23,14 @@ module.exports = class PluginAPI {
     this.options = {}
     this._pluginContext = context
     this._pluginQueue = []
-    this._initializeOptions(PLUGIN_OPTION_MAP)
+    this.initializeOptions(PLUGIN_OPTION_MAP)
   }
 
   /**
    * Get enabled plugins
+   *
    * @returns {array}
+   * @api public
    */
 
   get enabledPlugins () {
@@ -37,7 +39,9 @@ module.exports = class PluginAPI {
 
   /**
    * Get disabled plugins
+   *
    * @returns {array}
+   * @api public
    */
 
   get disabledPlugins () {
@@ -46,6 +50,8 @@ module.exports = class PluginAPI {
 
   /**
    * apply plugin.
+   *
+   * @api public
    */
 
   apply () {
@@ -60,9 +66,11 @@ module.exports = class PluginAPI {
 
   /**
    * Normalize plugin and push it to the plugin queue.
+   *
    * @param {object} pluginRaw
    * @param {object} pluginOptions
    * @returns {module.PluginAPI}
+   * @api public
    */
 
   use (pluginRaw, pluginOptions = {}) {
@@ -84,8 +92,10 @@ module.exports = class PluginAPI {
 
   /**
    * Use plugin by config.
+   *
    * @param pluginsConfig
    * @returns {module.PluginAPI}
+   * @api public
    */
 
   useByPluginsConfig (pluginsConfig) {
@@ -98,9 +108,11 @@ module.exports = class PluginAPI {
 
   /**
    * initialize plugin options.
+   *
+   * @api private
    */
 
-  _initializeOptions () {
+  initializeOptions () {
     Object.keys(PLUGIN_OPTION_MAP).forEach(key => {
       const option = PLUGIN_OPTION_MAP[key]
       this.options[option.name] = instantiateOption(option.name)
@@ -109,10 +121,12 @@ module.exports = class PluginAPI {
 
   /**
    * Register plugin option.
+   *
    * @param {string} key
    * @param {any} value
    * @param {string} pluginName
    * @returns {module.PluginAPI}
+   * @api private
    */
 
   registerOption (key, value, pluginName) {
@@ -132,6 +146,8 @@ module.exports = class PluginAPI {
 
   /**
    * apply plugin.
+   *
+   * @api private
    */
 
   applyPlugin ({

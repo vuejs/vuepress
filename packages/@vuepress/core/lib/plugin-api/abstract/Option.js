@@ -7,7 +7,7 @@
 const { logger, chalk, compose, datatypes: { isFunction }} = require('@vuepress/shared-utils')
 
 /**
- * Expose Option.
+ * Expose synchronous option class.
  */
 
 class Option {
@@ -18,8 +18,10 @@ class Option {
 
   /**
    * Set value with name.
+   *
    * @param {string} name
    * @param {T} value
+   * @api public
    */
 
   add (name, value) {
@@ -31,7 +33,9 @@ class Option {
 
   /**
    * Delete value with name.
+   *
    * @param {string} name
+   * @api public
    */
 
   delete (name) {
@@ -44,7 +48,9 @@ class Option {
 
   /**
    * Clean option store
+   *
    * @param {string} name
+   * @api public
    */
 
   clear (name) {
@@ -53,7 +59,9 @@ class Option {
 
   /**
    * Get values.
+   *
    * @returns {any<T>}
+   * @api public
    */
 
   get values () {
@@ -61,8 +69,10 @@ class Option {
   }
 
   /**
+   * Get applied values
    *
    * @returns {Array|*|any[]}
+   * @api public
    */
 
   get appliedValues () {
@@ -70,8 +80,10 @@ class Option {
   }
 
   /**
-   * Get values.
+   * Get entries.
+   *
    * @returns {any<T>}
+   * @api public
    */
 
   get entries () {
@@ -80,7 +92,9 @@ class Option {
 
   /**
    * Synchronous running
+   *
    * @param {Array<Function>} args
+   * @api public
    */
 
   syncApply (...args) {

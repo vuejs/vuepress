@@ -1,6 +1,16 @@
+'use strict'
+
+/**
+ * Module dependencies.
+ */
+
 const { normalizeHeadTag } = require('../util/index')
 
-module.exports = class SiteDataPlugin {
+/**
+ * Expose HeadPlugin class.
+ */
+
+module.exports = class HeadPlugin {
   constructor ({ tags }) {
     this.tags = tags
   }

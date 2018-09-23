@@ -1,4 +1,17 @@
+'use strict'
+
+/**
+ * Module dependencies.
+ */
+
 const { deeplyParseHeaders } = require('@vuepress/shared-utils')
+
+/**
+ * Normalize head tag config.
+ *
+ * @param {string|array} tag
+ * @returns {object}
+ */
 
 exports.normalizeHeadTag = function (tag) {
   if (typeof tag === 'string') {
@@ -13,6 +26,15 @@ exports.normalizeHeadTag = function (tag) {
   }
 }
 
+/**
+ * Use webpack-merge to merge user's config into default config.
+ *
+ * @param {object} userConfig
+ * @param {object} config
+ * @param {boolean} isServer
+ * @returns {object}
+ */
+
 exports.applyUserWebpackConfig = function (userConfig, config, isServer) {
   const merge = require('webpack-merge')
   if (typeof userConfig === 'object') {
@@ -26,6 +48,14 @@ exports.applyUserWebpackConfig = function (userConfig, config, isServer) {
   }
   return config
 }
+
+/**
+ * Infer a page's title via frontmatter and content.
+ *
+ * @param frontmatter
+ * @param strippedContent
+ * @returns {*}
+ */
 
 exports.inferTitle = function (frontmatter, strippedContent) {
   if (frontmatter.home) {
@@ -42,6 +72,15 @@ exports.inferTitle = function (frontmatter, strippedContent) {
 
 const LRU = require('lru-cache')
 const cache = LRU({ max: 1000 })
+
+/**
+ * Extract heeaders from markdown source content.
+ *
+ * @param {string} content
+ * @param {array} include
+ * @param {object} md
+ * @returns {array}
+ */
 
 exports.extractHeaders = function (content, include = [], md) {
   const key = content + include.join(',')

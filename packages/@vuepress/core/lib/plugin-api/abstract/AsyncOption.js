@@ -8,14 +8,16 @@ const { logger, chalk, datatypes: { isFunction }} = require('@vuepress/shared-ut
 const Option = require('./Option')
 
 /**
- * Expose Asynchronous Option.
+ * Expose asynchronous option class.
  */
 
 class AsyncOption extends Option {
   /**
    * Asynchronous serial running
+   *
    * @param args
    * @param {Array<AsyncFunction>} args
+   * @api public
    */
 
   async asyncApply (...args) {
@@ -42,8 +44,10 @@ class AsyncOption extends Option {
 
   /**
    * Asynchronous serial running
+   *
    * @param args
    * @param {Array<AsyncFunction>} args
+   * @api public
    */
 
   async parallelApply (...args) {
@@ -72,8 +76,10 @@ class AsyncOption extends Option {
 
   /**
    * Process a value via a pipeline.
+   *
    * @param input
-   * @returns {*}
+   * @returns {any}
+   * @api public
    */
 
   async pipeline (input) {

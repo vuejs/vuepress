@@ -1,3 +1,13 @@
+'use strict'
+
+/**
+ * Get page data via path (permalink).
+ *
+ * @param {array} pages
+ * @param {string} path
+ * @returns {object}
+ */
+
 function findPageForPath (pages, path) {
   for (let i = 0; i < pages.length; i++) {
     const page = pages[i]
@@ -10,6 +20,14 @@ function findPageForPath (pages, path) {
     frontmatter: {}
   }
 }
+
+/**
+ * Expose I18n constructor.Note that this file will
+ * be run in both server and client side.
+ *
+ * @param store
+ * @returns {{new(*): I18n, prototype: I18n}}
+ */
 
 module.exports = (store /* null in server side */) => class I18n {
   constructor (dataProvider) {

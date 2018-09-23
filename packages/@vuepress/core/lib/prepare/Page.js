@@ -1,17 +1,28 @@
+'use strict'
+
+/**
+ * Module dependencies.
+ */
+
 const path = require('path')
 const slugify = require('../markdown/slugify')
 const { inferTitle, extractHeaders } = require('../util/index')
 const { fs, fileToPath, parseFrontmatter, getPermalink } = require('@vuepress/shared-utils')
 
+/**
+ * Expose Page class.
+ */
+
 module.exports = class Page {
   /**
-   * @param { string } title markdown title
-   * @param { string } content markdown file content
-   * @param { string } filePath absolute file path of source markdown file.
-   * @param { string } relative relative file path of source markdown file.
-   * @param { string } permalink the URL (excluding the domain name) for your pages, posts.
-   * @param { object } frontmatter
-   * @param { string } permalinkPattern
+   * @param {string} path the URL (excluding the domain name) for your page/post.
+   * @param {string} title markdown title
+   * @param {string} content markdown file content
+   * @param {string} filePath absolute file path of source markdown file.
+   * @param {string} relative relative file path of source markdown file.
+   * @param {string} permalink same to path, the URL (excluding the domain name) for your page/post.
+   * @param {object} frontmatter
+   * @param {string} permalinkPattern
    */
   constructor ({
     path,
@@ -43,6 +54,16 @@ module.exports = class Page {
     this.regularPath = this.path = this._routePath
     this._permalinkPattern = permalinkPattern
   }
+
+  /**
+   * Process a page.
+   *
+   *   1. If it's a page pointing to a md file, this method will try
+   *      to resolve the page's title / headers from the content.
+   *   2. If it's a pure route. this method will only enhance it.
+   *
+   * @api public
+   */
 
   async process ({
     i18n,
@@ -85,9 +106,56 @@ module.exports = class Page {
     this._i18n = i18n
     this._localePath = i18n.$localePath
 
-    this._enhance(enhancers)
+    this.enhance(enhancers)
     this.buildPermalink()
   }
+
+  /**
+   * file name of page's source markdown file, or the last cut of regularPath.
+   *
+   * @returns {string}
+   * @api public
+   */
+
+  get filename () {
+    return path.parse(this._filePath || this.regularPath).name
+  }
+
+  /**
+   * slugified file name.
+   *
+   * @returns {string}
+   * @api public
+   */
+
+  get slug () {
+    return slugify(this.filename)
+  }
+
+  /**
+   * Convert page's metadata to JSON, note that all fields beginning
+   * with an underscore will not be serialized.
+   *
+   * @returns {object}
+   * @api public
+   */
+
+  toJson () {
+    const json = {}
+    Object.keys(this).reduce((json, key) => {
+      if (!key.startsWith('_')) {
+        json[key] = this[key]
+      }
+      return json
+    }, json)
+    return json
+  }
+
+  /**
+   * Build permalink via permalink pattern and page's metadata.
+   *
+   * @api private
+   */
 
   buildPermalink () {
     if (!this._permalink) {
@@ -105,7 +173,16 @@ module.exports = class Page {
     }
   }
 
-  _enhance (enhancers) {
+  /**
+   * Execute the page enhancers. A enhancer could do following things:
+   *
+   *   1. Modify page's frontmetter.
+   *   2. Add extra field to the page.
+   *
+   * @api private
+   */
+
+  enhance (enhancers) {
     for (const { name: pluginName, value: enhancer } of enhancers) {
       try {
         enhancer(this)
@@ -114,24 +191,5 @@ module.exports = class Page {
         throw new Error(`[${pluginName}] excuete extendPageData failed.`)
       }
     }
-  }
-
-  get filename () {
-    return path.parse(this._filePath || this.regularPath).name
-  }
-
-  get slug () {
-    return slugify(this.filename)
-  }
-
-  toJson () {
-    const json = {}
-    Object.keys(this).reduce((json, key) => {
-      if (!key.startsWith('_')) {
-        json[key] = this[key]
-      }
-      return json
-    }, json)
-    return json
   }
 }

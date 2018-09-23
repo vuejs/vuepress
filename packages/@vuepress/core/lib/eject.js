@@ -1,3 +1,5 @@
+'use strict'
+
 const path = require('path')
 const { chalk, fs, logger } = require('@vuepress/shared-utils')
 

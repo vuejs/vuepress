@@ -1,5 +1,15 @@
+'use strict'
+
+/**
+ * Module dependencies.
+ */
+
 const path = require('path')
 const { fs, logger, chalk } = require('@vuepress/shared-utils')
+
+/**
+ * Expose createBaseConfig method.
+ */
 
 module.exports = function createBaseConfig ({
   siteConfig,
