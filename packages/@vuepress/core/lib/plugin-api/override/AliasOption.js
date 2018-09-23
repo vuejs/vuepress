@@ -16,7 +16,7 @@ module.exports = class DefineOption extends Option {
     const aliases = this.appliedValues
     aliases.forEach((alias) => {
       Object.keys(alias).forEach(key => {
-        config.resolve.alias.set('key', alias[key])
+        config.resolve.alias.set(key, alias[key])
       })
     })
   }
