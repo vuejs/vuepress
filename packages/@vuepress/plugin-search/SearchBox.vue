@@ -36,6 +36,7 @@
 </template>
 
 <script>
+/* global SEARCH_MAX_SUGGESTIONS */
 export default {
   data () {
     return {
@@ -60,8 +61,8 @@ export default {
         return
       }
 
-      const { pages, themeConfig } = this.$site
-      const max = themeConfig.searchMaxSuggestions || 5
+      const { pages } = this.$site
+      const max = SEARCH_MAX_SUGGESTIONS
       const localePath = this.$localePath
       const matches = item => (
         item.title &&
