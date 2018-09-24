@@ -6,7 +6,7 @@
 
 const path = require('path')
 const slugify = require('../markdown/slugify')
-const { inferTitle, extractHeaders } = require('../util/index')
+const { inferTitle, inferDate, extractHeaders, DATE_RE } = require('../util/index')
 const { fs, fileToPath, parseFrontmatter, getPermalink } = require('@vuepress/shared-utils')
 
 /**
@@ -24,6 +24,7 @@ module.exports = class Page {
    * @param {object} frontmatter
    * @param {string} permalinkPattern
    */
+
   constructor ({
     path,
     meta,
@@ -41,18 +42,19 @@ module.exports = class Page {
     this._content = content
     this._permalink = permalink
     this.frontmatter = frontmatter
+    this._permalinkPattern = permalinkPattern
 
     if (relative) {
-      this._routePath = encodeURI(fileToPath(relative))
+      this.regularPath = encodeURI(fileToPath(relative))
     } else if (path) {
-      this._routePath = encodeURI(path)
+      this.regularPath = encodeURI(path)
     } else if (permalink) {
-      this._routePath = encodeURI(permalink)
+      this.regularPath = encodeURI(permalink)
     }
 
     this.key = 'v-' + Math.random().toString(16).slice(2)
-    this.regularPath = this.path = this._routePath
-    this._permalinkPattern = permalinkPattern
+    // Using regularPath first, would be override by permalink later.
+    this.path = this.regularPath
   }
 
   /**
@@ -66,9 +68,9 @@ module.exports = class Page {
    */
 
   async process ({
-    i18n,
+    computed,
     markdown,
-    enhancers
+    enhancers = []
   }) {
     if (this._filePath) {
       this._content = await fs.readFile(this._filePath, 'utf-8')
@@ -102,9 +104,9 @@ module.exports = class Page {
     }
 
     // resolve i18n
-    i18n.setSSRContext(this)
-    this._i18n = i18n
-    this._localePath = i18n.$localePath
+    computed.setPage(this)
+    this._computed = computed
+    this._localePath = computed.$localePath
 
     this.enhance(enhancers)
     this.buildPermalink()
@@ -129,7 +131,33 @@ module.exports = class Page {
    */
 
   get slug () {
-    return slugify(this.filename)
+    return slugify(this.strippedFilename)
+  }
+
+  /**
+   * stripped file name.
+   *
+   * If filename was yyyy-MM-dd-[title], the date prefix will be stripped.
+   * If filename was yyyy-MM-[title], the date prefix will be stripped.
+   *
+   * @returns {string}
+   * @api public
+   */
+
+  get strippedFilename () {
+    const match = this.filename.match(DATE_RE)
+    return match ? match[3] : this.filename
+  }
+
+  /**
+   * get date of a page.
+   *
+   * @returns {null|string}
+   * @api public
+   */
+
+  get date () {
+    return inferDate(this.frontmatter, this.filename)
   }
 
   /**
@@ -162,7 +190,7 @@ module.exports = class Page {
       this._permalink = getPermalink({
         pattern: this.frontmatter.permalink || this._permalinkPattern,
         slug: this.slug,
-        date: this.frontmatter.date,
+        date: this.date,
         localePath: this._localePath,
         regularPath: this.regularPath
       })

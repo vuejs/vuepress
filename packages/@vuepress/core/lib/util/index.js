@@ -70,9 +70,6 @@ exports.inferTitle = function (frontmatter, strippedContent) {
   }
 }
 
-const LRU = require('lru-cache')
-const cache = LRU({ max: 1000 })
-
 /**
  * Extract heeaders from markdown source content.
  *
@@ -81,6 +78,9 @@ const cache = LRU({ max: 1000 })
  * @param {object} md
  * @returns {array}
  */
+
+const LRU = require('lru-cache')
+const cache = LRU({ max: 1000 })
 
 exports.extractHeaders = function (content, include = [], md) {
   const key = content + include.join(',')
@@ -106,4 +106,26 @@ exports.extractHeaders = function (content, include = [], md) {
 
   cache.set(key, res)
   return res
+}
+
+/**
+ * Infer date.
+ *
+ * @param {object} frontmatter
+ * @param {string} filename
+ * @returns {null|string}
+ */
+
+const DATE_RE = /(\d{4}-\d{1,2}(-\d{1,2})?)-(.*)/
+exports.DATE_RE = DATE_RE
+
+exports.inferDate = function (frontmatter = {}, filename) {
+  if (frontmatter.date) {
+    return frontmatter.date
+  }
+  const match = filename.match(DATE_RE)
+  if (match) {
+    return match[1]
+  }
+  return null
 }

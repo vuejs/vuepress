@@ -11,7 +11,7 @@ const loadTheme = require('./loadTheme')
 const { fs, logger, chalk, globby, sort, datatypes: { isFunction }} = require('@vuepress/shared-utils')
 
 const Page = require('./Page')
-const I18n = require('./I18n')
+const ClientComputedMixin = require('./ClientComputedMixin')
 const PluginAPI = require('../plugin-api/index')
 
 /**
@@ -54,7 +54,7 @@ module.exports = class AppContext {
 
     this.pluginAPI = new PluginAPI(this)
     this.pages = [] // Array<Page>
-    this.I18nConstructor = I18n(null)
+    this.ClientComputedMixinConstructor = ClientComputedMixin(this.getSiteData())
   }
 
   /**
@@ -73,8 +73,8 @@ module.exports = class AppContext {
 
     await this.resolvePages()
     await Promise.all(
-      this.pluginAPI.options.additionalPages.values.map(async ({ path, permalink }) => {
-        await this.addPage({ filePath: path, permalink })
+      this.pluginAPI.options.additionalPages.values.map(async (options) => {
+        await this.addPage(options)
       })
     )
 
@@ -109,7 +109,6 @@ module.exports = class AppContext {
       .use(require('../internal-plugins/rootMixins'))
       .use(require('../internal-plugins/enhanceApp'))
       .use(require('../internal-plugins/overrideCSS'))
-      .use(require('../internal-plugins/i18nTemp'))
       .use(require('../internal-plugins/layoutComponents'))
       .use(require('../internal-plugins/pageComponents'))
       // user plugin
@@ -213,10 +212,10 @@ module.exports = class AppContext {
 
   async addPage (options) {
     options.permalinkPattern = this.siteConfig.permalink
-    const page = new Page(options)
+    const page = new Page(options, this)
     await page.process({
       markdown: this.markdown,
-      i18n: new this.I18nConstructor((this.getSiteData.bind(this))),
+      computed: new this.ClientComputedMixinConstructor(),
       enhancers: this.pluginAPI.options.extendPageData.items
     })
     this.pages.push(page)
@@ -249,13 +248,20 @@ module.exports = class AppContext {
    */
 
   getSiteData () {
+    const { locales } = this.siteConfig
+    if (locales) {
+      Object.keys(locales).forEach(path => {
+        locales[path].path = path
+      })
+    }
+
     return {
       title: this.siteConfig.title || '',
       description: this.siteConfig.description || '',
       base: this.base,
       pages: this.pages.map(page => page.toJson()),
       themeConfig: this.siteConfig.themeConfig || {},
-      locales: this.siteConfig.locales
+      locales
     }
   }
 }

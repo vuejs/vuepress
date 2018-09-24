@@ -4,22 +4,16 @@ import Vue from 'vue'
 
 export default function dataMixin (I18n, siteData) {
   prepare(siteData)
-  const store = new Vue({
-    data: {
-      siteData,
-      disableScrollBehavior: false
-    }
-  })
-  Vue.$store = store
+  Vue.$store.set('siteData', siteData)
 
   if (module.hot) {
     module.hot.accept(VUEPRESS_TEMP_PATH + '/internal/siteData.js', () => {
       prepare(siteData)
-      store.siteData = siteData
+      Vue.$store.set('siteData', siteData)
     })
   }
 
-  const I18nConstructor = I18n(store)
+  const I18nConstructor = I18n(Vue.$store.get('siteData'))
   const i18n = new I18nConstructor()
   const descriptors = Object.getOwnPropertyDescriptors(Object.getPrototypeOf(i18n))
   const computed = {}
