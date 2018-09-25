@@ -44,15 +44,6 @@ It is worth noting that during the `prepare` phase, VuePress does the following:
   - Customizable [navbar](../default-theme-config/README.md#navbar) and [sidebar](../default-theme-config/README.md#sidebar)
   - [Auto-generated GitHub link and page edit links](../default-theme-config/README.md#git-repo-and-edit-links)
 
-## Todo
-
-VuePress is still a work in progress. There are a few things that it currently does not support but are planned:
-
-- Plugin support
-- Blogging support
-
-Contributions are welcome!
-
 ## Why Not ...?
 
 ### Nuxt
