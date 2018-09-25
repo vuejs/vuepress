@@ -1,5 +1,6 @@
 {
   "private": true,
+  "version": "1.0.0",
   "name": "docs",
   "description": "docs of VuePress",
   "scripts": {
