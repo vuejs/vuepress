@@ -2,14 +2,23 @@
   <div class="theme-container" id="vuepress-plugin-i18n-ui">
     <div class="tool-box">
       <span class="select-lang">Language:&nbsp;</span>
+
       <select>
-        <option v-for="locale in localeList">
+        <option
+          v-for="locale in localeList"
+          :key="locale.label">
           {{ locale.label + '(' + locale.url + ')'}}
         </option>
       </select>
+
       <span class="select-page">Page:&nbsp;</span>
+
       <select @change="handlePageChange">
-        <option v-for="page in pages">{{ page.path }}</option>
+        <option
+          v-for="page in pages"
+          :key="page.path">
+          {{ page.path }}
+        </option>
       </select>
     </div>
 
@@ -77,7 +86,7 @@ export default {
     pages () {
       return this.$site.pages
         .filter(page => this.localeList.every(locale => page.path.indexOf(locale.url) !== 0))
-        .filter(page => page.path !== '/translation/')
+        .filter(page => page.path !== this.$page.path)
     }
   },
 
