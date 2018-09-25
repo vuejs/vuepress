@@ -24,11 +24,11 @@ module.exports = class AppContext {
    *
    * @param {string} sourceDir
    * @param {{
-   *  isProd: boolean,
    *  plugins: pluginsConfig,
-   *  theme: themeNameConfig
+   *  theme: themeNameConfig,
    *  temp: string
-   * }} options
+   * }} cliOptions
+   * @param {boolean} isProd
    */
 
   constructor (sourceDir, cliOptions = {}, isProd) {
