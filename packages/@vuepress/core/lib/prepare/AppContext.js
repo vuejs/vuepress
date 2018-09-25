@@ -66,10 +66,10 @@ module.exports = class AppContext {
 
   async process () {
     this.normalizeHeadTagUrls()
-    this.markdown = createMarkdown(this.siteConfig)
     this.resolveTemplates()
     await this.resolveTheme()
     this.resolvePlugins()
+    this.markdown = createMarkdown(this.siteConfig.markdown, this.pluginAPI)
 
     await this.resolvePages()
     await Promise.all(

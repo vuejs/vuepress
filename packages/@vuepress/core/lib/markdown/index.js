@@ -24,9 +24,7 @@ const { parseHeaders } = require('@vuepress/shared-utils')
  * Create markdown by config.
  */
 
-module.exports = ({
-  markdown = {}
-} = {}) => {
+module.exports = (markdown = {}, pluginAPI) => {
   // allow user config slugify
   const slugify = markdown.slugify || _slugify
   // using chainedAPI
@@ -95,6 +93,8 @@ module.exports = ({
       .plugin('line-numbers')
         .use(lineNumbers)
   }
+
+  pluginAPI.options.chainMarkdown.syncApply(config)
 
   if (markdown.chainMarkdown) {
     markdown.chainMarkdown(config)
