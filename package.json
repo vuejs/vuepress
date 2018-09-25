@@ -11,8 +11,8 @@
     "dev": "lerna exec --scope docs -- yarn dev",
     "build": "lerna exec --scope docs -- yarn build",
     "lint": "eslint --fix packages/**/*.js packages/**/*.vue packages/**/bin/*",
-    "prepublishOnly": "conventional-changelog -p angular -r 2 -i CHANGELOG.md -s",
-    "release": "/bin/bash scripts/release.sh",
+    "release": "yarn --pure-lockfile && node scripts/release.js",
+    "changelog": "node scripts/genChangelog.js run",
     "test": "node scripts/test.js"
   },
   "repository": {
@@ -47,7 +47,9 @@
     "lerna": "^2.11.0",
     "lint-staged": "^7.0.4",
     "minimist": "^1.2.0",
-    "yorkie": "^1.0.3"
+    "yorkie": "^1.0.3",
+    "inquirer": "^6.2.0",
+    "@vue/conventional-changelog": "^0.1.1"
   },
   "engines": {
     "node": ">=8"
