@@ -1,6 +1,5 @@
 <template>
-  <div id="vuepress-plugin-i18n-ui">
-
+  <div class="theme-container" id="vuepress-plugin-i18n-ui">
     <div class="tool-box">
       <span class="select-lang">Language:&nbsp;</span>
       <select>
@@ -17,18 +16,12 @@
     <div class="helper-content">
       <div id="left">
         <transition name="slide-left">
-          <Content
-            v-if="currentPageComponent"
-            :page-key="key"
-          />
+          <Content :page-key="key"/>
         </transition>
       </div>
       <div id="right">
         <transition name="slide-left">
-          <Content
-            v-if="rightPageComponent"
-            :page-key="rightKey"
-          />
+          <Content :page-key="rightKey"/>
         </transition>
       </div>
     </div>
@@ -41,16 +34,12 @@ import { findPageForPath } from '@app/util'
 export default {
   data () {
     return {
-      currentPagePath: '/',
-      currentPageComponent: null,
-      rightPageComponent: null
+      currentPagePath: '/'
     }
   },
 
   mounted () {
     syncScroll()
-    this.loadComponent(this.key, 'currentPageComponent')
-    this.loadComponent(this.rightKey, 'rightPageComponent')
   },
 
   computed: {

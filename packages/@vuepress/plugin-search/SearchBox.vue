@@ -36,6 +36,7 @@
 </template>
 
 <script>
+/* global SEARCH_MAX_SUGGESTIONS */
 export default {
   data () {
     return {
@@ -60,8 +61,8 @@ export default {
         return
       }
 
-      const { pages, themeConfig } = this.$site
-      const max = themeConfig.searchMaxSuggestions || 5
+      const { pages } = this.$site
+      const max = SEARCH_MAX_SUGGESTIONS
       const localePath = this.$localePath
       const matches = item => (
         item.title &&
@@ -152,7 +153,7 @@ export default {
 </script>
 
 <style lang="stylus">
-@import '../styles/config.styl'
+@import '~@app/style/config'
 
 .search-box
   display inline-block

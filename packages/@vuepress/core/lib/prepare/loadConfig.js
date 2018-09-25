@@ -1,7 +1,17 @@
+'use strict'
+
+/**
+ * Module dependencies.
+ */
+
 const { fs } = require('@vuepress/shared-utils')
 const path = require('path')
 const yamlParser = require('js-yaml')
 const tomlParser = require('toml')
+
+/**
+ * Expose loadConfig.
+ */
 
 module.exports = function loadConfig (vuepressDir, bustCache = true) {
   const configPath = path.resolve(vuepressDir, 'config.js')

@@ -59,7 +59,7 @@ export default {
 </script>
 
 <style lang="stylus">
-@import '../styles/config.styl'
+@import '~@app/style/config'
 
 .algolia-search-wrapper
   & > span

@@ -1,3 +1,10 @@
+'use strict'
+
+/**
+ * Module dependencies.
+ */
+
+const Config = require('markdown-it-chain')
 const highlight = require('./highlight')
 const highlightLines = require('./highlightLines')
 const preWrapper = require('./preWrapper')
@@ -13,47 +20,91 @@ const toc = require('markdown-it-table-of-contents')
 const _slugify = require('./slugify')
 const { parseHeaders } = require('@vuepress/shared-utils')
 
-module.exports = ({ markdown = {}} = {}) => {
+/**
+ * Create markdown by config.
+ */
+
+module.exports = ({
+  markdown = {}
+} = {}) => {
   // allow user config slugify
   const slugify = markdown.slugify || _slugify
+  // using chainedAPI
+  const config = new Config()
 
-  const md = require('markdown-it')({
-    html: true,
-    highlight
-  })
-    // custom plugins
-    .use(component)
-    .use(highlightLines)
-    .use(preWrapper)
-    .use(snippet)
-    .use(convertRouterLink, Object.assign({
-      target: '_blank',
-      rel: 'noopener noreferrer'
-    }, markdown.externalLinks))
-    .use(hoistScriptStyle)
-    .use(containers)
+  config
+    .options
+      .html(true)
+      .highlight(highlight)
+      .end()
 
-    // 3rd party plugins
-    .use(emoji)
-    .use(anchor, Object.assign({
-      slugify,
-      permalink: true,
-      permalinkBefore: true,
-      permalinkSymbol: '#'
-    }, markdown.anchor))
-    .use(toc, Object.assign({
-      slugify,
-      includeLevel: [2, 3],
-      format: parseHeaders
-    }, markdown.toc))
+    .plugin('component')
+      .use(component)
+      .end()
+
+    .plugin('highlight-lines')
+      .use(highlightLines)
+      .end()
+
+    .plugin('pre-wrapper')
+      .use(preWrapper)
+      .end()
+
+    .plugin('snippet')
+      .use(snippet)
+      .end()
+
+    .plugin('convert-router-link')
+      .use(convertRouterLink, [Object.assign({
+        target: '_blank',
+        rel: 'noopener noreferrer'
+      }, markdown.externalLinks)])
+      .end()
+
+    .plugin('hoist-script-style')
+      .use(hoistScriptStyle)
+      .end()
+
+    .plugin('containers')
+      .use(containers)
+      .end()
+
+    .plugin('emoji')
+      .use(emoji)
+      .end()
+
+    .plugin('anchor')
+      .use(anchor, [Object.assign({
+        slugify,
+        permalink: true,
+        permalinkBefore: true,
+        permalinkSymbol: '#'
+      }, markdown.anchor)])
+      .end()
+
+    .plugin('toc')
+      .use(toc, [Object.assign({
+        slugify,
+        includeLevel: [2, 3],
+        format: parseHeaders
+      }, markdown.toc)])
+      .end()
+
+  if (markdown.lineNumbers) {
+    config
+      .plugin('line-numbers')
+        .use(lineNumbers)
+  }
+
+  if (markdown.chainMarkdown) {
+    markdown.chainMarkdown(config)
+  }
+
+  const md = config.toMd()
 
   // apply user config
   if (markdown.config) {
     markdown.config(md)
-  }
-
-  if (markdown.lineNumbers) {
-    md.use(lineNumbers)
   }
 
   module.exports.dataReturnable(md)

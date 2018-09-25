@@ -1,9 +1,9 @@
-import { hydratePlugin } from '../../lib/plugin-api/util'
+import { flattenPlugin } from '../../lib/plugin-api/util'
 
-describe('hydratePlugin', () => {
+describe('flattenPlugin', () => {
   test('shoould hydrate plugin correctly', () => {
-    const plugin = { name: 'a', shortcut: 'a', config: { enhanceAppFiles: 'file' }}
-    const hydratedPlugin = hydratePlugin(plugin, {}, {})
+    const plugin = { name: 'a', shortcut: 'a', module: { enhanceAppFiles: 'file' }}
+    const hydratedPlugin = flattenPlugin(plugin, {}, {})
     expect(hydratedPlugin.name).toBe('a')
     expect(hydratedPlugin.shortcut).toBe('a')
     expect(hydratedPlugin.enabled).toBe(true)
@@ -11,19 +11,19 @@ describe('hydratePlugin', () => {
   })
 
   test('shoould set \'enabled\' to false when \'pluginOptions\' is set to false.', () => {
-    const plugin = { name: 'a', shortcut: 'a', config: {}}
-    const hydratedPlugin = hydratePlugin(plugin, false, {})
+    const plugin = { name: 'a', shortcut: 'a', module: {}}
+    const hydratedPlugin = flattenPlugin(plugin, false, {})
     expect(hydratedPlugin.name).toBe('a')
     expect(hydratedPlugin.shortcut).toBe('a')
     expect(hydratedPlugin.enabled).toBe(false)
   })
 
-  test('shoould hydrate functional plugin correctly.', () => {
+  test('shoould flatten functional plugin correctly.', () => {
     const config = jest.fn(() => ({ enhanceAppFiles: 'file' }))
-    const plugin = { name: 'a', shortcut: 'a', config }
+    const plugin = { name: 'a', shortcut: 'a', module: config }
     const pluginOptions = {}
     const pluginContext = {}
-    const hydratedPlugin = hydratePlugin(plugin, pluginOptions, pluginContext)
+    const hydratedPlugin = flattenPlugin(plugin, pluginOptions, pluginContext)
     expect(hydratedPlugin.name).toBe('a')
     expect(hydratedPlugin.shortcut).toBe('a')
     expect(hydratedPlugin.enabled).toBe(true)
@@ -33,12 +33,12 @@ describe('hydratePlugin', () => {
     expect(Object.getPrototypeOf(config.mock.calls[0][1])).toBe(pluginContext)
   })
 
-  test('shoould hydrate functional plugin correctly - options defaults to \'{}\'.', () => {
+  test('shoould flatten functional plugin correctly - options defaults to \'{}\'.', () => {
     const config = jest.fn(() => ({ enhanceAppFiles: 'file' }))
-    const plugin = { name: 'a', shortcut: 'a', config }
+    const plugin = { name: 'a', shortcut: 'a', module: config }
     const pluginOptions = undefined
     const pluginContext = {}
-    hydratePlugin(plugin, pluginOptions, pluginContext)
+    flattenPlugin(plugin, pluginOptions, pluginContext)
     expect(config.mock.calls[0][0]).toEqual({})
     expect(Object.getPrototypeOf(config.mock.calls[0][1])).toBe(pluginContext)
   })

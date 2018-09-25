@@ -1,29 +1,50 @@
+'use strict'
+
+/**
+ * Module dependencies.
+ */
+
 const path = require('path')
 const fs = require('fs')
 const {
-  logger, chalk,
+  shortcutPackageResolver: { resolveTheme },
   datatypes: { isString },
-  shortcutPackageResolver: { resolveTheme }
+  logger, chalk
 } = require('@vuepress/shared-utils')
 
+/**
+ * Resolve theme.
+ *
+ *   Resolving Priority:
+ *
+ *   1. If the theme was a absolute path and that path exists, respect it
+ *      as the theme directory.
+ *   2. If 'theme' directory located at vuepressDir exists, respect it as
+ *      the theme directory.
+ *   3. If 'theme' was a shortcut string, resolve it from deps.
+ *
+ * @param {string} theme
+ * @param {string} sourceDir
+ * @param {string} vuepressDir
+ * @returns {Promise}
+ */
+
 module.exports = async function loadTheme (theme, sourceDir, vuepressDir) {
-  // resolve theme
   const localThemePath = path.resolve(vuepressDir, 'theme')
   const useLocalTheme =
-    fs.existsSync(localThemePath) && (fs.readdirSync(localThemePath)).length > 0
+    !fs.existsSync(theme) &&
+    fs.existsSync(localThemePath) &&
+    (fs.readdirSync(localThemePath)).length > 0
 
   let themePath = null         // Mandatory
   let themeIndexFile = null    // Optional
-  let themePlugins = []        // Optional
   let themeName
   let themeShortcut
 
   if (useLocalTheme) {
-    // use local custom theme
     themePath = localThemePath
-    logger.tip(`\nApply theme located at ${themePath}...`)
+    logger.tip(`\nApply theme located at ${chalk.gray(themePath)}...`)
   } else if (isString(theme)) {
-    // use external theme
     const { module: modulePath, name, shortcut } = resolveTheme(theme, sourceDir)
     if (modulePath.endsWith('.js') || modulePath.endsWith('.vue')) {
       themePath = path.parse(modulePath).dir
@@ -44,8 +65,13 @@ module.exports = async function loadTheme (theme, sourceDir, vuepressDir) {
   }
 
   // handle theme api
-  const { plugins, layoutDir = useLocalTheme ? '.' : 'layouts' } = themeIndexFile
-  themePlugins = plugins
+  const {
+    plugins: themePlugins,
+    palette: themePalette,
+    layoutDir = useLocalTheme
+      ? '.'
+      : 'layouts'
+  } = themeIndexFile
 
   const layoutDirPath = path.resolve(themePath, layoutDir)
 
@@ -74,12 +100,18 @@ module.exports = async function loadTheme (theme, sourceDir, vuepressDir) {
       return map
     }, {})
 
-  if (!fs.existsSync(layoutComponentMap.Layout.path)) {
+  if (!layoutComponentMap.Layout && !fs.existsSync(layoutComponentMap.Layout.path)) {
     throw new Error(`[vuepress] Cannot resolve Layout.vue file in \n ${layoutComponentMap.Layout.path}`)
   }
 
-  if (!fs.existsSync(layoutComponentMap.NotFound.path)) {
-    layoutComponentMap['404'].path = path.resolve(__dirname, '../app/components/NotFound.vue')
+  // use default 404 component.
+  if (!layoutComponentMap.NotFound || !fs.existsSync(layoutComponentMap.NotFound.path)) {
+    layoutComponentMap['404'] = {
+      filename: 'Layout.vue',
+      componentName: 'NotFound',
+      path: path.resolve(__dirname, '../app/components/NotFound.vue'),
+      isInternal: true
+    }
   }
 
   return {
@@ -87,6 +119,7 @@ module.exports = async function loadTheme (theme, sourceDir, vuepressDir) {
     layoutComponentMap,
     themeIndexFile,
     themePlugins,
+    themePalette,
     themeName,
     themeShortcut
   }

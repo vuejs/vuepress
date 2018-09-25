@@ -1,5 +1,11 @@
-const instantiateOption = require('./option/instantiateOption')
-const { hydratePlugin, normalizePluginsConfig } = require('./util')
+'use strict'
+
+/**
+ * Module dependencies.
+ */
+
+const instantiateOption = require('./override/instantiateOption')
+const { flattenPlugin, normalizePluginsConfig } = require('./util')
 const { PLUGIN_OPTION_MAP } = require('./constants')
 const {
   shortcutPackageResolver: { resolvePlugin },
@@ -8,24 +14,48 @@ const {
   logger, chalk
 } = require('@vuepress/shared-utils')
 
+/**
+ * Expose PluginAPI class.
+ */
+
 module.exports = class PluginAPI {
   constructor (context) {
     this.options = {}
     this._pluginContext = context
-    this._pluginQuene = []
+    this._pluginQueue = []
     this.initializeOptions(PLUGIN_OPTION_MAP)
   }
 
+  /**
+   * Get enabled plugins
+   *
+   * @returns {array}
+   * @api public
+   */
+
   get enabledPlugins () {
-    return this._pluginQuene.filter(({ enabled }) => enabled)
+    return this._pluginQueue.filter(({ enabled }) => enabled)
   }
+
+  /**
+   * Get disabled plugins
+   *
+   * @returns {array}
+   * @api public
+   */
 
   get disabledPlugins () {
-    return this._pluginQuene.filter(({ enabled }) => !enabled)
+    return this._pluginQueue.filter(({ enabled }) => !enabled)
   }
 
+  /**
+   * apply plugin.
+   *
+   * @api public
+   */
+
   apply () {
-    this._pluginQuene.forEach(plugin => {
+    this._pluginQueue.forEach(plugin => {
       if (plugin.enabled) {
         this.applyPlugin(plugin)
       } else {
@@ -34,22 +64,39 @@ module.exports = class PluginAPI {
     })
   }
 
+  /**
+   * Normalize plugin and push it to the plugin queue.
+   *
+   * @param {object} pluginRaw
+   * @param {object} pluginOptions
+   * @returns {module.PluginAPI}
+   * @api public
+   */
+
   use (pluginRaw, pluginOptions = {}) {
     let plugin = resolvePlugin(pluginRaw)
     if (!plugin.module) {
       console.warn(`[vuepress] cannot resolve plugin "${pluginRaw}"`)
       return this
     }
-    plugin = hydratePlugin(plugin, pluginOptions, this._pluginContext, this)
+    plugin = flattenPlugin(plugin, pluginOptions, this._pluginContext, this)
     if (plugin.multiple !== true) {
-      const duplicateIndex = this._pluginQuene.findIndex(({ name }) => name === plugin.name)
+      const duplicateIndex = this._pluginQueue.findIndex(({ name }) => name === plugin.name)
       if (duplicateIndex !== -1) {
-        this._pluginQuene.splice(duplicateIndex, 1)
+        this._pluginQueue.splice(duplicateIndex, 1)
       }
     }
-    this._pluginQuene.push(plugin)
+    this._pluginQueue.push(plugin)
     return this
   }
+
+  /**
+   * Use plugin by config.
+   *
+   * @param pluginsConfig
+   * @returns {module.PluginAPI}
+   * @api public
+   */
 
   useByPluginsConfig (pluginsConfig) {
     pluginsConfig = normalizePluginsConfig(pluginsConfig)
@@ -59,6 +106,12 @@ module.exports = class PluginAPI {
     return this
   }
 
+  /**
+   * initialize plugin options.
+   *
+   * @api private
+   */
+
   initializeOptions () {
     Object.keys(PLUGIN_OPTION_MAP).forEach(key => {
       const option = PLUGIN_OPTION_MAP[key]
@@ -66,12 +119,22 @@ module.exports = class PluginAPI {
     })
   }
 
+  /**
+   * Register plugin option.
+   *
+   * @param {string} key
+   * @param {any} value
+   * @param {string} pluginName
+   * @returns {module.PluginAPI}
+   * @api private
+   */
+
   registerOption (key, value, pluginName) {
     const option = PLUGIN_OPTION_MAP[key]
     const types = option.types
     const { valid, warnMsg } = assertTypes(value, types)
     if (valid) {
-      this.options[option.name].tap(pluginName, value)
+      this.options[option.name].add(pluginName, value)
     } else if (value !== undefined) {
       logger.warn(
         `${chalk.gray(pluginName)} ` +
@@ -81,23 +144,36 @@ module.exports = class PluginAPI {
     return this
   }
 
+  /**
+   * apply plugin.
+   *
+   * @api private
+   */
+
   applyPlugin ({
+    // info
     name: pluginName,
     shortcut,
+
+    // hooks
+    ready,
+    compiled,
+    updated,
+    generated,
+
+    // options
     chainWebpack,
     enhanceDevServer,
     extendMarkdown,
     enhanceAppFiles,
     outFiles,
     extendPageData,
-    ready,
-    compiled,
-    updated,
-    generated,
     clientDynamicModules,
     clientRootMixin,
     additionalPages,
-    globalUIComponents
+    globalUIComponents,
+    define,
+    alias
   }) {
     const isInternalPlugin = pluginName.startsWith('@vuepress/internal-')
     if (shortcut) {
@@ -121,5 +197,7 @@ module.exports = class PluginAPI {
       .registerOption(PLUGIN_OPTION_MAP.CLIENT_ROOT_MIXIN.key, clientRootMixin, pluginName)
       .registerOption(PLUGIN_OPTION_MAP.ADDITIONAL_PAGES.key, additionalPages, pluginName)
       .registerOption(PLUGIN_OPTION_MAP.GLOBAL_UI_COMPONENTS.key, globalUIComponents, pluginName)
+      .registerOption(PLUGIN_OPTION_MAP.DEFINE.key, define, pluginName)
+      .registerOption(PLUGIN_OPTION_MAP.ALIAS.key, alias, pluginName)
   }
 }

@@ -7,5 +7,8 @@ module.exports = createJestConfig({
     '^@/(.*)$': '<rootDir>/$1',
     '^@core/(.*)$': '<rootDir>/packages/@vuepress/core/$1'
   },
-  globalSetup: '<rootDir>/packages/@vuepress/test-utils/prepare.js'
+  modulePathIgnorePatterns: [
+    '<rootDir>/packages/@vuepress/core/__test__/prepare/prepare.spec.js',
+    '<rootDir>/packages/@vuepress/core/__test__/plugin-api/AsyncOption.spec.js'
+  ]
 })
