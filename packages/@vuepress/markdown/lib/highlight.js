@@ -1,7 +1,6 @@
 const prism = require('prismjs')
 const loadLanguages = require('prismjs/components/index')
-const escapeHtml = require('escape-html')
-const { logger, chalk } = require('@vuepress/shared-utils')
+const { logger, chalk, escapeHtml } = require('@vuepress/shared-utils')
 
 // required to make embedded highlighting work...
 loadLanguages(['markup', 'css', 'javascript'])

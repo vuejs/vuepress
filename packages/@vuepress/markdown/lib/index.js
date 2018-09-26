@@ -6,17 +6,17 @@
 
 const Config = require('markdown-it-chain')
 const highlight = require('./highlight')
-const highlightLines = require('./highlightLines')
-const preWrapper = require('./preWrapper')
-const lineNumbers = require('./lineNumbers')
-const component = require('./component')
-const hoistScriptStyle = require('./hoist')
-const convertRouterLink = require('./link')
-const containers = require('./containers')
-const snippet = require('./snippet')
-const emoji = require('markdown-it-emoji')
-const anchor = require('markdown-it-anchor')
-const toc = require('markdown-it-table-of-contents')
+const highlightLinesPlugin = require('./highlightLines')
+const preWrapperPlugin = require('./preWrapper')
+const lineNumbersPlugin = require('./lineNumbers')
+const componentPlugin = require('./component')
+const hoistScriptStylePlugin = require('./hoist')
+const convertRouterLinkPlugin = require('./link')
+const containersPlugin = require('./containers')
+const snippetPlugin = require('./snippet')
+const emojiPlugin = require('markdown-it-emoji')
+const anchorPlugin = require('markdown-it-anchor')
+const tocPlugin = require('markdown-it-table-of-contents')
 const _slugify = require('./slugify')
 const { parseHeaders } = require('@vuepress/shared-utils')
 
@@ -24,9 +24,18 @@ const { parseHeaders } = require('@vuepress/shared-utils')
  * Create markdown by config.
  */
 
-module.exports = (markdown = {}, pluginAPI) => {
+module.exports = ({
+  slugify,
+  externalLinks,
+  anchor,
+  toc,
+  lineNumbers,
+  beforeInstantiate,
+  afterInstantiate
+} = {}) => {
   // allow user config slugify
-  const slugify = markdown.slugify || _slugify
+  slugify = slugify || _slugify
+
   // using chainedAPI
   const config = new Config()
 
@@ -37,75 +46,68 @@ module.exports = (markdown = {}, pluginAPI) => {
       .end()
 
     .plugin('component')
-      .use(component)
+      .use(componentPlugin)
       .end()
 
     .plugin('highlight-lines')
-      .use(highlightLines)
+      .use(highlightLinesPlugin)
       .end()
 
     .plugin('pre-wrapper')
-      .use(preWrapper)
+      .use(preWrapperPlugin)
       .end()
 
     .plugin('snippet')
-      .use(snippet)
+      .use(snippetPlugin)
       .end()
 
     .plugin('convert-router-link')
-      .use(convertRouterLink, [Object.assign({
+      .use(convertRouterLinkPlugin, [Object.assign({
         target: '_blank',
         rel: 'noopener noreferrer'
-      }, markdown.externalLinks)])
+      }, externalLinks)])
       .end()
 
     .plugin('hoist-script-style')
-      .use(hoistScriptStyle)
+      .use(hoistScriptStylePlugin)
       .end()
 
     .plugin('containers')
-      .use(containers)
+      .use(containersPlugin)
       .end()
 
     .plugin('emoji')
-      .use(emoji)
+      .use(emojiPlugin)
       .end()
 
     .plugin('anchor')
-      .use(anchor, [Object.assign({
+      .use(anchorPlugin, [Object.assign({
         slugify,
         permalink: true,
         permalinkBefore: true,
         permalinkSymbol: '#'
-      }, markdown.anchor)])
+      }, anchor)])
       .end()
 
     .plugin('toc')
-      .use(toc, [Object.assign({
+      .use(tocPlugin, [Object.assign({
         slugify,
         includeLevel: [2, 3],
         format: parseHeaders
-      }, markdown.toc)])
+      }, toc)])
       .end()
 
-  if (markdown.lineNumbers) {
+  if (lineNumbers) {
     config
       .plugin('line-numbers')
-        .use(lineNumbers)
+        .use(lineNumbersPlugin)
   }
 
-  pluginAPI.options.chainMarkdown.syncApply(config)
-
-  if (markdown.chainMarkdown) {
-    markdown.chainMarkdown(config)
-  }
+  beforeInstantiate && beforeInstantiate(config)
 
   const md = config.toMd()
 
-  // apply user config
-  if (markdown.config) {
-    markdown.config(md)
-  }
+  afterInstantiate && afterInstantiate(md)
 
   module.exports.dataReturnable(md)
 

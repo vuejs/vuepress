@@ -17,7 +17,7 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
   const DevLogPlugin = require('./webpack/DevLogPlugin')
   const createClientConfig = require('./webpack/createClientConfig')
   const { applyUserWebpackConfig } = require('./util/index')
-  const { frontmatterEmitter } = require('./webpack/markdownLoader')
+  const { frontmatterEmitter } = require('@vuepress/markdown-loader')
 
   logger.wait('\nExtracting site metadata...')
   const options = await prepare(sourceDir, cliOptions, false /* isProd */)

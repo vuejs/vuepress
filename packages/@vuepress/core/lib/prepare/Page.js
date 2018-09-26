@@ -5,9 +5,9 @@
  */
 
 const path = require('path')
-const slugify = require('../markdown/slugify')
-const { inferTitle, inferDate, extractHeaders, DATE_RE } = require('../util/index')
-const { fs, fileToPath, parseFrontmatter, getPermalink } = require('@vuepress/shared-utils')
+const slugify = require('../../../markdown/lib/slugify')
+const { inferDate, DATE_RE } = require('../util/index')
+const { extractHeaders, fs, fileToPath, parseFrontmatter, getPermalink, inferTitle } = require('@vuepress/shared-utils')
 
 /**
  * Expose Page class.

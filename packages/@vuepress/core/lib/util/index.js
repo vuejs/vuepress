@@ -1,12 +1,6 @@
 'use strict'
 
 /**
- * Module dependencies.
- */
-
-const { deeplyParseHeaders } = require('@vuepress/shared-utils')
-
-/**
  * Normalize head tag config.
  *
  * @param {string|array} tag
@@ -47,65 +41,6 @@ exports.applyUserWebpackConfig = function (userConfig, config, isServer) {
     }
   }
   return config
-}
-
-/**
- * Infer a page's title via frontmatter and content.
- *
- * @param frontmatter
- * @param strippedContent
- * @returns {*}
- */
-
-exports.inferTitle = function (frontmatter, strippedContent) {
-  if (frontmatter.home) {
-    return 'Home'
-  }
-  if (frontmatter.title) {
-    return deeplyParseHeaders(frontmatter.title)
-  }
-  const match = strippedContent.trim().match(/^#+\s+(.*)/)
-  if (match) {
-    return deeplyParseHeaders(match[1])
-  }
-}
-
-/**
- * Extract heeaders from markdown source content.
- *
- * @param {string} content
- * @param {array} include
- * @param {object} md
- * @returns {array}
- */
-
-const LRU = require('lru-cache')
-const cache = LRU({ max: 1000 })
-
-exports.extractHeaders = function (content, include = [], md) {
-  const key = content + include.join(',')
-  const hit = cache.get(key)
-  if (hit) {
-    return hit
-  }
-
-  const tokens = md.parse(content, {})
-
-  const res = []
-  tokens.forEach((t, i) => {
-    if (t.type === 'heading_open' && include.includes(t.tag)) {
-      const title = tokens[i + 1].content
-      const slug = t.attrs.find(([name]) => name === 'id')[1]
-      res.push({
-        level: parseInt(t.tag.slice(1), 10),
-        title: deeplyParseHeaders(title),
-        slug: slug || md.slugify(title)
-      })
-    }
-  })
-
-  cache.set(key, res)
-  return res
 }
 
 /**

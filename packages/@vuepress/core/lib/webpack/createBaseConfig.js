@@ -136,7 +136,7 @@ module.exports = function createBaseConfig ({
 
   mdRule
     .use('markdown-loader')
-      .loader(require.resolve('./markdownLoader'))
+      .loader(require.resolve('@vuepress/markdown-loader'))
       .options({ sourceDir, markdown })
 
   config.module

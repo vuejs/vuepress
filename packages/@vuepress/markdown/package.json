@@ -1,0 +1,37 @@
+{
+  "name": "@vuepress/markdown",
+  "version": "1.0.0",
+  "description": "markdown for vuepress",
+  "main": "lib/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuejs/vuepress.git"
+  },
+  "keywords": [
+    "documentation",
+    "vue",
+    "vuepress",
+    "generator",
+    "markdown"
+  ],
+  "dependencies": {
+    "@vuepress/shared-utils": "^1.0.0",
+    "markdown-it": "^8.4.1",
+    "markdown-it-anchor": "^5.0.2",
+    "markdown-it-container": "^2.0.0",
+    "markdown-it-emoji": "^1.4.0",
+    "markdown-it-table-of-contents": "^0.4.0",
+    "markdown-it-chain": "^1.2.0",
+    "prismjs": "^1.13.0",
+    "diacritics": "^1.3.0"
+  },
+  "author": "Evan You",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vuejs/vuepress/issues"
+  },
+  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/markdown#readme"
+}

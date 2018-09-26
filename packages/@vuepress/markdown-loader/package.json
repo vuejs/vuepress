@@ -1,7 +1,7 @@
 {
-  "name": "@vuepress/shared-utils",
+  "name": "@vuepress/markdown-loader",
   "version": "1.0.0",
-  "description": "shared-utils for vuepress",
+  "description": "markdown-loader for vuepress",
   "main": "index.js",
   "publishConfig": {
     "access": "public"
@@ -17,16 +17,13 @@
     "generator"
   ],
   "dependencies": {
-    "chalk": "^2.3.2",
-    "fs-extra": "^5.0.0",
-    "globby": "^8.0.1",
-    "escape-html": "^1.0.3",
-    "hash-sum": "^1.0.2"
+    "@vuepress/markdown": "1.0.0",
+    "loader-utils": "^1.1.0"
   },
   "author": "Evan You",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/vuejs/vuepress/issues"
   },
-  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/shared-utils#readme"
+  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/markdown-loader#readme"
 }

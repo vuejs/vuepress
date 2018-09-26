@@ -1,5 +1,5 @@
 import { Md, getFragment } from './util'
-import highlightLines from '../../lib/markdown/highlightLines.js'
+import highlightLines from '../lib/highlightLines.js'
 
 const md = Md()
 const mdH = Md().use(highlightLines)

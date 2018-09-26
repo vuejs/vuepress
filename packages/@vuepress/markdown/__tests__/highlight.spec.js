@@ -1,5 +1,5 @@
 import { Md, getFragment } from './util'
-import highlight from '../../lib/markdown/highlight.js'
+import highlight from '../lib/highlight.js'
 
 const md = Md()
 const mdH = Md().set({ highlight })

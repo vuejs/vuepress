@@ -21,6 +21,8 @@
   "dependencies": {
     "@babel/core": "7.0.0-beta.47",
     "@vue/babel-preset-app": "3.0.0-beta.11",
+    "@vuepress/markdown": "^1.0.0",
+    "@vuepress/markdown-loader": "^1.0.0",
     "@vuepress/shared-utils": "^1.0.0",
     "@vuepress/plugin-last-updated": "^1.0.0",
     "@vuepress/plugin-register-components": "^1.0.0",
@@ -33,8 +35,6 @@
     "copy-webpack-plugin": "^4.5.1",
     "cross-spawn": "^6.0.5",
     "css-loader": "^0.28.11",
-    "diacritics": "^1.3.0",
-    "escape-html": "^1.0.3",
     "file-loader": "^1.1.11",
     "globby": "^8.0.1",
     "gray-matter": "^4.0.1",
@@ -43,18 +43,11 @@
     "koa-mount": "^3.0.0",
     "koa-range": "^0.3.0",
     "koa-static": "^4.0.2",
-    "loader-utils": "^1.1.0",
     "lru-cache": "^4.1.2",
-    "markdown-it": "^8.4.1",
-    "markdown-it-anchor": "^5.0.2",
-    "markdown-it-container": "^2.0.0",
-    "markdown-it-emoji": "^1.4.0",
-    "markdown-it-table-of-contents": "^0.4.0",
     "mini-css-extract-plugin": "^0.4.1",
     "optimize-css-assets-webpack-plugin": "^4.0.0",
     "portfinder": "^1.0.13",
     "postcss-loader": "^2.1.5",
-    "prismjs": "^1.13.0",
     "toml": "^2.3.3",
     "url-loader": "^1.0.1",
     "vue": "^2.5.16",
@@ -67,8 +60,7 @@
     "webpack-chain": "^4.6.0",
     "webpack-merge": "^4.1.2",
     "webpack-serve": "^1.0.2",
-    "webpackbar": "^2.6.1",
-    "markdown-it-chain": "^1.2.0"
+    "webpackbar": "^2.6.1"
   },
   "engines": {
     "node": ">=8"

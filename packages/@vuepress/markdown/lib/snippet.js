@@ -1,4 +1,4 @@
-const fs = require('fs')
+const { fs } = require('@vuepress/shared-utils')
 
 module.exports = function snippet (md, options = {}) {
   const root = options.root || process.cwd()

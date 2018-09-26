@@ -1,6 +1,6 @@
 import { Md } from './util'
 import anchor from 'markdown-it-anchor'
-import slugify from '../../lib/markdown/slugify.js'
+import slugify from '../lib/slugify.js'
 
 const mdS = Md().use(anchor, {
   slugify,

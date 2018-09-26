@@ -4,14 +4,12 @@
  * Module dependencies.
  */
 
-const fs = require('fs')
 const path = require('path')
-const hash = require('hash-sum')
 const { EventEmitter } = require('events')
 const { getOptions } = require('loader-utils')
-const { inferTitle, extractHeaders } = require('../util/index')
-const { parseFrontmatter } = require('@vuepress/shared-utils')
+const { fs, hash, parseFrontmatter, inferTitle, extractHeaders } = require('@vuepress/shared-utils')
 const LRU = require('lru-cache')
+const md = require('@vuepress/markdown')
 
 const cache = LRU({ max: 1000 })
 const devCache = LRU({ max: 1000 })
@@ -23,7 +21,12 @@ const devCache = LRU({ max: 1000 })
 module.exports = function (src) {
   const isProd = process.env.NODE_ENV === 'production'
   const isServer = this.target === 'node'
-  const { markdown, sourceDir } = getOptions(this)
+  const options = getOptions(this)
+  const { sourceDir } = options
+  let { markdown } = options
+  if (!markdown) {
+    markdown = md()
+  }
 
   // we implement a manual cache here because this loader is chained before
   // vue-loader, and will be applied on the same file multiple times when
@@ -69,18 +72,23 @@ module.exports = function (src) {
   // check if relative links are valid
   links && links.forEach(link => {
     link = decodeURIComponent(link)
+
     const shortname = link
       .replace(/#.*$/, '')
       .replace(/\.html$/, '.md')
+
     const filename = shortname
       .replace(/\/$/, '/README.md')
       .replace(/^\//, sourceDir + '/')
+
     const altname = shortname
       .replace(/\/$/, '/index.md')
       .replace(/^\//, sourceDir + '/')
+
     const dir = path.dirname(this.resourcePath)
     const file = path.resolve(dir, filename)
     const altfile = altname !== filename ? path.resolve(dir, altname) : null
+
     if (!fs.existsSync(file) && (!altfile || !fs.existsSync(altfile))) {
       this.emitWarning(
         new Error(
@@ -95,7 +103,6 @@ module.exports = function (src) {
     `<template>\n` +
       `<div class="content">${html}</div>\n` +
     `</template>\n` +
-    `<script>export default { props: ['target'] }</script>` +
     (hoistedTags || []).join('\n')
   )
   cache.set(key, res)

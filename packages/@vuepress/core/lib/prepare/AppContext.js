@@ -5,7 +5,7 @@
  */
 
 const path = require('path')
-const createMarkdown = require('../markdown/index')
+const createMarkdown = require('./createMarkdown')
 const loadConfig = require('./loadConfig')
 const loadTheme = require('./loadTheme')
 const { fs, logger, chalk, globby, sort, datatypes: { isFunction }} = require('@vuepress/shared-utils')
@@ -69,7 +69,7 @@ module.exports = class AppContext {
     this.resolveTemplates()
     await this.resolveTheme()
     this.resolvePlugins()
-    this.markdown = createMarkdown(this.siteConfig.markdown, this.pluginAPI)
+    this.markdown = createMarkdown(this)
 
     await this.resolvePages()
     await Promise.all(
@@ -79,7 +79,6 @@ module.exports = class AppContext {
     )
 
     await this.pluginAPI.options.ready.apply()
-    this.pluginAPI.options.extendMarkdown.syncApply(this.markdown)
     await this.pluginAPI.options.clientDynamicModules.apply(this)
     await this.pluginAPI.options.globalUIComponents.apply(this)
     await this.pluginAPI.options.enhanceAppFiles.apply(this)
