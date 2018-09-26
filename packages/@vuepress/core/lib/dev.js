@@ -36,7 +36,7 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
     '.vuepress/components/**/*.vue'
   ], {
     cwd: sourceDir,
-    ignored: '.vuepress/**/*.md',
+    ignored: ['.vuepress/**/*.md', 'node_modules'],
     ignoreInitial: true
   })
   pagesWatcher.on('add', update)

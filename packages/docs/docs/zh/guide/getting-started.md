@@ -13,7 +13,7 @@
 yarn global add vuepress # 或者：npm install -g vuepress
 
 # 新建一个 markdown 文件
-echo "# Hello VuePress!" > README.md
+echo '# Hello VuePress!' > README.md
 
 # 开始写作
 vuepress dev .
@@ -34,7 +34,7 @@ yarn add -D vuepress # 或者：npm install -D vuepress
 mkdir docs
 
 # 新建一个 markdown 文件
-echo "# Hello VuePress!" > docs/README.md
+echo '# Hello VuePress!' > docs/README.md
 
 # 开始写作
 npx vuepress dev docs
