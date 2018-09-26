@@ -7,6 +7,9 @@
     "type": "git",
     "url": "git+https://github.com/vuejs/vuepress.git"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "keywords": [
     "documentation",
     "vue",
