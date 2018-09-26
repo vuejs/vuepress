@@ -8021,10 +8021,6 @@ schema-utils@^0.4.0, schema-utils@^0.4.2, schema-utils@^0.4.3, schema-utils@^0.4
     ajv "^6.1.0"
     ajv-keywords "^3.1.0"
 
-scifi@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/scifi/-/scifi-0.1.4.tgz#4d514ea11e0b2a6a350a33c6c56addcc9c4e676e"
-
 section-matter@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/section-matter/-/section-matter-1.0.0.tgz#e9041953506780ec01d59f292a19c7b850b84167"
