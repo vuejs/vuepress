@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/shared-utils",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha.0",
   "description": "shared-utils for vuepress",
   "main": "index.js",
   "publishConfig": {
@@ -18,9 +18,9 @@
   ],
   "dependencies": {
     "chalk": "^2.3.2",
+    "escape-html": "^1.0.3",
     "fs-extra": "^5.0.0",
     "globby": "^8.0.1",
-    "escape-html": "^1.0.3",
     "hash-sum": "^1.0.2"
   },
   "author": "Evan You",

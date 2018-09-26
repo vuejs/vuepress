@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/test-utils",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha.0",
   "description": "test-utils for vuepress",
   "publishConfig": {
     "access": "public"
@@ -16,17 +16,17 @@
     "generator"
   ],
   "dependencies": {
-    "@vuepress/core": "^1.0.0",
-    "@vuepress/shared-utils": "^1.0.0",
-    "@vue/test-utils": "^1.0.0-beta.16",
     "@babel/core": "^7.0.0-beta.47",
     "@babel/preset-env": "^7.0.0-beta.47",
+    "@vue/test-utils": "^1.0.0-beta.16",
+    "@vuepress/core": "^1.0.0-alpha.0",
+    "@vuepress/shared-utils": "^1.0.0-alpha.0",
     "babel-core": "^7.0.0-0",
     "babel-jest": "^23.4.0",
+    "execa": "^0.10.0",
     "jest": "^23.4.0",
     "jest-serializer-vue": "^1.0.0",
-    "vue-jest": "^2.6.0",
-    "execa": "^0.10.0"
+    "vue-jest": "^2.6.0"
   },
   "author": "Evan You",
   "license": "MIT",
