@@ -644,9 +644,3 @@ See: [base](../config/README.md#base).
 - Type: `Function`
 
 A utility for writing temporary files to tempPath.
-
-
-
-
-
-
