@@ -15,9 +15,9 @@
 
 ## Status: alpha
 
-Certain combinations of plugins may not work properly, and things may change or break until we reach beta phase. Do not use in production yet unless you are adventurous.
+Certain combinations of plugins may not work properly, and things may change or break until we reach `beta` phase. Do not use in production yet unless you are adventurous.
 
-For 0.x, it's moved to [0.x branch](https://github.com/vuejs/vuepress/tree/0.x) and still maintained.
+For 0.x, it's moved to [0.x branch](https://github.com/vuejs/vuepress/tree/0.x) and still maintained, the website was switching to https://v0.vuepress.vuejs.org
 
 # VuePress
 
