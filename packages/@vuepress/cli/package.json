@@ -16,6 +16,9 @@
     "vuepress",
     "generator"
   ],
+  "bin": {
+    "vuepress": "index.js"
+  },
   "author": "Evan You",
   "maintainers": [
     {
