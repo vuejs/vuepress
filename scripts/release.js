@@ -45,7 +45,23 @@ const release = async () => {
   })
   const bumpChoices = bumps.map(b => ({ name: `${b} (${versions[b]})`, value: b }))
 
-  const { bump, customVersion } = await inquirer.prompt([
+  function getVersion (answers) {
+    return answers.customVersion || versions[answers.bump]
+  }
+
+  function getNpmTags (version) {
+    console.log(version)
+    if (isPreRelease(version)) {
+      return ['next', 'latest']
+    }
+    return ['latest', 'next']
+  }
+
+  function isPreRelease (version) {
+    return !!semver.prerelease(version)
+  }
+
+  const { bump, customVersion, npmTag } = await inquirer.prompt([
     {
       name: 'bump',
       message: 'Select release type:',
@@ -60,6 +76,13 @@ const release = async () => {
       message: 'Input version:',
       type: 'input',
       when: answers => answers.bump === 'custom'
+    },
+    {
+      name: 'npmTag',
+      message: 'Input npm tag:',
+      type: 'list',
+      default: answers => getNpmTags(getVersion(answers))[0],
+      choices: answers => getNpmTags(getVersion(answers))
     }
   ])
 
@@ -67,7 +90,7 @@ const release = async () => {
 
   const { yes } = await inquirer.prompt([{
     name: 'yes',
-    message: `Confirm releasing ${version}?`,
+    message: `Confirm releasing ${version} (${npmTag})?`,
     type: 'list',
     choices: ['N', 'Y']
   }])
@@ -82,18 +105,14 @@ const release = async () => {
     '--repo-version',
     version,
     '--force-publish',
+    '--npm-tag',
+    npmTag,
     '*'
   ]
 
   console.log(`lerna ${releaseArguments.join(' ')}`)
 
-  await execa(require.resolve('lerna/bin/lerna'), [
-    'publish',
-    '--repo-version',
-    version,
-    '--force-publish',
-    '*'
-  ], { stdio: 'inherit' })
+  await execa(require.resolve('lerna/bin/lerna'), releaseArguments, { stdio: 'inherit' })
 
   require('./genChangelog')(version)
 }
