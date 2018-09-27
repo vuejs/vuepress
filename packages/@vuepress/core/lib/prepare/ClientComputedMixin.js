@@ -30,21 +30,18 @@ function findPageForPath (pages, path) {
  */
 
 module.exports = siteData => {
-  // We cannot use class here. webpack will throw error.
-  function ClientComputedMixin () {}
-
-  ClientComputedMixin.prototype = {
+  return class ClientComputedMixin {
     setPage (page) {
       this.__page = page
-    },
+    }
 
     get $site () {
       return siteData
-    },
+    }
 
     get $themeConfig () {
       return this.$site.themeConfig
-    },
+    }
 
     get $localeConfig () {
       const { locales = {}} = this.$site
@@ -58,11 +55,11 @@ module.exports = siteData => {
         }
       }
       return targetLang || defaultLang || {}
-    },
+    }
 
     get $siteTitle () {
       return this.$localeConfig.title || this.$site.title || ''
-    },
+    }
 
     get $title () {
       const page = this.$page
@@ -76,7 +73,7 @@ module.exports = siteData => {
           ? (selfTitle + ' | ' + siteTitle)
           : siteTitle
         : selfTitle || 'VuePress'
-    },
+    }
 
     get $description () {
       // #565 hoist description from meta
@@ -84,24 +81,20 @@ module.exports = siteData => {
       if (description) {
         return description
       }
-      // if (this.$page.frontmatter.meta) {
-      //   const descriptionMeta = this.$page.frontmatter.meta.filter(item => item.name === 'description')[0]
-      //   if (descriptionMeta) return descriptionMeta.content
-      // }
       return this.$page.frontmatter.description || this.$localeConfig.description || this.$site.description || ''
-    },
+    }
 
     get $lang () {
       return this.$page.frontmatter.lang || this.$localeConfig.lang || 'en-US'
-    },
+    }
 
     get $localePath () {
       return this.$localeConfig.path || '/'
-    },
+    }
 
     get $themeLocaleConfig () {
       return (this.$site.themeConfig.locales || {})[this.$localePath] || {}
-    },
+    }
 
     get $page () {
       if (this.__page) {
@@ -113,16 +106,11 @@ module.exports = siteData => {
       )
     }
   }
-
-  return ClientComputedMixin
 }
 
 function getMetaDescription (meta) {
   if (meta) {
-    // Why '(() => 'name')()' ?
-    // You can use item.name directly and see what happened.
-    // "How many pits did webpack bury?"
-    const descriptionMeta = meta.filter(item => item[(() => 'name')()] === 'description')[0]
+    const descriptionMeta = meta.filter(item => item.name === 'description')[0]
     if (descriptionMeta) return descriptionMeta.content
   }
 }

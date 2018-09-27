@@ -6,7 +6,7 @@ import { routes } from '@internal/routes'
 import { siteData } from '@internal/siteData'
 import appEnhancers from '@internal/app-enhancers'
 import globalUIComponents from '@internal/global-ui'
-import ClientComputedMixin from '../prepare/ClientComputedMixin'
+import ClientComputedMixin from '@transform/ClientComputedMixin'
 import Store from './Store'
 
 // generated from user config

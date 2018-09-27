@@ -110,6 +110,7 @@ module.exports = class AppContext {
       .use(require('../internal-plugins/overrideCSS'))
       .use(require('../internal-plugins/layoutComponents'))
       .use(require('../internal-plugins/pageComponents'))
+      .use(require('../internal-plugins/transformModule'))
       // user plugin
       .useByPluginsConfig(this.cliOptions.plugins)
       .useByPluginsConfig(this.siteConfig.plugins)
