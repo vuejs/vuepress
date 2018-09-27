@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const { chalk } = require('@vuepress/shared-utils')
 const semver = require('semver')
 
@@ -128,4 +130,10 @@ exports.bootstrap = function ({
   if (!process.argv.slice(2).length) {
     program.outputHelp()
   }
+}
+
+if (require.main === module) {
+  exports.bootstrap({
+    theme: '@vuepress/default'
+  })
 }
