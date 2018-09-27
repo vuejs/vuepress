@@ -32,7 +32,7 @@
     "semver": "^5.5.0"
   },
   "peerDependencies": {
-    "@vuepress/core": "^1.0.0"
+    "@vuepress/core": "^1.0.0-alpha.1"
   },
   "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/cli#readme"
 }
