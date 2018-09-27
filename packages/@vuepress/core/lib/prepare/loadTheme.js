@@ -106,7 +106,7 @@ module.exports = async function loadTheme (theme, sourceDir, vuepressDir) {
 
   // use default 404 component.
   if (!layoutComponentMap.NotFound || !fs.existsSync(layoutComponentMap.NotFound.path)) {
-    layoutComponentMap['404'] = {
+    layoutComponentMap['NotFound'] = {
       filename: 'Layout.vue',
       componentName: 'NotFound',
       path: path.resolve(__dirname, '../app/components/NotFound.vue'),
