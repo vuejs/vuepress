@@ -35,7 +35,7 @@ files.forEach(pkg => {
         'vuepress',
         'generator'
       ],
-      'author': 'Evan You',
+      'author': 'ULIVZ <chl814@foxmail.com>',
       'license': 'MIT',
       'bugs': {
         'url': 'https://github.com/vuejs/vuepress/issues'

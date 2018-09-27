@@ -16,6 +16,12 @@
     "generator"
   ],
   "author": "Evan You",
+  "maintainers": [
+    {
+      "name": "ULIVZ",
+      "email": "chl814@foxmail.com"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/vuejs/vuepress/issues"

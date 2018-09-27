@@ -16,6 +16,12 @@
     "vuepress": "vuepress.js"
   },
   "author": "Evan You",
+  "maintainers": [
+    {
+      "name": "ULIVZ",
+      "email": "chl814@foxmail.com"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/vuejs/vuepress/issues"
@@ -25,5 +31,11 @@
     "@vuepress/cli": "^1.0.0-alpha.0",
     "@vuepress/core": "^1.0.0-alpha.0",
     "@vuepress/theme-default": "^1.0.0-alpha.0"
-  }
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "browserslist": [
+    ">1%"
+  ]
 }

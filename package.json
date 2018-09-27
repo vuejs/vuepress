@@ -17,21 +17,6 @@
     "changelog": "node scripts/genChangelog.js run",
     "test": "node scripts/test.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vuejs/vuepress.git"
-  },
-  "keywords": [
-    "documentation",
-    "vue",
-    "generator"
-  ],
-  "author": "Evan You",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/vuejs/vuepress/issues"
-  },
-  "homepage": "https://github.com/vuejs/vuepress#readme",
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
@@ -52,11 +37,5 @@
     "yorkie": "^1.0.3",
     "inquirer": "^6.2.0",
     "@vue/conventional-changelog": "^0.1.1"
-  },
-  "engines": {
-    "node": ">=8"
-  },
-  "browserslist": [
-    ">1%"
-  ]
+  }
 }

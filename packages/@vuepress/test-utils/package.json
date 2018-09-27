@@ -28,7 +28,7 @@
     "jest-serializer-vue": "^1.0.0",
     "vue-jest": "^2.6.0"
   },
-  "author": "Evan You",
+  "author": "ULIVZ <chl814@foxmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/vuejs/vuepress/issues"
