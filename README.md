@@ -17,13 +17,20 @@
 
 Certain combinations of plugins may not work properly, and things may change or break until we reach `beta` phase. Do not use in production yet unless you are adventurous.
 
-For 0.x, it's moved to [0.x branch](https://github.com/vuejs/vuepress/tree/0.x) and still maintained, the website was switching to https://v0.vuepress.vuejs.org
+For 0.x, it's moved to [0.x branch](https://github.com/vuejs/vuepress/tree/0.x) and still maintained, the website was switching to https://v0.vuepress.vuejs.org.
 
 # VuePress
 
 > Minimalistic docs generator with Vue component based layout system
 
 https://vuepress.vuejs.org/
+
+## Install
+
+```bash
+yarn add vuepress -D       # Install 0.x.x.
+yarn add vuepress@next -D  # Install next.
+```
 
 ## Features
 
