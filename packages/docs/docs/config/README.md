@@ -199,7 +199,7 @@ Provide config options to the used theme. The options will vary depending on the
 For default usage, please refer to [plugin API](../plugin/README.md).
 
 ::: tip
-There is a hidden feature. `.vuepress/config.js` also supports all [options](../plugin/README.md#options) plugin API.
+There is a hidden feature. `.vuepress/config.js` also supports all [options](../plugin/README.md#options) of Plugin API.
 :::
 
 ## Markdown
