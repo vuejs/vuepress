@@ -436,9 +436,9 @@ editLink: false
 ---
 ```
 
-## Simple CSS Override
+## Simple Color Variables Override
 
-If you wish to apply simple overrides to the styling of the default theme, you can create an `.vuepress/override.styl` file. This is a [Stylus](http://stylus-lang.com/) file but you can use normal CSS syntax as well.
+If you wish to apply simple color overrides to the styling of the default theme, you can create an `.vuepress/palette.styl` file. This is a [Stylus](http://stylus-lang.com/) file but you can use normal CSS syntax as well.
 
 There are a few color variables you can tweak:
 
@@ -450,34 +450,23 @@ $borderColor = #eaecef
 $codeBgColor = #282c34
 ```
 
-### Existing issues <Badge text="< 0.12.0" type='error'/>
+::: danger Note
+You should ONLY write color variables in this file. since `palette.styl` will be imported at the end of the root stylus config file, as a config, it will be used by multiple files, so once you wrote styles here, your style would be duplicated by multiple times. 
+:::
 
-In order to override the default variables mentioned above, `override.styl` will be imported at the end of the `config.styl` in default theme, and this file will be used by multiple files, so once you wrote styles here, your style would be duplicated by multiple times. See [#637](https://github.com/vuejs/vuepress/issues/637).
+## Simple CSS Override
 
-### Migrate your styles to `style.styl` <Badge text="0.12.0+"/>
+VuePress provides a convenient way to add extra styles. you can create an `.vuepress/style.styl` file for that:
 
-In fact, The `stylus constants override` should be completed before all Stylus files are compiled; and the `user's additional CSS styles` should be generated at the end of the final style file. Therefore, these two duties should not be completed by the same stylus file.
-
-Start from `0.12.0`, we split `override.styl` into two APIs: `override.styl` and `style.styl`. If you wrote styles at `override.styl` in the past, e.g.
-
-``` stylus
-// .vuepress/override.styl
-$textColor = red // stylus constants override.
-
-#my-style {} // your extra styles.
+```stylus
+content {
+  font-size 30px
+}
 ```
 
-You'll need to separate the style part to `style.styl`:
+**Also see:** 
 
-``` stylus
-// .vuepress/override.styl, SHOULD ONLY contain "stylus constants override".
-$textColor = red
-```
-
-``` stylus
-// .vuepress/style.styl, your extra styles.
-#my-style {}
-```
+- [FAQ > Why can't `palette.styl` and `style.styl` merge into one API?](../faq/README.md#why-can-t-palette-styl-and-style-styl-merge-into-one-api)
 
 ## Custom Page Class
 

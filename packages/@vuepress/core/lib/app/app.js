@@ -9,9 +9,6 @@ import globalUIComponents from '@internal/global-ui'
 import ClientComputedMixin from '@transform/ClientComputedMixin'
 import Store from './Store'
 
-// generated from user config
-import('@temp/style.styl')
-
 // built-in components
 import Content from './components/Content'
 import OutboundLink from './components/OutboundLink.vue'
