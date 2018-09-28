@@ -31,7 +31,7 @@ module.exports = (options, context) => ({
     await writeTemp('palette.styl', paletteContent)
 
     // style.styl API.
-    const stylePath = path.resolve(sourceDir, '.vuepress/style.styl').replace(/[\\]+/g, '/')
+    const stylePath = path.resolve(sourceDir, '.vuepress/style.styl').replace(/\\/g, '/')
     const hasUserStyle = fs.existsSync(stylePath)
     await writeTemp('style.styl', hasUserStyle ? `@import(${JSON.stringify(stylePath)})` : ``)
 
