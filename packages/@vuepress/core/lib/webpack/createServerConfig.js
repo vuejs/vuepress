@@ -6,7 +6,7 @@
 
 module.exports = function createServerConfig (ctx) {
   const fs = require('fs')
-  const path = require('path')
+  const { path } = require('@vuepress/shared-utils')
   const WebpackBar = require('webpackbar')
   const createBaseConfig = require('./createBaseConfig')
   const VueSSRServerPlugin = require('vue-server-renderer/server-plugin')

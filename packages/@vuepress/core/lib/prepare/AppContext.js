@@ -4,12 +4,11 @@
  * Module dependencies.
  */
 
-const path = require('path')
 const createMarkdown = require('./createMarkdown')
 const loadConfig = require('./loadConfig')
 const loadTheme = require('./loadTheme')
 const {
-  fs, logger, chalk, globby, sort,
+  fs, path, logger, chalk, globby, sort,
   datatypes: { isFunction },
   fallback: { fsExistsFallback }
 } = require('@vuepress/shared-utils')

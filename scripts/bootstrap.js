@@ -1,7 +1,7 @@
 // create package.json and README for packages that don't have one yet
 
 const fs = require('fs')
-const path = require('path')
+const { path } = require('@vuepress/shared-utils')
 const baseVersion = require('../packages/@vuepress/core/package.json').version
 
 const packagesDir = path.resolve(__dirname, '../packages/@vuepress')

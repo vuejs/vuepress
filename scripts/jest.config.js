@@ -1,4 +1,4 @@
-const path = require('path')
+const { path } = require('@vuepress/shared-utils')
 const createJestConfig = require('@vuepress/test-utils/createJestConfig')
 
 module.exports = createJestConfig({

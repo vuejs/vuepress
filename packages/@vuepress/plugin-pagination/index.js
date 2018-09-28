@@ -1,4 +1,4 @@
-const path = require('path')
+const { path } = require('@vuepress/shared-utils')
 
 function getIntervallers (max, interval) {
   const count = Math.floor(max / interval)

@@ -1,5 +1,4 @@
-const path = require('path')
-const { logger, fs } = require('@vuepress/shared-utils')
+const { logger, fs, path } = require('@vuepress/shared-utils')
 
 module.exports = (options, context) => ({
   ready () {

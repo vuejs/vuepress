@@ -4,10 +4,9 @@
  * Module dependencies.
  */
 
-const path = require('path')
 const { EventEmitter } = require('events')
 const { getOptions } = require('loader-utils')
-const { fs, hash, parseFrontmatter, inferTitle, extractHeaders } = require('@vuepress/shared-utils')
+const { fs, path, hash, parseFrontmatter, inferTitle, extractHeaders } = require('@vuepress/shared-utils')
 const LRU = require('lru-cache')
 const md = require('@vuepress/markdown')
 

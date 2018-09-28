@@ -25,6 +25,7 @@ exports.extractHeaders = require('./lib/extractHeaders')
 
 exports.chalk = require('chalk')
 exports.fs = require('fs-extra')
+exports.path = require('upath')
 exports.globby = require('globby')
 
 exports.hash = require('hash-sum')

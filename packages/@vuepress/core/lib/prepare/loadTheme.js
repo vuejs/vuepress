@@ -4,9 +4,8 @@
  * Module dependencies.
  */
 
-const path = require('path')
-const fs = require('fs')
 const {
+  fs, path,
   shortcutPackageResolver: { resolveTheme },
   datatypes: { isString },
   logger, chalk

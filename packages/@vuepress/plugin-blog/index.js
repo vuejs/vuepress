@@ -1,5 +1,4 @@
-const path = require('path')
-const { datatypes: { isString }} = require('@vuepress/shared-utils')
+const { path, datatypes: { isString }} = require('@vuepress/shared-utils')
 
 module.exports = (options, ctx) => {
   const { layoutComponentMap } = ctx

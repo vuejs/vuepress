@@ -3,7 +3,7 @@
 module.exports = async function build (sourceDir, cliOptions = {}) {
   process.env.NODE_ENV = 'production'
 
-  const path = require('path')
+  const { path } = require('@vuepress/shared-utils')
   const webpack = require('webpack')
   const readline = require('readline')
   const escape = require('escape-html')

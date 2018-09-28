@@ -1,5 +1,4 @@
-const path = require('path')
-const { fs, logger, chalk } = require('@vuepress/shared-utils')
+const { fs, path, logger, chalk } = require('@vuepress/shared-utils')
 
 module.exports = (options, context) => ({
   name: '@vuepress/internal-style',
@@ -17,7 +16,7 @@ module.exports = (options, context) => ({
     }
 
     // style.styl API.
-    const stylePath = path.resolve(sourceDir, '.vuepress/style.styl').replace(/[\\]+/g, '/')
+    const stylePath = path.resolve(sourceDir, '.vuepress/style.styl')
     const hasUserStyle = fs.existsSync(stylePath)
     await writeTemp('style.styl', hasUserStyle ? `@import(${JSON.stringify(stylePath)})` : ``)
 

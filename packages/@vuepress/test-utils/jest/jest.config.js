@@ -1,7 +1,7 @@
 // https://github.com/facebook/jest/tree/master/packages/babel-jest
 // TODO remove 'babel-core@^7.0.0-0' when babel-jest can work with '@babel/core'
 
-const path = require('path')
+const { path } = require('@vuepress/shared-utils')
 
 module.exports = {
   rootDir: path.resolve(__dirname, '..'),

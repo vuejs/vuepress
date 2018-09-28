@@ -1,5 +1,4 @@
-const { fs } = require('@vuepress/shared-utils')
-const path = require('path')
+const { fs, path } = require('@vuepress/shared-utils')
 const prepare = require('../../lib/prepare')
 
 const docsBaseDir = path.resolve(__dirname, 'fixtures')

@@ -1,7 +1,6 @@
 'use strict'
 
-const path = require('path')
-const { chalk, fs, logger } = require('@vuepress/shared-utils')
+const { path, chalk, fs, logger } = require('@vuepress/shared-utils')
 
 module.exports = async (dir) => {
   try {

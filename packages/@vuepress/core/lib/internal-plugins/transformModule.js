@@ -1,5 +1,4 @@
-const path = require('path')
-const { fs } = require('@vuepress/shared-utils')
+const { fs, path } = require('@vuepress/shared-utils')
 
 const DIR = 'transform'
 

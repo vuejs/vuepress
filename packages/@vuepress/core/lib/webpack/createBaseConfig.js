@@ -4,8 +4,7 @@
  * Module dependencies.
  */
 
-const path = require('path')
-const { fs, logger, chalk } = require('@vuepress/shared-utils')
+const { fs, path, logger, chalk } = require('@vuepress/shared-utils')
 
 /**
  * Expose createBaseConfig method.

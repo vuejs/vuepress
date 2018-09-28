@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports = async function dev (sourceDir, cliOptions = {}) {
-  const path = require('path')
+  const { path } = require('@vuepress/shared-utils')
   const webpack = require('webpack')
   const chokidar = require('chokidar')
   const serve = require('webpack-serve')

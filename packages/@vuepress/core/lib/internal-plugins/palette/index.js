@@ -20,7 +20,6 @@ module.exports = (options, ctx) => ({
 
     // user's palette can override theme's palette.
     const paletteContent = themePaletteContent + userPaletteContent
-    console.log(paletteContent)
     await writeTemp('palette.styl', paletteContent)
   }
 })

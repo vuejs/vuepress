@@ -1,4 +1,4 @@
-const path = require('path')
+const { path } = require('@vuepress/shared-utils')
 
 module.exports = (options, context) => ({
   name: '@vuepress/internal-enhance-app',

@@ -1,4 +1,4 @@
-const path = require('path')
+const { path } = require('@vuepress/shared-utils')
 
 module.exports = (pluginOptions = {}, context) => ({
   name: 'i18n-ui',

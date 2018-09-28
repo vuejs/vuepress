@@ -1,7 +1,7 @@
 // Midified from https://github.com/vuejs/vue-cli/blob/dev/packages/@0vue/cli-shared-utils/lib/module.js
 
 const semver = require('semver')
-const path = require('path')
+const path = require('upath')
 const fs = require('fs-extra')
 const { isTest } = require('./env')
 

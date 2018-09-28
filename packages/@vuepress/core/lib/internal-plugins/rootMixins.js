@@ -1,4 +1,4 @@
-const path = require('path')
+const { path } = require('@vuepress/shared-utils')
 const { codegen: { pathsToModuleCode }} = require('@vuepress/shared-utils')
 
 module.exports = (options, context, api) => ({

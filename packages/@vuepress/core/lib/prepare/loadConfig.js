@@ -4,8 +4,7 @@
  * Module dependencies.
  */
 
-const { fs } = require('@vuepress/shared-utils')
-const path = require('path')
+const { fs, path } = require('@vuepress/shared-utils')
 const yamlParser = require('js-yaml')
 const tomlParser = require('toml')
 

@@ -30,7 +30,7 @@ exports.bootstrap = function ({
   plugins,
   theme
 } = {}) {
-  const path = require('path')
+  const { path } = require('@vuepress/shared-utils')
   const { dev, build, eject } = require('@vuepress/core')
 
   program

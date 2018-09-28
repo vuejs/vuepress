@@ -5,7 +5,7 @@
  */
 
 module.exports = function createClientConfig (ctx) {
-  const path = require('path')
+  const { path } = require('@vuepress/shared-utils')
   const WebpackBar = require('webpackbar')
   const createBaseConfig = require('./createBaseConfig')
 

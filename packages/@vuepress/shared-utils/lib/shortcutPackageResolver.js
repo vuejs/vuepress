@@ -1,5 +1,5 @@
 const fs = require('fs')
-const path = require('path')
+const path = require('upath')
 const chalk = require('chalk')
 const { isDebug } = require('./env')
 const { resolveModule, loadModule } = require('./module')
