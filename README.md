@@ -19,6 +19,8 @@ Certain combinations of plugins may not work properly, and things may change or 
 
 For 0.x, it's moved to [0.x branch](https://github.com/vuejs/vuepress/tree/0.x) and still maintained, the website was switching to https://v0.vuepress.vuejs.org.
 
+> Note that we are working hard to improve the documentation and contributions welcome if you keep up with the latest changes.
+
 # VuePress
 
 > Minimalistic docs generator with Vue component based layout system
