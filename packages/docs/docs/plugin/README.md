@@ -310,7 +310,7 @@ module.exports = (options, ctx) => {
       enhanceDevServer (app) {
         const mount = require('koa-mount')
         const serveStatic = require('koa-static')
-        app.use(mount(path.join(ctx.publicPath, 'images'), serveStatic(imagesAssetsPath)))
+        app.use(mount(path.join(ctx.base, 'images'), serveStatic(imagesAssetsPath)))
       },
 
       // For production
