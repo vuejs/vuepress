@@ -21,8 +21,6 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-@import '~@app/style/config'
-
 .badge
   display inline-block
   font-size 14px

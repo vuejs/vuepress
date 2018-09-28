@@ -59,8 +59,6 @@ export default {
 </script>
 
 <style lang="stylus">
-@import '~@app/style/config'
-
 .algolia-search-wrapper
   & > span
     vertical-align middle

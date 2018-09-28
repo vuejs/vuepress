@@ -79,8 +79,6 @@ function resolveOpenGroupIndex (route, items) {
 </script>
 
 <style lang="stylus">
-@import '~@app/style/config'
-
 .sidebar
   ul
     padding 0

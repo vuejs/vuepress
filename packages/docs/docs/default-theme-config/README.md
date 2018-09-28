@@ -459,7 +459,7 @@ You should ONLY write color variables in this file. since `palette.styl` will be
 VuePress provides a convenient way to add extra styles. you can create an `.vuepress/style.styl` file for that:
 
 ```stylus
-content {
+.content {
   font-size 30px
 }
 ```

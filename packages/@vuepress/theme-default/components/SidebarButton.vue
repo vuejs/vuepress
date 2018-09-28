@@ -7,8 +7,6 @@
 </template>
 
 <style lang="stylus">
-@import '~@app/style/config'
-
 .sidebar-button
   display none
   width 1.25rem

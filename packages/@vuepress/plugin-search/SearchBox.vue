@@ -153,8 +153,6 @@ export default {
 </script>
 
 <style lang="stylus">
-@import '~@app/style/config'
-
 .search-box
   display inline-block
   position relative

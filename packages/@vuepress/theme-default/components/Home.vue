@@ -71,8 +71,6 @@ export default {
 </script>
 
 <style lang="stylus">
-@import '~@app/style/config'
-
 .home
   padding $navbarHeight 2rem 0
   max-width 960px

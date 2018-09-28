@@ -118,6 +118,57 @@ Specify locales for i18n support. For more details, see the guide on [Internatio
 
 A function to control what files should have `<link rel="preload">` resource hints generated. See [shouldPrefetch](https://ssr.vuejs.org/api/#shouldprefetch).
 
+## Styling
+
+### palette
+
+- Type: `Object|String`
+- Default: `undefined`
+
+Set globally available stylus color variables.
+
+If it is string, it needs to be a **absolute path** pointing to a stylus file that defines the color constant:
+
+```js
+module.exports = {
+  palette: path.resolve(__dirname, 'palette.styl'),
+}
+```
+
+::: tip
+When `config.palette` is empty, vuepress will detect whether `.vuepress/palette.styl` exists. If it exists, the file will be used as palette.
+:::
+
+If it is an object, it needs to be an object with key as the color name and value as the HEX color value.
+
+```js
+module.exports = {
+  palette: {
+    // Internal default color constants can be 
+    // modified to quickly modify global styles.
+    $accentColor: '#3eaf7c',
+    $textColor: '#2c3e50',
+    $borderColor: '#eaecef',
+    $codeBgColor: '#282c34',
+    $arrowBgColor: '#ccc',
+
+    // Your extra colors
+    $shadowColor: '#ddd'
+  }
+}
+```
+
+::: tip
+It is worth noting that `modifying global style` via `palette` depends on the strict use of the default palette for your theme (e.g. the `@vuepress/theme-default` you see now). 
+:::
+
+### style
+
+- Type: `string`
+- Default: `undefined`
+
+TODO
+
 ## Theming
 
 ### theme
@@ -137,6 +188,19 @@ Provide config options to the used theme. The options will vary depending on the
 **Also see:**
 
 - [Default Theme Configuration](../default-theme-config/README.md).
+
+## Pluggable
+
+### plugins
+
+- Type: `Object|Array`
+- Default: `undefined`
+
+For default usage, please refer to [plugin API](../plugin/README.md).
+
+::: tip
+There is a hidden feature. `.vuepress/config.js` also supports all [options](../plugin/README.md#options) plugin API.
+:::
 
 ## Markdown
 

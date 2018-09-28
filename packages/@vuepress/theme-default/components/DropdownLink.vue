@@ -77,8 +77,6 @@ export default {
 </script>
 
 <style lang="stylus">
-  @import '~@app/style/config'
-
 .dropdown-wrapper
   cursor pointer
   .dropdown-title
