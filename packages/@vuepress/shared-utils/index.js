@@ -28,3 +28,5 @@ exports.fs = require('fs-extra')
 exports.globby = require('globby')
 
 exports.hash = require('hash-sum')
+
+exports.fallback = require('./lib/fallback')

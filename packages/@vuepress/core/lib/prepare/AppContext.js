@@ -8,7 +8,11 @@ const path = require('path')
 const createMarkdown = require('./createMarkdown')
 const loadConfig = require('./loadConfig')
 const loadTheme = require('./loadTheme')
-const { fs, logger, chalk, globby, sort, datatypes: { isFunction }} = require('@vuepress/shared-utils')
+const {
+  fs, logger, chalk, globby, sort,
+  datatypes: { isFunction },
+  fallback: { fsExistsFallback }
+} = require('@vuepress/shared-utils')
 
 const Page = require('./Page')
 const ClientComputedMixin = require('./ClientComputedMixin')
@@ -66,8 +70,8 @@ module.exports = class AppContext {
 
   async process () {
     this.normalizeHeadTagUrls()
-    this.resolveTemplates()
     await this.resolveTheme()
+    this.resolveTemplates()
     this.resolvePlugins()
     this.markdown = createMarkdown(this)
 
@@ -153,24 +157,42 @@ module.exports = class AppContext {
   /**
    * Make template configurable
    *
+   * Resolving Priority (devTemplate as example):
+   *
+   *   1. siteConfig.devTemplate
+   *   2. `dev.html` located at .vuepress/templates
+   *   3. themeIndexFile.devTemplate
+   *   4. default devTemplate
+   *
    * @api private
    */
 
   resolveTemplates () {
-    let { ssrTemplate, devTemplate } = this.siteConfig
+    const { siteSsrTemplate, siteDevTemplate } = this.siteConfig
+
     const templateDir = path.resolve(this.vuepressDir, 'templates')
-    if (!devTemplate) {
-      devTemplate = path.resolve(templateDir, 'dev.html')
-      if (!fs.existsSync(devTemplate)) {
-        devTemplate = path.resolve(__dirname, '../app/index.dev.html')
-      }
-    }
-    if (!ssrTemplate) {
-      ssrTemplate = path.resolve(templateDir, 'ssr.html')
-      if (!fs.existsSync(ssrTemplate)) {
-        ssrTemplate = path.resolve(__dirname, '../app/index.ssr.html')
-      }
-    }
+    const siteSsrTemplate2 = path.resolve(templateDir, 'dev.html')
+    const siteDevTemplate2 = path.resolve(templateDir, 'ssr.html')
+
+    const { themeSsrTemplate, themeDevTemplate } = this.themeIndexFile
+
+    const defaultSsrTemplate = path.resolve(__dirname, '../app/index.ssr.html')
+    const defaultDevTemplate = path.resolve(__dirname, '../app/index.dev.html')
+
+    const ssrTemplate = fsExistsFallback([
+      siteSsrTemplate,
+      siteSsrTemplate2,
+      themeSsrTemplate,
+      defaultSsrTemplate
+    ])
+
+    const devTemplate = fsExistsFallback([
+      siteDevTemplate,
+      siteDevTemplate2,
+      themeDevTemplate,
+      defaultDevTemplate
+    ])
+
     logger.debug('SSR Template File: ' + chalk.gray(ssrTemplate))
     logger.debug('DEV Template File: ' + chalk.gray(devTemplate))
     this.devTemplate = devTemplate
