@@ -179,23 +179,27 @@ Options for [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-
 
 Options for [markdown-it-table-of-contents](https://github.com/Oktavilla/markdown-it-table-of-contents). (Note: prefer `markdown.slugify` if you want to customize header ids.)
 
-### markdown.config
+### markdown.extendMarkdown
 
 - Type: `Function`
 - Default: `undefined`
 
-A function to modify default config or apply additional plugins to the [markdown-it](https://github.com/markdown-it/markdown-it) instance used to render source files. Example:
+A function to modify default config or apply additional plugins to the [markdown-it](https://github.com/markdown-it/markdown-it) instance used to render source files. e.g.
 
 ``` js
 module.exports = {
   markdown: {
-    config: md => {
+    extendMarkdown: md => {
       md.set({ breaks: true })
       md.use(require('markdown-it-xxx'))
     }
   }
 }
 ```
+
+::: tip
+This option is also included in [Plugin API](../plugin/README.md#extendmarkdown).
+:::
 
 ## Build Pipeline
 
