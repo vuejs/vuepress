@@ -1,7 +1,7 @@
 const { path, fs, logger } = require('@vuepress/shared-utils')
 const { createSitemap } = require('sitemap')
 
-module.exports = ({ hostname, changefreq = 'daily', cacheTime = 600000, urls = [] }, context) => ({
+module.exports = ({ hostname, changefreq = 'daily', cacheTime = 600000, urls = [], ...others }, context) => ({
   async generated () {
     if (!hostname) {
       return logger.warn(`\nNot generating sitemap because required 'hostname' option doesn't exist `)
@@ -23,8 +23,9 @@ module.exports = ({ hostname, changefreq = 'daily', cacheTime = 600000, urls = [
 
     const sitemap = createSitemap({
       hostname: hostname,
-      cacheTime: cacheTime || 600000, // 600 sec cache period
-      urls: _urls
+      cacheTime: cacheTime,
+      urls: _urls,
+      ...others
     })
 
     const sitemapXML = path.resolve(context.outDir, 'sitemap.xml')
