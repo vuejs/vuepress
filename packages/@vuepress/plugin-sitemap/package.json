@@ -1,0 +1,30 @@
+{
+  "name": "@vuepress/plugin-sitemap",
+  "version": "1.0.0-alpha.2",
+  "description": "sitemap plugin for vuepress",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuejs/vuepress.git"
+  },
+  "keywords": [
+    "documentation",
+    "vue",
+    "vuepress",
+    "vuepress-plugin",
+    "sitemap",
+    "generator"
+  ],
+  "author": "Eko Eryanto <ekoeryanto@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vuejs/vuepress/issues"
+  },
+  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/plugin-sitemap#readme",
+  "dependencies": {
+    "sitemap": "^2.0.1"
+  }
+}
