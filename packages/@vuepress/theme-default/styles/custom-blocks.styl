@@ -33,8 +33,14 @@ pre.vue-container
   border-left-width: .5rem;
   border-left-style: solid;
   border-color: #42b983;
-  code
+  & > code
     color: #2c3e50 !important;
     font-size: 14px !important;
     & > p
-      margin: -20px 0;
+      margin: -5px 0 -20px 0;
+    code
+      background-color: darken(#f3f5f7, 10%) !important;
+      padding: 3px 5px;
+      border-radius: 10px;
+      color: lighten(#2c3e50, 10%) !important;
+
