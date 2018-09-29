@@ -144,9 +144,8 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
       description: ''
     }
 
-    let html
     try {
-      html = await renderer.renderToString(context)
+      page.html = await renderer.renderToString(context)
     } catch (e) {
       console.error(logger.error(chalk.red(`Error rendering ${pagePath}:`), false))
       throw e
@@ -154,7 +153,7 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
     const filename = decodeURIComponent(pagePath.replace(/\/$/, '/index.html').replace(/^\//, ''))
     const filePath = path.resolve(outDir, filename)
     await fs.ensureDir(path.dirname(filePath))
-    await fs.writeFile(filePath, html)
+    await fs.writeFile(filePath, page.html)
   }
 
   function renderPageMeta (meta) {
