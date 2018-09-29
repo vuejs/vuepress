@@ -21,8 +21,7 @@ module.exports = (options, context) => {
 
       logger.wait('\nGenerating sitemap...')
 
-      const { pages } = context.getSiteData()
-      const _urls = pages
+      const _urls = context.pages
         .map(i => {
           const lastmodISO = i.lastUpdated
             ? new Date(i.lastUpdated).toISOString()
