@@ -104,7 +104,10 @@ module.exports = {
       serviceWorker: true,
       updatePopup: true
     },
-    '@vuepress/plugin-medium-zoom': true
+    '@vuepress/plugin-medium-zoom': true,
+    '@vuepress/plugin-sitemap': {
+      hostname: 'https://vuepress.vuejs.org'
+    }
   }
 }
 
