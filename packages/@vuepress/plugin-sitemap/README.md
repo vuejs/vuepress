@@ -1,6 +1,6 @@
-# @vuepress/plugin-search
+# @vuepress/plugin-sitemap
 
-> header-based search plugin for vuepress
+> Sitemap plugin for vuepress
 
 ## Usage
 
@@ -11,32 +11,13 @@
 
 module.exports = {
   plugins: [
-    ['@vuepress/search', {
-      searchMaxSuggestions: 10
+    ['@vuepress/sitemap', {
+      hostname: 'https://yours.net.id'
     }]
   ],
-  // Tweak the default color via palette.
-  palette: {
-    $accentColor: '#b58900',
-    $textColor: '#586e75',
-    $borderColor: '#eaecef',
-    $codeBgColor: '#282c34',
-    $arrowBgColor: '#ccc'
-  }
 }
 ```
 
-2. Using search component:
-
-```vue
-import SearchBox from '@SearchBox'
-```
 
 ## Options
-
-### searchMaxSuggestions
-
-- Type: `number`
-- Default: `true`
-
-Set the maximum number of results for search
+All the options of https://npm.im/sitemap
