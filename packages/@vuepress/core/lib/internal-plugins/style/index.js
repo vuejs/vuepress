@@ -12,21 +12,13 @@ module.exports = (options, context) => ({
     const hasUserOverride = fs.existsSync(overridePath)
 
     if (hasUserOverride) {
-      logger.tip(`${chalk.magenta('override.styl')} has been deprecated from v1.0.0, using ${chalk.cyan('config.palette')} instead.\n`)
+      logger.tip(`${chalk.magenta('override.styl')} has been deprecated from v1.0.0, using ${chalk.cyan('.vuepress/style/palette.styl')} instead.\n`)
     }
 
     // style.styl API.
-    const stylePath = path.resolve(sourceDir, '.vuepress/style.styl')
+    const stylePath = path.resolve(sourceDir, '.vuepress/styles/index.styl')
     const hasUserStyle = fs.existsSync(stylePath)
-    await writeTemp('style.styl', hasUserStyle ? `@import(${JSON.stringify(stylePath)})` : ``)
-
-    // Temporary tip, will be removed at next release.
-    if (hasUserOverride && !hasUserStyle) {
-      logger.tip(
-        `${chalk.magenta('override.styl')} has been split into 2 APIs, we recommend you upgrade to continue.\n` +
-        `      See: ${chalk.magenta('https://vuepress.vuejs.org/default-theme-config/#simple-css-override')}`
-      )
-    }
+    await writeTemp('style.styl', hasUserStyle ? `@import(${JSON.stringify(stylePath)})` : '')
   }
 })
 

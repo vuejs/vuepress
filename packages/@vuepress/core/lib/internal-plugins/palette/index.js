@@ -26,7 +26,7 @@ module.exports = (options, ctx) => ({
 
     const themePalette = ctx.themePalette
     const { palette: userPalette } = ctx.siteConfig
-    const palettePath = path.resolve(sourceDir, '.vuepress/palette.styl')
+    const palettePath = path.resolve(sourceDir, '.vuepress/styles/palette.styl')
 
     const themePaletteContent = resolvePaletteContent(themePalette)
     const userPaletteContent = resolvePaletteContent(userPalette)
