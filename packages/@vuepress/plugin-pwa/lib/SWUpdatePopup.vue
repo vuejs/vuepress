@@ -86,6 +86,7 @@ export default {
   background: #fff;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
   text-align: center;
+  z-index: 2;
 }
 
 .sw-update-popup > button {
