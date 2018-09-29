@@ -3,6 +3,7 @@ const { createSitemap } = require('sitemap')
 
 module.exports = (options, context) => {
   const {
+    outFile = 'sitemap.xml',
     hostname,
     changefreq = 'daily',
     cacheTime = 600000,
@@ -42,9 +43,11 @@ module.exports = (options, context) => {
         ...others
       })
 
-      const sitemapXML = path.resolve(context.outDir, 'sitemap.xml')
+      const sitemapXML = path.resolve(context.outDir, outFile)
 
       await fs.writeFile(sitemapXML, sitemap.toString())
+
+      logger.success(`sitemap generated at ${sitemapXML}`)
     }
   }
 }

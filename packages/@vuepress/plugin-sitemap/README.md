@@ -14,7 +14,8 @@ module.exports = {
     [
       "@vuepress/sitemap",
       {
-        hostname: "https://yours.net.id"
+        hostname: "https://yours.net.id",
+        outFile: 'sitemap.xml'
       }
     ]
   ]
@@ -23,4 +24,4 @@ module.exports = {
 
 ## Options
 
-All the options of https://npm.im/sitemap
+All the options of https://npm.im/sitemap plus `outFile` (relative target file name)
