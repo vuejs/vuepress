@@ -11,6 +11,11 @@ module.exports = md => {
         ? `<div v-pre>\n`
         : `</div>\n`
     })
+    .use(container, 'vue', {
+      render: (tokens, idx) => tokens[idx].nesting === 1
+        ? `<pre class="vue-container"><code>`
+        : `</code></pre>`
+    })
 }
 
 function createContainer (klass, defaultTitle) {
