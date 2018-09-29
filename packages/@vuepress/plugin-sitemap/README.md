@@ -11,13 +11,16 @@
 
 module.exports = {
   plugins: [
-    ['@vuepress/sitemap', {
-      hostname: 'https://yours.net.id'
-    }]
-  ],
-}
+    [
+      "@vuepress/sitemap",
+      {
+        hostname: "https://yours.net.id"
+      }
+    ]
+  ]
+};
 ```
 
-
 ## Options
+
 All the options of https://npm.im/sitemap

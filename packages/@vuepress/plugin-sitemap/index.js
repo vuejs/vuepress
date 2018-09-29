@@ -1,38 +1,50 @@
 const { path, fs, logger } = require('@vuepress/shared-utils')
 const { createSitemap } = require('sitemap')
 
-module.exports = ({ hostname, changefreq = 'daily', cacheTime = 600000, urls = [], ...others }, context) => ({
-  async generated () {
-    if (!hostname) {
-      return logger.warn(`\nNot generating sitemap because required 'hostname' option doesn't exist `)
-    }
+module.exports = (options, context) => {
+  const {
+    hostname,
+    changefreq = 'daily',
+    cacheTime = 600000,
+    urls = [],
+    ...others
+  } = options
 
-    logger.wait('\nGenerating sitemap...')
-
-    const { pages } = context.getSiteData()
-    const _urls = pages.map(i => {
-      const lastmodISO = i.lastUpdated ? new Date(i.lastUpdated).toISOString() : undefined
-
-      return {
-        url: i.path,
-        lastmodISO,
-        changefreq
+  return {
+    async generated () {
+      if (!hostname) {
+        return logger.warn(
+          `\nNot generating sitemap because required 'hostname' option doesn't exist`
+        )
       }
-    })
-    .concat(urls)
 
-    const sitemap = createSitemap({
-      hostname: hostname,
-      cacheTime: cacheTime,
-      urls: _urls,
-      ...others
-    })
+      logger.wait('\nGenerating sitemap...')
 
-    const sitemapXML = path.resolve(context.outDir, 'sitemap.xml')
+      const { pages } = context.getSiteData()
+      const _urls = pages
+        .map(i => {
+          const lastmodISO = i.lastUpdated
+            ? new Date(i.lastUpdated).toISOString()
+            : undefined
 
-    await fs.writeFile(
-      sitemapXML,
-      sitemap.toString()
-    )
+          return {
+            url: i.path,
+            lastmodISO,
+            changefreq
+          }
+        })
+        .concat(urls)
+
+      const sitemap = createSitemap({
+        hostname: hostname,
+        cacheTime: cacheTime,
+        urls: _urls,
+        ...others
+      })
+
+      const sitemapXML = path.resolve(context.outDir, 'sitemap.xml')
+
+      await fs.writeFile(sitemapXML, sitemap.toString())
+    }
   }
-})
+}
