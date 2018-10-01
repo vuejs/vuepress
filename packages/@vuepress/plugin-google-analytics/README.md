@@ -2,6 +2,14 @@
 
 > google-analytics plugin for vuepress
 
+## Usage
+
+```javascript
+module.exports = {
+  plugins: ['@vuepress/google-analytics'] 
+}
+```
+
 ## Options
 
 ### ga

@@ -4,6 +4,14 @@
 
 > Note that this plugin has been included in the core.
 
+## Usage
+
+```js
+module.exports = {
+  plugins: ['@vuepress/last-updated'] 
+}
+```
+
 ## Options
 
 ### transformer

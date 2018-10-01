@@ -2,6 +2,14 @@
 
 > PWA plugin for vuepress
 
+## Usage
+
+```javascript
+module.exports = {
+  plugins: ['@vuepress/pwa'] 
+}
+```
+
 ## Options
 
 ### serviceWorker

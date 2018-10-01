@@ -2,7 +2,15 @@
 
 > i18n-ui plugin for vuepress
 
-## Plugin Options
+## Usage
+
+```javascript
+module.exports = {
+  plugins: ['@vuepress/i18n-ui'] 
+}
+```
+
+## Options
 
 ### route
 

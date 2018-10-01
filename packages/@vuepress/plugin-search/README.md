@@ -39,4 +39,4 @@ import SearchBox from '@SearchBox'
 - Type: `number`
 - Default: `true`
 
-Set the maximum number of results for search
+Set the maximum number of results for search.

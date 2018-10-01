@@ -6,7 +6,7 @@
 
 ```javascript
 module.exports = {
-  plugins: ['back-to-top'] 
+  plugins: ['@vuepress/back-to-top'] 
 }
 ```
 
