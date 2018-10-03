@@ -66,7 +66,7 @@ module.exports = function (src) {
 
   // the render method has been augmented to allow plugins to
   // register data during render
-  const { html, data: { hoistedTags, links }} = markdown.render(content)
+  const { html, data: { hoistedTags, links }, dataBlockString } = markdown.render(content)
 
   // check if relative links are valid
   links && links.forEach(link => {
@@ -102,7 +102,8 @@ module.exports = function (src) {
     `<template>\n` +
       `<div class="content">${html}</div>\n` +
     `</template>\n` +
-    (hoistedTags || []).join('\n')
+    (hoistedTags || []).join('\n') +
+    `\n${dataBlockString}\n`
   )
   cache.set(key, res)
   return res

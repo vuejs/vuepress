@@ -36,7 +36,7 @@ module.exports = (md, externalAttrs) => {
     let to = link[1]
 
     // convert link to filename and export it for existence check
-    const links = md.__data.links || (md.__data.links = [])
+    const links = md.$data.links || (md.$data.links = [])
     links.push(to)
 
     const indexMatch = to.match(indexRE)
@@ -58,7 +58,7 @@ module.exports = (md, externalAttrs) => {
     link[1] = decodeURI(to)
 
     // export the router links for testing
-    const routerLinks = md.__data.routerLinks || (md.__data.routerLinks = [])
+    const routerLinks = md.$data.routerLinks || (md.$data.routerLinks = [])
     routerLinks.push(to)
 
     return Object.assign({}, token, {

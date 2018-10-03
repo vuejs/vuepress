@@ -121,11 +121,21 @@ module.exports.dataReturnable = function dataReturnable (md) {
   // override render to allow custom plugins return data
   const render = md.render
   md.render = (...args) => {
-    md.__data = {}
+    md.$data = {}
+    md.$data.__data_block = {}
+    md.$dataBlock = md.$data.__data_block
     const html = render.call(md, ...args)
     return {
       html,
-      data: md.__data
+      data: md.$data,
+      dataBlockString: toDataBlockString(md.$dataBlock)
     }
   }
+}
+
+function toDataBlockString (ob) {
+  if (Object.keys(ob).length === 0) {
+    return ''
+  }
+  return `<data>${JSON.stringify(ob)}</data>`
 }

@@ -3,7 +3,7 @@ module.exports = md => {
 
   md.renderer.rules.html_block = (tokens, idx) => {
     const content = tokens[idx].content
-    const hoistedTags = md.__data.hoistedTags || (md.__data.hoistedTags = [])
+    const hoistedTags = md.$data.hoistedTags || (md.$data.hoistedTags = [])
     if (RE.test(content.trim())) {
       hoistedTags.push(content)
       return ''
