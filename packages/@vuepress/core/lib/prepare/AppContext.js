@@ -115,6 +115,7 @@ module.exports = class AppContext {
       .use(require('../internal-plugins/layoutComponents'))
       .use(require('../internal-plugins/pageComponents'))
       .use(require('../internal-plugins/transformModule'))
+      .use(require('../internal-plugins/dataBlock'))
       // user plugin
       .useByPluginsConfig(this.cliOptions.plugins)
       .useByPluginsConfig(this.siteConfig.plugins)
