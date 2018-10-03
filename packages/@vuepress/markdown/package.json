@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/markdown",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "markdown for vuepress",
   "main": "lib/index.js",
   "publishConfig": {
@@ -18,7 +18,7 @@
     "markdown"
   ],
   "dependencies": {
-    "@vuepress/shared-utils": "^1.0.0-alpha.2",
+    "@vuepress/shared-utils": "^1.0.0-alpha.3",
     "diacritics": "^1.3.0",
     "markdown-it": "^8.4.1",
     "markdown-it-anchor": "^5.0.2",

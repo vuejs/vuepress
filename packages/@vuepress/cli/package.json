@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/cli",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "cli for vuepress",
   "main": "index.js",
   "publishConfig": {
