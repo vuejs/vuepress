@@ -9136,9 +9136,9 @@ vuepress-html-webpack-plugin@^3.2.0:
     toposort "^1.0.0"
     util.promisify "1.0.0"
 
-vuepress-plugin-flowchart@^1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/vuepress-plugin-flowchart/-/vuepress-plugin-flowchart-1.4.1.tgz#516348d915f6693ad1ab43aaa0df0615dc7f98e5"
+vuepress-plugin-flowchart@^1.4.2:
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/vuepress-plugin-flowchart/-/vuepress-plugin-flowchart-1.4.2.tgz#2062db10f70e81586f7ca48182bac36943eea2b3"
   dependencies:
     flowchart.js "^1.11.3"
 
