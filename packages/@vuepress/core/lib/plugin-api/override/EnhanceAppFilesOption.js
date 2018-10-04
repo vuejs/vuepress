@@ -48,7 +48,7 @@ module.exports = class EnhanceAppFilesOption extends AsyncOption {
         } else {
           destPath = await writeEnhancer(name, content, false /* do not contain default export*/)
         }
-        // 1.2 local file
+        // 1.2 pointing to a file
       } else {
         if (fs.existsSync(enhanceAppFile)) {
           const content = await fs.readFile(enhanceAppFile, 'utf-8')

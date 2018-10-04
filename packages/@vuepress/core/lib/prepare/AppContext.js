@@ -127,7 +127,7 @@ module.exports = class AppContext {
           path.resolve(this.sourceDir, '.vuepress/components')
         ]
       })
-      .apply()
+      .initialize()
   }
 
   /**

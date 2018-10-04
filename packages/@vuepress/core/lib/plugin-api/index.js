@@ -23,6 +23,7 @@ module.exports = class PluginAPI {
     this.options = {}
     this._pluginContext = context
     this._pluginQueue = []
+    this._initialized = false
     this.initializeOptions(PLUGIN_OPTION_MAP)
   }
 
@@ -49,12 +50,13 @@ module.exports = class PluginAPI {
   }
 
   /**
-   * apply plugin.
+   * initialize plugin.
    *
    * @api public
    */
 
-  apply () {
+  initialize () {
+    this._initialized = true
     this._pluginQueue.forEach(plugin => {
       if (plugin.enabled) {
         this.applyPlugin(plugin)
@@ -74,6 +76,9 @@ module.exports = class PluginAPI {
    */
 
   use (pluginRaw, pluginOptions = {}) {
+    if (this._initialized) {
+      throw new Error(`Cannot add new plugins after initialization.`)
+    }
     let plugin = resolvePlugin(pluginRaw)
     if (!plugin.module) {
       console.warn(`[vuepress] cannot resolve plugin "${pluginRaw}"`)
