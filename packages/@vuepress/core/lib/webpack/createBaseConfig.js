@@ -82,7 +82,7 @@ module.exports = function createBaseConfig ({
   } else {
     cacheDirectory = path.resolve(__dirname, '../../node_modules/.cache/vuepress')
   }
-  logger.debug('Cache directory: ' + chalk.gray(cacheDirectory))
+  logger.debug('\nCache directory: ' + chalk.gray(cacheDirectory))
   if (!cache) {
     logger.tip('\nClean cache...\n')
     fs.emptyDirSync(cacheDirectory)

@@ -9,7 +9,7 @@ const { flattenPlugin, normalizePluginsConfig } = require('./util')
 const { PLUGIN_OPTION_MAP } = require('./constants')
 const {
   shortcutPackageResolver: { resolvePlugin },
-  datatypes: { assertTypes },
+  datatypes: { assertTypes, isPlainObject },
   env: { isDebug },
   logger, chalk
 } = require('@vuepress/shared-utils')
@@ -79,20 +79,48 @@ module.exports = class PluginAPI {
     if (this._initialized) {
       throw new Error(`Cannot add new plugins after initialization.`)
     }
-    let plugin = resolvePlugin(pluginRaw)
-    if (!plugin.module) {
-      console.warn(`[vuepress] cannot resolve plugin "${pluginRaw}"`)
-      return this
+
+    let plugin
+    if (isPlainObject(pluginRaw) && pluginRaw.$$normalized) {
+      plugin = pluginRaw
+    } else {
+      plugin = this.normalizePlugin(pluginRaw, pluginOptions)
     }
-    plugin = flattenPlugin(plugin, pluginOptions, this._pluginContext, this)
+
     if (plugin.multiple !== true) {
       const duplicateIndex = this._pluginQueue.findIndex(({ name }) => name === plugin.name)
       if (duplicateIndex !== -1) {
         this._pluginQueue.splice(duplicateIndex, 1)
       }
     }
+
     this._pluginQueue.push(plugin)
+
+    if (plugin.plugins) {
+      logger.debug(`\nStart to use plugins defined at ${chalk.gray(plugin.name)}`)
+      logger.debug(JSON.stringify(plugin.plugins, null, 2))
+      this.useByPluginsConfig(plugin.plugins)
+    }
+
     return this
+  }
+
+  /**
+   * normalize plugin
+   * @param pluginRaw
+   * @param pluginOptions
+   * @api public
+   */
+
+  normalizePlugin (pluginRaw, pluginOptions = {}) {
+    let plugin = resolvePlugin(pluginRaw)
+    if (!plugin.module) {
+      console.warn(`[vuepress] cannot resolve plugin "${pluginRaw}"`)
+      return this
+    }
+    plugin = flattenPlugin(plugin, pluginOptions, this._pluginContext, this)
+    plugin.$$normalized = true
+    return plugin
   }
 
   /**
@@ -183,7 +211,7 @@ module.exports = class PluginAPI {
   }) {
     const isInternalPlugin = pluginName.startsWith('@vuepress/internal-')
     if (shortcut) {
-      logger.tip(`\nApply plugin ${chalk.magenta(shortcut)} ${chalk.gray(`(i.e. "${pluginName}")`)} ...`, !isInternalPlugin)
+      logger.tip(`\nApply plugin ${chalk.magenta(shortcut)} ${chalk.gray(`(i.e. "${pluginName}")`)} ...`)
     } else if (!isInternalPlugin || isDebug) {
       logger.tip(`\nApply plugin ${chalk.magenta(pluginName)} ...`)
     }

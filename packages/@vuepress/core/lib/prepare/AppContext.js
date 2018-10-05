@@ -71,7 +71,11 @@ module.exports = class AppContext {
     this.normalizeHeadTagUrls()
     await this.resolveTheme()
     this.resolveTemplates()
-    this.resolvePlugins()
+
+    this.applyInternalPlugins()
+    this.applyUserPlugins()
+    this.pluginAPI.initialize()
+
     this.markdown = createMarkdown(this)
 
     await this.resolvePages()
@@ -88,12 +92,12 @@ module.exports = class AppContext {
   }
 
   /**
-   * Apply internal and user plugins
+   * Apply internal plugins
    *
    * @api private
    */
 
-  resolvePlugins () {
+  applyInternalPlugins () {
     const themeConfig = this.themeConfig
     const siteConfig = this.siteConfig
 
@@ -105,8 +109,6 @@ module.exports = class AppContext {
 
     this.pluginAPI
       // internl core plugins
-      .use(Object.assign({}, siteConfig, { name: '@vuepress/internal-site-config' }))
-      .use(Object.assign({}, this.themeEntryFile, { name: '@vuepress/internal-theme-entry-file' }))
       .use(require('../internal-plugins/siteData'))
       .use(require('../internal-plugins/routes'))
       .use(require('../internal-plugins/rootMixins'))
@@ -117,18 +119,25 @@ module.exports = class AppContext {
       .use(require('../internal-plugins/pageComponents'))
       .use(require('../internal-plugins/transformModule'))
       .use(require('../internal-plugins/dataBlock'))
-      // user plugin
-      .useByPluginsConfig(this.cliOptions.plugins)
-      .useByPluginsConfig(this.siteConfig.plugins)
-      .useByPluginsConfig(this.themePlugins)
-      // built-in plugins
       .use('@vuepress/last-updated', shouldUseLastUpdated)
       .use('@vuepress/register-components', {
         componentsDir: [
           path.resolve(this.sourceDir, '.vuepress/components')
         ]
       })
-      .initialize()
+  }
+
+  /**
+   * Apply user plugins
+   *
+   * @api private
+   */
+
+  applyUserPlugins () {
+    this.pluginAPI
+      .useByPluginsConfig(this.cliOptions.plugins)
+      .use(this.themeEntryFile)
+      .use(Object.assign({}, this.siteConfig, { name: '@vuepress/internal-site-config' }))
   }
 
   /**
@@ -194,8 +203,8 @@ module.exports = class AppContext {
       defaultDevTemplate
     ])
 
-    logger.debug('SSR Template File: ' + chalk.gray(ssrTemplate))
-    logger.debug('DEV Template File: ' + chalk.gray(devTemplate))
+    logger.debug('\nSSR Template File: ' + chalk.gray(ssrTemplate))
+    logger.debug('\nDEV Template File: ' + chalk.gray(devTemplate))
     this.devTemplate = devTemplate
     this.ssrTemplate = ssrTemplate
   }
@@ -252,8 +261,7 @@ module.exports = class AppContext {
    */
 
   async resolveTheme () {
-    const theme = this.siteConfig.theme || this.cliOptions.theme
-    Object.assign(this, (await loadTheme(theme, this.sourceDir, this.vuepressDir)))
+    Object.assign(this, (await loadTheme(this)))
   }
 
   /**
@@ -312,7 +320,7 @@ function createTemp (tempPath) {
     fs.emptyDirSync(tempPath)
   }
 
-  logger.tip(`Temp directory: ${chalk.gray(tempPath)}`)
+  logger.tip(`\nTemp directory: ${chalk.gray(tempPath)}`)
   const tempCache = new Map()
 
   async function writeTemp (file, content) {

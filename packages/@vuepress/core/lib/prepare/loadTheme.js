@@ -28,7 +28,10 @@ const {
  * @returns {Promise}
  */
 
-module.exports = async function loadTheme (theme, sourceDir, vuepressDir) {
+module.exports = async function loadTheme (ctx) {
+  const { siteConfig, cliOptions, sourceDir, vuepressDir, pluginAPI } = ctx
+  const theme = siteConfig.theme || cliOptions.theme
+
   const localThemePath = path.resolve(vuepressDir, 'theme')
   const useLocalTheme =
     !fs.existsSync(theme) &&
@@ -58,16 +61,15 @@ module.exports = async function loadTheme (theme, sourceDir, vuepressDir) {
   }
 
   try {
-    themeEntryFile = require(themePath)
+    themeEntryFile = pluginAPI.normalizePlugin(themePath, ctx.themeConfig)
+    themeEntryFile.name = '@vuepress/internal-theme-entry-file'
+    themeEntryFile.shortcut = null
   } catch (error) {
     themeEntryFile = {}
   }
 
   // handle theme api
-  const {
-    plugins: themePlugins,
-    palette: themePalette
-  } = themeEntryFile
+  const { palette: themePalette } = themeEntryFile
 
   const layoutDirs = [
     path.resolve(themePath, 'layouts'),
@@ -133,7 +135,6 @@ module.exports = async function loadTheme (theme, sourceDir, vuepressDir) {
     themePath,
     layoutComponentMap,
     themeEntryFile,
-    themePlugins,
     themePalette,
     themeName,
     themeShortcut
