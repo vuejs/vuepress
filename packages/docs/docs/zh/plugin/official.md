@@ -6,37 +6,37 @@ sidebar: auto
 
 ## @vuepress/search
 
-### Options
+- TODO
 
 ## @vuepress/pwa
 
-### Options
+- TODO
 
 ## @vuepress/blog
 
-### Options
+- TODO
 
 ## @vuepress/pagination
 
-### Options
+- TODO
 
 ## @vuepress/google-analytics
 
-### Options
+- TODO
 
 ## @vuepress/i18n-ui
 
-### Options
+- TODO
 
 ## @vuepress/last-updated
 
-### Options
+- TODO
 
 ## @vuepress/medium-zoom
 
-### Options
+- TODO
 
 ## @vuepress/back-to-top
 
-### Options
+- TODO
 

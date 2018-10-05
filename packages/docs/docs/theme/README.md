@@ -240,10 +240,3 @@ The plugin whose name starts with `@vuepress/theme-` is an officially maintained
 - Default: undefined
 
 See: [Config > plugins](../config/README.md#plugins).
-
-### palette
-
-- Type: `String|Object`
-- Default: undefined
-
-See: [Config > palette](../config/README.md#palette).

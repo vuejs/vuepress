@@ -130,8 +130,7 @@ Create a `.vuepress/style/index.styl` file and it will be applied as global styl
 
 **Also see:**
 
-- [Why can't `palette.styl` and `index.styl` merge into one API?](faq/#why-can-t-palette-styl-and-index-styl-merge-into-one-api)
-- [Why can't `palette.styl` and `index.styl` merge into one API?](faq/#why-can-t-palette-styl-and-index-styl-merge-into-one-api)
+- [Why can't `palette.styl` and `index.styl` merge into one API?](../faq/README.md#why-can-t-palette-styl-and-index-styl-merge-into-one-api)
 
 ## Theming
 
@@ -160,11 +159,7 @@ Provide config options to the used theme. The options will vary depending on the
 - Type: `Object|Array`
 - Default: `undefined`
 
-For default usage, please refer to [plugin API](../plugin/README.md).
-
-::: tip
-There is a hidden feature. `.vuepress/config.js` also supports all [options](../plugin/README.md#options) of Plugin API.
-:::
+Please refer to [plugin API >  Using a plugin](../plugin/README.md#using-a-plugin) to leran how to use a plugin.
 
 ## Markdown
 

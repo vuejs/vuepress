@@ -115,6 +115,20 @@ module.exports = {
 
 一个函数，用来控制对于哪些文件，是需要生成 `<link rel="prefetch">` 资源提示的。请参考 [shouldPrefetch](https://ssr.vuejs.org/zh/api/#shouldpreload)。
 
+## 样式
+
+### palette.styl
+
+创建一个 `.vuepress/style/palette.styl` 文件，其会被自动注册为全局调色板。
+
+### index.styl
+
+创建一个 `.vuepress/style/index.styl` 文件， 其会被自动应用为全局样式
+
+**Also see:**
+
+- [Why can't `palette.styl` and `index.styl` merge into one API?](../faq/README.md#why-can-t-palette-styl-and-index-styl-merge-into-one-api)
+
 ## 主题
 
 ### theme
@@ -134,6 +148,15 @@ module.exports = {
 **也可以参考:**
 
 - [默认主题](../theme/default-theme-config.md)。
+
+## Pluggable
+
+### plugins
+
+- Type: `Object|Array`
+- Default: `undefined`
+
+请参考 [plugin API >  Using a plugin](../plugin/README.md#using-a-plugin) 来使用一个插件。
 
 ## Markdown
 
