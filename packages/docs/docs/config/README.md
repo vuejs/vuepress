@@ -179,7 +179,7 @@ Provide config options to the used theme. The options will vary depending on the
 - Type: `Object|Array`
 - Default: `undefined`
 
-Please refer to [plugin API >  Using a plugin](../plugin/README.md#using-a-plugin) to leran how to use a plugin.
+Please refer to [Plugin > Using a plugin](../plugin/README.md#using-a-plugin) to leran how to use a plugin.
 
 ## Markdown
 

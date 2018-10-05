@@ -4,6 +4,8 @@ sidebar: auto
 
 # Theme
 
+> To be translated soon.
+
 ::: tip
 Theme components are subject to the same [browser API access restrictions](../guide/using-vue.md#browser-api-access-restrictions).
 :::
@@ -239,4 +241,4 @@ The plugin whose name starts with `@vuepress/theme-` is an officially maintained
 - Type: `Array|Object`
 - Default: undefined
 
-See: [Config > plugins](../config/README.md#plugins).
+See: [Plugin > Using a plugin](../plugin/README.md#using-a-plugin).

@@ -4,6 +4,8 @@ sidebar: auto
 
 # Plugins
 
+> To be translated soon.
+
 ## Writing a Plugin
 
 Plugins usually add global-level functionality to VuePress. There is no strictly defined scope for a plugin - there are typically several types of plugins:

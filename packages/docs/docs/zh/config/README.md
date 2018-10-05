@@ -174,7 +174,7 @@ VuePress provides a convenient way to add extra styles. you can create an `.vuep
 - Type: `Object|Array`
 - Default: `undefined`
 
-请参考 [plugin API >  Using a plugin](../plugin/README.md#using-a-plugin) 来使用一个插件。
+请参考 [plugin > Using a plugin](../plugin/README.md#using-a-plugin) 来使用一个插件。
 
 ## Markdown
 

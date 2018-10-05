@@ -239,4 +239,4 @@ The plugin whose name starts with `@vuepress/theme-` is an officially maintained
 - Type: `Array|Object`
 - Default: undefined
 
-See: [Config > plugins](../config/README.md#plugins).
+See: [Plugin > Using a plugin](../plugin/README.md#using-a-plugin).
