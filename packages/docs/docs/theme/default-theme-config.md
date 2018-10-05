@@ -436,38 +436,6 @@ editLink: false
 ---
 ```
 
-## Simple Color Variables Override
-
-If you wish to apply simple color overrides to the styling of the default theme, you can create an `.vuepress/palette.styl` file. This is a [Stylus](http://stylus-lang.com/) file but you can use normal CSS syntax as well.
-
-There are a few color variables you can tweak:
-
-``` stylus
-// showing default values
-$accentColor = #3eaf7c
-$textColor = #2c3e50
-$borderColor = #eaecef
-$codeBgColor = #282c34
-```
-
-::: danger Note
-You should ONLY write color variables in this file. since `palette.styl` will be imported at the end of the root stylus config file, as a config, it will be used by multiple files, so once you wrote styles here, your style would be duplicated by multiple times. 
-:::
-
-## Simple CSS Override
-
-VuePress provides a convenient way to add extra styles. you can create an `.vuepress/style.styl` file for that:
-
-```stylus
-.content {
-  font-size 30px
-}
-```
-
-**Also see:** 
-
-- [FAQ > Why can't `palette.styl` and `style.styl` merge into one API?](../faq/README.md#why-can-t-palette-styl-and-style-styl-merge-into-one-api)
-
 ## Custom Page Class
 
 Sometimes, you may need to add a unique class for a specific page so that you can target content on that page only in custom CSS. You can add a class to the theme container div with `pageClass` in `YAML front matter`:

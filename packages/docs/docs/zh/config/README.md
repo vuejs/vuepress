@@ -115,19 +115,37 @@ module.exports = {
 
 一个函数，用来控制对于哪些文件，是需要生成 `<link rel="prefetch">` 资源提示的。请参考 [shouldPrefetch](https://ssr.vuejs.org/zh/api/#shouldpreload)。
 
-## 样式
+## Styling
+
+> To be translated.
 
 ### palette.styl
 
-创建一个 `.vuepress/style/palette.styl` 文件，其会被自动注册为全局调色板。
+If you wish to apply simple color overrides to the styling of the [default preset](https://github.com/vuejs/vuepress/blob/master/packages/@vuepress/core/lib/app/style/config.styl) or define some color variables for using later, you can create an `.vuepress/styles/palette.styl` file.
+
+There are a few color variables you can tweak:
+
+``` stylus
+// showing default values
+$accentColor = #3eaf7c
+$textColor = #2c3e50
+$borderColor = #eaecef
+$codeBgColor = #282c34
+```
+
+::: danger Note
+You should ONLY write color variables in this file. since `palette.styl` will be imported at the end of the root stylus config file, as a config, it will be used by multiple files, so once you wrote styles here, your style would be duplicated by multiple times. 
+:::
 
 ### index.styl
 
-创建一个 `.vuepress/style/index.styl` 文件， 其会被自动应用为全局样式
+VuePress provides a convenient way to add extra styles. you can create an `.vuepress/styles/index.styl` file for that. This is a [Stylus](http://stylus-lang.com/) file but you can use normal CSS syntax as well.
 
-**Also see:**
-
-- [Why can't `palette.styl` and `index.styl` merge into one API?](../faq/README.md#why-can-t-palette-styl-and-index-styl-merge-into-one-api)
+```stylus
+.content {
+  font-size 30px
+}
+```
 
 ## 主题
 

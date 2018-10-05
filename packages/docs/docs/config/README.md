@@ -122,11 +122,31 @@ A function to control what files should have `<link rel="preload">` resource hin
 
 ### palette.styl
 
-Create a `.vuepress/style/palette.styl` file and it will be registered as global palette.
+If you wish to apply simple color overrides to the styling of the [default preset](https://github.com/vuejs/vuepress/blob/master/packages/@vuepress/core/lib/app/style/config.styl) or define some color variables for using later, you can create an `.vuepress/styles/palette.styl` file.
+
+There are a few color variables you can tweak:
+
+``` stylus
+// showing default values
+$accentColor = #3eaf7c
+$textColor = #2c3e50
+$borderColor = #eaecef
+$codeBgColor = #282c34
+```
+
+::: danger Note
+You should ONLY write color variables in this file. since `palette.styl` will be imported at the end of the root stylus config file, as a config, it will be used by multiple files, so once you wrote styles here, your style would be duplicated by multiple times. 
+:::
 
 ### index.styl
 
-Create a `.vuepress/style/index.styl` file and it will be applied as global styles.
+VuePress provides a convenient way to add extra styles. you can create an `.vuepress/styles/index.styl` file for that. This is a [Stylus](http://stylus-lang.com/) file but you can use normal CSS syntax as well.
+
+```stylus
+.content {
+  font-size 30px
+}
+```
 
 **Also see:**
 
