@@ -36,7 +36,7 @@ module.exports = async function loadTheme (theme, sourceDir, vuepressDir) {
     (fs.readdirSync(localThemePath)).length > 0
 
   let themePath = null         // Mandatory
-  let themeIndexFile = null    // Optional
+  let themeEntryFile = null    // Optional
   let themeName
   let themeShortcut
 
@@ -58,16 +58,16 @@ module.exports = async function loadTheme (theme, sourceDir, vuepressDir) {
   }
 
   try {
-    themeIndexFile = require(themePath)
+    themeEntryFile = require(themePath)
   } catch (error) {
-    themeIndexFile = {}
+    themeEntryFile = {}
   }
 
   // handle theme api
   const {
     plugins: themePlugins,
     palette: themePalette
-  } = themeIndexFile
+  } = themeEntryFile
 
   const layoutDirs = [
     path.resolve(themePath, 'layouts'),
@@ -132,7 +132,7 @@ module.exports = async function loadTheme (theme, sourceDir, vuepressDir) {
   return {
     themePath,
     layoutComponentMap,
-    themeIndexFile,
+    themeEntryFile,
     themePlugins,
     themePalette,
     themeName,

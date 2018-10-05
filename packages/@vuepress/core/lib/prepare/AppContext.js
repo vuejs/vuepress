@@ -106,6 +106,7 @@ module.exports = class AppContext {
     this.pluginAPI
       // internl core plugins
       .use(Object.assign({}, siteConfig, { name: '@vuepress/internal-site-config' }))
+      .use(Object.assign({}, this.themeEntryFile, { name: '@vuepress/internal-theme-entry-file' }))
       .use(require('../internal-plugins/siteData'))
       .use(require('../internal-plugins/routes'))
       .use(require('../internal-plugins/rootMixins'))
@@ -161,7 +162,7 @@ module.exports = class AppContext {
    *
    *   1. siteConfig.devTemplate
    *   2. `dev.html` located at .vuepress/templates
-   *   3. themeIndexFile.devTemplate
+   *   3. themeEntryFile.devTemplate
    *   4. default devTemplate
    *
    * @api private
@@ -174,7 +175,7 @@ module.exports = class AppContext {
     const siteSsrTemplate2 = path.resolve(templateDir, 'dev.html')
     const siteDevTemplate2 = path.resolve(templateDir, 'ssr.html')
 
-    const { themeSsrTemplate, themeDevTemplate } = this.themeIndexFile
+    const { themeSsrTemplate, themeDevTemplate } = this.themeEntryFile
 
     const defaultSsrTemplate = path.resolve(__dirname, '../app/index.ssr.html')
     const defaultDevTemplate = path.resolve(__dirname, '../app/index.dev.html')
