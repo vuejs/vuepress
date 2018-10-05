@@ -17,15 +17,15 @@ VuePress 由两部分组成：一部分是支持用 Vue 开发主题的极简静
 - [Vue 驱动的自定义主题系统](custom-themes.md)
 - [自动生成 Service Worker](../config/README.md#serviceworker)
 - [Google Analytics 集成](../config/README.md#ga)
-- [基于 Git 的 “最后更新时间”](../default-theme-config/README.md#最后更新时间)
+- [基于 Git 的 “最后更新时间”](../theme/default-theme-config.md#最后更新时间)
 - [多语言支持](i18n.md)
 - 默认主题包含：
   - 响应式布局
-  - [可选的主页](../default-theme-config/README.md#首页)
-  - [简洁的开箱即用的标题搜索](../default-theme-config/README.md#内置搜索)
-  - [Algolia 搜索](../default-theme-config/README.md#algolia-搜索)
-  - 可自定义的[导航栏](../default-theme-config/README.md#导航栏) 和[侧边栏](../default-theme-config/README.md#侧边栏)
-  - [自动生成的 GitHub 链接和页面的编辑链接](../default-theme-config/README.md#git-仓库和编辑链接)
+  - [可选的主页](../theme/default-theme-config.md#首页)
+  - [简洁的开箱即用的标题搜索](../theme/default-theme-config.md#内置搜索)
+  - [Algolia 搜索](../theme/default-theme-config.md#algolia-搜索)
+  - 可自定义的[导航栏](../theme/default-theme-config.md#导航栏) 和[侧边栏](../theme/default-theme-config.md#侧边栏)
+  - [自动生成的 GitHub 链接和页面的编辑链接](../theme/default-theme-config.md#git-仓库和编辑链接)
 
 ## Todo
 

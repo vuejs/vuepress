@@ -139,7 +139,7 @@ The HTML wrapped by `<code>` will be displayed as is, only the HTML that is not 
 
 ::: tip
 
-The output HTML is accomplished by [markdown-it](https://github.com/markdown-it/markdown-it), while the parsed headers are done by VuePress, and used for the [sidebar](../default-theme-config/README.md#sidebar) and the document title.
+The output HTML is accomplished by [markdown-it](https://github.com/markdown-it/markdown-it), while the parsed headers are done by VuePress, and used for the [sidebar](../theme/default-theme-config.md#sidebar) and the document title.
 :::
 
 ## Using Pre-processors
@@ -210,7 +210,7 @@ See [Browser API Access Restrictions](#browser-api-access-restrictions).
 
 - **Usage**：   
    
-The compiled content of the current `.md` file being rendered. This will be very useful when you use [Custom Layout](../default-theme-config/README.md#custom-layout-for-specific-pages).
+The compiled content of the current `.md` file being rendered. This will be very useful when you use [Custom Layout](../theme/default-theme-config.md#custom-layout-for-specific-pages).
 
 ``` vue
 <Content/>

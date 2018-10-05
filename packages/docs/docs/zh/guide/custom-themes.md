@@ -57,7 +57,7 @@ VuePress 使用单文件组件来构建自定义主题。想要开发一个自�
 最后，别忘了，作为 Vue Router API 的一部分，`this.$route` 和 `this.$router` 同样可以使用。
 
 ::: tip 提示
-  `lastUpdated` 是这个文件最后一次 git 提交的 UNIX 时间戳，更多细节请参考：[最后更新时间](../default-theme-config/README.md#最后更新时间)。
+  `lastUpdated` 是这个文件最后一次 git 提交的 UNIX 时间戳，更多细节请参考：[最后更新时间](../theme/default-theme-config.md#最后更新时间)。
 :::
 
 ## 内容摘抄

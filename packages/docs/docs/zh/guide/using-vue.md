@@ -138,7 +138,7 @@ export default {
 被 `<code>` 包装的 HTML 将按原样显示，只有未被包装的 HTML 才会被 Vue 解析。
 
 ::: tip
-输出的 HTML 由 [markdown-it](https://github.com/markdown-it/markdown-it) 完成。而解析后的标题由 VuePress 完成，用于[侧边栏](../default-theme-config/README.md#侧边栏)以及文档的标题。
+输出的 HTML 由 [markdown-it](https://github.com/markdown-it/markdown-it) 完成。而解析后的标题由 VuePress 完成，用于[侧边栏](../theme/default-theme-config.md#侧边栏)以及文档的标题。
 :::
 
 ## 使用预处理器
@@ -211,7 +211,7 @@ export default {
 - **用法**：   
   
 
-当前的 `.md` 文件渲染的内容，当你在使用 [自定义布局](../default-theme-config/README.md#特定页面的自定义布局) 时，它将非常有用。
+当前的 `.md` 文件渲染的内容，当你在使用 [自定义布局](../theme/default-theme-config.md#特定页面的自定义布局) 时，它将非常有用。
    
 ``` vue
 <Content/>

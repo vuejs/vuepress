@@ -139,7 +139,7 @@ module.exports = {
 When `config.palette` is empty, vuepress will detect whether `.vuepress/palette.styl` exists. If it exists, the file will be used as palette.
 :::
 
-If it is an object, it needs to be an object with key as the color name and value as the HEX color value.
+If it is an object, it needs to be an object with key as the color name and value as the color value.
 
 ```js
 module.exports = {
@@ -167,7 +167,17 @@ It is worth noting that `modifying global style` via `palette` depends on the st
 - Type: `string`
 - Default: `undefined`
 
-TODO
+Extra style file.
+
+```js
+module.exports = {
+  style: path.resolve(__dirname, 'style.styl'),
+}
+```
+
+::: tip
+When `config.style` is empty, vuepress will detect whether `.vuepress/style.styl` exists. If it exists, the file will be applied automatically.
+:::
 
 ## Theming
 
@@ -187,7 +197,7 @@ Provide config options to the used theme. The options will vary depending on the
 
 **Also see:**
 
-- [Default Theme Configuration](../default-theme-config/README.md).
+- [Default Theme Configuration](../theme/default-theme-config.md).
 
 ## Pluggable
 

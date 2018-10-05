@@ -133,7 +133,7 @@ module.exports = {
 
 **也可以参考:**
 
-- [默认主题](../default-theme-config/README.md)。
+- [默认主题](../theme/default-theme-config.md)。
 
 ## Markdown
 

@@ -38,32 +38,7 @@ module.exports = {
         selectText: 'Languages',
         editLinkText: 'Edit this page on GitHub',
         lastUpdated: 'Last Updated',
-        nav: [
-          {
-            text: 'Guide',
-            link: '/guide/',
-          },
-          {
-            text: 'Config Reference',
-            link: '/config/'
-          },
-          {
-            text: 'Plugin',
-            link: '/plugin/'
-          },
-          {
-            text: 'Theme',
-            link: '/theme/'
-          },
-          {
-            text: 'Default Theme Config',
-            link: '/default-theme-config/'
-          },
-          {
-            text: 'Changelog',
-            link: 'https://github.com/vuejs/vuepress/blob/master/CHANGELOG.md'
-          }
-        ],
+        nav: require('./nav/en'),
         sidebar: {
           '/guide/': genSidebarConfig('Guide')
         }
@@ -73,24 +48,7 @@ module.exports = {
         selectText: '选择语言',
         editLinkText: '在 GitHub 上编辑此页',
         lastUpdated: '上次更新',
-        nav: [
-          {
-            text: '指南',
-            link: '/zh/guide/',
-          },
-          {
-            text: '配置',
-            link: '/zh/config/'
-          },
-          {
-            text: '默认主题',
-            link: '/zh/default-theme-config/'
-          },
-          {
-            text: 'Changelog',
-            link: 'https://github.com/vuejs/vuepress/blob/master/CHANGELOG.md'
-          }
-        ],
+        nav: require('./nav/zh'),
         sidebar: {
           '/zh/guide/': genSidebarConfig('指南')
         }
@@ -117,11 +75,12 @@ function genSidebarConfig (title) {
       children: [
         '',
         'getting-started',
+        'directory-structure',
+        'permalinks',
         'basic-config',
         'assets',
         'markdown',
         'using-vue',
-        'custom-themes',
         'i18n',
         'deploy'
       ]
