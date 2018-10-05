@@ -27,10 +27,9 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 
 ### As Easy as 1, 2, 3
 
-
 ::: warning 
 Note that this is the documentation of 1.x.x, if you are a 0.x.x user please go to: [https://v0.vuepress.vuejs.org.](https://v0.vuepress.vuejs.org).
-Since 1.x.x is still in the `alpha` stage, all APIs can happen before we release the rc version, so do not use in production yet unless you are adventurous.
+Since 1.x.x is still in the `alpha` stage, all APIs would change before we reach the `rc` stage, so do not use in production yet unless you are adventurous.
 :::
 
 ``` bash
