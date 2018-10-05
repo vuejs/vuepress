@@ -2,7 +2,7 @@
 
 export default ({ router }) => {
 // Google analytics integration
-  if (process.env.NODE_ENV === 'production' && GA_ID) {
+  if (process.env.NODE_ENV === 'production' && GA_ID && typeof window !== 'undefined') {
     (function (i, s, o, g, r, a, m) {
       i['GoogleAnalyticsObject'] = r
       i[r] = i[r] || function () {
