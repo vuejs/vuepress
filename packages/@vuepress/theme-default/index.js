@@ -1,10 +1,24 @@
-const themePlugin = require('./plugin')
+const path = require('path')
 
 // Theme API.
-module.exports = {
+module.exports = (options, ctx) => ({
+  alias () {
+    const { themeConfig, siteConfig } = ctx
+    // resolve algolia
+    const isAlgoliaSearch = (
+      themeConfig.algolia ||
+      Object.keys(siteConfig.locales && themeConfig.locales || {})
+        .some(base => themeConfig.locales[base].algolia)
+    )
+    return {
+      '@AlgoliaSearchBox': isAlgoliaSearch
+        ? path.resolve(__dirname, 'src/AlgoliaSearchBox.vue')
+        : path.resolve(__dirname, 'noopModule.js')
+    }
+  },
+
   plugins: [
-    themePlugin,
     '@vuepress/active-header-links',
     '@vuepress/search'
   ]
-}
+})
