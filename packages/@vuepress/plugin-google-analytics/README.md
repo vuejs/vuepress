@@ -15,6 +15,6 @@ module.exports = {
 ### ga
 
 - Type: `string`
-- Default: `/i18n/`
+- Default: `undefined`
 
 Provide the Google Analytics ID to enable integration.
