@@ -120,64 +120,18 @@ A function to control what files should have `<link rel="preload">` resource hin
 
 ## Styling
 
-### palette
+### palette.styl
 
-- Type: `Object|String`
-- Default: `undefined`
+Create a `.vuepress/style/palette.styl` file and it will be registered as global palette.
 
-Set globally available stylus color variables.
+### index.styl
 
-If it is string, it needs to be a **absolute path** pointing to a stylus file that defines the color constant:
+Create a `.vuepress/style/index.styl` file and it will be applied as global styles.
 
-```js
-module.exports = {
-  palette: path.resolve(__dirname, 'palette.styl'),
-}
-```
+**Also see:**
 
-::: tip
-When `config.palette` is empty, vuepress will detect whether `.vuepress/palette.styl` exists. If it exists, the file will be used as palette.
-:::
-
-If it is an object, it needs to be an object with key as the color name and value as the color value.
-
-```js
-module.exports = {
-  palette: {
-    // Internal default color constants can be 
-    // modified to quickly modify global styles.
-    $accentColor: '#3eaf7c',
-    $textColor: '#2c3e50',
-    $borderColor: '#eaecef',
-    $codeBgColor: '#282c34',
-    $arrowBgColor: '#ccc',
-
-    // Your extra colors
-    $shadowColor: '#ddd'
-  }
-}
-```
-
-::: tip
-It is worth noting that `modifying global style` via `palette` depends on the strict use of the default palette for your theme (e.g. the `@vuepress/theme-default` you see now). 
-:::
-
-### style
-
-- Type: `string`
-- Default: `undefined`
-
-Extra style file.
-
-```js
-module.exports = {
-  style: path.resolve(__dirname, 'style.styl'),
-}
-```
-
-::: tip
-When `config.style` is empty, vuepress will detect whether `.vuepress/style.styl` exists. If it exists, the file will be applied automatically.
-:::
+- [Why can't `palette.styl` and `index.styl` merge into one API?](faq/#why-can-t-palette-styl-and-index-styl-merge-into-one-api)
+- [Why can't `palette.styl` and `index.styl` merge into one API?](faq/#why-can-t-palette-styl-and-index-styl-merge-into-one-api)
 
 ## Theming
 

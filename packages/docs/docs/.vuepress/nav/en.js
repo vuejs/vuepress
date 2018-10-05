@@ -24,6 +24,10 @@ module.exports = [
           {
             text: 'Options',
             link: '/plugin/#options'
+          },
+          {
+            text: 'Official Plugins',
+            link: '/plugin/official.html'
           }
         ]
       },
@@ -32,15 +36,15 @@ module.exports = [
         items: [
           {
             text: 'Write a theme',
-            link: '/theme/#writing-a-plugin'
+            link: '/theme/#writing-a-theme'
           },
           {
             text: 'Using a theme',
-            link: '/theme/#using-a-plugin'
+            link: '/theme/#using-a-theme'
           },
           {
             text: 'Options',
-            link: '/theme/api.html'
+            link: '/theme/#options'
           },
           {
             text: 'Default Theme Config',
@@ -49,46 +53,18 @@ module.exports = [
         ]
       },
       {
-        text: 'Official Plugins',
+        text: 'Miscellaneous',
         items: [
           {
-            text: 'search',
-            link: '/plugin/official.html#vuepress-search'
+            text: 'Design Concepts',
+            link: '/miscellaneous/design-concepts.html'
           },
           {
-            text: 'pwa',
-            link: '/plugin/official.html#vuepress-pwa'
-          },
-          {
-            text: 'blog',
-            link: '/plugin/official.html#vuepress-blog'
-          },
-          {
-            text: 'pagination',
-            link: '/plugin/official.html#vuepress-pagination'
-          },
-          {
-            text: 'google-analytics',
-            link: '/plugin/official.html#vuepress-google-analytics'
-          },
-          {
-            text: 'i18n-ui',
-            link: '/plugin/official.html#vuepress-i18n-ui'
-          },
-          {
-            text: 'last-updated',
-            link: '/plugin/official.html#vuepress-last-updated'
-          },
-          {
-            text: 'medium-zoom',
-            link: '/plugin/official.html#vuepress-medium-zoom'
-          },
-          {
-            text: 'back-to-top',
-            link: '/plugin/official.html#vuepress-back-to-top'
+            text: 'Migrate from 0.x.x',
+            link: '/miscellaneous/migration-guide.html'
           }
         ]
-      }
+      },
     ],
   },
   {

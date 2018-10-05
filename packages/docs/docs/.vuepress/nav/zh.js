@@ -24,6 +24,10 @@ module.exports = [
           {
             text: '插件的选项',
             link: '/zh/plugin/#options'
+          },
+          {
+            text: '官方插件',
+            link: '/plugin/official.html'
           }
         ]
       },
@@ -32,11 +36,11 @@ module.exports = [
         items: [
           {
             text: '主题的开发',
-            link: '/zh/theme/#writing-a-plugin'
+            link: '/zh/theme/#writing-a-theme'
           },
           {
             text: '主题的使用',
-            link: '/zh/theme/#using-a-plugin'
+            link: '/zh/theme/#using-a-theme'
           },
           {
             text: '主题的选项',
@@ -49,46 +53,18 @@ module.exports = [
         ]
       },
       {
-        text: '官方插件',
+        text: '了解更多',
         items: [
           {
-            text: 'search',
-            link: '/zh/plugin/official.html#vuepress-search'
+            text: '设计理念',
+            link: '/miscellaneous/design-concepts.html'
           },
           {
-            text: 'pwa',
-            link: '/zh/plugin/official.html#vuepress-pwa'
-          },
-          {
-            text: 'blog',
-            link: '/zh/plugin/official.html#vuepress-blog'
-          },
-          {
-            text: 'pagination',
-            link: '/zh/plugin/official.html#vuepress-pagination'
-          },
-          {
-            text: 'google-analytics',
-            link: '/zh/plugin/official.html#vuepress-google-analytics'
-          },
-          {
-            text: 'i18n-ui',
-            link: '/zh/plugin/official.html#vuepress-i18n-ui'
-          },
-          {
-            text: 'last-updated',
-            link: '/zh/plugin/official.html#vuepress-last-updated'
-          },
-          {
-            text: 'medium-zoom',
-            link: '/zh/plugin/official.html#vuepress-medium-zoom'
-          },
-          {
-            text: 'back-to-top',
-            link: '/zh/plugin/official.html#vuepress-back-to-top'
+            text: '从 0.x.x 迁移',
+            link: '/miscellaneous/migration-guide.html'
           }
         ]
-      }
+      },
     ],
   },
   {
