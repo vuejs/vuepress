@@ -32,7 +32,7 @@ class Pagination {
 
   get posts () {
     const [start, end] = this._currentPage.interval
-    return this._posts.slice(start, end)
+    return this._posts.slice(start, end + 1)
   }
 
   get hasPrev () {
