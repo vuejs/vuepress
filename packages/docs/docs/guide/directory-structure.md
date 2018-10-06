@@ -13,7 +13,7 @@ VuePress follows the principle of **"Convention is better than configuration"**,
 │   │   ├── `styles` _(**Optional**)_
 │   │   │   ├── index.styl
 │   │   │   └── palette.styl
-│   │   ├── `emplates` _(**Optional, Danger Zone**)_
+│   │   ├── `templates` _(**Optional, Danger Zone**)_
 │   │   │   ├── dev.html
 │   │   │   └── ssr.html
 │   │   ├── `config.js` _(**Optional**)_
