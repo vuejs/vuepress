@@ -9,7 +9,7 @@ module.exports = async (dir) => {
     console.log(chalk.red(`\n[vuepress] cannot find '@vuepress/theme-default'\n`))
     process.exit(1)
   }
-  const source = require.resolve('@vuepress/theme-default')
+  const source = require.resolve('@vuepress/theme-default').replace(/index\.js$/, '')
   const target = path.resolve(dir, '.vuepress/theme')
   await fs.copy(source, target)
   logger.success(`\nCopied default theme into ${chalk.cyan(target)}.\n`)
