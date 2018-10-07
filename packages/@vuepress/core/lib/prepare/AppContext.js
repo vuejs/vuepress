@@ -52,8 +52,8 @@ module.exports = class AppContext {
     this.base = this.siteConfig.base || '/'
     this.themeConfig = this.siteConfig.themeConfig || {}
     this.outDir = this.siteConfig.dest
-      ? path.resolve(process.cwd(), this.siteConfig.dest)
-      : path.resolve(sourceDir, '.vuepress/dist')
+      ? require('path').resolve(process.cwd(), this.siteConfig.dest)
+      : require('path').resolve(sourceDir, '.vuepress/dist')
 
     this.pluginAPI = new PluginAPI(this)
     this.pages = [] // Array<Page>
