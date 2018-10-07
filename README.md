@@ -14,7 +14,7 @@
 
 > Minimalistic docs generator with Vue component based layout system
 
-https://vuepress.vuejs.org/
+https://v0.vuepress.vuejs.org/
 
 ## Features
 
