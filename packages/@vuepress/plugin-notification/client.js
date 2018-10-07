@@ -1,6 +1,9 @@
 import './index.styl'
-import Toasted from 'vue-toasted'
 
-export default ({ Vue }) => {
-  Vue.use(Toasted)
+export default ({ Vue, isServer }) => {
+  if (!isServer) {
+    import('vue-toasted' /* webpackChunkName: "notification" */).then((module) => {
+      Vue.use(module.default)
+    })
+  }
 }
