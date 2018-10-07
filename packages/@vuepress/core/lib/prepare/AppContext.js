@@ -12,6 +12,7 @@ const {
   datatypes: { isFunction },
   fallback: { fsExistsFallback }
 } = require('@vuepress/shared-utils')
+const { resolve } = require('path')
 
 const Page = require('./Page')
 const ClientComputedMixin = require('./ClientComputedMixin')
@@ -52,8 +53,8 @@ module.exports = class AppContext {
     this.base = this.siteConfig.base || '/'
     this.themeConfig = this.siteConfig.themeConfig || {}
     this.outDir = this.siteConfig.dest
-      ? path.resolve(this.siteConfig.dest)
-      : path.resolve(sourceDir, '.vuepress/dist')
+      ? resolve(this.siteConfig.dest)
+      : resolve(sourceDir, '.vuepress/dist')
 
     this.pluginAPI = new PluginAPI(this)
     this.pages = [] // Array<Page>
