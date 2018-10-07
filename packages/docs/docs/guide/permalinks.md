@@ -2,7 +2,7 @@
 
 ## Background
 
-Before 1.x.x, vuepress retrieves all markdown files in the documents source directory and defines the page links based on the file hierarchy. e.g. if you have the following file structure:
+Before 1.x.x, VuePress retrieves all markdown files in the documents source directory and defines the page links based on the file hierarchy. e.g. if you have the following file structure:
 
 ```
 ├── package.json
