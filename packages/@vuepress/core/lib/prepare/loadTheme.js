@@ -69,8 +69,6 @@ module.exports = async function loadTheme (ctx) {
   }
 
   // handle theme api
-  const { palette: themePalette } = themeEntryFile
-
   const layoutDirs = [
     path.resolve(themePath, 'layouts'),
     path.resolve(themePath, '.')
@@ -135,7 +133,6 @@ module.exports = async function loadTheme (ctx) {
     themePath,
     layoutComponentMap,
     themeEntryFile,
-    themePalette,
     themeName,
     themeShortcut
   }

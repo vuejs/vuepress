@@ -24,23 +24,21 @@ module.exports = (options, ctx) => ({
     // 2. write palette.styl
     const { sourceDir, writeTemp } = ctx
 
-    const themePalette = ctx.themePalette
-    const { palette: userPalette } = ctx.siteConfig
-    const palettePath = path.resolve(sourceDir, '.vuepress/styles/palette.styl')
+    const themePalette = path.resolve(ctx.themePath, 'styles/palette.styl')
+    const userPalette = path.resolve(sourceDir, '.vuepress/styles/palette.styl')
 
     const themePaletteContent = resolvePaletteContent(themePalette)
     const userPaletteContent = resolvePaletteContent(userPalette)
-    const userPaletteContent2 = resolvePaletteContent(palettePath)
 
     // user's palette can override theme's palette.
-    const paletteContent = themePaletteContent + userPaletteContent + userPaletteContent2
+    const paletteContent = themePaletteContent + userPaletteContent
     await writeTemp('palette.styl', paletteContent)
   }
 })
 
 /**
  * resolve palette content
- * @param {string|object} palette
+ * @param {string} palette
  * @returns {string}
  */
 
@@ -55,14 +53,8 @@ function resolvePaletteContent (palette) {
     return ''
   }
 
-  if (isString(palette)) {
-    if (fs.existsSync(palette)) {
-      return `@import(${JSON.stringify(palette)})\n`
-    }
-    return ''
-  } else if (isPlainObject(palette)) {
-    return Object.keys(palette).map(variableName => {
-      return `${variableName} = ${palette[variableName]}`
-    }).join('\n') + '\n'
+  if (isString(palette) && fs.existsSync(palette)) {
+    return `@import(${JSON.stringify(palette)})\n`
   }
+  return ''
 }
