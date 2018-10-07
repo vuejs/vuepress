@@ -22,11 +22,11 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
   }
 
   const { outDir } = options
-  if (path.resolve() === outDir) {
+  if (process.cwd() === outDir) {
     return console.error(logger.error(chalk.red('Unexpected option: outDir cannot be set to the current working directory.\n'), false))
   }
   await fs.remove(outDir)
-  logger.debug('Dist directory: ' + chalk.gray(path.resolve(outDir)))
+  logger.debug('Dist directory: ' + chalk.gray(path.resolve(process.cwd(), outDir)))
 
   let clientConfig = createClientConfig(options, cliOptions).toConfig()
   let serverConfig = createServerConfig(options, cliOptions).toConfig()
