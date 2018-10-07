@@ -27,7 +27,7 @@ module.exports = [
           },
           {
             text: '官方插件',
-            link: '/plugin/official.html'
+            link: '/zh/plugin/official.html'
           }
         ]
       },
@@ -57,11 +57,11 @@ module.exports = [
         items: [
           {
             text: '设计理念',
-            link: '/miscellaneous/design-concepts.html'
+            link: '/zh/miscellaneous/design-concepts.html'
           },
           {
             text: '从 0.x.x 迁移',
-            link: '/miscellaneous/migration-guide.html'
+            link: '/zh/miscellaneous/migration-guide.html'
           }
         ]
       },

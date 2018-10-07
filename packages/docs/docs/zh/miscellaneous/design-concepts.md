@@ -193,4 +193,4 @@ i18n UI 最终的路由将是 `/i18n/`.
 - [@vuepress/core](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/core)：包含 dev、build 的核心实现和 Plugin API；
 - [@vuepress/theme-default](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/theme-default)：你现在所看到的默认主题。
 
-当然，对于大多数用户来说，你并不需要关心上述三个库，[vuepress](https://www.npmjs.com/search?q=vuepress) 这个包已经将上述三个包组装在一起，你完全可以像 `0.x` 那样使用 VuePress。
+当然，对于大多数用户来说，你并不需要关心上述三个库，[vuepress](https://www.npmjs.com/search?q=vuepress) 这个包已经将上述三个包组装在一起，因此你完全可以像 `0.x` 那样使用 VuePress。

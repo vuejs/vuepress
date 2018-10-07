@@ -193,6 +193,6 @@ With the goal of decoupling, we were able to separate VuePress into the followin
 - [@vuepress/core](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/core)：Including the core implementation of `dev`, `build` and `Plugin API`;
 - [@vuepress/theme-default](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/theme-default)：The default theme you see now.
 
-Of course, for most users, you don't need to care about the three libraries. Package [vuepress](https://www.npmjs.com/search?Q=vuepress) has already assembled the three packages together, so you can use VuePress like `0.x`.
+Of course, for most users, you don't need to care about these three libraries, package [vuepress](https://www.npmjs.com/search?Q=vuepress) has already assembled them together, so you can use VuePress like `0.x`.
 
 
