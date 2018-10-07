@@ -181,7 +181,7 @@ module.exports = {
 - Type: `array`
 - Default: `undefined`
 
-A plug-in can contain multiple plug-ins like a preset.
+A plug-in can contain multiple plugins like a preset.
 
 
 ```js

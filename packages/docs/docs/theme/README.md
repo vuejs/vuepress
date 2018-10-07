@@ -58,7 +58,7 @@ Considering backward compatibility, Vue components located at theme root directo
 
 ### Layout Component
 
-Suppose your topic Layouts folder is as follows:
+Suppose your theme layouts folder is as follows:
 
 ::: vue
 theme
