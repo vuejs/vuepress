@@ -1,10 +1,6 @@
 const {
-  fs, path, logger,
-  datatypes: {
-    isPlainObject,
-    assertTypes,
-    isString
-  }
+  fs, path,
+  datatypes: { isPlainObject }
 } = require('@vuepress/shared-utils')
 
 module.exports = (options, ctx) => ({
@@ -27,34 +23,15 @@ module.exports = (options, ctx) => ({
     const themePalette = path.resolve(ctx.themePath, 'styles/palette.styl')
     const userPalette = path.resolve(sourceDir, '.vuepress/styles/palette.styl')
 
-    const themePaletteContent = resolvePaletteContent(themePalette)
-    const userPaletteContent = resolvePaletteContent(userPalette)
+    const themePaletteContent = fs.existsSync(themePalette)
+      ? `@import(${JSON.stringify(themePalette)})`
+      : ''
+    const userPaletteContent = fs.existsSync(userPalette)
+      ? `@import(${JSON.stringify(userPalette)})`
+      : ''
 
     // user's palette can override theme's palette.
     const paletteContent = themePaletteContent + userPaletteContent
     await writeTemp('palette.styl', paletteContent)
   }
 })
-
-/**
- * resolve palette content
- * @param {string} palette
- * @returns {string}
- */
-
-function resolvePaletteContent (palette) {
-  const { valid, warnMsg } = assertTypes(palette, [String, Object])
-  if (!valid) {
-    if (palette !== undefined) {
-      logger.warn(
-        `[vuepress] Invalid value for "palette": ${warnMsg}`
-      )
-    }
-    return ''
-  }
-
-  if (isString(palette) && fs.existsSync(palette)) {
-    return `@import(${JSON.stringify(palette)})\n`
-  }
-  return ''
-}
