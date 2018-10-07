@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   dest: '../../vuepress',
   locales: {
@@ -63,8 +65,10 @@ module.exports = {
       updatePopup: true
     },
     '@vuepress/plugin-medium-zoom': true,
+    '@vuepress/notification': true,
     'flowchart': true
-  }
+  },
+  clientRootMixin: path.resolve(__dirname, 'mixin.js')
 }
 
 function genSidebarConfig (title) {
