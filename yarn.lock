@@ -9120,6 +9120,10 @@ vue-template-es2015-compiler@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.6.0.tgz#dc42697133302ce3017524356a6c61b7b69b4a18"
 
+vue-toasted@^1.1.25:
+  version "1.1.25"
+  resolved "https://registry.yarnpkg.com/vue-toasted/-/vue-toasted-1.1.25.tgz#27b1f40866d98f8bf817722869f3d97f7c0d4db1"
+
 vue@^2.5.16:
   version "2.5.16"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.16.tgz#07edb75e8412aaeed871ebafa99f4672584a0085"
