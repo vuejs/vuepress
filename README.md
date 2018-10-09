@@ -91,6 +91,7 @@ Websites built with VuePress:
 * [cr-vue](https://cr-vue.mio3io.com/)
 * [vuesax](https://lusaxweb.github.io/vuesax/)
 * [vuemeetups](https://vuemeetups.org)
+* [rustlang-cn](https://rustlang-cn.github.io/)
 
 
 ## Development
