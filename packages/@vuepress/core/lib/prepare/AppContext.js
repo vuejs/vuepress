@@ -182,8 +182,8 @@ module.exports = class AppContext {
     const { siteSsrTemplate, siteDevTemplate } = this.siteConfig
 
     const templateDir = path.resolve(this.vuepressDir, 'templates')
-    const siteSsrTemplate2 = path.resolve(templateDir, 'dev.html')
-    const siteDevTemplate2 = path.resolve(templateDir, 'ssr.html')
+    const siteSsrTemplate2 = path.resolve(templateDir, 'ssr.html')
+    const siteDevTemplate2 = path.resolve(templateDir, 'dev.html')
 
     const { themeSsrTemplate, themeDevTemplate } = this.themeEntryFile
 
