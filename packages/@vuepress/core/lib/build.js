@@ -58,6 +58,7 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
     runInNewContext: false,
     inject: false,
     shouldPrefetch: options.siteConfig.shouldPrefetch || (() => true),
+    shouldPreload: options.siteConfig.shouldPreload || (() => true),
     template: await fs.readFile(options.ssrTemplate, 'utf-8')
   })
 
