@@ -30,7 +30,7 @@ class AsyncOption extends Option {
         this.add(
           name,
           isFunction(value)
-            ? await value(...args)
+            ? await Promise.resolve(value(...args))
             : value
         )
       } catch (error) {
@@ -60,7 +60,7 @@ class AsyncOption extends Option {
         this.add(
           name,
           isFunction(value)
-            ? await value(...args)
+            ? await Promise.resolve(value(...args))
             : value
         )
       } catch (error) {
@@ -84,7 +84,7 @@ class AsyncOption extends Option {
 
   async pipeline (input) {
     for (const fn of this.values) {
-      input = await fn(input)
+      input = await Promise.resolve(fn(input))
     }
     return input
   }

@@ -66,21 +66,22 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
     .map(renderHeadTag)
     .join('\n  ')
 
-  // render pages
-  logger.wait('Rendering static HTML...')
-  for (const page of options.pages) {
-    await renderPage(page)
-  }
-
   // if the user does not have a custom 404.md, generate the theme's default
   if (!options.pages.some(p => p.path === '/404.html')) {
-    await renderPage({ path: '/404.html' })
+    options.pages.push({ path: '/404.html' })
+  }
+
+  // render pages
+  logger.wait('Rendering static HTML...')
+  const pagePaths = []
+  for (const page of options.pages) {
+    pagePaths.push(await renderPage(page))
   }
 
   readline.clearLine(process.stdout, 0)
   readline.cursorTo(process.stdout, 0)
 
-  await options.pluginAPI.options.generated.apply()
+  await options.pluginAPI.options.generated.asyncApply(pagePaths)
 
   // DONE.
   const relativeDir = path.relative(process.cwd(), outDir)
@@ -155,6 +156,7 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
     const filePath = path.resolve(outDir, filename)
     await fs.ensureDir(path.dirname(filePath))
     await fs.writeFile(filePath, html)
+    return filePath
   }
 
   function renderPageMeta (meta) {

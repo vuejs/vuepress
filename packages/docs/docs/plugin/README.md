@@ -341,6 +341,21 @@ module.exports = (options, ctx) => {
 }
 ```
 
+### generated
+
+- Type: `Function`
+- Default: undefined
+
+Called when a (production) build finishes, with an array of generated page HTML paths.
+
+``` js
+module.exports = {
+  generated (pagePaths) {
+    // ...
+  }
+}
+```
+
 ### extendMarkdown
 
 - Type: `Function`
