@@ -22,7 +22,7 @@
     "diacritics": "^1.3.0",
     "markdown-it": "^8.4.1",
     "markdown-it-anchor": "^5.0.2",
-    "markdown-it-chain": "^1.2.0",
+    "markdown-it-chain": "^1.2.1",
     "markdown-it-container": "^2.0.0",
     "markdown-it-emoji": "^1.4.0",
     "markdown-it-table-of-contents": "^0.4.0",
