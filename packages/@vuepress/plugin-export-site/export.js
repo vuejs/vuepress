@@ -2,7 +2,8 @@ const puppeteer = require('puppeteer')
 const PDFMerge = require('easy-pdf-merge')
 const { path, fs, logger } = require('@vuepress/shared-utils')
 
-module.exports = async ({ extension, sourceDir, pages, dest }) => {
+module.exports = async ({ extension, sourceDir, pages, dest, enabled }) => {
+  if (!enabled) return
   if (extension === 'pdf') {
     await exportPDF({ sourceDir, pages, dest })
   } else {
