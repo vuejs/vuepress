@@ -8,6 +8,7 @@
 
 <style lang="stylus">
 .sidebar-button
+  cursor pointer
   display none
   width 1.25rem
   height 1.25rem
