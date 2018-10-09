@@ -15,7 +15,8 @@
     "lint": "eslint --fix packages/**/*.js packages/**/*.vue packages/**/bin/*",
     "release": "yarn --pure-lockfile && node scripts/release.js",
     "changelog": "node scripts/genChangelog.js run",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "debug":"lerna exec --scope docs -- yarn debug"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
