@@ -29,6 +29,8 @@ So it's time to reorganize your theme, an agreed theme directory structure is as
 
 ::: vue
 theme
+├── `global-components` _(**Optional**)_
+│   └── xxx.vue
 ├── `components` _(**Optional**)_
 │   └── xxx.vue
 ├── `layouts`
@@ -45,7 +47,8 @@ theme
 └── package.json
 :::
 
-- `theme/components`: Theme components are not automatically registered as global components. You can use [@vuepress/plugin-register-components](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-register-components) register them as global components.
+- `theme/global-components`: Components under this directory will be automatically registered as global components. For details, please refer to [@vuepress/plugin-register-components](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-register-components).
+- `theme/components`: Your components.
 - `theme/layouts`: Layout components of the theme, where `Layout.vue` is required.
 - `theme/styles`: Global style and palette. 
 - `theme/templates`: Modify default template.
