@@ -122,7 +122,8 @@ module.exports = class AppContext {
       .use('@vuepress/last-updated', shouldUseLastUpdated)
       .use('@vuepress/register-components', {
         componentsDir: [
-          path.resolve(this.sourceDir, '.vuepress/components')
+          path.resolve(this.sourceDir, '.vuepress/components'),
+          path.resolve(this.themePath, 'global-components')
         ]
       })
   }
