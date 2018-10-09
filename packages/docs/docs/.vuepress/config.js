@@ -66,7 +66,10 @@ module.exports = {
     },
     '@vuepress/plugin-medium-zoom': true,
     '@vuepress/notification': true,
-    'flowchart': true
+    'flowchart': true,
+    '@vuepress/export-site': {
+      extension: 'pdf'
+    }
   },
   clientRootMixin: path.resolve(__dirname, 'mixin.js')
 }

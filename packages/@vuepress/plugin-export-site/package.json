@@ -1,0 +1,29 @@
+{
+  "name": "@vuepress/plugin-export-site",
+  "version": "1.0.0-alpha.8",
+  "description": "export-site plugin for vuepress",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuejs/vuepress.git"
+  },
+  "dependencies": {
+    "easy-pdf-merge": "^0.1.3",
+    "puppeteer": "^1.7.0"
+  },
+  "keywords": [
+    "documentation",
+    "vue",
+    "vuepress",
+    "generator"
+  ],
+  "author": "LinFeng1997 <ynublow@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vuejs/vuepress/issues"
+  },
+  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/plugin-export-site#readme"
+}
