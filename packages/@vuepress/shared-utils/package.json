@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/shared-utils",
-  "version": "1.0.0-alpha.8",
+  "version": "1.0.0-alpha.9",
   "description": "shared-utils for vuepress",
   "main": "index.js",
   "publishConfig": {

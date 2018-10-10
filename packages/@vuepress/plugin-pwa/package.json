@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-pwa",
-  "version": "1.0.0-alpha.8",
+  "version": "1.0.0-alpha.9",
   "description": "pwa plugin for vuepress",
   "main": "index.js",
   "publishConfig": {
@@ -17,7 +17,7 @@
     "generator"
   ],
   "dependencies": {
-    "@vuepress/shared-utils": "^1.0.0-alpha.8",
+    "@vuepress/shared-utils": "^1.0.0-alpha.9",
     "register-service-worker": "^1.5.2",
     "workbox-build": "^3.1.0"
   },
