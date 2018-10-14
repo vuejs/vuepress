@@ -62,11 +62,11 @@ module.exports = async function loadTheme (ctx) {
 
   try {
     themeEntryFile = pluginAPI.normalizePlugin(themePath, ctx.themeConfig)
-    themeEntryFile.name = '@vuepress/internal-theme-entry-file'
-    themeEntryFile.shortcut = null
   } catch (error) {
     themeEntryFile = {}
   }
+  themeEntryFile.name = '@vuepress/internal-theme-entry-file'
+  themeEntryFile.shortcut = null
 
   // handle theme api
   const layoutDirs = [
