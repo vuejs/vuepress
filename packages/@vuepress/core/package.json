@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/core",
-  "version": "1.0.0-alpha.10",
+  "version": "1.0.0-alpha.11",
   "description": "Minimalistic doc generator with Vue component based layout system",
   "main": "lib/index.js",
   "repository": {
@@ -30,11 +30,11 @@
   "dependencies": {
     "@babel/core": "7.0.0-beta.47",
     "@vue/babel-preset-app": "3.0.0-beta.11",
-    "@vuepress/markdown": "^1.0.0-alpha.10",
-    "@vuepress/markdown-loader": "^1.0.0-alpha.10",
-    "@vuepress/plugin-last-updated": "^1.0.0-alpha.10",
-    "@vuepress/plugin-register-components": "^1.0.0-alpha.10",
-    "@vuepress/shared-utils": "^1.0.0-alpha.10",
+    "@vuepress/markdown": "^1.0.0-alpha.11",
+    "@vuepress/markdown-loader": "^1.0.0-alpha.11",
+    "@vuepress/plugin-last-updated": "^1.0.0-alpha.11",
+    "@vuepress/plugin-register-components": "^1.0.0-alpha.11",
+    "@vuepress/shared-utils": "^1.0.0-alpha.11",
     "autoprefixer": "^8.2.0",
     "babel-loader": "8.0.0-beta.3",
     "cache-loader": "^1.2.2",
