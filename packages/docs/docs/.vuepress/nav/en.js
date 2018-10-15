@@ -8,71 +8,84 @@ module.exports = [
     link: '/config/'
   },
   {
-    text: 'Advanced',
+    text: 'Plugin',
     items: [
       {
-        text: 'Plugin',
-        items: [
-          {
-            text: 'Write a plugin',
-            link: '/plugin/#writing-a-plugin'
-          },
-          {
-            text: 'Using a plugin',
-            link: '/plugin/#using-a-plugin'
-          },
-          {
-            text: 'Options',
-            link: '/plugin/#options'
-          },
-          {
-            text: 'Official Plugins',
-            link: '/plugin/official.html'
-          }
-        ]
+        text: 'Write a plugin',
+        link: '/plugin/#writing-a-plugin'
       },
       {
-        text: 'Theme',
+        text: 'Using a plugin',
+        link: '/plugin/#using-a-plugin'
+      },
+      {
+        text: 'Options',
+        link: '/plugin/#options'
+      },
+      {
+        text: 'Official Plugins',
+        link: '/plugin/official.html'
+      }
+    ]
+  },
+  {
+    text: 'Theme',
+    items: [
+      {
+        text: 'Write a theme',
+        link: '/theme/#writing-a-theme'
+      },
+      {
+        text: 'Using a theme',
+        link: '/theme/#using-a-theme'
+      },
+      {
+        text: 'Options',
+        link: '/theme/#options'
+      },
+      {
+        text: 'Default Theme Config',
+        link: '/theme/default-theme-config.html'
+      }
+    ]
+  },
+  {
+    text: 'Learn More',
+    items: [
+      {
+        text: 'Contributing Guide',
         items: [
           {
-            text: 'Write a theme',
-            link: '/theme/#writing-a-theme'
+            text: 'Global Computed',
+            link: '/miscellaneous/global-computed.html'
           },
           {
-            text: 'Using a theme',
-            link: '/theme/#using-a-theme'
+            text: 'Design Concepts',
+            link: '/miscellaneous/design-concepts.html'
           },
           {
-            text: 'Options',
-            link: '/theme/#options'
+            text: 'FAQ',
+            link: '/faq/',
           },
           {
-            text: 'Default Theme Config',
-            link: '/theme/default-theme-config.html'
-          }
+            text: 'Glossary',
+            link: '/miscellaneous/glossary.html'
+          },
         ]
       },
       {
         text: 'Miscellaneous',
         items: [
           {
-            text: 'Design Concepts',
-            link: '/miscellaneous/design-concepts.html'
-          },
-          {
             text: 'Migrate from 0.x.x',
             link: '/miscellaneous/migration-guide.html'
+          },
+          {
+            text: 'Changelog',
+            link: 'https://github.com/vuejs/vuepress/blob/master/CHANGELOG.md'
           }
         ]
-      },
-    ],
-  },
-  {
-    text: 'FAQ',
-    link: '/faq/',
-  },
-  {
-    text: 'Changelog',
-    link: 'https://github.com/vuejs/vuepress/blob/master/CHANGELOG.md'
+      }
+    ]
   }
 ]
