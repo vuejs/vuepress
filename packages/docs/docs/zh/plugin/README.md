@@ -10,10 +10,10 @@ sidebar: auto
 
 Plugins usually add global-level functionality to VuePress. There is no strictly defined scope for a plugin - there are typically several types of plugins:
 
-1. Extend the data generated at compile time. e.g. [@vuepress/plugin-last-updated](https://github.com/vuejs/vuepress/tree/next/packages/@vuepress/plugin-last-updated).
-2. Generate extra files before or after compilation. e.g. [@vuepress/plugin-pwa](https://github.com/vuejs/vuepress/tree/next/packages/%40vuepress/plugin-pwa)
-3. Add extra pages. e.g. [@vuepress/plugin-i18n-ui](https://github.com/vuejs/vuepress/tree/next/packages/@vuepress/plugin-i18n-ui)
-4. Inject global UI. e.g. [@vuepress/plugin-back-to-top](https://github.com/vuejs/vuepress/tree/next/packages/%40vuepress/plugin-back-to-top).
+1. Extend the data generated at compile time. e.g. [@vuepress/plugin-last-updated](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-last-updated).
+2. Generate extra files before or after compilation. e.g. [@vuepress/plugin-pwa](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-pwa)
+3. Add extra pages. e.g. [@vuepress/plugin-i18n-ui](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-i18n-ui)
+4. Inject global UI. e.g. [@vuepress/plugin-back-to-top](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-back-to-top).
 
 A plugin should export a `plain object`(`#1`). If the plugin needs to take options, it can be a function that exports a plain object(`#2`). The function will be called with the plugin's options as the first argument, along with [context](#plugin-context) which provides some compile-time metadata.
 
@@ -44,7 +44,7 @@ You can use plugins by doing some configuration at `.vuepress/config.js`:
 ``` js
 module.exports = {
   plugins: [
-    require('./my-plugin.js') 
+    require('./my-plugin.js')
   ]
 }
 ```
@@ -123,7 +123,7 @@ VuePress also provides a simpler way to use plugins from a dependency:
 ``` js
 module.exports = {
   plugins: {
-    'xxx': { /* options */ }    
+    'xxx': { /* options */ }
   }
 }
 ```
@@ -135,7 +135,7 @@ The plugin can be disabled when `false` is explicitly passed as option.
 
 ``` js
 module.exports = {
-  plugins: [ 
+  plugins: [
     [ 'xxx', false ] // disabled.
   ]
 }
@@ -160,11 +160,12 @@ module.exports = {
 - Type: `string`
 - Default: undefined
 
-The name of the plugin. 
+The name of the plugin.
 
 Internally, vuepress will use the plugin's package name as the plugin name. When your plugin is a local plugin (i.e. using a pure plugin function directly), please be sure to configure this option, that is good for debug tracking.
 
 ```js
+// .vuepress/config.js
 module.exports = {
   plugins: [
     [
@@ -173,6 +174,24 @@ module.exports = {
         // ... the rest of options
       })
     ]
+  ]
+}
+```
+
+### plugins
+
+- Type: `array`
+- Default: `undefined`
+
+A plug-in can contain multiple plugins like a preset.
+
+
+```js
+// your plugin
+module.exports = {
+  plugins: [
+    'tag',
+    'category'
   ]
 }
 ```
@@ -208,9 +227,9 @@ module.exports = {
 ```
 
 ::: tip
-Since VuePress is a Vue-SSR based application, there will be two webpack configurations, `isServer` is used to determine whether the current webpack config is applied to the server or client. 
+Since VuePress is a Vue-SSR based application, there will be two webpack configurations, `isServer` is used to determine whether the current webpack config is applied to the server or client.
 
-**Also see:** 
+**Also see:**
 
 - [Vue SSR > Build Configuration](https://ssr.vuejs.org/guide/build-config.html)
 :::
@@ -230,7 +249,7 @@ module.exports = {
         SW_BASE_URL: JSON.stringify('/')
       })
     ])
-  }  
+  }
 }
 ```
 
@@ -270,7 +289,7 @@ We can set aliases via [chainWebpack](chainwebpack):
 module.exports = (options, ctx) => ({
   chainWebpack (config) {
     config.resolve.alias.set('@theme', ctx.themePath)
-  }  
+  }
 })
 ```
 
@@ -306,7 +325,7 @@ const path = require('path')
 
 module.exports = (options, ctx) => {
   const imagesAssetsPath = path.resolve(ctx.sourceDir, '.vuepress/images')
-  
+
   return {
       // For development
       enhanceDevServer (app) {
@@ -357,25 +376,25 @@ module.exports = {
         .link(true)
         .breaks(true)
 
-    // Modify the arguments of internal plugin. 
+    // Modify the arguments of internal plugin.
     config
       .plugin('anchor')
         .tap(([options]) => [
           Object.assign(options, { permalinkSymbol: '#' })
         ])
-        
+
     // Add extra markdown-it plugin
     config
       .plugin('sup')
         .add(require('markdown-it-sup'))
-      
-    // Remove internal plugin  
+
+    // Remove internal plugin
     config.plugins.delete('snippet')
   }
 }
 ```
 
-**Also see:** 
+**Also see:**
 
 - [Internal plugins in VuePress](https://github.com/vuejs/vuepress/blob/next/packages/%40vuepress/core/lib/markdown/index.js)
 - [Config plugins](https://github.com/neutrinojs/webpack-chain#config-plugins)
@@ -399,7 +418,7 @@ The file can `export default` a hook function which will work like `.vuepress/en
 
 It's worth mentioning that in order for plugin developers to be able to do more things at compile time, this option also supports dynamic code:
 
-``` js
+```js
 module.exports = (option, context) => {
   return {
     enhanceAppFiles: [{
@@ -417,7 +436,7 @@ module.exports = (option, context) => {
 
 Sometimes, you may want to generate some client modules at compile time.
 
-``` js
+```js
 module.exports = (options, context) => ({
   clientDynamicModules() {
     return {
@@ -434,34 +453,32 @@ Then you can use this module at client side code by:
 import { SOURCE_DIR } from '@dynamic/constans'
 ```
 
-::: tip Q & A
-**Q**: Both `clientDynamicModules` and `enhanceAppFiles` can generate dynamic javascript code during build time, so what is the difference between the two?
-
-**A**: The files generated by `clientDynamicModules` needs to be imported as `@dynamic/xxx` by the consumers themselves. But all the files generated by `enhanceAppFiles` will be loaded automatically when the APP is initialized on the client side.
-:::
-
 ### extendPageData
 
 - Type: `Function`
 - Default: `undefined`
 
-A function that exports a plain object which will be merged into each page's data object. This function will be invoking once for each page at compile time.
+A function used to extend or modify the [$page](../miscellaneous/global-computed.md#page) object. This function will be invoking once for each page at compile time
 
-``` js
+```js
 module.exports = {
-  extendPageData ({
-    _filePath,           // file's absolute path
-    _i18n,               // access the client global mixins at build time, e.g _i18n.$localePath.
-    _content,            // file's raw content string
-    _strippedContent,    // file's content string without frontmatter
-    key,                 // page's unique hash key
-    frontmatter,         // page's frontmatter object
-    regularPath,         // current page's default link (follow the file hierarchy)
-    path,                // current page's permalink
-  }) {
-    return {
-      // ...
-    }
+  extendPageData ($page) {
+    const {
+      _filePath,           // file's absolute path
+      _i18n,               // access the client global mixins at build time, e.g _i18n.$localePath.
+      _content,            // file's raw content string
+      _strippedContent,    // file's content string without frontmatter
+      key,                 // page's unique hash key
+      frontmatter,         // page's frontmatter object
+      regularPath,         // current page's default link (follow the file hierarchy)
+      path,                // current page's permalink
+    } = $page
+   
+    // 1. Add extra files.
+    page.xxx = 'xxx'
+    
+    // 2. Change frontmatter.
+    frontmatter.sidebar = 'auto'
   }
 }
 ```
@@ -474,10 +491,8 @@ e.g.
 
 ``` js
 module.exports = {
-  extendPageData ({ content }) {
-    return {
-      size: (content.length / 1024).toFixed(2) + 'kb'
-    }
+  extendPageData ($page) {
+    $page.size = ($page.content.length / 1024).toFixed(2) + 'kb'
   }
 }
 ```
@@ -533,7 +548,7 @@ Add a page with explicit content:
 ```js
 module.exports = {
   async additionalPages () {
-    const rp = require('request-promise'); 
+    const rp = require('request-promise');
 
     // VuePress doesn't have request library built-in
     // you need to install it yourself.
@@ -593,7 +608,7 @@ Then, VuePress will automatically inject these components behind the theme conta
 
 ## Context
 
-Starting with VuePress 1.x.x, VuePress provides an `AppContext` object that stores all the state of the current app and can be accessed through the plugin API. 
+Starting with VuePress 1.x.x, VuePress provides an `AppContext` object that stores all the state of the current app and can be accessed through the plugin API.
 
 ::: warning Note
 Context of each plugin is a isolated context, they just inherit from the same app context.

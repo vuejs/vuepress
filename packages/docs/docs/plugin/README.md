@@ -456,23 +456,27 @@ import { SOURCE_DIR } from '@dynamic/constans'
 - Type: `Function`
 - Default: `undefined`
 
-A function that exports a plain object which will be merged into each page's data object. This function will be invoking once for each page at compile time.
+A function used to extend or modify the [$page](../miscellaneous/global-computed.md#page) object. This function will be invoking once for each page at compile time
 
 ```js
 module.exports = {
-  extendPageData ({
-    _filePath,           // file's absolute path
-    _i18n,               // access the client global mixins at build time, e.g _i18n.$localePath.
-    _content,            // file's raw content string
-    _strippedContent,    // file's content string without frontmatter
-    key,                 // page's unique hash key
-    frontmatter,         // page's frontmatter object
-    regularPath,         // current page's default link (follow the file hierarchy)
-    path,                // current page's permalink
-  }) {
-    return {
-      // ...
-    }
+  extendPageData ($page) {
+    const {
+      _filePath,           // file's absolute path
+      _i18n,               // access the client global mixins at build time, e.g _i18n.$localePath.
+      _content,            // file's raw content string
+      _strippedContent,    // file's content string without frontmatter
+      key,                 // page's unique hash key
+      frontmatter,         // page's frontmatter object
+      regularPath,         // current page's default link (follow the file hierarchy)
+      path,                // current page's permalink
+    } = $page
+   
+    // 1. Add extra files.
+    page.xxx = 'xxx'
+    
+    // 2. Change frontmatter.
+    frontmatter.sidebar = 'auto'
   }
 }
 ```
@@ -485,10 +489,8 @@ e.g.
 
 ``` js
 module.exports = {
-  extendPageData ({ content }) {
-    return {
-      size: (content.length / 1024).toFixed(2) + 'kb'
-    }
+  extendPageData ($page) {
+    $page.size = ($page.content.length / 1024).toFixed(2) + 'kb'
   }
 }
 ```
