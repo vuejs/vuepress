@@ -29,14 +29,7 @@
       />
     </Sidebar>
 
-    <div
-      class="custom-layout"
-      v-if="$page.frontmatter.layout"
-    >
-      <component :is="$page.frontmatter.layout"/>
-    </div>
-
-    <Home v-else-if="$page.frontmatter.home"/>
+    <Home v-if="$page.frontmatter.home"/>
 
     <Page
       v-else
