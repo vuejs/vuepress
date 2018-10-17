@@ -31,3 +31,4 @@ exports.globby = require('globby')
 exports.hash = require('hash-sum')
 
 exports.fallback = require('./lib/fallback')
+exports.slugify = require('./lib/slugify')

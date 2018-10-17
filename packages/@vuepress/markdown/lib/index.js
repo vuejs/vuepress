@@ -17,8 +17,7 @@ const snippetPlugin = require('./snippet')
 const emojiPlugin = require('markdown-it-emoji')
 const anchorPlugin = require('markdown-it-anchor')
 const tocPlugin = require('markdown-it-table-of-contents')
-const _slugify = require('./slugify')
-const { parseHeaders } = require('@vuepress/shared-utils')
+const { parseHeaders, slugify: _slugify } = require('@vuepress/shared-utils')
 
 /**
  * Create markdown by config.
