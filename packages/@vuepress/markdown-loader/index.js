@@ -50,7 +50,7 @@ module.exports = function (src) {
     const cachedData = devCache.get(file)
     if (cachedData && (
       cachedData.inferredTitle !== inferredTitle ||
-      JSON.stringify(cachedData.frontmatter) !== JSON.stringify(frontmatter) ||
+      JSON.stringify(cachedData.frontmatterData) !== JSON.stringify(frontmatter.data) ||
       headersChanged(cachedData.headers, headers)
     )) {
       // frontmatter changed... need to do a full reload
@@ -59,7 +59,7 @@ module.exports = function (src) {
 
     devCache.set(file, {
       headers,
-      frontmatter,
+      frontmatterData: frontmatter.data,
       inferredTitle
     })
   }
