@@ -1,6 +1,6 @@
 {
   "name": "vuepress",
-  "version": "1.0.0-alpha.12",
+  "version": "1.0.0-alpha.13",
   "description": "Minimalistic doc generator with Vue component based layout system",
   "main": "vuepress.js",
   "repository": {
@@ -28,9 +28,9 @@
   },
   "homepage": "https://github.com/vuejs/vuepress#readme",
   "dependencies": {
-    "@vuepress/cli": "^1.0.0-alpha.12",
-    "@vuepress/core": "^1.0.0-alpha.12",
-    "@vuepress/theme-default": "^1.0.0-alpha.12"
+    "@vuepress/cli": "^1.0.0-alpha.13",
+    "@vuepress/core": "^1.0.0-alpha.13",
+    "@vuepress/theme-default": "^1.0.0-alpha.13"
   },
   "engines": {
     "node": ">=8"
