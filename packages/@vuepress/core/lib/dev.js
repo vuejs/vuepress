@@ -23,7 +23,8 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
   const options = await prepare(sourceDir, cliOptions, false /* isProd */)
 
   // setup watchers to update options and dynamically generated files
-  const update = () => {
+  const update = (reason) => {
+    logger.debug(`Re-prepare due to ${chalk.cyan(reason)}`)
     options.pluginAPI.options.updated.syncApply()
     prepare(sourceDir, cliOptions, false /* isProd */).catch(err => {
       console.error(logger.error(chalk.red(err.stack), false))
@@ -39,10 +40,10 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
     ignored: ['.vuepress/**/*.md', 'node_modules'],
     ignoreInitial: true
   })
-  pagesWatcher.on('add', update)
-  pagesWatcher.on('unlink', update)
-  pagesWatcher.on('addDir', update)
-  pagesWatcher.on('unlinkDir', update)
+  pagesWatcher.on('add', () => update('add page'))
+  pagesWatcher.on('unlink', () => update('unlink page'))
+  pagesWatcher.on('addDir', () => update('addDir'))
+  pagesWatcher.on('unlinkDir', () => update('unlinkDir'))
 
   // watch config file
   const configWatcher = chokidar.watch([
@@ -53,10 +54,10 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
     cwd: sourceDir,
     ignoreInitial: true
   })
-  configWatcher.on('change', update)
+  configWatcher.on('change', () => update('config change'))
 
   // also listen for frontmatter changes from markdown files
-  frontmatterEmitter.on('update', update)
+  frontmatterEmitter.on('update', () => update('frontmatter or headers change'))
 
   // resolve webpack config
   let config = createClientConfig(options)
