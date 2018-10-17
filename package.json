@@ -3,7 +3,8 @@
   "workspaces": [
     "packages/@vuepress/*",
     "packages/vuepress",
-    "packages/docs"
+    "packages/docs",
+    "packages/temp"
   ],
   "description": "Minimalistic doc generator with Vue component based layout system",
   "scripts": {
@@ -12,6 +13,8 @@
     "build": "yarn workspace docs build",
     "dev:blog-example": "yarn workspace blog-example dev",
     "build:blog-example": "yarn workspace blog-example build",
+    "dev:temp": "yarn workspace temp dev",
+    "build:temp": "yarn workspace temp build",
     "lint": "eslint --fix packages/**/*.js packages/**/*.vue packages/**/bin/*",
     "release": "yarn --pure-lockfile && node scripts/release.js",
     "changelog": "node scripts/genChangelog.js run",
