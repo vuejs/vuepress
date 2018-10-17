@@ -106,7 +106,7 @@ module.exports = (options, ctx) => {
           tags.forEach(tag => handleTag(tag, key))
         }
         if (isString(category)) {
-          handleCategory(categories, key)
+          handleCategory(category, key)
         }
         if (Array.isArray(categories)) {
           categories.forEach(category => handleCategory(category, key))
