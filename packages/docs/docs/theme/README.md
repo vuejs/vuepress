@@ -28,7 +28,7 @@ Just one `Layout.vue` might not be enough, and you might also want to define mor
 So it's time to reorganize your theme, an agreed theme directory structure is as follows:
 
 ::: vue
-theme
+themePath
 ├── `global-components` _(**Optional**)_
 │   └── xxx.vue
 ├── `components` _(**Optional**)_
@@ -42,7 +42,7 @@ theme
 ├── `templates` _(**Optional**)_
 │   ├── dev.html
 │   └── ssr.html
-├── `index.js` _(**Optional**)_
+├── `index.js` _(**Only required when you publish it as an npm package**)_
 ├── `enhanceApp.js` _(**Optional**)_
 └── package.json
 :::
@@ -56,7 +56,17 @@ theme
 - `theme/enhanceApp.js`: Theme level enhancements.
 
 ::: warning Note
-Considering backward compatibility, Vue components located at theme root directory will also be automatically registered as layout components. But the recommended is placing them under `layouts` directory, which looks more clearer.
+1. Considering backward compatibility, Vue components located at [themePath](../miscellaneous/glossary.md#theme-side) will also be automatically registered as layout components. But the recommended is placing them under `themePath/layouts` directory, which looks more clearer.
+2. When you want to publish your theme as an npm package, make sure the package has `index.js`, and set `"main"` field at `package.json` to `index.js` so that VuePress can resolve and get the correct [themePath](../miscellaneous/glossary.md#theme-side).
+
+```json
+{
+  ...
+  "main": "index.js"
+  ...
+}
+```
+
 :::
 
 ### Layout Component

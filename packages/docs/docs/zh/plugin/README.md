@@ -4,7 +4,7 @@ sidebar: auto
 
 # Plugins
 
-> To be translated soon.
+> Translation are welcome!
 
 ## Writing a Plugin
 
