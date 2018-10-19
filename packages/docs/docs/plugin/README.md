@@ -181,7 +181,7 @@ module.exports = {
 - Type: `array`
 - Default: `undefined`
 
-A plug-in can contain multiple plugins like a preset.
+A plugin can contain multiple plugins like a preset.
 
 
 ```js
@@ -472,7 +472,7 @@ module.exports = {
       path,                // current page's permalink
     } = $page
    
-    // 1. Add extra files.
+    // 1. Add extra fields.
     page.xxx = 'xxx'
     
     // 2. Change frontmatter.
