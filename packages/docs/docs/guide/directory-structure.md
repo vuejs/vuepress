@@ -44,6 +44,10 @@ Please note the capitalization of the directory name.
 - `docs/.vuepress/config.js`: Entry file of configuration, can also be `yml` or `toml`.
 - `docs/.vuepress/enhanceApp.js`: App level enhancement.
 
+::: warning Note
+When customizing `templates/ssr.html`, or `templates/dev.html`, it is best to modify it on the basis of the [default template files](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/core/lib/app/index.dev.html), otherwise it may cause a build failure.
+:::
+
 ## Default Page Routing
 
 For the above directory structure, the default page routing paths are as follows:
