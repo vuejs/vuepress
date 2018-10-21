@@ -46,7 +46,7 @@ module.exports = async function loadTheme (ctx) {
   let themeName
   let themeShortcut
 
-  if (useLocalTheme) {
+  if (useAbsolutePath) {
     themePath = theme
     logger.tip(`\nApply theme located at ${chalk.gray(themePath)}...`)
   } else if (useLocalTheme) {
