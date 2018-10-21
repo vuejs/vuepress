@@ -33,9 +33,11 @@ module.exports = async function loadTheme (ctx) {
   const theme = siteConfig.theme || cliOptions.theme
   const themeResolver = getThemeResolver()
 
+  const useAbsolutePath = fs.existsSync(theme)
+
   const localThemePath = path.resolve(vuepressDir, 'theme')
   const useLocalTheme =
-    !fs.existsSync(theme) &&
+    !useAbsolutePath &&
     fs.existsSync(localThemePath) &&
     (fs.readdirSync(localThemePath)).length > 0
 
@@ -45,6 +47,9 @@ module.exports = async function loadTheme (ctx) {
   let themeShortcut
 
   if (useLocalTheme) {
+    themePath = theme
+    logger.tip(`\nApply theme located at ${chalk.gray(themePath)}...`)
+  } else if (useLocalTheme) {
     themePath = localThemePath
     logger.tip(`\nApply theme located at ${chalk.gray(themePath)}...`)
   } else if (isString(theme)) {
