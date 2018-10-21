@@ -16,23 +16,21 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
   const { normalizeHeadTag, applyUserWebpackConfig } = require('./util/index')
 
   logger.wait('\nExtracting site metadata...')
-  const options = await prepare(sourceDir, cliOptions, true /* isProd */)
-  if (cliOptions.outDir) {
-    options.outDir = cliOptions.outDir
-  }
+  const ctx = await prepare(sourceDir, cliOptions, true /* isProd */)
 
-  const { outDir } = options
-  if (process.cwd() === outDir) {
+  const { outDir, cwd } = ctx
+  if (cwd === outDir) {
     return console.error(logger.error(chalk.red('Unexpected option: outDir cannot be set to the current working directory.\n'), false))
   }
-  await fs.remove(outDir)
-  logger.debug('Dist directory: ' + chalk.gray(path.resolve(process.cwd(), outDir)))
 
-  let clientConfig = createClientConfig(options, cliOptions).toConfig()
-  let serverConfig = createServerConfig(options, cliOptions).toConfig()
+  await fs.remove(outDir)
+  logger.debug('Dist directory: ' + chalk.gray(outDir))
+
+  let clientConfig = createClientConfig(ctx, cliOptions).toConfig()
+  let serverConfig = createServerConfig(ctx, cliOptions).toConfig()
 
   // apply user config...
-  const userConfig = options.siteConfig.configureWebpack
+  const userConfig = ctx.siteConfig.configureWebpack
   if (userConfig) {
     clientConfig = applyUserWebpackConfig(userConfig, clientConfig, false)
     serverConfig = applyUserWebpackConfig(userConfig, serverConfig, true)
@@ -57,33 +55,33 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
     clientManifest,
     runInNewContext: false,
     inject: false,
-    shouldPrefetch: options.siteConfig.shouldPrefetch || (() => true),
-    template: await fs.readFile(options.ssrTemplate, 'utf-8')
+    shouldPrefetch: ctx.siteConfig.shouldPrefetch || (() => true),
+    template: await fs.readFile(ctx.ssrTemplate, 'utf-8')
   })
 
   // pre-render head tags from user config
-  const userHeadTags = (options.siteConfig.head || [])
+  const userHeadTags = (ctx.siteConfig.head || [])
     .map(renderHeadTag)
     .join('\n  ')
 
   // render pages
   logger.wait('Rendering static HTML...')
-  for (const page of options.pages) {
+  for (const page of ctx.pages) {
     await renderPage(page)
   }
 
   // if the user does not have a custom 404.md, generate the theme's default
-  if (!options.pages.some(p => p.path === '/404.html')) {
+  if (!ctx.pages.some(p => p.path === '/404.html')) {
     await renderPage({ path: '/404.html' })
   }
 
   readline.clearLine(process.stdout, 0)
   readline.cursorTo(process.stdout, 0)
 
-  await options.pluginAPI.options.generated.apply()
+  await ctx.pluginAPI.options.generated.apply()
 
   // DONE.
-  const relativeDir = path.relative(process.cwd(), outDir)
+  const relativeDir = path.relative(cwd, outDir)
   logger.success(`\n${chalk.green('Success!')} Generated static files in ${chalk.cyan(relativeDir)}.\n`)
 
   // --- helpers ---

@@ -20,12 +20,12 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
   const { frontmatterEmitter } = require('@vuepress/markdown-loader')
 
   logger.wait('\nExtracting site metadata...')
-  const options = await prepare(sourceDir, cliOptions, false /* isProd */)
+  const ctx = await prepare(sourceDir, cliOptions, false /* isProd */)
 
   // setup watchers to update options and dynamically generated files
   const update = (reason) => {
     logger.debug(`Re-prepare due to ${chalk.cyan(reason)}`)
-    options.pluginAPI.options.updated.syncApply()
+    ctx.pluginAPI.options.updated.syncApply()
     prepare(sourceDir, cliOptions, false /* isProd */).catch(err => {
       console.error(logger.error(chalk.red(err.stack), false))
     })
@@ -60,35 +60,35 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
   frontmatterEmitter.on('update', () => update('frontmatter or headers change'))
 
   // resolve webpack config
-  let config = createClientConfig(options)
+  let config = createClientConfig(ctx)
 
   config
     .plugin('html')
     // using a fork of html-webpack-plugin to avoid it requiring webpack
     // internals from an incompatible version.
     .use(require('vuepress-html-webpack-plugin'), [{
-      template: options.devTemplate
+      template: ctx.devTemplate
     }])
 
   config
     .plugin('site-data')
     .use(HeadPlugin, [{
-      tags: options.siteConfig.head || []
+      tags: ctx.siteConfig.head || []
     }])
 
-  const port = await resolvePort(cliOptions.port || options.siteConfig.port)
-  const { host, displayHost } = await resolveHost(cliOptions.host || options.siteConfig.host)
+  const port = await resolvePort(cliOptions.port || ctx.siteConfig.port)
+  const { host, displayHost } = await resolveHost(cliOptions.host || ctx.siteConfig.host)
 
   config
   .plugin('vuepress-log')
   .use(DevLogPlugin, [{
     port,
     displayHost,
-    publicPath: options.base
+    publicPath: ctx.base
   }])
 
   config = config.toConfig()
-  const userConfig = options.siteConfig.configureWebpack
+  const userConfig = ctx.siteConfig.configureWebpack
   if (userConfig) {
     config = applyUserWebpackConfig(userConfig, config, false /* isServer */)
   }
@@ -111,8 +111,7 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
     port,
     add: app => {
       // apply plugin options to extend dev server.
-      const { pluginAPI } = options
-      pluginAPI.options.enhanceDevServer.syncApply(app)
+      ctx.pluginAPI.options.enhanceDevServer.syncApply(app)
 
       const userPublic = path.resolve(sourceDir, '.vuepress/public')
 
@@ -121,7 +120,7 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
 
       // respect base when serving static files...
       if (fs.existsSync(userPublic)) {
-        app.use(mount(options.base, serveStatic(userPublic)))
+        app.use(mount(ctx.base, serveStatic(userPublic)))
       }
 
       app.use(convert(history({

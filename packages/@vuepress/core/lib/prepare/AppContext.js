@@ -49,10 +49,15 @@ module.exports = class AppContext {
       this.siteConfig = this.siteConfig(this)
     }
 
+    // TODO custom cwd.
+    this.cwd = process.cwd()
+
     this.base = this.siteConfig.base || '/'
     this.themeConfig = this.siteConfig.themeConfig || {}
-    this.outDir = this.siteConfig.dest
-      ? require('path').resolve(process.cwd(), this.siteConfig.dest)
+
+    const rawOutDir = cliOptions.outDir || this.siteConfig.dest
+    this.outDir = rawOutDir
+      ? require('path').resolve(this.cwd, rawOutDir)
       : require('path').resolve(sourceDir, '.vuepress/dist')
 
     this.pluginAPI = new PluginAPI(this)
