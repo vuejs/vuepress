@@ -2,7 +2,7 @@
   <div class="page">
     <slot name="top"/>
 
-    <Content :custom="false"/>
+    <Content/>
 
     <div class="page-edit">
       <div

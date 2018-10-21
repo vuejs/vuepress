@@ -38,7 +38,7 @@
       </div>
     </div>
 
-    <Content custom/>
+    <Content class="custom"/>
 
     <div
       class="footer"

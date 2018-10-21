@@ -5,10 +5,6 @@ export default {
   functional: true,
 
   props: {
-    custom: {
-      type: Boolean,
-      default: true
-    },
     pageKey: String,
     slot: String
   },
@@ -24,7 +20,7 @@ export default {
       }
 
       return h(pageKey, {
-        class: [props.custom ? 'custom' : '', data.class, data.staticClass],
+        class: [data.class, data.staticClass],
         style: data.style,
         slot: props.slot || 'default'
       })
