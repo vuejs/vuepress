@@ -18,7 +18,7 @@ exports.ensureLeadingSlash = require('./lib/ensureLeadingSlash')
 exports.ensureEndingSlash = require('./lib/ensureEndingSlash')
 
 exports.getPermalink = require('./lib/getPermalink')
-exports.shortcutPackageResolver = require('./lib/shortcutPackageResolver')
+exports.moduleResolver = require('./lib/moduleResolver')
 exports.inferTitle = require('./lib/inferTitle')
 
 exports.extractHeaders = require('./lib/extractHeaders')
@@ -32,3 +32,4 @@ exports.hash = require('hash-sum')
 
 exports.fallback = require('./lib/fallback')
 exports.slugify = require('./lib/slugify')
+exports.tryChain = require('./lib/tryChain')

@@ -8,6 +8,7 @@ const { logger, chalk, datatypes: { assertTypes }} = require('@vuepress/shared-u
 
 /**
  * flatten your plugin config by passing in name, options and context.
+ *
  * @param {function|object} module
  * @param {string} name
  * @param {string} hortcut
@@ -16,7 +17,7 @@ const { logger, chalk, datatypes: { assertTypes }} = require('@vuepress/shared-u
  */
 
 exports.flattenPlugin = function (
-  { module: config, name, shortcut, isLocal },
+  { entry: config, name, shortcut, fromDep },
   pluginOptions,
   pluginContext,
   self
@@ -45,10 +46,10 @@ exports.flattenPlugin = function (
   }
 
   // respect name in local plugin config
-  name = isLocal && config.name || name
+  name = fromDep && name || config.name
   return Object.assign({}, config, {
     name,
-    shortcut: isLocal ? null : shortcut,
+    shortcut: fromDep ? shortcut : null,
     enabled,
     $$options: pluginOptions /* used for test */
   })
@@ -56,6 +57,7 @@ exports.flattenPlugin = function (
 
 /**
  * Normalize plugins config in `.vuepress/config.js`
+ *
  * @param pluginsConfig
  */
 

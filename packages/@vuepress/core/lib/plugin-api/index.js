@@ -8,7 +8,7 @@ const instantiateOption = require('./override/instantiateOption')
 const { flattenPlugin, normalizePluginsConfig } = require('./util')
 const { PLUGIN_OPTION_MAP } = require('./constants')
 const {
-  shortcutPackageResolver: { resolvePlugin },
+  moduleResolver: { getPluginResolver },
   datatypes: { assertTypes, isPlainObject },
   env: { isDebug },
   logger, chalk
@@ -24,6 +24,7 @@ module.exports = class PluginAPI {
     this._pluginContext = context
     this._pluginQueue = []
     this._initialized = false
+    this._pluginResolver = getPluginResolver()
     this.initializeOptions(PLUGIN_OPTION_MAP)
   }
 
@@ -113,8 +114,8 @@ module.exports = class PluginAPI {
    */
 
   normalizePlugin (pluginRaw, pluginOptions = {}) {
-    let plugin = resolvePlugin(pluginRaw)
-    if (!plugin.module) {
+    let plugin = this._pluginResolver.resolve(pluginRaw)
+    if (!plugin.entry) {
       console.warn(`[vuepress] cannot resolve plugin "${pluginRaw}"`)
       return this
     }

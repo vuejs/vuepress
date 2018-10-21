@@ -6,7 +6,7 @@
 
 const {
   fs, path,
-  shortcutPackageResolver: { resolveTheme },
+  moduleResolver: { getThemeResolver },
   datatypes: { isString },
   logger, chalk
 } = require('@vuepress/shared-utils')
@@ -31,6 +31,7 @@ const {
 module.exports = async function loadTheme (ctx) {
   const { siteConfig, cliOptions, sourceDir, vuepressDir, pluginAPI } = ctx
   const theme = siteConfig.theme || cliOptions.theme
+  const themeResolver = getThemeResolver()
 
   const localThemePath = path.resolve(vuepressDir, 'theme')
   const useLocalTheme =
@@ -47,7 +48,8 @@ module.exports = async function loadTheme (ctx) {
     themePath = localThemePath
     logger.tip(`\nApply theme located at ${chalk.gray(themePath)}...`)
   } else if (isString(theme)) {
-    const { module: modulePath, name, shortcut } = resolveTheme(theme, sourceDir)
+    const { entry: modulePath, name, shortcut } = themeResolver.resolve(theme, sourceDir)
+
     if (modulePath.endsWith('.js') || modulePath.endsWith('.vue')) {
       themePath = path.parse(modulePath).dir
     } else {
