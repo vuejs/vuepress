@@ -13,6 +13,7 @@ const componentPlugin = require('./component')
 const hoistScriptStylePlugin = require('./hoist')
 const convertRouterLinkPlugin = require('./link')
 const containersPlugin = require('./containers')
+const contentSlotsContainersPlugin = require('./contentSlotsContainers')
 const snippetPlugin = require('./snippet')
 const emojiPlugin = require('markdown-it-emoji')
 const anchorPlugin = require('markdown-it-anchor')
@@ -73,6 +74,10 @@ module.exports = ({
 
     .plugin('containers')
       .use(containersPlugin)
+      .end()
+
+    .plugin('content-slots-containers')
+      .use(contentSlotsContainersPlugin)
       .end()
 
     .plugin('emoji')
