@@ -124,7 +124,7 @@ module.exports = class AppContext {
       .use(require('../internal-plugins/pageComponents'))
       .use(require('../internal-plugins/transformModule'))
       .use(require('../internal-plugins/dataBlock'))
-      .use('@vuepress/last-updated', shouldUseLastUpdated)
+      .use('@vuepress/last-updated', !!shouldUseLastUpdated)
       .use('@vuepress/register-components', {
         componentsDir: [
           path.resolve(this.sourceDir, '.vuepress/components'),
