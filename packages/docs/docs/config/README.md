@@ -159,7 +159,11 @@ VuePress provides a convenient way to add extra styles. you can create an `.vuep
 - Type: `string`
 - Default: `undefined`
 
-Specify this to use a custom theme. With the value of `"foo"`, VuePress will attempt to load the theme component at `node_modules/vuepress-theme-foo/Layout.vue`.
+Specify this to use a custom theme.
+
+**Also see:**
+
+- [Using a theme](../theme/README.md#using-a-theme).
 
 ### themeConfig
 
