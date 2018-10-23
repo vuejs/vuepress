@@ -185,6 +185,7 @@ Sometimes you may need to apply some JavaScript or CSS only to the current page.
 
 <script>
 export default {
+  props: ['slot-key'],
   mounted () {
     document.querySelector(`.${this.$style.example}`)
       .textContent = 'This is rendered by inline script and styled by inline CSS'
