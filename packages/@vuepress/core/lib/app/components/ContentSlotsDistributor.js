@@ -5,7 +5,6 @@ export default {
     required: true
   },
   render (h, { props, slots }) {
-    console.log(props.slotKey)
     return h('div',
       {
         class: [
