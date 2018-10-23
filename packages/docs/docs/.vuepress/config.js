@@ -42,7 +42,7 @@ module.exports = {
         lastUpdated: 'Last Updated',
         nav: require('./nav/en'),
         sidebar: {
-          '/guide/': genSidebarConfig('Guide')
+          '/guide/': genSidebarConfig('Guide', 'Advanced')
         }
       },
       '/zh/': {
@@ -52,7 +52,7 @@ module.exports = {
         lastUpdated: '上次更新',
         nav: require('./nav/zh'),
         sidebar: {
-          '/zh/guide/': genSidebarConfig('指南')
+          '/zh/guide/': genSidebarConfig('指南', '深入')
         }
       }
     }
@@ -71,22 +71,29 @@ module.exports = {
   clientRootMixin: path.resolve(__dirname, 'mixin.js')
 }
 
-function genSidebarConfig (title) {
+function genSidebarConfig (gruopA, groupB) {
   return [
     {
-      title,
+      title: gruopA,
       collapsable: false,
       children: [
         '',
         'getting-started',
         'directory-structure',
-        'permalinks',
         'basic-config',
         'assets',
         'markdown',
         'using-vue',
         'i18n',
-        'deploy'
+        'deploy',
+      ]
+    },
+    {
+      title: groupB,
+      collapsable: false,
+      children: [
+        'permalinks',
+        'markdown-slot'
       ]
     }
   ]
