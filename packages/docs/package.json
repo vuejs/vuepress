@@ -1,6 +1,6 @@
 {
   "private": true,
-  "version": "1.0.0-alpha.14",
+  "version": "1.0.0-alpha.15",
   "name": "docs",
   "description": "docs of VuePress",
   "scripts": {
@@ -23,12 +23,12 @@
   },
   "homepage": "https://github.com/vuejs/vuepress#readme",
   "devDependencies": {
-    "@vuepress/plugin-back-to-top": "^1.0.0-alpha.14",
-    "@vuepress/plugin-i18n-ui": "^1.0.0-alpha.14",
-    "@vuepress/plugin-medium-zoom": "^1.0.0-alpha.14",
-    "@vuepress/plugin-notification": "^1.0.0-alpha.14",
-    "@vuepress/plugin-pwa": "^1.0.0-alpha.14",
-    "vuepress": "^1.0.0-alpha.14",
+    "@vuepress/plugin-back-to-top": "^1.0.0-alpha.15",
+    "@vuepress/plugin-i18n-ui": "^1.0.0-alpha.15",
+    "@vuepress/plugin-medium-zoom": "^1.0.0-alpha.15",
+    "@vuepress/plugin-notification": "^1.0.0-alpha.15",
+    "@vuepress/plugin-pwa": "^1.0.0-alpha.15",
+    "vuepress": "^1.0.0-alpha.15",
     "vuepress-plugin-flowchart": "^1.4.2"
   }
 }
