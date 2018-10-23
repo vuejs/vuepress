@@ -46,7 +46,10 @@ exports.flattenPlugin = function (
   }
 
   // respect name in local plugin config
-  name = fromDep && name || config.name
+  if (!fromDep && config.name) {
+    name = config.name
+  }
+
   return Object.assign({}, config, {
     name,
     shortcut: fromDep ? shortcut : null,
