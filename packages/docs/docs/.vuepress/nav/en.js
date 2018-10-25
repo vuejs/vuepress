@@ -9,32 +9,7 @@ module.exports = [
   },
   {
     text: 'Plugin',
-    items: [
-      {
-        text: 'Write a plugin',
-        link: '/plugin/#writing-a-plugin'
-      },
-      {
-        text: 'Using a plugin',
-        link: '/plugin/#using-a-plugin'
-      },
-      {
-        text: 'Life Cycle API',
-        link: '/plugin/#life-cycle-api'
-      },
-      {
-        text: 'Option API',
-        link: '/plugin/#option-api'
-      },
-      {
-        text: 'Context API',
-        link: '/plugin/#context-api'
-      },
-      {
-        text: 'Official Plugins',
-        link: '/plugin/official.html'
-      }
-    ]
+    link: '/plugin/'
   },
   {
     text: 'Theme',

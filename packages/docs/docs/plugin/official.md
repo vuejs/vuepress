@@ -1,7 +1,3 @@
----
-sidebar: auto
----
-
 # Official Plugins
 
 ## @vuepress/search

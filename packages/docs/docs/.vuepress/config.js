@@ -42,7 +42,8 @@ module.exports = {
         lastUpdated: 'Last Updated',
         nav: require('./nav/en'),
         sidebar: {
-          '/guide/': genSidebarConfig('Guide', 'Advanced')
+          '/guide/': getGuideSidebar('Guide', 'Advanced'),
+          '/plugin/': getPluginSidebar('Plugin', 'Introduction')
         }
       },
       '/zh/': {
@@ -52,7 +53,8 @@ module.exports = {
         lastUpdated: '上次更新',
         nav: require('./nav/zh'),
         sidebar: {
-          '/zh/guide/': genSidebarConfig('指南', '深入')
+          '/zh/guide/': getGuideSidebar('指南', '深入'),
+          '/zh/plugin/': getPluginSidebar('插件', '介绍')
         }
       }
     }
@@ -71,7 +73,7 @@ module.exports = {
   clientRootMixin: path.resolve(__dirname, 'mixin.js')
 }
 
-function genSidebarConfig (gruopA, groupB) {
+function getGuideSidebar (gruopA, groupB) {
   return [
     {
       title: gruopA,
@@ -96,5 +98,22 @@ function genSidebarConfig (gruopA, groupB) {
         'markdown-slot'
       ]
     }
+  ]
+}
+
+function getPluginSidebar (gruopA, introduction) {
+  return [
+    {
+      title: gruopA,
+      collapsable: false,
+      children: [
+        ['', introduction],
+        'writing-a-plugin',
+        'using-a-plugin',
+        'life-cycle',
+        'option-api',
+        'context-api',
+      ]
+    },
   ]
 }

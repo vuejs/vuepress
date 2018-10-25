@@ -9,32 +9,7 @@ module.exports = [
   },
   {
     text: '插件',
-    items: [
-      {
-        text: '开发插件',
-        link: '/zh/plugin/#writing-a-plugin'
-      },
-      {
-        text: '使用插件',
-        link: '/zh/plugin/#using-a-plugin'
-      },
-      {
-        text: '生命周期',
-        link: '/zh/plugin/#life-cycle-api'
-      },
-      {
-        text: 'Option API',
-        link: '/zh/plugin/#option-api'
-      },
-      {
-        text: 'Context API',
-        link: '/zh/plugin/#context-api'
-      },
-      {
-        text: '官方插件',
-        link: '/zh/plugin/official.html'
-      }
-    ]
+    link: '/zh/plugin/'
   },
   {
     text: '主题',
