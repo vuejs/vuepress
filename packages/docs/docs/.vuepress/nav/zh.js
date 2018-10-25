@@ -13,24 +13,7 @@ module.exports = [
   },
   {
     text: '主题',
-    items: [
-      {
-        text: '主题的开发',
-        link: '/zh/theme/#writing-a-theme'
-      },
-      {
-        text: '主题的使用',
-        link: '/zh/theme/#using-a-theme'
-      },
-      {
-        text: '主题的选项',
-        link: '/zh/theme/#options'
-      },
-      {
-        text: '默认主题',
-        link: '/zh/theme/default-theme-config.html'
-      }
-    ]
+    link: '/zh/theme/'
   },
   {
     text: '了解更多',

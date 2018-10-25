@@ -1,3 +1,7 @@
+---
+seoTitle: Option API | Plugin
+---
+
 # Option API
 
 ## name

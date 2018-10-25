@@ -13,24 +13,7 @@ module.exports = [
   },
   {
     text: 'Theme',
-    items: [
-      {
-        text: 'Write a theme',
-        link: '/theme/#writing-a-theme'
-      },
-      {
-        text: 'Using a theme',
-        link: '/theme/#using-a-theme'
-      },
-      {
-        text: 'Options',
-        link: '/theme/#options'
-      },
-      {
-        text: 'Default Theme Config',
-        link: '/theme/default-theme-config.html'
-      }
-    ]
+    link: '/theme/'
   },
   {
     text: 'Learn More',

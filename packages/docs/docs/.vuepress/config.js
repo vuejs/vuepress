@@ -43,7 +43,8 @@ module.exports = {
         nav: require('./nav/en'),
         sidebar: {
           '/guide/': getGuideSidebar('Guide', 'Advanced'),
-          '/plugin/': getPluginSidebar('Plugin', 'Introduction')
+          '/plugin/': getPluginSidebar('Plugin', 'Introduction'),
+          '/theme/': getThemeSidebar('Theme', 'Introduction'),
         }
       },
       '/zh/': {
@@ -54,7 +55,8 @@ module.exports = {
         nav: require('./nav/zh'),
         sidebar: {
           '/zh/guide/': getGuideSidebar('指南', '深入'),
-          '/zh/plugin/': getPluginSidebar('插件', '介绍')
+          '/zh/plugin/': getPluginSidebar('插件', '介绍'),
+          '/zh/theme/': getThemeSidebar('主题', '介绍')
         }
       }
     }
@@ -101,18 +103,35 @@ function getGuideSidebar (gruopA, groupB) {
   ]
 }
 
-function getPluginSidebar (gruopA, introduction) {
+function getPluginSidebar (gruopA, introductionA) {
   return [
     {
       title: gruopA,
       collapsable: false,
       children: [
-        ['', introduction],
+        ['', introductionA],
         'writing-a-plugin',
         'using-a-plugin',
         'life-cycle',
         'option-api',
         'context-api',
+        'official'
+      ]
+    },
+  ]
+}
+
+function getThemeSidebar (gruopA, introductionA) {
+  return [
+    {
+      title: gruopA,
+      collapsable: false,
+      children: [
+        ['', introductionA],
+        'writing-a-theme',
+        'using-a-theme',
+        'option-api',
+        'default-theme-config'
       ]
     },
   ]
