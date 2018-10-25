@@ -19,7 +19,7 @@ module.exports = {
     [ 
       'register-components', 
       {
-        componentDir: somepath
+        componentsDir: somepath
       }
     ]
   ] 
