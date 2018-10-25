@@ -4,8 +4,6 @@ sidebar: auto
 
 # Plugins
 
-## Writing a Plugin
-
 Plugins usually add global-level functionality to VuePress. There is no strictly defined scope for a plugin - there are typically several types of plugins:
 
 1. Extend the data generated at compile time. e.g. [@vuepress/plugin-last-updated](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-last-updated).
@@ -13,7 +11,9 @@ Plugins usually add global-level functionality to VuePress. There is no strictly
 3. Add extra pages. e.g. [@vuepress/plugin-i18n-ui](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-i18n-ui)
 4. Inject global UI. e.g. [@vuepress/plugin-back-to-top](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-back-to-top).
 
-A plugin should export a `plain object`(`#1`). If the plugin needs to take options, it can be a function that exports a plain object(`#2`). The function will be called with the plugin's options as the first argument, along with [context](#plugin-context) which provides some compile-time metadata.
+## Writing a Plugin
+
+A plugin should export a `plain JavaScript object`(`#1`). If the plugin needs to take options, it can be a function that exports a plain object(`#2`). The function will be called with the plugin's options as the first argument, along with [ctx](#ctx) which provides some compile-time metadata.
 
 ``` js
 // #1
@@ -32,7 +32,7 @@ module.exports = (options, ctx) => {
 ```
 
 ::: tip
-A VuePress plugin module should leverage `CommonJS Module` because VuePress plugins runs on the Node side.
+A VuePress plugin module should be a `CommonJS Module` because VuePress plugins runs on the Node side.
 :::
 
 ## Using a plugin
@@ -49,7 +49,7 @@ module.exports = {
 
 ### Use plugins from a dependency
 
-A plugin can be published on npm in `CommonJS` format as `vuepress-plugin-xxx`. then you can use it:
+A plugin can be published on npm in `CommonJS` format as `vuepress-plugin-xxx`. you can use it:
 
 ``` js
 module.exports = {
@@ -105,7 +105,7 @@ Plugins can have options specified by wrapping the name and an options object in
 module.exports = {
   plugins: [
     [
-      require('./my-plugin.js'),
+      'vuepress-plugin-xxx',
       { /* options */ }
     ]
   ]
@@ -151,7 +151,57 @@ module.exports = {
 
 :::
 
-## Options
+## Life Cycle
+
+### ready
+
+- Type: `AsyncFunction`
+- Scope：`dev|build`
+
+```js
+module.exports = {
+  async ready() {
+    // ...
+  }
+}
+```
+
+::: tip 提示
+
+`ready` 钩子在应用初始化之后，并在某些特定的函数式 API 执行之前执行。这些函数式 API 包括：
+
+- clientDynamicModules
+- enhanceAppFiles
+
+:::
+
+### updated
+
+- Type: `Function`
+- Scope：`dev`
+
+```js
+module.exports = {
+  updated() {
+    // ...
+  }
+}
+```
+
+### generated
+
+- Type: `AsyncFunction`
+- Scope：`build`
+
+```js
+module.exports = {
+  async generated() {
+    // ...
+  }
+}
+```
+
+## API
 
 ### name
 
@@ -183,9 +233,8 @@ module.exports = {
 
 A plugin can contain multiple plugins like a preset.
 
-
 ```js
-// your plugin
+// A plugin
 module.exports = {
   plugins: [
     'tag',
@@ -237,7 +286,7 @@ Since VuePress is a Vue-SSR based application, there will be two webpack configu
 - Type: `Object|Function`
 - Default: undefined
 
-Since using [DefinePlugin](https://webpack.js.org/plugins/define-plugin/) via [chainWebpack](chainwebpack) would be a little complicated:
+Since using [DefinePlugin](https://webpack.js.org/plugins/define-plugin/) via [chainWebpack](#chainwebpack) would be a little complicated:
 
 ```js
 module.exports = {
@@ -281,7 +330,7 @@ module.exports = (options, ctx) => ({
 - Type: `Object|Function`
 - Default: undefined
 
-We can set aliases via [chainWebpack](chainwebpack):
+We can set aliases via [chainWebpack](#chainwebpack):
 
 ```js
 module.exports = (options, ctx) => ({
@@ -417,7 +466,7 @@ The file can `export default` a hook function which will work like `.vuepress/en
 It's worth mentioning that in order for plugin developers to be able to do more things at compile time, this option also supports dynamic code:
 
 ```js
-module.exports = (option, context) => {
+module.exports = (option, ctx) => {
   return {
     enhanceAppFiles: [{
       name: 'dynamic-code',
@@ -456,14 +505,14 @@ import { SOURCE_DIR } from '@dynamic/constans'
 - Type: `Function`
 - Default: `undefined`
 
-A function used to extend or modify the [$page](../miscellaneous/global-computed.md#page) object. This function will be invoking once for each page at compile time
+A function used to extend or modify the [$page](../miscellaneous/global-computed.md#page) object. This function will be invoking once for each page at compile time.
 
 ```js
 module.exports = {
   extendPageData ($page) {
     const {
       _filePath,           // file's absolute path
-      _i18n,               // access the client global mixins at build time, e.g _i18n.$localePath.
+      _computed,           // access the client global computed mixins at build time, e.g _computed.$localePath.
       _content,            // file's raw content string
       _strippedContent,    // file's content string without frontmatter
       key,                 // page's unique hash key
@@ -481,11 +530,11 @@ module.exports = {
 }
 ```
 
-::: warning Note
-These fields starting with an `_` means you can only access them during build time.
+::: warning 注意
+那些以 `_` 开头的字段意味着你只能在编译期访问。
 :::
 
-e.g.
+例子：
 
 ``` js
 module.exports = {
@@ -495,17 +544,17 @@ module.exports = {
 }
 ```
 
-Then you can use this value via `this.$page.size` in any Vue component.
+然后你可以在任意的 Vue 中通过 `this.$page.size` 来访问这个变量。
 
 ### clientRootMixin
 
-- Type: `String`
-- Default: `undefined`
+- 类型: `String`
+- 默认值: `undefined`
 
-A path to the mixin file which allow you to control the life cycle of root component.
+指向 `mixin` 文件的路径，它让你你可以控制根组件的生命周期：
 
 ``` js
-// plugin's entry
+// 插件的入口
 const path = require('path')
 
 module.exports = {
@@ -523,10 +572,10 @@ export default {
 
 ### additionalPages
 
-- Type: `Array|Function`
-- Default: `undefined`
+- 类型: `Array|Function`
+- 默认值: `undefined`
 
-Add a page pointing to a markdown file:
+增加一个指向某个 markdown 文件的页面：
 
 ```js
 const path = require('path')
@@ -541,7 +590,7 @@ module.exports = {
 }
 ```
 
-Add a page with explicit content:
+或增加一个具有明确内容的页面：
 
 ```js
 module.exports = {
@@ -561,7 +610,7 @@ module.exports = {
 }
 ```
 
-Add a pure route:
+或增加一个纯粹的路由：
 
 ```js
 module.exports = {
@@ -578,10 +627,10 @@ module.exports = {
 
 ### globalUIComponents
 
-- Type: `Array|String`
-- Default: `undefined`
+- 类型: `Array|String`
+- 默认值: `undefined`
 
-You might want to inject some global UI fixed somewhere on the page, e.g. `back-to-top`, `popup`. In VuePress, **a global UI is a Vue component**, you can define the component's name(s) in the plugin, e.g.
+你可以想注入某些全局的 UI，并固定在页面中的某处，如  `back-to-top`, `popup`。在 VuePress 中，**一个全局 UI 就是一个 Vue 组件。**你可以直接配置该全局组件的名称，如：
 
 ``` js
 module.exports = {
@@ -592,11 +641,11 @@ module.exports = {
 }
 ```
 
-Then, VuePress will automatically inject these components behind the theme container:
+VuePress 将会自动将这些组件注入到布局组件的隔壁：
 
 ```html
 <div id="app">
-  <div class="theme-container"> ... </div>
+  <div class="theme-container"> ... </div> <!-- Layout Component -->
   <div class="global-ui">
     <Component-1/>
     <Component-2/>
@@ -604,7 +653,7 @@ Then, VuePress will automatically inject these components behind the theme conta
 </div>
 ```
 
-## Context
+## ctx
 
 Starting with VuePress 1.x.x, VuePress provides an `AppContext` object that stores all the state of the current app and can be accessed through the plugin API.
 
@@ -613,48 +662,48 @@ Context of each plugin is a isolated context, they just inherit from the same ap
 :::
 
 ```js
-module.exports = (options, context) => {
+module.exports = (options, ctx) => {
   // ...
 }
 ```
 
-### context.isProd
+### ctx.isProd
 
 - Type: `boolean`
 
 Whether vuepress run in production environment mode.
 
-### context.sourceDir
+### ctx.sourceDir
 
 - Type: `string`
 
 Root directory where the documents are located.
 
-### context.tempPath
+### ctx.tempPath
 
 - Type: `string`
 
 Root directory where the temporary files are located.
 
-### context.outDir
+### ctx.outDir
 
 - Type: `string`
 
 Output path.
 
-### context.themePath
+### ctx.themePath
 
 - Type: `string`
 
 The path of the currently active theme.
 
-### context.base
+### ctx.base
 
 - Type: `string`
 
 See: [base](../config/README.md#base).
 
-### context.writeTemp
+### ctx.writeTemp
 
 - Type: `Function`
 

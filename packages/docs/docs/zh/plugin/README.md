@@ -2,20 +2,18 @@
 sidebar: auto
 ---
 
-# Plugins
+# 插件
 
-> Translation are welcome!
+插件通常会为 VuePress 添加全局功能。插件的范围没有限制——一般有下面几种：
 
-## Writing a Plugin
+1. 拓展在编译期生成的数据，如：[@vuepress/plugin-last-updated](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-last-updated).
+2. 在编译前后生成额外的文件，如：[@vuepress/plugin-pwa](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-pwa)
+3. 增加额外的页面，如：[@vuepress/plugin-i18n-ui](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-i18n-ui)
+4. 注入全局的 UI, 如：[@vuepress/plugin-back-to-top](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-back-to-top).
 
-Plugins usually add global-level functionality to VuePress. There is no strictly defined scope for a plugin - there are typically several types of plugins:
+## 开发插件
 
-1. Extend the data generated at compile time. e.g. [@vuepress/plugin-last-updated](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-last-updated).
-2. Generate extra files before or after compilation. e.g. [@vuepress/plugin-pwa](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-pwa)
-3. Add extra pages. e.g. [@vuepress/plugin-i18n-ui](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-i18n-ui)
-4. Inject global UI. e.g. [@vuepress/plugin-back-to-top](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-back-to-top).
-
-A plugin should export a `plain object`(`#1`). If the plugin needs to take options, it can be a function that exports a plain object(`#2`). The function will be called with the plugin's options as the first argument, along with [context](#plugin-context) which provides some compile-time metadata.
+一个插件应该导出一个普通的 JavaScript 对象（`#1`），如果插件需要接受配置选项，那么它可以是一个返回对象的函数（`#2`），这个函数接受插件的配置选项为第一个参数、包含编译期上下文的 [ctx](#ctx) 对象作为第二个参数。
 
 ``` js
 // #1
@@ -34,12 +32,12 @@ module.exports = (options, ctx) => {
 ```
 
 ::: tip
-A VuePress plugin module should leverage `CommonJS Module` because VuePress plugins runs on the Node side.
+一个 VuePress 插件应该是一个 `CommonJS 模块`，因为 VuePress 插件运行在 Node 端。
 :::
 
-## Using a plugin
+## 使用插件
 
-You can use plugins by doing some configuration at `.vuepress/config.js`:
+你可以通过在 `.vuepress/config.js` 中做一些配置来使用插件：
 
 ``` js
 module.exports = {
@@ -49,9 +47,9 @@ module.exports = {
 }
 ```
 
-### Use plugins from a dependency
+### 使用来自依赖的插件
 
-A plugin can be published on npm in `CommonJS` format as `vuepress-plugin-xxx`. then you can use it:
+一个插件可以在以 `vuepress-plugin-xxx` 的形式发布到 npm，你可以这样使用它：
 
 ``` js
 module.exports = {
@@ -59,9 +57,9 @@ module.exports = {
 }
 ```
 
-### Plugin Shorthand
+### 插件的缩写
 
-If you prefix the plugin with `vuepress-plugin-`, you can use a shorthand to leave out that prefix:
+如果你的插件名以 `vuepress-plugin-` 开头，你可以使用缩写来省略这个前缀：
 
 ``` js
 module.exports = {
@@ -69,7 +67,7 @@ module.exports = {
 }
 ```
 
-Same with:
+和下面等价：
 
 ``` js
 module.exports = {
@@ -77,7 +75,7 @@ module.exports = {
 }
 ```
 
-This also works with [Scoped Packages](https://docs.npmjs.com/misc/scope):
+这也适用于 [Scoped Packages](https://docs.npmjs.com/misc/scope):
 
 ``` js
 module.exports = {
@@ -85,7 +83,7 @@ module.exports = {
 }
 ```
 
-Shorthand:
+等价于:
 
 ``` js
 module.exports = {
@@ -93,32 +91,32 @@ module.exports = {
 }
 ```
 
-::: warning Note
-The plugin whose name starts with `@vuepress/plugin-` is an officially maintained plugin.
+::: warning 注意
+以 `@vuepress/plugin-` 开头的插件是官方维护的插件。
 :::
 
-### Plugin options
+### 插件的选项
 
-#### Babel Style
+#### Babel 式
 
-Plugins can have options specified by wrapping the name and an options object in an array inside your config:
+插件可以通过在配置内的数组中封装名称和选项对象来指定选项：
 
 ``` js
 module.exports = {
   plugins: [
     [
-      require('./my-plugin.js'),
+      'vuepress-plugin-xxx',
       { /* options */ }
     ]
   ]
 }
 ```
 
-Since this style is consistent with [babel's Plugin/Preset Options](https://babeljs.io/docs/en/plugins#plugin-preset-options), we call it `Babel Style`.
+由于这种风格和 [babeld Plugin/Preset Options](https://babeljs.io/docs/en/plugins#plugin-preset-options) 一直，我们称之为"Babel 风格"。
 
-#### Object Style
+#### 对象式
 
-VuePress also provides a simpler way to use plugins from a dependency:
+VuePress 也提供了一种更简单的方式来使用来自依赖的插件：
 
 ``` js
 module.exports = {
@@ -128,10 +126,10 @@ module.exports = {
 }
 ```
 
-::: warning Note
-The plugin can be disabled when `false` is explicitly passed as option.
+::: warning 注意
+可以通过显示地将选项设置成 `false` 来禁用一个插件：
 
-- Babel style
+- Babel 风格
 
 ``` js
 module.exports = {
@@ -141,7 +139,7 @@ module.exports = {
 }
 ```
 
-- Object style
+- 对象风格
 
 ``` js
 module.exports = {
@@ -153,16 +151,66 @@ module.exports = {
 
 :::
 
-## Options
+## 生命周期
+
+### ready
+
+- 类型: `AsyncFunction`
+- 作用域：`dev|build`
+
+```js
+module.exports = {
+  async ready() {
+    // ...
+  }
+}
+```
+
+::: tip 提示
+
+`ready` 钩子在应用初始化之后，并在某些特定的函数式 API 执行之前执行。这些函数式 API 包括：
+
+- clientDynamicModules
+- enhanceAppFiles
+
+:::
+
+### updated
+
+- 类型: `Function`
+- 作用域：`dev`
+
+```js
+module.exports = {
+  updated() {
+    // ...
+  }
+}
+```
+
+### generated
+
+- 类型: `AsyncFunction`
+- 作用域：`build`
+
+```js
+module.exports = {
+  async generated() {
+    // ...
+  }
+}
+```
+
+## API
 
 ### name
 
-- Type: `string`
-- Default: undefined
+- 类型: `string`
+- 默认值: undefined
 
-The name of the plugin.
+插件的名字。
 
-Internally, vuepress will use the plugin's package name as the plugin name. When your plugin is a local plugin (i.e. using a pure plugin function directly), please be sure to configure this option, that is good for debug tracking.
+在内部，VuePress 将会使用插件的包名作为插件的名称。当你你插件是一个本地插件（即直接使用了一个纯函数）时，请确保设定了该选项，这对调试更有利。
 
 ```js
 // .vuepress/config.js
@@ -180,14 +228,13 @@ module.exports = {
 
 ### plugins
 
-- Type: `array`
-- Default: `undefined`
+- 类型: `array`
+- 默认值: undefined
 
-A plugin can contain multiple plugins like a preset.
-
+一个插件可以像 preset 一样包含多个插件。
 
 ```js
-// your plugin
+// 一个插件
 module.exports = {
   plugins: [
     'tag',
@@ -198,10 +245,10 @@ module.exports = {
 
 ### enabled
 
-- Type: `boolean`
-- Default: true
+- 类型: `boolean`
+- 默认值: true'
 
-Configure whether to enable this plugin. e.g. if you want to enable a plugin only in development mode:
+是否激活插件。例子：如果你想让你的插件只在开发环境有效：
 
 ```js
 module.exports = (options, ctx) => {
@@ -213,33 +260,33 @@ module.exports = (options, ctx) => {
 
 ### chainWebpack
 
-- Type: `Function`
-- Default: undefined
+- 类型: `Function`
+- 默认值: undefined
 
-Modify the internal webpack config with [webpack-chain](https://github.com/mozilla-neutrino/webpack-chain).
+使用 [webpack-chain](https://github.com/mozilla-neutrino/webpack-chain) 来修改内部的 webpack 配置：
 
 ```js
 module.exports = {
   chainWebpack (config, isServer) {
-    // config is an instance of ChainableConfig
+    // config 是一个 ChainableConfig 的实例
   }
 }
 ```
 
-::: tip
-Since VuePress is a Vue-SSR based application, there will be two webpack configurations, `isServer` is used to determine whether the current webpack config is applied to the server or client.
+::: tip 提示
+由于 VuePress 是一个基于 Vue-SSR 的应用，这里会有两个 webpack 配置，`isServer` 用于决定当前的 webpack 配置是应用到 server 还是 client。
 
-**Also see:**
+**参考:**
 
-- [Vue SSR > Build Configuration](https://ssr.vuejs.org/guide/build-config.html)
+- [Vue SSR > 构建配置](https://ssr.vuejs.org/zh/guide/build-config.html)
 :::
 
 ### define
 
-- Type: `Object|Function`
-- Default: undefined
+- 类型: `Object|Function`
+- 默认值: undefined
 
-Since using [DefinePlugin](https://webpack.js.org/plugins/define-plugin/) via [chainWebpack](chainwebpack) would be a little complicated:
+由于通过 [chainWebpack](#chainwebpack) 使用 [DefinePlugin](https://webpack.js.org/plugins/define-plugin/) 会有点麻烦：
 
 ```js
 module.exports = {
@@ -253,9 +300,9 @@ module.exports = {
 }
 ```
 
-VuePress specifically opened up a more concise `define` option, note that the values has been automatically processed by `JSON.stringify`.
+VuePress 特别开辟了一个更简洁的 `define` 选项。值得注意的是这些值已自动地被 `JSON.stringify` 处理。
 
-- Object Usage:
+- 对象式:
 
 ```js
 module.exports = {
@@ -265,7 +312,7 @@ module.exports = {
 }
 ```
 
-- Function Usage:
+- 函数式:
 
 ```js
 module.exports = (options, ctx) => ({
@@ -280,10 +327,10 @@ module.exports = (options, ctx) => ({
 
 ### alias
 
-- Type: `Object|Function`
-- Default: undefined
+- 类型: `Object|Function`
+- 默认值: undefined
 
-We can set aliases via [chainWebpack](chainwebpack):
+我们可以通过 [chainWebpack](#chainwebpack) 来配置别名：
 
 ```js
 module.exports = (options, ctx) => ({
@@ -293,7 +340,7 @@ module.exports = (options, ctx) => ({
 })
 ```
 
-But `alias` option makes this process more like configuration:
+`alias` 可以使这个流程更像配置：
 
 ```js
 module.exports = (options, ctx) => ({
@@ -305,10 +352,10 @@ module.exports = (options, ctx) => ({
 
 ### enhanceDevServer
 
-- Type: `Function`
-- Default: undefined
+- 类型: `Function`
+- 默认值: undefined
 
-Enhance the underlying [Koa](https://github.com/koajs/koa) app.
+拓展 devServer 下层的 [Koa](https://github.com/koajs/koa) app：
 
 ``` js
 module.exports = {
@@ -318,7 +365,7 @@ module.exports = {
 }
 ```
 
-A simple plugin to create a sub public directory is as follows:
+一个简单的创建子 public 目录的插件如下：
 
 ```js
 const path = require('path')
@@ -345,10 +392,10 @@ module.exports = (options, ctx) => {
 
 ### extendMarkdown
 
-- Type: `Function`
-- Default: `undefined`
+- 类型: `Function`
+- 默认值: `undefined`
 
-A function to modify default config or apply additional plugins to the [markdown-it](https://github.com/markdown-it/markdown-it) instance used to render source files. Example:
+一个函数，修改内部用于渲染 markdown 文件的 [markdown-it](https://github.com/markdown-it/markdown-it) 实例的配置、或者应用一些额外的插件：
 
 ```js
 module.exports = {
@@ -361,32 +408,32 @@ module.exports = {
 
 ### chainMarkdown
 
-- Type: `Function`
-- Default: `undefined`
+- 类型: `Function`
+- 默认值: `undefined`
 
-Modify the internal markdown config with [markdown-it-chain](https://github.com/ulivz/markdown-it-chain) —— A chaining API like [webpack-chain](https://github.com/mozilla-neutrino/webpack-chain) but for [markdown-it](https://github.com/markdown-it/markdown-it).
+使用 [markdown-it-chain](https://github.com/ulivz/markdown-it-chain) 来修改内部的 markdown 配置。
 
 ```js
 module.exports = {
   chainMarkdown (config) {
-    // Interact with 'options' in new MarkdownIt
-    // Ref: https://markdown-it.github.io/markdown-it/#MarkdownIt.new
+    // 与 new MarkdownIt 的 'options' 互动
+    // 参考: https://markdown-it.github.io/markdown-it/#MarkdownIt.new
     config
       .options
         .link(true)
         .breaks(true)
 
-    // Modify the arguments of internal plugin.
+    // 修改内置插件的参数
     config
       .plugin('anchor')
         .tap(([options]) => [
           Object.assign(options, { permalinkSymbol: '#' })
         ])
 
-    // Add extra markdown-it plugin
+    // 增加额外的插件
     config
       .plugin('sup')
-        .add(require('markdown-it-sup'))
+        .use(require('markdown-it-sup'))
 
     // Remove internal plugin
     config.plugins.delete('snippet')
@@ -394,17 +441,17 @@ module.exports = {
 }
 ```
 
-**Also see:**
+**参考:**
 
-- [Internal plugins in VuePress](https://github.com/vuejs/vuepress/blob/next/packages/%40vuepress/core/lib/markdown/index.js)
-- [Config plugins](https://github.com/neutrinojs/webpack-chain#config-plugins)
+- [VuePress 的内置 markdown-it 插件](https://github.com/vuejs/vuepress/blob/next/packages/%40vuepress/core/lib/markdown/index.js)
+- [配置插件](https://github.com/neutrinojs/webpack-chain#config-plugins)
 
 ### enhanceAppFiles
 
-- Type: `Array | AsyncFunction`
-- Default: `undefined`
+- 类型: `Array|AsyncFunction`
+- 默认值: `undefined`
 
-This option accepts an array containing the file paths, or a function that returns this array, which allows you to do some [App Level Enhancements](../guide/basic-config.md#theme-configuration).
+这个选项接受一个包含文件的数组，或者一个返回该数组的函数。你可以通过此选项做一些[应用级别的配置](../guide/basic-config.md#应用级别的配置)。
 
 ``` js
 module.exports = {
@@ -414,12 +461,10 @@ module.exports = {
 }
 ```
 
-The file can `export default` a hook function which will work like `.vuepress/enhanceApp.js`, or any client side code snippets.
-
-It's worth mentioning that in order for plugin developers to be able to do more things at compile time, this option also supports dynamic code:
+值得提及的是，为了让插件开发者能够在编译器做更多的事情，`enhanceAppFiles` 也支持动态的代码：
 
 ```js
-module.exports = (option, context) => {
+module.exports = (option, ctx) => {
   return {
     enhanceAppFiles: [{
       name: 'dynamic-code',
@@ -431,13 +476,13 @@ module.exports = (option, context) => {
 
 ### clientDynamicModules
 
-- Type: `Function`
-- Default: `undefined`
+- 类型: `Function`
+- 默认值: `undefined`
 
-Sometimes, you may want to generate some client modules at compile time.
+有时，你可能想要在编译期间生成一些在客户端使用的模块：
 
 ```js
-module.exports = (options, context) => ({
+module.exports = (options, ctx) => ({
   clientDynamicModules() {
     return {
       name: 'constans.js',
@@ -447,7 +492,7 @@ module.exports = (options, context) => ({
 })
 ```
 
-Then you can use this module at client side code by:
+然后你可以在客户端这样使用你的模块：
 
 ``` js
 import { SOURCE_DIR } from '@dynamic/constans'
@@ -455,17 +500,17 @@ import { SOURCE_DIR } from '@dynamic/constans'
 
 ### extendPageData
 
-- Type: `Function`
-- Default: `undefined`
+- 类型: `Function`
+- 默认值: `undefined`
 
-A function used to extend or modify the [$page](../miscellaneous/global-computed.md#page) object. This function will be invoking once for each page at compile time
+一个函数，用于拓展或者修改 [$page](../miscellaneous/global-computed.md#page) 对象。这个函数将会在编译器为每个页面执行一次。
 
 ```js
 module.exports = {
   extendPageData ($page) {
     const {
       _filePath,           // file's absolute path
-      _i18n,               // access the client global mixins at build time, e.g _i18n.$localePath.
+      _computed,           // access the client global computed mixins at build time, e.g _computed.$localePath.
       _content,            // file's raw content string
       _strippedContent,    // file's content string without frontmatter
       key,                 // page's unique hash key
@@ -583,7 +628,7 @@ module.exports = {
 - Type: `Array|String`
 - Default: `undefined`
 
-You might want to inject some global UI fixed somewhere on the page, e.g. `back-to-top`, `popup`. In VuePress, **a global UI is a Vue component**, you can define the component's name(s) in the plugin, e.g.
+You might want to inject some global UI fixed somewhere on the page, e.g. `back-to-top`, `popup`. In VuePress, **a global UI is a Vue component**, you can directly define the component's name(s) in this option, e.g.
 
 ``` js
 module.exports = {
@@ -594,11 +639,11 @@ module.exports = {
 }
 ```
 
-Then, VuePress will automatically inject these components behind the theme container:
+Then, VuePress will automatically inject these components behind the layout component:
 
 ```html
 <div id="app">
-  <div class="theme-container"> ... </div>
+  <div class="theme-container"> ... </div> <!-- Layout Component -->
   <div class="global-ui">
     <Component-1/>
     <Component-2/>
@@ -606,7 +651,7 @@ Then, VuePress will automatically inject these components behind the theme conta
 </div>
 ```
 
-## Context
+## ctx
 
 Starting with VuePress 1.x.x, VuePress provides an `AppContext` object that stores all the state of the current app and can be accessed through the plugin API.
 
@@ -615,48 +660,48 @@ Context of each plugin is a isolated context, they just inherit from the same ap
 :::
 
 ```js
-module.exports = (options, context) => {
+module.exports = (options, ctx) => {
   // ...
 }
 ```
 
-### context.isProd
+### ctx.isProd
 
 - Type: `boolean`
 
 Whether vuepress run in production environment mode.
 
-### context.sourceDir
+### ctx.sourceDir
 
 - Type: `string`
 
 Root directory where the documents are located.
 
-### context.tempPath
+### ctx.tempPath
 
 - Type: `string`
 
 Root directory where the temporary files are located.
 
-### context.outDir
+### ctx.outDir
 
 - Type: `string`
 
 Output path.
 
-### context.themePath
+### ctx.themePath
 
 - Type: `string`
 
 The path of the currently active theme.
 
-### context.base
+### ctx.base
 
 - Type: `string`
 
 See: [base](../config/README.md#base).
 
-### context.writeTemp
+### ctx.writeTemp
 
 - Type: `Function`
 
