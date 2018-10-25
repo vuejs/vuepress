@@ -63,6 +63,11 @@ module.exports = siteData => {
 
     get $title () {
       const page = this.$page
+      const { seoTitle } = this.$page.frontmatter
+      if (typeof seoTitle === 'string') {
+        return seoTitle
+      }
+
       const siteTitle = this.$siteTitle
       const selfTitle = page.frontmatter.home ? null : (
         page.frontmatter.title || // explicit title
