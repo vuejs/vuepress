@@ -509,14 +509,14 @@ import { SOURCE_DIR } from '@dynamic/constans'
 module.exports = {
   extendPageData ($page) {
     const {
-      _filePath,           // file's absolute path
-      _computed,           // access the client global computed mixins at build time, e.g _computed.$localePath.
-      _content,            // file's raw content string
-      _strippedContent,    // file's content string without frontmatter
-      key,                 // page's unique hash key
-      frontmatter,         // page's frontmatter object
-      regularPath,         // current page's default link (follow the file hierarchy)
-      path,                // current page's permalink
+      _filePath,           // 源文件的绝对路径
+      _computed,           // 在构建期访问全局的计算属性，如：_computed.$localePath.
+      _content,            // 源文件的原始内容字符串
+      _strippedContent,    // 源文件剔除掉 frontmatter 的内容字符串
+      key,                 // 页面唯一的 hash key
+      frontmatter,         // 页面的 frontmatter 对象
+      regularPath,         // 当前页面遵循文件层次结构的默认链接
+      path,                // 当前页面的实际链接（在 permalink 不存在时，使用 regularPath ）
     } = $page
    
     // 1. Add extra fields.
@@ -528,11 +528,11 @@ module.exports = {
 }
 ```
 
-::: warning Note
-These fields starting with an `_` means you can only access them during build time.
+::: warning 注意
+那些以 `_` 开头的字段意味着你只能在编译期访问。
 :::
 
-e.g.
+例子：
 
 ``` js
 module.exports = {
@@ -542,17 +542,17 @@ module.exports = {
 }
 ```
 
-Then you can use this value via `this.$page.size` in any Vue component.
+然后你可以在任意的 Vue 中通过 `this.$page.size` 来访问这个变量。
 
 ### clientRootMixin
 
-- Type: `String`
-- Default: `undefined`
+- 类型: `String`
+- 默认值: `undefined`
 
-A path to the mixin file which allow you to control the life cycle of root component.
+指向 `mixin` 文件的路径，它让你你可以控制根组件的生命周期：
 
 ``` js
-// plugin's entry
+// 插件的入口
 const path = require('path')
 
 module.exports = {
@@ -570,10 +570,10 @@ export default {
 
 ### additionalPages
 
-- Type: `Array|Function`
-- Default: `undefined`
+- 类型: `Array|Function`
+- 默认值: `undefined`
 
-Add a page pointing to a markdown file:
+增加一个指向某个 markdown 文件的页面：
 
 ```js
 const path = require('path')
@@ -588,7 +588,7 @@ module.exports = {
 }
 ```
 
-Add a page with explicit content:
+或增加一个具有明确内容的页面：
 
 ```js
 module.exports = {
@@ -608,7 +608,7 @@ module.exports = {
 }
 ```
 
-Add a pure route:
+或增加一个纯粹的路由：
 
 ```js
 module.exports = {
@@ -625,10 +625,10 @@ module.exports = {
 
 ### globalUIComponents
 
-- Type: `Array|String`
-- Default: `undefined`
+- 类型: `Array|String`
+- 默认值: `undefined`
 
-You might want to inject some global UI fixed somewhere on the page, e.g. `back-to-top`, `popup`. In VuePress, **a global UI is a Vue component**, you can directly define the component's name(s) in this option, e.g.
+你可以想注入某些全局的 UI，并固定在页面中的某处，如  `back-to-top`, `popup`。在 VuePress 中，**一个全局 UI 就是一个 Vue 组件。**你可以直接配置该全局组件的名称，如：
 
 ``` js
 module.exports = {
@@ -639,7 +639,7 @@ module.exports = {
 }
 ```
 
-Then, VuePress will automatically inject these components behind the layout component:
+VuePress 将会自动将这些组件注入到布局组件的隔壁：
 
 ```html
 <div id="app">
