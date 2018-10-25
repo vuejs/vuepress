@@ -2,7 +2,7 @@
 sidebar: auto
 ---
 
-# Plugins
+# Plugin
 
 Plugins usually add global-level functionality to VuePress. There is no strictly defined scope for a plugin - there are typically several types of plugins:
 
@@ -151,7 +151,7 @@ module.exports = {
 
 :::
 
-## Life Cycle
+## Life Cycle API
 
 ### ready
 
@@ -201,7 +201,7 @@ module.exports = {
 }
 ```
 
-## API
+## Option API
 
 ### name
 
@@ -653,12 +653,12 @@ Then, VuePress will automatically inject these components behind the layout comp
 </div>
 ```
 
-## ctx
+## Context API
 
 Starting with VuePress 1.x.x, VuePress provides an `AppContext` object that stores all the state of the current app and can be accessed through the plugin API.
 
 ::: warning Note
-Context of each plugin is a isolated context, they just inherit from the same app context.
+Context of each plugin is a isolated context inherited from the same app context.
 :::
 
 ```js
@@ -671,7 +671,7 @@ module.exports = (options, ctx) => {
 
 - Type: `boolean`
 
-Whether vuepress run in production environment mode.
+Whether VuePress run in production environment mode.
 
 ### ctx.sourceDir
 

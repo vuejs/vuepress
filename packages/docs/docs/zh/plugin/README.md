@@ -201,7 +201,7 @@ module.exports = {
 }
 ```
 
-## API
+## Option API
 
 ### name
 
@@ -651,12 +651,12 @@ VuePress 将会自动将这些组件注入到布局组件的隔壁：
 </div>
 ```
 
-## ctx
+## Context API
 
-Starting with VuePress 1.x.x, VuePress provides an `AppContext` object that stores all the state of the current app and can be accessed through the plugin API.
+VuePress 提供了一个存储了当前页面所有状态的 Context API。
 
-::: warning Note
-Context of each plugin is a isolated context, they just inherit from the same app context.
+::: tip 提示
+每个函数式插件的上下文对象是一个继承于根上下文的隔离上下文对象。
 :::
 
 ```js
@@ -667,42 +667,42 @@ module.exports = (options, ctx) => {
 
 ### ctx.isProd
 
-- Type: `boolean`
+- 类型: `boolean`
 
-Whether vuepress run in production environment mode.
+VuePress 是否运行在生产环境模式下。
 
 ### ctx.sourceDir
 
-- Type: `string`
+- 类型: `string`
 
-Root directory where the documents are located.
+文档的根目录路径。
 
 ### ctx.tempPath
 
 - Type: `string`
 
-Root directory where the temporary files are located.
+临时文件所在的根目录路径。
 
 ### ctx.outDir
 
 - Type: `string`
 
-Output path.
+输出目录。
 
 ### ctx.themePath
 
 - Type: `string`
 
-The path of the currently active theme.
+当前应用的主题的根路径。
 
 ### ctx.base
 
 - Type: `string`
 
-See: [base](../config/README.md#base).
+参考: [base](../config/README.md#base).
 
 ### ctx.writeTemp
 
 - Type: `Function`
 
-A utility for writing temporary files to tempPath.
+一个用于向 tempPath 写入临时文件的方法。

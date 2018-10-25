@@ -19,8 +19,16 @@ module.exports = [
         link: '/plugin/#using-a-plugin'
       },
       {
-        text: 'Options',
-        link: '/plugin/#options'
+        text: 'Life Cycle API',
+        link: '/plugin/#life-cycle-api'
+      },
+      {
+        text: 'Option API',
+        link: '/plugin/#option-api'
+      },
+      {
+        text: 'Context API',
+        link: '/plugin/#context-api'
       },
       {
         text: 'Official Plugins',
