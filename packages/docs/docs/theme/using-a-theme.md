@@ -2,13 +2,13 @@
 
 Using a theme is almost same as using a plugin.
 
-## Use plugins from a dependency
+## Using a theme from a dependency
 
 Themes can be published on npm in raw Vue SFC format as `vuepress-theme-xxx`.
 
 ``` js
 module.exports = {
-  plugins: [ 'vuepress-theme-xx' ]
+  theme: 'vuepress-theme-xx'
 }
 ```
 
@@ -18,7 +18,7 @@ If you prefix the plugin with `vuepress-theme-`, you can use a shorthand to leav
 
 ``` js
 module.exports = {
-  plugins: [ 'xxx' ]
+  theme: 'xxx'
 }
 ```
 
@@ -26,7 +26,7 @@ Same with:
 
 ``` js
 module.exports = {
-  plugins: [ 'vuepress-theme-xxx' ]
+  theme: 'vuepress-theme-xxx'
 }
 ```
 
@@ -34,7 +34,7 @@ This also works with [Scoped Packages](https://docs.npmjs.com/misc/scope):
 
 ``` js
 module.exports = {
-  plugins: [ '@org/vuepress-theme-xxx', '@vuepress/theme-xxx' ]
+  theme: '@org/vuepress-theme-xxx', // or an official theme: '@vuepress/theme-xxx'
 }
 ```
 
@@ -42,7 +42,7 @@ Shorthand:
 
 ``` js
 module.exports = {
-  plugins: [ '@org/xxx', '@vuepress/xxx' ]
+  theme: '@org/xxx', // or an official theme: '@vuepress/xxx'
 }
 ```
 

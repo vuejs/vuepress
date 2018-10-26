@@ -1,51 +1,51 @@
 # 使用主题
 
-Using a theme is almost same as using a plugin.
+使用一个主题和使用一个插件几乎一致。
 
-## Use plugins from a dependency
+## 使用 dependency 中的主题
 
-Themes can be published on npm in raw Vue SFC format as `vuepress-theme-xxx`.
-
-``` js
-module.exports = {
-  plugins: [ 'vuepress-theme-xx' ]
-}
-```
-
-## Theme Shorthand
-
-If you prefix the plugin with `vuepress-theme-`, you can use a shorthand to leave out that prefix:
+一个插件可以在以 `vuepress-theme-xxx` 的形式发布到 npm，你可以这样使用它：
 
 ``` js
 module.exports = {
-  plugins: [ 'xxx' ]
+  theme: 'vuepress-theme-xx'
 }
 ```
 
-Same with:
+## 主题的缩写
+
+如果你的插件名以 `vuepress-theme-` 开头，你可以使用缩写来省略这个前缀：
 
 ``` js
 module.exports = {
-  plugins: [ 'vuepress-theme-xxx' ]
+  theme: 'xxx'
 }
 ```
 
-This also works with [Scoped Packages](https://docs.npmjs.com/misc/scope):
+和下面等价：
 
 ``` js
 module.exports = {
-  plugins: [ '@org/vuepress-theme-xxx', '@vuepress/theme-xxx' ]
+  theme: 'vuepress-theme-xxx'
 }
 ```
 
-Shorthand:
+这也适用于 [Scoped Packages](https://docs.npmjs.com/misc/scope):
 
 ``` js
 module.exports = {
-  plugins: [ '@org/xxx', '@vuepress/xxx' ]
+  theme: '@org/vuepress-theme-xxx', // 或者一个官方主题: '@vuepress/theme-xxx'
 }
 ```
 
-::: warning Note
-The plugin whose name starts with `@vuepress/theme-` is an officially maintained theme.
+缩写:
+
+``` js
+module.exports = {
+  theme: '@org/xxx', // 或者一个官方主题: '@vuepress/xxx'
+}
+```
+
+::: warning 注意
+以 `@vuepress/plugin-` 开头的插件是官方维护的插件。
 :::

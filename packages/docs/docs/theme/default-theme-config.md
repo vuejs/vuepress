@@ -1,7 +1,3 @@
----
-sidebar: auto
----
-
 # Default Theme Config
 
 <Bit/>

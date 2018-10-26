@@ -2,11 +2,11 @@
 seoTitle: Option API | Theme
 ---
 
-# Options
+# Option API
 
 ## plugins
 
-- Type: `Array|Object`
-- Default: undefined
+- 类型: `Array|Object`
+- 默认值: undefined
 
-See: [Plugin > Using a plugin](../plugin/using-a-plugin.md).
+参考: [插件 > 使用插件](../plugin/using-a-plugin.md).

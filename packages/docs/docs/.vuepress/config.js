@@ -110,8 +110,8 @@ function getPluginSidebar (gruopA, introductionA) {
       collapsable: false,
       children: [
         ['', introductionA],
-        'writing-a-plugin',
         'using-a-plugin',
+        'writing-a-plugin',
         'life-cycle',
         'option-api',
         'context-api',
@@ -128,8 +128,8 @@ function getThemeSidebar (gruopA, introductionA) {
       collapsable: false,
       children: [
         ['', introductionA],
-        'writing-a-theme',
         'using-a-theme',
+        'writing-a-theme',
         'option-api',
         'default-theme-config'
       ]

@@ -11,6 +11,22 @@ To write a theme, create a `.vuepress/theme` directory in your docs root, and th
 
 From there it's the same as developing a normal Vue application. It is entirely up to you how to organize your theme.
 
+## Content Outlet
+
+The compiled content of the current `.md` file being rendered will be available as a special `<Content/>` global component. You will need to render it somewhere in your layout in order to display the content of the page. The simplest theme can be just a single `Layout.vue` component with the following content:
+
+``` html
+<template>
+  <div class="theme-container">
+    <Content/>
+  </div>
+</template>
+```
+
+**Also see:**
+
+- [Markdown Slot](../guide/markdown-slot.md)
+
 ## Directory Structure
 
 Just one `Layout.vue` might not be enough, and you might also want to define more layout components in the theme for using on different pages. You may also want to customize the [palette](../config/README.md#palette), and even apply some plugins.
@@ -46,8 +62,7 @@ themePath
 - `theme/enhanceApp.js`: Theme level enhancements.
 
 ::: warning Note
-1. Considering backward compatibility, Vue components located at [themePath](../miscellaneous/glossary.md#theme-side) will also be automatically registered as layout components. But the recommended is placing them under `themePath/layouts` directory, which looks more clearer.
-2. When you want to publish your theme as an npm package, make sure the package has `index.js`, and set `"main"` field at `package.json` to `index.js` so that VuePress can resolve and get the correct [themePath](../miscellaneous/glossary.md#theme-side).
+When you want to publish your theme as an npm package, make sure the package has `index.js`, and set `"main"` field at `package.json` to `index.js` so that VuePress can resolve and get the correct [themePath](../miscellaneous/glossary.md#theme-side).
 
 ```json
 {
@@ -94,16 +109,6 @@ module.exports = {
       updatePopup: true
     }
   ]
-}
-```
-
-For themes that need to be released to NPM, please do not forget to add it to `dependencies`:
-
-```json
-{
-  "dependencies": {
-    "@vuepress/plugin-pwa": "^x.x.x",
-  }
 }
 ```
 
@@ -155,18 +160,6 @@ Finally, don't forget that `this.$route` and `this.$router` are also available a
 ## Content Excerpt
 
 If a markdown file contains a `<!-- more -->` comment, any content above the comment will be extracted and exposed as `$page.excerpt`. If you are building custom theme for blogging, this data can be used to render a post list with excerpts.
-
-## Content Outlet
-
-The compiled content of the current `.md` file being rendered will be available as a special `<Content/>` global component. You will need to render it somewhere in your layout in order to display the content of the page. The simplest theme can be just a single `Layout.vue` component with the following content:
-
-``` html
-<template>
-  <div class="theme-container">
-    <Content/>
-  </div>
-</template>
-```
 
 ## App Level Enhancements
 

@@ -1,6 +1,6 @@
 # 开发主题
 
-To write a theme, create a `.vuepress/theme` directory in your docs root, and then create a `Layout.vue` file:
+想要书写一个主题，首先在你文档根目录创建一个 `.vuepress/theme` 目录，接着创建一个 `Layout.vue` 文件：
 
 ::: vue
 .
@@ -9,45 +9,64 @@ To write a theme, create a `.vuepress/theme` directory in your docs root, and th
        └─ Layout.vue
 :::
 
-From there it's the same as developing a normal Vue application. It is entirely up to you how to organize your theme.
+到这里，就像开发一个普通的 Vue 应用一样。如何组织你的主题，这完全取决于你。
 
-## Directory Structure
+## 获取渲染内容
 
-Just one `Layout.vue` might not be enough, and you might also want to define more layout components in the theme for using on different pages. You may also want to customize the [palette](../config/README.md#palette), and even apply some plugins.
+当前的 `.md` 文件渲染的内容，可以作为一个独特的全局组件 `<Content/>` 来使用，你可能想要它显示在页面中的某个地方。一个最简单的主题，可以是一个唯一的 `Layout.vue` 组件，并包含以下内容：
 
-So it's time to reorganize your theme, an agreed theme directory structure is as follows:
+``` html
+<template>
+  <div class="theme-container">
+    <Content/>
+  </div>
+</template>
+```
+
+**更多请阅读:**
+
+- [Markdown 插槽](../guide/markdown-slot.md)
+
+## 内容摘抄
+
+如果一个 markdown 文件中有一个 `<!-- more -->` 注释，则该注释之前的内容会被抓取并暴露在 `$page.excerpt` 属性中。如果你在开发一个博客主题，你可以用这个属性来渲染一个带摘抄的文章列表。
+
+## 目录结构
+
+随着需求的变化，只有一个布局组件 `Layout.vue` 可能还不够，你可能想要定义更多的布局组件用于不同的页面，你可能还想要自定义一个[调色板](../config/README.md#palette-styl), 甚至应用一些插件。
+
+那么是时候重新组织你的主题了！一个约定的主题的目录结构如下：
 
 ::: vue
 themePath
-├── `global-components` _(**Optional**)_
+├── `global-components` _(**可选的**)_
 │   └── xxx.vue
-├── `components` _(**Optional**)_
+├── `components` _(**可选的**)_
 │   └── xxx.vue
 ├── `layouts`
-│   ├── Layout.vue _(**Required**)_
-│   └── 404.vue _(**Optional**)_
-├── `styles` _(**Optional**)_
+│   ├── Layout.vue _(**必要的**)_
+│   └── 404.vue _(**可选的**)_
+├── `styles` _(**必要的**)_
 │   ├── index.styl
 │   └── palette.styl
-├── `templates` _(**Optional**)_
+├── `templates` _(**必要的**)_
 │   ├── dev.html
 │   └── ssr.html
-├── `index.js` _(**Only required when you publish it as an npm package**)_
-├── `enhanceApp.js` _(**Optional**)_
+├── `index.js` _(**当你将主题发布为一个 npm 包时，这是必须的！**)_
+├── `enhanceApp.js` _(**必要的**)_
 └── package.json
 :::
 
-- `theme/global-components`: Components under this directory will be automatically registered as global components. For details, please refer to [@vuepress/plugin-register-components](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-register-components).
-- `theme/components`: Your components.
-- `theme/layouts`: Layout components of the theme, where `Layout.vue` is required.
-- `theme/styles`: Global style and palette. 
-- `theme/templates`: Modify default template.
-- `theme/index.js`: Entry file of theme configuration.
-- `theme/enhanceApp.js`: Theme level enhancements.
+- `theme/global-components`: 该目录下的组件都会被自动注册为全局组件。想了解更多，请参考 [@vuepress/plugin-register-components](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-register-components)。
+- `theme/components`: Vue 组件。
+- `theme/layouts`: 布局组件，其中  `Layout.vue` 是必需的。
+- `theme/styles`: 全局的样式和调色板。
+- `theme/templates`: 修改默认的模板文件。
+- `theme/index.js`: 主题文件的入口文件。
+- `theme/enhanceApp.js`: 主题水平的客户端增强文件。
 
-::: warning Note
-1. Considering backward compatibility, Vue components located at [themePath](../miscellaneous/glossary.md#theme-side) will also be automatically registered as layout components. But the recommended is placing them under `themePath/layouts` directory, which looks more clearer.
-2. When you want to publish your theme as an npm package, make sure the package has `index.js`, and set `"main"` field at `package.json` to `index.js` so that VuePress can resolve and get the correct [themePath](../miscellaneous/glossary.md#theme-side).
+::: warning 注意
+当你将你的主题以一个 npm 包的形式发布时，请确保这个包包含 `index.js`，同时将 `package.json` 中的 `"main"` 字段设置为 `index.js`，如此一来 VuePress 才能获取到正确的 [themePath](../miscellaneous/glossary.md#theme-side).
 
 ```json
 {
@@ -59,9 +78,9 @@ themePath
 
 :::
 
-## Layout Component
+## 布局组件
 
-Suppose your theme layouts folder is as follows:
+假设你的主题 `layouts` 目录如下：
 
 ::: vue
 theme
@@ -71,9 +90,9 @@ theme
     └── 404.vue
 :::
 
-Then, all the pages will use `Layout.vue` as layout component by default, while the routes not matching will use `404.vue`.
+然后，所有的页面将会默认使用 `Layout.vue` 作为布局组件，对于那些匹配不到的路由将会使用 `404.vue`。
 
-If you want to switch the layout of the some page to `AnotherLayout.vue`, you just need to update the frontmatter of this page:
+如果你想要在某一个页面中使用 `AnotherLayout.vue` 作为布局组件，那么你只需要更新这个页面的 `frontmatter`：
 
 ```markdown
 ---
@@ -81,9 +100,9 @@ layout: AnotherLayout
 ---
 ````
 
-## Apply plugins
+## 使用插件
 
-You can apply some plugins to the theme via `theme/index.js`.
+你可以通过主题的配置文件 `themePath/index.js` 来给主题应用一些插件：
 
 ```js
 module.exports = {
@@ -97,26 +116,16 @@ module.exports = {
 }
 ```
 
-For themes that need to be released to NPM, please do not forget to add it to `dependencies`:
+## 网站和页面的元数据
 
-```json
-{
-  "dependencies": {
-    "@vuepress/plugin-pwa": "^x.x.x",
-  }
-}
-```
+`Layout` 组件将会对每一个文档目录下的 `.md` 执行一次，同时，整个网站以及特定页面的元数据将分别暴露为 `this.$site` 和 `this.$page` 属性，它们将会被注入到每一个当前应用的组件中。
 
-## Site and Page Metadata
-
-The `Layout` component will be invoked once for every `.md` file in `docs`, and the metadata for the entire site and that specific page will be exposed respectively as `this.$site` and `this.$page` properties which are injected into every component in the app.
-
-This is the value of `$site` of this very website:
+这是你现在看到的这个网站的 `$site` 的值：
 
 ``` json
 {
   "title": "VuePress",
-  "description": "Vue-powered Static Site Generator",
+  "description": "Vue 驱动的静态网站生成器",
   "base": "/",
   "pages": [
     {
@@ -130,55 +139,44 @@ This is the value of `$site` of this very website:
 }
 ```
 
-`title`, `description` and `base` are copied from respective fields in `.vuepress/config.js`. `pages` contains an array of metadata objects for each page, including its path, page title (explicitly specified in [YAML front matter](../guide/markdown.md#front-matter) or inferred from the first header on the page), and any YAML front matter data in that file.
+`title`, `description` 和 `base` 会从 `.vuepress/config.js` 中对应的的字段复制过来，而 `pages` 是一个包含了每个页面元数据对象的数据，包括它的路径、页面标题（明确地通过 [YAML front matter](./markdown.md#front-matter) 指定，或者通过该页面的第一个标题取到），以及所有源文件中的 `YAML front matter` 的数据。
 
-This is the `$page` object for this page you are looking at:
+下面的这个对象是你正在看的这个页面的 `$page` 的值：
 
 ``` json
 {
   "lastUpdated": 1524847549000,
-  "path": "/guide/custom-themes.html",
-  "title": "Custom Themes",
+  "path": "/custom-themes.html",
+  "title": "自定义主题",
   "headers": [/* ... */],
   "frontmatter": {}
 }
 ```
 
-If the user provided `themeConfig` in `.vuepress/config.js`, it will also be available as `$site.themeConfig`. You can use this to allow users to customize behavior of your theme - for example, specifying categories and page order. You can then use these data together with `$site.pages` to dynamically construct navigation links.
+如果用户在 `.vuepress/config.js` 配置了 `themeConfig`，你将可以通过 `$site.themeConfig` 访问到它。如此一来，你可以通过它来对用户开放一些自定义主题的配置 —— 比如指定目录或者页面的顺序，你也可以结合 `$site.pages` 来动态地构建导航链接。
 
-Finally, don't forget that `this.$route` and `this.$router` are also available as part of Vue Router's API.
+最后，别忘了，作为 Vue Router API 的一部分，`this.$route` 和 `this.$router` 同样可以使用。
 
-::: tip
-  `lastUpdated` is the UNIX timestamp of this file's last git commit, for more details, refer to [Last Updated](../theme/default-theme-config.md#last-updated).
+::: tip 提示
+`lastUpdated` 是这个文件最后一次 git 提交的 UNIX 时间戳，更多细节请参考：[最后更新时间](../default-theme-config/README.md#最后更新时间)。
 :::
 
-## Content Excerpt
+**参考:**
 
-If a markdown file contains a `<!-- more -->` comment, any content above the comment will be extracted and exposed as `$page.excerpt`. If you are building custom theme for blogging, this data can be used to render a post list with excerpts.
+- [全局计算属性](../miscellaneous/global-computed.md).
 
-## Content Outlet
 
-The compiled content of the current `.md` file being rendered will be available as a special `<Content/>` global component. You will need to render it somewhere in your layout in order to display the content of the page. The simplest theme can be just a single `Layout.vue` component with the following content:
+## 应用配置
 
-``` html
-<template>
-  <div class="theme-container">
-    <Content/>
-  </div>
-</template>
-```
-
-## App Level Enhancements
-
-Themes can enhance the Vue app that VuePress uses by exposing an `enhanceApp.js` file at the root of the theme. The file should `export default` a hook function which will receive an object containing some app level values. You can use this hook to install additional Vue plugins, register global components, or add additional router hooks:
+自定义主题也可以通过主题根目录下的 `enhanceApp.js` 文件来对 VuePress 应用进行拓展配置。这个文件应当 `export default` 一个钩子函数，并接受一个包含了一些应用级别属性的对象作为参数。你可以使用这个钩子来安装一些附加的 Vue 插件、注册全局组件，或者增加额外的路由钩子等：
 
 ``` js
 export default ({
-  Vue, // the version of Vue being used in the VuePress app
-  options, // the options for the root Vue instance
-  router, // the router instance for the app
-  siteData // site metadata
+  Vue, // VuePress 正在使用的 Vue 构造函数
+  options, // 附加到根实例的一些选项
+  router, // 当前应用的路由实例
+  siteData // 站点元数据
 }) => {
-  // ...apply enhancements to the app
+  // ...做一些其他的应用级别的优化
 }
 ```

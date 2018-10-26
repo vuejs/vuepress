@@ -2,7 +2,7 @@
 seoTitle: Option API | Theme
 ---
 
-# Options
+# Option API
 
 ## plugins
 
