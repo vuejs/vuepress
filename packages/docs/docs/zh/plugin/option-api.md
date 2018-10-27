@@ -44,21 +44,6 @@ module.exports = {
 }
 ```
 
-## enabled
-
-- 类型: `boolean`
-- 默认值: true'
-
-是否激活插件。例子：如果你想让你的插件只在开发环境有效：
-
-```js
-module.exports = (options, ctx) => {
-  return {
-    enabled: !ctx.isProd
-  }
-}
-```
-
 ## chainWebpack
 
 - 类型: `Function`

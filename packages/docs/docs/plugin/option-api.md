@@ -40,21 +40,6 @@ module.exports = {
 }
 ```
 
-## enabled
-
-- Type: `boolean`
-- Default: true
-
-Configure whether to enable this plugin. e.g. if you want to enable a plugin only in development mode:
-
-```js
-module.exports = (options, ctx) => {
-  return {
-    enabled: !ctx.isProd
-  }
-}
-```
-
 ## chainWebpack
 
 - Type: `Function`
