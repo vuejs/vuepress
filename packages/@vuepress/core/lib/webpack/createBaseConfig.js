@@ -89,8 +89,8 @@ module.exports = function createBaseConfig ({
   }
   const cacheIdentifier = JSON.stringify({
     vuepress: require('../../package.json').version,
-    'cache-loader': require('cache-loader').version,
-    'vue-loader': require('vue-loader').version,
+    'cache-loader': require('cache-loader/package.json').version,
+    'vue-loader': require('cache-loader/package.json').version,
     isProd,
     isServer,
     config: (
