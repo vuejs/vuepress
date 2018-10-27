@@ -46,6 +46,9 @@ module.exports = function createBaseConfig ({
     config.devtool('cheap-module-eval-source-map')
   }
 
+  const modulePaths = getModulePaths()
+  logger.debug('modulePaths = ' + JSON.stringify(modulePaths, null, 2))
+
   config.resolve
     .set('symlinks', true)
     .alias
@@ -60,18 +63,12 @@ module.exports = function createBaseConfig ({
       .merge(['.js', '.jsx', '.vue', '.json', '.styl'])
       .end()
     .modules
-      // prioritize our own
-      .add(path.resolve(__dirname, '../../node_modules'))
-      .add(path.resolve(__dirname, '../../../'))
-      .add('node_modules')
+      .merge(modulePaths)
 
   config.resolveLoader
     .set('symlinks', true)
     .modules
-      // prioritize our own
-      .add(path.resolve(__dirname, '../../node_modules'))
-      .add(path.resolve(__dirname, '../../../'))
-      .add('node_modules')
+      .merge(modulePaths)
 
   config.module
     .noParse(/^(vue|vue-router|vuex|vuex-router-sync)$/)
@@ -319,4 +316,8 @@ function getLastCommitHash () {
     hash = spawn.sync('git', ['log', '-1', '--format=%h']).stdout.toString('utf-8').trim()
   } catch (error) {}
   return hash
+}
+
+function getModulePaths () {
+  return [path.resolve(process.cwd(), 'node_modules')].concat(module.paths)
 }
