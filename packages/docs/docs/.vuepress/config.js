@@ -70,7 +70,10 @@ module.exports = {
     },
     '@vuepress/plugin-medium-zoom': true,
     '@vuepress/notification': true,
-    'flowchart': true
+    'flowchart': true,
+    '@vuepress/google-analytics': {
+      ga: 'UA-128189152-1'
+    }
   },
   clientRootMixin: path.resolve(__dirname, 'mixin.js')
 }
