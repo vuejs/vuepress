@@ -128,7 +128,8 @@ module.exports = class AppContext {
       .use('@vuepress/register-components', {
         componentsDir: [
           path.resolve(this.sourceDir, '.vuepress/components'),
-          path.resolve(this.themePath, 'global-components')
+          path.resolve(this.themePath, 'global-components'),
+          this.parentThemePath && path.resolve(this.parentThemePath, 'global-components')
         ]
       })
   }
@@ -140,8 +141,11 @@ module.exports = class AppContext {
    */
 
   applyUserPlugins () {
+    this.pluginAPI.useByPluginsConfig(this.cliOptions.plugins)
+    if (this.parentThemePath) {
+      this.pluginAPI.use(this.parentThemeEntryFile)
+    }
     this.pluginAPI
-      .useByPluginsConfig(this.cliOptions.plugins)
       .use(this.themeEntryFile)
       .use(Object.assign({}, this.siteConfig, { name: '@vuepress/internal-site-config' }))
   }
@@ -193,6 +197,9 @@ module.exports = class AppContext {
     const themeSsrTemplate = path.resolve(this.themePath, 'templates/ssr.html')
     const themeDevTemplate = path.resolve(this.themePath, 'templates/dev.html')
 
+    const parentThemeSsrTemplate = path.resolve(this.themePath, 'templates/ssr.html')
+    const parentThemeDevTemplate = path.resolve(this.themePath, 'templates/dev.html')
+
     const defaultSsrTemplate = path.resolve(__dirname, '../app/index.ssr.html')
     const defaultDevTemplate = path.resolve(__dirname, '../app/index.dev.html')
 
@@ -200,6 +207,7 @@ module.exports = class AppContext {
       siteSsrTemplate,
       siteSsrTemplate2,
       themeSsrTemplate,
+      parentThemeSsrTemplate,
       defaultSsrTemplate
     ])
 
@@ -207,6 +215,7 @@ module.exports = class AppContext {
       siteDevTemplate,
       siteDevTemplate2,
       themeDevTemplate,
+      parentThemeDevTemplate,
       defaultDevTemplate
     ])
 

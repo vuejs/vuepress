@@ -26,12 +26,22 @@ module.exports = (options, ctx) => ({
     const themePaletteContent = fs.existsSync(themePalette)
       ? `@import(${JSON.stringify(themePalette)})`
       : ''
+
     const userPaletteContent = fs.existsSync(userPalette)
       ? `@import(${JSON.stringify(userPalette)})`
       : ''
 
     // user's palette can override theme's palette.
-    const paletteContent = themePaletteContent + userPaletteContent
+    let paletteContent = themePaletteContent + userPaletteContent
+
+    if (ctx.parentThemePath) {
+      const parentThemePalette = path.resolve(ctx.parentThemePath, 'styles/palette.styl')
+      const parentThemePaletteContent = fs.existsSync(parentThemePalette)
+        ? `@import(${JSON.stringify(parentThemePalette)})`
+        : ''
+      paletteContent = parentThemePaletteContent + paletteContent
+    }
+
     await writeTemp('palette.styl', paletteContent)
   }
 })

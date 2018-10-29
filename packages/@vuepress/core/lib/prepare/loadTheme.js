@@ -43,21 +43,21 @@ module.exports = async function loadTheme (ctx) {
   let themeEntryFile = null    // Optional
   let themeName
   let themeShortcut
+  let parentThemePath = null       // Optional
+  let parentThemeEntryFile = null  // Optional
 
   if (useLocalTheme) {
     themePath = localThemePath
     logger.tip(`\nApply theme located at ${chalk.gray(themePath)}...`)
   } else if (isString(theme)) {
     const resolved = themeResolver.resolve(theme, sourceDir)
-    const { entry: modulePath, name, shortcut } = resolved
-    if (modulePath === null) {
+    const { entry, name, shortcut } = resolved
+
+    if (entry === null) {
       throw new Error(`Cannot resolve theme ${theme}.`)
     }
-    if (modulePath.endsWith('.js') || modulePath.endsWith('.vue')) {
-      themePath = path.parse(modulePath).dir
-    } else {
-      themePath = modulePath
-    }
+
+    themePath = normalizeThemePath(resolved)
     themeName = name
     themeShortcut = shortcut
     logger.tip(`\nApply theme ${chalk.gray(themeName)}`)
@@ -70,14 +70,42 @@ module.exports = async function loadTheme (ctx) {
   } catch (error) {
     themeEntryFile = {}
   }
+
   themeEntryFile.name = '@vuepress/internal-theme-entry-file'
   themeEntryFile.shortcut = null
 
   // handle theme api
   const layoutDirs = [
-    path.resolve(themePath, 'layouts'),
-    path.resolve(themePath, '.')
+    path.resolve(themePath, '.'),
+    path.resolve(themePath, 'layouts')
   ]
+
+  if (themeEntryFile.extend) {
+    const resolved = themeResolver.resolve(themeEntryFile.extend, sourceDir)
+    if (resolved.entry === null) {
+      throw new Error(`Cannot resolve parent theme ${themeEntryFile.extend}.`)
+    }
+    parentThemePath = normalizeThemePath(resolved)
+
+    try {
+      parentThemeEntryFile = pluginAPI.normalizePlugin(parentThemePath, ctx.themeConfig)
+    } catch (error) {
+      parentThemeEntryFile = {}
+    }
+
+    parentThemeEntryFile.name = '@vuepress/internal-parent-theme-entry-file'
+    parentThemeEntryFile.shortcut = null
+
+    layoutDirs.unshift(
+      path.resolve(parentThemePath, '.'),
+      path.resolve(parentThemePath, 'layouts'),
+    )
+
+    themeEntryFile.alias = Object.assign(
+      themeEntryFile.alias || {},
+      { '@parent-theme': parentThemePath }
+    )
+  }
 
   // normalize component name
   const getComponentName = filename => {
@@ -139,6 +167,20 @@ module.exports = async function loadTheme (ctx) {
     layoutComponentMap,
     themeEntryFile,
     themeName,
-    themeShortcut
+    themeShortcut,
+    parentThemePath,
+    parentThemeEntryFile
+  }
+}
+
+function normalizeThemePath (resolved) {
+  const { entry, name, fromDep } = resolved
+  if (fromDep) {
+    const pkgPath = require.resolve(`${name}/package.json`)
+    return path.parse(pkgPath).dir
+  } else if (entry.endsWith('.js') || entry.endsWith('.vue')) {
+    return path.parse(entry).dir
+  } else {
+    return entry
   }
 }
