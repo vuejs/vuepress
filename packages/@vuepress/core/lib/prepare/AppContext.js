@@ -190,7 +190,8 @@ module.exports = class AppContext {
     const siteSsrTemplate2 = path.resolve(templateDir, 'ssr.html')
     const siteDevTemplate2 = path.resolve(templateDir, 'dev.html')
 
-    const { themeSsrTemplate, themeDevTemplate } = this.themeEntryFile
+    const themeSsrTemplate = path.resolve(this.themePath, 'templates/ssr.html')
+    const themeDevTemplate = path.resolve(this.themePath, 'templates/dev.html')
 
     const defaultSsrTemplate = path.resolve(__dirname, '../app/index.ssr.html')
     const defaultDevTemplate = path.resolve(__dirname, '../app/index.dev.html')
