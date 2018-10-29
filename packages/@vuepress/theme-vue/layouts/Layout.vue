@@ -1,18 +1,18 @@
 <template>
-  <Layout>
+  <ParentLayout>
     <CarbonAds slot="sidebar-top"/>
     <BuySellAds slot="page-bottom"/>
-  </Layout>
+  </ParentLayout>
 </template>
 
 <script>
-import Layout from '@parent-theme/layouts/Layout.vue'
+import ParentLayout from '@parent-theme/layouts/Layout.vue'
 import CarbonAds from '../components/CarbonAds.vue'
 import BuySellAds from '../components/BuySellAds.vue'
 
 export default {
   components: {
-    Layout,
+    ParentLayout,
     CarbonAds,
     BuySellAds
   }
