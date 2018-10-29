@@ -15,10 +15,6 @@ export default {
     Layout,
     CarbonAds,
     BuySellAds
-  },
-
-  mounted () {
-    console.log('mounted')
   }
 }
 </script>
