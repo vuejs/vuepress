@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/vuejs/vuepress#readme",
   "devDependencies": {
+    "@vuepress/theme-vue": "^1.0.0-alpha.17",
     "@vuepress/plugin-back-to-top": "^1.0.0-alpha.17",
     "@vuepress/plugin-i18n-ui": "^1.0.0-alpha.17",
     "@vuepress/plugin-medium-zoom": "^1.0.0-alpha.17",
