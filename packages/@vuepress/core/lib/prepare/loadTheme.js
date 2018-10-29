@@ -48,8 +48,11 @@ module.exports = async function loadTheme (ctx) {
     themePath = localThemePath
     logger.tip(`\nApply theme located at ${chalk.gray(themePath)}...`)
   } else if (isString(theme)) {
-    const { entry: modulePath, name, shortcut } = themeResolver.resolve(theme, sourceDir)
-
+    const resolved = themeResolver.resolve(theme, sourceDir)
+    const { entry: modulePath, name, shortcut } = resolved
+    if (modulePath === null) {
+      throw new Error(`Cannot resolve theme ${theme}.`)
+    }
     if (modulePath.endsWith('.js') || modulePath.endsWith('.vue')) {
       themePath = path.parse(modulePath).dir
     } else {
