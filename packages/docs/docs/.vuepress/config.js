@@ -1,6 +1,6 @@
 const path = require('path')
 
-module.exports = {
+module.exports = ctx => ({
   dest: '../../vuepress',
   locales: {
     '/': {
@@ -62,7 +62,7 @@ module.exports = {
     }
   },
   plugins: {
-    '@vuepress/i18n-ui': true,
+    '@vuepress/i18n-ui': !ctx.isProd,
     '@vuepress/back-to-top': true,
     '@vuepress/pwa': {
       serviceWorker: true,
@@ -76,7 +76,7 @@ module.exports = {
     }
   },
   clientRootMixin: path.resolve(__dirname, 'mixin.js')
-}
+})
 
 function getGuideSidebar (gruopA, groupB) {
   return [
