@@ -1,0 +1,35 @@
+{
+  "private": true,
+  "name": "@vuepress/theme-vue",
+  "version": "1.0.0-alpha.17",
+  "description": "VuePress theme for official Vue projects",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuejs/vuepress.git"
+  },
+  "keywords": [
+    "documentation",
+    "vue",
+    "vuepress",
+    "generator"
+  ],
+  "author": "Evan You",
+  "maintainers": [
+    {
+      "name": "ULIVZ",
+      "email": "chl814@foxmail.com"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vuejs/vuepress/issues"
+  },
+  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/theme-vue#readme",
+  "dependencies": {
+    "@vuepress/theme-default": "^1.0.0-alpha.17"
+  }
+}
