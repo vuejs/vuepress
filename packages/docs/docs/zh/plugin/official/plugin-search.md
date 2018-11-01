@@ -33,7 +33,7 @@ import SearchBox from '@SearchBox'
 - Type: `number`
 - Default: 5
 
-Maximum value of items searched.
+Set the maximum number of results for search.
 
 ## Tips
 
