@@ -1,3 +1,7 @@
+---
+title: blog
+---
+
 # @vuepress/plugin-blog
 
 > Blog plugin.

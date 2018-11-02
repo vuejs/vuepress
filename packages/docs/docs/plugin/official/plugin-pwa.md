@@ -1,3 +1,7 @@
+---
+title: pwa
+---
+
 # @vuepress/plugin-pwa
 
 > PWA plugin.

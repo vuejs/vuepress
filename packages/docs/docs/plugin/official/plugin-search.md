@@ -1,3 +1,7 @@
+---
+title: search
+---
+
 # @vuepress/plugin-search
 
 > Header-based search plugin.

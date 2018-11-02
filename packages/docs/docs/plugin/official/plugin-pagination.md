@@ -1,3 +1,7 @@
+---
+title: pagination
+---
+
 # @vuepress/plugin-pagination
 
 > pagination plugin for vuepress
