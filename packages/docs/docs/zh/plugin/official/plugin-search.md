@@ -1,9 +1,17 @@
-# @vuepress/search
+# @vuepress/plugin-search
 
 A Plugin for header-based search.
 
-- Type: `UI`
-- Included in default theme: `true`
+## Install
+
+```bash
+yarn add -D @vuepress/plugin-search
+# OR npm install -D @vuepress/plugin-search
+```
+
+::: tip
+Note that this plugin has been included in **default theme**, the search box you see in the navbar is powered by the plugin.
+:::
 
 ## Usage
 
