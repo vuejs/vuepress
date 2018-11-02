@@ -129,6 +129,7 @@ function getPluginSidebar (pluginTitle, pluginIntro, officialPluginTitle) {
         'official/plugin-search',
         'official/plugin-pwa',
         'official/plugin-blog',
+        'official/plugin-pagination',
       ]
     }
   ]
