@@ -134,6 +134,7 @@ function getPluginSidebar (pluginTitle, pluginIntro, officialPluginTitle) {
         'official/plugin-i18n-ui',
         'official/plugin-last-updated',
         'official/plugin-medium-zoom',
+        'official/plugin-back-to-top',
       ]
     }
   ]
