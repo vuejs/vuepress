@@ -118,8 +118,7 @@ function getPluginSidebar (pluginTitle, pluginIntro, officialPluginTitle) {
         'writing-a-plugin',
         'life-cycle',
         'option-api',
-        'context-api',
-        'official'
+        'context-api'
       ]
     },
     {
