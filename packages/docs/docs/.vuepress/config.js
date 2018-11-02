@@ -132,6 +132,7 @@ function getPluginSidebar (pluginTitle, pluginIntro, officialPluginTitle) {
         'official/plugin-pagination',
         'official/plugin-google-analytics',
         'official/plugin-i18n-ui',
+        'official/plugin-last-updated',
       ]
     }
   ]
