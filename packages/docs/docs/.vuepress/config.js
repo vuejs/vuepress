@@ -131,6 +131,7 @@ function getPluginSidebar (pluginTitle, pluginIntro, officialPluginTitle) {
         'official/plugin-blog',
         'official/plugin-pagination',
         'official/plugin-google-analytics',
+        'official/plugin-i18n-ui',
       ]
     }
   ]
