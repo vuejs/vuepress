@@ -130,6 +130,7 @@ function getPluginSidebar (pluginTitle, pluginIntro, officialPluginTitle) {
         'official/plugin-pwa',
         'official/plugin-blog',
         'official/plugin-pagination',
+        'official/plugin-google-analytics',
       ]
     }
   ]
