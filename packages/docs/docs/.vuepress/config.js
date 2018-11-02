@@ -126,7 +126,8 @@ function getPluginSidebar (pluginTitle, pluginIntro, officialPluginTitle) {
       title: officialPluginTitle,
       collapsable: false,
       children: [
-        'official/plugin-search'
+        'official/plugin-search',
+        'official/plugin-pwa'
       ]
     }
   ]
