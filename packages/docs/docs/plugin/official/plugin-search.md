@@ -1,6 +1,6 @@
 # @vuepress/plugin-search
 
-A Plugin for header-based search.
+> Header-based search plugin.
 
 ## Install
 
