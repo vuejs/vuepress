@@ -4,9 +4,9 @@ title: search
 
 # @vuepress/plugin-search
 
-> Header-based search plugin.
+> 基于 [Headers](../../miscellaneous/glossary.md#headers) 的搜索插件
 
-## Install
+## 安装
 
 ```bash
 yarn add -D @vuepress/plugin-search
@@ -14,12 +14,12 @@ yarn add -D @vuepress/plugin-search
 ```
 
 ::: tip
-Note that this plugin has been included in **default theme**, the search box you see in the navbar is powered by the plugin.
+请注意，此插件已包含在**默认主题**中，你现在看到的搜索便是由本插件提供支持。
 :::
 
-## Usage
+## 使用
 
-1. Enable this plugin:
+1. 启用此插件：
 
 ```js
 // .vuepress/config.js or themePath/index.js
@@ -32,29 +32,46 @@ module.exports = {
 }
 ```
 
-2. After using this plugin, VuePress will set a webpack alias `@SearchBox` pointing to the search component so that you can use it directly in your layout component:
+2. 本插件将自动注入指向搜索组件的 webpack 别名 `@SearchBox`，以便您可以直接在 [layout](../../miscellaneous/glossary.md#layout) 组件中使用它：
 
-```js
+```vue
+<template>
+  <div class="foo-layout">
+    <header>
+      <SearchBox/>
+    </header>
+    <main>
+      ...
+    </main>
+  </div>
+</template>
+
+<script>
 import SearchBox from '@SearchBox'
+
+export default {
+  components: { SearchBox }
+}
+</script>
 ```
 
-## Options
+## 选项
 
 ### searchMaxSuggestions
 
-- Type: `number`
-- Default: 5
+- 类型: `number`
+- 默认值: 5
 
-Set the maximum number of results for search.
+设置搜索的最大结果数。
 
-## Tips
+## 技巧
 
-### Tweak the default colors.
+### 调整默认颜色
 
-Since the Search component leverages the built-in palette, you can tweak the default colors via `styles/palette.styl`:
+由于该搜索组件使用了内置调色板，你可以通过 `styles/palette.styl` 来调整搜索框的默认颜色：
 
 ```stylus
-// colors of the website you see now:
+// 你现在看到的这个搜索栏的颜色：
 $accentColor = #3eaf7c
 $textColor = #2c3e50
 $borderColor = #eaecef
