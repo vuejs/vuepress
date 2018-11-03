@@ -43,7 +43,7 @@ module.exports = [
         text: '其他',
         items: [
           {
-            text: '从 0.x.x 迁移',
+            text: '从 0.x 迁移',
             link: '/zh/miscellaneous/migration-guide.html'
           },
           {

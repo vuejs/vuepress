@@ -43,7 +43,7 @@ module.exports = [
         text: 'Miscellaneous',
         items: [
           {
-            text: 'Migrate from 0.x.x',
+            text: 'Migrate from 0.x',
             link: '/miscellaneous/migration-guide.html'
           },
           {

@@ -2,7 +2,7 @@
 sidebar: auto
 ---
 
-# 从 VuePress 1.x 迁移
+# 从 VuePress 0.x 迁移
 
 ## config.js
 
