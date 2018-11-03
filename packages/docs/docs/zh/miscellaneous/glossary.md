@@ -61,3 +61,9 @@ VuePress 的动态布局系统等特性是基于 `frontmatter` 实现的，你�
 > Access: `Context.themeEntryFile`
 
 主题的配置文件 (`themePath/index.js`)。
+
+## layout
+
+> Access: `$page.frontmatter.layout`
+
+当前页面所使用的布局组件名。

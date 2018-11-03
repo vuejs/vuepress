@@ -54,10 +54,16 @@ Value of `themeConfig` in `.vuepress/config.js`, i.e., `user's theme configurati
 
 > Access: `Context.themePath`
 
-The root path (absolute path) of the currently used theme.
+Root path (absolute path) of the currently used theme.
 
 ## themeEntryFile
 
 > Access: `Context.themeEntryFile`
 
-The theme's configuration file (`themePath/index.js`).
+Theme's configuration file (`themePath/index.js`).
+
+## layout
+
+> Access: `$page.frontmatter.layout`
+
+Name of the layout component used by the current page.
