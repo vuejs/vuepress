@@ -1,4 +1,5 @@
 const path = require('path')
+const container = require('markdown-it-container')
 
 module.exports = ctx => ({
   dest: '../../vuepress',
@@ -76,7 +77,14 @@ module.exports = ctx => ({
       ga: 'UA-128189152-1'
     }
   },
-  clientRootMixin: path.resolve(__dirname, 'mixin.js')
+  clientRootMixin: path.resolve(__dirname, 'mixin.js'),
+  extendMarkdown (md) {
+    md.use(container, 'upgrade', {
+      render: (tokens, idx) => tokens[idx].nesting === 1
+        ? `<UpgradePath title="${tokens[idx].info.trim().slice('upgrade'.length).trim()}">`
+        : '</UpgradePath>'
+    })
+  },
 })
 
 function getGuideSidebar (groupA, groupB) {
