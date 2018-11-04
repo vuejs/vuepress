@@ -4,16 +4,16 @@ title: blog
 
 # @vuepress/plugin-blog
 
-> Blog plugin.
+> 博客插件
 
-## Install
+## 安装
 
 ```bash
 yarn add -D @vuepress/plugin-blog
 # OR npm install -D @vuepress/plugin-blog
 ```
 
-## Usage
+## 使用
 
 ```javascript
 module.exports = {
@@ -21,14 +21,15 @@ module.exports = {
 }
 ```
 
-## Options
+## 选项
 
 ### categoryIndexPageUrl
 
-- Type: `string`
-- Default: `/category/`
+- 类型: `string`
+- 默认值: `/category/`
 
 ### tagIndexPageUrl
 
-- Type: `string`
-- Default: `/tag/`
+- 类型: `string`
+- 默认值: `/tag/`
+
