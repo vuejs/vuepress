@@ -4,11 +4,11 @@ sidebar: auto
 
 # 从 VuePress 0.x 迁移
 
-## config.js
+## 站点配置
 
 ### ga <Badge text="替换"/>
 
-使用 [@vuepress/google-analytics](../plugin/official.md#vuepress-google-analytics) 代替。
+GA 已经被分离为一个单独的插件 [@vuepress/google-analytics](../plugin/official/plugin-google-analytics.md)。
 
 ::: upgrade
 
@@ -30,9 +30,9 @@ module.exports = {
 ```
 :::
 
-### markdown.config <Badge text="替换"/>
+### markdown.config <Badge text="重命名"/>
 
-使用 `extendMarkdown` 代替。
+使用 `extendMarkdown`：
 
 ::: upgrade
 Update `vuepress/config.js`:
@@ -45,4 +45,30 @@ module.exports = {
 +  extendMarkdown(md) { /* ... */ }
 }
 ```
+:::
+
+### serviceWorker <Badge text="替换"/>
+
+Service Worker 相关的功能已经被分离为一个单独的插件 [@vuepress/plugin-pwa](../plugin/official/plugin-pwa.md)。
+
+::: upgrade
+参考: [@vuepress/plugin-pwa > 从 0.x 迁移](../plugin/official/plugin-pwa.md#从-0-x-迁移)
+:::
+
+## 默认主题配置
+
+### `.vuepress/override.styl` <Badge text="替换"/>
+
+使用 `.vuepress/styles/palette.styl` 代替。
+
+::: upgrade
+参考: [Config > palette.styl](../config/README.md#palette-styl)
+:::
+
+### `.vuepress/style.styl` <Badge text="替换"/>
+
+使用 `.vuepress/styles/index.styl` 代替。
+
+::: upgrade
+参考: [Config > index.styl](../config/README.md#index-styl)
 :::
