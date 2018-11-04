@@ -102,7 +102,16 @@ module.exports = function (src) {
     `<template>\n` +
       `<ContentSlotsDistributor :slot-key="slotKey">${html}</ContentSlotsDistributor>\n` +
     `</template>\n` +
-    `<script>export default { props: ['slot-key'] }</script>` +
+    `<script>
+      export default { 
+         props: ['slot-key'], 
+         mounted() {
+           this.$nextTick(function () {
+             this.$vuepress.$emit('AsyncMarkdownContentLoaded', this.slotKey)
+           })
+         } 
+      }
+    </script>` +
     (hoistedTags || []).join('\n') +
     `\n${dataBlockString}\n`
   )
