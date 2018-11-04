@@ -28,12 +28,14 @@ module.exports = {
 - Type: `boolean`
 - Default: `true`
 
-If set to `true`, VuePress will automatically generate and register a service worker that caches the content for offline use (only enabled in production).
+If set to `true`, VuePress will automatically generate and register a [service worker](https://developers.google.com/web/fundamentals/primers/service-workers/) that caches the content for offline use (only enabled in production).
 
 ### updatePopup
 
-- Type: `boolean|popupConfig`
+- Type: `boolean|object`
 - Default: `undefined`
+
+The definition of type `popupConfig` is as follows:
 
 ```typescript
 interface normalPopupConfig {
@@ -61,11 +63,9 @@ A custom component to replace the default popup component.
 
 **Also see:**
 
-- [Customize the SW-Update Popup UI](#customize-the-sw-update-popup-ui)
+- [Customize the SW-Update Popup UI](#customize-the-ui-of-sw-update-popup)
 
 ## Migration from 0.x
-
-Now that we have plugin API, all features' options that are in plugin's areas will become plugin options.
 
 ### Service Worker
 
@@ -154,7 +154,7 @@ module.exports = {
 
 Feel free to submit PRs to improve the default [i18n configuration](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/plugin-pwa/lib/i18n.js).
 
-## Customize the SW-Update Popup UI
+## Customize the UI of SW-Update Popup
 
 The default sw-update popup component provides a default slot which gives you the ability to fully control the appearence of the popup.
 
@@ -198,7 +198,7 @@ export default {
 </style>
 ```
 
-Then, update your plugin:
+Then, update your plugin config:
 
 ``` diff
 module.exports = {
@@ -214,5 +214,5 @@ module.exports = {
 
 **Also see:**
 
-- [VuePress > Using Components](https://vuepress.vuejs.org/guide/using-vue.html#using-components)
-- [Vue > Scoped Slots](https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots)
+- [VuePress > Using Components](../../guide/using-vue.md#using-components)
+- [Vue > Scoped Slots](https://cn.vuejs.org/v2/guide/components-slots.html#scoped-slots)

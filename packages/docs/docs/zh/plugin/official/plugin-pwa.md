@@ -6,14 +6,14 @@ title: pwa
 
 > PWA plugin.
 
-## Install
+## 安装
 
 ```bash
 yarn add -D @vuepress/plugin-pwa
 # OR npm install -D @vuepress/plugin-pwa
 ```
 
-## Usage
+## 使用
 
 ```javascript
 module.exports = {
@@ -21,19 +21,21 @@ module.exports = {
 }
 ```
 
-## Options
+## 选项
 
 ### serviceWorker
 
-- Type: `boolean`
-- Default: `true`
+- 类型: `boolean`
+- 默认值: `true`
 
-If set to `true`, VuePress will automatically generate and register a service worker that caches the content for offline use (only enabled in production).
+如果设置为 `true`，VuePress 将自动生成并注册一个 [Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers/)，用于缓存页面的内容以供离线使用（仅会在生产环境中启用）。
 
 ### updatePopup
 
-- Type: `boolean|popupConfig`
-- Default: `undefined`
+- 类型: `boolean|popupConfig`
+- 默认值: `undefined`
+
+类型 `popupConfig` 的定义如下：
 
 ```typescript
 interface normalPopupConfig {
@@ -48,24 +50,22 @@ interface localedPopupConfig {
 type popupConfig = normalPopupConfig | localedPopupConfig
 ```
 
-This option enables the popup to refresh contents. The popup will be shown when the site is updated (i.e. service worker is updated). It provides `refresh` button to allow users to refresh contents immediately.
+本选项开启了一个用于刷新内容的弹窗。这个弹窗将会在站点有内容更新时显示出来，并提供了一个 `refresh` 按钮，允许用户立即刷新内容。
 
-> If without the `refresh` button, the new service worker will be active after all [clients](https://developer.mozilla.org/en-US/docs/Web/API/Clients) are closed. This means that visitors cannot see new contents until they close all tabs of your site. But the `refresh` button activates the new service worker immediately.
+>如果没有“刷新”按钮，则只有在所有的 [Clients](https://developer.mozilla.org/en-US/docs/Web/API/Clients) 被关闭后，新的 Service Worker 才会处于活动状态。这意味着用户在关闭你网站的所有标签之前无法看到新内容。但是 `refresh` 按钮会立即激活新的 Service Worker。
 
 ### popupComponent
 
-- Type: `string`
-- Default: `undefined`
+- 类型: `string`
+- 默认值: `undefined`
 
-A custom component to replace the default popup component.
+用于替换默认弹出组件的自定义组件。
 
-**Also see:**
+**参考:**
 
-- [Customize the SW-Update Popup UI](#customize-the-sw-update-popup-ui)
+- [自定义 SW-Update Popup](#自定义-sw-update-popup-的-ui)
 
-## Migration from 0.x
-
-Now that we have plugin API, all features' options that are in plugin's areas will become plugin options.
+## 从 0.x 迁移
 
 ### Service Worker
 
@@ -100,7 +100,7 @@ module.exports = {
 }
 ```
 
-For i18n user:
+如果你在 [i18n](../../guide/i18n.md) 模式下:
 
 ``` diff
 module.exports = {
@@ -139,7 +139,7 @@ module.exports = {
 +  }
 ```
 
-It's worth mentioning that the PWA plugin has above i18n built in, so if you want to use the default i18n directly, you can abbreviate the above configuration as:
+值得一提的是本插件已经内置了上述的 i18n 配置，所以如果你想直接使用默认的 i18n，你可以将上面的配置缩写为：
 
 ```js
 module.exports = {
@@ -152,13 +152,13 @@ module.exports = {
 }
 ```
 
-Feel free to submit PRs to improve the default [i18n configuration](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/plugin-pwa/lib/i18n.js).
+欢迎提交 PR 以增加默认的 [i18n 配置](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/plugin-pwa/lib/i18n.js).
 
-## Customize the SW-Update Popup UI
+## 自定义 SW-Update Popup 的 UI
 
-The default sw-update popup component provides a default slot which gives you the ability to fully control the appearence of the popup.
+默认的 SW-Update Popup 组件提供了一个默认插槽，使您能够完全控制弹窗的外观。
 
-First, you need to create a global component (e.g. `MySWUpdatePopup`) at `.vuepress/components`. A simple component created based on the default component is as follows:
+首先，您需要在 `.vuepress/components` 中创建一个全局组件（例如`MySWUpdatePopup`)。 一个基于默认组件创建的简单组件如下：
 
 ```vue
 <template>
@@ -198,7 +198,7 @@ export default {
 </style>
 ```
 
-Then, update your plugin:
+接着，更新你的插件配置：
 
 ``` diff
 module.exports = {
@@ -212,7 +212,7 @@ module.exports = {
 }
 ```
 
-**Also see:**
+**参考:**
 
-- [VuePress > Using Components](https://vuepress.vuejs.org/guide/using-vue.html#using-components)
-- [Vue > Scoped Slots](https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots)
+- [VuePress > 使用组件](../../guide/using-vue.md#使用组件)
+- [Vue > 作用域插槽](https://cn.vuejs.org/v2/guide/components-slots.html#作用域插槽)
