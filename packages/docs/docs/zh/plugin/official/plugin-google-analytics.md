@@ -4,16 +4,16 @@ title: google-analytics
 
 # @vuepress/plugin-google-analytics
 
-> Google analytics plugin for vuepress
+> Google analytics 插件
 
-## Install
+## 安装
 
 ```bash
 yarn add -D @vuepress/plugin-google-analytics
 # OR npm install -D @vuepress/plugin-google-analytics
 ```
 
-## Usage
+## 使用
 
 ```javascript
 module.exports = {
@@ -21,11 +21,11 @@ module.exports = {
 }
 ```
 
-## Options
+## 选项
 
 ### ga
 
-- Type: `string`
-- Default: `undefined`
+- 类型: `string`
+- 默认值: `undefined`
 
-Provide the Google Analytics ID to enable integration.
+Google Analytics ID。

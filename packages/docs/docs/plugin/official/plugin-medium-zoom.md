@@ -4,7 +4,7 @@ title: medium-zoom
 
 # @vuepress/plugin-medium-zoom
 
-> medium-zoom plugin for vuepress
+> [medium-zoom](https://github.com/francoischalifour/medium-zoom) plugin
 
 ## Install
 

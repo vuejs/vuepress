@@ -4,7 +4,7 @@ title: pwa
 
 # @vuepress/plugin-pwa
 
-> PWA plugin.
+> PWA plugin
 
 ## Install
 

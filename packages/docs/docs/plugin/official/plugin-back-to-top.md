@@ -4,7 +4,7 @@ title: back-to-top
 
 # @vuepress/plugin-back-to-top
 
-> Back-to-top plugin.
+> Back-to-top plugin
 
 ## Install
 

@@ -4,7 +4,7 @@ title: search
 
 # @vuepress/plugin-search
 
-> [Headers](../../miscellaneous/glossary.md#headers)-based search plugin.
+> [Headers](../../miscellaneous/glossary.md#headers)-based search plugin
 
 ## Install
 

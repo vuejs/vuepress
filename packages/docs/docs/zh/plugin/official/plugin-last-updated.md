@@ -4,18 +4,13 @@ title: last-updated
 
 # @vuepress/plugin-last-updated
 
-> last-updated plugin for vuepress
+> last-updated 插件。
 
-> Note that this plugin has been included in the core.
+::: warning 注意
+注意，vuepress 的 core 中已经包含此插件，你无需再重复安装。
+:::
 
-## Install
-
-```bash
-yarn add -D @vuepress/plugin-pagination
-# OR npm install -D @vuepress/plugin-pagination
-```
-
-## Usage
+## 使用
 
 ```js
 module.exports = {
@@ -23,14 +18,14 @@ module.exports = {
 }
 ```
 
-## Options
+## 选项
 
 ### transformer
 
-- Type: `function`
-- Default: `undefined`
+- 类型: `function`
+- 默认值: `undefined`
 
-By default, this plugin produces a 13-bit timestamp for each page, you can also pass in a transformer to convert it to any format that you want.
+默认情况下，本插件为每个页面生成一个 13 位的时间戳，你可以传入一个 transformer 将其转换为你想要的任何格式。
 
 ``` javascript
 const timeago = require("timeago.js");

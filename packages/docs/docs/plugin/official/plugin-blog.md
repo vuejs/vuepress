@@ -4,7 +4,7 @@ title: blog
 
 # @vuepress/plugin-blog
 
-> Blog plugin.
+> Blog plugin
 
 ## Install
 

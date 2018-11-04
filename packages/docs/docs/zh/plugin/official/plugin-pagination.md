@@ -4,16 +4,16 @@ title: pagination
 
 # @vuepress/plugin-pagination
 
-> pagination plugin for vuepress
+> 分页器插件
 
-## Install
+## 安装
 
 ```bash
 yarn add -D @vuepress/plugin-pagination
 # OR npm install -D @vuepress/plugin-pagination
 ```
 
-## Usage
+## 使用
 
 ```javascript
 module.exports = {
@@ -21,19 +21,21 @@ module.exports = {
 }
 ```
 
-## postsFilter
+## 选项
 
-- Type: `function`
-- Default:
+### postsFilter
+
+- 类型: `function`
+- 默认值:
 
 ```js
 (({ type }) => type === 'post')`
 ```
 
-## postsSorter
+### postsSorter
 
-- Type: `function`
-- Default:
+- 类型: `function`
+- 默认值:
 
 ```js
 ((prev, next) => {

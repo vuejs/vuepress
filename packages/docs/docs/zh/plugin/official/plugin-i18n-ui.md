@@ -4,16 +4,16 @@ title: i18n-ui
 
 # @vuepress/plugin-i18n-ui
 
-> i18n-ui plugin for vuepress
+> i18n-ui 插件。
 
-## Install
+## 安装
 
 ```bash
 yarn add -D @vuepress/plugin-i18n-ui
 # OR npm install -D @vuepress/plugin-i18n-ui
 ```
 
-## Usage
+## 使用
 
 ```javascript
 module.exports = {
@@ -21,11 +21,11 @@ module.exports = {
 }
 ```
 
-## Options
+## 选项
 
 ### route
 
-- Type: `string`
-- Default: `/i18n/`
+- 类型: `string`
+- 默认值: `/i18n/`
 
-Path to the i18n ui page.
+i18n ui页面的路径。

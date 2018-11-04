@@ -4,7 +4,7 @@ title: pagination
 
 # @vuepress/plugin-pagination
 
-> pagination plugin for vuepress
+> pagination plugin
 
 ## Install
 
@@ -21,7 +21,9 @@ module.exports = {
 }
 ```
 
-## postsFilter
+## Options
+
+### postsFilter
 
 - Type: `function`
 - Default:
@@ -30,7 +32,7 @@ module.exports = {
 (({ type }) => type === 'post')`
 ```
 
-## postsSorter
+### postsSorter
 
 - Type: `function`
 - Default:

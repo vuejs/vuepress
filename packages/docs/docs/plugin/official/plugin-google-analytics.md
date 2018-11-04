@@ -4,7 +4,7 @@ title: google-analytics
 
 # @vuepress/plugin-google-analytics
 
-> Google analytics plugin for vuepress
+> Google analytics plugin
 
 ## Install
 

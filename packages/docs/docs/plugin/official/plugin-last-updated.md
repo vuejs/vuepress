@@ -6,14 +6,9 @@ title: last-updated
 
 > last-updated plugin for vuepress
 
-> Note that this plugin has been included in the core.
-
-## Install
-
-```bash
-yarn add -D @vuepress/plugin-pagination
-# OR npm install -D @vuepress/plugin-pagination
-```
+::: warning Note
+Note that this plugin has been included in the core, you don't need to repeat the installation.
+:::
 
 ## Usage
 

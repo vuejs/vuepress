@@ -4,16 +4,16 @@ title: back-to-top
 
 # @vuepress/plugin-back-to-top
 
-> Back-to-top plugin.
+> back-to-top 插件.
 
-## Install
+## 安装
 
 ```bash
 yarn add -D @vuepress/plugin-back-to-top
 # OR npm install -D @vuepress/plugin-back-to-top
 ```
 
-## Usage
+## 使用
 
 ```javascript
 module.exports = {
