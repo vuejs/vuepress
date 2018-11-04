@@ -7,7 +7,7 @@ import { siteData } from '@internal/siteData'
 import appEnhancers from '@internal/app-enhancers'
 import globalUIComponents from '@internal/global-ui'
 import ClientComputedMixin from '@transform/ClientComputedMixin'
-import Store from './Store'
+import Store from './plugins/Store'
 
 // built-in components
 import Content from './components/Content'
@@ -30,9 +30,8 @@ if (module.hot) {
 
 Vue.config.productionTip = false
 
-Vue.$store = new Store()
-
 Vue.use(Router)
+Vue.use(Store, '$vuepress')
 // mixin for exposing $site and $page
 Vue.mixin(dataMixin(ClientComputedMixin, siteData))
 // component for rendering markdown content and setting title etc.
@@ -62,7 +61,7 @@ export function createApp (isServer) {
       if (saved) {
         return saved
       } else if (to.hash) {
-        if (Vue.$store.get('disableScrollBehavior')) {
+        if (Vue.$vuepress.$get('disableScrollBehavior')) {
           return false
         }
         return {
