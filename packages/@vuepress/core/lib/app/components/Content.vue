@@ -1,5 +1,5 @@
 <template>
-  <transition :name="layout === 'ContentLoading' || !layout ? null : 'fade'">
+  <transition :name="disableTransition ? null : 'fade'">
     <component
       v-if="layout"
       :is="layout"
@@ -24,13 +24,17 @@ export default {
 
   data () {
     return {
-      layout: 'ContentLoading'
+      layout: 'ContentLoading',
+      noTransition: true
     }
   },
 
   computed: {
     $key () {
       return this.pageKey || this.$page.key
+    },
+    disableTransition () {
+      return !this.layout || this.layout === 'ContentLoading' || this.noTransition
     }
   },
 
@@ -62,10 +66,12 @@ export default {
     reloadContent (pageKey) {
       if (Vue.component(pageKey)) {
         this.layout = pageKey
+        this.noTransition = true
         return
       }
       this.layout = 'ContentLoading'
       if (components[pageKey]) {
+        this.noTransition = false
         if (!this.$ssrContext) {
           Promise.all([
             components[pageKey](),
