@@ -44,13 +44,13 @@ Markdown 插槽便是为了解决这一类问题。
 <template>
   <div class="container">
     <header>
-      <Content slot="header"/>
+      <Content slot-key="header"/>
     </header>
     <main>
       <Content/>
     </main>
     <footer>
-      <Content slot="footer"/>
+      <Content slot-key="footer"/>
     </footer>
   </div>
 </template>
