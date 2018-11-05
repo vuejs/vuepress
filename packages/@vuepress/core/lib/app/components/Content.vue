@@ -57,6 +57,7 @@ export default {
 
     reloadContent (pageKey) {
       if (Vue.component(pageKey)) {
+        this.layout = pageKey
         return
       }
       this.layout = 'ContentLoading'
@@ -82,7 +83,7 @@ export default {
 
 <style>
   .fade-enter-active, .fade-leave-active {
-    transition: opacity .3s;
+    transition: opacity .2s;
   }
   .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
     opacity: 0;
