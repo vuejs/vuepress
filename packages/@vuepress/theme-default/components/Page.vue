@@ -4,7 +4,7 @@
 
     <Content/>
 
-    <div class="page-edit">
+    <div class="page-edit" v-if="contentMounted">
       <div
         class="edit-link"
         v-if="editLink"
@@ -26,7 +26,7 @@
       </div>
     </div>
 
-    <div class="page-nav" v-if="prev || next">
+    <div class="page-nav" v-if="contentMounted && (prev || next)">
       <p class="inner">
         <span
           v-if="prev"
@@ -67,10 +67,11 @@ import { resolvePage, normalize, outboundRE, endingSlashRE } from '../util'
 export default {
   props: ['sidebarItems'],
 
-  data () {
-  },
-
   computed: {
+    contentMounted () {
+      return this.$vuepress.$get('contentMounted')
+    },
+
     lastUpdated () {
       if (this.$page.lastUpdated) {
         return new Date(this.$page.lastUpdated).toLocaleString(this.$lang)

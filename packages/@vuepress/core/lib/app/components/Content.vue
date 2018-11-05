@@ -36,10 +36,14 @@ export default {
 
   created () {
     this.loadContent(this.$key)
+    this.$vuepress.$on('AsyncMarkdownContentMounted', (slotKey) => {
+      this.$vuepress.$set('contentMounted', true)
+    })
   },
 
   watch: {
     $key (key) {
+      this.$vuepress.$set('contentMounted', false)
       this.reloadContent(key)
     }
   },
