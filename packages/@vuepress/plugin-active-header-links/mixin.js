@@ -1,3 +1,5 @@
+/* global AHL_SIDEBAR_LINK_SELECTOR, AHL_HEADER_ANCHOR_SELECTOR */
+
 import throttle from 'lodash.throttle'
 
 function calculateCurrentAnchor (anchors) {
@@ -25,9 +27,9 @@ function calculateCurrentAnchor (anchors) {
 }
 
 function getAnchors () {
-  const sidebarLinks = [].slice.call(document.querySelectorAll('.sidebar-link'))
+  const sidebarLinks = [].slice.call(document.querySelectorAll(AHL_SIDEBAR_LINK_SELECTOR))
   return [].slice
-    .call(document.querySelectorAll('.header-anchor'))
+    .call(document.querySelectorAll(AHL_HEADER_ANCHOR_SELECTOR))
     .filter(anchor => sidebarLinks.some(sidebarLink => sidebarLink.hash === anchor.hash))
     .map(el => {
       return {
