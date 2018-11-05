@@ -68,8 +68,12 @@ export default {
 
   methods: {
     onScroll: throttle(function () {
+      const anchors = getAnchors()
+      if (anchors.length === 0) {
+        return
+      }
       this.$lastAnchor = this.$currentAnchor
-      this.$currentAnchor = calculateCurrentAnchor(getAnchors())
+      this.$currentAnchor = calculateCurrentAnchor(anchors)
       if (!this.$lastAnchor || this.$lastAnchor.hash !== this.$currentAnchor.hash) {
         this.$vuepress.$emit('AnchorHashChange', this.$currentAnchor)
       }
