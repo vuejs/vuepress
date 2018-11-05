@@ -68,7 +68,8 @@ module.exports = class Page {
   async process ({
     computed,
     markdown,
-    enhancers = []
+    enhancers = [],
+    preRender = {}
   }) {
     if (this._filePath) {
       this._content = await fs.readFile(this._filePath, 'utf-8')

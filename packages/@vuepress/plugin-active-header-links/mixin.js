@@ -43,7 +43,8 @@ function getAnchors () {
 
 export default {
   mounted () {
-    this.$vuepress.$on('AsyncMarkdownContentLoaded', (slotKey) => {
+    this.$vuepress.$on('AsyncMarkdownContentMounted', (slotKey) => {
+      console.warn('AsyncMarkdownContentMounted')
       if (slotKey === 'default') {
         window.addEventListener('scroll', this.onScroll)
       }

@@ -107,7 +107,7 @@ module.exports = function (src) {
          props: ['slot-key'], 
          mounted() {
            this.$nextTick(function () {
-             this.$vuepress.$emit('AsyncMarkdownContentLoaded', this.slotKey)
+             this.$vuepress.$emit('AsyncMarkdownContentMounted', this.slotKey)
            })
          } 
       }
