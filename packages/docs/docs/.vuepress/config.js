@@ -134,6 +134,7 @@ function getPluginSidebar (pluginTitle, pluginIntro, officialPluginTitle) {
       collapsable: false,
       children: [
         'official/plugin-search',
+        'official/plugin-active-header-links',
         'official/plugin-pwa',
         'official/plugin-blog',
         'official/plugin-pagination',
