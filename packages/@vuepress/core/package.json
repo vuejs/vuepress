@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/vuejs/vuepress#readme",
   "dependencies": {
-    "@babel/core": "7.0.0-beta.47",
+    "@babel/core": "^7.0.0",
     "@vue/babel-preset-app": "^3.1.1",
     "@vuepress/markdown": "^1.0.0-alpha.19",
     "@vuepress/markdown-loader": "^1.0.0-alpha.19",
@@ -36,7 +36,7 @@
     "@vuepress/plugin-register-components": "^1.0.0-alpha.19",
     "@vuepress/shared-utils": "^1.0.0-alpha.19",
     "autoprefixer": "^8.2.0",
-    "babel-loader": "8.0.0-beta.3",
+    "babel-loader": "^8.0.4",
     "cache-loader": "^1.2.2",
     "chokidar": "^2.0.3",
     "connect-history-api-fallback": "^1.5.0",
