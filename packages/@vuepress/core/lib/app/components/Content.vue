@@ -13,7 +13,6 @@
 /* global CONTENT_LOADING */
 
 import Vue from 'vue'
-import components from '@internal/page-components'
 import ContentLoading from './ContentLoading'
 
 const CONTENT_LOADING_COMPONENT = typeof CONTENT_LOADING === 'string'
@@ -61,26 +60,28 @@ export default {
   methods: {
     loadContent (pageKey) {
       this.layout = null
-      if (components[pageKey]) {
+      if (this.$vuepress.isPageExists(pageKey)) {
         if (!this.$ssrContext) {
-          Vue.component(pageKey, components[pageKey])
+          this.$vuepress.registerPageAsyncComponent(pageKey)
           this.layout = pageKey
         }
       }
     },
 
     reloadContent (pageKey) {
-      if (Vue.component(pageKey)) {
+      // When page has been loaded, disable transition.
+      if (this.$vuepress.isPageLoaded(pageKey)) {
         this.layout = pageKey
         this.noTransition = true
         return
       }
+      // Start to load unfetched page component.
       this.layout = CONTENT_LOADING_COMPONENT
-      if (components[pageKey]) {
+      if (this.$vuepress.isPageExists(pageKey)) {
         this.noTransition = false
         if (!this.$ssrContext) {
           Promise.all([
-            components[pageKey](),
+            this.$vuepress.loadPageAsyncComponent(pageKey),
             new Promise(resolve => setTimeout(resolve, 300))
           ]).then(([comp]) => {
             this.$vuepress.$emit('AsyncMarkdownAssetLoaded', this.pageKey)
