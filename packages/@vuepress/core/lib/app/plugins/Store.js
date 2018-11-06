@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-class Store {
+export default class Store {
   constructor () {
     this.store = new Vue({
       data: {
@@ -23,13 +23,5 @@ class Store {
 
   $on (...args) {
     this.store.$on(...args)
-  }
-}
-
-export default {
-  install (Vue, options = '$store') {
-    const store = new Store()
-    Vue[options] = store
-    Vue.prototype[options] = store
   }
 }

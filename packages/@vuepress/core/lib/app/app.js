@@ -7,7 +7,7 @@ import { siteData } from '@internal/siteData'
 import appEnhancers from '@internal/app-enhancers'
 import globalUIComponents from '@internal/global-ui'
 import ClientComputedMixin from '@transform/ClientComputedMixin'
-import Store from './plugins/Store'
+import VuePress from './plugins/VuePress'
 
 // built-in components
 import LoadableContent from './components/Content.vue'
@@ -32,7 +32,7 @@ if (module.hot) {
 Vue.config.productionTip = false
 
 Vue.use(Router)
-Vue.use(Store, '$vuepress')
+Vue.use(VuePress)
 // mixin for exposing $site and $page
 Vue.mixin(dataMixin(ClientComputedMixin, siteData))
 // component for rendering markdown content and setting title etc.
