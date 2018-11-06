@@ -118,6 +118,13 @@ Specify locales for i18n support. For more details, see the guide on [Internatio
 
 A function to control what files should have `<link rel="preload">` resource hints generated. See [shouldPrefetch](https://ssr.vuejs.org/api/#shouldprefetch).
 
+### contentLoading
+
+- Type: `boolean|string`
+- Default: `false`
+
+Whether to enable placeholder loading for asynchronous loading content. if it's a stirng, it should be the name of your custom loading component.
+
 ## Styling
 
 ### palette.styl
@@ -135,7 +142,7 @@ $codeBgColor = #282c34
 ```
 
 ::: danger Note
-You should ONLY write color variables in this file. since `palette.styl` will be imported at the end of the root stylus config file, as a config, it will be used by multiple files, so once you wrote styles here, your style would be duplicated by multiple times. 
+You should ONLY write color variables in this file. since `palette.styl` will be imported at the end of the root stylus config file, as a config, it will be used by multiple files, so once you wrote styles here, your style would be duplicated by multiple times.
 :::
 
 ### index.styl

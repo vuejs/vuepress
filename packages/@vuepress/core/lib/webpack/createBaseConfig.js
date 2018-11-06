@@ -300,7 +300,8 @@ module.exports = function createBaseConfig ({
     .use(require('webpack/lib/DefinePlugin'), [{
       VUEPRESS_VERSION: JSON.stringify(require('../../package.json').version),
       VUEPRESS_TEMP_PATH: JSON.stringify(tempPath),
-      LAST_COMMIT_HASH: JSON.stringify(getLastCommitHash())
+      LAST_COMMIT_HASH: JSON.stringify(getLastCommitHash()),
+      CONTENT_LOADING: JSON.stringify(siteConfig.contentLoading || false)
     }])
 
   pluginAPI.options.define.apply(config)

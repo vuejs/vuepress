@@ -3,6 +3,7 @@ const container = require('markdown-it-container')
 
 module.exports = ctx => ({
   dest: '../../vuepress',
+  contentLoading: true,
   locales: {
     '/': {
       lang: 'en-US',

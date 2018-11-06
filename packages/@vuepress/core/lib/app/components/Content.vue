@@ -10,9 +10,15 @@
 </template>
 
 <script>
+/* global CONTENT_LOADING */
+
 import Vue from 'vue'
 import components from '@internal/page-components'
 import ContentLoading from './ContentLoading'
+
+const CONTENT_LOADING_COMPONENT = typeof CONTENT_LOADING === 'string'
+  ? CONTENT_LOADING
+  : 'ContentLoading'
 
 export default {
   components: { ContentLoading },
@@ -24,7 +30,7 @@ export default {
 
   data () {
     return {
-      layout: 'ContentLoading',
+      layout: CONTENT_LOADING_COMPONENT,
       noTransition: true
     }
   },
@@ -34,7 +40,7 @@ export default {
       return this.pageKey || this.$page.key
     },
     disableTransition () {
-      return !this.layout || this.layout === 'ContentLoading' || this.noTransition
+      return !this.layout || this.layout === CONTENT_LOADING_COMPONENT || this.noTransition
     }
   },
 
@@ -69,7 +75,7 @@ export default {
         this.noTransition = true
         return
       }
-      this.layout = 'ContentLoading'
+      this.layout = CONTENT_LOADING_COMPONENT
       if (components[pageKey]) {
         this.noTransition = false
         if (!this.$ssrContext) {
