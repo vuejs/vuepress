@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-blog",
-  "version": "1.0.0-alpha.18",
+  "version": "1.0.0-alpha.19",
   "description": "blog plugin for vuepress",
   "main": "index.js",
   "publishConfig": {
