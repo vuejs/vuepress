@@ -29,8 +29,8 @@ class VuePress extends Store {
 
 export default {
   install (Vue) {
-    const store = new VuePress()
-    Vue.$vuepress = store
-    Vue.prototype.$vuepress = store
+    const ins = new VuePress()
+    Vue.$vuepress = ins
+    Vue.prototype.$vuepress = ins
   }
 }

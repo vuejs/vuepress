@@ -35,7 +35,7 @@ export default {
   },
 
   computed: {
-    $key () {
+    $pageKey () {
       return this.pageKey || this.$page.key
     },
     disableTransition () {
@@ -44,14 +44,11 @@ export default {
   },
 
   created () {
-    this.loadContent(this.$key)
-    this.$vuepress.$on('AsyncMarkdownContentMounted', (slotKey) => {
-      this.$vuepress.$set('contentMounted', true)
-    })
+    this.loadContent(this.$pageKey)
   },
 
   watch: {
-    $key (key) {
+    $pageKey (key) {
       this.$vuepress.$set('contentMounted', false)
       this.reloadContent(key)
     }
