@@ -29,7 +29,7 @@
   "homepage": "https://github.com/vuejs/vuepress#readme",
   "dependencies": {
     "@babel/core": "7.0.0-beta.47",
-    "@vue/babel-preset-app": "3.0.0-beta.11",
+    "@vue/babel-preset-app": "^3.1.1",
     "@vuepress/markdown": "^1.0.0-alpha.19",
     "@vuepress/markdown-loader": "^1.0.0-alpha.19",
     "@vuepress/plugin-last-updated": "^1.0.0-alpha.19",
