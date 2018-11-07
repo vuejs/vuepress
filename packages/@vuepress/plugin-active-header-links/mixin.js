@@ -44,14 +44,14 @@ function getAnchors () {
 let freezeScrollEvent = false
 
 export default {
-  watch: {
-    '$route.path' () {
-      console.log('$route.path changed')
-      freezeScrollEvent = true
-    }
-  },
-
   mounted () {
+    this.$router.beforeEach((to, from, next) => {
+      if (to.path !== from.path) {
+        freezeScrollEvent = true
+      }
+      next()
+    })
+
     this.$vuepress.$on('AsyncMarkdownContentMounted', (slotKey) => {
       freezeScrollEvent = false
       if (slotKey === 'default') {
