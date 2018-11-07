@@ -50,10 +50,10 @@ export default {
   },
   watch: {
     '$page' () {
-      this.$notification.goAway(0)
+      this.$notification && this.$notification.goAway(0)
     },
     '$localePath' () {
-      this.$notification.goAway(0)
+      this.$notification && this.$notification.goAway(0)
       this.notice()
     }
   },
