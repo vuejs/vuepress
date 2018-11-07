@@ -43,6 +43,10 @@ module.exports = siteData => {
       return this.$site.themeConfig
     }
 
+    get $frontmatter () {
+      return this.$page.frontmatter
+    }
+
     get $localeConfig () {
       const { locales = {}} = this.$site
       let targetLang
