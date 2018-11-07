@@ -7,6 +7,10 @@ module.exports = (options, context) => ({
     }, options)
   },
 
+  alias: {
+    '@sw-event': path.resolve(__dirname, 'lib/event.js')
+  },
+
   define () {
     const { serviceWorker, updatePopup } = options
     const base = context.base || '/'
