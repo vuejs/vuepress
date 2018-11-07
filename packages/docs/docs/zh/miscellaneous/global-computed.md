@@ -56,6 +56,10 @@ sidebar: auto
 }
 ```
 
+## $frontmatter
+
+[$page](#page).frontmatter 的引用。
+
 ## $lang
 
 当前页面的语言，默认值为 `en-US`。

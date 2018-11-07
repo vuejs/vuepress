@@ -54,6 +54,10 @@ This is the `$page` value of the page you see now:
 }
 ```
 
+## $frontmatter
+
+Reference of [$page](#page).frontmatter.
+
 ## $lang
 
 The language of the current page. default value is `en-US`.
