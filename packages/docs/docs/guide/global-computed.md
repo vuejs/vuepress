@@ -1,7 +1,3 @@
----
-sidebar: auto
----
-
 # Global Computed
 
 In VuePress, some core [computed](https://vuejs.org/v2/guide/computed.html#Computed-Properties) properties are built in for use by [default theme](../theme/default-theme-config.md) or custom themes.

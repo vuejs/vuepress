@@ -163,7 +163,7 @@ module.exports = {
 
 **参考:**
 
-- [全局计算属性](../miscellaneous/global-computed.md).
+- [全局计算属性](../guide/global-computed.md).
 
 
 ## 应用配置

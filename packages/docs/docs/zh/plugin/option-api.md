@@ -289,7 +289,7 @@ import { SOURCE_DIR } from '@dynamic/constans'
 - 类型: `Function`
 - 默认值: `undefined`
 
-一个函数，用于拓展或者修改 [$page](../miscellaneous/global-computed.md#page) 对象。这个函数将会在编译器为每个页面执行一次。
+一个函数，用于拓展或者修改 [$page](../guide/global-computed.md#page) 对象。这个函数将会在编译器为每个页面执行一次。
 
 ```js
 module.exports = {

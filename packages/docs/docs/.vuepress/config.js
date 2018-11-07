@@ -111,7 +111,8 @@ function getGuideSidebar (groupA, groupB) {
       children: [
         'frontmatter',
         'permalinks',
-        'markdown-slot'
+        'markdown-slot',
+        'global-computed'
       ]
     }
   ]
