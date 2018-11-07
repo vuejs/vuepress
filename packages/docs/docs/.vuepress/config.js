@@ -109,6 +109,7 @@ function getGuideSidebar (groupA, groupB) {
       title: groupB,
       collapsable: false,
       children: [
+        'frontmatter',
         'permalinks',
         'markdown-slot'
       ]

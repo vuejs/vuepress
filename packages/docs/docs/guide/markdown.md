@@ -66,43 +66,9 @@ lang: en-US
 ---
 ```
 
-The data will be available to the rest of the page, plus all custom and theming components as `$page`.
+The data will be available to the rest of the page, plus all custom and theming components.
 
-`title` and `lang` will be automatically set on the current page. In addition you can specify extra meta tags to be injected:
-
-``` yaml
----
-meta:
-  - name: description
-    content: hello
-  - name: keywords
-    content: super duper SEO
----
-```
-
-### Alternative Front Matter Formats
-
-In addition, VuePress also supports JSON or [TOML](https://github.com/toml-lang/toml) front matter.
-
-JSON front matter needs to start and end in curly braces:
-
-```
----
-{
-  "title": "Blogging Like a Hacker",
-  "lang": "en-US"
-}
----
-```
-
-TOML front matter needs to be explicitly marked as TOML:
-
-```
----toml
-title = "Blogging Like a Hacker"
-lang = "en-US"
----
-```
+For detailed introduction, please move to [Front Matter](./frontmatter.md).
 
 ## GitHub-Style Tables
 
