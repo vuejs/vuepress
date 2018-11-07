@@ -2,11 +2,36 @@ export default {
   created () {
     this.$vuepress.$on('AsyncMarkdownContentMounted', () => {
       this.$vuepress.$set('contentMounted', true)
+
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault()
+          window.scroll({
+            top: e.target.offsetTop - 75,
+            left: 0,
+            behavior: 'smooth'
+          })
+        })
+      })
+
+      if (this.$route.hash) {
+        try {
+          const anchor = document.getElementById(this.$route.hash.slice(1))
+          const anchorLink = anchor.querySelector('a.header-anchor')
+          window.scroll({
+            top: anchorLink.offsetTop - 70,
+            left: 0,
+            behavior: 'auto'
+          })
+        } catch (e) {
+          console.error(e)
+        }
+      }
     })
   },
 
   watch: {
-    $page () {
+    '$route.path' () {
       this.$vuepress.$set('contentMounted', false)
     }
   }

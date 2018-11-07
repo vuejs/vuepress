@@ -41,11 +41,21 @@ function getAnchors () {
     })
 }
 
+let freezeScrollEvent = false
+
 export default {
+  watch: {
+    '$route.path' () {
+      console.log('$route.path changed')
+      freezeScrollEvent = true
+    }
+  },
+
   mounted () {
     this.$vuepress.$on('AsyncMarkdownContentMounted', (slotKey) => {
+      freezeScrollEvent = false
       if (slotKey === 'default') {
-        window.addEventListener('scroll', this.onScroll)
+        window.addEventListener('scroll', () => this.onScroll(freezeScrollEvent))
       }
     })
 
@@ -66,7 +76,10 @@ export default {
   },
 
   methods: {
-    onScroll: throttle(function () {
+    onScroll: throttle(function (freezeScrollEvent) {
+      if (freezeScrollEvent) {
+        return
+      }
       const anchors = getAnchors()
       if (anchors.length === 0) {
         return
