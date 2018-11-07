@@ -1,5 +1,5 @@
 ---
-seoTitle: Option API | Plugin
+metaTitle: Option API | Plugin
 ---
 
 # Option API

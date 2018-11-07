@@ -1,5 +1,5 @@
 ---
-seoTitle: Option API | Theme
+metaTitle: Option API | Theme
 ---
 
 # Option API
