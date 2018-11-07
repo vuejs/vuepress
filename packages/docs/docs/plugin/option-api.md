@@ -287,7 +287,7 @@ import { SOURCE_DIR } from '@dynamic/constans'
 - Type: `Function`
 - Default: `undefined`
 
-A function used to extend or modify the [$page](../miscellaneous/global-computed.md#page) object. This function will be invoking once for each page at compile time.
+A function used to extend or modify the [$page](../guide/global-computed.md#page) object. This function will be invoking once for each page at compile time.
 
 ```js
 module.exports = {

@@ -107,11 +107,11 @@ meta:
 - 类型: `boolean`
 - 默认值: `undefined`
 
-参考: [默认值 Theme Config > Disable the Navbar](../theme/默认值-theme-config.md#禁用导航栏).
+参考: [默认值 Theme Config > Disable the Navbar](../theme/default-theme-config.md#禁用导航栏).
 
 ### sidebar
 
 - 类型: `boolean|'auto'`
 - 默认值: `undefined`
 
-参考: [默认值 Theme Config > Sidebar](../theme/默认值-theme-config.md#侧边栏).
+参考: [默认值 Theme Config > Sidebar](../theme/default-theme-config.md#侧边栏).

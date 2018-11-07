@@ -31,7 +31,7 @@ It is worth noting that during the `prepare` phase, VuePress does the following:
 - [Powerful Plugin API](../plugin/README.md)
 - [Built-in markdown extensions](markdown.md) optimized for technical documentation
 - [Ability to leverage Vue inside markdown files](using-vue.md)
-- [Vue-powered custom theme system](custom-themes.md)
+- [Vue-powered custom theme system](../theme/README.md)
 - [Automatic Service Worker generation](../config/README.md#serviceworker)
 - [Google Analytics Integration](../config/README.md#ga)
 - ["Last Updated" based on Git](../theme/default-theme-config.md#last-updated)

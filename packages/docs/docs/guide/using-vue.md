@@ -58,7 +58,7 @@ Directives also work:
 
 ### Access to Site & Page Data
 
-The compiled component does not have any private data but does have access to the [site metadata](./custom-themes.md#site-and-page-metadata). For example:
+The compiled component does not have any private data but does have access to the [site metadata](../theme/writing-a-theme.md#site-and-page-metadata). For example:
 
 **Input**
 
@@ -145,7 +145,7 @@ The output HTML is accomplished by [markdown-it](https://github.com/markdown-it/
 ## Using Pre-processors
 
 VuePress has built-in webpack config for the following pre-processors: `sass`, `scss`, `less`, `stylus` and `pug`. All you need to do is installing the corresponding dependencies. For example, to enable `sass`, install the following in your project:
- 
+
 ``` bash
 yarn add -D sass-loader node-sass
 ```
@@ -167,7 +167,7 @@ yarn add -D pug pug-plain-loader
 
 ::: tip
 If you are a Stylus user, you don't need to install `stylus` and `stylus-loader` in your project because VuePress uses Stylus internally.
-  
+
 For pre-processors that do not have built-in webpack config support, you will need to [extend the internal webpack config](../config/README.md#configurewebpack) in addition to installing the necessary dependencies.
 :::
 
@@ -209,19 +209,19 @@ See [Browser API Access Restrictions](#browser-api-access-restrictions).
 
   - `custom` - boolean
 
-- **Usage**：   
-   
+- **Usage**：
+
 The compiled content of the current `.md` file being rendered. This will be very useful when you use [Custom Layout](../theme/default-theme-config.md#custom-layout-for-specific-pages).
 
 ``` vue
 <Content/>
 ```
 
-**Also see:** 
+**Also see:**
 
-- [Custom Themes > Content Outlet](./custom-themes.md#content-outlet)
+- [Custom Themes > Content Outlet](../theme/writing-a-theme.md#content-outlet)
 
-  
+
 ### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/>
 
 - **Props**:
@@ -233,11 +233,11 @@ The compiled content of the current `.md` file being rendered. This will be very
 - **Usage**:
 
 You can use this component in header to add some status for some API:
-   
+
 ``` md
 ### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/>
-```   
+```
 
-**Also see:** 
+**Also see:**
 
 - [Using Components In Headers](#using-components-in-headers)
