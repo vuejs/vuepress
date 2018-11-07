@@ -22,10 +22,6 @@ module.exports = [
         text: '开发指南',
         items: [
           {
-            text: '全局计算属性',
-            link: '/zh/miscellaneous/global-computed.html'
-          },
-          {
             text: '设计理念',
             link: '/zh/miscellaneous/design-concepts.html'
           },

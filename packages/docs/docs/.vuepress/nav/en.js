@@ -22,10 +22,6 @@ module.exports = [
         text: 'Contributing Guide',
         items: [
           {
-            text: 'Global Computed',
-            link: '/miscellaneous/global-computed.html'
-          },
-          {
             text: 'Design Concepts',
             link: '/miscellaneous/design-concepts.html'
           },
