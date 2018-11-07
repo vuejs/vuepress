@@ -83,27 +83,6 @@ Provide the Google Analytics ID to enable integration.
 Please be aware of [GDPR (2018 reform of EU data protection rules)](https://ec.europa.eu/commission/priorities/justice-and-fundamental-rights/data-protection/2018-reform-eu-data-protection-rules_en) and consider setting Google Analytics to [anonymize IPs](https://support.google.com/analytics/answer/2763052?hl=en) where appropriate and/or needed.
 :::
 
-### serviceWorker
-
-- Type: `boolean`
-- Default: `false`
-
-If set to `true`, VuePress will automatically generate and register a service worker that caches the content for offline use (only enabled in production).
-
-If developing a custom theme, the `Layout.vue` component will also be emitting the following events:
-
-- `sw-ready`
-- `sw-cached`
-- `sw-updated`
-- `sw-offline`
-- `sw-error`
-
-::: tip PWA NOTES
-The `serviceWorker` option only handles the service worker. To make your site fully PWA-compliant, you will need to provide the Web App Manifest and icons in `.vuepress/public`. For more details, see [MDN docs about the Web App Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest).
-
-Also, only enable this if you are able to deploy your site with SSL, since service worker can only be registered under HTTPs URLs.
-:::
-
 ### locales
 
 - Type: `{ [path: string]: Object }`

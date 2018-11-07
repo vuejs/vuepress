@@ -30,6 +30,19 @@ module.exports = {
 
 如果设置为 `true`，VuePress 将自动生成并注册一个 [Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers/)，用于缓存页面的内容以供离线使用（仅会在生产环境中启用）。
 
+有一个别名化的模块 `@sw-event` 模块将会 emit 以下事件：
+
+- `sw-ready`
+- `sw-cached`
+- `sw-updated`
+- `sw-offline`
+- `sw-error`
+
+::: tip PWA NOTES
+`serviceWorker` 选项仅仅用来控制 service worker，为了让你的网站完全地兼容 PWA，你需要在 `.vuepress/public` 提供 Manifest 和 icons，更多细节，请参见 [MDN docs about the Web App Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest).
+此外，只有您能够使用 SSL 部署您的站点时才能启用此功能，因为 service worker 只能在 HTTPs 的 URL 下注册。
+:::
+
 ### updatePopup
 
 - 类型: `boolean|popupConfig`

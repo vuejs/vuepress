@@ -30,6 +30,20 @@ module.exports = {
 
 If set to `true`, VuePress will automatically generate and register a [service worker](https://developers.google.com/web/fundamentals/primers/service-workers/) that caches the content for offline use (only enabled in production).
 
+There is a aliased module `@sw-event` module that will also be emitting the following events:
+
+- `sw-ready`
+- `sw-cached`
+- `sw-updated`
+- `sw-offline`
+- `sw-error`
+
+::: tip PWA NOTES
+The `serviceWorker` option only handles the service worker. To make your site fully PWA-compliant, you will need to provide the Web App Manifest and icons in `.vuepress/public`. For more details, see [MDN docs about the Web App Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest).
+
+Also, only enable this if you are able to deploy your site with SSL, since service worker can only be registered under HTTPs URLs.
+:::
+
 ### updatePopup
 
 - Type: `boolean|object`
