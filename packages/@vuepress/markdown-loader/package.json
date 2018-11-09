@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/markdown-loader",
-  "version": "1.0.0-alpha.19",
+  "version": "1.0.0-alpha.20",
   "description": "markdown-loader for vuepress",
   "main": "index.js",
   "publishConfig": {
@@ -17,7 +17,7 @@
     "generator"
   ],
   "dependencies": {
-    "@vuepress/markdown": "^1.0.0-alpha.19",
+    "@vuepress/markdown": "^1.0.0-alpha.20",
     "loader-utils": "^1.1.0"
   },
   "author": "Evan You",

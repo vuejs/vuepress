@@ -2,13 +2,13 @@
   "private": true,
   "name": "blog",
   "description": "blog of VuePress",
-  "version": "1.0.0-alpha.19",
+  "version": "1.0.0-alpha.20",
   "scripts": {
     "dev": "vuepress dev source --temp .temp",
     "build": "vuepress build source --temp .temp"
   },
   "dependencies": {
-    "@vuepress/theme-blog": "^1.0.0-alpha.19",
-    "vuepress": "^1.0.0-alpha.19"
+    "@vuepress/theme-blog": "^1.0.0-alpha.20",
+    "vuepress": "^1.0.0-alpha.20"
   }
 }
