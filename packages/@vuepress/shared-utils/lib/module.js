@@ -50,7 +50,8 @@ exports.resolveModule = function (request, context) {
     return resolvedPath
   }
   resolvedPath = resolve(request, {
-    paths: [context || process.cwd()]
+    // module.paths is for globally install packages.
+    paths: [context || process.cwd(), ...module.paths]
   })
   return resolvedPath
 }
