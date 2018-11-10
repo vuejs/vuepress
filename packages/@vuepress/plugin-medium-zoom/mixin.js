@@ -18,8 +18,8 @@ export default {
     setTimeout(() => {
       if (self.zoom) {
         self.zoom.detach()
-        self.zoom.attach(SELECTOR)
       }
+      self.zoom = zoom(SELECTOR)
     }, 1000)
   }
 }
