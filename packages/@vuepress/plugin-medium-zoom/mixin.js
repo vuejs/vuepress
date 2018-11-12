@@ -7,19 +7,21 @@ export default {
   data: () => ({ zoom: null }),
 
   mounted () {
-    const self = this
-    setTimeout(() => {
-      self.zoom = zoom(SELECTOR)
-    }, 1000)
+    this.updateZoom()
   },
 
   updated () {
-    const self = this
-    setTimeout(() => {
-      if (self.zoom) {
-        self.zoom.detach()
-      }
-      self.zoom = zoom(SELECTOR)
-    }, 1000)
+    this.updateZoom()
+  },
+
+  methods: {
+    updateZoom () {
+      setTimeout(() => {
+        if (this.zoom) {
+          this.zoom.detach()
+        }
+        this.zoom = zoom(SELECTOR)
+      }, 1000)
+    }
   }
 }
