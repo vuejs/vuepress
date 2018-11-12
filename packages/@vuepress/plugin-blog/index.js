@@ -4,6 +4,7 @@ module.exports = (options, ctx) => {
   const { layoutComponentMap } = ctx
   const {
     pageEnhancers = [],
+    postsDir = '_posts',
     categoryIndexPageUrl = '/category/',
     tagIndexPageUrl = '/tag/',
     permalink = '/:year/:month/:day/:slug'
@@ -40,7 +41,7 @@ module.exports = (options, ctx) => {
       frontmatter: { layout: getLayout('Layout') }
     },
     {
-      when: ({ regularPath }) => regularPath.startsWith('/_posts/'),
+      when: ({ regularPath }) => regularPath.startsWith(`/${postsDir}/`),
       frontmatter: {
         layout: getLayout('Post', 'Page'),
         permalink: permalink
