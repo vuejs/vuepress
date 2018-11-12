@@ -32,3 +32,10 @@ module.exports = {
 
 - Type: `string`
 - Default: `/tag/`
+
+### permalink
+
+- Type: `string`
+- Default: `/:year/:month/:day/:slug`
+
+Configures the permalink generated for blog posts. See [Permalinks](/guide/permalinks.html#template-variables) for a list of valid variables.

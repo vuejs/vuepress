@@ -5,7 +5,8 @@ module.exports = (options, ctx) => {
   const {
     pageEnhancers = [],
     categoryIndexPageUrl = '/category/',
-    tagIndexPageUrl = '/tag/'
+    tagIndexPageUrl = '/tag/',
+    permalink = '/:year/:month/:day/:slug'
   } = options
 
   const isLayoutExists = name => layoutComponentMap[name] !== undefined
@@ -42,7 +43,7 @@ module.exports = (options, ctx) => {
       when: ({ regularPath }) => regularPath.startsWith('/_posts/'),
       frontmatter: {
         layout: getLayout('Post', 'Page'),
-        permalink: '/:year/:month/:day/:slug'
+        permalink: permalink
       },
       data: { type: 'post' }
     },
