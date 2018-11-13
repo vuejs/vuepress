@@ -271,7 +271,9 @@ module.exports = function createBaseConfig ({
         styles: {
           name: 'styles',
           // necessary to ensure async chunks are also extracted
-          test: m => /css-extract/.test(m.type),
+          test: m => {
+            return /css\/mini-extract/.test(m.type)
+          },
           chunks: 'all',
           enforce: true
         }
