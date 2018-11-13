@@ -1,8 +1,9 @@
 ---
 title: i18n-ui
+metaTitle: I18n-UI Plugin | VuePress
 ---
 
-# @vuepress/plugin-i18n-ui
+# [@vuepress/plugin-i18n-ui](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-i18n-ui)
 
 > i18n-ui plugin
 

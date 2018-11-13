@@ -1,8 +1,9 @@
 ---
 title: search
+metaTitle: Search Plugin | VuePress
 ---
 
-# @vuepress/plugin-search
+# [@vuepress/plugin-search](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-search)
 
 > [Headers](../../miscellaneous/glossary.md#headers)-based search plugin
 

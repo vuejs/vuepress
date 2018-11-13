@@ -1,8 +1,9 @@
 ---
 title: blog
+metaTitle: Blog Plugin | VuePress
 ---
 
-# @vuepress/plugin-blog
+# [@vuepress/plugin-blog](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-blog)
 
 > Blog plugin
 

@@ -1,8 +1,9 @@
 ---
 title: active-header-links
+metaTitle: Active-Header-Links Plugin | VuePress
 ---
 
-# @vuepress/plugin-active-header-links
+# [@vuepress/plugin-active-header-links](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-active-header-links)
 
 > A plugin of automatically update header links when page scrolls
 

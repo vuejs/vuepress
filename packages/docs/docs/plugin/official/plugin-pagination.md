@@ -1,8 +1,9 @@
 ---
 title: pagination
+metaTitle: Pagination Plugin | VuePress
 ---
 
-# @vuepress/plugin-pagination
+# [@vuepress/plugin-pagination](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-pagination)
 
 > pagination plugin
 
