@@ -210,19 +210,19 @@ Whether to show line numbers to the left of each code blocks.
 
 Function for transforming header texts into slugs. Changing this affects the ids/links generated for header anchors, table of contents and sidebar links.
 
-### markdown.externalLinks
-
-- Type: `Object`
-- Default: `{ target: '_blank', rel: 'noopener noreferrer' }`
-
-The key and value pair will be added to `<a>` tags that points to an external link. The default option will open external links in a new window.
-
 ### markdown.anchor
 
 - Type: `Object`
 - Default: `{ permalink: true, permalinkBefore: true, permalinkSymbol: '#' }`
 
 Options for [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor). (Note: prefer `markdown.slugify` if you want to customize header ids.)
+
+### markdown.externalLinks
+
+- Type: `Object`
+- Default: `{ target: '_blank', rel: 'noopener noreferrer' }`
+
+The key and value pair will be added to `<a>` tags that points to an external link. The default option will open external links in a new window.
 
 ### markdown.toc
 
