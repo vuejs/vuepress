@@ -27,7 +27,7 @@ It's needed to use with VuePress's [Plugin API > chainMarkdown](https://vuepress
 - **Usage**:
 
 ```js
-// You VuePress Plugin or site config.
+// Your VuePress Plugin or site config.
 const { removePlugin } = require('@vuepress/markdown')
 module.exports = {
   chainMarkdown (config) {
@@ -45,7 +45,7 @@ Remove all built-in but not 100% necessary markdown-it plugins in VuePress.
 - **Usage**:
 
 ```js
-// You VuePress Plugin or site config.
+// Your VuePress Plugin or site config.
 module.exports = {
   chainMarkdown (config) {
     require('@vuepress/markdown').removeAllBuiltInPlugins(config)
