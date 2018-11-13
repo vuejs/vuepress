@@ -104,6 +104,25 @@ A function to control what files should have `<link rel="preload">` resource hin
 
 Whether to enable placeholder loading for asynchronous loading content. if it's a stirng, it should be the name of your custom loading component.
 
+### cache
+
+- Type: `boolean|string`
+- Default: `true`
+
+VuePress uses [cache-loader](https://github.com/webpack-contrib/cache-loader) by default to greatly speed up the compilation of webpack.
+
+This option can be used to specify the path to the cache, and can also remove the cache before each build by setting it to `false`.
+
+::: tip
+This option can also be used through the CLI:
+
+```bash
+vuepress dev docs --cache .cache # set cache path
+vuepress dev docs --no-cache     # remove cache before each build.
+```
+:::
+
+
 ## Styling
 
 ### palette.styl

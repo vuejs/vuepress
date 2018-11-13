@@ -102,6 +102,23 @@ module.exports = {
 
 是否对异步加载页面的内容开启占位符加载。如果它是一个字符串，那么它应该是自定义加载组件的名称。
 
+### cache
+
+- Type: `boolean|string`
+- Default: `true`
+
+VuePress 默认使用了 [cache-loader](https://github.com/webpack-contrib/cache-loader)  来大大地加快 webpack 的编译速度。
+
+此选项可以用于指定 cache 的路径，同时也可以通过设置为 `false` 来在每次构建之前删除 cache。
+
+::: tip
+这个选项也可以通过命令行来使用：
+```bash
+vuepress dev docs --cache .cache # 设置 cache 路径
+vuepress dev docs --no-cache     # 在每次构建前删除 cache
+```
+:::
+
 ## Styling
 
 > To be translated.
