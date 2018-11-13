@@ -67,4 +67,4 @@ Hello!
 |:regular|VuePress默认的生成永久链接的方式，具体实现看 [这里][2]
 
 [1]:https://en.wikipedia.org/wiki/Link_rot
-[2]:https://github.com/vuejs/vuepress/blob/next/packages/%40vuepress/shared-utils/lib/fileToPath.js
+[2]:https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/shared-utils/lib/fileToPath.js

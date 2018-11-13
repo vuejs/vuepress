@@ -229,7 +229,7 @@ module.exports = {
 
 **参考:**
 
-- [VuePress 的内置 markdown-it 插件](https://github.com/vuejs/vuepress/blob/next/packages/%40vuepress/core/lib/markdown/index.js)
+- [VuePress 的内置 markdown-it 插件](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/markdown/lib/index.js)
 - [配置插件](https://github.com/neutrinojs/webpack-chain#config-plugins)
 
 ## enhanceAppFiles
