@@ -201,7 +201,7 @@ VuePress provides a convenient way to add extra styles. you can create an `.vuep
 
 [markdown-it-table-of-contents](https://github.com/Oktavilla/markdown-it-table-of-contents) 的选项。
 
-### markdown.config
+### markdown.extendMarkdown
 
 - 类型: `Function`
 - 默认值: `undefined`
@@ -218,6 +218,10 @@ module.exports = {
   }
 }
 ```
+
+::: tip
+这个选项也被 [Plugin API](../plugin/option-api.md#extendmarkdown) 所支持。
+:::
 
 ## 构建流程
 

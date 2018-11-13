@@ -231,7 +231,7 @@ module.exports = {
 ```
 
 ::: tip
-This option is also included in [Plugin API](../plugin/README.md#extendmarkdown).
+This option is also included in [Plugin API](../plugin/option-api.md#extendmarkdown).
 :::
 
 ## Build Pipeline
