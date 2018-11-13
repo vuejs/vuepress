@@ -41,7 +41,7 @@ function getAnchors () {
     })
 }
 
-let freezeScrollEvent = false
+let freezeScrollEvent = true
 
 export default {
   mounted () {
@@ -53,7 +53,10 @@ export default {
     })
 
     this.$vuepress.$on('AsyncMarkdownContentMounted', (slotKey) => {
-      freezeScrollEvent = false
+      // delay activation of scroll event
+      setTimeout(() => {
+        freezeScrollEvent = false
+      }, 1000)
       if (slotKey === 'default') {
         window.addEventListener('scroll', () => this.onScroll(freezeScrollEvent))
       }

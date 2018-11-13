@@ -15,13 +15,16 @@ export default {
       })
 
       if (this.$route.hash) {
+        const hash = decodeURIComponent(this.$route.hash)
         try {
-          const anchor = document.getElementById(this.$route.hash.slice(1))
+          const anchor = document.getElementById(hash.slice(1))
           const anchorLink = anchor.querySelector('a.header-anchor')
-          window.scroll({
-            top: anchorLink.offsetTop - 70,
-            left: 0,
-            behavior: 'auto'
+          setTimeout(() => {
+            window.scroll({
+              top: anchorLink.offsetTop - 70,
+              left: 0,
+              behavior: 'auto'
+            })
           })
         } catch (e) {
           console.error(e)
