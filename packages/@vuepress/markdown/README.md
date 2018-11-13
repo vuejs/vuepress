@@ -1,40 +1,54 @@
 # @vuepress/markdown
 
-> markdown for vuepress
+> markdown library for vuepress
 
-## Usage
+## Public API
 
-```javascript
-const createMarkdown = require('@vuepress/markdown')
-const md = createMarkdown(/* options */)
+### PLUGINS
+
+A map [constant](./lib/constant.js) containing the names of all built-in markdown-it plugins.
+
+### isRequiredPlugin(pluginName: string)
+
+- **Usage**:
+
+```js
+const { isRequiredPlugin } = require('@vuepress/markdown')
+console.log(isRequiredPlugin(PLUGINS.COMPONENT)) // true
+console.log(isRequiredPlugin(PLUGINS.HIGHLIGHT_LINES)) // false
 ```
 
-## Options
+### removePlugin(config: chainMarkdown, pluginName: string)
 
-### slugify
+Remove the specified built-in markdown-it plugin in VuePress.
 
-- TODO
+It's needed to use with VuePress's [Plugin API > chainMarkdown](https://vuepress.vuejs.org/plugin/option-api.html#chainmarkdown).
 
-### externalLinks
+- **Usage**:
 
-- TODO
+```js
+// You VuePress Plugin or site config.
+const { removePlugin } = require('@vuepress/markdown')
+module.exports = {
+  chainMarkdown (config) {
+    removePlugin(config, PLUGINS.HIGHLIGHT_LINES)
+  }
+}
+```
 
-### anchor
+> Note that `PLUGINS.COMPONENT` and `PLUGINS.ANCHOR` are required in VuePress, It is forbidden to delete them!
 
-- TODO
+### removeAllBuiltInPlugins(config: chainMarkdown)
 
-### toc
+Remove all built-in but not 100% necessary markdown-it plugins in VuePress.
 
-- TODO
+- **Usage**:
 
-### lineNumbers
-
-- TODO
-
-### beforeInstantiate
-
-- TODO
-
-### afterInstantiate
-
-- TODO
+```js
+// You VuePress Plugin or site config.
+module.exports = {
+  chainMarkdown (config) {
+    require('@vuepress/markdown').removeAllBuiltInPlugins(config)
+  }
+}
+```
