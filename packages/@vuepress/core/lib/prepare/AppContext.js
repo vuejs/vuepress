@@ -7,6 +7,7 @@
 const createMarkdown = require('./createMarkdown')
 const loadConfig = require('./loadConfig')
 const loadTheme = require('./loadTheme')
+const { getCacheLoaderOptions } = require('./CacheLoader')
 const {
   fs, path, logger, chalk, globby, sort,
   datatypes: { isFunction },
@@ -73,6 +74,7 @@ module.exports = class AppContext {
    */
 
   async process () {
+    this.resolveCacheLoaderOptions()
     this.normalizeHeadTagUrls()
     await this.resolveTheme()
     this.resolveTemplates()
@@ -172,6 +174,14 @@ module.exports = class AppContext {
         }
       })
     }
+  }
+
+  /**
+   * Resolve options of cache loader.
+   */
+
+  resolveCacheLoaderOptions () {
+    Object.assign(this, (getCacheLoaderOptions(this.siteConfig, this.cliOptions, this.cwd, this.isProd)))
   }
 
   /**
