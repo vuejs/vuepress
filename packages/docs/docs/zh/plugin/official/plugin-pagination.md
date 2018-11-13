@@ -1,8 +1,9 @@
 ---
 title: pagination
+metaTitle: Pagination 插件 | VuePress
 ---
 
-# @vuepress/plugin-pagination
+# [@vuepress/plugin-pagination](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-pagination)
 
 > 分页器插件
 

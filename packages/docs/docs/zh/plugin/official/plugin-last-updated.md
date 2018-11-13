@@ -1,8 +1,9 @@
 ---
 title: last-updated
+metaTitle: Last-Updated 插件 | VuePress
 ---
 
-# @vuepress/plugin-last-updated
+# [@vuepress/plugin-last-updated](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-last-updated)
 
 > last-updated 插件。
 

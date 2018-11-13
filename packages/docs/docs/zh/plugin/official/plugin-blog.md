@@ -1,8 +1,9 @@
 ---
 title: blog
+metaTitle: Blog 插件 | VuePress
 ---
 
-# @vuepress/plugin-blog
+# [@vuepress/plugin-blog](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-blog)
 
 > 博客插件
 

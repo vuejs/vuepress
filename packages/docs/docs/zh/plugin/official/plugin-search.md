@@ -1,8 +1,9 @@
 ---
 title: search
+metaTitle: Search 插件 | VuePress
 ---
 
-# @vuepress/plugin-search
+# [@vuepress/plugin-search](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-search)
 
 > 基于 [Headers](../../miscellaneous/glossary.md#headers) 的搜索插件
 

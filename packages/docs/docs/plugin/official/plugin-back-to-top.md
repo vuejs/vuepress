@@ -1,6 +1,6 @@
 ---
 title: back-to-top
-metaTitle: Back-To-Top | VuePress
+metaTitle: Back-To-Top Plugin | VuePress
 ---
 
 # [@vuepress/plugin-back-to-top](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-back-to-top)

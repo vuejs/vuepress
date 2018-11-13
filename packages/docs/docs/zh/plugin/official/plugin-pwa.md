@@ -1,8 +1,9 @@
 ---
 title: pwa
+metaTitle: PWA 插件 | VuePress
 ---
 
-# @vuepress/plugin-pwa
+# [@vuepress/plugin-pwa](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-pwa)
 
 > PWA 插件
 
