@@ -197,6 +197,13 @@ VuePress provides a convenient way to add extra styles. you can create an `.vuep
 
 - [行号](../guide/markdown.md#行号)
 
+### markdown.slugify
+
+- Type: `Function`
+- Default: [source](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/shared-utils/lib/slugify.js)
+
+一个将标题文本转换为 slug 的函数。修改它会影响标题锚点、TOC、以及侧边栏链接生成的 id 和 链接。
+
 ### markdown.anchor
 
 - 类型: `Object`
