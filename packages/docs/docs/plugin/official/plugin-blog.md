@@ -23,6 +23,11 @@ module.exports = {
 
 ## Options
 
+### postsDir
+
+- Type: `string`
+- Default: `_posts`
+
 ### categoryIndexPageUrl
 
 - Type: `string`
