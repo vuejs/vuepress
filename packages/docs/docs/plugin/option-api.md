@@ -215,7 +215,7 @@ module.exports = {
     // Add extra markdown-it plugin
     config
       .plugin('sup')
-        .add(require('markdown-it-sup'))
+        .use(require('markdown-it-sup'))
 
     // Remove internal plugin
     config.plugins.delete('snippet')
@@ -302,10 +302,10 @@ module.exports = {
       regularPath,         // current page's default link (follow the file hierarchy)
       path,                // current page's real link (use regularPath when permalink does not exist)
     } = $page
-   
+
     // 1. Add extra fields.
     page.xxx = 'xxx'
-    
+
     // 2. Change frontmatter.
     frontmatter.sidebar = 'auto'
   }
