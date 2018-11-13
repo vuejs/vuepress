@@ -1,3 +1,14 @@
+<a name="0.14.5"></a>
+## [0.14.5](https://github.com/vuejs/vuepress/compare/v0.14.4...v0.14.5) (2018-11-13)
+
+
+### Bug Fixes
+
+* **$core:** css cannot be extracted together (close: [#977](https://github.com/vuejs/vuepress/issues/977)) ([600ca3e](https://github.com/vuejs/vuepress/commit/600ca3e))
+* **dev:** Prevent files at node_modules from being watched (close: [#855](https://github.com/vuejs/vuepress/issues/855)) ([#856](https://github.com/vuejs/vuepress/issues/856)) ([2348e75](https://github.com/vuejs/vuepress/commit/2348e75))
+
+
+
 <a name="0.14.4"></a>
 ## [0.14.4](https://github.com/vuejs/vuepress/compare/v0.14.3...v0.14.4) (2018-09-15)
 
