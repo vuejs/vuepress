@@ -6,6 +6,7 @@
 
 const Config = require('markdown-it-chain')
 const highlight = require('./lib/highlight')
+const { PLUGINS, REQUIRED_PLUGINS } = require('./lib/constant')
 const highlightLinesPlugin = require('./lib/highlightLines')
 const preWrapperPlugin = require('./lib/preWrapper')
 const lineNumbersPlugin = require('./lib/lineNumbers')
@@ -18,7 +19,7 @@ const snippetPlugin = require('./lib/snippet')
 const emojiPlugin = require('markdown-it-emoji')
 const anchorPlugin = require('markdown-it-anchor')
 const tocPlugin = require('markdown-it-table-of-contents')
-const { parseHeaders, slugify: _slugify } = require('@vuepress/shared-utils')
+const { parseHeaders, slugify: _slugify, logger, chalk } = require('@vuepress/shared-utils')
 
 /**
  * Create markdown by config.
@@ -45,46 +46,46 @@ module.exports = ({
       .highlight(highlight)
       .end()
 
-    .plugin('component')
+    .plugin(PLUGINS.COMPONENT)
       .use(componentPlugin)
       .end()
 
-    .plugin('highlight-lines')
+    .plugin(PLUGINS.HIGHLIGHT_LINES)
       .use(highlightLinesPlugin)
       .end()
 
-    .plugin('pre-wrapper')
+    .plugin(PLUGINS.PRE_WRAPPER)
       .use(preWrapperPlugin)
       .end()
 
-    .plugin('snippet')
+    .plugin(PLUGINS.SNIPPET)
       .use(snippetPlugin)
       .end()
 
-    .plugin('convert-router-link')
+    .plugin(PLUGINS.CONVERT_ROUTER_LINK)
       .use(convertRouterLinkPlugin, [Object.assign({
         target: '_blank',
         rel: 'noopener noreferrer'
       }, externalLinks)])
       .end()
 
-    .plugin('hoist-script-style')
+    .plugin(PLUGINS.HOIST_SCRIPT_STYLE)
       .use(hoistScriptStylePlugin)
       .end()
 
-    .plugin('containers')
+    .plugin(PLUGINS.CONTAINERS)
       .use(containersPlugin)
       .end()
 
-    .plugin('markdown-slots-containers')
+    .plugin(PLUGINS.MARKDOWN_SLOTS_CONTAINERS)
       .use(markdownSlotsContainersPlugin)
       .end()
 
-    .plugin('emoji')
+    .plugin(PLUGINS.EMOJI)
       .use(emojiPlugin)
       .end()
 
-    .plugin('anchor')
+    .plugin(PLUGINS.ANCHOR)
       .use(anchorPlugin, [Object.assign({
         slugify,
         permalink: true,
@@ -93,7 +94,7 @@ module.exports = ({
       }, anchor)])
       .end()
 
-    .plugin('toc')
+    .plugin(PLUGINS.TOC)
       .use(tocPlugin, [Object.assign({
         slugify,
         includeLevel: [2, 3],
@@ -103,7 +104,7 @@ module.exports = ({
 
   if (lineNumbers) {
     config
-      .plugin('line-numbers')
+      .plugin(PLUGINS.LINE_NUMBERS)
         .use(lineNumbersPlugin)
   }
 
@@ -143,3 +144,25 @@ function toDataBlockString (ob) {
   }
   return `<data>${JSON.stringify(ob)}</data>`
 }
+
+function isRequiredPlugin (plugin) {
+  return REQUIRED_PLUGINS.includes(plugin)
+}
+
+function removePlugin (config, plugin) {
+  logger.debug(`Built-in markdown-it plugin ${chalk.green(plugin)} was removed.`)
+  config.plugins.delete(plugin)
+}
+
+function removeAllBuiltInPlugins (config) {
+  Object.keys(PLUGINS).forEach(key => {
+    if (!isRequiredPlugin(PLUGINS[key])) {
+      removePlugin(config, PLUGINS[key])
+    }
+  })
+}
+
+module.exports.isRequiredPlugin = isRequiredPlugin
+module.exports.removePlugin = removePlugin
+module.exports.removeAllBuiltInPlugins = removeAllBuiltInPlugins
+module.exports.PLUGINS = PLUGINS
