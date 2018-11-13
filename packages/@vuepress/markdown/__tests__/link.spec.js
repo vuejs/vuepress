@@ -1,6 +1,6 @@
 import { Md } from './util'
 import link from '../lib/link.js'
-import { dataReturnable } from '../lib/index.js'
+import { dataReturnable } from '../index.js'
 
 const mdL = Md().use(link, {
   target: '_blank',

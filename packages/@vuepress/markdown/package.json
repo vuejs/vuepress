@@ -2,7 +2,7 @@
   "name": "@vuepress/markdown",
   "version": "1.0.0-alpha.20",
   "description": "markdown for vuepress",
-  "main": "lib/index.js",
+  "main": "index.js",
   "publishConfig": {
     "access": "public"
   },
