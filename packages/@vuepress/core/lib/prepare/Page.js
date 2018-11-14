@@ -32,7 +32,8 @@ module.exports = class Page {
     relative,
     permalink,
     frontmatter = {},
-    permalinkPattern
+    permalinkPattern,
+    siteConfig
   }) {
     this.title = title
     this._meta = meta
@@ -41,6 +42,7 @@ module.exports = class Page {
     this._permalink = permalink
     this.frontmatter = frontmatter
     this._permalinkPattern = permalinkPattern
+    this._siteConfig = siteConfig
 
     if (relative) {
       this.regularPath = encodeURI(fileToPath(relative))
@@ -89,7 +91,7 @@ module.exports = class Page {
       // headers
       const headers = extractHeaders(
         this._strippedContent,
-        ['h2', 'h3'],
+        this._siteConfig.themeConfig.extractHeaders || ['h2', 'h3'],
         markdown
       )
       if (headers.length) {

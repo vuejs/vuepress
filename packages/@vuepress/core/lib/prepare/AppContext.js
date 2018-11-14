@@ -270,6 +270,7 @@ module.exports = class AppContext {
 
   async addPage (options) {
     options.permalinkPattern = this.siteConfig.permalink
+    options.siteConfig = this.siteConfig
     const page = new Page(options, this)
     await page.process({
       markdown: this.markdown,

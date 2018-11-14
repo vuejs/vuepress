@@ -29,6 +29,7 @@ module.exports = ctx => ({
   ],
   theme: '@vuepress/vue',
   themeConfig: {
+    extractHeaders: ['h2', 'h3', 'h4'],
     repo: 'vuejs/vuepress',
     editLinks: true,
     docsDir: 'packages/docs/docs',

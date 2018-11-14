@@ -152,6 +152,20 @@ module.exports = {
 }
 ```
 
+### Extract Headers
+
+While preparing the page, headers are extracted from the markdown file and stored in `this.$page.headers`. By default, VuePress will extract `h2` and `h3` elements for you.
+
+You can override the headers it pulls out in your `themeConfig` options.
+
+``` js
+module.exports = {
+  themeConfig: {
+    extractHeaders: [ 'h2', 'h3', 'h4' ]
+  }
+}
+```
+
 ### Active Header Links
 
 By default, the nested header links and the hash in the URL are updated as the user scrolls to view the different sections of the page. This behavior can be disabled with the following theme config:
@@ -329,7 +343,7 @@ module.exports = {
 ```
 
 ::: warning Note
-Unlike the [built-in search](#built-in-search) engine which works out of the box, [Algolia DocSearch](https://community.algolia.com/docsearch/) requires you to submit your site to them for indexing before it starts working. 
+Unlike the [built-in search](#built-in-search) engine which works out of the box, [Algolia DocSearch](https://community.algolia.com/docsearch/) requires you to submit your site to them for indexing before it starts working.
 :::
 
 For more options, refer to [Algolia DocSearch's documentation](https://github.com/algolia/docsearch#docsearch-options).
@@ -373,10 +387,10 @@ module.exports = {
   themeConfig: {
     serviceWorker: {
       updatePopup: true // Boolean | Object, default to undefined.
-      // If set to true, the default text config will be: 
-      // updatePopup: { 
-      //    message: "New content is available.", 
-      //    buttonText: "Refresh" 
+      // If set to true, the default text config will be:
+      // updatePopup: {
+      //    message: "New content is available.",
+      //    buttonText: "Refresh"
       // }
     }
   }
