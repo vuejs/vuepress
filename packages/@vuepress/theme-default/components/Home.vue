@@ -78,7 +78,6 @@ export default {
   .hero
     text-align center
     img
-      object-fit: contain
       max-width: 100%
       max-height 280px
       display block
