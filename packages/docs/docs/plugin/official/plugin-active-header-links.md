@@ -22,7 +22,7 @@ module.exports = {
 }
 ```
 
-## Options
+### Passing Options
 ```javascript
 module.exports = {
   plugins: ['@vuepress/active-header-links', {
@@ -32,6 +32,8 @@ module.exports = {
   }]
 }
 ```
+
+## Options
 
 ### sidebarLinkSelector
 
@@ -44,6 +46,7 @@ module.exports = {
 - Default: `.header-anchor`
 
 ### headerTopOffset
+The number of pixels that you want the header to be from the top of the page before updating the url hash switch to that header.
 
 - Type: `integer`
 - Default: `90`
