@@ -42,7 +42,7 @@ module.exports = function (src) {
 
   if (!isProd && !isServer) {
     const inferredTitle = inferTitle(frontmatter.data, frontmatter.content)
-    const headers = extractHeaders(content, ['h2', 'h3'], markdown)
+    const headers = extractHeaders(content, options.extractHeaders || ['h2', 'h3'], markdown)
     delete frontmatter.content
 
     // diff frontmatter and title, since they are not going to be part of the
