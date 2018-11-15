@@ -2,4 +2,5 @@
 
 > header-based search plugin for vuepress
 
-For documentation see [here]().
+See [documentation](https://vuepress.vuejs.org/plugin/official/plugin-search.html).
+
