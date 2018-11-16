@@ -1,4 +1,4 @@
-/* global AHL_SIDEBAR_LINK_SELECTOR, AHL_HEADER_ANCHOR_SELECTOR */
+/* global AHL_SIDEBAR_LINK_SELECTOR, AHL_HEADER_ANCHOR_SELECTOR, AHL_TOP_OFFSET */
 
 import throttle from 'lodash.throttle'
 
@@ -35,8 +35,8 @@ function getAnchors () {
       return {
         el,
         hash: decodeURIComponent(el.hash),
-        top: el.getBoundingClientRect().top - 90
-        /* 90 is to Subtract height of navbar & anchor's padding top */
+        top: el.getBoundingClientRect().top - AHL_TOP_OFFSET
+        /* AHL_TOP_OFFSET is to Subtract height of navbar & anchor's padding top */
       }
     })
 }
