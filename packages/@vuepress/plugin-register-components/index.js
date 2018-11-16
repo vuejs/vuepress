@@ -30,9 +30,11 @@ module.exports = (options, context) => ({
     }
 
     function genImport (baseDir, file) {
-      const name = fileToComponentName(file)
+      const split = file.split('/')
+      const fileName = Array.isArray(split) ? split[split.length - 1] : file
+      const componentName = fileToComponentName(fileName)
       const absolutePath = path.resolve(baseDir, file)
-      const code = importCode(name, absolutePath)
+      const code = importCode(componentName, absolutePath)
       return code
     }
 
