@@ -54,6 +54,13 @@ export function isActive (route, path) {
 }
 
 export function resolvePage (pages, rawPath, base) {
+  if (isExternal(rawPath)) {
+    return {
+      type: 'external',
+      title: rawPath,
+      path: rawPath,
+    }
+  }
   if (base) {
     rawPath = resolvePath(rawPath, base)
   }
