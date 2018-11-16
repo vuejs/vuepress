@@ -3,7 +3,8 @@
     <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')" />
 
     <RouterLink
-      :to="$localePath"
+      :to="logoLink"
+      v-if="!isExternal(logoLink)"
       class="home-link"
     >
       <img
@@ -19,6 +20,26 @@
         :class="{ 'can-hide': $site.themeConfig.logo }"
       >{{ $siteTitle }}</span>
     </RouterLink>
+    <a
+      v-else
+      :href="logoLink"
+      class="home-link"
+      :target="'_blank'"
+      :rel="'noopener noreferrer'"
+    >
+      <img
+        class="logo"
+        v-if="$site.themeConfig.logo"
+        :src="$withBase($site.themeConfig.logo)"
+        :alt="$siteTitle"
+      >
+      <span
+        ref="siteName"
+        class="site-name"
+        v-if="$siteTitle"
+        :class="{ 'can-hide': $site.themeConfig.logo }"
+      >{{ $siteTitle }}</span>
+    </a>
 
     <div
       class="links"
@@ -41,6 +62,7 @@ import AlgoliaSearchBox from '@AlgoliaSearchBox'
 import SearchBox from '@SearchBox'
 import SidebarButton from '@theme/components/SidebarButton.vue'
 import NavLinks from '@theme/components/NavLinks.vue'
+import { isExternal } from '../util'
 
 export default {
   name: 'Navbar',
@@ -58,6 +80,10 @@ export default {
     }
   },
 
+  methods: {
+    isExternal
+  },
+
   computed: {
     algolia () {
       return this.$themeLocaleConfig.algolia || this.$site.themeConfig.algolia || {}
@@ -66,6 +92,10 @@ export default {
     isAlgoliaSearch () {
       return this.algolia && this.algolia.apiKey && this.algolia.indexName
     }
+  },
+
+  logoLink () {
+    return this.$site.themeConfig.logoLink || this.$localePath
   },
 
   mounted () {
