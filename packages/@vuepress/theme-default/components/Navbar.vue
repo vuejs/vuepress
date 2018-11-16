@@ -102,7 +102,7 @@ export default {
     },
 
     logoLink () {
-      return this.$site.themeConfig.logoLink || this.$localePath
+      return this.$themeLocaleConfig.logoLink || this.$site.themeConfig.logoLink || this.$localePath
     }
   }
 }
