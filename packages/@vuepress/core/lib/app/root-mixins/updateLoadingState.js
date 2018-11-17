@@ -1,9 +1,9 @@
 export default {
   created () {
     this.$vuepress.$on('AsyncMarkdownContentMounted', () => {
-      this.$vuepress.$set('contentMounted', true)
+      this.$vuepress.$set('contentMounted', true);
 
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      [].slice.call(document.querySelectorAll('a[href^="#"]')).forEach(anchor => {
         anchor.addEventListener('click', function (e) {
           e.preventDefault()
           history.pushState(history.state, document.title, e.target.href)
