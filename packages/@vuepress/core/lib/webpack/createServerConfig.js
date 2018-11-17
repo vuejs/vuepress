@@ -56,10 +56,6 @@ module.exports = function createServerConfig (ctx) {
       }])
   }
 
-  if (ctx.siteConfig.chainWebpack) {
-    ctx.siteConfig.chainWebpack(config, true /* isServer */)
-  }
-
   ctx.pluginAPI.options.chainWebpack.syncApply(config, true /* isServer */)
 
   return config
