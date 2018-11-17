@@ -146,6 +146,7 @@ function getPluginSidebar (pluginTitle, pluginIntro, officialPluginTitle) {
         'official/plugin-last-updated',
         'official/plugin-medium-zoom',
         'official/plugin-back-to-top',
+        'official/plugin-register-components',
       ]
     }
   ]
