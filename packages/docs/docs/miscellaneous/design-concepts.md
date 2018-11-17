@@ -10,7 +10,7 @@ The design concepts of VuePress 1.x are mainly reflected in the following aspect
 2. Convention over configuration.
 3. Reasonable priority management.
 
-## Pluggable 
+## Pluggable
 
 VuePress 1.0 has been rewritten extensively, and the most important one is the introduction of the [Plugin API](../plugin/README.md). So what're the benefits of plugins?
 
@@ -78,7 +78,7 @@ module.exports = {
 
 ## Convention over configuration.
 
-VuePress 1.0 begin to introduce some conventions to reduce the user's excessive configuration pressure, the most intuitive manifestation of this is the conventions for the [document directory structure](../guide/directory-structure.md) and the [theme directory structure](../theme/README.md#directory-structure).
+VuePress 1.0 begin to introduce some conventions to reduce the user's excessive configuration pressure, the most intuitive manifestation of this is the conventions for the [document directory structure](../guide/directory-structure.md) and the [theme directory structure](../theme/writing-a-theme.md#directory-structure).
 
 In the future, we may combine community feedback to introduce more agreements. Let's wait and see.
 
