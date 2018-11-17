@@ -6,6 +6,7 @@ export default {
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
           e.preventDefault()
+          history.pushState(history.state, document.title, e.target.href)
           window.scroll({
             top: e.target.offsetTop - 75,
             left: 0,
