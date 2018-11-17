@@ -191,7 +191,7 @@ function find (page, items, offset) {
   })
   for (let i = 0; i < res.length; i++) {
     const cur = res[i]
-    if (cur.type === 'page' && cur.path === page.path) {
+    if (cur.type === 'page' && cur.path === decodeURIComponent(page.path)) {
       return res[i + offset]
     }
   }
