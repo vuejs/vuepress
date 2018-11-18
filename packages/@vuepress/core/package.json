@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/core",
-  "version": "1.0.0-alpha.22",
+  "version": "1.0.0-alpha.23",
   "description": "Minimalistic doc generator with Vue component based layout system",
   "main": "lib/index.js",
   "repository": {
@@ -30,11 +30,11 @@
   "dependencies": {
     "@babel/core": "^7.0.0",
     "@vue/babel-preset-app": "^3.1.1",
-    "@vuepress/markdown": "^1.0.0-alpha.22",
-    "@vuepress/markdown-loader": "^1.0.0-alpha.22",
-    "@vuepress/plugin-last-updated": "^1.0.0-alpha.22",
-    "@vuepress/plugin-register-components": "^1.0.0-alpha.22",
-    "@vuepress/shared-utils": "^1.0.0-alpha.22",
+    "@vuepress/markdown": "^1.0.0-alpha.23",
+    "@vuepress/markdown-loader": "^1.0.0-alpha.23",
+    "@vuepress/plugin-last-updated": "^1.0.0-alpha.23",
+    "@vuepress/plugin-register-components": "^1.0.0-alpha.23",
+    "@vuepress/shared-utils": "^1.0.0-alpha.23",
     "autoprefixer": "^8.2.0",
     "babel-loader": "^8.0.4",
     "cache-loader": "^1.2.2",
@@ -55,6 +55,7 @@
     "optimize-css-assets-webpack-plugin": "^4.0.0",
     "portfinder": "^1.0.13",
     "postcss-loader": "^2.1.5",
+    "smooth-scroll": "^15.0.0",
     "toml": "^2.3.3",
     "url-loader": "^1.0.1",
     "vue": "^2.5.16",
@@ -68,8 +69,7 @@
     "webpack-chain": "^4.6.0",
     "webpack-merge": "^4.1.2",
     "webpack-serve": "^1.0.2",
-    "webpackbar": "^2.6.1",
-    "smooth-scroll": "^15.0.0"
+    "webpackbar": "^2.6.1"
   },
   "engines": {
     "node": ">=8"

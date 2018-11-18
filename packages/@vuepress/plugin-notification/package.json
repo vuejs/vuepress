@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-notification",
-  "version": "1.0.0-alpha.22",
+  "version": "1.0.0-alpha.23",
   "description": "notification plugin for vuepress",
   "main": "index.js",
   "publishConfig": {
