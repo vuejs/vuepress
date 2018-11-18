@@ -10,8 +10,11 @@ export default {
   mounted () {
     // update title / meta tags
     this.currentMetaTags = new Set()
+    this.updateMeta()
+  },
 
-    const updateMeta = () => {
+  methods: {
+    updateMeta () {
       document.title = this.$title
       document.documentElement.lang = this.$lang
       const userMeta = this.$page.frontmatter.meta || []
@@ -31,8 +34,12 @@ export default {
 
       this.currentMetaTags = new Set(updateMetaTags(meta, this.currentMetaTags))
     }
-    this.$watch('$page', updateMeta)
-    updateMeta()
+  },
+
+  watch: {
+    $page () {
+      this.updateMeta()
+    }
   },
 
   beforeDestroy () {
