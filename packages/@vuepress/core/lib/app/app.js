@@ -62,21 +62,7 @@ export function createApp (isServer) {
     base: siteData.base,
     mode: 'history',
     fallback: false,
-    routes,
-    scrollBehavior: (to, from, saved) => {
-      if (saved) {
-        return saved
-      } else if (to.hash) {
-        if (Vue.$vuepress.$get('disableScrollBehavior')) {
-          return false
-        }
-        return {
-          selector: to.hash
-        }
-      } else {
-        return { x: 0, y: 0 }
-      }
-    }
+    routes
   })
 
   // redirect /foo to /foo/
