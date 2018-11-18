@@ -26,8 +26,7 @@ function calculateCurrentAnchor (anchors) {
   return anchors[0]
 }
 
-function getAnchors () {
-  const sidebarLinks = [].slice.call(document.querySelectorAll(AHL_SIDEBAR_LINK_SELECTOR))
+function getAnchors (sidebarLinks) {
   return [].slice
     .call(document.querySelectorAll(AHL_HEADER_ANCHOR_SELECTOR))
     .filter(anchor => sidebarLinks.some(sidebarLink => sidebarLink.hash === anchor.hash))
@@ -41,49 +40,23 @@ function getAnchors () {
     })
 }
 
-let freezeScrollEvent = true
-
 export default {
   mounted () {
-    this.$router.beforeEach((to, from, next) => {
-      if (to.path !== from.path) {
-        freezeScrollEvent = true
-      }
-      next()
-    })
-
     this.$vuepress.$on('AsyncMarkdownContentMounted', (slotKey) => {
-      // delay activation of scroll event
-      setTimeout(() => {
-        freezeScrollEvent = false
-      }, 1000)
       if (slotKey === 'default') {
-        window.addEventListener('scroll', () => this.onScroll(freezeScrollEvent))
+        window.addEventListener('scroll', this.onScroll)
       }
     })
 
     this.$vuepress.$on('AnchorHashChange', (anchor) => {
-      // When user clicked sidebar links, we need to disable the scroll
-      // event triggered.
-      if (this.$route.hash === anchor.hash) {
-        return
-      }
-      this.$vuepress.$set('disableScrollBehavior', true)
-      this.$router.replace(decodeURIComponent(anchor.hash), () => {
-        // execute after scrollBehavior handler.
-        this.$nextTick(() => {
-          this.$vuepress.$set('disableScrollBehavior', false)
-        })
-      })
+      this.$router.replace(decodeURIComponent(anchor.hash))
     })
   },
 
   methods: {
-    onScroll: throttle(function (freezeScrollEvent) {
-      if (freezeScrollEvent) {
-        return
-      }
-      const anchors = getAnchors()
+    onScroll: throttle(function () {
+      this.$sidebarLinks = [].slice.call(document.querySelectorAll(AHL_SIDEBAR_LINK_SELECTOR))
+      const anchors = getAnchors(this.$sidebarLinks)
       if (anchors.length === 0) {
         return
       }
