@@ -64,7 +64,7 @@ module.exports = (options, ctx) => {
         frontmatter = {}
       }) => {
         if (when(pageCtx)) {
-          Object.assign(rawFrontmatter, frontmatter)
+          Object.assign(frontmatter, rawFrontmatter)
           Object.assign(pageCtx, data)
         }
       })
