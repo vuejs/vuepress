@@ -24,6 +24,9 @@
 <a name="1.0.0-alpha.22"></a>
 # [1.0.0-alpha.22](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.21...v1.0.0-alpha.22) (2018-11-13)
 
+### Bug Fixes
+
+* **$core:** `.vuepress/style.styl` does not take effect in the production environment. ([#977](https://github.com/vuejs/vuepress/issues/977)) ([2dafd88](https://github.com/vuejs/vuepress/commit/2dafd88))
 
 
 <a name="1.0.0-alpha.21"></a>
