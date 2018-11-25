@@ -1,10 +1,10 @@
-<a name="0.14.6"></a>
-## [0.14.6](https://github.com/vuejs/vuepress/compare/v0.14.5...v0.14.6) (2018-11-25)
+<a name="0.14.7"></a>
+## [0.14.7](https://github.com/vuejs/vuepress/compare/v0.14.6...v0.14.7) (2018-11-25)
 
 
 ### Bug Fixes
 
-* **$core:** build error when VuePress runs in non-TTY device (close: [#1037](https://github.com/vuejs/vuepress/issues/1037)) ([32c32c9](https://github.com/vuejs/vuepress/commit/32c32c9))
+* **$core:** "index" is dropped in a link with "*index" pattern (close: [#996](https://github.com/vuejs/vuepress/issues/996)) ([1340e37](https://github.com/vuejs/vuepress/commit/1340e37))
 
 
 
