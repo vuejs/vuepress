@@ -6,7 +6,7 @@ export default {
       this.$vuepress.$set('contentMounted', true)
 
       this.$smoothScroll = new SmoothScroll('a[href*="#"]', {
-        speed: 400,
+        speed: 1,
         speedAsDuration: true,
         easing: 'easeInOutCubic'
       })
