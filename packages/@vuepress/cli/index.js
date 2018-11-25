@@ -30,7 +30,7 @@ exports.bootstrap = function ({
   plugins,
   theme
 } = {}) {
-  const { path } = require('@vuepress/shared-utils')
+  const { path, logger, env } = require('@vuepress/shared-utils')
   const { dev, build, eject } = require('@vuepress/core')
 
   program
@@ -46,21 +46,56 @@ exports.bootstrap = function ({
     .option('-c, --cache <cache>', 'set the directory of cache')
     .option('--no-cache', 'clean the cache before build')
     .option('--debug', 'start development server in debug mode')
-    .action((dir = '.', { host, port, debug, temp, cache }) => {
-      wrapCommand(dev)(path.resolve(dir), { host, port, debug, temp, cache, plugins, theme })
+    .option('--silent', 'start development server in silent mode')
+    .action((sourceDir = '.', {
+      host,
+      port,
+      debug,
+      temp,
+      cache,
+      silent
+    }) => {
+      logger.setOptions({ logLevel: silent ? 1 : debug ? 4 : 3 })
+      env.setOptions({ isDebug: debug, isTest: process.env.NODE_ENV === 'test' })
+
+      wrapCommand(dev)(path.resolve(sourceDir), {
+        host,
+        port,
+        temp,
+        cache,
+        plugins,
+        theme
+      })
     })
 
   program
     .command('build [targetDir]')
     .description('build dir as static site')
-    .option('-d, --dest <outDir>', 'specify build output dir (default: .vuepress/dist)')
+    .option('-d, --dest <dest>', 'specify build output dir (default: .vuepress/dist)')
     .option('-t, --temp <temp>', 'set the directory of the temporary file')
     .option('-c, --cache <cache>', 'set the directory of cache')
     .option('--no-cache', 'clean the cache before build')
     .option('--debug', 'build in development mode for debugging')
-    .action((dir = '.', { debug, dest, temp, cache }) => {
-      const outDir = dest ? path.resolve(dest) : null
-      wrapCommand(build)(path.resolve(dir), { debug, outDir, plugins, theme, temp, cache })
+    .option('--silent', 'build static site in silent mode')
+    .action((sourceDir, {
+      debug,
+      dest,
+      temp,
+      cache,
+      silent
+    }) => {
+      logger.setOptions({ logLevel: silent ? 1 : debug ? 4 : 3 })
+      env.setOptions({ isDebug: debug, isTest: process.env.NODE_ENV === 'test' })
+
+      wrapCommand(build)(path.resolve(sourceDir), {
+        debug,
+        dest,
+        plugins,
+        theme,
+        temp,
+        cache,
+        silent
+      })
     })
 
   program

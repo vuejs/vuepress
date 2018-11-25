@@ -346,7 +346,7 @@ function createTemp (tempPath) {
     fs.emptyDirSync(tempPath)
   }
 
-  logger.tip(`Temp directory: ${chalk.gray(tempPath)}`)
+  logger.debug(`Temp directory: ${chalk.gray(tempPath)}`)
   const tempCache = new Map()
 
   async function writeTemp (file, content) {

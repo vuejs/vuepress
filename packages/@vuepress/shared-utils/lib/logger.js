@@ -48,20 +48,32 @@ class Logger {
 
   // level: 3
   success (...args) {
+    if (this.options.logLevel < 3) {
+      return
+    }
     this.status('green', 'success', ...args)
   }
 
   // level: 3
   tip (...args) {
+    if (this.options.logLevel < 3) {
+      return
+    }
     this.status('blue', 'tip', ...args)
   }
 
   // level: 3
   info (...args) {
+    if (this.options.logLevel < 3) {
+      return
+    }
     this.status('cyan', 'info', ...args)
   }
 
   wait (...args) {
+    if (this.options.logLevel < 3) {
+      return
+    }
     this.status('cyan', 'wait', ...args)
   }
 

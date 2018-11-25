@@ -80,12 +80,12 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
   const { host, displayHost } = await resolveHost(cliOptions.host || ctx.siteConfig.host)
 
   config
-  .plugin('vuepress-log')
-  .use(DevLogPlugin, [{
-    port,
-    displayHost,
-    publicPath: ctx.base
-  }])
+    .plugin('vuepress-log')
+    .use(DevLogPlugin, [{
+      port,
+      displayHost,
+      publicPath: ctx.base
+    }])
 
   config = config.toConfig()
   const userConfig = ctx.siteConfig.configureWebpack

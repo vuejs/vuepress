@@ -8,7 +8,7 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
   const readline = require('readline')
   const escape = require('escape-html')
 
-  const { chalk, fs, logger } = require('@vuepress/shared-utils')
+  const { chalk, fs, logger, env } = require('@vuepress/shared-utils')
   const prepare = require('./prepare/index')
   const createClientConfig = require('./webpack/createClientConfig')
   const createServerConfig = require('./webpack/createServerConfig')
@@ -99,7 +99,7 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
           reject(new Error(`Failed to compile with errors.`))
           return
         }
-        if (cliOptions.debug && stats.hasWarnings()) {
+        if (env.isDebug && stats.hasWarnings()) {
           stats.toJson().warnings.forEach(warning => {
             console.warn(warning)
           })

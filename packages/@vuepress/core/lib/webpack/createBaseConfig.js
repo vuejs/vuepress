@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-const { fs, path, logger } = require('@vuepress/shared-utils')
+const { fs, path, logger, env } = require('@vuepress/shared-utils')
 
 /**
  * Expose createBaseConfig method.
@@ -21,7 +21,6 @@ module.exports = function createBaseConfig ({
   cacheDirectory,
   cacheIdentifier,
   cliOptions: {
-    debug,
     cache
   },
   pluginAPI
@@ -36,20 +35,19 @@ module.exports = function createBaseConfig ({
   const config = new Config()
 
   config
-    .mode(isProd && !debug ? 'production' : 'development')
+    .mode(isProd && !env.isDebug ? 'production' : 'development')
     .output
       .path(outDir)
       .filename(isProd ? 'assets/js/[name].[chunkhash:8].js' : 'assets/js/[name].js')
       .publicPath(isProd ? publicPath : '/')
 
-  if (debug) {
+  if (env.isDebug) {
     config.devtool('source-map')
   } else if (!isProd) {
     config.devtool('cheap-module-eval-source-map')
   }
 
   const modulePaths = getModulePaths()
-  logger.debug('modulePaths = ' + JSON.stringify(modulePaths, null, 2))
 
   config.resolve
     .set('symlinks', true)
