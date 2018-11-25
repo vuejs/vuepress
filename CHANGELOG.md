@@ -60,7 +60,7 @@
 ### Features
 
 * **$core:** global computed '$frontmatter' ([3a42c24](https://github.com/vuejs/vuepress/commit/3a42c24))
-* better hash locate behavior ([5918ca9](https://github.com/vuejs/vuepress/commit/5918ca9))
+* **$core:** better hash locate behavior ([5918ca9](https://github.com/vuejs/vuepress/commit/5918ca9))
 * **$plugin-pwa:** alias '[@sw-event](https://github.com/sw-event)' ([628c330](https://github.com/vuejs/vuepress/commit/628c330))
 
 
@@ -78,8 +78,8 @@
 
 * **$markdown-loader:** AsyncMarkdownContentLoaded event ([6f52012](https://github.com/vuejs/vuepress/commit/6f52012))
 * **$plugin-active-header-links:** sidebarLinkSelector & headerAnchorSelector option ([3a79635](https://github.com/vuejs/vuepress/commit/3a79635))
-* built-in content loading ([216d04a](https://github.com/vuejs/vuepress/commit/216d04a))
-* Vue.$vuepress & Vue.prototype.$vuepress ([9c947b2](https://github.com/vuejs/vuepress/commit/9c947b2))
+* **$core:** built-in content loading ([216d04a](https://github.com/vuejs/vuepress/commit/216d04a))
+* **$core:** Client VuePress Plugin ([9c947b2](https://github.com/vuejs/vuepress/commit/9c947b2))
 * **$core:** 'contentLoading' site config option ([f8e42bc](https://github.com/vuejs/vuepress/commit/f8e42bc))
 * **$plugin-medium-zoom:** support selector option. ([ce7da09](https://github.com/vuejs/vuepress/commit/ce7da09))
 * **$theme-default:** display els of page bottom after content mounted ([d9a8ced](https://github.com/vuejs/vuepress/commit/d9a8ced))
@@ -100,7 +100,7 @@
 ### Features
 
 * **$new-package:** [@vuepress/theme-vue](https://github.com/vuepress) ([cb87532](https://github.com/vuejs/vuepress/commit/cb87532))
-* **$core:** extend a theme ([84fd0ff](https://github.com/vuejs/vuepress/commit/84fd0ff))
+* **$core:** `extend` option API for a theme ([84fd0ff](https://github.com/vuejs/vuepress/commit/84fd0ff))
   - From now on, you can use the `extend` option to inherit an existing theme, and VuePres will automatically help you to resolve Layout components, palettes, styles, etc.
 
 
@@ -263,8 +263,8 @@
 ### Bug Fixes
 
 * **$core:** unexpected warning ([3fd51d5](https://github.com/vuejs/vuepress/commit/3fd51d5))
-* Check path in lowercase (close[#897](https://github.com/vuejs/vuepress/issues/897)) ([#898](https://github.com/vuejs/vuepress/issues/898)) ([94658ae](https://github.com/vuejs/vuepress/commit/94658ae))
-* Google Analytics Plugin build error ([#893](https://github.com/vuejs/vuepress/issues/893)) ([d7647bc](https://github.com/vuejs/vuepress/commit/d7647bc))
+* **$core:** Check path in lowercase (close[#897](https://github.com/vuejs/vuepress/issues/897)) ([#898](https://github.com/vuejs/vuepress/issues/898)) ([94658ae](https://github.com/vuejs/vuepress/commit/94658ae))
+* **plugin-google-analytics:** Google Analytics Plugin build error ([#893](https://github.com/vuejs/vuepress/issues/893)) ([d7647bc](https://github.com/vuejs/vuepress/commit/d7647bc))
 * **$theme-default:** header should be fixed ([d03b10d](https://github.com/vuejs/vuepress/commit/d03b10d))
 
 
