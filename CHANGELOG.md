@@ -1,3 +1,379 @@
+<a name=""></a>
+# [](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.23...v) (2018-11-25)
+
+
+### Bug Fixes
+
+* **$plugin-blog:** blocking front matter custom layout config (close:  [#906](https://github.com/vuejs/vuepress/issues/906)) ([#1027](https://github.com/vuejs/vuepress/issues/1027)) ([ab0e002](https://github.com/vuejs/vuepress/commit/ab0e002))
+* distracting and time wasting after importing smoothing scroll ([58981fb](https://github.com/vuejs/vuepress/commit/58981fb)), closes [/github.com/vuejs/vuejs.org/blob/master/themes/vue/source/js/common.js#L367](https://github.com//github.com/vuejs/vuejs.org/blob/master/themes/vue/source/js/common.js/issues/L367)
+
+
+
+<a name="1.0.0-alpha.23"></a>
+# [1.0.0-alpha.23](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.22...v1.0.0-alpha.23) (2018-11-18)
+
+
+### Bug Fixes
+
+* anchor links not updating current URL (closes [#1011](https://github.com/vuejs/vuepress/issues/1011)) ([#1014](https://github.com/vuejs/vuepress/issues/1014)) ([1a87017](https://github.com/vuejs/vuepress/commit/1a87017))
+* siteConfig.chainWebpack was executed twice. ([0d45cf4](https://github.com/vuejs/vuepress/commit/0d45cf4))
+* **$core:** NodeList.prototype.forEach doesn't exist in IE11 ([a3938b2](https://github.com/vuejs/vuepress/commit/a3938b2))
+* **$plugin-search:** collapsed in IE11 ([8e555f6](https://github.com/vuejs/vuepress/commit/8e555f6))
+* **$theme-default:** fit image for hero image ([#980](https://github.com/vuejs/vuepress/issues/980)) ([efece12](https://github.com/vuejs/vuepress/commit/efece12))
+* **$theme-default:** IE11 doesn't support shortcut of flex ([6734a60](https://github.com/vuejs/vuepress/commit/6734a60))
+* **$theme-default:** prev/next links disappears when url contains space. (close: [#1010](https://github.com/vuejs/vuepress/issues/1010)) ([e8d728f](https://github.com/vuejs/vuepress/commit/e8d728f))
+
+
+### Features
+
+* **$active-header-links:** add option for specifying the top offset ([#1005](https://github.com/vuejs/vuepress/issues/1005)) ([100bbf2](https://github.com/vuejs/vuepress/commit/100bbf2))
+* **$active-header-links:** simplify implementation ([6b9b38b](https://github.com/vuejs/vuepress/commit/6b9b38b))
+* **$core:** using 'smooth-scroll' ([5b0cdcf](https://github.com/vuejs/vuepress/commit/5b0cdcf))
+
+
+
+<a name="1.0.0-alpha.22"></a>
+# [1.0.0-alpha.22](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.21...v1.0.0-alpha.22) (2018-11-13)
+
+
+
+<a name="1.0.0-alpha.21"></a>
+# [1.0.0-alpha.21](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.20...v1.0.0-alpha.21) (2018-11-13)
+
+
+### Bug Fixes
+
+* **$medium-zoom:** not updating on component update ([#994](https://github.com/vuejs/vuepress/issues/994)) ([6aa4d91](https://github.com/vuejs/vuepress/commit/6aa4d91))
+
+
+### Features
+
+* cache option (boolean | absolute path | relative path) ([3871f4a](https://github.com/vuejs/vuepress/commit/3871f4a)), closes [#993](https://github.com/vuejs/vuepress/issues/993)
+* **$markdown:** ability to disable built-in markdown extensions ([15af271](https://github.com/vuejs/vuepress/commit/15af271))
+* **$plugin-blog:** add postsDir option ([#998](https://github.com/vuejs/vuepress/issues/998)) ([ecb1920](https://github.com/vuejs/vuepress/commit/ecb1920))
+* **$plugin-blog:** Allow the permalink for blog posts to be configured. ([#997](https://github.com/vuejs/vuepress/issues/997)) ([615006d](https://github.com/vuejs/vuepress/commit/615006d))
+
+
+
+<a name="1.0.0-alpha.20"></a>
+# [1.0.0-alpha.20](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.19...v1.0.0-alpha.20) (2018-11-09)
+
+
+### Bug Fixes
+
+* missing edit links under non-contentLoading situations ([47e9654](https://github.com/vuejs/vuepress/commit/47e9654))
+* **$core:** globally installed vuepress cannot resolve '[@vuepress](https://github.com/vuepress)/default' ([256b7c4](https://github.com/vuejs/vuepress/commit/256b7c4)), closes [#985](https://github.com/vuejs/vuepress/issues/985)
+
+
+### Features
+
+* **$core:** global computed '$frontmatter' ([3a42c24](https://github.com/vuejs/vuepress/commit/3a42c24))
+* better hash locate behavior ([5918ca9](https://github.com/vuejs/vuepress/commit/5918ca9))
+* **$pwa:** alias '[@sw-event](https://github.com/sw-event)' ([628c330](https://github.com/vuejs/vuepress/commit/628c330))
+
+
+
+<a name="1.0.0-alpha.19"></a>
+# [1.0.0-alpha.19](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.18...v1.0.0-alpha.19) (2018-11-06)
+
+
+### Bug Fixes
+
+* **$active-header-links:** unexpected error when anchors were empty ([d658169](https://github.com/vuejs/vuepress/commit/d658169))
+
+
+### Features
+
+* AsyncMarkdownContentLoaded event ([6f52012](https://github.com/vuejs/vuepress/commit/6f52012))
+* **$active-header-links:** sidebarLinkSelector & headerAnchorSelector option ([3a79635](https://github.com/vuejs/vuepress/commit/3a79635))
+* built-in content loading ([216d04a](https://github.com/vuejs/vuepress/commit/216d04a))
+* Vue.$vuepress & Vue.prototype.$vuepress ([9c947b2](https://github.com/vuejs/vuepress/commit/9c947b2))
+* **$core:** 'contentLoading' site config option ([f8e42bc](https://github.com/vuejs/vuepress/commit/f8e42bc))
+* **$medium-zoom:** support selector option. ([ce7da09](https://github.com/vuejs/vuepress/commit/ce7da09))
+* **$theme-default:** display els of page bottom after content mounted ([d9a8ced](https://github.com/vuejs/vuepress/commit/d9a8ced))
+
+
+
+<a name="1.0.0-alpha.18"></a>
+# [1.0.0-alpha.18](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.17...v1.0.0-alpha.18) (2018-10-29)
+
+
+### Bug Fixes
+
+* **$core:** themePath/templates/ssr.html doesn't work ([497ce80](https://github.com/vuejs/vuepress/commit/497ce80))
+* pages number in the pagination plugin ([#963](https://github.com/vuejs/vuepress/issues/963)) ([8bdeb09](https://github.com/vuejs/vuepress/commit/8bdeb09))
+* RangeError: Maximum call stack size exceeded (build) ([b3d4269](https://github.com/vuejs/vuepress/commit/b3d4269))
+
+
+### Features
+
+* [@vuepress](https://github.com/vuepress)/theme-vue ([cb87532](https://github.com/vuejs/vuepress/commit/cb87532))
+* extend a theme ([84fd0ff](https://github.com/vuejs/vuepress/commit/84fd0ff))
+
+
+
+<a name="1.0.0-alpha.17"></a>
+# [1.0.0-alpha.17](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.16...v1.0.0-alpha.17) (2018-10-27)
+
+
+### Bug Fixes
+
+* **$core:** globally installed vuepress doesn't work (close: [#908](https://github.com/vuejs/vuepress/issues/908), [#949](https://github.com/vuejs/vuepress/issues/949)) ([af80c4b](https://github.com/vuejs/vuepress/commit/af80c4b))
+* **$webpack:** version of cache-loader ([636bd81](https://github.com/vuejs/vuepress/commit/636bd81))
+
+
+### Features
+
+* frontmatter.seoTitle ([c9b0700](https://github.com/vuejs/vuepress/commit/c9b0700))
+
+
+
+<a name="1.0.0-alpha.16"></a>
+# [1.0.0-alpha.16](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.15...v1.0.0-alpha.16) (2018-10-23)
+
+
+### Bug Fixes
+
+* unexpected warning of last-updated plugin. ([daa4d09](https://github.com/vuejs/vuepress/commit/daa4d09))
+
+
+
+<a name="1.0.0-alpha.15"></a>
+# [1.0.0-alpha.15](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.14...v1.0.0-alpha.15) (2018-10-23)
+
+
+### Bug Fixes
+
+* cannot resolve local functional plugin name ([e8a35be](https://github.com/vuejs/vuepress/commit/e8a35be))
+
+
+
+<a name="1.0.0-alpha.14"></a>
+# [1.0.0-alpha.14](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.13...v1.0.0-alpha.14) (2018-10-23)
+
+
+### Bug Fixes
+
+* **$core:** content slots doesn't work ([704031f](https://github.com/vuejs/vuepress/commit/704031f))
+
+
+### Features
+
+* **$markdown:** markdown slot shortcut ([bde4ac4](https://github.com/vuejs/vuepress/commit/bde4ac4))
+* init blog & blog theme ([7276664](https://github.com/vuejs/vuepress/commit/7276664))
+
+
+
+<a name="1.0.0-alpha.13"></a>
+# [1.0.0-alpha.13](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.12...v1.0.0-alpha.13) (2018-10-17)
+
+
+### Bug Fixes
+
+* unexpected reload at dev when md contains frontmatter ([54efcb8](https://github.com/vuejs/vuepress/commit/54efcb8))
+* **$default-theme:** remove custom layout legacy. (close: [#935](https://github.com/vuejs/vuepress/issues/935)) ([1f345d1](https://github.com/vuejs/vuepress/commit/1f345d1))
+
+
+
+<a name="1.0.0-alpha.12"></a>
+# [1.0.0-alpha.12](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.11...v1.0.0-alpha.12) (2018-10-17)
+
+
+### Bug Fixes
+
+* algolia resolution error in theme-default ([#940](https://github.com/vuejs/vuepress/issues/940)) ([b084114](https://github.com/vuejs/vuepress/commit/b084114))
+* wrong import path (close: [#937](https://github.com/vuejs/vuepress/issues/937)) ([1dd1b55](https://github.com/vuejs/vuepress/commit/1dd1b55))
+* **$plugin-blog:** category field in frontmatter doesn't work (close: [#941](https://github.com/vuejs/vuepress/issues/941)) ([00f5d3b](https://github.com/vuejs/vuepress/commit/00f5d3b))
+
+
+
+<a name="1.0.0-alpha.11"></a>
+# [1.0.0-alpha.11](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.10...v1.0.0-alpha.11) (2018-10-15)
+
+
+### Bug Fixes
+
+* **$last-updated:** doesn't work due to internal api change ([b8ce22c](https://github.com/vuejs/vuepress/commit/b8ce22c))
+
+
+
+<a name="1.0.0-alpha.10"></a>
+# [1.0.0-alpha.10](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.9...v1.0.0-alpha.10) (2018-10-14)
+
+
+### Bug Fixes
+
+* **$core:** correct swapped ssr.html and dev.html ([#924](https://github.com/vuejs/vuepress/issues/924)) ([3019339](https://github.com/vuejs/vuepress/commit/3019339))
+* **$core:** fix extra anonymous plugin message ([#926](https://github.com/vuejs/vuepress/issues/926)) ([c95c09f](https://github.com/vuejs/vuepress/commit/c95c09f))
+
+
+
+<a name="1.0.0-alpha.9"></a>
+# [1.0.0-alpha.9](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.8...v1.0.0-alpha.9) (2018-10-10)
+
+
+### Features
+
+* **$core:** register 'themePath/global-components' dir as global components ([04588cc](https://github.com/vuejs/vuepress/commit/04588cc)), closes [#916](https://github.com/vuejs/vuepress/issues/916)
+
+
+
+<a name="1.0.0-alpha.8"></a>
+# [1.0.0-alpha.8](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.7...v1.0.0-alpha.8) (2018-10-07)
+
+
+### Bug Fixes
+
+* **$core:** theme/styles/index.styl doesn't work ([1995273](https://github.com/vuejs/vuepress/commit/1995273))
+
+
+
+<a name="1.0.0-alpha.7"></a>
+# [1.0.0-alpha.7](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.6...v1.0.0-alpha.7) (2018-10-07)
+
+
+### Bug Fixes
+
+* **$core:** theme/styles/palette.styl doesn't work ([0a7e38a](https://github.com/vuejs/vuepress/commit/0a7e38a))
+
+
+
+<a name="1.0.0-alpha.6"></a>
+# [1.0.0-alpha.6](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.5...v1.0.0-alpha.6) (2018-10-07)
+
+
+### Bug Fixes
+
+* **$core:** fix windows output path issue ([d89f766](https://github.com/vuejs/vuepress/commit/d89f766))
+
+
+
+<a name="1.0.0-alpha.5"></a>
+# [1.0.0-alpha.5](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.4...v1.0.0-alpha.5) (2018-10-07)
+
+
+### Bug Fixes
+
+* patch for pagination-plugin posts count ([#904](https://github.com/vuejs/vuepress/issues/904)) ([4a08d2d](https://github.com/vuejs/vuepress/commit/4a08d2d))
+* **$core:** try to fix windows output path issue ([f62cd73](https://github.com/vuejs/vuepress/commit/f62cd73))
+
+
+### Features
+
+* plugin-notification ([79632c0](https://github.com/vuejs/vuepress/commit/79632c0))
+
+
+
+<a name="1.0.0-alpha.4"></a>
+# [1.0.0-alpha.4](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.3...v1.0.0-alpha.4) (2018-10-05)
+
+
+### Bug Fixes
+
+* **$core:** unexpected warning ([3fd51d5](https://github.com/vuejs/vuepress/commit/3fd51d5))
+* Check path in lowercase (close[#897](https://github.com/vuejs/vuepress/issues/897)) ([#898](https://github.com/vuejs/vuepress/issues/898)) ([94658ae](https://github.com/vuejs/vuepress/commit/94658ae))
+* Google Analytics Plugin build error ([#893](https://github.com/vuejs/vuepress/issues/893)) ([d7647bc](https://github.com/vuejs/vuepress/commit/d7647bc))
+* **$default-theme:** header should be fixed ([d03b10d](https://github.com/vuejs/vuepress/commit/d03b10d))
+
+
+### Features
+
+* **$core:** 'plugins' in plugin. ([7345515](https://github.com/vuejs/vuepress/commit/7345515))
+* **$core:** theme entry file as plugin. ([3fbef0d](https://github.com/vuejs/vuepress/commit/3fbef0d))
+* **$default-theme:** add PHP language text tag to code block. ([#892](https://github.com/vuejs/vuepress/issues/892)) ([cc056ba](https://github.com/vuejs/vuepress/commit/cc056ba))
+* **$default-theme:** vue-styled deleted & inserted code ([d987ea5](https://github.com/vuejs/vuepress/commit/d987ea5))
+
+
+
+<a name="1.0.0-alpha.3"></a>
+# [1.0.0-alpha.3](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.2...v1.0.0-alpha.3) (2018-10-03)
+
+
+### Bug Fixes
+
+* **$pwa:** z-index issue ([4cc317f](https://github.com/vuejs/vuepress/commit/4cc317f))
+
+
+### Features
+
+* **$core:** change style convention ([86736e8](https://github.com/vuejs/vuepress/commit/86736e8))
+* **$core:** custom data block ([f6bb414](https://github.com/vuejs/vuepress/commit/f6bb414))
+* **$markdown:** support 'vue' container ([3c430f8](https://github.com/vuejs/vuepress/commit/3c430f8))
+* **$markdown:** support pass in block data at compile time ([903138e](https://github.com/vuejs/vuepress/commit/903138e))
+
+
+
+<a name="1.0.0-alpha.2"></a>
+# [1.0.0-alpha.2](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.1...v1.0.0-alpha.2) (2018-09-28)
+
+
+### Bug Fixes
+
+* **$core:** cannot fallback to default NotFound layout correctly ([0b89d9c](https://github.com/vuejs/vuepress/commit/0b89d9c))
+* eject failed because config.styl not exist ([#874](https://github.com/vuejs/vuepress/issues/874)) ([6222170](https://github.com/vuejs/vuepress/commit/6222170))
+
+
+### Features
+
+* **$core:** do not register global components at themePath/components (close: [#877](https://github.com/vuejs/vuepress/issues/877)) ([4e8da95](https://github.com/vuejs/vuepress/commit/4e8da95))
+* **$core:** make palette globally enabled and improve doc ([2b2e308](https://github.com/vuejs/vuepress/commit/2b2e308))
+* **$core:** multiple layout directories ([20e520d](https://github.com/vuejs/vuepress/commit/20e520d))
+* **$core:** support themeIndexFile.devTemplate/ssrTemplate (close: [#882](https://github.com/vuejs/vuepress/issues/882)) ([6c6225d](https://github.com/vuejs/vuepress/commit/6c6225d))
+
+
+
+<a name="1.0.0-alpha.1"></a>
+# [1.0.0-alpha.1](https://github.com/vuejs/vuepress/compare/v0.14.4...v1.0.0-alpha.1) (2018-09-27)
+
+
+### Bug Fixes
+
+* build error ([922bf13](https://github.com/vuejs/vuepress/commit/922bf13))
+* build failed - wrong import ([1b234b3](https://github.com/vuejs/vuepress/commit/1b234b3))
+* **$core:** Cannot assign to read only property 'exports' of object (close: [#869](https://github.com/vuejs/vuepress/issues/869)) ([47ac485](https://github.com/vuejs/vuepress/commit/47ac485))
+* **$core:** null check for Layout components ([ade62c9](https://github.com/vuejs/vuepress/commit/ade62c9))
+* **$core:** themePath should default to modulePath ([e2b6be8](https://github.com/vuejs/vuepress/commit/e2b6be8))
+* **$pagination:** do not need to withBase & do not generate root html ([93f169a](https://github.com/vuejs/vuepress/commit/93f169a))
+* **$test:** move babel config to test-utils to get correct transform ([91d8720](https://github.com/vuejs/vuepress/commit/91d8720))
+* **dev:** Prevent files at node_modules from being watched (close: [#855](https://github.com/vuejs/vuepress/issues/855)) ([#856](https://github.com/vuejs/vuepress/issues/856)) ([2348e75](https://github.com/vuejs/vuepress/commit/2348e75))
+
+
+### Features
+
+* **$blog:** support category and tag ([163f8a5](https://github.com/vuejs/vuepress/commit/163f8a5))
+* **$cli:** support '--cache' and '--no-cache' flag ([2a46178](https://github.com/vuejs/vuepress/commit/2a46178))
+* **$core:** 'define' plugin option and rewrite plugin API. ([0263f15](https://github.com/vuejs/vuepress/commit/0263f15))
+* **$core:** alias - plugin API ([a5f58f7](https://github.com/vuejs/vuepress/commit/a5f58f7))
+* **$core:** config the dev and ssr template. (close: [#733](https://github.com/vuejs/vuepress/issues/733)) ([38b3468](https://github.com/vuejs/vuepress/commit/38b3468))
+* **$core:** enhanceAppFile doesn't need export default manually. ([eff7949](https://github.com/vuejs/vuepress/commit/eff7949))
+* **$core:** flatten return array of functional option ([7b42984](https://github.com/vuejs/vuepress/commit/7b42984))
+* **$core:** plugin option - chainMarkdown ([e380de3](https://github.com/vuejs/vuepress/commit/e380de3))
+* plugin-search ([b0e3209](https://github.com/vuejs/vuepress/commit/b0e3209))
+* **$core:** site config as plugin ([8a7ee6c](https://github.com/vuejs/vuepress/commit/8a7ee6c))
+* **$core:** supoort pipeline plugin API. ([a122dfa](https://github.com/vuejs/vuepress/commit/a122dfa))
+* **$core:** support 'palette' API, deprecate override.styl ([63555c0](https://github.com/vuejs/vuepress/commit/63555c0))
+* **$core:** support passing in meta ([cb36ae6](https://github.com/vuejs/vuepress/commit/cb36ae6))
+* **$core:** use markdown-it-chain ([4bc4331](https://github.com/vuejs/vuepress/commit/4bc4331))
+* **$pagination:** correct meta title. ([91ebd10](https://github.com/vuejs/vuepress/commit/91ebd10))
+* **$shared-utils:** support pass in an absolute path for theme ([24840cd](https://github.com/vuejs/vuepress/commit/24840cd))
+
+
+### Reverts
+
+* change AsyncOption to prototype-style. ([a5cbd67](https://github.com/vuejs/vuepress/commit/a5cbd67))
+
+
+<a name="0.14.5"></a>
+## [0.14.5](https://github.com/vuejs/vuepress/compare/v0.14.4...v0.14.5) (2018-11-13)
+
+
+### Bug Fixes
+
+* **$core:** css cannot be extracted together (close: [#977](https://github.com/vuejs/vuepress/issues/977)) ([600ca3e](https://github.com/vuejs/vuepress/commit/600ca3e))
+* **dev:** Prevent files at node_modules from being watched (close: [#855](https://github.com/vuejs/vuepress/issues/855)) ([#856](https://github.com/vuejs/vuepress/issues/856)) ([2348e75](https://github.com/vuejs/vuepress/commit/2348e75))
+
+
+
 <a name="0.14.4"></a>
 ## [0.14.4](https://github.com/vuejs/vuepress/compare/v0.14.3...v0.14.4) (2018-09-15)
 
@@ -602,6 +978,4 @@
 * dev server ([890f929](https://github.com/vuejs/vuepress/commit/890f929))
 * support nesting in sidebar ([1964709](https://github.com/vuejs/vuepress/commit/1964709))
 * support style/script hoisting + css modules ([f97e676](https://github.com/vuejs/vuepress/commit/f97e676))
-
-
 
