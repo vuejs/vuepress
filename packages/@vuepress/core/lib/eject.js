@@ -6,7 +6,7 @@ const EXCLUDED_FILES = [
   '__tests__',
   '.npmignore',
   'package.json',
-  'package.json',
+  'node_modules',
   'README.md'
 ]
 
