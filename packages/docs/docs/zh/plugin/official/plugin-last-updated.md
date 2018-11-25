@@ -28,15 +28,19 @@ module.exports = {
 
 默认情况下，本插件为每个页面生成一个 13 位的时间戳，你可以传入一个 transformer 将其转换为你想要的任何格式。
 
+例子：
+
 ``` javascript
 const moment = require('moment');
 
 module.exports = {
   plugins: [
     [ 
-      'last-updated',
-      { 
+      '@vuepress/last-updated',
+      {
         transformer: (timestamp, lang) => {
+          // 不要忘了安装 moment
+          const moment = require('moment')
           moment.locale(lang)
           return moment(timestamp).fromNow()
         }

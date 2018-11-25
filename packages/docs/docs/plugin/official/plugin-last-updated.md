@@ -28,15 +28,19 @@ module.exports = {
 
 By default, this plugin produces a 13-bit timestamp for each page, you can also pass in a transformer to convert it to any format that you want.
 
+e.g.
+
 ``` javascript
 const moment = require('moment');
 
 module.exports = {
   plugins: [
     [ 
-      'last-updated',
-      { 
+      '@vuepress/last-updated',
+      {
         transformer: (timestamp, lang) => {
+          // Don't forget to install moment yourself
+          const moment = require('moment')
           moment.locale(lang)
           return moment(timestamp).fromNow()
         }
