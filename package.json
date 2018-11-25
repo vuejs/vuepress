@@ -8,6 +8,7 @@
   ],
   "description": "Minimalistic doc generator with Vue component based layout system",
   "scripts": {
+    "bootstrap": "lerna bootstrap",
     "boot": "node scripts/bootstrap.js",
     "dev": "yarn workspace docs dev",
     "build": "yarn workspace docs build",
@@ -16,7 +17,7 @@
     "register-vuepress": "lerna exec --scope vuepress -- yarn link",
     "lint": "eslint --fix packages/**/*.js packages/**/*.vue packages/**/bin/*",
     "release": "yarn --pure-lockfile && node scripts/release.js",
-    "changelog": "node scripts/genChangelog.js run",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "test": "node scripts/test.js"
   },
   "gitHooks": {
@@ -37,7 +38,6 @@
     "lint-staged": "^7.0.4",
     "minimist": "^1.2.0",
     "yorkie": "^1.0.3",
-    "inquirer": "^6.2.0",
-    "@vue/conventional-changelog": "^0.1.1"
+    "inquirer": "^6.2.0"
   }
 }
