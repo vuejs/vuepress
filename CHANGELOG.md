@@ -325,42 +325,53 @@
 <a name="1.0.0-alpha.1"></a>
 # [1.0.0-alpha.1](https://github.com/vuejs/vuepress/compare/v0.14.4...v1.0.0-alpha.1) (2018-09-27)
 
-
-### Bug Fixes
-
-* build error ([922bf13](https://github.com/vuejs/vuepress/commit/922bf13))
-* build failed - wrong import ([1b234b3](https://github.com/vuejs/vuepress/commit/1b234b3))
-* **$core:** Cannot assign to read only property 'exports' of object (close: [#869](https://github.com/vuejs/vuepress/issues/869)) ([47ac485](https://github.com/vuejs/vuepress/commit/47ac485))
-* **$core:** null check for Layout components ([ade62c9](https://github.com/vuejs/vuepress/commit/ade62c9))
-* **$core:** themePath should default to modulePath ([e2b6be8](https://github.com/vuejs/vuepress/commit/e2b6be8))
-* **$pagination:** do not need to withBase & do not generate root html ([93f169a](https://github.com/vuejs/vuepress/commit/93f169a))
-* **$test:** move babel config to test-utils to get correct transform ([91d8720](https://github.com/vuejs/vuepress/commit/91d8720))
-* **dev:** Prevent files at node_modules from being watched (close: [#855](https://github.com/vuejs/vuepress/issues/855)) ([#856](https://github.com/vuejs/vuepress/issues/856)) ([2348e75](https://github.com/vuejs/vuepress/commit/2348e75))
-
-
 ### Features
 
-* **$blog:** support category and tag ([163f8a5](https://github.com/vuejs/vuepress/commit/163f8a5))
-* **$cli:** support '--cache' and '--no-cache' flag ([2a46178](https://github.com/vuejs/vuepress/commit/2a46178))
-* **$core:** 'define' plugin option and rewrite plugin API. ([0263f15](https://github.com/vuejs/vuepress/commit/0263f15))
-* **$core:** alias - plugin API ([a5f58f7](https://github.com/vuejs/vuepress/commit/a5f58f7))
-* **$core:** config the dev and ssr template. (close: [#733](https://github.com/vuejs/vuepress/issues/733)) ([38b3468](https://github.com/vuejs/vuepress/commit/38b3468))
-* **$core:** enhanceAppFile doesn't need export default manually. ([eff7949](https://github.com/vuejs/vuepress/commit/eff7949))
-* **$core:** flatten return array of functional option ([7b42984](https://github.com/vuejs/vuepress/commit/7b42984))
-* **$core:** plugin option - chainMarkdown ([e380de3](https://github.com/vuejs/vuepress/commit/e380de3))
-* plugin-search ([b0e3209](https://github.com/vuejs/vuepress/commit/b0e3209))
-* **$core:** site config as plugin ([8a7ee6c](https://github.com/vuejs/vuepress/commit/8a7ee6c))
-* **$core:** supoort pipeline plugin API. ([a122dfa](https://github.com/vuejs/vuepress/commit/a122dfa))
-* **$core:** support 'palette' API, deprecate override.styl ([63555c0](https://github.com/vuejs/vuepress/commit/63555c0))
-* **$core:** support passing in meta ([cb36ae6](https://github.com/vuejs/vuepress/commit/cb36ae6))
-* **$core:** use markdown-it-chain ([4bc4331](https://github.com/vuejs/vuepress/commit/4bc4331))
-* **$pagination:** correct meta title. ([91ebd10](https://github.com/vuejs/vuepress/commit/91ebd10))
-* **$shared-utils:** support pass in an absolute path for theme ([24840cd](https://github.com/vuejs/vuepress/commit/24840cd))
+- **Plugin API**
+  - [Documentation](https://vuepress.vuejs.org/plugin/)
+  - Multiple official plugins
+    - [@vuepress/plugin-active-header-links](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-active-header-links)
+    - [@vuepress/plugin-back-to-top](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-back-to-top) (Thanks to @ycmjason )
+    - [@vuepress/plugin-blog](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-blog) (For blog theme developers.)
+    - [@vuepress/plugin-pagination](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-pagination) (For blog theme developers.)
+    - [@vuepress/plugin-google-analytics](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-google-analytics)
+    - [@vuepress/plugin-last-updated](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-last-updated)
+    - [@vuepress/plugin-i18n-ui](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-i18n-ui)
+    - [@vuepress/plugin-medium-zoom](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-medium-zoom)
+    - [@vuepress/plugin-pwa](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-pwa)
+    - [@vuepress/plugin-register-components](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-register-components)
 
+- **Refined Theme API**
+  - From now on, the theme will no longer use Layout.vue as the entry point, but you can have your own configuration. For example, a theme can have some built-in plugins.
+  - [Documentation](https://vuepress.vuejs.org/theme/)
 
-### Reverts
+- **Permalinks**
+  - From now on, VuePress supports custom routing in addition to the default file-level-based routing.
+  - [Documentation](https://vuepress.vuejs.org/guide/permalinks.html)
 
-* change AsyncOption to prototype-style. ([a5cbd67](https://github.com/vuejs/vuepress/commit/a5cbd67))
+- **Markdown slots**
+  - [Documentation](https://vuepress.vuejs.org/guide/markdown-slot.html)
+
+- **Free to add new pages**
+  - You can add new pages with content (i.e. pointing to markdown files) or no content (i.e. common routes).
+  - [Documentation](https://vuepress.vuejs.org/plugin/option-api.html#additionalpages)
+
+- **Custom temp path**
+  - The running of VuePress actually depends on some temporary files generated during the build time. Before that, its default location is in `node_modules`, but now you can start configuring it, but don't forget to add it to gitignore.
+    ```bash
+    vuepress dev docs --temp .temp # .temp is relative to process.cwd().
+    ```
+
+- **Custom temp path**
+  - In the past, custom layouts were actually implemented by `default theme`, for now it's moved to `core`.
+
+- **Configurable dev and ssr template**
+
+### Internal Changes
+
+* Leverage monorepo;
+* Decouple [@vuepress/core](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/core) and [@vuepress/theme-default](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/theme-default)
+* Rewrite `Prepare` with `Plugin API`
 
 
 <a name="0.14.5"></a>
@@ -370,7 +381,7 @@
 ### Bug Fixes
 
 * **$core:** css cannot be extracted together (close: [#977](https://github.com/vuejs/vuepress/issues/977)) ([600ca3e](https://github.com/vuejs/vuepress/commit/600ca3e))
-* **dev:** Prevent files at node_modules from being watched (close: [#855](https://github.com/vuejs/vuepress/issues/855)) ([#856](https://github.com/vuejs/vuepress/issues/856)) ([2348e75](https://github.com/vuejs/vuepress/commit/2348e75))
+* **$build:** Prevent files at node_modules from being watched (close: [#855](https://github.com/vuejs/vuepress/issues/855)) ([#856](https://github.com/vuejs/vuepress/issues/856)) ([2348e75](https://github.com/vuejs/vuepress/commit/2348e75))
 
 
 
