@@ -1,56 +1,82 @@
+'use strict'
+
+/**
+ * Module dependencies.
+ */
+
 const chalk = require('chalk')
-const env = require('./env')
 
-const logger = {}
+class Logger {
+  constructor (options) {
+    this.options = Object.assign(
+      {
+        logLevel: 3
+      },
+      options
+    )
+  }
 
-const logTypes = {
-  success: {
-    color: 'green',
-    label: 'DONE'
-  },
-  error: {
-    color: 'red',
-    label: 'FAIL'
-  },
-  warn: {
-    color: 'yellow',
-    label: 'WARN'
-  },
-  tip: {
-    color: 'cyan',
-    label: 'TIP'
-  },
-  wait: {
-    color: 'blue',
-    label: 'WAIT'
+  setOptions (options) {
+    Object.assign(this.options, options)
+  }
+
+  // level: 4
+  debug (...args) {
+    if (this.options.logLevel < 4) {
+      return
+    }
+
+    this.status('magenta', 'debug', ...args)
+  }
+
+  // level: 2
+  warn (...args) {
+    if (this.options.logLevel < 2) {
+      return
+    }
+    console.warn(chalk.yellow('warning'), ...args)
+  }
+
+  // level: 1
+  error (...args) {
+    if (this.options.logLevel < 1) {
+      return
+    }
+    process.exitCode = process.exitCode || 1
+    console.error(chalk.red('error'), ...args)
+  }
+
+  // level: 3
+  success (...args) {
+    this.status('green', 'success', ...args)
+  }
+
+  // level: 3
+  tip (...args) {
+    this.status('blue', 'tip', ...args)
+  }
+
+  // level: 3
+  info (...args) {
+    this.status('cyan', 'info', ...args)
+  }
+
+  wait (...args) {
+    this.status('cyan', 'wait', ...args)
+  }
+
+  // level: 3
+  status (color, label, ...args) {
+    if (this.options.logLevel < 3) {
+      return
+    }
+    console.log(chalk[color](label), ...args)
   }
 }
 
-const getLoggerFn = (color, label) => (msg, log = true) => {
-  let newLine = false
-  if (msg.startsWith('\n')) {
-    if (log) msg = msg.slice(1)
-    newLine = true
-  }
-  msg = chalk.reset.inverse.bold[color](` ${label} `) + ' ' + msg
-  if (log) {
-    console.log(newLine ? '\n' + msg : msg)
-  } else {
-    return msg
-  }
-}
+/**
+ * Expose a logger instance.
+ */
 
-for (const type in logTypes) {
-  const { color, label } = logTypes[type]
-  logger[type] = getLoggerFn(color, label)
-}
+module.exports = new Logger()
 
-const debugFn = getLoggerFn('magenta', 'DEBUG')
-
-logger.debug = function (msg) {
-  if (env.isDebug) {
-    debugFn(msg)
-  }
-}
-
-module.exports = logger

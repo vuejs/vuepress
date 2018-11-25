@@ -25,7 +25,7 @@ module.exports = class DevLogPlugin {
       const displayUrl = `http://${displayHost}:${port}${publicPath}`
 
       logger.success(
-        `\n${chalk.gray(`[${time}]`)} Build ${chalk.italic(stats.hash.slice(0, 6))} ` +
+        `${chalk.gray(`[${time}]`)} Build ${chalk.italic(stats.hash.slice(0, 6))} ` +
         `finished in ${stats.endTime - stats.startTime} ms! ` +
         (
           isFirst

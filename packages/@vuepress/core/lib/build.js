@@ -15,7 +15,7 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
   const { createBundleRenderer } = require('vue-server-renderer')
   const { normalizeHeadTag, applyUserWebpackConfig } = require('./util/index')
 
-  logger.wait('\nExtracting site metadata...')
+  logger.wait('Extracting site metadata...')
   const ctx = await prepare(sourceDir, cliOptions, true /* isProd */)
 
   const { outDir, cwd } = ctx
@@ -82,7 +82,7 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
 
   // DONE.
   const relativeDir = path.relative(cwd, outDir)
-  logger.success(`\n${chalk.green('Success!')} Generated static files in ${chalk.cyan(relativeDir)}.\n`)
+  logger.success(`${chalk.green('Success!')} Generated static files in ${chalk.cyan(relativeDir)}.\n`)
 
   // --- helpers ---
 

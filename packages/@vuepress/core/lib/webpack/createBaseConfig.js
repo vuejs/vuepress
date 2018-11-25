@@ -76,7 +76,7 @@ module.exports = function createBaseConfig ({
     .noParse(/^(vue|vue-router|vuex|vuex-router-sync)$/)
 
   if (cache === false) {
-    logger.tip('\nClean cache...\n')
+    logger.tip('Clean cache...\n')
     fs.emptyDirSync(cacheDirectory)
   }
 

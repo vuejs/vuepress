@@ -35,7 +35,7 @@ module.exports = (options, context) => ({
     const { outDir } = context
     const swFilePath = path.resolve(outDir, 'service-worker.js')
     if (serviceWorker) {
-      logger.wait('\nGenerating service worker...')
+      logger.wait('Generating service worker...')
       const wbb = require('workbox-build')
       await wbb.generateSW({
         swDest: swFilePath,

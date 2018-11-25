@@ -19,7 +19,7 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
   const { applyUserWebpackConfig } = require('./util/index')
   const { frontmatterEmitter } = require('@vuepress/markdown-loader')
 
-  logger.wait('\nExtracting site metadata...')
+  logger.wait('Extracting site metadata...')
   const ctx = await prepare(sourceDir, cliOptions, false /* isProd */)
 
   // setup watchers to update options and dynamically generated files
