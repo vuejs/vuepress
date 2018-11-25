@@ -77,7 +77,7 @@ exports.bootstrap = function ({
     .option('--no-cache', 'clean the cache before build')
     .option('--debug', 'build in development mode for debugging')
     .option('--silent', 'build static site in silent mode')
-    .action((sourceDir, {
+    .action((sourceDir = '.', {
       debug,
       dest,
       temp,
