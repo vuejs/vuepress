@@ -101,6 +101,7 @@ exports.bootstrap = function ({
   program
     .command('eject [targetDir]')
     .description('copy the default theme into .vuepress/theme for customization.')
+    .option('--debug', 'eject in debug mode')
     .action((dir = '.') => {
       wrapCommand(eject)(path.resolve(dir))
     })

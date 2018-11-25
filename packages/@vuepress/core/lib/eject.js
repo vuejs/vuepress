@@ -2,6 +2,14 @@
 
 const { path, chalk, fs, logger } = require('@vuepress/shared-utils')
 
+const EXCLUDED_FILES = [
+  '__tests__',
+  '.npmignore',
+  'package.json',
+  'package.json',
+  'README.md'
+]
+
 module.exports = async (dir) => {
   try {
     require.resolve('@vuepress/theme-default')
@@ -10,7 +18,24 @@ module.exports = async (dir) => {
     process.exit(1)
   }
   const source = require.resolve('@vuepress/theme-default')
-  const target = path.resolve(dir, '.vuepress/theme')
-  await fs.copy(source, target)
-  logger.success(`\nCopied default theme into ${chalk.cyan(target)}.\n`)
+  logger.debug('entry', chalk.cyan(source))
+
+  const sourceDir = path.parse(source).dir
+  const targetDir = path.resolve(dir, '.vuepress/theme')
+  logger.debug('sourceDir', chalk.cyan(sourceDir))
+  logger.debug('targetDir', chalk.cyan(targetDir))
+
+  await fs.copy(sourceDir, targetDir, {
+    filter: src => {
+      const relative = path.relative(sourceDir, src)
+      if (EXCLUDED_FILES.includes(relative)) {
+        return false
+      }
+      if (relative) {
+        logger.debug('Copied', chalk.cyan(relative))
+      }
+      return true
+    }
+  })
+  logger.success(`Copied default theme into ${chalk.cyan(targetDir)}.\n`)
 }

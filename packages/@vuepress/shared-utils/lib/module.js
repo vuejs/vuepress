@@ -49,10 +49,11 @@ exports.resolveModule = function (request, context) {
     }
     return resolvedPath
   }
-  resolvedPath = resolve(request, {
-    // module.paths is for globally install packages.
-    paths: [context || process.cwd(), ...module.paths]
-  })
+
+  // module.paths is for globally install packages.
+  const paths = [context || process.cwd(), ...module.paths]
+  resolvedPath = resolve(request, { paths })
+
   return resolvedPath
 }
 

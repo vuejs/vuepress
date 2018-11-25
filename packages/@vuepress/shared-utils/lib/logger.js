@@ -10,7 +10,9 @@ class Logger {
   constructor (options) {
     this.options = Object.assign(
       {
-        logLevel: 3
+        logLevel: process.argv.includes('--debug')
+          ? 4
+          : 3
       },
       options
     )
@@ -83,6 +85,13 @@ class Logger {
       return
     }
     console.log(chalk[color](label), ...args)
+  }
+
+  developer (...args) {
+    if (process.env.VUEPRESS_ENV !== 'developer') {
+      return
+    }
+    this.status('cyan', 'developer', ...args)
   }
 }
 
