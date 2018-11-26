@@ -1,3 +1,13 @@
+<a name="0.14.8"></a>
+## [0.14.8](https://github.com/vuejs/vuepress/compare/v0.14.7...v0.14.8) (2018-11-26)
+
+
+### Features
+
+* **$markdown:** pass rest options to instantiate markdown-it ([8383329](https://github.com/vuejs/vuepress/commit/8383329)), closes [#1040](https://github.com/vuejs/vuepress/issues/1040)
+
+
+
 <a name="0.14.7"></a>
 ## [0.14.7](https://github.com/vuejs/vuepress/compare/v0.14.6...v0.14.7) (2018-11-25)
 
