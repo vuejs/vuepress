@@ -251,12 +251,12 @@ It also supports [line highlighting](#line-highlighting-in-code-blocks):
 **Input**
 
 ``` md
-<<< @/test/markdown/fragments/snippet.js{2}
+<<< @/../@vuepress/markdown/__tests__/fragments/snippet.js{2}
 ```
 
 **Output**
 
-<<< @/test/markdown/fragments/snippet.js{2}
+<<< @/../@vuepress/markdown/__tests__/fragments/snippet.js{2}
 
 ::: tip
   Since the import of the code snippets will be executed before webpack compilation, you can't use the path alias in webpack. The default value of `@` is `process.cwd()`.

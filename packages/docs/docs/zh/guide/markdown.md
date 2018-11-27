@@ -249,12 +249,12 @@ module.exports = {
 **Input**
 
 ```
-<<< @/test/markdown/fragments/snippet.js{2}
+<<< @/../@vuepress/markdown/__tests__/fragments/snippet.js{2}
 ```
 
 **Output**
 
-<<< @/test/markdown/fragments/snippet.js{2}
+<<< @/../@vuepress/markdown/__tests__/fragments/snippet.js{2}
 
 ::: tip 注意
   由于代码段的导入将在 webpack 编译之前执行，因此你无法使用 webpack 中的路径别名，此处的 `@` 默认值是 `process.cwd()`。
