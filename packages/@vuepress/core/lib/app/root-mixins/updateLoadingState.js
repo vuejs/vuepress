@@ -1,17 +1,14 @@
+import SmoothScroll from 'smooth-scroll/dist/smooth-scroll.js'
+
 export default {
   created () {
     this.$vuepress.$on('AsyncMarkdownContentMounted', () => {
       this.$vuepress.$set('contentMounted', true)
 
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault()
-          window.scroll({
-            top: e.target.offsetTop - 75,
-            left: 0,
-            behavior: 'smooth'
-          })
-        })
+      this.$smoothScroll = new SmoothScroll('a[href*="#"]', {
+        speed: 1,
+        speedAsDuration: true,
+        easing: 'easeInOutCubic'
       })
 
       if (this.$route.hash) {
@@ -36,6 +33,11 @@ export default {
   watch: {
     '$route.path' () {
       this.$vuepress.$set('contentMounted', false)
+      this.$smoothScroll.destroy()
     }
+  },
+
+  beforeDestroy () {
+    this.$smoothScroll.destroy()
   }
 }

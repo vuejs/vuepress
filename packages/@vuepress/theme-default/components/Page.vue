@@ -73,9 +73,7 @@ export default {
     },
 
     lastUpdated () {
-      if (this.$page.lastUpdated) {
-        return new Date(this.$page.lastUpdated).toLocaleString(this.$lang)
-      }
+      return this.$page.lastUpdated
     },
 
     lastUpdatedText () {
@@ -191,7 +189,7 @@ function find (page, items, offset) {
   })
   for (let i = 0; i < res.length; i++) {
     const cur = res[i]
-    if (cur.type === 'page' && cur.path === page.path) {
+    if (cur.type === 'page' && cur.path === decodeURIComponent(page.path)) {
       return res[i + offset]
     }
   }

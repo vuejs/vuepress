@@ -5,8 +5,7 @@
  */
 
 module.exports = function createClientConfig (ctx) {
-  const { path } = require('@vuepress/shared-utils')
-  const WebpackBar = require('webpackbar')
+  const { path, env } = require('@vuepress/shared-utils')
   const createBaseConfig = require('./createBaseConfig')
 
   const config = createBaseConfig(ctx)
@@ -57,7 +56,8 @@ module.exports = function createClientConfig (ctx) {
       }])
   }
 
-  if (!ctx.cliOptions.debug) {
+  if (!env.isDebug) {
+    const WebpackBar = require('webpackbar')
     config
       .plugin('bar')
       .use(WebpackBar, [{
@@ -65,10 +65,6 @@ module.exports = function createClientConfig (ctx) {
         color: '#41b883',
         compiledIn: false
       }])
-  }
-
-  if (ctx.siteConfig.chainWebpack) {
-    ctx.siteConfig.chainWebpack(config, false /* isServer */)
   }
 
   ctx.pluginAPI.options.chainWebpack.syncApply(config, false /* isServer */)

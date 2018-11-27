@@ -10,7 +10,7 @@ const { PLUGIN_OPTION_MAP } = require('./constants')
 const {
   moduleResolver: { getPluginResolver },
   datatypes: { assertTypes, isPlainObject },
-  env: { isDebug },
+  env: { debug },
   logger, chalk
 } = require('@vuepress/shared-utils')
 
@@ -62,7 +62,7 @@ module.exports = class PluginAPI {
       if (plugin.enabled) {
         this.applyPlugin(plugin)
       } else {
-        logger.debug(`\n${chalk.gray(`[${plugin.name}]`)} disabled.`)
+        logger.debug(`${chalk.gray(`[${plugin.name}]`)} disabled.`)
       }
     })
   }
@@ -98,8 +98,7 @@ module.exports = class PluginAPI {
     this._pluginQueue.push(plugin)
 
     if (plugin.plugins) {
-      logger.debug(`\nStart to use plugins defined at ${chalk.gray(plugin.name)}`)
-      logger.debug(JSON.stringify(plugin.plugins, null, 2))
+      logger.debug(`Plugins defined at ${chalk.gray(plugin.name)}`, plugin.plugins)
       this.useByPluginsConfig(plugin.plugins)
     }
 
@@ -211,10 +210,12 @@ module.exports = class PluginAPI {
     alias
   }) {
     const isInternalPlugin = pluginName.startsWith('@vuepress/internal-')
-    if (shortcut) {
-      logger.tip(`\nApply plugin ${chalk.magenta(shortcut)} ${chalk.gray(`(i.e. "${pluginName}")`)} ...`)
-    } else if (!isInternalPlugin || isDebug) {
-      logger.tip(`\nApply plugin ${chalk.magenta(pluginName)} ...`)
+    if (!isInternalPlugin || debug) {
+      logger.tip(
+        shortcut
+          ? `Apply plugin ${chalk.magenta(shortcut)} ${chalk.gray(`(i.e. "${pluginName}")`)} ...`
+          : `Apply plugin ${chalk.magenta(pluginName)} ...`
+      )
     }
 
     this

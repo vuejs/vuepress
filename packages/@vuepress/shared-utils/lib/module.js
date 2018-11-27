@@ -42,17 +42,18 @@ exports.resolveModule = function (request, context) {
   // TODO
   // Temporary workaround for jest cannot resolve module path from '__mocks__'
   // when using 'require.resolve'.
-  if (isTest() && request !== '@vuepress/theme-default') {
+  if (isTest && request !== '@vuepress/theme-default') {
     resolvedPath = path.resolve(__dirname, '../../../../__mocks__', request)
     if (!fs.existsSync(`${resolvedPath}.js`) && !fs.existsSync(`${resolvedPath}/index.js`)) {
       throw new Error(`Cannot find module '${request}'`)
     }
     return resolvedPath
   }
-  resolvedPath = resolve(request, {
-    // module.paths is for globally install packages.
-    paths: [context || process.cwd(), ...module.paths]
-  })
+
+  // module.paths is for globally install packages.
+  const paths = [context || process.cwd(), ...module.paths]
+  resolvedPath = resolve(request, { paths })
+
   return resolvedPath
 }
 

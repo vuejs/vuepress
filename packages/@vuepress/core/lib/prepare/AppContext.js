@@ -229,8 +229,8 @@ module.exports = class AppContext {
       defaultDevTemplate
     ])
 
-    logger.debug('\nSSR Template File: ' + chalk.gray(ssrTemplate))
-    logger.debug('\nDEV Template File: ' + chalk.gray(devTemplate))
+    logger.debug('SSR Template File: ' + chalk.gray(ssrTemplate))
+    logger.debug('DEV Template File: ' + chalk.gray(devTemplate))
     this.devTemplate = devTemplate
     this.ssrTemplate = ssrTemplate
   }
@@ -347,7 +347,7 @@ function createTemp (tempPath) {
     fs.emptyDirSync(tempPath)
   }
 
-  logger.tip(`\nTemp directory: ${chalk.gray(tempPath)}`)
+  logger.debug(`Temp directory: ${chalk.gray(tempPath)}`)
   const tempCache = new Map()
 
   async function writeTemp (file, content) {

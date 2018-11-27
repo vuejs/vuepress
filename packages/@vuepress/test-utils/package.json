@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/test-utils",
-  "version": "1.0.0-alpha.22",
+  "version": "1.0.0-alpha.24",
   "description": "test-utils for vuepress",
   "publishConfig": {
     "access": "public"
@@ -16,11 +16,11 @@
     "generator"
   ],
   "dependencies": {
-    "@babel/core": "^7.0.0-beta.47",
-    "@babel/preset-env": "^7.0.0-beta.47",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
     "@vue/test-utils": "^1.0.0-beta.16",
-    "@vuepress/core": "^1.0.0-alpha.22",
-    "@vuepress/shared-utils": "^1.0.0-alpha.22",
+    "@vuepress/core": "^1.0.0-alpha.24",
+    "@vuepress/shared-utils": "^1.0.0-alpha.24",
     "babel-core": "^7.0.0-0",
     "babel-jest": "^23.4.0",
     "execa": "^0.10.0",

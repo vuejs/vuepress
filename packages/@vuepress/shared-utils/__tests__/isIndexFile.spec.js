@@ -13,7 +13,9 @@ test('isIndexFile', () => {
   });
   [
     'foo/one.md',
-    'one.md'
+    'one.md',
+    'one-index.md',
+    'foo/one-index.md'
   ].forEach(file => {
     expect(isIndexFile(file)).toBe(false)
   })

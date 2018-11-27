@@ -162,7 +162,7 @@ VuePress provides a convenient way to add extra styles. you can create an `.vuep
 
 **参考:**
 
-- [Using a theme](../theme/README.md#using-a-theme).
+- [使用主题](../theme/using-a-theme.md).
 
 ### themeConfig
 
@@ -182,7 +182,7 @@ VuePress provides a convenient way to add extra styles. you can create an `.vuep
 - Type: `Object|Array`
 - Default: `undefined`
 
-请参考 [plugin > Using a plugin](../plugin/README.md#using-a-plugin) 来使用一个插件。
+请参考 [plugin > Using a plugin](../plugin/using-a-plugin.md) 来使用一个插件。
 
 ## Markdown
 

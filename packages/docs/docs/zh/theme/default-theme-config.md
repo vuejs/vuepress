@@ -57,8 +57,8 @@ module.exports = {
       {
         text: 'Languages',
         items: [
-          { text: 'Chinese', link: '/language/chinese' },
-          { text: 'Japanese', link: '/language/japanese' }
+          { text: 'Chinese', link: '/language/chinese/' },
+          { text: 'Japanese', link: '/language/japanese/' }
         ]
       }
     ]
@@ -160,7 +160,7 @@ module.exports = {
 }
 ```
 
-::: tip 
+::: tip
 值得一提的是，当你禁用此选项时，此功能的相应脚本将不会被加载，这是我们性能优化的一个小点。
 :::
 

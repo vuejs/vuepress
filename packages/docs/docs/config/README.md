@@ -102,7 +102,7 @@ A function to control what files should have `<link rel="preload">` resource hin
 - Type: `boolean|string`
 - Default: `false`
 
-Whether to enable placeholder loading for asynchronous loading content. if it's a stirng, it should be the name of your custom loading component.
+Whether to enable placeholder loading for asynchronous loading content. if it's a string, it should be the name of your custom loading component.
 
 ### cache
 
@@ -168,7 +168,7 @@ Specify this to use a custom theme.
 
 **Also see:**
 
-- [Using a theme](../theme/README.md#using-a-theme).
+- [Using a theme](../theme/using-a-theme.md).
 
 ### themeConfig
 
@@ -188,7 +188,7 @@ Provide config options to the used theme. The options will vary depending on the
 - Type: `Object|Array`
 - Default: `undefined`
 
-Please refer to [Plugin > Using a plugin](../plugin/README.md#using-a-plugin) to learn how to use a plugin.
+Please refer to [Plugin > Using a plugin](../plugin/using-a-plugin.md) to learn how to use a plugin.
 
 ## Markdown
 

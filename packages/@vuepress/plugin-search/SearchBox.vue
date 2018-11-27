@@ -215,6 +215,11 @@ export default {
         left 0
         width 10rem
 
+// Match IE11
+@media all and (-ms-high-contrast: none)
+  .search-box input
+    height 2rem
+
 @media (max-width: $MQNarrow) and (min-width: $MQMobile)
   .search-box
     .suggestions

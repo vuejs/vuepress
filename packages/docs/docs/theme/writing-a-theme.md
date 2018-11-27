@@ -29,7 +29,7 @@ The compiled content of the current `.md` file being rendered will be available 
 
 ## Directory Structure
 
-Just one `Layout.vue` might not be enough, and you might also want to define more layout components in the theme for using on different pages. You may also want to customize the [palette](../config/README.md#palette), and even apply some plugins.
+Just one `Layout.vue` might not be enough, and you might also want to define more layout components in the theme for using on different pages. You may also want to customize the [palette](../config/README.md#palette-styl), and even apply some plugins.
 
 So it's time to reorganize your theme, an agreed theme directory structure is as follows:
 
@@ -56,7 +56,7 @@ themePath
 - `theme/global-components`: Components under this directory will be automatically registered as global components. For details, please refer to [@vuepress/plugin-register-components](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-register-components).
 - `theme/components`: Your components.
 - `theme/layouts`: Layout components of the theme, where `Layout.vue` is required.
-- `theme/styles`: Global style and palette. 
+- `theme/styles`: Global style and palette.
 - `theme/templates`: Modify default template.
 - `theme/index.js`: Entry file of theme configuration.
 - `theme/enhanceApp.js`: Theme level enhancements.
