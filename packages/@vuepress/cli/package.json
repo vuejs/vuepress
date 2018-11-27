@@ -29,8 +29,8 @@
   },
   "dependencies": {
     "chalk": "^2.3.2",
-    "commander": "^2.15.1",
-    "semver": "^5.5.0"
+    "semver": "^5.5.0",
+    "cac": "^6.3.3"
   },
   "peerDependencies": {
     "@vuepress/core": "^1.0.0-alpha.1"
