@@ -56,7 +56,7 @@ exports.bootstrap = function ({
         silent
       } = options
       logger.setOptions({ logLevel: silent ? 1 : debug ? 4 : 3 })
-      logger.debug('options', options)
+      logger.debug('cli_options', options)
       env.setOptions({ isDebug: debug, isTest: process.env.NODE_ENV === 'test' })
 
       wrapCommand(dev)(path.resolve(sourceDir), {
@@ -86,7 +86,7 @@ exports.bootstrap = function ({
         silent
       } = options
       logger.setOptions({ logLevel: silent ? 1 : debug ? 4 : 3 })
-      logger.debug('options', options)
+      logger.debug('cli_options', options)
       env.setOptions({ isDebug: debug, isTest: process.env.NODE_ENV === 'test' })
 
       wrapCommand(build)(path.resolve(sourceDir), {
