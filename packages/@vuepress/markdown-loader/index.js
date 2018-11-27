@@ -6,7 +6,11 @@
 
 const { EventEmitter } = require('events')
 const { getOptions } = require('loader-utils')
-const { fs, path, hash, parseFrontmatter, inferTitle, extractHeaders } = require('@vuepress/shared-utils')
+const { loadConfig } = require('@vuepress/core')
+const {
+  fs, path, hash, parseFrontmatter, inferTitle, extractHeaders,
+  datatypes: { isFunction }
+} = require('@vuepress/shared-utils')
 const LRU = require('lru-cache')
 const md = require('@vuepress/markdown')
 
@@ -26,7 +30,10 @@ module.exports = function (src) {
   if (!markdown) {
     markdown = md()
   }
-
+  let config = loadConfig(path.resolve(sourceDir, '.vuepress'), false)
+  if (isFunction(config)) {
+    config = config(this)
+  }
   // we implement a manual cache here because this loader is chained before
   // vue-loader, and will be applied on the same file multiple times when
   // selecting the individual blocks.
@@ -42,7 +49,11 @@ module.exports = function (src) {
 
   if (!isProd && !isServer) {
     const inferredTitle = inferTitle(frontmatter.data, frontmatter.content)
-    const headers = extractHeaders(content, options.extractHeaders || ['h2', 'h3'], markdown)
+    let headersToExtract = ['h2', 'h3']
+    if (config.markdown && config.markdown.extractHeaders) {
+      headersToExtract = this._siteConfig.markdown.extractHeaders
+    }
+    const headers = extractHeaders(content, headersToExtract, markdown)
     delete frontmatter.content
 
     // diff frontmatter and title, since they are not going to be part of the
