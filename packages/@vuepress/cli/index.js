@@ -35,25 +35,28 @@ exports.bootstrap = function ({
 
   cli
     .version(pkg.version)
+    .help()
 
   cli
     .command('dev [targetDir]', 'start development server')
-    .option('-p, --port <port>', 'use specified port (default: 8080)')
-    .option('-h, --host <host>', 'use specified host (default: 0.0.0.0)')
-    .option('-t, --temp <temp>', 'set the directory of the temporary file')
-    .option('-c, --cache <cache>', 'set the directory of cache')
+    .option('-p, --port [port]', 'use specified port (default: 8080)')
+    .option('-h, --host [host]', 'use specified host (default: 0.0.0.0)')
+    .option('-t, --temp [temp]', 'set the directory of the temporary file')
+    .option('-c, --cache [cache]', 'set the directory of cache')
     .option('--no-cache', 'clean the cache before build')
     .option('--debug', 'start development server in debug mode')
     .option('--silent', 'start development server in silent mode')
-    .action((sourceDir = '.', {
-      host,
-      port,
-      debug,
-      temp,
-      cache,
-      silent
-    }) => {
+    .action((sourceDir = '.', options) => {
+      const {
+        host,
+        port,
+        debug,
+        temp,
+        cache,
+        silent
+      } = options
       logger.setOptions({ logLevel: silent ? 1 : debug ? 4 : 3 })
+      logger.debug('options', options)
       env.setOptions({ isDebug: debug, isTest: process.env.NODE_ENV === 'test' })
 
       wrapCommand(dev)(path.resolve(sourceDir), {
@@ -68,20 +71,22 @@ exports.bootstrap = function ({
 
   cli
     .command('build [targetDir]', 'build dir as static site')
-    .option('-d, --dest <dest>', 'specify build output dir (default: .vuepress/dist)')
-    .option('-t, --temp <temp>', 'set the directory of the temporary file')
-    .option('-c, --cache <cache>', 'set the directory of cache')
+    .option('-d, --dest [dest]', 'specify build output dir (default: .vuepress/dist)')
+    .option('-t, --temp [temp]', 'set the directory of the temporary file')
+    .option('-c, --cache [cache]', 'set the directory of cache')
     .option('--no-cache', 'clean the cache before build')
     .option('--debug', 'build in development mode for debugging')
     .option('--silent', 'build static site in silent mode')
-    .action((sourceDir = '.', {
-      debug,
-      dest,
-      temp,
-      cache,
-      silent
-    }) => {
+    .action((sourceDir = '.', options) => {
+      const {
+        debug,
+        dest,
+        temp,
+        cache,
+        silent
+      } = options
       logger.setOptions({ logLevel: silent ? 1 : debug ? 4 : 3 })
+      logger.debug('options', options)
       env.setOptions({ isDebug: debug, isTest: process.env.NODE_ENV === 'test' })
 
       wrapCommand(build)(path.resolve(sourceDir), {
@@ -103,7 +108,6 @@ exports.bootstrap = function ({
     })
 
   // output help information on unknown commands
-  // Listen to unknown commands
   cli.on('command:*', () => {
     console.error('Unknown command: %s', cli.args.join(' '))
     console.log()
