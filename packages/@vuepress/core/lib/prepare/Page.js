@@ -89,9 +89,13 @@ module.exports = class Page {
       }
 
       // headers
+      this.headersToExtract = ['h2', 'h3']
+      if (this._siteConfig.markdown && this._siteConfig.markdown.extractHeaders) {
+        this.headersToExtract = this._siteConfig.markdown.extractHeaders
+      }
       const headers = extractHeaders(
         this._strippedContent,
-        this._siteConfig.themeConfig.extractHeaders || ['h2', 'h3'],
+        this.headersToExtract,
         markdown
       )
       if (headers.length) {
