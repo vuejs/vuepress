@@ -39,10 +39,10 @@ exports.bootstrap = function ({
 
   cli
     .command('dev [targetDir]', 'start development server')
-    .option('-p, --port [port]', 'use specified port (default: 8080)')
-    .option('-t, --temp [temp]', 'set the directory of the temporary file')
+    .option('-p, --port <port>', 'use specified port (default: 8080)')
+    .option('-t, --temp <temp>', 'set the directory of the temporary file')
     .option('-c, --cache [cache]', 'set the directory of cache')
-    .option('--host', 'use specified host (default: 0.0.0.0)')
+    .option('--host <host>', 'use specified host (default: 0.0.0.0)')
     .option('--no-cache', 'clean the cache before build')
     .option('--debug', 'start development server in debug mode')
     .option('--silent', 'start development server in silent mode')
@@ -71,8 +71,8 @@ exports.bootstrap = function ({
 
   cli
     .command('build [targetDir]', 'build dir as static site')
-    .option('-d, --dest [dest]', 'specify build output dir (default: .vuepress/dist)')
-    .option('-t, --temp [temp]', 'set the directory of the temporary file')
+    .option('-d, --dest <dest>', 'specify build output dir (default: .vuepress/dist)')
+    .option('-t, --temp <temp>', 'set the directory of the temporary file')
     .option('-c, --cache [cache]', 'set the directory of cache')
     .option('--no-cache', 'clean the cache before build')
     .option('--debug', 'build in development mode for debugging')
