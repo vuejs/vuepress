@@ -22,7 +22,7 @@
 
     <div
       class="links"
-      :style="linksWrapMaxWidth != null ? {
+      :style="linksWrapMaxWidth !== null ? {
         'max-width': linksWrapMaxWidth + 'px'
       } : {}"
     >
