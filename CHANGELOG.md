@@ -1,3 +1,46 @@
+<a name="1.0.0-alpha.25"></a>
+# [1.0.0-alpha.25](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.24...v1.0.0-alpha.25) (2018-11-29)
+
+
+### Bug Fixes
+
+* **$core:** content property of additionalPages doesn't work (close: [#1050](https://github.com/vuejs/vuepress/issues/1050)) ([4f505a8](https://github.com/vuejs/vuepress/commit/4f505a8))
+* **$core:** markdown slots doesn't work (close: [#1048](https://github.com/vuejs/vuepress/issues/1048))([#1054](https://github.com/vuejs/vuepress/issues/1054)) ([c07949d](https://github.com/vuejs/vuepress/commit/c07949d))
+* **$theme-default:** Extending `Layout.vue` causes the Sidebar to disappear (close: [#1045](https://github.com/vuejs/vuepress/issues/1045)) ([8dd418e](https://github.com/vuejs/vuepress/commit/8dd418e))
+
+
+### Features
+
+* **$cli:** migrate to CAC ([#1049](https://github.com/vuejs/vuepress/issues/1049)) ([1a897cb](https://github.com/vuejs/vuepress/commit/1a897cb))
+* **$core:** support debug in dev process ([#1051](https://github.com/vuejs/vuepress/issues/1051)) ([e570252](https://github.com/vuejs/vuepress/commit/e570252))
+* **$core:** AppContext was still expecting --outDir instead of --dest ([#1041](https://github.com/vuejs/vuepress/issues/1041)) ([5d9f87b](https://github.com/vuejs/vuepress/commit/5d9f87b))
+* **$markdown:** pass rest options to instantiate markdown-it ([d8db81c](https://github.com/vuejs/vuepress/commit/d8db81c)), closes [#1040](https://github.com/vuejs/vuepress/issues/1040)
+
+
+
+<a name="1.0.0-alpha.24"></a>
+# [1.0.0-alpha.24](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.23...v1.0.0-alpha.24) (2018-11-25)
+
+
+### Bug Fixes
+
+* **$core:** distracting and time wasting after importing smoothing scroll ([58981fb](https://github.com/vuejs/vuepress/commit/58981fb))
+* **$cli:** 'vuepress eject' doesn't copy files (close: [#1028](https://github.com/vuejs/vuepress/issues/1028)) ([aad86b9](https://github.com/vuejs/vuepress/commit/aad86b9))
+* **$markdown:** "index" is dropped in a link with "*index" pattern ([e8b78c4](https://github.com/vuejs/vuepress/commit/e8b78c4)), closes [#996](https://github.com/vuejs/vuepress/issues/996)
+* **$plugin-blog:** blocking front matter custom layout config (close:  [#906](https://github.com/vuejs/vuepress/issues/906)) ([#1027](https://github.com/vuejs/vuepress/issues/1027)) ([ab0e002](https://github.com/vuejs/vuepress/commit/ab0e002))
+* **$test-utils:** test failed due to wrong babel version ([8611c1c](https://github.com/vuejs/vuepress/commit/8611c1c))
+* **$theme-default:** hard to read in a dark-themed browser (close: [#1025](https://github.com/vuejs/vuepress/issues/1025)) ([d338468](https://github.com/vuejs/vuepress/commit/d338468))
+* **$theme-default:** shouldn't transform date string at client side (close: [#1035](https://github.com/vuejs/vuepress/issues/1035)) ([c059faa](https://github.com/vuejs/vuepress/commit/c059faa))
+
+
+### Features
+
+* **$cli:** '--silent' option ([df99cb6](https://github.com/vuejs/vuepress/commit/df99cb6))
+* **$core:** disable smoothing scroll by default ([de72c91](https://github.com/vuejs/vuepress/commit/de72c91))
+* **$core:** more concise logger ([9c61390](https://github.com/vuejs/vuepress/commit/9c61390))
+
+
+
 <a name="1.0.0-alpha.23"></a>
 # [1.0.0-alpha.23](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.22...v1.0.0-alpha.23) (2018-11-18)
 
