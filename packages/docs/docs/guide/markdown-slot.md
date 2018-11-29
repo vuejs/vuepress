@@ -17,7 +17,7 @@ Markdown Slot is to solve this kind of problem.
 You can define a named markdown slot through the following markdown syntax:
 
 ``` md
-::: slot [$name]
+::: slot name
 
 :::
 ```
@@ -25,7 +25,7 @@ You can define a named markdown slot through the following markdown syntax:
 Use the `Content` component to use the slot in the layout component:
 
 ``` vue
-<Content slot="$name"/> 
+<Content slot-key="name"/>
 ```
 
 ## Default Slot Content
