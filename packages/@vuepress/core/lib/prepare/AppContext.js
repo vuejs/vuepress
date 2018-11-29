@@ -56,7 +56,7 @@ module.exports = class AppContext {
     this.base = this.siteConfig.base || '/'
     this.themeConfig = this.siteConfig.themeConfig || {}
 
-    const rawOutDir = cliOptions.outDir || this.siteConfig.dest
+    const rawOutDir = cliOptions.dest || this.siteConfig.dest
     this.outDir = rawOutDir
       ? require('path').resolve(this.cwd, rawOutDir)
       : require('path').resolve(sourceDir, '.vuepress/dist')
