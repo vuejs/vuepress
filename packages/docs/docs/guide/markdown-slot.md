@@ -28,6 +28,10 @@ Use the `Content` component to use the slot in the layout component:
 <Content slot-key="name"/>
 ```
 
+::: tip
+Here we are using `slot-key` instead of `slot`, because in Vue, `slot` is a reserved prop name.
+:::
+
 ## Default Slot Content
 
 By default, the slot-free part of a markdown file becomes the default content of a markdown slot, which you can access directly using the `Content` component:
