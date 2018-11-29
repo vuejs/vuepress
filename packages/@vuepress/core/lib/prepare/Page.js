@@ -5,7 +5,17 @@
  */
 
 const { inferDate, DATE_RE } = require('../util/index')
-const { extractHeaders, fs, path, fileToPath, parseFrontmatter, getPermalink, inferTitle, slugify } = require('@vuepress/shared-utils')
+const {
+  fs,
+  path,
+  hash,
+  slugify,
+  inferTitle,
+  fileToPath,
+  getPermalink,
+  extractHeaders,
+  parseFrontmatter
+} = require('@vuepress/shared-utils')
 
 /**
  * Expose Page class.
@@ -50,7 +60,7 @@ module.exports = class Page {
       this.regularPath = encodeURI(permalink)
     }
 
-    this.key = 'v-' + Math.random().toString(16).slice(2)
+    this.key = 'v-' + hash(`${this._filePath}${this.regularPath}`)
     // Using regularPath first, would be override by permalink later.
     this.path = this.regularPath
   }
