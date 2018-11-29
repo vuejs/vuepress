@@ -9,6 +9,8 @@ const {
   fs,
   path,
   hash,
+  chalk,
+  logger,
   slugify,
   inferTitle,
   fileToPath,
@@ -43,7 +45,7 @@ module.exports = class Page {
     permalink,
     frontmatter = {},
     permalinkPattern
-  }) {
+  }, context) {
     this.title = title
     this._meta = meta
     this._filePath = filePath
@@ -51,6 +53,7 @@ module.exports = class Page {
     this._permalink = permalink
     this.frontmatter = frontmatter
     this._permalinkPattern = permalinkPattern
+    this._context = context
 
     if (relative) {
       this.regularPath = encodeURI(fileToPath(relative))
@@ -82,7 +85,13 @@ module.exports = class Page {
     preRender = {}
   }) {
     if (this._filePath) {
+      logger.developer(`static_route`, chalk.cyan(this.path))
       this._content = await fs.readFile(this._filePath, 'utf-8')
+    } else if (this._content) {
+      logger.developer(`static_route`, chalk.cyan(this.path))
+      this._filePath = await this._context.writeTemp(`temp-pages/${this.key}.md`, this._content)
+    } else {
+      logger.developer(`dynamic_route`, chalk.cyan(this.path))
     }
 
     if (this._content) {
