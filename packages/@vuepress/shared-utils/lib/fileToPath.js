@@ -9,8 +9,8 @@ module.exports = function fileToPath (file) {
     // foo/README.md -> /foo/
     return file.replace(indexRE, '/$1')
   } else {
-    // foo.md -> /foo.html
-    // foo/bar.md -> /foo/bar.html
-    return `/${file.replace(extRE, '').replace(/\\/g, '/')}.html`
+    // foo.md -> /foo/
+    // foo/bar.md -> /foo/bar/
+    return `/${file.replace(extRE, '').replace(/\\/g, '/')}/`
   }
 }
