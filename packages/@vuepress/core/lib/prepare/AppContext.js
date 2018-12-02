@@ -93,9 +93,11 @@ module.exports = class AppContext {
     )
 
     await this.pluginAPI.options.ready.apply()
-    await this.pluginAPI.options.clientDynamicModules.apply(this)
-    await this.pluginAPI.options.globalUIComponents.apply(this)
-    await this.pluginAPI.options.enhanceAppFiles.apply(this)
+    await Promise.all([
+      this.pluginAPI.options.clientDynamicModules.apply(this),
+      this.pluginAPI.options.enhanceAppFiles.apply(this),
+      this.pluginAPI.options.globalUIComponents.apply(this)
+    ])
   }
 
   /**
