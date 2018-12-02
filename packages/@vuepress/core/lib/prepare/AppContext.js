@@ -23,6 +23,13 @@ const PluginAPI = require('../plugin-api/index')
  */
 
 module.exports = class AppContext {
+  static getInstance (...args) {
+    if (!AppContext._instance) {
+      AppContext._instance = new AppContext(...args)
+    }
+    return AppContext._instance
+  }
+
   /**
    * Instantiate the app context with a new API
    *
@@ -45,6 +52,16 @@ module.exports = class AppContext {
     this.writeTemp = writeTemp
 
     this.vuepressDir = path.resolve(sourceDir, '.vuepress')
+  }
+
+  /**
+   * Resolve user config and initialize.
+   *
+   * @returns {void}
+   * @api private
+   */
+
+  resolveConfigAndInitialize () {
     this.siteConfig = loadConfig(this.vuepressDir)
     if (isFunction(this.siteConfig)) {
       this.siteConfig = this.siteConfig(this)
@@ -56,13 +73,12 @@ module.exports = class AppContext {
     this.base = this.siteConfig.base || '/'
     this.themeConfig = this.siteConfig.themeConfig || {}
 
-    const rawOutDir = cliOptions.dest || this.siteConfig.dest
+    const rawOutDir = this.cliOptions.dest || this.siteConfig.dest
     this.outDir = rawOutDir
       ? require('path').resolve(this.cwd, rawOutDir)
-      : require('path').resolve(sourceDir, '.vuepress/dist')
-
-    this.pluginAPI = new PluginAPI(this)
+      : require('path').resolve(this.sourceDir, '.vuepress/dist')
     this.pages = [] // Array<Page>
+    this.pluginAPI = new PluginAPI(this)
     this.ClientComputedMixinConstructor = ClientComputedMixin(this.getSiteData())
   }
 
@@ -74,6 +90,7 @@ module.exports = class AppContext {
    */
 
   async process () {
+    this.resolveConfigAndInitialize()
     this.resolveCacheLoaderOptions()
     this.normalizeHeadTagUrls()
     await this.resolveTheme()
