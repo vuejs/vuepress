@@ -16,7 +16,8 @@ const {
   fileToPath,
   getPermalink,
   extractHeaders,
-  parseFrontmatter
+  parseFrontmatter,
+  parseVueFrontmatter
 } = require('@vuepress/shared-utils')
 
 /**
@@ -95,29 +96,37 @@ module.exports = class Page {
     }
 
     if (this._content) {
-      const { excerpt, data, content } = parseFrontmatter(this._content)
-      this._strippedContent = content
-      this.frontmatter = data
+      if (this._filePath.endsWith('.md')) {
+        const { excerpt, data, content } = parseFrontmatter(this._content)
+        this._strippedContent = content
+        this.frontmatter = data
 
-      // infer title
-      const title = inferTitle(this.frontmatter, this._strippedContent)
-      if (title) {
-        this.title = title
-      }
+        // infer title
+        const title = inferTitle(this.frontmatter, this._strippedContent)
+        if (title) {
+          this.title = title
+        }
 
-      // headers
-      const headers = extractHeaders(
-        this._strippedContent,
-        ['h2', 'h3'],
-        markdown
-      )
-      if (headers.length) {
-        this.headers = headers
-      }
+        // headers
+        const headers = extractHeaders(
+          this._strippedContent,
+          ['h2', 'h3'],
+          markdown
+        )
+        if (headers.length) {
+          this.headers = headers
+        }
 
-      if (excerpt) {
-        const { html } = markdown.render(excerpt)
-        this.excerpt = html
+        if (excerpt) {
+          const { html } = markdown.render(excerpt)
+          this.excerpt = html
+        }
+      } else if (this._filePath.endsWith('.vue')) {
+        const { data = {}} = parseVueFrontmatter(this._content)
+        // When Vue SFCs are source files, make them as layout components directly.
+        this.frontmatter = Object.assign({
+          layout: this.key
+        }, data)
       }
     }
 

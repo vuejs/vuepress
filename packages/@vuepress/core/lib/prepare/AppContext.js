@@ -145,6 +145,7 @@ module.exports = class AppContext {
       .use(require('../internal-plugins/pageComponents'))
       .use(require('../internal-plugins/transformModule'))
       .use(require('../internal-plugins/dataBlock'))
+      .use(require('../internal-plugins/frontmatterBlock'))
       .use('@vuepress/last-updated', !!shouldUseLastUpdated)
       .use('@vuepress/register-components', {
         componentsDir: [
@@ -263,7 +264,7 @@ module.exports = class AppContext {
 
   async resolvePages () {
     // resolve pageFiles
-    const patterns = ['**/*.md', '!.vuepress', '!node_modules']
+    const patterns = ['**/*.md', '**/*.vue', '!.vuepress', '!node_modules']
     if (this.siteConfig.dest) {
       // #654 exclude dest folder when dest dir was set in
       // sourceDir but not in '.vuepress'

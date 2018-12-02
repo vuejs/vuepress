@@ -4,6 +4,7 @@ exports.codegen = require('./lib/codegen')
 exports.compose = require('./lib/compose')
 exports.datatypes = require('./lib/datatypes')
 exports.parseFrontmatter = require('./lib/parseFrontmatter')
+exports.parseVueFrontmatter = require('./lib/parseVueFrontmatter')
 
 exports.unescapeHtml = require('./lib/unescapeHtml')
 exports.escapeHtml = require('escape-html')
