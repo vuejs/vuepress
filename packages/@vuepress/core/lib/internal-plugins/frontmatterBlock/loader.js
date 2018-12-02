@@ -18,7 +18,6 @@ module.exports = function (source, map) {
       parsed.data &&
       JSON.stringify(cached.data) !== JSON.stringify(parsed.data)
     ) {
-      // TODO Replace temporary files in bulk to avoid repeated refreshes.
       frontmatterEmitter.emit('update')
     }
 
