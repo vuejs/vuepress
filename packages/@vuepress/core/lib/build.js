@@ -83,7 +83,7 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
   const relativeDir = path.relative(cwd, outDir)
   logger.success(`Generated static files in ${chalk.cyan(relativeDir)}.`)
   const { duration } = performance.stop()
-  logger.debug(`It took a total of ${chalk.cyan(`${duration}ms`)} to run the ${chalk.cyan('vuepress build')}.`)
+  logger.developer(`It took a total of ${chalk.cyan(`${duration}ms`)} to run the ${chalk.cyan('vuepress build')}.`)
   console.log()
 
   // --- helpers ---

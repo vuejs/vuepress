@@ -88,7 +88,7 @@ class Logger {
   }
 
   developer (...args) {
-    if (process.env.VUEPRESS_ENV !== 'developer') {
+    if (process.env.VUEPRESS_ENV !== 'developer' || process.argv.includes('--developer')) {
       return
     }
     this.status('cyan', 'developer', ...args)
