@@ -1681,9 +1681,9 @@ byline@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/byline/-/byline-5.0.0.tgz#741c5216468eadc457b03410118ad77de8c1ddb1"
 
-cac@^6.3.3:
-  version "6.3.3"
-  resolved "https://registry.yarnpkg.com/cac/-/cac-6.3.3.tgz#01e56f50068bd1be326b1612950d77d31112400d"
+cac@^6.3.6:
+  version "6.3.9"
+  resolved "https://registry.yarnpkg.com/cac/-/cac-6.3.9.tgz#0cdf3f2d3a7d3fb71ab89c476c73e472084859a2"
 
 cacache@^10.0.4:
   version "10.0.4"
