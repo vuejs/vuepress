@@ -1,3 +1,21 @@
+<a name="1.0.0-alpha.26"></a>
+# [1.0.0-alpha.26](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.25...v1.0.0-alpha.26) (2018-12-02)
+
+
+### Bug Fixes
+
+* **$core:** changing `frontmatter` always took a long time to refresh page ([68add19](https://github.com/vuejs/vuepress/commit/68add19))
+  - From now on `AppContext` has become a `singleton`.
+
+
+### Features
+
+* **$cli:** allow unknown options in dev and build command ([0ecd099](https://github.com/vuejs/vuepress/commit/0ecd099))
+* **$core:** debug to see performance ([0876491](https://github.com/vuejs/vuepress/commit/0876491))
+  - Using `--developer` flag to see the performance for 1st dev and build. note that `--developer` flag is a separate flag which doesn't have log level.
+* **$core:** support Vue SFCs as source files ([dfb0bba](https://github.com/vuejs/vuepress/commit/dfb0bba))
+  - Note that when Vue SFCs are source files, VuePress will treat them as `layout components` directly.
+
 <a name="1.0.0-alpha.25"></a>
 # [1.0.0-alpha.25](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.24...v1.0.0-alpha.25) (2018-11-29)
 
