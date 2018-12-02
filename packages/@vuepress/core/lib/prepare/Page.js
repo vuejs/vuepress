@@ -123,7 +123,10 @@ module.exports = class Page {
         }
       } else if (this._filePath.endsWith('.vue')) {
         const { data = {}} = parseVueFrontmatter(this._content)
-        this.frontmatter = data
+        // When Vue SFCs are source files, make them as layout components directly.
+        this.frontmatter = Object.assign({
+          layout: this.key
+        }, data)
       }
     }
 
