@@ -34,3 +34,5 @@ exports.fallback = require('./lib/fallback')
 exports.slugify = require('./lib/slugify')
 exports.tryChain = require('./lib/tryChain')
 exports.toAbsolutePath = require('./lib/toAbsolutePath')
+
+exports.performance = require('./lib/performance')

@@ -1,4 +1,4 @@
-const { chalk } = require('@vuepress/shared-utils')
+const { chalk, performance } = require('@vuepress/shared-utils')
 const semver = require('semver')
 
 try {
@@ -32,6 +32,8 @@ exports.bootstrap = function ({
 } = {}) {
   const { path, logger, env } = require('@vuepress/shared-utils')
   const { dev, build, eject } = require('@vuepress/core')
+
+  performance.start()
 
   cli
     .version(pkg.version)

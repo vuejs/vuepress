@@ -3,12 +3,11 @@
 module.exports = async function build (sourceDir, cliOptions = {}) {
   process.env.NODE_ENV = 'production'
 
-  const { path } = require('@vuepress/shared-utils')
   const webpack = require('webpack')
   const readline = require('readline')
   const escape = require('escape-html')
 
-  const { chalk, fs, logger, env } = require('@vuepress/shared-utils')
+  const { chalk, fs, path, logger, env, performance } = require('@vuepress/shared-utils')
   const prepare = require('./prepare/index')
   const createClientConfig = require('./webpack/createClientConfig')
   const createServerConfig = require('./webpack/createServerConfig')
@@ -83,6 +82,8 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
   // DONE.
   const relativeDir = path.relative(cwd, outDir)
   logger.success(`${chalk.green('Success!')} Generated static files in ${chalk.cyan(relativeDir)}.\n`)
+  const { duration } = performance.stop()
+  logger.debug(`It took a total of ${duration}ms to run the ${chalk.cyan('vuepress build')}.`)
 
   // --- helpers ---
 

@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-const { chalk, logger } = require('@vuepress/shared-utils')
+const { chalk, logger, performance } = require('@vuepress/shared-utils')
 
 /**
  * Expose DevLogPlugin class.
@@ -35,7 +35,9 @@ module.exports = class DevLogPlugin {
       )
       if (isFirst) {
         isFirst = false
-        console.log(`\n${chalk.gray('>')} VuePress dev server listening at ${chalk.cyan(displayUrl)}`)
+        console.log(`${chalk.gray('>')} VuePress dev server listening at ${chalk.cyan(displayUrl)}`)
+        const { duration } = performance.stop()
+        logger.debug(`It took a total of ${duration}ms to run the ${chalk.cyan('vuepress dev')} for the first time.`)
       }
     })
     compiler.hooks.invalid.tap('vuepress-log', clearScreen)
