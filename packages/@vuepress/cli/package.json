@@ -28,7 +28,7 @@
     "url": "https://github.com/vuejs/vuepress/issues"
   },
   "dependencies": {
-    "cac": "^6.3.3",
+    "cac": "^6.3.6",
     "chalk": "^2.3.2",
     "semver": "^5.5.0"
   },
