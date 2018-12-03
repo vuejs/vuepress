@@ -1,3 +1,11 @@
+<a name="1.0.0-alpha.27"></a>
+# [1.0.0-alpha.27](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.26...v1.0.0-alpha.27) (2018-12-03)
+
+
+### Bug Fixes
+
+* **$core:** `vuepress dev` broken on nodejs v10 and greater (close: [#1063](https://github.com/vuejs/vuepress/issues/1063)) (close: [#1064](https://github.com/vuejs/vuepress/issues/1064)) ([39e9673](https://github.com/vuejs/vuepress/commit/39e9673))
+
 <a name="1.0.0-alpha.26"></a>
 # [1.0.0-alpha.26](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.25...v1.0.0-alpha.26) (2018-12-02)
 
@@ -1042,4 +1050,5 @@
 * dev server ([890f929](https://github.com/vuejs/vuepress/commit/890f929))
 * support nesting in sidebar ([1964709](https://github.com/vuejs/vuepress/commit/1964709))
 * support style/script hoisting + css modules ([f97e676](https://github.com/vuejs/vuepress/commit/f97e676))
+
 
