@@ -80,7 +80,8 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
   const { host, displayHost } = await resolveHost(cliOptions.host || ctx.siteConfig.host)
 
   // debug in a running dev process.
-  process.stdout.on('data', chunk => {
+  process.stdin &&
+  process.stdin.on('data', chunk => {
     const parsed = chunk.toString('utf-8').trim()
     if (parsed === '*') {
       console.log(Object.keys(ctx))
