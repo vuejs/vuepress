@@ -187,9 +187,8 @@ i18n UI 最终的路由将是 `/i18n/`.
 
 ## 其他
 
-本着解耦的目标，引入 monorepo 后，我们也得以将 VuePress 分离成以下几个库：
+本着解耦的目标，引入 monorepo 后，我们也得以将 VuePress 分离成以下两个库：
 
-- [@vuepress/cli](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/cli): 命令行指令的管理；
 - [@vuepress/core](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/core)：包含 dev、build 的核心实现和 Plugin API；
 - [@vuepress/theme-default](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/theme-default)：你现在所看到的默认主题。
 

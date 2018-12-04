@@ -436,3 +436,30 @@ VuePress 将会自动将这些组件注入到布局组件的隔壁：
 </div>
 </div>
 ```
+
+## registerCommand
+
+- 类型: `function`
+- 默认值: `undefined`
+
+注册一个额外的 command 来增强 vuepress 的 CLI。这个函数将会以一个 [CAC](https://github.com/cacjs/cac) 的实例作为第一个参数被调用。
+
+```js
+module.exports = {
+  registerCommand (cli) {
+    cli
+      .command('info [targetDir]', '')
+      .option('--debug', 'display info in debug mode')
+      .action((dir = '.') => {
+        console.log('Display info of your website')
+      })
+  }
+}
+```
+
+现在你可以在你项目中使用 `vuepress info [targetDir]` 了！
+
+::: tip
+值得注意的是，一个自定义的 command 需要 VuePress 像 `vuepress dev` 或 `vuepress build` 去定位到你的站点配置，所以在开发一个 command 时，请确保引导用户去传入 `targetDir` 作为 CLI 参数的一部分。
+:::
+

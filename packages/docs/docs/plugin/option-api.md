@@ -434,3 +434,29 @@ Then, VuePress will automatically inject these components behind the layout comp
 </div>
 </div>
 ```
+
+## registerCommand
+
+- Type: `function`
+- Default: `undefined`
+
+Register a extra command to enhance the CLI of vuepress. The function will be called with a [CAC](https://github.com/cacjs/cac)'s instance as the first argument.
+
+```js
+module.exports = {
+  registerCommand (cli) {
+    cli
+      .command('info [targetDir]', '')
+      .option('--debug', 'display info in debug mode')
+      .action((dir = '.') => {
+        console.log('Display info of your website')
+      })
+  }
+}
+```
+
+Now you can use `vuepress info [targetDir]` a in your project!
+
+::: tip
+Note that a custom command registered by a plugin requires VuePress to locate your site configuration like `vuepress dev` and `vuepress build`, so when developing a command, be sure to lead the user to pass `targetDir` as an CLI argument.
+:::
