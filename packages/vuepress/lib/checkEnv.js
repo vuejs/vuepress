@@ -1,18 +1,17 @@
-module.exports = function checkEnv () {
-  const { chalk } = require('@vuepress/shared-utils')
-  const semver = require('semver')
+'use strict'
 
-  try {
-    require.resolve('@vuepress/core')
-  } catch (err) {
-    console.log(chalk.red(
-      `\n[vuepress] @vuepress/cli ` +
-      `requires @vuepress/core to be installed.\n`
-    ))
-    process.exit(1)
-  }
+/**
+ * Module dependencies.
+ */
 
-  const pkg = require('@vuepress/core/package.json')
+const { chalk } = require('@vuepress/shared-utils')
+const semver = require('semver')
+
+/**
+ * Expose handleUnknownCommand function.
+ */
+
+module.exports = function checkEnv (pkg) {
   const requiredVersion = pkg.engines.node
 
   if (!semver.satisfies(process.version, requiredVersion)) {

@@ -11,11 +11,10 @@ const OPTIONS = {
 
 CLI({
   async beforeParse (cli) {
-    checkEnv()
+    const pkg = require('@vuepress/core/package.json')
+    checkEnv(pkg)
     registerCoreCommands(cli, OPTIONS)
     await handleUnknownCommand(cli, OPTIONS)
-
-    const pkg = require('@vuepress/core/package.json')
     cli.version(pkg.version).help()
   },
 
