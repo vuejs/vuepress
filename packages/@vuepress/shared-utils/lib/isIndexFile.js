@@ -1,4 +1,4 @@
-const indexRE = /(^|.*\/)(index|readme)\.md$/i
+const indexRE = /(^|.*\/)(index|readme)\.(md|vue)$/i
 
 function isIndexFile (file) {
   return indexRE.test(file)

@@ -5,7 +5,20 @@
  */
 
 const { inferDate, DATE_RE } = require('../util/index')
-const { extractHeaders, fs, path, fileToPath, parseFrontmatter, getPermalink, inferTitle, slugify } = require('@vuepress/shared-utils')
+const {
+  fs,
+  path,
+  hash,
+  chalk,
+  logger,
+  slugify,
+  inferTitle,
+  fileToPath,
+  getPermalink,
+  extractHeaders,
+  parseFrontmatter,
+  parseVueFrontmatter
+} = require('@vuepress/shared-utils')
 
 /**
  * Expose Page class.
@@ -34,7 +47,7 @@ module.exports = class Page {
     frontmatter = {},
     permalinkPattern,
     siteConfig
-  }) {
+  }, context) {
     this.title = title
     this._meta = meta
     this._filePath = filePath
@@ -43,6 +56,7 @@ module.exports = class Page {
     this.frontmatter = frontmatter
     this._permalinkPattern = permalinkPattern
     this._siteConfig = siteConfig
+    this._context = context
 
     if (relative) {
       this.regularPath = encodeURI(fileToPath(relative))
@@ -52,7 +66,7 @@ module.exports = class Page {
       this.regularPath = encodeURI(permalink)
     }
 
-    this.key = 'v-' + Math.random().toString(16).slice(2)
+    this.key = 'v-' + hash(`${this._filePath}${this.regularPath}`)
     // Using regularPath first, would be override by permalink later.
     this.path = this.regularPath
   }
@@ -74,21 +88,28 @@ module.exports = class Page {
     preRender = {}
   }) {
     if (this._filePath) {
+      logger.developer(`static_route`, chalk.cyan(this.path))
       this._content = await fs.readFile(this._filePath, 'utf-8')
+    } else if (this._content) {
+      logger.developer(`static_route`, chalk.cyan(this.path))
+      this._filePath = await this._context.writeTemp(`temp-pages/${this.key}.md`, this._content)
+    } else {
+      logger.developer(`dynamic_route`, chalk.cyan(this.path))
     }
 
     if (this._content) {
-      const { excerpt, data, content } = parseFrontmatter(this._content)
-      this._strippedContent = content
-      this.frontmatter = data
+      if (this._filePath.endsWith('.md')) {
+        const { excerpt, data, content } = parseFrontmatter(this._content)
+        this._strippedContent = content
+        this.frontmatter = data
 
-      // infer title
-      const title = inferTitle(this.frontmatter, this._strippedContent)
-      if (title) {
-        this.title = title
-      }
+        // infer title
+        const title = inferTitle(this.frontmatter, this._strippedContent)
+        if (title) {
+          this.title = title
+        }
 
-      // headers
+        // headers
       this.headersToExtract = ['h2', 'h3']
       if (this._siteConfig.markdown && this._siteConfig.markdown.extractHeaders) {
         this.headersToExtract = this._siteConfig.markdown.extractHeaders
@@ -102,9 +123,16 @@ module.exports = class Page {
         this.headers = headers
       }
 
-      if (excerpt) {
-        const { html } = markdown.render(excerpt)
-        this.excerpt = html
+        if (excerpt) {
+          const { html } = markdown.render(excerpt)
+          this.excerpt = html
+        }
+      } else if (this._filePath.endsWith('.vue')) {
+        const { data = {}} = parseVueFrontmatter(this._content)
+        // When Vue SFCs are source files, make them as layout components directly.
+        this.frontmatter = Object.assign({
+          layout: this.key
+        }, data)
       }
     }
 

@@ -25,17 +25,18 @@ const { parseHeaders, slugify: _slugify, logger, chalk } = require('@vuepress/sh
  * Create markdown by config.
  */
 
-module.exports = ({
-  slugify,
-  externalLinks,
-  anchor,
-  toc,
-  lineNumbers,
-  beforeInstantiate,
-  afterInstantiate
-} = {}) => {
+module.exports = (markdown = {}) => {
+  const {
+    externalLinks,
+    anchor,
+    toc,
+    lineNumbers,
+    beforeInstantiate,
+    afterInstantiate
+  } = markdown
+
   // allow user config slugify
-  slugify = slugify || _slugify
+  const slugify = markdown.slugify || _slugify
 
   // using chainedAPI
   const config = new Config()
@@ -110,7 +111,7 @@ module.exports = ({
 
   beforeInstantiate && beforeInstantiate(config)
 
-  const md = config.toMd()
+  const md = config.toMd(require('markdown-it'), markdown)
 
   afterInstantiate && afterInstantiate(md)
 
