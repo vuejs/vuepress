@@ -27,8 +27,7 @@ Note that this plugin has been included in **default theme**, the search box you
 module.exports = {
   plugins: [
     ['@vuepress/search', {
-      searchMaxSuggestions: 10,
-      searchPaths: []
+      searchMaxSuggestions: 10      
     }]
   ]
 }
@@ -66,16 +65,19 @@ export default {
 
 Set the maximum number of results for search.
 
-### searchPaths
+### test
 
-- Type: `array`
-- Default: []
+- Type: `RegExp` | `Array<RegExp>`
+- Default: `null`
 
-Set the array of searchable paths. Default value (a empty array) will search on all paths. Considering you have this structure:
+Set up searchable paths with regular expressions. If no test expression is provided it will search on all paths. Considering you have this structure:
 
 ```bash
 docs/
 ├── .vuepress/            
+│    └── ...
+│
+├── master/               
 │    └── ...
 │
 ├── 1.0/               
@@ -85,7 +87,13 @@ docs/
      └── ...                       
 ```
 
-You can restrict the searching setting with `searchPaths` as `['/1.0/']`. Otherwise,  the default search will return duplications, once you can have similar content between folders `/1.0/` and `/2.0/`.
+You can set up searchable paths with `test` as:
+
+- RegExp: `'/1\.0/'`
+- Array of RegExp: `['/1\.0/', '/2\.0/']`
+
+
+Otherwise,  the default search will return duplicates, once you can have similar content between folders `/master/`, `/1.0/` and `/2.0/`.
 
 ## Tips
 

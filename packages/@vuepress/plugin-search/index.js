@@ -7,6 +7,6 @@ module.exports = (options) => ({
   },
   define: {
     SEARCH_MAX_SUGGESTIONS: options.searchMaxSuggestions || 5,
-    SEARCH_PATHS: options.searchPaths || []
+    SEARCH_PATHS: options.test || null
   }
 })

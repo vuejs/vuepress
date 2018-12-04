@@ -5,7 +5,7 @@ module.exports = {
     '@vuepress/medium-zoom',
     ['@vuepress/search', {
       searchMaxSuggestions: 10,
-      searchPaths: []
+      test: null
     }]
   ]
 }

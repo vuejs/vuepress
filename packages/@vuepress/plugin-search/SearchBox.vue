@@ -119,20 +119,16 @@ export default {
     },
 
     isSearchable (page) {
-      const searchPaths = SEARCH_PATHS
+      let searchPaths = SEARCH_PATHS
 
       // all paths searchables
-      if (searchPaths.length === 0) { return true }
+      if (searchPaths === null) { return true }
 
-      let searchable = false
+      searchPaths = Array.isArray(searchPaths) ? searchPaths : new Array(searchPaths)
 
-      searchPaths.forEach((path) => {
-        if (page.path.indexOf(path) !== -1) {
-          searchable = true
-          return
-        }
-      })
-      return searchable
+      return searchPaths.filter(path => {
+        return page.path.match(path)
+      }).length > 0
     },
 
     onUp () {
