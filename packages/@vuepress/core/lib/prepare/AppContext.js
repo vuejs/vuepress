@@ -54,6 +54,9 @@ module.exports = class AppContext {
     this.cwd = process.cwd()
 
     this.base = this.siteConfig.base || '/'
+    if (this.siteConfig.htmlSuffix === undefined) {
+      this.siteConfig.htmlSuffix = true
+    }
     this.themeConfig = this.siteConfig.themeConfig || {}
 
     const rawOutDir = cliOptions.dest || this.siteConfig.dest
@@ -305,7 +308,7 @@ module.exports = class AppContext {
    */
 
   getSiteData () {
-    const { locales } = this.siteConfig
+    const { locales, htmlSuffix } = this.siteConfig
     if (locales) {
       Object.keys(locales).forEach(path => {
         locales[path].path = path
@@ -318,7 +321,8 @@ module.exports = class AppContext {
       base: this.base,
       pages: this.pages.map(page => page.toJson()),
       themeConfig: this.siteConfig.themeConfig || {},
-      locales
+      locales,
+      htmlSuffix
     }
   }
 }

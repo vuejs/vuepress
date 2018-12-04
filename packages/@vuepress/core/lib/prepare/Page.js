@@ -56,7 +56,7 @@ module.exports = class Page {
     this._context = context
 
     if (relative) {
-      this.regularPath = encodeURI(fileToPath(relative))
+      this.regularPath = encodeURI(fileToPath(relative, context.siteConfig.htmlSuffix))
     } else if (path) {
       this.regularPath = encodeURI(path)
     } else if (permalink) {

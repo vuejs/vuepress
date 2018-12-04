@@ -8,7 +8,7 @@ test('fileToPath', () => {
     'foo/bar.md': '/foo/bar.html'
   }
   Object.keys(asserts).forEach(file => {
-    expect(fileToPath(file)).toBe(asserts[file])
+    expect(fileToPath(file, true)).toBe(asserts[file])
   })
 })
 

@@ -29,7 +29,7 @@ export default {
 
   computed: {
     link () {
-      return ensureExt(this.item.link)
+      return ensureExt(this.item.link, this.$site.htmlSuffix)
     },
 
     exact () {

@@ -3,11 +3,12 @@ export const extRE = /\.(md|html)$/
 export const endingSlashRE = /\/$/
 export const outboundRE = /^(https?:|mailto:|tel:)/
 
-export function normalize (path) {
-  return decodeURI(path)
+export function normalize (path, htmlSuffix) {
+  const normalized = decodeURI(path)
     .replace(hashRE, '')
     .replace(extRE, '')
-    .replace(endingSlashRE, '')
+
+  return htmlSuffix ? normalized : normalized.replace(endingSlashRE, '')
 }
 
 export function getHash (path) {
@@ -29,41 +30,42 @@ export function isTel (path) {
   return /^tel:/.test(path)
 }
 
-export function ensureExt (path) {
+export function ensureExt (path, htmlSuffix) {
   if (isExternal(path)) {
     return path
   }
   const hashMatch = path.match(hashRE)
   const hash = hashMatch ? hashMatch[0] : ''
-  const normalized = normalize(path)
+  const normalized = normalize(path, htmlSuffix)
+  const ext = htmlSuffix ? '.html' : '/'
 
   if (endingSlashRE.test(normalized)) {
     return path
   }
-  return normalized + '/' + hash
+  return normalized + ext + hash
 }
 
-export function isActive (route, path) {
+export function isActive (route, path, htmlSuffix) {
   const routeHash = route.hash
   const linkHash = getHash(path)
   if (linkHash && routeHash !== linkHash) {
     return false
   }
-  const routePath = normalize(route.path)
-  const pagePath = normalize(path)
+  const routePath = normalize(route.path, htmlSuffix)
+  const pagePath = normalize(path, htmlSuffix)
   return routePath === pagePath
 }
 
-export function resolvePage (pages, rawPath, base) {
+export function resolvePage (pages, rawPath, base, htmlSuffix) {
   if (base) {
     rawPath = resolvePath(rawPath, base)
   }
-  const path = normalize(rawPath)
+  const path = normalize(rawPath, htmlSuffix)
   for (let i = 0; i < pages.length; i++) {
-    if (normalize(pages[i].regularPath) === path) {
+    if (normalize(pages[i].regularPath, htmlSuffix) === path) {
       return Object.assign({}, pages[i], {
         type: 'page',
-        path: ensureExt(pages[i].path)
+        path: ensureExt(pages[i].path, htmlSuffix)
       })
     }
   }
@@ -117,7 +119,7 @@ function resolvePath (relative, base, append) {
  * @returns { SidebarGroup }
  */
 export function resolveSidebarItems (page, regularPath, site, localePath) {
-  const { pages, themeConfig } = site
+  const { pages, themeConfig, htmlSuffix } = site
 
   const localeConfig = localePath && themeConfig.locales
     ? themeConfig.locales[localePath] || themeConfig
@@ -134,7 +136,7 @@ export function resolveSidebarItems (page, regularPath, site, localePath) {
   } else {
     const { base, config } = resolveMatchingConfig(regularPath, sidebarConfig)
     return config
-      ? config.map(item => resolveItem(item, pages, base))
+      ? config.map(item => resolveItem(item, pages, base, htmlSuffix))
       : []
   }
 }
@@ -208,11 +210,11 @@ function ensureEndingSlash (path) {
     : path + '/'
 }
 
-function resolveItem (item, pages, base, isNested) {
+function resolveItem (item, pages, base, htmlSuffix, isNested) {
   if (typeof item === 'string') {
-    return resolvePage(pages, item, base)
+    return resolvePage(pages, item, base, htmlSuffix)
   } else if (Array.isArray(item)) {
-    return Object.assign(resolvePage(pages, item[0], base), {
+    return Object.assign(resolvePage(pages, item[0], base, htmlSuffix), {
       title: item[1]
     })
   } else {
@@ -226,7 +228,7 @@ function resolveItem (item, pages, base, isNested) {
     return {
       type: 'group',
       title: item.title,
-      children: children.map(child => resolveItem(child, pages, base, true)),
+      children: children.map(child => resolveItem(child, pages, base, htmlSuffix, true)),
       collapsable: item.collapsable !== false
     }
   }

@@ -9,11 +9,11 @@ export default {
   render (h, { parent: { $page, $site, $route }, props: { item }}) {
     // use custom active class matching logic
     // due to edge case of paths ending with / + hash
-    const selfActive = isActive($route, item.path)
+    const selfActive = isActive($route, item.path, $site.htmlSuffix)
     // for sidebar: auto pages, a hash link should be active if one of its child
     // matches
     const active = item.type === 'auto'
-      ? selfActive || item.children.some(c => isActive($route, item.basePath + '#' + c.slug))
+      ? selfActive || item.children.some(c => isActive($route, item.basePath + '#' + c.slug, $site.htmlSuffix))
       : selfActive
     const link = renderLink(h, item.path, item.title || item.path, active)
     const configDepth = $page.frontmatter.sidebarDepth != null
@@ -22,10 +22,10 @@ export default {
     const maxDepth = configDepth == null ? 1 : configDepth
     const displayAllHeaders = !!$site.themeConfig.displayAllHeaders
     if (item.type === 'auto') {
-      return [link, renderChildren(h, item.children, item.basePath, $route, maxDepth)]
+      return [link, renderChildren(h, item.children, item.basePath, $route, $site.htmlSuffix, maxDepth)]
     } else if ((active || displayAllHeaders) && item.headers && !hashRE.test(item.path)) {
       const children = groupHeaders(item.headers)
-      return [link, renderChildren(h, children, item.path, $route, maxDepth)]
+      return [link, renderChildren(h, children, item.path, $route, $site.htmlSuffix, maxDepth)]
     } else {
       return link
     }
@@ -46,10 +46,10 @@ function renderLink (h, to, text, active) {
   }, text)
 }
 
-function renderChildren (h, children, path, route, maxDepth, depth = 1) {
+function renderChildren (h, children, path, route, htmlSuffix, maxDepth, depth = 1) {
   if (!children || depth > maxDepth) return null
   return h('ul', { class: 'sidebar-sub-headers' }, children.map(c => {
-    const active = isActive(route, path + '#' + c.slug)
+    const active = isActive(route, path + '#' + c.slug, htmlSuffix)
     return h('li', { class: 'sidebar-sub-header' }, [
       renderLink(h, path + '#' + c.slug, c.title, active),
       renderChildren(h, c.children, path, route, maxDepth, depth + 1)
