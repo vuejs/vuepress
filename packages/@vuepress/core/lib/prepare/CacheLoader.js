@@ -54,8 +54,8 @@ exports.getCacheLoaderOptions = function (siteConfig, cliOptions, cwd, isProd) {
     )
   })
 
-  logger.debug('\nCache directory: ' + chalk.gray(cacheDirectory))
-  logger.debug('\nCache identifier : ' + chalk.gray(cacheIdentifier))
+  logger.debug('Cache directory: ' + chalk.gray(cacheDirectory))
+  logger.debug('Cache identifier : ' + chalk.gray(cacheIdentifier))
 
   return { cacheDirectory, cacheIdentifier }
 }

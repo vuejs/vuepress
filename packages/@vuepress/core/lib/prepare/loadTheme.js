@@ -48,7 +48,7 @@ module.exports = async function loadTheme (ctx) {
 
   if (useLocalTheme) {
     themePath = localThemePath
-    logger.tip(`\nApply theme located at ${chalk.gray(themePath)}...`)
+    logger.tip(`Apply theme located at ${chalk.gray(themePath)}...`)
   } else if (isString(theme)) {
     const resolved = themeResolver.resolve(theme, sourceDir)
     const { entry, name, shortcut } = resolved
@@ -60,7 +60,7 @@ module.exports = async function loadTheme (ctx) {
     themePath = normalizeThemePath(resolved)
     themeName = name
     themeShortcut = shortcut
-    logger.tip(`\nApply theme ${chalk.gray(themeName)}`)
+    logger.tip(`Apply theme ${chalk.gray(themeName)}`)
   } else {
     throw new Error(`[vuepress] You must specify a theme, or create a local custom theme. \n For more details, refer to https://vuepress.vuejs.org/guide/custom-themes.html#custom-themes. \n`)
   }

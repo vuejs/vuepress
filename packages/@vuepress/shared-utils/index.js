@@ -4,6 +4,7 @@ exports.codegen = require('./lib/codegen')
 exports.compose = require('./lib/compose')
 exports.datatypes = require('./lib/datatypes')
 exports.parseFrontmatter = require('./lib/parseFrontmatter')
+exports.parseVueFrontmatter = require('./lib/parseVueFrontmatter')
 
 exports.unescapeHtml = require('./lib/unescapeHtml')
 exports.escapeHtml = require('escape-html')
@@ -34,3 +35,5 @@ exports.fallback = require('./lib/fallback')
 exports.slugify = require('./lib/slugify')
 exports.tryChain = require('./lib/tryChain')
 exports.toAbsolutePath = require('./lib/toAbsolutePath')
+
+exports.performance = require('./lib/performance')

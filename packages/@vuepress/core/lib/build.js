@@ -3,19 +3,18 @@
 module.exports = async function build (sourceDir, cliOptions = {}) {
   process.env.NODE_ENV = 'production'
 
-  const { path } = require('@vuepress/shared-utils')
   const webpack = require('webpack')
   const readline = require('readline')
   const escape = require('escape-html')
 
-  const { chalk, fs, logger } = require('@vuepress/shared-utils')
+  const { chalk, fs, path, logger, env, performance } = require('@vuepress/shared-utils')
   const prepare = require('./prepare/index')
   const createClientConfig = require('./webpack/createClientConfig')
   const createServerConfig = require('./webpack/createServerConfig')
   const { createBundleRenderer } = require('vue-server-renderer')
   const { normalizeHeadTag, applyUserWebpackConfig } = require('./util/index')
 
-  logger.wait('\nExtracting site metadata...')
+  logger.wait('Extracting site metadata...')
   const ctx = await prepare(sourceDir, cliOptions, true /* isProd */)
 
   const { outDir, cwd } = ctx
@@ -23,7 +22,7 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
     return console.error(logger.error(chalk.red('Unexpected option: outDir cannot be set to the current working directory.\n'), false))
   }
 
-  await fs.remove(outDir)
+  await fs.emptyDir(outDir)
   logger.debug('Dist directory: ' + chalk.gray(outDir))
 
   let clientConfig = createClientConfig(ctx, cliOptions).toConfig()
@@ -82,7 +81,10 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
 
   // DONE.
   const relativeDir = path.relative(cwd, outDir)
-  logger.success(`\n${chalk.green('Success!')} Generated static files in ${chalk.cyan(relativeDir)}.\n`)
+  logger.success(`Generated static files in ${chalk.cyan(relativeDir)}.`)
+  const { duration } = performance.stop()
+  logger.developer(`It took a total of ${chalk.cyan(`${duration}ms`)} to run the ${chalk.cyan('vuepress build')}.`)
+  console.log()
 
   // --- helpers ---
 
@@ -99,7 +101,7 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
           reject(new Error(`Failed to compile with errors.`))
           return
         }
-        if (cliOptions.debug && stats.hasWarnings()) {
+        if (env.isDebug && stats.hasWarnings()) {
           stats.toJson().warnings.forEach(warning => {
             console.warn(warning)
           })

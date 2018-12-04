@@ -19,7 +19,7 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
   const { applyUserWebpackConfig } = require('./util/index')
   const { frontmatterEmitter } = require('@vuepress/markdown-loader')
 
-  logger.wait('\nExtracting site metadata...')
+  logger.wait('Extracting site metadata...')
   const ctx = await prepare(sourceDir, cliOptions, false /* isProd */)
 
   // setup watchers to update options and dynamically generated files
@@ -79,13 +79,25 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
   const port = await resolvePort(cliOptions.port || ctx.siteConfig.port)
   const { host, displayHost } = await resolveHost(cliOptions.host || ctx.siteConfig.host)
 
+  // debug in a running dev process.
+  process.stdin &&
+  process.stdin.on('data', chunk => {
+    const parsed = chunk.toString('utf-8').trim()
+    if (parsed === '*') {
+      console.log(Object.keys(ctx))
+    }
+    if (ctx[parsed]) {
+      console.log(ctx[parsed])
+    }
+  })
+
   config
-  .plugin('vuepress-log')
-  .use(DevLogPlugin, [{
-    port,
-    displayHost,
-    publicPath: ctx.base
-  }])
+    .plugin('vuepress-log')
+    .use(DevLogPlugin, [{
+      port,
+      displayHost,
+      publicPath: ctx.base
+    }])
 
   config = config.toConfig()
   const userConfig = ctx.siteConfig.configureWebpack

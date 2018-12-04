@@ -19,7 +19,7 @@ export default {
         class: [data.class, data.staticClass],
         style: data.style,
         props: {
-          slotKey: props.slot || 'default'
+          slotKey: props.slotKey || 'default'
         }
       })
     }

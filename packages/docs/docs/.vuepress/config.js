@@ -33,10 +33,10 @@ module.exports = ctx => ({
     editLinks: true,
     docsDir: 'packages/docs/docs',
     // #697 Provided by the official algolia team.
-    // algolia: {
-    //   apiKey: '3a539aab83105f01761a137c61004d85',
-    //   indexName: 'vuepress'
-    // },
+    algolia: ctx.isProd ? ({
+      apiKey: '3a539aab83105f01761a137c61004d85',
+      indexName: 'vuepress'
+    }) : null,
     locales: {
       '/': {
         label: 'English',
@@ -64,20 +64,19 @@ module.exports = ctx => ({
       }
     }
   },
-  plugins: {
-    '@vuepress/i18n-ui': !ctx.isProd,
-    '@vuepress/back-to-top': true,
-    '@vuepress/pwa': {
+  plugins: [
+    ['@vuepress/i18n-ui',!ctx.isProd],
+    ['@vuepress/back-to-top', true],
+    ['@vuepress/pwa', {
       serviceWorker: true,
       updatePopup: true
-    },
-    '@vuepress/plugin-medium-zoom': true,
-    '@vuepress/notification': true,
-    'flowchart': true,
-    '@vuepress/google-analytics': {
+    }],
+    ['@vuepress/medium-zoom', true],
+    ['@vuepress/notification', true],
+    ['@vuepress/google-analytics', {
       ga: 'UA-128189152-1'
-    }
-  },
+    }],
+  ],
   clientRootMixin: path.resolve(__dirname, 'mixin.js'),
   extendMarkdown (md) {
     md.use(container, 'upgrade', {

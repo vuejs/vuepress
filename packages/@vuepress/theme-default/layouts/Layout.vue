@@ -86,7 +86,6 @@ export default {
     shouldShowSidebar () {
       const { frontmatter } = this.$page
       return (
-        !frontmatter.layout &&
         !frontmatter.home &&
         frontmatter.sidebar !== false &&
         this.sidebarItems.length
@@ -116,8 +115,6 @@ export default {
   },
 
   mounted () {
-    window.addEventListener('scroll', this.onScroll)
-
     // configure progress bar
     nprogress.configure({ showSpinner: false })
 

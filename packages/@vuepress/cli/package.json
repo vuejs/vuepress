@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/cli",
-  "version": "1.0.0-alpha.22",
+  "version": "1.0.0-alpha.27",
   "description": "cli for vuepress",
   "main": "index.js",
   "publishConfig": {
@@ -28,8 +28,8 @@
     "url": "https://github.com/vuejs/vuepress/issues"
   },
   "dependencies": {
+    "cac": "^6.3.6",
     "chalk": "^2.3.2",
-    "commander": "^2.15.1",
     "semver": "^5.5.0"
   },
   "peerDependencies": {
