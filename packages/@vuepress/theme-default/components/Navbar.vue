@@ -22,9 +22,9 @@
 
     <div
       class="links"
-      :style="{
+      :style="linksWrapMaxWidth ? {
         'max-width': linksWrapMaxWidth + 'px'
-      }"
+      } : {}"
     >
       <AlgoliaSearchBox
         v-if="isAlgoliaSearch"

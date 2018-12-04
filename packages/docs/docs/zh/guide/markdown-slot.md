@@ -17,7 +17,7 @@ Markdown 插槽便是为了解决这一类问题。
 你可以通过下述的语法来定义一个具名 Markdown 插槽：
 
 ``` md
-::: slot [$name]
+::: slot name
 
 :::
 ```
@@ -25,8 +25,12 @@ Markdown 插槽便是为了解决这一类问题。
 在布局组件中利用 `Content` 组件来使用该插槽：
 
 ``` vue
-<Content slot="$name"/> 
+<Content slot-key="name"/>
 ```
+
+::: tip 提示
+这里我们使用的是 `slot-key` 而不是 `slot`，这是因为在 Vue 中，`slot` 是一个保留的 `prop` 名。
+:::
 
 ## 插槽的默认内容
 
