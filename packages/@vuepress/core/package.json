@@ -72,7 +72,7 @@
     "webpackbar": "^2.6.1"
   },
   "engines": {
-    "node": ">=8"
+    "node": ">=8.6"
   },
   "browserslist": [
     ">1%"
