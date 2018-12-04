@@ -36,6 +36,7 @@ module.exports = class AppContext {
    */
 
   constructor (sourceDir, cliOptions = {}, isProd) {
+    logger.debug('sourceDir', sourceDir)
     this.sourceDir = sourceDir
     this.cliOptions = cliOptions
     this.isProd = isProd

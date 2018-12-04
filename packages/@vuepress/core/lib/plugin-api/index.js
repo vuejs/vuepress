@@ -207,7 +207,8 @@ module.exports = class PluginAPI {
     additionalPages,
     globalUIComponents,
     define,
-    alias
+    alias,
+    registerCommand
   }) {
     const isInternalPlugin = pluginName.startsWith('@vuepress/internal-')
     if (!isInternalPlugin || debug) {
@@ -236,5 +237,6 @@ module.exports = class PluginAPI {
       .registerOption(PLUGIN_OPTION_MAP.GLOBAL_UI_COMPONENTS.key, globalUIComponents, pluginName)
       .registerOption(PLUGIN_OPTION_MAP.DEFINE.key, define, pluginName)
       .registerOption(PLUGIN_OPTION_MAP.ALIAS.key, alias, pluginName)
+      .registerOption(PLUGIN_OPTION_MAP.REGISTER_COMMAND.key, registerCommand, pluginName)
   }
 }
