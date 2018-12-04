@@ -2,6 +2,10 @@ import SmoothScroll from 'smooth-scroll/dist/smooth-scroll.js'
 
 export default {
   created () {
+    if (this.$ssrContext) {
+      return;
+    }
+
     this.$vuepress.$on('AsyncMarkdownContentMounted', () => {
       this.$vuepress.$set('contentMounted', true)
 
@@ -33,11 +37,15 @@ export default {
   watch: {
     '$route.path' () {
       this.$vuepress.$set('contentMounted', false)
-      this.$smoothScroll.destroy()
+      if (!this.$ssrContext) {
+        this.$smoothScroll.destroy()
+      }
     }
   },
 
   beforeDestroy () {
-    this.$smoothScroll.destroy()
+    if (!this.$ssrContext) {
+      this.$smoothScroll.destroy()
+    }
   }
 }
