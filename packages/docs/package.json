@@ -5,7 +5,8 @@
   "description": "docs of VuePress",
   "scripts": {
     "dev": "vuepress dev docs --temp .temp",
-    "build": "vuepress build docs --temp .temp"
+    "build": "vuepress build docs --temp .temp",
+    "show-help": "vuepress --help"
   },
   "repository": {
     "type": "git",
