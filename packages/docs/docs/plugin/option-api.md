@@ -354,7 +354,7 @@ export default {
 
 ## additionalPages
 
-- Type: `Array|Function`
+- Type: `Array|AsyncFunction`
 - Default: `undefined`
 
 Add a page pointing to a markdown file:
