@@ -16,6 +16,18 @@ module.exports = (options, ctx) => {
 
   const enhancers = [
     {
+      when: ({ regularPath }) => regularPath === '/',
+      frontmatter: { layout: getLayout('Layout') }
+    },
+    {
+      when: ({ regularPath }) => regularPath === tagIndexPageUrl,
+      frontmatter: { layout: getLayout('Tags', 'Page') }
+    },
+    {
+      when: ({ regularPath }) => regularPath === categoryIndexPageUrl,
+      frontmatter: { layout: getLayout('Categories', 'Page') }
+    },
+    {
       when: ({ regularPath }) => isDirectChild(regularPath),
       frontmatter: { layout: getLayout('Page', 'Layout') },
       data: { type: 'page' }
@@ -25,20 +37,8 @@ module.exports = (options, ctx) => {
       frontmatter: { layout: getLayout('Category', 'Page') }
     },
     {
-      when: ({ regularPath }) => regularPath === categoryIndexPageUrl,
-      frontmatter: { layout: getLayout('Categories', 'Page') }
-    },
-    {
       when: ({ regularPath }) => regularPath.startsWith('/tag/'),
       frontmatter: { layout: getLayout('Tag', 'Page') }
-    },
-    {
-      when: ({ regularPath }) => regularPath === tagIndexPageUrl,
-      frontmatter: { layout: getLayout('Tags', 'Page') }
-    },
-    {
-      when: ({ regularPath }) => regularPath === '/',
-      frontmatter: { layout: getLayout('Layout') }
     },
     {
       when: ({ regularPath }) => regularPath.startsWith(`/${postsDir}/`),
