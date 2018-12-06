@@ -71,7 +71,7 @@
     "webpack-serve": "^1.0.2",
     "webpackbar": "^2.6.1",
     "semver": "^5.5.0",
-    "cac": "^6.3.3"
+    "cac": "^6.3.9"
   },
   "engines": {
     "node": ">=8.6"
