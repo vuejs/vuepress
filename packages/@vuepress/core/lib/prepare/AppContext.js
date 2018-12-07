@@ -103,11 +103,7 @@ module.exports = class AppContext {
     this.markdown = createMarkdown(this)
 
     await this.resolvePages()
-    await Promise.all(
-      this.pluginAPI.options.additionalPages.values.map(async (options) => {
-        await this.addPage(options)
-      })
-    )
+    await this.pluginAPI.options.additionalPages.apply(this)
 
     await this.pluginAPI.options.ready.apply()
     await Promise.all([
