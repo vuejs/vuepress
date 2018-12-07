@@ -23,7 +23,7 @@ if (module.hot) {
     if (siteData.base !== prevBase) {
       window.alert(
         `[vuepress] Site base has changed. ` +
-          `Please restart dev server to ensure correct asset paths.`
+        `Please restart dev server to ensure correct asset paths.`
       )
     }
   })
@@ -76,11 +76,9 @@ export function createApp (isServer) {
   // redirect /foo to /foo/
   router.beforeEach((to, from, next) => {
     if (!/(\/|\.html)$/.test(to.path)) {
-      next(
-        Object.assign({}, to, {
-          path: to.path + '/'
-        })
-      )
+      next(Object.assign({}, to, {
+        path: to.path + '/'
+      }))
     } else {
       next()
     }
@@ -104,11 +102,7 @@ export function createApp (isServer) {
       render (h) {
         return h('div', { attrs: { id: 'app' }}, [
           h('router-view', { ref: 'layout' }),
-          h(
-            'div',
-            { class: 'global-ui' },
-            globalUIComponents.map(component => h(component))
-          )
+          h('div', { class: 'global-ui' }, globalUIComponents.map(component => h(component)))
         ])
       }
     })
