@@ -62,7 +62,15 @@ export function createApp (isServer) {
     base: siteData.base,
     mode: 'history',
     fallback: false,
-    routes
+    routes,
+    scrollBehavior (to, from, savedPosition) {
+      if (savedPosition) {
+        return savedPosition
+      }
+      if (to.path !== from.path) {
+        return { x: 0, y: 0 }
+      }
+    }
   })
 
   // redirect /foo to /foo/
