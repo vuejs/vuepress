@@ -27,7 +27,7 @@ const notification = {
 
 const gotIt = {
   '/': 'Got it',
-  '/zh/': '知道了',
+  '/zh/': '知道了'
 }
 
 export default {
@@ -49,8 +49,11 @@ export default {
     }
   },
   watch: {
+    '$page' () {
+      this.$notification && this.$notification.goAway(0)
+    },
     '$localePath' () {
-      this.$notification.goAway(0)
+      this.$notification && this.$notification.goAway(0)
       this.notice()
     }
   },

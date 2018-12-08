@@ -1,8 +1,8 @@
 {
   "name": "@vuepress/markdown",
-  "version": "1.0.0-alpha.9",
+  "version": "1.0.0-alpha.27",
   "description": "markdown for vuepress",
-  "main": "lib/index.js",
+  "main": "index.js",
   "publishConfig": {
     "access": "public"
   },
@@ -18,11 +18,10 @@
     "markdown"
   ],
   "dependencies": {
-    "@vuepress/shared-utils": "^1.0.0-alpha.9",
-    "diacritics": "^1.3.0",
+    "@vuepress/shared-utils": "^1.0.0-alpha.27",
     "markdown-it": "^8.4.1",
     "markdown-it-anchor": "^5.0.2",
-    "markdown-it-chain": "^1.2.1",
+    "markdown-it-chain": "^1.3.0",
     "markdown-it-container": "^2.0.0",
     "markdown-it-emoji": "^1.4.0",
     "markdown-it-table-of-contents": "^0.4.0",

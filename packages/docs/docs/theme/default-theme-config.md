@@ -1,7 +1,3 @@
----
-sidebar: auto
----
-
 # Default Theme Config
 
 <Bit/>
@@ -65,8 +61,8 @@ module.exports = {
       {
         text: 'Languages',
         items: [
-          { text: 'Chinese', link: '/language/chinese' },
-          { text: 'Japanese', link: '/language/japanese' }
+          { text: 'Chinese', link: '/language/chinese/' },
+          { text: 'Japanese', link: '/language/japanese/' }
         ]
       }
     ]

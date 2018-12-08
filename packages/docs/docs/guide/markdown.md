@@ -66,43 +66,9 @@ lang: en-US
 ---
 ```
 
-The data will be available to the rest of the page, plus all custom and theming components as `$page`.
+The data will be available to the rest of the page, plus all custom and theming components.
 
-`title` and `lang` will be automatically set on the current page. In addition you can specify extra meta tags to be injected:
-
-``` yaml
----
-meta:
-  - name: description
-    content: hello
-  - name: keywords
-    content: super duper SEO
----
-```
-
-### Alternative Front Matter Formats
-
-In addition, VuePress also supports JSON or [TOML](https://github.com/toml-lang/toml) front matter.
-
-JSON front matter needs to start and end in curly braces:
-
-```
----
-{
-  "title": "Blogging Like a Hacker",
-  "lang": "en-US"
-}
----
-```
-
-TOML front matter needs to be explicitly marked as TOML:
-
-```
----toml
-title = "Blogging Like a Hacker"
-lang = "en-US"
----
-```
+For detailed introduction, please move to [Front Matter](./frontmatter.md).
 
 ## GitHub-Style Tables
 
@@ -285,12 +251,12 @@ It also supports [line highlighting](#line-highlighting-in-code-blocks):
 **Input**
 
 ``` md
-<<< @/test/markdown/fragments/snippet.js{2}
+<<< @/../@vuepress/markdown/__tests__/fragments/snippet.js{2}
 ```
 
 **Output**
 
-<<< @/test/markdown/fragments/snippet.js{2}
+<<< @/../@vuepress/markdown/__tests__/fragments/snippet.js{2}
 
 ::: tip
   Since the import of the code snippets will be executed before webpack compilation, you can't use the path alias in webpack. The default value of `@` is `process.cwd()`.
@@ -308,7 +274,7 @@ module.exports = {
     anchor: { permalink: false },
     // options for markdown-it-toc
     toc: { includeLevel: [1, 2] },
-    config: md => {
+    extendMarkdown: md => {
       // use more markdown-it plugins!
       md.use(require('markdown-it-xxx'))
     }

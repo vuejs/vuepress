@@ -4,6 +4,7 @@ exports.codegen = require('./lib/codegen')
 exports.compose = require('./lib/compose')
 exports.datatypes = require('./lib/datatypes')
 exports.parseFrontmatter = require('./lib/parseFrontmatter')
+exports.parseVueFrontmatter = require('./lib/parseVueFrontmatter')
 
 exports.unescapeHtml = require('./lib/unescapeHtml')
 exports.escapeHtml = require('escape-html')
@@ -18,7 +19,7 @@ exports.ensureLeadingSlash = require('./lib/ensureLeadingSlash')
 exports.ensureEndingSlash = require('./lib/ensureEndingSlash')
 
 exports.getPermalink = require('./lib/getPermalink')
-exports.shortcutPackageResolver = require('./lib/shortcutPackageResolver')
+exports.moduleResolver = require('./lib/moduleResolver')
 exports.inferTitle = require('./lib/inferTitle')
 
 exports.extractHeaders = require('./lib/extractHeaders')
@@ -31,3 +32,8 @@ exports.globby = require('globby')
 exports.hash = require('hash-sum')
 
 exports.fallback = require('./lib/fallback')
+exports.slugify = require('./lib/slugify')
+exports.tryChain = require('./lib/tryChain')
+exports.toAbsolutePath = require('./lib/toAbsolutePath')
+
+exports.performance = require('./lib/performance')

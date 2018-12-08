@@ -9,6 +9,7 @@
   <a href="https://www.npmjs.com/package/vuepress"><img src="https://img.shields.io/npm/v/vuepress.svg" alt="Version"></a>
   <a href="https://www.npmjs.com/package/vuepress"><img src="https://badgen.net/npm/v/vuepress/next" alt="npm next version"></a>
   <a href="https://www.npmjs.com/package/vuepress"><img src="https://img.shields.io/npm/l/vuepress.svg" alt="License"></a>
+  <a href="https://discordapp.com/invite/HBherRA"><img src="https://img.shields.io/badge/Discord-join%20chat-738bd7.svg" alt="vuepress channel on Discord"></a>
 </p>
 
 > This is the branch for `VuePress Next`.
@@ -51,19 +52,19 @@ yarn add vuepress@next -D  # Install next.
 
 **Vue-powered custom theme system**
 
-* [Metadata](https://vuepress.vuejs.org/guide/custom-themes.html#site-and-page-metadata)
-* [Content Excerpt](https://vuepress.vuejs.org/guide/custom-themes.html#content-excerpt)
+* [Metadata](https://vuepress.vuejs.org/theme/writing-a-theme.html#site-and-page-metadata)
+* [Content Excerpt](https://vuepress.vuejs.org/theme/writing-a-theme.html#content-excerpt)
 
 **Default theme**
 
 * Responsive layout
-* [Optional Homepage](https://vuepress.vuejs.org/default-theme-config/#homepage)
-* [Simple out-of-the-box header-based search](https://vuepress.vuejs.org/default-theme-config/#built-in-search)
-* [Algolia Search](https://vuepress.vuejs.org/default-theme-config/#algolia-search)
-* Customizable [navbar](https://vuepress.vuejs.org/default-theme-config/#navbar) and [sidebar](https://vuepress.vuejs.org/default-theme-config/#sidebar)
-* [Auto-generated GitHub link and page edit links](https://vuepress.vuejs.org/default-theme-config/#git-repo-and-edit-links)
-* [PWA: Popup UI to refresh contents](https://vuepress.vuejs.org/default-theme-config/#popup-ui-to-refresh-contents)
-* [Last Updated](https://vuepress.vuejs.org/default-theme-config/#last-updated)
+* [Optional Homepage](https://vuepress.vuejs.org/theme/default-theme-config.html#homepage)
+* [Simple out-of-the-box header-based search](https://vuepress.vuejs.org/theme/default-theme-config.html#built-in-search)
+* [Algolia Search](https://vuepress.vuejs.org/theme/default-theme-config.html#algolia-search)
+* Customizable [navbar](https://vuepress.vuejs.org/theme/default-theme-config.html#navbar) and [sidebar](https://vuepress.vuejs.org/theme/default-theme-config.html#sidebar)
+* [Auto-generated GitHub link and page edit links](https://vuepress.vuejs.org/theme/default-theme-config.html#git-repo-and-edit-links)
+* [PWA: Popup UI to refresh contents](https://vuepress.vuejs.org/theme/default-theme-config.html#popup-ui-to-refresh-contents)
+* [Last Updated](https://vuepress.vuejs.org/theme/default-theme-config.html#last-updated)
 
 **Miscellaneous**
 

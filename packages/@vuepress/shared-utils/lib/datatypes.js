@@ -14,6 +14,9 @@ exports.isFunction = isOfType('function')
 exports.isString = isOfType('string')
 exports.isBoolean = isOfType('boolean')
 exports.isPlainObject = isObjectOfType('Object')
+exports.isUndefined = isOfType('undefined')
+exports.isNull = x => x === null
+exports.isNullOrUndefined = x => exports.isUndefined(x) || exports.isNull(x)
 
 exports.toRawType = value => _toString.call(value).slice(8, -1)
 

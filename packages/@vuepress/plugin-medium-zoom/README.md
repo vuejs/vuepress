@@ -2,10 +2,4 @@
 
 > medium-zoom plugin for vuepress
 
-## Usage
-
-```javascript
-module.exports = {
-  plugins: ['@vuepress/medium-zoom'] 
-}
-```
+See [documentation](https://vuepress.vuejs.org/plugin/official/plugin-medium-zoom.html).

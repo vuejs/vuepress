@@ -2,9 +2,9 @@
   <div class="page">
     <slot name="top"/>
 
-    <Content :custom="false"/>
+    <Content/>
 
-    <div class="page-edit">
+    <div class="page-edit" v-if="contentMounted">
       <div
         class="edit-link"
         v-if="editLink"
@@ -26,7 +26,7 @@
       </div>
     </div>
 
-    <div class="page-nav" v-if="prev || next">
+    <div class="page-nav" v-if="contentMounted && (prev || next)">
       <p class="inner">
         <span
           v-if="prev"
@@ -68,10 +68,12 @@ export default {
   props: ['sidebarItems'],
 
   computed: {
+    contentMounted () {
+      return this.$vuepress.$get('contentMounted')
+    },
+
     lastUpdated () {
-      if (this.$page.lastUpdated) {
-        return new Date(this.$page.lastUpdated).toLocaleString(this.$lang)
-      }
+      return this.$page.lastUpdated
     },
 
     lastUpdatedText () {
@@ -187,7 +189,7 @@ function find (page, items, offset) {
   })
   for (let i = 0; i < res.length; i++) {
     const cur = res[i]
-    if (cur.type === 'page' && cur.path === page.path) {
+    if (cur.type === 'page' && cur.path === decodeURIComponent(page.path)) {
       return res[i + offset]
     }
   }

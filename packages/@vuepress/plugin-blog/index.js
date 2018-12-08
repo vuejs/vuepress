@@ -4,8 +4,10 @@ module.exports = (options, ctx) => {
   const { layoutComponentMap } = ctx
   const {
     pageEnhancers = [],
+    postsDir = '_posts',
     categoryIndexPageUrl = '/category/',
-    tagIndexPageUrl = '/tag/'
+    tagIndexPageUrl = '/tag/',
+    permalink = '/:year/:month/:day/:slug'
   } = options
 
   const isLayoutExists = name => layoutComponentMap[name] !== undefined
@@ -39,10 +41,10 @@ module.exports = (options, ctx) => {
       frontmatter: { layout: getLayout('Layout') }
     },
     {
-      when: ({ regularPath }) => regularPath.startsWith('/_posts/'),
+      when: ({ regularPath }) => regularPath.startsWith(`/${postsDir}/`),
       frontmatter: {
         layout: getLayout('Post', 'Page'),
-        permalink: '/:year/:month/:day/:slug'
+        permalink: permalink
       },
       data: { type: 'post' }
     },
@@ -62,7 +64,9 @@ module.exports = (options, ctx) => {
         frontmatter = {}
       }) => {
         if (when(pageCtx)) {
-          Object.assign(rawFrontmatter, frontmatter)
+          Object.keys(frontmatter).forEach(key => {
+            rawFrontmatter[key] = rawFrontmatter[key] || frontmatter[key]
+          })
           Object.assign(pageCtx, data)
         }
       })
@@ -106,7 +110,7 @@ module.exports = (options, ctx) => {
           tags.forEach(tag => handleTag(tag, key))
         }
         if (isString(category)) {
-          handleCategory(categories, key)
+          handleCategory(category, key)
         }
         if (Array.isArray(categories)) {
           categories.forEach(category => handleCategory(category, key))

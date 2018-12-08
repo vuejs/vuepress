@@ -1,7 +1,14 @@
-const isDebug = process.argv.indexOf('--debug') !== -1
-const isProduction = () => process.env.NODE_ENV === 'production'
-const isTest = () => process.env.NODE_ENV === 'test'
+class ENV {
+  constructor () {
+    this.isDebug = false
+    this.isTest = false
+    this.isProduction = false
+  }
 
-exports.isDebug = isDebug
-exports.isTest = isTest
-exports.isProduction = isProduction
+  setOptions (options) {
+    Object.assign(this, options)
+  }
+}
+
+module.exports = new ENV()
+

@@ -83,27 +83,6 @@ Provide the Google Analytics ID to enable integration.
 Please be aware of [GDPR (2018 reform of EU data protection rules)](https://ec.europa.eu/commission/priorities/justice-and-fundamental-rights/data-protection/2018-reform-eu-data-protection-rules_en) and consider setting Google Analytics to [anonymize IPs](https://support.google.com/analytics/answer/2763052?hl=en) where appropriate and/or needed.
 :::
 
-### serviceWorker
-
-- Type: `boolean`
-- Default: `false`
-
-If set to `true`, VuePress will automatically generate and register a service worker that caches the content for offline use (only enabled in production).
-
-If developing a custom theme, the `Layout.vue` component will also be emitting the following events:
-
-- `sw-ready`
-- `sw-cached`
-- `sw-updated`
-- `sw-offline`
-- `sw-error`
-
-::: tip PWA NOTES
-The `serviceWorker` option only handles the service worker. To make your site fully PWA-compliant, you will need to provide the Web App Manifest and icons in `.vuepress/public`. For more details, see [MDN docs about the Web App Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest).
-
-Also, only enable this if you are able to deploy your site with SSL, since service worker can only be registered under HTTPs URLs.
-:::
-
 ### locales
 
 - Type: `{ [path: string]: Object }`
@@ -117,6 +96,32 @@ Specify locales for i18n support. For more details, see the guide on [Internatio
 - Default: `() => true`
 
 A function to control what files should have `<link rel="preload">` resource hints generated. See [shouldPrefetch](https://ssr.vuejs.org/api/#shouldprefetch).
+
+### contentLoading
+
+- Type: `boolean|string`
+- Default: `false`
+
+Whether to enable placeholder loading for asynchronous loading content. if it's a string, it should be the name of your custom loading component.
+
+### cache
+
+- Type: `boolean|string`
+- Default: `true`
+
+VuePress uses [cache-loader](https://github.com/webpack-contrib/cache-loader) by default to greatly speed up the compilation of webpack.
+
+This option can be used to specify the path to the cache, and can also remove the cache before each build by setting it to `false`.
+
+::: tip
+This option can also be used through the CLI:
+
+```bash
+vuepress dev docs --cache .cache # set cache path
+vuepress dev docs --no-cache     # remove cache before each build.
+```
+:::
+
 
 ## Styling
 
@@ -135,7 +140,7 @@ $codeBgColor = #282c34
 ```
 
 ::: danger Note
-You should ONLY write color variables in this file. since `palette.styl` will be imported at the end of the root stylus config file, as a config, it will be used by multiple files, so once you wrote styles here, your style would be duplicated by multiple times. 
+You should ONLY write color variables in this file. since `palette.styl` will be imported at the end of the root stylus config file, as a config, it will be used by multiple files, so once you wrote styles here, your style would be duplicated by multiple times.
 :::
 
 ### index.styl
@@ -159,7 +164,11 @@ VuePress provides a convenient way to add extra styles. you can create an `.vuep
 - Type: `string`
 - Default: `undefined`
 
-Specify this to use a custom theme. With the value of `"foo"`, VuePress will attempt to load the theme component at `node_modules/vuepress-theme-foo/Layout.vue`.
+Specify this to use a custom theme.
+
+**Also see:**
+
+- [Using a theme](../theme/using-a-theme.md).
 
 ### themeConfig
 
@@ -179,7 +188,7 @@ Provide config options to the used theme. The options will vary depending on the
 - Type: `Object|Array`
 - Default: `undefined`
 
-Please refer to [Plugin > Using a plugin](../plugin/README.md#using-a-plugin) to leran how to use a plugin.
+Please refer to [Plugin > Using a plugin](../plugin/using-a-plugin.md) to learn how to use a plugin.
 
 ## Markdown
 
@@ -197,16 +206,9 @@ Whether to show line numbers to the left of each code blocks.
 ### markdown.slugify
 
 - Type: `Function`
-- Default: [source](https://github.com/vuejs/vuepress/blob/master/lib/markdown/slugify.js)
+- Default: [source](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/shared-utils/lib/slugify.js)
 
-Function for transforming header texts into slugs. This affects the ids/links generated for header anchors, table of contents and sidebar links.
-
-### markdown.externalLinks
-
-- Type: `Object`
-- Default: `{ target: '_blank', rel: 'noopener noreferrer' }`
-
-The key and value pair will be added to `<a>` tags that points to an external link. The default option will open external links in a new window.
+Function for transforming [header](../miscellaneous/glossary.md#headers) texts into slugs. Changing this affects the ids/links generated for header anchors, [table of contents](../guide/markdown.md#table-of-contents) and [sidebar](../theme/default-theme-config.md#sidebar) links.
 
 ### markdown.anchor
 
@@ -214,6 +216,13 @@ The key and value pair will be added to `<a>` tags that points to an external li
 - Default: `{ permalink: true, permalinkBefore: true, permalinkSymbol: '#' }`
 
 Options for [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor). (Note: prefer `markdown.slugify` if you want to customize header ids.)
+
+### markdown.externalLinks
+
+- Type: `Object`
+- Default: `{ target: '_blank', rel: 'noopener noreferrer' }`
+
+The key and value pair will be added to `<a>` tags that points to an external link. The default option will open external links in a new window.
 
 ### markdown.toc
 
@@ -241,7 +250,7 @@ module.exports = {
 ```
 
 ::: tip
-This option is also included in [Plugin API](../plugin/README.md#extendmarkdown).
+This option is also included in [Plugin API](../plugin/option-api.md#extendmarkdown).
 :::
 
 ## Build Pipeline

@@ -1,5 +1,8 @@
 const { path } = require('@vuepress/shared-utils')
 
-module.exports = {
+module.exports = (options, context) => ({
+  define: {
+    SELECTOR: options.selector || '.content img'
+  },
   clientRootMixin: path.resolve(__dirname, 'mixin.js')
-}
+})

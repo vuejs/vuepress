@@ -66,43 +66,9 @@ lang: en-US
 ---
 ```
 
-这些数据可以在当前页的正文中使用，在任意的自定义或主题组件中，它可以通过 `$page` 来访问。
+这些数据可以在当前 markdown 的正文，或者是任意的自定义或主题组件中使用。
 
-`title` 和 `lang` 的 meta 将会被自动地注入到当前的页面中，当然你也可以指定一些额外需要注入的 meta：
-
-``` yaml
----
-meta:
-  - name: description
-    content: hello
-  - name: keywords
-    content: super duper SEO
----
-```
-
-### 其他格式的 Front Matter
-
-除了 YAML 之外，VuePress 也支持 JSON 或者 [TOML](https://github.com/toml-lang/toml) 格式的 front matter。
-
-JSON front matter 需要以花括号开头和结尾：
-
-```
----
-{
-  "title": "Blogging Like a Hacker",
-  "lang": "en-US"
-}
----
-```
-
-TOML front matter 需要显式地标注为 TOML：
-
-```
----toml
-title = "Blogging Like a Hacker"
-lang = "en-US"
----
-```
+想了解更多，请移步 [Front Matter](./frontmatter.md)。
 
 ## GitHub 风格的表格
 
@@ -283,12 +249,12 @@ module.exports = {
 **Input**
 
 ```
-<<< @/test/markdown/fragments/snippet.js{2}
+<<< @/../@vuepress/markdown/__tests__/fragments/snippet.js{2}
 ```
 
 **Output**
 
-<<< @/test/markdown/fragments/snippet.js{2}
+<<< @/../@vuepress/markdown/__tests__/fragments/snippet.js{2}
 
 ::: tip 注意
   由于代码段的导入将在 webpack 编译之前执行，因此你无法使用 webpack 中的路径别名，此处的 `@` 默认值是 `process.cwd()`。
@@ -305,7 +271,7 @@ module.exports = {
     anchor: { permalink: false },
     // markdown-it-toc 的选项
     toc: { includeLevel: [1, 2] },
-    config: md => {
+    extendMarkdown: md => {
       // 使用更多的 markdown-it 插件!
       md.use(require('markdown-it-xxx'))
     }

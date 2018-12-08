@@ -1,6 +1,6 @@
 const { fs, path } = require('@vuepress/shared-utils')
 const AppContext = require('../../lib/prepare/AppContext')
-const createMarkdown = require('../../../markdown/lib/index')
+const createMarkdown = require('../../../markdown/index')
 
 function getAppContext () {
   return new AppContext('.')

@@ -78,7 +78,7 @@ module.exports = {
 
 ## 约定大于配置
 
-VuePress 1.0 开始引入一些约定，以减少用户过多的配置压力。对于这一点，最直观的体现是对[文档目录结构](../guide/directory-structure.md)和[主题目录结构](../theme/README.md#directory-structure)的约定。
+VuePress 1.0 开始引入一些约定，以减少用户过多的配置压力。对于这一点，最直观的体现是对[文档目录结构](../guide/directory-structure.md)和[主题目录结构](../theme/writing-a-theme.md#目录结构)的约定。
 
 未来我们可能还会结合社区的反馈来引入更多的约定，让我们拭目以待。
 

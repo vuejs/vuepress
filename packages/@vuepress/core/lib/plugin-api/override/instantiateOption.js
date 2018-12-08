@@ -4,6 +4,7 @@ const GlobalUIComponentsOption = require('./GlobalUIComponentsOption')
 const DefineOption = require('./DefineOption')
 const AliasOption = require('./AliasOption')
 const AsyncOption = require('../abstract/AsyncOption')
+const AdditionalPagesOption = require('./AdditionalPagesOption')
 const Option = require('../abstract/Option')
 const { PLUGIN_OPTION_MAP } = require('../constants')
 
@@ -23,6 +24,9 @@ module.exports = function instantiateOption (option) {
 
   case PLUGIN_OPTION_MAP.ALIAS.name:
     return new AliasOption(option.name)
+
+  case PLUGIN_OPTION_MAP.ADDITIONAL_PAGES.name:
+    return new AdditionalPagesOption(name)
 
   default: return option.async ? new AsyncOption(option.name) : new Option(option.name)
   }

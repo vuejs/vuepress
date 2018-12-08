@@ -8,71 +8,46 @@ module.exports = [
     link: '/config/'
   },
   {
-    text: 'Advanced',
+    text: 'Plugin',
+    link: '/plugin/'
+  },
+  {
+    text: 'Theme',
+    link: '/theme/'
+  },
+  {
+    text: 'Learn More',
     items: [
       {
-        text: 'Plugin',
-        items: [
-          {
-            text: 'Write a plugin',
-            link: '/plugin/#writing-a-plugin'
-          },
-          {
-            text: 'Using a plugin',
-            link: '/plugin/#using-a-plugin'
-          },
-          {
-            text: 'Options',
-            link: '/plugin/#options'
-          },
-          {
-            text: 'Official Plugins',
-            link: '/plugin/official.html'
-          }
-        ]
-      },
-      {
-        text: 'Theme',
-        items: [
-          {
-            text: 'Write a theme',
-            link: '/theme/#writing-a-theme'
-          },
-          {
-            text: 'Using a theme',
-            link: '/theme/#using-a-theme'
-          },
-          {
-            text: 'Options',
-            link: '/theme/#options'
-          },
-          {
-            text: 'Default Theme Config',
-            link: '/theme/default-theme-config.html'
-          }
-        ]
-      },
-      {
-        text: 'Miscellaneous',
+        text: 'Contributing Guide',
         items: [
           {
             text: 'Design Concepts',
             link: '/miscellaneous/design-concepts.html'
           },
           {
-            text: 'Migrate from 0.x.x',
-            link: '/miscellaneous/migration-guide.html'
-          }
+            text: 'FAQ',
+            link: '/faq/',
+          },
+          {
+            text: 'Glossary',
+            link: '/miscellaneous/glossary.html'
+          },
         ]
       },
-    ],
-  },
-  {
-    text: 'FAQ',
-    link: '/faq/',
-  },
-  {
-    text: 'Changelog',
-    link: 'https://github.com/vuejs/vuepress/blob/master/CHANGELOG.md'
+      {
+        text: 'Miscellaneous',
+        items: [
+          {
+            text: 'Migrate from 0.x',
+            link: '/miscellaneous/migration-guide.html'
+          },
+          {
+            text: 'Changelog',
+            link: 'https://github.com/vuejs/vuepress/blob/master/CHANGELOG.md'
+          }
+        ]
+      }
+    ]
   }
 ]

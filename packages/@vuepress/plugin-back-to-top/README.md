@@ -1,15 +1,5 @@
 # @vuepress/plugin-back-to-top
 
-> back-to-top plugin for vuepress
+> Back-to-top plugin for vuepress
 
-## Usage
-
-```javascript
-module.exports = {
-  plugins: ['@vuepress/back-to-top'] 
-}
-```
-
-## Options
-
-No options for now.
+See [documentation](https://vuepress.vuejs.org/plugin/official/plugin-back-to-top.html).

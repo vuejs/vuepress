@@ -1,6 +1,6 @@
 import { Md, getFragment } from './util'
 import hoist from '../lib/hoist.js'
-import { dataReturnable } from '../lib/index.js'
+import { dataReturnable } from '../index.js'
 
 const md = Md().set({ html: true })
 const mdH = Md().set({ html: true }).use(hoist)

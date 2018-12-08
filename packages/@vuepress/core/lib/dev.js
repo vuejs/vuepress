@@ -19,12 +19,13 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
   const { applyUserWebpackConfig } = require('./util/index')
   const { frontmatterEmitter } = require('@vuepress/markdown-loader')
 
-  logger.wait('\nExtracting site metadata...')
-  const options = await prepare(sourceDir, cliOptions, false /* isProd */)
+  logger.wait('Extracting site metadata...')
+  const ctx = await prepare(sourceDir, cliOptions, false /* isProd */)
 
   // setup watchers to update options and dynamically generated files
-  const update = () => {
-    options.pluginAPI.options.updated.syncApply()
+  const update = (reason) => {
+    logger.debug(`Re-prepare due to ${chalk.cyan(reason)}`)
+    ctx.pluginAPI.options.updated.syncApply()
     prepare(sourceDir, cliOptions, false /* isProd */).catch(err => {
       console.error(logger.error(chalk.red(err.stack), false))
     })
@@ -39,10 +40,10 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
     ignored: ['.vuepress/**/*.md', 'node_modules'],
     ignoreInitial: true
   })
-  pagesWatcher.on('add', update)
-  pagesWatcher.on('unlink', update)
-  pagesWatcher.on('addDir', update)
-  pagesWatcher.on('unlinkDir', update)
+  pagesWatcher.on('add', () => update('add page'))
+  pagesWatcher.on('unlink', () => update('unlink page'))
+  pagesWatcher.on('addDir', () => update('addDir'))
+  pagesWatcher.on('unlinkDir', () => update('unlinkDir'))
 
   // watch config file
   const configWatcher = chokidar.watch([
@@ -53,41 +54,53 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
     cwd: sourceDir,
     ignoreInitial: true
   })
-  configWatcher.on('change', update)
+  configWatcher.on('change', () => update('config change'))
 
   // also listen for frontmatter changes from markdown files
-  frontmatterEmitter.on('update', update)
+  frontmatterEmitter.on('update', () => update('frontmatter or headers change'))
 
   // resolve webpack config
-  let config = createClientConfig(options)
+  let config = createClientConfig(ctx)
 
   config
     .plugin('html')
     // using a fork of html-webpack-plugin to avoid it requiring webpack
     // internals from an incompatible version.
     .use(require('vuepress-html-webpack-plugin'), [{
-      template: options.devTemplate
+      template: ctx.devTemplate
     }])
 
   config
     .plugin('site-data')
     .use(HeadPlugin, [{
-      tags: options.siteConfig.head || []
+      tags: ctx.siteConfig.head || []
     }])
 
-  const port = await resolvePort(cliOptions.port || options.siteConfig.port)
-  const { host, displayHost } = await resolveHost(cliOptions.host || options.siteConfig.host)
+  const port = await resolvePort(cliOptions.port || ctx.siteConfig.port)
+  const { host, displayHost } = await resolveHost(cliOptions.host || ctx.siteConfig.host)
+
+  // debug in a running dev process.
+  process.stdin &&
+  process.stdin.on('data', chunk => {
+    const parsed = chunk.toString('utf-8').trim()
+    if (parsed === '*') {
+      console.log(Object.keys(ctx))
+    }
+    if (ctx[parsed]) {
+      console.log(ctx[parsed])
+    }
+  })
 
   config
-  .plugin('vuepress-log')
-  .use(DevLogPlugin, [{
-    port,
-    displayHost,
-    publicPath: options.base
-  }])
+    .plugin('vuepress-log')
+    .use(DevLogPlugin, [{
+      port,
+      displayHost,
+      publicPath: ctx.base
+    }])
 
   config = config.toConfig()
-  const userConfig = options.siteConfig.configureWebpack
+  const userConfig = ctx.siteConfig.configureWebpack
   if (userConfig) {
     config = applyUserWebpackConfig(userConfig, config, false /* isServer */)
   }
@@ -110,8 +123,7 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
     port,
     add: app => {
       // apply plugin options to extend dev server.
-      const { pluginAPI } = options
-      pluginAPI.options.enhanceDevServer.syncApply(app)
+      ctx.pluginAPI.options.enhanceDevServer.syncApply(app)
 
       const userPublic = path.resolve(sourceDir, '.vuepress/public')
 
@@ -120,7 +132,7 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
 
       // respect base when serving static files...
       if (fs.existsSync(userPublic)) {
-        app.use(mount(options.base, serveStatic(userPublic)))
+        app.use(mount(ctx.base, serveStatic(userPublic)))
       }
 
       app.use(convert(history({

@@ -29,14 +29,7 @@
       />
     </Sidebar>
 
-    <div
-      class="custom-layout"
-      v-if="$page.frontmatter.layout"
-    >
-      <component :is="$page.frontmatter.layout"/>
-    </div>
-
-    <Home v-else-if="$page.frontmatter.home"/>
+    <Home v-if="$page.frontmatter.home"/>
 
     <Page
       v-else
@@ -93,7 +86,6 @@ export default {
     shouldShowSidebar () {
       const { frontmatter } = this.$page
       return (
-        !frontmatter.layout &&
         !frontmatter.home &&
         frontmatter.sidebar !== false &&
         this.sidebarItems.length
@@ -123,8 +115,6 @@ export default {
   },
 
   mounted () {
-    window.addEventListener('scroll', this.onScroll)
-
     // configure progress bar
     nprogress.configure({ showSpinner: false })
 

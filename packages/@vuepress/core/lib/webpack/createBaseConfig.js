@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-const { fs, path, logger, chalk } = require('@vuepress/shared-utils')
+const { fs, path, logger, env } = require('@vuepress/shared-utils')
 
 /**
  * Expose createBaseConfig method.
@@ -18,8 +18,9 @@ module.exports = function createBaseConfig ({
   themePath,
   markdown,
   tempPath,
+  cacheDirectory,
+  cacheIdentifier,
   cliOptions: {
-    debug,
     cache
   },
   pluginAPI
@@ -34,17 +35,19 @@ module.exports = function createBaseConfig ({
   const config = new Config()
 
   config
-    .mode(isProd && !debug ? 'production' : 'development')
+    .mode(isProd && !env.isDebug ? 'production' : 'development')
     .output
       .path(outDir)
       .filename(isProd ? 'assets/js/[name].[chunkhash:8].js' : 'assets/js/[name].js')
       .publicPath(isProd ? publicPath : '/')
 
-  if (debug) {
+  if (env.isDebug) {
     config.devtool('source-map')
   } else if (!isProd) {
     config.devtool('cheap-module-eval-source-map')
   }
+
+  const modulePaths = getModulePaths()
 
   config.resolve
     .set('symlinks', true)
@@ -60,45 +63,22 @@ module.exports = function createBaseConfig ({
       .merge(['.js', '.jsx', '.vue', '.json', '.styl'])
       .end()
     .modules
-      // prioritize our own
-      .add(path.resolve(__dirname, '../../node_modules'))
-      .add(path.resolve(__dirname, '../../../'))
-      .add('node_modules')
+      .merge(modulePaths)
 
   config.resolveLoader
     .set('symlinks', true)
     .modules
-      // prioritize our own
-      .add(path.resolve(__dirname, '../../node_modules'))
-      .add(path.resolve(__dirname, '../../../'))
-      .add('node_modules')
+      .merge(modulePaths)
 
   config.module
     .noParse(/^(vue|vue-router|vuex|vuex-router-sync)$/)
 
-  let cacheDirectory
-  if (cache && typeof cache === 'string') {
-    cacheDirectory = path.resolve(cache)
-  } else {
-    cacheDirectory = path.resolve(__dirname, '../../node_modules/.cache/vuepress')
-  }
-  logger.debug('\nCache directory: ' + chalk.gray(cacheDirectory))
-  if (!cache) {
-    logger.tip('\nClean cache...\n')
+  if (cache === false) {
+    logger.tip('Clean cache...\n')
     fs.emptyDirSync(cacheDirectory)
   }
-  const cacheIdentifier = JSON.stringify({
-    vuepress: require('../../package.json').version,
-    'cache-loader': require('cache-loader').version,
-    'vue-loader': require('vue-loader').version,
-    isProd,
-    isServer,
-    config: (
-      (siteConfig.markdown ? JSON.stringify(siteConfig.markdown) : '') +
-      (siteConfig.chainWebpack || '').toString() +
-      (siteConfig.configureWebpack || '').toString()
-    )
-  })
+
+  cacheIdentifier += `isServer:${isServer}`
 
   function applyVuePipeline (rule) {
     rule
@@ -289,7 +269,9 @@ module.exports = function createBaseConfig ({
         styles: {
           name: 'styles',
           // necessary to ensure async chunks are also extracted
-          test: m => /css-extract/.test(m.type),
+          test: m => {
+            return /css\/mini-extract/.test(m.type)
+          },
           chunks: 'all',
           enforce: true
         }
@@ -303,7 +285,8 @@ module.exports = function createBaseConfig ({
     .use(require('webpack/lib/DefinePlugin'), [{
       VUEPRESS_VERSION: JSON.stringify(require('../../package.json').version),
       VUEPRESS_TEMP_PATH: JSON.stringify(tempPath),
-      LAST_COMMIT_HASH: JSON.stringify(getLastCommitHash())
+      LAST_COMMIT_HASH: JSON.stringify(getLastCommitHash()),
+      CONTENT_LOADING: JSON.stringify(siteConfig.contentLoading || false)
     }])
 
   pluginAPI.options.define.apply(config)
@@ -319,4 +302,8 @@ function getLastCommitHash () {
     hash = spawn.sync('git', ['log', '-1', '--format=%h']).stdout.toString('utf-8').trim()
   } catch (error) {}
   return hash
+}
+
+function getModulePaths () {
+  return [path.resolve(process.cwd(), 'node_modules')].concat(module.paths)
 }

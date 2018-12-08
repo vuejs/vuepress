@@ -5,36 +5,38 @@
  */
 
 const Config = require('markdown-it-chain')
-const highlight = require('./highlight')
-const highlightLinesPlugin = require('./highlightLines')
-const preWrapperPlugin = require('./preWrapper')
-const lineNumbersPlugin = require('./lineNumbers')
-const componentPlugin = require('./component')
-const hoistScriptStylePlugin = require('./hoist')
-const convertRouterLinkPlugin = require('./link')
-const containersPlugin = require('./containers')
-const snippetPlugin = require('./snippet')
+const highlight = require('./lib/highlight')
+const { PLUGINS, REQUIRED_PLUGINS } = require('./lib/constant')
+const highlightLinesPlugin = require('./lib/highlightLines')
+const preWrapperPlugin = require('./lib/preWrapper')
+const lineNumbersPlugin = require('./lib/lineNumbers')
+const componentPlugin = require('./lib/component')
+const hoistScriptStylePlugin = require('./lib/hoist')
+const convertRouterLinkPlugin = require('./lib/link')
+const containersPlugin = require('./lib/containers')
+const markdownSlotsContainersPlugin = require('./lib/markdownSlotsContainers')
+const snippetPlugin = require('./lib/snippet')
 const emojiPlugin = require('markdown-it-emoji')
 const anchorPlugin = require('markdown-it-anchor')
 const tocPlugin = require('markdown-it-table-of-contents')
-const _slugify = require('./slugify')
-const { parseHeaders } = require('@vuepress/shared-utils')
+const { parseHeaders, slugify: _slugify, logger, chalk } = require('@vuepress/shared-utils')
 
 /**
  * Create markdown by config.
  */
 
-module.exports = ({
-  slugify,
-  externalLinks,
-  anchor,
-  toc,
-  lineNumbers,
-  beforeInstantiate,
-  afterInstantiate
-} = {}) => {
+module.exports = (markdown = {}) => {
+  const {
+    externalLinks,
+    anchor,
+    toc,
+    lineNumbers,
+    beforeInstantiate,
+    afterInstantiate
+  } = markdown
+
   // allow user config slugify
-  slugify = slugify || _slugify
+  const slugify = markdown.slugify || _slugify
 
   // using chainedAPI
   const config = new Config()
@@ -45,42 +47,46 @@ module.exports = ({
       .highlight(highlight)
       .end()
 
-    .plugin('component')
+    .plugin(PLUGINS.COMPONENT)
       .use(componentPlugin)
       .end()
 
-    .plugin('highlight-lines')
+    .plugin(PLUGINS.HIGHLIGHT_LINES)
       .use(highlightLinesPlugin)
       .end()
 
-    .plugin('pre-wrapper')
+    .plugin(PLUGINS.PRE_WRAPPER)
       .use(preWrapperPlugin)
       .end()
 
-    .plugin('snippet')
+    .plugin(PLUGINS.SNIPPET)
       .use(snippetPlugin)
       .end()
 
-    .plugin('convert-router-link')
+    .plugin(PLUGINS.CONVERT_ROUTER_LINK)
       .use(convertRouterLinkPlugin, [Object.assign({
         target: '_blank',
         rel: 'noopener noreferrer'
       }, externalLinks)])
       .end()
 
-    .plugin('hoist-script-style')
+    .plugin(PLUGINS.HOIST_SCRIPT_STYLE)
       .use(hoistScriptStylePlugin)
       .end()
 
-    .plugin('containers')
+    .plugin(PLUGINS.CONTAINERS)
       .use(containersPlugin)
       .end()
 
-    .plugin('emoji')
+    .plugin(PLUGINS.MARKDOWN_SLOTS_CONTAINERS)
+      .use(markdownSlotsContainersPlugin)
+      .end()
+
+    .plugin(PLUGINS.EMOJI)
       .use(emojiPlugin)
       .end()
 
-    .plugin('anchor')
+    .plugin(PLUGINS.ANCHOR)
       .use(anchorPlugin, [Object.assign({
         slugify,
         permalink: true,
@@ -89,7 +95,7 @@ module.exports = ({
       }, anchor)])
       .end()
 
-    .plugin('toc')
+    .plugin(PLUGINS.TOC)
       .use(tocPlugin, [Object.assign({
         slugify,
         includeLevel: [2, 3],
@@ -99,13 +105,13 @@ module.exports = ({
 
   if (lineNumbers) {
     config
-      .plugin('line-numbers')
+      .plugin(PLUGINS.LINE_NUMBERS)
         .use(lineNumbersPlugin)
   }
 
   beforeInstantiate && beforeInstantiate(config)
 
-  const md = config.toMd()
+  const md = config.toMd(require('markdown-it'), markdown)
 
   afterInstantiate && afterInstantiate(md)
 
@@ -139,3 +145,25 @@ function toDataBlockString (ob) {
   }
   return `<data>${JSON.stringify(ob)}</data>`
 }
+
+function isRequiredPlugin (plugin) {
+  return REQUIRED_PLUGINS.includes(plugin)
+}
+
+function removePlugin (config, plugin) {
+  logger.debug(`Built-in markdown-it plugin ${chalk.green(plugin)} was removed.`)
+  config.plugins.delete(plugin)
+}
+
+function removeAllBuiltInPlugins (config) {
+  Object.keys(PLUGINS).forEach(key => {
+    if (!isRequiredPlugin(PLUGINS[key])) {
+      removePlugin(config, PLUGINS[key])
+    }
+  })
+}
+
+module.exports.isRequiredPlugin = isRequiredPlugin
+module.exports.removePlugin = removePlugin
+module.exports.removeAllBuiltInPlugins = removeAllBuiltInPlugins
+module.exports.PLUGINS = PLUGINS

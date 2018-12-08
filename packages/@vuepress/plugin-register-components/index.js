@@ -1,4 +1,4 @@
-const { fs, path, globby } = require('@vuepress/shared-utils')
+const { fs, path, globby, datatypes: { isString }} = require('@vuepress/shared-utils')
 
 function fileToComponentName (file) {
   return file
@@ -40,6 +40,9 @@ module.exports = (options, context) => ({
 
     // 1. Register components in specified directories
     for (const baseDir of baseDirs) {
+      if (!isString(baseDir)) {
+        continue
+      }
       const files = await resolveComponents(baseDir) || []
       code += files.map(file => genImport(baseDir, file)).join('\n') + '\n'
     }

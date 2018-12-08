@@ -3,36 +3,33 @@
 module.exports = async function build (sourceDir, cliOptions = {}) {
   process.env.NODE_ENV = 'production'
 
-  const { path } = require('@vuepress/shared-utils')
   const webpack = require('webpack')
   const readline = require('readline')
   const escape = require('escape-html')
 
-  const { chalk, fs, logger } = require('@vuepress/shared-utils')
+  const { chalk, fs, path, logger, env, performance } = require('@vuepress/shared-utils')
   const prepare = require('./prepare/index')
   const createClientConfig = require('./webpack/createClientConfig')
   const createServerConfig = require('./webpack/createServerConfig')
   const { createBundleRenderer } = require('vue-server-renderer')
   const { normalizeHeadTag, applyUserWebpackConfig } = require('./util/index')
 
-  logger.wait('\nExtracting site metadata...')
-  const options = await prepare(sourceDir, cliOptions, true /* isProd */)
-  if (cliOptions.outDir) {
-    options.outDir = cliOptions.outDir
-  }
+  logger.wait('Extracting site metadata...')
+  const ctx = await prepare(sourceDir, cliOptions, true /* isProd */)
 
-  const { outDir } = options
-  if (process.cwd() === outDir) {
+  const { outDir, cwd } = ctx
+  if (cwd === outDir) {
     return console.error(logger.error(chalk.red('Unexpected option: outDir cannot be set to the current working directory.\n'), false))
   }
-  await fs.remove(outDir)
-  logger.debug('Dist directory: ' + chalk.gray(path.resolve(process.cwd(), outDir)))
 
-  let clientConfig = createClientConfig(options, cliOptions).toConfig()
-  let serverConfig = createServerConfig(options, cliOptions).toConfig()
+  await fs.emptyDir(outDir)
+  logger.debug('Dist directory: ' + chalk.gray(outDir))
+
+  let clientConfig = createClientConfig(ctx, cliOptions).toConfig()
+  let serverConfig = createServerConfig(ctx, cliOptions).toConfig()
 
   // apply user config...
-  const userConfig = options.siteConfig.configureWebpack
+  const userConfig = ctx.siteConfig.configureWebpack
   if (userConfig) {
     clientConfig = applyUserWebpackConfig(userConfig, clientConfig, false)
     serverConfig = applyUserWebpackConfig(userConfig, serverConfig, true)
@@ -57,12 +54,12 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
     clientManifest,
     runInNewContext: false,
     inject: false,
-    shouldPrefetch: options.siteConfig.shouldPrefetch || (() => true),
-    template: await fs.readFile(options.ssrTemplate, 'utf-8')
+    shouldPrefetch: ctx.siteConfig.shouldPrefetch || (() => true),
+    template: await fs.readFile(ctx.ssrTemplate, 'utf-8')
   })
 
   // pre-render head tags from user config
-  const userHeadTags = (options.siteConfig.head || [])
+  const userHeadTags = (ctx.siteConfig.head || [])
     .map(renderHeadTag)
     .join('\n  ')
 
@@ -73,6 +70,7 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
 
   // render pages
   logger.wait('Rendering static HTML...')
+
   const pagePaths = []
   for (const page of options.pages) {
     pagePaths.push(await renderPage(page))
@@ -84,8 +82,11 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
   await options.pluginAPI.options.generated.asyncApply(pagePaths)
 
   // DONE.
-  const relativeDir = path.relative(process.cwd(), outDir)
-  logger.success(`\n${chalk.green('Success!')} Generated static files in ${chalk.cyan(relativeDir)}.\n`)
+  const relativeDir = path.relative(cwd, outDir)
+  logger.success(`Generated static files in ${chalk.cyan(relativeDir)}.`)
+  const { duration } = performance.stop()
+  logger.developer(`It took a total of ${chalk.cyan(`${duration}ms`)} to run the ${chalk.cyan('vuepress build')}.`)
+  console.log()
 
   // --- helpers ---
 
@@ -102,7 +103,7 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
           reject(new Error(`Failed to compile with errors.`))
           return
         }
-        if (cliOptions.debug && stats.hasWarnings()) {
+        if (env.isDebug && stats.hasWarnings()) {
           stats.toJson().warnings.forEach(warning => {
             console.warn(warning)
           })

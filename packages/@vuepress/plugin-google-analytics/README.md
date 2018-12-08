@@ -1,20 +1,5 @@
 # @vuepress/plugin-google-analytics
 
-> google-analytics plugin for vuepress
+> Google analytics plugin for vuepress
 
-## Usage
-
-```javascript
-module.exports = {
-  plugins: ['@vuepress/google-analytics'] 
-}
-```
-
-## Options
-
-### ga
-
-- Type: `string`
-- Default: `undefined`
-
-Provide the Google Analytics ID to enable integration.
+See [documentation](https://vuepress.vuejs.org/plugin/official/plugin-google-analytics.html).

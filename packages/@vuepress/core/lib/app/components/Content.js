@@ -1,32 +1,26 @@
 import Vue from 'vue'
-import components from '@internal/page-components'
 
 export default {
   functional: true,
-
   props: {
-    custom: {
-      type: Boolean,
-      default: true
-    },
     pageKey: String,
-    slot: String
+    slotKey: String
   },
-
   render (h, { parent, props, data }) {
     const pageKey = props.pageKey || parent.$page.key
-
-    if (components[pageKey]) {
+    if (Vue.$vuepress.isPageExists(pageKey)) {
       // In SSR, if a component is not registered with the component option
       // vue-server-renderer will not be able to resovle it.
       if (!parent.$ssrContext) {
-        Vue.component(pageKey, components[pageKey])
+        Vue.$vuepress.registerPageAsyncComponent(pageKey)
       }
 
       return h(pageKey, {
-        class: [props.custom ? 'custom' : '', data.class, data.staticClass],
+        class: [data.class, data.staticClass],
         style: data.style,
-        slot: props.slot || 'default'
+        props: {
+          slotKey: props.slotKey || 'default'
+        }
       })
     }
     return h('')

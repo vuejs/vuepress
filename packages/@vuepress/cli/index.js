@@ -1,4 +1,4 @@
-const { chalk } = require('@vuepress/shared-utils')
+const { chalk, performance } = require('@vuepress/shared-utils')
 const semver = require('semver')
 
 try {
@@ -23,96 +23,98 @@ if (!semver.satisfies(process.version, requiredVersion)) {
   process.exit(1)
 }
 
-const program = require('commander')
+const cli = require('cac')()
 
-exports.program = program
+exports.cli = cli
 exports.bootstrap = function ({
   plugins,
   theme
 } = {}) {
-  const { path } = require('@vuepress/shared-utils')
+  const { path, logger, env } = require('@vuepress/shared-utils')
   const { dev, build, eject } = require('@vuepress/core')
 
-  program
-    .version(pkg.version)
-    .usage('<command> [options]')
+  performance.start()
 
-  program
-    .command('dev [targetDir]')
-    .description('start development server')
+  cli
+    .version(pkg.version)
+    .help()
+
+  cli
+    .command('dev [targetDir]', 'start development server')
+    .allowUnknownOptions()
     .option('-p, --port <port>', 'use specified port (default: 8080)')
-    .option('-h, --host <host>', 'use specified host (default: 0.0.0.0)')
     .option('-t, --temp <temp>', 'set the directory of the temporary file')
-    .option('-c, --cache <cache>', 'set the directory of cache')
+    .option('-c, --cache [cache]', 'set the directory of cache')
+    .option('--host <host>', 'use specified host (default: 0.0.0.0)')
     .option('--no-cache', 'clean the cache before build')
     .option('--debug', 'start development server in debug mode')
-    .action((dir = '.', { host, port, debug, temp, cache }) => {
-      wrapCommand(dev)(path.resolve(dir), { host, port, debug, temp, cache, plugins, theme })
+    .option('--silent', 'start development server in silent mode')
+    .action((sourceDir = '.', options) => {
+      const {
+        host,
+        port,
+        debug,
+        temp,
+        cache,
+        silent
+      } = options
+      logger.setOptions({ logLevel: silent ? 1 : debug ? 4 : 3 })
+      logger.debug('cli_options', options)
+      env.setOptions({ isDebug: debug, isTest: process.env.NODE_ENV === 'test' })
+
+      wrapCommand(dev)(path.resolve(sourceDir), {
+        host,
+        port,
+        temp,
+        cache,
+        plugins,
+        theme
+      })
     })
 
-  program
-    .command('build [targetDir]')
-    .description('build dir as static site')
-    .option('-d, --dest <outDir>', 'specify build output dir (default: .vuepress/dist)')
+  cli
+    .command('build [targetDir]', 'build dir as static site')
+    .allowUnknownOptions()
+    .option('-d, --dest <dest>', 'specify build output dir (default: .vuepress/dist)')
     .option('-t, --temp <temp>', 'set the directory of the temporary file')
-    .option('-c, --cache <cache>', 'set the directory of cache')
+    .option('-c, --cache [cache]', 'set the directory of cache')
     .option('--no-cache', 'clean the cache before build')
     .option('--debug', 'build in development mode for debugging')
-    .action((dir = '.', { debug, dest, temp, cache }) => {
-      const outDir = dest ? path.resolve(dest) : null
-      wrapCommand(build)(path.resolve(dir), { debug, outDir, plugins, theme, temp, cache })
+    .option('--silent', 'build static site in silent mode')
+    .action((sourceDir = '.', options) => {
+      const {
+        debug,
+        dest,
+        temp,
+        cache,
+        silent
+      } = options
+      logger.setOptions({ logLevel: silent ? 1 : debug ? 4 : 3 })
+      logger.debug('cli_options', options)
+      env.setOptions({ isDebug: debug, isTest: process.env.NODE_ENV === 'test' })
+
+      wrapCommand(build)(path.resolve(sourceDir), {
+        debug,
+        dest,
+        plugins,
+        theme,
+        temp,
+        cache,
+        silent
+      })
     })
 
-  program
-    .command('eject [targetDir]')
-    .description('copy the default theme into .vuepress/theme for customization.')
+  cli
+    .command('eject [targetDir]', 'copy the default theme into .vuepress/theme for customization.')
+    .option('--debug', 'eject in debug mode')
     .action((dir = '.') => {
       wrapCommand(eject)(path.resolve(dir))
     })
 
   // output help information on unknown commands
-  program
-    .arguments('<command>')
-    .action((cmd) => {
-      program.outputHelp()
-      console.log(`  ` + chalk.red(`Unknown command ${chalk.yellow(cmd)}.`))
-      console.log()
-    })
-
-  // add some useful info on help
-  program.on('--help', () => {
+  cli.on('command:*', () => {
+    console.error('Unknown command: %s', cli.args.join(' '))
     console.log()
-    console.log(`  Run ${chalk.cyan(`vuepress <command> --help`)} for detailed usage of given command.`)
-    console.log()
-  })
-
-  program.commands.forEach(c => c.on('--help', () => console.log()))
-
-  // enhance common error messages
-  const enhanceErrorMessages = (methodName, log) => {
-    program.Command.prototype[methodName] = function (...args) {
-      if (methodName === 'unknownOption' && this._allowUnknownOption) {
-        return
-      }
-      this.outputHelp()
-      console.log(`  ` + chalk.red(log(...args)))
-      console.log()
-      process.exit(1)
-    }
-  }
-
-  enhanceErrorMessages('missingArgument', argName => {
-    return `Missing required argument ${chalk.yellow(`<${argName}>`)}.`
-  })
-
-  enhanceErrorMessages('unknownOption', optionName => {
-    return `Unknown option ${chalk.yellow(optionName)}.`
-  })
-
-  enhanceErrorMessages('optionMissingArgument', (option, flag) => {
-    return `Missing required argument for option ${chalk.yellow(option.flags)}` + (
-      flag ? `, got ${chalk.yellow(flag)}` : ``
-    )
   })
 
   function wrapCommand (fn) {
@@ -124,8 +126,9 @@ exports.bootstrap = function ({
     }
   }
 
-  program.parse(process.argv)
+  cli.parse(process.argv)
   if (!process.argv.slice(2).length) {
-    program.outputHelp()
+    cli.outputHelp()
   }
 }
+

@@ -6,8 +6,7 @@
 
 module.exports = function createServerConfig (ctx) {
   const fs = require('fs')
-  const { path } = require('@vuepress/shared-utils')
-  const WebpackBar = require('webpackbar')
+  const { path, env } = require('@vuepress/shared-utils')
   const createBaseConfig = require('./createBaseConfig')
   const VueSSRServerPlugin = require('vue-server-renderer/server-plugin')
   const CopyPlugin = require('copy-webpack-plugin')
@@ -46,7 +45,8 @@ module.exports = function createServerConfig (ctx) {
       ]])
   }
 
-  if (!ctx.cliOptions.debug) {
+  if (!env.isDebug) {
+    const WebpackBar = require('webpackbar')
     config
       .plugin('bar')
       .use(WebpackBar, [{
@@ -54,10 +54,6 @@ module.exports = function createServerConfig (ctx) {
         color: 'blue',
         compiledIn: false
       }])
-  }
-
-  if (ctx.siteConfig.chainWebpack) {
-    ctx.siteConfig.chainWebpack(config, true /* isServer */)
   }
 
   ctx.pluginAPI.options.chainWebpack.syncApply(config, true /* isServer */)

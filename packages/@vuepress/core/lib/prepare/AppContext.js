@@ -7,6 +7,7 @@
 const createMarkdown = require('./createMarkdown')
 const loadConfig = require('./loadConfig')
 const loadTheme = require('./loadTheme')
+const { getCacheLoaderOptions } = require('./CacheLoader')
 const {
   fs, path, logger, chalk, globby, sort,
   datatypes: { isFunction },
@@ -22,6 +23,13 @@ const PluginAPI = require('../plugin-api/index')
  */
 
 module.exports = class AppContext {
+  static getInstance (...args) {
+    if (!AppContext._instance) {
+      AppContext._instance = new AppContext(...args)
+    }
+    return AppContext._instance
+  }
+
   /**
    * Instantiate the app context with a new API
    *
@@ -44,19 +52,33 @@ module.exports = class AppContext {
     this.writeTemp = writeTemp
 
     this.vuepressDir = path.resolve(sourceDir, '.vuepress')
+  }
+
+  /**
+   * Resolve user config and initialize.
+   *
+   * @returns {void}
+   * @api private
+   */
+
+  resolveConfigAndInitialize () {
     this.siteConfig = loadConfig(this.vuepressDir)
     if (isFunction(this.siteConfig)) {
       this.siteConfig = this.siteConfig(this)
     }
 
+    // TODO custom cwd.
+    this.cwd = process.cwd()
+
     this.base = this.siteConfig.base || '/'
     this.themeConfig = this.siteConfig.themeConfig || {}
-    this.outDir = this.siteConfig.dest
-      ? require('path').resolve(process.cwd(), this.siteConfig.dest)
-      : require('path').resolve(sourceDir, '.vuepress/dist')
 
-    this.pluginAPI = new PluginAPI(this)
+    const rawOutDir = this.cliOptions.dest || this.siteConfig.dest
+    this.outDir = rawOutDir
+      ? require('path').resolve(this.cwd, rawOutDir)
+      : require('path').resolve(this.sourceDir, '.vuepress/dist')
     this.pages = [] // Array<Page>
+    this.pluginAPI = new PluginAPI(this)
     this.ClientComputedMixinConstructor = ClientComputedMixin(this.getSiteData())
   }
 
@@ -68,6 +90,8 @@ module.exports = class AppContext {
    */
 
   async process () {
+    this.resolveConfigAndInitialize()
+    this.resolveCacheLoaderOptions()
     this.normalizeHeadTagUrls()
     await this.resolveTheme()
     this.resolveTemplates()
@@ -79,16 +103,14 @@ module.exports = class AppContext {
     this.markdown = createMarkdown(this)
 
     await this.resolvePages()
-    await Promise.all(
-      this.pluginAPI.options.additionalPages.values.map(async (options) => {
-        await this.addPage(options)
-      })
-    )
+    await this.pluginAPI.options.additionalPages.apply(this)
 
     await this.pluginAPI.options.ready.apply()
-    await this.pluginAPI.options.clientDynamicModules.apply(this)
-    await this.pluginAPI.options.globalUIComponents.apply(this)
-    await this.pluginAPI.options.enhanceAppFiles.apply(this)
+    await Promise.all([
+      this.pluginAPI.options.clientDynamicModules.apply(this),
+      this.pluginAPI.options.enhanceAppFiles.apply(this),
+      this.pluginAPI.options.globalUIComponents.apply(this)
+    ])
   }
 
   /**
@@ -119,11 +141,13 @@ module.exports = class AppContext {
       .use(require('../internal-plugins/pageComponents'))
       .use(require('../internal-plugins/transformModule'))
       .use(require('../internal-plugins/dataBlock'))
-      .use('@vuepress/last-updated', shouldUseLastUpdated)
+      .use(require('../internal-plugins/frontmatterBlock'))
+      .use('@vuepress/last-updated', !!shouldUseLastUpdated)
       .use('@vuepress/register-components', {
         componentsDir: [
           path.resolve(this.sourceDir, '.vuepress/components'),
-          path.resolve(this.themePath, 'global-components')
+          path.resolve(this.themePath, 'global-components'),
+          this.parentThemePath && path.resolve(this.parentThemePath, 'global-components')
         ]
       })
   }
@@ -135,8 +159,11 @@ module.exports = class AppContext {
    */
 
   applyUserPlugins () {
+    this.pluginAPI.useByPluginsConfig(this.cliOptions.plugins)
+    if (this.parentThemePath) {
+      this.pluginAPI.use(this.parentThemeEntryFile)
+    }
     this.pluginAPI
-      .useByPluginsConfig(this.cliOptions.plugins)
       .use(this.themeEntryFile)
       .use(Object.assign({}, this.siteConfig, { name: '@vuepress/internal-site-config' }))
   }
@@ -166,6 +193,14 @@ module.exports = class AppContext {
   }
 
   /**
+   * Resolve options of cache loader.
+   */
+
+  resolveCacheLoaderOptions () {
+    Object.assign(this, (getCacheLoaderOptions(this.siteConfig, this.cliOptions, this.cwd, this.isProd)))
+  }
+
+  /**
    * Make template configurable
    *
    * Resolving Priority (devTemplate as example):
@@ -182,10 +217,14 @@ module.exports = class AppContext {
     const { siteSsrTemplate, siteDevTemplate } = this.siteConfig
 
     const templateDir = path.resolve(this.vuepressDir, 'templates')
-    const siteSsrTemplate2 = path.resolve(templateDir, 'dev.html')
-    const siteDevTemplate2 = path.resolve(templateDir, 'ssr.html')
+    const siteSsrTemplate2 = path.resolve(templateDir, 'ssr.html')
+    const siteDevTemplate2 = path.resolve(templateDir, 'dev.html')
 
-    const { themeSsrTemplate, themeDevTemplate } = this.themeEntryFile
+    const themeSsrTemplate = path.resolve(this.themePath, 'templates/ssr.html')
+    const themeDevTemplate = path.resolve(this.themePath, 'templates/dev.html')
+
+    const parentThemeSsrTemplate = path.resolve(this.themePath, 'templates/ssr.html')
+    const parentThemeDevTemplate = path.resolve(this.themePath, 'templates/dev.html')
 
     const defaultSsrTemplate = path.resolve(__dirname, '../app/index.ssr.html')
     const defaultDevTemplate = path.resolve(__dirname, '../app/index.dev.html')
@@ -194,6 +233,7 @@ module.exports = class AppContext {
       siteSsrTemplate,
       siteSsrTemplate2,
       themeSsrTemplate,
+      parentThemeSsrTemplate,
       defaultSsrTemplate
     ])
 
@@ -201,11 +241,12 @@ module.exports = class AppContext {
       siteDevTemplate,
       siteDevTemplate2,
       themeDevTemplate,
+      parentThemeDevTemplate,
       defaultDevTemplate
     ])
 
-    logger.debug('\nSSR Template File: ' + chalk.gray(ssrTemplate))
-    logger.debug('\nDEV Template File: ' + chalk.gray(devTemplate))
+    logger.debug('SSR Template File: ' + chalk.gray(ssrTemplate))
+    logger.debug('DEV Template File: ' + chalk.gray(devTemplate))
     this.devTemplate = devTemplate
     this.ssrTemplate = ssrTemplate
   }
@@ -219,7 +260,7 @@ module.exports = class AppContext {
 
   async resolvePages () {
     // resolve pageFiles
-    const patterns = ['**/*.md', '!.vuepress', '!node_modules']
+    const patterns = ['**/*.md', '**/*.vue', '!.vuepress', '!node_modules']
     if (this.siteConfig.dest) {
       // #654 exclude dest folder when dest dir was set in
       // sourceDir but not in '.vuepress'
@@ -321,7 +362,7 @@ function createTemp (tempPath) {
     fs.emptyDirSync(tempPath)
   }
 
-  logger.tip(`\nTemp directory: ${chalk.gray(tempPath)}`)
+  logger.debug(`Temp directory: ${chalk.gray(tempPath)}`)
   const tempCache = new Map()
 
   async function writeTemp (file, content) {

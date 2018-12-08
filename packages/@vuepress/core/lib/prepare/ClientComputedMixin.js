@@ -43,6 +43,10 @@ module.exports = siteData => {
       return this.$site.themeConfig
     }
 
+    get $frontmatter () {
+      return this.$page.frontmatter
+    }
+
     get $localeConfig () {
       const { locales = {}} = this.$site
       let targetLang
@@ -63,6 +67,11 @@ module.exports = siteData => {
 
     get $title () {
       const page = this.$page
+      const { metaTitle } = this.$page.frontmatter
+      if (typeof metaTitle === 'string') {
+        return metaTitle
+      }
+
       const siteTitle = this.$siteTitle
       const selfTitle = page.frontmatter.home ? null : (
         page.frontmatter.title || // explicit title

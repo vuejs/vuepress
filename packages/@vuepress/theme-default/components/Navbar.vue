@@ -22,9 +22,9 @@
 
     <div
       class="links"
-      :style="{
+      :style="linksWrapMaxWidth ? {
         'max-width': linksWrapMaxWidth + 'px'
-      }"
+      } : {}"
     >
       <AlgoliaSearchBox
         v-if="isAlgoliaSearch"
@@ -117,8 +117,6 @@ $navbar-horizontal-padding = 1.5rem
     .search-box
       flex: 0 0 auto
       vertical-align top
-    .nav-links
-      flex 1
 
 @media (max-width: $MQMobile)
   .navbar

@@ -1,7 +1,9 @@
 const path = require('path')
+const container = require('markdown-it-container')
 
-module.exports = {
+module.exports = ctx => ({
   dest: '../../vuepress',
+  contentLoading: true,
   locales: {
     '/': {
       lang: 'en-US',
@@ -25,15 +27,16 @@ module.exports = {
     ['meta', { name: 'msapplication-TileImage', content: '/icons/msapplication-icon-144x144.png' }],
     ['meta', { name: 'msapplication-TileColor', content: '#000000' }]
   ],
+  theme: '@vuepress/vue',
   themeConfig: {
     repo: 'vuejs/vuepress',
     editLinks: true,
-    docsDir: 'docs',
+    docsDir: 'packages/docs/docs',
     // #697 Provided by the official algolia team.
-    // algolia: {
-    //   apiKey: '3a539aab83105f01761a137c61004d85',
-    //   indexName: 'vuepress'
-    // },
+    algolia: ctx.isProd ? ({
+      apiKey: '3a539aab83105f01761a137c61004d85',
+      indexName: 'vuepress'
+    }) : null,
     locales: {
       '/': {
         label: 'English',
@@ -42,7 +45,9 @@ module.exports = {
         lastUpdated: 'Last Updated',
         nav: require('./nav/en'),
         sidebar: {
-          '/guide/': genSidebarConfig('Guide')
+          '/guide/': getGuideSidebar('Guide', 'Advanced'),
+          '/plugin/': getPluginSidebar('Plugin', 'Introduction', 'Official Plugins'),
+          '/theme/': getThemeSidebar('Theme', 'Introduction'),
         }
       },
       '/zh/': {
@@ -52,42 +57,112 @@ module.exports = {
         lastUpdated: '上次更新',
         nav: require('./nav/zh'),
         sidebar: {
-          '/zh/guide/': genSidebarConfig('指南')
+          '/zh/guide/': getGuideSidebar('指南', '深入'),
+          '/zh/plugin/': getPluginSidebar('插件', '介绍', '官方插件'),
+          '/zh/theme/': getThemeSidebar('主题', '介绍')
         }
       }
     }
   },
-  plugins: {
-    '@vuepress/i18n-ui': true,
-    '@vuepress/back-to-top': true,
-    '@vuepress/pwa': {
+  plugins: [
+    ['@vuepress/i18n-ui',!ctx.isProd],
+    ['@vuepress/back-to-top', true],
+    ['@vuepress/pwa', {
       serviceWorker: true,
       updatePopup: true
-    },
-    '@vuepress/plugin-medium-zoom': true,
-    '@vuepress/notification': true,
-    'flowchart': true
+    }],
+    ['@vuepress/medium-zoom', true],
+    ['@vuepress/notification', true],
+    ['@vuepress/google-analytics', {
+      ga: 'UA-128189152-1'
+    }],
+  ],
+  clientRootMixin: path.resolve(__dirname, 'mixin.js'),
+  extendMarkdown (md) {
+    md.use(container, 'upgrade', {
+      render: (tokens, idx) => tokens[idx].nesting === 1
+        ? `<UpgradePath title="${tokens[idx].info.trim().slice('upgrade'.length).trim()}">`
+        : '</UpgradePath>'
+    })
   },
-  clientRootMixin: path.resolve(__dirname, 'mixin.js')
-}
+})
 
-function genSidebarConfig (title) {
+function getGuideSidebar (groupA, groupB) {
   return [
     {
-      title,
+      title: groupA,
       collapsable: false,
       children: [
         '',
         'getting-started',
         'directory-structure',
-        'permalinks',
         'basic-config',
         'assets',
         'markdown',
         'using-vue',
         'i18n',
-        'deploy'
+        'deploy',
+      ]
+    },
+    {
+      title: groupB,
+      collapsable: false,
+      children: [
+        'frontmatter',
+        'permalinks',
+        'markdown-slot',
+        'global-computed'
       ]
     }
+  ]
+}
+
+function getPluginSidebar (pluginTitle, pluginIntro, officialPluginTitle) {
+  return [
+    {
+      title: pluginTitle,
+      collapsable: false,
+      children: [
+        ['', pluginIntro],
+        'using-a-plugin',
+        'writing-a-plugin',
+        'life-cycle',
+        'option-api',
+        'context-api'
+      ]
+    },
+    {
+      title: officialPluginTitle,
+      collapsable: false,
+      children: [
+        'official/plugin-search',
+        'official/plugin-active-header-links',
+        'official/plugin-pwa',
+        'official/plugin-blog',
+        'official/plugin-pagination',
+        'official/plugin-google-analytics',
+        'official/plugin-i18n-ui',
+        'official/plugin-last-updated',
+        'official/plugin-medium-zoom',
+        'official/plugin-back-to-top',
+        'official/plugin-register-components',
+      ]
+    }
+  ]
+}
+
+function getThemeSidebar (groupA, introductionA) {
+  return [
+    {
+      title: groupA,
+      collapsable: false,
+      children: [
+        ['', introductionA],
+        'using-a-theme',
+        'writing-a-theme',
+        'option-api',
+        'default-theme-config'
+      ]
+    },
   ]
 }

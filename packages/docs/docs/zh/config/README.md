@@ -81,26 +81,6 @@ module.exports = {
 请留意 [GDPR (2018年欧盟数据保护规则改革)](https://ec.europa.eu/commission/priorities/justice-and-fundamental-rights/data-protection/2018-reform-eu-data-protection-rules_en), 在合适或者需要的情况下，考虑将 Google Analytics 设置为[匿名化的 IP](https://support.google.com/analytics/answer/2763052?hl=zh-Hans)。
 :::
 
-### serviceWorker
-
-- 类型: `boolean`
-- 默认值: `false`
-
-如果设置成 `true`，VuePress 将会自动生成并且注册一个 service worker，它缓存了那些已访问过的页面的内容，用于离线访问（仅在生产环境生效）。
-
-如果你正在开发一个自定义主题，`Layout.vue` 组件将会自动触发下述的事件：
-
-- `sw-ready`
-- `sw-cached`
-- `sw-updated`
-- `sw-offline`
-- `sw-error`
-
-::: tip PWA NOTES
-`serviceWorker` 选项仅仅用来控制 service worker，为了让你的网站完全地兼容 PWA，你需要在 `.vuepress/public` 提供 Manifest 和 icons，更多细节，请参见 [MDN docs about the Web App Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest).
-此外，只有您能够使用 SSL 部署您的站点时才能启用此功能，因为 service worker 只能在 HTTPs 的 URL 下注册。
-:::
-
 ### locales
 
 - 类型: `{ [path: string]: Object }`
@@ -114,6 +94,30 @@ module.exports = {
 - 默认值: `() => true`
 
 一个函数，用来控制对于哪些文件，是需要生成 `<link rel="prefetch">` 资源提示的。请参考 [shouldPrefetch](https://ssr.vuejs.org/zh/api/#shouldpreload)。
+
+### contentLoading
+
+- 类型: `boolean|string`
+- 默认值: `false`
+
+是否对异步加载页面的内容开启占位符加载。如果它是一个字符串，那么它应该是自定义加载组件的名称。
+
+### cache
+
+- Type: `boolean|string`
+- Default: `true`
+
+VuePress 默认使用了 [cache-loader](https://github.com/webpack-contrib/cache-loader)  来大大地加快 webpack 的编译速度。
+
+此选项可以用于指定 cache 的路径，同时也可以通过设置为 `false` 来在每次构建之前删除 cache。
+
+::: tip
+这个选项也可以通过命令行来使用：
+```bash
+vuepress dev docs --cache .cache # 设置 cache 路径
+vuepress dev docs --no-cache     # 在每次构建前删除 cache
+```
+:::
 
 ## Styling
 
@@ -134,7 +138,7 @@ $codeBgColor = #282c34
 ```
 
 ::: danger Note
-You should ONLY write color variables in this file. since `palette.styl` will be imported at the end of the root stylus config file, as a config, it will be used by multiple files, so once you wrote styles here, your style would be duplicated by multiple times. 
+You should ONLY write color variables in this file. since `palette.styl` will be imported at the end of the root stylus config file, as a config, it will be used by multiple files, so once you wrote styles here, your style would be duplicated by multiple times.
 :::
 
 ### index.styl
@@ -154,7 +158,11 @@ VuePress provides a convenient way to add extra styles. you can create an `.vuep
 - 类型: `string`
 - 默认值: `undefined`
 
-当你使用自定义主题的时候，需要指定它。当值为 `"foo"` 时，VuePress 将会尝试去加载位于 `node_modules/vuepress-theme-foo/Layout.vue` 的主题组件。
+当你使用自定义主题的时候，需要指定它。
+
+**参考:**
+
+- [使用主题](../theme/using-a-theme.md).
 
 ### themeConfig
 
@@ -174,7 +182,7 @@ VuePress provides a convenient way to add extra styles. you can create an `.vuep
 - Type: `Object|Array`
 - Default: `undefined`
 
-请参考 [plugin > Using a plugin](../plugin/README.md#using-a-plugin) 来使用一个插件。
+请参考 [plugin > Using a plugin](../plugin/using-a-plugin.md) 来使用一个插件。
 
 ## Markdown
 
@@ -188,6 +196,13 @@ VuePress provides a convenient way to add extra styles. you can create an `.vuep
 **参考:**
 
 - [行号](../guide/markdown.md#行号)
+
+### markdown.slugify
+
+- Type: `Function`
+- Default: [source](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/shared-utils/lib/slugify.js)
+
+一个将标题文本转换为 slug 的函数。修改它会影响 [标题](../miscellaneous/glossary.md#headers)、[目录](../guide/markdown.md#目录)、以及[侧边栏](../theme/default-theme-config.md#侧边栏)链接的 id 和 链接。
 
 ### markdown.anchor
 
@@ -210,7 +225,7 @@ VuePress provides a convenient way to add extra styles. you can create an `.vuep
 
 [markdown-it-table-of-contents](https://github.com/Oktavilla/markdown-it-table-of-contents) 的选项。
 
-### markdown.config
+### markdown.extendMarkdown
 
 - 类型: `Function`
 - 默认值: `undefined`
@@ -227,6 +242,10 @@ module.exports = {
   }
 }
 ```
+
+::: tip
+这个选项也被 [Plugin API](../plugin/option-api.md#extendmarkdown) 所支持。
+:::
 
 ## 构建流程
 

@@ -50,7 +50,7 @@ module.exports = function (src) {
     const cachedData = devCache.get(file)
     if (cachedData && (
       cachedData.inferredTitle !== inferredTitle ||
-      JSON.stringify(cachedData.frontmatter) !== JSON.stringify(frontmatter) ||
+      JSON.stringify(cachedData.frontmatterData) !== JSON.stringify(frontmatter.data) ||
       headersChanged(cachedData.headers, headers)
     )) {
       // frontmatter changed... need to do a full reload
@@ -59,7 +59,7 @@ module.exports = function (src) {
 
     devCache.set(file, {
       headers,
-      frontmatter,
+      frontmatterData: frontmatter.data,
       inferredTitle
     })
   }
@@ -100,8 +100,18 @@ module.exports = function (src) {
 
   const res = (
     `<template>\n` +
-      `<div class="content">${html}</div>\n` +
+      `<ContentSlotsDistributor :slot-key="slotKey">${html}</ContentSlotsDistributor>\n` +
     `</template>\n` +
+    `<script>
+      export default { 
+         props: ['slot-key'], 
+         mounted() {
+           this.$nextTick(function () {
+             this.$vuepress.$emit('AsyncMarkdownContentMounted', this.slotKey)
+           })
+         } 
+      }
+    </script>` +
     (hoistedTags || []).join('\n') +
     `\n${dataBlockString}\n`
   )

@@ -12,7 +12,7 @@ module.exports = (options, ctx) => ({
     const hasUserOverride = fs.existsSync(overridePath)
 
     if (hasUserOverride) {
-      logger.tip(`${chalk.magenta('override.styl')} has been deprecated from v1.0.0, using ${chalk.cyan('.vuepress/style/palette.styl')} instead.\n`)
+      logger.tip(`${chalk.magenta('override.styl')} has been deprecated from v1.0.0, using ${chalk.cyan('.vuepress/styles/palette.styl')} instead.\n`)
     }
 
     const themeStyle = path.resolve(ctx.themePath, 'styles/index.styl')
@@ -21,11 +21,21 @@ module.exports = (options, ctx) => ({
     const themeStyleContent = fs.existsSync(themeStyle)
       ? `@import(${JSON.stringify(themeStyle)})`
       : ''
+
     const userStyleContent = fs.existsSync(userStyle)
       ? `@import(${JSON.stringify(userStyle)})`
       : ''
 
-    const styleContent = themeStyleContent + userStyleContent
+    let styleContent = themeStyleContent + userStyleContent
+
+    if (ctx.parentThemePath) {
+      const parentThemeStyle = path.resolve(ctx.parentThemePath, 'styles/index.styl')
+      const parentThemeStyleContent = fs.existsSync(parentThemeStyle)
+        ? `@import(${JSON.stringify(parentThemeStyle)})`
+        : ''
+      styleContent = parentThemeStyleContent + styleContent
+    }
+
     await writeTemp('style.styl', styleContent)
   }
 })
