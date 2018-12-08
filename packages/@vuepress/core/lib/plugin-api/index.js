@@ -147,7 +147,7 @@ module.exports = class PluginAPI {
   initializeOptions () {
     Object.keys(PLUGIN_OPTION_MAP).forEach(key => {
       const option = PLUGIN_OPTION_MAP[key]
-      this.options[option.name] = instantiateOption(option.name)
+      this.options[option.name] = instantiateOption(option)
     })
   }
 
