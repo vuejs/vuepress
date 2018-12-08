@@ -20,7 +20,7 @@ const PLUGIN_OPTION_META_MAP = {
   GLOBAL_UI_COMPONENTS: { name: 'globalUIComponents', types: [String, Array] },
   DEFINE: { name: 'define', types: [Function, Object] },
   ALIAS: { name: 'alias', types: [Function, Object] },
-  REGISTER_COMMAND: { name: 'registerCommand', types: [Function] }
+  EXTEND_CLI: { name: 'extendCli', types: [Function] }
 }
 
 const PLUGIN_OPTION_MAP = {}

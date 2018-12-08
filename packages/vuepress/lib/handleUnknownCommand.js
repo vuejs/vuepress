@@ -39,7 +39,7 @@ module.exports = async function (cli, options) {
 
     if (sourceDir) {
       context = await prepare(sourceDir, options)
-      context.pluginAPI.options.registerCommand.apply(cli)
+      context.pluginAPI.options.extendCli.apply(cli)
     }
 
     logger.setOptions({ logLevel: 3 })
@@ -107,7 +107,7 @@ function registerUnknownCommands (cli, options) {
           ...options,
           ...commandoptions
         }, false /* isProd */)
-        await context.pluginAPI.options.registerCommand.apply(subCli)
+        await context.pluginAPI.options.extendCli.apply(subCli)
       },
       async afterParse (subCli) {
         if (!subCli.matchedCommand) {
