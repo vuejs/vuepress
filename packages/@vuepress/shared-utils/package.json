@@ -4,6 +4,10 @@
   "description": "shared-utils for vuepress",
   "main": "lib/index.js",
   "types": "types/index.d.ts",
+  "files": [
+    "lib",
+    "types"
+  ],
   "scripts": {
     "tsc": "tsc",
     "update-index": "node scripts/update-index.js"
