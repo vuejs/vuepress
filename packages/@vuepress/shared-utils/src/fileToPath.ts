@@ -1,9 +1,8 @@
-const { indexRE } = require('./isIndexFile')
-const isIndexFile = require('./isIndexFile')
+import { indexRE, isIndexFile } from './isIndexFile'
 
 const extRE = /\.(vue|md)$/
 
-module.exports = function fileToPath (file) {
+export = function fileToPath (file: string): string {
   if (isIndexFile(file)) {
     // README.md -> /
     // README.vue -> /

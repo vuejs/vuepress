@@ -1,4 +1,4 @@
-module.exports = function parseFrontmatter (content) {
+export = function parseFrontmatter (content: string) {
   const matter = require('gray-matter')
   const toml = require('toml')
 

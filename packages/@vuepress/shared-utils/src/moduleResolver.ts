@@ -4,19 +4,18 @@
  * Module dependencies.
  */
 
-const path = require('upath')
-const chalk = require('chalk')
-const { resolveModule, loadModule } = require('./module')
-const tryChain = require('./tryChain')
-const { fsExistsFallback } = require('./fallback')
-const hash = require('hash-sum')
-const {
+import path from 'upath'
+import chalk from 'chalk'
+import { resolveModule, loadModule } from './moduleLoader'
+import tryChain from './tryChain'
+import { fsExistsFallback } from './fallback'
+import hash from 'hash-sum'
+import {
   isString,
   isFunction,
   isObject,
-  isNullOrUndefined,
   assertTypes
-} = require('./datatypes')
+} from './datatypes'
 
 const SCOPE_PACKAGE_RE = /^@(.*)\/(.*)/
 
@@ -24,8 +23,18 @@ const SCOPE_PACKAGE_RE = /^@(.*)\/(.*)/
  * Common module constructor.
  */
 
-class CommonModule {
-  constructor (entry, name, shortcut, fromDep) {
+export class CommonModule {
+  name: string | null
+  entry: string | null
+  shortcut: string | null
+  fromDep: boolean | null
+
+  constructor (
+    entry: string | null,
+    name: string | null,
+    shortcut: string | null,
+    fromDep: boolean | null,
+  ) {
     this.entry = entry
     this.shortcut = shortcut
     this.name = name
@@ -33,12 +42,35 @@ class CommonModule {
   }
 }
 
+export interface NormalizedModuleRequest {
+  name: string | null
+  shortcut: string | null
+}
+
 /**
  * Expose ModuleResolver.
  */
 
+type Type = String | Number | Boolean | RegExp | Function | Object | Record<string, any> | Array<any>
+
 class ModuleResolver {
-  constructor (type, org, allowedTypes = [String], load = false, cwd) {
+  private type: string
+  private org: string
+  private allowedTypes: Type[]
+  private load: boolean
+  private cwd: string
+  private nonScopePrefix: string
+  private scopePrefix: string
+  private typePrefixLength: number
+  private prefixSlicePosition: number
+
+  constructor (
+    type: string,
+    org: string,
+    allowedTypes: Type[] = [String],
+    load = false,
+    cwd: string
+  ) {
     this.type = type
     this.org = org
     this.allowedTypes = allowedTypes
@@ -54,13 +86,9 @@ class ModuleResolver {
 
   /**
    * Resolve package.
-   *
-   * @param {any} req
-   * @param {string} cwd
-   * @api public
    */
 
-  resolve (req, cwd) {
+  public resolve (req: string, cwd: string): CommonModule | never {
     if (cwd) {
       this.setCwd(cwd)
     }
@@ -73,7 +101,7 @@ class ModuleResolver {
     const isStringRequest = isString(req)
     const isAbsolutePath = isStringRequest && path.isAbsolute(req)
 
-    const resolved = tryChain([
+    const resolved = tryChain<string, CommonModule>([
       [this.resolveNonStringPackage.bind(this), !isStringRequest],
       [this.resolveAbsolutePathPackage.bind(this), isStringRequest && isAbsolutePath],
       [this.resolveRelativePathPackage.bind(this), isStringRequest && !isAbsolutePath],
@@ -89,39 +117,27 @@ class ModuleResolver {
 
   /**
    * Set current working directory.
-   * @param cwd
-   * @returns {module.ModuleResolver}
-   * @api public
    */
 
-  setCwd (cwd) {
+  private setCwd (cwd: string) {
     this.cwd = cwd
     return this
   }
 
   /**
    * Resolve non-string package, return directly.
-   *
-   * @param {object|function} req
-   * @param {string} type
-   * @returns {CommonModule}
-   * @api private
    */
 
-  resolveNonStringPackage (req) {
-    const { shortcut, name } = this.normalizeRequest(req)
+  private resolveNonStringPackage (req: string) {
+    const { shortcut, name } = <NormalizedModuleRequest>this.normalizeRequest(req)
     return new CommonModule(req, name, shortcut, false /* fromDep */)
   }
 
   /**
    * Resolve module with absolute path.
-   *
-   * @param {string} req
-   * @returns {CommonModule}
-   * @api private
    */
 
-  resolveAbsolutePathPackage (req) {
+  resolveAbsolutePathPackage (req: string) {
     const normalized = fsExistsFallback([
       req,
       req + '.js',
@@ -140,42 +156,30 @@ class ModuleResolver {
 
   /**
    * Resolve module with absolute path.
-   *
-   * @param {string} req
-   * @returns {CommonModule}
-   * @api private
    */
 
-  resolveRelativePathPackage (req) {
+  private resolveRelativePathPackage (req: string) {
     req = path.resolve(process.cwd(), req)
     return this.resolveAbsolutePathPackage(req)
   }
 
   /**
    * Resolve module from dependency.
-   *
-   * @param {string} req
-   * @returns {CommonModule}
-   * @api private
    */
 
-  resolveDepPackage (req) {
+  private resolveDepPackage (req: string) {
     const { shortcut, name } = this.normalizeRequest(req)
     const entry = this.load
-      ? loadModule(name, this.cwd)
-      : resolveModule(name, this.cwd)
+      ? loadModule(<string>name, this.cwd)
+      : resolveModule(<string>name, this.cwd)
     return new CommonModule(entry, name, shortcut, true /* fromDep */)
   }
 
   /**
    * Get shortcut.
-   *
-   * @param {string} req
-   * @returns {string}
-   * @api private
    */
 
-  getShortcut (req) {
+  private getShortcut (req: string) {
     return req.startsWith(this.nonScopePrefix)
       ? req.slice(this.prefixSlicePosition)
       : req
@@ -183,15 +187,12 @@ class ModuleResolver {
 
   /**
    * Normalize string request name.
-   *
-   * @param {string} req
-   * @returns {object}
-   * @api private
    */
 
-  normalizeName (req) {
+  normalizeName (req: string): NormalizedModuleRequest {
     let name
     let shortcut
+
     if (req.startsWith('@')) {
       const pkg = resolveScopePackage(req)
       if (pkg) {
@@ -212,27 +213,17 @@ class ModuleResolver {
       name = `${this.nonScopePrefix}${shortcut}`
     }
 
+    // @ts-ignore
     return { name, shortcut }
   }
 
   /**
    * Normalize any request.
-   *
-   * @param {any} req
-   * @returns {object}
-   * @api private
    */
 
-  normalizeRequest (req) {
+  private normalizeRequest (req: any): NormalizedModuleRequest {
     if (isString(req)) {
       return this.normalizeName(req)
-    }
-
-    if (isNullOrUndefined(req)) {
-      return {
-        name: null,
-        shortcut: null
-      }
     }
 
     if (isObject(req) || isFunction(req)) {
@@ -244,6 +235,11 @@ class ModuleResolver {
         return { name, shortcut }
       }
     }
+
+    return {
+      name: null,
+      shortcut: null
+    }
   }
 }
 
@@ -251,7 +247,7 @@ class ModuleResolver {
  * Parse info of scope package.
  */
 
-function resolveScopePackage (name) {
+export function resolveScopePackage (name: string) {
   if (SCOPE_PACKAGE_RE.test(name)) {
     return {
       org: RegExp.$1,
@@ -261,13 +257,10 @@ function resolveScopePackage (name) {
   return null
 }
 
-module.exports = ModuleResolver
-module.exports.resolveScopePackage = resolveScopePackage
-
-module.exports.getPluginResolver = (cwd) => new ModuleResolver(
+export const getPluginResolver = (cwd: string) => new ModuleResolver(
   'plugin', 'vuepress', [String, Function, Object], true /* load module */, cwd
 )
 
-module.exports.getThemeResolver = (cwd) => new ModuleResolver(
+export const getThemeResolver = (cwd: string) => new ModuleResolver(
   'theme', 'vuepress', [String], false /* load module */, cwd
 )

@@ -1,14 +1,15 @@
-const compiler = require('vue-template-compiler')
-const { parse } = require('@vue/component-compiler-utils')
-const parseFrontmatter = require('./parseFrontmatter')
+// @ts-ignore
+import compiler from 'vue-template-compiler'
+import { parse as _parse } from '@vue/component-compiler-utils'
+import parseFrontmatter from './parseFrontmatter'
 
-function parseStrippedFrontmatter (src) {
+export function parseStrippedFrontmatter (src: string) {
   src = `---\n${src}\n---`
   return parseFrontmatter(src)
 }
 
-module.exports = src => {
-  const output = parse({
+export function parse (src: string) {
+  const output = _parse({
     source: src,
     compiler,
     needMap: false
@@ -20,5 +21,3 @@ module.exports = src => {
   }
   return {}
 }
-
-module.exports.parseStrippedFrontmatter = parseStrippedFrontmatter

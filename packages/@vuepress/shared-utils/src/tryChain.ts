@@ -1,6 +1,9 @@
-module.exports = function tryChain (resolvers, arg) {
-  let response
-  let error
+type Provider<T, U> = (arg: T) => U
+type Resolver<T, U> = (Provider<T, U> | boolean)[] | boolean
+
+export = function tryChain<T, U> (resolvers: Array<Resolver<T, U>>, arg: T): U | void {
+  let response: U
+
   for (let resolver of resolvers) {
     if (!Array.isArray(resolver)) {
       resolver = [resolver, true]
@@ -10,10 +13,9 @@ module.exports = function tryChain (resolvers, arg) {
       continue
     }
     try {
-      response = provider(arg, error)
+      response = (<Provider<T, U>>provider)(arg)
       return response
     } catch (e) {
-      error = e
     }
   }
 }

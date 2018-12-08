@@ -1,4 +1,4 @@
-const deeplyParseHeaders = require('./deeplyParseHeaders')
+import deeplyParseHeaders from './deeplyParseHeaders'
 
 /**
  * Infer a page's title via frontmatter and content.
@@ -8,7 +8,7 @@ const deeplyParseHeaders = require('./deeplyParseHeaders')
  * @returns {*}
  */
 
-module.exports = function (frontmatter, strippedContent) {
+export = function (frontmatter: Record<string, any>, strippedContent: string): string | void {
   if (frontmatter.home) {
     return 'Home'
   }

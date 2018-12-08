@@ -4,10 +4,16 @@
  * Module dependencies.
  */
 
-const chalk = require('chalk')
+import chalk from 'chalk'
+
+interface LoggerOptions {
+  logLevel: number
+}
 
 class Logger {
-  constructor (options) {
+  options: LoggerOptions
+
+  constructor (options?: LoggerOptions) {
     this.options = Object.assign(
       {
         logLevel: process.argv.includes('--debug')
@@ -18,12 +24,12 @@ class Logger {
     )
   }
 
-  setOptions (options) {
+  setOptions (options: LoggerOptions) {
     Object.assign(this.options, options)
   }
 
   // level: 4
-  debug (...args) {
+  debug (...args: any[]) {
     if (this.options.logLevel < 4) {
       return
     }
@@ -32,7 +38,7 @@ class Logger {
   }
 
   // level: 2
-  warn (...args) {
+  warn (...args: any[]) {
     if (this.options.logLevel < 2) {
       return
     }
@@ -40,7 +46,7 @@ class Logger {
   }
 
   // level: 1
-  error (...args) {
+  error (...args: any[]) {
     if (this.options.logLevel < 1) {
       return
     }
@@ -49,7 +55,7 @@ class Logger {
   }
 
   // level: 3
-  success (...args) {
+  success (...args: any[]) {
     if (this.options.logLevel < 3) {
       return
     }
@@ -57,7 +63,7 @@ class Logger {
   }
 
   // level: 3
-  tip (...args) {
+  tip (...args: any[]) {
     if (this.options.logLevel < 3) {
       return
     }
@@ -65,14 +71,14 @@ class Logger {
   }
 
   // level: 3
-  info (...args) {
+  info (...args: any[]) {
     if (this.options.logLevel < 3) {
       return
     }
     this.status('cyan', 'info', ...args)
   }
 
-  wait (...args) {
+  wait (...args: any[]) {
     if (this.options.logLevel < 3) {
       return
     }
@@ -80,14 +86,15 @@ class Logger {
   }
 
   // level: 3
-  status (color, label, ...args) {
+  status (color: string, label: string, ...args: any[]) {
     if (this.options.logLevel < 3) {
       return
     }
+    // @ts-ignore
     console.log(chalk[color](label), ...args)
   }
 
-  developer (...args) {
+  developer (...args: any[]) {
     if (process.env.VUEPRESS_ENV !== 'developer' && !process.argv.includes('--developer')) {
       return
     }
@@ -99,5 +106,5 @@ class Logger {
  * Expose a logger instance.
  */
 
-module.exports = new Logger()
+export = new Logger()
 

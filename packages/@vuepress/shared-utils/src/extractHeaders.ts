@@ -1,4 +1,5 @@
-const deeplyParseHeaders = require('./deeplyParseHeaders')
+import LRU from 'lru-cache'
+import deeplyParseHeaders from './deeplyParseHeaders'
 
 /**
  * Extract heeaders from markdown source content.
@@ -9,10 +10,9 @@ const deeplyParseHeaders = require('./deeplyParseHeaders')
  * @returns {array}
  */
 
-const LRU = require('lru-cache')
 const cache = LRU({ max: 1000 })
 
-module.exports = function (content, include = [], md) {
+export = function (content: string, include = [], md: any) {
   const key = content + include.join(',')
   const hit = cache.get(key)
   if (hit) {
@@ -21,11 +21,13 @@ module.exports = function (content, include = [], md) {
 
   const tokens = md.parse(content, {})
 
-  const res = []
-  tokens.forEach((t, i) => {
+  const res: any[] = []
+  tokens.forEach((t: any, i: any) => {
+    // @ts-ignore
     if (t.type === 'heading_open' && include.includes(t.tag)) {
       const title = tokens[i + 1].content
-      const slug = t.attrs.find(([name]) => name === 'id')[1]
+      // @ts-ignore
+      const slug = (t.attrs).find(([name]) => name === 'id')[1]
       res.push({
         level: parseInt(t.tag.slice(1), 10),
         title: deeplyParseHeaders(title),

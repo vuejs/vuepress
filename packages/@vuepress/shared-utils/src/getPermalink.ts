@@ -1,5 +1,13 @@
-const ensureEndingSlash = require('./ensureEndingSlash')
-const ensureLeadingSlash = require('./ensureLeadingSlash')
+import ensureEndingSlash from './ensureEndingSlash'
+import ensureLeadingSlash from './ensureLeadingSlash'
+
+interface PermalinkOption {
+  pattern: string;
+  slug: string;
+  date: string;
+  regularPath: string;
+  localePath: string;
+}
 
 // e.g.
 // filename: docs/_posts/evan you.md
@@ -10,13 +18,13 @@ const ensureLeadingSlash = require('./ensureLeadingSlash')
 // :year/:month/:day/:title/ => 2018/08/14/yyx 990803/
 // :year/:month/:day/:original/ => 2018/08/14/_posts/evan you.html
 
-module.exports = function getPermalink ({
+export = function getPermalink ({
   pattern,
   slug,
   date,
   regularPath,
   localePath = '/'
-}) {
+}: PermalinkOption) {
   if (!pattern) {
     return
   }
@@ -37,13 +45,13 @@ module.exports = function getPermalink ({
   const link =
     localePath +
     pattern
-      .replace(/:year/, year)
-      .replace(/:month/, month)
-      .replace(/:i_month/, iMonth)
-      .replace(/:i_day/, iDay)
-      .replace(/:day/, day)
-      .replace(/:minutes/, minutes)
-      .replace(/:seconds/, seconds)
+      .replace(/:year/, String(year))
+      .replace(/:month/, String(month))
+      .replace(/:i_month/, String(iMonth))
+      .replace(/:i_day/, String(iDay))
+      .replace(/:day/, String(day))
+      .replace(/:minutes/, String(minutes))
+      .replace(/:seconds/, String(seconds))
       .replace(/:slug/, slug)
       .replace(/:regular/, regularPath)
 

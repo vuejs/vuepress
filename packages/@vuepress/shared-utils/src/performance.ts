@@ -1,6 +1,13 @@
-const os = require('os')
+import os from 'os'
 
 class Performance {
+  // @ts-ignore
+  private _totalMemory: number
+  private _startFreeMemory: number
+  private _endFreeMemory: number
+  private _startTime: number
+  private _endTime: number
+
   constructor () {
     this._totalMemory = os.totalmem()
   }
@@ -20,4 +27,4 @@ class Performance {
   }
 }
 
-module.exports = new Performance()
+export = new Performance()

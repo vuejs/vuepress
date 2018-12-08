@@ -1,4 +1,8 @@
-exports.pathsToModuleCode = function (files) {
+/**
+ * Convert paths string to real-world import code.
+ */
+
+export function pathsToModuleCode (files: string[]) {
   let index = 0
   let code = ''
 

@@ -1,4 +1,4 @@
-module.exports = html => String(html)
+export = (html: string): string => String(html)
   .replace(/&quot;/g, '"')
   .replace(/&#39;/g, '\'')
   .replace(/&#x3A;/g, ':')
