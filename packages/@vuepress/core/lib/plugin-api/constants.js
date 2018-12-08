@@ -5,7 +5,7 @@ const PLUGIN_OPTION_META_MAP = {
   READY: { name: 'ready', types: [Function] },
   COMPILED: { name: 'compiled', types: [Function] },
   UPDATED: { name: 'updated', types: [Function] },
-  GENERATED: { name: 'generated', types: [Function] },
+  GENERATED: { name: 'generated', types: [Function], async: true },
   // options
   CHAIN_WEBPACK: { name: 'chainWebpack', types: [Function] },
   ENHANCE_DEV_SERVER: { name: 'enhanceDevServer', types: [Function] },
