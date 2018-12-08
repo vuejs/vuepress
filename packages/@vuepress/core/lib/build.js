@@ -65,7 +65,7 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
 
   // if the user does not have a custom 404.md, generate the theme's default
   if (!ctx.pages.some(p => p.path === '/404.html')) {
-    ctx.pages.addPage({ path: '/404.html' })
+    ctx.addPage({ path: '/404.html' })
   }
 
   // render pages
