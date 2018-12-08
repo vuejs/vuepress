@@ -2,7 +2,12 @@
   "name": "@vuepress/shared-utils",
   "version": "1.0.0-alpha.27",
   "description": "shared-utils for vuepress",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "types/index.d.ts",
+  "scripts": {
+    "tsc": "tsc",
+    "update-index": "node scripts/update-index.js"
+  },
   "publishConfig": {
     "access": "public"
   },

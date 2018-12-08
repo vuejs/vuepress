@@ -10,8 +10,8 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "boot": "node scripts/bootstrap.js",
-    "dev": "yarn workspace docs dev",
-    "build": "yarn workspace docs build",
+    "dev": "yarn tsc && yarn workspace docs dev",
+    "build": "yarn tsc && yarn workspace docs build",
     "show-help": "yarn workspace docs show-help",
     "dev:blog": "yarn workspace blog dev",
     "build:blog": "yarn workspace blog build",
@@ -19,7 +19,8 @@
     "lint": "eslint --fix packages/**/*.js packages/**/*.vue packages/**/bin/*",
     "release": "yarn --pure-lockfile && node scripts/release.js",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "tsc": "lerna run tsc"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
@@ -39,6 +40,14 @@
     "lint-staged": "^7.0.4",
     "minimist": "^1.2.0",
     "yorkie": "^1.0.3",
-    "inquirer": "^6.2.0"
+    "inquirer": "^6.2.0",
+    "typescript": "^3.2.2",
+    "@types/node": "^10.12.12",
+    "@types/lru-cache": "^4.1.1",
+    "@types/fs-extra": "^5.0.4",
+    "@types/semver": "^5.5.0",
+    "@types/hash-sum": "^1.0.0",
+    "@types/globby": "^8.0.0",
+    "@types/escape-html": "^0.0.20"
   }
 }

@@ -1,7 +1,7 @@
 // https://github.com/facebook/jest/tree/master/packages/babel-jest
 // TODO remove 'babel-core@^7.0.0-0' when babel-jest can work with '@babel/core'
 
-const { path } = require('@vuepress/shared-utils')
+const path = require('path')
 
 module.exports = {
   rootDir: path.resolve(__dirname, '..'),
@@ -9,8 +9,11 @@ module.exports = {
   testURL: 'http://localhost/',
   moduleFileExtensions: [
     'js',
-    'vue'
+    'vue',
+    'ts',
+    'json'
   ],
+  testRegex: '(/__test__/.*|(\\.|/)(test|spec))\\.(ts|js)?$',
   testPathIgnorePatterns: [
     'test.js',
     path.resolve(__dirname, '../test')
@@ -20,7 +23,8 @@ module.exports = {
   },
   transform: {
     '^.+\\.js$': '<rootDir>/node_modules/babel-jest',
-    '.*\\.(vue)$': '<rootDir>/node_modules/vue-jest'
+    '.*\\.(vue)$': '<rootDir>/node_modules/vue-jest',
+    '^.+\\.ts?$': '<rootDir>/node_modules/ts-jest'
   },
   snapshotSerializers: [
     '<rootDir>/node_modules/jest-serializer-vue'

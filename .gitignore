@@ -4,3 +4,5 @@ node_modules
 .temp
 TODOs.md
 vuepress
+packages/@vuepress/shared-utils/lib/
+types

@@ -17,7 +17,7 @@ const {
   getPermalink,
   extractHeaders,
   parseFrontmatter,
-  parseVueFrontmatter
+  parseVueFrontmatter: { parse: parseVueFrontmatter }
 } = require('@vuepress/shared-utils')
 
 /**

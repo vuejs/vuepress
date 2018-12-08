@@ -26,7 +26,9 @@
     "execa": "^0.10.0",
     "jest": "^23.4.0",
     "jest-serializer-vue": "^1.0.0",
-    "vue-jest": "^2.6.0"
+    "vue-jest": "^2.6.0",
+    "ts-jest": "^23.10.5",
+    "@types/jest": "^23.3.10"
   },
   "author": "ULIVZ <chl814@foxmail.com>",
   "license": "MIT",
