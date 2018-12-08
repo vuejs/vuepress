@@ -1,4 +1,4 @@
-import parseHeaders from '../lib/parseHeaders'
+import parseHeaders from '../src/parseHeaders'
 
 describe('parseHeaders', () => {
   test('should unescape html', () => {
@@ -7,7 +7,7 @@ describe('parseHeaders', () => {
   })
 
   test('should remove markdown tokens correctly', () => {
-    const asserts = {
+    const asserts: Record<string, string> = {
       // #238
       '[vue](vuejs.org)': 'vue',
       '`vue`': 'vue',

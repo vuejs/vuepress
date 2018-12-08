@@ -1,7 +1,7 @@
-import fileToPath from '../lib/fileToPath'
+import fileToPath from '../src/fileToPath'
 
 test('fileToPath', () => {
-  const asserts = {
+  const asserts: Record<string, string> = {
     'README.md': '/',
     'foo/README.md': '/foo/',
     'foo.md': '/foo.html',

@@ -18,7 +18,10 @@
     "strictFunctionTypes": true,
     "alwaysStrict": true,
     "module": "commonjs",
-    "outDir": "lib"
+    "outDir": "lib",
+    "typeRoots": [
+      "node_modules/@types"
+    ]
   },
   "exclude": [
     "node_modules",

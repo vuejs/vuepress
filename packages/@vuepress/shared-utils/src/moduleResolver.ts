@@ -221,7 +221,7 @@ class ModuleResolver {
    * Normalize any request.
    */
 
-  private normalizeRequest (req: any): NormalizedModuleRequest {
+  public normalizeRequest (req: any): NormalizedModuleRequest {
     if (isString(req)) {
       return this.normalizeName(req)
     }
@@ -247,6 +247,11 @@ class ModuleResolver {
  * Parse info of scope package.
  */
 
+export interface ScopePackage {
+  org: string;
+  name: string;
+}
+
 export function resolveScopePackage (name: string) {
   if (SCOPE_PACKAGE_RE.test(name)) {
     return {
@@ -254,13 +259,16 @@ export function resolveScopePackage (name: string) {
       name: RegExp.$2
     }
   }
-  return null
+  return {
+    org: '',
+    name: ''
+  }
 }
 
-export const getPluginResolver = (cwd: string) => new ModuleResolver(
+export const getPluginResolver = (cwd: string): ModuleResolver => new ModuleResolver(
   'plugin', 'vuepress', [String, Function, Object], true /* load module */, cwd
 )
 
-export const getThemeResolver = (cwd: string) => new ModuleResolver(
+export const getThemeResolver = (cwd: string): ModuleResolver => new ModuleResolver(
   'theme', 'vuepress', [String], false /* load module */, cwd
 )

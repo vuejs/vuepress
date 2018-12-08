@@ -1,7 +1,7 @@
 import * as codegen from './codegen'
 import compose from './compose'
 import * as datatypes from './datatypes'
-import * as deeplyParseHeaders from './deeplyParseHeaders'
+import deeplyParseHeaders from './deeplyParseHeaders'
 import ensureEndingSlash from './ensureEndingSlash'
 import ensureLeadingSlash from './ensureLeadingSlash'
 import env from './env'

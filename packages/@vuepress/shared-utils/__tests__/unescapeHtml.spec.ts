@@ -1,4 +1,4 @@
-import unescapeHtml from '../lib/unescapeHtml'
+import unescapeHtml from '../src/unescapeHtml'
 
 test('should unescape html', () => {
   const input = '&lt;div&gt;'
