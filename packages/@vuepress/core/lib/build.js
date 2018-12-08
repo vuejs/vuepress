@@ -64,22 +64,22 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
     .join('\n  ')
 
   // if the user does not have a custom 404.md, generate the theme's default
-  if (!options.pages.some(p => p.path === '/404.html')) {
-    options.pages.push({ path: '/404.html' })
+  if (!ctx.pages.some(p => p.path === '/404.html')) {
+    ctx.pages.push({ path: '/404.html' })
   }
 
   // render pages
   logger.wait('Rendering static HTML...')
 
   const pagePaths = []
-  for (const page of options.pages) {
+  for (const page of ctx.pages) {
     pagePaths.push(await renderPage(page))
   }
 
   readline.clearLine(process.stdout, 0)
   readline.cursorTo(process.stdout, 0)
 
-  await options.pluginAPI.options.generated.asyncApply(pagePaths)
+  await ctx.pluginAPI.options.generated.apply(pagePaths)
 
   // DONE.
   const relativeDir = path.relative(cwd, outDir)
