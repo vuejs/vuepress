@@ -17,7 +17,7 @@
     "build:blog": "yarn workspace blog build",
     "register-vuepress": "lerna exec --scope vuepress -- yarn link",
     "lint": "eslint --fix packages/**/*.js packages/**/*.vue packages/**/bin/*",
-    "release": "yarn --pure-lockfile && node scripts/release.js",
+    "release": "yarn --pure-lockfile && yarn tsc && node scripts/release.js",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "test": "node scripts/test.js",
     "tsc": "lerna run tsc"
