@@ -9,7 +9,7 @@ const Option = require('../abstract/Option')
 const { PLUGIN_OPTION_MAP } = require('../constants')
 
 module.exports = function instantiateOption ({ name, async }) {
-  switch (option.name) {
+  switch (name) {
   case PLUGIN_OPTION_MAP.ENHANCE_APP_FILES.name:
     return new EnhanceAppFilesOption(name)
 
