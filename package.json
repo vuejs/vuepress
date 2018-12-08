@@ -12,6 +12,7 @@
     "boot": "node scripts/bootstrap.js",
     "dev": "yarn workspace docs dev",
     "build": "yarn workspace docs build",
+    "show-help": "yarn workspace docs show-help",
     "dev:blog": "yarn workspace blog dev",
     "build:blog": "yarn workspace blog build",
     "register-vuepress": "lerna exec --scope vuepress -- yarn link",

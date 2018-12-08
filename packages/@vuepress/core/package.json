@@ -68,10 +68,12 @@
     "webpack-chain": "^4.6.0",
     "webpack-merge": "^4.1.2",
     "webpack-serve": "^1.0.2",
-    "webpackbar": "^2.6.1"
+    "webpackbar": "^2.6.1",
+    "semver": "^5.5.0",
+    "cac": "^6.3.9"
   },
   "engines": {
-    "node": ">=8"
+    "node": ">=8.6"
   },
   "browserslist": [
     ">1%"

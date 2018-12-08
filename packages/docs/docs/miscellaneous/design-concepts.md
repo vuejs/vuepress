@@ -187,9 +187,8 @@ Then the final route of i18n UI is `/i18n/`.
 
 ## Others
 
-With the goal of decoupling, we were able to separate VuePress into the following libraries by introducing monorepo:
+With the goal of decoupling, we were able to separate VuePress into the following two libraries by introducing monorepo:
 
-- [@vuepress/cli](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/cli): Management of command line;
 - [@vuepress/core](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/core)：Including the core implementation of `dev`, `build` and `Plugin API`;
 - [@vuepress/theme-default](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/theme-default)：The default theme you see now.
 
