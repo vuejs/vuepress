@@ -32,6 +32,6 @@ You should consider using this process if you intend to make `"substantial"` cha
 - If you are interested in working on the implementation for an `'active'` RFC, but cannot determine if someone else is already working on it, feel free to ask (e.g. by leaving a comment on the associated issue).
 - It's worth noting that even if RFC becomes `'active'`, it doesn't mean that the pull request of this implementation will eventually be merged.
 
-**VuePress's RFC process owes its inspiration to the [Yarn RFC process].
+**VuePress's RFC process owes its inspiration to the [Yarn RFC process]**.
 
 [Yarn RFC process]: https://github.com/yarnpkg/rfcs
