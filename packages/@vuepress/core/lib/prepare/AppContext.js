@@ -105,6 +105,11 @@ module.exports = class AppContext {
 
     await this.resolvePages()
     await this.pluginAPI.options.additionalPages.apply(this)
+    await Promise.all(
+      this.pluginAPI.options.additionalPages.appliedValues.map(async (options) => {
+        await this.addPage(options)
+      })
+    )
 
     await this.pluginAPI.options.ready.apply()
     await Promise.all([

@@ -16,7 +16,7 @@ const PLUGIN_OPTION_META_MAP = {
   CHAIN_MARKDOWN: { name: 'chainMarkdown', types: [Function] },
   CLIENT_DYNAMIC_MODULES: { name: 'clientDynamicModules', types: [Object, Function] },
   CLIENT_ROOT_MIXIN: { name: 'clientRootMixin', types: [String] },
-  ADDITIONAL_PAGES: { name: 'additionalPages', types: [Function, Array] },
+  ADDITIONAL_PAGES: { name: 'additionalPages', types: [Function, Array], async: true },
   GLOBAL_UI_COMPONENTS: { name: 'globalUIComponents', types: [String, Array] },
   DEFINE: { name: 'define', types: [Function, Object] },
   ALIAS: { name: 'alias', types: [Function, Object] },
