@@ -377,14 +377,13 @@ Add a page with explicit content:
 ```js
 module.exports = {
   async additionalPages () {
-    const rp = require('request-promise');
-
-    // VuePress doesn't have request library built-in
+    // Note that VuePress doesn't have request library built-in
     // you need to install it yourself.
-    const content = await rp('https://github.com/vuejs/vuepress/blob/master/CHANGELOG.md');
+    const rp = require('request-promise')
+    const content = await rp('https://raw.githubusercontent.com/vuejs/vuepress/master/CHANGELOG.md')
     return [
       {
-        path: '/readme/',
+        path: '/changelog/',
         content
       }
     ]

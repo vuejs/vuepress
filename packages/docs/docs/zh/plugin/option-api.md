@@ -356,7 +356,7 @@ export default {
 
 ## additionalPages
 
-- 类型: `Array|Function`
+- 类型: `Array|AsyncFunction`
 - 默认值: `undefined`
 
 增加一个指向某个 markdown 文件的页面：
@@ -379,14 +379,13 @@ module.exports = {
 ```js
 module.exports = {
   async additionalPages () {
-    const rp = require('request-promise');
-
-    // VuePress doesn't have request library built-in
-    // you need to install it yourself.
-    const content = await rp('https://github.com/vuejs/vuepress/blob/master/CHANGELOG.md');
+    // 注意 VuePress 没有任何内置的请求库，
+    // 你需要自己安装它。
+    const rp = require('request-promise')
+    const content = await rp('https://raw.githubusercontent.com/vuejs/vuepress/master/CHANGELOG.md')
     return [
       {
-        path: '/readme/',
+        path: '/changelog/',
         content
       }
     ]
