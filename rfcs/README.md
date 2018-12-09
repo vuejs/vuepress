@@ -17,11 +17,11 @@ You should consider using this process if you intend to make `"substantial"` cha
 - Fill in the RFC. Put care into the details.
 - Submit a pull request.
 - Build consensus and integrate feedback. RFCs that have broad support are much more likely to make progress than those that don't receive any comments.
-- Finally, the team will decide whether the RFC is a `candidate` for inclusion in VuePress.
-- Once an RFC becomes `'candidate'`, it will enter a `"final stage"` lasting 7 calendar days.
+- Finally, the team will decide whether the RFC is a `'candidate'` for inclusion in VuePress.
+- Once an RFC becomes `'candidate'`, it will enter a `'final stage'` lasting 7 calendar days.
 - An RFC can be modified based upon feedback from the team and community.
 - An RFC may be rejected by the team after public discussion has settled and comments have been made summarizing the rationale for rejection. A member of the team should then close the RFCs associated pull request.
-- An RFC may be accepted at the close of its `"final stage"`. A team member will merge the RFCs associated pull request, at which point the RFC will become `'active'`.
+- An RFC may be accepted at the close of its `'final stage'`. A team member will merge the RFCs associated pull request, at which point the RFC will become `'active'`.
 - Once an RFC becomes `'active'`, a team member will open an issue for the implmentation request, then authors may implement it and submit a pull request to the VuePress repo.
 - An `'active'` RFC implementation pull request will ONLY be merged when it passes the review of core members. Once the implmentation is merged, the corresponding issue will be closed  and the RFC will enter the `'finished'` stage.
 - An `'active'` RFC that no one follows in a month will be tagged `'inactive'`. It will remain `'inactive'` unless someone opens a pull request.
