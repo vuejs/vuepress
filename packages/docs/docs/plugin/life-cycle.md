@@ -13,11 +13,11 @@ module.exports = {
 }
 ```
 
-::: tip 提示
+::: tip
 The `ready` hook is executed after the application is initialized and before some specific functional APIs are executed. These functional APIs include:
 
-- clientDynamicModules
-- enhanceAppFiles
+- [clientDynamicModules](./option-api.md#clientdynamicmodules)
+- [enhanceAppFiles](./option-api.md#enhanceappfiles)
 
 :::
 
@@ -34,14 +34,16 @@ module.exports = {
 }
 ```
 
-## generated
+### generated
 
 - Type: `AsyncFunction`
 - Scope：`build`
 
-```js
+ Called when a (production) build finishes, with an array of generated page HTML paths.
+
+``` js
 module.exports = {
-  async generated() {
+  async generated (pagePaths) {
     // ...
   }
 }
