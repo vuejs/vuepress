@@ -13,7 +13,7 @@ You should consider using this process if you intend to make `"substantial"` cha
 ## The RFC life-cycle
 
 - Fork this repo https://github.com/vuejs/vuepress.
-- Copy `template.md` to `text/0000-feature.md` (where 'feature' is descriptive. Don't assign an RFC number yet).
+- Copy `rfcs/template.md` to `rfcs/text/0000-feature.md` (where 'feature' is descriptive. Don't assign an RFC number yet).
 - Fill in the RFC. Put care into the details.
 - Submit a pull request.
 - Build consensus and integrate feedback. RFCs that have broad support are much more likely to make progress than those that don't receive any comments.
