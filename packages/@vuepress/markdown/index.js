@@ -32,7 +32,8 @@ module.exports = (markdown = {}) => {
     toc,
     lineNumbers,
     beforeInstantiate,
-    afterInstantiate
+    afterInstantiate,
+    plugins
   } = markdown
 
   // allow user config slugify
@@ -116,6 +117,13 @@ module.exports = (markdown = {}) => {
   afterInstantiate && afterInstantiate(md)
 
   module.exports.dataReturnable(md)
+
+  if (plugins) {
+    markdown.plugins.forEach(function (plugin) {
+      plugin = plugin.replace('markdown-it-', '')
+      md.use(require(`markdown-it-${plugin}`))
+    })
+  }
 
   // expose slugify
   md.slugify = slugify
