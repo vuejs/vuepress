@@ -1,3 +1,25 @@
+<a name="1.0.0-alpha.28"></a>
+# [1.0.0-alpha.28](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.27...v1.0.0-alpha.28) (2018-12-12)
+
+
+### Bug Fixes
+
+* **$cli:** bump CAC version ([#1062](https://github.com/vuejs/vuepress/issues/1062)) ([172afa3](https://github.com/vuejs/vuepress/commit/172afa3))
+* **$core:** async function support for plugin option `additionalPages` (close: [#1077](https://github.com/vuejs/vuepress/issues/1077))([#1080](https://github.com/vuejs/vuepress/issues/1080)) ([3095106](https://github.com/vuejs/vuepress/commit/3095106))
+* **$core:** `'slotKey'` must be defined as props in user's markdown's script tag (close: [#975](https://github.com/vuejs/vuepress/issues/975)) ([ece2e1e](https://github.com/vuejs/vuepress/commit/ece2e1e))
+* **$core:** remove smoothing scroll (close: [#1071](https://github.com/vuejs/vuepress/issues/1071)) ([#1075](https://github.com/vuejs/vuepress/issues/1075)) ([26c0628](https://github.com/vuejs/vuepress/commit/26c0628))
+* **$theme-default:** fix height of input in SearchBox for IE11 ([#1093](https://github.com/vuejs/vuepress/issues/1093)) ([04510e9](https://github.com/vuejs/vuepress/commit/04510e9))
+
+
+### Features
+
+* **$core:** pass generated page paths to `generated` hook ([#925](https://github.com/vuejs/vuepress/issues/925)) ([5ee2b2b](https://github.com/vuejs/vuepress/commit/5ee2b2b))
+* **$core:** `extendCli` Plugin Option API ([#1069](https://github.com/vuejs/vuepress/issues/1069)) ([e963731](https://github.com/vuejs/vuepress/commit/e963731))
+  - See [docs](https://vuepress.vuejs.org/plugin/option-api.html#extendcli).
+* **$plugin-search:** searchable paths with test RegExp ([#1032](https://github.com/vuejs/vuepress/issues/1032)) ([d6bddf1](https://github.com/vuejs/vuepress/commit/d6bddf1))
+
+
+
 <a name="1.0.0-alpha.27"></a>
 # [1.0.0-alpha.27](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.26...v1.0.0-alpha.27) (2018-12-03)
 
@@ -1050,5 +1072,4 @@
 * dev server ([890f929](https://github.com/vuejs/vuepress/commit/890f929))
 * support nesting in sidebar ([1964709](https://github.com/vuejs/vuepress/commit/1964709))
 * support style/script hoisting + css modules ([f97e676](https://github.com/vuejs/vuepress/commit/f97e676))
-
 
