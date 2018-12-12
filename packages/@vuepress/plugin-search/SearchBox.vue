@@ -160,6 +160,7 @@ export default {
   input
     cursor text
     width 10rem
+    height: 2rem
     color lighten($textColor, 25%)
     display inline-block
     border 1px solid darken($borderColor, 10%)
