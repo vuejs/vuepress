@@ -42,7 +42,7 @@ function getAnchors (sidebarLinks) {
 
 export default {
   mounted () {
-    this.$vuepress.$on('AsyncMarkdownContentMounted', (slotKey) => {
+    this.$vuepress.$on('contentMounted', (slotKey) => {
       if (slotKey === 'default') {
         window.addEventListener('scroll', this.onScroll)
       }
