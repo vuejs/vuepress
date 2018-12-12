@@ -36,7 +36,7 @@
 </template>
 
 <script>
-/* global SEARCH_MAX_SUGGESTIONS */
+/* global SEARCH_MAX_SUGGESTIONS, SEARCH_PATHS */
 export default {
   data () {
     return {
@@ -76,6 +76,12 @@ export default {
         if (this.getPageLocalePath(p) !== localePath) {
           continue
         }
+
+        // filter out results that do not match searchable paths
+        if (!this.isSearchable(p)) {
+          continue
+        }
+
         if (matches(p)) {
           res.push(p)
         } else if (p.headers) {
@@ -110,6 +116,19 @@ export default {
         }
       }
       return '/'
+    },
+
+    isSearchable (page) {
+      let searchPaths = SEARCH_PATHS
+
+      // all paths searchables
+      if (searchPaths === null) { return true }
+
+      searchPaths = Array.isArray(searchPaths) ? searchPaths : new Array(searchPaths)
+
+      return searchPaths.filter(path => {
+        return page.path.match(path)
+      }).length > 0
     },
 
     onUp () {
