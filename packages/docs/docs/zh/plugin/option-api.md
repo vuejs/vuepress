@@ -436,7 +436,7 @@ VuePress 将会自动将这些组件注入到布局组件的隔壁：
 </div>
 ```
 
-## registerCommand
+## extendCli
 
 - 类型: `function`
 - 默认值: `undefined`
@@ -445,7 +445,7 @@ VuePress 将会自动将这些组件注入到布局组件的隔壁：
 
 ```js
 module.exports = {
-  registerCommand (cli) {
+  extendCli (cli) {
     cli
       .command('info [targetDir]', '')
       .option('--debug', 'display info in debug mode')
