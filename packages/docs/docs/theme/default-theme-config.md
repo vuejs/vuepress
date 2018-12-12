@@ -8,12 +8,14 @@ All options listed on this page apply to the default theme only. If you are usin
 
 ## Homepage
 
-The default theme provides a homepage layout (which is used on [the homepage of this very website](../README.md)). To use it, specify `home: true` plus some other metadata in your root `README.md`'s [YAML front matter](../guide/markdown.md#front-matter). This is the actual data used on this site:
+The default theme provides a homepage layout (which is used on [the homepage of this very website](../README.md)). To use it, specify `home: true` plus some other metadata in your root `README.md`'s [YAML front matter](../guide/markdown.md#front-matter). This is an example of how it works:
 
 ``` yaml
 ---
 home: true
 heroImage: /hero.png
+heroText: Hero Title
+tagline: Hero subtitle
 actionText: Get Started →
 actionLink: /guide/
 features:
