@@ -65,7 +65,9 @@ module.exports = (options, ctx) => {
       }) => {
         if (when(pageCtx)) {
           Object.keys(frontmatter).forEach(key => {
-            rawFrontmatter[key] = rawFrontmatter[key] || frontmatter[key]
+            if (!frontmatter[key]) {
+              rawFrontmatter[key] || frontmatter[key]
+            }
           })
           Object.assign(pageCtx, data)
         }
