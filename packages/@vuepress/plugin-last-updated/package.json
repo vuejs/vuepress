@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-last-updated",
-  "version": "1.0.0-alpha.28",
+  "version": "1.0.0-alpha.29",
   "description": "last-updated plugin for vuepress",
   "main": "index.js",
   "publishConfig": {

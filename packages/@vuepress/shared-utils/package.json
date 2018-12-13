@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/shared-utils",
-  "version": "1.0.0-alpha.28",
+  "version": "1.0.0-alpha.29",
   "description": "shared-utils for vuepress",
   "main": "lib/index.js",
   "types": "types/index.d.ts",
