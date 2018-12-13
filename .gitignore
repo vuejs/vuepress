@@ -3,6 +3,5 @@ node_modules
 *.log
 .temp
 TODOs.md
-vuepress
 packages/@vuepress/shared-utils/lib/
 types
