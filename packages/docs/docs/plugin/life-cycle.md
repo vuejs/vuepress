@@ -34,7 +34,7 @@ module.exports = {
 }
 ```
 
-### generated
+## generated
 
 - Type: `AsyncFunction`
 - Scope：`build`

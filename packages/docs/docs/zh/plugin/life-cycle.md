@@ -35,7 +35,7 @@ module.exports = {
 }
 ```
 
-### generated
+## generated
 
 - 类型: `AsyncFunction`
 - 作用域：`build`

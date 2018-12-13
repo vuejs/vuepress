@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/core",
-  "version": "1.0.0-alpha.27",
+  "version": "1.0.0-alpha.28",
   "description": "Minimalistic doc generator with Vue component based layout system",
   "main": "lib/index.js",
   "repository": {
@@ -30,13 +30,14 @@
   "dependencies": {
     "@babel/core": "^7.0.0",
     "@vue/babel-preset-app": "^3.1.1",
-    "@vuepress/markdown": "^1.0.0-alpha.27",
-    "@vuepress/markdown-loader": "^1.0.0-alpha.27",
-    "@vuepress/plugin-last-updated": "^1.0.0-alpha.27",
-    "@vuepress/plugin-register-components": "^1.0.0-alpha.27",
-    "@vuepress/shared-utils": "^1.0.0-alpha.27",
+    "@vuepress/markdown": "^1.0.0-alpha.28",
+    "@vuepress/markdown-loader": "^1.0.0-alpha.28",
+    "@vuepress/plugin-last-updated": "^1.0.0-alpha.28",
+    "@vuepress/plugin-register-components": "^1.0.0-alpha.28",
+    "@vuepress/shared-utils": "^1.0.0-alpha.28",
     "autoprefixer": "^8.2.0",
     "babel-loader": "^8.0.4",
+    "cac": "^6.3.9",
     "cache-loader": "^1.2.2",
     "chokidar": "^2.0.3",
     "connect-history-api-fallback": "^1.5.0",
@@ -55,6 +56,7 @@
     "optimize-css-assets-webpack-plugin": "^4.0.0",
     "portfinder": "^1.0.13",
     "postcss-loader": "^2.1.5",
+    "semver": "^5.5.0",
     "toml": "^2.3.3",
     "url-loader": "^1.0.1",
     "vue": "^2.5.16",
@@ -68,9 +70,7 @@
     "webpack-chain": "^4.6.0",
     "webpack-merge": "^4.1.2",
     "webpack-serve": "^1.0.2",
-    "webpackbar": "^2.6.1",
-    "semver": "^5.5.0",
-    "cac": "^6.3.9"
+    "webpackbar": "^2.6.1"
   },
   "engines": {
     "node": ">=8.6"

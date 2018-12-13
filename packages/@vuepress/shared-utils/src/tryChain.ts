@@ -1,5 +1,5 @@
 type Provider<T, U> = (arg: T) => U
-type Resolver<T, U> = (Provider<T, U> | boolean)[] | boolean
+type Resolver<T, U> = (Provider<T, U> | boolean)[] | Provider<T, U>
 
 export = function tryChain<T, U> (resolvers: Array<Resolver<T, U>>, arg: T): U | void {
   let response: U

@@ -24,7 +24,10 @@ export default {
 
   props: {
     pageKey: String,
-    slotKey: String
+    slotKey: {
+      type: String,
+      default: 'default'
+    }
   },
 
   data () {
@@ -72,6 +75,7 @@ export default {
         this.noTransition = true
         return
       }
+
       // Start to load unfetched page component.
       this.layout = CONTENT_LOADING_COMPONENT
       if (this.$vuepress.isPageExists(pageKey)) {
@@ -79,13 +83,17 @@ export default {
         if (!this.$ssrContext) {
           Promise.all([
             this.$vuepress.loadPageAsyncComponent(pageKey),
-            new Promise(resolve => setTimeout(resolve, 300))
+            new Promise(resolve => setTimeout(resolve, 1000))
           ]).then(([comp]) => {
             this.$vuepress.$emit('AsyncMarkdownAssetLoaded', this.pageKey)
             Vue.component(pageKey, comp.default)
             this.layout = null
             setTimeout(() => {
               this.layout = pageKey
+              setTimeout(() => {
+                this.$vuepress.$set('contentMounted', true)
+                this.$vuepress.$emit('contentMounted', this.slotKey)
+              })
             })
           })
         }
@@ -99,7 +107,8 @@ export default {
   .fade-enter-active, .fade-leave-active {
     transition: opacity .2s;
   }
-  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+
+  .fade-enter, .fade-leave-to {
     opacity: 0;
   }
 </style>
