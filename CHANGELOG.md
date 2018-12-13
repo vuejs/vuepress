@@ -1,3 +1,14 @@
+<a name="1.0.0-alpha.29"></a>
+# [1.0.0-alpha.29](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.28...v1.0.0-alpha.29) (2018-12-13)
+
+
+### Bug Fixes
+
+* **$plugin-blog:** fix blog layout rendering error (close: [#1073](https://github.com/vuejs/vuepress/issues/1073)) ([#1095](https://github.com/vuejs/vuepress/issues/1095)) ([f8469eb](https://github.com/vuejs/vuepress/commit/f8469eb))
+* **$core:** variable `parent` is undefined in build process ([#1098](https://github.com/vuejs/vuepress/issues/1098)) ([dc7be95](https://github.com/vuejs/vuepress/commit/dc7be95))
+
+
+
 <a name="1.0.0-alpha.28"></a>
 # [1.0.0-alpha.28](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.27...v1.0.0-alpha.28) (2018-12-12)
 
