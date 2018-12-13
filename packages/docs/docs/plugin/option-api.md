@@ -434,7 +434,7 @@ Then, VuePress will automatically inject these components behind the layout comp
 </div>
 ```
 
-## registerCommand
+## extendCli
 
 - Type: `function`
 - Default: `undefined`
@@ -443,7 +443,7 @@ Register a extra command to enhance the CLI of vuepress. The function will be ca
 
 ```js
 module.exports = {
-  registerCommand (cli) {
+  extendCli (cli) {
     cli
       .command('info [targetDir]', '')
       .option('--debug', 'display info in debug mode')
