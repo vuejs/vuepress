@@ -16,25 +16,20 @@ module.exports = (options, ctx) => {
 
   const enhancers = [
     {
-      when: ({ regularPath }) => isDirectChild(regularPath),
-      frontmatter: { layout: getLayout('Page', 'Layout') },
-      data: { type: 'page' }
+      when: ({ regularPath }) => regularPath === categoryIndexPageUrl,
+      frontmatter: { layout: getLayout('Categories', 'Page') }
     },
     {
       when: ({ regularPath }) => regularPath.startsWith('/category/'),
       frontmatter: { layout: getLayout('Category', 'Page') }
     },
     {
-      when: ({ regularPath }) => regularPath === categoryIndexPageUrl,
-      frontmatter: { layout: getLayout('Categories', 'Page') }
+      when: ({ regularPath }) => regularPath === tagIndexPageUrl,
+      frontmatter: { layout: getLayout('Tags', 'Page') }
     },
     {
       when: ({ regularPath }) => regularPath.startsWith('/tag/'),
       frontmatter: { layout: getLayout('Tag', 'Page') }
-    },
-    {
-      when: ({ regularPath }) => regularPath === tagIndexPageUrl,
-      frontmatter: { layout: getLayout('Tags', 'Page') }
     },
     {
       when: ({ regularPath }) => regularPath === '/',
@@ -48,7 +43,12 @@ module.exports = (options, ctx) => {
       },
       data: { type: 'post' }
     },
-    ...pageEnhancers
+    ...pageEnhancers,
+    {
+      when: ({ regularPath }) => isDirectChild(regularPath),
+      frontmatter: { layout: getLayout('Page', 'Layout') },
+      data: { type: 'page' }
+    }
   ]
 
   return {
@@ -65,8 +65,8 @@ module.exports = (options, ctx) => {
       }) => {
         if (when(pageCtx)) {
           Object.keys(frontmatter).forEach(key => {
-            if (!frontmatter[key]) {
-              rawFrontmatter[key] || frontmatter[key]
+            if (!rawFrontmatter[key]) {
+              rawFrontmatter[key] = frontmatter[key]
             }
           })
           Object.assign(pageCtx, data)
@@ -77,7 +77,7 @@ module.exports = (options, ctx) => {
     /**
      * Create tag page and category page.
      */
-    ready () {
+    async ready () {
       const { pages } = ctx
       const tagMap = {}
       const categoryMap = {}
@@ -142,7 +142,7 @@ module.exports = (options, ctx) => {
           frontmatter: { title: `${categoryName} | Category` }
         }))
       ]
-      extraPages.forEach(page => ctx.addPage(page))
+      await Promise.all(extraPages.map(page => ctx.addPage(page)))
     },
 
     /**
