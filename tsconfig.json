@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "declaration": true,
+    "esModuleInterop": true,
+    "pretty": true,
+    "moduleResolution": "node",
+    "lib": ["es2015", "es2016.array.include"],
+    "allowSyntheticDefaultImports": true,
+    "stripInternal": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "alwaysStrict": true,
+    "module": "commonjs",
+    "outDir": "lib",
+    "typeRoots": [
+      "node_modules/@types"
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
+}

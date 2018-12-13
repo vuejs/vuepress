@@ -147,7 +147,7 @@ module.exports = class PluginAPI {
   initializeOptions () {
     Object.keys(PLUGIN_OPTION_MAP).forEach(key => {
       const option = PLUGIN_OPTION_MAP[key]
-      this.options[option.name] = instantiateOption(option.name)
+      this.options[option.name] = instantiateOption(option)
     })
   }
 
@@ -206,7 +206,8 @@ module.exports = class PluginAPI {
     additionalPages,
     globalUIComponents,
     define,
-    alias
+    alias,
+    extendCli
   }) {
     const isInternalPlugin = pluginName.startsWith('@vuepress/internal-')
     logger[isInternalPlugin ? 'debug' : 'tip'](pluginLog(pluginName, shortcut))
@@ -229,6 +230,7 @@ module.exports = class PluginAPI {
       .registerOption(PLUGIN_OPTION_MAP.GLOBAL_UI_COMPONENTS.key, globalUIComponents, pluginName)
       .registerOption(PLUGIN_OPTION_MAP.DEFINE.key, define, pluginName)
       .registerOption(PLUGIN_OPTION_MAP.ALIAS.key, alias, pluginName)
+      .registerOption(PLUGIN_OPTION_MAP.EXTEND_CLI.key, extendCli, pluginName)
   }
 }
 

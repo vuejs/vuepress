@@ -5,7 +5,7 @@ const PLUGIN_OPTION_META_MAP = {
   READY: { name: 'ready', types: [Function] },
   COMPILED: { name: 'compiled', types: [Function] },
   UPDATED: { name: 'updated', types: [Function] },
-  GENERATED: { name: 'generated', types: [Function] },
+  GENERATED: { name: 'generated', types: [Function], async: true },
   // options
   CHAIN_WEBPACK: { name: 'chainWebpack', types: [Function] },
   ENHANCE_DEV_SERVER: { name: 'enhanceDevServer', types: [Function] },
@@ -16,10 +16,11 @@ const PLUGIN_OPTION_META_MAP = {
   CHAIN_MARKDOWN: { name: 'chainMarkdown', types: [Function] },
   CLIENT_DYNAMIC_MODULES: { name: 'clientDynamicModules', types: [Object, Function] },
   CLIENT_ROOT_MIXIN: { name: 'clientRootMixin', types: [String] },
-  ADDITIONAL_PAGES: { name: 'additionalPages', types: [Function, Array] },
+  ADDITIONAL_PAGES: { name: 'additionalPages', types: [Function, Array], async: true },
   GLOBAL_UI_COMPONENTS: { name: 'globalUIComponents', types: [String, Array] },
   DEFINE: { name: 'define', types: [Function, Object] },
-  ALIAS: { name: 'alias', types: [Function, Object] }
+  ALIAS: { name: 'alias', types: [Function, Object] },
+  EXTEND_CLI: { name: 'extendCli', types: [Function] }
 }
 
 const PLUGIN_OPTION_MAP = {}

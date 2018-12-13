@@ -6,12 +6,14 @@
 
 ## 首页
 
-默认的主题提供了一个首页（Homepage）的布局 (用于 [这个网站的主页](../README.md))。想要使用它，需要在你的根级 `README.md` 的 [YAML front matter](../guide/markdown.md#front-matter) 指定 `home: true`。以下是这个网站实际使用的数据：
+默认的主题提供了一个首页（Homepage）的布局 (用于 [这个网站的主页](../README.md))。想要使用它，需要在你的根级 `README.md` 的 [YAML front matter](../guide/markdown.md#front-matter) 指定 `home: true`。以下是一个如何使用的例子：
 
 ``` yaml
 ---
 home: true
 heroImage: /hero.png
+heroText: Hero 标题
+tagline: Hero 副标题
 actionText: 快速上手 →
 actionLink: /zh/guide/
 features:

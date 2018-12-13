@@ -43,6 +43,7 @@ module.exports = class AppContext {
    */
 
   constructor (sourceDir, cliOptions = {}, isProd) {
+    logger.debug('sourceDir', sourceDir)
     this.sourceDir = sourceDir
     this.cliOptions = cliOptions
     this.isProd = isProd
@@ -103,8 +104,9 @@ module.exports = class AppContext {
     this.markdown = createMarkdown(this)
 
     await this.resolvePages()
+    await this.pluginAPI.options.additionalPages.apply(this)
     await Promise.all(
-      this.pluginAPI.options.additionalPages.values.map(async (options) => {
+      this.pluginAPI.options.additionalPages.appliedValues.map(async (options) => {
         await this.addPage(options)
       })
     )

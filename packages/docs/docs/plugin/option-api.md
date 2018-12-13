@@ -354,7 +354,7 @@ export default {
 
 ## additionalPages
 
-- Type: `Array|Function`
+- Type: `Array|AsyncFunction`
 - Default: `undefined`
 
 Add a page pointing to a markdown file:
@@ -377,14 +377,13 @@ Add a page with explicit content:
 ```js
 module.exports = {
   async additionalPages () {
-    const rp = require('request-promise');
-
-    // VuePress doesn't have request library built-in
+    // Note that VuePress doesn't have request library built-in
     // you need to install it yourself.
-    const content = await rp('https://github.com/vuejs/vuepress/blob/master/CHANGELOG.md');
+    const rp = require('request-promise')
+    const content = await rp('https://raw.githubusercontent.com/vuejs/vuepress/master/CHANGELOG.md')
     return [
       {
-        path: '/readme/',
+        path: '/changelog/',
         content
       }
     ]
@@ -434,3 +433,29 @@ Then, VuePress will automatically inject these components behind the layout comp
 </div>
 </div>
 ```
+
+## extendCli
+
+- Type: `function`
+- Default: `undefined`
+
+Register a extra command to enhance the CLI of vuepress. The function will be called with a [CAC](https://github.com/cacjs/cac)'s instance as the first argument.
+
+```js
+module.exports = {
+  extendCli (cli) {
+    cli
+      .command('info [targetDir]', '')
+      .option('--debug', 'display info in debug mode')
+      .action((dir = '.') => {
+        console.log('Display info of your website')
+      })
+  }
+}
+```
+
+Now you can use `vuepress info [targetDir]` a in your project!
+
+::: tip
+Note that a custom command registered by a plugin requires VuePress to locate your site configuration like `vuepress dev` and `vuepress build`, so when developing a command, be sure to lead the user to pass `targetDir` as an CLI argument.
+:::

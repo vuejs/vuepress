@@ -356,7 +356,7 @@ export default {
 
 ## additionalPages
 
-- 类型: `Array|Function`
+- 类型: `Array|AsyncFunction`
 - 默认值: `undefined`
 
 增加一个指向某个 markdown 文件的页面：
@@ -379,14 +379,13 @@ module.exports = {
 ```js
 module.exports = {
   async additionalPages () {
-    const rp = require('request-promise');
-
-    // VuePress doesn't have request library built-in
-    // you need to install it yourself.
-    const content = await rp('https://github.com/vuejs/vuepress/blob/master/CHANGELOG.md');
+    // 注意 VuePress 没有任何内置的请求库，
+    // 你需要自己安装它。
+    const rp = require('request-promise')
+    const content = await rp('https://raw.githubusercontent.com/vuejs/vuepress/master/CHANGELOG.md')
     return [
       {
-        path: '/readme/',
+        path: '/changelog/',
         content
       }
     ]
@@ -436,3 +435,30 @@ VuePress 将会自动将这些组件注入到布局组件的隔壁：
 </div>
 </div>
 ```
+
+## extendCli
+
+- 类型: `function`
+- 默认值: `undefined`
+
+注册一个额外的 command 来增强 vuepress 的 CLI。这个函数将会以一个 [CAC](https://github.com/cacjs/cac) 的实例作为第一个参数被调用。
+
+```js
+module.exports = {
+  extendCli (cli) {
+    cli
+      .command('info [targetDir]', '')
+      .option('--debug', 'display info in debug mode')
+      .action((dir = '.') => {
+        console.log('Display info of your website')
+      })
+  }
+}
+```
+
+现在你可以在你项目中使用 `vuepress info [targetDir]` 了！
+
+::: tip
+值得注意的是，一个自定义的 command 需要 VuePress 像 `vuepress dev` 或 `vuepress build` 去定位到你的站点配置，所以在开发一个 command 时，请确保引导用户去传入 `targetDir` 作为 CLI 参数的一部分。
+:::
+
