@@ -126,7 +126,10 @@ export function resolveSidebarItems (page, regularPath, site, localePath) {
   }
 
   const sidebarConfig = localeConfig.sidebar || themeConfig.sidebar
-  const normalizedPagesMap = pages.reduce((map, page) => (map[normalize(page.regularPath)] = page), {})
+  const normalizedPagesMap = pages.reduce((map, page) => {
+    map[normalize(page.regularPath)] = page
+    return map
+  }, {})
   if (!sidebarConfig) {
     return []
   } else {
