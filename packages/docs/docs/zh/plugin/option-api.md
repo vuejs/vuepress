@@ -413,7 +413,7 @@ module.exports = {
 - 类型: `Array|String`
 - 默认值: `undefined`
 
-你可以想注入某些全局的 UI，并固定在页面中的某处，如  `back-to-top`, `popup`。在 VuePress 中，**一个全局 UI 就是一个 Vue 组件。**你可以直接配置该全局组件的名称，如：
+你可能想注入某些全局的 UI，并固定在页面中的某处，如  `back-to-top`, `popup`。在 VuePress 中，**一个全局 UI 就是一个 Vue 组件。**你可以直接配置该全局组件的名称，如：
 
 ``` js
 module.exports = {
