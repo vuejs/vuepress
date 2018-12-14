@@ -5,7 +5,7 @@
       :is="layout"
       :slot-key="slotKey || 'default'"
     />
-    <div v-else class="conent"></div>
+    <div v-else class="content"></div>
   </transition>
 </template>
 
