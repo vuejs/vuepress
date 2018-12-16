@@ -45,7 +45,8 @@ module.exports = class Page {
     relative,
     permalink,
     frontmatter = {},
-    permalinkPattern
+    permalinkPattern,
+    siteConfig
   }, context) {
     this.title = title
     this._meta = meta
@@ -54,6 +55,7 @@ module.exports = class Page {
     this._permalink = permalink
     this.frontmatter = frontmatter
     this._permalinkPattern = permalinkPattern
+    this._siteConfig = siteConfig
     this._context = context
 
     if (relative) {
@@ -108,9 +110,13 @@ module.exports = class Page {
         }
 
         // headers
+        this.headersToExtract = ['h2', 'h3']
+        if (this._siteConfig.markdown && this._siteConfig.markdown.extractHeaders) {
+          this.headersToExtract = this._siteConfig.markdown.extractHeaders
+        }
         const headers = extractHeaders(
           this._strippedContent,
-          ['h2', 'h3'],
+          this.headersToExtract,
           markdown
         )
         if (headers.length) {
