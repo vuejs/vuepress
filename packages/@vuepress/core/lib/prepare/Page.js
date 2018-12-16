@@ -55,6 +55,7 @@ module.exports = class Page {
     this._permalink = permalink
     this.frontmatter = frontmatter
     this._permalinkPattern = permalinkPattern
+    this._siteConfig = siteConfig
     this._context = context
     this._siteConfig = siteConfig
 
