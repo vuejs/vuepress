@@ -121,6 +121,7 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
     },
     logLevel: 'error',
     port,
+    open: cliOptions.open,
     add: app => {
       // apply plugin options to extend dev server.
       ctx.pluginAPI.options.enhanceDevServer.syncApply(app)
