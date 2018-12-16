@@ -6,11 +6,7 @@
 
 const { EventEmitter } = require('events')
 const { getOptions } = require('loader-utils')
-const { loadConfig } = require('@vuepress/core')
-const {
-  fs, path, hash, parseFrontmatter, inferTitle, extractHeaders,
-  datatypes: { isFunction }
-} = require('@vuepress/shared-utils')
+const { fs, path, hash, parseFrontmatter, inferTitle, extractHeaders } = require('@vuepress/shared-utils')
 const LRU = require('lru-cache')
 const md = require('@vuepress/markdown')
 
@@ -31,10 +27,7 @@ module.exports = function (src) {
   if (!markdown) {
     markdown = md()
   }
-  let config = loadConfig(path.resolve(sourceDir, '.vuepress'), false)
-  if (isFunction(config)) {
-    config = config(this)
-  }
+
   // we implement a manual cache here because this loader is chained before
   // vue-loader, and will be applied on the same file multiple times when
   // selecting the individual blocks.
