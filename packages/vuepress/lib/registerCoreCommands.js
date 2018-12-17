@@ -22,6 +22,7 @@ module.exports = function (cli, options) {
     .option('--no-cache', 'clean the cache before build')
     .option('--debug', 'start development server in debug mode')
     .option('--silent', 'start development server in silent mode')
+    .option('--open', 'open browser when ready')
     .action((sourceDir = '.', commandOptions) => {
       const { debug, silent } = commandOptions
 
