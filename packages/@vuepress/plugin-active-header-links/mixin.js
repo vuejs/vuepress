@@ -42,14 +42,16 @@ function getAnchors (sidebarLinks) {
 
 export default {
   mounted () {
-    this.$vuepress.$on('contentMounted', (slotKey) => {
-      if (slotKey === 'default') {
-        window.addEventListener('scroll', this.onScroll)
-      }
-    })
+    window.addEventListener('scroll', this.onScroll)
 
     this.$vuepress.$on('AnchorHashChange', (anchor) => {
-      this.$router.replace(decodeURIComponent(anchor.hash))
+      this.$vuepress.$set('disableScrollBehavior', true)
+      this.$router.replace(decodeURIComponent(anchor.hash), () => {
+        // execute after scrollBehavior handler.
+        this.$nextTick(() => {
+          this.$vuepress.$set('disableScrollBehavior', false)
+        })
+      })
     })
   },
 

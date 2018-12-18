@@ -14,6 +14,7 @@ module.exports = (options, ctx) => ({
  */
 function importCode () {
   return `
+import Vue from 'vue'
 import { injectComponentOption } from '@app/util'
 import rootMixins from '@internal/root-mixins'
 import layoutComponents from '@internal/layout-components'
@@ -41,7 +42,13 @@ function routesCode (pages) {
   {
     name: ${JSON.stringify(componentName)},
     path: ${JSON.stringify(pagePath)},
-    component: LayoutDistributor,${_meta ? `\n    meta: ${JSON.stringify(_meta)}` : ''}
+    component: LayoutDistributor,
+    beforeEnter: (to, from, next) => {
+      pageComponents[${JSON.stringify(componentName)}]().then(comp => {
+        Vue.component(${JSON.stringify(componentName)}, comp.default)
+        next()
+      })
+    },${_meta ? `\n    meta: ${JSON.stringify(_meta)}` : ''}
   }`
 
     const dncodedPath = decodeURIComponent(pagePath)
