@@ -14,15 +14,13 @@ module.exports = (options, ctx) => ({
  */
 function importCode () {
   return `
-import Vue from 'vue'
-import { injectComponentOption } from '@app/util'
+import { injectComponentOption, ensureAsyncComponentLoaded } from '@app/util'
 import rootMixins from '@internal/root-mixins'
 import layoutComponents from '@internal/layout-components'
 import pageComponents from '@internal/page-components'
 import LayoutDistributor from '@app/components/LayoutDistributor.vue'
 
 injectComponentOption(LayoutDistributor, 'mixins', rootMixins)
-injectComponentOption(LayoutDistributor, 'components', Object.assign({}, layoutComponents, pageComponents))
 `
 }
 
@@ -35,6 +33,9 @@ function routesCode (pages) {
   function genRoute ({
     path: pagePath,
     key: componentName,
+    frontmatter: {
+      layout
+    },
     regularPath,
     _meta
   }) {
@@ -44,10 +45,7 @@ function routesCode (pages) {
     path: ${JSON.stringify(pagePath)},
     component: LayoutDistributor,
     beforeEnter: (to, from, next) => {
-      pageComponents[${JSON.stringify(componentName)}]().then(comp => {
-        Vue.component(${JSON.stringify(componentName)}, comp.default)
-        next()
-      })
+      ensureAsyncComponentLoaded(${JSON.stringify(layout || 'Layout')}, ${JSON.stringify(componentName)}).then(next)
     },${_meta ? `\n    meta: ${JSON.stringify(_meta)}` : ''}
   }`
 
