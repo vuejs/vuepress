@@ -1,3 +1,23 @@
+
+<a name="1.0.0-alpha.30"></a>
+# [1.0.0-alpha.30](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.29...v1.0.0-alpha.30) (2018-12-18)
+
+### Features
+
+* **$core:** add `--open` argument to open browser automatically (close: [#1100](https://github.com/vuejs/vuepress/issues/1100))([#1109](https://github.com/vuejs/vuepress/issues/1109)) ([550317e](https://github.com/vuejs/vuepress/commit/550317e))
+* **$core:** re-enable behavior of scrolling to anchor link (close: [#1107](https://github.com/vuejs/vuepress/issues/1107))([#1108](https://github.com/vuejs/vuepress/issues/1108)) ([7ad0a42](https://github.com/vuejs/vuepress/commit/7ad0a42))
+
+### Breaking Changes
+
+* **$core:** remove `contentLoading` and refine scroll behavior ([#1117](https://github.com/vuejs/vuepress/issues/1117)) ([0a7d85b](https://github.com/vuejs/vuepress/commit/0a7d85b))
+  - It also fixes the exisitng issues about anchor links. (Refs: [#1113](https://github.com/vuejs/vuepress/issues/1113), [#1016](https://github.com/vuejs/vuepress/issues/1016), [#1011](https://github.com/vuejs/vuepress/issues/1011), [#895](https://github.com/vuejs/vuepress/issues/895))
+
+### Performance Improvements
+
+* **$core:** improve ssr performance ([#1068](https://github.com/vuejs/vuepress/issues/1068)) ([1c2aa08](https://github.com/vuejs/vuepress/commit/1c2aa08))
+
+
+
 <a name="1.0.0-alpha.29"></a>
 # [1.0.0-alpha.29](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.28...v1.0.0-alpha.29) (2018-12-13)
 
