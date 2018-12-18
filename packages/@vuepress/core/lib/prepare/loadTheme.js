@@ -30,7 +30,7 @@ const {
 
 module.exports = async function loadTheme (ctx) {
   const { siteConfig, cliOptions, sourceDir, vuepressDir, pluginAPI } = ctx
-  const theme = siteConfig.theme || cliOptions.theme
+  const theme = cliOptions.theme || siteConfig.theme
   const themeResolver = getThemeResolver()
 
   const localThemePath = path.resolve(vuepressDir, 'theme')
