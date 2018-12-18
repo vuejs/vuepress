@@ -32,4 +32,3 @@ module.exports = {
 
 - Type: `string`
 - Default: `.header-anchor'`
-

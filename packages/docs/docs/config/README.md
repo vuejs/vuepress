@@ -97,13 +97,6 @@ Specify locales for i18n support. For more details, see the guide on [Internatio
 
 A function to control what files should have `<link rel="preload">` resource hints generated. See [shouldPrefetch](https://ssr.vuejs.org/api/#shouldprefetch).
 
-### contentLoading
-
-- Type: `boolean|string`
-- Default: `false`
-
-Whether to enable placeholder loading for asynchronous loading content. if it's a string, it should be the name of your custom loading component.
-
 ### cache
 
 - Type: `boolean|string`

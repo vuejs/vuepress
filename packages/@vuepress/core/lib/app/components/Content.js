@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import { isPageExists } from '../util'
 
 export default {
   props: {
@@ -10,13 +10,7 @@ export default {
   },
   render (h) {
     const pageKey = this.pageKey || this.$parent.$page.key
-    if (Vue.$vuepress.isPageExists(pageKey)) {
-      // In SSR, if a component is not registered with the component option
-      // vue-server-renderer will not be able to resovle it.
-      if (!this.$parent.$ssrContext) {
-        Vue.$vuepress.registerPageAsyncComponent(pageKey)
-      }
-
+    if (isPageExists(pageKey)) {
       return h(pageKey)
     }
     return h('')

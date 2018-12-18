@@ -1,4 +1,4 @@
-/* global VUEPRESS_TEMP_PATH, CONTENT_LOADING */
+/* global VUEPRESS_TEMP_PATH */
 import Vue from 'vue'
 import Router from 'vue-router'
 import dataMixin from './dataMixin'
@@ -10,7 +10,6 @@ import ClientComputedMixin from '@transform/ClientComputedMixin'
 import VuePress from './plugins/VuePress'
 
 // built-in components
-import LoadableContent from './components/Content.vue'
 import Content from './components/Content.js'
 import ContentSlotsDistributor from './components/ContentSlotsDistributor'
 import OutboundLink from './components/OutboundLink.vue'
@@ -36,12 +35,8 @@ Vue.use(VuePress)
 // mixin for exposing $site and $page
 Vue.mixin(dataMixin(ClientComputedMixin, siteData))
 // component for rendering markdown content and setting title etc.
-if (CONTENT_LOADING) {
-  Vue.component('Content', LoadableContent)
-} else {
-  Vue.component('Content', Content)
-}
 
+Vue.component('Content', Content)
 Vue.component('ContentSlotsDistributor', ContentSlotsDistributor)
 Vue.component('OutboundLink', OutboundLink)
 // component for client-only content
@@ -67,6 +62,9 @@ export function createApp (isServer) {
       if (savedPosition) {
         return savedPosition
       } else if (to.hash) {
+        if (Vue.$vuepress.$get('disableScrollBehavior')) {
+          return false
+        }
         return {
           selector: to.hash
         }

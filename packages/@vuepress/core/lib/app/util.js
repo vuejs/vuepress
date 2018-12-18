@@ -1,3 +1,42 @@
+import Vue from 'vue'
+import layoutComponents from '@internal/layout-components'
+import pageComponents from '@internal/page-components'
+
+const asyncComponents = Object.assign({}, layoutComponents, pageComponents)
+
+export function isPageExists (pageKey) {
+  return Boolean(pageComponents[pageKey])
+}
+
+export function isPageLoaded (pageKey) {
+  return Boolean(Vue.component(pageKey))
+}
+
+export function getPageAsyncComponent (pageKey) {
+  return pageComponents[pageKey]
+}
+
+export function isLayoutExists (layout) {
+  return Boolean(layoutComponents[layout])
+}
+
+export function isLayoutLoaded (layout) {
+  return Boolean(Vue.component(layout))
+}
+
+export function getLayoutAsyncComponent (pageKey) {
+  return layoutComponents[pageKey]
+}
+
+export function ensureAsyncComponentsLoaded (...names) {
+  return Promise.all(names.filter(v => v).map(async (name) => {
+    if (!Vue.component(name) && asyncComponents[name]) {
+      const comp = await asyncComponents[name]()
+      Vue.component(name, comp.default)
+    }
+  }))
+}
+
 /**
  * Inject option to Vue SFC
  * @param {object} options
