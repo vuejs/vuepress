@@ -1,19 +1,20 @@
 ---
 title: active-header-links
-metaTitle: Active-Header-Links 插件 | VuePress
+metaTitle: 页面滚动时自动激活侧边栏链接的插件 | VuePress
 ---
 
 # [@vuepress/plugin-active-header-links](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-active-header-linksd)
 
-> 页面滚动时自动更新标题链接的插件
-## Install
+> 页面滚动时自动激活侧边栏链接的插件
+
+## 安装
 
 ```bash
 yarn add -D @vuepress/plugin-active-header-links
 # OR npm install -D @vuepress/plugin-active-header-links
 ```
 
-## Usage
+## 使用
 
 ```javascript
 module.exports = {
@@ -21,14 +22,14 @@ module.exports = {
 }
 ```
 
-## Options
+## 选项
 
 ### sidebarLinkSelector
 
-- Type: `string`
-- Default: `.sidebar-link`
+- 类型: `string`
+- 默认值: `.sidebar-link`
 
 ### headerAnchorSelector
 
-- Type: `string`
-- Default: `.header-anchor'`
+- 类型: `string`
+- 默认值: `.header-anchor'`
