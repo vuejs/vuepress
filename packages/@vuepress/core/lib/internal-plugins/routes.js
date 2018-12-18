@@ -14,7 +14,7 @@ module.exports = (options, ctx) => ({
  */
 function importCode () {
   return `
-import { injectComponentOption, ensureAsyncComponentLoaded } from '@app/util'
+import { injectComponentOption, ensureAsyncComponentsLoaded } from '@app/util'
 import rootMixins from '@internal/root-mixins'
 import layoutComponents from '@internal/layout-components'
 import pageComponents from '@internal/page-components'
@@ -45,7 +45,7 @@ function routesCode (pages) {
     path: ${JSON.stringify(pagePath)},
     component: LayoutDistributor,
     beforeEnter: (to, from, next) => {
-      ensureAsyncComponentLoaded(${JSON.stringify(layout || 'Layout')}, ${JSON.stringify(componentName)}).then(next)
+      ensureAsyncComponentsLoaded(${JSON.stringify(layout || 'Layout')}, ${JSON.stringify(componentName)}).then(next)
     },${_meta ? `\n    meta: ${JSON.stringify(_meta)}` : ''}
   }`
 

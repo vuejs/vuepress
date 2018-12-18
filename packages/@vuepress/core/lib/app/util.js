@@ -28,7 +28,7 @@ export function getLayoutAsyncComponent (pageKey) {
   return layoutComponents[pageKey]
 }
 
-export function ensureAsyncComponentLoaded (...names) {
+export function ensureAsyncComponentsLoaded (...names) {
   return Promise.all(names.filter(v => v).map(async (name) => {
     if (!Vue.component(name) && asyncComponents[name]) {
       const comp = await asyncComponents[name]()
