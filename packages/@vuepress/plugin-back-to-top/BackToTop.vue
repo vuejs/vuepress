@@ -71,7 +71,7 @@ export default {
 }
 
 .go-to-top:hover {
-  color: $accentColor;
+  color: lighten($accentColor, 30%);
 }
 
 @media (max-width: 959px) {
