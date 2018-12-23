@@ -59,19 +59,19 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang='stylus' scoped>
 .go-to-top {
   cursor: pointer;
   position: fixed;
   bottom: 2rem;
   right: 2.5rem;
   width: 2rem;
-  color: #72cda4;
+  color: $accentColor;
   z-index: 1;
 }
 
 .go-to-top:hover {
-  color: #3eaf7c;
+  color: lighten($accentColor, 30%);
 }
 
 @media (max-width: 959px) {
