@@ -50,3 +50,7 @@ export default ({
   // ...apply enhancements to the app
 }
 ```
+
+**Related:**
+
+- [App Level Enhancements in Plugin API](../plugin/option-api.md#enhanceappfiles)

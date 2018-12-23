@@ -14,7 +14,7 @@ Internally, vuepress will use the plugin's package name as the plugin name. When
 module.exports = {
   plugins: [
     [
-      (pluginOptions, ctx) => ({
+      (pluginOptions, context) => ({
         name: 'my-xxx-plugin'
         // ... the rest of options
       })
@@ -97,10 +97,10 @@ module.exports = {
 - Function Usage:
 
 ```js
-module.exports = (options, ctx) => ({
+module.exports = (options, context) => ({
   define () {
     return {
-      SW_BASE_URL: ctx.base || '/',
+      SW_BASE_URL: context.base || '/',
       SW_ENABLED: !!options.enabled,
     }
   }
@@ -115,9 +115,9 @@ module.exports = (options, ctx) => ({
 We can set aliases via [chainWebpack](#chainwebpack):
 
 ```js
-module.exports = (options, ctx) => ({
+module.exports = (options, context) => ({
   chainWebpack (config) {
-    config.resolve.alias.set('@theme', ctx.themePath)
+    config.resolve.alias.set('@theme', context.themePath)
   }
 })
 ```
@@ -125,9 +125,9 @@ module.exports = (options, ctx) => ({
 But `alias` option makes this process more like configuration:
 
 ```js
-module.exports = (options, ctx) => ({
+module.exports = (options, context) => ({
   alias: {
-    '@theme': ctx.themePath
+    '@theme': context.themePath
   }
 })
 ```
@@ -152,21 +152,21 @@ A simple plugin to create a sub public directory is as follows:
 ```js
 const path = require('path')
 
-module.exports = (options, ctx) => {
-  const imagesAssetsPath = path.resolve(ctx.sourceDir, '.vuepress/images')
+module.exports = (options, context) => {
+  const imagesAssetsPath = path.resolve(context.sourceDir, '.vuepress/images')
 
   return {
       // For development
       enhanceDevServer (app) {
         const mount = require('koa-mount')
         const serveStatic = require('koa-static')
-        app.use(mount(path.join(ctx.base, 'images'), serveStatic(imagesAssetsPath)))
+        app.use(mount(path.join(context.base, 'images'), serveStatic(imagesAssetsPath)))
       },
 
       // For production
       async generated () {
         const { fs } = require('@vuepress/shared-utils')
-        await fs.copy(imagesAssetsPath, path.resolve(ctx.outDir, 'images'))
+        await fs.copy(imagesAssetsPath, path.resolve(context.outDir, 'images'))
       }
   }
 }
@@ -230,30 +230,32 @@ module.exports = {
 
 ## enhanceAppFiles
 
-- Type: `Array | AsyncFunction`
+- Type: `String | Array | AsyncFunction`
 - Default: `undefined`
 
-This option accepts an array containing the file paths, or a function that returns this array, which allows you to do some [App Level Enhancements](../guide/basic-config.md#theme-configuration).
+This option accepts absolute file path(s) pointing to the enhancement file(s), or a function that returns the path(s), which allows you to do some [App Level Enhancements](../guide/basic-config.md#app-level-enhancements).
 
 ``` js
+import { resolve } from 'path'
+
 module.exports = {
-  enhanceAppFiles: [
-    path.resolve(__dirname, 'client.js')
-  ]
+  enhanceAppFiles: resolve(__dirname, 'client.js')
 }
 ```
 
-The file can `export default` a hook function which will work like `.vuepress/enhanceApp.js`, or any client side code snippets.
-
-It's worth mentioning that in order for plugin developers to be able to do more things at compile time, this option also supports dynamic code:
+This option also supports dynamic code which allows you to do more things with the ability to touch the compilation context:
 
 ```js
-module.exports = (option, ctx) => {
+module.exports = (option, context) => {
   return {
-    enhanceAppFiles: [{
-      name: 'dynamic-code',
-      content: `export default ({ Vue }) => { Vue.mixin('$source', '${context.sourceDir}') }`
-    }]
+    enhanceAppFiles() {
+      return {
+         name: 'dynamic-code',
+         content: `export default ({ Vue }) => { Vue.mixin('$source', '${
+           context.sourceDir
+         }') }`
+       }
+    }
   }
 }
 ```

@@ -18,7 +18,7 @@ metaTitle: Option API | Plugin
 module.exports = {
   plugins: [
     [
-      (pluginOptions, ctx) => ({
+      (pluginOptions, context) => ({
         name: 'my-xxx-plugin'
         // ... the rest of options
       })
@@ -101,10 +101,10 @@ module.exports = {
 - 函数式:
 
 ```js
-module.exports = (options, ctx) => ({
+module.exports = (options, context) => ({
   define () {
     return {
-      SW_BASE_URL: ctx.base || '/',
+      SW_BASE_URL: context.base || '/',
       SW_ENABLED: !!options.enabled,
     }
   }
@@ -119,9 +119,9 @@ module.exports = (options, ctx) => ({
 我们可以通过 [chainWebpack](#chainwebpack) 来配置别名：
 
 ```js
-module.exports = (options, ctx) => ({
+module.exports = (options, context) => ({
   chainWebpack (config) {
-    config.resolve.alias.set('@theme', ctx.themePath)
+    config.resolve.alias.set('@theme', context.themePath)
   }
 })
 ```
@@ -129,9 +129,9 @@ module.exports = (options, ctx) => ({
 `alias` 可以使这个流程更像配置：
 
 ```js
-module.exports = (options, ctx) => ({
+module.exports = (options, context) => ({
   alias: {
-    '@theme': ctx.themePath
+    '@theme': context.themePath
   }
 })
 ```
@@ -156,21 +156,21 @@ module.exports = {
 ```js
 const path = require('path')
 
-module.exports = (options, ctx) => {
-  const imagesAssetsPath = path.resolve(ctx.sourceDir, '.vuepress/images')
+module.exports = (options, context) => {
+  const imagesAssetsPath = path.resolve(context.sourceDir, '.vuepress/images')
 
   return {
       // For development
       enhanceDevServer (app) {
         const mount = require('koa-mount')
         const serveStatic = require('koa-static')
-        app.use(mount(path.join(ctx.base, 'images'), serveStatic(imagesAssetsPath)))
+        app.use(mount(path.join(context.base, 'images'), serveStatic(imagesAssetsPath)))
       },
 
       // For production
       async generated () {
         const { fs } = require('@vuepress/shared-utils')
-        await fs.copy(imagesAssetsPath, path.resolve(ctx.outDir, 'images'))
+        await fs.copy(imagesAssetsPath, path.resolve(context.outDir, 'images'))
       }
   }
 }
@@ -234,28 +234,32 @@ module.exports = {
 
 ## enhanceAppFiles
 
-- 类型: `Array|AsyncFunction`
+- 类型: `String | Array | AsyncFunction`
 - 默认值: `undefined`
 
-这个选项接受一个包含文件的数组，或者一个返回该数组的函数。你可以通过此选项做一些[应用级别的配置](../guide/basic-config.md#应用级别的配置)。
+此选项接受指向增强文件的绝对文件路径或返回该路径的函数，你可以通过此选项做一些[应用级别的配置](../guide/basic-config.md#应用级别的配置):
 
 ``` js
+import { resolve } from 'path'
+
 module.exports = {
-  enhanceAppFiles: [
-    path.resolve(__dirname, 'client.js')
-  ]
+  enhanceAppFiles: resolve(__dirname, 'client.js')
 }
 ```
 
-值得提及的是，为了让插件开发者能够在编译器做更多的事情，`enhanceAppFiles` 也支持动态的代码：
+此选项还支持动态代码，允许你使用触摸编译上下文的能力来做更多的事：
 
 ```js
-module.exports = (option, ctx) => {
+module.exports = (option, context) => {
   return {
-    enhanceAppFiles: [{
-      name: 'dynamic-code',
-      content: `export default ({ Vue }) => { Vue.mixin('$source', '${context.sourceDir}') }`
-    }]
+    enhanceAppFiles() {
+      return {
+         name: 'dynamic-code',
+         content: `export default ({ Vue }) => { Vue.mixin('$source', '${
+           context.sourceDir
+         }') }`
+       }
+    }
   }
 }
 ```
@@ -268,7 +272,7 @@ module.exports = (option, ctx) => {
 有时，你可能想要在编译期间生成一些在客户端使用的模块：
 
 ```js
-module.exports = (options, ctx) => ({
+module.exports = (options, context) => ({
   clientDynamicModules() {
     return {
       name: 'constans.js',
