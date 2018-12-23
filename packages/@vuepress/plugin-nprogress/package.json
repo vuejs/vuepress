@@ -1,0 +1,28 @@
+{
+  "name": "@vuepress/plugin-nprogress",
+  "version": "1.0.0-alpha.30",
+  "description": "nprogress plugin for vuepress",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuejs/vuepress.git"
+  },
+  "keywords": [
+    "documentation",
+    "vue",
+    "vuepress",
+    "generator"
+  ],
+  "dependencies": {
+    "nprogress": "^0.2.0"
+  },
+  "author": "ULIVZ <chl814@foxmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vuejs/vuepress/issues"
+  },
+  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/plugin-nprogress#readme"
+}
