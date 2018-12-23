@@ -271,7 +271,7 @@ Sometimes, you may want to generate some client modules at compile time.
 module.exports = (options, context) => ({
   clientDynamicModules() {
     return {
-      name: 'constans.js',
+      name: 'constants.js',
       content: `export const SOURCE_DIR = '${context.sourceDir}'`
     }
   }
@@ -281,7 +281,7 @@ module.exports = (options, context) => ({
 Then you can use this module at client side code by:
 
 ``` js
-import { SOURCE_DIR } from '@dynamic/constans'
+import { SOURCE_DIR } from '@dynamic/constants'
 ```
 
 ## extendPageData

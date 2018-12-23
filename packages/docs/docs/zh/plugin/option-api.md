@@ -275,7 +275,7 @@ module.exports = (option, context) => {
 module.exports = (options, context) => ({
   clientDynamicModules() {
     return {
-      name: 'constans.js',
+      name: 'constants.js',
       content: `export const SOURCE_DIR = '${context.sourceDir}'`
     }
   }
@@ -285,7 +285,7 @@ module.exports = (options, context) => ({
 然后你可以在客户端这样使用你的模块：
 
 ``` js
-import { SOURCE_DIR } from '@dynamic/constans'
+import { SOURCE_DIR } from '@dynamic/constants'
 ```
 
 ## extendPageData
