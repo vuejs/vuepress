@@ -1,9 +1,9 @@
 const { path } = require('@vuepress/shared-utils')
 
-module.exports = (options, context) => ({
+module.exports = {
   enhanceAppFiles: [
-    path.resolve(__dirname, 'client.js')
+    path.resolve(__dirname, 'enhanceAppFile.js')
   ],
 
   globalUIComponents: 'BackToTop'
-})
+}

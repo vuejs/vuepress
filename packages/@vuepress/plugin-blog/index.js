@@ -161,8 +161,6 @@ module.exports = (options, ctx) => {
       ]
     },
 
-    enhanceAppFiles: [
-      path.resolve(__dirname, 'clientPlugin.js')
-    ]
+    enhanceAppFiles: path.resolve(__dirname, 'enhanceAppFile.js')
   }
 }
