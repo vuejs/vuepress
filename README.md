@@ -74,6 +74,8 @@ yarn add vuepress@next -D  # Install next.
 
 ## Showcase
 
+> Check [Awesome Vuepress](https://github.com/meteorlxy/awesome-vuepress) for more
+
 Websites built with VuePress:
 
 **Vue Ecosystem**
