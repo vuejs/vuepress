@@ -2,6 +2,7 @@ const { path, datatypes: { isString }} = require('@vuepress/shared-utils')
 
 module.exports = (options, ctx) => {
   const { layoutComponentMap } = ctx
+  const componentMap = {}
   const {
     pageEnhancers = [],
     postsDir = '_posts',
@@ -11,8 +12,13 @@ module.exports = (options, ctx) => {
   } = options
 
   const isLayoutExists = name => layoutComponentMap[name] !== undefined
-  const getLayout = (name, fallback) => isLayoutExists(name) ? name : fallback
+  const componentExists = name => componentMap[name] !== undefined
+  const getLayout = (name, fallback) => isLayoutExists(name) || componentExists(name)  ? name : fallback
   const isDirectChild = regularPath => path.parse(regularPath).dir === '/'
+
+  fs.readdirSync(`${sourceDir}/.vuepress/components/`).forEach(file => {
+    componentMap[file.split(".")[0]] = file
+  })
 
   const enhancers = [
     {
