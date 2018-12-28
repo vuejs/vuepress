@@ -1,7 +1,8 @@
+const fs = require("fs")
 const { path, datatypes: { isString }} = require('@vuepress/shared-utils')
 
 module.exports = (options, ctx) => {
-  const { layoutComponentMap } = ctx
+  const { layoutComponentMap, sourceDir } = ctx
   const componentMap = {}
   const {
     pageEnhancers = [],
