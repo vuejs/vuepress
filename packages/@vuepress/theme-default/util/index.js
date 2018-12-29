@@ -53,7 +53,18 @@ export function isActive (route, path) {
   return routePath === pagePath
 }
 
+function normalizedPagesMap (pages) {
+  return pages.reduce((map, page) => {
+    map[normalize(page.regularPath)] = page
+    return map
+  }, {})
+}
+
 export function resolvePage (pages, rawPath, base) {
+  return resolvePageByMap(normalizedPagesMap(pages), rawPath, base)
+}
+
+function resolvePageByMap (pages, rawPath, base) {
   if (base) {
     rawPath = resolvePath(rawPath, base)
   }
@@ -126,16 +137,12 @@ export function resolveSidebarItems (page, regularPath, site, localePath) {
   }
 
   const sidebarConfig = localeConfig.sidebar || themeConfig.sidebar
-  const normalizedPagesMap = pages.reduce((map, page) => {
-    map[normalize(page.regularPath)] = page
-    return map
-  }, {})
   if (!sidebarConfig) {
     return []
   } else {
     const { base, config } = resolveMatchingConfig(regularPath, sidebarConfig)
     return config
-      ? config.map(item => resolveItem(item, normalizedPagesMap, base))
+      ? config.map(item => resolveItem(item, normalizedPagesMap(pages), base))
       : []
   }
 }
@@ -211,9 +218,9 @@ function ensureEndingSlash (path) {
 
 function resolveItem (item, pages, base, isNested) {
   if (typeof item === 'string') {
-    return resolvePage(pages, item, base)
+    return resolvePageByMap(pages, item, base)
   } else if (Array.isArray(item)) {
-    return Object.assign(resolvePage(pages, item[0], base), {
+    return Object.assign(resolvePageByMap(pages, item[0], base), {
       title: item[1]
     })
   } else {
