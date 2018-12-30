@@ -8,24 +8,26 @@ sidebar: auto
 
 ### ga <Badge text="替换"/>
 
-GA 已经被分离为一个单独的插件 [@vuepress/google-analytics](../plugin/official/plugin-google-analytics.md)。
+GA 已经被分离为一个单独的插件 [@vuepress/plugin-google-analytics](../plugin/official/plugin-google-analytics.md)。
 
 ::: upgrade
 
-1. Install `@vuepress/google-analytics`:
+1. Install `@vuepress/plugin-google-analytics`:
 
 ```bash
-yarn add @vuepress/google-analytics -D
+yarn add -D @vuepress/plugin-google-analytics
 ```
 
 2. Update `vuepress/config.js`:
 
 ```diff
 module.exports = {
--  markdown: {
--    config(md) { /* ... */ }
--  },
-+  extendMarkdown(md) { /* ... */ }
+-  ga: 'UA-12345678-9'
+},
+plugins: {
++  '@vuepress/google-analytics': {
++    ga: 'UA-12345678-9'
++  }
 }
 ```
 :::
