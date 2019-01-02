@@ -39,7 +39,7 @@ If you want to use a completely custom homepage layout, you can also use a [Cust
 
 The Navbar may contain your page title, [Search Box](#search-box), [Navbar Links](#navbar-links), [Languages](../guide/i18n.md) and [Repository Link](#git-repo-and-edit-links), all of them depends on your configuration.
 
-## Navbar Logo
+### Navbar Logo
 
 You can add a logo to the navbar via `themeConfig.logo`. Logo can be placed in [public folder](../guide/assets.md#public-files).
 
