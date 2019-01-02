@@ -17,6 +17,7 @@ export default ({ router }) => {
     })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga')
 
     ga('create', GA_ID, 'auto')
+    ga('set', 'anonymizeIp', true)
     ga('send', 'pageview')
 
     router.afterEach(function (to) {
