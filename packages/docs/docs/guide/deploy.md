@@ -196,7 +196,7 @@ heroku open
           "src": "package.json",
           "use": "@now/static-build"
         }]
-      }
+     }
     ```
 
     You can further customize the static serving behavior by consulting [Now's documentation](https://zeit.co/examples/vuepress/).
