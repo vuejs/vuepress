@@ -1,13 +1,13 @@
 <template>
-  <div class="home">
-    <div class="hero">
+  <main class="home" aria-labelledby="main-title">
+    <header class="hero">
       <img
         v-if="data.heroImage"
         :src="$withBase(data.heroImage)"
         alt="hero"
       >
 
-      <h1>{{ data.heroText || $title || 'Hello' }}</h1>
+      <h1 id="main-title">{{ data.heroText || $title || 'Hello' }}</h1>
 
       <p class="description">
         {{ data.tagline || $description || 'Welcome to your VuePress site' }}
@@ -22,7 +22,7 @@
           :item="actionLink"
         />
       </p>
-    </div>
+    </header>
 
     <div
       class="features"
