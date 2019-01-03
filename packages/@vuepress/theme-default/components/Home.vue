@@ -75,6 +75,7 @@ export default {
   padding $navbarHeight 2rem 0
   max-width 960px
   margin 0px auto
+  display block
   .hero
     text-align center
     img

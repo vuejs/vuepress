@@ -197,6 +197,7 @@ function find (page, items, offset) {
 
 .page
   padding-bottom 2rem
+  display block
 
 .page-edit
   @extend $wrapper
