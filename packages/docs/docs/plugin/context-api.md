@@ -18,6 +18,12 @@ module.exports = (options, ctx) => {
 
 Whether VuePress run in production environment mode.
 
+## ctx.pages
+
+- Type: `array`
+
+Contains a list of Page objects
+
 ## ctx.sourceDir
 
 - Type: `string`
