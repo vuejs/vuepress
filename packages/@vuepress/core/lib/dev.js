@@ -1,18 +1,13 @@
 'use strict'
 
 module.exports = async function dev (sourceDir, cliOptions = {}) {
+  const WebpackDevServer = require('webpack-dev-server')
   const { path } = require('@vuepress/shared-utils')
   const webpack = require('webpack')
   const chokidar = require('chokidar')
-  const serve = require('webpack-serve')
-  const convert = require('koa-connect')
-  const mount = require('koa-mount')
-  const range = require('koa-range')
-  const serveStatic = require('koa-static')
-  const history = require('connect-history-api-fallback')
 
   const prepare = require('./prepare/index')
-  const { chalk, fs, logger } = require('@vuepress/shared-utils')
+  const { chalk, logger } = require('@vuepress/shared-utils')
   const HeadPlugin = require('./webpack/HeadPlugin')
   const DevLogPlugin = require('./webpack/DevLogPlugin')
   const createClientConfig = require('./webpack/createClientConfig')
@@ -105,52 +100,49 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
     config = applyUserWebpackConfig(userConfig, config, false /* isServer */)
   }
 
-  const compiler = webpack(config)
-
-  const nonExistentDir = path.resolve(__dirname, 'non-existent')
-  await serve({
-    // avoid project cwd from being served. Otherwise if the user has index.html
-    // in cwd it would break the server
-    content: [nonExistentDir],
-    compiler,
-    host,
-    dev: { logLevel: 'warn' },
-    hot: {
-      port: port + 1,
-      logLevel: 'error'
+  const serverConfig = {
+    disableHostCheck: true,
+    compress: true,
+    clientLogLevel: 'none',
+    hot: true,
+    quiet: true,
+    headers: {
+      'access-control-allow-origin': '*'
     },
-    logLevel: 'error',
-    port,
-    open: cliOptions.open,
-    add: app => {
-      // apply plugin options to extend dev server.
-      ctx.pluginAPI.options.enhanceDevServer.syncApply(app)
+    publicPath: ctx.base,
+    watchOptions: {
+      ignored: /node_modules/
+    },
+    historyApiFallback: {
+      rewrites: [
+        { from: /\.html$/, to: '/' }
+      ]
+    },
+    overlay: false,
+    host,
+    contentBase: path.resolve(sourceDir, '.vuepress/public')
+    // before(app) {
+    //   ctx.pluginAPI.options.enhanceDevServer.syncApply(app)
+    //   app.use('/', express.static(path.resolve(sourceDir, '.vuepress/public')))
+    // }
+  }
 
-      const userPublic = path.resolve(sourceDir, '.vuepress/public')
+  WebpackDevServer.addDevServerEntrypoints(config, serverConfig)
 
-      // enable range request
-      app.use(range)
+  const compiler = webpack(config)
+  const server = new WebpackDevServer(compiler, serverConfig)
 
-      // respect base when serving static files...
-      if (fs.existsSync(userPublic)) {
-        app.use(mount(ctx.base, serveStatic(userPublic)))
-      }
-
-      app.use(convert(history({
-        rewrites: [
-          { from: /\.html$/, to: '/' }
-        ]
-      })))
+  server.listen(port, host, err => {
+    if (err) {
+      console.log(err)
     }
   })
 }
 
 function resolveHost (host) {
-  // webpack-serve hot updates doesn't work properly over 0.0.0.0 on Windows,
-  // but localhost does not allow visiting over network :/
-  const defaultHost = process.platform === 'win32' ? 'localhost' : '0.0.0.0'
+  const defaultHost = 'localhost'
   host = host || defaultHost
-  const displayHost = host === defaultHost && process.platform !== 'win32'
+  const displayHost = host === defaultHost
     ? 'localhost'
     : host
   return {
