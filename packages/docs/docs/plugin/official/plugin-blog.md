@@ -10,8 +10,8 @@ metaTitle: Blog Plugin | VuePress
 ## Install
 
 ```bash
-yarn add -D @vuepress/plugin-blog
-# OR npm install -D @vuepress/plugin-blog
+yarn add -D @vuepress/plugin-blog@next
+# OR npm install -D @vuepress/plugin-blog@next
 ```
 
 ## Usage
