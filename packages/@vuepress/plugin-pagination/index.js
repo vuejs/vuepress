@@ -5,7 +5,7 @@ function getIntervallers (max, interval) {
   const arr = [...Array(count)]
   return arr.map((v, index) => {
     const start = index * interval
-    const end = (index + 1) * interval - 1
+    const end = (index + 1) * interval
     return [start, end > max ? max : end]
   })
 }
