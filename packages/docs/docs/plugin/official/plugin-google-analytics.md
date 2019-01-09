@@ -22,7 +22,7 @@ module.exports = {
   plugins: [
     '@vuepress/google-analytics',
     {
-      'ga': '' // Google Analytics ID which usually looks like UA-00000000-0
+      'ga': '' // UA-00000000-0
     }
   ] 
 }
