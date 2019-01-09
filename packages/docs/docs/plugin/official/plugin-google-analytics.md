@@ -19,7 +19,12 @@ yarn add -D @vuepress/plugin-google-analytics
 
 ```javascript
 module.exports = {
-  plugins: ['@vuepress/google-analytics'] 
+  plugins: [
+    '@vuepress/google-analytics',
+    {
+      'ga': '' // Google Analytics ID which usually looks like UA-00000000-0
+    }
+  ] 
 }
 ```
 
