@@ -46,7 +46,7 @@
     >
       {{ data.footer }}
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
