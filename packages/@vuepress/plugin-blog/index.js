@@ -5,13 +5,18 @@ module.exports = (options, ctx) => {
   const {
     pageEnhancers = [],
     postsDir = '_posts',
+    archivePostsDir = '_archive',
+    archivePageUrl = '/archive/',
     categoryIndexPageUrl = '/category/',
     tagIndexPageUrl = '/tag/',
     permalink = '/:year/:month/:day/:slug'
   } = options
 
   const isLayoutExists = name => layoutComponentMap[name] !== undefined
-  const getLayout = (name, fallback) => isLayoutExists(name) ? name : fallback
+  const getLayout = (name, fallback) => {
+    return isLayoutExists(name) ? name : (fallback || 'Layout')
+  }
+
   const isDirectChild = regularPath => path.parse(regularPath).dir === '/'
 
   const enhancers = [
@@ -39,9 +44,21 @@ module.exports = (options, ctx) => {
       when: ({ regularPath }) => regularPath.startsWith(`/${postsDir}/`),
       frontmatter: {
         layout: getLayout('Post', 'Page'),
-        permalink: permalink
+        permalink
       },
       data: { type: 'post' }
+    },
+    {
+      when: ({ regularPath }) => regularPath === archivePageUrl,
+      frontmatter: { layout: getLayout('Archive', 'Page') }
+    },
+    {
+      when: ({ regularPath }) => regularPath.startsWith(`/${archivePostsDir}/`),
+      frontmatter: {
+        layout: getLayout('Post', 'Page'),
+        permalink: `/archive/${permalink}`
+      },
+      data: { type: 'archived_post' }
     },
     ...pageEnhancers,
     {
@@ -65,6 +82,7 @@ module.exports = (options, ctx) => {
       }) => {
         if (when(pageCtx)) {
           Object.keys(frontmatter).forEach(key => {
+            // Respect the original frontmatter in markdown
             if (!rawFrontmatter[key]) {
               rawFrontmatter[key] = frontmatter[key]
             }
@@ -130,6 +148,10 @@ module.exports = (options, ctx) => {
         {
           permalink: categoryIndexPageUrl,
           frontmatter: { title: `Categories` }
+        },
+        {
+          permalink: archivePageUrl,
+          frontmatter: { title: `Archive` }
         },
         ...Object.keys(tagMap).map(tagName => ({
           permalink: tagMap[tagName].path,
