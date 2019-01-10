@@ -35,7 +35,7 @@
     "@vuepress/plugin-last-updated": "^1.0.0-alpha.30",
     "@vuepress/plugin-register-components": "^1.0.0-alpha.30",
     "@vuepress/shared-utils": "^1.0.0-alpha.30",
-    "autoprefixer": "^8.2.0",
+    "autoprefixer": "^7.1.2",
     "babel-loader": "^8.0.4",
     "cac": "^6.3.9",
     "cache-loader": "^1.2.2",
