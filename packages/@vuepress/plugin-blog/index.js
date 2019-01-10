@@ -122,6 +122,8 @@ module.exports = (options, ctx) => {
       ctx.tagMap = tagMap
       ctx.categoryMap = categoryMap
 
+      const noExistsPage = pageEnhancers.filter(it => it.permalink).map(it => ({ permalink: it.permalink }))
+
       const extraPages = [
         {
           permalink: tagIndexPageUrl,
@@ -131,6 +133,7 @@ module.exports = (options, ctx) => {
           permalink: categoryIndexPageUrl,
           frontmatter: { title: `Categories` }
         },
+        ...noExistsPage,
         ...Object.keys(tagMap).map(tagName => ({
           permalink: tagMap[tagName].path,
           meta: { tagName },
