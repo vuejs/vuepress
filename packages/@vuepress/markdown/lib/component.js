@@ -43,7 +43,6 @@ function htmlBlock (state, startLine, endLine, silent) {
   }
 
   if (i === HTML_SEQUENCES.length) {
-    console.log(lineText)
     return false
   }
 
