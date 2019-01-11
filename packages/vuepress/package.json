@@ -29,7 +29,8 @@
   "homepage": "https://github.com/vuejs/vuepress#readme",
   "dependencies": {
     "@vuepress/core": "^1.0.0-alpha.31",
-    "@vuepress/theme-default": "^1.0.0-alpha.31"
+    "@vuepress/theme-default": "^1.0.0-alpha.31",
+    "cac": "^6.3.9"
   },
   "engines": {
     "node": ">=8"
