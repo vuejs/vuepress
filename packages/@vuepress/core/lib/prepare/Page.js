@@ -45,7 +45,8 @@ module.exports = class Page {
     relative,
     permalink,
     frontmatter = {},
-    permalinkPattern
+    permalinkPattern,
+    ...rest
   }, context) {
     this.title = title
     this._meta = meta
@@ -55,6 +56,8 @@ module.exports = class Page {
     this.frontmatter = frontmatter
     this._permalinkPattern = permalinkPattern
     this._context = context
+
+    Object.assign(this, rest)
 
     if (relative) {
       this.regularPath = encodeURI(fileToPath(relative))

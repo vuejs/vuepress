@@ -291,6 +291,9 @@ module.exports = class AppContext {
    */
 
   async addPage (options) {
+    if (this.pageExists(options)) {
+      console.log(`Page already exists`, options)
+    }
     options.permalinkPattern = this.siteConfig.permalink
     const page = new Page(options, this)
     await page.process({
@@ -299,6 +302,10 @@ module.exports = class AppContext {
       enhancers: this.pluginAPI.options.extendPageData.items
     })
     this.pages.push(page)
+  }
+
+  pageExists ({ permalink }) {
+    return this.pages.includes(page => page.permalink === permalink)
   }
 
   /**
