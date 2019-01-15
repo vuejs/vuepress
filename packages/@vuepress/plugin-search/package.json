@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-search",
-  "version": "1.0.0-alpha.31",
+  "version": "1.0.0-alpha.32",
   "description": "search plugin for vuepress",
   "main": "index.js",
   "publishConfig": {

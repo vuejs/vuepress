@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/shared-utils",
-  "version": "1.0.0-alpha.31",
+  "version": "1.0.0-alpha.32",
   "description": "shared-utils for vuepress",
   "main": "lib/index.js",
   "types": "types/index.d.ts",
@@ -31,9 +31,9 @@
     "escape-html": "^1.0.3",
     "fs-extra": "^5.0.0",
     "globby": "^8.0.1",
+    "gray-matter": "^4.0.1",
     "hash-sum": "^1.0.2",
-    "upath": "^1.1.0",
-    "gray-matter": "^4.0.1"
+    "upath": "^1.1.0"
   },
   "author": "ULIVZ <chl814@foxmail.com>",
   "license": "MIT",
