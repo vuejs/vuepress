@@ -1,3 +1,17 @@
+<a name="1.0.0-alpha.32"></a>
+# [1.0.0-alpha.32](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.31...v1.0.0-alpha.32) (2019-01-15)
+
+
+### Bug Fixes
+
+* **$plugin-blog,$plugin-google-analytics:** Uniform plugin file name to `enhanceAppFile` ([#1194](https://github.com/vuejs/vuepress/issues/1194)) ([dce17c6](https://github.com/vuejs/vuepress/commit/dce17c6))
+* **$core:** Move cac dependency to `vuepress` package (close: [#1183](https://github.com/vuejs/vuepress/issues/1183)) ([#1184](https://github.com/vuejs/vuepress/issues/1184)) ([d160e68](https://github.com/vuejs/vuepress/commit/d160e68))
+* **$plugin-pagination:** Won't work when `perPagePosts` is 1 and total posts is 2 ([#1176](https://github.com/vuejs/vuepress/issues/1176)) ([8735d2c](https://github.com/vuejs/vuepress/commit/8735d2c))
+* **$shared-utils:** missing `gray-matter` dependency (close: [#1190](https://github.com/vuejs/vuepress/issues/1190)) ([02bf7b9](https://github.com/vuejs/vuepress/commit/02bf7b9))
+* **$theme-default:** Tag `<main>` has no matching end tag ([#1181](https://github.com/vuejs/vuepress/issues/1181)) ([c82cc10](https://github.com/vuejs/vuepress/commit/c82cc10))
+
+
+
 <a name="1.0.0-alpha.31"></a>
 # [1.0.0-alpha.31](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.30...v1.0.0-alpha.31) (2019-01-10)
 
