@@ -32,7 +32,8 @@
     "fs-extra": "^5.0.0",
     "globby": "^8.0.1",
     "hash-sum": "^1.0.2",
-    "upath": "^1.1.0"
+    "upath": "^1.1.0",
+    "gray-matter": "^4.0.1"
   },
   "author": "ULIVZ <chl814@foxmail.com>",
   "license": "MIT",
