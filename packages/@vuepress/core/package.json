@@ -37,7 +37,6 @@
     "@vuepress/shared-utils": "^1.0.0-alpha.31",
     "autoprefixer": "^7.1.2",
     "babel-loader": "^8.0.4",
-    "cac": "^6.3.9",
     "cache-loader": "^1.2.2",
     "chokidar": "^2.0.3",
     "connect-history-api-fallback": "^1.5.0",
