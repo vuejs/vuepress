@@ -69,7 +69,7 @@ See: [Config > palette.styl](../config/README.md#palette-styl)
 
 ### `.vuepress/style.styl` <Badge text="replaced"/>
 
-Replaced by `.vuepress/styles/index.styl` 代替.
+Replaced by `.vuepress/styles/index.styl`.
 
 ::: upgrade
 See: [Config > index.styl](../config/README.md#index-styl)
