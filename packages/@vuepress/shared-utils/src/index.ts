@@ -31,6 +31,7 @@ import path from 'path'
 import globby from 'globby'
 import hash from 'hash-sum'
 import escapeHtml from 'escape-html'
+import semver from 'semver'
 
 export {
   codegen,
@@ -65,4 +66,5 @@ export {
   globby,
   hash,
   escapeHtml,
+  semver,
 }

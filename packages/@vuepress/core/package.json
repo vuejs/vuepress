@@ -54,7 +54,6 @@
     "optimize-css-assets-webpack-plugin": "^4.0.0",
     "portfinder": "^1.0.13",
     "postcss-loader": "^2.1.5",
-    "semver": "^5.5.0",
     "toml": "^2.3.3",
     "url-loader": "^1.0.1",
     "vue": "^2.5.16",
