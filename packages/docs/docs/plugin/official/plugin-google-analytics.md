@@ -20,10 +20,12 @@ yarn add -D @vuepress/plugin-google-analytics
 ```javascript
 module.exports = {
   plugins: [
-    '@vuepress/google-analytics',
-    {
-      'ga': '' // UA-00000000-0
-    }
+    [ 
+      '@vuepress/google-analytics',
+      {
+        'ga': '' // UA-00000000-0
+      }
+    ]  
   ] 
 }
 ```
