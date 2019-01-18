@@ -22,7 +22,7 @@ module.exports = function (src) {
   const isServer = this.target === 'node'
   const options = getOptions(this)
   const { sourceDir } = options
-  const { siteConfig } = options
+  const { markdownConfig } = options
   let { markdown } = options
   if (!markdown) {
     markdown = md()
@@ -44,8 +44,8 @@ module.exports = function (src) {
   if (!isProd && !isServer) {
     const inferredTitle = inferTitle(frontmatter.data, frontmatter.content)
     let headersToExtract = ['h2', 'h3']
-    if (siteConfig.markdown && siteConfig.markdown.extractHeaders) {
-      headersToExtract = siteConfig.markdown.extractHeaders
+    if (markdownConfig && markdownConfig.extractHeaders) {
+      headersToExtract = markdownConfig.extractHeaders
     }
     const headers = extractHeaders(content, headersToExtract, markdown)
     delete frontmatter.content

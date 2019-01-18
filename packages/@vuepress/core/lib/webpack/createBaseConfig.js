@@ -33,6 +33,7 @@ module.exports = function createBaseConfig ({
   const inlineLimit = 10000
 
   const config = new Config()
+  const markdownConfig = siteConfig.markdown
 
   config
     .mode(isProd && !env.isDebug ? 'production' : 'development')
@@ -116,7 +117,7 @@ module.exports = function createBaseConfig ({
   mdRule
     .use('markdown-loader')
       .loader(require.resolve('@vuepress/markdown-loader'))
-      .options({ sourceDir, markdown, siteConfig })
+      .options({ sourceDir, markdown, markdownConfig })
 
   config.module
     .rule('pug')
