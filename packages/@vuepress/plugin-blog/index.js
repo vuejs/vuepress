@@ -1,7 +1,6 @@
 const { path, datatypes: { isString }} = require('@vuepress/shared-utils')
 
 module.exports = (options, ctx) => {
-  const { layoutComponentMap } = ctx
   const {
     pageEnhancers = [],
     postsDir = '_posts',
@@ -10,35 +9,33 @@ module.exports = (options, ctx) => {
     permalink = '/:year/:month/:day/:slug'
   } = options
 
-  const isLayoutExists = name => layoutComponentMap[name] !== undefined
-  const getLayout = (name, fallback) => isLayoutExists(name) ? name : fallback
   const isDirectChild = regularPath => path.parse(regularPath).dir === '/'
 
   const enhancers = [
     {
       when: ({ regularPath }) => regularPath === categoryIndexPageUrl,
-      frontmatter: { layout: getLayout('Categories', 'Page') }
+      frontmatter: { layout: 'Categories' }
     },
     {
       when: ({ regularPath }) => regularPath.startsWith('/category/'),
-      frontmatter: { layout: getLayout('Category', 'Page') }
+      frontmatter: { layout: 'Category' }
     },
     {
       when: ({ regularPath }) => regularPath === tagIndexPageUrl,
-      frontmatter: { layout: getLayout('Tags', 'Page') }
+      frontmatter: { layout: 'Tags' }
     },
     {
       when: ({ regularPath }) => regularPath.startsWith('/tag/'),
-      frontmatter: { layout: getLayout('Tag', 'Page') }
+      frontmatter: { layout: 'Tag' }
     },
     {
       when: ({ regularPath }) => regularPath === '/',
-      frontmatter: { layout: getLayout('Layout') }
+      frontmatter: { layout: 'Layout' }
     },
     {
       when: ({ regularPath }) => regularPath.startsWith(`/${postsDir}/`),
       frontmatter: {
-        layout: getLayout('Post', 'Page'),
+        layout: 'Post',
         permalink: permalink
       },
       data: { type: 'post' }
@@ -46,7 +43,7 @@ module.exports = (options, ctx) => {
     ...pageEnhancers,
     {
       when: ({ regularPath }) => isDirectChild(regularPath),
-      frontmatter: { layout: getLayout('Page', 'Layout') },
+      frontmatter: { layout: 'Page' },
       data: { type: 'page' }
     }
   ]
