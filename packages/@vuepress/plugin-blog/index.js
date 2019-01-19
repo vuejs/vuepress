@@ -86,15 +86,15 @@ module.exports = (options, ctx) => {
         if (key) {
           if (!map[key]) {
             map[key] = {}
-            map[key].path = `/${scope}/${key}.html`
+            map[key].path = `${scope}${key}.html`
             map[key].pageKeys = []
           }
           map[key].pageKeys.push(pageKey)
         }
       }
 
-      const handleTag = curryHandler('tag', tagMap)
-      const handleCategory = curryHandler('category', categoryMap)
+      const handleTag = curryHandler(tagIndexPageUrl, tagMap)
+      const handleCategory = curryHandler(categoryIndexPageUrl, categoryMap)
 
       pages.forEach(({
         key,
