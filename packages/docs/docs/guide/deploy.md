@@ -183,29 +183,4 @@ heroku open
 
 ## Now
 
-1. Install the Now CLI globally: `npm install -g now`
-
-2. Add a `now.json` file to your project root:
-
-    ```json
-    {
-        "version": 2,
-        "name": "vuepress",
-        "alias": "vuepress.now.sh",
-        "builds": [{
-          "src": "package.json",
-          "use": "@now/static-build"
-        }]
-     }
-    ```
-
-    You can further customize the static serving behavior by consulting [Now's documentation](https://zeit.co/examples/vuepress/).
-
-3. Adding a deployment script in `package.json`:
-
-    ```json
-    "now-build": "npm run docs:build && mv docs/.vuepress/dist dist"
-    "docs:deploy": "now && now alias"
-    ```
-
-    This will automatically point your site's alias to the latest deployment. Now, just run `npm run docs:deploy` to deploy your app.
+Please refer to [Deploy a example vuepress website with Now](https://zeit.co/examples/vuepress/).

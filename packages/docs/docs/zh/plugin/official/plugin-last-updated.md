@@ -53,5 +53,5 @@ module.exports = {
 ::: tip
 如果你在 [i18n](../../guide/i18n.md) 模式下运行，你还可以使用第二个参数 `lang` 为不同语言生成时间字符串。
 
-请注意，在VuePres中，我们遵循以下规范：[W3C > Language tags in HTML and XML](https://en.wikipedia.org/wiki/Language_localisation)，因此 `zh-CN` 使用连字符（`-`）而不是下划线（`_`）。 请确保你使用的库遵循此规范，否则请自行转换。
+请注意，在 VuePress 中，我们遵循以下规范：[W3C > Language tags in HTML and XML](https://en.wikipedia.org/wiki/Language_localisation)，因此 `zh-CN` 使用连字符（`-`）而不是下划线（`_`）。 请确保你使用的库遵循此规范，否则请自行转换。
 :::

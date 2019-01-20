@@ -23,11 +23,11 @@ yarn add -D @vuepress/plugin-google-analytics
 ```diff
 module.exports = {
 -  ga: 'UA-12345678-9'
-},
-plugins: {
-+  '@vuepress/google-analytics': {
-+    ga: 'UA-12345678-9'
-+  }
++  plugins: [
++    ['@vuepress/google-analytics', {
++      ga: 'UA-12345678-9'
++    }]
++ ]
 }
 ```
 :::
