@@ -10,9 +10,11 @@
   "scripts": {
     "bootstrap": "lerna bootstrap && yarn tsc",
     "boot": "node scripts/bootstrap.js",
+    "newpage": "yarn workspace docs newpage",
     "dev": "yarn tsc && yarn workspace docs dev",
     "build": "yarn tsc && yarn workspace docs build",
     "show-help": "yarn workspace docs show-help",
+    "newpage:blog": "yarn workspace blog newpage",
     "dev:blog": "yarn tsc && yarn workspace blog dev",
     "build:blog": "yarn tsc && yarn workspace blog build",
     "register-vuepress": "lerna exec --scope vuepress -- yarn link",
