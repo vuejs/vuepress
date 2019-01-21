@@ -29,11 +29,11 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 
 ``` bash
 # install
-yarn global add vuepress@next 
+yarn global add vuepress@next
 # OR npm install -g vuepress@next
 
-# create a markdown file
-echo '# Hello VuePress' > README.md
+# create a new page
+vuepress newpage --title "Hello VuePress" --path "README.md"
 
 # start writing
 vuepress dev

@@ -12,8 +12,8 @@ If you just want to play around with VuePress, you can install it globally:
 # install globally
 yarn global add vuepress # OR npm install -g vuepress
 
-# create a markdown file
-echo '# Hello VuePress' > README.md
+# create a new page
+vuepress newpage --title "Hello VuePress" --path "README.md"
 
 # start writing
 vuepress dev
@@ -30,10 +30,8 @@ If you have an existing project and would like to keep documentation inside the 
 # install as a local dependency
 yarn add -D vuepress # OR npm install -D vuepress
 
-# create a docs directory
-mkdir docs
-# create a markdown file
-echo '# Hello VuePress' > docs/README.md
+# create default theme home page
+vuepress newpage --path "docs/README.md" --frontmatter.home true
 ```
 
 ::: warning
@@ -45,10 +43,17 @@ Then, add some scripts to `package.json`:
 ``` json
 {
   "scripts": {
+    "docs:newpage": "vuepress newpage docs",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   }
 }
+```
+
+You can now start creating pages with:
+
+``` bash
+yarn docs:newpage # OR npm run docs:newpage
 ```
 
 You can now start writing with:
