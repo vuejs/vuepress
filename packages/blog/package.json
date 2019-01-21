@@ -5,7 +5,8 @@
   "version": "1.0.0-alpha.32",
   "scripts": {
     "dev": "vuepress dev source --temp .temp",
-    "build": "vuepress build source --temp .temp"
+    "build": "vuepress build source --temp .temp",
+    "newpage": "vuepress newpage source"
   },
   "dependencies": {
     "@vuepress/theme-blog": "^1.0.0-alpha.32",
