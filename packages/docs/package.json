@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vuepress dev docs --temp .temp",
     "build": "vuepress build docs --temp .temp",
-    "show-help": "vuepress --help"
+    "show-help": "vuepress --help",
+    "newpage": "vuepress newpage docs"
   },
   "repository": {
     "type": "git",
