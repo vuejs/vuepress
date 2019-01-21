@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-const { dev, build, eject } = require('@vuepress/core')
+const { dev, build, eject, newpage } = require('@vuepress/core')
 const { path, logger, env } = require('@vuepress/shared-utils')
 const { wrapCommand } = require('./util')
 
@@ -64,5 +64,25 @@ module.exports = function (cli, options) {
     .option('--debug', 'eject in debug mode')
     .action((dir = '.') => {
       wrapCommand(eject)(path.resolve(dir))
+    })
+
+  cli
+    .command('newpage [targetDir]', 'create new page')
+    .alias('new-page')
+    .alias('new_page')
+    .alias('newPage')
+    .option('-t, --title <title>', 'page title - required if path is empty; it can be set here or using `--frontmatter.title`')
+    .option('-c, --content [content]', 'page content (default: `# {{ page.title }})')
+    .option('--fm, --frontmatter [frontmatter]', 'set page frontmatter as dot-nested options, such as --fm.lang "en-US"')
+    .option('--nodir, --not-in-own-directory', 'disable page in it\'s own directory (default: false)')
+    .option('-f, --filename [filename]', 'page filename, such as \'index.md\', applicable if page is in it\'s own directory (default: README.md)')
+    .option('-s, --slug [slug]', 'set page slug (default: `slugify( title ))`')
+    .option('-p, --path [path]', 'manually set page path (it will be resolved based on targetDir) - this would ignore --nodir, --filename, and --slug')
+    .option('-T, --template [template]', 'path to template file (default: auto generated template based on --title and --frontmatter options)')
+    .action((dir = '.', commandOptions) => {
+      wrapCommand(newpage)(path.resolve(dir), {
+        ...options,
+        ...commandOptions
+      })
     })
 }
