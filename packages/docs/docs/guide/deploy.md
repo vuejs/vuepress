@@ -56,6 +56,32 @@ cd -
 You can also run the above script in your CI setup to enable automatic deployment on each push.
 :::
 
+### Github Pages and Travis CI
+
+1. Set correct `base` in `docs/.vuepress/config.js`.
+
+   If you are deploying to `https://<USERNAME or GROUP>.github.io/`, you can omit `base` as it defaults to `"/"`.
+
+   If you are deploying to `https://<USERNAME or GROUP>.github.io/<REPO>/`, (i.e. your repository is at `https://github.com/<USERNAME>/<REPO>`), set `base` to `"/<REPO>/"`.
+
+2. Create a file named `.travis.yml` in the root of your project.
+
+3. Use Github Pages deploy provider template and follow the [travis documentation](https://docs.travis-ci.com/user/deployment/pages/).
+
+``` yaml
+language: node_js
+script:
+  - npm run docs:build
+deploy:
+  provider: pages
+  skip-cleanup: true
+  local_dir: docs/.vuepress/dist
+  github-token: $GITHUB_TOKEN # a token generated on github allowing travis to push code on you repository
+  keep-history: true
+  on:
+    branch: master
+```
+
 ## GitLab Pages and GitLab CI
 
 1. Set correct `base` in `docs/.vuepress/config.js`.
