@@ -228,7 +228,7 @@ VuePress provides a convenient way to add extra styles. you can create an `.vuep
 ``` js
 module.exports = {
   markdown: {
-    config: md => {
+    extendMarkdown: md => {
       md.set({ breaks: true })
       md.use(require('markdown-it-xxx'))
     }
