@@ -18,7 +18,7 @@ import { injectComponentOption, ensureAsyncComponentsLoaded } from '@app/util'
 import rootMixins from '@internal/root-mixins'
 import layoutComponents from '@internal/layout-components'
 import pageComponents from '@internal/page-components'
-import LayoutDistributor from '@app/components/LayoutDistributor.vue'
+import LayoutDistributor from '@app/components/LayoutDistributor'
 
 injectComponentOption(LayoutDistributor, 'mixins', rootMixins)
 `
