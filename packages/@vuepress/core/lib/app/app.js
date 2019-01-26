@@ -6,8 +6,10 @@ import { routes } from '@internal/routes'
 import { siteData } from '@internal/siteData'
 import appEnhancers from '@internal/app-enhancers'
 import globalUIComponents from '@internal/global-ui'
+import rootMixins from '@internal/root-mixins'
 import ClientComputedMixin from '@transform/ClientComputedMixin'
 import VuePress from './plugins/VuePress'
+import { injectComponentOption } from '@app/util'
 
 // built-in components
 import Content from './components/Content.js'
@@ -96,6 +98,8 @@ export function createApp (isServer) {
   } catch (e) {
     console.error(e)
   }
+
+  injectComponentOption(options, 'mixins', rootMixins)
 
   const app = new Vue(
     Object.assign(options, {

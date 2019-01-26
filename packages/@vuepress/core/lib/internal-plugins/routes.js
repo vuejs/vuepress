@@ -14,13 +14,10 @@ module.exports = (options, ctx) => ({
  */
 function importCode () {
   return `
-import { injectComponentOption, ensureAsyncComponentsLoaded } from '@app/util'
-import rootMixins from '@internal/root-mixins'
+import { ensureAsyncComponentsLoaded } from '@app/util'
 import layoutComponents from '@internal/layout-components'
 import pageComponents from '@internal/page-components'
 import LayoutDistributor from '@app/components/LayoutDistributor'
-
-injectComponentOption(LayoutDistributor, 'mixins', rootMixins)
 `
 }
 
