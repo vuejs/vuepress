@@ -15,6 +15,7 @@ export default {
 
   methods: {
     updateMeta () {
+      if (typeof document === 'undefined') return
       document.title = this.$title
       document.documentElement.lang = this.$lang
       const userMeta = this.$page.frontmatter.meta || []

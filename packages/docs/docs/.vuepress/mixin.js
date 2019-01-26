@@ -33,6 +33,7 @@ const gotIt = {
 export default {
   methods: {
     notice () {
+      if (!this.$toasted) return
       setTimeout(() => {
         this.$notification = this.$toasted.show(notification[this.$localePath], {
           containerClass: 'compatibility-notification',
