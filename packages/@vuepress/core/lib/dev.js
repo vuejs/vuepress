@@ -100,10 +100,10 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
     config = applyUserWebpackConfig(userConfig, config, false /* isServer */)
   }
 
-  const serverConfig = {
+  const serverConfig = Object.assign({
     disableHostCheck: true,
     compress: true,
-    clientLogLevel: 'none',
+    clientLogLevel: 'error',
     hot: true,
     quiet: true,
     headers: {
@@ -120,12 +120,14 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
     },
     overlay: false,
     host,
-    contentBase: path.resolve(sourceDir, '.vuepress/public')
-    // before(app) {
-    //   ctx.pluginAPI.options.enhanceDevServer.syncApply(app)
-    //   app.use('/', express.static(path.resolve(sourceDir, '.vuepress/public')))
-    // }
-  }
+    contentBase: path.resolve(sourceDir, '.vuepress/public'),
+    before (app, server) {
+      ctx.pluginAPI.options.beforeDevServer.syncApply(app, server)
+    },
+    after (app, server) {
+      ctx.pluginAPI.options.afterDevServer.syncApply(app, server)
+    }
+  }, ctx.siteConfig.devServer || {})
 
   WebpackDevServer.addDevServerEntrypoints(config, serverConfig)
 

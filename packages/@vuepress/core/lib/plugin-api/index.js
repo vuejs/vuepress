@@ -207,7 +207,9 @@ module.exports = class PluginAPI {
     globalUIComponents,
     define,
     alias,
-    extendCli
+    extendCli,
+    beforeDevServer,
+    afterDevServer
   }) {
     const isInternalPlugin = pluginName.startsWith('@vuepress/internal-')
     logger[isInternalPlugin ? 'debug' : 'tip'](pluginLog(pluginName, shortcut))
@@ -231,6 +233,8 @@ module.exports = class PluginAPI {
       .registerOption(PLUGIN_OPTION_MAP.DEFINE.key, define, pluginName)
       .registerOption(PLUGIN_OPTION_MAP.ALIAS.key, alias, pluginName)
       .registerOption(PLUGIN_OPTION_MAP.EXTEND_CLI.key, extendCli, pluginName)
+      .registerOption(PLUGIN_OPTION_MAP.BEFORE_DEV_SERVER.key, beforeDevServer, pluginName)
+      .registerOption(PLUGIN_OPTION_MAP.AFTER_DEV_SERVER.key, afterDevServer, pluginName)
   }
 }
 
