@@ -179,3 +179,7 @@ git push heroku master
 # 打开浏览器查看 Helku CI 的 dashboard
 heroku open
 ```
+
+## Now
+
+请查看 [用 Now 部署一个 VuePress 的示例站点](https://zeit.co/examples/vuepress/).

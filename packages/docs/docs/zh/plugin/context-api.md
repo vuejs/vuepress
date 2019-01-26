@@ -18,6 +18,12 @@ module.exports = (options, ctx) => {
 
 VuePress 是否运行在生产环境模式下。
 
+## ctx.pages
+
+- 类型: `array`
+
+一个包含了页面对象的列表。
+
 ## ctx.sourceDir
 
 - 类型: `string`

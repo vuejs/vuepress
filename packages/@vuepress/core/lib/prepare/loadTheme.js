@@ -176,7 +176,7 @@ module.exports = async function loadTheme (ctx) {
 function normalizeThemePath (resolved) {
   const { entry, name, fromDep } = resolved
   if (fromDep) {
-    const pkgPath = require.resolve(`${name}/package.json`)
+    const pkgPath = require.resolve(name)
     return path.parse(pkgPath).dir
   } else if (entry.endsWith('.js') || entry.endsWith('.vue')) {
     return path.parse(entry).dir

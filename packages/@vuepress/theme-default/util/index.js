@@ -58,11 +58,13 @@ export function resolvePage (pages, rawPath, base) {
     rawPath = resolvePath(rawPath, base)
   }
   const path = normalize(rawPath)
-  if (path in pages) {
-    return Object.assign({}, pages[path], {
-      type: 'page',
-      path: ensureExt(pages[path].path)
-    })
+  for (let i = 0; i < pages.length; i++) {
+    if (normalize(pages[i].regularPath) === path) {
+      return Object.assign({}, pages[i], {
+        type: 'page',
+        path: ensureExt(pages[i].path)
+      })
+    }
   }
   console.error(`[vuepress] No matching page found for sidebar item "${rawPath}"`)
   return {}
@@ -126,16 +128,12 @@ export function resolveSidebarItems (page, regularPath, site, localePath) {
   }
 
   const sidebarConfig = localeConfig.sidebar || themeConfig.sidebar
-  const normalizedPagesMap = pages.reduce((map, page) => {
-    map[normalize(page.regularPath)] = page
-    return map
-  }, {})
   if (!sidebarConfig) {
     return []
   } else {
     const { base, config } = resolveMatchingConfig(regularPath, sidebarConfig)
     return config
-      ? config.map(item => resolveItem(item, normalizedPagesMap, base))
+      ? config.map(item => resolveItem(item, pages, base))
       : []
   }
 }

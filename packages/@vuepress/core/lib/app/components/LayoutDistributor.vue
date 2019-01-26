@@ -13,7 +13,10 @@ export default {
   computed: {
     layout () {
       if (this.$page.path) {
-        return this.$page.frontmatter.layout || 'Layout'
+        if (getLayoutAsyncComponent(this.$page.frontmatter.layout)) {
+          return this.$page.frontmatter.layout
+        }
+        return 'Layout'
       }
       return 'NotFound'
     }

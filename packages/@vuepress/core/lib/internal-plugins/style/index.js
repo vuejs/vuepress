@@ -17,6 +17,7 @@ module.exports = (options, ctx) => ({
 
     const themeStyle = path.resolve(ctx.themePath, 'styles/index.styl')
     const userStyle = path.resolve(sourceDir, '.vuepress/styles/index.styl')
+      .replace(/[\\]+/g, '/')
 
     const themeStyleContent = fs.existsSync(themeStyle)
       ? `@import(${JSON.stringify(themeStyle)})`

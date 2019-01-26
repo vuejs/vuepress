@@ -10,7 +10,7 @@ import deeplyParseHeaders from './deeplyParseHeaders'
  * @returns {array}
  */
 
-const cache = LRU({ max: 1000 })
+const cache = new LRU({ max: 1000 })
 
 export = function (content: string, include = [], md: any) {
   const key = content + include.join(',')

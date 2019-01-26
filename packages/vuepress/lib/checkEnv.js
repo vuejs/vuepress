@@ -4,8 +4,7 @@
  * Module dependencies.
  */
 
-const { chalk } = require('@vuepress/shared-utils')
-const semver = require('semver')
+const { chalk, semver } = require('@vuepress/shared-utils')
 
 /**
  * Expose handleUnknownCommand function.

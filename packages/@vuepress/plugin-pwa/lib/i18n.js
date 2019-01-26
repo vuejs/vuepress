@@ -14,5 +14,13 @@ export const popupConfig = {
   '/uk/': {
     message: 'Доступний новий контент.',
     buttonText: 'Оновити'
+  },
+  '/ja/': {
+    message: '新しいコンテンツがあります。',
+    buttonText: '更新する'
+  },
+  '/es/': {
+    message: 'Hay nuevo contenido disponible.',
+    buttonText: 'Actualizar'
   }
 }

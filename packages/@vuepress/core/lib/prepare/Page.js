@@ -99,7 +99,7 @@ module.exports = class Page {
       if (this._filePath.endsWith('.md')) {
         const { excerpt, data, content } = parseFrontmatter(this._content)
         this._strippedContent = content
-        this.frontmatter = data
+        Object.assign(this.frontmatter, data)
 
         // infer title
         const title = inferTitle(this.frontmatter, this._strippedContent)

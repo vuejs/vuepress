@@ -10,8 +10,8 @@ const { fs, path, hash, parseFrontmatter, inferTitle, extractHeaders } = require
 const LRU = require('lru-cache')
 const md = require('@vuepress/markdown')
 
-const cache = LRU({ max: 1000 })
-const devCache = LRU({ max: 1000 })
+const cache = new LRU({ max: 1000 })
+const devCache = new LRU({ max: 1000 })
 
 /**
  * Expose markdown loader.

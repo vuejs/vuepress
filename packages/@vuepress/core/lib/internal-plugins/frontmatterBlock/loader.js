@@ -1,7 +1,7 @@
 const { parseVueFrontmatter: { parseStrippedFrontmatter }} = require('@vuepress/shared-utils')
 const { frontmatterEmitter } = require('@vuepress/markdown-loader')
 const LRU = require('lru-cache')
-const cache = LRU({ max: 1000 })
+const cache = new LRU({ max: 1000 })
 
 module.exports = function (source, map) {
   const isProd = process.env.NODE_ENV === 'production'
