@@ -1,13 +1,13 @@
 <template>
   <div class="container">
     <header>
-      <Content slot-key="header"/>
+      <Content slot="header"/>
     </header>
     <main>
       <Content/>
     </main>
     <footer>
-      <Content slot-key="footer"/>
+      <Content slot="footer"/>
     </footer>
   </div>
 </template>
