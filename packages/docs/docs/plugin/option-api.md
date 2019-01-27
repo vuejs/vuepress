@@ -132,42 +132,36 @@ module.exports = (options, context) => ({
 })
 ```
 
-## enhanceDevServer
+## beforeDevServer
 
 - Type: `Function`
 - Default: undefined
 
-Enhance the underlying [Koa](https://github.com/koajs/koa) app.
+Equivalent to [before](https://webpack.js.org/configuration/dev-server/#devserver-before) in [webpack-dev-server](https://github.com/webpack/webpack-dev-server). you can use it to define custom handlers before all middleware is executed:
 
-``` js
+```js
 module.exports = {
-  enhanceDevServer (app) {
-    // ...
+  // ...
+  beforeDevServer(app, server) {
+    app.get('/path/to/your/custom', function(req, res) {
+      res.json({ custom: 'response' })
+    })
   }
 }
 ```
 
-A simple plugin to create a sub public directory is as follows:
+## afterDevServer
+
+- Type: `Function`
+- Default: undefined
+
+Equivalent to [after](https://webpack.js.org/configuration/dev-server/#devserver-after) in [webpack-dev-server](https://github.com/webpack/webpack-dev-server). you can use it to execute custom middleware after all other middleware:
 
 ```js
-const path = require('path')
-
-module.exports = (options, context) => {
-  const imagesAssetsPath = path.resolve(context.sourceDir, '.vuepress/images')
-
-  return {
-      // For development
-      enhanceDevServer (app) {
-        const mount = require('koa-mount')
-        const serveStatic = require('koa-static')
-        app.use(mount(path.join(context.base, 'images'), serveStatic(imagesAssetsPath)))
-      },
-
-      // For production
-      async generated () {
-        const { fs } = require('@vuepress/shared-utils')
-        await fs.copy(imagesAssetsPath, path.resolve(context.outDir, 'images'))
-      }
+module.exports = {
+  // ...
+  afterDevServer(app, server) {
+    // hacking now ...
   }
 }
 ```

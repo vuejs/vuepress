@@ -54,6 +54,10 @@ module.exports = function createClientConfig (ctx) {
           mergeLonghand: false
         }
       }])
+  } else {
+    config
+      .plugin('hmr')
+      .use(require('webpack/lib/HotModuleReplacementPlugin'))
   }
 
   if (!env.isDebug) {

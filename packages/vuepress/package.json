@@ -2,7 +2,7 @@
   "name": "vuepress",
   "version": "1.0.0-alpha.32",
   "description": "Minimalistic doc generator with Vue component based layout system",
-  "main": "vuepress.js",
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vuejs/vuepress.git"
@@ -13,7 +13,7 @@
     "generator"
   ],
   "bin": {
-    "vuepress": "vuepress.js"
+    "vuepress": "cli.js"
   },
   "author": "Evan You",
   "maintainers": [
