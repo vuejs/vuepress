@@ -1,3 +1,22 @@
+<a name="1.0.0-alpha.33"></a>
+# [1.0.0-alpha.33](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.32...v1.0.0-alpha.33) (2019-01-27)
+
+
+### Features
+
+* **$core:** Leverage `webpack-dev-server` and sunset `webpack-serve` ([#1195](https://github.com/vuejs/vuepress/issues/1195)) ([81e3ef6](https://github.com/vuejs/vuepress/commit/81e3ef6))
+  - Add new plugin option api [beforeDevServer](https://vuepress.vuejs.org/plugin/option-api.html#beforedevserver) and [afterDevServer](https://vuepress.vuejs.org/plugin/option-api.html#afterdevserver).
+  - Remove `enhanceDevServer`.  
+  - Publish [vuepress-plugin-export](https://github.com/ulivz/vuepress-plugin-export).
+* **$core:** Allow a theme package using a sub directory (close [#1204](https://github.com/vuejs/vuepress/issues/1204)) ([#1206](https://github.com/vuejs/vuepress/issues/1206)) ([febe3a7](https://github.com/vuejs/vuepress/commit/febe3a7))
+* **$theme-default:** Support shortcut for `sh` and `yml`. (close: [#1221](https://github.com/vuejs/vuepress/issues/1221)) ([fc5dba8](https://github.com/vuejs/vuepress/commit/fc5dba8))
+
+### BREAKING CHANGES
+
+* **$core:** - Plugin option `enhanceDevServer` was removed.
+  - **For 0.x users**, there is no any effect since we didn't expose API to modify it.
+  - **For 1.x users whose version of VuePress is lower than 1.0.0-alpha.33**, you should use `beforeDevServer`(e.g. [before](https://webpack.js.org/configuration/dev-server/#devserver-before) in `webpack-dev-server`) to replace `enhanceDevServer`, you can also use `afterDevServer`(e.g. [after](https://webpack.js.org/configuration/dev-server/#devserver-after) in `webpack-dev-server`) to execute custom middleware after all other middleware internally within the server.
+
 <a name="1.0.0-alpha.32"></a>
 # [1.0.0-alpha.32](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.31...v1.0.0-alpha.32) (2019-01-15)
 
