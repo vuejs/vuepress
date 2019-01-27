@@ -1,6 +1,17 @@
 'use strict'
 
-module.exports = async function dev (sourceDir, cliOptions = {}) {
+module.exports = (sourceDir, cliOptions = {}, ctx) => {
+  const { server, host, port } = prepareServer(sourceDir, cliOptions, ctx)
+  server.listen(port, host, err => {
+    if (err) {
+      console.log(err)
+    }
+  })
+}
+
+module.exports.prepare = prepareServer
+
+async function prepareServer (sourceDir, cliOptions = {}, context) {
   const WebpackDevServer = require('webpack-dev-server')
   const { path } = require('@vuepress/shared-utils')
   const webpack = require('webpack')
@@ -15,7 +26,7 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
   const { frontmatterEmitter } = require('@vuepress/markdown-loader')
 
   logger.wait('Extracting site metadata...')
-  const ctx = await prepare(sourceDir, cliOptions, false /* isProd */)
+  const ctx = context || await prepare(sourceDir, cliOptions, false /* isProd */)
 
   // setup watchers to update options and dynamically generated files
   const update = (reason) => {
@@ -134,11 +145,12 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
   const compiler = webpack(config)
   const server = new WebpackDevServer(compiler, serverConfig)
 
-  server.listen(port, host, err => {
-    if (err) {
-      console.log(err)
-    }
-  })
+  return {
+    server,
+    host,
+    port,
+    ctx
+  }
 }
 
 function resolveHost (host) {
