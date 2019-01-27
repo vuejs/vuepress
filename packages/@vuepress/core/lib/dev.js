@@ -25,7 +25,6 @@ async function prepareServer (sourceDir, cliOptions = {}, context) {
   const { applyUserWebpackConfig } = require('./util/index')
   const { frontmatterEmitter } = require('@vuepress/markdown-loader')
 
-  logger.wait('Extracting site metadata...')
   const ctx = context || await prepare(sourceDir, cliOptions, false /* isProd */)
 
   // setup watchers to update options and dynamically generated files
