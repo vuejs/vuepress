@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/core",
-  "version": "1.0.0-alpha.32",
+  "version": "1.0.0-alpha.33",
   "description": "Minimalistic doc generator with Vue component based layout system",
   "main": "lib/index.js",
   "repository": {
@@ -30,11 +30,11 @@
   "dependencies": {
     "@babel/core": "^7.0.0",
     "@vue/babel-preset-app": "^3.1.1",
-    "@vuepress/markdown": "^1.0.0-alpha.32",
-    "@vuepress/markdown-loader": "^1.0.0-alpha.32",
-    "@vuepress/plugin-last-updated": "^1.0.0-alpha.32",
-    "@vuepress/plugin-register-components": "^1.0.0-alpha.32",
-    "@vuepress/shared-utils": "^1.0.0-alpha.32",
+    "@vuepress/markdown": "^1.0.0-alpha.33",
+    "@vuepress/markdown-loader": "^1.0.0-alpha.33",
+    "@vuepress/plugin-last-updated": "^1.0.0-alpha.33",
+    "@vuepress/plugin-register-components": "^1.0.0-alpha.33",
+    "@vuepress/shared-utils": "^1.0.0-alpha.33",
     "autoprefixer": "^7.1.2",
     "babel-loader": "^8.0.4",
     "cache-loader": "^1.2.2",
@@ -60,8 +60,8 @@
     "vuepress-html-webpack-plugin": "^3.2.0",
     "webpack": "^4.8.1",
     "webpack-chain": "^4.6.0",
-    "webpack-merge": "^4.1.2",
     "webpack-dev-server": "^3.1.14",
+    "webpack-merge": "^4.1.2",
     "webpackbar": "^2.6.1"
   },
   "engines": {
