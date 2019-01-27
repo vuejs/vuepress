@@ -195,7 +195,6 @@ module.exports = class PluginAPI {
 
     // options
     chainWebpack,
-    enhanceDevServer,
     extendMarkdown,
     chainMarkdown,
     enhanceAppFiles,
@@ -220,7 +219,6 @@ module.exports = class PluginAPI {
       .registerOption(PLUGIN_OPTION_MAP.UPDATED.key, updated, pluginName)
       .registerOption(PLUGIN_OPTION_MAP.GENERATED.key, generated, pluginName)
       .registerOption(PLUGIN_OPTION_MAP.CHAIN_WEBPACK.key, chainWebpack, pluginName)
-      .registerOption(PLUGIN_OPTION_MAP.ENHANCE_DEV_SERVER.key, enhanceDevServer, pluginName)
       .registerOption(PLUGIN_OPTION_MAP.EXTEND_MARKDOWN.key, extendMarkdown, pluginName)
       .registerOption(PLUGIN_OPTION_MAP.CHAIN_MARKDOWN.key, chainMarkdown, pluginName)
       .registerOption(PLUGIN_OPTION_MAP.EXTEND_PAGE_DATA.key, extendPageData, pluginName)
