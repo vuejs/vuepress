@@ -1,7 +1,7 @@
 'use strict'
 
-module.exports = (sourceDir, cliOptions = {}, ctx) => {
-  const { server, host, port } = prepareServer(sourceDir, cliOptions, ctx)
+module.exports = async (sourceDir, cliOptions = {}, ctx) => {
+  const { server, host, port } = await prepareServer(sourceDir, cliOptions, ctx)
   server.listen(port, host, err => {
     if (err) {
       console.log(err)
