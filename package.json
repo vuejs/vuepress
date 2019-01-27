@@ -8,7 +8,7 @@
   ],
   "description": "Minimalistic doc generator with Vue component based layout system",
   "scripts": {
-    "bootstrap": "lerna bootstrap",
+    "bootstrap": "lerna bootstrap && yarn tsc",
     "boot": "node scripts/bootstrap.js",
     "dev": "yarn tsc && yarn workspace docs dev",
     "build": "yarn tsc && yarn workspace docs build",

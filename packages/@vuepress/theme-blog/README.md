@@ -1,3 +1,3 @@
 # @vuepress/theme-blog
 
-> theme-blog for vuepress
+> theme-blog for vuepress (WIP)

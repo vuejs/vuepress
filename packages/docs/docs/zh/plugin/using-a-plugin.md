@@ -75,7 +75,7 @@ module.exports = {
 }
 ```
 
-由于这种风格和 [babeld Plugin/Preset Options](https://babeljs.io/docs/en/plugins#plugin-preset-options) 一直，我们称之为"Babel 风格"。
+由于这种风格和 [babeld Plugin/Preset Options](https://babeljs.io/docs/en/plugins#plugin-preset-options) 一致，我们称之为"Babel 风格"。
 
 ### 对象式
 

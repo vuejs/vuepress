@@ -53,5 +53,5 @@ module.exports = {
 ::: tip
 If you are running in [i18n](../../guide/i18n.md) mode, you can also use the second argument `lang` to generate time strings for different languages.
 
-Note that in VuePres, we follow this spec: [W3C > Language tags in HTML and XML](https://en.wikipedia.org/wiki/Language_localisation), so `en-US` uses hyphens (`-`) instead of underscores (`_`). Please make sure that the library you are using follows this spec, otherwise please convert it yourself.
+Note that in VuePress, we follow this spec: [W3C > Language tags in HTML and XML](https://en.wikipedia.org/wiki/Language_localisation), so `en-US` uses hyphens (`-`) instead of underscores (`_`). Please make sure that the library you are using follows this spec, otherwise please convert it yourself.
 :::

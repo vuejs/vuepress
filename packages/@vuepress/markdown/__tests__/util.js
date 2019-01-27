@@ -2,7 +2,7 @@ import fs from 'fs-extra'
 import LRU from 'lru-cache'
 import path from 'path'
 
-const cache = LRU({ max: 1000 })
+const cache = new LRU({ max: 1000 })
 
 export function Md () {
   return require('markdown-it')()

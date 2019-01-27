@@ -22,6 +22,7 @@ module.exports = (options, ctx) => ({
 
     const themePalette = path.resolve(ctx.themePath, 'styles/palette.styl')
     const userPalette = path.resolve(sourceDir, '.vuepress/styles/palette.styl')
+      .replace(/[\\]+/g, '/')
 
     const themePaletteContent = fs.existsSync(themePalette)
       ? `@import(${JSON.stringify(themePalette)})`
