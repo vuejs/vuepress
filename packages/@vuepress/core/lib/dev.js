@@ -126,6 +126,7 @@ async function prepareServer (sourceDir, cliOptions = {}, context) {
       ignored: /node_modules/
     },
     historyApiFallback: {
+      index: ctx.base,
       rewrites: [
         { from: /\.html$/, to: '/' }
       ]
