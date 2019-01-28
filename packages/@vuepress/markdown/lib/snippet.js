@@ -24,7 +24,7 @@ module.exports = function snippet (md, options = {}) {
     const start = pos + 3
     const end = state.skipSpacesBack(max, pos)
     const rawPath = state.src.slice(start, end).trim().replace(/^@/, root)
-    const filename = rawPath.split(/[{:\s]/).shift()
+    const filename = rawPath.split(/[{\s]/).shift()
     const content = fs.existsSync(filename) ? fs.readFileSync(filename).toString() : 'Not found: ' + filename
     const meta = rawPath.replace(filename, '')
 
