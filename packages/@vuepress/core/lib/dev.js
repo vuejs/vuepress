@@ -126,9 +126,9 @@ async function prepareServer (sourceDir, cliOptions = {}, context) {
       ignored: /node_modules/
     },
     historyApiFallback: {
-      index: ctx.base,
+      disableDotRule: true,
       rewrites: [
-        { from: /\.html$/, to: '/' }
+        { from: /./, to: path.posix.join(ctx.base, 'index.html') }
       ]
     },
     overlay: false,
