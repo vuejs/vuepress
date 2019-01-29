@@ -203,16 +203,17 @@ export default {
 
 参考 [浏览器的 API 访问限制](#浏览器的-api-访问限制)。
 
-### Content <Badge text="beta" type="warn"/>
+### Content <Badge text="1.0.0+"/>
 
 - **Props**:
 
-  - `custom` - boolean
+  - `pageKey` - string, 要渲染的 [page](./global-computed.md#page) 的 hash key, 默认值是当前页面的 key.
+  - `slotKey` - string, 页面的 [markdown slot](./markdown-slot.md) 的 key. 默认值是 [default slot](./markdown-slot.md#default-slot-content).
 
-- **用法**：
+- **Usage**：
 
-
-当前的 `.md` 文件渲染的内容，当你在使用 [自定义布局](../theme/default-theme-config.md#特定页面的自定义布局) 时，它将非常有用。
+指定一个指定页面的特定 slot 用于渲染，当你使用 [自定义布局](../theme/default-theme-config.md#特定页面的自定义布局) 或者自定义主题时，这将非常有用。
+ 
 
 ``` vue
 <Content/>
@@ -220,7 +221,9 @@ export default {
 
 **参考:**
 
-- [自定义主题 > 获取渲染内容](../theme/writing-a-theme.md#获取渲染内容)
+- [全局计算属性 > $page](./global-computed.md#page)
+- [Markdown 插槽](./markdown-slot.md)
+- [开发主题 > 获取渲染内容](../theme/writing-a-theme.md#获取渲染内容)
 
 
 ### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/>
