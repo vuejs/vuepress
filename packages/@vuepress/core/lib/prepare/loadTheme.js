@@ -124,14 +124,15 @@ module.exports = async function loadTheme (ctx) {
 
   const layoutComponentMap = layoutDirs
     .map(
-      layourDir => readdirSync(layourDir)
+      layoutDir => readdirSync(layoutDir)
         .filter(filename => filename.endsWith('.vue'))
         .map(filename => {
           const componentName = getComponentName(filename)
           return {
-            filename, componentName,
+            filename,
+            componentName,
             isInternal: isInternal(componentName),
-            path: path.resolve(layourDir, filename)
+            path: path.resolve(layoutDir, filename)
           }
         })
     )
@@ -148,14 +149,15 @@ module.exports = async function loadTheme (ctx) {
 
   const { Layout = {}, NotFound = {}} = layoutComponentMap
 
-  if (!Layout && !fs.existsSync(Layout.path)) {
+  // layout component does not exist.
+  if (!Layout || !fs.existsSync(Layout.path)) {
     throw new Error(`[vuepress] Cannot resolve Layout.vue file in \n ${Layout.path}`)
   }
 
   // use default 404 component.
   if (!NotFound || !fs.existsSync(NotFound.path)) {
     layoutComponentMap.NotFound = {
-      filename: 'Layout.vue',
+      filename: 'NotFound.vue',
       componentName: 'NotFound',
       path: path.resolve(__dirname, '../app/components/NotFound.vue'),
       isInternal: true
