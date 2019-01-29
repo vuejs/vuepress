@@ -129,7 +129,8 @@ module.exports = async function loadTheme (ctx) {
         .map(filename => {
           const componentName = getComponentName(filename)
           return {
-            filename, componentName,
+            filename,
+            componentName,
             isInternal: isInternal(componentName),
             path: path.resolve(layoutDir, filename)
           }
