@@ -156,7 +156,7 @@ module.exports = async function loadTheme (ctx) {
   // use default 404 component.
   if (!NotFound || !fs.existsSync(NotFound.path)) {
     layoutComponentMap.NotFound = {
-      filename: 'Layout.vue',
+      filename: 'NotFound.vue',
       componentName: 'NotFound',
       path: path.resolve(__dirname, '../app/components/NotFound.vue'),
       isInternal: true
