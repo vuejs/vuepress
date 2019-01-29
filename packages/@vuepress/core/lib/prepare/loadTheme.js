@@ -124,14 +124,14 @@ module.exports = async function loadTheme (ctx) {
 
   const layoutComponentMap = layoutDirs
     .map(
-      layourDir => readdirSync(layourDir)
+      layoutDir => readdirSync(layoutDir)
         .filter(filename => filename.endsWith('.vue'))
         .map(filename => {
           const componentName = getComponentName(filename)
           return {
             filename, componentName,
             isInternal: isInternal(componentName),
-            path: path.resolve(layourDir, filename)
+            path: path.resolve(layoutDir, filename)
           }
         })
     )
