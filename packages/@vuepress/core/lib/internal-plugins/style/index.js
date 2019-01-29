@@ -17,14 +17,13 @@ module.exports = (options, ctx) => ({
 
     const themeStyle = path.resolve(ctx.themePath, 'styles/index.styl')
     const userStyle = path.resolve(sourceDir, '.vuepress/styles/index.styl')
-      .replace(/[\\]+/g, '/')
 
     const themeStyleContent = fs.existsSync(themeStyle)
-      ? `@import(${JSON.stringify(themeStyle)})`
+      ? `@import(${JSON.stringify(themeStyle.replace(/[\\]+/g, '/'))})`
       : ''
 
     const userStyleContent = fs.existsSync(userStyle)
-      ? `@import(${JSON.stringify(userStyle)})`
+      ? `@import(${JSON.stringify(userStyle.replace(/[\\]+/g, '/'))})`
       : ''
 
     let styleContent = themeStyleContent + userStyleContent
@@ -32,7 +31,7 @@ module.exports = (options, ctx) => ({
     if (ctx.parentThemePath) {
       const parentThemeStyle = path.resolve(ctx.parentThemePath, 'styles/index.styl')
       const parentThemeStyleContent = fs.existsSync(parentThemeStyle)
-        ? `@import(${JSON.stringify(parentThemeStyle)})`
+        ? `@import(${JSON.stringify(parentThemeStyle.replace(/[\\]+/g, '/'))})`
         : ''
       styleContent = parentThemeStyleContent + styleContent
     }
