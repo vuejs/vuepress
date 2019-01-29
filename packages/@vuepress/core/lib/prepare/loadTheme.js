@@ -148,7 +148,8 @@ module.exports = async function loadTheme (ctx) {
 
   const { Layout = {}, NotFound = {}} = layoutComponentMap
 
-  if (!Layout && !fs.existsSync(Layout.path)) {
+  // layout component does not exist.
+  if (!Layout || !fs.existsSync(Layout.path)) {
     throw new Error(`[vuepress] Cannot resolve Layout.vue file in \n ${Layout.path}`)
   }
 
