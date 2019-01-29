@@ -1,3 +1,31 @@
+<a name="1.0.0-alpha.34"></a>
+# [1.0.0-alpha.34](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.33...v1.0.0-alpha.34) (2019-01-29)
+
+
+### Bug Fixes
+
+* **$core:** Cannot load assets when `base` is not '/' (close:  [#1238](https://github.com/vuejs/vuepress/issues/1238))([#1239](https://github.com/vuejs/vuepress/issues/1239)) ([8a234bb](https://github.com/vuejs/vuepress/commit/8a234bb))
+  <br>This is a regression issue of leverage webpack-dev-server at [#1195](https://github.com/vuejs/vuepress/issues/1195).
+
+* **$markdown:** Remove colon as separator for [Import Code Snippets](https://vuepress.vuejs.org/guide/markdown.html#import-code-snippets) (close: [#1151](https://github.com/vuejs/vuepress/issues/1151)) ([#1236](https://github.com/vuejs/vuepress/issues/1236)) ([099d346](https://github.com/vuejs/vuepress/commit/099d346))
+
+
+### Features
+
+* **$core:** Support extra watching files ([02cc268](https://github.com/vuejs/vuepress/commit/02cc268)), 
+  <br>e.g.
+  ```js
+  // .vuepress/config.js
+  module.exports = {
+    extraWatchFiles: [
+      require.resolve('./sidebar.js')
+      // or '.vuepress/sidebar.js'
+    ]
+  }
+  ```
+
+
+
 <a name="1.0.0-alpha.33"></a>
 # [1.0.0-alpha.33](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.32...v1.0.0-alpha.33) (2019-01-27)
 
@@ -15,7 +43,7 @@
 
 * **$core:** - Plugin option `enhanceDevServer` was removed.
   - **For 0.x users**, there is no any effect since we didn't expose API to modify it.
-  - **For 1.x users whose version of VuePress is lower than 1.0.0-alpha.33**, you should use `beforeDevServer`(e.g. [before](https://webpack.js.org/configuration/dev-server/#devserver-before) in `webpack-dev-server`) to replace `enhanceDevServer`, you can also use `afterDevServer`(e.g. [after](https://webpack.js.org/configuration/dev-server/#devserver-after) in `webpack-dev-server`) to execute custom middleware after all other middleware internally within the server.
+  - **For 1.x users whose version of VuePress is lower than 1.0.0-alpha.33**, you should use [`beforeDevServer`](https://vuepress.vuejs.org/plugin/option-api.html#beforedevserver)(i.e. [before](https://webpack.js.org/configuration/dev-server/#devserver-before) in `webpack-dev-server`) to replace `enhanceDevServer`, you can also use [`afterDevServer`](https://vuepress.vuejs.org/plugin/option-api.html#afterdevserver)(i.e. [after](https://webpack.js.org/configuration/dev-server/#devserver-after) in `webpack-dev-server`) to execute custom middleware after all other middleware internally within the server.
 
 <a name="1.0.0-alpha.32"></a>
 # [1.0.0-alpha.32](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.31...v1.0.0-alpha.32) (2019-01-15)
