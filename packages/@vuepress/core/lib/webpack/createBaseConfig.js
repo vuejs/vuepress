@@ -39,7 +39,7 @@ module.exports = function createBaseConfig ({
     .output
       .path(outDir)
       .filename(isProd ? 'assets/js/[name].[chunkhash:8].js' : 'assets/js/[name].js')
-      .publicPath(isProd ? publicPath : '/')
+      .publicPath(publicPath)
 
   if (env.isDebug) {
     config.devtool('source-map')

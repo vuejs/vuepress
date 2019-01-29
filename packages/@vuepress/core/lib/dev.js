@@ -18,7 +18,7 @@ async function prepareServer (sourceDir, cliOptions = {}, context) {
   const chokidar = require('chokidar')
 
   const prepare = require('./prepare/index')
-  const { chalk, logger } = require('@vuepress/shared-utils')
+  const { chalk, fs, logger } = require('@vuepress/shared-utils')
   const HeadPlugin = require('./webpack/HeadPlugin')
   const DevLogPlugin = require('./webpack/DevLogPlugin')
   const createClientConfig = require('./webpack/createClientConfig')
@@ -110,6 +110,8 @@ async function prepareServer (sourceDir, cliOptions = {}, context) {
     config = applyUserWebpackConfig(userConfig, config, false /* isServer */)
   }
 
+  const contentBase = path.resolve(sourceDir, '.vuepress/public')
+
   const serverConfig = Object.assign({
     disableHostCheck: true,
     compress: true,
@@ -124,14 +126,19 @@ async function prepareServer (sourceDir, cliOptions = {}, context) {
       ignored: /node_modules/
     },
     historyApiFallback: {
+      disableDotRule: true,
       rewrites: [
-        { from: /\.html$/, to: '/' }
+        { from: /./, to: path.posix.join(ctx.base, 'index.html') }
       ]
     },
     overlay: false,
     host,
-    contentBase: path.resolve(sourceDir, '.vuepress/public'),
+    contentBase,
     before (app, server) {
+      if (fs.existsSync(contentBase)) {
+        app.use(ctx.base, require('express').static(contentBase))
+      }
+
       ctx.pluginAPI.options.beforeDevServer.syncApply(app, server)
     },
     after (app, server) {
