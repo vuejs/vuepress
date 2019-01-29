@@ -29,12 +29,16 @@ async function prepareServer (sourceDir, cliOptions = {}, context) {
 
   // setup watchers to update options and dynamically generated files
   const update = (reason) => {
-    logger.debug(`Re-prepare due to ${chalk.cyan(reason)}`)
+    console.log(`Reload due to ${reason}`)
     ctx.pluginAPI.options.updated.syncApply()
     prepare(sourceDir, cliOptions, false /* isProd */).catch(err => {
       console.error(logger.error(chalk.red(err.stack), false))
     })
   }
+
+  // Curry update handler by update type
+  const spawnUpdate = (updateType) =>
+    file => update(`${chalk.red(updateType)} ${chalk.cyan(file)}`)
 
   // watch add/remove of files
   const pagesWatcher = chokidar.watch([
@@ -45,21 +49,29 @@ async function prepareServer (sourceDir, cliOptions = {}, context) {
     ignored: ['.vuepress/**/*.md', 'node_modules'],
     ignoreInitial: true
   })
-  pagesWatcher.on('add', () => update('add page'))
-  pagesWatcher.on('unlink', () => update('unlink page'))
-  pagesWatcher.on('addDir', () => update('addDir'))
-  pagesWatcher.on('unlinkDir', () => update('unlinkDir'))
+  pagesWatcher.on('add', spawnUpdate('add'))
+  pagesWatcher.on('unlink', spawnUpdate('unlink'))
+  pagesWatcher.on('addDir', spawnUpdate('addDir'))
+  pagesWatcher.on('unlinkDir', spawnUpdate('unlinkDir'))
 
-  // watch config file
-  const configWatcher = chokidar.watch([
+  const watchFiles = [
     '.vuepress/config.js',
     '.vuepress/config.yml',
     '.vuepress/config.toml'
-  ], {
+  ].concat(
+    (
+      ctx.siteConfig.extraWatchFiles || []
+    ).map(file => normalizeWatchFilePath(file, ctx.sourceDir))
+  )
+
+  logger.debug('watchFiles', watchFiles)
+
+  // watch config file
+  const configWatcher = chokidar.watch(watchFiles, {
     cwd: sourceDir,
     ignoreInitial: true
   })
-  configWatcher.on('change', () => update('config change'))
+  configWatcher.on('change', spawnUpdate('change'))
 
   // also listen for frontmatter changes from markdown files
   frontmatterEmitter.on('update', () => update('frontmatter or headers change'))
@@ -176,4 +188,12 @@ async function resolvePort (port) {
   portfinder.basePort = parseInt(port) || 8080
   port = await portfinder.getPortPromise()
   return port
+}
+
+function normalizeWatchFilePath (filepath, baseDir) {
+  const { isAbsolute, relative } = require('path')
+  if (isAbsolute(filepath)) {
+    return relative(baseDir, filepath)
+  }
+  return filepath
 }
