@@ -139,7 +139,10 @@ async function prepareServer (sourceDir, cliOptions = {}, context) {
     },
     publicPath: ctx.base,
     watchOptions: {
-      ignored: /node_modules/
+      ignored: [
+        /node_modules/,
+        `!${ctx.tempPath}/**`
+      ]
     },
     historyApiFallback: {
       disableDotRule: true,
