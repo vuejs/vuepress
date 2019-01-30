@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-register-components",
-  "version": "1.0.0-alpha.34",
+  "version": "1.0.0-alpha.35",
   "description": "register-global-components plugin for vuepress",
   "main": "index.js",
   "publishConfig": {
@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/plugin-register-components#readme",
   "dependencies": {
-    "@vuepress/shared-utils": "^1.0.0-alpha.34"
+    "@vuepress/shared-utils": "^1.0.0-alpha.35"
   }
 }
