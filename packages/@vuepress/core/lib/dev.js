@@ -37,8 +37,12 @@ async function prepareServer (sourceDir, cliOptions = {}, context) {
   }
 
   // Curry update handler by update type
-  const spawnUpdate = (updateType) =>
-    file => update(`${chalk.red(updateType)} ${chalk.cyan(file)}`)
+  const spawnUpdate = updateType => file => {
+    const target = path.join(sourceDir, file)
+    // Bust cache.
+    delete require.cache[target]
+    update(`${chalk.red(updateType)} ${chalk.cyan(file)}`)
+  }
 
   // watch add/remove of files
   const pagesWatcher = chokidar.watch([
