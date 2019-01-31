@@ -14,7 +14,7 @@ The following guides are based on a few shared assumptions:
 }
 ```
 ## AWS Amplify
-In this guide we'll walk through how to deploy and host your Gatsby site using the [AWS Amplify Console](https://console.amplify.aws).
+In this guide we'll walk through how to deploy and host your VuePress site using the [AWS Amplify Console](https://console.amplify.aws).
 
 1. Log in to the [AWS Amplify Console](https://console.aws.amazon.com/amplify/home) and choose Get Started under Deploy.
 
