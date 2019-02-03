@@ -37,7 +37,9 @@ export default {
 
     const maxDepth = configDepth == null ? 1 : configDepth
 
-    const displayAllHeaders = !!$themeLocaleConfig.displayAllHeaders
+    const displayAllHeaders = $themeLocaleConfig.displayAllHeaders
+      || $themeConfig.displayAllHeaders
+
     if (item.type === 'auto') {
       return [link, renderChildren(h, item.children, item.basePath, $route, maxDepth)]
     } else if ((active || displayAllHeaders) && item.headers && !hashRE.test(item.path)) {
