@@ -34,10 +34,10 @@ module.exports = async function loadTheme (ctx) {
   const themeResolver = getThemeResolver()
 
   const localThemePath = path.resolve(vuepressDir, 'theme')
-  const useLocalTheme =
-    !fs.existsSync(theme) &&
-    fs.existsSync(localThemePath) &&
-    (fs.readdirSync(localThemePath)).length > 0
+  const useLocalTheme
+    = !fs.existsSync(theme)
+    && fs.existsSync(localThemePath)
+    && (fs.readdirSync(localThemePath)).length > 0
 
   let themePath = null         // Mandatory
   let themeEntryFile = null    // Optional
@@ -119,8 +119,8 @@ module.exports = async function loadTheme (ctx) {
   const readdirSync = dir => fs.existsSync(dir) && fs.readdirSync(dir) || []
 
   // built-in named layout or not.
-  const isInternal = componentName => componentName === 'Layout' ||
-    componentName === 'NotFound'
+  const isInternal = componentName => componentName === 'Layout'
+    || componentName === 'NotFound'
 
   const layoutComponentMap = layoutDirs
     .map(

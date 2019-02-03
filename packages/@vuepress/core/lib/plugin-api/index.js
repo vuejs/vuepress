@@ -169,8 +169,8 @@ module.exports = class PluginAPI {
       this.options[option.name].add(pluginName, value)
     } else if (value !== undefined) {
       logger.warn(
-        `${chalk.gray(pluginName)} ` +
-        `Invalid value for "option" ${chalk.cyan(option.name)}: ${warnMsg}`
+        `${chalk.gray(pluginName)} `
+        + `Invalid value for "option" ${chalk.cyan(option.name)}: ${warnMsg}`
       )
     }
     return this

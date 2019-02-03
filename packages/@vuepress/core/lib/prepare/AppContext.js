@@ -130,8 +130,8 @@ module.exports = class AppContext {
     const siteConfig = this.siteConfig
 
     const shouldUseLastUpdated = (
-      themeConfig.lastUpdated ||
-      Object.keys(siteConfig.locales && themeConfig.locales || {})
+      themeConfig.lastUpdated
+      || Object.keys(siteConfig.locales && themeConfig.locales || {})
         .some(base => themeConfig.locales[base].lastUpdated)
     )
 

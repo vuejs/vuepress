@@ -14,8 +14,8 @@ module.exports = md => {
     const lineNumbersCode = [...Array(lines.length - 1)]
       .map((line, index) => `<span class="line-number">${index + 1}</span><br>`).join('')
 
-    const lineNumbersWrapperCode =
-      `<div class="line-numbers-wrapper">${lineNumbersCode}</div>`
+    const lineNumbersWrapperCode
+      = `<div class="line-numbers-wrapper">${lineNumbersCode}</div>`
 
     const finalCode = rawCode
       .replace('<!--beforeend-->', `${lineNumbersWrapperCode}<!--beforeend-->`)

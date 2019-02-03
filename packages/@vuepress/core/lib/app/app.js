@@ -21,8 +21,8 @@ if (module.hot) {
   module.hot.accept(VUEPRESS_TEMP_PATH + '/internal/siteData.js', () => {
     if (siteData.base !== prevBase) {
       window.alert(
-        `[vuepress] Site base has changed. ` +
-        `Please restart dev server to ensure correct asset paths.`
+        `[vuepress] Site base has changed. `
+        + `Please restart dev server to ensure correct asset paths.`
       )
     }
   })

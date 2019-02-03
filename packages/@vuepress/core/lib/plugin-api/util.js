@@ -26,8 +26,8 @@ exports.flattenPlugin = function (
   if (!valid) {
     if (pluginOptions !== undefined) {
       logger.warn(
-        `[${chalk.gray(shortcut)}] ` +
-        `Invalid value for "pluginOptions" ${chalk.cyan(name)}: ${warnMsg}`
+        `[${chalk.gray(shortcut)}] `
+        + `Invalid value for "pluginOptions" ${chalk.cyan(name)}: ${warnMsg}`
       )
     }
     pluginOptions = {}
@@ -69,8 +69,8 @@ exports.normalizePluginsConfig = function (pluginsConfig) {
   if (!valid) {
     if (pluginsConfig !== undefined) {
       logger.warn(
-        `[${chalk.gray('config')}] ` +
-        `Invalid value for "plugin" field : ${warnMsg}`
+        `[${chalk.gray('config')}] `
+        + `Invalid value for "plugin" field : ${warnMsg}`
       )
     }
     pluginsConfig = []

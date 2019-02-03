@@ -6,6 +6,7 @@ module.exports = {
   ],
   rules: {
     indent: ['error', 2, { MemberExpression: 'off' }],
-    "no-undef": ["error"]
+    "no-undef": ["error"],
+    'operator-linebreak': ["error", "before"]
   }
 }
