@@ -3,7 +3,26 @@
     class="sidebar-group"
     :class="{ first, collapsable }"
   >
+    <router-link
+      class="sidebar-heading clickable"
+      :class="{
+        open,
+        'active': isActive($route, item.path)
+      }"
+      :to="item.path"
+      v-if="item.path"
+      @click.native="$emit('toggle')"
+    >
+      <span>{{ item.title }}</span>
+      <span
+        class="arrow"
+        v-if="collapsable"
+        :class="open ? 'down' : 'right'">
+      </span>
+    </router-link>
+
     <p
+      v-else
       class="sidebar-heading"
       :class="{ open }"
       @click="$emit('toggle')"
@@ -16,39 +35,36 @@
       </span>
     </p>
 
-    <DropdownTransition>
-      <ul
-        ref="items"
-        class="sidebar-group-items"
-        v-if="open || !collapsable"
-      >
-        <li v-for="child in item.children">
-          <SidebarLink :item="child"/>
-        </li>
-      </ul>
-    </DropdownTransition>
+    <ul
+      ref="items"
+      class="sidebar-group-items"
+      v-if="open || !collapsable"
+    >
+      <li v-for="child in item.children">
+        <SidebarLink :item="child"/>
+      </li>
+    </ul>
   </section>
 </template>
 
 <script>
+import { isActive } from '../util'
 import SidebarLink from './SidebarLink.vue'
-import DropdownTransition from './DropdownTransition.vue'
 
 export default {
   name: 'SidebarGroup',
   props: ['item', 'first', 'open', 'collapsable'],
-  components: { SidebarLink, DropdownTransition }
+  components: { SidebarLink },
+  methods: { isActive }
 }
 </script>
 
 <style lang="stylus">
 .sidebar-group
-  &:not(.first)
-    margin-top 1em
   .sidebar-group
     padding-left 0.5em
   &:not(.collapsable)
-    .sidebar-heading
+    .sidebar-heading:not(.clickable)
       cursor auto
       color inherit
 
@@ -59,9 +75,11 @@ export default {
   font-size 1.1em
   font-weight bold
   // text-transform uppercase
-  padding 0 1.5rem
-  margin-top 0
-  margin-bottom 0.5rem
+  padding 0.35rem 1.5rem
+  width 100%
+  box-sizing border-box
+  margin 0
+  border-left 0.25rem solid transparent
   &.open, &:hover
     color inherit
   .arrow
@@ -70,6 +88,13 @@ export default {
     left 0.5em
   &:.open .arrow
     top -0.18em
+  &.clickable
+    &.active
+      font-weight 600
+      color $accentColor
+      border-left-color $accentColor
+    &:hover
+      color $accentColor
 
 .sidebar-group-items
   transition height .1s ease-out

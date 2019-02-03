@@ -148,6 +148,7 @@ function resolveHeaders (page) {
     type: 'group',
     collapsable: false,
     title: page.title,
+    path: null,
     children: headers.map(h => ({
       type: 'auto',
       title: h.title,
@@ -224,6 +225,7 @@ function resolveItem (item, pages, base, isNested) {
     const children = item.children || []
     return {
       type: 'group',
+      path: item.path,
       title: item.title,
       children: children.map(child => resolveItem(child, pages, base, true)),
       collapsable: item.collapsable !== false
