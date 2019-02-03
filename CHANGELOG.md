@@ -1,3 +1,21 @@
+<a name="1.0.0-alpha.36"></a>
+# [1.0.0-alpha.36](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.35...v1.0.0-alpha.36) (2019-02-03)
+
+
+### Bug Fixes
+
+* **$core:** SFC page compile error (close: [#1110](https://github.com/vuejs/vuepress/issues/1110)) ([8f5b0cd](https://github.com/vuejs/vuepress/commit/8f5b0cd))
+
+
+### Features
+
+* **$theme-default:** refine sidebar groups ([#1257](https://github.com/vuejs/vuepress/issues/1257)) ([01dd45b](https://github.com/vuejs/vuepress/commit/01dd45b)), closes [#814](https://github.com/vuejs/vuepress/issues/814) [#783](https://github.com/vuejs/vuepress/issues/783) [#287](https://github.com/vuejs/vuepress/issues/287)
+  - `sidebarDepth` for a specified sidebar group.
+  - Nested sidebar groups.
+  - Clickable heading for sidebar groups.
+
+
+
 <a name="1.0.0-alpha.35"></a>
 # [1.0.0-alpha.35](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.34...v1.0.0-alpha.35) (2019-01-30)
 
