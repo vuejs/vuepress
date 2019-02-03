@@ -177,8 +177,10 @@ module.exports = {
   themeConfig: {
     sidebar: [
       {
-        title: 'Group 1',
-        collapsable: false,
+        title: 'Group 1',   // 必要的
+        path: '/foo/'       // 可选的, 应该是一个绝对路径
+        collapsable: false, // 可选的, 默认值是 true,
+        sidebarDepth: 1,    // 可选的, 默认值是 1
         children: [
           '/'
         ]
@@ -193,6 +195,12 @@ module.exports = {
 ```
 
 侧边栏的每个子组默认是可折叠的，你可以设置 `collapsable: false` 来让一个组永远都是展开状态。
+
+一个侧边栏的子组配置同时支持 [sidebarDepth](#nested-header-links) 字段用于重写默认显示的侧边栏深度(`1`)。
+
+::: tip
+  从 `1.0.0-alpha-36` 开始，嵌套的侧边栏分组 <Badge text="beta"/> 也是支持的，但嵌套深度应小于 3，否则在控制台会收到警告。
+:::
 
 ### 多个侧边栏
 
