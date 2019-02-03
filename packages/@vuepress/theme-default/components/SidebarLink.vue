@@ -4,9 +4,22 @@ import { isActive, hashRE, groupHeaders } from '../util'
 export default {
   functional: true,
 
-  props: ['item'],
+  props: ['item', 'sidebarDepth'],
 
-  render (h, { parent: { $page, $site, $route }, props: { item }}) {
+  render (h,
+    {
+      parent: {
+        $page,
+        $site,
+        $route,
+        $themeConfig,
+        $themeLocaleConfig
+      },
+      props: {
+        item,
+        sidebarDepth
+      }
+    }) {
     // use custom active class matching logic
     // due to edge case of paths ending with / + hash
     const selfActive = isActive($route, item.path)
@@ -16,11 +29,17 @@ export default {
       ? selfActive || item.children.some(c => isActive($route, item.basePath + '#' + c.slug))
       : selfActive
     const link = renderLink(h, item.path, item.title || item.path, active)
-    const configDepth = $page.frontmatter.sidebarDepth != null
-      ? $page.frontmatter.sidebarDepth
-      : $site.themeConfig.sidebarDepth
+
+    const configDepth = $page.frontmatter.sidebarDepth ||
+      sidebarDepth ||
+      $themeLocaleConfig.sidebarDepth ||
+      $themeConfig.sidebarDepth
+
     const maxDepth = configDepth == null ? 1 : configDepth
-    const displayAllHeaders = !!$site.themeConfig.displayAllHeaders
+
+    const displayAllHeaders = $themeLocaleConfig.displayAllHeaders ||
+      $themeConfig.displayAllHeaders
+
     if (item.type === 'auto') {
       return [link, renderChildren(h, item.children, item.basePath, $route, maxDepth)]
     } else if ((active || displayAllHeaders) && item.headers && !hashRE.test(item.path)) {
@@ -64,6 +83,7 @@ function renderChildren (h, children, path, route, maxDepth, depth = 1) {
   font-size 0.95em
 
 a.sidebar-link
+  font-size 1em
   font-weight 400
   display inline-block
   color $textColor

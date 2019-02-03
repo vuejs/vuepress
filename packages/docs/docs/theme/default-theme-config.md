@@ -180,8 +180,10 @@ module.exports = {
   themeConfig: {
     sidebar: [
       {
-        title: 'Group 1',
-        collapsable: false,
+        title: 'Group 1',   // required
+        path: '/foo/'       // optional, which should be a absolute path.
+        collapsable: false, // optional, defaults to true
+        sidebarDepth: 1,    // optional, defaults to 1
         children: [
           '/'
         ]
@@ -196,6 +198,12 @@ module.exports = {
 ```
 
 Sidebar groups are collapsable by default. You can force a group to be always open with `collapsable: false`.
+
+A sidebar group config also supports [sidebarDepth](#nested-header-links) field to override the default sidebar depth (`1`).
+
+::: tip
+   From `1.0.0-alpha-36` on, nested sidebar group <Badge text="beta"/> is also supported, but the nesting depth should be less than 3, otherwise the console will receive a warning.
+:::
 
 ### Multiple Sidebars
 

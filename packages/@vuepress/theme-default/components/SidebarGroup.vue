@@ -1,9 +1,34 @@
 <template>
   <section
     class="sidebar-group"
-    :class="{ first, collapsable }"
+    :class="[
+      {
+        collapsable,
+        'is-sub-group': depth !== 0
+      },
+      `depth-${depth}`
+    ]"
   >
+    <router-link
+      v-if="item.path"
+      class="sidebar-heading clickable"
+      :class="{
+        open,
+        'active': isActive($route, item.path)
+      }"
+      :to="item.path"
+      @click.native="$emit('toggle')"
+    >
+      <span>{{ item.title }}</span>
+      <span
+        class="arrow"
+        v-if="collapsable"
+        :class="open ? 'down' : 'right'">
+      </span>
+    </router-link>
+
     <p
+      v-else
       class="sidebar-heading"
       :class="{ open }"
       @click="$emit('toggle')"
@@ -17,40 +42,59 @@
     </p>
 
     <DropdownTransition>
-      <ul
-        ref="items"
+      <SidebarLinks
         class="sidebar-group-items"
+        :items="item.children"
         v-if="open || !collapsable"
-      >
-        <li v-for="child in item.children">
-          <SidebarLink :item="child"/>
-        </li>
-      </ul>
+        :sidebarDepth="item.sidebarDepth"
+        :depth="depth + 1"
+      />
     </DropdownTransition>
   </section>
 </template>
 
 <script>
-import SidebarLink from './SidebarLink.vue'
+import { isActive } from '../util'
 import DropdownTransition from './DropdownTransition.vue'
 
 export default {
   name: 'SidebarGroup',
-  props: ['item', 'first', 'open', 'collapsable'],
-  components: { SidebarLink, DropdownTransition }
+  props: ['item', 'open', 'collapsable', 'depth'],
+  components: { DropdownTransition },
+  // ref: https://vuejs.org/v2/guide/components-edge-cases.html#Circular-References-Between-Components
+  beforeCreate () {
+    this.$options.components.SidebarLinks = require('./SidebarLinks.vue').default
+  },
+  methods: { isActive }
 }
 </script>
 
 <style lang="stylus">
 .sidebar-group
-  &:not(.first)
-    margin-top 1em
   .sidebar-group
     padding-left 0.5em
   &:not(.collapsable)
-    .sidebar-heading
+    .sidebar-heading:not(.clickable)
       cursor auto
       color inherit
+  // refine styles of nested sidebar groups
+  &.is-sub-group
+    padding-left 0
+    & > .sidebar-heading
+      font-size 0.95em
+      line-height 1.4
+      font-weight normal
+      padding-left 2rem
+      &:not(.clickable)
+        opacity 0.5
+    & > .sidebar-group-items
+      padding-left 1rem
+      & > li > .sidebar-link
+        font-size: 0.95em;
+        border-left none
+  &.depth-2
+    & > .sidebar-heading
+      border-left none
 
 .sidebar-heading
   color #999
@@ -59,19 +103,27 @@ export default {
   font-size 1.1em
   font-weight bold
   // text-transform uppercase
-  padding 0 1.5rem
-  margin-top 0
-  margin-bottom 0.5rem
+  padding 0.35rem 1.5rem 0.35rem 1.25rem
+  width 100%
+  box-sizing border-box
+  margin 0
+  border-left 0.25rem solid transparent
   &.open, &:hover
     color inherit
   .arrow
     position relative
     top -0.12em
     left 0.5em
-  &:.open .arrow
-    top -0.18em
+  &.clickable
+    &.active
+      font-weight 600
+      color $accentColor
+      border-left-color $accentColor
+    &:hover
+      color $accentColor
 
 .sidebar-group-items
   transition height .1s ease-out
+  font-size 0.95em
   overflow hidden
 </style>
