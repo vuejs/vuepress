@@ -6,7 +6,19 @@ export default {
 
   props: ['item'],
 
-  render (h, { parent: { $page, $site, $route }, props: { item }}) {
+  render (h,
+    {
+      parent: {
+        $page,
+        $site,
+        $route,
+        $themeConfig,
+        $themeLocaleConfig
+      },
+      props: {
+        item
+      }
+    }) {
     // use custom active class matching logic
     // due to edge case of paths ending with / + hash
     const selfActive = isActive($route, item.path)
@@ -18,9 +30,10 @@ export default {
     const link = renderLink(h, item.path, item.title || item.path, active)
     const configDepth = $page.frontmatter.sidebarDepth != null
       ? $page.frontmatter.sidebarDepth
-      : $site.themeConfig.sidebarDepth
+      : ($themeLocaleConfig.sidebarDepth || $themeConfig.sidebarDepth)
     const maxDepth = configDepth == null ? 1 : configDepth
-    const displayAllHeaders = !!$site.themeConfig.displayAllHeaders
+
+    const displayAllHeaders = !!$themeLocaleConfig.displayAllHeaders
     if (item.type === 'auto') {
       return [link, renderChildren(h, item.children, item.basePath, $route, maxDepth)]
     } else if ((active || displayAllHeaders) && item.headers && !hashRE.test(item.path)) {
