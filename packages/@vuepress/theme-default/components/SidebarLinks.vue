@@ -9,6 +9,7 @@
         :item="item"
         :open="i === openGroupIndex"
         :collapsable="item.collapsable || item.collapsible"
+        :depth="depth"
         @toggle="toggleGroup(i)"
       />
       <SidebarLink
@@ -30,7 +31,11 @@ export default {
 
   components: { SidebarGroup, SidebarLink },
 
-  props: ['items', 'sidebarDepth'],
+  props: [
+    'items',
+    'depth',  // depth of current sidebar links
+    'sidebarDepth' // depth of headers to be extracted
+  ],
 
   data () {
     return {

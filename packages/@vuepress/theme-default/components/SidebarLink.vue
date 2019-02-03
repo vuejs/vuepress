@@ -83,6 +83,7 @@ function renderChildren (h, children, path, route, maxDepth, depth = 1) {
   font-size 0.95em
 
 a.sidebar-link
+  font-size 1em
   font-weight 400
   display inline-block
   color $textColor

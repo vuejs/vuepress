@@ -1,7 +1,13 @@
 <template>
   <section
     class="sidebar-group"
-    :class="{ collapsable }"
+    :class="[
+      {
+        collapsable,
+        'is-sub-group': depth !== 0
+      },
+      `depth-${depth}`
+    ]"
   >
     <router-link
       v-if="item.path"
@@ -41,6 +47,7 @@
         :items="item.children"
         v-if="open || !collapsable"
         :sidebarDepth="item.sidebarDepth"
+        :depth="depth + 1"
       />
     </DropdownTransition>
   </section>
@@ -52,7 +59,7 @@ import DropdownTransition from './DropdownTransition.vue'
 
 export default {
   name: 'SidebarGroup',
-  props: ['item', 'open', 'collapsable'],
+  props: ['item', 'open', 'collapsable', 'depth'],
   components: { DropdownTransition },
   // ref: https://vuejs.org/v2/guide/components-edge-cases.html#Circular-References-Between-Components
   beforeCreate () {
@@ -71,10 +78,11 @@ export default {
       cursor auto
       color inherit
   // refine styles of nested sidebar groups
-  & > .sidebar-links > li > .sidebar-group
+  &.is-sub-group
     padding-left 0
     & > .sidebar-heading
-      font-size 15px
+      font-size 0.95em
+      line-height 1.4
       font-weight normal
       padding-left 2rem
       &:not(.clickable)
@@ -84,6 +92,9 @@ export default {
       & > li > .sidebar-link
         font-size: 0.95em;
         border-left none
+  &.depth-2
+    & > .sidebar-heading
+      border-left none
 
 .sidebar-heading
   color #999
@@ -113,5 +124,6 @@ export default {
 
 .sidebar-group-items
   transition height .1s ease-out
+  font-size 0.95em
   overflow hidden
 </style>
