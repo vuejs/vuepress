@@ -30,15 +30,15 @@ export default {
       : selfActive
     const link = renderLink(h, item.path, item.title || item.path, active)
 
-    const configDepth = $page.frontmatter.sidebarDepth
-      || sidebarDepth
-      || $themeLocaleConfig.sidebarDepth
-      || $themeConfig.sidebarDepth
+    const configDepth = $page.frontmatter.sidebarDepth ||
+      sidebarDepth ||
+      $themeLocaleConfig.sidebarDepth ||
+      $themeConfig.sidebarDepth
 
     const maxDepth = configDepth == null ? 1 : configDepth
 
-    const displayAllHeaders = $themeLocaleConfig.displayAllHeaders
-      || $themeConfig.displayAllHeaders
+    const displayAllHeaders = $themeLocaleConfig.displayAllHeaders ||
+      $themeConfig.displayAllHeaders
 
     if (item.type === 'auto') {
       return [link, renderChildren(h, item.children, item.basePath, $route, maxDepth)]
