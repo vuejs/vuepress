@@ -4,7 +4,6 @@
       <SidebarGroup
         v-if="item.type === 'group'"
         :item="item"
-        :first="i === 0"
         :open="i === openGroupIndex"
         :collapsable="item.collapsable || item.collapsible"
         @toggle="toggleGroup(i)"
