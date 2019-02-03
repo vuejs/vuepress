@@ -30,14 +30,10 @@ export default {
       : selfActive
     const link = renderLink(h, item.path, item.title || item.path, active)
 
-    let configDepth
-    if ($page.frontmatter.sidebarDepth != null) {
-      configDepth = $page.frontmatter.sidebarDepth
-    } else if (sidebarDepth != null) {
-      configDepth = sidebarDepth
-    } else {
-      configDepth = $themeLocaleConfig.sidebarDepth || $themeConfig.sidebarDepth
-    }
+    const configDepth = $page.frontmatter.sidebarDepth
+      || sidebarDepth
+      || $themeLocaleConfig.sidebarDepth
+      || $themeConfig.sidebarDepth
 
     const maxDepth = configDepth == null ? 1 : configDepth
 
