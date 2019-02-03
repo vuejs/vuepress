@@ -1,7 +1,7 @@
 <template>
   <section
     class="sidebar-group"
-    :class="{ first, collapsable }"
+    :class="{ collapsable }"
   >
     <router-link
       class="sidebar-heading clickable"
@@ -36,28 +36,28 @@
     </p>
 
     <DropdownTransition>
-      <ul
-        ref="items"
+      <SidebarLinks
         class="sidebar-group-items"
+        :items="item.children"
         v-if="open || !collapsable"
-      >
-        <li v-for="child in item.children">
-          <SidebarLink :item="child"/>
-        </li>
-      </ul>
+        :sidebarDepth="item.sidebarDepth"
+      />
     </DropdownTransition>
   </section>
 </template>
 
 <script>
 import { isActive } from '../util'
-import SidebarLink from './SidebarLink.vue'
 import DropdownTransition from './DropdownTransition.vue'
 
 export default {
   name: 'SidebarGroup',
-  props: ['item', 'first', 'open', 'collapsable'],
-  components: { SidebarLink, DropdownTransition },
+  props: ['item', 'open', 'collapsable'],
+  components: { DropdownTransition },
+  // ref: https://vuejs.org/v2/guide/components-edge-cases.html#Circular-References-Between-Components
+  beforeCreate () {
+    this.$options.components.SidebarLinks = require('./SidebarLinks.vue').default
+  },
   methods: { isActive }
 }
 </script>
@@ -78,7 +78,7 @@ export default {
   font-size 1.1em
   font-weight bold
   // text-transform uppercase
-  padding 0.35rem 1.5rem
+  padding 0.35rem 1.5rem 0.35rem 1.25rem
   width 100%
   box-sizing border-box
   margin 0

@@ -4,7 +4,7 @@ import { isActive, hashRE, groupHeaders } from '../util'
 export default {
   functional: true,
 
-  props: ['item'],
+  props: ['item', 'sidebarDepth'],
 
   render (h,
     {
@@ -16,7 +16,8 @@ export default {
         $themeLocaleConfig
       },
       props: {
-        item
+        item,
+        sidebarDepth
       }
     }) {
     // use custom active class matching logic
@@ -28,9 +29,16 @@ export default {
       ? selfActive || item.children.some(c => isActive($route, item.basePath + '#' + c.slug))
       : selfActive
     const link = renderLink(h, item.path, item.title || item.path, active)
-    const configDepth = $page.frontmatter.sidebarDepth != null
-      ? $page.frontmatter.sidebarDepth
-      : ($themeLocaleConfig.sidebarDepth || $themeConfig.sidebarDepth)
+
+    let configDepth
+    if ($page.frontmatter.sidebarDepth != null) {
+      configDepth = $page.frontmatter.sidebarDepth
+    } else if (sidebarDepth != null) {
+      configDepth = sidebarDepth
+    } else {
+      configDepth = $themeLocaleConfig.sidebarDepth || $themeConfig.sidebarDepth
+    }
+
     const maxDepth = configDepth == null ? 1 : configDepth
 
     const displayAllHeaders = !!$themeLocaleConfig.displayAllHeaders

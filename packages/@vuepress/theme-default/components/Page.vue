@@ -177,13 +177,7 @@ function resolveNext (page, items) {
 
 function find (page, items, offset) {
   const res = []
-  items.forEach(item => {
-    if (item.type === 'group') {
-      res.push(...item.children || [])
-    } else {
-      res.push(item)
-    }
-  })
+  flatternItems(items, res)
   for (let i = 0; i < res.length; i++) {
     const cur = res[i]
     if (cur.type === 'page' && cur.path === decodeURIComponent(page.path)) {
@@ -191,6 +185,17 @@ function find (page, items, offset) {
     }
   }
 }
+
+function flatternItems (items, res) {
+  for (let i = 0, l = items.length; i < l; i++) {
+    if (items[i].type === 'group') {
+      flatternItems(items[i].children, res)
+    } else {
+      res.push(items[i])
+    }
+  }
+}
+
 </script>
 
 <style lang="stylus">
