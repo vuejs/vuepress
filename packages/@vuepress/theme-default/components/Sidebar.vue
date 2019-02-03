@@ -2,7 +2,7 @@
   <aside class="sidebar">
     <NavLinks/>
     <slot name="top"/>
-    <SidebarLinks class="sidebar-links" :items="items"/>
+    <SidebarLinks :items="items"/>
     <slot name="bottom"/>
   </aside>
 </template>
@@ -39,8 +39,10 @@ export default {
       line-height 1.25rem
       font-size 1.1em
       padding 0.5rem 0 0.5rem 1.5rem
-  .sidebar-links
+  & > .sidebar-links
     padding 1.5rem 0
+    & > li:not(:first-child)
+      margin-top .75rem
 
 @media (max-width: $MQMobile)
   .sidebar
@@ -48,6 +50,6 @@ export default {
       display block
       .dropdown-wrapper .nav-dropdown .dropdown-item a.router-link-active::after
         top calc(1rem - 2px)
-    .sidebar-links
+    & > .sidebar-links
       padding 1rem 0
 </style>

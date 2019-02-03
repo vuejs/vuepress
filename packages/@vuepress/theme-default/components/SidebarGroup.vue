@@ -4,13 +4,13 @@
     :class="{ collapsable }"
   >
     <router-link
+      v-if="item.path"
       class="sidebar-heading clickable"
       :class="{
         open,
         'active': isActive($route, item.path)
       }"
       :to="item.path"
-      v-if="item.path"
       @click.native="$emit('toggle')"
     >
       <span>{{ item.title }}</span>
@@ -70,6 +70,20 @@ export default {
     .sidebar-heading:not(.clickable)
       cursor auto
       color inherit
+  // refine styles of nested sidebar groups
+  & > .sidebar-links > li > .sidebar-group
+    padding-left 0
+    & > .sidebar-heading
+      font-size 15px
+      font-weight normal
+      padding-left 2rem
+      &:not(.clickable)
+        opacity 0.5
+    & > .sidebar-group-items
+      padding-left 1rem
+      & > li > .sidebar-link
+        font-size: 0.95em;
+        border-left none
 
 .sidebar-heading
   color #999
@@ -89,8 +103,6 @@ export default {
     position relative
     top -0.12em
     left 0.5em
-  &:.open .arrow
-    top -0.18em
   &.clickable
     &.active
       font-weight 600
