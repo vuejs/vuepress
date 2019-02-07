@@ -24,7 +24,7 @@ module.exports = {
 
 ## 选项
 
-### Selector 
+### selector 
 
 - 类型: `string`
 - 默认值: `.content img`
