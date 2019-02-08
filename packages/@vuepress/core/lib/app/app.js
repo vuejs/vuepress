@@ -8,7 +8,7 @@ import appEnhancers from '@internal/app-enhancers'
 import globalUIComponents from '@internal/global-ui'
 import ClientComputedMixin from '@transform/ClientComputedMixin'
 import VuePress from './plugins/VuePress'
-import handleRedirect from './redirect.js'
+import { handleRedirectForCleanUrls } from './redirect.js'
 
 // built-in components
 import Content from './components/Content.js'
@@ -75,7 +75,7 @@ export function createApp (isServer) {
     }
   })
 
-  handleRedirect(router)
+  handleRedirectForCleanUrls(router)
 
   const options = {}
 
