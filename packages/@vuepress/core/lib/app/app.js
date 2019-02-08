@@ -8,6 +8,7 @@ import appEnhancers from '@internal/app-enhancers'
 import globalUIComponents from '@internal/global-ui'
 import ClientComputedMixin from '@transform/ClientComputedMixin'
 import VuePress from './plugins/VuePress'
+import { handleRedirectForCleanUrls } from './redirect.js'
 
 // built-in components
 import Content from './components/Content.js'
@@ -74,16 +75,7 @@ export function createApp (isServer) {
     }
   })
 
-  // redirect /foo to /foo/
-  router.beforeEach((to, from, next) => {
-    if (!/(\/|\.html)$/.test(to.path)) {
-      next(Object.assign({}, to, {
-        path: to.path + '/'
-      }))
-    } else {
-      next()
-    }
-  })
+  handleRedirectForCleanUrls(router)
 
   const options = {}
 
