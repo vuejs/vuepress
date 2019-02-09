@@ -131,12 +131,12 @@ $codeBgColor = #282c34
 ```
 
 ::: danger Note
-您应该**只在**这个文件中写入颜色变量。因为 `palette.styl` 将在根的 stylus 配置文件的末尾引入，作为配置，它将被多个文件使用，所以一旦你在这里写了样式，你的样式就会被多次复制。
+你应该**只在**这个文件中写入颜色变量。因为 `palette.styl` 将在根的 stylus 配置文件的末尾引入，作为配置，它将被多个文件使用，所以一旦你在这里写了样式，你的样式就会被多次复制。
 :::
 
 ### index.styl
 
-VuePress 提供了一种添加额外样式的简便方法。您可以创建一个 `.vuepress/styles/index.styl` 文件。这是一个 [Stylus](http://stylus-lang.com/) 文件，但您也可以使用正常的 CSS 语法。 
+VuePress 提供了一种添加额外样式的简便方法。你可以创建一个 `.vuepress/styles/index.styl` 文件。这是一个 [Stylus](http://stylus-lang.com/) 文件，但你也可以使用正常的 CSS 语法。 
 
 ```stylus
 .content {
