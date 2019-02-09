@@ -51,8 +51,8 @@ module.exports = {
 
 ### host
 
-- Type: `string`
-- Default: `'0.0.0.0'`
+- 类型: `string`
+- 默认值: `'0.0.0.0'`
 
 指定用于 dev server 的主机名。
 
@@ -97,8 +97,8 @@ module.exports = {
 
 ### cache
 
-- Type: `boolean|string`
-- Default: `true`
+- 类型: `boolean|string`
+- 默认值: `true`
 
 VuePress 默认使用了 [cache-loader](https://github.com/webpack-contrib/cache-loader)  来大大地加快 webpack 的编译速度。
 
@@ -118,12 +118,12 @@ vuepress dev docs --no-cache     # 在每次构建前删除 cache
 
 ### palette.styl
 
-If you wish to apply simple color overrides to the styling of the [default preset](https://github.com/vuejs/vuepress/blob/master/packages/@vuepress/core/lib/app/style/config.styl) or define some color variables for using later, you can create an `.vuepress/styles/palette.styl` file.
+如果要对[默认预设](https://github.com/vuejs/vuepress/blob/master/packages/@vuepress/core/lib/app/style/config.styl)的样式应用简单的颜色替换，或者定义一些颜色变量供以后使用，你可以创建一个 `.vuepress/styles/palette.styl` 文件。
 
-There are a few color variables you can tweak:
+你可以调整一些颜色变量:
 
 ``` stylus
-// showing default values
+// 默认值
 $accentColor = #3eaf7c
 $textColor = #2c3e50
 $borderColor = #eaecef
@@ -131,12 +131,12 @@ $codeBgColor = #282c34
 ```
 
 ::: danger Note
-You should ONLY write color variables in this file. since `palette.styl` will be imported at the end of the root stylus config file, as a config, it will be used by multiple files, so once you wrote styles here, your style would be duplicated by multiple times.
+你应该**只在**这个文件中写入颜色变量。因为 `palette.styl` 将在根的 stylus 配置文件的末尾引入，作为配置，它将被多个文件使用，所以一旦你在这里写了样式，你的样式就会被多次复制。
 :::
 
 ### index.styl
 
-VuePress provides a convenient way to add extra styles. you can create an `.vuepress/styles/index.styl` file for that. This is a [Stylus](http://stylus-lang.com/) file but you can use normal CSS syntax as well.
+VuePress 提供了一种添加额外样式的简便方法。你可以创建一个 `.vuepress/styles/index.styl` 文件。这是一个 [Stylus](http://stylus-lang.com/) 文件，但你也可以使用正常的 CSS 语法。 
 
 ```stylus
 .content {
@@ -172,8 +172,8 @@ VuePress provides a convenient way to add extra styles. you can create an `.vuep
 
 ### plugins
 
-- Type: `Object|Array`
-- Default: `undefined`
+- 类型: `Object|Array`
+- 默认值: `undefined`
 
 请参考 [plugin > Using a plugin](../plugin/using-a-plugin.md) 来使用一个插件。
 
@@ -192,8 +192,8 @@ VuePress provides a convenient way to add extra styles. you can create an `.vuep
 
 ### markdown.slugify
 
-- Type: `Function`
-- Default: [source](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/shared-utils/src/slugify.ts)
+- 类型: `Function`
+- 默认值: [source](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/shared-utils/src/slugify.ts)
 
 一个将标题文本转换为 slug 的函数。修改它会影响 [标题](../miscellaneous/glossary.md#headers)、[目录](../guide/markdown.md#目录)、以及[侧边栏](../theme/default-theme-config.md#侧边栏)链接的 id 和 链接。
 
@@ -206,8 +206,8 @@ VuePress provides a convenient way to add extra styles. you can create an `.vuep
 
 ### markdown.externalLinks
 
-- Type: `Object`
-- Default: `{ target: '_blank', rel: 'noopener noreferrer' }`
+- 类型: `Object`
+- 默认值: `{ target: '_blank', rel: 'noopener noreferrer' }`
 
 这个键值对将会作为特性被增加到是外部链接的 `<a>` 标签上，默认的选项将会在新窗口中打开一个该外部链接。
 
@@ -251,28 +251,28 @@ module.exports = {
 
 ### stylus
 
-- Type: `Object`
-- Default: `{ preferPathResolver: 'webpack' }`
+- 类型: `Object`
+- 默认值: `{ preferPathResolver: 'webpack' }`
 
 [stylus-loader](https://github.com/shama/stylus-loader) 的选项。
 
 ### scss
 
-- Type: `Object`
-- Default: `{}`
+- 类型: `Object`
+- 默认值: `{}`
 
 加载 `*.scss` 文件的 [sass-loader](https://github.com/postcss/postcss-loader) 的选项。
 
 ### sass
 
-- Type: `Object`
-- Default: `{ indentedSyntax: true }`
+- 类型: `Object`
+- 默认值: `{ indentedSyntax: true }`
 
 加载 `*.sass` 文件的 [sass-loader](https://github.com/postcss/postcss-loader) 的选项。
 
 ### less
 
-- Type: `Object`
+- 类型: `Object`
 - Default: `{}`
 
 [less-loader](https://github.com/webpack-contrib/less-loader) 的选项。
