@@ -66,9 +66,9 @@ lang: en-US
 ---
 ```
 
-The data will be available to the rest of the page, plus all custom and theming components.
+This data will be available to the rest of the page, along with all custom and theming components.
 
-For detailed introduction, please move to [Front Matter](./frontmatter.md).
+For more details, check out the [Front Matter](./frontmatter.md) page.
 
 ## GitHub-Style Tables
 
