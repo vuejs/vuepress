@@ -39,43 +39,6 @@ npm install -D vuepress      # Install 0.x.x.
 npm install -D vuepress@next # Install next.
 ```
 
-## Features
-
-**Built-in markdown extensions**
-
-* [Table of Contents](https://vuepress.vuejs.org/guide/markdown.html#table-of-contents)
-* [Custom Containers](https://vuepress.vuejs.org/guide/markdown.html#custom-containers)
-* [Line Highlighting](https://vuepress.vuejs.org/guide/markdown.html#line-highlighting-in-code-blocks)
-* [Line Numbers](https://vuepress.vuejs.org/guide/markdown.html#line-numbers)
-* [Import Code Snippets](https://vuepress.vuejs.org/guide/markdown.html#import-code-snippets)
-
-**Using Vue in Markdown**
-
-* [Templating](https://vuepress.vuejs.org/guide/using-vue.html#templating)
-* [Using Components](https://vuepress.vuejs.org/guide/using-vue.html#using-components)
-
-**Vue-powered custom theme system**
-
-* [Metadata](https://vuepress.vuejs.org/theme/writing-a-theme.html#site-and-page-metadata)
-* [Content Excerpt](https://vuepress.vuejs.org/theme/writing-a-theme.html#content-excerpt)
-
-**Default theme**
-
-* Responsive layout
-* [Optional Homepage](https://vuepress.vuejs.org/theme/default-theme-config.html#homepage)
-* [Simple out-of-the-box header-based search](https://vuepress.vuejs.org/theme/default-theme-config.html#built-in-search)
-* [Algolia Search](https://vuepress.vuejs.org/theme/default-theme-config.html#algolia-search)
-* Customizable [navbar](https://vuepress.vuejs.org/theme/default-theme-config.html#navbar) and [sidebar](https://vuepress.vuejs.org/theme/default-theme-config.html#sidebar)
-* [Auto-generated GitHub link and page edit links](https://vuepress.vuejs.org/theme/default-theme-config.html#git-repo-and-edit-links)
-* [PWA: Popup UI to refresh contents](https://vuepress.vuejs.org/theme/default-theme-config.html#popup-ui-to-refresh-contents)
-* [Last Updated](https://vuepress.vuejs.org/theme/default-theme-config.html#last-updated)
-
-**Miscellaneous**
-
-* [Multi-Language Support](https://vuepress.vuejs.org/guide/i18n.html)
-* [Service Worker](https://vuepress.vuejs.org/config/#serviceworker)
-* [Google Analytics](https://vuepress.vuejs.org/config/#ga)
-
 ## Showcase
 
 Check out [Awesome Vuepress](https://github.com/ulivz/awesome-vuepress) to find awesome things related to VuePress.

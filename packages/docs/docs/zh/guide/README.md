@@ -10,22 +10,43 @@ VuePress 由两部分组成：第一部分是一个[极简静态网站生成器]
 
 在构建时，我们会为应用创建一个服务端渲染（SSR）的版本，然后通过虚拟访问每一条路径来渲染对应的HTML。这种做法的灵感来源于 [Nuxt](https://nuxtjs.org/) 的 `nuxt generate` 命令，以及其他的一些项目，比如 [Gatsby](https://www.gatsbyjs.org/)。
 
-## 特性
+## Features
 
-- 为技术文档而优化的 [内置 Markdown 拓展](markdown.md)
-- [在 Markdown 文件中使用 Vue 组件的能力](using-vue.md)
-- [Vue 驱动的自定义主题系统](../theme/README.md)
-- [自动生成 Service Worker](../plugin/official/plugin-pwa.md)
-- [Google Analytics 集成](../config/README.md#ga)
-- [基于 Git 的 “最后更新时间”](../theme/default-theme-config.md#最后更新时间)
-- [多语言支持](i18n.md)
-- 默认主题包含：
-  - 响应式布局
-  - [可选的主页](../theme/default-theme-config.md#首页)
-  - [简洁的开箱即用的标题搜索](../theme/default-theme-config.md#内置搜索)
-  - [Algolia 搜索](../theme/default-theme-config.md#algolia-搜索)
-  - 可自定义的[导航栏](../theme/default-theme-config.md#导航栏) 和[侧边栏](../theme/default-theme-config.md#侧边栏)
-  - [自动生成的 GitHub 链接和页面的编辑链接](../theme/default-theme-config.md#git-仓库和编辑链接)
+**内置的 Markdown 拓展**
+
+* [目录](../guide/markdown.md#目录)
+* [自定义容器](../guide/markdown.md#自定义容器)
+* [代码块中的行高亮](../guide/markdown.md#代码块中的行高亮)
+* [行号](../guide/markdown.md#行号)
+* [导入代码段](../guide/markdown.md#导入代码段)
+
+**在 Markdown 中 使用 Vue**
+
+* [模板语法](../guide/using-vue.md#模板语法)
+* [使用组件](../guide/using-vue.md#使用组件)
+
+**Vue-powered custom theme system**
+
+* [网站和页面的元数据](../theme/writing-a-theme.md#网站和页面的元数据a)
+* [内容摘抄](../theme/writing-a-theme.md#内容摘抄)
+
+**Default theme**
+
+* Responsive layout
+* [首页](../theme/default-theme-config.md#首页)
+* [内置的搜索](../theme/default-theme-config.md#内置搜索)
+* [Algolia 搜索](../theme/default-theme-config.md#algolia-搜索)
+* 可定制的 [navbar](../theme/default-theme-config.md#navbar) and [sidebar](../theme/default-theme-config.md#sidebar)
+* [自动生成的 GitHub 链接和页面编辑链接](../theme/default-theme-config.md#Git-仓库和编辑链接)
+* [PWA: 刷新内容的 Popup](../theme/default-theme-config.md#popup-ui-to-refresh-contents)
+* [最后更新时间](../theme/default-theme-config.md#最后更新时间)
+
+**Miscellaneous**
+
+* [Multi-Language Support](../guide/i18n.md)
+* [Service Worker](../config/#serviceworker)
+* [Google Analytics](../config/#ga)
+* [Powerful Plugin API](../plugin/README.md)
 
 ## 为什么不是...?
 

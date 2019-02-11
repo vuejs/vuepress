@@ -16,21 +16,41 @@ Each markdown file is compiled into HTML with [markdown-it](https://github.com/m
 
 ## Features
 
-- [Powerful Plugin API](../plugin/README.md)
-- [Built-in markdown extensions](markdown.md) optimized for technical documentation
-- [Ability to leverage Vue inside markdown files](using-vue.md)
-- [Vue-powered custom theme system](../theme/README.md)
-- [Automatic Service Worker generation](../plugin/official/plugin-pwa.md)
-- [Google Analytics Integration](../config/README.md#ga)
-- ["Last Updated" based on Git](../theme/default-theme-config.md#last-updated)
-- [Multi-language support](i18n.md)
-- A default theme with:
-  - Responsive layout
-  - [Optional Homepage](../theme/default-theme-config.md#homepage)
-  - [Simple out-of-the-box header-based search](../theme/default-theme-config.md#built-in-search)
-  - [Algolia Search](../theme/default-theme-config.md#algolia-search)
-  - Customizable [navbar](../theme/default-theme-config.md#navbar) and [sidebar](../theme/default-theme-config.md#sidebar)
-  - [Auto-generated GitHub link and page edit links](../theme/default-theme-config.md#git-repo-and-edit-links)
+**Built-in markdown extensions**
+
+* [Table of Contents](../guide/markdown.md#table-of-contents)
+* [Custom Containers](../guide/markdown.md#custom-containers)
+* [Line Highlighting](../guide/markdown.md#line-highlighting-in-code-blocks)
+* [Line Numbers](../guide/markdown.md#line-numbers)
+* [Import Code Snippets](../guide/markdown.md#import-code-snippets)
+
+**Using Vue in Markdown**
+
+* [Templating](../guide/using-vue.md#templating)
+* [Using Components](../guide/using-vue.md#using-components)
+
+**Vue-powered custom theme system**
+
+* [Metadata](../theme/writing-a-theme.md#site-and-page-metadata)
+* [Content Excerpt](../theme/writing-a-theme.md#content-excerpt)
+
+**Default theme**
+
+* Responsive layout
+* [Optional Homepage](../theme/default-theme-config.md#homepage)
+* [Simple out-of-the-box header-based search](../theme/default-theme-config.md#built-in-search)
+* [Algolia Search](../theme/default-theme-config.md#algolia-search)
+* Customizable [navbar](../theme/default-theme-config.md#navbar) and [sidebar](../theme/default-theme-config.md#sidebar)
+* [Auto-generated GitHub link and page edit links](../theme/default-theme-config.md#git-repo-and-edit-links)
+* [PWA: Popup UI to refresh contents](../theme/default-theme-config.md#popup-ui-to-refresh-contents)
+* [Last Updated](../theme/default-theme-config.md#last-updated)
+
+**Miscellaneous**
+
+* [Multi-Language Support](../guide/i18n.md)
+* [Service Worker](../config/#serviceworker)
+* [Google Analytics](../config/#ga)
+* [Powerful Plugin API](../plugin/README.md)
 
 ## Why Not ...?
 
