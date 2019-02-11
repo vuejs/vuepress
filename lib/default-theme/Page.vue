@@ -147,6 +147,7 @@ export default {
           : repo
         return (
           base.replace(endingSlashRE, '') +
+            `/src` +
            `/${docsBranch}` +
            (docsDir ? '/' + docsDir.replace(endingSlashRE, '') : '') +
            path +
