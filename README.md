@@ -33,6 +33,10 @@ https://vuepress.vuejs.org/
 ```bash
 yarn add vuepress -D       # Install 0.x.x.
 yarn add vuepress@next -D  # Install next.
+
+or
+npm install -D vuepress      # Install 0.x.x.
+npm install -D vuepress@next # Install next.
 ```
 
 ## Features
