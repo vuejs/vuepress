@@ -12,7 +12,7 @@
   <a href="https://discordapp.com/invite/HBherRA"><img src="https://img.shields.io/badge/Discord-join%20chat-738bd7.svg" alt="vuepress channel on Discord"></a>
 </p>
 
-> This is the branch for `VuePress Next`.
+> This is the branch for `VuePress Next` and docs are available at https://vuepress.vuejs.org.
 
 ## Status: alpha
 
@@ -22,21 +22,11 @@ For 0.x, it's moved to [0.x branch](https://github.com/vuejs/vuepress/tree/0.x) 
 
 > Note that we are working hard to improve the documentation and contributions welcome if you keep up with the latest changes.
 
-# VuePress
-
-> Minimalistic docs generator with Vue component based layout system
-
-https://vuepress.vuejs.org/
-
 ## Install
 
 ```bash
 yarn add vuepress -D       # Install 0.x.x.
 yarn add vuepress@next -D  # Install next.
-
-or
-npm install -D vuepress      # Install 0.x.x.
-npm install -D vuepress@next # Install next.
 ```
 
 ## Showcase
@@ -48,7 +38,6 @@ Check out [Awesome Vuepress](https://github.com/ulivz/awesome-vuepress) to find 
 > Please make sure your version of Node.js is greater than 8.
 
 ``` bash
-yarn
 yarn dev  # serves VuePress' own docs with itself
 yarn test # make sure your code change pass the test
 ```
