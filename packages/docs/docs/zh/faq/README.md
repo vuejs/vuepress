@@ -4,25 +4,27 @@ sidebar: auto
 
 # FAQ
 
-## Why can't `palette.styl` and `index.styl` merge into one API?
+## 为什么不能把 `palette.styl` 和 `index.styl` 合并到一个 API?
 
-The `palette.styl` is responsible for global color settings. During compilation, theme color constants should be resolved by the preprocessor first and then be applied to the global context. 
+`palete.styl` 负责全局颜色设置。在编译期间，主题颜色常量应该首先由预处理器解析，然后应用于全局上下文。
 
-But for `index.styl`. its job is to override the default styles of application. According to the priority principle of css, the later style has a higher priority, so it should be generated at the end of the CSS file. 
+但对于 `index.styl`，它的工作是重写应用的默认样式。根据 CSS 的优先级原则，后一种样式具有更高的优先级，因此应该在 CSS 文件的末尾生成。
 
-A simple diagram describing the stylus compiler's compilation order as follows:
+描述 stylus 编译器编译顺序的简单图表如下：
 
-@flowstart
-stage1=>operation: palette.styl
-stage2=>operation: default app styles
-stage3=>operation: index.styl
+@flowstart <br />
+阶段1=>操作: palette.styl <br />
+阶段2=>操作: 默认 app 样式 <br />
+阶段3=>操作: index.styl <br />
 
-stage1->stage2->stage3
+阶段1->阶段2->阶段3 <br />
 @flowend
 
 <br>
 
 ## What's the differences between the `clientDynamicModules` and `enhanceAppFiles`?
+
+> To be translated.
 
 Let's take a look back first, both `clientDynamicModules` and `enhanceAppFiles` can generate modules with dynamic javascript code during compile time.
 
