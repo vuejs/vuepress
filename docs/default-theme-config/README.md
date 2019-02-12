@@ -480,6 +480,16 @@ $textColor = red // stylus constants override.
 #my-style {} // your extra styles.
 ```
 
+Let's say you wanted to override the width of the default `.content` class you could do:
+```stylus
+
+.theme-container.content
+    max-width: 1050px; 
+    margin: 0 auto;
+    padding: 2rem 2.5rem
+    
+```
+
 You'll need to separate the style part to `style.styl`:
 
 ``` stylus
