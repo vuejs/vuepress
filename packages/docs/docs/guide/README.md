@@ -44,13 +44,15 @@ Each markdown file is compiled into HTML with [markdown-it](https://github.com/m
 * [Auto-generated GitHub link and page edit links](../theme/default-theme-config.md#git-repo-and-edit-links)
 * [PWA: Popup UI to refresh contents](../theme/default-theme-config.md#popup-ui-to-refresh-contents)
 * [Last Updated](../theme/default-theme-config.md#last-updated)
-
-**Miscellaneous**
-
 * [Multi-Language Support](../guide/i18n.md)
-* [Service Worker](../config/#serviceworker)
-* [Google Analytics](../config/#ga)
+
+**Plugin**
+
 * [Powerful Plugin API](../plugin/README.md)
+* [Search Plugin](../plugin/official/plugin-search.md)
+* [PWA Plugin](../plugin/official/plugin-pwa.md)
+* [Google Analytics Plugin](../plugin/official/plugin-google-analytics.md)
+* ...
 
 ## Why Not ...?
 

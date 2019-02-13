@@ -25,12 +25,12 @@ VuePress 由两部分组成：第一部分是一个[极简静态网站生成器]
 * [模板语法](../guide/using-vue.md#模板语法)
 * [使用组件](../guide/using-vue.md#使用组件)
 
-**Vue-powered custom theme system**
+**Vue驱动的自定义主题系统**
 
 * [网站和页面的元数据](../theme/writing-a-theme.md#网站和页面的元数据a)
 * [内容摘抄](../theme/writing-a-theme.md#内容摘抄)
 
-**Default theme**
+**默认主题**
 
 * Responsive layout
 * [首页](../theme/default-theme-config.md#首页)
@@ -40,13 +40,14 @@ VuePress 由两部分组成：第一部分是一个[极简静态网站生成器]
 * [自动生成的 GitHub 链接和页面编辑链接](../theme/default-theme-config.md#Git-仓库和编辑链接)
 * [PWA: 刷新内容的 Popup](../theme/default-theme-config.md#popup-ui-to-refresh-contents)
 * [最后更新时间](../theme/default-theme-config.md#最后更新时间)
+* [多语言支持](../guide/i18n.md)
 
-**Miscellaneous**
+**Plugin**
 
-* [Multi-Language Support](../guide/i18n.md)
-* [Service Worker](../config/#serviceworker)
-* [Google Analytics](../config/#ga)
-* [Powerful Plugin API](../plugin/README.md)
+* [强大的 Plugin API](../plugin/README.md)
+* [PWA 插件](../plugin/official/plugin-pwa.md)
+* [Google Analytics 插件](../plugin/official/plugin-google-analytics.md)
+* ...
 
 ## 为什么不是...?
 
