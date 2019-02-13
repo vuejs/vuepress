@@ -13,16 +13,6 @@ The following guides are based on a few shared assumptions:
   }
 }
 ```
-## AWS Amplify
-In this guide we'll walk through how to deploy and host your VuePress site using the [AWS Amplify Console](https://console.amplify.aws).
-
-1. Log in to the [AWS Amplify Console](https://console.aws.amazon.com/amplify/home) and choose Get Started under Deploy.
-
-1. Connect a branch from your GitHub, Bitbucket, GitLab, or AWS CodeCommit repository. Connecting your repository allows Amplify to deploy updates on every code commit to a branch.
-
-1. Accept the default build settings. The Amplify Console automatically detects your VuePress build settings and output directory.
-
-1. Review your changes and then choose **Save and deploy**. The Amplify Console will pull code from your repository, build changes to your frontend, and deploy build artifacts at `https://branch-name.unique-id.amplifyapp.com`. 
 
 ## GitHub Pages
 
