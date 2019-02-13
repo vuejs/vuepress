@@ -170,12 +170,9 @@ VuePress uses [Prism](https://prismjs.com/) to highlight language syntax in mark
 
 ````
 ``` js
-function removeAllBuiltInPlugins (config) {
-  Object.keys(PLUGINS).forEach(key => {
-    if (!isRequiredPlugin(PLUGINS[key])) {
-      removePlugin(config, PLUGINS[key])
-    }
-  })
+export default {
+  name: 'MyComponent',
+  // ...
 }
 ```
 ````
@@ -183,12 +180,9 @@ function removeAllBuiltInPlugins (config) {
 **Output**
 
 ``` js
-function removeAllBuiltInPlugins (config) {
-  Object.keys(PLUGINS).forEach(key => {
-    if (!isRequiredPlugin(PLUGINS[key])) {
-      removePlugin(config, PLUGINS[key])
-    }
-  })
+export default {
+  name: 'MyComponent',
+  // ...
 }
 ```
 
@@ -196,20 +190,28 @@ function removeAllBuiltInPlugins (config) {
 
 ````
 ``` html
-<div class="tip custom-block">
-  <p class="custom-block-title">TIP</p>
-  <p>This is a tip</p>
-</div>
+<ul>
+  <li
+    v-for="todo in todos"
+    :key="todo.id"
+  >
+    {{ todo.text }}
+  </li>
+</ul>
 ```
 ````
 
 **Output**
 
 ``` html
-<div class="tip custom-block">
-  <p class="custom-block-title">TIP</p>
-  <p>This is a tip</p>
-</div>
+<ul>
+  <li
+    v-for="todo in todos"
+    :key="todo.id"
+  >
+    {{ todo.text }}
+  </li>
+</ul>
 ```
 
 Check out [the list of valid languages](https://prismjs.com/#languages-list) on the Prism website.
