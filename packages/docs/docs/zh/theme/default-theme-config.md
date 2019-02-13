@@ -354,8 +354,12 @@ module.exports = {
 请注意，`themeConfig.lastUpdated` 默认是关闭的，如果给定一个字符串，它将会作为前缀显示（默认值是：`Last Updated`）。
 
 ::: warning 使用须知
-  由于 `lastUpdated` 是基于 `git` 的, 所以你只能在一个基于 `git` 的项目中启用它。
+  由于 `lastUpdated` 是基于 `git` 的, 所以你只能在一个基于 `git` 的项目中启用它。此外，由于使用的时间戳来自 git commit，因此它将仅在给定页的第一次提交之后显示，并且仅在该页面后续提交更改时更新。
 :::
+
+**拓展阅读:**
+
+- [@vuepress/plugin-last-updated](../plugin/official/plugin-last-updated.md)
 
 ## Service Worker
 

@@ -362,6 +362,11 @@ Note that it's `off` by default. If given a `string`, it will be displayed as a 
   Since `lastUpdated` is based on `git`, you can only use it in a `git` repository. Also, since the timestamp used comes from the git commit, it will display only after a first commit for a given page, and update only on subsequent commits of that page.
 :::
 
+
+**Also see:**
+
+- [@vuepress/plugin-last-updated](../plugin/official/plugin-last-updated.md)
+
 ## Service Worker
 
 The `themeConfig.serviceWorker` option allows you to configure the service worker.
