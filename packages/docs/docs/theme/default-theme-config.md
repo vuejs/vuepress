@@ -319,6 +319,13 @@ module.exports = {
 }
 ```
 
+You can also disable the built-in search box for individual pages with `YAML front matter`:
+```yaml
+---
+search: false
+---
+```
+
 ::: tip
 Built-in Search only builds index from the title, `h2` and `h3` headers, if you need full text search, you can use [Algolia Search](#algolia-search).
 :::
