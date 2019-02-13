@@ -56,7 +56,32 @@ cd -
 你可以在你的持续集成的设置中，设置在每次 push 代码时自动运行上述脚本。
 :::
 
-## GitLab Pages and GitLab CI
+### Github Pages and Travis CI
+
+1. 在 `docs/.vuepress/config.js` 中设置正确的 `base`。
+
+   如果你打算发布到 `https://<USERNAME or GROUP>.github.io/`，则可以省略这一步，因为 `base` 默认即是 `"/"`。
+  
+   如果你打算发布到 `https://<USERNAME or GROUP>.github.io/<REPO>/`（也就是说你的仓库在 `https://github.com/<USERNAME>/<REPO>`），则将 `base` 设置为 `"/<REPO>/"`。
+  
+2. 在项目的根目录创建一个名为 `.travis.yml` 的文件；
+3. 使用 Github Pages 部署提供程序模板并遵循 [Travis 文档](https://docs.travis ci.com/user/deployment/pages/)。
+
+``` yaml
+language: node_js
+script:
+  - npm run docs:build
+deploy:
+  provider: pages
+  skip-cleanup: true
+  local_dir: docs/.vuepress/dist
+  github-token: $GITHUB_TOKEN # a token generated on github allowing travis to push code on you repository
+  keep-history: true
+  on:
+    branch: master
+```
+
+### GitLab Pages and GitLab CI
 
 1. 在 `docs/.vuepress/config.js` 中设置正确的 `base`。
 
