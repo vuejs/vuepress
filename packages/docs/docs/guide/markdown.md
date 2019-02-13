@@ -162,6 +162,60 @@ Danger zone, do not proceed
 Danger zone, do not proceed
 :::
 
+## Syntax Highlighting in Code Blocks
+
+VuePress uses [Prism](https://prismjs.com/) to highlight language syntax in markdown code blocks, using coloured text. Prism supports a wide variety of programming languages. All you need to do is append a valid language alias to the beginning backticks for the code block:
+
+**Input**
+
+````
+``` js
+export default {
+  name: 'MyComponent',
+  // ...
+}
+```
+````
+
+**Output**
+
+``` js
+export default {
+  name: 'MyComponent',
+  // ...
+}
+```
+
+**Input**
+
+````
+``` html
+<ul>
+  <li
+    v-for="todo in todos"
+    :key="todo.id"
+  >
+    {{ todo.text }}
+  </li>
+</ul>
+```
+````
+
+**Output**
+
+``` html
+<ul>
+  <li
+    v-for="todo in todos"
+    :key="todo.id"
+  >
+    {{ todo.text }}
+  </li>
+</ul>
+```
+
+Check out [the list of valid languages](https://prismjs.com/#languages-list) on the Prism website.
+
 ## Line Highlighting in Code Blocks
 
 **Input**
