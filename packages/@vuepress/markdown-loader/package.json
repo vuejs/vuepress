@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/markdown-loader",
-  "version": "1.0.0-alpha.34",
+  "version": "1.0.0-alpha.37",
   "description": "markdown-loader for vuepress",
   "main": "index.js",
   "publishConfig": {
@@ -8,7 +8,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vuejs/vuepress.git"
+    "url": "git+https://github.com/vuejs/vuepress.git",
+    "directory": "packages/@vuepress/markdown-loader"
   },
   "keywords": [
     "documentation",
@@ -17,7 +18,7 @@
     "generator"
   ],
   "dependencies": {
-    "@vuepress/markdown": "^1.0.0-alpha.34",
+    "@vuepress/markdown": "^1.0.0-alpha.37",
     "loader-utils": "^1.1.0"
   },
   "author": "Evan You",

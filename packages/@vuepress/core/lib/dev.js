@@ -37,8 +37,12 @@ async function prepareServer (sourceDir, cliOptions = {}, context) {
   }
 
   // Curry update handler by update type
-  const spawnUpdate = (updateType) =>
-    file => update(`${chalk.red(updateType)} ${chalk.cyan(file)}`)
+  const spawnUpdate = updateType => file => {
+    const target = path.join(sourceDir, file)
+    // Bust cache.
+    delete require.cache[target]
+    update(`${chalk.red(updateType)} ${chalk.cyan(file)}`)
+  }
 
   // watch add/remove of files
   const pagesWatcher = chokidar.watch([
@@ -97,8 +101,8 @@ async function prepareServer (sourceDir, cliOptions = {}, context) {
   const { host, displayHost } = await resolveHost(cliOptions.host || ctx.siteConfig.host)
 
   // debug in a running dev process.
-  process.stdin &&
-  process.stdin.on('data', chunk => {
+  process.stdin
+  && process.stdin.on('data', chunk => {
     const parsed = chunk.toString('utf-8').trim()
     if (parsed === '*') {
       console.log(Object.keys(ctx))
@@ -135,7 +139,10 @@ async function prepareServer (sourceDir, cliOptions = {}, context) {
     },
     publicPath: ctx.base,
     watchOptions: {
-      ignored: /node_modules/
+      ignored: [
+        /node_modules/,
+        `!${ctx.tempPath}/**`
+      ]
     },
     historyApiFallback: {
       disableDotRule: true,

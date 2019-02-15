@@ -18,17 +18,17 @@ const EXPORTED_MODULES = [
   ['hash-sum', 'hash']
 ]
 
-const code =
-  [
+const code
+  = [
     ...modules.map(v => getImport(v, `./${v}`)),
     ...EXPORTED_MODULES.map(v => Array.isArray(v) ? getImport(v[1], v[0]) : getImport(v, v))
-  ].join('\n') +
-  `\n\nexport {\n` +
-  [
+  ].join('\n')
+  + `\n\nexport {\n`
+  + [
     ...modules,
     ...EXPORTED_MODULES.map(v => Array.isArray(v) ? v[1] : v)
-  ].map(v => `  ${v},`).join('\n') +
-  '\n}'
+  ].map(v => `  ${v},`).join('\n')
+  + '\n}'
 
 fs.writeFileSync(target, code, 'utf-8')
 

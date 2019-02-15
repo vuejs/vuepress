@@ -82,7 +82,7 @@ deploy:
     branch: master
 ```
 
-## GitLab Pages and GitLab CI
+### GitLab Pages and GitLab CI
 
 1. Set correct `base` in `docs/.vuepress/config.js`.
 

@@ -12,11 +12,11 @@ module.exports = function (source, map) {
     const cached = cache.get(file)
     const parsed = parseStrippedFrontmatter(source)
 
-    if (cached &&
-      cached.data &&
-      parsed &&
-      parsed.data &&
-      JSON.stringify(cached.data) !== JSON.stringify(parsed.data)
+    if (cached
+      && cached.data
+      && parsed
+      && parsed.data
+      && JSON.stringify(cached.data) !== JSON.stringify(parsed.data)
     ) {
       frontmatterEmitter.emit('update')
     }

@@ -1,3 +1,53 @@
+
+<a name="1.0.0-alpha.37"></a>
+# [1.0.0-alpha.37](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.36...v1.0.0-alpha.37) (2019-02-08)
+
+
+### Features
+
+* **$core:** redirects for clean urls ([#1269](https://github.com/vuejs/vuepress/issues/1269)) ([213bb34](https://github.com/vuejs/vuepress/commit/213bb34))
+* **$theme-default:** fallback current group node to page node if children doesn't exist ([11ce576](https://github.com/vuejs/vuepress/commit/11ce576))
+* **$theme-default:** highlight sidebar link text at root level like sidebar group heading text ([05e793f](https://github.com/vuejs/vuepress/commit/05e793f))
+* **$theme-default:** unify the text color of sidebar heading text and root-level sidebar link ([3e47a20](https://github.com/vuejs/vuepress/commit/3e47a20))
+
+
+
+<a name="1.0.0-alpha.36"></a>
+# [1.0.0-alpha.36](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.35...v1.0.0-alpha.36) (2019-02-03)
+
+
+### Bug Fixes
+
+* **$core:** SFC page compile error (close: [#1110](https://github.com/vuejs/vuepress/issues/1110)) ([8f5b0cd](https://github.com/vuejs/vuepress/commit/8f5b0cd))
+
+
+### Features
+
+* **$theme-default:** refine sidebar groups ([#1257](https://github.com/vuejs/vuepress/issues/1257)) ([01dd45b](https://github.com/vuejs/vuepress/commit/01dd45b)), closes [#814](https://github.com/vuejs/vuepress/issues/814) [#783](https://github.com/vuejs/vuepress/issues/783) [#287](https://github.com/vuejs/vuepress/issues/287)
+  - `sidebarDepth` for a specified sidebar group.
+  - Nested sidebar groups.
+  - Clickable heading for sidebar groups.
+
+
+
+<a name="1.0.0-alpha.35"></a>
+# [1.0.0-alpha.35](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.34...v1.0.0-alpha.35) (2019-01-30)
+
+
+### Bug Fixes
+
+* **$core:** bust cache of extra watching files ([075f470](https://github.com/vuejs/vuepress/commit/075f470))
+* **$core:** never throw error if layout component does not exist ([#1247](https://github.com/vuejs/vuepress/issues/1247)) ([49c5983](https://github.com/vuejs/vuepress/commit/49c5983))
+* **$core:** style and platte path sep on windows ([#1246](https://github.com/vuejs/vuepress/issues/1246)) ([592918a](https://github.com/vuejs/vuepress/commit/592918a))
+* **$theme-default:** bitbucket edit link goes to wrong link (close: [#1235](https://github.com/vuejs/vuepress/issues/1235)) ([#1248](https://github.com/vuejs/vuepress/issues/1248)) ([3c5b3a6](https://github.com/vuejs/vuepress/commit/3c5b3a6))
+
+
+### Features
+
+* **$core:** exclude temp dir from being ignored watching ([c6797dd](https://github.com/vuejs/vuepress/commit/c6797dd))
+
+
+
 <a name="1.0.0-alpha.34"></a>
 # [1.0.0-alpha.34](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.33...v1.0.0-alpha.34) (2019-01-29)
 

@@ -22,14 +22,13 @@ module.exports = (options, ctx) => ({
 
     const themePalette = path.resolve(ctx.themePath, 'styles/palette.styl')
     const userPalette = path.resolve(sourceDir, '.vuepress/styles/palette.styl')
-      .replace(/[\\]+/g, '/')
 
     const themePaletteContent = fs.existsSync(themePalette)
-      ? `@import(${JSON.stringify(themePalette)})`
+      ? `@import(${JSON.stringify(themePalette.replace(/[\\]+/g, '/'))})`
       : ''
 
     const userPaletteContent = fs.existsSync(userPalette)
-      ? `@import(${JSON.stringify(userPalette)})`
+      ? `@import(${JSON.stringify(userPalette.replace(/[\\]+/g, '/'))})`
       : ''
 
     // user's palette can override theme's palette.
@@ -38,7 +37,7 @@ module.exports = (options, ctx) => ({
     if (ctx.parentThemePath) {
       const parentThemePalette = path.resolve(ctx.parentThemePath, 'styles/palette.styl')
       const parentThemePaletteContent = fs.existsSync(parentThemePalette)
-        ? `@import(${JSON.stringify(parentThemePalette)})`
+        ? `@import(${JSON.stringify(parentThemePalette.replace(/[\\]+/g, '/'))})`
         : ''
       paletteContent = parentThemePaletteContent + paletteContent
     }

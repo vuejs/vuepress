@@ -7,9 +7,9 @@ metaTitle: Last-Updated Plugin | VuePress
 
 > last-updated plugin for vuepress
 
-::: warning Note
-Note that this plugin has been included in the core, you don't need to repeat the installation.
-:::
+If you use the default theme, you don't need to install this plugin, because the plugin is already included in the `core` of VuePress, and you should use the [themeConfig.lastUpdated](../../theme/default-theme-config.md#last-updated) option directly.
+
+If you use it at your custom theme, you'll need to handle the UI by yourself, and you can use __[$page.lastUpdated](../../guide/global-computed.md#page)__ to access the date string.
 
 ## Usage
 

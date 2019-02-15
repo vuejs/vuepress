@@ -155,6 +155,7 @@ function getThemeSidebar (groupA, introductionA) {
     {
       title: groupA,
       collapsable: false,
+      sidebarDepth: 2,
       children: [
         ['', introductionA],
         'using-a-theme',

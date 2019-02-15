@@ -20,8 +20,8 @@ module.exports = async function (cli, options) {
   const inferredUserDocsDirectory = await inferUserDocsDirectory(pwd)
   logger.developer('inferredUserDocsDirectory', inferredUserDocsDirectory)
 
-  const needPrepareBeforeLaunchCLI = inferredUserDocsDirectory &&
-    (isHelpFlag(argv[0]) || isUnknownCommandHelp(argv))
+  const needPrepareBeforeLaunchCLI = inferredUserDocsDirectory
+    && (isHelpFlag(argv[0]) || isUnknownCommandHelp(argv))
 
   logger.developer('needPrepareBeforeLaunchCLI', needPrepareBeforeLaunchCLI)
 

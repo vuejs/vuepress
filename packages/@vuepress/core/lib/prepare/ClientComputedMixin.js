@@ -74,8 +74,8 @@ module.exports = siteData => {
 
       const siteTitle = this.$siteTitle
       const selfTitle = page.frontmatter.home ? null : (
-        page.frontmatter.title || // explicit title
-        page.title // inferred title
+        page.frontmatter.title // explicit title
+        || page.title // inferred title
       )
       return siteTitle
         ? selfTitle

@@ -1,5 +1,5 @@
-# Theme
+# 主题
 
 ::: tip
-Theme components are subject to the same [browser API access restrictions](../guide/using-vue.md#浏览器的API访问限制).
+主题组件受到相同的 [浏览器的 API 访问限制](../guide/using-vue.md#浏览器的API访问限制).
 :::

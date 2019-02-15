@@ -300,7 +300,7 @@ module.exports = {
     } = $page
 
     // 1. Add extra fields.
-    page.xxx = 'xxx'
+    $page.xxx = 'xxx'
 
     // 2. Change frontmatter.
     frontmatter.sidebar = 'auto'
@@ -317,7 +317,7 @@ e.g.
 ``` js
 module.exports = {
   extendPageData ($page) {
-    $page.size = ($page.content.length / 1024).toFixed(2) + 'kb'
+    $page.size = ($page._content.length / 1024).toFixed(2) + 'kb'
   }
 }
 ```
