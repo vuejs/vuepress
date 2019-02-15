@@ -2,6 +2,8 @@
 // 1. adding target="_blank" to external links
 // 2. converting internal links to <router-link>
 
+const url = require('url')
+
 const indexRE = /(^|.*\/)(index|readme).md(#?.*)$/i
 
 module.exports = (md, externalAttrs) => {
@@ -9,6 +11,7 @@ module.exports = (md, externalAttrs) => {
   let hasOpenExternalLink = false
 
   md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
+    const { relPath } = env
     const token = tokens[idx]
     const hrefIndex = token.attrIndex('href')
     if (hrefIndex >= 0) {
@@ -25,19 +28,26 @@ module.exports = (md, externalAttrs) => {
         }
       } else if (isSourceLink) {
         hasOpenRouterLink = true
-        tokens[idx] = toRouterLink(token, link)
+        tokens[idx] = toRouterLink(token, link, relPath)
       }
     }
     return self.renderToken(tokens, idx, options)
   }
 
-  function toRouterLink (token, link) {
+  function toRouterLink (token, link, relPath) {
     link[0] = 'to'
     let to = link[1]
 
     // convert link to filename and export it for existence check
     const links = md.$data.links || (md.$data.links = [])
     links.push(to)
+
+    // relative path usage.
+    if (!to.startsWith('/')) {
+      to = relPath
+        ? url.resolve('/' + relPath, to)
+        : ensureBeginningDotSlash(to)
+    }
 
     const indexMatch = to.match(indexRE)
     if (indexMatch) {
@@ -47,11 +57,6 @@ module.exports = (md, externalAttrs) => {
       to = to
         .replace(/\.md$/, '.html')
         .replace(/\.md(#.*)$/, '.html$1')
-    }
-
-    // relative path usage.
-    if (!to.startsWith('/')) {
-      to = ensureBeginningDotSlash(to)
     }
 
     // markdown-it encodes the uri
