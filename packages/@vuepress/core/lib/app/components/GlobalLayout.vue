@@ -3,13 +3,11 @@
 </template>
 
 <script>
-import { getLayoutAsyncComponent } from '../util'
-
 export default {
   computed: {
     layout () {
       if (this.$page.path) {
-        if (getLayoutAsyncComponent(this.$page.frontmatter.layout)) {
+        if (this.$vuepress.isLayoutExists(this.$page.frontmatter.layout)) {
           return this.$page.frontmatter.layout
         }
         return 'Layout'
