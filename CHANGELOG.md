@@ -1,3 +1,65 @@
+<a name="1.0.0-alpha.38"></a>
+# [1.0.0-alpha.38](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.37...v1.0.0-alpha.38) (2019-02-16)
+
+
+### Bug Fixes
+
+* **$plugin-pwa:** set current registration scope for service worker (close: [#1271](https://github.com/vuejs/vuepress/issues/1271)) ([#1302](https://github.com/vuejs/vuepress/issues/1302)) ([4b2b0f4](https://github.com/vuejs/vuepress/commit/4b2b0f4))
+* **$theme-default:** sidebar group item cannot contain empty children (close: [#1278](https://github.com/vuejs/vuepress/issues/1278)) ([5f1eb0e](https://github.com/vuejs/vuepress/commit/5f1eb0e))
+
+
+### Features
+
+* **$core:** support global layout (close: [#1226](https://github.com/vuejs/vuepress/issues/1226)) ([c91f55a](https://github.com/vuejs/vuepress/commit/c91f55a))
+
+  From now on, users have the ability to use a custom global layout component via [siteConfig](https://vuepress.vuejs.org/miscellaneous/glossary.html#siteconfig) or [themeEntryFile](https://vuepress.vuejs.org/miscellaneous/glossary.html#themeentryfile):
+  
+  ```js
+  module.exports = {
+    globalLayout: '/path/to/your/global/vue/sfc'
+  }
+  ```
+
+  Here is the [content of default global layout component](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/core/lib/app/components/GlobalLayout.vue), an example of setting global header and footer:
+  
+  ```vue
+  <template>
+    <div id="global-layout">
+      <header><h1>Header</h1></header>
+      <component :is="layout"/>
+      <footer><h1>Footer</h1></footer>
+    </div>
+  </template>
+  
+  <script>
+  export default {
+    computed: {
+      layout () {
+        if (this.$page.path) {
+          if (this.$vuepress.isLayoutExists(this.$page.frontmatter.layout)) {
+            return this.$page.frontmatter.layout
+          }
+          return 'Layout'
+        }
+        return 'NotFound'
+      }
+    }
+  }
+  </script>
+  ```
+  
+  Also, you can follow the convention, directly create a component `.vuepress/components/GlobalLayout.vue` or `themePath/layouts/GlobalLayout.vue` without any config. the loading priority is as follows: 
+  
+  - siteConfig
+  - siteAgreement
+  - themeEntryFile
+  - themeAgreement
+  - default
+
+* **$theme-default:** disable search box via frontmatter (close: [#1287](https://github.com/vuejs/vuepress/issues/1287)) ([#1288](https://github.com/vuejs/vuepress/issues/1288)) ([54e9eb0](https://github.com/vuejs/vuepress/commit/54e9eb0))
+
+
+
 
 <a name="1.0.0-alpha.37"></a>
 # [1.0.0-alpha.37](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.36...v1.0.0-alpha.37) (2019-02-08)
