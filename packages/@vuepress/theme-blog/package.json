@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@vuepress/theme-blog",
-  "version": "1.0.0-alpha.38",
+  "version": "1.0.0-alpha.39",
   "description": "theme-blog for vuepress",
   "main": "index.js",
   "publishConfig": {
@@ -19,10 +19,10 @@
     "generator"
   ],
   "dependencies": {
-    "@vuepress/plugin-blog": "^1.0.0-alpha.38",
-    "@vuepress/plugin-medium-zoom": "^1.0.0-alpha.38",
-    "@vuepress/plugin-pagination": "^1.0.0-alpha.38",
-    "@vuepress/plugin-search": "^1.0.0-alpha.38"
+    "@vuepress/plugin-blog": "^1.0.0-alpha.39",
+    "@vuepress/plugin-medium-zoom": "^1.0.0-alpha.39",
+    "@vuepress/plugin-pagination": "^1.0.0-alpha.39",
+    "@vuepress/plugin-search": "^1.0.0-alpha.39"
   },
   "author": "ULIVZ <chl814@foxmail.com>",
   "license": "MIT",
