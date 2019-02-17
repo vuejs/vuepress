@@ -296,10 +296,10 @@ module.exports = class AppContext {
     themeAgreement
   }) {
     const siteConfigValue = this.siteConfig[configKey]
-    siteAgreement = path.resolve(this.vuepressDir, siteAgreement)
+    siteAgreement = this.resolveSiteAgreementFile(siteAgreement)
 
     const themeConfigValue = this.getThemeConfigValue(configKey)
-    themeAgreement = this.getThemeAgreementFile(themeAgreement)
+    themeAgreement = this.resolveThemeAgreementFile(themeAgreement)
 
     return fsExistsFallback([
       siteConfigValue,
@@ -307,7 +307,7 @@ module.exports = class AppContext {
       themeConfigValue,
       themeAgreement,
       defaultValue
-    ])
+    ].map(v => v))
   }
 
   /**
@@ -377,15 +377,37 @@ module.exports = class AppContext {
     return this.themeEntryFile[key] || this.parentThemeEntryFile[key]
   }
 
-  getThemeAgreementFile (filepath) {
+  /**
+   * Resolve the absolute path of a theme-level agreement file,
+   * return `undefined` when it doesn't exists.
+   *
+   * @param {string} filepath
+   * @returns {string|undefined}
+   */
+
+  resolveThemeAgreementFile (filepath) {
     const current = path.resolve(this.themePath, filepath)
     if (fs.existsSync(current)) {
       return current
     }
-    const parent = path.resolve(this.parentThemePath, filepath)
-    if (fs.existsSync(parent)) {
-      return parent
+    if (this.parentThemePath) {
+      const parent = path.resolve(this.parentThemePath, filepath)
+      if (fs.existsSync(parent)) {
+        return parent
+      }
     }
+  }
+
+  /**
+   * Resolve the absolute path of a site-level agreement file,
+   * return `undefined` when it doesn't exists.
+   *
+   * @param {string} filepath
+   * @returns {string|undefined}
+   */
+
+  resolveSiteAgreementFile (filepath) {
+    return path.resolve(this.vuepressDir, filepath)
   }
 
   /**
