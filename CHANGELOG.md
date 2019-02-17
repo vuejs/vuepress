@@ -1,3 +1,14 @@
+<a name="1.0.0-alpha.39"></a>
+# [1.0.0-alpha.39](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.38...v1.0.0-alpha.39) (2019-02-17)
+
+
+### Bug Fixes
+
+* **$core:** cannot read property 'globalLayout' of null (close: [#1304](https://github.com/vuejs/vuepress/issues/1304)) ([94dab12](https://github.com/vuejs/vuepress/commit/94dab12))
+* **$core:** cannot use relative path in a permalink page (close: [#1227](https://github.com/vuejs/vuepress/issues/1227))([#1298](https://github.com/vuejs/vuepress/issues/1298)) ([d560e22](https://github.com/vuejs/vuepress/commit/d560e22))
+  - Check out the [blog post](https://vuepress-relative-paths.ulivz.com/) for more details.
+
+
 <a name="1.0.0-alpha.38"></a>
 # [1.0.0-alpha.38](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.37...v1.0.0-alpha.38) (2019-02-16)
 
