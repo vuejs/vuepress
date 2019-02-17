@@ -66,7 +66,14 @@ module.exports = function (src) {
 
   // the render method has been augmented to allow plugins to
   // register data during render
-  const { html, data: { hoistedTags, links }, dataBlockString } = markdown.render(content)
+  const {
+    html,
+    data: { hoistedTags, links },
+    dataBlockString
+  } = markdown.render(content, {
+    frontmatter: frontmatter.data,
+    relPath: path.relative(sourceDir, file)
+  })
 
   // check if relative links are valid
   links && links.forEach(link => {
