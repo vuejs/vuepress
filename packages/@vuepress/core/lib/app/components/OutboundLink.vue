@@ -9,4 +9,7 @@
 .icon.outbound
   color #aaa
   display inline-block
+  vertical-align middle
+  position relative
+  top -1px
 </style>
