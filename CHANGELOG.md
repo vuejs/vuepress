@@ -5,8 +5,8 @@
 ### Bug Fixes
 
 * **$theme-default:** bitbucket edit link goes to wrong link ([#1277](https://github.com/vuejs/vuepress/issues/1277)) ([947a70f](https://github.com/vuejs/vuepress/commit/947a70f)), closes [#1235](https://github.com/vuejs/vuepress/issues/1235)
-* remove colon as separator (close: [#1297](https://github.com/vuejs/vuepress/issues/1297)) ([#1305](https://github.com/vuejs/vuepress/issues/1305)) ([3b15f9f](https://github.com/vuejs/vuepress/commit/3b15f9f))
-* sidebar button should be hidden when there are no sidebars in mobile side ([#1159](https://github.com/vuejs/vuepress/issues/1159)) ([b7f3ac4](https://github.com/vuejs/vuepress/commit/b7f3ac4))
+* **$theme-default:** sidebar button should be hidden when there are no sidebars in mobile side ([#1159](https://github.com/vuejs/vuepress/issues/1159)) ([b7f3ac4](https://github.com/vuejs/vuepress/commit/b7f3ac4))
+* **$core:** remove colon as separator (close: [#1297](https://github.com/vuejs/vuepress/issues/1297)) ([#1305](https://github.com/vuejs/vuepress/issues/1305)) ([3b15f9f](https://github.com/vuejs/vuepress/commit/3b15f9f))
 
 
 
