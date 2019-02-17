@@ -18,7 +18,7 @@ const markdownSlotsContainersPlugin = require('./lib/markdownSlotsContainers')
 const snippetPlugin = require('./lib/snippet')
 const emojiPlugin = require('markdown-it-emoji')
 const anchorPlugin = require('markdown-it-anchor')
-const tocPlugin = require('markdown-it-table-of-contents')
+const tocPlugin = require('./lib/tableOfContents')
 const { parseHeaders, slugify: _slugify, logger, chalk } = require('@vuepress/shared-utils')
 
 /**
