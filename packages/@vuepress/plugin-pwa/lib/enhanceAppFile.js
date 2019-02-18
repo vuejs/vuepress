@@ -16,7 +16,7 @@ export default ({ router, isServer }) => {
       && !isServer
       && SW_ENABLED) {
       register(`${SW_BASE_URL}service-worker.js`, {
-        registrationOptions: { scope: `./${SW_BASE_URL}` },
+        registrationOptions: {},
         ready () {
           console.log('[vuepress:sw] Service worker is active.')
           event.$emit('sw-ready')
