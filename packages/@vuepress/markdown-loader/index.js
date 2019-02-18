@@ -71,6 +71,7 @@ module.exports = function (src) {
     data: { hoistedTags, links },
     dataBlockString
   } = markdown.render(content, {
+    loader: this,
     frontmatter: frontmatter.data,
     relPath: path.relative(sourceDir, file)
   })
