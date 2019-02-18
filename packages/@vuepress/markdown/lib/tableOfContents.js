@@ -1,14 +1,12 @@
 // reference: https://github.com/Oktavilla/markdown-it-table-of-contents
 
-const slugify = (s) => encodeURIComponent(String(s).trim().toLowerCase().replace(/\s+/g, '-'))
 const defaults = {
-  includeLevel: [1, 2],
+  includeLevel: [2, 3],
   containerClass: 'table-of-contents',
-  slugify,
   markerPattern: /^\[\[toc\]\]/im,
   listType: 'ul',
-  format: undefined,
-  forceFullToc: false
+  containerHeaderHtml: '',
+  containerFooterHtml: ''
 }
 
 module.exports = (md, options) => {
@@ -52,10 +50,31 @@ module.exports = (md, options) => {
     return true
   }
 
-  md.renderer.rules.toc_open = function (tokens, index) {
-    return `<TOC class="${options.containerClass}" />`
+  md.renderer.rules.toc_open = function () {
+    return vBindEscape`<TOC
+      :class=${options.containerClass}
+      :list-type=${options.listType}
+      :include-level=${options.includeLevel}
+      :container-header-html=${options.containerHeaderHtml}
+      :container-footer-html=${options.containerFooterHtml}
+    >`
+  }
+
+  md.renderer.rules.toc_close = function () {
+    return `</TOC>`
   }
 
   // Insert TOC
   md.inline.ruler.after('emphasis', 'toc', toc)
+}
+
+/** escape double quotes in v-bind derivatives */
+function vBindEscape (strs, ...args) {
+  return strs.reduce((prev, curr, index) => {
+    return prev + curr + (index >= args.length
+      ? ''
+      : `"${JSON.stringify(args[index])
+        .replace(/"/g, "'")
+        .replace(/([^\\])(\\\\)*\\'/g, (_, char) => char + '\\u0022')}"`)
+  }, '')
 }

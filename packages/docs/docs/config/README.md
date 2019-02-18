@@ -222,7 +222,12 @@ The key and value pair will be added to `<a>` tags that points to an external li
 - Type: `Object`
 - Default: `{ includeLevel: [2, 3] }`
 
-Options for [markdown-it-table-of-contents](https://github.com/Oktavilla/markdown-it-table-of-contents). (Note: prefer `markdown.slugify` if you want to customize header ids.)
+This attribute will control the behaviour of `[[TOC]]`. We design this interface as close as possible to the options of [markdown-it-table-of-contents](https://github.com/Oktavilla/markdown-it-table-of-contents). However, there are some little differences:
+
+1. `slugify`, `format` and `forceFullToc` are not supported at present.
+2. In addition to supporting `String` type, `listType` also supports passing in an array representing the list type for each level. For example, when `listType` is set to `['ol', 'ul']`, a three-level list will show the structure of `<ol><li><ul><li><ul><li>`.
+
+We also provide a global component `<TOC>` which allows for more free control by passing props directly to `<TOC>`.
 
 ### markdown.extendMarkdown
 

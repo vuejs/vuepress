@@ -214,7 +214,12 @@ VuePress 提供了一种添加额外样式的简便方法。你可以创建一�
 - 类型: `Object`
 - 默认值: `{ includeLevel: [2, 3] }`
 
-[markdown-it-table-of-contents](https://github.com/Oktavilla/markdown-it-table-of-contents) 的选项。
+这个值将会控制 `[[TOC]]` 默认行为。我们将其设计成了尽可能与 [markdown-it-table-of-contents](https://github.com/Oktavilla/markdown-it-table-of-contents) 兼容的选项。不过有一些微小的区别：
+
+1. 暂不支持 `slugify`，`format` 和 `forceFullToc`。
+2. `listType` 除了支持 `String` 类型外，还支持传入一个数组，表示每一层级的列表类型。比如当设置 `listType` 为 `['ol', 'ul']` 时，一个三级的列表将呈现出 `<ol><li><ul><li><ul><li>` 的结构。
+
+此外，我们还提供了全局组件 `<TOC>`，可以通过直接向 `<TOC>` 传递属性实现更加自由的控制。
 
 ### markdown.extendMarkdown
 
