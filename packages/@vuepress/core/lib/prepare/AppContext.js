@@ -96,6 +96,7 @@ module.exports = class AppContext {
     this.normalizeHeadTagUrls()
     await this.resolveTheme()
     this.resolveTemplates()
+    this.resolveGlobalLayout()
 
     this.applyInternalPlugins()
     this.applyUserPlugins()
@@ -258,6 +259,58 @@ module.exports = class AppContext {
   }
 
   /**
+   * resolve global layout
+   *
+   * @returns {string}
+   * @api private
+   */
+
+  resolveGlobalLayout () {
+    const GLOBAL_LAYOUT_COMPONENT_NAME = `GlobalLayout`
+
+    this.globalLayout = this.resolveCommonAgreementFilePath(
+      'globalLayout',
+      {
+        defaultValue: path.resolve(__dirname, `../app/components/${GLOBAL_LAYOUT_COMPONENT_NAME}.vue`),
+        siteAgreement: `components/${GLOBAL_LAYOUT_COMPONENT_NAME}.vue`,
+        themeAgreement: `layouts/${GLOBAL_LAYOUT_COMPONENT_NAME}.vue`
+      }
+    )
+
+    logger.debug('globalLayout: ' + chalk.gray(this.globalLayout))
+  }
+
+  /**
+   * Resolve a path-type config.
+   *
+   * @param {string} configKey
+   * @param {string} defaultValue an absolute path
+   * @param {string} siteAgreement a relative path to vuepress dir
+   * @param {string} themeAgreement a relative path to theme dir
+   * @returns {string | void}
+   */
+
+  resolveCommonAgreementFilePath (configKey, {
+    defaultValue,
+    siteAgreement,
+    themeAgreement
+  }) {
+    const siteConfigValue = this.siteConfig[configKey]
+    siteAgreement = this.resolveSiteAgreementFile(siteAgreement)
+
+    const themeConfigValue = this.getThemeConfigValue(configKey)
+    themeAgreement = this.resolveThemeAgreementFile(themeAgreement)
+
+    return fsExistsFallback([
+      siteConfigValue,
+      siteAgreement,
+      themeConfigValue,
+      themeAgreement,
+      defaultValue
+    ].map(v => v))
+  }
+
+  /**
    * Find all page source files located in sourceDir
    *
    * @returns {Promise<void>}
@@ -310,6 +363,51 @@ module.exports = class AppContext {
 
   async resolveTheme () {
     Object.assign(this, (await loadTheme(this)))
+  }
+
+  /**
+   * Get config value of current active theme.
+   *
+   * @param {string} key
+   * @returns {any}
+   * @api private
+   */
+
+  getThemeConfigValue (key) {
+    return this.themeEntryFile[key] || this.parentThemeEntryFile[key]
+  }
+
+  /**
+   * Resolve the absolute path of a theme-level agreement file,
+   * return `undefined` when it doesn't exists.
+   *
+   * @param {string} filepath
+   * @returns {string|undefined}
+   */
+
+  resolveThemeAgreementFile (filepath) {
+    const current = path.resolve(this.themePath, filepath)
+    if (fs.existsSync(current)) {
+      return current
+    }
+    if (this.parentThemePath) {
+      const parent = path.resolve(this.parentThemePath, filepath)
+      if (fs.existsSync(parent)) {
+        return parent
+      }
+    }
+  }
+
+  /**
+   * Resolve the absolute path of a site-level agreement file,
+   * return `undefined` when it doesn't exists.
+   *
+   * @param {string} filepath
+   * @returns {string|undefined}
+   */
+
+  resolveSiteAgreementFile (filepath) {
+    return path.resolve(this.vuepressDir, filepath)
   }
 
   /**

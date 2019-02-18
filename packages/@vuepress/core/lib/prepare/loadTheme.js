@@ -40,11 +40,11 @@ module.exports = async function loadTheme (ctx) {
     && (fs.readdirSync(localThemePath)).length > 0
 
   let themePath = null         // Mandatory
-  let themeEntryFile = null    // Optional
+  let themeEntryFile = {}      // Optional
   let themeName
   let themeShortcut
   let parentThemePath = null       // Optional
-  let parentThemeEntryFile = null  // Optional
+  let parentThemeEntryFile = {}    // Optional
 
   if (useLocalTheme) {
     themePath = localThemePath
