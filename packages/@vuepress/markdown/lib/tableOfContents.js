@@ -60,7 +60,7 @@ module.exports = (md, options) => {
 
   md.renderer.rules.toc_body = function () {
     return `<template slot="header">${options.containerHeaderHtml}</template>`
-      + `<template slot="footer">${options.containerHeaderHtml}</template>`
+      + `<template slot="footer">${options.containerFooterHtml}</template>`
   }
 
   md.renderer.rules.toc_close = function () {

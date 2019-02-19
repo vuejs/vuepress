@@ -220,14 +220,17 @@ The key and value pair will be added to `<a>` tags that points to an external li
 ### markdown.toc
 
 - Type: `Object`
-- Default: `{ includeLevel: [2, 3] }`
 
-This attribute will control the behaviour of `[[TOC]]`. We design this interface as close as possible to the options of [markdown-it-table-of-contents](https://github.com/Oktavilla/markdown-it-table-of-contents). However, there are some little differences:
+This attribute will control the behaviour of `[[TOC]]`. It contains the following options:
 
-1. `slugify`, `format` and `forceFullToc` are not supported at present.
-2. In addition to supporting `String` type, `listType` also supports passing in an array representing the list type for each level. For example, when `listType` is set to `['ol', 'ul']`, a three-level list will show the structure of `<ol><li><ul><li><ul><li>`.
+- includeLevel: [number, number], level of headers to be included, defaults to `[2, 3]`.
+- containerClass: string, the class name for the container, defaults to `table-of-contents`.
+- markerPattern: RegExp, the regular expression for the marker to be replaced with TOC, defaults to `/^\[\[toc\]\]/im`.
+- listType: string or Array, labels for all levels of the list, defaults to `"ul"`.
+- containerHeaderHtml: string, an HTML string for container header, defaults to `""`.
+- containerFooterHtml: string, an HTML string for container footer, defaults to `""`.
 
-We also provide a global component `<TOC>` which allows for more free control by passing props directly to `<TOC>`.
+We also provide a [global component TOC](../guide/using-vue.md#toc) which allows for more free control by passing props directly to `<TOC>`.
 
 ### markdown.extendMarkdown
 

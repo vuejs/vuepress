@@ -122,7 +122,7 @@ or
 
 [[toc]]
 
-Rendering of TOC can be configured using the [`markdown.toc`](../config/README.md#markdown-toc) option, or as props of TOC component, like `<TOC list-type="ol" :include-level="[2, Infinity]"/>`.
+Rendering of TOC can be configured using the [`markdown.toc`](../config/README.md#markdown-toc) option, or as props of [TOC component](./using-vue.md#toc), like `<TOC list-type="ol" :include-level="[2, Infinity]"/>`.
 
 ## Custom Containers
 
