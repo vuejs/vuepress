@@ -117,7 +117,7 @@ We can set aliases via [chainWebpack](#chainwebpack):
 ```js
 module.exports = (options, context) => ({
   chainWebpack (config) {
-    config.resolve.alias.set('@theme', context.themePath)
+    config.resolve.alias.set('@pwd', process.cwd())
   }
 })
 ```
@@ -127,7 +127,7 @@ But `alias` option makes this process more like configuration:
 ```js
 module.exports = (options, context) => ({
   alias: {
-    '@theme': context.themePath
+    '@pwd': process.cwd()
   }
 })
 ```

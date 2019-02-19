@@ -52,13 +52,13 @@ VuePress 的动态布局系统等特性是基于 `frontmatter` 实现的，你�
 
 ## themePath
 
-> Access: `Context.themePath`
+> Access: `Context.themeAPI.theme.path`
 
 当前使用的主题的根路径（绝对路径）。
 
 ## themeEntryFile
 
-> Access: `Context.themeEntryFile`
+> Access: `Context.themeAPI.theme.entry`
 
 主题的配置文件 (`themePath/index.js`)。
 

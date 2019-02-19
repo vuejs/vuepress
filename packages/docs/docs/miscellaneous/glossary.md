@@ -52,13 +52,13 @@ Value of `themeConfig` in `.vuepress/config.js`, i.e., `user's theme configurati
 
 ## themePath
 
-> Access: `Context.themePath`
+> Access: `Context.themeAPI.theme.path`
 
 Root path (absolute path) of the currently used theme.
 
 ## themeEntryFile
 
-> Access: `Context.themeEntryFile`
+> Access: `Context.themeAPI.theme.entry`
 
 Theme's configuration file (`themePath/index.js`).
 
