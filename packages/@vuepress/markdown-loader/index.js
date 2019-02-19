@@ -10,7 +10,6 @@ const { fs, path, hash, parseFrontmatter, inferTitle, extractHeaders } = require
 const LRU = require('lru-cache')
 const md = require('@vuepress/markdown')
 
-const cache = new LRU({ max: 1000 })
 const devCache = new LRU({ max: 1000 })
 
 /**
@@ -31,26 +30,18 @@ module.exports = function (src) {
   // vue-loader, and will be applied on the same file multiple times when
   // selecting the individual blocks.
   const file = this.resourcePath
-  const key = hash(file + src)
-  const cached = cache.get(key)
-  if (cached && (isProd || /\?vue/.test(this.resourceQuery))) {
-    return cached
-  }
-
-  const frontmatter = parseFrontmatter(src)
-  const content = frontmatter.content
+  const { content, data } = parseFrontmatter(src)
 
   if (!isProd && !isServer) {
-    const inferredTitle = inferTitle(frontmatter.data, frontmatter.content)
+    const inferredTitle = inferTitle(data, content)
     const headers = extractHeaders(content, ['h2', 'h3'], markdown)
-    delete frontmatter.content
 
     // diff frontmatter and title, since they are not going to be part of the
     // returned component, changes in frontmatter do not trigger proper updates
     const cachedData = devCache.get(file)
     if (cachedData && (
       cachedData.inferredTitle !== inferredTitle
-      || JSON.stringify(cachedData.frontmatterData) !== JSON.stringify(frontmatter.data)
+      || JSON.stringify(cachedData.frontmatterData) !== JSON.stringify(data)
       || headersChanged(cachedData.headers, headers)
     )) {
       // frontmatter changed... need to do a full reload
@@ -59,9 +50,47 @@ module.exports = function (src) {
 
     devCache.set(file, {
       headers,
-      frontmatterData: frontmatter.data,
+      frontmatterData: data,
       inferredTitle
     })
+  }
+
+  // observe dependency changes
+  const loader = Object.create(this)
+  let __hasDep__
+  function observeDependency (func) {
+    return (...args) => {
+      __hasDep__ = true
+      process.exit(1)
+      func.call(loader, ...args)
+    }
+  }
+
+  loader.addContextDependency = observeDependency(this.addContextDependency)
+  loader.addDependency = observeDependency(this.addDependency)
+  loader.dependency = observeDependency(this.dependency)
+
+  const { rules } = markdown.renderer
+  for (const key in rules) {
+    const rule = rules[key]
+    if (rule.__cache__) continue
+    const cache = new LRU({ max: 100 })
+    rules[key] = (...args) => {
+      const key = hash(args)
+      const cached = cache.get(key)
+      if (cached) {
+        return cached
+      } else {
+        __hasDep__ = false
+        const result = rule(...args)
+        // if not having any dependencies, use cached data
+        if (!__hasDep__) {
+          cache.set(key, result)
+        }
+        return result
+      }
+    }
+    Object.defineProperty(rules[key], '__cache__', { value: cache })
   }
 
   // the render method has been augmented to allow plugins to
@@ -71,8 +100,8 @@ module.exports = function (src) {
     data: { hoistedTags, links },
     dataBlockString
   } = markdown.render(content, {
-    loader: this,
-    frontmatter: frontmatter.data,
+    loader,
+    frontmatter: data,
     relPath: path.relative(sourceDir, file)
   })
 
@@ -113,7 +142,6 @@ module.exports = function (src) {
     + (hoistedTags || []).join('\n')
     + `\n${dataBlockString}\n`
   )
-  cache.set(key, res)
   return res
 }
 

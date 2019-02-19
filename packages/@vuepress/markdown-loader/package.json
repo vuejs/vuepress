@@ -19,7 +19,8 @@
   ],
   "dependencies": {
     "@vuepress/markdown": "^1.0.0-alpha.39",
-    "loader-utils": "^1.1.0"
+    "loader-utils": "^1.1.0",
+    "lru-cache": "^5.1.1"
   },
   "author": "Evan You",
   "maintainers": [
