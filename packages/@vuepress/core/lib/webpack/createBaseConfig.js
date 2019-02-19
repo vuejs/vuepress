@@ -15,7 +15,6 @@ module.exports = function createBaseConfig ({
   sourceDir,
   outDir,
   base: publicPath,
-  themePath,
   markdown,
   tempPath,
   cacheDirectory,
@@ -52,7 +51,6 @@ module.exports = function createBaseConfig ({
   config.resolve
     .set('symlinks', true)
     .alias
-      .set('@theme', themePath)
       .set('@source', sourceDir)
       .set('@app', path.resolve(__dirname, '../app'))
       .set('@temp', tempPath)

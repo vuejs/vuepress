@@ -6,7 +6,7 @@ module.exports = (options, ctx) => ({
   enhanceAppFiles: [path.resolve(__dirname, 'client.js')],
 
   async ready () {
-    const { sourceDir, writeTemp } = ctx
+    const { sourceDir, writeTemp, themeAPI } = ctx
 
     const overridePath = path.resolve(sourceDir, '.vuepress/override.styl')
     const hasUserOverride = fs.existsSync(overridePath)
@@ -15,7 +15,7 @@ module.exports = (options, ctx) => ({
       logger.tip(`${chalk.magenta('override.styl')} has been deprecated from v1.0.0, using ${chalk.cyan('.vuepress/styles/palette.styl')} instead.\n`)
     }
 
-    const themeStyle = path.resolve(ctx.themePath, 'styles/index.styl')
+    const themeStyle = path.resolve(themeAPI.themePath, 'styles/index.styl')
     const userStyle = path.resolve(sourceDir, '.vuepress/styles/index.styl')
 
     const themeStyleContent = fs.existsSync(themeStyle)
@@ -28,8 +28,8 @@ module.exports = (options, ctx) => ({
 
     let styleContent = themeStyleContent + userStyleContent
 
-    if (ctx.parentThemePath) {
-      const parentThemeStyle = path.resolve(ctx.parentThemePath, 'styles/index.styl')
+    if (themeAPI.existsParentTheme) {
+      const parentThemeStyle = path.resolve(themeAPI.parentThemePath, 'styles/index.styl')
       const parentThemeStyleContent = fs.existsSync(parentThemeStyle)
         ? `@import(${JSON.stringify(parentThemeStyle.replace(/[\\]+/g, '/'))})`
         : ''
