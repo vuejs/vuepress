@@ -1,8 +1,8 @@
 <template>
   <div>
-    <p class="header" v-html="containerHeaderHtml" />
+    <slot name="header" />
     <HeaderList :items="groupedHeaders" :list-type="listTypes" />
-    <p class="footer" v-html="containerFooterHtml" />
+    <slot name="footer" />
   </div>
 </template>
 
@@ -19,9 +19,7 @@ export default {
     includeLevel: {
       type: Array,
       default: () => [2, 3]
-    },
-    containerHeaderHtml: String,
-    containerFooterHtml: String
+    }
   },
 
   components: { HeaderList },

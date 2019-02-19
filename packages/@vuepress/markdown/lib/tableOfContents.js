@@ -55,9 +55,12 @@ module.exports = (md, options) => {
       :class=${options.containerClass}
       :list-type=${options.listType}
       :include-level=${options.includeLevel}
-      :container-header-html=${options.containerHeaderHtml}
-      :container-footer-html=${options.containerFooterHtml}
     >`
+  }
+
+  md.renderer.rules.toc_body = function () {
+    return `<template slot="header">${options.containerHeaderHtml}</template>`
+      + `<template slot="footer">${options.containerHeaderHtml}</template>`
   }
 
   md.renderer.rules.toc_close = function () {
