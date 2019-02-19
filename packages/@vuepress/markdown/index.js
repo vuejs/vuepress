@@ -155,17 +155,6 @@ module.exports.dataReturnable = function dataReturnable (md) {
   }
 }
 
-// // I actually don't know whether we should
-// // prevent modification to cached tokens
-// function copyTokens (tokens) {
-//   return tokens.map((token) => {
-//     if (token.children) {
-//       token.children = copyTokens(token.children)
-//     }
-//     return Object.create(token)
-//   })
-// }
-
 function toDataBlockString (ob) {
   if (Object.keys(ob).length === 0) {
     return ''
