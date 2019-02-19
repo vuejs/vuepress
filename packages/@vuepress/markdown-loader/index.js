@@ -30,6 +30,7 @@ module.exports = function (src) {
   // vue-loader, and will be applied on the same file multiple times when
   // selecting the individual blocks.
   const file = this.resourcePath
+  const loader = Object.create(this)
   const { content, data } = parseFrontmatter(src)
 
   if (!isProd && !isServer) {
@@ -56,41 +57,51 @@ module.exports = function (src) {
   }
 
   // observe dependency changes
-  const loader = Object.create(this)
-  let __hasDep__
-  function observeDependency (func) {
-    return (...args) => {
-      __hasDep__ = true
-      process.exit(1)
-      func.call(loader, ...args)
+  function observe (callback) {
+    const result = {
+      deps: [],
+      ctxDeps: []
     }
-  }
 
-  loader.addContextDependency = observeDependency(this.addContextDependency)
-  loader.addDependency = observeDependency(this.addDependency)
-  loader.dependency = observeDependency(this.dependency)
-
-  const { rules } = markdown.renderer
-  for (const key in rules) {
-    const rule = rules[key]
-    if (rule.__cache__) continue
-    const cache = new LRU({ max: 100 })
-    rules[key] = (...args) => {
-      const key = hash(args)
-      const cached = cache.get(key)
-      if (cached) {
-        return cached
-      } else {
-        __hasDep__ = false
-        const result = rule(...args)
-        // if not having any dependencies, use cached data
-        if (!__hasDep__) {
-          cache.set(key, result)
-        }
-        return result
+    function addObserver (key, type) {
+      loader[key] = (file) => {
+        result[type].push(file)
       }
     }
-    Object.defineProperty(rules[key], '__cache__', { value: cache })
+
+    addObserver('addContextDependency', 'ctxDeps')
+    addObserver('addDependency', 'deps')
+    addObserver('dependency', 'deps')
+
+    result.output = callback()
+
+    delete loader.addContextDependency
+    delete loader.addDependency
+    delete loader.dependency
+
+    return result
+  }
+
+  const { rules } = markdown.renderer
+  for (const name in rules) {
+    const rule = rules[name]
+    const cache = rule.__cache__ || new LRU({ max: 100 })
+
+    rules[name] = (...args) => {
+      const key = hash(args.slice(0, 3))
+      let result = cache.get(key)
+      if (!result) {
+        result = observe(() => rule(...args))
+        cache.set(key, result)
+      }
+      result.deps.forEach(loader.addDependency)
+      result.ctxDeps.forEach(loader.addContextDependency)
+      return result.output
+    }
+
+    if (!rule.__cache__) {
+      Object.defineProperty(rules[name], '__cache__', { value: cache })
+    }
   }
 
   // the render method has been augmented to allow plugins to
