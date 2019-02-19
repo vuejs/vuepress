@@ -4,6 +4,7 @@ module.exports = function snippet (md, options = {}) {
   const root = options.root || process.cwd()
 
   function parser (state, startLine, endLine, silent) {
+    const CH = '<'.charCodeAt(0)
     const pos = state.bMarks[startLine] + state.tShift[startLine]
     const max = state.eMarks[startLine]
 
@@ -13,8 +14,9 @@ module.exports = function snippet (md, options = {}) {
       return false
     }
 
-    if (!/^<<</.test(state.src)) {
-      return false
+    for (let i = 0; i < 3; ++i) {
+      const ch = state.src.charCodeAt(pos + i)
+      if (ch !== CH || pos + i >= max) return false
     }
 
     if (silent) {
