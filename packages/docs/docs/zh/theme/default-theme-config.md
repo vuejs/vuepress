@@ -314,6 +314,14 @@ module.exports = {
 }
 ```
 
+你可以通过 `YAML front matter` 来对单独的页面禁用内置的搜索框：
+
+```yaml
+---
+search: false
+---
+```
+
 ::: tip
 内置搜索只会为页面的标题、`h2` 和 `h3` 构建搜索索引，如果你需要全文搜索，你可以使用 [Algolia 搜索](#Algolia-搜索)。
 :::
