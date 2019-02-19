@@ -2,19 +2,19 @@ const { fs } = require('@vuepress/shared-utils')
 
 module.exports = function snippet (md, options = {}) {
   const root = options.root || process.cwd()
+
   function parser (state, startLine, endLine, silent) {
-    const CH = '<'.charCodeAt(0)
     const pos = state.bMarks[startLine] + state.tShift[startLine]
     const max = state.eMarks[startLine]
 
-    // if it's indented more than 3 spaces, it should be a code block
+    // if it's indented more than 3 spaces,
+    // it should be a code block
     if (state.sCount[startLine] - state.blkIndent >= 4) {
       return false
     }
 
-    for (let i = 0; i < 3; ++i) {
-      const ch = state.src.charCodeAt(pos + i)
-      if (ch !== CH || pos + i >= max) return false
+    if (!/^<<</.test(state.src)) {
+      return false
     }
 
     if (silent) {
@@ -28,10 +28,24 @@ module.exports = function snippet (md, options = {}) {
     const content = fs.existsSync(filename) ? fs.readFileSync(filename).toString() : 'Not found: ' + filename
     const meta = rawPath.replace(filename, '')
 
+    const langExtWithMeta = () => {
+      if (meta && /lang/.test(meta)) {
+        const langSet = meta.match(/lang=\w+/)[0]
+        if (langSet) {
+          const lang = langSet.split('=')[1]
+          const extractedMeta = meta.replace(langSet, '')
+
+          return lang + extractedMeta
+        }
+      }
+
+      return filename.split('.').pop() + meta
+    }
+
     state.line = startLine + 1
 
     const token = state.push('fence', 'code', 0)
-    token.info = filename.split('.').pop() + meta
+    token.info = langExtWithMeta()
     token.content = content
     token.markup = '```'
     token.map = [startLine, startLine + 1]

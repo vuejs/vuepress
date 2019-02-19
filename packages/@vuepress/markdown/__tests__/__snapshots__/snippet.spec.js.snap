@@ -7,6 +7,15 @@ exports[`snippet import snippet 1`] = `
 </code></pre>
 `;
 
+exports[`snippet import snippet with highlight lines and language specified as ruby 1`] = `
+<div class="highlight-lines">
+  <div class="highlighted">&nbsp;</div>
+  <br>
+  <div class="highlighted">&nbsp;</div>
+  <br>
+</div>def vuepress puts 'vuepress' end
+`;
+
 exports[`snippet import snippet with highlight multiple lines 1`] = `
 <div class="highlight-lines">
   <div class="highlighted">&nbsp;</div>
@@ -23,4 +32,11 @@ exports[`snippet import snippet with highlight single line 1`] = `
   <div class="highlighted">&nbsp;</div>
   <br>
 </div>export default function () { // .. }
+`;
+
+exports[`snippet import snippet with language specified as ruby 1`] = `
+<pre><code class="language-ruby">def vuepress
+  puts 'vuepress'
+end
+</code></pre>
 `;
