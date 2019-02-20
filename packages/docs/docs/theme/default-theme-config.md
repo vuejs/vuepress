@@ -37,6 +37,40 @@ If you want to use a completely custom homepage layout, you can also use a [Cust
 
 The Navbar may contain your page title, [Search Box](#search-box), [Navbar Links](#navbar-links), [Languages](../guide/i18n.md) and [Repository Link](#git-repo-and-edit-links), all of them depends on your configuration.
 
+### Logo Link
+
+By default, clicking on the logo redirects you to the [`localePath`](/config/#locales) - the root of the path defined in your current locale. You can change this link on a locale or site-wide level:
+
+```js
+// .vuepress/config.js
+// Site-wide
+module.exports = {
+  themeConfig: {
+    logoLink: 'https://yourdomain.com'
+  }
+}
+```
+
+```js
+// .vuepress/config.js
+// Locale-specific
+module.exports = {
+  themeConfig: {
+    locales: {
+      '/': {
+        label: 'English',
+        logoLink: 'https://yourdomain.com'
+      },
+      '/zh': {
+        label: '简体中文',
+        logoLink: 'https://yourdomain.cn'
+      }
+    }
+  }
+}
+```
+
+
 ### Navbar Links
 
 You can add links to the navbar via `themeConfig.nav`:
