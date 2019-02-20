@@ -94,9 +94,6 @@ module.exports = class AppContext {
     this.resolveConfigAndInitialize()
     this.resolveCacheLoaderOptions()
     this.normalizeHeadTagUrls()
-    /**
-     * @type {ThemeAPI}
-     */
     this.themeAPI = loadTheme(this)
     this.resolveTemplates()
     this.resolveGlobalLayout()
@@ -156,8 +153,8 @@ module.exports = class AppContext {
       .use('@vuepress/register-components', {
         componentsDir: [
           path.resolve(this.sourceDir, '.vuepress/components'),
-          path.resolve(this.themeAPI.themePath, 'global-components'),
-          this.themeAPI.existsParentTheme && path.resolve(this.themeAPI.parentThemePath, 'global-components')
+          path.resolve(this.themeAPI.theme.path, 'global-components'),
+          this.themeAPI.existsParentTheme && path.resolve(this.themeAPI.parentTheme.path, 'global-components')
         ]
       })
   }
@@ -171,10 +168,11 @@ module.exports = class AppContext {
   applyUserPlugins () {
     this.pluginAPI.useByPluginsConfig(this.cliOptions.plugins)
     if (this.themeAPI.existsParentTheme) {
-      this.pluginAPI.use(this.themeAPI.parentThemePath)
+      this.pluginAPI.use(this.themeAPI.parentTheme.entry)
     }
     this.pluginAPI
-      .use(this.themeAPI.themePath)
+      .use(this.themeAPI.theme.entry)
+      .use(this.themeAPI.vuepressPlugin)
       .use(Object.assign({}, this.siteConfig, { name: '@vuepress/internal-site-config' }))
   }
 
@@ -224,41 +222,26 @@ module.exports = class AppContext {
    */
 
   resolveTemplates () {
-    const { siteSsrTemplate, siteDevTemplate } = this.siteConfig
+    this.devTemplate = this.resolveCommonAgreementFilePath(
+      'devTemplate',
+      {
+        defaultValue: path.resolve(__dirname, '../app/index.dev.html'),
+        siteAgreement: 'templates/dev.html',
+        themeAgreement: 'templates/dev.html'
+      }
+    )
 
-    const templateDir = path.resolve(this.vuepressDir, 'templates')
-    const siteSsrTemplate2 = path.resolve(templateDir, 'ssr.html')
-    const siteDevTemplate2 = path.resolve(templateDir, 'dev.html')
+    this.ssrTemplate = this.resolveCommonAgreementFilePath(
+      'ssrTemplate',
+      {
+        defaultValue: path.resolve(__dirname, '../app/index.ssr.html'),
+        siteAgreement: 'templates/ssr.html',
+        themeAgreement: 'templates/ssr.html'
+      }
+    )
 
-    const themeSsrTemplate = path.resolve(this.themeAPI.themePath, 'templates/ssr.html')
-    const themeDevTemplate = path.resolve(this.themeAPI.themePath, 'templates/dev.html')
-
-    const parentThemeSsrTemplate = path.resolve(this.themeAPI.parentThemePath, 'templates/ssr.html')
-    const parentThemeDevTemplate = path.resolve(this.themeAPI.parentThemePath, 'templates/dev.html')
-
-    const defaultSsrTemplate = path.resolve(__dirname, '../app/index.ssr.html')
-    const defaultDevTemplate = path.resolve(__dirname, '../app/index.dev.html')
-
-    const ssrTemplate = fsExistsFallback([
-      siteSsrTemplate,
-      siteSsrTemplate2,
-      themeSsrTemplate,
-      parentThemeSsrTemplate,
-      defaultSsrTemplate
-    ])
-
-    const devTemplate = fsExistsFallback([
-      siteDevTemplate,
-      siteDevTemplate2,
-      themeDevTemplate,
-      parentThemeDevTemplate,
-      defaultDevTemplate
-    ])
-
-    logger.debug('SSR Template File: ' + chalk.gray(ssrTemplate))
-    logger.debug('DEV Template File: ' + chalk.gray(devTemplate))
-    this.devTemplate = devTemplate
-    this.ssrTemplate = ssrTemplate
+    logger.debug('SSR Template File: ' + chalk.gray(this.ssrTemplate))
+    logger.debug('DEV Template File: ' + chalk.gray(this.devTemplate))
   }
 
   /**
@@ -366,7 +349,8 @@ module.exports = class AppContext {
    */
 
   getThemeConfigValue (key) {
-    return this.themeEntryFile[key] || this.parentThemeEntryFile[key]
+    return this.themeAPI.theme.entry[key]
+      || this.themeAPI.existsParentTheme && this.themeAPI.parentTheme.entry[key]
   }
 
   /**
@@ -378,12 +362,12 @@ module.exports = class AppContext {
    */
 
   resolveThemeAgreementFile (filepath) {
-    const current = path.resolve(this.themeAPI.themePath, filepath)
+    const current = path.resolve(this.themeAPI.theme.path, filepath)
     if (fs.existsSync(current)) {
       return current
     }
     if (this.themeAPI.existsParentTheme) {
-      const parent = path.resolve(this.themeAPI.parentThemePath, filepath)
+      const parent = path.resolve(this.themeAPI.theme.path, filepath)
       if (fs.existsSync(parent)) {
         return parent
       }

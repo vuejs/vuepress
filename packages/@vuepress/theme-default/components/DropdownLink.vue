@@ -51,7 +51,7 @@
 
 <script>
 import NavLink from '@theme/components/NavLink.vue'
-import DropdownTransition from './DropdownTransition.vue'
+import DropdownTransition from '@theme/components/DropdownTransition.vue'
 
 export default {
   components: { NavLink, DropdownTransition },

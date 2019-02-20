@@ -2,34 +2,28 @@ const { logger, fs, path: { resolve }} = require('@vuepress/shared-utils')
 const readdirSync = dir => fs.existsSync(dir) && fs.readdirSync(dir) || []
 
 module.exports = class ThemeAPI {
-  constructor (theme, parentTheme, ctx) {
+  constructor (theme, parentTheme) {
     this.theme = theme
     this.parentTheme = parentTheme || {}
-    this.ctx = ctx
     this.existsParentTheme = !!this.parentTheme.path
+    this.vuepressPlugin = {
+      name: '@vuepress/internal-theme-api',
+      alias: {}
+    }
     this.init()
   }
 
   setAlias (alias) {
-    this.theme.entryFile.alias = {
-      ...(this.theme.entryFile.alias || {}),
-      alias
+    this.vuepressPlugin.alias = {
+      ...this.vuepressPlugin.alias,
+      ...alias
     }
-  }
-
-  get themePath () {
-    return this.theme.path
-  }
-
-  get parentThemePath () {
-    return this.parentTheme.path
   }
 
   init () {
     const alias = {
       '@current-theme': this.theme.path
     }
-    this.setAlias()
     if (this.existsParentTheme) {
       alias['@parent-theme'] = this.parentTheme.path
     }
@@ -101,6 +95,13 @@ module.exports = class ThemeAPI {
   }
 }
 
+/**
+ * Resolve Vue SFCs, return a Map
+ *
+ * @param dirs
+ * @returns {*}
+ */
+
 function resolveSFCs (dirs) {
   return dirs.map(
     layoutDir => readdirSync(layoutDir)
@@ -125,9 +126,11 @@ function resolveSFCs (dirs) {
 
 /**
  * normalize component name
+ *
  * @param {strin} filename
  * @returns {string}
  */
+
 function getComponentName (filename) {
   filename = filename.slice(0, -4)
   if (filename === '404') {
@@ -135,6 +138,13 @@ function getComponentName (filename) {
   }
   return filename
 }
+
+/**
+ * Whether it's agreed layout component
+ *
+ * @param name
+ * @returns {boolean}
+ */
 
 function isInternal (name) {
   return name === 'Layout' || name === 'NotFound'

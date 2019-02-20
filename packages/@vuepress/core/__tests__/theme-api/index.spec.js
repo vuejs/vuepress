@@ -21,7 +21,7 @@ const parent = {
 describe('ThemeAPI', () => {
   test('extend', async () => {
     const themeAPI = new ThemeAPI(theme, parent)
-    console.log(themeAPI.theme.entryFile)
+    console.log(themeAPI.theme.entry)
   })
   // loadTheme('vuepress-theme-child')
 })

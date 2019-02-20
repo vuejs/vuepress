@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import NavLink from './NavLink.vue'
+import NavLink from '@theme/components/NavLink.vue'
 
 export default {
   components: { NavLink },

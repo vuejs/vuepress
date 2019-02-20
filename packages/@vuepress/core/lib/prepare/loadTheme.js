@@ -33,16 +33,16 @@ const ThemeAPI = require('../theme-api')
 module.exports = function loadTheme (ctx) {
   const themeResolver = getThemeResolver()
 
-  const theme = resolveTheme(themeResolver, ctx)
+  const theme = resolveTheme(ctx, themeResolver)
   if (!theme.path) {
     throw new Error(`[vuepress] You must specify a theme, or create a local custom theme. \n For more details, refer to https://vuepress.vuejs.org/guide/custom-themes.html#custom-themes. \n`)
   }
-  theme.entryFile.name = '@vuepress/internal-theme-entry-file'
+  theme.entry.name = '@vuepress/internal-theme-entry-file'
 
   let parentTheme = {}
-  if (theme.entryFile.extend) {
-    parentTheme = resolveTheme(themeResolver, ctx, true, theme.entryFile.extend)
-    parentTheme.entryFile.name = '@vuepress/internal-parent-theme-entry-file'
+  if (theme.entry.extend) {
+    parentTheme = resolveTheme(ctx, themeResolver, true, theme.entry.extend)
+    parentTheme.entry.name = '@vuepress/internal-parent-theme-entry-file'
   }
 
   return new ThemeAPI(theme, parentTheme, ctx)
@@ -63,12 +63,12 @@ function normalizeThemePath (resolved) {
 function resolveTheme (ctx, resolver, ignoreLocal, theme) {
   const { siteConfig, cliOptions, sourceDir, vuepressDir, pluginAPI } = ctx
   const localThemePath = resolve(vuepressDir, 'theme')
-  theme = siteConfig.theme || cliOptions.theme
+  theme = theme || siteConfig.theme || cliOptions.theme
 
   let path
   let name
   let shortcut
-  let entryFile = {}
+  let entry = {}
 
   // 1. From local
   if (!ignoreLocal
@@ -95,10 +95,10 @@ function resolveTheme (ctx, resolver, ignoreLocal, theme) {
   }
 
   try {
-    entryFile = pluginAPI.normalizePlugin(path, ctx.themeConfig)
+    entry = pluginAPI.normalizePlugin(path, ctx.themeConfig)
   } catch (error) {
-    entryFile = {}
+    entry = {}
   }
 
-  return { path, name, shortcut, entryFile }
+  return { path, name, shortcut, entry }
 }
