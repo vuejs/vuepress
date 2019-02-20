@@ -114,7 +114,11 @@ module.exports = class PluginAPI {
   normalizePlugin (pluginRaw, pluginOptions = {}) {
     let plugin = this._pluginResolver.resolve(pluginRaw)
     if (!plugin.entry) {
-      console.warn(`[vuepress] cannot resolve plugin "${pluginRaw}"`)
+      if (plugin.error) {
+        console.warn(`[vuepress] an error was encounted in plugin "${pluginRaw}"`)
+      } else {
+        console.warn(`[vuepress] cannot resolve plugin "${pluginRaw}"`)
+      }
       return this
     }
     plugin = flattenPlugin(plugin, pluginOptions, this._pluginContext, this)

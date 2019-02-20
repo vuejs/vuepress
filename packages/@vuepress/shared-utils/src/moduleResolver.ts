@@ -24,22 +24,17 @@ const SCOPE_PACKAGE_RE = /^@(.*)\/(.*)/
  */
 
 export class CommonModule {
-  name: string | null
-  entry: string | null
-  shortcut: string | null
-  fromDep: boolean | null
-
   constructor (
-    entry: string | null,
-    name: string | null,
-    shortcut: string | null,
-    fromDep: boolean | null,
-  ) {
-    this.entry = entry
-    this.shortcut = shortcut
-    this.name = name
-    this.fromDep = fromDep
-  }
+    public entry: string | null,
+    public name: string | null,
+    public shortcut: string | null,
+    public fromDep: boolean | null,
+    public error?: Error
+  ) {}
+}
+
+function getNoopModule(error?: Error) {
+  return new CommonModule(null, null, null, null, error)
 }
 
 export interface NormalizedModuleRequest {
@@ -99,17 +94,15 @@ class ModuleResolver {
     }
 
     const isStringRequest = isString(req)
-    const isAbsolutePath = isStringRequest && path.isAbsolute(req)
 
     const resolved = tryChain<string, CommonModule>([
       [this.resolveNonStringPackage.bind(this), !isStringRequest],
-      [this.resolveAbsolutePathPackage.bind(this), isStringRequest && isAbsolutePath],
-      [this.resolveRelativePathPackage.bind(this), isStringRequest && !isAbsolutePath],
+      [this.resolvePathPackage.bind(this), isStringRequest],
       [this.resolveDepPackage.bind(this), isStringRequest]
     ], req)
 
     if (!resolved) {
-      return new CommonModule(null, null, null, null /* fromDep */)
+      return getNoopModule()
     }
 
     return resolved
@@ -128,16 +121,20 @@ class ModuleResolver {
    * Resolve non-string package, return directly.
    */
 
-  private resolveNonStringPackage (req: string) {
-    const { shortcut, name } = <NormalizedModuleRequest>this.normalizeRequest(req)
+  private resolveNonStringPackage (req: any) {
+    const { shortcut, name } = this.normalizeRequest(req)
     return new CommonModule(req, name, shortcut, false /* fromDep */)
   }
 
   /**
-   * Resolve module with absolute path.
+   * Resolve module with absolute/relative path.
    */
 
-  resolveAbsolutePathPackage (req: string) {
+  resolvePathPackage (req: string) {
+    if (!path.isAbsolute(req)) {
+      req = path.resolve(this.cwd, req)
+    }
+
     const normalized = fsExistsFallback([
       req,
       req + '.js',
@@ -149,18 +146,13 @@ class ModuleResolver {
     }
 
     const dirname = path.parse(normalized).name
-    const { shortcut, name } = this.normalizeRequest(dirname)
-    const module = this.load ? require(normalized) : normalized
-    return new CommonModule(module, name, shortcut, false /* fromDep */)
-  }
-
-  /**
-   * Resolve module with absolute path.
-   */
-
-  private resolveRelativePathPackage (req: string) {
-    req = path.resolve(process.cwd(), req)
-    return this.resolveAbsolutePathPackage(req)
+    const { shortcut, name } = this.normalizeName(dirname)
+    try {
+      const module = this.load ? require(normalized) : normalized
+      return new CommonModule(module, name, shortcut, false /* fromDep */)
+    } catch (error) {
+      return getNoopModule(error)
+    }
   }
 
   /**
@@ -168,11 +160,15 @@ class ModuleResolver {
    */
 
   private resolveDepPackage (req: string) {
-    const { shortcut, name } = this.normalizeRequest(req)
-    const entry = this.load
-      ? loadModule(<string>name, this.cwd)
-      : resolveModule(<string>name, this.cwd)
-    return new CommonModule(entry, name, shortcut, true /* fromDep */)
+    const { shortcut, name } = this.normalizeName(req)
+    try {
+      const entry = this.load
+        ? loadModule(<string>name, this.cwd)
+        : resolveModule(<string>name, this.cwd)
+      return new CommonModule(entry, name, shortcut, true /* fromDep */)
+    } catch (error) {
+      return getNoopModule(error)
+    }
   }
 
   /**
@@ -190,8 +186,8 @@ class ModuleResolver {
    */
 
   normalizeName (req: string): NormalizedModuleRequest {
-    let name
-    let shortcut
+    let name = null
+    let shortcut = null
 
     if (req.startsWith('@')) {
       const pkg = resolveScopePackage(req)
@@ -213,7 +209,6 @@ class ModuleResolver {
       name = `${this.nonScopePrefix}${shortcut}`
     }
 
-    // @ts-ignore
     return { name, shortcut }
   }
 
