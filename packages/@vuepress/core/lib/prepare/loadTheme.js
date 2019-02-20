@@ -66,7 +66,7 @@ module.exports = async function loadTheme (ctx) {
   }
 
   try {
-    themeEntryFile = pluginAPI.normalizePlugin(themePath, ctx.themeConfig)
+    themeEntryFile = pluginAPI.normalizePlugin('theme', themePath, ctx.themeConfig)
   } catch (error) {
     themeEntryFile = {}
   }
@@ -88,7 +88,7 @@ module.exports = async function loadTheme (ctx) {
     parentThemePath = normalizeThemePath(resolved)
 
     try {
-      parentThemeEntryFile = pluginAPI.normalizePlugin(parentThemePath, ctx.themeConfig)
+      parentThemeEntryFile = pluginAPI.normalizePlugin('theme', parentThemePath, ctx.themeConfig)
     } catch (error) {
       parentThemeEntryFile = {}
     }
