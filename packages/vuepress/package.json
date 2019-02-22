@@ -31,7 +31,8 @@
   "dependencies": {
     "@vuepress/core": "^1.0.0-alpha.39",
     "@vuepress/theme-default": "^1.0.0-alpha.39",
-    "cac": "^6.3.9"
+    "cac": "^6.3.9",
+    "opn": "^5.4.0"
   },
   "engines": {
     "node": ">=8"
