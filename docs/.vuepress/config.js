@@ -62,8 +62,12 @@ module.exports = {
           },
           {
             text: 'Changelog',
-            link: 'https://github.com/vuejs/vuepress/blob/master/CHANGELOG.md'
-          }
+            link: 'https://github.com/vuejs/vuepress/blob/0.x/CHANGELOG.md'
+          },
+          {
+            text: '1.x',
+            link: 'https://v1.vuepress.vuejs.org/'
+          },
         ],
         sidebar: {
           '/guide/': genSidebarConfig('Guide')
@@ -95,8 +99,12 @@ module.exports = {
           },
           {
             text: 'Changelog',
-            link: 'https://github.com/vuejs/vuepress/blob/master/CHANGELOG.md'
-          }
+            link: 'https://github.com/vuejs/vuepress/blob/0.x/CHANGELOG.md'
+          },
+          {
+            text: '1.x',
+            link: 'https://v1.vuepress.vuejs.org/'
+          },
         ],
         sidebar: {
           '/zh/guide/': genSidebarConfig('指南')
