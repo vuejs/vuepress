@@ -23,7 +23,7 @@
 
 * **$core:** support global layout (close: [#1226](https://github.com/vuejs/vuepress/issues/1226)) ([c91f55a](https://github.com/vuejs/vuepress/commit/c91f55a))
 
-  From now on, users have the ability to use a custom global layout component via [siteConfig](https://vuepress.vuejs.org/miscellaneous/glossary.html#siteconfig) or [themeEntryFile](https://vuepress.vuejs.org/miscellaneous/glossary.html#themeentryfile):
+  From now on, users have the ability to use a custom global layout component via [siteConfig](https://v1.vuepress.vuejs.org/miscellaneous/glossary.html#siteconfig) or [themeEntryFile](https://v1.vuepress.vuejs.org/miscellaneous/glossary.html#themeentryfile):
   
   ```js
   module.exports = {
@@ -130,7 +130,7 @@
 * **$core:** Cannot load assets when `base` is not '/' (close:  [#1238](https://github.com/vuejs/vuepress/issues/1238))([#1239](https://github.com/vuejs/vuepress/issues/1239)) ([8a234bb](https://github.com/vuejs/vuepress/commit/8a234bb))
   <br>This is a regression issue of leverage webpack-dev-server at [#1195](https://github.com/vuejs/vuepress/issues/1195).
 
-* **$markdown:** Remove colon as separator for [Import Code Snippets](https://vuepress.vuejs.org/guide/markdown.html#import-code-snippets) (close: [#1151](https://github.com/vuejs/vuepress/issues/1151)) ([#1236](https://github.com/vuejs/vuepress/issues/1236)) ([099d346](https://github.com/vuejs/vuepress/commit/099d346))
+* **$markdown:** Remove colon as separator for [Import Code Snippets](https://v1.vuepress.vuejs.org/guide/markdown.html#import-code-snippets) (close: [#1151](https://github.com/vuejs/vuepress/issues/1151)) ([#1236](https://github.com/vuejs/vuepress/issues/1236)) ([099d346](https://github.com/vuejs/vuepress/commit/099d346))
 
 
 ### Features
@@ -156,7 +156,7 @@
 ### Features
 
 * **$core:** Leverage `webpack-dev-server` and sunset `webpack-serve` ([#1195](https://github.com/vuejs/vuepress/issues/1195)) ([81e3ef6](https://github.com/vuejs/vuepress/commit/81e3ef6))
-  - Add new plugin option api [beforeDevServer](https://vuepress.vuejs.org/plugin/option-api.html#beforedevserver) and [afterDevServer](https://vuepress.vuejs.org/plugin/option-api.html#afterdevserver).
+  - Add new plugin option api [beforeDevServer](https://v1.vuepress.vuejs.org/plugin/option-api.html#beforedevserver) and [afterDevServer](https://v1.vuepress.vuejs.org/plugin/option-api.html#afterdevserver).
   - Remove `enhanceDevServer`.  
   - Publish [vuepress-plugin-export](https://github.com/ulivz/vuepress-plugin-export).
 * **$core:** Allow a theme package using a sub directory (close [#1204](https://github.com/vuejs/vuepress/issues/1204)) ([#1206](https://github.com/vuejs/vuepress/issues/1206)) ([febe3a7](https://github.com/vuejs/vuepress/commit/febe3a7))
@@ -166,7 +166,7 @@
 
 * **$core:** - Plugin option `enhanceDevServer` was removed.
   - **For 0.x users**, there is no any effect since we didn't expose API to modify it.
-  - **For 1.x users whose version of VuePress is lower than 1.0.0-alpha.33**, you should use [`beforeDevServer`](https://vuepress.vuejs.org/plugin/option-api.html#beforedevserver)(i.e. [before](https://webpack.js.org/configuration/dev-server/#devserver-before) in `webpack-dev-server`) to replace `enhanceDevServer`, you can also use [`afterDevServer`](https://vuepress.vuejs.org/plugin/option-api.html#afterdevserver)(i.e. [after](https://webpack.js.org/configuration/dev-server/#devserver-after) in `webpack-dev-server`) to execute custom middleware after all other middleware internally within the server.
+  - **For 1.x users whose version of VuePress is lower than 1.0.0-alpha.33**, you should use [`beforeDevServer`](https://v1.vuepress.vuejs.org/plugin/option-api.html#beforedevserver)(i.e. [before](https://webpack.js.org/configuration/dev-server/#devserver-before) in `webpack-dev-server`) to replace `enhanceDevServer`, you can also use [`afterDevServer`](https://v1.vuepress.vuejs.org/plugin/option-api.html#afterdevserver)(i.e. [after](https://webpack.js.org/configuration/dev-server/#devserver-after) in `webpack-dev-server`) to execute custom middleware after all other middleware internally within the server.
 
 <a name="1.0.0-alpha.32"></a>
 # [1.0.0-alpha.32](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.31...v1.0.0-alpha.32) (2019-01-15)
@@ -252,7 +252,7 @@
 
 * **$core:** pass generated page paths to `generated` hook ([#925](https://github.com/vuejs/vuepress/issues/925)) ([5ee2b2b](https://github.com/vuejs/vuepress/commit/5ee2b2b))
 * **$core:** `extendCli` Plugin Option API ([#1069](https://github.com/vuejs/vuepress/issues/1069)) ([e963731](https://github.com/vuejs/vuepress/commit/e963731))
-  - See [docs](https://vuepress.vuejs.org/plugin/option-api.html#extendcli).
+  - See [docs](https://v1.vuepress.vuejs.org/plugin/option-api.html#extendcli).
 * **$plugin-search:** searchable paths with test RegExp ([#1032](https://github.com/vuejs/vuepress/issues/1032)) ([d6bddf1](https://github.com/vuejs/vuepress/commit/d6bddf1))
 
 
@@ -648,7 +648,7 @@
 ### Features
 
 - **Plugin API**
-  - [Documentation](https://vuepress.vuejs.org/plugin/)
+  - [Documentation](https://v1.vuepress.vuejs.org/plugin/)
   - Multiple official plugins
     - [@vuepress/plugin-active-header-links](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-active-header-links)
     - [@vuepress/plugin-back-to-top](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-back-to-top) (Thanks to @ycmjason )
@@ -663,18 +663,18 @@
 
 - **Refined Theme API**
   - From now on, the theme will no longer use Layout.vue as the entry point, but you can have your own configuration. For example, a theme can have some built-in plugins.
-  - [Documentation](https://vuepress.vuejs.org/theme/)
+  - [Documentation](https://v1.vuepress.vuejs.org/theme/)
 
 - **Permalinks**
   - From now on, VuePress supports custom routing in addition to the default file-level-based routing.
-  - [Documentation](https://vuepress.vuejs.org/guide/permalinks.html)
+  - [Documentation](https://v1.vuepress.vuejs.org/guide/permalinks.html)
 
 - **Markdown slots**
-  - [Documentation](https://vuepress.vuejs.org/guide/markdown-slot.html)
+  - [Documentation](https://v1.vuepress.vuejs.org/guide/markdown-slot.html)
 
 - **Free to add new pages**
   - You can add new pages with content (i.e. pointing to markdown files) or no content (i.e. common routes).
-  - [Documentation](https://vuepress.vuejs.org/plugin/option-api.html#additionalpages)
+  - [Documentation](https://v1.vuepress.vuejs.org/plugin/option-api.html#additionalpages)
 
 - **Custom temp path**
   - The running of VuePress actually depends on some temporary files generated during the build time. Before that, its default location is in `node_modules`, but now you can start configuring it, but don't forget to add it to gitignore.
@@ -826,7 +826,7 @@
 * **$core:**: version data layer ([0c5b752](https://github.com/vuejs/vuepress/commit/0c5b752))
 * **$default-theme:** new file-level API: `style.styl`. ([2f53f2f](https://github.com/vuejs/vuepress/commit/2f53f2f))
   1. Fixed overriding css variable doesn't work at `0.11.0` (close: [#639](https://github.com/vuejs/vuepress/issues/639))
-  2. Split `override.styl` into two APIs: `override.styl` and `style.styl`, the former will focus on ONLY the stylus constants override, while the latter will focus on styles override or custom styles. See also: https://vuepress.vuejs.org/default-theme-config/#simple-css-override.
+  2. Split `override.styl` into two APIs: `override.styl` and `style.styl`, the former will focus on ONLY the stylus constants override, while the latter will focus on styles override or custom styles. See also: https://v1.vuepress.vuejs.org/default-theme-config/#simple-css-override.
 
 
 <a name="0.11.0"></a>
