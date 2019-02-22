@@ -6,12 +6,12 @@ module.exports = ctx => ({
   locales: {
     '/': {
       lang: 'en-US',
-      title: 'VuePress',
+      title: 'VuePress 1.x',
       description: 'Vue-powered Static Site Generator'
     },
     '/zh/': {
       lang: 'zh-CN',
-      title: 'VuePress',
+      title: 'VuePress 1.x',
       description: 'Vue 驱动的静态网站生成器'
     }
   },
@@ -64,7 +64,7 @@ module.exports = ctx => ({
     }
   },
   plugins: [
-    ['@vuepress/i18n-ui',!ctx.isProd],
+    ['@vuepress/i18n-ui', !ctx.isProd],
     ['@vuepress/back-to-top', true],
     ['@vuepress/pwa', {
       serviceWorker: true,
@@ -76,7 +76,6 @@ module.exports = ctx => ({
       ga: 'UA-128189152-1'
     }],
   ],
-  clientRootMixin: path.resolve(__dirname, 'mixin.js'),
   extendMarkdown (md) {
     md.use(container, 'upgrade', {
       render: (tokens, idx) => tokens[idx].nesting === 1
