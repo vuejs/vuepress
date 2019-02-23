@@ -66,9 +66,9 @@ module.exports = class EnhanceAppFilesOption extends AsyncOption {
             )
           }
         } else {
-          logger.debug(
-            chalk.gray(`[${pluginName}] `) +
-            `${chalk.cyan(enhanceAppFile)} Not Found.`
+          logger.developer(
+            chalk.gray(`[${pluginName}] `)
+            + `${chalk.cyan(enhanceAppFile)} Not Found.`
           )
         }
       }

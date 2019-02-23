@@ -8,12 +8,14 @@ All options listed on this page apply to the default theme only. If you are usin
 
 ## Homepage
 
-The default theme provides a homepage layout (which is used on [the homepage of this very website](../README.md)). To use it, specify `home: true` plus some other metadata in your root `README.md`'s [YAML front matter](../guide/markdown.md#front-matter). This is the actual data used on this site:
+The default theme provides a homepage layout (which is used on [the homepage of this very website](../README.md)). To use it, specify `home: true` plus some other metadata in your root `README.md`'s [YAML front matter](../guide/markdown.md#front-matter). This is an example of how it works:
 
 ``` yaml
 ---
 home: true
 heroImage: /hero.png
+heroText: Hero Title
+tagline: Hero subtitle
 actionText: Get Started →
 actionLink: /guide/
 features:
@@ -178,8 +180,10 @@ module.exports = {
   themeConfig: {
     sidebar: [
       {
-        title: 'Group 1',
-        collapsable: false,
+        title: 'Group 1',   // required
+        path: '/foo/',      // optional, which should be a absolute path.
+        collapsable: false, // optional, defaults to true
+        sidebarDepth: 1,    // optional, defaults to 1
         children: [
           '/'
         ]
@@ -194,6 +198,12 @@ module.exports = {
 ```
 
 Sidebar groups are collapsable by default. You can force a group to be always open with `collapsable: false`.
+
+A sidebar group config also supports [sidebarDepth](#nested-header-links) field to override the default sidebar depth (`1`).
+
+::: tip
+   From `1.0.0-alpha-36` on, nested sidebar group <Badge text="beta"/> is also supported, but the nesting depth should be less than 3, otherwise the console will receive a warning.
+:::
 
 ### Multiple Sidebars
 
@@ -309,6 +319,13 @@ module.exports = {
 }
 ```
 
+You can also disable the built-in search box for individual pages with `YAML front matter`:
+```yaml
+---
+search: false
+---
+```
+
 ::: tip
 Built-in Search only builds index from the title, `h2` and `h3` headers, if you need full text search, you can use [Algolia Search](#algolia-search).
 :::
@@ -351,6 +368,11 @@ Note that it's `off` by default. If given a `string`, it will be displayed as a 
 ::: warning
   Since `lastUpdated` is based on `git`, you can only use it in a `git` repository. Also, since the timestamp used comes from the git commit, it will display only after a first commit for a given page, and update only on subsequent commits of that page.
 :::
+
+
+**Also see:**
+
+- [@vuepress/plugin-last-updated](../plugin/official/plugin-last-updated.md)
 
 ## Service Worker
 

@@ -4,5 +4,5 @@ module.exports = (options, context) => ({
   define: {
     SELECTOR: options.selector || '.content img'
   },
-  clientRootMixin: path.resolve(__dirname, 'mixin.js')
+  clientRootMixin: path.resolve(__dirname, 'clientRootMixin.js')
 })

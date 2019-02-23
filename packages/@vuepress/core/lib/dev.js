@@ -1,15 +1,21 @@
 'use strict'
 
-module.exports = async function dev (sourceDir, cliOptions = {}) {
+module.exports = async (sourceDir, cliOptions = {}, ctx) => {
+  const { server, host, port } = await prepareServer(sourceDir, cliOptions, ctx)
+  server.listen(port, host, err => {
+    if (err) {
+      console.log(err)
+    }
+  })
+}
+
+module.exports.prepare = prepareServer
+
+async function prepareServer (sourceDir, cliOptions = {}, context) {
+  const WebpackDevServer = require('webpack-dev-server')
   const { path } = require('@vuepress/shared-utils')
   const webpack = require('webpack')
   const chokidar = require('chokidar')
-  const serve = require('webpack-serve')
-  const convert = require('koa-connect')
-  const mount = require('koa-mount')
-  const range = require('koa-range')
-  const serveStatic = require('koa-static')
-  const history = require('connect-history-api-fallback')
 
   const prepare = require('./prepare/index')
   const { chalk, fs, logger } = require('@vuepress/shared-utils')
@@ -19,16 +25,23 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
   const { applyUserWebpackConfig } = require('./util/index')
   const { frontmatterEmitter } = require('@vuepress/markdown-loader')
 
-  logger.wait('Extracting site metadata...')
-  const ctx = await prepare(sourceDir, cliOptions, false /* isProd */)
+  const ctx = context || await prepare(sourceDir, cliOptions, false /* isProd */)
 
   // setup watchers to update options and dynamically generated files
   const update = (reason) => {
-    logger.debug(`Re-prepare due to ${chalk.cyan(reason)}`)
+    console.log(`Reload due to ${reason}`)
     ctx.pluginAPI.options.updated.syncApply()
     prepare(sourceDir, cliOptions, false /* isProd */).catch(err => {
       console.error(logger.error(chalk.red(err.stack), false))
     })
+  }
+
+  // Curry update handler by update type
+  const spawnUpdate = updateType => file => {
+    const target = path.join(sourceDir, file)
+    // Bust cache.
+    delete require.cache[target]
+    update(`${chalk.red(updateType)} ${chalk.cyan(file)}`)
   }
 
   // watch add/remove of files
@@ -40,21 +53,29 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
     ignored: ['.vuepress/**/*.md', 'node_modules'],
     ignoreInitial: true
   })
-  pagesWatcher.on('add', () => update('add page'))
-  pagesWatcher.on('unlink', () => update('unlink page'))
-  pagesWatcher.on('addDir', () => update('addDir'))
-  pagesWatcher.on('unlinkDir', () => update('unlinkDir'))
+  pagesWatcher.on('add', spawnUpdate('add'))
+  pagesWatcher.on('unlink', spawnUpdate('unlink'))
+  pagesWatcher.on('addDir', spawnUpdate('addDir'))
+  pagesWatcher.on('unlinkDir', spawnUpdate('unlinkDir'))
 
-  // watch config file
-  const configWatcher = chokidar.watch([
+  const watchFiles = [
     '.vuepress/config.js',
     '.vuepress/config.yml',
     '.vuepress/config.toml'
-  ], {
+  ].concat(
+    (
+      ctx.siteConfig.extraWatchFiles || []
+    ).map(file => normalizeWatchFilePath(file, ctx.sourceDir))
+  )
+
+  logger.debug('watchFiles', watchFiles)
+
+  // watch config file
+  const configWatcher = chokidar.watch(watchFiles, {
     cwd: sourceDir,
     ignoreInitial: true
   })
-  configWatcher.on('change', () => update('config change'))
+  configWatcher.on('change', spawnUpdate('change'))
 
   // also listen for frontmatter changes from markdown files
   frontmatterEmitter.on('update', () => update('frontmatter or headers change'))
@@ -80,7 +101,8 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
   const { host, displayHost } = await resolveHost(cliOptions.host || ctx.siteConfig.host)
 
   // debug in a running dev process.
-  process.stdout.on('data', chunk => {
+  process.stdin
+  && process.stdin.on('data', chunk => {
     const parsed = chunk.toString('utf-8').trim()
     if (parsed === '*') {
       console.log(Object.keys(ctx))
@@ -104,51 +126,62 @@ module.exports = async function dev (sourceDir, cliOptions = {}) {
     config = applyUserWebpackConfig(userConfig, config, false /* isServer */)
   }
 
-  const compiler = webpack(config)
+  const contentBase = path.resolve(sourceDir, '.vuepress/public')
 
-  const nonExistentDir = path.resolve(__dirname, 'non-existent')
-  await serve({
-    // avoid project cwd from being served. Otherwise if the user has index.html
-    // in cwd it would break the server
-    content: [nonExistentDir],
-    compiler,
-    host,
-    dev: { logLevel: 'warn' },
-    hot: {
-      port: port + 1,
-      logLevel: 'error'
+  const serverConfig = Object.assign({
+    disableHostCheck: true,
+    compress: true,
+    clientLogLevel: 'error',
+    hot: true,
+    quiet: true,
+    headers: {
+      'access-control-allow-origin': '*'
     },
-    logLevel: 'error',
-    port,
-    add: app => {
-      // apply plugin options to extend dev server.
-      ctx.pluginAPI.options.enhanceDevServer.syncApply(app)
-
-      const userPublic = path.resolve(sourceDir, '.vuepress/public')
-
-      // enable range request
-      app.use(range)
-
-      // respect base when serving static files...
-      if (fs.existsSync(userPublic)) {
-        app.use(mount(ctx.base, serveStatic(userPublic)))
+    publicPath: ctx.base,
+    watchOptions: {
+      ignored: [
+        /node_modules/,
+        `!${ctx.tempPath}/**`
+      ]
+    },
+    historyApiFallback: {
+      disableDotRule: true,
+      rewrites: [
+        { from: /./, to: path.posix.join(ctx.base, 'index.html') }
+      ]
+    },
+    overlay: false,
+    host,
+    contentBase,
+    before (app, server) {
+      if (fs.existsSync(contentBase)) {
+        app.use(ctx.base, require('express').static(contentBase))
       }
 
-      app.use(convert(history({
-        rewrites: [
-          { from: /\.html$/, to: '/' }
-        ]
-      })))
+      ctx.pluginAPI.options.beforeDevServer.syncApply(app, server)
+    },
+    after (app, server) {
+      ctx.pluginAPI.options.afterDevServer.syncApply(app, server)
     }
-  })
+  }, ctx.siteConfig.devServer || {})
+
+  WebpackDevServer.addDevServerEntrypoints(config, serverConfig)
+
+  const compiler = webpack(config)
+  const server = new WebpackDevServer(compiler, serverConfig)
+
+  return {
+    server,
+    host,
+    port,
+    ctx
+  }
 }
 
 function resolveHost (host) {
-  // webpack-serve hot updates doesn't work properly over 0.0.0.0 on Windows,
-  // but localhost does not allow visiting over network :/
-  const defaultHost = process.platform === 'win32' ? 'localhost' : '0.0.0.0'
+  const defaultHost = 'localhost'
   host = host || defaultHost
-  const displayHost = host === defaultHost && process.platform !== 'win32'
+  const displayHost = host === defaultHost
     ? 'localhost'
     : host
   return {
@@ -162,4 +195,12 @@ async function resolvePort (port) {
   portfinder.basePort = parseInt(port) || 8080
   port = await portfinder.getPortPromise()
   return port
+}
+
+function normalizeWatchFilePath (filepath, baseDir) {
+  const { isAbsolute, relative } = require('path')
+  if (isAbsolute(filepath)) {
+    return relative(baseDir, filepath)
+  }
+  return filepath
 }

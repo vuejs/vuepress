@@ -8,7 +8,7 @@ First, let's review the relationship between layout components and markdown file
 
 <diagram-markdown-slot-relationship/>
 
-markdown files are providers of metadata (page content, configuration, etc.), and layout components consume them. We can use `frontmatter` to define some metadata for common data types, but `frontmatter` is hard to do something about markdown / HTML, a complex metadata that involves pre-compile differences.
+Markdown files are providers of metadata (Page content, Configuration, etc.), while layout components consume them. We can use `frontmatter` to define some metadata for common data types, but `frontmatter` is hard to do something about markdown / HTML, a complex metadata that involves differences before and after compilation.
 
 Markdown Slot is to solve this kind of problem.
 

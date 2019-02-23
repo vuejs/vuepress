@@ -1,14 +1,24 @@
 {
   "name": "@vuepress/shared-utils",
-  "version": "1.0.0-alpha.25",
+  "version": "1.0.0-alpha.39",
   "description": "shared-utils for vuepress",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "types/index.d.ts",
+  "files": [
+    "lib",
+    "types"
+  ],
+  "scripts": {
+    "tsc": "tsc",
+    "update-index": "node scripts/update-index.js"
+  },
   "publishConfig": {
     "access": "public"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vuejs/vuepress.git"
+    "url": "git+https://github.com/vuejs/vuepress.git",
+    "directory": "packages/@vuepress/shared-utils"
   },
   "keywords": [
     "documentation",
@@ -22,7 +32,9 @@
     "escape-html": "^1.0.3",
     "fs-extra": "^5.0.0",
     "globby": "^8.0.1",
+    "gray-matter": "^4.0.1",
     "hash-sum": "^1.0.2",
+    "semver": "^5.5.0",
     "upath": "^1.1.0"
   },
   "author": "ULIVZ <chl814@foxmail.com>",

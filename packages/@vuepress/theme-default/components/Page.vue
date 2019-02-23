@@ -1,10 +1,10 @@
 <template>
-  <div class="page">
+  <main class="page">
     <slot name="top"/>
 
     <Content/>
 
-    <div class="page-edit" v-if="contentMounted">
+    <footer class="page-edit">
       <div
         class="edit-link"
         v-if="editLink"
@@ -24,9 +24,9 @@
         <span class="prefix">{{ lastUpdatedText }}: </span>
         <span class="time">{{ lastUpdated }}</span>
       </div>
-    </div>
+    </footer>
 
-    <div class="page-nav" v-if="contentMounted && (prev || next)">
+    <div class="page-nav" v-if="prev || next">
       <p class="inner">
         <span
           v-if="prev"
@@ -58,7 +58,7 @@
     </div>
 
     <slot name="bottom"/>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -68,10 +68,6 @@ export default {
   props: ['sidebarItems'],
 
   computed: {
-    contentMounted () {
-      return this.$vuepress.$get('contentMounted')
-    },
-
     lastUpdated () {
       return this.$page.lastUpdated
     },
@@ -133,9 +129,9 @@ export default {
 
     editLinkText () {
       return (
-        this.$themeLocaleConfig.editLinkText ||
-        this.$site.themeConfig.editLinkText ||
-        `Edit this page`
+        this.$themeLocaleConfig.editLinkText
+        || this.$site.themeConfig.editLinkText
+        || `Edit this page`
       )
     }
   },
@@ -148,11 +144,12 @@ export default {
           ? docsRepo
           : repo
         return (
-          base.replace(endingSlashRE, '') +
-           `/${docsBranch}` +
-           (docsDir ? '/' + docsDir.replace(endingSlashRE, '') : '') +
-           path +
-           `?mode=edit&spa=0&at=${docsBranch}&fileviewer=file-view-default`
+          base.replace(endingSlashRE, '')
+           + `/src`
+           + `/${docsBranch}`
+           + (docsDir ? '/' + docsDir.replace(endingSlashRE, '') : '')
+           + path
+           + `?mode=edit&spa=0&at=${docsBranch}&fileviewer=file-view-default`
         )
       }
 
@@ -161,10 +158,10 @@ export default {
         : `https://github.com/${docsRepo}`
 
       return (
-        base.replace(endingSlashRE, '') +
-        `/edit/${docsBranch}` +
-        (docsDir ? '/' + docsDir.replace(endingSlashRE, '') : '') +
-        path
+        base.replace(endingSlashRE, '')
+        + `/edit/${docsBranch}`
+        + (docsDir ? '/' + docsDir.replace(endingSlashRE, '') : '')
+        + path
       )
     }
   }
@@ -180,13 +177,7 @@ function resolveNext (page, items) {
 
 function find (page, items, offset) {
   const res = []
-  items.forEach(item => {
-    if (item.type === 'group') {
-      res.push(...item.children || [])
-    } else {
-      res.push(item)
-    }
-  })
+  flattern(items, res)
   for (let i = 0; i < res.length; i++) {
     const cur = res[i]
     if (cur.type === 'page' && cur.path === decodeURIComponent(page.path)) {
@@ -194,6 +185,17 @@ function find (page, items, offset) {
     }
   }
 }
+
+function flattern (items, res) {
+  for (let i = 0, l = items.length; i < l; i++) {
+    if (items[i].type === 'group') {
+      flattern(items[i].children || [], res)
+    } else {
+      res.push(items[i])
+    }
+  }
+}
+
 </script>
 
 <style lang="stylus">
@@ -201,6 +203,7 @@ function find (page, items, offset) {
 
 .page
   padding-bottom 2rem
+  display block
 
 .page-edit
   @extend $wrapper

@@ -23,6 +23,13 @@ const PluginAPI = require('../plugin-api/index')
  */
 
 module.exports = class AppContext {
+  static getInstance (...args) {
+    if (!AppContext._instance) {
+      AppContext._instance = new AppContext(...args)
+    }
+    return AppContext._instance
+  }
+
   /**
    * Instantiate the app context with a new API
    *
@@ -36,6 +43,7 @@ module.exports = class AppContext {
    */
 
   constructor (sourceDir, cliOptions = {}, isProd) {
+    logger.debug('sourceDir', sourceDir)
     this.sourceDir = sourceDir
     this.cliOptions = cliOptions
     this.isProd = isProd
@@ -45,6 +53,16 @@ module.exports = class AppContext {
     this.writeTemp = writeTemp
 
     this.vuepressDir = path.resolve(sourceDir, '.vuepress')
+  }
+
+  /**
+   * Resolve user config and initialize.
+   *
+   * @returns {void}
+   * @api private
+   */
+
+  resolveConfigAndInitialize () {
     this.siteConfig = loadConfig(this.vuepressDir)
     if (isFunction(this.siteConfig)) {
       this.siteConfig = this.siteConfig(this)
@@ -59,13 +77,12 @@ module.exports = class AppContext {
     }
     this.themeConfig = this.siteConfig.themeConfig || {}
 
-    const rawOutDir = cliOptions.dest || this.siteConfig.dest
+    const rawOutDir = this.cliOptions.dest || this.siteConfig.dest
     this.outDir = rawOutDir
       ? require('path').resolve(this.cwd, rawOutDir)
-      : require('path').resolve(sourceDir, '.vuepress/dist')
-
-    this.pluginAPI = new PluginAPI(this)
+      : require('path').resolve(this.sourceDir, '.vuepress/dist')
     this.pages = [] // Array<Page>
+    this.pluginAPI = new PluginAPI(this)
     this.ClientComputedMixinConstructor = ClientComputedMixin(this.getSiteData())
   }
 
@@ -77,10 +94,12 @@ module.exports = class AppContext {
    */
 
   async process () {
+    this.resolveConfigAndInitialize()
     this.resolveCacheLoaderOptions()
     this.normalizeHeadTagUrls()
     await this.resolveTheme()
     this.resolveTemplates()
+    this.resolveGlobalLayout()
 
     this.applyInternalPlugins()
     this.applyUserPlugins()
@@ -89,16 +108,19 @@ module.exports = class AppContext {
     this.markdown = createMarkdown(this)
 
     await this.resolvePages()
+    await this.pluginAPI.options.additionalPages.apply(this)
     await Promise.all(
-      this.pluginAPI.options.additionalPages.values.map(async (options) => {
+      this.pluginAPI.options.additionalPages.appliedValues.map(async (options) => {
         await this.addPage(options)
       })
     )
 
     await this.pluginAPI.options.ready.apply()
-    await this.pluginAPI.options.clientDynamicModules.apply(this)
-    await this.pluginAPI.options.globalUIComponents.apply(this)
-    await this.pluginAPI.options.enhanceAppFiles.apply(this)
+    await Promise.all([
+      this.pluginAPI.options.clientDynamicModules.apply(this),
+      this.pluginAPI.options.enhanceAppFiles.apply(this),
+      this.pluginAPI.options.globalUIComponents.apply(this)
+    ])
   }
 
   /**
@@ -112,8 +134,8 @@ module.exports = class AppContext {
     const siteConfig = this.siteConfig
 
     const shouldUseLastUpdated = (
-      themeConfig.lastUpdated ||
-      Object.keys(siteConfig.locales && themeConfig.locales || {})
+      themeConfig.lastUpdated
+      || Object.keys(siteConfig.locales && themeConfig.locales || {})
         .some(base => themeConfig.locales[base].lastUpdated)
     )
 
@@ -129,6 +151,7 @@ module.exports = class AppContext {
       .use(require('../internal-plugins/pageComponents'))
       .use(require('../internal-plugins/transformModule'))
       .use(require('../internal-plugins/dataBlock'))
+      .use(require('../internal-plugins/frontmatterBlock'))
       .use('@vuepress/last-updated', !!shouldUseLastUpdated)
       .use('@vuepress/register-components', {
         componentsDir: [
@@ -239,6 +262,58 @@ module.exports = class AppContext {
   }
 
   /**
+   * resolve global layout
+   *
+   * @returns {string}
+   * @api private
+   */
+
+  resolveGlobalLayout () {
+    const GLOBAL_LAYOUT_COMPONENT_NAME = `GlobalLayout`
+
+    this.globalLayout = this.resolveCommonAgreementFilePath(
+      'globalLayout',
+      {
+        defaultValue: path.resolve(__dirname, `../app/components/${GLOBAL_LAYOUT_COMPONENT_NAME}.vue`),
+        siteAgreement: `components/${GLOBAL_LAYOUT_COMPONENT_NAME}.vue`,
+        themeAgreement: `layouts/${GLOBAL_LAYOUT_COMPONENT_NAME}.vue`
+      }
+    )
+
+    logger.debug('globalLayout: ' + chalk.gray(this.globalLayout))
+  }
+
+  /**
+   * Resolve a path-type config.
+   *
+   * @param {string} configKey
+   * @param {string} defaultValue an absolute path
+   * @param {string} siteAgreement a relative path to vuepress dir
+   * @param {string} themeAgreement a relative path to theme dir
+   * @returns {string | void}
+   */
+
+  resolveCommonAgreementFilePath (configKey, {
+    defaultValue,
+    siteAgreement,
+    themeAgreement
+  }) {
+    const siteConfigValue = this.siteConfig[configKey]
+    siteAgreement = this.resolveSiteAgreementFile(siteAgreement)
+
+    const themeConfigValue = this.getThemeConfigValue(configKey)
+    themeAgreement = this.resolveThemeAgreementFile(themeAgreement)
+
+    return fsExistsFallback([
+      siteConfigValue,
+      siteAgreement,
+      themeConfigValue,
+      themeAgreement,
+      defaultValue
+    ].map(v => v))
+  }
+
+  /**
    * Find all page source files located in sourceDir
    *
    * @returns {Promise<void>}
@@ -247,7 +322,7 @@ module.exports = class AppContext {
 
   async resolvePages () {
     // resolve pageFiles
-    const patterns = ['**/*.md', '!.vuepress', '!node_modules']
+    const patterns = ['**/*.md', '**/*.vue', '!.vuepress', '!node_modules']
     if (this.siteConfig.dest) {
       // #654 exclude dest folder when dest dir was set in
       // sourceDir but not in '.vuepress'
@@ -291,6 +366,51 @@ module.exports = class AppContext {
 
   async resolveTheme () {
     Object.assign(this, (await loadTheme(this)))
+  }
+
+  /**
+   * Get config value of current active theme.
+   *
+   * @param {string} key
+   * @returns {any}
+   * @api private
+   */
+
+  getThemeConfigValue (key) {
+    return this.themeEntryFile[key] || this.parentThemeEntryFile[key]
+  }
+
+  /**
+   * Resolve the absolute path of a theme-level agreement file,
+   * return `undefined` when it doesn't exists.
+   *
+   * @param {string} filepath
+   * @returns {string|undefined}
+   */
+
+  resolveThemeAgreementFile (filepath) {
+    const current = path.resolve(this.themePath, filepath)
+    if (fs.existsSync(current)) {
+      return current
+    }
+    if (this.parentThemePath) {
+      const parent = path.resolve(this.parentThemePath, filepath)
+      if (fs.existsSync(parent)) {
+        return parent
+      }
+    }
+  }
+
+  /**
+   * Resolve the absolute path of a site-level agreement file,
+   * return `undefined` when it doesn't exists.
+   *
+   * @param {string} filepath
+   * @returns {string|undefined}
+   */
+
+  resolveSiteAgreementFile (filepath) {
+    return path.resolve(this.vuepressDir, filepath)
   }
 
   /**

@@ -4,7 +4,8 @@ module.exports = {
     '@vuepress/pagination',
     '@vuepress/medium-zoom',
     ['@vuepress/search', {
-      searchMaxSuggestions: 10
+      searchMaxSuggestions: 10,
+      test: null
     }]
   ]
 }

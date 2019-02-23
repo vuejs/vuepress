@@ -10,7 +10,6 @@ const { PLUGIN_OPTION_MAP } = require('./constants')
 const {
   moduleResolver: { getPluginResolver },
   datatypes: { assertTypes, isPlainObject },
-  env: { debug },
   logger, chalk
 } = require('@vuepress/shared-utils')
 
@@ -148,7 +147,7 @@ module.exports = class PluginAPI {
   initializeOptions () {
     Object.keys(PLUGIN_OPTION_MAP).forEach(key => {
       const option = PLUGIN_OPTION_MAP[key]
-      this.options[option.name] = instantiateOption(option.name)
+      this.options[option.name] = instantiateOption(option)
     })
   }
 
@@ -170,8 +169,8 @@ module.exports = class PluginAPI {
       this.options[option.name].add(pluginName, value)
     } else if (value !== undefined) {
       logger.warn(
-        `${chalk.gray(pluginName)} ` +
-        `Invalid value for "option" ${chalk.cyan(option.name)}: ${warnMsg}`
+        `${chalk.gray(pluginName)} `
+        + `Invalid value for "option" ${chalk.cyan(option.name)}: ${warnMsg}`
       )
     }
     return this
@@ -196,7 +195,6 @@ module.exports = class PluginAPI {
 
     // options
     chainWebpack,
-    enhanceDevServer,
     extendMarkdown,
     chainMarkdown,
     enhanceAppFiles,
@@ -207,16 +205,13 @@ module.exports = class PluginAPI {
     additionalPages,
     globalUIComponents,
     define,
-    alias
+    alias,
+    extendCli,
+    beforeDevServer,
+    afterDevServer
   }) {
     const isInternalPlugin = pluginName.startsWith('@vuepress/internal-')
-    if (!isInternalPlugin || debug) {
-      logger.tip(
-        shortcut
-          ? `Apply plugin ${chalk.magenta(shortcut)} ${chalk.gray(`(i.e. "${pluginName}")`)} ...`
-          : `Apply plugin ${chalk.magenta(pluginName)} ...`
-      )
-    }
+    logger[isInternalPlugin ? 'debug' : 'tip'](pluginLog(pluginName, shortcut))
 
     this
       .registerOption(PLUGIN_OPTION_MAP.READY.key, ready, pluginName)
@@ -224,7 +219,6 @@ module.exports = class PluginAPI {
       .registerOption(PLUGIN_OPTION_MAP.UPDATED.key, updated, pluginName)
       .registerOption(PLUGIN_OPTION_MAP.GENERATED.key, generated, pluginName)
       .registerOption(PLUGIN_OPTION_MAP.CHAIN_WEBPACK.key, chainWebpack, pluginName)
-      .registerOption(PLUGIN_OPTION_MAP.ENHANCE_DEV_SERVER.key, enhanceDevServer, pluginName)
       .registerOption(PLUGIN_OPTION_MAP.EXTEND_MARKDOWN.key, extendMarkdown, pluginName)
       .registerOption(PLUGIN_OPTION_MAP.CHAIN_MARKDOWN.key, chainMarkdown, pluginName)
       .registerOption(PLUGIN_OPTION_MAP.EXTEND_PAGE_DATA.key, extendPageData, pluginName)
@@ -236,5 +230,14 @@ module.exports = class PluginAPI {
       .registerOption(PLUGIN_OPTION_MAP.GLOBAL_UI_COMPONENTS.key, globalUIComponents, pluginName)
       .registerOption(PLUGIN_OPTION_MAP.DEFINE.key, define, pluginName)
       .registerOption(PLUGIN_OPTION_MAP.ALIAS.key, alias, pluginName)
+      .registerOption(PLUGIN_OPTION_MAP.EXTEND_CLI.key, extendCli, pluginName)
+      .registerOption(PLUGIN_OPTION_MAP.BEFORE_DEV_SERVER.key, beforeDevServer, pluginName)
+      .registerOption(PLUGIN_OPTION_MAP.AFTER_DEV_SERVER.key, afterDevServer, pluginName)
   }
+}
+
+function pluginLog (name, shortcut) {
+  return shortcut
+    ? `Apply plugin ${chalk.magenta(shortcut)} ${chalk.gray(`(i.e. "${name}")`)} ...`
+    : `Apply plugin ${chalk.magenta(name)} ...`
 }

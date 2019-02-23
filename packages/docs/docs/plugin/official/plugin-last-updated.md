@@ -7,9 +7,9 @@ metaTitle: Last-Updated Plugin | VuePress
 
 > last-updated plugin for vuepress
 
-::: warning Note
-Note that this plugin has been included in the core, you don't need to repeat the installation.
-:::
+If you use the default theme, you don't need to install this plugin, because the plugin is already included in the `core` of VuePress, and you should use the [themeConfig.lastUpdated](../../theme/default-theme-config.md#last-updated) option directly.
+
+If you use it at your custom theme, you'll need to handle the UI by yourself, and you can use __[$page.lastUpdated](../../guide/global-computed.md#page)__ to access the date string.
 
 ## Usage
 
@@ -53,5 +53,5 @@ module.exports = {
 ::: tip
 If you are running in [i18n](../../guide/i18n.md) mode, you can also use the second argument `lang` to generate time strings for different languages.
 
-Note that in VuePres, we follow this spec: [W3C > Language tags in HTML and XML](https://en.wikipedia.org/wiki/Language_localisation), so `en-US` uses hyphens (`-`) instead of underscores (`_`). Please make sure that the library you are using follows this spec, otherwise please convert it yourself.
+Note that in VuePress, we follow this spec: [W3C > Language tags in HTML and XML](https://en.wikipedia.org/wiki/Language_localisation), so `en-US` uses hyphens (`-`) instead of underscores (`_`). Please make sure that the library you are using follows this spec, otherwise please convert it yourself.
 :::

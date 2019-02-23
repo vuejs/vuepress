@@ -6,8 +6,8 @@ module.exports = (options, ctx) => ({
     const { themeConfig, siteConfig } = ctx
     // resolve algolia
     const isAlgoliaSearch = (
-      themeConfig.algolia ||
-      Object.keys(siteConfig.locales && themeConfig.locales || {})
+      themeConfig.algolia
+      || Object.keys(siteConfig.locales && themeConfig.locales || {})
         .some(base => themeConfig.locales[base].algolia)
     )
     return {
@@ -19,6 +19,7 @@ module.exports = (options, ctx) => ({
 
   plugins: [
     '@vuepress/active-header-links',
-    '@vuepress/search'
+    '@vuepress/search',
+    '@vuepress/plugin-nprogress'
   ]
 })

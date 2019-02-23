@@ -39,7 +39,7 @@ module.exports = function createBaseConfig ({
     .output
       .path(outDir)
       .filename(isProd ? 'assets/js/[name].[chunkhash:8].js' : 'assets/js/[name].js')
-      .publicPath(isProd ? publicPath : '/')
+      .publicPath(publicPath)
 
   if (env.isDebug) {
     config.devtool('source-map')
@@ -285,8 +285,7 @@ module.exports = function createBaseConfig ({
     .use(require('webpack/lib/DefinePlugin'), [{
       VUEPRESS_VERSION: JSON.stringify(require('../../package.json').version),
       VUEPRESS_TEMP_PATH: JSON.stringify(tempPath),
-      LAST_COMMIT_HASH: JSON.stringify(getLastCommitHash()),
-      CONTENT_LOADING: JSON.stringify(siteConfig.contentLoading || false)
+      LAST_COMMIT_HASH: JSON.stringify(getLastCommitHash())
     }])
 
   pluginAPI.options.define.apply(config)

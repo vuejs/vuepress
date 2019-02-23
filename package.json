@@ -8,17 +8,19 @@
   ],
   "description": "Minimalistic doc generator with Vue component based layout system",
   "scripts": {
-    "bootstrap": "lerna bootstrap",
+    "bootstrap": "lerna bootstrap && yarn tsc",
     "boot": "node scripts/bootstrap.js",
-    "dev": "yarn workspace docs dev",
-    "build": "yarn workspace docs build",
-    "dev:blog": "yarn workspace blog dev",
-    "build:blog": "yarn workspace blog build",
+    "dev": "yarn tsc && yarn workspace docs dev",
+    "build": "yarn tsc && yarn workspace docs build",
+    "show-help": "yarn workspace docs show-help",
+    "dev:blog": "yarn tsc && yarn workspace blog dev",
+    "build:blog": "yarn tsc && yarn workspace blog build",
     "register-vuepress": "lerna exec --scope vuepress -- yarn link",
-    "lint": "eslint --fix packages/**/*.js packages/**/*.vue packages/**/bin/*",
-    "release": "yarn --pure-lockfile && node scripts/release.js",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "test": "node scripts/test.js"
+    "lint": "eslint packages --fix --ext .js,.vue",
+    "release": "yarn --pure-lockfile && yarn tsc && node scripts/release.js",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 2",
+    "test": "node scripts/test.js",
+    "tsc": "lerna run tsc"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
@@ -34,10 +36,18 @@
     "eslint": "^4.19.1",
     "eslint-plugin-jest": "^21.15.1",
     "eslint-plugin-vue-libs": "^3.0.0",
-    "lerna": "^2.11.0",
+    "lerna": "^3.6.0",
     "lint-staged": "^7.0.4",
     "minimist": "^1.2.0",
     "yorkie": "^1.0.3",
-    "inquirer": "^6.2.0"
+    "inquirer": "^6.2.0",
+    "typescript": "^3.2.2",
+    "@types/node": "^10.12.12",
+    "@types/lru-cache": "^4.1.1",
+    "@types/fs-extra": "^5.0.4",
+    "@types/semver": "^5.5.0",
+    "@types/hash-sum": "^1.0.0",
+    "@types/globby": "^8.0.0",
+    "@types/escape-html": "^0.0.20"
   }
 }

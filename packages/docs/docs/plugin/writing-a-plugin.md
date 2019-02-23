@@ -1,6 +1,6 @@
 # Writing a Plugin
 
-A plugin should export a `plain JavaScript object`(`#1`). If the plugin needs to take options, it can be a function that exports a plain object(`#2`). The function will be called with the plugin's options as the first argument, along with [ctx](#ctx) which provides some compile-time metadata.
+A plugin should export a `plain JavaScript object`(`#1`). If the plugin needs to take options, it can be a function that exports a plain object(`#2`). The function will be called with the plugin's options as the first argument, along with [ctx](./context-api.md) which provides some compile-time metadata.
 
 ``` js
 // #1

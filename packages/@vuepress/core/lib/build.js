@@ -3,12 +3,11 @@
 module.exports = async function build (sourceDir, cliOptions = {}) {
   process.env.NODE_ENV = 'production'
 
-  const { path } = require('@vuepress/shared-utils')
   const webpack = require('webpack')
   const readline = require('readline')
   const escape = require('escape-html')
 
-  const { chalk, fs, logger, env } = require('@vuepress/shared-utils')
+  const { chalk, fs, path, logger, env, performance } = require('@vuepress/shared-utils')
   const prepare = require('./prepare/index')
   const createClientConfig = require('./webpack/createClientConfig')
   const createServerConfig = require('./webpack/createServerConfig')
@@ -64,25 +63,30 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
     .map(renderHeadTag)
     .join('\n  ')
 
-  // render pages
-  logger.wait('Rendering static HTML...')
-  for (const page of ctx.pages) {
-    await renderPage(page)
-  }
-
   // if the user does not have a custom 404.md, generate the theme's default
   if (!ctx.pages.some(p => p.path === '/404.html')) {
-    await renderPage({ path: '/404.html' })
+    ctx.addPage({ path: '/404.html' })
+  }
+
+  // render pages
+  logger.wait('Rendering static HTML...')
+
+  const pagePaths = []
+  for (const page of ctx.pages) {
+    pagePaths.push(await renderPage(page))
   }
 
   readline.clearLine(process.stdout, 0)
   readline.cursorTo(process.stdout, 0)
 
-  await ctx.pluginAPI.options.generated.apply()
+  await ctx.pluginAPI.options.generated.apply(pagePaths)
 
   // DONE.
   const relativeDir = path.relative(cwd, outDir)
-  logger.success(`${chalk.green('Success!')} Generated static files in ${chalk.cyan(relativeDir)}.\n`)
+  logger.success(`Generated static files in ${chalk.cyan(relativeDir)}.`)
+  const { duration } = performance.stop()
+  logger.developer(`It took a total of ${chalk.cyan(`${duration}ms`)} to run the ${chalk.cyan('vuepress build')}.`)
+  console.log()
 
   // --- helpers ---
 
@@ -153,6 +157,7 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
     const filePath = path.resolve(outDir, filename)
     await fs.ensureDir(path.dirname(filePath))
     await fs.writeFile(filePath, html)
+    return filePath
   }
 
   function renderPageMeta (meta) {

@@ -10,8 +10,8 @@ const { fs, path, hash, parseFrontmatter, inferTitle, extractHeaders } = require
 const LRU = require('lru-cache')
 const md = require('@vuepress/markdown')
 
-const cache = LRU({ max: 1000 })
-const devCache = LRU({ max: 1000 })
+const cache = new LRU({ max: 1000 })
+const devCache = new LRU({ max: 1000 })
 
 /**
  * Expose markdown loader.
@@ -49,9 +49,9 @@ module.exports = function (src) {
     // returned component, changes in frontmatter do not trigger proper updates
     const cachedData = devCache.get(file)
     if (cachedData && (
-      cachedData.inferredTitle !== inferredTitle ||
-      JSON.stringify(cachedData.frontmatterData) !== JSON.stringify(frontmatter.data) ||
-      headersChanged(cachedData.headers, headers)
+      cachedData.inferredTitle !== inferredTitle
+      || JSON.stringify(cachedData.frontmatterData) !== JSON.stringify(frontmatter.data)
+      || headersChanged(cachedData.headers, headers)
     )) {
       // frontmatter changed... need to do a full reload
       module.exports.frontmatterEmitter.emit('update')
@@ -66,7 +66,14 @@ module.exports = function (src) {
 
   // the render method has been augmented to allow plugins to
   // register data during render
-  const { html, data: { hoistedTags, links }, dataBlockString } = markdown.render(content)
+  const {
+    html,
+    data: { hoistedTags, links },
+    dataBlockString
+  } = markdown.render(content, {
+    frontmatter: frontmatter.data,
+    relPath: path.relative(sourceDir, file)
+  })
 
   // check if relative links are valid
   links && links.forEach(link => {
@@ -91,29 +98,19 @@ module.exports = function (src) {
     if (!fs.existsSync(file) && (!altfile || !fs.existsSync(altfile))) {
       this.emitWarning(
         new Error(
-          `\nFile for relative link "${link}" does not exist.\n` +
-          `(Resolved file: ${file})\n`
+          `\nFile for relative link "${link}" does not exist.\n`
+          + `(Resolved file: ${file})\n`
         )
       )
     }
   })
 
   const res = (
-    `<template>\n` +
-      `<ContentSlotsDistributor :slot-key="slotKey">${html}</ContentSlotsDistributor>\n` +
-    `</template>\n` +
-    `<script>
-      export default { 
-         props: ['slot-key'], 
-         mounted() {
-           this.$nextTick(function () {
-             this.$vuepress.$emit('AsyncMarkdownContentMounted', this.slotKey)
-           })
-         } 
-      }
-    </script>` +
-    (hoistedTags || []).join('\n') +
-    `\n${dataBlockString}\n`
+    `<template>\n`
+      + `<ContentSlotsDistributor :slot-key="$parent.slotKey">${html}</ContentSlotsDistributor>\n`
+    + `</template>\n`
+    + (hoistedTags || []).join('\n')
+    + `\n${dataBlockString}\n`
   )
   cache.set(key, res)
   return res
@@ -122,8 +119,8 @@ module.exports = function (src) {
 function headersChanged (a, b) {
   if (a.length !== b.length) return true
   return a.some((h, i) => (
-    h.title !== b[i].title ||
-    h.level !== b[i].level
+    h.title !== b[i].title
+    || h.level !== b[i].level
   ))
 }
 

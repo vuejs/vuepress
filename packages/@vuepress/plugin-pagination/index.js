@@ -5,14 +5,14 @@ function getIntervallers (max, interval) {
   const arr = [...Array(count)]
   return arr.map((v, index) => {
     const start = index * interval
-    const end = (index + 1) * interval - 1
+    const end = (index + 1) * interval
     return [start, end > max ? max : end]
   })
 }
 
 module.exports = (options, ctx) => ({
   enhanceAppFiles: [
-    path.resolve(__dirname, 'clientPlugin.js')
+    path.resolve(__dirname, 'enhanceAppFile.js')
   ],
 
   ready () {

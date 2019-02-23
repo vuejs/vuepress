@@ -1,11 +1,12 @@
 {
   "name": "@vuepress/core",
-  "version": "1.0.0-alpha.25",
+  "version": "1.0.0-alpha.39",
   "description": "Minimalistic doc generator with Vue component based layout system",
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vuejs/vuepress.git"
+    "url": "git+https://github.com/vuejs/vuepress.git",
+    "directory": "packages/@vuepress/core"
   },
   "publishConfig": {
     "access": "public"
@@ -30,12 +31,12 @@
   "dependencies": {
     "@babel/core": "^7.0.0",
     "@vue/babel-preset-app": "^3.1.1",
-    "@vuepress/markdown": "^1.0.0-alpha.25",
-    "@vuepress/markdown-loader": "^1.0.0-alpha.25",
-    "@vuepress/plugin-last-updated": "^1.0.0-alpha.25",
-    "@vuepress/plugin-register-components": "^1.0.0-alpha.25",
-    "@vuepress/shared-utils": "^1.0.0-alpha.25",
-    "autoprefixer": "^8.2.0",
+    "@vuepress/markdown": "^1.0.0-alpha.39",
+    "@vuepress/markdown-loader": "^1.0.0-alpha.39",
+    "@vuepress/plugin-last-updated": "^1.0.0-alpha.39",
+    "@vuepress/plugin-register-components": "^1.0.0-alpha.39",
+    "@vuepress/shared-utils": "^1.0.0-alpha.39",
+    "autoprefixer": "^7.1.2",
     "babel-loader": "^8.0.4",
     "cache-loader": "^1.2.2",
     "chokidar": "^2.0.3",
@@ -44,35 +45,28 @@
     "cross-spawn": "^6.0.5",
     "css-loader": "^0.28.11",
     "file-loader": "^1.1.11",
-    "gray-matter": "^4.0.1",
     "js-yaml": "^3.11.0",
-    "koa-connect": "^2.0.1",
-    "koa-mount": "^3.0.0",
-    "koa-range": "^0.3.0",
-    "koa-static": "^4.0.2",
-    "lru-cache": "^4.1.2",
+    "lru-cache": "^5.1.1",
     "mini-css-extract-plugin": "0.4.4",
     "optimize-css-assets-webpack-plugin": "^4.0.0",
     "portfinder": "^1.0.13",
     "postcss-loader": "^2.1.5",
-    "smooth-scroll": "^15.0.0",
     "toml": "^2.3.3",
     "url-loader": "^1.0.1",
     "vue": "^2.5.16",
-    "vue-content-loader": "^0.2.1",
     "vue-loader": "^15.2.4",
-    "vue-router": "^3.0.1",
+    "vue-router": "^3.0.2",
     "vue-server-renderer": "^2.5.16",
     "vue-template-compiler": "^2.5.16",
     "vuepress-html-webpack-plugin": "^3.2.0",
     "webpack": "^4.8.1",
     "webpack-chain": "^4.6.0",
+    "webpack-dev-server": "^3.1.14",
     "webpack-merge": "^4.1.2",
-    "webpack-serve": "^1.0.2",
     "webpackbar": "^2.6.1"
   },
   "engines": {
-    "node": ">=8"
+    "node": ">=8.6"
   },
   "browserslist": [
     ">1%"

@@ -50,3 +50,7 @@ export default ({
   // ...做一些其他的应用级别的优化
 }
 ```
+
+**相关阅读：**
+
+- [插件 API 中的 enhanceApp](../plugin/option-api.md#enhanceappfiles)

@@ -7,14 +7,14 @@ metaTitle: Medium-Zoom 插件 | VuePress
 
 > [medium-zoom](https://github.com/francoischalifour/medium-zoom) 插件
 
-## Install
+## 安装
 
 ```bash
 yarn add -D @vuepress/plugin-medium-zoom
 # OR npm install -D @vuepress/plugin-medium-zoom
 ```
 
-## Usage
+## 使用
 
 ```javascript
 module.exports = {
@@ -22,9 +22,9 @@ module.exports = {
 }
 ```
 
-## Options
+## 选项
 
-### selector
+### selector 
 
-- Type: `string`
-- Default: `.content img`
+- 类型: `string`
+- 默认值: `.content img`

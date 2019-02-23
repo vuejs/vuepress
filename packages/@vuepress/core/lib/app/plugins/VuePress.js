@@ -1,31 +1,23 @@
-import Vue from 'vue'
 import Store from './Store'
-import pageComponents from '@internal/page-components'
+import {
+  isPageExists,
+  isPageLoaded,
+  getPageAsyncComponent,
+  isLayoutExists,
+  isLayoutLoaded,
+  getLayoutAsyncComponent
+} from '../util'
 
-class VuePress extends Store {
-  isPageExists (pageKey) {
-    return Boolean(pageComponents[pageKey])
-  }
+class VuePress extends Store {}
 
-  isPageLoaded (pageKey) {
-    return Boolean(Vue.component(pageKey))
-  }
-
-  getPageAsyncComponent (pageKey) {
-    if (!this.isPageExists(pageKey)) {
-      throw new Error(`Cannot found ${pageKey}`)
-    }
-    return pageComponents[pageKey]
-  }
-
-  loadPageAsyncComponent (pageKey) {
-    return this.getPageAsyncComponent(pageKey)()
-  }
-
-  registerPageAsyncComponent (pageKey) {
-    Vue.component(pageKey, this.getPageAsyncComponent(pageKey))
-  }
-}
+Object.assign(VuePress.prototype, {
+  isPageExists,
+  isPageLoaded,
+  getPageAsyncComponent,
+  isLayoutExists,
+  isLayoutLoaded,
+  getLayoutAsyncComponent
+})
 
 export default {
   install (Vue) {

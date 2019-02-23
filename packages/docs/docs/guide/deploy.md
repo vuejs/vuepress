@@ -56,7 +56,33 @@ cd -
 You can also run the above script in your CI setup to enable automatic deployment on each push.
 :::
 
-## GitLab Pages and GitLab CI
+### Github Pages and Travis CI
+
+1. Set correct `base` in `docs/.vuepress/config.js`.
+
+   If you are deploying to `https://<USERNAME or GROUP>.github.io/`, you can omit `base` as it defaults to `"/"`.
+
+   If you are deploying to `https://<USERNAME or GROUP>.github.io/<REPO>/`, (i.e. your repository is at `https://github.com/<USERNAME>/<REPO>`), set `base` to `"/<REPO>/"`.
+
+2. Create a file named `.travis.yml` in the root of your project.
+
+3. Use Github Pages deploy provider template and follow the [travis documentation](https://docs.travis-ci.com/user/deployment/pages/).
+
+``` yaml
+language: node_js
+script:
+  - npm run docs:build
+deploy:
+  provider: pages
+  skip-cleanup: true
+  local_dir: docs/.vuepress/dist
+  github-token: $GITHUB_TOKEN # a token generated on github allowing travis to push code on you repository
+  keep-history: true
+  on:
+    branch: master
+```
+
+### GitLab Pages and GitLab CI
 
 1. Set correct `base` in `docs/.vuepress/config.js`.
 
@@ -183,36 +209,4 @@ heroku open
 
 ## Now
 
-1. Install the Now CLI globally: `npm install -g now`
-
-2. Add a `docs.now.json` file to your project root:
-
-    ```json
-    {
-      "name": "my-cool-docs",
-      "type": "static",
-      "static": {
-        "public": "docs/.vuepress/dist"
-      },
-      "alias": "my-cool-docs",
-      "files": [
-        "docs/.vuepress/dist"
-      ]
-    }
-    ```
-
-    You can further customize the static serving behavior by consulting [Now's documentation](https://zeit.co/docs/deployment-types/static).
-
-3. Adding a deployment script in `package.json`:
-
-    ```json
-    "docs:deploy": "npm run docs:build && now --local-config docs.now.json && now alias --local-config docs.now.json"
-    ```
-
-    If you want to deploy publicly by default, you can change the deployment script to the following one:
-
-    ```json
-    "docs:deploy": "npm run docs:build && now --public --local-config docs.now.json && now alias --local-config docs.now.json"
-    ```
-
-    This will automatically point your site's alias to the latest deployment. Now, just run `npm run docs:deploy` to deploy your app.
+Please refer to [Deploy a example vuepress website with Now](https://zeit.co/examples/vuepress/).

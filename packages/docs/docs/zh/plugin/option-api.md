@@ -18,7 +18,7 @@ metaTitle: Option API | Plugin
 module.exports = {
   plugins: [
     [
-      (pluginOptions, ctx) => ({
+      (pluginOptions, context) => ({
         name: 'my-xxx-plugin'
         // ... the rest of options
       })
@@ -101,10 +101,10 @@ module.exports = {
 - 函数式:
 
 ```js
-module.exports = (options, ctx) => ({
+module.exports = (options, context) => ({
   define () {
     return {
-      SW_BASE_URL: ctx.base || '/',
+      SW_BASE_URL: context.base || '/',
       SW_ENABLED: !!options.enabled,
     }
   }
@@ -119,9 +119,9 @@ module.exports = (options, ctx) => ({
 我们可以通过 [chainWebpack](#chainwebpack) 来配置别名：
 
 ```js
-module.exports = (options, ctx) => ({
+module.exports = (options, context) => ({
   chainWebpack (config) {
-    config.resolve.alias.set('@theme', ctx.themePath)
+    config.resolve.alias.set('@theme', context.themePath)
   }
 })
 ```
@@ -129,49 +129,43 @@ module.exports = (options, ctx) => ({
 `alias` 可以使这个流程更像配置：
 
 ```js
-module.exports = (options, ctx) => ({
+module.exports = (options, context) => ({
   alias: {
-    '@theme': ctx.themePath
+    '@theme': context.themePath
   }
 })
 ```
 
-## enhanceDevServer
+## beforeDevServer
 
 - 类型: `Function`
 - 默认值: undefined
 
-拓展 devServer 下层的 [Koa](https://github.com/koajs/koa) app：
+等同于 [webpack-dev-server](https://github.com/webpack/webpack-dev-server) 中的 [before](https://webpack.js.org/configuration/dev-server/#devserver-before) 选项，你可以使用它来自定义你的 devServer，如：
 
-``` js
+```js
 module.exports = {
-  enhanceDevServer (app) {
-    // ...
+  // ...
+  beforeDevServer(app, server) {
+    app.get('/path/to/your/custom', function(req, res) {
+      res.json({ custom: 'response' })
+    })
   }
 }
 ```
 
-一个简单的创建子 public 目录的插件如下：
+## afterDevServer
+
+- 类型: `Function`
+- 默认值: undefined
+
+等同于 [webpack-dev-server](https://github.com/webpack/webpack-dev-server) 中的 [after](https://webpack.js.org/configuration/dev-server/#devserver-after)，你可以用其在所有中间件的最后去执行一些自定义的中间件：
 
 ```js
-const path = require('path')
-
-module.exports = (options, ctx) => {
-  const imagesAssetsPath = path.resolve(ctx.sourceDir, '.vuepress/images')
-
-  return {
-      // For development
-      enhanceDevServer (app) {
-        const mount = require('koa-mount')
-        const serveStatic = require('koa-static')
-        app.use(mount(path.join(ctx.base, 'images'), serveStatic(imagesAssetsPath)))
-      },
-
-      // For production
-      async generated () {
-        const { fs } = require('@vuepress/shared-utils')
-        await fs.copy(imagesAssetsPath, path.resolve(ctx.outDir, 'images'))
-      }
+module.exports = {
+  // ...
+  afterDevServer(app, server) {
+    // hacking now ...
   }
 }
 ```
@@ -234,28 +228,32 @@ module.exports = {
 
 ## enhanceAppFiles
 
-- 类型: `Array|AsyncFunction`
+- 类型: `String | Array | AsyncFunction`
 - 默认值: `undefined`
 
-这个选项接受一个包含文件的数组，或者一个返回该数组的函数。你可以通过此选项做一些[应用级别的配置](../guide/basic-config.md#应用级别的配置)。
+此选项接受指向增强文件的绝对文件路径或返回该路径的函数，你可以通过此选项做一些[应用级别的配置](../guide/basic-config.md#应用级别的配置):
 
 ``` js
+import { resolve } from 'path'
+
 module.exports = {
-  enhanceAppFiles: [
-    path.resolve(__dirname, 'client.js')
-  ]
+  enhanceAppFiles: resolve(__dirname, 'client.js')
 }
 ```
 
-值得提及的是，为了让插件开发者能够在编译器做更多的事情，`enhanceAppFiles` 也支持动态的代码：
+此选项还支持动态代码，允许你使用触摸编译上下文的能力来做更多的事：
 
 ```js
-module.exports = (option, ctx) => {
+module.exports = (option, context) => {
   return {
-    enhanceAppFiles: [{
-      name: 'dynamic-code',
-      content: `export default ({ Vue }) => { Vue.mixin('$source', '${context.sourceDir}') }`
-    }]
+    enhanceAppFiles() {
+      return {
+         name: 'dynamic-code',
+         content: `export default ({ Vue }) => { Vue.mixin('$source', '${
+           context.sourceDir
+         }') }`
+       }
+    }
   }
 }
 ```
@@ -268,10 +266,10 @@ module.exports = (option, ctx) => {
 有时，你可能想要在编译期间生成一些在客户端使用的模块：
 
 ```js
-module.exports = (options, ctx) => ({
+module.exports = (options, context) => ({
   clientDynamicModules() {
     return {
-      name: 'constans.js',
+      name: 'constants.js',
       content: `export const SOURCE_DIR = '${context.sourceDir}'`
     }
   }
@@ -281,7 +279,7 @@ module.exports = (options, ctx) => ({
 然后你可以在客户端这样使用你的模块：
 
 ``` js
-import { SOURCE_DIR } from '@dynamic/constans'
+import { SOURCE_DIR } from '@dynamic/constants'
 ```
 
 ## extendPageData
@@ -306,7 +304,7 @@ module.exports = {
     } = $page
    
     // 1. Add extra fields.
-    page.xxx = 'xxx'
+    $page.xxx = 'xxx'
     
     // 2. Change frontmatter.
     frontmatter.sidebar = 'auto'
@@ -323,7 +321,7 @@ module.exports = {
 ``` js
 module.exports = {
   extendPageData ($page) {
-    $page.size = ($page.content.length / 1024).toFixed(2) + 'kb'
+    $page.size = ($page._content.length / 1024).toFixed(2) + 'kb'
   }
 }
 ```
@@ -356,7 +354,7 @@ export default {
 
 ## additionalPages
 
-- 类型: `Array|Function`
+- 类型: `Array|AsyncFunction`
 - 默认值: `undefined`
 
 增加一个指向某个 markdown 文件的页面：
@@ -379,14 +377,13 @@ module.exports = {
 ```js
 module.exports = {
   async additionalPages () {
-    const rp = require('request-promise');
-
-    // VuePress doesn't have request library built-in
-    // you need to install it yourself.
-    const content = await rp('https://github.com/vuejs/vuepress/blob/master/CHANGELOG.md');
+    // 注意 VuePress 没有任何内置的请求库，
+    // 你需要自己安装它。
+    const rp = require('request-promise')
+    const content = await rp('https://raw.githubusercontent.com/vuejs/vuepress/master/CHANGELOG.md')
     return [
       {
-        path: '/readme/',
+        path: '/changelog/',
         content
       }
     ]
@@ -414,7 +411,7 @@ module.exports = {
 - 类型: `Array|String`
 - 默认值: `undefined`
 
-你可以想注入某些全局的 UI，并固定在页面中的某处，如  `back-to-top`, `popup`。在 VuePress 中，**一个全局 UI 就是一个 Vue 组件。**你可以直接配置该全局组件的名称，如：
+你可能想注入某些全局的 UI，并固定在页面中的某处，如  `back-to-top`, `popup`。在 VuePress 中，**一个全局 UI 就是一个 Vue 组件。**你可以直接配置该全局组件的名称，如：
 
 ``` js
 module.exports = {
@@ -436,3 +433,30 @@ VuePress 将会自动将这些组件注入到布局组件的隔壁：
 </div>
 </div>
 ```
+
+## extendCli
+
+- 类型: `function`
+- 默认值: `undefined`
+
+注册一个额外的 command 来增强 vuepress 的 CLI。这个函数将会以一个 [CAC](https://github.com/cacjs/cac) 的实例作为第一个参数被调用。
+
+```js
+module.exports = {
+  extendCli (cli) {
+    cli
+      .command('info [targetDir]', '')
+      .option('--debug', 'display info in debug mode')
+      .action((dir = '.') => {
+        console.log('Display info of your website')
+      })
+  }
+}
+```
+
+现在你可以在你项目中使用 `vuepress info [targetDir]` 了！
+
+::: tip
+值得注意的是，一个自定义的 command 需要 VuePress 像 `vuepress dev` 或 `vuepress build` 去定位到你的站点配置，所以在开发一个 command 时，请确保引导用户去传入 `targetDir` 作为 CLI 参数的一部分。
+:::
+

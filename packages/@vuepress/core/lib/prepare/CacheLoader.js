@@ -38,19 +38,19 @@ exports.getCacheLoaderOptions = function (siteConfig, cliOptions, cwd, isProd) {
         siteConfig.markdown
           ? JSON.stringify(siteConfig.markdown)
           : ''
-      ) +
-      (
+      )
+      + (
         siteConfig.markdown && siteConfig.markdown.extendMarkdown
           ? siteConfig.markdown.extendMarkdown.toString()
           : ''
-      ) +
-      (
+      )
+      + (
         siteConfig.extendMarkdown
           ? siteConfig.extendMarkdown.toString()
           : ''
-      ) +
-      (siteConfig.chainWebpack || '').toString() +
-      (siteConfig.configureWebpack || '').toString()
+      )
+      + (siteConfig.chainWebpack || '').toString()
+      + (siteConfig.configureWebpack || '').toString()
     )
   })
 

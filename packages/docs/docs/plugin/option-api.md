@@ -14,7 +14,7 @@ Internally, vuepress will use the plugin's package name as the plugin name. When
 module.exports = {
   plugins: [
     [
-      (pluginOptions, ctx) => ({
+      (pluginOptions, context) => ({
         name: 'my-xxx-plugin'
         // ... the rest of options
       })
@@ -97,10 +97,10 @@ module.exports = {
 - Function Usage:
 
 ```js
-module.exports = (options, ctx) => ({
+module.exports = (options, context) => ({
   define () {
     return {
-      SW_BASE_URL: ctx.base || '/',
+      SW_BASE_URL: context.base || '/',
       SW_ENABLED: !!options.enabled,
     }
   }
@@ -115,9 +115,9 @@ module.exports = (options, ctx) => ({
 We can set aliases via [chainWebpack](#chainwebpack):
 
 ```js
-module.exports = (options, ctx) => ({
+module.exports = (options, context) => ({
   chainWebpack (config) {
-    config.resolve.alias.set('@theme', ctx.themePath)
+    config.resolve.alias.set('@theme', context.themePath)
   }
 })
 ```
@@ -125,49 +125,43 @@ module.exports = (options, ctx) => ({
 But `alias` option makes this process more like configuration:
 
 ```js
-module.exports = (options, ctx) => ({
+module.exports = (options, context) => ({
   alias: {
-    '@theme': ctx.themePath
+    '@theme': context.themePath
   }
 })
 ```
 
-## enhanceDevServer
+## beforeDevServer
 
 - Type: `Function`
 - Default: undefined
 
-Enhance the underlying [Koa](https://github.com/koajs/koa) app.
+Equivalent to [before](https://webpack.js.org/configuration/dev-server/#devserver-before) in [webpack-dev-server](https://github.com/webpack/webpack-dev-server). you can use it to define custom handlers before all middleware is executed:
 
-``` js
+```js
 module.exports = {
-  enhanceDevServer (app) {
-    // ...
+  // ...
+  beforeDevServer(app, server) {
+    app.get('/path/to/your/custom', function(req, res) {
+      res.json({ custom: 'response' })
+    })
   }
 }
 ```
 
-A simple plugin to create a sub public directory is as follows:
+## afterDevServer
+
+- Type: `Function`
+- Default: undefined
+
+Equivalent to [after](https://webpack.js.org/configuration/dev-server/#devserver-after) in [webpack-dev-server](https://github.com/webpack/webpack-dev-server). you can use it to execute custom middleware after all other middleware:
 
 ```js
-const path = require('path')
-
-module.exports = (options, ctx) => {
-  const imagesAssetsPath = path.resolve(ctx.sourceDir, '.vuepress/images')
-
-  return {
-      // For development
-      enhanceDevServer (app) {
-        const mount = require('koa-mount')
-        const serveStatic = require('koa-static')
-        app.use(mount(path.join(ctx.base, 'images'), serveStatic(imagesAssetsPath)))
-      },
-
-      // For production
-      async generated () {
-        const { fs } = require('@vuepress/shared-utils')
-        await fs.copy(imagesAssetsPath, path.resolve(ctx.outDir, 'images'))
-      }
+module.exports = {
+  // ...
+  afterDevServer(app, server) {
+    // hacking now ...
   }
 }
 ```
@@ -230,30 +224,32 @@ module.exports = {
 
 ## enhanceAppFiles
 
-- Type: `Array | AsyncFunction`
+- Type: `String | Array | AsyncFunction`
 - Default: `undefined`
 
-This option accepts an array containing the file paths, or a function that returns this array, which allows you to do some [App Level Enhancements](../guide/basic-config.md#theme-configuration).
+This option accepts absolute file path(s) pointing to the enhancement file(s), or a function that returns the path(s), which allows you to do some [App Level Enhancements](../guide/basic-config.md#app-level-enhancements).
 
 ``` js
+import { resolve } from 'path'
+
 module.exports = {
-  enhanceAppFiles: [
-    path.resolve(__dirname, 'client.js')
-  ]
+  enhanceAppFiles: resolve(__dirname, 'client.js')
 }
 ```
 
-The file can `export default` a hook function which will work like `.vuepress/enhanceApp.js`, or any client side code snippets.
-
-It's worth mentioning that in order for plugin developers to be able to do more things at compile time, this option also supports dynamic code:
+This option also supports dynamic code which allows you to do more things with the ability to touch the compilation context:
 
 ```js
-module.exports = (option, ctx) => {
+module.exports = (option, context) => {
   return {
-    enhanceAppFiles: [{
-      name: 'dynamic-code',
-      content: `export default ({ Vue }) => { Vue.mixin('$source', '${context.sourceDir}') }`
-    }]
+    enhanceAppFiles() {
+      return {
+         name: 'dynamic-code',
+         content: `export default ({ Vue }) => { Vue.mixin('$source', '${
+           context.sourceDir
+         }') }`
+       }
+    }
   }
 }
 ```
@@ -269,7 +265,7 @@ Sometimes, you may want to generate some client modules at compile time.
 module.exports = (options, context) => ({
   clientDynamicModules() {
     return {
-      name: 'constans.js',
+      name: 'constants.js',
       content: `export const SOURCE_DIR = '${context.sourceDir}'`
     }
   }
@@ -279,7 +275,7 @@ module.exports = (options, context) => ({
 Then you can use this module at client side code by:
 
 ``` js
-import { SOURCE_DIR } from '@dynamic/constans'
+import { SOURCE_DIR } from '@dynamic/constants'
 ```
 
 ## extendPageData
@@ -304,7 +300,7 @@ module.exports = {
     } = $page
 
     // 1. Add extra fields.
-    page.xxx = 'xxx'
+    $page.xxx = 'xxx'
 
     // 2. Change frontmatter.
     frontmatter.sidebar = 'auto'
@@ -321,7 +317,7 @@ e.g.
 ``` js
 module.exports = {
   extendPageData ($page) {
-    $page.size = ($page.content.length / 1024).toFixed(2) + 'kb'
+    $page.size = ($page._content.length / 1024).toFixed(2) + 'kb'
   }
 }
 ```
@@ -354,7 +350,7 @@ export default {
 
 ## additionalPages
 
-- Type: `Array|Function`
+- Type: `Array|AsyncFunction`
 - Default: `undefined`
 
 Add a page pointing to a markdown file:
@@ -377,14 +373,13 @@ Add a page with explicit content:
 ```js
 module.exports = {
   async additionalPages () {
-    const rp = require('request-promise');
-
-    // VuePress doesn't have request library built-in
+    // Note that VuePress doesn't have request library built-in
     // you need to install it yourself.
-    const content = await rp('https://github.com/vuejs/vuepress/blob/master/CHANGELOG.md');
+    const rp = require('request-promise')
+    const content = await rp('https://raw.githubusercontent.com/vuejs/vuepress/master/CHANGELOG.md')
     return [
       {
-        path: '/readme/',
+        path: '/changelog/',
         content
       }
     ]
@@ -434,3 +429,29 @@ Then, VuePress will automatically inject these components behind the layout comp
 </div>
 </div>
 ```
+
+## extendCli
+
+- Type: `function`
+- Default: `undefined`
+
+Register a extra command to enhance the CLI of vuepress. The function will be called with a [CAC](https://github.com/cacjs/cac)'s instance as the first argument.
+
+```js
+module.exports = {
+  extendCli (cli) {
+    cli
+      .command('info [targetDir]', '')
+      .option('--debug', 'display info in debug mode')
+      .action((dir = '.') => {
+        console.log('Display info of your website')
+      })
+  }
+}
+```
+
+Now you can use `vuepress info [targetDir]` a in your project!
+
+::: tip
+Note that a custom command registered by a plugin requires VuePress to locate your site configuration like `vuepress dev` and `vuepress build`, so when developing a command, be sure to lead the user to pass `targetDir` as an CLI argument.
+:::

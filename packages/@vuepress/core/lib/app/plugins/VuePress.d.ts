@@ -14,7 +14,7 @@ declare class VuePress extends Store {
 }
 
 declare module "vue/types/vue" {
-  interface Vue {
+  export interface Vue {
     $vuepress: VuePress;
   }
 }

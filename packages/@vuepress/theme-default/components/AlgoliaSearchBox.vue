@@ -2,6 +2,7 @@
   <form
     id="search-form"
     class="algolia-search-wrapper search-box"
+    role="search"
   >
     <input
       id="algolia-search-input"

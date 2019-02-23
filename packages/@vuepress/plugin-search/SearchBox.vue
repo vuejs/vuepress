@@ -36,7 +36,7 @@
 </template>
 
 <script>
-/* global SEARCH_MAX_SUGGESTIONS */
+/* global SEARCH_MAX_SUGGESTIONS, SEARCH_PATHS */
 export default {
   data () {
     return {
@@ -49,9 +49,9 @@ export default {
   computed: {
     showSuggestions () {
       return (
-        this.focused &&
-        this.suggestions &&
-        this.suggestions.length
+        this.focused
+        && this.suggestions
+        && this.suggestions.length
       )
     },
 
@@ -65,8 +65,8 @@ export default {
       const max = SEARCH_MAX_SUGGESTIONS
       const localePath = this.$localePath
       const matches = item => (
-        item.title &&
-        item.title.toLowerCase().indexOf(query) > -1
+        item.title
+        && item.title.toLowerCase().indexOf(query) > -1
       )
       const res = []
       for (let i = 0; i < pages.length; i++) {
@@ -76,6 +76,12 @@ export default {
         if (this.getPageLocalePath(p) !== localePath) {
           continue
         }
+
+        // filter out results that do not match searchable paths
+        if (!this.isSearchable(p)) {
+          continue
+        }
+
         if (matches(p)) {
           res.push(p)
         } else if (p.headers) {
@@ -110,6 +116,19 @@ export default {
         }
       }
       return '/'
+    },
+
+    isSearchable (page) {
+      let searchPaths = SEARCH_PATHS
+
+      // all paths searchables
+      if (searchPaths === null) { return true }
+
+      searchPaths = Array.isArray(searchPaths) ? searchPaths : new Array(searchPaths)
+
+      return searchPaths.filter(path => {
+        return page.path.match(path)
+      }).length > 0
     },
 
     onUp () {
@@ -160,6 +179,7 @@ export default {
   input
     cursor text
     width 10rem
+    height: 2rem
     color lighten($textColor, 25%)
     display inline-block
     border 1px solid darken($borderColor, 10%)

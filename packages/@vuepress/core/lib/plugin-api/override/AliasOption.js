@@ -7,10 +7,10 @@
 const Option = require('../abstract/Option')
 
 /**
- * define option.
+ * alias option.
  */
 
-module.exports = class DefineOption extends Option {
+module.exports = class AliasOption extends Option {
   apply (config) {
     super.syncApply()
     const aliases = this.appliedValues

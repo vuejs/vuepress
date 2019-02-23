@@ -203,15 +203,16 @@ It(<OutboundLink/>) is used to indicate that this is an external link. In VuePre
 
 See [Browser API Access Restrictions](#browser-api-access-restrictions).
 
-### Content <Badge text="beta" type="warn"/>
+### Content <Badge text="1.0.0+"/>
 
 - **Props**:
 
-  - `custom` - boolean
+  - `pageKey` - string, [page](./global-computed.md#page)'s hash key, defaults to current page's key.
+  - `slotKey` - string, key of [markdown slot](./markdown-slot.md). defaults to [default slot](./markdown-slot.md#default-slot-content).
 
 - **Usage**：
 
-The compiled content of the current `.md` file being rendered. This will be very useful when you use [Custom Layout](../theme/default-theme-config.md#custom-layout-for-specific-pages).
+Specify a specific slot for a specific page (.md) for rendering. This will be very useful when you use [Custom Layout](../theme/default-theme-config.md#custom-layout-for-specific-pages) or [Writing a theme](../theme/writing-a-theme.md)
 
 ``` vue
 <Content/>
@@ -219,7 +220,9 @@ The compiled content of the current `.md` file being rendered. This will be very
 
 **Also see:**
 
-- [Custom Themes > Content Outlet](../theme/writing-a-theme.md#content-outlet)
+- [Global Computed > $page](./global-computed.md#page)
+- [Markdown Slot](./markdown-slot.md)
+- [Writing a theme > Content Outlet](../theme/writing-a-theme.md#content-outlet)
 
 
 ### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/>

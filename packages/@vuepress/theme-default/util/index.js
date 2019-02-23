@@ -151,6 +151,7 @@ function resolveHeaders (page) {
     type: 'group',
     collapsable: false,
     title: page.title,
+    path: null,
     children: headers.map(h => ({
       type: 'auto',
       title: h.title,
@@ -210,7 +211,7 @@ function ensureEndingSlash (path) {
     : path + '/'
 }
 
-function resolveItem (item, pages, base, htmlSuffix, isNested) {
+function resolveItem (item, pages, base, htmlSuffix, groupDepth = 1) {
   if (typeof item === 'string') {
     return resolvePage(pages, item, base, htmlSuffix)
   } else if (Array.isArray(item)) {
@@ -218,17 +219,23 @@ function resolveItem (item, pages, base, htmlSuffix, isNested) {
       title: item[1]
     })
   } else {
-    if (isNested) {
+    if (groupDepth > 3) {
       console.error(
-        '[vuepress] Nested sidebar groups are not supported. ' +
-        'Consider using navbar + categories instead.'
+        '[vuepress] detected a too deep nested sidebar group.'
       )
     }
     const children = item.children || []
+    if (children.length === 0 && item.path) {
+      return Object.assign(resolvePage(pages, item.path, base), {
+        title: item.title
+      })
+    }
     return {
       type: 'group',
+      path: item.path,
       title: item.title,
-      children: children.map(child => resolveItem(child, pages, base, htmlSuffix, true)),
+      sidebarDepth: item.sidebarDepth,
+      children: children.map(child => resolveItem(child, pages, base, htmlSuffix, groupDepth + 1)),
       collapsable: item.collapsable !== false
     }
   }

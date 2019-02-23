@@ -28,7 +28,7 @@ module.exports = (options, context) => ({
 
   globalUIComponents: options.popupComponent || 'SWUpdatePopup',
 
-  enhanceAppFiles: path.resolve(__dirname, 'lib/inject.js'),
+  enhanceAppFiles: path.resolve(__dirname, 'lib/enhanceAppFile.js'),
 
   async generated () {
     const { serviceWorker } = options
