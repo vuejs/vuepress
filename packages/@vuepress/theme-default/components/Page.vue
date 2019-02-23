@@ -34,12 +34,10 @@
         >
           ←
           <router-link
-            v-if="prev"
             class="prev"
             :to="prev.path"
-          >
-            {{ prev.title || prev.path }}
-          </router-link>
+            v-text="prev.title || prev.path"
+          />
         </span>
 
         <span
@@ -47,11 +45,10 @@
           class="next"
         >
           <router-link
-            v-if="next"
+            class="next"
             :to="next.path"
-          >
-            {{ next.title || next.path }}
-          </router-link>
+            v-text="next.title || next.path"
+          />
           →
         </span>
       </p>
@@ -68,6 +65,10 @@ export default {
   props: ['sidebarItems'],
 
   computed: {
+    flattenedItems () {
+      return Array.from(this.flatten(this.sidebarItems))
+    },
+
     lastUpdated () {
       return this.$page.lastUpdated
     },
@@ -89,7 +90,7 @@ export default {
       } else if (prev) {
         return resolvePage(this.$site.pages, prev, this.$route.path)
       } else {
-        return resolvePrev(this.$page, this.sidebarItems)
+        return this.findPage(-1)
       }
     },
 
@@ -100,7 +101,7 @@ export default {
       } else if (next) {
         return resolvePage(this.$site.pages, next, this.$route.path)
       } else {
-        return resolveNext(this.$page, this.sidebarItems)
+        return this.findPage(1)
       }
     },
 
@@ -163,35 +164,25 @@ export default {
         + (docsDir ? '/' + docsDir.replace(endingSlashRE, '') : '')
         + path
       )
-    }
-  }
-}
+    },
 
-function resolvePrev (page, items) {
-  return find(page, items, -1)
-}
+    findPage (offset) {
+      for (let i = 0; i < this.flattenedItems.length; i++) {
+        const cur = this.flattenedItems[i]
+        if (cur.path === decodeURIComponent(this.$page.path)) {
+          return this.flattenedItems[i + offset]
+        }
+      }
+    },
 
-function resolveNext (page, items) {
-  return find(page, items, 1)
-}
-
-function find (page, items, offset) {
-  const res = []
-  flattern(items, res)
-  for (let i = 0; i < res.length; i++) {
-    const cur = res[i]
-    if (cur.type === 'page' && cur.path === decodeURIComponent(page.path)) {
-      return res[i + offset]
-    }
-  }
-}
-
-function flattern (items, res) {
-  for (let i = 0, l = items.length; i < l; i++) {
-    if (items[i].type === 'group') {
-      flattern(items[i].children || [], res)
-    } else {
-      res.push(items[i])
+    * flatten (items) {
+      for (const item of items) {
+        if (item.type === 'group') {
+          yield * this.flatten(item.children || [])
+        } else {
+          yield item
+        }
+      }
     }
   }
 }
