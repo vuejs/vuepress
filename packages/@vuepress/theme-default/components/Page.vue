@@ -34,7 +34,6 @@
         >
           ←
           <router-link
-            class="prev"
             :to="prev.path"
             v-text="prev.title || prev.path"
           />
@@ -45,7 +44,6 @@
           class="next"
         >
           <router-link
-            class="next"
             :to="next.path"
             v-text="next.title || next.path"
           />
