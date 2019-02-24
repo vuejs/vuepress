@@ -32,4 +32,4 @@ module.exports = {
 ### headerAnchorSelector
 
 - 类型: `string`
-- 默认值: `.header-anchor'`
+- 默认值: `.header-anchor`
