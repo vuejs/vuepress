@@ -78,7 +78,7 @@ VuePress provides the ability to inherit one theme from another. VuePress will f
 **Also see:**
 
 - [Theme Inheritance](./inheritance.md)
-- [VuePress 1.x 的设计理念](../miscellaneous/design-concepts.md)
+- [Design Concepts of VuePress 1.x](../miscellaneous/design-concepts.md)
 
 ## globalLayout <Badge text="Danger Zone"/>
 

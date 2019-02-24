@@ -34,7 +34,7 @@ module.exports = {
 
 ## 继承策略
 
-**父主题的所有能力都会"传递"给子主题，对于文件级别的约定，子主题可以通过在同样的位置创建同名文件来覆盖它；对于某些主题配置选项，如 [globalLayout](./option-api.md#globallayout)，子主题也可以通过同名配置来覆盖它。**
+父主题的所有能力都会"传递"给子主题，对于文件级别的约定，子主题可以通过在同样的位置创建同名文件来覆盖它；对于某些主题配置选项，如 [globalLayout](./option-api.md#globallayout)，子主题也可以通过同名配置来覆盖它。
 
 [文件级别的约定](./writing-a-theme.md#目录结构)如下：
 
@@ -152,7 +152,7 @@ theme
 
 ## 访问父主题
 
-你可以使用 `@parent-theme` 来访问父主题的根路径，下述示例展示了在子主题中创建一个同名的布局组件，并简单使用父主题中的 slot，[@vuepress/theme-vue](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/theme-vue) 便是通过这种方式来基于默认主题创造的。
+你可以使用 `@parent-theme` 来访问父主题的根路径，下述示例展示了在子主题中创建一个同名的布局组件，并简单使用父主题中的 slot，[@vuepress/theme-vue](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/theme-vue) 便是通过这种方式创造的。
 
 ```vue
 <!-- themePath/components/Foo.vue -->

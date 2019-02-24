@@ -4,7 +4,7 @@
 
 We have two main reasons to support this feature:
 
-1. VuePress provides users with a [default theme](./default-theme-config.md), which meets the needs of document writers in most scenarios, even so, there are still many users who choose to `eject` and modify, even if they may only need to make minor changes to one of the components.
+1. VuePress provides users with a [default theme](./default-theme-config.md), which meets the needs of document writers in most scenarios, even so, there are still many users who choose to `eject` and modify it, even if they may only need to make minor changes to one of the components.
    
 2. In [0.x](https://vuepress.vuejs.org/guide/custom-themes.html#site-and-page-metadata), only one `Layout.vue` is needed for a theme, so we can achieve simple expansion by directly wrapping `Layout.vue` of another theme.
 
@@ -17,15 +17,15 @@ Therefore, we need to provide a reasonable and reliable theme inheritance strate
 To introduce this section, let's start with a few basic concepts:
 
 - **Atomic theme**：i.e. the parent theme, which is implemented entirely from scratch, like the default theme.
-- **Derived theme**：i.e. the child theme, created based on parent theme;
+- **Derived theme**：i.e. the child theme, which is created based on parent theme.
 
 ::: tip
-For now theme inheritance doesn't support high-level inheritance, that means, a derived topic cannot be inherited.
+For now theme inheritance doesn't support high-order inheritance, that means, a derived theme cannot be inherited.
 :::
 
 ## Usage
 
-Suppose you want to create a theme inherited from the default theme of VuePress, you just need to configure the [extend](./option-api.md#extend) option in your theme configuration:
+Suppose you want to create a theme inherited from the default theme, you just need to configure the [extend](./option-api.md#extend) option in your theme configuration:
 
 ```js
 module.exports = {
@@ -35,9 +35,9 @@ module.exports = {
 
 ## Inheritance Strategy
 
-**All the capabilities of the parent theme will be `"passed"` to the child theme. For file-level conventions, child theme can override it by creating a file with the same name in the same location. For some theme configuration options, such as [globalLayout](./option-api.md/globallayout), child theme can override it by the same name configuration.**
+All the capabilities of the parent theme will be `"passed"` to the child theme. For file-level conventions, child theme can override it by creating a file with the same name in the same location. For some theme configuration options, such as [globalLayout](./option-api.md/globallayout), child theme can override it by the same name configuration.
 
-The [file-level agreement](./writing-a-theme.md#directory-structure) at are as follows:
+The [file-level conventions](./writing-a-theme.md#directory-structure) are as follows:
 
 - **Global Components**，i.e. the Vue components under `theme/global-components`.
 - **Components**，i.e. the Vue components under `theme/components`.
@@ -148,12 +148,12 @@ In this way, you can easily "tamper" with some part of an atomic theme.
 
 ::: tip
 1. You'd better override the component based on the code of the corresponding component in the parent theme.
-2. Currently, when developing theme locally, you need to manually restart dev serverwhen a component is created or removed.
+2. Currently, when developing theme locally, you need to manually restart dev server when a component is created or removed.
 :::
 
 ## Access Parent Theme
 
-You can use `@parent-theme` to access the root path of the parent theme. The following example shows creating a layout component with the same name in a child theme and simply using slots in the parent theme. [@vuepress/theme-vue](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/theme-vue) is created in this way based on the default theme.
+You can use `@parent-theme` to access the root path of the parent theme. The following example shows creating a layout component with the same name in a child theme and simply using slots in the parent theme. [@vuepress/theme-vue](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/theme-vue) is created in this way.
 
 ```vue
 <!-- themePath/components/Foo.vue -->

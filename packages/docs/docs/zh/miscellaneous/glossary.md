@@ -58,7 +58,7 @@ sidebar: auto
 
 - Access: `Context.themeAPI.theme.path`
 
-当前使用的主题的所在路径（绝对路径）。
+当前使用的主题的所在的绝对路径。
 
 ## themeEntry
 
@@ -70,7 +70,7 @@ sidebar: auto
 
 - Access: `Context.themeAPI.parentTheme.path`
 
-如果当前使用的主题是一个派生主题，那么 `parentThemePath` 就是指父主题的所在路径（绝对路径）。
+如果当前使用的主题是一个派生主题，那么 `parentThemePath` 就是指父主题的所在绝对路径。
 
 ## parentThemeNetry
 
