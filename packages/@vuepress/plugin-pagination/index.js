@@ -16,16 +16,16 @@ module.exports = (options, ctx) => ({
   ],
 
   ready () {
-    let { postsFilter, postsSorter } = options
-    postsFilter = postsFilter || (({ type }) => type === 'post')
-    postsSorter = postsSorter || ((prev, next) => {
+    const { postsFilter, postsSorter } = options
+    ctx.postsFilter = postsFilter || (({ type }) => type === 'post')
+    ctx.postsSorter = postsSorter || ((prev, next) => {
       const prevTime = new Date(prev.frontmatter.date).getTime()
       const nextTime = new Date(next.frontmatter.date).getTime()
       return prevTime - nextTime > 0 ? -1 : 1
     })
 
     const { pages } = ctx
-    const posts = pages.filter(postsFilter)
+    const posts = pages.filter(ctx.postsFilter)
     const {
       perPagePosts = 10,
       paginationDir = 'page',
@@ -34,19 +34,14 @@ module.exports = (options, ctx) => ({
     } = options
 
     const intervallers = getIntervallers(posts.length, perPagePosts)
-    const pagination = {
-      paginationPages: intervallers.map((interval, index) => {
-        const path = index === 0
-          ? firstPagePath
-          : `/${paginationDir}/${index + 1}/`
-        return { path, interval }
-      }),
-      postsFilter: postsFilter.toString(),
-      postsSorter: postsSorter.toString()
-    }
+    ctx.paginationPages = intervallers.map((interval, index) => {
+      const path = index === 0
+        ? firstPagePath
+        : `/${paginationDir}/${index + 1}/`
+      return { path, interval }
+    })
 
-    ctx.pagination = pagination
-    pagination.paginationPages.forEach(({ path }, index) => {
+    ctx.paginationPages.forEach(({ path }, index) => {
       if (path === '/') {
         return
       }
@@ -63,7 +58,10 @@ module.exports = (options, ctx) => ({
   async clientDynamicModules () {
     return {
       name: 'pagination.js',
-      content: `export default ${JSON.stringify(ctx.pagination, null, 2)}`
+      content: `\
+export const paginationPages = ${JSON.stringify(ctx.paginationPages, null, 2)}
+export const postsFilter = ${ctx.postsFilter}
+export const postsSorter = ${ctx.postsSorter}`
     }
   }
 })

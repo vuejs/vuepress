@@ -1,4 +1,4 @@
-import paginationMeta from '@dynamic/pagination'
+import * as paginationMeta from '@dynamic/pagination'
 
 class Pagination {
   constructor (pagination, { pages, route }) {
