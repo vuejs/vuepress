@@ -7,8 +7,6 @@
 const { dev, build, eject } = require('@vuepress/core')
 const { path, logger, env } = require('@vuepress/shared-utils')
 const { wrapCommand } = require('./util')
-const opn = require('opn')
-const url = require('url')
 
 /**
  * Expose registerCoreCommands function.
@@ -26,7 +24,7 @@ module.exports = function (cli, options) {
     .option('--silent', 'start development server in silent mode')
     .option('--open', 'open browser when ready')
     .action((sourceDir = '.', commandOptions) => {
-      const { debug, silent, open } = commandOptions
+      const { debug, silent } = commandOptions
 
       logger.setOptions({ logLevel: silent ? 1 : debug ? 4 : 3 })
       logger.debug('global_options', options)
@@ -36,13 +34,6 @@ module.exports = function (cli, options) {
       wrapCommand(dev)(path.resolve(sourceDir), {
         ...options,
         ...commandOptions
-      }).then((urlObject) => {
-        if (!open) return
-        opn(url.format({
-          protocol: 'http',
-          hostname: urlObject.host,
-          port: urlObject.port
-        }))
       })
     })
 

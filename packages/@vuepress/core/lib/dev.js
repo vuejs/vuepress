@@ -7,7 +7,6 @@ module.exports = async (sourceDir, cliOptions = {}, ctx) => {
       console.log(err)
     }
   })
-  return { host, port }
 }
 
 module.exports.prepare = prepareServer
