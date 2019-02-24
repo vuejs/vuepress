@@ -106,7 +106,7 @@ Normally, you don't need to do this unless you know clearly that disabling plugi
 
 ## Override Components
 
-You may want to override the same-name components in the parent theme. By default, when the components in the parent theme use relative paths to reference other components, you will not be able to do this because you cannot modify the code of the parent theme at run time.
+You may want to override the same-name components in the parent theme. By default, when the components in the parent theme use relative paths to reference other components, you will not be able to do this because you cannot modify the code of the parent theme at runtime.
 
 VuePress achieves this requirement in a clever way, but there is a requirement for the parent theme - **All components must use the `@theme` alias to refer to other components**.
 
