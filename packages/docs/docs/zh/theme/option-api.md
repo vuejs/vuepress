@@ -1,10 +1,10 @@
 ---
-metaTitle: Option API | Theme
+metaTitle: Configuration | Theme
 ---
 
 # 主题的配置
 
-和插件几乎一样，主题的配置文件 `themeEntry` 应该导出一个普通的 JavaScript 对象（`#1`），它也可以是一个返回对象的函数（`#2`），这个函数接受用户在 `siteConfig`（即 `.vuepress/config.js`） 中的 `themeConfig` 为第一个参数、包含编译期上下文的 [ctx](./context-api.md) 对象作为第二个参数。
+和插件几乎一样，主题的配置文件 `themeEntry` 应该导出一个普通的 JavaScript 对象（`#1`），它也可以是一个返回对象的函数（`#2`），这个函数接受用户在 `siteConfig.themeConfig` 为第一个参数、包含编译期上下文的 [ctx](./context-api.md) 对象作为第二个参数。
 
 ``` js
 // #1
@@ -39,7 +39,6 @@ module.exports = (themeConfig, ctx) => {
 ---
 
 ::: warning 注意
-You probably don't need to use following options tagged with <Badge text="Danger Zone" vertical="middle"/> unless you know what you are doing!
 你可能不需要使用下面这些带有 <Badge text="Danger Zone" vertical="middle"/> 的选项，除非你知道你在做什么！
 :::
 
@@ -55,7 +54,11 @@ dev 模式下使用的 HTML 模板路径，默认模板见 [这里](https://gith
 - 类型: `String`
 - 默认值: undefined
 
-build 模式下使用的 HTML 模板路径，默认模板见 [这里](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/core/lib/app/index.dev.html)。
+build 模式下使用的 HTML 模板路径，默认模板见 [这里](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/core/lib/app/index.ssr.html)。
+
+**参考:**
+
+- [Vue SSR Guide > template](https://ssr.vuejs.org/zh/api/#createrenderer).
 
 
 ## extend <Badge text="Danger Zone"/>
@@ -75,7 +78,6 @@ VuePress 支持一个主题继承于另一个主题。VuePress 将遵循 `overri
 
 - [主题继承](./inheritance.md)
 - [例子: `@vuepress/theme-vue`](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/theme-vue)
-- [VuePress 1.x 的设计理念](../miscellaneous/design-concepts.md)
 
 ## globalLayout <Badge text="Danger Zone"/>
 

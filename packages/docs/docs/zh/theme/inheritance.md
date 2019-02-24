@@ -1,13 +1,13 @@
-# 主题的继承
+# 主题的继承 <Badge type="warn" text="beta" />
 
 ## 动机
 
 我们有两个主要的理由来支持这个特性：
 
-1. VuePress 为开发者提供了一个[默认主题](./default-theme-config.md)，它能在大多数场景下满足了文档编写者的需求。即便如此，仍然还是会有不少用户选择将其 eject 出来进行修改。实际上，我们可能只需要小改其中的某个组件。
-2. 在 [0.x](https://vuepress.vuejs.org/guide/custom-themes.html#site-and-page-metadata) 中，主题的入口只需要一个 `Layout.vue`，所以我们可以通过把另一个主题的 `Layout.vue` 直接引入来实现复用，这时，如果父 Layout 中提供了一些 slots，那么我们就可以在自己的 Layout 组件中传入这些 slot 了——这实现了简单的主题继承。
+1. VuePress 为开发者提供了一个[默认主题](./default-theme-config.md)，它能在大多数场景下满足了文档编写者的需求。即便如此，仍然还是会有不少用户选择将其 eject 出来进行修改，即使他们可能只是想要修改其中的某个组件。
+2. 在 [0.x](https://vuepress.vuejs.org/guide/custom-themes.html#site-and-page-metadata) 中，主题的入口只需要一个 `Layout.vue`，所以我们可以通过包装另一个主题的 `Layout.vue` 来实现简单的拓展。
   
-   到了 1.x 中，一个主题的配置开始变得复杂，我们开始有了[主题级别的配置](./option-api.md)，它支持为主题添加插件、自定义 GlobalLayout 等。除此之外，我们还有一些引入了主题开发的 [目录结构的约定](./writing-a-theme.md#目录结构)，如 `styles/index.styl`，在这样的背景下，我们无法使用 0.x 的方式来实现继承了。
+   到了 1.x 中，一个主题的元素开始变得复杂，我们开始有了[主题级别的配置](./option-api.md)，它支持为主题添加插件、自定义 GlobalLayout 等。除此之外，我们还有一些引入了主题开发的 [目录结构的约定](./writing-a-theme.md#目录结构)，如 `styles/index.styl`，在这样的背景下，我们无法使用 0.x 的方式来实现继承了。
 
 因此，我们需要提供一种合理、可靠的主题继承方案。
 
@@ -19,7 +19,7 @@
 - **派生主题**：即子主题，基于父主题创建的主题；
 
 ::: tip 提示
-主题支持暂时不支持高阶继承，也就是说，一个派生主题无法被继承。
+主题继承暂时不支持高阶继承，也就是说，一个派生主题无法被继承。
 :::
 
 ## 使用
@@ -34,9 +34,9 @@ module.exports = {
 
 ## 继承策略
 
-**父主题的所有能力都会"传递"给子主题，对于文件级别的约定，子主题可以通过在同样的位置创建同名文件来覆盖它，对于某些主题配置选项，如 [globalLayout](./option-api.md#globallayout)，子主题也可以通过同名配置来覆盖它。**
+**父主题的所有能力都会"传递"给子主题，对于文件级别的约定，子主题可以通过在同样的位置创建同名文件来覆盖它；对于某些主题配置选项，如 [globalLayout](./option-api.md#globallayout)，子主题也可以通过同名配置来覆盖它。**
 
-文件级别的约定如下：
+[文件级别的约定](./writing-a-theme.md#目录结构)如下：
 
 - **全局组件**，即放置在 `theme/global-components` 中的 Vue 组件。
 - **组件**，即放置在 `theme/components` 中的 Vue 组件。
@@ -44,7 +44,7 @@ module.exports = {
 - **HTML 模板**，即放置在 `theme/templates` 中的 `dev.html` 和 `ssr.html`。
 - **主题水平的客户端增强文件**，即 `theme/enhanceApp.js`
 
-能被子主题覆盖的主题配置选项如下：
+对于主题配置，能被子主题覆盖的配置选项如下：
 
 - [devTemplate](./option-api.md#devtemplate)
 - [ssrTemplate](./option-api.md#ssrtemplate)
@@ -52,15 +52,15 @@ module.exports = {
 
 无法被子主题覆盖的主题配置选项如下：
 
-- [extend](./option-api.md#extend)：父主题不会存在 extend。
+- [extend](./option-api.md#extend)
 
 需要特殊处理的主题选项：
 
-- [plugins](./option-api.md#plugins)：见下文。
+- [plugins](./option-api.md#plugins)：参见 [插件的覆盖](#插件的覆盖)。
 
 ## 插件的覆盖
 
-对于父主题中的 [plugins](./option-api.md#plugins), 子主题不会覆盖它，但可以通过同名的插件配置来 override 插件的默认选项，如：
+对于父主题中的 [plugins](./option-api.md#plugins), 子主题不会直接覆盖它，但是插件的选项可以通过创建同名的插件配置来覆盖。
 
 举例来说，如果父主题具有如下配置：
 
@@ -109,7 +109,7 @@ module.exports = {
 
 VuePress 则通过一种巧妙的方式实现了这种需求，但这对父主题有一定的要求——**所有的组件都必须使用 `@theme` 别名来引用其他组件**。
 
-举例来说，如果你想开发一个父主题，它的结构如下：
+举例来说，如果你正在开发的一个原子主题的结构如下：
 
 ::: vue
 theme
@@ -124,7 +124,7 @@ theme
 └── index.js
 ::: 
 
-那么，你在主题中的任意 Vue 组件中，**都应该通过 `@theme` 来访问主题根目录**：
+那么，在该主题中的任意 Vue 组件中，**你都应该通过 `@theme` 来访问主题根目录**：
 
 ```vue
 <script>
@@ -152,7 +152,7 @@ theme
 
 ## 访问父主题
 
-你可以在子主题的组件中，使用 `@parent-theme` 来访问父主题，下述示例展示了在子主题中创建一个同名的布局组件，并简单复用父主题中的 slot，[@vuepress/theme-vue](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/theme-vue) 便是通过这种方式来基于默认主题创造的。
+你可以使用 `@parent-theme` 来访问父主题的根路径，下述示例展示了在子主题中创建一个同名的布局组件，并简单使用父主题中的 slot，[@vuepress/theme-vue](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/theme-vue) 便是通过这种方式来基于默认主题创造的。
 
 ```vue
 <!-- themePath/components/Foo.vue -->
