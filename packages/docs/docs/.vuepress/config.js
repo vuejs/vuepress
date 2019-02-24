@@ -1,4 +1,3 @@
-const path = require('path')
 const container = require('markdown-it-container')
 
 module.exports = ctx => ({
@@ -6,12 +5,12 @@ module.exports = ctx => ({
   locales: {
     '/': {
       lang: 'en-US',
-      title: 'VuePress',
+      title: 'VuePress 1.x',
       description: 'Vue-powered Static Site Generator'
     },
     '/zh/': {
       lang: 'zh-CN',
-      title: 'VuePress',
+      title: 'VuePress 1.x',
       description: 'Vue 驱动的静态网站生成器'
     }
   },
@@ -32,10 +31,10 @@ module.exports = ctx => ({
     editLinks: true,
     docsDir: 'packages/docs/docs',
     // #697 Provided by the official algolia team.
-    algolia: ctx.isProd ? ({
-      apiKey: '3a539aab83105f01761a137c61004d85',
-      indexName: 'vuepress'
-    }) : null,
+    // algolia: ctx.isProd ? ({
+    //   apiKey: '3a539aab83105f01761a137c61004d85',
+    //   indexName: 'vuepress'
+    // }) : null,
     locales: {
       '/': {
         label: 'English',
@@ -64,7 +63,7 @@ module.exports = ctx => ({
     }
   },
   plugins: [
-    ['@vuepress/i18n-ui',!ctx.isProd],
+    ['@vuepress/i18n-ui', !ctx.isProd],
     ['@vuepress/back-to-top', true],
     ['@vuepress/pwa', {
       serviceWorker: true,
@@ -76,9 +75,6 @@ module.exports = ctx => ({
       ga: 'UA-128189152-1'
     }],
   ],
-  clientRootMixin: ctx.isProd
-    ? path.resolve(__dirname, 'mixin.js')
-    : [],
   extendMarkdown (md) {
     md.use(container, 'upgrade', {
       render: (tokens, idx) => tokens[idx].nesting === 1

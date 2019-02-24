@@ -21,6 +21,7 @@ module.exports = function (src) {
   const isProd = process.env.NODE_ENV === 'production'
   const isServer = this.target === 'node'
   const options = getOptions(this)
+  const loader = Object.create(this)
   const { sourceDir } = options
   let { markdown } = options
   if (!markdown) {
@@ -71,6 +72,7 @@ module.exports = function (src) {
     data: { hoistedTags, links },
     dataBlockString
   } = markdown.render(content, {
+    loader,
     frontmatter: frontmatter.data,
     relPath: path.relative(sourceDir, file)
   })
