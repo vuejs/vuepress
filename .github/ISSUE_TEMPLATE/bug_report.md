@@ -39,3 +39,4 @@ about: Create a report to help us improve
 - Browser version: 
 - Is this a global or local install? 
 - Which package manager did you use for the install?
+- Does this issue occur when all plugins are disabled?
