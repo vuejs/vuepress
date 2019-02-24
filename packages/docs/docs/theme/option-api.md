@@ -32,3 +32,4 @@ Note that in the child theme, VuePress will apply a `@parent-theme` [alias](../p
 
 - [Example: `@vuepress/theme-vue`](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/theme-vue)
 - [Design Concepts of VuePress 1.x](../miscellaneous/design-concepts.md)
+

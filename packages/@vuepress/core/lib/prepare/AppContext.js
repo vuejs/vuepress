@@ -252,14 +252,12 @@ module.exports = class AppContext {
    */
 
   resolveGlobalLayout () {
-    const GLOBAL_LAYOUT_COMPONENT_NAME = `GlobalLayout`
-
     this.globalLayout = this.resolveCommonAgreementFilePath(
       'globalLayout',
       {
-        defaultValue: path.resolve(__dirname, `../app/components/${GLOBAL_LAYOUT_COMPONENT_NAME}.vue`),
-        siteAgreement: `components/${GLOBAL_LAYOUT_COMPONENT_NAME}.vue`,
-        themeAgreement: `layouts/${GLOBAL_LAYOUT_COMPONENT_NAME}.vue`
+        defaultValue: path.resolve(__dirname, `../app/components/GlobalLayout.vue`),
+        siteAgreement: `components/GlobalLayout.vue`,
+        themeAgreement: `layouts/GlobalLayout.vue`
       }
     )
 

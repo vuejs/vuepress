@@ -76,7 +76,9 @@ module.exports = ctx => ({
       ga: 'UA-128189152-1'
     }],
   ],
-  clientRootMixin: path.resolve(__dirname, 'mixin.js'),
+  clientRootMixin: ctx.isProd
+    ? path.resolve(__dirname, 'mixin.js')
+    : [],
   extendMarkdown (md) {
     md.use(container, 'upgrade', {
       render: (tokens, idx) => tokens[idx].nesting === 1
@@ -161,7 +163,8 @@ function getThemeSidebar (groupA, introductionA) {
         'using-a-theme',
         'writing-a-theme',
         'option-api',
-        'default-theme-config'
+        'default-theme-config',
+        'inheritance'
       ]
     },
   ]

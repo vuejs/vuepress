@@ -37,6 +37,7 @@ module.exports = function loadTheme (ctx) {
   if (!theme.path) {
     throw new Error(`[vuepress] You must specify a theme, or create a local custom theme. \n For more details, refer to https://vuepress.vuejs.org/guide/custom-themes.html#custom-themes. \n`)
   }
+  logger.tip(`Apply theme ${chalk.gray(theme.name)}`)
   theme.entry.name = '@vuepress/internal-theme-entry-file'
 
   let parentTheme = {}
@@ -45,6 +46,8 @@ module.exports = function loadTheme (ctx) {
     parentTheme.entry.name = '@vuepress/internal-parent-theme-entry-file'
   }
 
+  logger.debug('theme', theme.name, theme.path)
+  logger.debug('parentTheme', parentTheme.name, parentTheme.path)
   return new ThemeAPI(theme, parentTheme, ctx)
 }
 
@@ -52,7 +55,13 @@ function normalizeThemePath (resolved) {
   const { entry, name, fromDep } = resolved
   if (fromDep) {
     const pkgPath = require.resolve(name)
-    return parse(pkgPath).dir
+    let packageRootDir = parse(pkgPath).dir
+    // For those cases that "main" field was set to non-index file
+    // e.g. `layouts/Layout.vue`
+    while (!fs.existsSync(`${packageRootDir}/package.json`)) {
+      packageRootDir = resolve(packageRootDir, '..')
+    }
+    return packageRootDir
   } else if (entry.endsWith('.js') || entry.endsWith('.vue')) {
     return parse(entry).dir
   } else {
@@ -89,7 +98,6 @@ function resolveTheme (ctx, resolver, ignoreLocal, theme) {
     path = normalizeThemePath(resolved)
     name = resolved.name
     shortcut = resolved.shortcut
-    logger.tip(`Apply theme ${chalk.gray(name)}`)
   } else {
     return {}
   }
