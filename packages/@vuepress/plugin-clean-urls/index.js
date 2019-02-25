@@ -8,9 +8,15 @@ module.exports = (options = {}, context) => {
     extendPageData (page) {
       const { regularPath, frontmatter = {}} = page
       if (frontmatter.permalink) return
-      page.path = regularPath
-        .replace(/\.html$/, normalSuffix)
-        .replace(/\/$/, indexSuffix)
+      if (regularPath.endsWith('.html')) {
+        // normal path
+        // e.g. foo/bar.md -> foo/bar.html
+        page.path = regularPath.slice(0, -5) + normalSuffix
+      } else if (regularPath.endsWith('/')) {
+        // index path
+        // e.g. foo/index.md -> foo/
+        page.path = regularPath.slice(0, -1) + indexSuffix
+      }
     }
   }
 }
