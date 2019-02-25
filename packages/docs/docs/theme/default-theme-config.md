@@ -202,7 +202,7 @@ Sidebar groups are collapsable by default. You can force a group to be always op
 A sidebar group config also supports [sidebarDepth](#nested-header-links) field to override the default sidebar depth (`1`).
 
 ::: tip
-   From `1.0.0-alpha-36` on, nested sidebar group <Badge text="beta"/> is also supported, but the nesting depth should be less than 3, otherwise the console will receive a warning.
+   From `1.0.0-alpha.36` on, nested sidebar group <Badge text="beta"/> is also supported, but the nesting depth should be less than 3, otherwise the console will receive a warning.
 :::
 
 ### Multiple Sidebars
