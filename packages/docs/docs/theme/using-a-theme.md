@@ -1,6 +1,6 @@
 # Using a theme
 
-Using a theme is almost same as using a plugin.
+Using a theme is almost the same as using a plugin.
 
 ## Using a theme from a dependency
 

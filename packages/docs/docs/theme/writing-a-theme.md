@@ -88,7 +88,7 @@ theme
 
 Then, all the pages will use `Layout.vue` as layout component by default, while the routes not matching will use `404.vue`.
 
-If you want to switch the layout of the some page to `AnotherLayout.vue`, you just need to update the frontmatter of this page:
+If you want to switch the layout of some pages to `AnotherLayout.vue`, you just need to update the frontmatter of this page:
 
 ```markdown
 ---
@@ -163,7 +163,7 @@ If a markdown file contains a `<!-- more -->` comment, any content above the com
 
 ## App Level Enhancements
 
-Themes can enhance the Vue app that VuePress uses by exposing an `enhanceApp.js` file at the root of the theme. The file should `export default` a hook function which will receive an object containing some app level values. You can use this hook to install additional Vue plugins, register global components, or add additional router hooks:
+Themes can enhance the Vue app that VuePress uses by exposing an `enhanceApp.js` file at the root of the theme. The file should `export default` a hook function which will receive an object containing some app-level values. You can use this hook to install additional Vue plugins, register global components, or add additional router hooks:
 
 ``` js
 export default ({

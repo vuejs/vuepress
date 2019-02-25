@@ -209,4 +209,4 @@ heroku open
 
 ## Now
 
-Please refer to [Deploy a example vuepress website with Now](https://zeit.co/examples/vuepress/).
+Please refer to [Deploy an example vuepress website with Now](https://zeit.co/examples/vuepress/).

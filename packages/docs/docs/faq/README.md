@@ -49,7 +49,7 @@ module.exports = (options, ctx) => ({
 ## When do I need to use `enhanceAppFiles`?
 
 1. I want to execute some code on the client side automatically.
-2. I don't have need for reuse of this module.
+2. I don't have a need for reuse of this module.
 
 **Example:**
 
