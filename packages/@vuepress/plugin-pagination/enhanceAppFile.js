@@ -2,14 +2,8 @@ import * as paginationMeta from '@dynamic/pagination'
 
 class Pagination {
   constructor (pagination, { pages, route }) {
-    let { postsFilter, postsSorter } = pagination
-
-    /* eslint-disable no-eval */
-    postsFilter = eval(postsFilter)
-    postsSorter = eval(postsSorter)
-
+    const { postsFilter, postsSorter, paginationPages } = pagination
     const { path } = route
-    const { paginationPages } = pagination
 
     paginationPages.forEach((page, index) => {
       if (page.path === path) {
