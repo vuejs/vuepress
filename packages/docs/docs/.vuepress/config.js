@@ -143,6 +143,7 @@ function getPluginSidebar (pluginTitle, pluginIntro, officialPluginTitle) {
         'official/plugin-medium-zoom',
         'official/plugin-back-to-top',
         'official/plugin-register-components',
+        'official/plugin-clean-urls'
       ]
     }
   ]
