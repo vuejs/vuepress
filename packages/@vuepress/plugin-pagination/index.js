@@ -60,8 +60,23 @@ module.exports = (options, ctx) => ({
       name: 'pagination.js',
       content: `\
 export const paginationPages = ${JSON.stringify(ctx.paginationPages, null, 2)}
-export const postsFilter = ${ctx.postsFilter}
-export const postsSorter = ${ctx.postsSorter}`
+export const postsFilter = ${stringifyFunction(ctx.postsFilter)}
+export const postsSorter = ${stringifyFunction(ctx.postsSorter)}`
     }
   }
 })
+
+function stringifyFunction (input) {
+  let output = String(input)
+  if (!/^(function\b|\()/.test(output)) {
+    /**
+     * fix edge case:
+     * ```js
+     * const foo = { bar () {} }
+     * stringifyFunction(foo.bar)
+     * ```
+     */
+    output = output.replace(/^[^(]+/, 'function')
+  }
+  return output
+}
