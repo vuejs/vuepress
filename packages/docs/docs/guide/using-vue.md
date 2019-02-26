@@ -173,7 +173,7 @@ For pre-processors that do not have built-in webpack config support, you will ne
 
 ## Script & Style Hoisting
 
-Sometimes you may need to apply some JavaScript or CSS only to the current page. In those cases you can directly write root-level `<script>` or `<style>` blocks in the markdown file, and they will be hoisted out of the compiled HTML and used as the `<script>` and `<style>` blocks for the resulting Vue single-file component.
+Sometimes you may need to apply some JavaScript or CSS only to the current page. In those cases, you can directly write root-level `<script>` or `<style>` blocks in the markdown file, and they will be hoisted out of the compiled HTML and used as the `<script>` and `<style>` blocks for the resulting Vue single-file component.
 
 <p class="demo" :class="$style.example"></p>
 
@@ -197,7 +197,7 @@ export default {
 
 ### OutboundLink <Badge text="stable"/>
 
-It(<OutboundLink/>) is used to indicate that this is an external link. In VuePress this component have been followed by every external link.
+It(<OutboundLink/>) is used to indicate that this is an external link. In VuePress, this component has been followed by every external link.
 
 ### ClientOnly <Badge text="stable"/>
 
