@@ -22,7 +22,6 @@ module.exports = class ThemeAPI {
 
   init () {
     const alias = {
-      '@theme': this.theme.path,
       '@current-theme': this.theme.path
     }
     if (this.existsParentTheme) {
@@ -40,6 +39,7 @@ module.exports = class ThemeAPI {
       const { filename, path } = this.layoutComponentMap[name]
       alias[`@theme/layouts/${filename}`] = path
     })
+    alias['@theme'] = this.theme.path
     this.setAlias(alias)
   }
 
