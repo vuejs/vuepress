@@ -50,7 +50,7 @@ sidebar: auto
 
 ## themeConfig
 
-- Access: `$site | Context.themeConfig`
+- Access: `$themeConfig | Context.themeConfig`
 
 即 `.vuepress/config.js` 中 `themeConfig` 的值，是用户对当前所使用的主题的配置。
 
@@ -72,7 +72,7 @@ sidebar: auto
 
 如果当前使用的主题是一个派生主题，那么 `parentThemePath` 就是指父主题的所在绝对路径。
 
-## parentThemeNetry
+## parentThemeEntry
 
 - Access: `Context.themeAPI.parentTheme.entry`
 

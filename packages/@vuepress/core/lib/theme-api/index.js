@@ -22,6 +22,7 @@ module.exports = class ThemeAPI {
 
   init () {
     const alias = {
+      '@theme': this.theme.path,
       '@current-theme': this.theme.path
     }
     if (this.existsParentTheme) {

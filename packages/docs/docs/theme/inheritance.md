@@ -138,7 +138,7 @@ On this premise, when you create a `Navbar` component in the same place in the c
 
 ::: vue
 theme
-└──  components
+└── components
     └── `Navbar.vue`
 ::: 
 

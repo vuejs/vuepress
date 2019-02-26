@@ -48,9 +48,9 @@ That is, those titles defined by one or more `#` in `markdown`.
 
 ## themeConfig
 
-- Access: `$site | Context.themeConfig`
+- Access: `$themeConfig | Context.themeConfig`
 
-Value of `themeConfig` in `.vuepress/config.js`, i.e., `user's theme configuration`.
+Value of `themeConfig` in `.vuepress/config.js`, i.e., user's theme configuration.
 
 ## themePath
 
@@ -70,7 +70,7 @@ Theme's configuration file - `themePath/index.js`.
 
 If the current theme is a derived theme, `parentThemePath` refers to the absolute path of the parent theme.
 
-## parentThemeNetry
+## parentThemeEntry
 
 - Access: `Context.themeAPI.parentTheme.entry`
 

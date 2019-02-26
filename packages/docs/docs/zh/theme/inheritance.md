@@ -137,7 +137,7 @@ import Home from '@theme/components/Navbar.vue'
 
 ::: vue
 theme
-└──  components
+└── components
     └── `Navbar.vue`
 ::: 
 
