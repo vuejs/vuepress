@@ -20,7 +20,7 @@ module.exports = (options, ctx) => ({
     // 2. write palette.styl
     const { sourceDir, writeTemp } = ctx
 
-    const themePalette = path.resolve(ctx.themePath, 'styles/palette.styl')
+    const themePalette = path.resolve(ctx.themeAPI.theme.path, 'styles/palette.styl')
     const userPalette = path.resolve(sourceDir, '.vuepress/styles/palette.styl')
 
     const themePaletteContent = fs.existsSync(themePalette)
@@ -34,8 +34,8 @@ module.exports = (options, ctx) => ({
     // user's palette can override theme's palette.
     let paletteContent = themePaletteContent + userPaletteContent
 
-    if (ctx.parentThemePath) {
-      const parentThemePalette = path.resolve(ctx.parentThemePath, 'styles/palette.styl')
+    if (ctx.themeAPI.existsParentTheme) {
+      const parentThemePalette = path.resolve(ctx.themeAPI.parentTheme.path, 'styles/palette.styl')
       const parentThemePaletteContent = fs.existsSync(parentThemePalette)
         ? `@import(${JSON.stringify(parentThemePalette.replace(/[\\]+/g, '/'))})`
         : ''

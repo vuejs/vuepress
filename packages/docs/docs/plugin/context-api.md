@@ -42,12 +42,6 @@ Root directory where the temporary files are located.
 
 Output path.
 
-## ctx.themePath
-
-- Type: `string`
-
-The path of the currently active theme.
-
 ## ctx.base
 
 - Type: `string`

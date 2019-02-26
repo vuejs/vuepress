@@ -7,8 +7,8 @@
 
 <script>
 import ParentLayout from '@parent-theme/layouts/Layout.vue'
-import CarbonAds from '../components/CarbonAds.vue'
-import BuySellAds from '../components/BuySellAds.vue'
+import CarbonAds from '@theme/components/CarbonAds.vue'
+import BuySellAds from '@theme/components/BuySellAds.vue'
 
 export default {
   components: {

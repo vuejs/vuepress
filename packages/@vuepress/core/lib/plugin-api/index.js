@@ -84,7 +84,11 @@ module.exports = class PluginAPI {
     if (isPlainObject(pluginRaw) && pluginRaw.$$normalized) {
       plugin = pluginRaw
     } else {
-      plugin = this.normalizePlugin(pluginRaw, pluginOptions)
+      try {
+        plugin = this.normalizePlugin(pluginRaw, pluginOptions)
+      } catch (e) {
+        logger.warn(e.message)
+      }
     }
 
     if (plugin.multiple !== true) {
@@ -114,8 +118,7 @@ module.exports = class PluginAPI {
   normalizePlugin (pluginRaw, pluginOptions = {}) {
     let plugin = this._pluginResolver.resolve(pluginRaw)
     if (!plugin.entry) {
-      console.warn(`[vuepress] cannot resolve plugin "${pluginRaw}"`)
-      return this
+      throw new Error(`[vuepress] cannot resolve plugin "${pluginRaw}"`)
     }
     plugin = flattenPlugin(plugin, pluginOptions, this._pluginContext, this)
     plugin.$$normalized = true

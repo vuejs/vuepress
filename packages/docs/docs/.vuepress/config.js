@@ -160,7 +160,8 @@ function getThemeSidebar (groupA, introductionA) {
         'using-a-theme',
         'writing-a-theme',
         'option-api',
-        'default-theme-config'
+        'default-theme-config',
+        'inheritance'
       ]
     },
   ]
