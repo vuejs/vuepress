@@ -70,7 +70,7 @@ Specify the port to use for the dev server.
 - Type: `string`
 - Default: `.vuepress/dist`
 
-Specify the output directory for `vuepress build`.
+Specify the output directory for `vuepress build`. If a relative path is specified, it will be resolved based on `process.cwd()`.
 
 ### ga
 
