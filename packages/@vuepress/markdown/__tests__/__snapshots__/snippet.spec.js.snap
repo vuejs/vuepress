@@ -7,6 +7,15 @@ exports[`snippet import snippet 1`] = `
 </code></pre>
 `;
 
+exports[`snippet import snippet with comment/block transclusion => ::: 1`] = `
+<pre><code class="language-vue">export default {
+  mounted() {
+    alert(&quot;yay!&quot;);
+  }
+};
+</code></pre>
+`;
+
 exports[`snippet import snippet with highlight multiple lines 1`] = `
 <div class="highlight-lines">
   <div class="highlighted">&nbsp;</div>
@@ -23,4 +32,31 @@ exports[`snippet import snippet with highlight single line 1`] = `
   <div class="highlighted">&nbsp;</div>
   <br>
 </div>export default function () { // .. }
+`;
+
+exports[`snippet import snippet with lang option 1`] = `
+<pre><code class="language-ruby">def snippet
+  puts 'hello'
+  puts 'from'
+  puts 'vue'
+end
+</code></pre>
+`;
+
+exports[`snippet import snippet with line transclusion 1`] = `
+<pre><code class="language-vue">&lt;style lang=&quot;scss&quot; scoped&gt;
+.component {
+  display: flex;
+}
+&lt;/style&gt;
+</code></pre>
+`;
+
+exports[`snippet import snippet with tag transclusion => style 1`] = `
+<pre><code class="language-vue">&lt;style lang=&quot;scss&quot; scoped&gt;
+.component {
+  display: flex;
+}
+&lt;/style&gt;
+</code></pre>
 `;
