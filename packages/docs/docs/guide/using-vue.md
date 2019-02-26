@@ -225,7 +225,7 @@ Specify a specific slot for a specific page (.md) for rendering. This will be ve
 - [Writing a theme > Content Outlet](../theme/writing-a-theme.md#content-outlet)
 
 
-### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/>
+### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/> <Badge text="default theme"/>
 
 - **Props**:
 
@@ -238,7 +238,7 @@ Specify a specific slot for a specific page (.md) for rendering. This will be ve
 You can use this component in header to add some status for some API:
 
 ``` md
-### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/>
+### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/> <Badge text="default theme"/>
 ```
 
 **Also see:**
