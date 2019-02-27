@@ -6,7 +6,7 @@ module.exports = md => {
   md
     .use(container, SLOT_KEY, {
       render: (tokens, idx) => tokens[idx].nesting === 1
-        ? `<template slot="${tokens[idx].info.trim().slice(SLOT_KEY.length).trim()}">`
+        ? `<template #${tokens[idx].info.trim().slice(SLOT_KEY.length).trim()}>`
         : '</template>'
     })
 }

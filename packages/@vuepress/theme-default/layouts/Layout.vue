@@ -21,11 +21,11 @@
     >
       <slot
         name="sidebar-top"
-        slot="top"
+        #top
       />
       <slot
         name="sidebar-bottom"
-        slot="bottom"
+        #bottom
       />
     </Sidebar>
 
@@ -37,11 +37,11 @@
     >
       <slot
         name="page-top"
-        slot="top"
+        #top
       />
       <slot
         name="page-bottom"
-        slot="bottom"
+        #bottom
       />
     </Page>
   </div>
