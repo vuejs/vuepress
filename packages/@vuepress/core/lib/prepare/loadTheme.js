@@ -5,11 +5,13 @@
  */
 
 const {
-  fs, path,
+  fs,
+  path: { resolve, parse },
   moduleResolver: { getThemeResolver },
   datatypes: { isString },
   logger, chalk
 } = require('@vuepress/shared-utils')
+const ThemeAPI = require('../theme-api')
 
 /**
  * Resolve theme.
@@ -25,164 +27,86 @@ const {
  * @param {string} theme
  * @param {string} sourceDir
  * @param {string} vuepressDir
- * @returns {Promise}
+ * @returns {ThemeAPI}
  */
 
-module.exports = async function loadTheme (ctx) {
-  const { siteConfig, cliOptions, sourceDir, vuepressDir, pluginAPI } = ctx
-  const theme = siteConfig.theme || cliOptions.theme
+module.exports = function loadTheme (ctx) {
   const themeResolver = getThemeResolver()
 
-  const localThemePath = path.resolve(vuepressDir, 'theme')
-  const useLocalTheme
-    = !fs.existsSync(theme)
-    && fs.existsSync(localThemePath)
-    && (fs.readdirSync(localThemePath)).length > 0
-
-  let themePath = null         // Mandatory
-  let themeEntryFile = {}      // Optional
-  let themeName
-  let themeShortcut
-  let parentThemePath = null       // Optional
-  let parentThemeEntryFile = {}    // Optional
-
-  if (useLocalTheme) {
-    themePath = localThemePath
-    logger.tip(`Apply theme located at ${chalk.gray(themePath)}...`)
-  } else if (isString(theme)) {
-    const resolved = themeResolver.resolve(theme, sourceDir)
-    const { entry, name, shortcut } = resolved
-
-    if (entry === null) {
-      throw new Error(`Cannot resolve theme ${theme}.`)
-    }
-
-    themePath = normalizeThemePath(resolved)
-    themeName = name
-    themeShortcut = shortcut
-    logger.tip(`Apply theme ${chalk.gray(themeName)}`)
-  } else {
+  const theme = resolveTheme(ctx, themeResolver)
+  if (!theme.path) {
     throw new Error(`[vuepress] You must specify a theme, or create a local custom theme. \n For more details, refer to https://vuepress.vuejs.org/guide/custom-themes.html#custom-themes. \n`)
   }
+  logger.tip(`Apply theme ${chalk.gray(theme.name)}`)
+  theme.entry.name = '@vuepress/internal-theme-entry-file'
 
-  try {
-    themeEntryFile = pluginAPI.normalizePlugin(themePath, ctx.themeConfig)
-  } catch (error) {
-    themeEntryFile = {}
+  let parentTheme = {}
+  if (theme.entry.extend) {
+    parentTheme = resolveTheme(ctx, themeResolver, true, theme.entry.extend)
+    parentTheme.entry.name = '@vuepress/internal-parent-theme-entry-file'
   }
 
-  themeEntryFile.name = '@vuepress/internal-theme-entry-file'
-  themeEntryFile.shortcut = null
-
-  // handle theme api
-  const layoutDirs = [
-    path.resolve(themePath, '.'),
-    path.resolve(themePath, 'layouts')
-  ]
-
-  if (themeEntryFile.extend) {
-    const resolved = themeResolver.resolve(themeEntryFile.extend, sourceDir)
-    if (resolved.entry === null) {
-      throw new Error(`Cannot resolve parent theme ${themeEntryFile.extend}.`)
-    }
-    parentThemePath = normalizeThemePath(resolved)
-
-    try {
-      parentThemeEntryFile = pluginAPI.normalizePlugin(parentThemePath, ctx.themeConfig)
-    } catch (error) {
-      parentThemeEntryFile = {}
-    }
-
-    parentThemeEntryFile.name = '@vuepress/internal-parent-theme-entry-file'
-    parentThemeEntryFile.shortcut = null
-
-    layoutDirs.unshift(
-      path.resolve(parentThemePath, '.'),
-      path.resolve(parentThemePath, 'layouts'),
-    )
-
-    themeEntryFile.alias = Object.assign(
-      themeEntryFile.alias || {},
-      { '@parent-theme': parentThemePath }
-    )
-  }
-
-  // normalize component name
-  const getComponentName = filename => {
-    filename = filename.slice(0, -4)
-    if (filename === '404') {
-      filename = 'NotFound'
-    }
-    return filename
-  }
-
-  const readdirSync = dir => fs.existsSync(dir) && fs.readdirSync(dir) || []
-
-  // built-in named layout or not.
-  const isInternal = componentName => componentName === 'Layout'
-    || componentName === 'NotFound'
-
-  const layoutComponentMap = layoutDirs
-    .map(
-      layoutDir => readdirSync(layoutDir)
-        .filter(filename => filename.endsWith('.vue'))
-        .map(filename => {
-          const componentName = getComponentName(filename)
-          return {
-            filename,
-            componentName,
-            isInternal: isInternal(componentName),
-            path: path.resolve(layoutDir, filename)
-          }
-        })
-    )
-
-    .reduce((arr, next) => {
-      arr.push(...next)
-      return arr
-    }, [])
-
-    .reduce((map, component) => {
-      map[component.componentName] = component
-      return map
-    }, {})
-
-  const { Layout = {}, NotFound = {}} = layoutComponentMap
-
-  // layout component does not exist.
-  if (!Layout || !fs.existsSync(Layout.path)) {
-    throw new Error(`[vuepress] Cannot resolve Layout.vue file in \n ${Layout.path}`)
-  }
-
-  // use default 404 component.
-  if (!NotFound || !fs.existsSync(NotFound.path)) {
-    layoutComponentMap.NotFound = {
-      filename: 'NotFound.vue',
-      componentName: 'NotFound',
-      path: path.resolve(__dirname, '../app/components/NotFound.vue'),
-      isInternal: true
-    }
-  }
-
-  return {
-    themePath,
-    layoutComponentMap,
-    themeEntryFile,
-    themeName,
-    themeShortcut,
-    parentThemePath,
-    parentThemeEntryFile
-  }
+  logger.debug('theme', theme.name, theme.path)
+  logger.debug('parentTheme', parentTheme.name, parentTheme.path)
+  return new ThemeAPI(theme, parentTheme, ctx)
 }
 
 function normalizeThemePath (resolved) {
   const { entry, name, fromDep } = resolved
   if (fromDep) {
     const pkgPath = require.resolve(name)
-    return path.parse(pkgPath).dir
+    let packageRootDir = parse(pkgPath).dir
+    // For those cases that "main" field was set to non-index file
+    // e.g. `layouts/Layout.vue`
+    while (!fs.existsSync(`${packageRootDir}/package.json`)) {
+      packageRootDir = resolve(packageRootDir, '..')
+    }
+    return packageRootDir
   } else if (entry.endsWith('.js') || entry.endsWith('.vue')) {
-    return path.parse(entry).dir
+    return parse(entry).dir
   } else {
     return entry
   }
+}
+
+function resolveTheme (ctx, resolver, ignoreLocal, theme) {
+  const { siteConfig, cliOptions, sourceDir, vuepressDir, pluginAPI } = ctx
+  const localThemePath = resolve(vuepressDir, 'theme')
+  theme = theme || siteConfig.theme || cliOptions.theme
+
+  let path
+  let name
+  let shortcut
+  let entry = {}
+
+  // 1. From local
+  if (!ignoreLocal
+    && !fs.existsSync(theme)
+    && fs.existsSync(localThemePath)
+    && (fs.readdirSync(localThemePath)).length > 0
+  ) {
+    path = localThemePath
+    name = shortcut = 'local'
+    logger.tip(`Apply local theme at ${chalk.gray(path)}...`)
+
+    // 2. From dep
+  } else if (isString(theme)) {
+    const resolved = resolver.resolve(theme, sourceDir)
+    if (resolved.entry === null) {
+      throw new Error(`Cannot resolve theme: ${theme}.`)
+    }
+    path = normalizeThemePath(resolved)
+    name = resolved.name
+    shortcut = resolved.shortcut
+  } else {
+    return {}
+  }
+
+  try {
+    entry = pluginAPI.normalizePlugin(path, ctx.themeConfig)
+  } catch (error) {
+    entry = {}
+  }
+
+  return { path, name, shortcut, entry }
 }

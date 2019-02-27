@@ -49,5 +49,9 @@ module.exports = [
         ]
       }
     ]
-  }
+  },
+  {
+    text: '0.x',
+    link: 'https://vuepress.vuejs.org/'
+  },
 ]

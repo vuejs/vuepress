@@ -121,7 +121,7 @@ module.exports = (options, context) => ({
 ```js
 module.exports = (options, context) => ({
   chainWebpack (config) {
-    config.resolve.alias.set('@theme', context.themePath)
+    config.resolve.alias.set('@pwd', process.cwd())
   }
 })
 ```
@@ -131,7 +131,7 @@ module.exports = (options, context) => ({
 ```js
 module.exports = (options, context) => ({
   alias: {
-    '@theme': context.themePath
+    '@theme': context.themeAPI.themePath
   }
 })
 ```

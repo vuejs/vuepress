@@ -24,6 +24,9 @@ module.exports = (str, lang) => {
   if (lang === 'md') {
     lang = 'markdown'
   }
+  if (lang === 'rb') {
+    lang = 'ruby'
+  }
   if (lang === 'ts') {
     lang = 'typescript'
   }

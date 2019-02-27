@@ -20,6 +20,7 @@ module.exports = function (src) {
   const isProd = process.env.NODE_ENV === 'production'
   const isServer = this.target === 'node'
   const options = getOptions(this)
+  const loader = Object.create(this)
   const { sourceDir } = options
   let { markdown } = options
   if (!markdown) {
@@ -30,7 +31,6 @@ module.exports = function (src) {
   // vue-loader, and will be applied on the same file multiple times when
   // selecting the individual blocks.
   const file = this.resourcePath
-  const loader = Object.create(this)
   const { content, data } = parseFrontmatter(src)
 
   if (!isProd && !isServer) {

@@ -4,10 +4,10 @@
       <img
         v-if="data.heroImage"
         :src="$withBase(data.heroImage)"
-        alt="hero"
+        :alt="data.heroAlt || 'hero'"
       >
 
-      <h1 id="main-title">{{ data.heroText || $title || 'Hello' }}</h1>
+      <h1 v-if="data.heroText !== null" id="main-title">{{ data.heroText || $title || 'Hello' }}</h1>
 
       <p class="description">
         {{ data.tagline || $description || 'Welcome to your VuePress site' }}
@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import NavLink from './NavLink.vue'
+import NavLink from '@theme/components/NavLink.vue'
 
 export default {
   components: { NavLink },
