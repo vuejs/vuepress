@@ -132,18 +132,19 @@ function getPluginSidebar (pluginTitle, pluginIntro, officialPluginTitle) {
       title: officialPluginTitle,
       collapsable: false,
       children: [
-        'official/plugin-search',
         'official/plugin-active-header-links',
-        'official/plugin-pwa',
+        'official/plugin-back-to-top',
         'official/plugin-blog',
-        'official/plugin-pagination',
+        'official/plugin-clean-urls',
         'official/plugin-google-analytics',
         'official/plugin-i18n-ui',
         'official/plugin-last-updated',
         'official/plugin-medium-zoom',
-        'official/plugin-back-to-top',
+        'official/plugin-nprogress',
+        'official/plugin-pagination',
+        'official/plugin-pwa',
         'official/plugin-register-components',
-        'official/plugin-clean-urls'
+        'official/plugin-search'
       ]
     }
   ]
