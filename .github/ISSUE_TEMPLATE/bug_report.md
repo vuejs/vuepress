@@ -11,7 +11,7 @@ about: Create a report to help us improve
 <!-- Issues which contain questions or support requests will be closed. -->
 <!-- (Update "[ ]" to "[x]" to check a box) -->
 
-- [ ] I confirm that this is a issue rather than a question.
+- [ ] I confirm that this is an issue rather than a question.
 
 <!-- Please ask questions via following several ways. -->
 <!-- https://vue-land.js.org/ -->
