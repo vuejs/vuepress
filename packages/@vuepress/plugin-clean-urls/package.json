@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-clean-urls",
-  "version": "1.0.0-alpha.39",
+  "version": "1.0.0-alpha.40",
   "description": "clean urls plugin for vuepress",
   "main": "index.js",
   "publishConfig": {
