@@ -17,10 +17,10 @@ const convertRouterLinkPlugin = require('./lib/link')
 const containersPlugin = require('./lib/containers')
 const markdownSlotsContainersPlugin = require('./lib/markdownSlotsContainers')
 const snippetPlugin = require('./lib/snippet')
+const tocPlugin = require('./lib/tableOfContents')
 const emojiPlugin = require('markdown-it-emoji')
 const anchorPlugin = require('markdown-it-anchor')
-const tocPlugin = require('markdown-it-table-of-contents')
-const { parseHeaders, slugify: _slugify, logger, chalk, hash } = require('@vuepress/shared-utils')
+const { slugify: _slugify, logger, chalk, hash } = require('@vuepress/shared-utils')
 
 /**
  * Create markdown by config.
@@ -97,11 +97,7 @@ module.exports = (markdown = {}) => {
       .end()
 
     .plugin(PLUGINS.TOC)
-      .use(tocPlugin, [Object.assign({
-        slugify,
-        includeLevel: [2, 3],
-        format: parseHeaders
-      }, toc)])
+      .use(tocPlugin, [toc])
       .end()
 
   if (lineNumbers) {

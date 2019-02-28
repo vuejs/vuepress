@@ -108,15 +108,21 @@ A list of all emojis available can be found [here](https://github.com/markdown-i
 
 **Input**
 
-```
+```md
 [[toc]]
+```
+
+or
+
+```md
+<TOC/>
 ```
 
 **Output**
 
 [[toc]]
 
-Rendering of TOC can be configured using the [`markdown.toc`](../config/README.md#markdown-toc) option.
+Rendering of TOC can be configured using the [`markdown.toc`](../config/README.md#markdown-toc) option, or as props of [TOC component](./using-vue.md#toc), like `<TOC list-type="ol" :include-level="[2, Infinity]"/>`.
 
 ## Custom Containers
 
