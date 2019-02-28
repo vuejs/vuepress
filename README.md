@@ -12,26 +12,24 @@
   <a href="https://discordapp.com/invite/HBherRA"><img src="https://img.shields.io/badge/Discord-join%20chat-738bd7.svg" alt="vuepress channel on Discord"></a>
 </p>
 
-> This is the branch for `VuePress Next` and docs are available at https://vuepress.vuejs.org.
+> This is the branch for `VuePress 1.x` and docs are available at https://v1.vuepress.vuejs.org.
 
 ## Status: alpha
 
 Certain combinations of plugins may not work properly, and things may change or break until we reach `beta` phase. Do not use in production yet unless you are adventurous.
 
-For 0.x, it's moved to [0.x branch](https://github.com/vuejs/vuepress/tree/0.x) and still maintained, the website was switching to https://v0.vuepress.vuejs.org.
-
-> Note that we are working hard to improve the documentation and contributions welcome if you keep up with the latest changes.
+For 0.x, it's moved to [0.x branch](https://github.com/vuejs/vuepress/tree/0.x) and still maintained, the website is: https://vuepress.vuejs.org.
 
 ## Install
 
 ```bash
-yarn add vuepress -D       # Install 0.x.x.
-yarn add vuepress@next -D  # Install next.
+yarn add vuepress -D       # Install 0.x
+yarn add vuepress@next -D  # Install 1.x.
 ```
 
 ## Showcase
 
-Check out [Awesome Vuepress](https://github.com/ulivz/awesome-vuepress) to find awesome things related to VuePress.
+Check out [Awesome Vuepress](https://github.com/ulivz/awesome-vuepress) to find awesome things related to VuePress 1.x .
 
 ## Development
 

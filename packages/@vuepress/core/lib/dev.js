@@ -137,6 +137,7 @@ async function prepareServer (sourceDir, cliOptions = {}, context) {
     headers: {
       'access-control-allow-origin': '*'
     },
+    open: cliOptions.open,
     publicPath: ctx.base,
     watchOptions: {
       ignored: [

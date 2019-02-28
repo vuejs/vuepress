@@ -65,7 +65,7 @@ cd -
    如果你打算发布到 `https://<USERNAME or GROUP>.github.io/<REPO>/`（也就是说你的仓库在 `https://github.com/<USERNAME>/<REPO>`），则将 `base` 设置为 `"/<REPO>/"`。
   
 2. 在项目的根目录创建一个名为 `.travis.yml` 的文件；
-3. 使用 Github Pages 部署提供程序模板并遵循 [Travis 文档](https://docs.travis ci.com/user/deployment/pages/)。
+3. 使用 Github Pages 部署提供程序模板并遵循 [Travis 文档](https://docs.travis-ci.com/user/deployment/pages/)。
 
 ``` yaml
 language: node_js

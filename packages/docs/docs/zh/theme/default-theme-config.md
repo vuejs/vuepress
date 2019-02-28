@@ -178,7 +178,7 @@ module.exports = {
     sidebar: [
       {
         title: 'Group 1',   // 必要的
-        path: '/foo/'       // 可选的, 应该是一个绝对路径
+        path: '/foo/',      // 可选的, 应该是一个绝对路径
         collapsable: false, // 可选的, 默认值是 true,
         sidebarDepth: 1,    // 可选的, 默认值是 1
         children: [
@@ -199,7 +199,7 @@ module.exports = {
 一个侧边栏的子组配置同时支持 [sidebarDepth](#nested-header-links) 字段用于重写默认显示的侧边栏深度(`1`)。
 
 ::: tip
-  从 `1.0.0-alpha-36` 开始，嵌套的侧边栏分组 <Badge text="beta"/> 也是支持的，但嵌套深度应小于 3，否则在控制台会收到警告。
+  从 `1.0.0-alpha.36` 开始，嵌套的侧边栏分组 <Badge text="beta"/> 也是支持的，但嵌套深度应小于 3，否则在控制台会收到警告。
 :::
 
 ### 多个侧边栏

@@ -34,22 +34,22 @@ Just one `Layout.vue` might not be enough, and you might also want to define mor
 So it's time to reorganize your theme, an agreed theme directory structure is as follows:
 
 ::: vue
-themePath
-├── `global-components` _(**Optional**)_
+theme
+├── `global-components`
 │   └── xxx.vue
-├── `components` _(**Optional**)_
+├── `components`
 │   └── xxx.vue
 ├── `layouts`
-│   ├── Layout.vue _(**Required**)_
-│   └── 404.vue _(**Optional**)_
-├── `styles` _(**Optional**)_
+│   ├── Layout.vue _(**必要的**)_
+│   └── 404.vue
+├── `styles`
 │   ├── index.styl
 │   └── palette.styl
-├── `templates` _(**Optional**)_
+├── `templates`
 │   ├── dev.html
 │   └── ssr.html
-├── `index.js` _(**Only required when you publish it as an npm package**)_
-├── `enhanceApp.js` _(**Optional**)_
+├── `index.js`
+├── `enhanceApp.js`
 └── package.json
 :::
 
@@ -62,12 +62,11 @@ themePath
 - `theme/enhanceApp.js`: Theme level enhancements.
 
 ::: warning Note
-When you want to publish your theme as an npm package, make sure the package has `index.js`, and set `"main"` field at `package.json` to `index.js` so that VuePress can resolve and get the correct [themePath](../miscellaneous/glossary.md#theme-side).
-
+When you publish your theme as an NPM package, if you don't have any theme configuration, that means you don't have `theme/index.js`, you'll need to set the `"main"` field  to `layouts/Layout.vue` in `package.json`, only in this way VuePress can correctly resolve the theme.
 ```json
 {
   ...
-  "main": "index.js"
+  "main": "layouts/Layout.vue",
   ...
 }
 ```
@@ -88,13 +87,17 @@ theme
 
 Then, all the pages will use `Layout.vue` as layout component by default, while the routes not matching will use `404.vue`.
 
-If you want to switch the layout of the some page to `AnotherLayout.vue`, you just need to update the frontmatter of this page:
+If you want to switch the layout of some pages to `AnotherLayout.vue`, you just need to update the frontmatter of this page:
 
 ```markdown
 ---
 layout: AnotherLayout
 ---
 ````
+
+::: tip
+Each layout component may render distinct pages. If you want to apply some global UI (e.g. global header), consider using [globalLayout](./option-api.md#globallayout)。
+:::
 
 ## Apply plugins
 
@@ -163,7 +166,7 @@ If a markdown file contains a `<!-- more -->` comment, any content above the com
 
 ## App Level Enhancements
 
-Themes can enhance the Vue app that VuePress uses by exposing an `enhanceApp.js` file at the root of the theme. The file should `export default` a hook function which will receive an object containing some app level values. You can use this hook to install additional Vue plugins, register global components, or add additional router hooks:
+Themes can enhance the Vue app that VuePress uses by exposing an `enhanceApp.js` file at the root of the theme. The file should `export default` a hook function which will receive an object containing some app-level values. You can use this hook to install additional Vue plugins, register global components, or add additional router hooks:
 
 ``` js
 export default ({

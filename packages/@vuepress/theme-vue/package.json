@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@vuepress/theme-vue",
-  "version": "1.0.0-alpha.39",
+  "version": "1.0.0-alpha.40",
   "description": "VuePress theme for official Vue projects",
   "main": "index.js",
   "publishConfig": {
@@ -31,6 +31,6 @@
   },
   "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/theme-vue#readme",
   "dependencies": {
-    "@vuepress/theme-default": "^1.0.0-alpha.39"
+    "@vuepress/theme-default": "^1.0.0-alpha.40"
   }
 }

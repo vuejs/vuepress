@@ -34,9 +34,9 @@
 </template>
 
 <script>
-import DropdownLink from './DropdownLink.vue'
+import DropdownLink from '@theme/components/DropdownLink.vue'
 import { resolveNavLinkItem } from '../util'
-import NavLink from './NavLink.vue'
+import NavLink from '@theme/components/NavLink.vue'
 
 export default {
   components: { NavLink, DropdownLink },
