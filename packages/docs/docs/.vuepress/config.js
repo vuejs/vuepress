@@ -1,5 +1,3 @@
-const container = require('markdown-it-container')
-
 module.exports = ctx => ({
   dest: '../../vuepress',
   locales: {
@@ -74,14 +72,17 @@ module.exports = ctx => ({
     ['@vuepress/google-analytics', {
       ga: 'UA-128189152-1'
     }],
+    ['@vuepress/container', {
+      type: 'vue',
+      before: '<pre class="vue-container"><code>',
+      after: '</code></pre>',
+    }],
+    ['@vuepress/container', {
+      type: 'upgrade',
+      before: ({ info }) => `<UpgradePath title="${info.trim().slice(7).trim()}">`,
+      after: '</UpgradePath>',
+    }],
   ],
-  extendMarkdown (md) {
-    md.use(container, 'upgrade', {
-      render: (tokens, idx) => tokens[idx].nesting === 1
-        ? `<UpgradePath title="${tokens[idx].info.trim().slice('upgrade'.length).trim()}">`
-        : '</UpgradePath>'
-    })
-  },
 })
 
 function getGuideSidebar (groupA, groupB) {

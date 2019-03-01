@@ -14,7 +14,6 @@ const lineNumbersPlugin = require('./lib/lineNumbers')
 const componentPlugin = require('./lib/component')
 const hoistScriptStylePlugin = require('./lib/hoist')
 const convertRouterLinkPlugin = require('./lib/link')
-const containersPlugin = require('./lib/containers')
 const markdownSlotsContainersPlugin = require('./lib/markdownSlotsContainers')
 const snippetPlugin = require('./lib/snippet')
 const emojiPlugin = require('markdown-it-emoji')
@@ -73,10 +72,6 @@ module.exports = (markdown = {}) => {
 
     .plugin(PLUGINS.HOIST_SCRIPT_STYLE)
       .use(hoistScriptStylePlugin)
-      .end()
-
-    .plugin(PLUGINS.CONTAINERS)
-      .use(containersPlugin)
       .end()
 
     .plugin(PLUGINS.MARKDOWN_SLOTS_CONTAINERS)
