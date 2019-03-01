@@ -27,7 +27,7 @@ If you've got the dev server running, you should see the page now has a header w
 Consult the [Config Reference](../config/README.md) for a full list of options.
 
 ::: tip Alternative Config Formats
-You can also use YAML (`.vuepress/config.yml`) or TOML (`.vuepress/config.toml`) formats for the configuration file.
+You can also split config and use YAML (`.vuepress/config.yml`) or TOML (`.vuepress/config.toml`) formats for the configuration. All configuration files will be merged together.
 :::
 
 ## Theme Configuration

@@ -1,6 +1,6 @@
 const container = require('markdown-it-container')
 
-module.exports = ctx => ({
+module.exports = {
   dest: '../../vuepress',
   locales: {
     '/': {
@@ -63,7 +63,7 @@ module.exports = ctx => ({
     }
   },
   plugins: [
-    ['@vuepress/i18n-ui', !ctx.isProd],
+    ['@vuepress/i18n-ui'],
     ['@vuepress/back-to-top', true],
     ['@vuepress/pwa', {
       serviceWorker: true,
@@ -82,7 +82,7 @@ module.exports = ctx => ({
         : '</UpgradePath>'
     })
   },
-})
+}
 
 function getGuideSidebar (groupA, groupB) {
   return [

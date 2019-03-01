@@ -24,11 +24,13 @@ module.exports = function loadConfig (vuepressDir, bustCache = true) {
   // resolve siteConfig
   let siteConfig = {}
   if (fs.existsSync(configYmlPath)) {
-    siteConfig = parseConfig(configYmlPath)
-  } else if (fs.existsSync(configTomlPath)) {
-    siteConfig = parseConfig(configTomlPath)
-  } else if (fs.existsSync(configPath)) {
-    siteConfig = require(configPath)
+    siteConfig = Object.assign(siteConfig, parseConfig(configYmlPath))
+  }
+  if (fs.existsSync(configTomlPath)) {
+    siteConfig = Object.assign(siteConfig, parseConfig(configTomlPath))
+  }
+  if (fs.existsSync(configPath)) {
+    siteConfig = Object.assign(siteConfig, require(configPath))
   }
 
   return siteConfig
