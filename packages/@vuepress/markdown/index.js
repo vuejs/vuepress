@@ -5,6 +5,7 @@
  */
 
 const Config = require('markdown-it-chain')
+const LRUCache = require('lru-cache')
 const highlight = require('./lib/highlight')
 const { PLUGINS, REQUIRED_PLUGINS } = require('./lib/constant')
 const highlightLinesPlugin = require('./lib/highlightLines')
@@ -19,7 +20,7 @@ const snippetPlugin = require('./lib/snippet')
 const emojiPlugin = require('markdown-it-emoji')
 const anchorPlugin = require('markdown-it-anchor')
 const tocPlugin = require('markdown-it-table-of-contents')
-const { parseHeaders, slugify: _slugify, logger, chalk } = require('@vuepress/shared-utils')
+const { parseHeaders, slugify: _slugify, logger, chalk, hash } = require('@vuepress/shared-utils')
 
 /**
  * Create markdown by config.
@@ -114,6 +115,21 @@ module.exports = (markdown = {}) => {
   const md = config.toMd(require('markdown-it'), markdown)
 
   afterInstantiate && afterInstantiate(md)
+
+  // override parse to allow cache
+  const parse = md.parse
+  const cache = new LRUCache({ max: 1000 })
+  md.parse = (src, env) => {
+    const key = hash(src + env.relPath)
+    const cached = cache.get(key)
+    if (cached) {
+      return cached
+    } else {
+      const tokens = parse.call(md, src, env)
+      cache.set(key, tokens)
+      return tokens
+    }
+  }
 
   module.exports.dataReturnable(md)
 

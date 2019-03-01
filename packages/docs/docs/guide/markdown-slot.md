@@ -60,7 +60,7 @@ Suppose your layout component is as follows:
 </template>
 ```
 
-If the markdown content of a page's is like this:
+If the markdown content of a page is like this:
 
 ```md
 ::: slot header

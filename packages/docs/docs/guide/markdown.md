@@ -253,7 +253,7 @@ module.exports = {
   markdown: {
     lineNumbers: true
   }
-}  
+}
 ```
 
 <!-- TODO Support line numbers for specific fence block -->
@@ -262,12 +262,12 @@ module.exports = {
 
 <picture>
   <source srcset="/line-numbers-desktop.png" media="(min-width: 719px)">
-  <img class="line-numbers-desktop-snap" alt="Image">
+  <img src="/line-numbers-desktop.png" class="line-numbers-desktop-snap" alt="Image">
 </picture>
 
 <picture>
   <source srcset="/line-numbers-mobile.gif" media="(max-width: 719px)">
-  <img class="line-numbers-mobile-snap" alt="Image">
+  <img src="/line-numbers-mobile.gif" class="line-numbers-mobile-snap" alt="Image">
 </picture>
 
 <style>
@@ -299,7 +299,7 @@ You can import code snippets from existing files via following syntax:
 It also supports [line highlighting](#line-highlighting-in-code-blocks):
 
 ``` md
-<<< @/filepath{highlightLines} 
+<<< @/filepath{highlightLines}
 ```
 
 **Input**

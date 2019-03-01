@@ -6,64 +6,75 @@ sidebar: auto
 
 你可能会在文档中碰到一些陌生的概念，本节列出了文档中常见的术语，方便查阅、学习、插件/主题开发之用。
 
+## layout
+
+- Access: `$page.frontmatter.layout`
+
+当前页面所使用的布局组件名。
+
 ## frontmatter
 
-> Access: `$page.frontmatter`
+- Access: `$page.frontmatter`
 
-当前页面的 `markdown` 文件中包裹在 `---` 中的配置，一般用于做一些页面级别的配置。
-
-::: tip
-VuePress 的动态布局系统等特性是基于 `frontmatter` 实现的，你可以使用插件 API [extendPageData](../plugin/option-api.md#extendpagedata) 在构建期间动态修改 frontmatter 的值。
-:::
+当前页面的 `markdown` 文件中包裹在 `---` 中的配置，一般用于做一些页面级别的配置，参考 [Front Matter](../guide/frontmatter.md) 一节了解更多。
 
 ## permalink
 
-> Access: `$page.frontmatter.permalink`
+- Access: `$page.frontmatter.permalink`
 
-永久链接，参考 [permalinks](../guide/permalinks.md) 了解更多。
+永久链接，参考 [Permalinks](../guide/permalinks.md) 一节了解更多。
 
 ## regularPath
 
-> Access: `$page.regularPath`
+- Access: `$page.regularPath`
 
 当前页面基于目录结构生成的 URL。
 
-::: tip
-在构建期动态生成路由时，一个页面的 URL (`$page.path`) 将优先使用 `$page.frontmatter.permalink`，若不存在则降级到 `$page.regularPath`。
-:::
+## path
+
+- Access: `$page.path`
+
+当前页面的实际 URL。在构建期生成路由时，一个页面的 URL 将优先使用 `permalink`，若不存在则降级到 `regularPath`。
 
 ## headers
 
-> Access: `$page.headers`
+- Access: `$page.headers`
 
 即 `markdown` 中那些以一个或多个 `#` 定义的标题。
 
 ## siteConfig
 
-> Access: `$site | Context.siteConfig`
+- Access: `$site | Context.siteConfig`
 
-即 `.vuepress/config.js`，译为`站点配置`。
+即 `.vuepress/config.js`，译为 `站点配置`。
 
 ## themeConfig
 
-> Access: `$site | Context.themeConfig`
+- Access: `$themeConfig | Context.themeConfig`
 
-即 `.vuepress/config.js` 中 `themeConfig` 的值，译为`用户的主题配置`。
+即 `.vuepress/config.js` 中 `themeConfig` 的值，是用户对当前所使用的主题的配置。
 
 ## themePath
 
-> Access: `Context.themePath`
+- Access: `Context.themeAPI.theme.path`
 
-当前使用的主题的根路径（绝对路径）。
+当前使用的主题的所在的绝对路径。
 
-## themeEntryFile
+## themeEntry
 
-> Access: `Context.themeEntryFile`
+- Access: `Context.themeAPI.theme.entry`
 
-主题的配置文件 (`themePath/index.js`)。
+主题的配置文件 `themePath/index.js`。
 
-## layout
+## parentThemePath
 
-> Access: `$page.frontmatter.layout`
+- Access: `Context.themeAPI.parentTheme.path`
 
-当前页面所使用的布局组件名。
+如果当前使用的主题是一个派生主题，那么 `parentThemePath` 就是指父主题的所在绝对路径。
+
+## parentThemeEntry
+
+- Access: `Context.themeAPI.parentTheme.entry`
+
+如果当前使用的主题是一个派生主题，那么 `parentThemePath` 就是指父主题的主题的配置文件 `parentThemePath/index.js`。
+

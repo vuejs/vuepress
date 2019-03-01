@@ -33,27 +33,27 @@
 
 ## 目录结构
 
-随着需求的变化，只有一个布局组件 `Layout.vue` 可能还不够，你可能想要定义更多的布局组件用于不同的页面，你可能还想要自定义一个[调色板](../config/README.md#palette-styl), 甚至应用一些插件。
+随着需求的变化，只有一个布局组件 `Layout.vue` 可能还不够，你可能想要定义更多的布局组件用于不同的页面，你可能还想要自定义一个[调色板](../config/README.md#palette-styl)，甚至应用一些插件。
 
 那么是时候重新组织你的主题了！一个约定的主题的目录结构如下：
 
 ::: vue
-themePath
-├── `global-components` _(**可选的**)_
+theme
+├── `global-components`
 │   └── xxx.vue
-├── `components` _(**可选的**)_
+├── `components`
 │   └── xxx.vue
 ├── `layouts`
 │   ├── Layout.vue _(**必要的**)_
-│   └── 404.vue _(**可选的**)_
-├── `styles` _(**必要的**)_
+│   └── 404.vue
+├── `styles`
 │   ├── index.styl
 │   └── palette.styl
-├── `templates` _(**必要的**)_
+├── `templates`
 │   ├── dev.html
 │   └── ssr.html
-├── `index.js` _(**当你将主题发布为一个 npm 包时，这是必须的！**)_
-├── `enhanceApp.js` _(**必要的**)_
+├── `index.js`
+├── `enhanceApp.js`
 └── package.json
 :::
 
@@ -66,12 +66,12 @@ themePath
 - `theme/enhanceApp.js`: 主题水平的客户端增强文件。
 
 ::: warning 注意
-当你将你的主题以一个 npm 包的形式发布时，请确保这个包包含 `index.js`，同时将 `package.json` 中的 `"main"` 字段设置为 `index.js`，如此一来 VuePress 才能获取到正确的 [themePath](../miscellaneous/glossary.md#theme-side).
+当你将你的主题以一个 npm 包的形式发布时，如果你没有任何主题配置，即没有 `theme/index.js`，那么你需要将 `package.json` 中的 `"main"` 字段设置为 `layouts/Layout.vue`，只有这样 VuePress 才能正确地解析主题。
 
 ```json
 {
   ...
-  "main": "index.js"
+  "main": "layouts/Layout.vue",
   ...
 }
 ```
@@ -99,6 +99,10 @@ theme
 layout: AnotherLayout
 ---
 ````
+
+::: tip
+每个 layout 组件都可能会渲染出截然不同的页面，如果你想设置一些全局的 UI（如全局的 `<header>`），可以考虑使用 [globalLayout](./option-api.md#globallayout)。
+:::
 
 ## 使用插件
 

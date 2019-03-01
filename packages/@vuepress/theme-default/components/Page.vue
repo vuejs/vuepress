@@ -177,7 +177,7 @@ function resolveNext (page, items) {
 
 function find (page, items, offset) {
   const res = []
-  flattern(items, res)
+  flatten(items, res)
   for (let i = 0; i < res.length; i++) {
     const cur = res[i]
     if (cur.type === 'page' && cur.path === decodeURIComponent(page.path)) {
@@ -186,10 +186,10 @@ function find (page, items, offset) {
   }
 }
 
-function flattern (items, res) {
+function flatten (items, res) {
   for (let i = 0, l = items.length; i < l; i++) {
     if (items[i].type === 'group') {
-      flattern(items[i].children || [], res)
+      flatten(items[i].children || [], res)
     } else {
       res.push(items[i])
     }

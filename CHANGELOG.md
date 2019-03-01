@@ -1,3 +1,33 @@
+<a name=""></a>
+# [](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.40...v) (2019-02-27)
+
+
+
+<a name="1.0.0-alpha.40"></a>
+# [1.0.0-alpha.40](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.39...v1.0.0-alpha.40) (2019-02-27)
+
+
+### Bug Fixes
+
+* **$cli:** re-support option `--open` (close: [#1320](https://github.com/vuejs/vuepress/issues/1320)) ([#1329](https://github.com/vuejs/vuepress/issues/1329)) ([b97e9ee](https://github.com/vuejs/vuepress/commit/b97e9ee))
+* **$core:** handle redirect based on lower case ([#1333](https://github.com/vuejs/vuepress/issues/1333)) ([505fea6](https://github.com/vuejs/vuepress/commit/505fea6))
+* **$core:** update outbound link icon alignment ([#1308](https://github.com/vuejs/vuepress/issues/1308)) ([6de1c30](https://github.com/vuejs/vuepress/commit/6de1c30))
+* **$plugin-pwa:** service worker doesn't work under sub directory (close: [#1311](https://github.com/vuejs/vuepress/issues/1311)) ([0d56a99](https://github.com/vuejs/vuepress/commit/0d56a99))
+
+
+### Features
+
+* **$core:** refine theme api ([d16d3d5](https://github.com/vuejs/vuepress/commit/d16d3d5)) ([#1319](https://github.com/vuejs/vuepress/issues/1319))
+  - Check out [Theme Inheritance](https://v1.vuepress.vuejs.org/theme/inheritance.html) for more details.
+* **$markdown:** code snippet hmr (close [#1309](https://github.com/vuejs/vuepress/issues/1309)) ([#1358](https://github.com/vuejs/vuepress/issues/1358)) ([8f83a17](https://github.com/vuejs/vuepress/commit/8f83a17))
+* **$markdown:** refine markdown api ([#1337](https://github.com/vuejs/vuepress/issues/1337)) ([b79768c](https://github.com/vuejs/vuepress/commit/b79768c))
+* **$markdown:** cache parser ([#1359](https://github.com/vuejs/vuepress/issues/1359)) ([f04adbf](https://github.com/vuejs/vuepress/commit/f04adbf))
+* **$theme-default:** add ruby shortcut `rb` support for syntax highlighting ([#1312](https://github.com/vuejs/vuepress/issues/1312)) ([dad2928](https://github.com/vuejs/vuepress/commit/dad2928))
+* **$theme-default:** should allow for optional `h1` text at homepage ([#1326](https://github.com/vuejs/vuepress/issues/1326)) ([598799f](https://github.com/vuejs/vuepress/commit/598799f))
+* **$plugin-clean-urls:** init ([#1339](https://github.com/vuejs/vuepress/issues/1339)) ([40b3da8](https://github.com/vuejs/vuepress/commit/40b3da8))
+
+
+
 <a name="1.0.0-alpha.39"></a>
 # [1.0.0-alpha.39](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.38...v1.0.0-alpha.39) (2019-02-17)
 
@@ -22,51 +52,6 @@
 ### Features
 
 * **$core:** support global layout (close: [#1226](https://github.com/vuejs/vuepress/issues/1226)) ([c91f55a](https://github.com/vuejs/vuepress/commit/c91f55a))
-
-  From now on, users have the ability to use a custom global layout component via [siteConfig](https://v1.vuepress.vuejs.org/miscellaneous/glossary.html#siteconfig) or [themeEntryFile](https://v1.vuepress.vuejs.org/miscellaneous/glossary.html#themeentryfile):
-  
-  ```js
-  module.exports = {
-    globalLayout: '/path/to/your/global/vue/sfc'
-  }
-  ```
-
-  Here is the [content of default global layout component](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/core/lib/app/components/GlobalLayout.vue), an example of setting global header and footer:
-  
-  ```vue
-  <template>
-    <div id="global-layout">
-      <header><h1>Header</h1></header>
-      <component :is="layout"/>
-      <footer><h1>Footer</h1></footer>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    computed: {
-      layout () {
-        if (this.$page.path) {
-          if (this.$vuepress.isLayoutExists(this.$page.frontmatter.layout)) {
-            return this.$page.frontmatter.layout
-          }
-          return 'Layout'
-        }
-        return 'NotFound'
-      }
-    }
-  }
-  </script>
-  ```
-  
-  Also, you can follow the convention, directly create a component `.vuepress/components/GlobalLayout.vue` or `themePath/layouts/GlobalLayout.vue` without any config. the loading priority is as follows: 
-  
-  - siteConfig
-  - siteAgreement
-  - themeEntryFile
-  - themeAgreement
-  - default
-
 * **$theme-default:** disable search box via frontmatter (close: [#1287](https://github.com/vuejs/vuepress/issues/1287)) ([#1288](https://github.com/vuejs/vuepress/issues/1288)) ([54e9eb0](https://github.com/vuejs/vuepress/commit/54e9eb0))
 
 
