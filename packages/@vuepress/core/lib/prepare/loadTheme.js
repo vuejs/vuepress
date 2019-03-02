@@ -54,14 +54,17 @@ module.exports = function loadTheme (ctx) {
 function normalizeThemePath (resolved) {
   const { entry, name, fromDep } = resolved
   if (fromDep) {
-    const pkgPath = require.resolve(name)
-    let packageRootDir = parse(pkgPath).dir
-    // For those cases that "main" field was set to non-index file
-    // e.g. `layouts/Layout.vue`
-    while (!fs.existsSync(`${packageRootDir}/package.json`)) {
-      packageRootDir = resolve(packageRootDir, '..')
+    const packageRoot = require.resolve(`${name}/package.json`)
+    const { main } = require(packageRoot)
+    if (main.endsWith('.vue')) {
+      // For those cases that "main" field is set to an non-index file
+      // e.g. `layouts/Layout.vue`
+      return packageRoot
+    } else {
+      // For those cases that "index.js" is not at package root
+      // e.g. `lib/index.js` (#1362)
+      return parse(require.resolve(name)).dir
     }
-    return packageRootDir
   } else if (entry.endsWith('.js') || entry.endsWith('.vue')) {
     return parse(entry).dir
   } else {
