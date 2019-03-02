@@ -47,7 +47,11 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
   // find and remove empty style chunk caused by
   // https://github.com/webpack-contrib/mini-css-extract-plugin/issues/85
   // TODO remove when it's fixed
-  if (!clientConfig.devtool && (!clientConfig.plugins || !clientConfig.plugins.some(p => p instanceof webpack.SourceMapDevToolPlugin || p instanceof webpack.EvalSourceMapDevToolPlugin))) {
+  if (!clientConfig.devtool && (!clientConfig.plugins ||           
+    !clientConfig.plugins.some(p =>
+      p instanceof webpack.SourceMapDevToolPlugin ||
+      p instanceof webpack.EvalSourceMapDevToolPlugin
+    ))) {
     await workaroundEmptyStyleChunk()
   }
 
