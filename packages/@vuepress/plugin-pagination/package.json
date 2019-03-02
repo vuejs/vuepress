@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-pagination",
-  "version": "1.0.0-alpha.40",
+  "version": "1.0.0-alpha.41",
   "description": "pagination plugin for vuepress",
   "main": "index.js",
   "publishConfig": {
