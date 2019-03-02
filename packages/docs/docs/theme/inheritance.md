@@ -159,7 +159,7 @@ You can use `@parent-theme` to access the root path of the parent theme. The fol
 <!-- themePath/components/Foo.vue -->
 <template>
   <ParentLayout>
-    <Foo slot="foo"/>
+    <Foo #foo/>
   </ParentLayout>
 </template>
 

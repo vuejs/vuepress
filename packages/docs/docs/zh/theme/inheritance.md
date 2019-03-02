@@ -158,7 +158,7 @@ theme
 <!-- themePath/components/Foo.vue -->
 <template>
   <ParentLayout>
-    <Foo slot="foo"/>
+    <Foo #foo/>
   </ParentLayout>
 </template>
 
