@@ -1,3 +1,13 @@
+<a name="0.14.10"></a>
+## [0.14.10](https://github.com/vuejs/vuepress/compare/v0.14.9...v0.14.10) (2019-03-02)
+
+
+### Bug Fixes
+
+* missing sidebar button on a mobile homepage (close: [#1355](https://github.com/vuejs/vuepress/issues/1355)) ([#1361](https://github.com/vuejs/vuepress/issues/1361)) ([ae7013f](https://github.com/vuejs/vuepress/commit/ae7013f)), closes [#1159](https://github.com/vuejs/vuepress/issues/1159)
+
+
+
 <a name="0.14.9"></a>
 ## [0.14.9](https://github.com/vuejs/vuepress/compare/v0.14.8...v0.14.9) (2019-02-17)
 
