@@ -31,6 +31,6 @@
   },
   "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/theme-vue#readme",
   "dependencies": {
-    "@vuepress/theme-default": "^1.0.0-alpha.40"
+    "@vuepress/theme-default": "1.0.0-alpha.40"
   }
 }

@@ -19,7 +19,7 @@
     "markdown"
   ],
   "dependencies": {
-    "@vuepress/shared-utils": "^1.0.0-alpha.40",
+    "@vuepress/shared-utils": "1.0.0-alpha.40",
     "lru-cache": "^5.1.1",
     "markdown-it": "^8.4.1",
     "markdown-it-anchor": "^5.0.2",

@@ -8,7 +8,7 @@
     "build": "vuepress build source --temp .temp"
   },
   "dependencies": {
-    "@vuepress/theme-blog": "^1.0.0-alpha.40",
-    "vuepress": "^1.0.0-alpha.40"
+    "@vuepress/theme-blog": "1.0.0-alpha.40",
+    "vuepress": "1.0.0-alpha.40"
   }
 }

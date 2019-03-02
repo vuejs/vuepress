@@ -19,10 +19,10 @@
     "generator"
   ],
   "dependencies": {
-    "@vuepress/plugin-blog": "^1.0.0-alpha.40",
-    "@vuepress/plugin-medium-zoom": "^1.0.0-alpha.40",
-    "@vuepress/plugin-pagination": "^1.0.0-alpha.40",
-    "@vuepress/plugin-search": "^1.0.0-alpha.40"
+    "@vuepress/plugin-blog": "1.0.0-alpha.40",
+    "@vuepress/plugin-medium-zoom": "1.0.0-alpha.40",
+    "@vuepress/plugin-pagination": "1.0.0-alpha.40",
+    "@vuepress/plugin-search": "1.0.0-alpha.40"
   },
   "author": "ULIVZ <chl814@foxmail.com>",
   "license": "MIT",
