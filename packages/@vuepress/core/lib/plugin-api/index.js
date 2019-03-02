@@ -88,6 +88,7 @@ module.exports = class PluginAPI {
         plugin = this.normalizePlugin(pluginRaw, pluginOptions)
       } catch (e) {
         logger.warn(e.message)
+        return this
       }
     }
 
