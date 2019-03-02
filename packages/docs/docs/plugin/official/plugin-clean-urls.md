@@ -10,8 +10,8 @@ metaTitle: A plugin of automatically generating clean urls | VuePress
 ## Install
 
 ```bash
-yarn add -D @vuepress/plugin-clean-urls
-# OR npm install -D @vuepress/plugin-clean-urls
+yarn add -D @vuepress/plugin-clean-urls@next
+# OR npm install -D @vuepress/plugin-clean-urls@next
 ```
 
 ## Usage

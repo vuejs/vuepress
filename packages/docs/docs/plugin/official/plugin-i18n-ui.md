@@ -10,8 +10,8 @@ metaTitle: I18n-UI Plugin | VuePress
 ## Install
 
 ```bash
-yarn add -D @vuepress/plugin-i18n-ui
-# OR npm install -D @vuepress/plugin-i18n-ui
+yarn add -D @vuepress/plugin-i18n-ui@next
+# OR npm install -D @vuepress/plugin-i18n-ui@next
 ```
 
 ## Usage

@@ -10,8 +10,8 @@ metaTitle: 注册组件的插件 | VuePress
 ## 安装
 
 ```bash
-yarn add -D @vuepress/plugin-register-components
-# OR npm install -D @vuepress/plugin-register-components
+yarn add -D @vuepress/plugin-register-components@next
+# OR npm install -D @vuepress/plugin-register-components@next
 ```
 
 ## 使用

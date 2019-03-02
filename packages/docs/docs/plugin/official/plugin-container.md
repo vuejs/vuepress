@@ -10,8 +10,8 @@ metaTitle: A plugin of registering markdown containers | VuePress
 ## Install
 
 ```bash
-yarn add -D @vuepress/plugin-container
-# OR npm install -D @vuepress/plugin-container
+yarn add -D @vuepress/plugin-container@next
+# OR npm install -D @vuepress/plugin-container@next
 ```
 
 ## Usage

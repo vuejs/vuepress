@@ -10,8 +10,8 @@ metaTitle: Nprogress 插件 | VuePress
 ## 安装
 
 ```bash
-yarn add -D @vuepress/plugin-nprogress
-# 或者 npm install -D @vuepress/plugin-nprogress
+yarn add -D @vuepress/plugin-nprogress@next
+# 或者 npm install -D @vuepress/plugin-nprogress@next
 ```
 
 ## 使用

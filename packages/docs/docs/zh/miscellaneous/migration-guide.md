@@ -15,7 +15,8 @@ GA 已经被分离为一个单独的插件 [@vuepress/plugin-google-analytics](.
 1. 安装 `@vuepress/plugin-google-analytics`:
 
 ```bash
-yarn add -D @vuepress/plugin-google-analytics
+yarn add -D @vuepress/plugin-google-analytics@next
+# OR npm install -D @vuepress/plugin-google-analytics@next
 ```
 
 2. 更新 `vuepress/config.js`:

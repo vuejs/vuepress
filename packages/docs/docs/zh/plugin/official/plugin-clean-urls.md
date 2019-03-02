@@ -10,8 +10,8 @@ metaTitle: 自动生成简洁链接的插件 | VuePress
 ## 安装
 
 ```bash
-yarn add -D @vuepress/plugin-clean-urls
-# OR npm install -D @vuepress/plugin-clean-urls
+yarn add -D @vuepress/plugin-clean-urls@next
+# OR npm install -D @vuepress/plugin-clean-urls@next
 ```
 
 ## 使用

@@ -10,8 +10,8 @@ metaTitle: Nprogress Plugin | VuePress
 ## Install
 
 ```bash
-yarn add -D @vuepress/plugin-nprogress
-# OR npm install -D @vuepress/plugin-nprogress
+yarn add -D @vuepress/plugin-nprogress@next
+# OR npm install -D @vuepress/plugin-nprogress@next
 ```
 
 ## Usage

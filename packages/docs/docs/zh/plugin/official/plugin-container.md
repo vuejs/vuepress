@@ -10,8 +10,8 @@ metaTitle: Markdown 容器插件 | VuePress
 ## 安装
 
 ```bash
-yarn add -D @vuepress/plugin-container
-# OR npm install -D @vuepress/plugin-container
+yarn add -D @vuepress/plugin-container@next
+# OR npm install -D @vuepress/plugin-container@next
 ```
 
 ## 使用

@@ -10,8 +10,8 @@ metaTitle: Pagination 插件 | VuePress
 ## 安装
 
 ```bash
-yarn add -D @vuepress/plugin-pagination
-# OR npm install -D @vuepress/plugin-pagination
+yarn add -D @vuepress/plugin-pagination@next
+# OR npm install -D @vuepress/plugin-pagination@next
 ```
 
 ## 使用

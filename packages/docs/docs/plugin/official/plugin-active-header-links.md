@@ -10,8 +10,8 @@ metaTitle: A plugin of automatically activating sidebar links when page scrolls 
 ## Install
 
 ```bash
-yarn add -D @vuepress/plugin-active-header-links
-# OR npm install -D @vuepress/plugin-active-header-links
+yarn add -D @vuepress/plugin-active-header-links@next
+# OR npm install -D @vuepress/plugin-active-header-links@next
 ```
 
 ## Usage
