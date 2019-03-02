@@ -10,6 +10,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap && yarn tsc",
     "boot": "node scripts/bootstrap.js",
+    "remote-version": "node scripts/remote-version.js",
     "dev": "yarn tsc && yarn workspace docs dev",
     "build": "yarn tsc && yarn workspace docs build",
     "show-help": "yarn workspace docs show-help",
