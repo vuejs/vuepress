@@ -225,6 +225,27 @@ export default {
 - [Markdown 插槽](./markdown-slot.md)
 - [开发主题 > 获取渲染内容](../theme/writing-a-theme.md#获取渲染内容)
 
+### TOC <Badge text="1.0.0-alpha.41+"/>
+
+- **Props**:
+  - `listType` - string 或 Array, 默认值为 `"ul"`
+  - `includeLevel` - [number, number], 默认值为 `[2, 3]`
+
+- **Slots**: `header`, `footer`
+
+- **Usage**:
+
+你可以通过一些属性来实现一个自定义的目录。`includeLevel` 决定了哪些级别的标题会被显示在目录中。`listType` 决定了所有列表的标签。如果设置为了数组，组件将会使用第一个元素作为第一级列表的标签，以此类推。如果提供的标签不够多，将使用提供的最后一个值作为全部剩下的列表标签。
+
+``` md
+<TOC :list-type="['ol', 'ul']">
+  <p slot="header"><strong>自定义目录</strong></p>
+</TOC>
+```
+
+<TOC :list-type="['ol', 'ul']">
+  <p slot="header"><strong>自定义目录</strong></p>
+</TOC>
 
 ### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/> <Badge text="默认主题"/>
 

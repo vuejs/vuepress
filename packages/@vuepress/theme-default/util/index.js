@@ -192,7 +192,7 @@ export function resolveMatchingConfig (regularPath, config) {
     }
   }
   for (const base in config) {
-    if (ensureEndingSlash(regularPath).indexOf(base) === 0) {
+    if (ensureEndingSlash(regularPath).indexOf(encodeURI(base)) === 0) {
       return {
         base,
         config: config[base]

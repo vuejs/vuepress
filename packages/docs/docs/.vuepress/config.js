@@ -1,4 +1,4 @@
-const container = require('markdown-it-container')
+const { fs, path } = require('@vuepress/shared-utils')
 
 module.exports = ctx => ({
   dest: '../../vuepress',
@@ -74,14 +74,17 @@ module.exports = ctx => ({
     ['@vuepress/google-analytics', {
       ga: 'UA-128189152-1'
     }],
+    ['@vuepress/container', {
+      type: 'vue',
+      before: '<pre class="vue-container"><code>',
+      after: '</code></pre>',
+    }],
+    ['@vuepress/container', {
+      type: 'upgrade',
+      before: ({ info }) => `<UpgradePath title="${info.trim().slice(7).trim()}">`,
+      after: '</UpgradePath>',
+    }],
   ],
-  extendMarkdown (md) {
-    md.use(container, 'upgrade', {
-      render: (tokens, idx) => tokens[idx].nesting === 1
-        ? `<UpgradePath title="${tokens[idx].info.trim().slice('upgrade'.length).trim()}">`
-        : '</UpgradePath>'
-    })
-  },
 })
 
 function getGuideSidebar (groupA, groupB) {
@@ -114,6 +117,11 @@ function getGuideSidebar (groupA, groupB) {
   ]
 }
 
+const officalPlugins = fs
+  .readdirSync(path.resolve(__dirname, '../plugin/official'))
+  .map(filename => 'official/' + filename.slice(0, -3))
+  .sort()
+
 function getPluginSidebar (pluginTitle, pluginIntro, officialPluginTitle) {
   return [
     {
@@ -131,21 +139,7 @@ function getPluginSidebar (pluginTitle, pluginIntro, officialPluginTitle) {
     {
       title: officialPluginTitle,
       collapsable: false,
-      children: [
-        'official/plugin-active-header-links',
-        'official/plugin-back-to-top',
-        'official/plugin-blog',
-        'official/plugin-clean-urls',
-        'official/plugin-google-analytics',
-        'official/plugin-i18n-ui',
-        'official/plugin-last-updated',
-        'official/plugin-medium-zoom',
-        'official/plugin-nprogress',
-        'official/plugin-pagination',
-        'official/plugin-pwa',
-        'official/plugin-register-components',
-        'official/plugin-search'
-      ]
+      children: officalPlugins,
     }
   ]
 }

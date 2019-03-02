@@ -106,15 +106,21 @@ lang: en-US
 
 **Input**
 
-```
+```md
 [[toc]]
+```
+
+或者
+
+```md
+<TOC/>
 ```
 
 **Output**
 
 [[toc]]
 
-目录（Table of Contents）的渲染可以通过  [`markdown.toc`](../config/README.md#markdown-toc) 选项来配置。
+目录（Table of Contents）的渲染可以通过  [`markdown.toc`](../config/README.md#markdown-toc) 选项来配置，也可以在 [TOC 组件](./using-vue.md#toc)中直接传入，如 `<TOC list-type="ol" :include-level="[2, Infinity]"/>`。
 
 ## 自定义容器
 

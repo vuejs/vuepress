@@ -220,9 +220,17 @@ The key and value pair will be added to `<a>` tags that point to an external lin
 ### markdown.toc
 
 - Type: `Object`
-- Default: `{ includeLevel: [2, 3] }`
 
-Options for [markdown-it-table-of-contents](https://github.com/Oktavilla/markdown-it-table-of-contents). (Note: prefer `markdown.slugify` if you want to customize header ids.)
+This attribute will control the behaviour of `[[TOC]]`. It contains the following options:
+
+- includeLevel: [number, number], level of headers to be included, defaults to `[2, 3]`.
+- containerClass: string, the class name for the container, defaults to `table-of-contents`.
+- markerPattern: RegExp, the regular expression for the marker to be replaced with TOC, defaults to `/^\[\[toc\]\]/im`.
+- listType: string or Array, labels for all levels of the list, defaults to `"ul"`.
+- containerHeaderHtml: string, an HTML string for container header, defaults to `""`.
+- containerFooterHtml: string, an HTML string for container footer, defaults to `""`.
+
+We also provide a [global component TOC](../guide/using-vue.md#toc) which allows for more free control by passing props directly to `<TOC>`.
 
 ### markdown.extendMarkdown
 
