@@ -1,7 +1,9 @@
+$nprogressColor ?= $accentColor
+
 #nprogress
   pointer-events none
   .bar
-    background $accentColor
+    background $nprogressColor
     position fixed
     z-index 1031
     top 0
@@ -14,7 +16,7 @@
     right 0px
     width 100px
     height 100%
-    box-shadow 0 0 10px $accentColor, 0 0 5px $accentColor
+    box-shadow 0 0 10px $nprogressColor, 0 0 5px $nprogressColor
     opacity 1.0
     transform rotate(3deg) translate(0px, -4px)
   .spinner
@@ -28,8 +30,8 @@
     height 18px
     box-sizing border-box
     border solid 2px transparent
-    border-top-color $accentColor
-    border-left-color $accentColor
+    border-top-color $nprogressColor
+    border-left-color $nprogressColor
     border-radius 50%
     animation nprogress-spinner 400ms linear infinite
 

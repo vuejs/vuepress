@@ -120,6 +120,7 @@ function getGuideSidebar (groupA, groupB) {
 const officalPlugins = fs
   .readdirSync(path.resolve(__dirname, '../plugin/official'))
   .map(filename => 'official/' + filename.slice(0, -3))
+  .sort()
 
 function getPluginSidebar (pluginTitle, pluginIntro, officialPluginTitle) {
   return [
