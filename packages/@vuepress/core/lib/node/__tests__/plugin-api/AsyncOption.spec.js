@@ -1,4 +1,4 @@
-const AsyncOption = require('../../lib/plugin-api/abstract/AsyncOption')
+const AsyncOption = require('../../plugin-api/abstract/AsyncOption')
 
 describe('AsyncOption', () => {
   test('parallelApply', async () => {

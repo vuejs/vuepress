@@ -1,4 +1,4 @@
-import Option from '../../lib/plugin-api/abstract/Option'
+import Option from '../../plugin-api/abstract/Option'
 
 describe('Option', () => {
   test('key', () => {

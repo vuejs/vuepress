@@ -1,4 +1,4 @@
-import { flattenPlugin } from '../../lib/plugin-api/util'
+import { flattenPlugin } from '../../plugin-api/util'
 
 describe('flattenPlugin', () => {
   test('should hydrate plugin correctly', () => {

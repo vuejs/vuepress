@@ -2,8 +2,8 @@ jest.mock('vuepress-plugin-a')
 jest.mock('vuepress-plugin-b')
 jest.mock('@org/vuepress-plugin-a')
 
-import PluginAPI from '../../lib/plugin-api/index'
-import { PLUGIN_OPTION_MAP } from '../../lib/plugin-api/constants'
+import PluginAPI from '../../plugin-api/index'
+import { PLUGIN_OPTION_MAP } from '../../plugin-api/constants'
 
 describe('Plugin', () => {
   test('registerOption', () => {
