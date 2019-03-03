@@ -15,7 +15,7 @@ module.exports = async function build (sourceDir, options = {}) {
   const { normalizeHeadTag, applyUserWebpackConfig } = require('./util/index')
 
   logger.wait('Extracting site metadata...')
-  const ctx = await prepare(sourceDir, { ...options, isProd: true })
+  const ctx = await prepare({ sourceDir, isProd: true, ...options })
 
   const { outDir, cwd } = ctx
   if (cwd === outDir) {

@@ -25,21 +25,21 @@ async function prepareServer (sourceDir, options = {}, context) {
   const { applyUserWebpackConfig } = require('./util/index')
   const { frontmatterEmitter } = require('@vuepress/markdown-loader')
 
-  options = { ...options, isProd: false }
-  const ctx = context || await prepare(sourceDir, options)
+  options = { sourceDir, isProd: false, ...options }
+  const ctx = context || await prepare(options)
 
   // setup watchers to update options and dynamically generated files
   const update = (reason) => {
     console.log(`Reload due to ${reason}`)
     ctx.pluginAPI.options.updated.syncApply()
-    prepare(sourceDir, options).catch(err => {
+    prepare(ctx.sourceDir, options).catch(err => {
       console.error(logger.error(chalk.red(err.stack), false))
     })
   }
 
   // Curry update handler by update type
   const spawnUpdate = updateType => file => {
-    const target = path.join(sourceDir, file)
+    const target = path.join(ctx.sourceDir, file)
     // Bust cache.
     delete require.cache[target]
     update(`${chalk.red(updateType)} ${chalk.cyan(file)}`)
@@ -50,7 +50,7 @@ async function prepareServer (sourceDir, options = {}, context) {
     '**/*.md',
     '.vuepress/components/**/*.vue'
   ], {
-    cwd: sourceDir,
+    cwd: ctx.sourceDir,
     ignored: ['.vuepress/**/*.md', 'node_modules'],
     ignoreInitial: true
   })
@@ -73,7 +73,7 @@ async function prepareServer (sourceDir, options = {}, context) {
 
   // watch config file
   const configWatcher = chokidar.watch(watchFiles, {
-    cwd: sourceDir,
+    cwd: ctx.sourceDir,
     ignoreInitial: true
   })
   configWatcher.on('change', spawnUpdate('change'))
@@ -127,7 +127,7 @@ async function prepareServer (sourceDir, options = {}, context) {
     config = applyUserWebpackConfig(userConfig, config, false /* isServer */)
   }
 
-  const contentBase = path.resolve(sourceDir, '.vuepress/public')
+  const contentBase = path.resolve(ctx.sourceDir, '.vuepress/public')
 
   const serverConfig = Object.assign({
     disableHostCheck: true,

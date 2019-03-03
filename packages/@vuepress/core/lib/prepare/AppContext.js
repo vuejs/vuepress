@@ -42,17 +42,17 @@ module.exports = class AppContext {
    * }} options
    */
 
-  constructor (sourceDir, options = {}) {
-    logger.debug('sourceDir', sourceDir)
-    this.sourceDir = sourceDir
+  constructor (options = {}) {
     this.options = options
+    this.sourceDir = this.options.sourceDir || path.join(__dirname, 'docs.fallback')
     this.isProd = this.options.isProd
+    logger.debug('sourceDir', this.sourceDir)
 
     const { tempPath, writeTemp } = createTemp(options.temp)
     this.tempPath = tempPath
     this.writeTemp = writeTemp
 
-    this.vuepressDir = path.resolve(sourceDir, '.vuepress')
+    this.vuepressDir = path.resolve(this.sourceDir, '.vuepress')
   }
 
   /**
@@ -63,11 +63,15 @@ module.exports = class AppContext {
    */
 
   resolveConfigAndInitialize () {
-    let siteConfig = loadConfig(this.vuepressDir)
-    if (isFunction(siteConfig)) {
-      siteConfig = siteConfig(this)
+    if (this.options.siteConfig) {
+      this.siteConfig = this.options.siteConfig
+    } else {
+      let siteConfig = loadConfig(this.vuepressDir)
+      if (isFunction(siteConfig)) {
+        siteConfig = siteConfig(this)
+      }
+      this.siteConfig = siteConfig
     }
-    this.siteConfig = siteConfig
 
     // TODO custom cwd.
     this.cwd = process.cwd()

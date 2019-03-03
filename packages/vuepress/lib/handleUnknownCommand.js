@@ -38,7 +38,7 @@ module.exports = async function (cli, options) {
     logger.setOptions({ logLevel: 1 })
 
     if (sourceDir) {
-      context = await prepare(sourceDir, options)
+      context = await prepare({ sourceDir, ...options })
       context.pluginAPI.options.extendCli.apply(cli, context)
     }
 
