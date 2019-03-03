@@ -16,18 +16,21 @@ const {
 
 const Page = require('./Page')
 const ClientComputedMixin = require('./ClientComputedMixin')
-const PluginAPI = require('../plugin-api/index')
+const PluginAPI = require('./plugin-api')
+const DevProcess = require('./dev')
+const BuildProcess = require('./build')
+const createTemp = require('./createTemp')
 
 /**
- * Expose AppContext.
+ * Expose VuePressApp.
  */
 
-module.exports = class AppContext {
+module.exports = class App {
   static getInstance (...args) {
-    if (!AppContext._instance) {
-      AppContext._instance = new AppContext(...args)
+    if (!App._instance) {
+      App._instance = new App(...args)
     }
-    return AppContext._instance
+    return App._instance
   }
 
   /**
@@ -35,7 +38,6 @@ module.exports = class AppContext {
    *
    * @param {string} sourceDir
    * @param {{
-   *  isProd: boolean,
    *  plugins: pluginsConfig,
    *  theme: themeNameConfig
    *  temp: string
@@ -45,7 +47,6 @@ module.exports = class AppContext {
   constructor (options = {}) {
     this.options = options
     this.sourceDir = this.options.sourceDir || path.join(__dirname, 'docs.fallback')
-    this.isProd = this.options.isProd
     logger.debug('sourceDir', this.sourceDir)
 
     const { tempPath, writeTemp } = createTemp(options.temp)
@@ -53,6 +54,7 @@ module.exports = class AppContext {
     this.writeTemp = writeTemp
 
     this.vuepressDir = path.resolve(this.sourceDir, '.vuepress')
+    this.libDir = path.join(__dirname, '../')
   }
 
   /**
@@ -97,7 +99,6 @@ module.exports = class AppContext {
 
   async process () {
     this.resolveConfigAndInitialize()
-    this.resolveCacheLoaderOptions()
     this.normalizeHeadTagUrls()
     this.themeAPI = loadTheme(this)
     this.resolveTemplates()
@@ -110,18 +111,18 @@ module.exports = class AppContext {
     this.markdown = createMarkdown(this)
 
     await this.resolvePages()
-    await this.pluginAPI.options.additionalPages.apply(this)
+
+    await this.pluginAPI.applyAsyncOption('additionalPages', this)
     await Promise.all(
-      this.pluginAPI.options.additionalPages.appliedValues.map(async (options) => {
+      this.pluginAPI.getOption('additionalPages').appliedValues.map(async (options) => {
         await this.addPage(options)
       })
     )
-
-    await this.pluginAPI.options.ready.apply()
+    await this.pluginAPI.applyAsyncOption('ready')
     await Promise.all([
-      this.pluginAPI.options.clientDynamicModules.apply(this),
-      this.pluginAPI.options.enhanceAppFiles.apply(this),
-      this.pluginAPI.options.globalUIComponents.apply(this)
+      this.pluginAPI.applyAsyncOption('clientDynamicModules', this),
+      this.pluginAPI.applyAsyncOption('enhanceAppFiles', this),
+      this.pluginAPI.applyAsyncOption('globalUIComponents', this)
     ])
   }
 
@@ -143,17 +144,17 @@ module.exports = class AppContext {
 
     this.pluginAPI
     // internl core plugins
-      .use(require('../internal-plugins/siteData'))
-      .use(require('../internal-plugins/routes'))
-      .use(require('../internal-plugins/rootMixins'))
-      .use(require('../internal-plugins/enhanceApp'))
-      .use(require('../internal-plugins/palette'))
-      .use(require('../internal-plugins/style'))
-      .use(require('../internal-plugins/layoutComponents'))
-      .use(require('../internal-plugins/pageComponents'))
-      .use(require('../internal-plugins/transformModule'))
-      .use(require('../internal-plugins/dataBlock'))
-      .use(require('../internal-plugins/frontmatterBlock'))
+      .use(require('./internal-plugins/siteData'))
+      .use(require('./internal-plugins/routes'))
+      .use(require('./internal-plugins/rootMixins'))
+      .use(require('./internal-plugins/enhanceApp'))
+      .use(require('./internal-plugins/palette'))
+      .use(require('./internal-plugins/style'))
+      .use(require('./internal-plugins/layoutComponents'))
+      .use(require('./internal-plugins/pageComponents'))
+      .use(require('./internal-plugins/transformModule'))
+      .use(require('./internal-plugins/dataBlock'))
+      .use(require('./internal-plugins/frontmatterBlock'))
       .use('@vuepress/container', {
         type: 'slot',
         before: info => `<template slot="${info}">`,
@@ -240,7 +241,7 @@ module.exports = class AppContext {
     this.devTemplate = this.resolveCommonAgreementFilePath(
       'devTemplate',
       {
-        defaultValue: path.resolve(__dirname, '../app/index.dev.html'),
+        defaultValue: this.getLibFilePath('client/index.dev.html'),
         siteAgreement: 'templates/dev.html',
         themeAgreement: 'templates/dev.html'
       }
@@ -249,7 +250,7 @@ module.exports = class AppContext {
     this.ssrTemplate = this.resolveCommonAgreementFilePath(
       'ssrTemplate',
       {
-        defaultValue: path.resolve(__dirname, '../app/index.ssr.html'),
+        defaultValue: this.getLibFilePath('client/index.ssr.html'),
         siteAgreement: 'templates/ssr.html',
         themeAgreement: 'templates/ssr.html'
       }
@@ -270,7 +271,7 @@ module.exports = class AppContext {
     this.globalLayout = this.resolveCommonAgreementFilePath(
       'globalLayout',
       {
-        defaultValue: path.resolve(__dirname, `../app/components/GlobalLayout.vue`),
+        defaultValue: this.getLibFilePath('client/components/GlobalLayout.vue'),
         siteAgreement: `components/GlobalLayout.vue`,
         themeAgreement: `layouts/GlobalLayout.vue`
       }
@@ -348,7 +349,7 @@ module.exports = class AppContext {
     await page.process({
       markdown: this.markdown,
       computed: new this.ClientComputedMixinConstructor(),
-      enhancers: this.pluginAPI.options.extendPageData.items
+      enhancers: this.pluginAPI.getOption('extendPageData').items
     })
     this.pages.push(page)
   }
@@ -430,45 +431,52 @@ module.exports = class AppContext {
       locales
     }
   }
+
+  /**
+   * Get file path in core lib
+   *
+   * @param relative
+   * @returns {string}
+   * @api public
+   */
+
+  getLibFilePath (relative) {
+    return path.join(this.libDir, relative)
+  }
+
+  /**
+   * Start a dev process with correct app context
+   *
+   * @returns {Promise<void>}
+   * @api public
+   */
+
+  async dev () {
+    this.isProd = false
+    this.devProcess = new DevProcess(this)
+    await this.devProcess.process()
+
+    this.devProcess
+      .on('fileChanged', ({ type, target }) => {
+        console.log(`Reload due to ${chalk.red(type)} ${chalk.cyan(target)}`)
+        this.process()
+      })
+      .createServer()
+      .listen()
+  }
+
+  /**
+   * Start a build process with correct app context
+   *
+   * @returns {Promise<void>}
+   * @api public
+   */
+
+  async build () {
+    this.isProd = true
+    this.buildProcess = new BuildProcess(this)
+    await this.buildProcess.process()
+    await this.buildProcess.render()
+  }
 }
 
-/**
- * Create a dynamic temp utility context that allow to lanuch
- * multiple apps with isolated context at the same time.
- * @param tempPath
- * @returns {{
- *  writeTemp: (function(file: string, content: string): string),
- *  tempPath: string
- * }}
- */
-
-function createTemp (tempPath) {
-  if (!tempPath) {
-    tempPath = path.resolve(__dirname, '../../.temp')
-  } else {
-    tempPath = path.resolve(tempPath)
-  }
-
-  if (!fs.existsSync(tempPath)) {
-    fs.ensureDirSync(tempPath)
-  } else {
-    fs.emptyDirSync(tempPath)
-  }
-
-  logger.debug(`Temp directory: ${chalk.gray(tempPath)}`)
-  const tempCache = new Map()
-
-  async function writeTemp (file, content) {
-    const destPath = path.join(tempPath, file)
-    await fs.ensureDir(path.parse(destPath).dir)
-    // cache write to avoid hitting the dist if it didn't change
-    const cached = tempCache.get(file)
-    if (cached !== content) {
-      await fs.writeFile(destPath, content)
-      tempCache.set(file, content)
-    }
-    return destPath
-  }
-
-  return { writeTemp, tempPath }
-}

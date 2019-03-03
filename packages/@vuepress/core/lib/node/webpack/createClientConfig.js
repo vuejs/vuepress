@@ -5,14 +5,14 @@
  */
 
 module.exports = function createClientConfig (ctx) {
-  const { path, env } = require('@vuepress/shared-utils')
+  const { env } = require('@vuepress/shared-utils')
   const createBaseConfig = require('./createBaseConfig')
 
   const config = createBaseConfig(ctx)
 
   config
     .entry('app')
-      .add(path.resolve(__dirname, '../app/clientEntry.js'))
+      .add(ctx.getLibFilePath('client/clientEntry.js'))
 
   config.node
     .merge({
@@ -71,7 +71,7 @@ module.exports = function createClientConfig (ctx) {
       }])
   }
 
-  ctx.pluginAPI.options.chainWebpack.syncApply(config, false /* isServer */)
+  ctx.pluginAPI.applySyncOption('chainWebpack', config, false /* isServer */)
 
   return config
 }

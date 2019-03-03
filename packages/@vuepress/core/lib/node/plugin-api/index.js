@@ -238,6 +238,50 @@ module.exports = class PluginAPI {
       .registerOption(PLUGIN_OPTION_MAP.BEFORE_DEV_SERVER.key, beforeDevServer, pluginName)
       .registerOption(PLUGIN_OPTION_MAP.AFTER_DEV_SERVER.key, afterDevServer, pluginName)
   }
+
+  /**
+   * Apply synchronous option.
+   *
+   * @param {string} name
+   * @param {Array<any>} args
+   * @returns {void}
+   * @api public
+   */
+
+  applySyncOption (name, ...args) {
+    logger.debug('applySyncOption: ' + name)
+    this.getOption(name).apply(...args)
+    return this
+  }
+
+  /**
+   * Apply asynchronous option.
+   *
+   * @param {string} name
+   * @param {Array<any>} args
+   * @returns {Promise<void>}
+   * @api public
+   */
+
+  async applyAsyncOption (name, ...args) {
+    logger.debug('applyAsyncOption: ' + name)
+    await this.getOption(name).apply(...args)
+  }
+
+  /**
+   * Get exisiting option
+   *
+   * @param name
+   * @returns {Option}
+   * @api public
+   */
+
+  getOption (name) {
+    if (!this.options[name]) {
+      throw new Error(`Unknown option ${name}`)
+    }
+    return this.options[name]
+  }
 }
 
 function pluginLog (name, shortcut) {

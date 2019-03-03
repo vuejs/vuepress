@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-const { inferDate, DATE_RE } = require('../util/index')
+const { inferDate, DATE_RE } = require('./util/index')
 const {
   fs,
   path,

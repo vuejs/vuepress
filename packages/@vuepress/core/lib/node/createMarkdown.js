@@ -16,12 +16,12 @@ module.exports = function (ctx) {
 
   const beforeInstantiate = config => {
     chainMarkdown && chainMarkdown(config)
-    ctx.pluginAPI.options.chainMarkdown.syncApply(config)
+    ctx.pluginAPI.applySyncOption('chainMarkdown', config)
   }
 
   const afterInstantiate = md => {
     extendMarkdown && extendMarkdown(md)
-    ctx.pluginAPI.options.extendMarkdown.syncApply(md)
+    ctx.pluginAPI.applySyncOption('extendMarkdown', md)
   }
 
   return createMarkdown(

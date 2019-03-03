@@ -11,7 +11,7 @@ module.exports = (options, ctx) => ({
 
   async clientDynamicModules () {
     const files = [
-      path.resolve(__dirname, '../prepare/ClientComputedMixin.js')
+      path.resolve(__dirname, '../ClientComputedMixin.js')
     ]
 
     const modules = await Promise.all(files.map(async file => {

@@ -88,7 +88,7 @@ module.exports = class ThemeAPI {
       layoutComponentMap.NotFound = {
         filename: 'NotFound.vue',
         componentName: 'NotFound',
-        path: resolve(__dirname, '../app/components/NotFound.vue'),
+        path: resolve(__dirname, '../../client/components/NotFound.vue'),
         isInternal: true
       }
     }

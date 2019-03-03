@@ -10,20 +10,22 @@ const { fs, path, logger, env } = require('@vuepress/shared-utils')
  * Expose createBaseConfig method.
  */
 
-module.exports = function createBaseConfig ({
-  siteConfig,
-  sourceDir,
-  outDir,
-  base: publicPath,
-  markdown,
-  tempPath,
-  cacheDirectory,
-  cacheIdentifier,
-  options: {
-    cache
-  },
-  pluginAPI
-}, isServer) {
+module.exports = function createBaseConfig (context, isServer) {
+  const {
+    siteConfig,
+    sourceDir,
+    outDir,
+    base: publicPath,
+    markdown,
+    tempPath,
+    cacheDirectory,
+    cacheIdentifier,
+    options: {
+      cache
+    },
+    pluginAPI
+  } = context
+
   const Config = require('webpack-chain')
   const { VueLoaderPlugin } = require('vue-loader')
   const CSSExtractPlugin = require('mini-css-extract-plugin')
@@ -47,12 +49,14 @@ module.exports = function createBaseConfig ({
   }
 
   const modulePaths = getModulePaths()
+  const clientDir = context.getLibFilePath('client')
 
   config.resolve
     .set('symlinks', true)
     .alias
       .set('@source', sourceDir)
-      .set('@app', path.resolve(__dirname, '../app'))
+      .set('@client', clientDir)
+      .set('@app', clientDir)
       .set('@temp', tempPath)
       .set('@dynamic', path.resolve(tempPath, 'dynamic'))
       .set('@internal', path.resolve(tempPath, 'internal'))
@@ -76,7 +80,7 @@ module.exports = function createBaseConfig ({
     fs.emptyDirSync(cacheDirectory)
   }
 
-  cacheIdentifier += `isServer:${isServer}`
+  const finalCacheIdentifier = cacheIdentifier + `isServer:${isServer}`
 
   function applyVuePipeline (rule) {
     rule
@@ -84,7 +88,7 @@ module.exports = function createBaseConfig ({
         .loader('cache-loader')
         .options({
           cacheDirectory,
-          cacheIdentifier
+          cacheIdentifier: finalCacheIdentifier
         })
 
     rule
@@ -95,7 +99,7 @@ module.exports = function createBaseConfig ({
             preserveWhitespace: true
           },
           cacheDirectory,
-          cacheIdentifier
+          cacheIdentifier: finalCacheIdentifier
         })
   }
 
@@ -144,7 +148,7 @@ module.exports = function createBaseConfig ({
           .loader('cache-loader')
           .options({
             cacheDirectory,
-            cacheIdentifier
+            cacheIdentifier: finalCacheIdentifier
           })
           .end()
         .use('babel-loader')
@@ -281,13 +285,13 @@ module.exports = function createBaseConfig ({
   config
     .plugin('injections')
     .use(require('webpack/lib/DefinePlugin'), [{
-      VUEPRESS_VERSION: JSON.stringify(require('../../package.json').version),
+      VUEPRESS_VERSION: JSON.stringify(require('../../../package.json').version),
       VUEPRESS_TEMP_PATH: JSON.stringify(tempPath),
       LAST_COMMIT_HASH: JSON.stringify(getLastCommitHash())
     }])
 
-  pluginAPI.options.define.apply(config)
-  pluginAPI.options.alias.apply(config)
+  pluginAPI.applySyncOption('define', config)
+  pluginAPI.applySyncOption('alias', config)
 
   return config
 }

@@ -24,7 +24,7 @@ module.exports = function createServerConfig (ctx) {
 
   config
     .entry('app')
-      .add(path.resolve(__dirname, '../app/serverEntry.js'))
+      .add(ctx.getLibFilePath('client/serverEntry.js'))
 
   config.output
     .filename('server-bundle.js')
@@ -56,7 +56,7 @@ module.exports = function createServerConfig (ctx) {
       }])
   }
 
-  ctx.pluginAPI.options.chainWebpack.syncApply(config, true /* isServer */)
+  ctx.pluginAPI.applySyncOption('chainWebpack', config, true /* isServer */)
 
   return config
 }

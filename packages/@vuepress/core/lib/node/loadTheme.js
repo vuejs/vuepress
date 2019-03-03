@@ -11,7 +11,7 @@ const {
   datatypes: { isString },
   logger, chalk
 } = require('@vuepress/shared-utils')
-const ThemeAPI = require('../theme-api')
+const ThemeAPI = require('./theme-api')
 
 /**
  * Resolve theme.
@@ -76,6 +76,7 @@ function resolveTheme (ctx, resolver, ignoreLocal, theme) {
   const { siteConfig, options, sourceDir, vuepressDir, pluginAPI } = ctx
   const localThemePath = resolve(vuepressDir, 'theme')
   theme = theme || siteConfig.theme || options.theme
+  console.log(theme)
 
   let path
   let name

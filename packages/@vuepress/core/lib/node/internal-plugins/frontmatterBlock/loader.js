@@ -18,7 +18,7 @@ module.exports = function (source, map) {
       && parsed.data
       && JSON.stringify(cached.data) !== JSON.stringify(parsed.data)
     ) {
-      frontmatterEmitter.emit('update')
+      frontmatterEmitter.emit('update', file)
     }
 
     cache.set(file, parsed)

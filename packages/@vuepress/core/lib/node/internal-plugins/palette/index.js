@@ -8,7 +8,7 @@ module.exports = (options, ctx) => ({
 
   async ready () {
     // 1. enable config.styl globally.
-    const configFile = path.resolve(__dirname, '../../app/style/config.styl')
+    const configFile = ctx.getLibFilePath('client/style/config.styl')
     if (!ctx.siteConfig.stylus) {
       ctx.siteConfig.stylus = {
         import: [configFile]
