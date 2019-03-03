@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-i18n-ui",
-  "version": "1.0.0-alpha.41",
+  "version": "1.0.0-alpha.42",
   "description": "i18n-ui plugin for vuepress",
   "main": "index.js",
   "publishConfig": {

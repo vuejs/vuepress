@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-container",
-  "version": "1.0.0-alpha.41",
+  "version": "1.0.0-alpha.42",
   "description": "markdown container plugin for vuepress",
   "main": "index.js",
   "publishConfig": {
