@@ -26,8 +26,8 @@ module.exports = (options, context) => ({
     if (!render) {
       if (before !== undefined && after !== undefined) {
         render = (tokens, index) => {
-          const token = tokens[index]
-          return token.nesting === 1 ? call(before, token) : call(after, token)
+          const info = tokens[index].info.trim().slice(type.length).trim
+          return tokens[index].nesting === 1 ? call(before, info) : call(after, info)
         }
       } else {
         render = (tokens, index) => {

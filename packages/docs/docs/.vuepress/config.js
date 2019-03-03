@@ -81,7 +81,7 @@ module.exports = ctx => ({
     }],
     ['@vuepress/container', {
       type: 'upgrade',
-      before: ({ info }) => `<UpgradePath title="${info.trim().slice(7).trim()}">`,
+      before: info => `<UpgradePath title="${info}">`,
       after: '</UpgradePath>',
     }],
   ],
