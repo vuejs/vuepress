@@ -1,4 +1,19 @@
 <a name=""></a>
+# [](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.42...v) (2019-03-03)
+
+
+
+<a name="1.0.0-alpha.42"></a>
+# [1.0.0-alpha.42](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.41...v1.0.0-alpha.42) (2019-03-03)
+
+
+### Bug Fixes
+
+* **$theme-default:** support slot and v-pre container (close: [#1387](https://github.com/vuejs/vuepress/issues/1387)) ([#1389](https://github.com/vuejs/vuepress/issues/1389)) ([c85f62d](https://github.com/vuejs/vuepress/commit/c85f62d))
+
+
+
+<a name=""></a>
 # [](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.40...v) (2019-02-27)
 
 
