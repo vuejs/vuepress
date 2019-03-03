@@ -7,9 +7,9 @@ module.exports = function createJestRunner (jestArgs) {
   return async function () {
     let args = [...jestArgs, ...rawArgs]
     const execArgv = getChildProcesExecArgv()
-    args = [...execArgv, 'node_modules/.bin/jest', '--runInBand', ...args]
+    args = [...execArgv, 'node_modules/.bin/jest', ...args]
     console.log(`running node with args: ${args.join(' ')}`)
-    await execa('node', [...execArgv, 'node_modules/.bin/jest', ...args], {
+    await execa('node', args, {
       stdio: 'inherit'
     })
   }
