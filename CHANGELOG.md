@@ -1,8 +1,3 @@
-<a name=""></a>
-# [](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.42...v) (2019-03-03)
-
-
-
 <a name="1.0.0-alpha.42"></a>
 # [1.0.0-alpha.42](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.41...v1.0.0-alpha.42) (2019-03-03)
 
@@ -12,9 +7,24 @@
 * **$theme-default:** support slot and v-pre container (close: [#1387](https://github.com/vuejs/vuepress/issues/1387)) ([#1389](https://github.com/vuejs/vuepress/issues/1389)) ([c85f62d](https://github.com/vuejs/vuepress/commit/c85f62d))
 
 
+<a name="1.0.0-alpha.41"></a>
+# [1.0.0-alpha.41](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.40...v1.0.0-alpha.41) (2019-03-02)
 
-<a name=""></a>
-# [](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.40...v) (2019-02-27)
+
+### Bug Fixes
+
+* **$core:** Generated js have SyntaxError when source-map is enabled (close: [#1367](https://github.com/vuejs/vuepress/issues/1367)) ([#1378](https://github.com/vuejs/vuepress/issues/1378)) ([b53324d](https://github.com/vuejs/vuepress/commit/b53324d))
+* **$core:** skip plugin on error (Related to [#1371](https://github.com/vuejs/vuepress/issues/1371)) [#1383](https://github.com/vuejs/vuepress/issues/1383) ([7d2c065](https://github.com/vuejs/vuepress/commit/7d2c065))
+* **$core:** support theme index file which is not at root (close: [#1362](https://github.com/vuejs/vuepress/issues/1362)) ([#1376](https://github.com/vuejs/vuepress/issues/1376)) ([204cbe4](https://github.com/vuejs/vuepress/commit/204cbe4))
+* **$markdown:** fix line highlighting (close: [#1364](https://github.com/vuejs/vuepress/issues/1364)) ([#1369](https://github.com/vuejs/vuepress/issues/1369)) ([5a111a2](https://github.com/vuejs/vuepress/commit/5a111a2))
+* **$theme-default:** encodeURI for sidebar items which contain CJK characters (close: [#717](https://github.com/vuejs/vuepress/issues/717)) ([285b368](https://github.com/vuejs/vuepress/commit/285b368))
+
+
+### Features
+
+* **$plugin-container:** init ([#1381](https://github.com/vuejs/vuepress/issues/1381)) ([ad0ff72](https://github.com/vuejs/vuepress/commit/ad0ff72))
+* **$markdown:** TOC component (close: [#1275](https://github.com/vuejs/vuepress/issues/1275)) ([#1375](https://github.com/vuejs/vuepress/issues/1375)) ([760f90b](https://github.com/vuejs/vuepress/commit/760f90b))
+* **$plugin-nprogress:** allow nprogress use different color and add docs ([#1366](https://github.com/vuejs/vuepress/issues/1366)) ([1a928c7](https://github.com/vuejs/vuepress/commit/1a928c7))
 
 
 
