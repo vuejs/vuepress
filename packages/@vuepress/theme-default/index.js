@@ -28,11 +28,6 @@ module.exports = (options, ctx) => ({
       type: 'v-pre',
       before: '<div v-pre>\n',
       after: '</div>\n'
-    }],
-    ['@vuepress/container', {
-      type: 'slot',
-      before: info => `<template slot="${info}">`,
-      after: '</template>\n'
     }]
   ]
 })
