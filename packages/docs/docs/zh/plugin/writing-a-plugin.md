@@ -18,6 +18,6 @@ module.exports = (options, ctx) => {
 }
 ```
 
-::: tip
+::: tip 提示
 一个 VuePress 插件应该是一个 `CommonJS 模块`，因为 VuePress 插件运行在 Node 端。
 :::

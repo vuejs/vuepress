@@ -26,7 +26,7 @@ VuePress 1.0 进行了大范围的重写，其中最重要的就是引入 [Plugi
 
 没错，你的配置文件也是一个插件，因此，你可以直接使用插件 API，而不必为此新建一个插件，然后在配置中导入它。
 
-::: tip
+::: tip 提示
 `.vuepress/config.js` 所支持的 API，实际上是在插件选项的基础上又新增了一些特定的选项。
 :::
 
@@ -34,7 +34,7 @@ VuePress 1.0 进行了大范围的重写，其中最重要的就是引入 [Plugi
 
 主题的根配置文件也是插件。
 
-::: tip
+::: tip 提示
 和 `.vuepress/config.js` 一样，`theme/config.js` 所支持的选项，也是在插件选项的基础上，又新增了一些特定的选项。用一张图来表达它们的关系就是：
 
 <svg viewBox="0 0 2806 912" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

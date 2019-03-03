@@ -456,7 +456,7 @@ module.exports = {
 
 现在你可以在你项目中使用 `vuepress info [targetDir]` 了！
 
-::: tip
+::: tip 提示
 值得注意的是，一个自定义的 command 需要 VuePress 像 `vuepress dev` 或 `vuepress build` 去定位到你的站点配置，所以在开发一个 command 时，请确保引导用户去传入 `targetDir` 作为 CLI 参数的一部分。
 :::
 

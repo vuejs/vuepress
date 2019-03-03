@@ -137,7 +137,7 @@ export default {
 
 被 `<code>` 包装的 HTML 将按原样显示，只有未被包装的 HTML 才会被 Vue 解析。
 
-::: tip
+::: tip 提示
 输出的 HTML 由 [markdown-it](https://github.com/markdown-it/markdown-it) 完成。而解析后的标题由 VuePress 完成，用于[侧边栏](../theme/default-theme-config.md#侧边栏)以及文档的标题。
 :::
 
@@ -164,7 +164,7 @@ yarn add -D sass-loader node-sass
 yarn add -D pug pug-plain-loader
 ```
 
-::: tip
+::: tip 提示
 需要指出的是，如果你是一个 `stylus` 用户，你并不需要在你的项目中安装 `stylus` 和 `stylus-loader`，因为 VuePress 已经内置了它们。
 
 对于那些没有内置的预处理器，除了安装对应的依赖，你还需要 [拓展内部的 Webpack 配置](../config/README.md#configurewebpack)。

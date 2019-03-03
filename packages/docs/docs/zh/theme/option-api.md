@@ -22,7 +22,7 @@ module.exports = (themeConfig, ctx) => {
 }
 ```
 
-::: tip
+::: tip 提示
 1. 你应该能看到 `themeEntry` 和 `themeConfig` 的区别，前者是一个主题本身的配置，这些配置由 VuePress 本身提供；而后者则是用户对主题的配置，这些配置选项则由当前使用的主题来实现，如 [默认主题配置](./default-theme-config.md)。
 2. 除了本节列出的选项，`themeEntry` 也支持插件支持的所有 [配置选项](../plugin/option-api.md) 和 [生命周期](../plugin/life-cycle.md)。
 :::

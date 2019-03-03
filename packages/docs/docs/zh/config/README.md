@@ -104,7 +104,7 @@ VuePress 默认使用了 [cache-loader](https://github.com/webpack-contrib/cache
 
 此选项可以用于指定 cache 的路径，同时也可以通过设置为 `false` 来在每次构建之前删除 cache。
 
-::: tip
+::: tip 提示
 这个选项也可以通过命令行来使用：
 ```bash
 vuepress dev docs --cache .cache # 设置 cache 路径
@@ -128,7 +128,7 @@ $borderColor = #eaecef
 $codeBgColor = #282c34
 ```
 
-::: danger Note
+::: danger 注意
 你应该**只在**这个文件中写入颜色变量。因为 `palette.styl` 将在根的 stylus 配置文件的末尾引入，作为配置，它将被多个文件使用，所以一旦你在这里写了样式，你的样式就会被多次复制。
 :::
 
@@ -242,7 +242,7 @@ module.exports = {
 }
 ```
 
-::: tip
+::: tip 提示
 这个选项也被 [Plugin API](../plugin/option-api.md#extendmarkdown) 所支持。
 :::
 

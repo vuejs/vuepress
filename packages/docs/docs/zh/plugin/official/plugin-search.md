@@ -14,7 +14,7 @@ yarn add -D @vuepress/plugin-search@next
 # OR npm install -D @vuepress/plugin-search@next
 ```
 
-::: tip
+::: tip 提示
 请注意，此插件已包含在**默认主题**中，你现在看到的搜索便是由本插件提供支持。
 :::
 

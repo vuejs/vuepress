@@ -40,7 +40,7 @@ echo '# Hello VuePress!' > docs/README.md
 npx vuepress dev docs
 ```
 
-::: warning
+::: warning 注意
 如果你的现有项目依赖了 webpack 3.x，推荐使用 [Yarn](https://yarnpkg.com/en/) 而不是 npm 来安装 VuePress。因为在这种情形下，npm 会生成错误的依赖树。
 :::
 
