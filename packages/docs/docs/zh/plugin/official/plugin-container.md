@@ -49,14 +49,14 @@ module.exports = {
 - 类型: `string | Function`
 - 默认值: `undefined`
 
-要插入在容器前的 HTML。如果设置为一个函数，将传入当前的 `token` 作为第一个参数。如果设置了这个值，它将覆盖 `defaultTitle` 的效果。
+要插入在容器前的 HTML。如果设置为一个函数，将传入当前的 `info` 作为第一个参数。（在上面的例子中，`info` 的值为 `bar`。）如果设置了这个值，它将覆盖 `defaultTitle` 的效果。
 
 ### after
 
 - 类型: `string | Function`
 - 默认值: `undefined`
 
-要插入在容器后的 HTML。如果设置为一个函数，将传入当前的 `token` 作为第一个参数。如果设置了这个值，它将覆盖 `defaultTitle` 的效果。
+要插入在容器后的 HTML。如果设置为一个函数，将传入当前的 `info` 作为第一个参数。（在上面的例子中，`info` 的值为 `bar`。）如果设置了这个值，它将覆盖 `defaultTitle` 的效果。
 
 ### validate
 

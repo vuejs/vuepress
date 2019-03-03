@@ -149,6 +149,16 @@ module.exports = class AppContext {
       .use(require('../internal-plugins/transformModule'))
       .use(require('../internal-plugins/dataBlock'))
       .use(require('../internal-plugins/frontmatterBlock'))
+      .use('@vuepress/container', {
+        type: 'slot',
+        before: info => `<template slot="${info}">`,
+        after: '</template>'
+      })
+      .use('@vuepress/container', {
+        type: 'v-pre',
+        before: '<div v-pre>',
+        after: '</div>'
+      })
       .use('@vuepress/last-updated', !!shouldUseLastUpdated)
       .use('@vuepress/register-components', {
         componentsDir: [
