@@ -239,7 +239,7 @@ export default {
 
 **Output**
 
-``` js{4}
+``` js {4}
 export default {
   data () {
     return {

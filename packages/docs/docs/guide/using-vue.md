@@ -98,15 +98,15 @@ By default, fenced code blocks are automatically wrapped with `v-pre`. If you wa
 
 Any `*.vue` files found in `.vuepress/components` are automatically registered as [global](https://vuejs.org/v2/guide/components-registration.html#Global-Registration), [async](https://vuejs.org/v2/guide/components-dynamic-async.html#Async-Components) components. For example:
 
-```
+::: files
 .
-└─ .vuepress
-   └─ components
-      ├─ demo-1.vue
-      ├─ OtherComponent.vue
-      └─ Foo
-         └─ Bar.vue
-```
+└── .vuepress
+&nbsp;   └── components
+&nbsp;       ├── demo-1.vue
+&nbsp;       ├── OtherComponent.vue
+&nbsp;       └── Foo
+             └── Bar.vue
+:::
 
 Inside any markdown file you can then directly use the components (names are inferred from filenames):
 

@@ -24,7 +24,7 @@ The following guides are based on a few shared assumptions:
 
 2. Inside your project, create `deploy.sh` with the following content (with highlighted lines uncommented appropriately) and run it to deploy:
 
-``` bash{13,20,23}
+``` bash {13,20,23}
 #!/usr/bin/env sh
 
 # abort on errors

@@ -2,7 +2,7 @@
 
 VuePress follows the principle of **"Convention is better than configuration"**, the recommended document structure is as follows:
 
-::: vue
+::: files
 .
 ├── docs
 │   ├── .vuepress _(**Optional**)_

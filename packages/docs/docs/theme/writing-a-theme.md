@@ -2,7 +2,7 @@
 
 To write a theme, create a `.vuepress/theme` directory in your docs root, and then create a `Layout.vue` file:
 
-::: vue
+::: files
 .
 └─ .vuepress
    └─ `theme`
@@ -33,7 +33,7 @@ Just one `Layout.vue` might not be enough, and you might also want to define mor
 
 So it's time to reorganize your theme, an agreed theme directory structure is as follows:
 
-::: vue
+::: files
 theme
 ├── `global-components`
 │   └── xxx.vue
@@ -77,7 +77,7 @@ When you publish your theme as an NPM package, if you don't have any theme confi
 
 Suppose your theme layouts folder is as follows:
 
-::: vue
+::: files
 theme
 └── `layouts`
     ├── Layout.vue

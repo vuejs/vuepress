@@ -2,7 +2,7 @@
 
 想要书写一个主题，首先在你文档根目录创建一个 `.vuepress/theme` 目录，接着创建一个 `Layout.vue` 文件：
 
-::: vue
+::: files
 .
 └─ .vuepress
    └─ `theme`
@@ -37,7 +37,7 @@
 
 那么是时候重新组织你的主题了！一个约定的主题的目录结构如下：
 
-::: vue
+::: files
 theme
 ├── `global-components`
 │   └── xxx.vue
@@ -82,7 +82,7 @@ theme
 
 假设你的主题 `layouts` 目录如下：
 
-::: vue
+::: files
 theme
 └── `layouts`
     ├── Layout.vue

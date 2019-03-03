@@ -112,7 +112,7 @@ VuePress achieves this requirement in a clever way, but there is a requirement f
 
 For example, if you are developing an atomic theme with the following structure:
 
-::: vue
+::: files
 theme
 ├── components
 │   ├── `Home.vue`
@@ -136,7 +136,7 @@ import Home from '@theme/components/Navbar.vue'
 
 On this premise, when you create a `Navbar` component in the same place in the child theme
 
-::: vue
+::: files
 theme
 └── components
     └── `Navbar.vue`

@@ -227,7 +227,7 @@ Check out [the list of valid languages](https://prismjs.com/#languages-list) on 
 **Input**
 
 ````
-``` js{4}
+``` js {4}
 export default {
   data () {
     return {
@@ -240,7 +240,7 @@ export default {
 
 **Output**
 
-``` js{4}
+``` js {4}
 export default {
   data () {
     return {

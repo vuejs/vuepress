@@ -75,8 +75,8 @@ module.exports = ctx => ({
       ga: 'UA-128189152-1'
     }],
     ['@vuepress/container', {
-      type: 'vue',
-      before: '<pre class="vue-container"><code>',
+      type: 'files',
+      before: '<pre class="file-structure"><code>',
       after: '</code></pre>',
     }],
     ['@vuepress/container', {
