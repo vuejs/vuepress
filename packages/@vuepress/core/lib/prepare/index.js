@@ -11,9 +11,9 @@ const { logger } = require('@vuepress/shared-utils')
  * Expose prepare.
  */
 
-module.exports = async function prepare (sourceDir, cliOptions, isProd) {
+module.exports = async function prepare (sourceDir, options) {
   logger.wait('Extracting site metadata...')
-  const appContext = AppContext.getInstance(sourceDir, cliOptions, isProd)
+  const appContext = AppContext.getInstance(sourceDir, options)
   await appContext.process()
   return appContext
 }

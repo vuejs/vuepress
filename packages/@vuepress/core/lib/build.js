@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = async function build (sourceDir, cliOptions = {}) {
+module.exports = async function build (sourceDir, options = {}) {
   process.env.NODE_ENV = 'production'
 
   const webpack = require('webpack')
@@ -15,7 +15,7 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
   const { normalizeHeadTag, applyUserWebpackConfig } = require('./util/index')
 
   logger.wait('Extracting site metadata...')
-  const ctx = await prepare(sourceDir, cliOptions, true /* isProd */)
+  const ctx = await prepare(sourceDir, { ...options, isProd: true })
 
   const { outDir, cwd } = ctx
   if (cwd === outDir) {
@@ -25,8 +25,8 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
   await fs.emptyDir(outDir)
   logger.debug('Dist directory: ' + chalk.gray(outDir))
 
-  let clientConfig = createClientConfig(ctx, cliOptions).toConfig()
-  let serverConfig = createServerConfig(ctx, cliOptions).toConfig()
+  let clientConfig = createClientConfig(ctx, options).toConfig()
+  let serverConfig = createServerConfig(ctx, options).toConfig()
 
   // apply user config...
   const userConfig = ctx.siteConfig.configureWebpack
@@ -47,10 +47,10 @@ module.exports = async function build (sourceDir, cliOptions = {}) {
   // find and remove empty style chunk caused by
   // https://github.com/webpack-contrib/mini-css-extract-plugin/issues/85
   // TODO remove when it's fixed
-  if (!clientConfig.devtool && (!clientConfig.plugins ||           
-    !clientConfig.plugins.some(p =>
-      p instanceof webpack.SourceMapDevToolPlugin ||
-      p instanceof webpack.EvalSourceMapDevToolPlugin
+  if (!clientConfig.devtool && (!clientConfig.plugins
+    || !clientConfig.plugins.some(p =>
+      p instanceof webpack.SourceMapDevToolPlugin
+      || p instanceof webpack.EvalSourceMapDevToolPlugin
     ))) {
     await workaroundEmptyStyleChunk()
   }

@@ -73,9 +73,9 @@ function normalizeThemePath (resolved) {
 }
 
 function resolveTheme (ctx, resolver, ignoreLocal, theme) {
-  const { siteConfig, cliOptions, sourceDir, vuepressDir, pluginAPI } = ctx
+  const { siteConfig, options, sourceDir, vuepressDir, pluginAPI } = ctx
   const localThemePath = resolve(vuepressDir, 'theme')
-  theme = theme || siteConfig.theme || cliOptions.theme
+  theme = theme || siteConfig.theme || options.theme
 
   let path
   let name

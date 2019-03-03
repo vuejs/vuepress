@@ -12,12 +12,12 @@ const {
 /**
  * Get cache directory and cache identifier via config.
  * @param {object} siteConfig
- * @param {object} cliOptions
+ * @param {object} options
  */
 
-exports.getCacheLoaderOptions = function (siteConfig, cliOptions, cwd, isProd) {
+exports.getCacheLoaderOptions = function (siteConfig, options, cwd, isProd) {
   const defaultCacheDirectory = path.resolve(__dirname, '../../node_modules/.cache/vuepress')
-  let cache = cliOptions.cache || siteConfig.cache || defaultCacheDirectory
+  let cache = options.cache || siteConfig.cache || defaultCacheDirectory
 
   if (isBoolean(cache)) {
     if (cache === true) {

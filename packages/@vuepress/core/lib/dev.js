@@ -1,7 +1,7 @@
 'use strict'
 
-module.exports = async (sourceDir, cliOptions = {}, ctx) => {
-  const { server, host, port } = await prepareServer(sourceDir, cliOptions, ctx)
+module.exports = async (sourceDir, options = {}, ctx) => {
+  const { server, host, port } = await prepareServer(sourceDir, options, ctx)
   server.listen(port, host, err => {
     if (err) {
       console.log(err)
@@ -11,7 +11,7 @@ module.exports = async (sourceDir, cliOptions = {}, ctx) => {
 
 module.exports.prepare = prepareServer
 
-async function prepareServer (sourceDir, cliOptions = {}, context) {
+async function prepareServer (sourceDir, options = {}, context) {
   const WebpackDevServer = require('webpack-dev-server')
   const { path } = require('@vuepress/shared-utils')
   const webpack = require('webpack')
@@ -25,13 +25,14 @@ async function prepareServer (sourceDir, cliOptions = {}, context) {
   const { applyUserWebpackConfig } = require('./util/index')
   const { frontmatterEmitter } = require('@vuepress/markdown-loader')
 
-  const ctx = context || await prepare(sourceDir, cliOptions, false /* isProd */)
+  options = { ...options, isProd: false }
+  const ctx = context || await prepare(sourceDir, options)
 
   // setup watchers to update options and dynamically generated files
   const update = (reason) => {
     console.log(`Reload due to ${reason}`)
     ctx.pluginAPI.options.updated.syncApply()
-    prepare(sourceDir, cliOptions, false /* isProd */).catch(err => {
+    prepare(sourceDir, options).catch(err => {
       console.error(logger.error(chalk.red(err.stack), false))
     })
   }
@@ -97,8 +98,8 @@ async function prepareServer (sourceDir, cliOptions = {}, context) {
       tags: ctx.siteConfig.head || []
     }])
 
-  const port = await resolvePort(cliOptions.port || ctx.siteConfig.port)
-  const { host, displayHost } = await resolveHost(cliOptions.host || ctx.siteConfig.host)
+  const port = await resolvePort(options.port || ctx.siteConfig.port)
+  const { host, displayHost } = await resolveHost(options.host || ctx.siteConfig.host)
 
   // debug in a running dev process.
   process.stdin
@@ -137,7 +138,7 @@ async function prepareServer (sourceDir, cliOptions = {}, context) {
     headers: {
       'access-control-allow-origin': '*'
     },
-    open: cliOptions.open,
+    open: options.open,
     publicPath: ctx.base,
     watchOptions: {
       ignored: [

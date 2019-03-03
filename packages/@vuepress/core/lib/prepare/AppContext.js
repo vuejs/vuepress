@@ -42,13 +42,13 @@ module.exports = class AppContext {
    * }} options
    */
 
-  constructor (sourceDir, cliOptions = {}, isProd) {
+  constructor (sourceDir, options = {}) {
     logger.debug('sourceDir', sourceDir)
     this.sourceDir = sourceDir
-    this.cliOptions = cliOptions
-    this.isProd = isProd
+    this.options = options
+    this.isProd = this.options.isProd
 
-    const { tempPath, writeTemp } = createTemp(cliOptions.temp)
+    const { tempPath, writeTemp } = createTemp(options.temp)
     this.tempPath = tempPath
     this.writeTemp = writeTemp
 
@@ -63,10 +63,11 @@ module.exports = class AppContext {
    */
 
   resolveConfigAndInitialize () {
-    this.siteConfig = loadConfig(this.vuepressDir)
-    if (isFunction(this.siteConfig)) {
-      this.siteConfig = this.siteConfig(this)
+    let siteConfig = loadConfig(this.vuepressDir)
+    if (isFunction(siteConfig)) {
+      siteConfig = siteConfig(this)
     }
+    this.siteConfig = siteConfig
 
     // TODO custom cwd.
     this.cwd = process.cwd()
@@ -74,7 +75,7 @@ module.exports = class AppContext {
     this.base = this.siteConfig.base || '/'
     this.themeConfig = this.siteConfig.themeConfig || {}
 
-    const rawOutDir = this.cliOptions.dest || this.siteConfig.dest
+    const rawOutDir = this.options.dest || this.siteConfig.dest
     this.outDir = rawOutDir
       ? require('path').resolve(this.cwd, rawOutDir)
       : require('path').resolve(this.sourceDir, '.vuepress/dist')
@@ -176,7 +177,7 @@ module.exports = class AppContext {
    */
 
   applyUserPlugins () {
-    this.pluginAPI.useByPluginsConfig(this.cliOptions.plugins)
+    this.pluginAPI.useByPluginsConfig(this.options.plugins)
     if (this.themeAPI.existsParentTheme) {
       this.pluginAPI.use(this.themeAPI.parentTheme.entry)
     }
@@ -215,7 +216,7 @@ module.exports = class AppContext {
    */
 
   resolveCacheLoaderOptions () {
-    Object.assign(this, (getCacheLoaderOptions(this.siteConfig, this.cliOptions, this.cwd, this.isProd)))
+    Object.assign(this, (getCacheLoaderOptions(this.siteConfig, this.options, this.cwd, this.isProd)))
   }
 
   /**

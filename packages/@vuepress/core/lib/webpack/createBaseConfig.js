@@ -19,7 +19,7 @@ module.exports = function createBaseConfig ({
   tempPath,
   cacheDirectory,
   cacheIdentifier,
-  cliOptions: {
+  options: {
     cache
   },
   pluginAPI
