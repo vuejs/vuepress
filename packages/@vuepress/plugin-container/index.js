@@ -9,6 +9,8 @@ function call (target, ...args) {
 }
 
 module.exports = (options, context) => ({
+  name: require('./package').name,
+
   multiple: true,
 
   extendMarkdown (md) {
@@ -26,7 +28,7 @@ module.exports = (options, context) => ({
     if (!render) {
       if (before !== undefined && after !== undefined) {
         render = (tokens, index) => {
-          const info = tokens[index].info.trim().slice(type.length).trim
+          const info = tokens[index].info.trim().slice(type.length).trim()
           return tokens[index].nesting === 1 ? call(before, info) : call(after, info)
         }
       } else {
