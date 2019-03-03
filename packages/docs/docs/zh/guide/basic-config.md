@@ -4,14 +4,14 @@
 
 如果没有任何配置，这个网站将会是非常局限的，用户也无法在你的网站上自由导航。为了更好地自定义你的网站，让我们首先在你的文档目录下创建一个 `.vuepress` 目录，所有 VuePress 相关的文件都将会被放在这里。你的项目结构可能是这样：
 
-```
+::: files
 .
-├─ docs
-│  ├─ README.md
-│  └─ .vuepress
-│     └─ config.js
+├── docs
+│   ├── README.md
+│   └── .vuepress
+│       └── config.js
 └─ package.json
-```
+:::
 
 一个 VuePress 网站必要的配置文件是 `.vuepress/config.js`，它应该导出一个 JavaScript 对象：
 
@@ -32,7 +32,7 @@ module.exports = {
 
 ## 主题配置
 
-一个 VuePress 主题应该负责整个网站的布局和交互细节。在 VuePress 中，目前自带了一个默认的主题（正是你现在所看到的），它是为技术文档而设计的。同时，默认主题提供了一些选项，让你可以去自定义导航栏（navbar）、 侧边栏（sidebar）和 首页（homepage） 等，详情请参见 [默认主题](../theme/default-theme-config.md) 。
+一个 VuePress 主题应该负责整个网站的布局和交互细节。在 VuePress 中，目前自带了一个默认的主题（正是你现在所看到的），它是为技术文档而设计的。同时，默认主题提供了一些选项，让你可以去自定义导航栏（navbar）、 侧边栏（sidebar）和 首页（homepage） 等，详情请参见 [默认主题](../theme/default-theme-config.md)。
 
 如果你想开发一个自定义主题，可以参考 [自定义主题](../theme/README.md)。
 

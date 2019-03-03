@@ -36,7 +36,7 @@ VuePress 由两部分组成：第一部分是一个[极简静态网站生成器]
 * [首页](../theme/default-theme-config.md#首页)
 * [内置的搜索](../theme/default-theme-config.md#内置搜索)
 * [Algolia 搜索](../theme/default-theme-config.md#algolia-搜索)
-* 可定制的[导航栏](../theme/default-theme-config.md#navbar)和[侧边栏](../theme/default-theme-config.md#sidebar)
+* 可定制的 [导航栏](../theme/default-theme-config.md#navbar) 和 [侧边栏](../theme/default-theme-config.md#sidebar)
 * [自动生成的 GitHub 链接和页面编辑链接](../theme/default-theme-config.md#Git-仓库和编辑链接)
 * [PWA: 刷新内容的 Popup](../theme/default-theme-config.md#popup-ui-to-refresh-contents)
 * [最后更新时间](../theme/default-theme-config.md#最后更新时间)
