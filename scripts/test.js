@@ -21,7 +21,9 @@ const jestRunner = createJestRunner(
   ])
 
 // ensure the basic temp files were genereatod
-createApp()
+createApp({
+  temp: '.temp'
+})
   .process()
   .then(() => jestRunner())
   .catch(err => {
