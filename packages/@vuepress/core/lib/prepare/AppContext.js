@@ -154,6 +154,11 @@ module.exports = class AppContext {
         before: info => `<template slot="${info}">`,
         after: '</template>'
       })
+      .use('@vuepress/container', {
+        type: 'v-pre',
+        before: '<div v-pre>',
+        after: '</div>'
+      })
       .use('@vuepress/last-updated', !!shouldUseLastUpdated)
       .use('@vuepress/register-components', {
         componentsDir: [
