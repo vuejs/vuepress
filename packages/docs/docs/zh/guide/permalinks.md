@@ -5,14 +5,15 @@
 在 1.x.x 版本之前，VuePress 会检索文档源目录下的所有 markdown 文件并按照文件的层次结构去定义页面链接。
 比如你有以下的文件结构：
 
-```
+::: files
+.
 ├── package.json
 └── source
-    ├── _post
-    │   └── intro-vuepress.md
-    ├── index.md
-    └── tags.md
-```
+&nbsp;   ├── _post
+&nbsp;   │   └── intro-vuepress.md
+&nbsp;   ├── index.md
+&nbsp;   └── tags.md
+:::
 
 那么你就会获得以下的可用页面：
 
@@ -38,7 +39,7 @@
 // .vuepress/config.js
 module.exports = {
   permalink: "/:year/:month/:day/:slug"
-};
+}
 ```
 
 另外，你也可以只为单独一个页面去设置永久链接。这种方式比全局配置拥有更高的优先级。

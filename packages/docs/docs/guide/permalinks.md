@@ -4,14 +4,15 @@
 
 Before 1.x.x, VuePress retrieves all markdown files in the documents source directory and defines the page links based on the file hierarchy. e.g. if you have the following file structure:
 
-```
+::: files
+.
 ├── package.json
 └── source
-    ├── _post
-    │   └── intro-vuepress.md
-    ├── index.md
-    └── tags.md
-```
+&nbsp;   ├── _post
+&nbsp;   │   └── intro-vuepress.md
+&nbsp;   ├── index.md
+&nbsp;   └── tags.md
+:::
 
 Then you will get following available pages:
 

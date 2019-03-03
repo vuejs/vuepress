@@ -22,6 +22,12 @@ module.exports = {
 }
 ```
 
+::: warning
+VuePress **does not have the right** to modify server identification. If you want your URLs to follow a certain pattern (e.g. `/routing` instead of `/routing.html` or `routing/`), you should make sure that your server would treat it as an HTML. This mean that you may need to configure your server specifically.
+
+However, this plugin will always work on your dev server.
+:::
+
 ## Options
 
 ### normalSuffix

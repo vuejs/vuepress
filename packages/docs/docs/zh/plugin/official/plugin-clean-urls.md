@@ -22,6 +22,12 @@ module.exports = {
 }
 ```
 
+::: warning 注意
+VuePress **并没有能力**去修改服务器识别链接的方式。如果你希望你的网站地址符合某种特殊的模式（比如使用 `/routing` 而不是 `/routing.html` 或者 `routing/`），你需要确保你的服务器会将这些地址认为是 HTML。这可能意味着你需要对你的服务器进行特殊的配置。
+
+尽管如此，这个插件在 dev 服务器上总是生效的。
+:::
+
 ## 选项
 
 ### normalSuffix
@@ -46,6 +52,6 @@ module.exports = {
 - `foo`（当 `indexSuffix` 被设为 `''` 时）
 - `foo/index.html`（当 `indexSuffix` 被设为 `'/index.html'` 时）
 
-::: tip
+::: tip 提示
 索引页面是指文件名为 index.md 或者 readme.md 的页面（不区分大小写）。
 :::
