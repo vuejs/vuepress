@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import layoutComponents from '@internal/layout-components'
 import pageComponents from '@internal/page-components'
+import { capitalize, camelize } from 'vue/src/shared/util'
 
 const asyncComponents = Object.assign({}, layoutComponents, pageComponents)
 
@@ -17,7 +18,15 @@ export function getPageAsyncComponent (pageKey) {
 }
 
 export function isLayoutExists (layout) {
-  return Boolean(layoutComponents[layout])
+  if (layoutComponents[layout]) {
+    return true
+  }
+  const camelizeLayout = camelize(layout)
+  if (layoutComponents[camelizeLayout]) {
+    return true
+  }
+  const PascalCaseLayout = capitalize(camelizeLayout)
+  return Boolean(layoutComponents[PascalCaseLayout])
 }
 
 export function isLayoutLoaded (layout) {
