@@ -142,7 +142,7 @@ sidebarDepth: 2
 ---
 ```
 
-### Displaying Header Links of All Page
+### Displaying Header Links of All Pages
 
 The sidebar only displays links for headers in the current active page. You can display all header links for every page with `themeConfig.displayAllHeaders: true`:
 
