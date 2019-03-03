@@ -84,6 +84,7 @@ module.exports = ctx => ({
       before: info => `<UpgradePath title="${info}">`,
       after: '</UpgradePath>',
     }],
+    [require('./plugins/vuepress-plugin-extend-cli-test'), true]
   ],
 })
 

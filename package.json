@@ -13,6 +13,7 @@
     "remote-version": "node scripts/remote-version.js",
     "dev": "yarn tsc && yarn workspace docs dev",
     "build": "yarn tsc && yarn workspace docs build",
+    "view-info": "yarn tsc && yarn workspace docs view-info",
     "show-help": "yarn workspace docs show-help",
     "dev:blog": "yarn tsc && yarn workspace blog dev",
     "build:blog": "yarn tsc && yarn workspace blog build",
