@@ -1,5 +1,5 @@
 const path = require('upath')
-const createJestConfig = require('@vuepress/test-utils/createJestConfig')
+const { createJestConfig } = require('@vuepress/test-utils')
 
 module.exports = createJestConfig({
   rootDir: path.resolve(__dirname, '..'),

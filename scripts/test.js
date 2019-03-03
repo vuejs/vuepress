@@ -1,5 +1,5 @@
 const minimist = require('minimist')
-const createJestRunner = require('@vuepress/test-utils/createJestRunner')
+const { createJestRunner } = require('@vuepress/test-utils')
 
 const rawArgs = process.argv.slice(2)
 const args = minimist(rawArgs)
