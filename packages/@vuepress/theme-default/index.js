@@ -23,11 +23,6 @@ module.exports = (options, ctx) => ({
     '@vuepress/plugin-nprogress',
     ['@vuepress/container', { type: 'tip' }],
     ['@vuepress/container', { type: 'warning' }],
-    ['@vuepress/container', { type: 'danger' }],
-    ['@vuepress/container', {
-      type: 'v-pre',
-      before: '<div v-pre>\n',
-      after: '</div>\n'
-    }]
+    ['@vuepress/container', { type: 'danger' }]
   ]
 })

@@ -49,14 +49,14 @@ The default title for the container. If no title was provided, `defaultTitle` wi
 - Type: `string | Function`
 - Default: `undefined`
 
-String to be placed before the block. If specified as a function, a argument `token` will be passed to it. If specified, it will override `defaultTitle`.
+String to be placed before the block. If specified as a function, a argument `info` will be passed to it. (In the example above, `info` will be `bar`.) If specified, it will override `defaultTitle`.
 
 ### after
 
 - Type: `string | Function`
 - Default: `undefined`
 
-String to be placed after the block. If specified as a function, a argument `token` will be passed to it. If specified, it will override `defaultTitle`.
+String to be placed after the block. If specified as a function, a argument `info` will be passed to it. (In the example above, `info` will be `bar`.) If specified, it will override `defaultTitle`.
 
 ### validate
 
