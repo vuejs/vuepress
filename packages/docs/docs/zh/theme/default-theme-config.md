@@ -138,7 +138,7 @@ sidebarDepth: 2
 ---
 ```
 
-### 显示所有页面的标题链接 <Badge text="0.11.0+"/>
+### 显示所有页面的标题链接
 
 默认情况下，侧边栏只会显示由当前活动页面的标题（headers）组成的链接，你可以将 `themeConfig.displayAllHeaders` 设置为 `true` 来显示所有页面的标题链接：
 
@@ -377,7 +377,7 @@ module.exports = {
 请不要将本选项与 [Config > serviceWorker](../config/README.md#serviceworker) 混淆，[Config > serviceWorker](../config/README.md#serviceworker) 是网站级别的配置，而本选项是主题级别的配置。
 :::
 
-### 刷新内容的弹窗 <Badge text="0.13.0+"/> <Badge text="beta" type="warn"/>
+### 刷新内容的弹窗 <Badge text="beta" type="warn"/>
 
 开启 `themeConfig.serviceWorker.updatePopup` 选项，将开启一个能够刷新内容的弹窗。当网站更新（即 Service Worker 更新）时，它会提供一个 `refresh` 按钮，允许用户立刻刷新内容。
 

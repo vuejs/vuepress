@@ -5,7 +5,7 @@ metaTitle: Last-Updated 插件 | VuePress
 
 # [@vuepress/plugin-last-updated](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-last-updated)
 
-> last-updated 插件。
+last-updated 插件。
 
 如果你使用默认主题，你无需安装本插件，因为 VuePress 的 `core` 中已经包含此插件，同时，你应该直接使用 [themeConfig.lastUpdated](../../theme/default-theme-config.md#最后更新时间) 选项。
 

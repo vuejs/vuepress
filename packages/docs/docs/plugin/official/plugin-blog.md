@@ -5,7 +5,7 @@ metaTitle: Blog Plugin | VuePress
 
 # [@vuepress/plugin-blog](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-blog)
 
-> Blog plugin
+Blog plugin
 
 ## Install
 

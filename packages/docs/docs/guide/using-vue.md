@@ -195,15 +195,15 @@ export default {
 
 ## Built-In Components
 
-### OutboundLink <Badge text="stable"/>
+### OutboundLink
 
 It(<OutboundLink/>) is used to indicate that this is an external link. In VuePress, this component has been followed by every external link.
 
-### ClientOnly <Badge text="stable"/>
+### ClientOnly
 
 See [Browser API Access Restrictions](#browser-api-access-restrictions).
 
-### Content <Badge text="1.0.0+"/>
+### Content
 
 - **Props**:
 
@@ -246,7 +246,7 @@ You can add a custom table of contents by specify some props to this component. 
   <p slot="header"><strong>Custom Table of Contents</strong></p>
 </TOC>
 
-### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/> <Badge text="default theme"/>
+### Badge <Badge text="beta" type="warn"/> <Badge text="default theme"/>
 
 - **Props**:
 
@@ -259,7 +259,7 @@ You can add a custom table of contents by specify some props to this component. 
 You can use this component in header to add some status for some API:
 
 ``` md
-### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/> <Badge text="default theme"/>
+### Badge <Badge text="beta" type="warn"/> <Badge text="default theme"/>
 ```
 
 **Also see:**

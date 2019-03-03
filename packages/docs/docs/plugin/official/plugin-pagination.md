@@ -5,7 +5,7 @@ metaTitle: Pagination Plugin | VuePress
 
 # [@vuepress/plugin-pagination](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-pagination)
 
-> pagination plugin
+pagination plugin
 
 ## Install
 

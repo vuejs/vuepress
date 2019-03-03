@@ -142,7 +142,7 @@ sidebarDepth: 2
 ---
 ```
 
-### Displaying Header Links of All Pages <Badge text="0.11.0+"/>
+### Displaying Header Links of All Page
 
 The sidebar only displays links for headers in the current active page. You can display all header links for every page with `themeConfig.displayAllHeaders: true`:
 
@@ -382,7 +382,7 @@ The `themeConfig.serviceWorker` option allows you to configure the service worke
 Please do not confuse this option with [Config > serviceWorker](../config/README.md#serviceworker), [Config > serviceWorker](../config/README.md#serviceworker) is **site-level**, while this option is **theme-level**.
 :::
 
-### Popup UI to refresh contents <Badge text="0.13.0+"/> <Badge text="beta" type="warn"/>
+### Popup UI to refresh contents <Badge text="beta" type="warn"/>
 
 The `themeConfig.serviceWorker.updatePopup` option enables a popup to refresh site content. The popup will be shown when the site is updated (i.e. service worker is updated). It provides a `refresh` button to allow users to refresh contents immediately.
 

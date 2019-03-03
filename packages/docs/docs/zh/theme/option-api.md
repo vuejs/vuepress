@@ -39,7 +39,7 @@ module.exports = (themeConfig, ctx) => {
 ---
 
 ::: warning 注意
-你可能不需要使用下面这些带有 <Badge text="Danger Zone" vertical="middle"/> 的选项，除非你知道你在做什么！
+你可能不需要使用下面这些带有 <Badge text="Danger Zone" vertical="baseline"/> 的选项，除非你知道你在做什么！
 :::
 
 ## devTemplate <Badge text="Danger Zone"/>

@@ -10,7 +10,7 @@ VuePress 由两部分组成：第一部分是一个[极简静态网站生成器]
 
 在构建时，我们会为应用创建一个服务端渲染（SSR）的版本，然后通过虚拟访问每一条路径来渲染对应的HTML。这种做法的灵感来源于 [Nuxt](https://nuxtjs.org/) 的 `nuxt generate` 命令，以及其他的一些项目，比如 [Gatsby](https://www.gatsbyjs.org/)。
 
-## Features
+## 特性
 
 **内置的 Markdown 拓展**
 
@@ -20,23 +20,23 @@ VuePress 由两部分组成：第一部分是一个[极简静态网站生成器]
 * [行号](../guide/markdown.md#行号)
 * [导入代码段](../guide/markdown.md#导入代码段)
 
-**在 Markdown 中 使用 Vue**
+**在 Markdown 中使用 Vue**
 
 * [模板语法](../guide/using-vue.md#模板语法)
 * [使用组件](../guide/using-vue.md#使用组件)
 
-**Vue驱动的自定义主题系统**
+**Vue 驱动的自定义主题系统**
 
 * [网站和页面的元数据](../theme/writing-a-theme.md#网站和页面的元数据a)
 * [内容摘抄](../theme/writing-a-theme.md#内容摘抄)
 
 **默认主题**
 
-* Responsive layout
+* 响应式布局
 * [首页](../theme/default-theme-config.md#首页)
 * [内置的搜索](../theme/default-theme-config.md#内置搜索)
 * [Algolia 搜索](../theme/default-theme-config.md#algolia-搜索)
-* 可定制的 [navbar](../theme/default-theme-config.md#navbar) and [sidebar](../theme/default-theme-config.md#sidebar)
+* 可定制的[导航栏](../theme/default-theme-config.md#navbar)和[侧边栏](../theme/default-theme-config.md#sidebar)
 * [自动生成的 GitHub 链接和页面编辑链接](../theme/default-theme-config.md#Git-仓库和编辑链接)
 * [PWA: 刷新内容的 Popup](../theme/default-theme-config.md#popup-ui-to-refresh-contents)
 * [最后更新时间](../theme/default-theme-config.md#最后更新时间)

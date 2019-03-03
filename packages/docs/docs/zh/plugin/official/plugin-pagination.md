@@ -5,7 +5,7 @@ metaTitle: Pagination 插件 | VuePress
 
 # [@vuepress/plugin-pagination](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-pagination)
 
-> 分页器插件
+分页器插件
 
 ## 安装
 

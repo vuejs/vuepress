@@ -1,4 +1,4 @@
-# 在 Markdown 中 使用 Vue
+# 在 Markdown 中使用 Vue
 
 ## 浏览器的 API 访问限制
 
@@ -195,15 +195,15 @@ export default {
 
 ## 内置的组件
 
-### OutboundLink <Badge text="stable"/>
+### OutboundLink
 
 (<OutboundLink/>) 用来表明当前是一个外部链接。在 VuePress 中这个组件会紧跟在每一个外部链接后面。
 
-### ClientOnly <Badge text="stable"/>
+### ClientOnly
 
 参考 [浏览器的 API 访问限制](#浏览器的-api-访问限制)。
 
-### Content <Badge text="1.0.0+"/>
+### Content
 
 - **Props**:
 
@@ -247,7 +247,7 @@ export default {
   <p slot="header"><strong>自定义目录</strong></p>
 </TOC>
 
-### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/> <Badge text="默认主题"/>
+### Badge <Badge text="beta" type="warn"/> <Badge text="默认主题"/>
 
 - **Props**:
 
@@ -260,7 +260,7 @@ export default {
 你可以在标题中，使用这个组件来为某些 API 添加一些状态：
 
 ``` md
-### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/> <Badge text="默认主题"/>
+### Badge <Badge text="beta" type="warn"/> <Badge text="默认主题"/>
 ```
 
 **参考:**

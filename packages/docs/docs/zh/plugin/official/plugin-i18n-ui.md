@@ -5,7 +5,7 @@ metaTitle: I18n-UI 插件 | VuePress
 
 # [@vuepress/plugin-i18n-ui](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-i18n-ui)
 
-> i18n-ui 插件。
+i18n-ui 插件。
 
 ## 安装
 

@@ -41,7 +41,7 @@ module.exports = (themeConfig, ctx) => {
 ---
 
 ::: warning
-You probably don't need to use following options tagged with <Badge text="Danger Zone" vertical="middle"/> unless you know what you are doing!
+You probably don't need to use following options tagged with <Badge text="Danger Zone" vertical="baseline"/> unless you know what you are doing!
 :::
 
 ## devTemplate <Badge text="Danger Zone"/>

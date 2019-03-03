@@ -5,7 +5,7 @@ metaTitle: Medium-Zoom Plugin | VuePress
 
 # [@vuepress/plugin-medium-zoom](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-medium-zoom)
 
-> [medium-zoom](https://github.com/francoischalifour/medium-zoom) plugin
+[medium-zoom](https://github.com/francoischalifour/medium-zoom) plugin
 
 ## Install
 

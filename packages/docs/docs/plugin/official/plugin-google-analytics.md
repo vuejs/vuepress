@@ -5,8 +5,7 @@ metaTitle: Google Analytics Plugin | VuePress
 
 # [@vuepress/plugin-google-analytics](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-google-analytics)
 
-
-> Google analytics plugin
+Google analytics plugin
 
 ## Install
 

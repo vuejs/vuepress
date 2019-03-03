@@ -5,7 +5,7 @@ metaTitle: PWA Plugin | VuePress
 
 # [@vuepress/plugin-pwa](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-pwa)
 
-> PWA plugin
+PWA plugin
 
 ## Install
 
