@@ -1,6 +1,6 @@
 import { mount, RouterLinkStub } from '@vue/test-utils'
 import DropdownLink from '../../components/DropdownLink.vue'
-import createLocalVue from '@vuepress/test-utils/createLocalVue'
+import { createLocalVue } from '@vuepress/test-utils/client'
 
 describe('DropdownLink', () => {
   test('renders dropdown link.', () => {

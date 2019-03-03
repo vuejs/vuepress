@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-module.exports = {
+export default {
   "title": "VuePress",
   "description": "",
   "base": "/",

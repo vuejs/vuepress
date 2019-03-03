@@ -3,13 +3,13 @@ const { fs, path } = require('@vuepress/shared-utils')
 
 const cache = new LRU({ max: 1000 })
 
-module.exports = async function getFragment (dirname, name) {
-  let content = cache.get(name)
+module.exports = function getFragment (dirname, name) {
+  const target = path.resolve(dirname, name)
+  let content = cache.get(target)
   if (content) {
     return content
   }
-  const target = path.resolve(dirname, `fragments/${name}.md`)
-  content = await fs.readFile(target, 'utf-8')
-  cache.set(name, content)
+  content = fs.readFileSync(target, 'utf-8')
+  cache.set(target, content)
   return content
 }

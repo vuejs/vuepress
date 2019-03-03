@@ -1,13 +1,11 @@
-const context = require('./lib/context')
 const getFragment = require('./lib/getFragment')
-const usePlugin = require('./lib/plugin')
+const getFragments = require('./lib/getFragments')
 const createJestRunner = require('./lib/createJestRunner')
 const createJestConfig = require('./lib/createJestConfig')
 
 module.exports = {
-  context,
   getFragment,
-  usePlugin,
+  getFragments,
   createJestRunner,
   createJestConfig
 }
