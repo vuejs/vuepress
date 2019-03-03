@@ -9,8 +9,7 @@ exports[`containers danger.md 1`] = `
 
 exports[`containers markdown-slots.md 1`] = `
 <template slot="header">
-  <h1 id="here-might-be-a-page-title">
-    <a class="header-anchor" href="#here-might-be-a-page-title" aria-hidden="true">#</a> Here might be a page title</h1>
+  <h1 id="here-might-be-a-page-title"><a class="header-anchor" href="#here-might-be-a-page-title" aria-hidden="true">#</a> Here might be a page title</h1>
 </template>
 <ul>
   <li>A Paragraph</li>

@@ -1,1 +1,1 @@
-<<< @/packages/@vuepress/core/__test__/markdown/fragments/snippet.js
+<<< @/packages/@vuepress/markdown/__tests__/fragments/snippet.js

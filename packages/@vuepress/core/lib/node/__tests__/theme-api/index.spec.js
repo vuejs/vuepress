@@ -1,7 +1,7 @@
 jest.mock('vuepress-theme-parent')
 jest.mock('vuepress-theme-child')
 
-import ThemeAPI from '../../lib/theme-api'
+import ThemeAPI from '../../theme-api'
 import { resolve } from 'path'
 
 const theme = {

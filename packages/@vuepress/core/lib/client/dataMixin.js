@@ -1,8 +1,8 @@
 /* global VUEPRESS_TEMP_PATH */
 
-import Vue from 'vue'
+import GLobalVue from 'vue'
 
-export default function dataMixin (I18n, siteData) {
+export default function dataMixin (I18n, siteData, Vue = GLobalVue) {
   prepare(siteData)
   Vue.$vuepress.$set('siteData', siteData)
 

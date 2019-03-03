@@ -3,8 +3,8 @@ const { fs, path } = require('@vuepress/shared-utils')
 
 const cache = new LRU({ max: 1000 })
 
-module.exports = function getFragment (dirname, name) {
-  const target = path.resolve(dirname, name)
+module.exports = function getFragment (dirname, name, fragmentsDir = 'fragments') {
+  const target = path.resolve(dirname, `${fragmentsDir}/${name}`)
   let content = cache.get(target)
   if (content) {
     return content

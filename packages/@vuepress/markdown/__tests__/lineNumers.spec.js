@@ -1,4 +1,5 @@
-import { Md, getFragment } from './util'
+import { getFragment } from '@vuepress/test-utils'
+import { Md } from './util'
 import preWrapper from '../lib/preWrapper.js'
 import lineNumbers from '../lib/lineNumbers.js'
 import highlightLines from '../lib/highlightLines.js'
@@ -9,14 +10,14 @@ const mdL = Md().use(preWrapper).use(lineNumbers)
 const mdLH = Md().use(highlightLines).use(preWrapper).use(lineNumbers)
 
 describe('lineNumbers', () => {
-  test('should render lineNumbers', async () => {
-    const input = await getFragment('code')
+  test('should render lineNumbers', () => {
+    const input = getFragment(__dirname, 'code.md')
     const output = mdL.render(input)
     expect(output).toMatchSnapshot()
   })
 
-  test('should lineNumbers work with highlightLines', async () => {
-    const input = await getFragment('code-highlightLines-single')
+  test('should lineNumbers work with highlightLines', () => {
+    const input = getFragment(__dirname, 'code-highlightLines-single.md')
     const output = mdLH.render(input)
     expect(output).toMatchSnapshot()
   })
