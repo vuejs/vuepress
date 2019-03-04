@@ -458,7 +458,7 @@ module.exports = class App {
 
     this.devProcess
       .on('fileChanged', ({ type, target }) => {
-        console.log(`Reload due to ${chalk.red(type)} ${chalk.cyan(target)}`)
+        console.log(`Reload due to ${chalk.red(type)} ${chalk.cyan(path.relative(this.sourceDir, target))}`)
         this.process()
       })
       .createServer()

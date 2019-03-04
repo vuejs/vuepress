@@ -1,4 +1,4 @@
-# Node.js
+# Node.js API
 
 ```js
 const vuepress = require('vuepress')
@@ -38,20 +38,20 @@ app.process().then(() => {
 
 ### options.theme
 
-查看 [theme](./config.md#theme)。
+查看 [theme](../config/README.md#theme)。
 
 ### options.plugins
 
-查看 [plugins](./config.md#plugins)。
+查看 [plugins](../config/README.md#plugins)。
 
 ### options.temp
 
-查看 [temp](./config.md#temp)。
+查看 [temp](../config/README.md#temp)。
 
 ### options.dest
 
-查看 [dest](./config.md#dest)。
+查看 [dest](../config/README.md#dest)。
 
 ### options.siteConfig
 
-查看 [siteConfig](./config.md)。
+查看 [siteConfig](../config/README.md)。

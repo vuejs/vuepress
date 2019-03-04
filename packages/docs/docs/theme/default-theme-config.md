@@ -379,7 +379,7 @@ Note that it's `off` by default. If given a `string`, it will be displayed as a 
 The `themeConfig.serviceWorker` option allows you to configure the service worker.
 
 ::: tip
-Please do not confuse this option with [Config > serviceWorker](../api/config.md#serviceworker), [Config > serviceWorker](../api/config.md#serviceworker) is **site-level**, while this option is **theme-level**.
+Please do not confuse this option with [Config > serviceWorker](../config/config.md#serviceworker), [Config > serviceWorker](../config/config.md#serviceworker) is **site-level**, while this option is **theme-level**.
 :::
 
 ### Popup UI to refresh contents <Badge text="0.13.0+"/> <Badge text="beta" type="warn"/>

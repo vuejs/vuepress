@@ -36,4 +36,4 @@ $nprogressColor = red
 
 **参考：**
 
-- [配置 > Styling](../../api/config.md#styling)
+- [配置 > Styling](../../config/config.md#styling)

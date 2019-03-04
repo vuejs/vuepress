@@ -4,8 +4,8 @@ module.exports = [
     link: '/zh/guide/',
   },
   {
-    text: 'API',
-    link: '/zh/api/'
+    text: '配置',
+    link: '/zh/config/'
   },
   {
     text: '插件',
@@ -18,6 +18,19 @@ module.exports = [
   {
     text: '了解更多',
     items: [
+      {
+        text: 'API',
+        items: [
+          {
+            text: 'CLI',
+            link: '/zh/api/cli.html'
+          },
+          {
+            text: 'Node',
+            link: '/zh/api/node.html'
+          },
+        ]
+      },
       {
         text: '开发指南',
         items: [

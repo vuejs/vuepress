@@ -11,14 +11,14 @@ vuepress <command> targetDir [options]
 Build dir as a static site.
 
 ### -p, --port `<port>`
-See [port](./config.md#port).
+See [port](../config/README.md#port).
 
 ### -t, --temp `<temp>`
-See [temp](./config.md#temp).
+See [temp](../config/README.md#temp).
 
 ### -c, --cache [cache]
 ### -no--cache [cache]
-See [cache](./config.md#cache).
+See [cache](../config/README.md#cache).
 
 ### --debug
 Start development server in debug mode.
@@ -31,7 +31,7 @@ Start development server in silent mode.
 Start a development server. All options from `vuepress build` are available. And there are several options specifically for dev:
 
 ### --host `<host>`
-See [host](../config.md#host).
+See [host](../config/README.md#host).
 
 ### --open
 Open browser when ready.

@@ -46,7 +46,7 @@ module.exports = function (src) {
       || headersChanged(cachedData.headers, headers)
     )) {
       // frontmatter changed... need to do a full reload
-      module.exports.frontmatterEmitter.emit('update')
+      module.exports.frontmatterEmitter.emit('update', file)
     }
 
     devCache.set(file, {

@@ -2,7 +2,7 @@
 
 ## Header Anchors
 
-所有的标题将会自动地应用 anchor 链接，anchor 的渲染可以通过 [`markdown.anchor`](../api/config.md#markdown-anchor) 来配置。
+所有的标题将会自动地应用 anchor 链接，anchor 的渲染可以通过 [`markdown.anchor`](../config/config.md#markdown-anchor) 来配置。
 
 ## 链接
 
@@ -53,7 +53,7 @@
 - [vuejs.org](https://vuejs.org)
 - [VuePress on GitHub](https://github.com/vuejs/vuepress)
 
-你可以自定义通过配置 [config.markdown.externalLinks](../api/config.md#markdown-externallinks) 来自定义外部链接的特性。
+你可以自定义通过配置 [config.markdown.externalLinks](../config/config.md#markdown-externallinks) 来自定义外部链接的特性。
 
 ## Front Matter
 
@@ -120,7 +120,7 @@ lang: en-US
 
 [[toc]]
 
-目录（Table of Contents）的渲染可以通过  [`markdown.toc`](../api/config.md#markdown-toc) 选项来配置，也可以在 [TOC 组件](./using-vue.md#toc)中直接传入，如 `<TOC list-type="ol" :include-level="[2, Infinity]"/>`。
+目录（Table of Contents）的渲染可以通过  [`markdown.toc`](../config/config.md#markdown-toc) 选项来配置，也可以在 [TOC 组件](./using-vue.md#toc)中直接传入，如 `<TOC list-type="ol" :include-level="[2, Infinity]"/>`。
 
 ## 自定义容器
 

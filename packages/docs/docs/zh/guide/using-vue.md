@@ -167,7 +167,7 @@ yarn add -D pug pug-plain-loader
 ::: tip
 需要指出的是，如果你是一个 `stylus` 用户，你并不需要在你的项目中安装 `stylus` 和 `stylus-loader`，因为 VuePress 已经内置了它们。
 
-对于那些没有内置的预处理器，除了安装对应的依赖，你还需要 [拓展内部的 Webpack 配置](../api/config.md#configurewebpack)。
+对于那些没有内置的预处理器，除了安装对应的依赖，你还需要 [拓展内部的 Webpack 配置](../config/config.md#configurewebpack)。
 :::
 
 

@@ -65,7 +65,7 @@ See: [@vuepress/plugin-pwa > Migration from 0.x](../plugin/official/plugin-pwa.m
 Replaced by `.vuepress/styles/palette.styl`.
 
 ::: upgrade
-See: [Config > palette.styl](../api/config.md#palette-styl)
+See: [Config > palette.styl](../config/config.md#palette-styl)
 :::
 
 ### `.vuepress/style.styl` <Badge text="replaced"/>
@@ -73,5 +73,5 @@ See: [Config > palette.styl](../api/config.md#palette-styl)
 Replaced by `.vuepress/styles/index.styl`.
 
 ::: upgrade
-See: [Config > index.styl](../api/config.md#index-styl)
+See: [Config > index.styl](../config/config.md#index-styl)
 :::
