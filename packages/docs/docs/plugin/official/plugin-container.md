@@ -1,11 +1,11 @@
 ---
 title: container
-metaTitle: A plugin of registering markdown containers | VuePress
+metaTitle: A plugin for registering markdown containers | VuePress
 ---
 
 # [@vuepress/plugin-container](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-container)
 
-> A plugin of registering markdown containers
+> A plugin for registering markdown containers
 
 ## Install
 
@@ -29,7 +29,7 @@ module.exports = {
 - Type: `string`
 - This is a required option.
 
-The type for the container. For example, if `type` was set to `foo`, only the following syntax will be parsed as a container:
+The type for the container. For example, if `type` is set to `foo`, only the following syntax will be parsed as a container:
 
 ```md
 ::: foo bar
@@ -42,21 +42,21 @@ write something here ~
 - Type: `string`
 - Default: the upper case of `type`
 
-The default title for the container. If no title was provided, `defaultTitle` will be showed as the title of the container.
+The default title for the container. If no title is provided, `defaultTitle` will be shown as the title of the container.
 
 ### before
 
 - Type: `string | Function`
 - Default: `undefined`
 
-String to be placed before the block. If specified as a function, a argument `info` will be passed to it. (In the example above, `info` will be `bar`.) If specified, it will override `defaultTitle`.
+String to be placed before the block. If specified as a function, an argument `info` will be passed to it. (In the example above, `info` will be `bar`.) If specified, it will override `defaultTitle`.
 
 ### after
 
 - Type: `string | Function`
 - Default: `undefined`
 
-String to be placed after the block. If specified as a function, a argument `info` will be passed to it. (In the example above, `info` will be `bar`.) If specified, it will override `defaultTitle`.
+String to be placed after the block. If specified as a function, an argument `info` will be passed to it. (In the example above, `info` will be `bar`.) If specified, it will override `defaultTitle`.
 
 ### validate
 
@@ -77,4 +77,4 @@ The renderer function for opening/closing tokens. If specified, it will override
 - Type: `string`
 - Default: `':'`
 
-The character to use in delimiter.
+The character to use as a delimiter.
