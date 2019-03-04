@@ -4,7 +4,7 @@ import snippet from '../lib/snippet.js'
 import highlightLines from '../lib/highlightLines.js'
 
 const md = Md().use(snippet)
-const mdH = Md().use(snippet).use(highlightLines)
+const mdH = Md().use(highlightLines).use(snippet)
 
 describe('snippet', () => {
   test('import snippet', () => {

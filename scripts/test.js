@@ -13,12 +13,11 @@ if (args.p) {
   rawArgs.splice(i, 2)
 }
 
-const jestRunner = createJestRunner(
-  [
-    '--config', 'scripts/jest.config.js',
-    '--runInBand',
-    ...(regex ? [regex] : [])
-  ])
+const jestRunner = createJestRunner([
+  '--config', 'scripts/jest.config.js',
+  '--runInBand',
+  ...(regex ? [regex] : [])
+])
 
 // ensure the basic temp files were genereatod
 createApp({
