@@ -17,7 +17,7 @@ In addition, you can use the `~` prefix to explicitly indicate this is a webpack
 ![Image from dependency](~some-dependency/image.png)
 ```
 
-webpack aliases can be configured via [configureWebpack](/config/#configurewebpack) in `.vuepress/config.js`. Example:
+webpack aliases can be configured via [configureWebpack](../api/config.md#configurewebpack) in `.vuepress/config.js`. Example:
 
 ``` js
 module.exports = {
