@@ -70,7 +70,6 @@ module.exports = ctx => ({
       updatePopup: true
     }],
     ['@vuepress/medium-zoom', true],
-    ['@vuepress/notification', true],
     ['@vuepress/google-analytics', {
       ga: 'UA-128189152-1'
     }],
