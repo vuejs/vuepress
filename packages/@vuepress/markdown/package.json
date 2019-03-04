@@ -27,6 +27,9 @@
     "markdown-it-emoji": "^1.4.0",
     "prismjs": "^1.13.0"
   },
+  "devDependencies": {
+    "@vuepress/test-utils": "^1.0.0-alpha.42"
+  },
   "author": "Evan You",
   "maintainers": [
     {

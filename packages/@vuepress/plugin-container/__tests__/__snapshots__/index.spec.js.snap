@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`containers danger.md 1`] = `
+<div class="danger custom-block">
+  <p class="custom-block-title">DANGER</p>
+  <p>I am a danger</p>
+</div>
+`;
+
+exports[`containers markdown-slots.md 1`] = `
+<template slot="header">
+  <h1 id="here-might-be-a-page-title"><a class="header-anchor" href="#here-might-be-a-page-title" aria-hidden="true">#</a> Here might be a page title</h1>
+</template>
+<ul>
+  <li>A Paragraph</li>
+  <li>Another Paragraph</li>
+</ul>
+<template slot="footer">
+  <p>Here's some contact info</p>
+</template>
+`;
+
+exports[`containers tip.md 1`] = `
+<div class="tip custom-block">
+  <p class="custom-block-title">TIP</p>
+  <p>I am a tip</p>
+</div>
+`;
+
+exports[`containers tip-override.md 1`] = `
+<div class="tip custom-block">
+  <p class="custom-block-title">提示</p>
+  <p>I am a tip</p>
+</div>
+`;
+
+exports[`containers v-pre.md 1`] = `
+<div v-pre>
+  <p>I am a v-pre</p>
+</div>
+`;
+
+exports[`containers warning.md 1`] = `
+<div class="warning custom-block">
+  <p class="custom-block-title">WARNING</p>
+  <p>I am a warning</p>
+</div>
+`;

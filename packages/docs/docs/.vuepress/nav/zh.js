@@ -4,8 +4,8 @@ module.exports = [
     link: '/zh/guide/',
   },
   {
-    text: '配置',
-    link: '/zh/config/'
+    text: 'API',
+    link: '/zh/api/'
   },
   {
     text: '插件',

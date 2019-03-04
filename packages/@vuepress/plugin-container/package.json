@@ -20,6 +20,9 @@
   "dependencies": {
     "markdown-it-container": "^2.0.0"
   },
+  "devDependencies": {
+    "@vuepress/test-utils": "1.0.0-alpha.42"
+  },
   "author": "Shigma <1700011071@pku.edu.cn>",
   "license": "MIT",
   "bugs": {

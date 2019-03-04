@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-const prepare = require('@vuepress/core/lib/prepare')
+const { createApp } = require('@vuepress/core')
 const { path, logger, globby, chalk } = require('@vuepress/shared-utils')
 const { isKnownCommand, CLI } = require('./util')
 const pwd = process.cwd()
@@ -26,7 +26,7 @@ module.exports = async function (cli, options) {
   logger.developer('needPrepareBeforeLaunchCLI', needPrepareBeforeLaunchCLI)
 
   if (needPrepareBeforeLaunchCLI) {
-    let context
+    let app
     let [, sourceDir] = argv
 
     if (!sourceDir || sourceDir.startsWith('-')) {
@@ -38,8 +38,9 @@ module.exports = async function (cli, options) {
     logger.setOptions({ logLevel: 1 })
 
     if (sourceDir) {
-      context = await prepare(sourceDir, options)
-      context.pluginAPI.options.extendCli.apply(cli, context)
+      app = createApp({ sourceDir, ...options })
+      await app.process()
+      app.pluginAPI.applySyncOption('extendCli', cli, app)
     }
 
     logger.setOptions({ logLevel: 3 })
@@ -103,11 +104,14 @@ function registerUnknownCommands (cli, options) {
     logger.debug('Custom command', chalk.cyan(commandName))
     CLI({
       async beforeParse (subCli) {
-        const context = await prepare(sourceDir, {
+        const app = createApp({
+          sourceDir: sourceDir,
           ...options,
           ...commandoptions
-        }, false /* isProd */)
-        await context.pluginAPI.options.extendCli.apply(subCli, context)
+        })
+        await app.process()
+        app.pluginAPI.applySyncOption('extendCli', subCli, app)
+        console.log()
       },
       async afterParse (subCli) {
         if (!subCli.matchedCommand) {
