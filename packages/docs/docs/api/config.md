@@ -1,5 +1,5 @@
 ---
-sidebar: auto
+sidebarDepth: 3
 ---
 
 # Config Reference
@@ -64,6 +64,13 @@ Specify the host to use for the dev server.
 - Default: `8080`
 
 Specify the port to use for the dev server.
+
+### temp
+
+- Type: `number`
+- Default: `@vuepress/core/.temp`
+
+Specify the temporary directory for client. 
 
 ### dest
 

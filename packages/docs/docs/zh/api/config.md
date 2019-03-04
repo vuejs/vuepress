@@ -1,5 +1,5 @@
 ---
-sidebar: auto
+sidebarDepth: 3
 ---
 
 # 配置
@@ -62,6 +62,13 @@ module.exports = {
 - 默认值: `8080`
 
 指定 dev server 的端口。
+
+### temp
+
+- Type: `number`
+- Default: `@vuepress/core/.temp`
+
+指定客户端文件的临时目录。
 
 ### dest
 
