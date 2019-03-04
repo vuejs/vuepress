@@ -5,11 +5,10 @@ const usedPorts = []
 
 module.exports = function createJestRunner (jestArgs) {
   return async function () {
-    let args = [...jestArgs, ...rawArgs]
     const execArgv = getChildProcesExecArgv()
-    args = [...execArgv, 'node_modules/.bin/jest', ...args]
+    const args = [...execArgv, ...jestArgs, ...rawArgs]
     console.log(`running node with args: ${args.join(' ')}`)
-    await execa('node', args, {
+    await execa('jest', args, {
       stdio: 'inherit'
     })
   }
