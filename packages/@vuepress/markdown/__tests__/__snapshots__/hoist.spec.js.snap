@@ -18,6 +18,7 @@ exports[`hoist Should miss script and style when using hoist 1`] = `
 
 exports[`hoist Should miss script and style when using hoist 2`] = `
 Object {
+  "__data_block": Object {},
   "hoistedTags": Array [
     <script src="vue.js"></script>,
     <style>

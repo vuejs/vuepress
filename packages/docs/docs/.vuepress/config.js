@@ -43,6 +43,7 @@ module.exports = ctx => ({
         lastUpdated: 'Last Updated',
         nav: require('./nav/en'),
         sidebar: {
+          '/api/': getApiSidebar(),
           '/guide/': getGuideSidebar('Guide', 'Advanced'),
           '/plugin/': getPluginSidebar('Plugin', 'Introduction', 'Official Plugins'),
           '/theme/': getThemeSidebar('Theme', 'Introduction'),
@@ -55,6 +56,7 @@ module.exports = ctx => ({
         lastUpdated: '上次更新',
         nav: require('./nav/zh'),
         sidebar: {
+          '/zh/api/': getApiSidebar(),
           '/zh/guide/': getGuideSidebar('指南', '深入'),
           '/zh/plugin/': getPluginSidebar('插件', '介绍', '官方插件'),
           '/zh/theme/': getThemeSidebar('主题', '介绍')
@@ -85,6 +87,15 @@ module.exports = ctx => ({
     }],
   ],
 })
+
+function getApiSidebar () {
+  return [
+    '',
+    'config',
+    'cli',
+    'node'
+  ]
+}
 
 function getGuideSidebar (groupA, groupB) {
   return [

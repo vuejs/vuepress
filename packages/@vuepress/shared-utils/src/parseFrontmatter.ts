@@ -1,7 +1,7 @@
-export = function parseFrontmatter (content: string) {
-  const matter = require('gray-matter')
-  const toml = require('toml')
+const matter = require('gray-matter')
+const toml = require('toml')
 
+export = function parseFrontmatter (content: string) {
   return matter(content, {
     excerpt_separator: '<!-- more -->',
     engines: {
