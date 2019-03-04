@@ -37,14 +37,16 @@ module.exports = function loadTheme (ctx) {
   if (!theme.path) {
     throw new Error(`[vuepress] You must specify a theme, or create a local custom theme. \n For more details, refer to https://vuepress.vuejs.org/guide/custom-themes.html#custom-themes. \n`)
   }
-  logger.tip(`Apply theme ${chalk.gray(theme.name)}`)
+  let applyTip = `Apply theme ${chalk.magenta(theme.name)}`
   theme.entry.name = '@vuepress/internal-theme-entry-file'
 
   let parentTheme = {}
   if (theme.entry.extend) {
     parentTheme = resolveTheme(ctx, themeResolver, true, theme.entry.extend)
     parentTheme.entry.name = '@vuepress/internal-parent-theme-entry-file'
+    applyTip += chalk.gray(` (extends ${chalk.magenta(parentTheme.name)})`)
   }
+  logger.tip(applyTip + ' ...')
 
   logger.debug('theme', theme.name, theme.path)
   logger.debug('parentTheme', parentTheme.name, parentTheme.path)
@@ -76,7 +78,6 @@ function resolveTheme (ctx, resolver, ignoreLocal, theme) {
   const { siteConfig, options, sourceDir, vuepressDir, pluginAPI } = ctx
   const localThemePath = resolve(vuepressDir, 'theme')
   theme = theme || siteConfig.theme || options.theme
-  console.log(theme)
 
   let path
   let name

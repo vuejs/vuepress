@@ -189,7 +189,6 @@ module.exports = class DevProcess extends EventEmitter {
   createServer () {
     const contentBase = path.resolve(this.context.sourceDir, '.vuepress/public')
 
-    console.log(this.webpackConfig)
     const serverConfig = Object.assign({
       disableHostCheck: true,
       compress: true,
