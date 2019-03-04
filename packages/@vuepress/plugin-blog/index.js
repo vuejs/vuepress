@@ -1,7 +1,7 @@
 const { path, datatypes: { isString }} = require('@vuepress/shared-utils')
 
 module.exports = (options, ctx) => {
-  const { layoutComponentMap } = ctx
+  const { themeAPI: { layoutComponentMap }} = ctx
   const {
     pageEnhancers = [],
     postsDir = '_posts',
