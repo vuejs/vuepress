@@ -60,7 +60,7 @@ For the above directory structure, the default page routing paths are as follows
 
 **Also see:** 
 
-- [Config](../config/config.md)
+- [Config](../config/README.md)
 - [Theme](../theme/)
 - [Default Theme Config](../theme/default-theme-config.md)
 

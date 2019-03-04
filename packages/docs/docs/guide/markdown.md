@@ -2,7 +2,7 @@
 
 ## Header Anchors
 
-Headers automatically get anchor links applied. Rendering of anchors can be configured using the [`markdown.anchor`](../config/config.md#markdown-anchor) option.
+Headers automatically get anchor links applied. Rendering of anchors can be configured using the [`markdown.anchor`](../config/README.md#markdown-anchor) option.
 
 ## Links
 
@@ -53,7 +53,7 @@ Outbound links automatically gets `target="_blank" rel="noopener noreferrer"`:
 - [vuejs.org](https://vuejs.org)
 - [VuePress on GitHub](https://github.com/vuejs/vuepress)
 
-You can customize the attributes added to external links by setting [config.markdown.externalLinks](../config/config.md#markdown-externallinks).
+You can customize the attributes added to external links by setting [config.markdown.externalLinks](../config/README.md#markdown-externallinks).
 
 ## Front Matter
 
@@ -122,7 +122,7 @@ or
 
 [[toc]]
 
-Rendering of TOC can be configured using the [`markdown.toc`](../config/config.md#markdown-toc) option, or as props of [TOC component](./using-vue.md#toc), like `<TOC list-type="ol" :include-level="[2, Infinity]"/>`.
+Rendering of TOC can be configured using the [`markdown.toc`](../config/README.md#markdown-toc) option, or as props of [TOC component](./using-vue.md#toc), like `<TOC list-type="ol" :include-level="[2, Infinity]"/>`.
 
 ## Custom Containers
 

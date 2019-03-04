@@ -50,7 +50,7 @@ VuePress 遵循 **“约定优于配置”** 的原则，推荐的目录结构�
 
 **同时阅读:** 
 
-- [配置](../config/config.md)
+- [配置](../config/README.md)
 - [主题](../theme/README.md)
 - [默认主题配置](../theme/default-theme-config.md)
 

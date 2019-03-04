@@ -29,7 +29,7 @@ The compiled content of the current `.md` file being rendered will be available 
 
 ## Directory Structure
 
-Just one `Layout.vue` might not be enough, and you might also want to define more layout components in the theme for using on different pages. You may also want to customize the [palette](../config/config.md#palette-styl), and even apply some plugins.
+Just one `Layout.vue` might not be enough, and you might also want to define more layout components in the theme for using on different pages. You may also want to customize the [palette](../config/README.md#palette-styl), and even apply some plugins.
 
 So it's time to reorganize your theme, an agreed theme directory structure is as follows:
 

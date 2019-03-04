@@ -24,7 +24,7 @@ module.exports = {
 
 对于上述的配置，如果你运行起 dev server，你应该能看到一个页面，它包含一个页头，里面包含一个标题和一个搜索框。VuePress 内置了基于 headers 的搜索 —— 它会自动为所有页面的标题、`h2` 和 `h3` 构建起一个简单的搜索索引。
 
-参见 [配置](../config/config.md) 来查看所有可配置的选项。
+参见 [配置](../config/README.md) 来查看所有可配置的选项。
 
 ::: tip 其他配置格式
 你也可以使用 YAML (`.vuepress/config.yml`) 或是 TOML (`.vuepress/config.toml`) 格式的配置文件。

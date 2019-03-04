@@ -46,7 +46,7 @@ VuePress 是否运行在生产环境模式下。
 
 - 类型: `string`
 
-参考: [base](../config/config.md#base).
+参考: [base](../config/README.md#base).
 
 ## ctx.writeTemp
 

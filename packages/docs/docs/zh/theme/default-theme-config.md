@@ -374,7 +374,7 @@ module.exports = {
 `themeConfig.serviceWorker` 允许你去配置 Service Worker。
 
 ::: tip 提示
-请不要将本选项与 [Config > serviceWorker](../config/config.md#serviceworker) 混淆，[Config > serviceWorker](../config/config.md#serviceworker) 是网站级别的配置，而本选项是主题级别的配置。
+请不要将本选项与 [Config > serviceWorker](../config/README.md#serviceworker) 混淆，[Config > serviceWorker](../config/README.md#serviceworker) 是网站级别的配置，而本选项是主题级别的配置。
 :::
 
 ### 刷新内容的弹窗 <Badge text="0.13.0+"/> <Badge text="beta" type="warn"/>

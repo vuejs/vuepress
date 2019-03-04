@@ -17,7 +17,7 @@
 ![Image from dependency](~some-dependency/image.png)
 ```
 
-Webpack 的别名可以通过 `.vuepress/config.js` 中 [configureWebpack](../config/config.md#configurewebpack) 来配置，如：
+Webpack 的别名可以通过 `.vuepress/config.js` 中 [configureWebpack](../config/README.md#configurewebpack) 来配置，如：
 
 ``` js
 module.exports = {

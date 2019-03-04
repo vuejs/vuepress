@@ -65,7 +65,7 @@ Service Worker 相关的功能已经被分离为一个单独的插件 [@vuepress
 使用 `.vuepress/styles/palette.styl` 代替。
 
 ::: upgrade
-参考: [Config > palette.styl](../config/config.md#palette-styl)
+参考: [Config > palette.styl](../config/README.md#palette-styl)
 :::
 
 ### `.vuepress/style.styl` <Badge text="替换"/>
@@ -73,5 +73,5 @@ Service Worker 相关的功能已经被分离为一个单独的插件 [@vuepress
 使用 `.vuepress/styles/index.styl` 代替。
 
 ::: upgrade
-参考: [Config > index.styl](../config/config.md#index-styl)
+参考: [Config > index.styl](../config/README.md#index-styl)
 :::
