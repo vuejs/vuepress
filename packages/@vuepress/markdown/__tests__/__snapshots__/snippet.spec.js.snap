@@ -10,11 +10,18 @@ exports[`snippet import snippet 1`] = `
 exports[`snippet import snippet with highlight multiple lines 1`] = `
 <div class="highlight-lines">
   <div class="highlighted">&nbsp;</div>
-</div>
+  <div class="highlighted">&nbsp;</div>
+  <div class="highlighted">&nbsp;</div><br>
+</div>export default function () {
+// ..
+}
 `;
 
 exports[`snippet import snippet with highlight single line 1`] = `
 <div class="highlight-lines">
-  <div class="highlighted">&nbsp;</div>
-</div>
+  <div class="highlighted">&nbsp;</div><br>
+  <div class="highlighted">&nbsp;</div><br>
+</div>export default function () {
+// ..
+}
 `;
