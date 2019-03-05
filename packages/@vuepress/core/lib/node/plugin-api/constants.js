@@ -13,7 +13,7 @@ const PLUGIN_OPTION_META_MAP = {
   EXTEND_PAGE_DATA: { name: 'extendPageData', types: [Function] },
   EXTEND_MARKDOWN: { name: 'extendMarkdown', types: [Function] },
   CHAIN_MARKDOWN: { name: 'chainMarkdown', types: [Function] },
-  CLIENT_DYNAMIC_MODULES: { name: 'clientDynamicModules', types: [Object, Function] },
+  CLIENT_DYNAMIC_MODULES: { name: 'clientDynamicModules', types: [Object, Function, Array] },
   CLIENT_ROOT_MIXIN: { name: 'clientRootMixin', types: [String] },
   ADDITIONAL_PAGES: { name: 'additionalPages', types: [Function, Array], async: true },
   GLOBAL_UI_COMPONENTS: { name: 'globalUIComponents', types: [String, Array] },

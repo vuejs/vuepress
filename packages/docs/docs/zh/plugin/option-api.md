@@ -260,7 +260,7 @@ module.exports = (option, context) => {
 
 ## clientDynamicModules
 
-- 类型: `Function`
+- 类型: `Function | Array | Object`
 - 默认值: `undefined`
 
 有时，你可能想要在编译期间生成一些在客户端使用的模块：

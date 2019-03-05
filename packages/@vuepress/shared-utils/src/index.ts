@@ -20,6 +20,7 @@ import parseHeaders from './parseHeaders'
 import * as parseVueFrontmatter from './parseVueFrontmatter'
 import performance from './performance'
 import slugify from './slugify'
+import stringify from './stringify'
 import sort from './sort'
 import toAbsolutePath from './toAbsolutePath'
 import tryChain from './tryChain'
@@ -56,6 +57,7 @@ export {
   parseVueFrontmatter,
   performance,
   slugify,
+  stringify,
   sort,
   toAbsolutePath,
   tryChain,

@@ -256,7 +256,7 @@ module.exports = (option, context) => {
 
 ## clientDynamicModules
 
-- Type: `Function`
+- Type: `Function | Array | Object`
 - Default: `undefined`
 
 Sometimes, you may want to generate some client modules at compile time.

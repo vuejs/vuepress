@@ -14,6 +14,7 @@ const isObjectOfType = (type: string) => (x: string) => getObjectType(x) === typ
 export const isFunction = isOfType('function')
 export const isString = isOfType('string')
 export const isBoolean = isOfType('boolean')
+export const isRegExp = isObjectOfType('RegExp')
 export const isPlainObject = isObjectOfType('Object')
 export const isUndefined = isOfType('undefined')
 export const isNull = (x: any) => x === null
