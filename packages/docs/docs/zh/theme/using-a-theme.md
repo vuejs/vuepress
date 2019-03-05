@@ -1,10 +1,10 @@
 # 使用主题
 
-使用一个主题和使用一个插件几乎一致。
+使用一个主题和使用一个插件的方式几乎一致。
 
-## 使用 dependency 中的主题
+## 使用来自依赖的主题
 
-一个插件可以在以 `vuepress-theme-xxx` 的形式发布到 npm，你可以这样使用它：
+一个主题可以在以 `vuepress-theme-xxx` 的形式发布到 npm，你可以这样使用它：
 
 ``` js
 module.exports = {
@@ -14,7 +14,7 @@ module.exports = {
 
 ## 主题的缩写
 
-如果你的插件名以 `vuepress-theme-` 开头，你可以使用缩写来省略这个前缀：
+如果你的主题名以 `vuepress-theme-` 开头，你可以使用缩写来省略这个前缀：
 
 ``` js
 module.exports = {
@@ -47,5 +47,5 @@ module.exports = {
 ```
 
 ::: warning 注意
-以 `@vuepress/plugin-` 开头的插件是官方维护的插件。
+以 `@vuepress/theme-` 开头的主题是官方维护的主题。
 :::

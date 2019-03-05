@@ -56,7 +56,7 @@ Reference of [$page](#page).frontmatter.
 
 ## $lang
 
-The language of the current page. default value is `en-US`.
+The language of the current page, the default value is `en-US`.
 
 **Also see:**
 

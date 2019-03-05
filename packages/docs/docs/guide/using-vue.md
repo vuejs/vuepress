@@ -173,7 +173,7 @@ For pre-processors that do not have built-in webpack config support, you will ne
 
 ## Script & Style Hoisting
 
-Sometimes you may need to apply some JavaScript or CSS only to the current page. In those cases you can directly write root-level `<script>` or `<style>` blocks in the markdown file, and they will be hoisted out of the compiled HTML and used as the `<script>` and `<style>` blocks for the resulting Vue single-file component.
+Sometimes you may need to apply some JavaScript or CSS only to the current page. In those cases, you can directly write root-level `<script>` or `<style>` blocks in the markdown file, and they will be hoisted out of the compiled HTML and used as the `<script>` and `<style>` blocks for the resulting Vue single-file component.
 
 <p class="demo" :class="$style.example"></p>
 
@@ -197,7 +197,7 @@ export default {
 
 ### OutboundLink <Badge text="stable"/>
 
-It(<OutboundLink/>) is used to indicate that this is an external link. In VuePress this component have been followed by every external link.
+It(<OutboundLink/>) is used to indicate that this is an external link. In VuePress, this component has been followed by every external link.
 
 ### ClientOnly <Badge text="stable"/>
 
@@ -224,8 +224,29 @@ Specify a specific slot for a specific page (.md) for rendering. This will be ve
 - [Markdown Slot](./markdown-slot.md)
 - [Writing a theme > Content Outlet](../theme/writing-a-theme.md#content-outlet)
 
+### TOC <Badge text="1.0.0-alpha.41+"/>
 
-### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/>
+- **Props**:
+  - `listType` - string or Array, defaults to `"ul"`
+  - `includeLevel` - [number, number], defaults to `[2, 3]`
+
+- **Slots**: `header`, `footer`
+
+- **Usage**:
+
+You can add a custom table of contents by specify some props to this component. `includeLevel` decides which level of headers should be included. `listType` decides the tags of lists. If specified as an array, the component will take the first element as the first-level list type and so on. If there are not enough values provided, the last value will be used for all the remaining list types.
+
+``` md
+<TOC :list-type="['ol', 'ul']">
+  <p slot="header"><strong>Custom Table of Contents</strong></p>
+</TOC>
+```
+
+<TOC :list-type="['ol', 'ul']">
+  <p slot="header"><strong>Custom Table of Contents</strong></p>
+</TOC>
+
+### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/> <Badge text="default theme"/>
 
 - **Props**:
 
@@ -238,7 +259,7 @@ Specify a specific slot for a specific page (.md) for rendering. This will be ve
 You can use this component in header to add some status for some API:
 
 ``` md
-### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/>
+### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/> <Badge text="default theme"/>
 ```
 
 **Also see:**

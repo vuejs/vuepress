@@ -1,17 +1,16 @@
-const path = require('path')
-const container = require('markdown-it-container')
+const { fs, path } = require('@vuepress/shared-utils')
 
 module.exports = ctx => ({
   dest: '../../vuepress',
   locales: {
     '/': {
       lang: 'en-US',
-      title: 'VuePress',
+      title: 'VuePress 1.x',
       description: 'Vue-powered Static Site Generator'
     },
     '/zh/': {
       lang: 'zh-CN',
-      title: 'VuePress',
+      title: 'VuePress 1.x',
       description: 'Vue 驱动的静态网站生成器'
     }
   },
@@ -32,10 +31,10 @@ module.exports = ctx => ({
     editLinks: true,
     docsDir: 'packages/docs/docs',
     // #697 Provided by the official algolia team.
-    algolia: ctx.isProd ? ({
-      apiKey: '3a539aab83105f01761a137c61004d85',
-      indexName: 'vuepress'
-    }) : null,
+    // algolia: ctx.isProd ? ({
+    //   apiKey: '3a539aab83105f01761a137c61004d85',
+    //   indexName: 'vuepress'
+    // }) : null,
     locales: {
       '/': {
         label: 'English',
@@ -44,6 +43,7 @@ module.exports = ctx => ({
         lastUpdated: 'Last Updated',
         nav: require('./nav/en'),
         sidebar: {
+          '/api/': getApiSidebar(),
           '/guide/': getGuideSidebar('Guide', 'Advanced'),
           '/plugin/': getPluginSidebar('Plugin', 'Introduction', 'Official Plugins'),
           '/theme/': getThemeSidebar('Theme', 'Introduction'),
@@ -56,6 +56,7 @@ module.exports = ctx => ({
         lastUpdated: '上次更新',
         nav: require('./nav/zh'),
         sidebar: {
+          '/zh/api/': getApiSidebar(),
           '/zh/guide/': getGuideSidebar('指南', '深入'),
           '/zh/plugin/': getPluginSidebar('插件', '介绍', '官方插件'),
           '/zh/theme/': getThemeSidebar('主题', '介绍')
@@ -64,27 +65,39 @@ module.exports = ctx => ({
     }
   },
   plugins: [
-    ['@vuepress/i18n-ui',!ctx.isProd],
+    ['@vuepress/i18n-ui', !ctx.isProd],
     ['@vuepress/back-to-top', true],
     ['@vuepress/pwa', {
       serviceWorker: true,
       updatePopup: true
     }],
     ['@vuepress/medium-zoom', true],
-    ['@vuepress/notification', true],
     ['@vuepress/google-analytics', {
       ga: 'UA-128189152-1'
     }],
+    ['@vuepress/container', {
+      type: 'vue',
+      before: '<pre class="vue-container"><code>',
+      after: '</code></pre>',
+    }],
+    ['@vuepress/container', {
+      type: 'upgrade',
+      before: info => `<UpgradePath title="${info}">`,
+      after: '</UpgradePath>',
+    }],
   ],
-  clientRootMixin: path.resolve(__dirname, 'mixin.js'),
-  extendMarkdown (md) {
-    md.use(container, 'upgrade', {
-      render: (tokens, idx) => tokens[idx].nesting === 1
-        ? `<UpgradePath title="${tokens[idx].info.trim().slice('upgrade'.length).trim()}">`
-        : '</UpgradePath>'
-    })
-  },
+  extraWatchFiles: [
+    '.vuepress/nav/en.js',
+    '.vuepress/nav/zh.js',
+  ]
 })
+
+function getApiSidebar () {
+  return [
+    'cli',
+    'node'
+  ]
+}
 
 function getGuideSidebar (groupA, groupB) {
   return [
@@ -116,6 +129,11 @@ function getGuideSidebar (groupA, groupB) {
   ]
 }
 
+const officalPlugins = fs
+  .readdirSync(path.resolve(__dirname, '../plugin/official'))
+  .map(filename => 'official/' + filename.slice(0, -3))
+  .sort()
+
 function getPluginSidebar (pluginTitle, pluginIntro, officialPluginTitle) {
   return [
     {
@@ -133,19 +151,7 @@ function getPluginSidebar (pluginTitle, pluginIntro, officialPluginTitle) {
     {
       title: officialPluginTitle,
       collapsable: false,
-      children: [
-        'official/plugin-search',
-        'official/plugin-active-header-links',
-        'official/plugin-pwa',
-        'official/plugin-blog',
-        'official/plugin-pagination',
-        'official/plugin-google-analytics',
-        'official/plugin-i18n-ui',
-        'official/plugin-last-updated',
-        'official/plugin-medium-zoom',
-        'official/plugin-back-to-top',
-        'official/plugin-register-components',
-      ]
+      children: officalPlugins,
     }
   ]
 }
@@ -161,7 +167,8 @@ function getThemeSidebar (groupA, introductionA) {
         'using-a-theme',
         'writing-a-theme',
         'option-api',
-        'default-theme-config'
+        'default-theme-config',
+        'inheritance'
       ]
     },
   ]

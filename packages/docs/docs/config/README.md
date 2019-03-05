@@ -1,4 +1,5 @@
 ---
+sidebarDepth: 3
 sidebar: auto
 ---
 
@@ -13,7 +14,7 @@ sidebar: auto
 - Type: `string`
 - Default: `/`
 
-The base URL the site will be deployed at. You will need to set this if you plan to deploy your site under a sub path, for example GitHub pages. If you plan to deploy your site to `https://foo.github.io/bar/`, then `base` should be set to `"/bar/"`. It should always start and end with a slash.
+The base URL the site will be deployed at. You will need to set this if you plan to deploy your site under a sub path, for example, GitHub pages. If you plan to deploy your site to `https://foo.github.io/bar/`, then `base` should be set to `"/bar/"`. It should always start and end with a slash.
 
 The `base` is automatically prepended to all the URLs that start with `/` in other options, so you only need to specify it once.
 
@@ -65,12 +66,19 @@ Specify the host to use for the dev server.
 
 Specify the port to use for the dev server.
 
+### temp
+
+- Type: `number`
+- Default: `@vuepress/core/.temp`
+
+Specify the temporary directory for client. 
+
 ### dest
 
 - Type: `string`
 - Default: `.vuepress/dist`
 
-Specify the output directory for `vuepress build`.
+Specify the output directory for `vuepress build`. If a relative path is specified, it will be resolved based on `process.cwd()`.
 
 ### ga
 
@@ -215,14 +223,22 @@ Options for [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-
 - Type: `Object`
 - Default: `{ target: '_blank', rel: 'noopener noreferrer' }`
 
-The key and value pair will be added to `<a>` tags that points to an external link. The default option will open external links in a new window.
+The key and value pair will be added to `<a>` tags that point to an external link. The default option will open external links in a new window.
 
 ### markdown.toc
 
 - Type: `Object`
-- Default: `{ includeLevel: [2, 3] }`
 
-Options for [markdown-it-table-of-contents](https://github.com/Oktavilla/markdown-it-table-of-contents). (Note: prefer `markdown.slugify` if you want to customize header ids.)
+This attribute will control the behaviour of `[[TOC]]`. It contains the following options:
+
+- includeLevel: [number, number], level of headers to be included, defaults to `[2, 3]`.
+- containerClass: string, the class name for the container, defaults to `table-of-contents`.
+- markerPattern: RegExp, the regular expression for the marker to be replaced with TOC, defaults to `/^\[\[toc\]\]/im`.
+- listType: string or Array, labels for all levels of the list, defaults to `"ul"`.
+- containerHeaderHtml: string, an HTML string for container header, defaults to `""`.
+- containerFooterHtml: string, an HTML string for container footer, defaults to `""`.
+
+We also provide a [global component TOC](../guide/using-vue.md#toc) which allows for more free control by passing props directly to `<TOC>`.
 
 ### markdown.extendMarkdown
 

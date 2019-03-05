@@ -108,15 +108,21 @@ A list of all emojis available can be found [here](https://github.com/markdown-i
 
 **Input**
 
-```
+```md
 [[toc]]
+```
+
+or
+
+```md
+<TOC/>
 ```
 
 **Output**
 
 [[toc]]
 
-Rendering of TOC can be configured using the [`markdown.toc`](../config/README.md#markdown-toc) option.
+Rendering of TOC can be configured using the [`markdown.toc`](../config/README.md#markdown-toc) option, or as props of [TOC component](./using-vue.md#toc), like `<TOC list-type="ol" :include-level="[2, Infinity]"/>`.
 
 ## Custom Containers
 
@@ -253,7 +259,7 @@ module.exports = {
   markdown: {
     lineNumbers: true
   }
-}  
+}
 ```
 
 <!-- TODO Support line numbers for specific fence block -->
@@ -262,12 +268,12 @@ module.exports = {
 
 <picture>
   <source srcset="/line-numbers-desktop.png" media="(min-width: 719px)">
-  <img class="line-numbers-desktop-snap" alt="Image">
+  <img src="/line-numbers-desktop.png" class="line-numbers-desktop-snap" alt="Image">
 </picture>
 
 <picture>
   <source srcset="/line-numbers-mobile.gif" media="(max-width: 719px)">
-  <img class="line-numbers-mobile-snap" alt="Image">
+  <img src="/line-numbers-mobile.gif" class="line-numbers-mobile-snap" alt="Image">
 </picture>
 
 <style>
@@ -299,7 +305,7 @@ You can import code snippets from existing files via following syntax:
 It also supports [line highlighting](#line-highlighting-in-code-blocks):
 
 ``` md
-<<< @/filepath{highlightLines} 
+<<< @/filepath{highlightLines}
 ```
 
 **Input**

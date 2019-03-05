@@ -19,6 +19,19 @@ module.exports = [
     text: '了解更多',
     items: [
       {
+        text: 'API',
+        items: [
+          {
+            text: 'CLI',
+            link: '/zh/api/cli.html'
+          },
+          {
+            text: 'Node',
+            link: '/zh/api/node.html'
+          },
+        ]
+      },
+      {
         text: '开发指南',
         items: [
           {
@@ -49,5 +62,9 @@ module.exports = [
         ]
       }
     ]
-  }
+  },
+  {
+    text: '0.x',
+    link: 'https://vuepress.vuejs.org/'
+  },
 ]

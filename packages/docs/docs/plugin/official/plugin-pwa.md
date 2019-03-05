@@ -10,8 +10,8 @@ metaTitle: PWA Plugin | VuePress
 ## Install
 
 ```bash
-yarn add -D @vuepress/plugin-pwa
-# OR npm install -D @vuepress/plugin-pwa
+yarn add -D @vuepress/plugin-pwa@next
+# OR npm install -D @vuepress/plugin-pwa@next
 ```
 
 ## Usage

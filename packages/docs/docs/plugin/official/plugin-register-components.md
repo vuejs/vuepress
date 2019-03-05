@@ -10,8 +10,8 @@ metaTitle: Register Components Plugin | VuePress
 ## Install
 
 ```bash
-yarn add -D @vuepress/plugin-register-components
-# OR npm install -D @vuepress/plugin-register-components
+yarn add -D @vuepress/plugin-register-components@next
+# OR npm install -D @vuepress/plugin-register-components@next
 ```
 
 ## Usage

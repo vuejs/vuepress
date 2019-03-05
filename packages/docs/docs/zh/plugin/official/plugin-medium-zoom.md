@@ -10,8 +10,8 @@ metaTitle: Medium-Zoom 插件 | VuePress
 ## 安装
 
 ```bash
-yarn add -D @vuepress/plugin-medium-zoom
-# OR npm install -D @vuepress/plugin-medium-zoom
+yarn add -D @vuepress/plugin-medium-zoom@next
+# OR npm install -D @vuepress/plugin-medium-zoom@next
 ```
 
 ## 使用

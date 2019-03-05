@@ -1,25 +1,26 @@
-import { Md, getFragment } from './util'
+import { getFragment } from '@vuepress/test-utils'
+import { Md } from './util'
 import snippet from '../lib/snippet.js'
 import highlightLines from '../lib/highlightLines.js'
 
 const md = Md().use(snippet)
-const mdH = Md().use(snippet).use(highlightLines)
+const mdH = Md().use(highlightLines).use(snippet)
 
 describe('snippet', () => {
-  test('import snippet', async () => {
-    const input = await getFragment('code-snippet')
+  test('import snippet', () => {
+    const input = getFragment(__dirname, 'code-snippet.md')
     const output = md.render(input)
     expect(output).toMatchSnapshot()
   })
 
-  test('import snippet with highlight single line', async () => {
-    const input = await getFragment('code-snippet-highlightLines-single')
+  test('import snippet with highlight single line', () => {
+    const input = getFragment(__dirname, 'code-snippet-highlightLines-single.md')
     const output = mdH.render(input)
     expect(output).toMatchSnapshot()
   })
 
-  test('import snippet with highlight multiple lines', async () => {
-    const input = await getFragment('code-snippet-highlightLines-multiple')
+  test('import snippet with highlight multiple lines', () => {
+    const input = getFragment(__dirname, 'code-snippet-highlightLines-multiple.md')
     const output = mdH.render(input)
     expect(output).toMatchSnapshot()
   })

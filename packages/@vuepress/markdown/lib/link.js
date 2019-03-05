@@ -66,8 +66,8 @@ module.exports = (md, externalAttrs) => {
     const routerLinks = md.$data.routerLinks || (md.$data.routerLinks = [])
     routerLinks.push(to)
 
-    return Object.assign({}, token, {
-      tag: 'router-link'
+    return Object.create(token, {
+      tag: { value: 'router-link' }
     })
   }
 

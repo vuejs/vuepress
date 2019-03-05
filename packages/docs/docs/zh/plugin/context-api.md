@@ -42,12 +42,6 @@ VuePress 是否运行在生产环境模式下。
 
 输出目录。
 
-## ctx.themePath
-
-- 类型: `string`
-
-当前应用的主题的根路径。
-
 ## ctx.base
 
 - 类型: `string`

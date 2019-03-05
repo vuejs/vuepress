@@ -15,7 +15,8 @@ GA has been separated into a standalone plugin [@vuepress/plugin-google-analytic
 1. Install `@vuepress/plugin-google-analytics`:
 
 ```bash
-yarn add -D @vuepress/plugin-google-analytics
+yarn add -D @vuepress/plugin-google-analytics@next
+# OR npm install -D @vuepress/plugin-google-analytics@next
 ```
 
 2. Update `vuepress/config.js`:
