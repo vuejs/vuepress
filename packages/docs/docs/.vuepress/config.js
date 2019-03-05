@@ -86,12 +86,14 @@ module.exports = ctx => ({
       after: '</UpgradePath>',
     }],
   ],
+  extraWatchFiles: [
+    '.vuepress/nav/en.js',
+    '.vuepress/nav/zh.js',
+  ]
 })
 
 function getApiSidebar () {
   return [
-    '',
-    'config',
     'cli',
     'node'
   ]

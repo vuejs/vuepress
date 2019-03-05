@@ -46,7 +46,7 @@ Output path.
 
 - Type: `string`
 
-See: [base](../api/config.md#base).
+See: [base](../config/README.md#base).
 
 ## ctx.writeTemp
 

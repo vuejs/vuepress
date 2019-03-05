@@ -46,6 +46,7 @@ module.exports = class DevProcess extends EventEmitter {
    */
 
   handleUpdate (type, target) {
+    logger.debug(type, target)
     if (!path.isAbsolute(target)) {
       target = path.join(this.context.sourceDir, target)
     }

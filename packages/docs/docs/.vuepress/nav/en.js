@@ -4,8 +4,8 @@ module.exports = [
     link: '/guide/',
   },
   {
-    text: 'API',
-    link: '/api/'
+    text: 'Config Reference',
+    link: '/config/'
   },
   {
     text: 'Plugin',
@@ -18,6 +18,19 @@ module.exports = [
   {
     text: 'Learn More',
     items: [
+      {
+        text: 'API',
+        items: [
+          {
+            text: 'CLI',
+            link: '/api/cli.html'
+          },
+          {
+            text: 'Node',
+            link: '/api/node.html'
+          },
+        ]
+      },
       {
         text: 'Contributing Guide',
         items: [

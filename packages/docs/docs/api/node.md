@@ -38,20 +38,20 @@ Specify the source directory for VuePress.
 
 ### options.theme
 
-See [theme](../config.md#theme).
+See [theme](../config/README.md#theme).
 
 ### options.plugins
 
-See [plugins](../config.md#plugins).
+See [plugins](../config/README.md#plugins).
 
 ### options.temp
 
-See [temp](../config.md#temp).
+See [temp](../config/README.md#temp).
 
 ### options.dest
 
-See [dest](../config.md#dest).
+See [dest](../config/README.md#dest).
 
 ### options.siteConfig
 
-See [siteConfig](../config.md).
+See [siteConfig](../config/README.md).

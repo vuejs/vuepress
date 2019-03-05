@@ -1,5 +1,6 @@
 ---
 sidebarDepth: 3
+sidebar: auto
 ---
 
 # Config Reference
