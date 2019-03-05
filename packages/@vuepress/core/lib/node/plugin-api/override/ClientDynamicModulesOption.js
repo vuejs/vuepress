@@ -20,7 +20,8 @@ module.exports = class ClientDynamicModulesOption extends AsyncOption {
         name: pluginName,
         value: { name, content, dirname = 'dynamic', data }
       } = item
-      const output = content || 'export default ' + stringify(data)
+      let output = content ? content + '\n' : ''
+      output += data !== undefined ? 'export default ' + stringify(data) : ''
       await ctx.writeTemp(
         `${dirname}/${name}`,
         `\

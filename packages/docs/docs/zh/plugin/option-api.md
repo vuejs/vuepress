@@ -282,6 +282,33 @@ module.exports = (options, context) => ({
 import { SOURCE_DIR } from '@dynamic/constants'
 ```
 
+如果你希望将对象传给客户端，也可以使用 `data` 属性：
+
+``` js
+module.exports = {
+  clientDynamicModules() {
+    return {
+      name: 'sayHello.js',
+      data () {
+        console.log('Hello VuePress!')
+      }
+    }
+  }
+}
+```
+
+然后你可以在客户端这样使用你的模块：
+
+``` js
+import sayHello from '@dynamic/sayHello'
+
+sayHello() // Hello VuePress!
+```
+
+::: warning 注意
+`data` 属性的本质仍然是变为字符串传递，因此函数不会有任何上下文。如果使用了闭包中的变量，你需要通过 `content` 属性自己提供。由 `data` 和 `content` 生成的代码会被放入同一个文件中。
+:::
+
 ## extendPageData
 
 - 类型: `Function`
