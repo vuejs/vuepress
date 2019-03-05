@@ -4,6 +4,11 @@ import pageComponents from '@internal/page-components'
 
 const asyncComponents = Object.assign({}, layoutComponents, pageComponents)
 
+// TODO: reuse this function in shared-utils
+function pascalize (source = '') {
+  return source.replace(/(^|-)[a-z]/g, s => s.slice(-1).toUpperCase())
+}
+
 export function isPageExists (pageKey) {
   return Boolean(pageComponents[pageKey])
 }
@@ -17,7 +22,7 @@ export function getPageAsyncComponent (pageKey) {
 }
 
 export function isLayoutExists (layout) {
-  return Boolean(layoutComponents[layout])
+  return Boolean(getLayoutAsyncComponent(layout))
 }
 
 export function isLayoutLoaded (layout) {
@@ -25,11 +30,12 @@ export function isLayoutLoaded (layout) {
 }
 
 export function getLayoutAsyncComponent (pageKey) {
-  return layoutComponents[pageKey]
+  return layoutComponents[pascalize(pageKey)]
 }
 
 export function ensureAsyncComponentsLoaded (...names) {
   return Promise.all(names.filter(v => v).map(async (name) => {
+    name = pascalize(name)
     if (!Vue.component(name) && asyncComponents[name]) {
       const comp = await asyncComponents[name]()
       Vue.component(name, comp.default)
@@ -96,7 +102,7 @@ export function findPageByKey (pages, key) {
  *
  *
  * Usage:
- *
+ * ```js
  * import { normalizeConfig } from '@app/util'
  * export default {
  *   data () {
@@ -108,7 +114,7 @@ export function findPageByKey (pages, key) {
  *     }
  *   }
  * }
- *
+ * ```
  *
  * e.g.
  *

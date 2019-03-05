@@ -18,6 +18,7 @@ import * as parseEmojis from './parseEmojis'
 import parseFrontmatter from './parseFrontmatter'
 import parseHeaders from './parseHeaders'
 import * as parseVueFrontmatter from './parseVueFrontmatter'
+import pascalize from './pascalize'
 import performance from './performance'
 import slugify from './slugify'
 import sort from './sort'
@@ -54,6 +55,7 @@ export {
   parseFrontmatter,
   parseHeaders,
   parseVueFrontmatter,
+  pascalize,
   performance,
   slugify,
   sort,
