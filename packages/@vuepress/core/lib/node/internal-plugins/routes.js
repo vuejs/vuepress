@@ -42,10 +42,7 @@ function routesCode (pages) {
   {
     name: ${JSON.stringify(componentName)},
     path: ${JSON.stringify(pagePath)},
-    component: GlobalLayout,
-    beforeEnter: (to, from, next) => {
-      ensureAsyncComponentsLoaded(${JSON.stringify(layout || 'Layout')}, ${JSON.stringify(componentName)}).then(next)
-    },${_meta ? `\n    meta: ${JSON.stringify(_meta)}` : ''}
+    component: GlobalLayout,${_meta ? `\n    meta: ${JSON.stringify(_meta)}` : ''}
   }`
 
     const dncodedPath = decodeURIComponent(pagePath)

@@ -7,12 +7,15 @@ module.exports = (options, ctx) => {
   return {
     name: '@vuepress/internal-page-components',
 
-    async clientDynamicModules () {
-      const code = `export default {\n${pages
+    async enhanceAppFiles () {
+      const code = `import Vue from 'vue'\n${pages
         .filter(({ _filePath }) => _filePath)
-        .map(({ key, _filePath }) => `  ${JSON.stringify(pascalize(key))}: () => import(${JSON.stringify(_filePath)})`)
-        .join(',\n')} \n}`
-      return { name: 'page-components.js', content: code, dirname: 'internal' }
+        .map(({ key, _filePath }) => `Vue.component(${JSON.stringify(pascalize(key))}, () => import(${JSON.stringify(_filePath)}))`)
+        .join(',\n')} \n`
+      return {
+        name: 'page-components.js',
+        content: code
+      }
     }
   }
 }

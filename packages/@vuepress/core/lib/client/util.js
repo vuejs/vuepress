@@ -1,46 +1,30 @@
 import Vue from 'vue'
-import layoutComponents from '@internal/layout-components'
-import pageComponents from '@internal/page-components'
 
-const asyncComponents = Object.assign({}, layoutComponents, pageComponents)
-
-// TODO: reuse this function in shared-utils
 function pascalize (source = '') {
   return source.replace(/(^|-)\w/g, s => s.slice(-1).toUpperCase())
 }
-
 export function isPageExists (pageKey) {
-  return Boolean(getPageAsyncComponent(pageKey))
+  return Boolean(Vue.component(pascalize(pageKey)))
 }
 
 export function isPageLoaded (pageKey) {
-  return Boolean(Vue.component(pageKey))
+  return Boolean(Vue.component(pascalize(pageKey)))
 }
 
 export function getPageAsyncComponent (pageKey) {
-  return pageComponents[pascalize(pageKey)]
+  return Vue.component(pascalize(pageKey))
 }
 
 export function isLayoutExists (layout) {
-  return Boolean(getLayoutAsyncComponent(layout))
+  return Boolean(Vue.component(pascalize(layout)))
 }
 
 export function isLayoutLoaded (layout) {
-  return Boolean(Vue.component(layout))
+  return Boolean(Vue.component(pascalize(layout)))
 }
 
 export function getLayoutAsyncComponent (pageKey) {
-  return layoutComponents[pascalize(pageKey)]
-}
-
-export function ensureAsyncComponentsLoaded (...names) {
-  return Promise.all(names.filter(v => v).map(async (name) => {
-    name = pascalize(name)
-    if (!Vue.component(name) && asyncComponents[name]) {
-      const comp = await asyncComponents[name]()
-      Vue.component(name, comp.default)
-    }
-  }))
+  return Vue.component(pascalize(pageKey))
 }
 
 /**
