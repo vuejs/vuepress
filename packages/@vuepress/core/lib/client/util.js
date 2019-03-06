@@ -10,7 +10,7 @@ function pascalize (source = '') {
 }
 
 export function isPageExists (pageKey) {
-  return Boolean(pageComponents[pageKey])
+  return Boolean(getPageAsyncComponent(pageKey))
 }
 
 export function isPageLoaded (pageKey) {
