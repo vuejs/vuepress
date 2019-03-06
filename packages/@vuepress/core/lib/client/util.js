@@ -1,13 +1,11 @@
 import Vue from 'vue'
 
-function pascalize (source = '') {
-  return source.replace(/(^|-)\w/g, s => s.slice(-1).toUpperCase())
-}
-export function isPageExists (pageKey) {
-  return Boolean(Vue.component(pascalize(pageKey)))
+function pascalize (str = '') {
+  const cache = Object.create(null)
+  return str => str in cache ? cache[str] : (cache[str] = str.replace(/(^|-)\w/g, s => s.slice(-1).toUpperCase()))
 }
 
-export function isPageLoaded (pageKey) {
+export function isPageExists (pageKey) {
   return Boolean(Vue.component(pascalize(pageKey)))
 }
 
