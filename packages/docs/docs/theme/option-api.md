@@ -111,7 +111,7 @@ export default {
   computed: {
     layout () {
       if (this.$page.path) {
-        if (this.$vuepress.isLayoutExists(this.$frontmatter.layout)) {
+        if (this.$hasComponent(this.$frontmatter.layout)) {
           return this.$frontmatter.layout
         }
         return 'Layout'

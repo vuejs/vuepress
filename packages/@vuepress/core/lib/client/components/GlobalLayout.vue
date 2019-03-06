@@ -7,7 +7,7 @@ export default {
   computed: {
     layout () {
       if (this.$page.path) {
-        if (this.$vuepress.isLayoutExists(this.$page.frontmatter.layout)) {
+        if (this.$hasComponent(this.$page.frontmatter.layout)) {
           return this.$page.frontmatter.layout
         }
         return 'Layout'

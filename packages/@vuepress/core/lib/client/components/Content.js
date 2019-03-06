@@ -8,7 +8,7 @@ export default {
   },
   render (h) {
     const pageKey = this.pageKey || this.$parent.$page.key
-    if (this.$vuepress.isPageExists(pageKey)) {
+    if (this.$hasComponent(pageKey)) {
       return h(pageKey)
     }
     return h('')

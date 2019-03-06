@@ -1,14 +1,8 @@
-import { Store } from './Store';
-import { AsyncComponent } from 'vue'
+import { Store } from './Store'
 
-declare class VuePress extends Store {
-  isPageExists (pageKey: string): boolean;
-
-  isLayoutExists (pageKey: string): boolean;
-}
-
-declare module "vue/types/vue" {
+declare module 'vue/types/vue' {
   export interface Vue {
-    $vuepress: VuePress;
+    $vuepress: Store
+    $hasComponent (key: string): boolean
   }
 }
