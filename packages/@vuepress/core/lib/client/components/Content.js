@@ -1,5 +1,3 @@
-import { isPageExists } from '../util'
-
 export default {
   props: {
     pageKey: String,
@@ -10,7 +8,7 @@ export default {
   },
   render (h) {
     const pageKey = this.pageKey || this.$parent.$page.key
-    if (isPageExists(pageKey)) {
+    if (this.$vuepress.isPageExists(pageKey)) {
       return h(pageKey)
     }
     return h('')
