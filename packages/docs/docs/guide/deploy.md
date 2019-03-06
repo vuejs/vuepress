@@ -70,6 +70,8 @@ You can also run the above script in your CI setup to enable automatic deploymen
 
 ``` yaml
 language: node_js
+node_js:
+  - lts/*
 script:
   - npm run docs:build
 deploy:
