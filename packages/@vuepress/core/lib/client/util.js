@@ -17,10 +17,6 @@ export function isLayoutExists (layout) {
   return Boolean(Vue.component(pascalize(layout)))
 }
 
-export function isLayoutLoaded (layout) {
-  return Boolean(Vue.component(pascalize(layout)))
-}
-
 export function getLayoutAsyncComponent (pageKey) {
   return Vue.component(pascalize(pageKey))
 }

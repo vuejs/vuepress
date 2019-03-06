@@ -3,7 +3,6 @@ import {
   isPageExists,
   getPageAsyncComponent,
   isLayoutExists,
-  isLayoutLoaded,
   getLayoutAsyncComponent
 } from '../util'
 
@@ -13,7 +12,6 @@ Object.assign(VuePress.prototype, {
   isPageExists,
   getPageAsyncComponent,
   isLayoutExists,
-  isLayoutLoaded,
   getLayoutAsyncComponent
 })
 
