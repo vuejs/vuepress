@@ -6,7 +6,7 @@ const asyncComponents = Object.assign({}, layoutComponents, pageComponents)
 
 // TODO: reuse this function in shared-utils
 function pascalize (source = '') {
-  return source.replace(/(^|-)[a-z]/g, s => s.slice(-1).toUpperCase())
+  return source.replace(/(^|-)\w/g, s => s.slice(-1).toUpperCase())
 }
 
 export function isPageExists (pageKey) {
@@ -18,7 +18,7 @@ export function isPageLoaded (pageKey) {
 }
 
 export function getPageAsyncComponent (pageKey) {
-  return pageComponents[pageKey]
+  return pageComponents[pascalize(pageKey)]
 }
 
 export function isLayoutExists (layout) {
