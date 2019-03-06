@@ -15,7 +15,6 @@ import Content from './components/Content.js'
 import ContentSlotsDistributor from './components/ContentSlotsDistributor'
 import OutboundLink from './components/OutboundLink.vue'
 import ClientOnly from './components/ClientOnly'
-import TOC from './components/TOC.vue'
 
 // suggest dev server restart on base change
 if (module.hot) {
@@ -44,7 +43,7 @@ Vue.component('OutboundLink', OutboundLink)
 // component for client-only content
 Vue.component('ClientOnly', ClientOnly)
 // markdown components
-Vue.component('TOC', TOC)
+Vue.component('TOC', () => import('./components/TOC.vue'))
 
 // global helper for adding base path to absolute urls
 Vue.prototype.$withBase = function (path) {

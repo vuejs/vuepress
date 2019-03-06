@@ -1,25 +1,3 @@
-import Vue from 'vue'
-
-function cached (fn) {
-  const cache = Object.create(null)
-  return str => {
-    if (typeof cache[str] === 'undefined') {
-      cache[str] = fn(str)
-    }
-    return cache[str]
-  }
-}
-
-const pascalize = cached((str = '') => str.replace(/(^|-)\w/g, s => s.slice(-1).toUpperCase()))
-
-export function isPageExists (pageKey) {
-  return Boolean(Vue.component(pascalize(pageKey)))
-}
-
-export function isLayoutExists (layout) {
-  return Boolean(Vue.component(pascalize(layout)))
-}
-
 /**
  * Inject option to Vue SFC
  * @param {object} options
