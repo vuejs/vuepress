@@ -9,7 +9,6 @@ import globalUIComponents from '@internal/global-ui'
 import ClientComputedMixin from '@transform/ClientComputedMixin'
 import VuePress from './plugins/VuePress'
 import { handleRedirectForCleanUrls } from './redirect.js'
-import { getLayoutAsyncComponent } from './util'
 
 // built-in components
 import Content from './components/Content.js'
@@ -44,9 +43,6 @@ Vue.component('ContentSlotsDistributor', ContentSlotsDistributor)
 Vue.component('OutboundLink', OutboundLink)
 // component for client-only content
 Vue.component('ClientOnly', ClientOnly)
-// core components
-Vue.component('Layout', getLayoutAsyncComponent('Layout'))
-Vue.component('NotFound', getLayoutAsyncComponent('NotFound'))
 // markdown components
 Vue.component('TOC', TOC)
 

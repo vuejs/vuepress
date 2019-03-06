@@ -1,24 +1,15 @@
 import Vue from 'vue'
 
 function pascalize (str = '') {
-  const cache = Object.create(null)
-  return str => str in cache ? cache[str] : (cache[str] = str.replace(/(^|-)\w/g, s => s.slice(-1).toUpperCase()))
+  return str.replace(/(^|-)\w/g, s => s.slice(-1).toUpperCase())
 }
 
 export function isPageExists (pageKey) {
   return Boolean(Vue.component(pascalize(pageKey)))
 }
 
-export function getPageAsyncComponent (pageKey) {
-  return Vue.component(pascalize(pageKey))
-}
-
 export function isLayoutExists (layout) {
   return Boolean(Vue.component(pascalize(layout)))
-}
-
-export function getLayoutAsyncComponent (pageKey) {
-  return Vue.component(pascalize(pageKey))
 }
 
 /**

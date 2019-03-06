@@ -1,18 +1,14 @@
 import Store from './Store'
 import {
   isPageExists,
-  getPageAsyncComponent,
-  isLayoutExists,
-  getLayoutAsyncComponent
+  isLayoutExists
 } from '../util'
 
 class VuePress extends Store {}
 
 Object.assign(VuePress.prototype, {
   isPageExists,
-  getPageAsyncComponent,
-  isLayoutExists,
-  getLayoutAsyncComponent
+  isLayoutExists
 })
 
 export default {
