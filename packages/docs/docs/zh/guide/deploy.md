@@ -69,6 +69,8 @@ cd -
 
 ``` yaml
 language: node_js
+node_js:
+  - lts/*
 script:
   - npm run docs:build
 deploy:
