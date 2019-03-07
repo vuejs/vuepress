@@ -3,6 +3,7 @@
   "version": "1.0.0-alpha.42",
   "description": "Minimalistic doc generator with Vue component based layout system",
   "main": "lib/index.js",
+  "typings": "lib/types/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vuejs/vuepress.git",
@@ -30,6 +31,8 @@
   "homepage": "https://github.com/vuejs/vuepress#readme",
   "dependencies": {
     "@babel/core": "^7.0.0",
+    "@types/webpack-chain": "^5.0.1",
+    "@types/webpack-dev-server": "^3.1.2",
     "@vue/babel-preset-app": "^3.1.1",
     "@vuepress/markdown": "^1.0.0-alpha.42",
     "@vuepress/markdown-loader": "^1.0.0-alpha.42",

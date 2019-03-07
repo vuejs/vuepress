@@ -20,6 +20,7 @@ async function build (options) {
   await app.build()
 }
 
+exports.App = App
 exports.createApp = createApp
 exports.dev = dev
 exports.build = build
