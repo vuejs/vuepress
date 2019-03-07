@@ -14,10 +14,26 @@ export {
   ClientComputedMixin,
 }
 
+/**
+ * create a VuePress app for for customization
+ * @param options options for VuePress app
+ */
 export function createApp(options?: AppOptions): App
 
+/**
+ * start a development server
+ * @param options options for VuePress app
+ */
 export function dev(options?: AppOptions): Promise<void>
 
+/**
+ * build directory as a static site
+ * @param options options for VuePress app
+ */
 export function build(options?: AppOptions): Promise<void>
 
+/**
+ * copy the default theme into `.vuepress/theme` for customization
+ * @param dir targeted directory
+ */
 export function eject(dir: string): Promise<void>
