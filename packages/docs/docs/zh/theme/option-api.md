@@ -4,7 +4,7 @@ metaTitle: Configuration | Theme
 
 # 主题的配置
 
-和插件几乎一样，主题的配置文件 `themeEntry` 应该导出一个普通的 JavaScript 对象（`#1`），它也可以是一个返回对象的函数（`#2`），这个函数接受用户在 `siteConfig.themeConfig` 为第一个参数、包含编译期上下文的 [ctx](./context-api.md) 对象作为第二个参数。
+和插件几乎一样，主题的配置文件 `themeEntry` 应该导出一个普通的 JavaScript 对象（`#1`），它也可以是一个返回对象的函数（`#2`），这个函数接受用户在 `siteConfig.themeConfig` 为第一个参数、包含编译期上下文的 [ctx](../plugin/context-api.md) 对象作为第二个参数。
 
 ``` js
 // #1
