@@ -108,8 +108,9 @@ function resolveTheme (ctx, resolver, ignoreLocal, theme) {
   }
 
   try {
-    entry = pluginAPI.normalizePlugin(path, ctx.themeConfig)
-  } catch (error) {
+    entry = pluginAPI.normalizePlugin('theme', path, ctx.themeConfig)
+  } catch (e) {
+    logger.warn(e.message)
     entry = {}
   }
 
