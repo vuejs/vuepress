@@ -20,7 +20,7 @@ module.exports = (options, ctx) => {
       frontmatter: { layout: getLayout('Categories', 'Page') }
     },
     {
-      when: ({ regularPath }) => regularPath.startsWith('/category/'),
+      when: ({ regularPath }) => regularPath.startsWith(categoryIndexPageUrl),
       frontmatter: { layout: getLayout('Category', 'Page') }
     },
     {
@@ -28,7 +28,7 @@ module.exports = (options, ctx) => {
       frontmatter: { layout: getLayout('Tags', 'Page') }
     },
     {
-      when: ({ regularPath }) => regularPath.startsWith('/tag/'),
+      when: ({ regularPath }) => regularPath.startsWith(tagIndexPageUrl),
       frontmatter: { layout: getLayout('Tag', 'Page') }
     },
     {
@@ -86,15 +86,14 @@ module.exports = (options, ctx) => {
         if (key) {
           if (!map[key]) {
             map[key] = {}
-            map[key].path = `/${scope}/${key}.html`
+            map[key].path = `${scope}${key}.html`
             map[key].pageKeys = []
           }
           map[key].pageKeys.push(pageKey)
         }
       }
-
-      const handleTag = curryHandler('tag', tagMap)
-      const handleCategory = curryHandler('category', categoryMap)
+      const handleTag = curryHandler(tagIndexPageUrl, tagMap)
+      const handleCategory = curryHandler(categoryIndexPageUrl, categoryMap)
 
       pages.forEach(({
         key,
