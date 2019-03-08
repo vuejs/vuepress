@@ -37,7 +37,7 @@ module.exports = class Page {
    */
 
   constructor ({
-    path,
+    path: _path,
     meta,
     title,
     content,
@@ -58,10 +58,14 @@ module.exports = class Page {
 
     if (relative) {
       this.regularPath = encodeURI(fileToPath(relative))
-    } else if (path) {
-      this.regularPath = encodeURI(path)
+    } else if (_path) {
+      this.regularPath = encodeURI(_path)
     } else if (permalink) {
       this.regularPath = encodeURI(permalink)
+    }
+
+    if (filePath) {
+      this.relativePath = path.relative(context.sourceDir, filePath).replace(/\\/g, '/')
     }
 
     this.key = 'v-' + hash(`${this._filePath}${this.regularPath}`)
@@ -85,11 +89,7 @@ module.exports = class Page {
     enhancers = [],
     preRender = {}
   }) {
-    // relative path
-    let relPath
-
     if (this._filePath) {
-      relPath = path.relative(this._context.sourceDir, this._filePath)
       logger.developer(`static_route`, chalk.cyan(this.path))
       this._content = await fs.readFile(this._filePath, 'utf-8')
     } else if (this._content) {
@@ -124,7 +124,7 @@ module.exports = class Page {
         if (excerpt) {
           const { html } = markdown.render(excerpt, {
             frontmatter: this.frontmatter,
-            relPath
+            relPath: this.relativePath
           })
           this.excerpt = html
         }
