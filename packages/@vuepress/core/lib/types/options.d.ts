@@ -1,14 +1,22 @@
 import App from './App'
 import CAC from 'cac/types/CAC'
-import Config from 'webpack-chain'
 import Page, { PageOptions } from './Page'
+import ChainableConfig from 'webpack-chain'
 import { Configuration as DevServerConfig } from 'webpack-dev-server'
 
 type ArrayLike<T> = T | T[]
 type FunctionLike<T, R extends any[] = []> = T | ((...args: R) => T)
 type AsyncFunctionLike<T, R extends any[] = []> = T | ((...args: R) => T | Promise<T>)
 
-type Config = boolean | Record<string, any> | any[]
+/**
+ * A general VuePress plugin config.
+ */
+export type PluginConfig = boolean | Record<string, any> | any[]
+
+/**
+ * A general VuePress theme config.
+ */
+export type ThemeConfig = Record<string, any>
 
 export interface DynamicFile {
   /**
@@ -24,21 +32,11 @@ export interface DynamicFile {
 
 export interface OptionAPI {
   /**
-   * The name of the plugin.
-   * 
-   * Internally, vuepress will use the plugin's package name
-   * as the plugin name. When your plugin is a local plugin
-   * (i.e. using a pure plugin function directly), please be
-   * sure to configure this option, that is good for debug tracking.
-   */
-  name?: string
-
-  /**
    * The ready hook is executed after the application is
    * initialized and before some specific functional APIs
    * are executed. These functional APIs include:
-   * - clientDynamicModules
-   * - enhanceAppFiles
+   * - `clientDynamicModules`
+   * - `enhanceAppFiles`
    */
   ready?(): void | Promise<void>
 
@@ -56,7 +54,7 @@ export interface OptionAPI {
   /**
    * A plugin can contain multiple plugins like a preset.
    */
-  plugins?: (string | [string, Config?])[] | Record<string, Config>
+  plugins?: (string | [string, PluginConfig?])[] | Record<string, PluginConfig>
 
   /**
    * A simplified form of using `DefinePlugin` via `chainWebpack`.
@@ -73,7 +71,7 @@ export interface OptionAPI {
    * @param config an instance of `ChainableConfig` for webpack
    * @param isServer whether the current webpack config is applied to the server or client
    */
-  chainWebpack?(config: Config, isServer: boolean): void
+  chainWebpack?(config: ChainableConfig, isServer: boolean): void
 
   /**
    * Equivalent to `before` in webpack-dev-server.
@@ -148,6 +146,16 @@ export interface OptionAPI {
 
 interface PluginOptions extends OptionAPI {
   /**
+   * The name of the plugin.
+   * 
+   * Internally, vuepress will use the plugin's package name
+   * as the plugin name. When your plugin is a local plugin
+   * (i.e. using a pure plugin function directly), please be
+   * sure to configure this option, that is good for debug tracking.
+   */
+  name?: string
+
+  /**
    * Declare that this plugin can be applied multiple times.
    */
   multiple?: boolean
@@ -159,7 +167,7 @@ interface ThemeOptions extends OptionAPI {
    * VuePress will follow the concept of override and automatically
    * help you prioritize various thematic attributes.
    */
-  extends: string
+  extends?: string
 
   /**
    * [Danger Zone] HTML template path used in dev mode.
@@ -180,9 +188,9 @@ interface ThemeOptions extends OptionAPI {
 /**
  * A general VuePress plugin entry.
  */
-export type Plugin = FunctionLike<PluginOptions, [Config, App]>
+export type Plugin = FunctionLike<PluginOptions, [PluginConfig, App]>
 
 /**
  * A general VuePress theme entry.
  */
-export type Theme = FunctionLike<ThemeOptions, [Config, App]>
+export type Theme = FunctionLike<ThemeOptions, [PluginConfig, App]>

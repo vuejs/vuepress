@@ -1,11 +1,11 @@
 import { SiteData } from './App'
-import { Config } from './options'
+import { ThemeConfig } from './options'
 import Frontmatter from './Frontmatter'
 
 export default class ClientComputedMixin {
   public $site: SiteData
   
-  public $themeConfig: Config
+  public $themeConfig: ThemeConfig
 
   public $frontmatter: Frontmatter
 
