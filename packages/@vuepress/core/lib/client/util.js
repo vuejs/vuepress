@@ -2,36 +2,89 @@ import Vue from 'vue'
 import layoutComponents from '@internal/layout-components'
 import pageComponents from '@internal/page-components'
 
+/**
+ * Create a cached version of a pure function.
+ */
+function cached (fn) {
+  const cache = Object.create(null)
+  // eslint-disable-next-line func-names
+  return function cachedFn (str) {
+    const hit = cache[str]
+    // eslint-disable-next-line no-return-assign
+    return hit || (cache[str] = fn(str))
+  }
+}
+
+/**
+ * Camelize a hyphen-delimited string.
+ */
+const camelizeRE = /-(\w)/g
+const camelize = cached(str => {
+  return str.replace(camelizeRE, (_, c) => c ? c.toUpperCase() : '')
+})
+
+/**
+ * Hyphenate a camelCase string.
+ */
+const hyphenateRE = /\B([A-Z])/g
+const hyphenate = cached(str => {
+  return str.replace(hyphenateRE, '-$1').toLowerCase()
+})
+
+/**
+ * Capitalize a string.
+ */
+const capitalize = cached(str => {
+  return str.charAt(0).toUpperCase() + str.slice(1)
+})
+
+/**
+ * This method was for securely getting Vue component when components
+ * are named in different style.
+ *
+ * e.g. a component named `a-b` can be also getted by `AB`, It's the
+ * same the other way round
+ *
+ * @param {function} getter a function of getting component by name
+ * @param {string} name component's name
+ * @returns {Component|AsyncComponent}
+ */
+export function getComponent (getter, name) {
+  if (!name) return
+  if (getter(name)) return getter(name)
+
+  const isKebabCase = name.includes('-')
+  if (isKebabCase) return getter(capitalize(camelize(name)))
+
+  return getter(capitalize(name)) || getter(hyphenate(name))
+}
+
 const asyncComponents = Object.assign({}, layoutComponents, pageComponents)
-
-export function isPageExists (pageKey) {
-  return Boolean(pageComponents[pageKey])
-}
-
-export function isPageLoaded (pageKey) {
-  return Boolean(Vue.component(pageKey))
-}
+const asyncComponentsGetter = name => asyncComponents[name]
+const pageComponentsGetter = layout => pageComponents[layout]
+const layoutComponentsGetter = layout => layoutComponents[layout]
+const globalComponentsGetter = name => Vue.component(name)
 
 export function getPageAsyncComponent (pageKey) {
-  return pageComponents[pageKey]
+  return getComponent(pageComponentsGetter, pageKey)
 }
 
-export function isLayoutExists (layout) {
-  return Boolean(layoutComponents[layout])
+export function getLayoutAsyncComponent (layout) {
+  return getComponent(layoutComponentsGetter, layout)
 }
 
-export function isLayoutLoaded (layout) {
-  return Boolean(Vue.component(layout))
+export function getAsyncComponent (name) {
+  return getComponent(asyncComponentsGetter, name)
 }
 
-export function getLayoutAsyncComponent (pageKey) {
-  return layoutComponents[pageKey]
+export function getVueComponent (name) {
+  return getComponent(globalComponentsGetter, name)
 }
 
 export function ensureAsyncComponentsLoaded (...names) {
   return Promise.all(names.filter(v => v).map(async (name) => {
-    if (!Vue.component(name) && asyncComponents[name]) {
-      const comp = await asyncComponents[name]()
+    if (!getVueComponent(name) && getAsyncComponent(name)) {
+      const comp = await getAsyncComponent(name)()
       Vue.component(name, comp.default)
     }
   }))

@@ -3,17 +3,14 @@
 </template>
 
 <script>
-import Vue from 'vue'
-
 export default {
   computed: {
     layout () {
       if (this.$page.path) {
-        if (
-          this.$vuepress.isLayoutExists(this.$page.frontmatter.layout)
-          || Boolean(Vue.component(this.$page.frontmatter.layout))
-        ) {
-          return this.$page.frontmatter.layout
+        const layout = this.$page.frontmatter.layout
+        if (layout && (this.$vuepress.getLayoutAsyncComponent(layout)
+          || this.$vuepress.getVueComponent(layout))) {
+          return layout
         }
         return 'Layout'
       }
