@@ -50,8 +50,6 @@ module.exports = class Build extends EventEmitter {
    */
 
   async render () {
-    logger.wait('Extracting site metadata...')
-
     // compile!
     const stats = await compile([this.clientConfig, this.serverConfig])
     const serverBundle = require(path.resolve(this.outDir, 'manifest/server.json'))
