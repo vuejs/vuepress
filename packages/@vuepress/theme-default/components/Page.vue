@@ -117,7 +117,7 @@ export default {
         docsRepo = repo
       } = this.$site.themeConfig
 
-      if (docsRepo && editLinks) {
+      if (docsRepo && editLinks && this.$page.relativePath) {
         return this.createEditLink(repo, docsRepo, docsDir, docsBranch, this.$page.relativePath)
       }
     },
