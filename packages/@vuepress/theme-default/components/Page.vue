@@ -62,8 +62,7 @@
 </template>
 
 <script>
-import { resolve } from 'url'
-import { resolvePage, outboundRE } from '../util'
+import { resolvePage, outboundRE, endingSlashRE } from '../util'
 
 export default {
   props: ['sidebarItems'],
@@ -138,13 +137,26 @@ export default {
         const base = outboundRE.test(docsRepo)
           ? docsRepo
           : repo
-        return resolve(base + '/', `src/${docsBranch}/${docsDir}/${path}?mode=edit&spa=0&at=${docsBranch}&fileviewer=file-view-default`)
+        return (
+          base.replace(endingSlashRE, '')
+           + `/src`
+           + `/${docsBranch}/`
+           + (docsDir ? docsDir.replace(endingSlashRE, '') + '/' : '')
+           + path
+           + `?mode=edit&spa=0&at=${docsBranch}&fileviewer=file-view-default`
+        )
       }
 
       const base = outboundRE.test(docsRepo)
         ? docsRepo
         : `https://github.com/${docsRepo}`
-      return resolve(base + '/', `edit/${docsBranch}/${docsDir}/${path}`)
+      return (
+        base.replace(endingSlashRE, '')
+        + `/edit`
+        + `/${docsBranch}/`
+        + (docsDir ? docsDir.replace(endingSlashRE, '') + '/' : '')
+        + path
+      )
     }
   }
 }
