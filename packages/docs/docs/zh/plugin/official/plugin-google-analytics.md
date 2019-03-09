@@ -36,4 +36,4 @@ module.exports = {
 - 类型: `string`
 - 默认值: `undefined`
 
-提供Google Analytics ID以启用集成。
+提供 Google Analytics ID 以启用集成。
