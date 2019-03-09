@@ -1,4 +1,5 @@
-import { isPageExists } from '../util'
+import Vue from 'vue'
+import { isPageExists, getPageAsyncComponent } from '../util'
 
 export default {
   props: {
@@ -11,6 +12,7 @@ export default {
   render (h) {
     const pageKey = this.pageKey || this.$parent.$page.key
     if (isPageExists(pageKey)) {
+      Vue.component(pageKey, getPageAsyncComponent(pageKey))
       return h(pageKey)
     }
     return h('')
