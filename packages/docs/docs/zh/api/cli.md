@@ -36,6 +36,9 @@ vuepress <command> targetDir [options]
 ### --open
 当服务端准备就绪时自动打开浏览器。
 
+### --no-clear-screen
+当 dev server 就绪时不清除屏幕。
+
 ## eject
 
 将默认主题复制到 `.vuepress/theme` 目录，以供自定义。

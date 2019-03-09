@@ -17,7 +17,7 @@ See [port](../config/README.md#port).
 See [temp](../config/README.md#temp).
 
 ### -c, --cache [cache]
-### -no--cache [cache]
+### -no--cache
 See [cache](../config/README.md#cache).
 
 ### --debug
@@ -35,6 +35,9 @@ See [host](../config/README.md#host).
 
 ### --open
 Open browser when ready.
+
+### --no-clear-screen
+do not clear screen when dev server is ready.
 
 ## eject
 

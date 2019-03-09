@@ -176,7 +176,8 @@ module.exports = class DevProcess extends EventEmitter {
       .use(DevLogPlugin, [{
         port: this.port,
         displayHost: this.displayHost,
-        publicPath: this.context.base
+        publicPath: this.context.base,
+        clearScreen: this.context.options.clearScreen
       }])
 
     config = config.toConfig()
