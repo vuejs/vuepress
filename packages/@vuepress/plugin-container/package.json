@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-container",
-  "version": "1.0.0-alpha.42",
+  "version": "1.0.0-alpha.43",
   "description": "markdown container plugin for vuepress",
   "main": "index.js",
   "publishConfig": {
@@ -21,7 +21,7 @@
     "markdown-it-container": "^2.0.0"
   },
   "devDependencies": {
-    "@vuepress/test-utils": "1.0.0-alpha.42"
+    "@vuepress/test-utils": "^1.0.0-alpha.43"
   },
   "author": "Shigma <1700011071@pku.edu.cn>",
   "license": "MIT",
