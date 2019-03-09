@@ -1,3 +1,27 @@
+<a name=""></a>
+# [](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.43...v) (2019-03-09)
+
+
+
+<a name="1.0.0-alpha.43"></a>
+# [1.0.0-alpha.43](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.42...v1.0.0-alpha.43) (2019-03-09)
+
+
+### Bug Fixes
+
+* **$core:** cannot render another page with pageKey (close: [#1173](https://github.com/vuejs/vuepress/issues/1173)) ([9d01514](https://github.com/vuejs/vuepress/commit/9d01514))
+* **$core:** global components cannot be used as layouts (close: [#1321](https://github.com/vuejs/vuepress/issues/1321)) ([0306574](https://github.com/vuejs/vuepress/commit/0306574))
+* **$core:** PascalCase layouts cannot be used with camelCase nor hyphen-delimited (close: [#1391](https://github.com/vuejs/vuepress/issues/1391)) ([3e91eba](https://github.com/vuejs/vuepress/commit/3e91eba))
+* **$plugin-blog:** read `layoutComponents` from themeAPI ([#1396](https://github.com/vuejs/vuepress/issues/1396)) ([5bf4d24](https://github.com/vuejs/vuepress/commit/5bf4d24))
+
+
+### Features
+
+* **$core:** refine node api ([#1395](https://github.com/vuejs/vuepress/issues/1395)) ([e5d8ed4](https://github.com/vuejs/vuepress/commit/e5d8ed4))
+* **$cli:** `--no-clear-screen` flag (close: [#1421](https://github.com/vuejs/vuepress/issues/1421)) ([e5f51de](https://github.com/vuejs/vuepress/commit/e5f51de))
+
+
+
 <a name="1.0.0-alpha.42"></a>
 # [1.0.0-alpha.42](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.41...v1.0.0-alpha.42) (2019-03-03)
 
