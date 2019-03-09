@@ -22,6 +22,7 @@ module.exports = class PluginAPI {
     this.options = {}
     this._pluginContext = context
     this._pluginQueue = []
+    this._loggedPlugins = []
     this._initialized = false
     this._pluginResolver = getPluginResolver()
     this.initializeOptions(PLUGIN_OPTION_MAP)
@@ -214,8 +215,11 @@ module.exports = class PluginAPI {
     beforeDevServer,
     afterDevServer
   }) {
-    const isInternalPlugin = pluginName.startsWith('@vuepress/internal-')
-    logger[isInternalPlugin ? 'debug' : 'tip'](pluginLog(pluginName, shortcut))
+    if (!this._loggedPlugins.includes(pluginName)) {
+      const isInternalPlugin = pluginName.startsWith('@vuepress/internal-')
+      logger[isInternalPlugin ? 'debug' : 'tip'](pluginLog(pluginName, shortcut))
+      this._loggedPlugins.push(pluginName)
+    }
 
     this
       .registerOption(PLUGIN_OPTION_MAP.READY.key, ready, pluginName)
