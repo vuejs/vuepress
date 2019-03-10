@@ -1,5 +1,4 @@
 {
-  "private": true,
   "name": "@vuepress/theme-vue",
   "version": "1.0.0-alpha.43",
   "description": "VuePress theme for official Vue projects",
