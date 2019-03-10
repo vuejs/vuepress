@@ -188,6 +188,11 @@ module.exports = class DevProcess extends EventEmitter {
     this.webpackConfig = config
   }
 
+  /**
+   * Create dev server
+   * @returns {module.DevProcess}
+   */
+
   createServer () {
     const contentBase = path.resolve(this.context.sourceDir, '.vuepress/public')
 
@@ -236,15 +241,29 @@ module.exports = class DevProcess extends EventEmitter {
     return this
   }
 
-  listen () {
-    this.server.listen(this.port, this.host, err => {
-      if (err) {
-        console.log(err)
+  /**
+   * delegate listen call.
+   *
+   * @param callback handler when connection is ready.
+   * @returns {module.DevProcess}
+   */
+
+  listen (callback) {
+    this.server.listen(this.port, this.host, (err) => {
+      if (callback) {
+        callback(err)
       }
     })
     return this
   }
 }
+
+/**
+ * Resolve host.
+ *
+ * @param {string} host user's host
+ * @returns {{displayHost: string, host: string}}
+ */
 
 function resolveHost (host) {
   const defaultHost = 'localhost'
@@ -258,12 +277,27 @@ function resolveHost (host) {
   }
 }
 
+/**
+ * Resolve port.
+ *
+ * @param {number} port user's port
+ * @returns {Promise<number>}
+ */
+
 async function resolvePort (port) {
   const portfinder = require('portfinder')
   portfinder.basePort = parseInt(port) || 8080
   port = await portfinder.getPortPromise()
   return port
 }
+
+/**
+ * Normalize file path and always return relative path,
+ *
+ * @param {string} filepath user's path
+ * @param {string} baseDir source directory
+ * @returns {string}
+ */
 
 function normalizeWatchFilePath (filepath, baseDir) {
   const { isAbsolute, relative } = require('path')
