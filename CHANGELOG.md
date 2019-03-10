@@ -1,5 +1,12 @@
-<a name=""></a>
-# [](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.43...v) (2019-03-09)
+<a name="1.0.0-alpha.44"></a>
+# [1.0.0-alpha.44](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.43...v1.0.0-alpha.44) (2019-03-10)
+
+
+### Features
+
+* **$core:** optional `callback` when socket connection is ready under dev. ([547e4f9](https://github.com/vuejs/vuepress/commit/547e4f9))
+* **$core:** return current app instance in node api ([1c2a6b2](https://github.com/vuejs/vuepress/commit/1c2a6b2))
+
 
 
 
