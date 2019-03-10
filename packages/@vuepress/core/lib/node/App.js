@@ -91,7 +91,8 @@ module.exports = class App {
   }
 
   /**
-   * Load pages, load plugins, apply plugins / plugin options, etc.
+   * A asynchronous method used to prepare the context of the current app. which
+   * contains loading pages and plugins, apply plugins, etc.
    *
    * @returns {Promise<void>}
    * @api private
@@ -445,30 +446,39 @@ module.exports = class App {
   }
 
   /**
-   * Start a dev process with correct app context
+   * Launch a dev process with current app context.
    *
-   * @returns {Promise<void>}
+   * @returns {Promise<App>}
    * @api public
    */
 
-  async dev (callback) {
+  async dev () {
     this.isProd = false
     this.devProcess = new DevProcess(this)
     await this.devProcess.process()
-
-    this.devProcess
-      .on('fileChanged', ({ type, target }) => {
-        console.log(`Reload due to ${chalk.red(type)} ${chalk.cyan(path.relative(this.sourceDir, target))}`)
-        this.process()
-      })
-      .createServer()
-      .listen(callback)
+    const error = await new Promise(resolve => {
+      try {
+        this.devProcess
+            .on('fileChanged', ({ type, target }) => {
+              console.log(`Reload due to ${chalk.red(type)} ${chalk.cyan(path.relative(this.sourceDir, target))}`)
+              this.process()
+            })
+            .createServer()
+            .listen(resolve)
+      } catch (err) {
+        resolve(err)
+      }
+    })
+    if (error) {
+      throw error
+    }
+    return this
   }
 
   /**
-   * Start a build process with correct app context
+   * Launch a build process with current app context
    *
-   * @returns {Promise<void>}
+   * @returns {Promise<App>}
    * @api public
    */
 
@@ -477,6 +487,7 @@ module.exports = class App {
     this.buildProcess = new BuildProcess(this)
     await this.buildProcess.process()
     await this.buildProcess.render()
+    return this
   }
 }
 

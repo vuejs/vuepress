@@ -11,13 +11,13 @@ function createApp (options) {
 async function dev (options) {
   const app = createApp(options)
   await app.process()
-  await app.dev()
+  return app.dev()
 }
 
 async function build (options) {
   const app = createApp(options)
   await app.process()
-  await app.build()
+  return app.build()
 }
 
 exports.createApp = createApp
