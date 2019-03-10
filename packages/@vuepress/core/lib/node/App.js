@@ -451,7 +451,7 @@ module.exports = class App {
    * @api public
    */
 
-  async dev () {
+  async dev (callback) {
     this.isProd = false
     this.devProcess = new DevProcess(this)
     await this.devProcess.process()
@@ -462,7 +462,7 @@ module.exports = class App {
         this.process()
       })
       .createServer()
-      .listen()
+      .listen(callback)
   }
 
   /**

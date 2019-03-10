@@ -250,7 +250,7 @@ module.exports = class DevProcess extends EventEmitter {
 
   listen (callback) {
     this.server.listen(this.port, this.host, (err) => {
-      if (callback) {
+      if (typeof callback === 'function') {
         callback(err)
       }
     })
