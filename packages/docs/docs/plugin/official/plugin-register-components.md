@@ -68,3 +68,10 @@ module.exports = {
   ]
 }
 ```
+
+### getComponentName
+
+- Type: `(file: string) => string`
+- Default: `file => file.replace(/\/|\\/g, '-')`
+
+Customize component names for files under `componentsDir`.
