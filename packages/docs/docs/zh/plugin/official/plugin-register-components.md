@@ -68,3 +68,10 @@ module.exports = {
   ]
 }
 ```
+
+### getComponentName
+
+- 类型: `(file: string) => string`
+- 默认值: `file => file.replace(/\/|\\/g, '-')`
+
+自定义 `componentsDir` 中注册的组件的名称。
