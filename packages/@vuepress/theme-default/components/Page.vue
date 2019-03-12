@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import { resolvePage, normalize, outboundRE, endingSlashRE } from '../util'
+import { resolvePage, outboundRE, endingSlashRE } from '../util'
 
 export default {
   props: ['sidebarItems'],
@@ -116,14 +116,8 @@ export default {
         docsRepo = repo
       } = this.$site.themeConfig
 
-      let path = normalize(this.$page.path)
-      if (endingSlashRE.test(path)) {
-        path += 'README.md'
-      } else {
-        path += '.md'
-      }
-      if (docsRepo && editLinks) {
-        return this.createEditLink(repo, docsRepo, docsDir, docsBranch, path)
+      if (docsRepo && editLinks && this.$page.relativePath) {
+        return this.createEditLink(repo, docsRepo, docsDir, docsBranch, this.$page.relativePath)
       }
     },
 
@@ -146,8 +140,8 @@ export default {
         return (
           base.replace(endingSlashRE, '')
            + `/src`
-           + `/${docsBranch}`
-           + (docsDir ? '/' + docsDir.replace(endingSlashRE, '') : '')
+           + `/${docsBranch}/`
+           + (docsDir ? docsDir.replace(endingSlashRE, '') + '/' : '')
            + path
            + `?mode=edit&spa=0&at=${docsBranch}&fileviewer=file-view-default`
         )
@@ -156,11 +150,11 @@ export default {
       const base = outboundRE.test(docsRepo)
         ? docsRepo
         : `https://github.com/${docsRepo}`
-
       return (
         base.replace(endingSlashRE, '')
-        + `/edit/${docsBranch}`
-        + (docsDir ? '/' + docsDir.replace(endingSlashRE, '') : '')
+        + `/edit`
+        + `/${docsBranch}/`
+        + (docsDir ? docsDir.replace(endingSlashRE, '') + '/' : '')
         + path
       )
     }
