@@ -121,7 +121,7 @@ or
 
 Rendering of TOC can be configured using the [`markdown.toc`](../config/README.md#markdown-toc) option, or as props of [TOC component](./using-vue.md#toc), like `<TOC list-type="ol" :include-level="[2, Infinity]"/>`.
 
-## Custom Containers
+## Custom Containers <Badge text="default theme"/>
 
 **Input**
 
@@ -164,6 +164,10 @@ Danger zone, do not proceed
 ::: danger STOP
 Danger zone, do not proceed
 :::
+
+**Also see:**
+
+- [@vuepress/plugin-container](../plugin/official/plugin-container.md)
 
 ## Syntax Highlighting in Code Blocks
 
@@ -291,7 +295,7 @@ module.exports = {
   }
 </style>
 
-## Import Code Snippets <Badge text="beta" type="warn"/> <Badge text="0.10.1+" type="tip"/>
+## Import Code Snippets <Badge text="beta" type="warn"/>
 
 You can import code snippets from existing files via following syntax:
 
@@ -316,7 +320,7 @@ It also supports [line highlighting](#line-highlighting-in-code-blocks):
 <<< @/../@vuepress/markdown/__tests__/fragments/snippet.js{2}
 
 ::: tip
-  Since the import of the code snippets will be executed before webpack compilation, you can't use the path alias in webpack. The default value of `@` is `process.cwd()`.
+Since the import of the code snippets will be executed before webpack compilation, you can't use the path alias in webpack. The default value of `@` is `process.cwd()`.
 :::
 
 
