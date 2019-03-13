@@ -48,7 +48,7 @@ Given the following directory structure:
 
 ### External Links
 
-Outbound links automatically gets `target="_blank" rel="noopener noreferrer"`:
+Outbound links automatically get `target="_blank" rel="noopener noreferrer"`:
 
 - [vuejs.org](https://vuejs.org)
 - [VuePress on GitHub](https://github.com/vuejs/vuepress)
