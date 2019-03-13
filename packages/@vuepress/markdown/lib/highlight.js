@@ -39,6 +39,10 @@ module.exports = (str, lang) => {
   if (lang === 'yml') {
     lang = 'yaml'
   }
+  if (lang === 'styl') {
+    lang = 'stylus'
+  }
+  
   if (!prism.languages[lang]) {
     try {
       loadLanguages([lang])
