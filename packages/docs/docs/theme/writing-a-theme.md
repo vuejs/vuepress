@@ -40,7 +40,7 @@ theme
 ├── `components`
 │   └── xxx.vue
 ├── `layouts`
-│   ├── Layout.vue _(**必要的**)_
+│   ├── Layout.vue _(**Mandatory**)_
 │   └── 404.vue
 ├── `styles`
 │   ├── index.styl
