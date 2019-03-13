@@ -14,6 +14,7 @@ import * as isIndexFile from './isIndexFile'
 import logger from './logger'
 import * as moduleLoader from './moduleLoader'
 import * as moduleResolver from './moduleResolver'
+import normalizeConfig from './normalizeConfig'
 import * as parseEmojis from './parseEmojis'
 import parseFrontmatter from './parseFrontmatter'
 import parseHeaders from './parseHeaders'
@@ -50,6 +51,7 @@ export {
   logger,
   moduleLoader,
   moduleResolver,
+  normalizeConfig,
   parseEmojis,
   parseFrontmatter,
   parseHeaders,

@@ -240,6 +240,38 @@ This attribute will control the behaviour of `[[TOC]]`. It contains the followin
 
 We also provide a [global component TOC](../guide/using-vue.md#toc) which allows for more free control by passing props directly to `<TOC>`.
 
+### markdown.plugins
+
+You can install any markdown-it plugins through `markdown.plugins` option. It is similar with [using VuePress plugins](../plugin/using-a-plugin.html#using-a-plugin). You can either use Babel style or object style. The `markdown-it-` prefix is optional and can omit in the list.
+
+``` js
+module.exports = {
+  markdown: {
+    plugins: [
+      '@org/foo', // equals to @org/markdown-it-foo if exists
+      ['markdown-it-bar', {
+        // provide options here
+      }]
+    ]
+  }
+}
+```
+
+or
+
+``` js
+module.exports = {
+  markdown: {
+    plugins: {
+      '@org/foo': {}
+      'markdown-it-bar': {
+        // provide options here
+      }
+    }
+  }
+}
+```
+
 ### markdown.extendMarkdown
 
 - Type: `Function`

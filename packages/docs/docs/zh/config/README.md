@@ -232,6 +232,38 @@ VuePress 提供了一种添加额外样式的简便方法。你可以创建一�
 
 此外，我们还提供了[全局组件 TOC](../guide/using-vue.md#toc)，可以通过直接向 `<TOC>` 传递属性实现更加自由的控制。
 
+### markdown.plugins
+
+你可以使用 `markdown.plugins` 来安装 markdown-it 插件。它的使用方法与[安装一个 VuePress 插件](../plugin/using-a-plugin.html#using-a-plugin)类似。你可以使用 Babel 语法或对象语法。`markdown-it-` 前缀同样是可以忽略的。
+
+``` js
+module.exports = {
+  markdown: {
+    plugins: [
+      '@org/foo', // 等价于 @org/markdown-it-foo，如果对应的包存在
+      ['markdown-it-bar', {
+        // 提供你的选项
+      }]
+    ]
+  }
+}
+```
+
+or
+
+``` js
+module.exports = {
+  markdown: {
+    plugins: {
+      '@org/foo': {}
+      'markdown-it-bar': {
+        // 提供你的选项
+      }
+    }
+  }
+}
+```
+
 ### markdown.extendMarkdown
 
 - 类型: `Function`

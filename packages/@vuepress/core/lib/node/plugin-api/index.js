@@ -5,12 +5,12 @@
  */
 
 const instantiateOption = require('./override/instantiateOption')
-const { flattenPlugin, normalizePluginsConfig } = require('./util')
+const { flattenPlugin } = require('./util')
 const { PLUGIN_OPTION_MAP } = require('./constants')
 const {
   moduleResolver: { getPluginResolver },
   datatypes: { assertTypes, isPlainObject },
-  logger, chalk
+  logger, chalk, normalizeConfig
 } = require('@vuepress/shared-utils')
 
 /**
@@ -136,7 +136,7 @@ module.exports = class PluginAPI {
    */
 
   useByPluginsConfig (pluginsConfig) {
-    pluginsConfig = normalizePluginsConfig(pluginsConfig)
+    pluginsConfig = normalizeConfig(pluginsConfig)
     pluginsConfig.forEach(([pluginRaw, pluginOptions]) => {
       this.use(pluginRaw, pluginOptions)
     })

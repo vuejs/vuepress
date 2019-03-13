@@ -22,7 +22,7 @@
   </footer>
 </template>
 <script>
-import { endingSlashRE, normalize, outboundRE } from '../util'
+import { endingSlashRE, outboundRE } from '../util'
 
 export default {
   name: 'PageEdit',
@@ -53,14 +53,8 @@ export default {
         docsRepo = repo
       } = this.$site.themeConfig
 
-      let path = normalize(this.$page.path)
-      if (endingSlashRE.test(path)) {
-        path += 'README.md'
-      } else {
-        path += '.md'
-      }
-      if (docsRepo && editLinks) {
-        return this.createEditLink(repo, docsRepo, docsDir, docsBranch, path)
+      if (docsRepo && editLinks && this.$page.relativePath) {
+        return this.createEditLink(repo, docsRepo, docsDir, docsBranch, this.$page.relativePath)
       }
     },
 
@@ -82,22 +76,22 @@ export default {
           : repo
         return (
           base.replace(endingSlashRE, '')
-          + `/src`
-          + `/${docsBranch}`
-          + (docsDir ? '/' + docsDir.replace(endingSlashRE, '') : '')
-          + path
-          + `?mode=edit&spa=0&at=${docsBranch}&fileviewer=file-view-default`
+           + `/src`
+           + `/${docsBranch}/`
+           + (docsDir ? docsDir.replace(endingSlashRE, '') + '/' : '')
+           + path
+           + `?mode=edit&spa=0&at=${docsBranch}&fileviewer=file-view-default`
         )
       }
 
       const base = outboundRE.test(docsRepo)
         ? docsRepo
         : `https://github.com/${docsRepo}`
-
       return (
         base.replace(endingSlashRE, '')
-        + `/edit/${docsBranch}`
-        + (docsDir ? '/' + docsDir.replace(endingSlashRE, '') : '')
+        + `/edit`
+        + `/${docsBranch}/`
+        + (docsDir ? docsDir.replace(endingSlashRE, '') + '/' : '')
         + path
       )
     }
