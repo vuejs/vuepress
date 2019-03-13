@@ -65,7 +65,6 @@ module.exports = ctx => ({
     }
   },
   plugins: [
-    ['@vuepress/i18n-ui', !ctx.isProd],
     ['@vuepress/back-to-top', true],
     ['@vuepress/pwa', {
       serviceWorker: true,

@@ -167,9 +167,9 @@ $accentColor = #f00
 // theme/index.js
 module.exports = {
   plugins: [
-    '@vuepress/i18n-ui',
-    { route: '/i18n-page/' }
-  ] 
+    'vuepress-plugin-xxx',
+    { name: 'foo' }
+  ]
 }
 ```
 
@@ -177,13 +177,13 @@ module.exports = {
 // .vuepress/config.js
 module.exports = {
   plugins: [
-    '@vuepress/i18n-ui',
-    { route: '/i18n/' }
+    'vuepress-plugin-xxx',
+    { name: 'bar' }
   ] 
 }
 ```
 
-i18n UI 最终的路由将是 `/i18n/`.
+name 的最终值将是 `bar`.
 
 ## 其他
 
