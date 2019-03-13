@@ -136,7 +136,7 @@ module.exports = class Build extends EventEmitter {
     const pagePath = page.path
     readline.clearLine(process.stdout, 0)
     readline.cursorTo(process.stdout, 0)
-    process.stdout.write(`Rendering page: ${pagePath}`)
+    process.stdout.write(`Rendering page: ${decodeURIComponent(pagePath)}`)
 
     // #565 Avoid duplicate description meta at SSR.
     const meta = (page.frontmatter && page.frontmatter.meta || []).filter(item => item.name !== 'description')
