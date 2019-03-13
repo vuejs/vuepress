@@ -8,20 +8,7 @@ Headers automatically get anchor links applied. Rendering of anchors can be conf
 
 ### Internal Links
 
-Inbound links ending in `.md` or `.html` are converted to `<router-link>` for SPA navigation.
-
-Each sub-directory in your static site should contain a `README.md`. It will automatically be converted to `index.html`.
-
-::: tip
-When writing the relative path to a directory's `index.html`, don't forget to close it off with a `/`, otherwise you will get a 404. For example, use `/config/` instead of `/config`.
-:::
-
-If you want to link to another markdown file within a directory, remember to:
-
-1.  Append it with either `.html` or `.md`
-2.  Make sure the case matches since the path is case-sensitive
-
-#### Example
+Internal links are converted to `<router-link>` for SPA navigation. Also, every `README.md` or `index.md` contained in each sub-directory will automatically be converted to `index.html`, with corresponding url `/`.
 
 Given the following directory structure:
 
@@ -38,13 +25,23 @@ Given the following directory structure:
    └─ four.md
 ```
 
+And providing you are in `foo/one.md`:
+
 ```md
 [Home](/) <!-- Sends the user to the root README.md -->
 [foo](/foo/) <!-- Sends the user to index.html of directory foo -->
-[foo heading anchor](/foo/#heading) <!-- Anchors user to a heading in the foo README file -->
-[foo - one](/foo/one.html) <!-- You can append .html -->
-[foo - two](/foo/two.md) <!-- Or you can append .md -->
+[foo heading](./#heading) <!-- Anchors user to a heading in the foo README file -->
+[bar - three](../bar/three.md) <!-- You can append .md (recommended) -->
+[bar - four](../bar/four.html) <!-- Or you can append .html -->
 ```
+
+### Redirection for URLs <Badge text="1.0.0-alpha.37"/>
+
+VuePress supports redirecting to clean links. If a link `/foo` is not found, VuePress will look for a existing `/foo/` or `/foo.html`. Conversely, when one of `/foo/` or `/foo.html` is not found, VuePress will also try the other. With this feature, we can customize your website's urls with the official plugin [@vuepress/plugin-clean-urls](../plugin/official/plugin-clean-urls.md).
+
+::: tip
+Regardless of whether the permalink and clean-urls plugins are used, your relative path should be defined by the current file structure. In the above example, even though you set the path of `/foo/one.md` to `/foo/one/`, you should still access `/foo/two.md` via `./two.md`.
+:::
 
 ### External Links
 
