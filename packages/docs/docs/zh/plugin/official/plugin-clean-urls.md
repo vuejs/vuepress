@@ -5,7 +5,7 @@ metaTitle: 自动生成简洁链接的插件 | VuePress
 
 # [@vuepress/plugin-clean-urls](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-clean-urls)
 
-用于自动生成简洁链接的插件。<Badge text="1.0.0-alpha.40+" vertical="baseline"/>
+用于自动生成简洁链接的插件。<Badge text="1.0.0-alpha.40+"/>
 
 ## 安装
 
