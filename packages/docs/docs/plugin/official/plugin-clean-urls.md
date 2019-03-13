@@ -5,7 +5,7 @@ metaTitle: A plugin of automatically generating clean urls | VuePress
 
 # [@vuepress/plugin-clean-urls](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-clean-urls)
 
-A plugin for automatically generating clean urls. <Badge text="1.0.0-alpha.40+" vertical="baseline"/>
+A plugin for automatically generating clean urls. <Badge text="1.0.0-alpha.40+"/>
 
 ## Install
 
