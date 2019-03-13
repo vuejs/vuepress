@@ -67,7 +67,7 @@ lang: en-US
 
 ## GitHub 风格的表格
 
-**Input**
+**输入**
 
 ```
 | Tables        | Are           | Cool  |
@@ -77,7 +77,7 @@ lang: en-US
 | zebra stripes | are neat      |    $1 |
 ```
 
-**Output**
+**输出**
 
 | Tables        | Are           | Cool  |
 | ------------- |:-------------:| -----:|
@@ -87,19 +87,19 @@ lang: en-US
 
 ## Emoji
 
-**Input**
+**输入**
 
 ```
 :tada: :100:
 ```
 
-**Output**
+**输出**
 
 :tada: :100:
 
 ## 目录
 
-**Input**
+**输入**
 
 ```md
 [[toc]]
@@ -111,15 +111,15 @@ lang: en-US
 <TOC/>
 ```
 
-**Output**
+**输出**
 
 [[toc]]
 
 目录（Table of Contents）的渲染可以通过  [`markdown.toc`](../config/README.md#markdown-toc) 选项来配置，也可以在 [TOC 组件](./using-vue.md#toc)中直接传入，如 `<TOC list-type="ol" :include-level="[2, Infinity]"/>`。
 
-## 自定义容器
+## 自定义容器 <Badge text="默认主题"/>
 
-**Input**
+**输入**
 
 ```
 ::: tip
@@ -135,7 +135,7 @@ This is a dangerous warning
 :::
 ```
 
-**Output**
+**输出**
 
 ::: tip
 This is a tip
@@ -161,11 +161,15 @@ Danger zone, do not proceed
 Danger zone, do not proceed
 :::
 
+**参考:**
+
+- [@vuepress/plugin-container](../plugin/official/plugin-container.md)
+
 ## 代码块中的语法高亮
 
 VuePress 使用了 [Prism](https://prismjs.com/) 来为 markdown 中的代码块实现语法高亮。Prism 支持大量的编程语言，你需要做的只是在代码块的开始倒勾中附加一个有效的语言别名：
 
-**Input**
+**输入**
 
 ````
 ``` js
@@ -176,7 +180,7 @@ export default {
 ```
 ````
 
-**Output**
+**输出**
 
 ``` js
 export default {
@@ -185,7 +189,7 @@ export default {
 }
 ```
 
-**Input**
+**输入**
 
 ````
 ``` html
@@ -200,7 +204,7 @@ export default {
 ```
 ````
 
-**Output**
+**输出**
 
 ``` html
 <ul>
@@ -218,7 +222,7 @@ export default {
 
 ## 代码块中的行高亮
 
-**Input**
+**输入**
 
 ````
 ``` js {4}
@@ -232,7 +236,7 @@ export default {
 ```
 ````
 
-**Output**
+**输出**
 
 ``` js{4}
 export default {
@@ -288,7 +292,7 @@ module.exports = {
   }
 </style>
 
-## 导入代码段 <Badge text="beta" type="warn"/> <Badge text="0.10.1+" type="tip"/>
+## 导入代码段 <Badge text="beta" type="warn"/>
 
 你可以通过下述的语法导入已经存在的文件中的代码段：
 
@@ -302,18 +306,18 @@ module.exports = {
 <<< @/filepath{highlightLines} 
 ```
 
-**Input**
+**输入**
 
 ```
 <<< @/../@vuepress/markdown/__tests__/fragments/snippet.js{2}
 ```
 
-**Output**
+**输出**
 
 <<< @/../@vuepress/markdown/__tests__/fragments/snippet.js{2}
 
 ::: tip 注意
-  由于代码段的导入将在 webpack 编译之前执行，因此你无法使用 webpack 中的路径别名，此处的 `@` 默认值是 `process.cwd()`。
+由于代码段的导入将在 webpack 编译之前执行，因此你无法使用 webpack 中的路径别名，此处的 `@` 默认值是 `process.cwd()`。
 :::
 
 ## 进阶配置
