@@ -10,7 +10,7 @@ Headers automatically get anchor links applied. Rendering of anchors can be conf
 
 Internal links are converted to `<router-link>` for SPA navigation. Also, every `README.md` or `index.md` contained in each sub-directory will automatically be converted to `index.html`, with corresponding url `/`.
 
-Given the following directory structure (and providing you are in `foo/one.md`):
+Given the following directory structure:
 
 ```
 .
@@ -25,12 +25,14 @@ Given the following directory structure (and providing you are in `foo/one.md`):
    └─ four.md
 ```
 
+And providing you are in `foo/one.md`:
+
 ```md
 [Home](/) <!-- Sends the user to the root README.md -->
 [foo](/foo/) <!-- Sends the user to index.html of directory foo -->
 [foo heading](./#heading) <!-- Anchors user to a heading in the foo README file -->
-[bar - three](../bar/three.html) <!-- You can append .html -->
-[bar - four](../bar/four.md) <!-- Or you can append .md -->
+[bar - three](../bar/three.md) <!-- You can append .md (recommended) -->
+[bar - four](../bar/four.html) <!-- Or you can append .html -->
 ```
 
 ### Redirection for URLs <Badge text="1.0.0-alpha.37"/>

@@ -10,7 +10,7 @@
 
 网站内部的的链接，将会被转换成 `<router-link>` 用于 SPA 导航。同时，站内的每一个文件夹下的 `README.md` 或者 `index.md` 文件都会被自动编译为 `index.html`，对应的链接将被视为 `/`。
 
-以如下的文件结构为例（假设你现在在 `foo/one.md` 中）：
+以如下的文件结构为例：
 
 ```
 .
@@ -25,12 +25,14 @@
    └─ four.md
 ```
 
+假设你现在在 `foo/one.md` 中：
+
 ``` md
 [Home](/) <!-- 跳转到根部的 README.md -->
 [foo](/foo/) <!-- 跳转到 foo 文件夹的 index.html -->
 [foo heading](./#heading) <!-- 跳转到 foo/index.html 的特定标题位置 -->
-[bar - three](../bar/three.html) <!-- 具体文件可以使用 .html 结尾 -->
-[bar - four](../bar/four.md) <!-- 也可以用 .md -->
+[bar - three](../bar/three.md) <!-- 具体文件可以使用 .md 结尾（推荐） -->
+[bar - four](../bar/four.html) <!-- 也可以用 .html -->
 ```
 
 ### 链接的重定向 <Badge text="1.0.0-alpha.37"/>
