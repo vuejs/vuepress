@@ -114,15 +114,15 @@ For example, if you are developing an atomic theme with the following structure:
 
 ::: files
 theme
-├── components
-│   ├── `Home.vue`
-│   ├── `Navbar.vue`
-│   └── `Sidebar.vue`
-├── layouts
-│   ├── `404.vue`
-│   └── `Layout.vue`
-├── package.json
-└── index.js
+├─ components
+│  ├─ `Home.vue`
+│  ├─ `Navbar.vue`
+│  └─ `Sidebar.vue`
+├─ layouts
+│  ├─ `404.vue`
+│  └─ `Layout.vue`
+├─ package.json
+└─ index.js
 :::
 
 Then, in any Vue components on the theme, **you should access the theme root directory through `@theme`**:
@@ -138,8 +138,8 @@ On this premise, when you create a `Navbar` component in the same place in the c
 
 ::: files
 theme
-└── components
-    └── `Navbar.vue`
+└─ components
+&nbsp;  └─ `Navbar.vue`
 ::: 
 
 `@theme/components/Navbar.vue` will automatically map to the Navbar component in the child theme. and when you remove the component, `@theme/components/Navbar.vue` will automatically restore to the Navbar component in the parent theme.

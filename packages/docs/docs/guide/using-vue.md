@@ -100,12 +100,12 @@ Any `*.vue` files found in `.vuepress/components` are automatically registered a
 
 ::: files
 .
-└── .vuepress
-&nbsp;   └── components
-&nbsp;       ├── demo-1.vue
-&nbsp;       ├── OtherComponent.vue
-&nbsp;       └── Foo
-             └── Bar.vue
+└─ .vuepress
+   └─ components
+&nbsp;     ├─ demo-1.vue
+      ├─ OtherComponent.vue
+      └─ Foo
+&nbsp;        └─ Bar.vue
 :::
 
 Inside any markdown file you can then directly use the components (names are inferred from filenames):

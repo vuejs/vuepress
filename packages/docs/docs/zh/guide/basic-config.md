@@ -6,10 +6,10 @@
 
 ::: files
 .
-├── docs
-│   ├── README.md
-│   └── .vuepress
-│       └── config.js
+├─ docs
+│  ├─ README.md
+│  └─ .vuepress
+│     └─ config.js
 └─ package.json
 :::
 

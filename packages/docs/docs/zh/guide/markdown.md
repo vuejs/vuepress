@@ -14,15 +14,15 @@
 
 ::: files
 .
-├── README.md
-├── foo
-│   ├── README.md
-│   ├── one.md
-│   └── two.md
-└── bar
-&nbsp;   ├── README.md
-&nbsp;   ├── three.md
-&nbsp;   └── four.md
+├─ README.md
+├─ foo
+│  ├─ README.md
+│  ├─ one.md
+│  └─ two.md
+└─ bar
+&nbsp;  ├─ README.md
+&nbsp;  ├─ three.md
+&nbsp;  └─ four.md
 :::
 
 ``` md

@@ -5,8 +5,8 @@ To write a theme, create a `.vuepress/theme` directory in your docs root, and th
 ::: files
 .
 └─ .vuepress
-   └─ `theme`
-       └─ Layout.vue
+&nbsp;  └─ `theme`
+&nbsp;     └─ Layout.vue
 :::
 
 From there it's the same as developing a normal Vue application. It is entirely up to you how to organize your theme.
@@ -35,22 +35,22 @@ So it's time to reorganize your theme, an agreed theme directory structure is as
 
 ::: files
 theme
-├── `global-components`
-│   └── xxx.vue
-├── `components`
-│   └── xxx.vue
-├── `layouts`
-│   ├── Layout.vue _(**必要的**)_
-│   └── 404.vue
-├── `styles`
-│   ├── index.styl
-│   └── palette.styl
-├── `templates`
-│   ├── dev.html
-│   └── ssr.html
-├── `index.js`
-├── `enhanceApp.js`
-└── package.json
+├─ `global-components`
+│  └─ xxx.vue
+├─ `components`
+│  └─ xxx.vue
+├─ `layouts`
+│  ├─ Layout.vue _(**必要的**)_
+│  └─ 404.vue
+├─ `styles`
+│  ├─ index.styl
+│  └─ palette.styl
+├─ `templates`
+│  ├─ dev.html
+│  └─ ssr.html
+├─ `index.js`
+├─ `enhanceApp.js`
+└─ package.json
 :::
 
 - `theme/global-components`: Components under this directory will be automatically registered as global components. For details, please refer to [@vuepress/plugin-register-components](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-register-components).
@@ -79,10 +79,10 @@ Suppose your theme layouts folder is as follows:
 
 ::: files
 theme
-└── `layouts`
-    ├── Layout.vue
-    ├── AnotherLayout.vue
-    └── 404.vue
+└─ `layouts`
+   ├─ Layout.vue
+   ├─ AnotherLayout.vue
+   └─ 404.vue
 :::
 
 Then, all the pages will use `Layout.vue` as layout component by default, while the routes not matching will use `404.vue`.

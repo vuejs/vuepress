@@ -6,10 +6,10 @@ Without any configuration, the page is pretty minimal, and the user has no way t
 
 ::: files
 .
-├── docs
-│   ├── README.md
-│   └── .vuepress
-│       └── config.js
+├─ docs
+│  ├─ README.md
+│  └─ .vuepress
+│     └─ config.js
 └─ package.json
 :::
 

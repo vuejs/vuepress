@@ -100,12 +100,12 @@ export default {
 
 ::: files
 .
-└── .vuepress
-&nbsp;   └── components
-&nbsp;       ├── demo-1.vue
-&nbsp;       ├── OtherComponent.vue
-&nbsp;       └── Foo
-             └── Bar.vue
+└─ .vuepress
+   └─ components
+&nbsp;     ├─ demo-1.vue
+      ├─ OtherComponent.vue
+      └─ Foo
+&nbsp;        └─ Bar.vue
 :::
 
 你可以直接使用这些组件在任意的 Markdown 文件中（组件名是通过文件名取到的）：

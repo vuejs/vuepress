@@ -7,12 +7,12 @@
 
 ::: files
 .
-├── package.json
-└── source
-&nbsp;   ├── _post
-&nbsp;   │   └── intro-vuepress.md
-&nbsp;   ├── index.md
-&nbsp;   └── tags.md
+├─ package.json
+└─ source
+&nbsp;  ├─ _post
+&nbsp;  │  └─ intro-vuepress.md
+&nbsp;  ├─ index.md
+&nbsp;  └─ tags.md
 :::
 
 那么你就会获得以下的可用页面：
@@ -23,7 +23,13 @@
 /source/_post/intro-vuepress.html
 ```
 
-看起来我们已经发现了 blog 的阴暗面。让我们继续看下去。
+然而对于博客系统，我们希望可以自定义这些文章的链接。VuePress 从 `1.0.0` 开始支持这个功能。这就是所谓的“永久链接”。然后，实际页面将是：
+
+```
+/source/
+/source/tags/
+/source/2018/4/1/intro-vuepress.html
+```
 
 ## 永久链接
 

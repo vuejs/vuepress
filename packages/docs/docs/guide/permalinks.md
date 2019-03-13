@@ -6,12 +6,12 @@ Before 1.x.x, VuePress retrieves all markdown files in the documents source dire
 
 ::: files
 .
-├── package.json
-└── source
-&nbsp;   ├── _post
-&nbsp;   │   └── intro-vuepress.md
-&nbsp;   ├── index.md
-&nbsp;   └── tags.md
+├─ package.json
+└─ source
+&nbsp;  ├─ _post
+&nbsp;  │  └─ intro-vuepress.md
+&nbsp;  ├─ index.md
+&nbsp;  └─ tags.md
 :::
 
 Then you will get following available pages:
@@ -29,8 +29,6 @@ However, for a blog system, we hope that the link of a post can be customized. V
 /source/tags/
 /source/2018/4/1/intro-vuepress.html
 ```
-
-It seems that we have seen the shadow of the blog. Let's continue to look down.
 
 ## Permalinks
 

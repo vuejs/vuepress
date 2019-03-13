@@ -5,8 +5,8 @@
 ::: files
 .
 └─ .vuepress
-   └─ `theme`
-       └─ Layout.vue
+&nbsp;  └─ `theme`
+&nbsp;     └─ Layout.vue
 :::
 
 到这里，就像开发一个普通的 Vue 应用一样。如何组织你的主题，这完全取决于你。
@@ -39,22 +39,22 @@
 
 ::: files
 theme
-├── `global-components`
-│   └── xxx.vue
-├── `components`
-│   └── xxx.vue
-├── `layouts`
-│   ├── Layout.vue _(**必要的**)_
-│   └── 404.vue
-├── `styles`
-│   ├── index.styl
-│   └── palette.styl
-├── `templates`
-│   ├── dev.html
-│   └── ssr.html
-├── `index.js`
-├── `enhanceApp.js`
-└── package.json
+├─ `global-components`
+│  └─ xxx.vue
+├─ `components`
+│  └─ xxx.vue
+├─ `layouts`
+│  ├─ Layout.vue _(**必要的**)_
+│  └─ 404.vue
+├─ `styles`
+│  ├─ index.styl
+│  └─ palette.styl
+├─ `templates`
+│  ├─ dev.html
+│  └─ ssr.html
+├─ `index.js`
+├─ `enhanceApp.js`
+└─ package.json
 :::
 
 - `theme/global-components`: 该目录下的组件都会被自动注册为全局组件。想了解更多，请参考 [@vuepress/plugin-register-components](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-register-components)。
@@ -84,10 +84,10 @@ theme
 
 ::: files
 theme
-└── `layouts`
-    ├── Layout.vue
-    ├── AnotherLayout.vue
-    └── 404.vue
+└─ `layouts`
+   ├─ Layout.vue
+   ├─ AnotherLayout.vue
+   └─ 404.vue
 :::
 
 然后，所有的页面将会默认使用 `Layout.vue` 作为布局组件，对于那些匹配不到的路由将会使用 `404.vue`。

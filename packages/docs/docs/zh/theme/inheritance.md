@@ -113,15 +113,15 @@ VuePress 则通过一种巧妙的方式实现了这种需求，但这对父主�
 
 ::: files
 theme
-├── components
-│   ├── `Home.vue`
-│   ├── `Navbar.vue`
-│   └── `Sidebar.vue`
-├── layouts
-│   ├── `404.vue`
-│   └── `Layout.vue`
-├── package.json
-└── index.js
+├─ components
+│  ├─ `Home.vue`
+│  ├─ `Navbar.vue`
+│  └─ `Sidebar.vue`
+├─ layouts
+│  ├─ `404.vue`
+│  └─ `Layout.vue`
+├─ package.json
+└─ index.js
 ::: 
 
 那么，在该主题中的任意 Vue 组件中，**你都应该通过 `@theme` 来访问主题根目录**：
@@ -137,8 +137,8 @@ import Home from '@theme/components/Navbar.vue'
 
 ::: files
 theme
-└── components
-    └── `Navbar.vue`
+└─ components
+&nbsp;  └─ `Navbar.vue`
 ::: 
 
 `@theme/components/Navbar.vue` 会自动地映射到子主题中的 Navbar 组件，当你移除这个组件时，`@theme/components/Navbar.vue` 又会自动恢复为父主题中的 Navbar 组件。
