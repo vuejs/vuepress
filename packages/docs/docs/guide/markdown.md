@@ -29,8 +29,8 @@ Given the following directory structure (and providing you are in `foo/one.md`):
 [Home](/) <!-- Sends the user to the root README.md -->
 [foo](/foo/) <!-- Sends the user to index.html of directory foo -->
 [foo heading](./#heading) <!-- Anchors user to a heading in the foo README file -->
-[bar - three](../bar/three.html) <!-- You can append .html -->
-[bar - four](../bar/four.md) <!-- Or you can append .md -->
+[bar - three](../bar/three.md) <!-- You can append .md (recommanded) -->
+[bar - four](../bar/four.html) <!-- Or you can append .html -->
 ```
 
 ### Redirection for URLs <Badge text="1.0.0-alpha.37"/>
