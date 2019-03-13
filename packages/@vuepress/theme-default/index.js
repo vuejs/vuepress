@@ -19,8 +19,9 @@ module.exports = (options, ctx) => ({
 
   plugins: [
     '@vuepress/active-header-links',
+    '@vuepress/nprogress',
     '@vuepress/search',
-    '@vuepress/plugin-nprogress',
+    '@vuepress/toc',
     ['@vuepress/container', { type: 'tip' }],
     ['@vuepress/container', { type: 'warning' }],
     ['@vuepress/container', { type: 'danger' }]

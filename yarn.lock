@@ -4000,7 +4000,7 @@ expect@^24.1.0:
     jest-message-util "^24.0.0"
     jest-regex-util "^24.0.0"
 
-express@^4.16.2:
+express@^4.16.2, express@^4.16.4:
   version "4.16.4"
   resolved "https://registry.yarnpkg.com/express/-/express-4.16.4.tgz#fddef61926109e24c515ea97fd2f1bdbf62df12e"
   dependencies:
@@ -6996,7 +6996,7 @@ onetime@^2.0.0:
   dependencies:
     mimic-fn "^1.0.0"
 
-opn@^5.1.0:
+opn@^5.1.0, opn@^5.4.0:
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/opn/-/opn-5.4.0.tgz#cb545e7aab78562beb11aa3bfabc7042e1761035"
   dependencies:
@@ -9572,6 +9572,15 @@ vuepress-plugin-flowchart@^1.4.2:
   resolved "https://registry.yarnpkg.com/vuepress-plugin-flowchart/-/vuepress-plugin-flowchart-1.4.3.tgz#1692807257c9ba02f764ced0caf930c627f65bdb"
   dependencies:
     flowchart.js "^1.11.3"
+
+vuepress-plugin-serve@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/vuepress-plugin-serve/-/vuepress-plugin-serve-1.0.1.tgz#4739ac6ef518cdeb1dacab1433e83f7e975549da"
+  integrity sha512-SJW2axWAXMAy25XuwbKFi1uwL8cpbnttdH5iZQ4qaZ40xGuNwBcPxPB152FKD/GMm4zhIwBCWDhoj+g7SFo37A==
+  dependencies:
+    chalk "^2.4.2"
+    express "^4.16.4"
+    opn "^5.4.0"
 
 w3c-hr-time@^1.0.1:
   version "1.0.1"

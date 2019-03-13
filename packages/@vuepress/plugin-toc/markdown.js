@@ -1,5 +1,3 @@
-// reference: https://github.com/Oktavilla/markdown-it-table-of-contents
-
 const defaults = {
   includeLevel: [2, 3],
   containerClass: 'table-of-contents',

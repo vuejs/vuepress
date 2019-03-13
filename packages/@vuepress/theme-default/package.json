@@ -34,6 +34,7 @@
     "@vuepress/plugin-container": "^1.0.0-alpha.44",
     "@vuepress/plugin-nprogress": "^1.0.0-alpha.44",
     "@vuepress/plugin-search": "^1.0.0-alpha.44",
+    "@vuepress/plugin-toc": "^1.0.0-alpha.44",
     "docsearch.js": "^2.5.2",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2"
