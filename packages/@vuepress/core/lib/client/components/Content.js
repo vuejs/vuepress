@@ -13,8 +13,7 @@ export default {
     const pageKey = this.pageKey || this.$parent.$page.key
     const pageComponent = getPageAsyncComponent(pageKey)
     if (pageComponent) {
-      Vue.component(pageKey, pageComponent)
-      return h(pageKey)
+      return h(pageComponent)
     }
     return h('')
   }
