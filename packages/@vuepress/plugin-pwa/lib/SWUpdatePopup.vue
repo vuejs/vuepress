@@ -99,7 +99,7 @@ export default {
 }
 
 .sw-update-popup-enter, .sw-update-popup-leave-to {
-  opacit: 0;
+  opacity: 0;
   transform: translate(0, 50%) scale(0.5);
 }
 </style>
