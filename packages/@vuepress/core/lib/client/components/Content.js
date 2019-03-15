@@ -1,4 +1,3 @@
-import Vue from 'vue'
 import { getPageAsyncComponent } from '../util'
 
 export default {
