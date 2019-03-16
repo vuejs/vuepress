@@ -105,25 +105,20 @@ module.exports = class ThemeAPI {
  */
 
 function resolveSFCs (dirs) {
-  return dirs.map(
-    layoutDir => readdirSync(layoutDir)
-      .filter(filename => filename.endsWith('.vue'))
-      .map(filename => {
-        const componentName = getComponentName(filename)
-        return {
-          filename,
-          componentName,
-          isInternal: isInternal(componentName),
-          path: resolve(layoutDir, filename)
-        }
-      })
-  ).reduce((arr, next) => {
-    arr.push(...next)
-    return arr
-  }, []).reduce((map, component) => {
-    map[component.componentName] = component
-    return map
-  }, {})
+  const map = {}
+  for (const dir of dirs) {
+    for (const filename of readdirSync(dir)) {
+      if (!filename.endsWith('.vue')) continue
+      const componentName = getComponentName(filename)
+      map[componentName] = {
+        filename,
+        componentName,
+        isInternal: isInternal(componentName),
+        path: resolve(dir, filename)
+      }
+    }
+  }
+  return map
 }
 
 /**
