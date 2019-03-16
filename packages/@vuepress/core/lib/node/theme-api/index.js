@@ -81,7 +81,7 @@ module.exports = class ThemeAPI {
         isInternal: true
       }
       if (this.context.globalLayout !== this.context.getLibFilePath('client/components/GlobalLayout.vue')) {
-        // doesn't expect a Layout.vue when a custom GlobalLayout is registered
+        // don't expect a Layout.vue when a custom GlobalLayout is registered
         logger.warn(`[vuepress] Cannot find Layout.vue, fallback to default layout.`)
       }
     }
