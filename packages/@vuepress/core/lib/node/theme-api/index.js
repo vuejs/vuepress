@@ -2,8 +2,9 @@ const { logger, fs, path: { resolve }} = require('@vuepress/shared-utils')
 const readdirSync = dir => fs.existsSync(dir) && fs.readdirSync(dir) || []
 
 module.exports = class ThemeAPI {
-  constructor (theme, parentTheme) {
+  constructor (theme, parentTheme, context) {
     this.theme = theme
+    this.context = context
     this.parentTheme = parentTheme || {}
     this.existsParentTheme = !!this.parentTheme.path
     this.vuepressPlugin = {
@@ -69,9 +70,9 @@ module.exports = class ThemeAPI {
     // built-in named layout or not.
     const layoutComponentMap = resolveSFCs(layoutDirs)
 
-    const { Layout = {}, NotFound = {}} = layoutComponentMap
+    const { Layout, NotFound } = layoutComponentMap
     // layout component does not exist.
-    if (!Layout || !fs.existsSync(Layout.path)) {
+    if (!Layout) {
       const fallbackLayoutPath = resolve(__dirname, 'Layout.fallback.vue')
       layoutComponentMap.Layout = {
         filename: 'Layout.vue',
@@ -79,12 +80,12 @@ module.exports = class ThemeAPI {
         path: fallbackLayoutPath,
         isInternal: true
       }
-      logger.warn(
-        `[vuepress] Cannot resolve Layout.vue file in \n ${Layout.path},`
-        + `fallback to default layout: ${fallbackLayoutPath}`
-      )
+      if (this.context.globalLayout !== this.context.getLibFilePath('client/components/GlobalLayout.vue')) {
+        // doesn't expect a Layout.vue when a custom GlobalLayout is registered
+        logger.warn(`[vuepress] Cannot find Layout.vue, fallback to default layout.`)
+      }
     }
-    if (!NotFound || !fs.existsSync(NotFound.path)) {
+    if (!NotFound) {
       layoutComponentMap.NotFound = {
         filename: 'NotFound.vue',
         componentName: 'NotFound',
