@@ -5,7 +5,7 @@ metaTitle: 自动生成简洁链接的插件 | VuePress
 
 # [@vuepress/plugin-clean-urls](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-clean-urls)
 
-> 自动生成简洁链接的插件
+> 用于自动生成简洁链接的插件。<Badge text="1.0.0-alpha.40+"/>
 
 ## 安装
 
@@ -21,6 +21,15 @@ module.exports = {
   plugins: ['@vuepress/clean-urls'] 
 }
 ```
+
+::: warning 注意
+这个插件在 dev 服务器上总是生效的，但 VuePress **并没有能力**去修改服务器识别链接的方式。如果你希望你的网站地址符合某种特殊的模式（比如使用 `/routing` 而不是 `/routing.html` 或者 `routing/`），你需要确保你的服务器会将这些地址认为是 HTML。这可能意味着你需要对你的服务器进行特殊的配置。
+
+参考资料：
+
+- Netify 用户: [https://www.netlify.com/docs/redirects/#trailing-slash](https://www.netlify.com/docs/redirects/#trailing-slash).
+- Surge 用户: [https://surge.sh/help/using-clean-urls-automatically](https://surge.sh/help/using-clean-urls-automatically).
+:::
 
 ## 选项
 

@@ -5,7 +5,7 @@ metaTitle: Markdown 容器插件 | VuePress
 
 # [@vuepress/plugin-container](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-container)
 
-> Markdown 容器插件
+> 用于注册 Markdown 容器的插件，基于 [markdown-it-container](https://github.com/markdown-it/markdown-it-container)。<Badge text="1.0.0-alpha.41+"/>
 
 ## 安装
 

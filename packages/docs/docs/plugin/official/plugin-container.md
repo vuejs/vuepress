@@ -5,7 +5,7 @@ metaTitle: A plugin for registering markdown containers | VuePress
 
 # [@vuepress/plugin-container](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-container)
 
-> A plugin for registering markdown containers
+> A plugin for registering markdown containers, based on [markdown-it-container](https://github.com/markdown-it/markdown-it-container). <Badge text="1.0.0-alpha.41+"/>
 
 ## Install
 
