@@ -26,13 +26,6 @@ const createTemp = require('./createTemp')
  */
 
 module.exports = class App {
-  static getInstance (...args) {
-    if (!App._instance) {
-      App._instance = new App(...args)
-    }
-    return App._instance
-  }
-
   /**
    * Instantiate the app context with a new API
    *
