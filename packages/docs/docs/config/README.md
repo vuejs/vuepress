@@ -80,17 +80,6 @@ Specify the temporary directory for client.
 
 Specify the output directory for `vuepress build`. If a relative path is specified, it will be resolved based on `process.cwd()`.
 
-### ga
-
-- Type: `string`
-- Default: `undefined`
-
-Provide the Google Analytics ID to enable integration.
-
-::: tip
-Please be aware of [GDPR (2018 reform of EU data protection rules)](https://ec.europa.eu/commission/priorities/justice-and-fundamental-rights/data-protection/2018-reform-eu-data-protection-rules_en) and consider setting Google Analytics to [anonymize IPs](https://support.google.com/analytics/answer/2763052?hl=en) where appropriate and/or needed.
-:::
-
 ### locales
 
 - Type: `{ [path: string]: Object }`
