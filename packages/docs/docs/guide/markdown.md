@@ -37,7 +37,7 @@ And providing you are in `foo/one.md`:
 
 ### Redirection for URLs <Badge text="1.0.0-alpha.37"/>
 
-VuePress supports redirecting to clean links. If a link `/foo` is not found, VuePress will look for a existing `/foo/` or `/foo.html`. Conversely, when one of `/foo/` or `/foo.html` is not found, VuePress will also try the other. With this feature, we can customize your website's urls with the official plugin [@vuepress/plugin-clean-urls](../plugin/official/plugin-clean-urls.md).
+VuePress supports redirecting to clean links. If a link `/foo` is not found, VuePress will look for a existing `/foo/` or `/foo.html`. Conversely, when one of `/foo/` or `/foo.html` is not found, VuePress will also try the other. With this feature, we can customize your website's urls with the official plugin [vuepress-plugin-clean-urls](https://vuepress.github.io/plugins/clean-urls/).
 
 ::: tip
 Regardless of whether the permalink and clean-urls plugins are used, your relative path should be defined by the current file structure. In the above example, even though you set the path of `/foo/one.md` to `/foo/one/`, you should still access `/foo/two.md` via `./two.md`.
