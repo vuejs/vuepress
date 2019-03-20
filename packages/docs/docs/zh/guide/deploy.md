@@ -56,16 +56,16 @@ cd -
 你可以在你的持续集成的设置中，设置在每次 push 代码时自动运行上述脚本。
 :::
 
-### Github Pages and Travis CI
+### GitHub Pages and Travis CI
 
 1. 在 `docs/.vuepress/config.js` 中设置正确的 `base`。
 
    如果你打算发布到 `https://<USERNAME or GROUP>.github.io/`，则可以省略这一步，因为 `base` 默认即是 `"/"`。
-  
+
    如果你打算发布到 `https://<USERNAME or GROUP>.github.io/<REPO>/`（也就是说你的仓库在 `https://github.com/<USERNAME>/<REPO>`），则将 `base` 设置为 `"/<REPO>/"`。
-  
+
 2. 在项目的根目录创建一个名为 `.travis.yml` 的文件；
-3. 使用 Github Pages 部署提供程序模板并遵循 [Travis 文档](https://docs.travis-ci.com/user/deployment/pages/)。
+3. 使用 GitHub Pages 部署提供程序模板并遵循 [Travis 文档](https://docs.travis-ci.com/user/deployment/pages/)。
 
 ``` yaml
 language: node_js
@@ -88,9 +88,9 @@ deploy:
 1. 在 `docs/.vuepress/config.js` 中设置正确的 `base`。
 
    如果你打算发布到 `https://<USERNAME or GROUP>.gitlab.io/`，则可以省略这一步，因为 `base` 默认即是 `"/"`。
-  
+
    如果你打算发布到 `https://<USERNAME or GROUP>.gitlab.io/<REPO>/`（也就是说你的仓库在 `https://gitlab.com/<USERNAME>/<REPO>`），则将 `base` 设置为 `"/<REPO>/"`。
-  
+
 2. 在 `.vuepress/config.js` 中将 `dest` 设置为 `public`。
 3. 在你项目的根目录下创建一个名为 `.gitlab-ci.yml` 的文件，无论何时你提交了更改，它都会帮助你自动构建和部署：
 
@@ -114,7 +114,7 @@ pages:
 
 ## Netlify
 
-1. 在 Netlify 中, 创建一个新的 Github 项目，使用以下设置：
+1. 在 Netlify 中, 创建一个新的 GitHub 项目，使用以下设置：
 
   - **Build Command:** `npm run build:docs` 或者 `yarn build:docs`
   - **Publish directory:** `docs/.vuepress/dist`
@@ -181,7 +181,7 @@ pages:
 ```
 
 这里是你项目的配置，请参考 [heroku-buildpack-static](https://github.com/heroku/heroku-buildpack-static) 了解更多。
-    
+
 5. 配置 Heroku 的 git 远程仓库：
 
 ``` bash
@@ -196,9 +196,9 @@ heroku apps:create example
 # 为静态网站设置构建包
 heroku buildpacks:set https://github.com/heroku/heroku-buildpack-static.git
 ```
-  
+
 6. 部署你的网站：
-  
+
 ``` bash
 # 发布网站
 git push heroku master
