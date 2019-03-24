@@ -23,6 +23,13 @@ export default {
         document.body.scrollTop
       )
 
+      const scrollHeight = Math.max(
+        document.documentElement.scrollHeight,
+        document.body.scrollHeight
+      )
+
+      const bottomY = window.innerHeight + scrollTop
+
       for (let i = 0; i < anchors.length; i++) {
         const anchor = anchors[i]
         const nextAnchor = anchors[i + 1]
@@ -31,9 +38,19 @@ export default {
           || (scrollTop >= anchor.parentElement.offsetTop + 10
             && (!nextAnchor || scrollTop < nextAnchor.parentElement.offsetTop - 10))
 
-        if (isActive && decodeURIComponent(this.$route.hash) !== decodeURIComponent(anchor.hash)) {
+        const routeHash = decodeURIComponent(this.$route.hash)
+        if (isActive && routeHash !== decodeURIComponent(anchor.hash)) {
+          let activeAnchor = anchor
+          // check if anchor is at the bottom of the page to keep $route.hash consistent
+          if (bottomY === scrollHeight) {
+            for (let j = i + 1; j < anchors.length; j++) {
+              if (routeHash === decodeURIComponent(anchors[j].hash)) {
+                activeAnchor = anchors[j]
+              }
+            }
+          }
           this.$vuepress.$set('disableScrollBehavior', true)
-          this.$router.replace(decodeURIComponent(anchor.hash), () => {
+          this.$router.replace(decodeURIComponent(activeAnchor.hash), () => {
             // execute after scrollBehavior handler.
             this.$nextTick(() => {
               this.$vuepress.$set('disableScrollBehavior', false)
