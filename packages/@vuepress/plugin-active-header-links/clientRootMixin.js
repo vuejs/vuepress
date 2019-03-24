@@ -40,12 +40,12 @@ export default {
 
         const routeHash = decodeURIComponent(this.$route.hash)
         if (isActive && routeHash !== decodeURIComponent(anchor.hash)) {
-          let activeAnchor = anchor
+          const activeAnchor = anchor
           // check if anchor is at the bottom of the page to keep $route.hash consistent
           if (bottomY === scrollHeight) {
             for (let j = i + 1; j < anchors.length; j++) {
               if (routeHash === decodeURIComponent(anchors[j].hash)) {
-                activeAnchor = anchors[j]
+                return
               }
             }
           }
