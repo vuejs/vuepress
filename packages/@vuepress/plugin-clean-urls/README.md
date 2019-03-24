@@ -2,4 +2,4 @@
 
 > clean urls plugin for vuepress
 
-See [documentation](https://vuepress.vuejs.org/plugin/official/plugin-clean-urls.html).
+See [documentation](https://v1.vuepress.vuejs.org/plugin/official/plugin-clean-urls.html).
