@@ -38,7 +38,7 @@ export default {
   &.top
     vertical-align top
   &.tip, &.green
-    background-color $badgeGreen
+    background-color $badgeTip
   &.error
     background-color $badgeError
   &.warning, &.warn, &.yellow
