@@ -18,6 +18,7 @@ module.exports = function (cli, options) {
     .option('-p, --port <port>', 'use specified port (default: 8080)')
     .option('-t, --temp <temp>', 'set the directory of the temporary file')
     .option('-c, --cache [cache]', 'set the directory of cache')
+    .option('--dest <dest>', 'the output directory for build process')
     .option('--host <host>', 'use specified host (default: 0.0.0.0)')
     .option('--no-cache', 'clean the cache before build')
     .option('--no-clear-screen', 'do not clear screen when dev server is ready')
