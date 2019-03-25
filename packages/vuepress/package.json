@@ -3,6 +3,7 @@
   "version": "1.0.0-alpha.42",
   "description": "Minimalistic doc generator with Vue component based layout system",
   "main": "index.js",
+  "typings": "index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vuejs/vuepress.git",

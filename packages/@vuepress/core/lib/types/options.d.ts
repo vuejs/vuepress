@@ -32,6 +32,16 @@ export interface DynamicFile {
 
 export interface OptionAPI {
   /**
+   * The name of the plugin.
+   * 
+   * Internally, vuepress will use the plugin's package name
+   * as the plugin name. When your plugin is a local plugin
+   * (i.e. using a pure plugin function directly), please be
+   * sure to configure this option, that is good for debug tracking.
+   */
+  name?: string
+
+  /**
    * The ready hook is executed after the application is
    * initialized and before some specific functional APIs
    * are executed. These functional APIs include:
@@ -144,31 +154,14 @@ export interface OptionAPI {
   extendCli?(cli: CAC): void
 }
 
-interface PluginOptions extends OptionAPI {
-  /**
-   * The name of the plugin.
-   * 
-   * Internally, vuepress will use the plugin's package name
-   * as the plugin name. When your plugin is a local plugin
-   * (i.e. using a pure plugin function directly), please be
-   * sure to configure this option, that is good for debug tracking.
-   */
-  name?: string
-
+export interface PluginOptions extends OptionAPI {
   /**
    * Declare that this plugin can be applied multiple times.
    */
   multiple?: boolean
 }
 
-interface ThemeOptions extends OptionAPI {
-  /**
-   * VuePress provides the ability to inherit one theme from another.
-   * VuePress will follow the concept of override and automatically
-   * help you prioritize various thematic attributes.
-   */
-  extends?: string
-
+export interface ThemeOrConfigOptions extends OptionAPI {
   /**
    * [Danger Zone] HTML template path used in dev mode.
    */
@@ -183,6 +176,15 @@ interface ThemeOptions extends OptionAPI {
    * [Danger Zone] Global layout component is a component responsible for the global layout strategy.
    */
   globalLayout?: string
+}
+
+export interface ThemeOptions extends ThemeOrConfigOptions {
+  /**
+   * VuePress provides the ability to inherit one theme from another.
+   * VuePress will follow the concept of override and automatically
+   * help you prioritize various thematic attributes.
+   */
+  extends?: string
 }
 
 /**

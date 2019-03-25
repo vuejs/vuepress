@@ -1,11 +1,7 @@
-import { ThemeConfig, OptionAPI } from './options'
+import { ThemeConfig, ThemeOrConfigOptions } from './options'
 import { PageOptions } from './Page'
 
-export interface AppOptions {
-
-}
-
-export interface SiteConfig extends OptionAPI {
+interface BaseOptions {
   /**
    * The base URL the site will be deployed at. You will need
    * to set this if you plan to deploy your site under a sub
@@ -13,19 +9,62 @@ export interface SiteConfig extends OptionAPI {
    * site to `https://foo.github.io/bar/`, then `base` should be
    * set to `"/bar/"`. It should always start and end with a slash.
    */
-  base?: string
+  base: string
+}
 
+interface ContextSharedOptions {
+  /**
+   * Root directory where the documents are located.
+   */
+  sourceDir: string
+
+  /**
+   * Site lever configuration (usually in `config.js`).
+   */
+  siteConfig: SiteConfig
+}
+
+interface AppSharedOptions {
+  /**
+   * Root directory where the temporary files are located.
+   */
+  temp?: string
+
+  /**
+   * Specify the output directory for vuepress build. If a relative
+   * path is specified, it will be resolved based on `process.cwd()`.
+   */
+  dest?: string
+}
+
+export interface AppOptions extends AppSharedOptions, Partial<ContextSharedOptions> {}
+
+interface SiteSharedOptions extends Partial<BaseOptions> {
   /**
    * Title for the site. This will be the prefix for all page titles,
    * and displayed in the navbar in the default theme.
    */
-  title?: string
+  title: string
 
   /**
    * Description for the site.
    * This will be rendered as a `<meta>` tag in the page HTML.
    */
-  description?: string
+  description: string
+
+  /**
+   * Specify locales for i18n support.
+   */
+  locales: Record<string, SiteData>
+
+  /**
+   * Config options for the used theme. The options
+   * will vary depending on the theme you are using.
+   */
+  themeConfig: ThemeConfig
+}
+
+export interface SiteConfig extends ThemeOrConfigOptions, AppSharedOptions, Partial<SiteSharedOptions> {
 
   /**
    * Extra tags to be injected to the page HTML `<head>`.
@@ -45,22 +84,6 @@ export interface SiteConfig extends OptionAPI {
   port?: number
 
   /**
-   * Specify the temporary directory for client.
-   */
-  temp?: string
-
-  /**
-   * Specify the output directory for vuepress build. If a relative
-   * path is specified,it will be resolved based on `process.cwd()`.
-   */
-  dest?: string
-
-  /**
-   * Specify locales for i18n support.
-   */
-  locales?: Record<string, SiteData>
-
-  /**
    * A function to control what files should have
    * `<link rel="preload">` resource hints generated.
    * @param file file name
@@ -78,12 +101,6 @@ export interface SiteConfig extends OptionAPI {
    * Specify this to use a custom theme.
    */
   theme?: string
-
-  /**
-   * Provide config options to the used theme.
-   * The options will vary depending on the theme you are using.
-   */
-  themeConfig?: ThemeConfig
 
   /**
    * Options for markdown rendering.
@@ -126,39 +143,65 @@ export interface SiteConfig extends OptionAPI {
   evergreen?: boolean
 }
 
-export interface SiteData extends SiteConfig {
+export interface SiteData extends SiteSharedOptions {
+  /**
+   * Contains a list of Page objects.
+   */
   pages: PageOptions[]
 }
 
-/** VuePress App */
-export default class App {
+/**
+ * VuePress App
+ */
+export default class App implements BaseOptions, ContextSharedOptions {
+  public base: string
+  public sourceDir: string
+  public siteConfig: SiteConfig
+
+  /**
+   * Options for VuePress App.
+   */
   public options: AppOptions
 
-  public sourceDir: string
-
+  /**
+   * Root directory where the temporary files are located.
+   */
   public tempPath: string
 
+  /**
+   * Output path.
+   */
+  public outDir: string
+
+  /**
+   * Path for `.vuepress` directory.
+   */
   public vuepressDir: string
+
+  /**
+   * Whether VuePress run in production environment mode.
+   */
+  public isProd: boolean
 
   constructor(options?: AppOptions)
 
   /**
    * load theme and plugins 
    */
-  process(): Promise<void>
+  public process(): Promise<void>
 
   /**
-   * add a page 
+   * Add a page.
    */
-  addPage(options: PageOptions): Promise<void>
+  public addPage(options: PageOptions): Promise<void>
 
   /**
-   * get siteData 
+   * Get current `siteData`.
    */
-  getSiteData(): SiteData
+  public getSiteData(): SiteData
 
   /**
-   * write a file to tempPath 
+   * Write a file to tempPath.
    */
-  writeTemp(file: string, content: string): Promise<string>
+  public writeTemp(file: string, content: string): Promise<string>
 }
