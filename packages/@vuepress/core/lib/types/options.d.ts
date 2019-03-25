@@ -2,6 +2,7 @@ import App from './App'
 import CAC from 'cac/types/CAC'
 import Page, { PageOptions } from './Page'
 import ChainableConfig from 'webpack-chain'
+import { MarkdownOptions } from './markdown'
 import { Configuration as DevServerConfig } from 'webpack-dev-server'
 
 type ArrayLike<T> = T | T[]
@@ -12,6 +13,12 @@ type AsyncFunctionLike<T, R extends any[] = []> = T | ((...args: R) => T | Promi
  * A general VuePress plugin config.
  */
 export type PluginConfig = boolean | Record<string, any> | any[]
+
+/**
+ * Plugin config.
+ * You can use either Babel style or object style.
+ */
+export type Plugins = (string | [string, PluginConfig?])[] | Record<string, PluginConfig>
 
 /**
  * A general VuePress theme config.
@@ -30,7 +37,7 @@ export interface DynamicFile {
   content: string
 }
 
-export interface OptionAPI {
+export interface OptionAPI extends MarkdownOptions {
   /**
    * The name of the plugin.
    * 
@@ -64,7 +71,7 @@ export interface OptionAPI {
   /**
    * A plugin can contain multiple plugins like a preset.
    */
-  plugins?: (string | [string, PluginConfig?])[] | Record<string, PluginConfig>
+  plugins?: Plugins
 
   /**
    * A simplified form of using `DefinePlugin` via `chainWebpack`.
@@ -95,20 +102,6 @@ export interface OptionAPI {
    * You can use it to execute custom middleware after all other middleware.
    */
   afterDevServer: DevServerConfig['after']
-
-  // TODO: markdown-it typings support
-  /**
-   * A function to modify default config or apply additional plugins
-   * to the markdown-it instance used to render source files.
-   * @param markdown an instance of `MarkdownIt`
-   */
-  extendMarkdown?(markdown: any): void
-
-  /**
-   * Modify the internal markdown config with markdown-it-chain.
-   * @param config an instance of `ChainableConfig` for markdown-it
-   */
-  chainMarkdown?(config: any): void
 
   /**
    * This option accepts absolute file path(s) pointing

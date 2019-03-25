@@ -1,4 +1,5 @@
 import { ThemeConfig, ThemeOrConfigOptions } from './options'
+import { MarkdownConfig } from './markdown'
 import { PageOptions } from './Page'
 
 interface BaseOptions {
@@ -65,7 +66,6 @@ interface SiteSharedOptions extends Partial<BaseOptions> {
 }
 
 export interface SiteConfig extends ThemeOrConfigOptions, AppSharedOptions, Partial<SiteSharedOptions> {
-
   /**
    * Extra tags to be injected to the page HTML `<head>`.
    * Each tag can be specified in the form of
@@ -105,7 +105,7 @@ export interface SiteConfig extends ThemeOrConfigOptions, AppSharedOptions, Part
   /**
    * Options for markdown rendering.
    */
-  markdown?: Record<string, any> // TODO
+  markdown?: MarkdownConfig
 
   /**
    * Options for postcss-loader.
