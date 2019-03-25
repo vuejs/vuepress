@@ -1,6 +1,6 @@
 import { ThemeConfig, ThemeOrConfigOptions } from './options'
+import Page, { PageOptions } from './Page'
 import { MarkdownConfig } from './markdown'
-import { PageOptions } from './Page'
 
 interface BaseOptions {
   /**
@@ -147,7 +147,7 @@ export interface SiteData extends SiteSharedOptions {
   /**
    * Contains a list of Page objects.
    */
-  pages: PageOptions[]
+  pages: Page[]
 }
 
 /**

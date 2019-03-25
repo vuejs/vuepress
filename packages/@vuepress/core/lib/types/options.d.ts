@@ -121,9 +121,9 @@ export interface OptionAPI extends MarkdownOptions {
   /**
    * A function used to extend or modify the `$page` object.
    * This function will be invoking once for each page at compile time.
-   * @param pageData a `Page` instance
+   * @param page a `Page` instance
    */
-  extendPageData?(pageData: Page): void
+  extendPageData?(page: Page): void
 
   /**
    * A path to the mixin file which allow you to control the life cycle of root component.

@@ -1,7 +1,7 @@
 import { SiteData } from './App'
+import { ClientPage } from './Page'
 import { ThemeConfig } from './options'
 import Frontmatter from './Frontmatter'
-import Page from './Page'
 
 export default class ClientComputedMixin {
   /**
@@ -57,5 +57,5 @@ export default class ClientComputedMixin {
   /**
    * Current page information.
    */
-  public $page: Page
+  public $page: ClientPage
 }
