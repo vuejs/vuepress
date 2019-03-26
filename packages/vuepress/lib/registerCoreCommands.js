@@ -44,6 +44,7 @@ module.exports = function (cli, options) {
     .option('-d, --dest <dest>', 'specify build output dir (default: .vuepress/dist)')
     .option('-t, --temp <temp>', 'set the directory of the temporary file')
     .option('-c, --cache [cache]', 'set the directory of cache')
+    .option('--dest <dest>', 'the output directory for build process')
     .option('--no-cache', 'clean the cache before build')
     .option('--debug', 'build in development mode for debugging')
     .option('--silent', 'build static site in silent mode')
