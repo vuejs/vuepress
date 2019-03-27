@@ -21,7 +21,7 @@ The `base` is automatically prepended to all the URLs that start with `/` in oth
 **Also see:**
 
 - [Base URL](../guide/assets.md#base-url)
-- [Deploy Guide > Github Pages](../guide/deploy.md#github-pages)
+- [Deploy Guide > GitHub Pages](../guide/deploy.md#github-pages)
 
 ### title
 
@@ -71,7 +71,7 @@ Specify the port to use for the dev server.
 - Type: `number`
 - Default: `@vuepress/core/.temp`
 
-Specify the temporary directory for client. 
+Specify the temporary directory for client.
 
 ### dest
 
