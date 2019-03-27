@@ -24,19 +24,19 @@ module.exports = (options, ctx) => ({
     ['container', {
       type: 'tip',
       localeTitle: {
-        zh: '提示'
+        '/zh/': '提示'
       }
     }],
     ['container', {
       type: 'warning',
       localeTitle: {
-        zh: '注意'
+        '/zh/': '注意'
       }
     }],
     ['container', {
       type: 'danger',
       localeTitle: {
-        zh: '警告'
+        '/zh/': '警告'
       }
     }]
   ]
