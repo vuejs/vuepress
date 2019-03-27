@@ -5,11 +5,12 @@
   </svg>
 </template>
 
-<style lang="stylus">
-.icon.outbound
-  color #aaa
-  display inline-block
-  vertical-align middle
-  position relative
-  top -1px
+<style>
+.icon.outbound {
+  color: #aaa;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+}
 </style>
