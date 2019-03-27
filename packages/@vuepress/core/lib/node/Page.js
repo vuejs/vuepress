@@ -124,7 +124,7 @@ module.exports = class Page {
         if (excerpt) {
           const { html } = markdown.render(excerpt, {
             frontmatter: this.frontmatter,
-            relPath: this.relativePath
+            relativePath: this.relativePath
           })
           this.excerpt = html
         }
