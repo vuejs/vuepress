@@ -65,7 +65,7 @@ module.exports = function (src) {
   } = markdown.render(content, {
     loader,
     frontmatter: data,
-    relativePath: path.relative(sourceDir, file)
+    relativePath: path.relative(sourceDir, file).replace(/\\/g, '/')
   })
 
   // check if relative links are valid
