@@ -123,7 +123,7 @@ module.exports = (markdown = {}) => {
   const parse = md.parse
   const cache = new LRUCache({ max: 1000 })
   md.parse = (src, env) => {
-    const key = hash(src + env.relPath)
+    const key = hash(src + env.relativePath)
     const cached = cache.get(key)
     if (cached) {
       return cached
