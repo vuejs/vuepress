@@ -36,6 +36,6 @@
     "docsearch.js": "^2.5.2",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
-    "vuepress-plugin-container": "^1.1.1"
+    "vuepress-plugin-container": "^1.1.2"
   }
 }
