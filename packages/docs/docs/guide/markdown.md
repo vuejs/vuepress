@@ -167,7 +167,7 @@ Danger zone, do not proceed
 
 **Also see:**
 
-- [vuepress-plugin-container](https://vuepress.github.io/plugins/container)
+- [vuepress-plugin-container](https://vuepress.github.io/plugins/container/)
 
 ## Syntax Highlighting in Code Blocks
 

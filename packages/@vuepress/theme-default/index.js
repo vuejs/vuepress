@@ -23,19 +23,19 @@ module.exports = (options, ctx) => ({
     '@vuepress/plugin-nprogress',
     ['container', {
       type: 'tip',
-      localeTitle: {
+      defaultTitle: {
         '/zh/': '提示'
       }
     }],
     ['container', {
       type: 'warning',
-      localeTitle: {
+      defaultTitle: {
         '/zh/': '注意'
       }
     }],
     ['container', {
       type: 'danger',
-      localeTitle: {
+      defaultTitle: {
         '/zh/': '警告'
       }
     }]
