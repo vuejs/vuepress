@@ -356,7 +356,7 @@ module.exports = {
 
 ### evergreen
 
-- Type: `boolean`
+- Type: `boolean | Function`
 - Default: `false`
 
 Set to `true` if you are only targeting evergreen browsers. This will disable ES5 transpilation and polyfills for IE, and result in faster builds and smaller files.
