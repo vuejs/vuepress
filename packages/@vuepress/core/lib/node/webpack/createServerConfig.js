@@ -5,14 +5,11 @@
  */
 
 module.exports = function createServerConfig (ctx) {
-  const fs = require('fs')
-  const { path, env } = require('@vuepress/shared-utils')
+  const { env } = require('@vuepress/shared-utils')
   const createBaseConfig = require('./createBaseConfig')
   const VueSSRServerPlugin = require('vue-server-renderer/server-plugin')
-  const CopyPlugin = require('copy-webpack-plugin')
 
   const config = createBaseConfig(ctx, true /* isServer */)
-  const { sourceDir, outDir } = ctx
 
   config
     .target('node')
@@ -35,15 +32,6 @@ module.exports = function createServerConfig (ctx) {
     .use(VueSSRServerPlugin, [{
       filename: 'manifest/server.json'
     }])
-
-  const publicDir = path.resolve(sourceDir, '.vuepress/public')
-  if (fs.existsSync(publicDir)) {
-    config
-      .plugin('copy')
-      .use(CopyPlugin, [[
-        { from: publicDir, to: outDir }
-      ]])
-  }
 
   if (!env.isDebug) {
     const WebpackBar = require('webpackbar')

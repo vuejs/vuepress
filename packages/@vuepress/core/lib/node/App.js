@@ -160,6 +160,7 @@ module.exports = class App {
         after: '</div>'
       })
       .use('@vuepress/last-updated', !!shouldUseLastUpdated)
+      .use('@vuepress/public-files', ['.vuepress/public'])
       .use('@vuepress/register-components', {
         componentsDir: [
           path.resolve(this.sourceDir, '.vuepress/components'),
