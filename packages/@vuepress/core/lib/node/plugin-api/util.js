@@ -22,7 +22,7 @@ exports.flattenPlugin = function (
   pluginContext,
   self
 ) {
-  const { valid, warnMsg } = assertTypes(pluginOptions, [Object, Boolean])
+  const { valid, warnMsg } = assertTypes(pluginOptions, [Object, Array, Boolean])
   if (!valid) {
     if (pluginOptions !== undefined) {
       logger.warn(
