@@ -25,6 +25,7 @@
   "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/plugin-public-files#readme",
   "dependencies": {
     "@vuepress/shared-utils": "^1.0.0-alpha.44",
-    "copy-webpack-plugin": "^5.0.2"
+    "copy-webpack-plugin": "^5.0.2",
+    "vuepress-mergeable": "^1.0.1"
   }
 }
