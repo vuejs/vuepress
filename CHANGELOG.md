@@ -1,3 +1,38 @@
+<a name="1.0.0-alpha.45"></a>
+# [1.0.0-alpha.45](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.44...v1.0.0-alpha.45) (2019-03-31)
+
+
+### Bug Fixes
+
+* **$core:** do not register component in render function ([#1449](https://github.com/vuejs/vuepress/issues/1449)) ([ef82c47](https://github.com/vuejs/vuepress/commit/ef82c47))
+* **$core:** do not use stylus in outbound link ([d34e038](https://github.com/vuejs/vuepress/commit/d34e038))
+* **$core:** should default host be 0.0.0.0 ([699492a](https://github.com/vuejs/vuepress/commit/699492a))
+* **$markdown:** treat styl as stylus language ([#1433](https://github.com/vuejs/vuepress/issues/1433)) ([f44e2db](https://github.com/vuejs/vuepress/commit/f44e2db))
+* **$markdown-loader:** always use `/` instead of `\` in `relPath` ([#1484](https://github.com/vuejs/vuepress/issues/1484)) ([944ebe4](https://github.com/vuejs/vuepress/commit/944ebe4))
+* **$plugin-active-header-links:** side navigation edge case bug ([#1477](https://github.com/vuejs/vuepress/issues/1477)) ([8a11d14](https://github.com/vuejs/vuepress/commit/8a11d14))
+* **$plugin-blog:** inconsistent paths of tag and category pages with index page ([#1420](https://github.com/vuejs/vuepress/issues/1420)) ([5c0e62f](https://github.com/vuejs/vuepress/commit/5c0e62f))
+* **$plugin-pwa:** fix a typo in `opacity` ([#1444](https://github.com/vuejs/vuepress/issues/1444)) ([c174f0d](https://github.com/vuejs/vuepress/commit/c174f0d))
+* **$theme-default:** fix wrong editLink (close: [#1115](https://github.com/vuejs/vuepress/issues/1115), [#1125](https://github.com/vuejs/vuepress/issues/1125)) ([#1419](https://github.com/vuejs/vuepress/issues/1419)) ([3b14375](https://github.com/vuejs/vuepress/commit/3b14375))
+* **$theme-default:** nav url change bug (close: [#865](https://github.com/vuejs/vuepress/issues/865)) ([#1475](https://github.com/vuejs/vuepress/issues/1475)) ([521dddd](https://github.com/vuejs/vuepress/commit/521dddd))
+
+
+### Features
+
+* **$core:** allow dynamic routeBase at runtime ([fc99d59](https://github.com/vuejs/vuepress/commit/fc99d59))
+* **$core:** decode page path for better readablility ([#1438](https://github.com/vuejs/vuepress/issues/1438)) ([93b2ca1](https://github.com/vuejs/vuepress/commit/93b2ca1))
+* **$core:** export version ([#1486](https://github.com/vuejs/vuepress/issues/1486)) ([d7b8daf](https://github.com/vuejs/vuepress/commit/d7b8daf))
+* **$core:** functional siteConfig.evergreen ([#1489](https://github.com/vuejs/vuepress/issues/1489)) ([19e0569](https://github.com/vuejs/vuepress/commit/19e0569))
+* **$core:** support array as plugin options ([#1493](https://github.com/vuejs/vuepress/issues/1493)) ([9e07b1e](https://github.com/vuejs/vuepress/commit/9e07b1e))
+* **$markdown:** markdown plugin (close: [#585](https://github.com/vuejs/vuepress/issues/585)) ([#1422](https://github.com/vuejs/vuepress/issues/1422)) ([9734a58](https://github.com/vuejs/vuepress/commit/9734a58))
+* **$plugin-register-components:** custom name registration (close: [#656](https://github.com/vuejs/vuepress/issues/656)) ([#1418](https://github.com/vuejs/vuepress/issues/1418)) ([9c6a00b](https://github.com/vuejs/vuepress/commit/9c6a00b))
+
+
+### Breaking Changes
+
+* Depreated [@vuepress/plugin-container](https://www.npmjs.com/package/@vuepress/plugin-container) and moved it to [vuepress-plugin-container](https://www.npmjs.com/package/vuepress-plugin-container).
+* Depreated [@vuepress/plugin-clean-urls](https://www.npmjs.com/package/@vuepress/plugin-clean-urls) and moved it to [vuepress-plugin-clean-urls](https://www.npmjs.com/package/vuepress-plugin-clean-urls).
+
+
 <a name="1.0.0-alpha.44"></a>
 # [1.0.0-alpha.44](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.43...v1.0.0-alpha.44) (2019-03-10)
 
