@@ -266,7 +266,7 @@ module.exports = class DevProcess extends EventEmitter {
  */
 
 function resolveHost (host) {
-  const defaultHost = 'localhost'
+  const defaultHost = '0.0.0.0'
   host = host || defaultHost
   const displayHost = host === defaultHost
     ? 'localhost'
