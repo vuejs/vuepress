@@ -127,7 +127,10 @@ module.exports = function createBaseConfig (context, isServer) {
       .loader('pug-plain-loader')
       .end()
 
-  if (!siteConfig.evergreen) {
+  const evergreen = typeof siteConfig.evergreen === 'function'
+    ? siteConfig.evergreen()
+    : siteConfig.evergreen
+  if (!evergreen) {
     const libDir = path.join(__dirname, '..')
     config.module
       .rule('js')

@@ -26,13 +26,6 @@ const createTemp = require('./createTemp')
  */
 
 module.exports = class App {
-  static getInstance (...args) {
-    if (!App._instance) {
-      App._instance = new App(...args)
-    }
-    return App._instance
-  }
-
   /**
    * Instantiate the app context with a new API
    *
@@ -156,12 +149,12 @@ module.exports = class App {
       .use(require('./internal-plugins/transformModule'))
       .use(require('./internal-plugins/dataBlock'))
       .use(require('./internal-plugins/frontmatterBlock'))
-      .use('@vuepress/container', {
+      .use('container', {
         type: 'slot',
         before: info => `<template slot="${info}">`,
         after: '</template>'
       })
-      .use('@vuepress/container', {
+      .use('container', {
         type: 'v-pre',
         before: '<div v-pre>',
         after: '</div>'

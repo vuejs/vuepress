@@ -133,7 +133,7 @@ module.exports = class Build extends EventEmitter {
    */
 
   async renderPage (page) {
-    const pagePath = page.path
+    const pagePath = decodeURIComponent(page.path)
     readline.clearLine(process.stdout, 0)
     readline.cursorTo(process.stdout, 0)
     process.stdout.write(`Rendering page: ${pagePath}`)
@@ -143,7 +143,7 @@ module.exports = class Build extends EventEmitter {
     const pageMeta = renderPageMeta(meta)
 
     const context = {
-      url: pagePath,
+      url: page.path,
       userHeadTags: this.userHeadTags,
       pageMeta,
       title: 'VuePress',
@@ -158,7 +158,7 @@ module.exports = class Build extends EventEmitter {
       console.error(logger.error(chalk.red(`Error rendering ${pagePath}:`), false))
       throw e
     }
-    const filename = decodeURIComponent(pagePath.replace(/\/$/, '/index.html').replace(/^\//, ''))
+    const filename = pagePath.replace(/\/$/, '/index.html').replace(/^\//, '')
     const filePath = path.resolve(this.outDir, filename)
     await fs.ensureDir(path.dirname(filePath))
     await fs.writeFile(filePath, html)

@@ -21,7 +21,7 @@ The `base` is automatically prepended to all the URLs that start with `/` in oth
 **Also see:**
 
 - [Base URL](../guide/assets.md#base-url)
-- [Deploy Guide > Github Pages](../guide/deploy.md#github-pages)
+- [Deploy Guide > GitHub Pages](../guide/deploy.md#github-pages)
 
 ### title
 
@@ -71,7 +71,7 @@ Specify the port to use for the dev server.
 - Type: `number`
 - Default: `@vuepress/core/.temp`
 
-Specify the temporary directory for client. 
+Specify the temporary directory for client.
 
 ### dest
 
@@ -79,17 +79,6 @@ Specify the temporary directory for client.
 - Default: `.vuepress/dist`
 
 Specify the output directory for `vuepress build`. If a relative path is specified, it will be resolved based on `process.cwd()`.
-
-### ga
-
-- Type: `string`
-- Default: `undefined`
-
-Provide the Google Analytics ID to enable integration.
-
-::: tip
-Please be aware of [GDPR (2018 reform of EU data protection rules)](https://ec.europa.eu/commission/priorities/justice-and-fundamental-rights/data-protection/2018-reform-eu-data-protection-rules_en) and consider setting Google Analytics to [anonymize IPs](https://support.google.com/analytics/answer/2763052?hl=en) where appropriate and/or needed.
-:::
 
 ### locales
 
@@ -367,7 +356,7 @@ module.exports = {
 
 ### evergreen
 
-- Type: `boolean`
+- Type: `boolean | Function`
 - Default: `false`
 
 Set to `true` if you are only targeting evergreen browsers. This will disable ES5 transpilation and polyfills for IE, and result in faster builds and smaller files.

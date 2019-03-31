@@ -65,7 +65,6 @@ module.exports = ctx => ({
     }
   },
   plugins: [
-    ['@vuepress/i18n-ui', !ctx.isProd],
     ['@vuepress/back-to-top', true],
     ['@vuepress/pwa', {
       serviceWorker: true,
@@ -75,12 +74,12 @@ module.exports = ctx => ({
     ['@vuepress/google-analytics', {
       ga: 'UA-128189152-1'
     }],
-    ['@vuepress/container', {
+    ['container', {
       type: 'vue',
       before: '<pre class="vue-container"><code>',
       after: '</code></pre>',
     }],
-    ['@vuepress/container', {
+    ['container', {
       type: 'upgrade',
       before: info => `<UpgradePath title="${info}">`,
       after: '</UpgradePath>',

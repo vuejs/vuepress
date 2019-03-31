@@ -12,14 +12,14 @@ sidebar: auto
 - 类型: `string`
 - 默认值: `/`
 
-部署站点的基础路径，如果你想让你的网站部署到一个子路径下，你将需要设置它。如 Github pages，如果你想将你的网站部署到 `https://foo.github.io/bar/`，那么 `base` 应该被设置成 `"/bar/"`，它的值应当总是以斜杠开始，并以斜杠结束。
+部署站点的基础路径，如果你想让你的网站部署到一个子路径下，你将需要设置它。如 GitHub pages，如果你想将你的网站部署到 `https://foo.github.io/bar/`，那么 `base` 应该被设置成 `"/bar/"`，它的值应当总是以斜杠开始，并以斜杠结束。
 
 `base` 将会自动地作为前缀插入到所有以 `/` 开始的其他选项的链接中，所以你只需要指定一次。
 
 **参考:**
 
 - [Base URL](../guide/assets.md#基础路径)
-- [部署指南 > Github Pages](../guide/deploy.md#github-pages)
+- [部署指南 > GitHub Pages](../guide/deploy.md#github-pages)
 
 ### title
 
@@ -78,17 +78,6 @@ module.exports = {
 
 指定 `vuepress build` 的输出目录。如果传入的是相对路径，则会基于 `process.cwd()` 进行解析。
 
-### ga
-
-- 类型: `string`
-- 默认值: `undefined`
-
-提供一个 Google Analytics ID 来使 GA 生效。
-
-::: tip 提示
-请留意 [GDPR (2018年欧盟数据保护规则改革)](https://ec.europa.eu/commission/priorities/justice-and-fundamental-rights/data-protection/2018-reform-eu-data-protection-rules_en), 在合适或者需要的情况下，考虑将 Google Analytics 设置为[匿名化的 IP](https://support.google.com/analytics/answer/2763052?hl=zh-Hans)。
-:::
-
 ### locales
 
 - 类型: `{ [path: string]: Object }`
@@ -142,7 +131,7 @@ $codeBgColor = #282c34
 
 ### index.styl
 
-VuePress 提供了一种添加额外样式的简便方法。你可以创建一个 `.vuepress/styles/index.styl` 文件。这是一个 [Stylus](http://stylus-lang.com/) 文件，但你也可以使用正常的 CSS 语法。 
+VuePress 提供了一种添加额外样式的简便方法。你可以创建一个 `.vuepress/styles/index.styl` 文件。这是一个 [Stylus](http://stylus-lang.com/) 文件，但你也可以使用正常的 CSS 语法。
 
 ```stylus
 .content {
@@ -359,7 +348,7 @@ module.exports = {
 
 ### evergreen
 
-- 类型: `boolean`
+- 类型: `boolean | Function`
 - 默认值: `false`
 
 如果你的对象只有那些 “常青树” 浏览器，你可以将其设置成 `true`，这将会禁止 ESNext 到 ES5 的转译以及对 IE 的 polyfills，同时会带来更快的构建速度和更小的文件体积。
