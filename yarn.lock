@@ -9580,6 +9580,13 @@ vuepress-plugin-flowchart@^1.4.2:
   dependencies:
     flowchart.js "^1.11.3"
 
+vuepress-plugin-nprogress@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/vuepress-plugin-nprogress/-/vuepress-plugin-nprogress-1.0.0.tgz#8ce561537cca470aaf1738b3e35e699d21149f7d"
+  integrity sha512-x2dwgDwfcgPwSr2Ah5IXOxZik16KJpdKrt7SsAK+sn1sR1B6Tyh1ziFyQVE43lb6GEERbzRTjAYoOrmuRPCbKw==
+  dependencies:
+    nprogress "^0.2.0"
+
 w3c-hr-time@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/w3c-hr-time/-/w3c-hr-time-1.0.1.tgz#82ac2bff63d950ea9e3189a58a65625fedf19045"
