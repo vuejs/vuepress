@@ -24,3 +24,10 @@ exports[`snippet import snippet with highlight single line 1`] = `
   <br>
 </div>export default function () { // .. }
 `;
+
+exports[`snippet import snipets when the file has a space in the file path 1`] = `
+<pre><code class="language-js">export default function () {
+  // ..
+}
+</code></pre>
+`;
