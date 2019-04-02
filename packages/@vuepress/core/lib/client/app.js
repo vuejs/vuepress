@@ -61,7 +61,7 @@ Vue.prototype.$withBase = function (path) {
 }
 
 export function createApp (isServer) {
-  const routerBase = typeof window !== 'undefined'
+  const routerBase = typeof window !== 'undefined' && window.__VUEPRESS_ROUTER_BASE__
     ? window.__VUEPRESS_ROUTER_BASE__
     : (siteData.routerBase || siteData.base)
 
