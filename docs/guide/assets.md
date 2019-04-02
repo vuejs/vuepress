@@ -35,6 +35,15 @@ module.exports = {
 
 Sometimes you may need to provide static assets that are not directly referenced in any of your markdown or theme components - for example, favicons and PWA icons. In such cases you can put them inside `.vuepress/public` and they will be copied to the root of the generated directory.
 
+When calling assets from the `.vuepress/public` directory into non-markdown files, use absolute paths:
+
+```css
+@font-face {
+  font-family: 'Roboto';
+  src: url('/Roboto-Regular.woff2) format('woff2');
+}
+```
+
 ## Base URL
 
 If your site is deployed to a non-root URL, you will need to set the `base` option in `.vuepress/config.js`. For example, if you plan to deploy your site to `https://foo.github.io/bar/`, then `base` should be set to `"/bar/"` (it should always start and end with a slash).
