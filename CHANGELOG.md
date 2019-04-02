@@ -1,3 +1,75 @@
+### Bug Fixes
+
+* **$core:** regression of introducing dynamic `routerBase` (close: [#1498](https://github.com/vuejs/vuepress/issues/1498)) ([5e12b49](https://github.com/vuejs/vuepress/commit/5e12b49))
+
+
+
+<a name="1.0.0-alpha.45"></a>
+# [1.0.0-alpha.45](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.44...v1.0.0-alpha.45) (2019-03-31)
+
+
+### Bug Fixes
+
+* **$core:** do not register component in render function ([#1449](https://github.com/vuejs/vuepress/issues/1449)) ([ef82c47](https://github.com/vuejs/vuepress/commit/ef82c47))
+* **$core:** do not use stylus in outbound link ([d34e038](https://github.com/vuejs/vuepress/commit/d34e038))
+* **$core:** should default host be 0.0.0.0 ([699492a](https://github.com/vuejs/vuepress/commit/699492a))
+* **$markdown:** treat styl as stylus language ([#1433](https://github.com/vuejs/vuepress/issues/1433)) ([f44e2db](https://github.com/vuejs/vuepress/commit/f44e2db))
+* **$markdown-loader:** always use `/` instead of `\` in `relPath` ([#1484](https://github.com/vuejs/vuepress/issues/1484)) ([944ebe4](https://github.com/vuejs/vuepress/commit/944ebe4))
+* **$plugin-active-header-links:** side navigation edge case bug ([#1477](https://github.com/vuejs/vuepress/issues/1477)) ([8a11d14](https://github.com/vuejs/vuepress/commit/8a11d14))
+* **$plugin-blog:** inconsistent paths of tag and category pages with index page ([#1420](https://github.com/vuejs/vuepress/issues/1420)) ([5c0e62f](https://github.com/vuejs/vuepress/commit/5c0e62f))
+* **$plugin-pwa:** fix a typo in `opacity` ([#1444](https://github.com/vuejs/vuepress/issues/1444)) ([c174f0d](https://github.com/vuejs/vuepress/commit/c174f0d))
+* **$theme-default:** fix wrong editLink (close: [#1115](https://github.com/vuejs/vuepress/issues/1115), [#1125](https://github.com/vuejs/vuepress/issues/1125)) ([#1419](https://github.com/vuejs/vuepress/issues/1419)) ([3b14375](https://github.com/vuejs/vuepress/commit/3b14375))
+* **$theme-default:** nav url change bug (close: [#865](https://github.com/vuejs/vuepress/issues/865)) ([#1475](https://github.com/vuejs/vuepress/issues/1475)) ([521dddd](https://github.com/vuejs/vuepress/commit/521dddd))
+
+
+### Features
+
+* **$core:** allow dynamic routeBase at runtime ([fc99d59](https://github.com/vuejs/vuepress/commit/fc99d59))
+* **$core:** decode page path for better readablility ([#1438](https://github.com/vuejs/vuepress/issues/1438)) ([93b2ca1](https://github.com/vuejs/vuepress/commit/93b2ca1))
+* **$core:** export version ([#1486](https://github.com/vuejs/vuepress/issues/1486)) ([d7b8daf](https://github.com/vuejs/vuepress/commit/d7b8daf))
+* **$core:** functional siteConfig.evergreen ([#1489](https://github.com/vuejs/vuepress/issues/1489)) ([19e0569](https://github.com/vuejs/vuepress/commit/19e0569))
+* **$core:** support array as plugin options ([#1493](https://github.com/vuejs/vuepress/issues/1493)) ([9e07b1e](https://github.com/vuejs/vuepress/commit/9e07b1e))
+* **$markdown:** markdown plugin (close: [#585](https://github.com/vuejs/vuepress/issues/585)) ([#1422](https://github.com/vuejs/vuepress/issues/1422)) ([9734a58](https://github.com/vuejs/vuepress/commit/9734a58))
+* **$plugin-register-components:** custom name registration (close: [#656](https://github.com/vuejs/vuepress/issues/656)) ([#1418](https://github.com/vuejs/vuepress/issues/1418)) ([9c6a00b](https://github.com/vuejs/vuepress/commit/9c6a00b))
+
+
+### Breaking Changes
+
+* Depreated [@vuepress/plugin-container](https://www.npmjs.com/package/@vuepress/plugin-container) and moved it to [vuepress-plugin-container](https://www.npmjs.com/package/vuepress-plugin-container).
+* Depreated [@vuepress/plugin-clean-urls](https://www.npmjs.com/package/@vuepress/plugin-clean-urls) and moved it to [vuepress-plugin-clean-urls](https://www.npmjs.com/package/vuepress-plugin-clean-urls).
+
+
+<a name="1.0.0-alpha.44"></a>
+# [1.0.0-alpha.44](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.43...v1.0.0-alpha.44) (2019-03-10)
+
+
+### Features
+
+* **$core:** optional `callback` when socket connection is ready under dev. ([547e4f9](https://github.com/vuejs/vuepress/commit/547e4f9))
+* **$core:** return current app instance in node api ([1c2a6b2](https://github.com/vuejs/vuepress/commit/1c2a6b2))
+
+
+
+
+<a name="1.0.0-alpha.43"></a>
+# [1.0.0-alpha.43](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.42...v1.0.0-alpha.43) (2019-03-09)
+
+
+### Bug Fixes
+
+* **$core:** cannot render another page with pageKey (close: [#1173](https://github.com/vuejs/vuepress/issues/1173)) ([9d01514](https://github.com/vuejs/vuepress/commit/9d01514))
+* **$core:** global components cannot be used as layouts (close: [#1321](https://github.com/vuejs/vuepress/issues/1321)) ([0306574](https://github.com/vuejs/vuepress/commit/0306574))
+* **$core:** PascalCase layouts cannot be used with camelCase nor hyphen-delimited (close: [#1391](https://github.com/vuejs/vuepress/issues/1391)) ([3e91eba](https://github.com/vuejs/vuepress/commit/3e91eba))
+* **$plugin-blog:** read `layoutComponents` from themeAPI ([#1396](https://github.com/vuejs/vuepress/issues/1396)) ([5bf4d24](https://github.com/vuejs/vuepress/commit/5bf4d24))
+
+
+### Features
+
+* **$core:** refine node api ([#1395](https://github.com/vuejs/vuepress/issues/1395)) ([e5d8ed4](https://github.com/vuejs/vuepress/commit/e5d8ed4))
+* **$cli:** `--no-clear-screen` flag (close: [#1421](https://github.com/vuejs/vuepress/issues/1421)) ([e5f51de](https://github.com/vuejs/vuepress/commit/e5f51de))
+
+
+
 <a name="1.0.0-alpha.42"></a>
 # [1.0.0-alpha.42](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.41...v1.0.0-alpha.42) (2019-03-03)
 

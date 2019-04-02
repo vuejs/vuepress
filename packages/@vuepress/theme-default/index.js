@@ -21,8 +21,23 @@ module.exports = (options, ctx) => ({
     '@vuepress/active-header-links',
     '@vuepress/search',
     '@vuepress/plugin-nprogress',
-    ['@vuepress/container', { type: 'tip' }],
-    ['@vuepress/container', { type: 'warning' }],
-    ['@vuepress/container', { type: 'danger' }]
+    ['container', {
+      type: 'tip',
+      defaultTitle: {
+        '/zh/': '提示'
+      }
+    }],
+    ['container', {
+      type: 'warning',
+      defaultTitle: {
+        '/zh/': '注意'
+      }
+    }],
+    ['container', {
+      type: 'danger',
+      defaultTitle: {
+        '/zh/': '警告'
+      }
+    }]
   ]
 })

@@ -16,9 +16,12 @@ vuepress <command> targetDir [options]
 ### -t, --temp `<temp>`
 查看 [temp](../config/README.md#temp)。
 
-### -c, --cache [cache]
-### -no--cache [cache]
+### -c, --cache `[cache]`
+### -no--cache
 查看 [cache](../config/README.md#cache)。
+
+### --dest `<dest>`
+查看 [dest](../config/README.md#dest)。
 
 ### --debug
 以调试模式启动开发服务器。
@@ -35,6 +38,9 @@ vuepress <command> targetDir [options]
 
 ### --open
 当服务端准备就绪时自动打开浏览器。
+
+### --no-clear-screen
+当 dev server 就绪时不清除屏幕。
 
 ## eject
 

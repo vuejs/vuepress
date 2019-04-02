@@ -18,7 +18,11 @@ const snippetPlugin = require('./lib/snippet')
 const tocPlugin = require('./lib/tableOfContents')
 const emojiPlugin = require('markdown-it-emoji')
 const anchorPlugin = require('markdown-it-anchor')
-const { slugify: _slugify, logger, chalk, hash } = require('@vuepress/shared-utils')
+const {
+  slugify: _slugify,
+  logger, chalk, hash, normalizeConfig,
+  moduleResolver: { getMarkdownItResolver }
+} = require('@vuepress/shared-utils')
 
 /**
  * Create markdown by config.
@@ -29,10 +33,13 @@ module.exports = (markdown = {}) => {
     externalLinks,
     anchor,
     toc,
+    plugins,
     lineNumbers,
     beforeInstantiate,
     afterInstantiate
   } = markdown
+
+  const resolver = getMarkdownItResolver()
 
   // allow user config slugify
   const slugify = markdown.slugify || _slugify
@@ -100,13 +107,23 @@ module.exports = (markdown = {}) => {
 
   const md = config.toMd(require('markdown-it'), markdown)
 
+  const pluginsConfig = normalizeConfig(plugins || [])
+  pluginsConfig.forEach(([pluginRaw, pluginOptions]) => {
+    const plugin = resolver.resolve(pluginRaw)
+    if (plugin.entry) {
+      md.use(plugin.entry, pluginOptions)
+    } else {
+      // TODO: error handling
+    }
+  })
+
   afterInstantiate && afterInstantiate(md)
 
   // override parse to allow cache
   const parse = md.parse
   const cache = new LRUCache({ max: 1000 })
   md.parse = (src, env) => {
-    const key = hash(src + env.relPath)
+    const key = hash(src + env.relativePath)
     const cached = cache.get(key)
     if (cached) {
       return cached

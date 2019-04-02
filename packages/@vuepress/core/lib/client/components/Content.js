@@ -1,4 +1,4 @@
-import { isPageExists } from '../util'
+import { getPageAsyncComponent } from '../util'
 
 export default {
   props: {
@@ -10,8 +10,9 @@ export default {
   },
   render (h) {
     const pageKey = this.pageKey || this.$parent.$page.key
-    if (isPageExists(pageKey)) {
-      return h(pageKey)
+    const pageComponent = getPageAsyncComponent(pageKey)
+    if (pageComponent) {
+      return h(pageComponent)
     }
     return h('')
   }

@@ -4,7 +4,7 @@ metaTitle: Configuration | Theme
 
 # Theme Configuration
 
-As with plugins, the theme configuration file `themeEntry` should export a `plain JavaScript object`(`#1`). If the plugin needs to take options, it can be a function that exports a plain object(`#2`). The function will be called with the `siteConfig.themeConfig` as the first argument, along with [ctx](./context-api.md) which provides some compile-time metadata.
+As with plugins, the theme configuration file `themeEntry` should export a `plain JavaScript object`(`#1`). If the plugin needs to take options, it can be a function that exports a plain object(`#2`). The function will be called with the `siteConfig.themeConfig` as the first argument, along with [ctx](../plugin/context-api.md) which provides some compile-time metadata.
 
 ``` js
 // #1
@@ -111,7 +111,8 @@ export default {
   computed: {
     layout () {
       if (this.$page.path) {
-        if (this.$vuepress.isLayoutExists(this.$frontmatter.layout)) {
+        if (this.$frontmatter.layout) {
+          // You can also check whether layout exists first as the default global layout does.
           return this.$frontmatter.layout
         }
         return 'Layout'

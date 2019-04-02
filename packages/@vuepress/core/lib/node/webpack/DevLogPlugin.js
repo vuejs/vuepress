@@ -17,10 +17,13 @@ module.exports = class DevLogPlugin {
 
   apply (compiler) {
     let isFirst = true
-    compiler.hooks.done.tap('vuepress-log', stats => {
-      clearScreen()
+    const { displayHost, port, publicPath, clearScreen: shouldClearScreen = true } = this.options
 
-      const { displayHost, port, publicPath } = this.options
+    compiler.hooks.done.tap('vuepress-log', stats => {
+      if (shouldClearScreen) {
+        clearScreen()
+      }
+
       const time = new Date().toTimeString().match(/^[\d:]+/)[0]
       const displayUrl = `http://${displayHost}:${port}${publicPath}`
 
@@ -40,7 +43,9 @@ module.exports = class DevLogPlugin {
         logger.developer(`It took a total of ${chalk.cyan(`${duration}ms`)} to run the ${chalk.cyan('vuepress dev')} for the first time.`)
       }
     })
-    compiler.hooks.invalid.tap('vuepress-log', clearScreen)
+    if (shouldClearScreen) {
+      compiler.hooks.invalid.tap('vuepress-log', clearScreen)
+    }
   }
 }
 

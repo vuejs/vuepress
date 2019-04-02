@@ -16,7 +16,7 @@ VuePress 1.0 has been rewritten extensively, and the most important one is the i
 
 ### Decoupling
 
-With plugins, we can implement many of the core functions with plugins, and you can see many built-in plugins [here](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/core/lib/internal-plugins) that cover many of the core functions of VuePress, which used to blend in all parts of the code base, but now they're clear at a glance.
+With plugins, we can implement many of the core functions with plugins, and you can see many built-in plugins [here](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/core/lib/node/internal-plugins) that cover many of the core functions of VuePress, which used to blend in all parts of the code base, but now they're clear at a glance.
 
 ### Configuration management
 
@@ -166,9 +166,9 @@ Since all plugins with the same name can be applied ONLY once by default, users 
 // theme/index.js
 module.exports = {
   plugins: [
-    '@vuepress/i18n-ui',
-    { route: '/i18n-page/' }
-  ] 
+    'vuepress-plugin-xxx',
+    { name: 'foo' }
+  ]
 }
 ```
 
@@ -176,13 +176,13 @@ module.exports = {
 // .vuepress/config.js
 module.exports = {
   plugins: [
-    '@vuepress/i18n-ui',
-    { route: '/i18n/' }
+    'vuepress-plugin-xxx',
+    { name: 'bar' }
   ] 
 }
 ```
 
-Then the final route of i18n UI is `/i18n/`.
+Then the final value of `name` option will be `bar`.
 
 
 ## Others

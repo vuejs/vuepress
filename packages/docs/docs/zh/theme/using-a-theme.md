@@ -46,6 +46,6 @@ module.exports = {
 }
 ```
 
-::: warning 注意
+::: warning
 以 `@vuepress/theme-` 开头的主题是官方维护的主题。
 :::

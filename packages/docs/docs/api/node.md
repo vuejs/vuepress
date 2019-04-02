@@ -1,57 +1,99 @@
-# Node.js API
+# Node.js API <Badge text="1.0.0-alpha.44+"/>
+
+## Usage
 
 ```js
-const vuepress = require('vuepress')
+const { createApp, dev, build, eject } = require('vuepress')
 ```
 
-## Global Methods
+## Methods
 
-### vuepress.dev
+### createApp(\[options]): Promise\<App>
 
-Start a development server.
+Create a VuePress application.
 
-### vuepress.build
+#### App.prototype.process: () => Promise\<void> | never
 
-Build dir as a static site.
+A asynchronous method used to prepare the context of the current app. which contains loading pages and plugins, apply plugins, etc.
 
-### vuepress.eject
+#### App.prototype.dev: () => Promise\<App> | never
 
-Copy the default theme into `.vuepress/theme` for customization.
+Launch a dev process with current app context.
 
-### vuepress.createApp
+#### App.prototype.build: () => Promise\<App> | never
 
-Create a VuePress App for for customization. For example,
+Launch a build process with current app context.
+
+
+### dev(\[options]): Promise\<App>
+
+Start a development server, actually it's implemented by `createApp`:
 
 ```js
-const app = vuepress.createApp(/* options */)
-app.process().then(() => {
-  console.log('ready!')
-  app.dev()
-})
+async function dev (options) {
+  const app = createApp(options)
+  await app.process()
+  return app.dev()
+}
 ```
 
-## App Options
+### build(\[options]): Promise\<App>
 
-### options.sourceDir
+Build your source files as a static site, actually it's implemented by `createApp`:
 
-Specify the source directory for VuePress.
+```js
+async function build (options) {
+  const app = createApp(options)
+  await app.process()
+  return app.build()
+}
+```
 
-### options.theme
+### eject(targetDir): Promise\<void>
+
+Copy the default theme into `{targetDir}/.vuepress/theme` for customization.
+
+
+## Options
+
+### sourceDir
+
+- Type: `string`
+- Required: `true`
+
+Specify the source directory of your VuePress site.
+
+### theme
+
+- Type: `string`
+- Required: `false`
 
 See [theme](../config/README.md#theme).
 
-### options.plugins
+### plugins
+
+- Type: `array`
+- Required: `false`
 
 See [plugins](../config/README.md#plugins).
 
-### options.temp
+### temp
+
+- Type: `string`
+- Required: `false`
 
 See [temp](../config/README.md#temp).
 
-### options.dest
+### dest
+
+- Type: `string`
+- Required: `false`
 
 See [dest](../config/README.md#dest).
 
-### options.siteConfig
+### siteConfig
 
-See [siteConfig](../config/README.md).
+- Type: `object`
+- Required: `{}`
+
+It's very useful when you're writing tests and don't want to depend on actual config file, for all options please head [siteConfig](../config/README.md).

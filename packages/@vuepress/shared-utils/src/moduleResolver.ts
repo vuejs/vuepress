@@ -66,8 +66,12 @@ class ModuleResolver {
     this.allowedTypes = allowedTypes
     this.load = load
     this.cwd = cwd || process.cwd()
-    this.nonScopePrefix = `${org}-${type}-`
-    this.scopePrefix = `@${org}/${type}-`
+    if (org) {
+      this.nonScopePrefix = `${org}-${type}-`
+      this.scopePrefix = `@${org}/${type}-`
+    } else {
+      this.nonScopePrefix = `${type}-`
+    }
     this.typePrefixLength = type.length + 1
     /* - */
     this.prefixSlicePosition = this.typePrefixLength + org.length + 1
@@ -188,7 +192,7 @@ class ModuleResolver {
       const pkg = resolveScopePackage(req)
       if (pkg) {
         // speicial handling for default org.
-        if (pkg.org === this.org) {
+        if (this.org && pkg.org === this.org) {
           shortcut = pkg.name.startsWith(`${this.type}-`)
             ? pkg.name.slice(this.typePrefixLength)
             : pkg.name
@@ -254,6 +258,10 @@ export function resolveScopePackage (name: string) {
     name: ''
   }
 }
+
+export const getMarkdownItResolver = (cwd: string) => new ModuleResolver(
+  'markdown-it', '', [String, Function], true /* load module */, cwd
+)
 
 export const getPluginResolver = (cwd: string): ModuleResolver => new ModuleResolver(
   'plugin', 'vuepress', [String, Function, Object], true /* load module */, cwd

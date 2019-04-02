@@ -56,7 +56,7 @@ cd -
 You can also run the above script in your CI setup to enable automatic deployment on each push.
 :::
 
-### Github Pages and Travis CI
+### GitHub Pages and Travis CI
 
 1. Set correct `base` in `docs/.vuepress/config.js`.
 
@@ -66,7 +66,7 @@ You can also run the above script in your CI setup to enable automatic deploymen
 
 2. Create a file named `.travis.yml` in the root of your project.
 
-3. Use Github Pages deploy provider template and follow the [travis documentation](https://docs.travis-ci.com/user/deployment/pages/).
+3. Use GitHub Pages deploy provider template and follow the [travis documentation](https://docs.travis-ci.com/user/deployment/pages/).
 
 ``` yaml
 language: node_js
@@ -168,7 +168,7 @@ You can also deploy to a [custom domain](http://surge.sh/help/adding-a-custom-do
 2. Create a Heroku account [here](https://signup.heroku.com).
 
 3. Run `heroku login` and fill in your Heroku credentials:
-  
+
  ``` bash
  heroku login
  ```

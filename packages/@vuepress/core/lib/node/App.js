@@ -26,13 +26,6 @@ const createTemp = require('./createTemp')
  */
 
 module.exports = class App {
-  static getInstance (...args) {
-    if (!App._instance) {
-      App._instance = new App(...args)
-    }
-    return App._instance
-  }
-
   /**
    * Instantiate the app context with a new API
    *
@@ -91,7 +84,8 @@ module.exports = class App {
   }
 
   /**
-   * Load pages, load plugins, apply plugins / plugin options, etc.
+   * A asynchronous method used to prepare the context of the current app. which
+   * contains loading pages and plugins, apply plugins, etc.
    *
    * @returns {Promise<void>}
    * @api private
@@ -155,12 +149,12 @@ module.exports = class App {
       .use(require('./internal-plugins/transformModule'))
       .use(require('./internal-plugins/dataBlock'))
       .use(require('./internal-plugins/frontmatterBlock'))
-      .use('@vuepress/container', {
+      .use('container', {
         type: 'slot',
         before: info => `<template slot="${info}">`,
         after: '</template>'
       })
-      .use('@vuepress/container', {
+      .use('container', {
         type: 'v-pre',
         before: '<div v-pre>',
         after: '</div>'
@@ -445,9 +439,9 @@ module.exports = class App {
   }
 
   /**
-   * Start a dev process with correct app context
+   * Launch a dev process with current app context.
    *
-   * @returns {Promise<void>}
+   * @returns {Promise<App>}
    * @api public
    */
 
@@ -455,20 +449,29 @@ module.exports = class App {
     this.isProd = false
     this.devProcess = new DevProcess(this)
     await this.devProcess.process()
-
-    this.devProcess
-      .on('fileChanged', ({ type, target }) => {
-        console.log(`Reload due to ${chalk.red(type)} ${chalk.cyan(path.relative(this.sourceDir, target))}`)
-        this.process()
-      })
-      .createServer()
-      .listen()
+    const error = await new Promise(resolve => {
+      try {
+        this.devProcess
+            .on('fileChanged', ({ type, target }) => {
+              console.log(`Reload due to ${chalk.red(type)} ${chalk.cyan(path.relative(this.sourceDir, target))}`)
+              this.process()
+            })
+            .createServer()
+            .listen(resolve)
+      } catch (err) {
+        resolve(err)
+      }
+    })
+    if (error) {
+      throw error
+    }
+    return this
   }
 
   /**
-   * Start a build process with correct app context
+   * Launch a build process with current app context
    *
-   * @returns {Promise<void>}
+   * @returns {Promise<App>}
    * @api public
    */
 
@@ -477,6 +480,7 @@ module.exports = class App {
     this.buildProcess = new BuildProcess(this)
     await this.buildProcess.process()
     await this.buildProcess.render()
+    return this
   }
 }
 

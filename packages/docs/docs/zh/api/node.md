@@ -1,57 +1,100 @@
-# Node.js API
+# Node.js API <Badge text="1.0.0-alpha.44+"/>
+
+## 使用
 
 ```js
-const vuepress = require('vuepress')
+const { createApp, dev, build, eject } = require('vuepress')
 ```
 
-## 全局方法
+## 方法
 
-### vuepress.dev
+### createApp(\[options]): Promise\<App>
 
-启动一个开发服务器。
+创建一个 VuePress 应用实例。
 
-### vuepress.build
+#### App.prototype.process: () => Promise\<void> | never
 
-生成一个静态站点。
+用于准备当前站点上下文的异步方法。其中包含加载页面和插件、应用插件等。
 
-### vuepress.eject
+#### App.prototype.dev: () => Promise\<App> | never
 
-将默认主题复制到 `.vuepress/theme` 目录，以供自定义。
+使用当前应用程序上下文启动一个 devProcess.
 
-### vuepress.createApp
 
-创建一个 VuePress 应用。
+#### App.prototype.build: () => Promise\<App> | never
+
+使用当前应用程序上下文启动一个 buildProcess.
+
+### dev(\[options]): Promise\<App>
+
+启动一个 Dev Server，实际上它是由 `createapp` 实现的：
 
 ```js
-const app = vuepress.createApp(/* options */)
-app.process().then(() => {
-  console.log('ready!')
-  app.dev()
-})
+async function dev (options) {
+  const app = createApp(options)
+  await app.process()
+  return app.dev()
+}
 ```
 
-## App 选项
+### build(\[options]): Promise\<App>
 
-### options.sourceDir
+将源文件构建为静态站点, 实际上它是由 `createapp` 实现的：
 
-指定 VuePress 的根目录。
+```js
+async function build (options) {
+  const app = createApp(options)
+  await app.process()
+  return app.build()
+}
+```
 
-### options.theme
+### eject(targetDir): Promise\<void>
 
-查看 [theme](../config/README.md#theme)。
+将默认主题复制到 `{targetDir}/.vuepress/theme`中进行自定义。
 
-### options.plugins
 
-查看 [plugins](../config/README.md#plugins)。
+## Options
 
-### options.temp
+### sourceDir
 
-查看 [temp](../config/README.md#temp)。
+- 类型: `string`
+- 默认值: `true`
 
-### options.dest
+指定 VuePress 站点的源目录。
 
-查看 [dest](../config/README.md#dest)。
+### theme
 
-### options.siteConfig
+- 类型: `string`
+- 默认值: `false`
 
-查看 [siteConfig](../config/README.md)。
+参见 [theme](../config/README.md#theme)。
+
+### plugins
+
+- 类型: `array`
+- 默认值: `false`
+
+参见 [plugins](../config/README.md#plugins)。
+
+### temp
+
+- 类型: `string`
+- 默认值: `false`
+
+参见 [temp](../config/README.md#temp)。
+
+### dest
+
+- 类型: `string`
+- 默认值: `false`
+
+参见 [dest](../config/README.md#dest)。
+
+### siteConfig
+
+- 类型: `object`
+- 默认值: `{}`
+
+当你想编写测试且不想依赖于实际的配置文件时，它将非常有用。想要查看所有的配置选项，请移步 [siteConfig](../config/README.md)。
+
