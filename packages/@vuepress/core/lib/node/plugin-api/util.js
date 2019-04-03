@@ -49,8 +49,8 @@ exports.flattenPlugin = function (
         `[${chalk.gray(shortcut)}] `
         + `Invalid value for plugin: ${warnMsg}`
       )
+      config = {}
     }
-    config = {}
   }
 
   // respect name in local plugin config
