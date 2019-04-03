@@ -165,7 +165,7 @@ Danger zone, do not proceed
 
 **参考:**
 
-- [@vuepress/plugin-container](../plugin/official/plugin-container.md)
+- [vuepress-plugin-container](https://vuepress.github.io/plugins/container/)
 
 ## 代码块中的语法高亮
 
