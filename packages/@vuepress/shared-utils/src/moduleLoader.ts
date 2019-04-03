@@ -38,14 +38,17 @@ const resolve = semver.satisfies(process.version, '>=10.0.0')
   ? require.resolve
   : resolveFallback
 
+const MOCKED_REGEX = /^(@vuepress\/|(@[\w-]+\/)?vuepress-)(theme|plugin)-mock-[\w-]+/
+
 export function resolveModule (request: string, context: string): string {
   let resolvedPath
   // TODO
   // Temporary workaround for jest cannot resolve module path from '__mocks__'
   // when using 'require.resolve'.
-  if (env.isTest && request !== '@vuepress/theme-default') {
+  if (env.isTest && MOCKED_REGEX.test(request)) {
     resolvedPath = path.resolve(__dirname, '../../../../__mocks__', request)
     if (!fs.existsSync(`${resolvedPath}.js`) && !fs.existsSync(`${resolvedPath}/index.js`)) {
+      console.log(resolvedPath)
       throw new Error(`Cannot find module '${request}'`)
     }
     return resolvedPath

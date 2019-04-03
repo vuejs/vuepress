@@ -1,19 +1,19 @@
-jest.mock('vuepress-theme-parent')
-jest.mock('vuepress-theme-child')
+jest.mock('vuepress-theme-mocked-parent')
+jest.mock('vuepress-theme-mocked-child')
 
 import ThemeAPI from '../../theme-api'
 import { resolve } from 'path'
 
 const theme = {
-  path: resolve(process.cwd(), '__mocks__/vuepress-theme-child'),
-  name: 'vuepress-theme-child',
+  path: resolve(process.cwd(), '__mocks__/vuepress-theme-mocked-child'),
+  name: 'vuepress-theme-mocked-child',
   shortcut: 'child',
-  entryFile: require('vuepress-theme-child')
+  entryFile: require('vuepress-theme-mocked-child')
 }
 
 const parent = {
-  path: resolve(process.cwd(), '__mocks__/vuepress-theme-parent'),
-  name: 'vuepress-theme-parent',
+  path: resolve(process.cwd(), '__mocks__/vuepress-theme-mocked-parent'),
+  name: 'vuepress-theme-mocked-parent',
   shortcut: 'parent',
   entryFile: {}
 }
@@ -23,5 +23,4 @@ describe('ThemeAPI', () => {
     const themeAPI = new ThemeAPI(theme, parent)
     console.log(themeAPI.theme.entry)
   })
-  // loadTheme('vuepress-theme-child')
 })

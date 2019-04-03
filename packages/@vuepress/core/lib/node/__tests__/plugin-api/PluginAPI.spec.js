@@ -1,6 +1,6 @@
-jest.mock('vuepress-plugin-a')
-jest.mock('vuepress-plugin-b')
-jest.mock('@org/vuepress-plugin-a')
+jest.mock('vuepress-plugin-mocked-a')
+jest.mock('vuepress-plugin-mocked-b')
+jest.mock('@org/vuepress-plugin-mocked-a')
 
 import PluginAPI from '../../plugin-api/index'
 import { PLUGIN_OPTION_MAP } from '../../plugin-api/constants'
@@ -16,37 +16,37 @@ describe('Plugin', () => {
 
   test('useByPluginsConfig', () => {
     [
-      ['a'],
-      [['a']],
-      [['a', true]],
-      { a: true }
+      ['mocked-a'],
+      [['mocked-a']],
+      [['mocked-a', true]],
+      { 'mocked-a': true }
     ].forEach(pluginsConfig => {
       const api = new PluginAPI()
       api.useByPluginsConfig(pluginsConfig)
       expect(api.enabledPlugins).toHaveLength(1)
-      expect(api.enabledPlugins[0].name).toBe('vuepress-plugin-a')
+      expect(api.enabledPlugins[0].name).toBe('vuepress-plugin-mocked-a')
       expect(api.disabledPlugins).toHaveLength(0)
     })
   })
 
   test('useByPluginsConfig - disable plugin', () => {
     [
-      [['a', false]],
-      { a: false }
+      [['mocked-a', false]],
+      { 'mocked-a': false }
     ].forEach(pluginsConfig => {
       const api = new PluginAPI()
       api.useByPluginsConfig(pluginsConfig)
       expect(api.enabledPlugins).toHaveLength(0)
       expect(api.disabledPlugins).toHaveLength(1)
-      expect(api.disabledPlugins[0].name).toBe('vuepress-plugin-a')
+      expect(api.disabledPlugins[0].name).toBe('vuepress-plugin-mocked-a')
     })
   })
 
   test('useByPluginsConfig - get options', () => {
     const pluginOptions = {};
     [
-      [['a', pluginOptions]],
-      { a: pluginOptions }
+      [['mocked-a', pluginOptions]],
+      { 'mocked-a': pluginOptions }
     ].forEach(pluginsConfig => {
       const api = new PluginAPI()
       api.useByPluginsConfig(pluginsConfig)
@@ -59,9 +59,9 @@ describe('Plugin', () => {
     const pluginOptions2 = {}
     const pluginOptions3 = {}
     const pluginsConfig = [
-      ['a', pluginOptions1],
-      ['a', pluginOptions2],
-      ['a', pluginOptions3]
+      ['mocked-a', pluginOptions1],
+      ['mocked-a', pluginOptions2],
+      ['mocked-a', pluginOptions3]
     ]
     const api = new PluginAPI()
     api.useByPluginsConfig(pluginsConfig)
@@ -74,8 +74,8 @@ describe('Plugin', () => {
     const pluginOptions1 = { a: 1 }
     const pluginOptions2 = { b: 1 }
     const pluginsConfig = [
-      ['b', pluginOptions1],
-      ['b', pluginOptions2]
+      ['mocked-b', pluginOptions1],
+      ['mocked-b', pluginOptions2]
     ]
     const api = new PluginAPI()
     api.useByPluginsConfig(pluginsConfig)
