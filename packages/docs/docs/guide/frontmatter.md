@@ -101,6 +101,21 @@ meta:
 ---
 ```
 
+### link
+
+- Type: `array`
+- Default: `undefined`
+
+Specify extra link tags to be injected:
+
+``` yaml
+---
+link:
+  - rel: canonical
+    content: https://my-canonical-url.com/article/1
+---
+```
+
 ## Predefined Variables Powered By Default Theme
 
 ### navbar

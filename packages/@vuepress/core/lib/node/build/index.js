@@ -140,12 +140,15 @@ module.exports = class Build extends EventEmitter {
 
     // #565 Avoid duplicate description meta at SSR.
     const meta = (page.frontmatter && page.frontmatter.meta || []).filter(item => item.name !== 'description')
-    const pageMeta = renderPageMeta(meta)
+    const link = page.frontmatter && page.frontmatter.link || []
+    const pageLink = renderPageEmptyTag('link', link)
+    const pageMeta = renderPageEmptyTag('meta', meta)
 
     const context = {
       url: page.path,
       userHeadTags: this.userHeadTags,
       pageMeta,
+      pageLink,
       title: 'VuePress',
       lang: 'en',
       description: ''
@@ -225,16 +228,17 @@ function renderAttrs (attrs = {}) {
 }
 
 /**
- * Render meta tags
+ * Render html empty tags
  *
- * @param {Array} meta
+ * @param {String} tagName
+ * @param {Array} tags
  * @returns {Array<string>}
  */
 
-function renderPageMeta (meta) {
-  if (!meta) return ''
-  return meta.map(m => {
-    let res = `<meta`
+function renderPageEmptyTag (tagName, tags) {
+  if (!tags) return ''
+  return tags.map(m => {
+    let res = `<tag`
     Object.keys(m).forEach(key => {
       res += ` ${key}="${escape(m[key])}"`
     })
