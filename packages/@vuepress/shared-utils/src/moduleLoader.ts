@@ -38,7 +38,7 @@ const resolve = semver.satisfies(process.version, '>=10.0.0')
   ? require.resolve
   : resolveFallback
 
-const MOCKED_REGEX = /^(@vuepress\/|(@[\w-]+\/)?vuepress-)(theme|plugin)-mocked-[\w-]+/
+const MOCKED_REGEX = /^(@vuepress\/|(@[\w-]+\/)?vuepress-)(theme|plugin)-mocked-/
 
 export function resolveModule (request: string, context: string): string {
   let resolvedPath
