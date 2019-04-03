@@ -11,6 +11,9 @@
     "url": "git+https://github.com/vuejs/vuepress.git",
     "directory": "packages/@vuepress/plugin-public-files"
   },
+  "scripts": {
+    "jest": "jest .*\\.spec\\.js$"
+  },
   "keywords": [
     "documentation",
     "vue",
