@@ -1,1 +1,1 @@
-<<< @/test/markdown/fragments/snippet with spaces.js
+<<< @/test/markdown/fragments/snippet with spaces.js {1}
