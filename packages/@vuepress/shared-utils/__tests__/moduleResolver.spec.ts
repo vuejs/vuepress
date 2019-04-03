@@ -53,11 +53,11 @@ describe('resolveScopePackage', () => {
   })
 })
 
-const getBaseAsserts = (type: string) => [
-  { input: 'a', output: ['a', `vuepress-${type}-mocked-a`] },
-  { input: `vuepress-${type}-a`, output: ['a', `vuepress-${type}-mocked-a`] },
-  { input: '@vuepress/a', output: ['@vuepress/a', `@vuepress/${type}-mocked-a`] },
-  { input: '@org/a', output: ['@org/a', `@org/vuepress-${type}-mocked-a`] }
+const getBaseAsserts = (type: string, name = 'mocked-a') => [
+  { input: name, output: [name, `vuepress-${type}-${name}`] },
+  { input: `vuepress-${type}-${name}`, output: [name, `vuepress-${type}-${name}`] },
+  { input: `@vuepress/${name}`, output: [`@vuepress/${name}`, `@vuepress/${type}-${name}`] },
+  { input: `@org/${name}`, output: [`@org/${name}`, `@org/vuepress-${type}-${name}`] }
 ]
 
 describe('normalizeRequest', () => {
@@ -87,7 +87,7 @@ describe('normalizeRequest', () => {
     const req = { name: 'a' }
     const { name, shortcut } = normalizeRequest(req)
     expect(shortcut).toBe('a')
-    expect(name).toBe(`vuepress-plugin-mocked-a`)
+    expect(name).toBe(`vuepress-plugin-a`)
   })
 })
 
