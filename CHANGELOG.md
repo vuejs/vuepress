@@ -1,8 +1,3 @@
-<a name=""></a>
-# [](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.47...v) (2019-04-06)
-
-
-
 <a name="1.0.0-alpha.47"></a>
 # [1.0.0-alpha.47](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.46...v1.0.0-alpha.47) (2019-04-06)
 
