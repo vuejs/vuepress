@@ -41,6 +41,9 @@ module.exports = class App {
     this.options = options
     this.sourceDir = this.options.sourceDir || path.join(__dirname, 'docs.fallback')
     logger.debug('sourceDir', this.sourceDir)
+    if (!fs.existsSync(this.sourceDir)) {
+      logger.warn(`Source directory doesn't exist: ${chalk.yellow(this.sourceDir)}`)
+    }
 
     const { tempPath, writeTemp } = createTemp(options.temp)
     this.tempPath = tempPath
