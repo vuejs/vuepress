@@ -44,6 +44,14 @@ module.exports = {
 此外，只有您能够使用 SSL 部署您的站点时才能启用此功能，因为 service worker 只能在 HTTPs 的 URL 下注册。
 :::
 
+### generateSWConfig
+
+- 类型: `object`
+- 默认值: `{}`
+
+workbox-build 的 [generateSW config](https://developers.google.com/web/tools/workbox/modules/workbox-build#full_generatesw_config)。
+
+
 ### updatePopup
 
 - 类型: `boolean|popupConfig`
