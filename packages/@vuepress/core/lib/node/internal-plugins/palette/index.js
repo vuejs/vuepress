@@ -31,15 +31,22 @@ module.exports = (options, ctx) => ({
       ? `@import(${JSON.stringify(userPalette.replace(/[\\]+/g, '/'))})`
       : ''
 
+    const nullComment = '// null'
+
     // user's palette can override theme's palette.
-    let paletteContent = themePaletteContent + userPaletteContent
+    let paletteContent = '// Theme\'s Palette\n'
+      + (themePaletteContent || nullComment)
+      + '\n\n// User\'s Palette\n'
+      + (userPaletteContent || nullComment)
 
     if (ctx.themeAPI.existsParentTheme) {
       const parentThemePalette = path.resolve(ctx.themeAPI.parentTheme.path, 'styles/palette.styl')
       const parentThemePaletteContent = fs.existsSync(parentThemePalette)
         ? `@import(${JSON.stringify(parentThemePalette.replace(/[\\]+/g, '/'))})`
         : ''
-      paletteContent = parentThemePaletteContent + paletteContent
+      paletteContent = '// Parent Theme\'s Palette\n'
+        + (parentThemePaletteContent || nullComment)
+        + '\n\n' + paletteContent
     }
 
     await writeTemp('palette.styl', paletteContent)
