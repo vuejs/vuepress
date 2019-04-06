@@ -1,3 +1,31 @@
+<a name=""></a>
+# [](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.47...v) (2019-04-06)
+
+
+
+<a name="1.0.0-alpha.47"></a>
+# [1.0.0-alpha.47](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.46...v1.0.0-alpha.47) (2019-04-06)
+
+
+### Bug Fixes
+
+* **$core:** `index.styl` is not injected at the end of the style bundle (close: [#1523](https://github.com/vuejs/vuepress/issues/1523)) ([dabf506](https://github.com/vuejs/vuepress/commit/dabf506))
+* **$core:** `routerBase` will always get '/' (close: [#1503](https://github.com/vuejs/vuepress/issues/1503)) ([9fba549](https://github.com/vuejs/vuepress/commit/9fba549))
+* **$markdown:** Snippets should allow spaces in file path (closes [#1505](https://github.com/vuejs/vuepress/issues/1505)) ([#1517](https://github.com/vuejs/vuepress/issues/1517)) ([5c307c9](https://github.com/vuejs/vuepress/commit/5c307c9))
+
+
+### Features
+
+* **$core:** assert return type for functional plugin ([#1516](https://github.com/vuejs/vuepress/issues/1516)) ([74887c5](https://github.com/vuejs/vuepress/commit/74887c5))
+* **$core:** emit warning if the source directory doesn't exist (close: [#1521](https://github.com/vuejs/vuepress/issues/1521)) ([6da9a5f](https://github.com/vuejs/vuepress/commit/6da9a5f))
+* **$plugin-pwa:** allow using local workbox files (close: [#539](https://github.com/vuejs/vuepress/issues/539)) ([4640614](https://github.com/vuejs/vuepress/commit/4640614))
+
+
+
+<a name="1.0.0-alpha.46"></a>
+# [1.0.0-alpha.46](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.45...v1.0.0-alpha.46) (2019-04-01)
+
+
 ### Bug Fixes
 
 * **$core:** regression of introducing dynamic `routerBase` (close: [#1498](https://github.com/vuejs/vuepress/issues/1498)) ([5e12b49](https://github.com/vuejs/vuepress/commit/5e12b49))
