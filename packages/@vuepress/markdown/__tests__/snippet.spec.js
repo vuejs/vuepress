@@ -24,4 +24,10 @@ describe('snippet', () => {
     const output = mdH.render(input)
     expect(output).toMatchSnapshot()
   })
+
+  test('import snipets when the file has a space in the file path', () => {
+    const input = getFragment(__dirname, 'code-snippet-with-space-in-path.md')
+    const output = mdH.render(input)
+    expect(output).toMatchSnapshot()
+  })
 })
