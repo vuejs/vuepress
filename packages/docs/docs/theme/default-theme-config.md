@@ -319,10 +319,10 @@ module.exports = {
 
 Options for [markdown-it-table-of-contents](https://github.com/Oktavilla/markdown-it-table-of-contents#options). The default options are `{ includeLevel: [2, 3] }`.
 
-**Note:**
-
+::: tip
 1. You should always use [`markdown.slugify`](../config/#markdown-slugify) instead of `themeConfig.toc.slugify` if you want to customize header ids.
 2. Setting `themeConfig.toc` to `false` will disable the `[[toc]]` syntax (in case you want to switch to other plugins, such as [vuepress-plugin-toc](https://vuepress.github.io/plugins/toc/)).
+:::
 
 ## Search Box
 

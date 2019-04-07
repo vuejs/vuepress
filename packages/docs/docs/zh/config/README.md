@@ -206,21 +206,6 @@ VuePress 提供了一种添加额外样式的简便方法。你可以创建一�
 
 这个键值对将会作为特性被增加到是外部链接的 `<a>` 标签上，默认的选项将会在新窗口中打开一个该外部链接。
 
-### markdown.toc
-
-- 类型: `Object`
-
-这个值将会控制 `[[TOC]]` 默认行为。它包含下面的选项：
-
-- includeLevel: [number, number]，决定哪些级别的标题会被显示在目录中，默认值为 `[2, 3]`。
-- containerClass: string，决定了目录容器的类名，默认值为 `table-of-contents`。
-- markerPattern: RegExp，决定了标题匹配的正则表达式，默认值为 `/^\[\[toc\]\]/im`。
-- listType: string 或 Array，决定了各级列表的标签，默认值为 `"ul"`。
-- containerHeaderHtml: string，在目录开头插入的 HTML 字符串，默认值为 `""`。
-- containerFooterHtml: string，在目录结尾插入的 HTML 字符串，默认值为 `""`。
-
-此外，我们还提供了[全局组件 TOC](../guide/using-vue.md#toc)，可以通过直接向 `<TOC>` 传递属性实现更加自由的控制。
-
 ### markdown.plugins
 
 你可以使用 `markdown.plugins` 来安装 markdown-it 插件。它的使用方法与[安装一个 VuePress 插件](../plugin/using-a-plugin.html#using-a-plugin)类似。你可以使用 Babel 语法或对象语法。`markdown-it-` 前缀同样是可以忽略的。
