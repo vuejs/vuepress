@@ -348,7 +348,12 @@ module.exports = class App {
       computed: new this.ClientComputedMixinConstructor(),
       enhancers: this.pluginAPI.getOption('extendPageData').items
     })
-    this.pages.push(page)
+    const index = this.pages.findIndex(({ path }) => path === page.path)
+    if (index >= 0) {
+      this.pages.splice(index, 1, page)
+    } else {
+      this.pages.push(page)
+    }
   }
 
   /**
