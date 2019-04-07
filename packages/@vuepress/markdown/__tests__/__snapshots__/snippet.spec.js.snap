@@ -1,5 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`snippet import snipets when the file has a space in the file path 1`] = `
+<div class="highlight-lines">
+  <div class="highlighted">&nbsp;</div>
+  <div class="highlighted">&nbsp;</div>
+  <div class="highlighted">&nbsp;</div><br>
+</div>export default function () {
+// ..
+}
+`;
+
 exports[`snippet import snippet 1`] = `
 <pre><code class="language-js">export default function () {
   // ..
