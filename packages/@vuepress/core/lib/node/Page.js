@@ -142,7 +142,7 @@ module.exports = class Page {
     this._computed = computed
     this._localePath = computed.$localePath
 
-    this.enhance(enhancers)
+    await this.enhance(enhancers)
     this.buildPermalink()
   }
 
@@ -245,13 +245,13 @@ module.exports = class Page {
    */
 
   enhance (enhancers) {
-    for (const { name: pluginName, value: enhancer } of enhancers) {
-      try {
-        enhancer(this)
-      } catch (error) {
-        console.log(error)
-        throw new Error(`[${pluginName}] excuete extendPageData failed.`)
-      }
-    }
+    return enhancers.reduce(async (accumulator, { pluginName, value }) => {
+      return accumulator
+        .then(() => value(this))
+        .catch(error => {
+          console.log(error)
+          throw new Error(`[${pluginName}] execute extendPageData failed.`)
+        })
+    }, Promise.resolve())
   }
 }
