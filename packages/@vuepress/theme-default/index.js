@@ -18,7 +18,12 @@ module.exports = (options, ctx) => ({
   },
 
   extendMarkdown (md) {
-    md.use(require('markdown-it-table-of-contents'), options.toc)
+    if (options.toc !== false) {
+      md.use(require('markdown-it-table-of-contents'), {
+        includeLevel: [2, 3],
+        ...options.toc
+      })
+    }
   },
 
   plugins: [
