@@ -17,6 +17,10 @@ module.exports = (options, ctx) => ({
     }
   },
 
+  extendMarkdown (md) {
+    md.use(require('markdown-it-table-of-contents'), options.toc)
+  },
+
   plugins: [
     ['@vuepress/active-header-links', options.activeHeaderLinks],
     ['@vuepress/search'],
