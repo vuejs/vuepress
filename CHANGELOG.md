@@ -1,3 +1,15 @@
+<a name="0.14.11"></a>
+## [0.14.11](https://github.com/vuejs/vuepress/compare/v0.14.10...v0.14.11) (2019-04-13)
+
+
+### Bug Fixes
+
+* **$core:** unexpected webpack externals (close: [#451](https://github.com/vuejs/vuepress/issues/451)) ([#1539](https://github.com/vuejs/vuepress/issues/1539)) ([aaf4a7b](https://github.com/vuejs/vuepress/commit/aaf4a7b))
+* **$markdown:** code snippets should not split path on space (close: [#1505](https://github.com/vuejs/vuepress/issues/1505))([#1509](https://github.com/vuejs/vuepress/issues/1509)) ([7b4c4b0](https://github.com/vuejs/vuepress/commit/7b4c4b0))
+* **$theme-default:** hero image resizing ([#873](https://github.com/vuejs/vuepress/issues/873)) ([3cc805d](https://github.com/vuejs/vuepress/commit/3cc805d))
+
+
+
 <a name="0.14.10"></a>
 ## [0.14.10](https://github.com/vuejs/vuepress/compare/v0.14.9...v0.14.10) (2019-03-02)
 
