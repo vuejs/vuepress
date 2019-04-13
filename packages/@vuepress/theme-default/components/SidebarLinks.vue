@@ -77,10 +77,23 @@ export default {
 function resolveOpenGroupIndex (route, items) {
   for (let i = 0; i < items.length; i++) {
     const item = items[i]
-    if (item.type === 'group' && item.children.some(c => c.type === 'page' && isActive(route, c.path))) {
+    if (descendantIsActive(route, item)) {
       return i
     }
   }
   return -1
+}
+
+function descendantIsActive (route, item) {
+  if (item.type === 'group') {
+    return item.children.some(c => {
+      if (c.type === 'group') {
+        return descendantIsActive(route, c)
+      } else {
+        return c.type === 'page' && isActive(route, c.path)
+      }
+    })
+  }
+  return false
 }
 </script>
