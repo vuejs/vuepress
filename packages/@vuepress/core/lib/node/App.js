@@ -351,9 +351,7 @@ module.exports = class App {
     const index = this.pages.findIndex(({ path }) => path === page.path)
     if (index >= 0) {
       // override a page if corresponding path already exists
-      if (!this.pages[index].overridable) {
-        logger.warn(`Override existing page ${chalk.yellow(page.path)}.`)
-      }
+      logger.warn(`Override existing page ${chalk.yellow(page.path)}.`)
       this.pages.splice(index, 1, page)
     } else {
       this.pages.push(page)
