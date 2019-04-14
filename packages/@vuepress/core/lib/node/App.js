@@ -348,7 +348,14 @@ module.exports = class App {
       computed: new this.ClientComputedMixinConstructor(),
       enhancers: this.pluginAPI.getOption('extendPageData').items
     })
-    this.pages.push(page)
+    const index = this.pages.findIndex(({ path }) => path === page.path)
+    if (index >= 0) {
+      // Override a page if corresponding path already exists
+      logger.warn(`Override existing page ${chalk.yellow(page.path)}.`)
+      this.pages.splice(index, 1, page)
+    } else {
+      this.pages.push(page)
+    }
   }
 
   /**
