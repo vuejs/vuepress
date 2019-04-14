@@ -68,8 +68,9 @@ Specify the port to use for the dev server.
 
 ### temp
 
-- Type: `number`
-- Default: `@vuepress/core/.temp`
+- Type: `string`
+- Default: `/path/to/@vuepress/core/.temp`
+
 
 Specify the temporary directory for client.
 
