@@ -34,7 +34,7 @@
     "cac": "^6.3.9"
   },
   "engines": {
-    "node": ">=8"
+    "node": ">=8.6"
   },
   "browserslist": [
     ">1%"
