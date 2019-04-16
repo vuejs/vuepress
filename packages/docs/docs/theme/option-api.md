@@ -49,14 +49,14 @@ You probably don't need to use following options tagged with <Badge text="Danger
 - Type: `String`
 - Default: undefined
 
-HTML template path used in `dev` mode, default template see [here](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/core/lib/app/index.dev.html)
+HTML template path used in `dev` mode, default template see [here](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/core/lib/client/index.dev.html)
 
 ## ssrTemplate <Badge text="Danger Zone"/>
 
 - Type: `String`
 - Default: undefined
 
-HTML template path used in `build` mode, default template see [here](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/core/lib/app/index.ssr.html)
+HTML template path used in `build` mode, default template see [here](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/core/lib/client/index.ssr.html)
 
 **Also see:**
 
