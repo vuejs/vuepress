@@ -14,10 +14,11 @@ module.exports = class ThemeAPI {
   }
 
   setAlias (alias) {
-    this.vuepressPlugin.alias = {
-      ...this.vuepressPlugin.alias,
-      ...alias
-    }
+    this.vuepressPlugin.alias = Object.assign(
+      {},
+      this.vuepressPlugin.alias,
+      alias
+    )
   }
 
   init () {

@@ -32,11 +32,13 @@ module.exports = function (cli, options) {
       logger.debug('dev_options', commandOptions)
       env.setOptions({ isDebug: debug, isTest: process.env.NODE_ENV === 'test' })
 
-      wrapCommand(dev)({
-        sourceDir: path.resolve(sourceDir),
-        ...options,
-        ...commandOptions
-      })
+      wrapCommand(dev)(
+        Object.assign(
+          { sourceDir: path.resolve(sourceDir) },
+          options,
+          commandOptions
+        )
+      )
     })
 
   cli
@@ -56,11 +58,13 @@ module.exports = function (cli, options) {
       logger.debug('build_options', commandOptions)
       env.setOptions({ isDebug: debug, isTest: process.env.NODE_ENV === 'test' })
 
-      wrapCommand(build)({
-        sourceDir: path.resolve(sourceDir),
-        ...options,
-        ...commandOptions
-      })
+      wrapCommand(build)(
+        Object.assign(
+          { sourceDir: path.resolve(sourceDir) },
+          options,
+          commandOptions
+        )
+      )
     })
 
   cli

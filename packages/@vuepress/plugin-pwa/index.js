@@ -37,12 +37,16 @@ module.exports = (options, context) => ({
     if (serviceWorker) {
       logger.wait('Generating service worker...')
       const wbb = require('workbox-build')
-      await wbb.generateSW({
-        swDest: swFilePath,
-        globDirectory: outDir,
-        globPatterns: ['**\/*.{js,css,html,png,jpg,jpeg,gif,svg,woff,woff2,eot,ttf,otf}'],
-        ...(options.generateSWConfig || {})
-      })
+      await wbb.generateSW(
+        Object.assign(
+          {
+            swDest: swFilePath,
+            globDirectory: outDir,
+            globPatterns: ['**\/*.{js,css,html,png,jpg,jpeg,gif,svg,woff,woff2,eot,ttf,otf}']
+          },
+          options.generateSWConfig || {}
+        )
+      )
       await fs.writeFile(
         swFilePath,
         await fs.readFile(path.resolve(__dirname, 'lib/skip-waiting.js'), 'utf8'),

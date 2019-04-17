@@ -38,7 +38,7 @@ module.exports = async function (cli, options) {
     logger.setOptions({ logLevel: 1 })
 
     if (sourceDir) {
-      app = createApp({ sourceDir, ...options })
+      app = createApp(Object.assign({ sourceDir }, options))
       await app.process()
       app.pluginAPI.applySyncOption('extendCli', cli, app)
     }
@@ -104,11 +104,11 @@ function registerUnknownCommands (cli, options) {
     logger.debug('Custom command', chalk.cyan(commandName))
     CLI({
       async beforeParse (subCli) {
-        const app = createApp({
-          sourceDir: sourceDir,
-          ...options,
-          ...commandoptions
-        })
+        const app = createApp(Object.assign(
+          { sourceDir },
+          options,
+          commandoptions
+        ))
         await app.process()
         app.pluginAPI.applySyncOption('extendCli', subCli, app)
         console.log()
