@@ -1,0 +1,45 @@
+{
+  "name": "@vuepress/markdown",
+  "version": "1.0.0-alpha.47",
+  "description": "markdown for vuepress",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuejs/vuepress.git",
+    "directory": "packages/@vuepress/markdown"
+  },
+  "keywords": [
+    "documentation",
+    "vue",
+    "vuepress",
+    "generator",
+    "markdown"
+  ],
+  "dependencies": {
+    "@vuepress/shared-utils": "^1.0.0-alpha.47",
+    "lru-cache": "^5.1.1",
+    "markdown-it": "^8.4.1",
+    "markdown-it-anchor": "^5.0.2",
+    "markdown-it-chain": "^1.3.0",
+    "markdown-it-emoji": "^1.4.0",
+    "prismjs": "^1.13.0"
+  },
+  "devDependencies": {
+    "@vuepress/test-utils": "^1.0.0-alpha.47"
+  },
+  "author": "Evan You",
+  "maintainers": [
+    {
+      "name": "ULIVZ",
+      "email": "chl814@foxmail.com"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vuejs/vuepress/issues"
+  },
+  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/markdown#readme"
+}

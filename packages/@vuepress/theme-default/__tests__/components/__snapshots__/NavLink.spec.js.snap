@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavLink renders nav link with external link 1`] = `
+<a href="http://vuejs.org/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Vue
+  <p class="component outbound-link">outbound-link</p></a>
+`;
+
+exports[`NavLink renders nav link with internal link 1`] = `<a class="nav-link">VuePress</a>`;
