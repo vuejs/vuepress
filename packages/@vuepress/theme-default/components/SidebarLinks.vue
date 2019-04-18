@@ -77,8 +77,14 @@ export default {
 function resolveOpenGroupIndex (route, items) {
   for (let i = 0; i < items.length; i++) {
     const item = items[i]
-    if (item.type === 'group' && item.children.some(c => c.type === 'page' && isActive(route, c.path))) {
-      return i
+    if (item.type === 'page') {
+      if (isActive(route, item.path)) {
+        return i
+      }
+    } else if (item.type === 'group') {
+      if (resolveOpenGroupIndex(route, item.children) !== -1) {
+        return i
+      }
     }
   }
   return -1
