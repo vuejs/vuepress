@@ -147,14 +147,14 @@ module.exports = class Page {
   }
 
   /**
-   * name of page's parent folder.
+   * name of page's parent directory.
    *
    * @returns {string}
    * @api public
    */
 
-  get foldername () {
-    return path.dirname(this._filePath || this.regularPath).split(path.sep).pop()
+  get dirname () {
+    return path.basename(path.dirname(this._filePath || this.regularPath))
   }
 
   /**
@@ -213,7 +213,7 @@ module.exports = class Page {
    */
 
   get date () {
-    return inferDate(this.frontmatter, this.filename, this.foldername)
+    return inferDate(this.frontmatter, this.filename, this.dirname)
   }
 
   /**
