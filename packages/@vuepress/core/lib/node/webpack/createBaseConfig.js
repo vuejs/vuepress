@@ -227,12 +227,13 @@ module.exports = function createBaseConfig (context, isServer) {
       }
 
       rule.use('css-loader')
-        .loader(isServer ? 'css-loader/locals' : 'css-loader')
+        .loader('css-loader')
         .options({
           modules,
           localIdentName: `[local]_[hash:base64:8]`,
           importLoaders: 1,
-          sourceMap: !isProd
+          sourceMap: !isProd,
+          exportOnlyLocals: isServer
         })
 
       rule.use('postcss-loader').loader('postcss-loader').options(Object.assign({
