@@ -147,6 +147,17 @@ module.exports = class Page {
   }
 
   /**
+   * name of page's parent directory.
+   *
+   * @returns {string}
+   * @api public
+   */
+
+  get dirname () {
+    return path.basename(path.dirname(this._filePath || this.regularPath))
+  }
+
+  /**
    * file name of page's source markdown file, or the last cut of regularPath.
    *
    * @returns {string}
@@ -202,7 +213,7 @@ module.exports = class Page {
    */
 
   get date () {
-    return inferDate(this.frontmatter, this.filename)
+    return inferDate(this.frontmatter, this.filename, this.dirname)
   }
 
   /**
