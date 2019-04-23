@@ -215,9 +215,9 @@ module.exports = class Page {
    * @returns {string}
    * @private
    */
-  stripFilename(fileName) {
+  stripFilename (fileName) {
     const match = fileName.match(DATE_RE)
-    
+
     return match ? match[3] : fileName
   }
 
