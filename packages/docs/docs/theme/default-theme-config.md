@@ -327,8 +327,17 @@ search: false
 ```
 
 ::: tip
-Built-in Search only builds index from the title, `h2` and `h3` headers, if you need full text search, you can use [Algolia Search](#algolia-search).
+Built-in Search only builds index from the title, `h2` and `h3` headers and any tags added with `YAML front matter` as shown below, if you need full text search, you can use [Algolia Search](#algolia-search).
 :::
+
+```yaml
+---
+tags: 
+  - configuration
+  - theme
+  - indexing
+---
+```
 
 ### Algolia Search
 

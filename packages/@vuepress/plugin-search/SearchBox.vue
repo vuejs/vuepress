@@ -64,10 +64,44 @@ export default {
       const { pages } = this.$site
       const max = SEARCH_MAX_SUGGESTIONS
       const localePath = this.$localePath
-      const matches = item => (
-        item.title
-        && item.title.toLowerCase().indexOf(query) > -1
-      )
+
+      const matchTest = (q, domain) => {
+
+        const escapeRegExp = (s) => {
+          return s.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&");
+        }
+
+        const words = q
+          .split(/\s+/g)
+          .map(s => s.trim())
+          .filter(s => !!s);
+        const hasTrailingSpace = q.endsWith(" ");
+        const searchRegex = new RegExp(
+          words
+            .map((word, i) => {
+              if (i + 1 === words.length && !hasTrailingSpace) {
+                // The last word - ok with the word being "startswith"-like
+                return `(?=.*\\b${escapeRegExp(word)})`;
+              } else {
+                // Not the last word - expect the whole word exactly
+                return `(?=.*\\b${escapeRegExp(word)}\\b)`;
+              }
+            })
+            .join("") + ".+",
+          "gi"
+        );
+          return searchRegex.test(domain);
+      }
+
+      const matches = (item, additionalStr = null) => {
+        let domain;
+        domain = (item.title) ? item.title : "";
+        domain = (item.frontmatter && item.frontmatter.tags) ? domain + " " + item.frontmatter.tags.join(" ") : domain;
+        if(additionalStr) domain = domain + " " + additionalStr;
+
+        return matchTest(query, domain)
+      }
+
       const res = []
       for (let i = 0; i < pages.length; i++) {
         if (res.length >= max) break
@@ -88,7 +122,7 @@ export default {
           for (let j = 0; j < p.headers.length; j++) {
             if (res.length >= max) break
             const h = p.headers[j]
-            if (matches(h)) {
+            if (h.title && matches(p,h.title)) {
               res.push(Object.assign({}, p, {
                 path: p.path + '#' + h.slug,
                 header: h
@@ -198,7 +232,7 @@ export default {
     background #fff
     width 20rem
     position absolute
-    top 1.5rem
+    top 2 rem
     border 1px solid darken($borderColor, 10%)
     border-radius 6px
     padding 0.4rem
