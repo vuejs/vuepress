@@ -11,6 +11,7 @@ files.forEach(pkg => {
   if (pkg.charAt(0) === '.') return
 
   const isPlugin = /^plugin-/.test(pkg)
+  const isTheme = /^theme-/.test(pkg)
   const desc = isPlugin
     ? `${pkg.replace('plugin-', '')} plugin for vuepress`
     : `${pkg} for vuepress`
