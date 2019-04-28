@@ -29,6 +29,7 @@ describe('plugin-public-files: source folder', () => {
   testForExistence(app, 'readme.md', false)
   testForExistence(app, '.dotfile', false)
   testForExistence(app, '.dotfolder', false)
+  testForExistence(app, 'bar/readme.md', false)
 })
 
 describe('plugin-public-files: assets folder', () => {
