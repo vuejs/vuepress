@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-public-files",
-  "version": "1.0.0-alpha.44",
+  "version": "1.0.0-alpha.47",
   "description": "register-global-components plugin for vuepress",
   "main": "index.js",
   "publishConfig": {
@@ -27,8 +27,9 @@
   },
   "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/plugin-public-files#readme",
   "dependencies": {
-    "@vuepress/shared-utils": "^1.0.0-alpha.44",
-    "copy-webpack-plugin": "^5.0.2",
+    "@vuepress/core": "^1.0.0-alpha.47",
+    "@vuepress/shared-utils": "^1.0.0-alpha.47",
+    "copy-webpack-plugin": "^5.0.3",
     "vuepress-mergeable": "^1.0.1"
   }
 }
