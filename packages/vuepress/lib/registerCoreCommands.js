@@ -74,7 +74,7 @@ module.exports = function (cli, options) {
     })
 
   cli
-    .command('info', 'Shows useful information regarding the local environment')
+    .command('info', 'Shows debugging information about the local environment')
     .action(() => {
       console.log(chalk.bold('\nEnvironment Info:'))
       envinfo.run(
@@ -82,7 +82,7 @@ module.exports = function (cli, options) {
           System: ['OS', 'CPU'],
           Binaries: ['Node', 'Yarn', 'npm'],
           Browsers: ['Chrome', 'Edge', 'Firefox', 'Safari'],
-          npmGlobalPackages: ['@vuepress']
+          npmGlobalPackages: ['vuepress']
         },
         {
           showNotFound: true,
