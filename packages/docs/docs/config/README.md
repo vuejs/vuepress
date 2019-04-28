@@ -68,8 +68,9 @@ Specify the port to use for the dev server.
 
 ### temp
 
-- Type: `number`
-- Default: `@vuepress/core/.temp`
+- Type: `string`
+- Default: `/path/to/@vuepress/core/.temp`
+
 
 Specify the temporary directory for client.
 
@@ -284,6 +285,10 @@ This option is also included in [Plugin API](../plugin/option-api.md#extendmarkd
 :::
 
 ## Build Pipeline
+
+:::tip Configuring CSS Pre-processors
+VuePress comes with built-in webpack config for the CSS pre-processors listed below. For more information on installation these or pre-processors without built-in support, see [Using Pre-Processors](../guide/using-vue.md#using-pre-processors) for more information.
+:::
 
 ### postcss
 

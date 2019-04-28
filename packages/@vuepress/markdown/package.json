@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/markdown",
-  "version": "1.0.0-alpha.46",
+  "version": "1.0.0-alpha.47",
   "description": "markdown for vuepress",
   "main": "index.js",
   "publishConfig": {
@@ -19,7 +19,7 @@
     "markdown"
   ],
   "dependencies": {
-    "@vuepress/shared-utils": "^1.0.0-alpha.46",
+    "@vuepress/shared-utils": "^1.0.0-alpha.47",
     "lru-cache": "^5.1.1",
     "markdown-it": "^8.4.1",
     "markdown-it-anchor": "^5.0.2",
@@ -28,7 +28,7 @@
     "prismjs": "^1.13.0"
   },
   "devDependencies": {
-    "@vuepress/test-utils": "^1.0.0-alpha.46"
+    "@vuepress/test-utils": "^1.0.0-alpha.47"
   },
   "author": "Evan You",
   "maintainers": [

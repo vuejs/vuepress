@@ -41,17 +41,17 @@
     "eslint-plugin-jest": "^21.15.1",
     "eslint-plugin-vue-libs": "^3.0.0",
     "lerna": "^3.6.0",
-    "lint-staged": "^7.0.4",
+    "lint-staged": "^8.1.5",
     "minimist": "^1.2.0",
-    "yorkie": "^1.0.3",
+    "yorkie": "^2.0.0",
     "inquirer": "^6.2.0",
     "typescript": "^3.2.2",
     "@types/node": "^10.12.12",
     "@types/lru-cache": "^4.1.1",
     "@types/fs-extra": "^5.0.4",
-    "@types/semver": "^5.5.0",
+    "@types/semver": "^6.0.0",
     "@types/hash-sum": "^1.0.0",
-    "@types/globby": "^8.0.0",
+    "@types/globby": "^9.1.0",
     "@types/escape-html": "^0.0.20"
   }
 }

@@ -45,6 +45,14 @@ The `serviceWorker` option only handles the service worker. To make your site fu
 Also, only enable this if you are able to deploy your site with SSL, since service worker can only be registered under HTTPs URLs.
 :::
 
+### generateSWConfig
+
+- Type: `object`
+- Default: `{}`
+
+[generateSW config](https://developers.google.com/web/tools/workbox/modules/workbox-build#full_generatesw_config) of workbox-build.
+
+
 ### updatePopup
 
 - Type: `boolean|object`

@@ -66,8 +66,8 @@ module.exports = {
 
 ### temp
 
-- Type: `number`
-- Default: `@vuepress/core/.temp`
+- Type: `string`
+- Default: `/path/to/@vuepress/core/.temp`
 
 指定客户端文件的临时目录。
 
