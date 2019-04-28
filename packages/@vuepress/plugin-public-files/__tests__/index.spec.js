@@ -5,7 +5,13 @@
 const { createApp } = require('@vuepress/core')
 const { path: { resolve }, fs } = require('@vuepress/shared-utils')
 
-describe('plugin-public-files: source dir', () => {
+function testForExistence (app, name, existence = true) {
+  test(`${existence ? '' : 'in'}existence: ${name}`, () => {
+    expect(fs.existsSync(resolve(app.outDir, name))).toBe(existence)
+  })
+}
+
+describe('plugin-public-files: source folder', () => {
   const app = createApp({
     sourceDir: resolve(__dirname, 'docs-1')
   })
@@ -15,18 +21,33 @@ describe('plugin-public-files: source dir', () => {
     await app.build()
   }, 60000)
 
-  function testForExistence (name, existence = true) {
-    test(`${existence ? '' : 'in'}existence: ${name}`, () => {
-      expect(fs.existsSync(resolve(app.outDir, name))).toBe(existence)
-    })
-  }
+  testForExistence(app, 'foo.txt')
+  testForExistence(app, 'baz.txt')
+  testForExistence(app, 'bar/foo.txt')
+  testForExistence(app, 'bar/baz.txt')
+  testForExistence(app, 'index.html')
+  testForExistence(app, 'readme.md', false)
+  testForExistence(app, '.dotfile', false)
+  testForExistence(app, '.dotfolder', false)
+})
 
-  testForExistence('foo.txt')
-  testForExistence('baz.txt')
-  testForExistence('bar/foo.txt')
-  testForExistence('bar/baz.txt')
-  testForExistence('index.html')
-  testForExistence('readme.md', false)
-  testForExistence('.dotfile', false)
-  testForExistence('.dotfolder', false)
+describe('plugin-public-files: assets folder', () => {
+  const app = createApp({
+    sourceDir: resolve(__dirname, 'docs-2')
+  })
+
+  beforeAll(async () => {
+    await app.process()
+    await app.build()
+  }, 60000)
+
+  testForExistence(app, 'foo.txt')
+  testForExistence(app, 'assets/bar.png')
+  testForExistence(app, 'assets/.dotfile')
+  testForExistence(app, 'assets/.dotfolder/foo.txt')
+  testForExistence(app, 'bar.png', false)
+  testForExistence(app, 'baz.ignore', false)
+  testForExistence(app, '.dotfile', false)
+  testForExistence(app, '.dotfolder', false)
+  testForExistence(app, 'assets/baz.ignore', false)
 })
