@@ -154,7 +154,7 @@ Whether to show line numbers to the left of each code blocks.
 ### markdown.slugify
 
 - Type: `Function`
-- Default: [source](https://github.com/vuejs/vuepress/blob/master/lib/markdown/slugify.js)
+- Default: [source](https://github.com/vuejs/vuepress/blob/0.x/lib/markdown/slugify.js)
 
 Function for transforming header texts into slugs. This affects the ids/links generated for header anchors, table of contents and sidebar links.
 
