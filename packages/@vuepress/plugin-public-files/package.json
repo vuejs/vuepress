@@ -12,6 +12,7 @@
     "directory": "packages/@vuepress/plugin-public-files"
   },
   "scripts": {
+    "build": "vuepress build __tests__/docs-1",
     "jest": "jest .*\\.spec\\.js$"
   },
   "keywords": [
