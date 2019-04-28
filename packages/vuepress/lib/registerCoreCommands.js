@@ -82,7 +82,7 @@ module.exports = function (cli, options) {
           System: ['OS', 'CPU'],
           Binaries: ['Node', 'Yarn', 'npm'],
           Browsers: ['Chrome', 'Edge', 'Firefox', 'Safari'],
-          npmGlobalPackages: ['vuepress']
+          npmPackages: ['/**/{@vuepress/*/}']
         },
         {
           showNotFound: true,
