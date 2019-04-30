@@ -426,7 +426,7 @@ Then, VuePress will automatically inject these components behind the layout comp
   <div class="global-ui">
     <Component-1/>
     <Component-2/>
-</div>
+  </div>
 </div>
 ```
 
