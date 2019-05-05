@@ -4,6 +4,9 @@
  * Module dependencies.
  */
 
+const { chalk } = require('@vuepress/shared-utils')
+const envinfo = require('envinfo')
+
 const { dev, build, eject } = require('@vuepress/core')
 const { path, logger, env } = require('@vuepress/shared-utils')
 const { wrapCommand } = require('./util')
@@ -68,5 +71,24 @@ module.exports = function (cli, options) {
     .option('--debug', 'eject in debug mode')
     .action((dir = '.') => {
       wrapCommand(eject)(path.resolve(dir))
+    })
+
+  cli
+    .command('info', 'Shows debugging information about the local environment')
+    .action(() => {
+      console.log(chalk.bold('\nEnvironment Info:'))
+      envinfo.run(
+        {
+          System: ['OS', 'CPU'],
+          Binaries: ['Node', 'Yarn', 'npm'],
+          Browsers: ['Chrome', 'Edge', 'Firefox', 'Safari'],
+          npmPackages: ['/**/{@vuepress/*/}']
+        },
+        {
+          showNotFound: true,
+          duplicates: true,
+          fullTree: true
+        }
+      ).then(console.log)
     })
 }
