@@ -20,8 +20,6 @@ about: Create a report to help us improve
 
 ## Bug report
 
-#### Version
-
 #### Steps to reproduce
 
 <!-- If you are reporting a bug that can ONLY be reproduced on your repository, PLEASE provide this repo link. That takes guessing work out of the way and saves us time. -->
@@ -34,9 +32,17 @@ about: Create a report to help us improve
 
 #### Other relevant information
 
-- Your OS: 
-- Node.js version: 
-- Browser version: 
-- Is this a global or local install? 
-- Which package manager did you use for the install?
-- Does this issue occur when all plugins are disabled?
+<!-- Please choose one of the following and and fill in the information. -->
+<!-- (Update "[ ]" to "[x]" to check a box) -->
+
+- [ ] My VuePress version is lower and euqal than `1.0.0-alpha.47`:
+
+  - VuePress version:
+  - OS:
+  - Node.js version: 
+  - Browser version: 
+  - Is this a global or local install? 
+  - Which package manager did you use for the install?
+  - Does this issue occur when all plugins are disabled?
+
+- [ ] My VuePress version is higher than `1.0.0-alpha.47`, the following is the output of `npx vuepress info` in my VuePress project:
