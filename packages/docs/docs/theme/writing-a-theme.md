@@ -106,11 +106,10 @@ You can apply some plugins to the theme via `theme/index.js`.
 ```js
 module.exports = {
   plugins: [
-    '@vuepress/pwa',
-    { 
+    ['@vuepress/pwa', { 
       serviceWorker: true,
       updatePopup: true
-    }
+    }]
   ]
 }
 ```
