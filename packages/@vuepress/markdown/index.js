@@ -5,7 +5,6 @@
  */
 
 const Config = require('markdown-it-chain')
-const LRUCache = require('lru-cache')
 const highlight = require('./lib/highlight')
 const { PLUGINS, REQUIRED_PLUGINS } = require('./lib/constant')
 const highlightLinesPlugin = require('./lib/highlightLines')
@@ -21,7 +20,7 @@ const tocPlugin = require('markdown-it-table-of-contents')
 const {
   slugify: _slugify,
   parseHeaders,
-  logger, chalk, hash, normalizeConfig,
+  logger, chalk, normalizeConfig,
   moduleResolver: { getMarkdownItResolver }
 } = require('@vuepress/shared-utils')
 
@@ -123,21 +122,6 @@ module.exports = (markdown = {}) => {
   })
 
   afterInstantiate && afterInstantiate(md)
-
-  // override parse to allow cache
-  const parse = md.parse
-  const cache = new LRUCache({ max: 1000 })
-  md.parse = (src, env) => {
-    const key = hash(src + env.relativePath)
-    const cached = cache.get(key)
-    if (cached) {
-      return cached
-    } else {
-      const tokens = parse.call(md, src, env)
-      cache.set(key, tokens)
-      return tokens
-    }
-  }
 
   module.exports.dataReturnable(md)
 
