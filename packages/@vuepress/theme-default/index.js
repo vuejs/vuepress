@@ -17,19 +17,10 @@ module.exports = (options, ctx) => ({
     }
   },
 
-  extendMarkdown (md) {
-    if (options.toc !== false) {
-      md.use(require('markdown-it-table-of-contents'), {
-        includeLevel: [2, 3],
-        ...options.toc
-      })
-    }
-  },
-
   plugins: [
     ['@vuepress/active-header-links', options.activeHeaderLinks],
-    ['@vuepress/search'],
-    ['@vuepress/nprogress'],
+    '@vuepress/search',
+    '@vuepress/plugin-nprogress',
     ['container', {
       type: 'tip',
       defaultTitle: {

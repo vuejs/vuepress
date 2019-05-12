@@ -299,26 +299,6 @@ sidebar: false
 ---
 ```
 
-## 目录
-
-``` js
-// .vuepress/config.js
-module.exports = {
-  themeConfig: {
-    toc: {
-      sidebar: 'auto'
-    }
-  }
-}
-```
-
-提供给 [markdown-it-table-of-contents](https://github.com/Oktavilla/markdown-it-table-of-contents#options) 的选项。默认选项为 `{ includeLevel: [2, 3] }`。
-
-::: tip
-1. 如果你希望自定义标题，你应该使用 [`markdown.slugify`](../config/#markdown-slugify) 而不是 `themeConfig.toc.slugify`。
-2. 将 `themeConfig.toc` 设为 `false` 将会禁用 `[[toc]]` 的语法（这在当你想要使用诸如 [vuepress-plugin-toc](https://vuepress.github.io/plugins/toc/) 的插件时是有用的）。
-:::
-
 ## 搜索框
 
 ### 内置搜索
