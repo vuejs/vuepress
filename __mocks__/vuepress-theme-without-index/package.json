@@ -1,4 +1,4 @@
 {
-    "name": "vuepress-theme-without-index",
-    "main": "Layout.vue"
+  "name": "vuepress-theme-without-index",
+  "main": "Layout.vue"
 }
