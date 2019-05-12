@@ -109,6 +109,24 @@ vuepress dev docs --no-cache     # 在每次构建前删除 cache
 ```
 :::
 
+### extraWatchFiles
+
+- 类型: `Array`
+- 默认值: `[]`
+
+指定额外的需要被监听的文件。
+
+你可以监听任何想监听的文件，文件变动将会触发 `vuepress` 重新构建，并实时更新。
+
+``` js
+module.exports = {
+  extraWatchFiles: [
+    '.vuepress/foo.js', // 使用相对路径
+    '/path/to/bar.js'   // 使用绝对路径
+  ]
+}
+```
+
 ## Styling
 
 ### palette.styl
