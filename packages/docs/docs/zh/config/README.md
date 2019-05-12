@@ -209,17 +209,9 @@ VuePress 提供了一种添加额外样式的简便方法。你可以创建一�
 ### markdown.toc
 
 - 类型: `Object`
+- 默认值: `{ includeLevel: [2, 3] }`
 
-这个值将会控制 `[[TOC]]` 默认行为。它包含下面的选项：
-
-- includeLevel: [number, number]，决定哪些级别的标题会被显示在目录中，默认值为 `[2, 3]`。
-- containerClass: string，决定了目录容器的类名，默认值为 `table-of-contents`。
-- markerPattern: RegExp，决定了标题匹配的正则表达式，默认值为 `/^\[\[toc\]\]/im`。
-- listType: string 或 Array，决定了各级列表的标签，默认值为 `"ul"`。
-- containerHeaderHtml: string，在目录开头插入的 HTML 字符串，默认值为 `""`。
-- containerFooterHtml: string，在目录结尾插入的 HTML 字符串，默认值为 `""`。
-
-此外，我们还提供了[全局组件 TOC](../guide/using-vue.md#toc)，可以通过直接向 `<TOC>` 传递属性实现更加自由的控制。
+[markdown-it-table-of-contents](https://github.com/Oktavilla/markdown-it-table-of-contents) 的选项。
 
 ### markdown.plugins
 
