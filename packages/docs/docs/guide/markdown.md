@@ -101,7 +101,7 @@ For more details, check out the [Front Matter](./frontmatter.md) page.
 
 A list of all emojis available can be found [here](https://github.com/markdown-it/markdown-it-emoji/blob/master/lib/data/full.json).
 
-## Table of Contents
+## Table of Contents <Badge text="default theme"/>
 
 **Input**
 
@@ -109,17 +109,13 @@ A list of all emojis available can be found [here](https://github.com/markdown-i
 [[toc]]
 ```
 
-or
-
-```md
-<TOC/>
-```
-
 **Output**
 
 [[toc]]
 
-Rendering of TOC can be configured using the [`markdown.toc`](../config/README.md#markdown-toc) option, or as props of [TOC component](./using-vue.md#toc), like `<TOC list-type="ol" :include-level="[2, Infinity]"/>`.
+Rendering of TOC can be configured using the [`themeConfig.toc`](../theme/default-theme-config.md#table-of-contents) option.
+
+> You can also use the official plugin [vuepress-plugin-toc](https://vuepress.github.io/plugins/toc/) for an advanced `<TOC/>` component.
 
 ## Custom Containers <Badge text="default theme"/>
 

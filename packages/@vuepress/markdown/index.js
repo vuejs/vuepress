@@ -15,7 +15,6 @@ const componentPlugin = require('./lib/component')
 const hoistScriptStylePlugin = require('./lib/hoist')
 const convertRouterLinkPlugin = require('./lib/link')
 const snippetPlugin = require('./lib/snippet')
-const tocPlugin = require('./lib/tableOfContents')
 const emojiPlugin = require('markdown-it-emoji')
 const anchorPlugin = require('markdown-it-anchor')
 const {
@@ -32,7 +31,6 @@ module.exports = (markdown = {}) => {
   const {
     externalLinks,
     anchor,
-    toc,
     plugins,
     lineNumbers,
     beforeInstantiate,
@@ -91,10 +89,6 @@ module.exports = (markdown = {}) => {
         permalinkBefore: true,
         permalinkSymbol: '#'
       }, anchor)])
-      .end()
-
-    .plugin(PLUGINS.TOC)
-      .use(tocPlugin, [toc])
       .end()
 
   if (lineNumbers) {

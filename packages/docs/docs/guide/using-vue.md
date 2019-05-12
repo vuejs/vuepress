@@ -224,28 +224,6 @@ Specify a specific slot for a specific page (.md) for rendering. This will be ve
 - [Markdown Slot](./markdown-slot.md)
 - [Writing a theme > Content Outlet](../theme/writing-a-theme.md#content-outlet)
 
-### TOC <Badge text="1.0.0-alpha.41+"/>
-
-- **Props**:
-  - `listType` - string or Array, defaults to `"ul"`
-  - `includeLevel` - [number, number], defaults to `[2, 3]`
-
-- **Slots**: `header`, `footer`
-
-- **Usage**:
-
-You can add a custom table of contents by specify some props to this component. `includeLevel` decides which level of headers should be included. `listType` decides the tags of lists. If specified as an array, the component will take the first element as the first-level list type and so on. If there are not enough values provided, the last value will be used for all the remaining list types.
-
-``` md
-<TOC :list-type="['ol', 'ul']">
-  <p slot="header"><strong>Custom Table of Contents</strong></p>
-</TOC>
-```
-
-<TOC :list-type="['ol', 'ul']">
-  <p slot="header"><strong>Custom Table of Contents</strong></p>
-</TOC>
-
 ### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/> <Badge text="default theme"/>
 
 - **Props**:

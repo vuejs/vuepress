@@ -215,21 +215,6 @@ Options for [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-
 
 The key and value pair will be added to `<a>` tags that point to an external link. The default option will open external links in a new window.
 
-### markdown.toc
-
-- Type: `Object`
-
-This attribute will control the behaviour of `[[TOC]]`. It contains the following options:
-
-- includeLevel: [number, number], level of headers to be included, defaults to `[2, 3]`.
-- containerClass: string, the class name for the container, defaults to `table-of-contents`.
-- markerPattern: RegExp, the regular expression for the marker to be replaced with TOC, defaults to `/^\[\[toc\]\]/im`.
-- listType: string or Array, labels for all levels of the list, defaults to `"ul"`.
-- containerHeaderHtml: string, an HTML string for container header, defaults to `""`.
-- containerFooterHtml: string, an HTML string for container footer, defaults to `""`.
-
-We also provide a [global component TOC](../guide/using-vue.md#toc) which allows for more free control by passing props directly to `<TOC>`.
-
 ### markdown.plugins
 
 You can install any markdown-it plugins through `markdown.plugins` option. It is similar with [using VuePress plugins](../plugin/using-a-plugin.html#using-a-plugin). You can either use Babel style or object style. The `markdown-it-` prefix is optional and can omit in the list.
