@@ -11,7 +11,7 @@ module.exports = (options, ctx) => {
   } = options
 
   const isLayoutExists = name => layoutComponentMap[name] !== undefined
-  const getLayout = (name, fallback) => isLayoutExists(name) ? name : fallback
+  const getLayout = (name, fallback) => return isLayoutExists(name) ? name : fallback
   const isDirectChild = regularPath => path.parse(regularPath).dir === '/'
 
   const enhancers = [
