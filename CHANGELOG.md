@@ -1,3 +1,24 @@
+<a name="1.0.0-alpha.48"></a>
+# [1.0.0-alpha.48](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.47...v1.0.0-alpha.48) (2019-05-14)
+
+
+### Bug Fixes
+
+* **$core:** Failed to load theme when using `layouts/Layout.vue` as entry file (close: [#1563](https://github.com/vuejs/vuepress/issues/1563)) ([#1564](https://github.com/vuejs/vuepress/issues/1564)) ([057d8bf](https://github.com/vuejs/vuepress/commit/057d8bf))
+* **$core:** Search result cannot jump to the correct hash anchor (close: [#1594](https://github.com/vuejs/vuepress/issues/1594)) ([#1599](https://github.com/vuejs/vuepress/issues/1599)) ([e6af68f](https://github.com/vuejs/vuepress/commit/e6af68f))
+* **$core:** Use directory name to compute slug if filename is readme or index (close: [#1443](https://github.com/vuejs/vuepress/issues/1443)) ([#1535](https://github.com/vuejs/vuepress/issues/1535)) ([9efc678](https://github.com/vuejs/vuepress/commit/9efc678))
+* **$core:** webpack externals (ref: [#451](https://github.com/vuejs/vuepress/issues/451)) ([fb324d5](https://github.com/vuejs/vuepress/commit/fb324d5))
+
+
+### Features
+
+* **$core:** Infer page's date via directory name ([#1553](https://github.com/vuejs/vuepress/issues/1553)) ([2c930c9](https://github.com/vuejs/vuepress/commit/2c930c9))
+* **$core:** `info` command ([#1573](https://github.com/vuejs/vuepress/issues/1573)) ([3eeb080](https://github.com/vuejs/vuepress/commit/3eeb080))
+* **$core:** Prevent duplicate route ([#1525](https://github.com/vuejs/vuepress/issues/1525)) ([441f023](https://github.com/vuejs/vuepress/commit/441f023))
+* **$theme-default:** Support external links in sidebar (close: [#764](https://github.com/vuejs/vuepress/issues/764))([#1534](https://github.com/vuejs/vuepress/issues/1534)) ([141bd11](https://github.com/vuejs/vuepress/commit/141bd11))
+
+
+
 <a name="1.0.0-alpha.47"></a>
 # [1.0.0-alpha.47](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.46...v1.0.0-alpha.47) (2019-04-06)
 

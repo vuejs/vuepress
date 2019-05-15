@@ -46,6 +46,10 @@ do not clear screen when dev server is ready.
 
 Copy the default theme into `.vuepress/theme` for customization.
 
+## info
+
+Shows debugging information about the local environment.
+
 ## more commands
 
 You can create a custom command with [extendCli](../plugin/option-api.md#extendcli).
