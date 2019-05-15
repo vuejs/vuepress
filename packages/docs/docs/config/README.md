@@ -113,6 +113,23 @@ vuepress dev docs --no-cache     # remove cache before each build.
 ```
 :::
 
+### extraWatchFiles
+
+- Type: `Array`
+- Default: `[]`
+
+Specify extra files to be watched.
+
+You can watch any file if you want. File changes will trigger `vuepress` rebuilding and real-time updates.
+
+``` js
+module.exports = {
+  extraWatchFiles: [
+    '.vuepress/foo.js', // Relative path usage
+    '/path/to/bar.js'   // Absolute path usage
+  ]
+}
+```
 
 ## Styling
 
