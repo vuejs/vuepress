@@ -476,7 +476,7 @@ Then you can write CSS targeting that page only:
 
 ## Custom Layout for Specific Pages
 
-By default the content of each `*.md` file is rendered in a `<div class="page">` container, along with the sidebar, auto-generated edit links and prev/next links. If you wish to use a completely custom component in place of the page (while only keeping the navbar), you can again specify the component to use using `YAML front matter`:
+By default the content of each `*.md` file is rendered in a `<div class="page">` container, along with the sidebar, auto-generated edit links and prev/next links. If you wish to use a completely custom component in place of the page, you can again specify the component to use using `YAML front matter`:
 
 ``` yaml
 ---
