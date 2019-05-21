@@ -464,15 +464,18 @@ pageClass: custom-page-class
 ---
 ```
 
-Then you can write CSS targeting that page only:
+Then you can write CSS targeting that page only in `./vuepress/styles/index.styl`.
 
 ``` css
-/* .vuepress/override.styl */
 
 .theme-container.custom-page-class {
   /* page-specific rules */
 }
 ```
+
+::: tip Note
+These styles are written in [index.styl](/config/#index-styl), a file that allows you to conveniently add extra styles or override existing ones for the default theme.
+:::
 
 ## Custom Layout for Specific Pages
 
