@@ -57,7 +57,7 @@ You can customize the attributes added to external links by setting [config.mark
 
 ## Front Matter
 
-[YAML front matter](https://jekyllrb.com/docs/frontmatter/) is supported out of the box:
+[YAML front matter](https://jekyllrb.com/docs/frontmatter/) is supported out of the box when placed at the very beginning of your markdown file:
 
 ``` yaml
 ---
