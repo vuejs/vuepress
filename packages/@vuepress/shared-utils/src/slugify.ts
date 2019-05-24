@@ -19,6 +19,8 @@ export = function slugify (str: string): string {
     .replace(/^\-+|\-+$/g, '')
     // ensure it doesn't start with a number (#121)
     .replace(/^(\d)/, '_$1')
+    // ensure it isn't empty, breaking scrolling and sidebar
+    .replace(/^$/, '_')
     // lowercase
     .toLowerCase()
 }
