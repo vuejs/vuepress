@@ -464,19 +464,22 @@ pageClass: custom-page-class
 ---
 ```
 
-Then you can write CSS targeting that page only:
+Then you can write CSS targeting that page only in `./vuepress/styles/index.styl`.
 
 ``` css
-/* .vuepress/override.styl */
 
 .theme-container.custom-page-class {
   /* page-specific rules */
 }
 ```
 
+::: tip Note
+These styles are written in [index.styl](/config/#index-styl), a file that allows you to conveniently add extra styles or override existing ones for the default theme.
+:::
+
 ## Custom Layout for Specific Pages
 
-By default the content of each `*.md` file is rendered in a `<div class="page">` container, along with the sidebar, auto-generated edit links and prev/next links. If you wish to use a completely custom component in place of the page (while only keeping the navbar), you can again specify the component to use using `YAML front matter`:
+By default the content of each `*.md` file is rendered in a `<div class="page">` container, along with the sidebar, auto-generated edit links and prev/next links. If you wish to use a completely custom component in place of the page, you can again specify the component to use using `YAML front matter`:
 
 ``` yaml
 ---
@@ -488,4 +491,8 @@ This will render `.vuepress/components/SpecialLayout.vue` for the given page.
 
 ## Ejecting
 
-You can copy the default theme source code into `.vuepress/theme` to fully customize the theme using the `vuepress eject [targetDir]` command. Note, however, once you eject, you are on your own and won't be receiving future updates or bug fixes to the default theme even if you upgrade VuePress.
+You can copy the default theme source code into `.vuepress/theme` to fully customize the theme using the `vuepress eject [targetDir]` command. 
+
+::: warning
+Once you eject, you are on your own and **won't** be receiving future updates or bug fixes to the default theme even if you upgrade VuePress.
+:::
