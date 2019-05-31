@@ -85,12 +85,13 @@ export function createApp (isServer) {
 
   handleRedirectForCleanUrls(router)
 
-  const options = {}
+  let options = {}
 
   try {
     appEnhancers.forEach(enhancer => {
       if (typeof enhancer === 'function') {
-        enhancer({ Vue, options, router, siteData, isServer })
+        const opts = enhancer({ Vue, options, router, siteData, isServer })
+        if (opts) options = Object.assign(options, opts)
       }
     })
   } catch (e) {
