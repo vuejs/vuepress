@@ -1,3 +1,4 @@
+import { setGlobalInfo } from '@app/util'
 
 export default {
   props: {
@@ -9,6 +10,8 @@ export default {
   },
   render (h) {
     const pageKey = this.pageKey || this.$parent.$page.key
+    setGlobalInfo('pageKey', pageKey)
+
     if (pageKey) {
       return h(pageKey)
     }
