@@ -15,7 +15,8 @@ GA has been separated into a standalone plugin [@vuepress/plugin-google-analytic
 1. Install `@vuepress/plugin-google-analytics`:
 
 ```bash
-yarn add -D @vuepress/plugin-google-analytics
+yarn add -D @vuepress/plugin-google-analytics@next
+# OR npm install -D @vuepress/plugin-google-analytics@next
 ```
 
 2. Update `vuepress/config.js`:
@@ -23,11 +24,11 @@ yarn add -D @vuepress/plugin-google-analytics
 ```diff
 module.exports = {
 -  ga: 'UA-12345678-9'
-},
-plugins: {
-+  '@vuepress/google-analytics': {
-+    ga: 'UA-12345678-9'
-+  }
++  plugins: [
++    ['@vuepress/google-analytics', {
++      ga: 'UA-12345678-9'
++    }]
++ ]
 }
 ```
 :::
@@ -69,7 +70,7 @@ See: [Config > palette.styl](../config/README.md#palette-styl)
 
 ### `.vuepress/style.styl` <Badge text="replaced"/>
 
-Replaced by `.vuepress/styles/index.styl` 代替.
+Replaced by `.vuepress/styles/index.styl`.
 
 ::: upgrade
 See: [Config > index.styl](../config/README.md#index-styl)

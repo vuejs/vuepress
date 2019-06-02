@@ -14,6 +14,7 @@ import * as isIndexFile from './isIndexFile'
 import logger from './logger'
 import * as moduleLoader from './moduleLoader'
 import * as moduleResolver from './moduleResolver'
+import normalizeConfig from './normalizeConfig'
 import * as parseEmojis from './parseEmojis'
 import parseFrontmatter from './parseFrontmatter'
 import parseHeaders from './parseHeaders'
@@ -31,6 +32,7 @@ import path from 'path'
 import globby from 'globby'
 import hash from 'hash-sum'
 import escapeHtml from 'escape-html'
+import semver from 'semver'
 
 export {
   codegen,
@@ -49,6 +51,7 @@ export {
   logger,
   moduleLoader,
   moduleResolver,
+  normalizeConfig,
   parseEmojis,
   parseFrontmatter,
   parseHeaders,
@@ -65,4 +68,5 @@ export {
   globby,
   hash,
   escapeHtml,
+  semver,
 }

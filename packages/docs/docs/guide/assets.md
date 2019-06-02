@@ -17,7 +17,7 @@ In addition, you can use the `~` prefix to explicitly indicate this is a webpack
 ![Image from dependency](~some-dependency/image.png)
 ```
 
-webpack aliases can be configured via [configureWebpack](/config/#configurewebpack) in `.vuepress/config.js`. Example:
+webpack aliases can be configured via [configureWebpack](../config/README.md#configurewebpack) in `.vuepress/config.js`. Example:
 
 ``` js
 module.exports = {
@@ -33,7 +33,7 @@ module.exports = {
 
 ## Public Files
 
-Sometimes you may need to provide static assets that are not directly referenced in any of your markdown or theme components - for example, favicons and PWA icons. In such cases you can put them inside `.vuepress/public` and they will be copied to the root of the generated directory.
+Sometimes you may need to provide static assets that are not directly referenced in any of your markdown or theme components - for example, favicons and PWA icons. In such cases, you can put them inside `.vuepress/public` and they will be copied to the root of the generated directory.
 
 ## Base URL
 

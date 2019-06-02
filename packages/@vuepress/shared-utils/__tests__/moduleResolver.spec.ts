@@ -21,7 +21,7 @@ function loadMockModule (name: string) {
 }
 
 function resolveMockModule (name: string) {
-  return path.resolve(__dirname, `${MOCK_RELATIVE}/${name}`)
+  return require.resolve(path.resolve(__dirname, `${MOCK_RELATIVE}/${name}/`))
 }
 
 const fixturesDir = path.resolve(__dirname, 'fixtures')
@@ -110,12 +110,14 @@ describe('resolvePlugin', () => {
     expect(resolved.fromDep).toBe(false)
   })
 
-  test('from dep', () => {
+  describe('from dep', () => {
     const asserts = getBaseAsserts('plugin')
     for (const { input, output } of asserts) {
-      const [, name] = output
-      const resolved = resolvePlugin(input)
-      expect(resolved.entry).toBe(loadMockModule(name))
+      test(input, () => {
+        const [, name] = output
+        const resolved = resolvePlugin(input)
+        expect(resolved.entry).toBe(loadMockModule(name))
+      })
     }
   })
 
@@ -137,12 +139,14 @@ describe('resolvePlugin', () => {
 describe('resolveTheme', () => {
   const resolveTheme = themeResolver.resolve.bind(themeResolver)
 
-  test('from dep', () => {
+  describe('from dep', () => {
     const asserts = getBaseAsserts('theme')
     for (const { input, output } of asserts) {
-      const [, name] = output
-      const resolved = resolveTheme(input)
-      expect(resolved.entry).toBe(resolveMockModule(name))
+      test(input, () => {
+        const [, name] = output
+        const resolved = resolveTheme(input)
+        expect(resolved.entry).toBe(resolveMockModule(name))
+      })
     }
   })
 

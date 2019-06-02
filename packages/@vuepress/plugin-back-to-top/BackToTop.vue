@@ -40,9 +40,9 @@ export default {
 
   methods: {
     getScrollTop () {
-      return window.pageYOffset ||
-        document.documentElement.scrollTop ||
-        document.body.scrollTop || 0
+      return window.pageYOffset
+        || document.documentElement.scrollTop
+        || document.body.scrollTop || 0
     },
 
     scrollToTop () {

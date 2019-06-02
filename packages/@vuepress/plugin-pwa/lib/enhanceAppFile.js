@@ -12,10 +12,11 @@ if (SW_UPDATE_POPUP) {
 export default ({ router, isServer }) => {
   // Register service worker
   router.onReady(() => {
-    if (process.env.NODE_ENV === 'production' &&
-      !isServer &&
-      SW_ENABLED) {
+    if (process.env.NODE_ENV === 'production'
+      && !isServer
+      && SW_ENABLED) {
       register(`${SW_BASE_URL}service-worker.js`, {
+        registrationOptions: {},
         ready () {
           console.log('[vuepress:sw] Service worker is active.')
           event.$emit('sw-ready')

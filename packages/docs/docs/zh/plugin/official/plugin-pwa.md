@@ -10,8 +10,8 @@ metaTitle: PWA 插件 | VuePress
 ## 安装
 
 ```bash
-yarn add -D @vuepress/plugin-pwa
-# OR npm install -D @vuepress/plugin-pwa
+yarn add -D @vuepress/plugin-pwa@next
+# OR npm install -D @vuepress/plugin-pwa@next
 ```
 
 ## 使用
@@ -43,6 +43,14 @@ module.exports = {
 `serviceWorker` 选项仅仅用来控制 service worker，为了让你的网站完全地兼容 PWA，你需要在 `.vuepress/public` 提供 Manifest 和 icons，更多细节，请参见 [MDN docs about the Web App Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest).
 此外，只有您能够使用 SSL 部署您的站点时才能启用此功能，因为 service worker 只能在 HTTPs 的 URL 下注册。
 :::
+
+### generateSWConfig
+
+- 类型: `object`
+- 默认值: `{}`
+
+workbox-build 的 [generateSW config](https://developers.google.com/web/tools/workbox/modules/workbox-build#full_generatesw_config)。
+
 
 ### updatePopup
 

@@ -180,8 +180,10 @@ module.exports = {
   themeConfig: {
     sidebar: [
       {
-        title: 'Group 1',
-        collapsable: false,
+        title: 'Group 1',   // required
+        path: '/foo/',      // optional, which should be a absolute path.
+        collapsable: false, // optional, defaults to true
+        sidebarDepth: 1,    // optional, defaults to 1
         children: [
           '/'
         ]
@@ -196,6 +198,12 @@ module.exports = {
 ```
 
 Sidebar groups are collapsable by default. You can force a group to be always open with `collapsable: false`.
+
+A sidebar group config also supports [sidebarDepth](#nested-header-links) field to override the default sidebar depth (`1`).
+
+::: tip
+   From `1.0.0-alpha.36` on, nested sidebar group <Badge text="beta"/> is also supported, but the nesting depth should be less than 3, otherwise the console will receive a warning.
+:::
 
 ### Multiple Sidebars
 
@@ -311,11 +319,18 @@ module.exports = {
 }
 ```
 
+You can also disable the built-in search box for individual pages with `YAML front matter`:
+```yaml
+---
+search: false
+---
+```
+
 ::: tip
-Built-in Search only builds index from the title, `h2` and `h3` headers, if you need full text search, you can use [Algolia Search](#algolia-search).
+Built-in Search only builds index from the title, `h2` and `h3` headers, if you need full text search, you can use [Algolia DocSearch](#algolia-docsearch).
 :::
 
-### Algolia Search
+### Algolia DocSearch
 
 The `themeConfig.algolia` option allows you to use [Algolia DocSearch](https://community.algolia.com/docsearch/) to replace the simple built-in search. To enable it, you need to provide at least `apiKey` and `indexName`:
 
@@ -353,6 +368,11 @@ Note that it's `off` by default. If given a `string`, it will be displayed as a 
 ::: warning
   Since `lastUpdated` is based on `git`, you can only use it in a `git` repository. Also, since the timestamp used comes from the git commit, it will display only after a first commit for a given page, and update only on subsequent commits of that page.
 :::
+
+
+**Also see:**
+
+- [@vuepress/plugin-last-updated](../plugin/official/plugin-last-updated.md)
 
 ## Service Worker
 
@@ -444,19 +464,22 @@ pageClass: custom-page-class
 ---
 ```
 
-Then you can write CSS targeting that page only:
+Then you can write CSS targeting that page only in `./vuepress/styles/index.styl`.
 
 ``` css
-/* .vuepress/override.styl */
 
 .theme-container.custom-page-class {
   /* page-specific rules */
 }
 ```
 
+::: tip Note
+These styles are written in [index.styl](/config/#index-styl), a file that allows you to conveniently add extra styles or override existing ones for the default theme.
+:::
+
 ## Custom Layout for Specific Pages
 
-By default the content of each `*.md` file is rendered in a `<div class="page">` container, along with the sidebar, auto-generated edit links and prev/next links. If you wish to use a completely custom component in place of the page (while only keeping the navbar), you can again specify the component to use using `YAML front matter`:
+By default the content of each `*.md` file is rendered in a `<div class="page">` container, along with the sidebar, auto-generated edit links and prev/next links. If you wish to use a completely custom component in place of the page, you can again specify the component to use using `YAML front matter`:
 
 ``` yaml
 ---
@@ -468,4 +491,8 @@ This will render `.vuepress/components/SpecialLayout.vue` for the given page.
 
 ## Ejecting
 
-You can copy the default theme source code into `.vuepress/theme` to fully customize the theme using the `vuepress eject [targetDir]` command. Note, however, once you eject, you are on your own and won't be receiving future updates or bug fixes to the default theme even if you upgrade VuePress.
+You can copy the default theme source code into `.vuepress/theme` to fully customize the theme using the `vuepress eject [targetDir]` command. 
+
+::: warning
+Once you eject, you are on your own and **won't** be receiving future updates or bug fixes to the default theme even if you upgrade VuePress.
+:::

@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-active-header-links",
-  "version": "1.0.0-alpha.30",
+  "version": "1.0.0-alpha.48",
   "description": "active-header-links plugin for vuepress",
   "main": "index.js",
   "publishConfig": {
@@ -8,7 +8,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vuejs/vuepress.git"
+    "url": "git+https://github.com/vuejs/vuepress.git",
+    "directory": "packages/@vuepress/plugin-active-header-links"
   },
   "keywords": [
     "documentation",

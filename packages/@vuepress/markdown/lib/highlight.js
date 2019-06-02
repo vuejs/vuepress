@@ -24,12 +24,25 @@ module.exports = (str, lang) => {
   if (lang === 'md') {
     lang = 'markdown'
   }
+  if (lang === 'rb') {
+    lang = 'ruby'
+  }
   if (lang === 'ts') {
     lang = 'typescript'
   }
   if (lang === 'py') {
     lang = 'python'
   }
+  if (lang === 'sh') {
+    lang = 'bash'
+  }
+  if (lang === 'yml') {
+    lang = 'yaml'
+  }
+  if (lang === 'styl') {
+    lang = 'stylus'
+  }
+
   if (!prism.languages[lang]) {
     try {
       loadLanguages([lang])

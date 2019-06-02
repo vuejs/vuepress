@@ -10,7 +10,7 @@ If you just want to play around with VuePress, you can install it globally:
 
 ``` bash
 # install globally
-yarn global add vuepress # OR npm install -g vuepress
+yarn global add vuepress@next # OR npm install -g vuepress@next
 
 # create a markdown file
 echo '# Hello VuePress' > README.md
@@ -28,7 +28,7 @@ If you have an existing project and would like to keep documentation inside the 
 
 ``` bash
 # install as a local dependency
-yarn add -D vuepress # OR npm install -D vuepress
+yarn add -D vuepress@next # OR npm install -D vuepress@next
 
 # create a docs directory
 mkdir docs
@@ -63,4 +63,4 @@ To generate static assets, run:
 yarn docs:build # Or npm run docs:build
 ```
 
-By default the built files will be in `.vuepress/dist`, which can be configured via the `dest` field in `.vuepress/config.js`. The built files can be deployed to any static file server. See [Deployment Guide](deploy.md) for guides on deploying to popular services.
+By default, the built files will be in `.vuepress/dist`, which can be configured via the `dest` field in `.vuepress/config.js`. The built files can be deployed to any static file server. See [Deployment Guide](deploy.md) for guides on deploying to popular services.

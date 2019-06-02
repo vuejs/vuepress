@@ -8,20 +8,7 @@
 
 ### 内部链接
 
-内部的、并以 `.md` or `.html` 结尾的链接，将会被转换成 `<router-link>` 用于 SPA 导航。
-
-站内的每一个子文件夹都应当有一个 `README.md` 文件，它会被自动编译为 `index.html`。
-
-::: tip
-在链接到一个文件夹的 `index.html` 时，确保你的链接以 `/` 结尾，否则该链接将导致 404。比如，用 `/config/` 而不是 `/config`。
-:::
-
-如果你想要链接到另一个 markdown 文件：
-
-1. 确保链接以 `.html` 或 `.md` 结尾；
-2. 确保路径大小写正确，因为路径的匹配是大小写敏感的。
-
-#### 示例
+网站内部的的链接，将会被转换成 `<router-link>` 用于 SPA 导航。同时，站内的每一个文件夹下的 `README.md` 或者 `index.md` 文件都会被自动编译为 `index.html`，对应的链接将被视为 `/`。
 
 以如下的文件结构为例：
 
@@ -38,13 +25,23 @@
    └─ four.md
 ```
 
+假设你现在在 `foo/one.md` 中：
+
 ``` md
 [Home](/) <!-- 跳转到根部的 README.md -->
 [foo](/foo/) <!-- 跳转到 foo 文件夹的 index.html -->
-[foo heading anchor](/foo/#heading) <!-- 跳转到 foo/index.html 的特定 anchor 位置 -->
-[foo - one](/foo/one.html) <!-- 具体文件可以使用 .html 结尾 -->
-[foo - two](/foo/two.md) <!-- 也可以用 .md -->
+[foo heading](./#heading) <!-- 跳转到 foo/index.html 的特定标题位置 -->
+[bar - three](../bar/three.md) <!-- 具体文件可以使用 .md 结尾（推荐） -->
+[bar - four](../bar/four.html) <!-- 也可以用 .html -->
 ```
+
+### 链接的重定向 <Badge text="1.0.0-alpha.37"/>
+
+VuePress 支持重定向到干净链接。如果一个链接 `/foo` 找不到，VuePress 会自行寻找一个可用的 `/foo/` 或 `/foo.html`。反过来，当 `/foo/` 或 `/foo.html` 中的一个找不到时，VuePress 也会尝试寻找另一个。借助这种特性，我们可以通过官方插件 [vuepress-plugin-clean-urls](https://vuepress.github.io/plugins/clean-urls/) 定制你的网站路径。
+
+::: tip 注意
+无论是否使用了 permalink 和 clean-urls 插件，你的相对路径都应该依赖于当前的文件结构来定义。在上面的例子中，即使你将 `/foo/one.md` 的路径设为了 `/foo/one/`，你依然应该通过 `./two.md` 来访问 `/foo/two.md`。
+:::
 
 ### 外部链接
 
@@ -72,7 +69,7 @@ lang: en-US
 
 ## GitHub 风格的表格
 
-**Input**
+**输入**
 
 ```
 | Tables        | Are           | Cool  |
@@ -82,7 +79,7 @@ lang: en-US
 | zebra stripes | are neat      |    $1 |
 ```
 
-**Output**
+**输出**
 
 | Tables        | Are           | Cool  |
 | ------------- |:-------------:| -----:|
@@ -92,33 +89,33 @@ lang: en-US
 
 ## Emoji
 
-**Input**
+**输入**
 
 ```
 :tada: :100:
 ```
 
-**Output**
+**输出**
 
 :tada: :100:
 
 ## 目录
 
-**Input**
+**输入**
 
 ```
 [[toc]]
 ```
 
-**Output**
+**输出**
 
 [[toc]]
 
 目录（Table of Contents）的渲染可以通过  [`markdown.toc`](../config/README.md#markdown-toc) 选项来配置。
 
-## 自定义容器
+## 自定义容器 <Badge text="默认主题"/>
 
-**Input**
+**输入**
 
 ```
 ::: tip
@@ -134,7 +131,7 @@ This is a dangerous warning
 :::
 ```
 
-**Output**
+**输出**
 
 ::: tip
 This is a tip
@@ -160,12 +157,71 @@ Danger zone, do not proceed
 Danger zone, do not proceed
 :::
 
-## 代码块中的行高亮
+**参考:**
 
-**Input**
+- [vuepress-plugin-container](https://vuepress.github.io/plugins/container/)
+
+## 代码块中的语法高亮
+
+VuePress 使用了 [Prism](https://prismjs.com/) 来为 markdown 中的代码块实现语法高亮。Prism 支持大量的编程语言，你需要做的只是在代码块的开始倒勾中附加一个有效的语言别名：
+
+**输入**
 
 ````
-``` js{4}
+``` js
+export default {
+  name: 'MyComponent',
+  // ...
+}
+```
+````
+
+**输出**
+
+``` js
+export default {
+  name: 'MyComponent',
+  // ...
+}
+```
+
+**输入**
+
+````
+``` html
+<ul>
+  <li
+    v-for="todo in todos"
+    :key="todo.id"
+  >
+    {{ todo.text }}
+  </li>
+</ul>
+```
+````
+
+**输出**
+
+``` html
+<ul>
+  <li
+    v-for="todo in todos"
+    :key="todo.id"
+  >
+    {{ todo.text }}
+  </li>
+</ul>
+```
+
+在 Prism 的网站上查看 [合法的语言列表](https://prismjs.com/#languages-list)。
+
+
+## 代码块中的行高亮
+
+**输入**
+
+````
+``` js {4}
 export default {
   data () {
     return {
@@ -176,7 +232,7 @@ export default {
 ```
 ````
 
-**Output**
+**输出**
 
 ``` js{4}
 export default {
@@ -232,7 +288,7 @@ module.exports = {
   }
 </style>
 
-## 导入代码段 <Badge text="beta" type="warn"/> <Badge text="0.10.1+" type="tip"/>
+## 导入代码段 <Badge text="beta" type="warn"/>
 
 你可以通过下述的语法导入已经存在的文件中的代码段：
 
@@ -246,18 +302,18 @@ module.exports = {
 <<< @/filepath{highlightLines} 
 ```
 
-**Input**
+**输入**
 
 ```
 <<< @/../@vuepress/markdown/__tests__/fragments/snippet.js{2}
 ```
 
-**Output**
+**输出**
 
 <<< @/../@vuepress/markdown/__tests__/fragments/snippet.js{2}
 
 ::: tip 注意
-  由于代码段的导入将在 webpack 编译之前执行，因此你无法使用 webpack 中的路径别名，此处的 `@` 默认值是 `process.cwd()`。
+由于代码段的导入将在 webpack 编译之前执行，因此你无法使用 webpack 中的路径别名，此处的 `@` 默认值是 `process.cwd()`。
 :::
 
 ## 进阶配置

@@ -8,9 +8,9 @@ VuePress 实现了一套针对 Markdown 的内容分发 API。通过这个特性
 
 <diagram-markdown-slot-relationship/>
 
-Markdown 文件是元数据（页面内容、配置等）的提供者，而布局组件负责消费他们。我们可以通过 frontmatter 来定义一些普通数据类型的元数据，但对于 Markdown/HTML 这种涉及到编译前差异的复杂元数据，frontmatter 却无能能力。
+Markdown 文件是元数据（页面内容、配置等）的提供者，而布局组件负责消费他们。我们可以通过 frontmatter 来定义一些普通数据类型的元数据，但对于 Markdown / HTML 这种涉及到编译前后差异的复杂元数据，frontmatter 却无能能力。
 
-Markdown 插槽便是为了解决这一类问题。
+Markdown 插槽便解决了这一类问题。
 
 ## 具名插槽
 

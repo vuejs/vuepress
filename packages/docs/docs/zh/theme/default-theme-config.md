@@ -1,6 +1,6 @@
 # 默认主题配置
 
-::: tip 提示
+::: tip
 本页所列的选项仅对默认主题生效。如果你在使用一个自定义主题，选项可能会有不同。
 :::
 
@@ -177,8 +177,10 @@ module.exports = {
   themeConfig: {
     sidebar: [
       {
-        title: 'Group 1',
-        collapsable: false,
+        title: 'Group 1',   // 必要的
+        path: '/foo/',      // 可选的, 应该是一个绝对路径
+        collapsable: false, // 可选的, 默认值是 true,
+        sidebarDepth: 1,    // 可选的, 默认值是 1
         children: [
           '/'
         ]
@@ -193,6 +195,12 @@ module.exports = {
 ```
 
 侧边栏的每个子组默认是可折叠的，你可以设置 `collapsable: false` 来让一个组永远都是展开状态。
+
+一个侧边栏的子组配置同时支持 [sidebarDepth](#nested-header-links) 字段用于重写默认显示的侧边栏深度(`1`)。
+
+::: tip
+  从 `1.0.0-alpha.36` 开始，嵌套的侧边栏分组 <Badge text="beta"/> 也是支持的，但嵌套深度应小于 3，否则在控制台会收到警告。
+:::
 
 ### 多个侧边栏
 
@@ -306,6 +314,14 @@ module.exports = {
 }
 ```
 
+你可以通过 `YAML front matter` 来对单独的页面禁用内置的搜索框：
+
+```yaml
+---
+search: false
+---
+```
+
 ::: tip
 内置搜索只会为页面的标题、`h2` 和 `h3` 构建搜索索引，如果你需要全文搜索，你可以使用 [Algolia 搜索](#Algolia-搜索)。
 :::
@@ -346,8 +362,12 @@ module.exports = {
 请注意，`themeConfig.lastUpdated` 默认是关闭的，如果给定一个字符串，它将会作为前缀显示（默认值是：`Last Updated`）。
 
 ::: warning 使用须知
-  由于 `lastUpdated` 是基于 `git` 的, 所以你只能在一个基于 `git` 的项目中启用它。
+  由于 `lastUpdated` 是基于 `git` 的, 所以你只能在一个基于 `git` 的项目中启用它。此外，由于使用的时间戳来自 git commit，因此它将仅在给定页的第一次提交之后显示，并且仅在该页面后续提交更改时更新。
 :::
+
+**拓展阅读:**
+
+- [@vuepress/plugin-last-updated](../plugin/official/plugin-last-updated.md)
 
 ## Service Worker
 

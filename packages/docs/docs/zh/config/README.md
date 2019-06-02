@@ -1,4 +1,5 @@
 ---
+sidebarDepth: 3
 sidebar: auto
 ---
 
@@ -11,14 +12,14 @@ sidebar: auto
 - 类型: `string`
 - 默认值: `/`
 
-部署站点的基础路径，如果你想让你的网站部署到一个子路径下，你将需要设置它。如 Github pages，如果你想将你的网站部署到 `https://foo.github.io/bar/`，那么 `base` 应该被设置成 `"/bar/"`，它的值应当总是以斜杠开始，并以斜杠结束。
+部署站点的基础路径，如果你想让你的网站部署到一个子路径下，你将需要设置它。如 GitHub pages，如果你想将你的网站部署到 `https://foo.github.io/bar/`，那么 `base` 应该被设置成 `"/bar/"`，它的值应当总是以斜杠开始，并以斜杠结束。
 
 `base` 将会自动地作为前缀插入到所有以 `/` 开始的其他选项的链接中，所以你只需要指定一次。
 
 **参考:**
 
 - [Base URL](../guide/assets.md#基础路径)
-- [部署指南 > Github Pages](../guide/deploy.md#github-pages)
+- [部署指南 > GitHub Pages](../guide/deploy.md#github-pages)
 
 ### title
 
@@ -51,8 +52,8 @@ module.exports = {
 
 ### host
 
-- Type: `string`
-- Default: `'0.0.0.0'`
+- 类型: `string`
+- 默认值: `'0.0.0.0'`
 
 指定用于 dev server 的主机名。
 
@@ -63,23 +64,19 @@ module.exports = {
 
 指定 dev server 的端口。
 
+### temp
+
+- Type: `string`
+- Default: `/path/to/@vuepress/core/.temp`
+
+指定客户端文件的临时目录。
+
 ### dest
 
 - 类型: `string`
 - 默认值: `.vuepress/dist`
 
-指定 `vuepress build` 的输出目录。
-
-### ga
-
-- 类型: `string`
-- 默认值: `undefined`
-
-提供一个 Google Analytics ID 来使 GA 生效。
-
-::: tip 提示
-请留意 [GDPR (2018年欧盟数据保护规则改革)](https://ec.europa.eu/commission/priorities/justice-and-fundamental-rights/data-protection/2018-reform-eu-data-protection-rules_en), 在合适或者需要的情况下，考虑将 Google Analytics 设置为[匿名化的 IP](https://support.google.com/analytics/answer/2763052?hl=zh-Hans)。
-:::
+指定 `vuepress build` 的输出目录。如果传入的是相对路径，则会基于 `process.cwd()` 进行解析。
 
 ### locales
 
@@ -97,8 +94,8 @@ module.exports = {
 
 ### cache
 
-- Type: `boolean|string`
-- Default: `true`
+- 类型: `boolean|string`
+- 默认值: `true`
 
 VuePress 默认使用了 [cache-loader](https://github.com/webpack-contrib/cache-loader)  来大大地加快 webpack 的编译速度。
 
@@ -112,18 +109,34 @@ vuepress dev docs --no-cache     # 在每次构建前删除 cache
 ```
 :::
 
-## Styling
+### extraWatchFiles
 
-> To be translated.
+- 类型: `Array`
+- 默认值: `[]`
+
+指定额外的需要被监听的文件。
+
+你可以监听任何想监听的文件，文件变动将会触发 `vuepress` 重新构建，并实时更新。
+
+``` js
+module.exports = {
+  extraWatchFiles: [
+    '.vuepress/foo.js', // 使用相对路径
+    '/path/to/bar.js'   // 使用绝对路径
+  ]
+}
+```
+
+## Styling
 
 ### palette.styl
 
-If you wish to apply simple color overrides to the styling of the [default preset](https://github.com/vuejs/vuepress/blob/master/packages/@vuepress/core/lib/app/style/config.styl) or define some color variables for using later, you can create an `.vuepress/styles/palette.styl` file.
+如果要对[默认预设](https://github.com/vuejs/vuepress/blob/master/packages/@vuepress/core/lib/app/style/config.styl)的样式应用简单的颜色替换，或者定义一些颜色变量供以后使用，你可以创建一个 `.vuepress/styles/palette.styl` 文件。
 
-There are a few color variables you can tweak:
+你可以调整一些颜色变量:
 
 ``` stylus
-// showing default values
+// 默认值
 $accentColor = #3eaf7c
 $textColor = #2c3e50
 $borderColor = #eaecef
@@ -131,12 +144,12 @@ $codeBgColor = #282c34
 ```
 
 ::: danger Note
-You should ONLY write color variables in this file. since `palette.styl` will be imported at the end of the root stylus config file, as a config, it will be used by multiple files, so once you wrote styles here, your style would be duplicated by multiple times.
+你应该**只在**这个文件中写入颜色变量。因为 `palette.styl` 将在根的 stylus 配置文件的末尾引入，作为配置，它将被多个文件使用，所以一旦你在这里写了样式，你的样式就会被多次复制。
 :::
 
 ### index.styl
 
-VuePress provides a convenient way to add extra styles. you can create an `.vuepress/styles/index.styl` file for that. This is a [Stylus](http://stylus-lang.com/) file but you can use normal CSS syntax as well.
+VuePress 提供了一种添加额外样式的简便方法。你可以创建一个 `.vuepress/styles/index.styl` 文件。这是一个 [Stylus](http://stylus-lang.com/) 文件，但你也可以使用正常的 CSS 语法。
 
 ```stylus
 .content {
@@ -172,8 +185,8 @@ VuePress provides a convenient way to add extra styles. you can create an `.vuep
 
 ### plugins
 
-- Type: `Object|Array`
-- Default: `undefined`
+- 类型: `Object|Array`
+- 默认值: `undefined`
 
 请参考 [plugin > Using a plugin](../plugin/using-a-plugin.md) 来使用一个插件。
 
@@ -192,8 +205,8 @@ VuePress provides a convenient way to add extra styles. you can create an `.vuep
 
 ### markdown.slugify
 
-- Type: `Function`
-- Default: [source](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/shared-utils/src/slugify.ts)
+- 类型: `Function`
+- 默认值: [source](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/shared-utils/src/slugify.ts)
 
 一个将标题文本转换为 slug 的函数。修改它会影响 [标题](../miscellaneous/glossary.md#headers)、[目录](../guide/markdown.md#目录)、以及[侧边栏](../theme/default-theme-config.md#侧边栏)链接的 id 和 链接。
 
@@ -206,8 +219,8 @@ VuePress provides a convenient way to add extra styles. you can create an `.vuep
 
 ### markdown.externalLinks
 
-- Type: `Object`
-- Default: `{ target: '_blank', rel: 'noopener noreferrer' }`
+- 类型: `Object`
+- 默认值: `{ target: '_blank', rel: 'noopener noreferrer' }`
 
 这个键值对将会作为特性被增加到是外部链接的 `<a>` 标签上，默认的选项将会在新窗口中打开一个该外部链接。
 
@@ -217,6 +230,38 @@ VuePress provides a convenient way to add extra styles. you can create an `.vuep
 - 默认值: `{ includeLevel: [2, 3] }`
 
 [markdown-it-table-of-contents](https://github.com/Oktavilla/markdown-it-table-of-contents) 的选项。
+
+### markdown.plugins
+
+你可以使用 `markdown.plugins` 来安装 markdown-it 插件。它的使用方法与[安装一个 VuePress 插件](../plugin/using-a-plugin.html#using-a-plugin)类似。你可以使用 Babel 语法或对象语法。`markdown-it-` 前缀同样是可以忽略的。
+
+``` js
+module.exports = {
+  markdown: {
+    plugins: [
+      '@org/foo', // 等价于 @org/markdown-it-foo，如果对应的包存在
+      ['markdown-it-bar', {
+        // 提供你的选项
+      }]
+    ]
+  }
+}
+```
+
+or
+
+``` js
+module.exports = {
+  markdown: {
+    plugins: {
+      '@org/foo': {}
+      'markdown-it-bar': {
+        // 提供你的选项
+      }
+    }
+  }
+}
+```
 
 ### markdown.extendMarkdown
 
@@ -228,7 +273,7 @@ VuePress provides a convenient way to add extra styles. you can create an `.vuep
 ``` js
 module.exports = {
   markdown: {
-    config: md => {
+    extendMarkdown: md => {
       md.set({ breaks: true })
       md.use(require('markdown-it-xxx'))
     }
@@ -251,28 +296,28 @@ module.exports = {
 
 ### stylus
 
-- Type: `Object`
-- Default: `{ preferPathResolver: 'webpack' }`
+- 类型: `Object`
+- 默认值: `{ preferPathResolver: 'webpack' }`
 
 [stylus-loader](https://github.com/shama/stylus-loader) 的选项。
 
 ### scss
 
-- Type: `Object`
-- Default: `{}`
+- 类型: `Object`
+- 默认值: `{}`
 
 加载 `*.scss` 文件的 [sass-loader](https://github.com/postcss/postcss-loader) 的选项。
 
 ### sass
 
-- Type: `Object`
-- Default: `{ indentedSyntax: true }`
+- 类型: `Object`
+- 默认值: `{ indentedSyntax: true }`
 
 加载 `*.sass` 文件的 [sass-loader](https://github.com/postcss/postcss-loader) 的选项。
 
 ### less
 
-- Type: `Object`
+- 类型: `Object`
 - Default: `{}`
 
 [less-loader](https://github.com/webpack-contrib/less-loader) 的选项。
@@ -313,7 +358,7 @@ module.exports = {
 
 ### evergreen
 
-- 类型: `boolean`
+- 类型: `boolean | Function`
 - 默认值: `false`
 
 如果你的对象只有那些 “常青树” 浏览器，你可以将其设置成 `true`，这将会禁止 ESNext 到 ES5 的转译以及对 IE 的 polyfills，同时会带来更快的构建速度和更小的文件体积。

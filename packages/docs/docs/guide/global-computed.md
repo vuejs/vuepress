@@ -9,7 +9,7 @@ This is the `$site` value of the website you see now:
 ``` json
 {
   "title": "VuePress",
-  "description": "Vue 驱动的静态网站生成器",
+  "description": "Vue-powered static site generator",
   "base": "/",
   "pages": [
     {
@@ -56,7 +56,7 @@ Reference of [$page](#page).frontmatter.
 
 ## $lang
 
-The language of the current page. default value is `en-US`.
+The language of the current page, the default value is `en-US`.
 
 **Also see:**
 

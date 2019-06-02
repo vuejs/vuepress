@@ -173,7 +173,7 @@ For pre-processors that do not have built-in webpack config support, you will ne
 
 ## Script & Style Hoisting
 
-Sometimes you may need to apply some JavaScript or CSS only to the current page. In those cases you can directly write root-level `<script>` or `<style>` blocks in the markdown file, and they will be hoisted out of the compiled HTML and used as the `<script>` and `<style>` blocks for the resulting Vue single-file component.
+Sometimes you may need to apply some JavaScript or CSS only to the current page. In those cases, you can directly write root-level `<script>` or `<style>` blocks in the markdown file, and they will be hoisted out of the compiled HTML and used as the `<script>` and `<style>` blocks for the resulting Vue single-file component.
 
 <p class="demo" :class="$style.example"></p>
 
@@ -197,21 +197,22 @@ export default {
 
 ### OutboundLink <Badge text="stable"/>
 
-It(<OutboundLink/>) is used to indicate that this is an external link. In VuePress this component have been followed by every external link.
+It(<OutboundLink/>) is used to indicate that this is an external link. In VuePress, this component has been followed by every external link.
 
 ### ClientOnly <Badge text="stable"/>
 
 See [Browser API Access Restrictions](#browser-api-access-restrictions).
 
-### Content <Badge text="beta" type="warn"/>
+### Content <Badge text="1.0.0+"/>
 
 - **Props**:
 
-  - `custom` - boolean
+  - `pageKey` - string, [page](./global-computed.md#page)'s hash key, defaults to current page's key.
+  - `slotKey` - string, key of [markdown slot](./markdown-slot.md). defaults to [default slot](./markdown-slot.md#default-slot-content).
 
 - **Usage**：
 
-The compiled content of the current `.md` file being rendered. This will be very useful when you use [Custom Layout](../theme/default-theme-config.md#custom-layout-for-specific-pages).
+Specify a specific slot for a specific page (.md) for rendering. This will be very useful when you use [Custom Layout](../theme/default-theme-config.md#custom-layout-for-specific-pages) or [Writing a theme](../theme/writing-a-theme.md)
 
 ``` vue
 <Content/>
@@ -219,10 +220,12 @@ The compiled content of the current `.md` file being rendered. This will be very
 
 **Also see:**
 
-- [Custom Themes > Content Outlet](../theme/writing-a-theme.md#content-outlet)
+- [Global Computed > $page](./global-computed.md#page)
+- [Markdown Slot](./markdown-slot.md)
+- [Writing a theme > Content Outlet](../theme/writing-a-theme.md#content-outlet)
 
 
-### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/>
+### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/> <Badge text="default theme"/>
 
 - **Props**:
 
@@ -235,7 +238,7 @@ The compiled content of the current `.md` file being rendered. This will be very
 You can use this component in header to add some status for some API:
 
 ``` md
-### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/>
+### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/> <Badge text="default theme"/>
 ```
 
 **Also see:**

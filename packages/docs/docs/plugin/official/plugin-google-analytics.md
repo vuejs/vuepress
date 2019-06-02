@@ -11,17 +11,28 @@ metaTitle: Google Analytics Plugin | VuePress
 ## Install
 
 ```bash
-yarn add -D @vuepress/plugin-google-analytics
-# OR npm install -D @vuepress/plugin-google-analytics
+yarn add -D @vuepress/plugin-google-analytics@next
+# OR npm install -D @vuepress/plugin-google-analytics@next
 ```
 
 ## Usage
 
 ```javascript
 module.exports = {
-  plugins: ['@vuepress/google-analytics'] 
+  plugins: [
+    [ 
+      '@vuepress/google-analytics',
+      {
+        'ga': '' // UA-00000000-0
+      }
+    ]  
+  ] 
 }
 ```
+
+::: tip
+Please be aware of [GDPR (2018 reform of EU data protection rules)](https://ec.europa.eu/commission/priorities/justice-and-fundamental-rights/data-protection/2018-reform-eu-data-protection-rules_en) and consider setting Google Analytics to [anonymize IPs](https://support.google.com/analytics/answer/2763052?hl=en) where appropriate and/or needed.
+:::
 
 ## Options
 

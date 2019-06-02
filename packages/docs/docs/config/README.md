@@ -1,4 +1,5 @@
 ---
+sidebarDepth: 3
 sidebar: auto
 ---
 
@@ -13,14 +14,14 @@ sidebar: auto
 - Type: `string`
 - Default: `/`
 
-The base URL the site will be deployed at. You will need to set this if you plan to deploy your site under a sub path, for example GitHub pages. If you plan to deploy your site to `https://foo.github.io/bar/`, then `base` should be set to `"/bar/"`. It should always start and end with a slash.
+The base URL the site will be deployed at. You will need to set this if you plan to deploy your site under a sub path, for example, GitHub pages. If you plan to deploy your site to `https://foo.github.io/bar/`, then `base` should be set to `"/bar/"`. It should always start and end with a slash.
 
 The `base` is automatically prepended to all the URLs that start with `/` in other options, so you only need to specify it once.
 
 **Also see:**
 
 - [Base URL](../guide/assets.md#base-url)
-- [Deploy Guide > Github Pages](../guide/deploy.md#github-pages)
+- [Deploy Guide > GitHub Pages](../guide/deploy.md#github-pages)
 
 ### title
 
@@ -65,23 +66,20 @@ Specify the host to use for the dev server.
 
 Specify the port to use for the dev server.
 
+### temp
+
+- Type: `string`
+- Default: `/path/to/@vuepress/core/.temp`
+
+
+Specify the temporary directory for client.
+
 ### dest
 
 - Type: `string`
 - Default: `.vuepress/dist`
 
-Specify the output directory for `vuepress build`.
-
-### ga
-
-- Type: `string`
-- Default: `undefined`
-
-Provide the Google Analytics ID to enable integration.
-
-::: tip
-Please be aware of [GDPR (2018 reform of EU data protection rules)](https://ec.europa.eu/commission/priorities/justice-and-fundamental-rights/data-protection/2018-reform-eu-data-protection-rules_en) and consider setting Google Analytics to [anonymize IPs](https://support.google.com/analytics/answer/2763052?hl=en) where appropriate and/or needed.
-:::
+Specify the output directory for `vuepress build`. If a relative path is specified, it will be resolved based on `process.cwd()`.
 
 ### locales
 
@@ -115,6 +113,23 @@ vuepress dev docs --no-cache     # remove cache before each build.
 ```
 :::
 
+### extraWatchFiles
+
+- Type: `Array`
+- Default: `[]`
+
+Specify extra files to be watched.
+
+You can watch any file if you want. File changes will trigger `vuepress` rebuilding and real-time updates.
+
+``` js
+module.exports = {
+  extraWatchFiles: [
+    '.vuepress/foo.js', // Relative path usage
+    '/path/to/bar.js'   // Absolute path usage
+  ]
+}
+```
 
 ## Styling
 
@@ -215,7 +230,7 @@ Options for [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-
 - Type: `Object`
 - Default: `{ target: '_blank', rel: 'noopener noreferrer' }`
 
-The key and value pair will be added to `<a>` tags that points to an external link. The default option will open external links in a new window.
+The key and value pair will be added to `<a>` tags that point to an external link. The default option will open external links in a new window.
 
 ### markdown.toc
 
@@ -223,6 +238,38 @@ The key and value pair will be added to `<a>` tags that points to an external li
 - Default: `{ includeLevel: [2, 3] }`
 
 Options for [markdown-it-table-of-contents](https://github.com/Oktavilla/markdown-it-table-of-contents). (Note: prefer `markdown.slugify` if you want to customize header ids.)
+
+### markdown.plugins
+
+You can install any markdown-it plugins through `markdown.plugins` option. It is similar with [using VuePress plugins](../plugin/using-a-plugin.html#using-a-plugin). You can either use Babel style or object style. The `markdown-it-` prefix is optional and can omit in the list.
+
+``` js
+module.exports = {
+  markdown: {
+    plugins: [
+      '@org/foo', // equals to @org/markdown-it-foo if exists
+      ['markdown-it-bar', {
+        // provide options here
+      }]
+    ]
+  }
+}
+```
+
+or
+
+``` js
+module.exports = {
+  markdown: {
+    plugins: {
+      '@org/foo': {}
+      'markdown-it-bar': {
+        // provide options here
+      }
+    }
+  }
+}
+```
 
 ### markdown.extendMarkdown
 
@@ -247,6 +294,10 @@ This option is also included in [Plugin API](../plugin/option-api.md#extendmarkd
 :::
 
 ## Build Pipeline
+
+:::tip Configuring CSS Pre-processors
+VuePress comes with built-in webpack config for the CSS pre-processors listed below. For more information on installation these or pre-processors without built-in support, see [Using Pre-Processors](../guide/using-vue.md#using-pre-processors) for more information.
+:::
 
 ### postcss
 
@@ -319,7 +370,7 @@ module.exports = {
 
 ### evergreen
 
-- Type: `boolean`
+- Type: `boolean | Function`
 - Default: `false`
 
 Set to `true` if you are only targeting evergreen browsers. This will disable ES5 transpilation and polyfills for IE, and result in faster builds and smaller files.

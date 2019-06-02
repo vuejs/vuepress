@@ -43,5 +43,5 @@ vuepress build
 ```
 
 ::: warning COMPATIBILITY NOTE
-VuePress requires Node.js >= 8.
+VuePress requires Node.js >= 8.6.
 :::

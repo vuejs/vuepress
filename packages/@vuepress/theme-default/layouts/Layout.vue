@@ -48,10 +48,10 @@
 </template>
 
 <script>
-import Home from '../components/Home.vue'
-import Navbar from '../components/Navbar.vue'
-import Page from '../components/Page.vue'
-import Sidebar from '../components/Sidebar.vue'
+import Home from '@theme/components/Home.vue'
+import Navbar from '@theme/components/Navbar.vue'
+import Page from '@theme/components/Page.vue'
+import Sidebar from '@theme/components/Sidebar.vue'
 import { resolveSidebarItems } from '../util'
 
 export default {
@@ -68,25 +68,25 @@ export default {
       const { themeConfig } = this.$site
       const { frontmatter } = this.$page
       if (
-        frontmatter.navbar === false ||
-        themeConfig.navbar === false) {
+        frontmatter.navbar === false
+        || themeConfig.navbar === false) {
         return false
       }
       return (
-        this.$title ||
-        themeConfig.logo ||
-        themeConfig.repo ||
-        themeConfig.nav ||
-        this.$themeLocaleConfig.nav
+        this.$title
+        || themeConfig.logo
+        || themeConfig.repo
+        || themeConfig.nav
+        || this.$themeLocaleConfig.nav
       )
     },
 
     shouldShowSidebar () {
       const { frontmatter } = this.$page
       return (
-        !frontmatter.home &&
-        frontmatter.sidebar !== false &&
-        this.sidebarItems.length
+        !frontmatter.home
+        && frontmatter.sidebar !== false
+        && this.sidebarItems.length
       )
     },
 
@@ -147,4 +147,3 @@ export default {
 </script>
 
 <style src="prismjs/themes/prism-tomorrow.css"></style>
-<style src="../styles/theme.styl" lang="stylus"></style>

@@ -1,13 +1,13 @@
 <template>
-  <div class="home">
-    <div class="hero">
+  <main class="home" aria-labelledby="main-title">
+    <header class="hero">
       <img
         v-if="data.heroImage"
         :src="$withBase(data.heroImage)"
-        alt="hero"
+        :alt="data.heroAlt || 'hero'"
       >
 
-      <h1>{{ data.heroText || $title || 'Hello' }}</h1>
+      <h1 v-if="data.heroText !== null" id="main-title">{{ data.heroText || $title || 'Hello' }}</h1>
 
       <p class="description">
         {{ data.tagline || $description || 'Welcome to your VuePress site' }}
@@ -22,7 +22,7 @@
           :item="actionLink"
         />
       </p>
-    </div>
+    </header>
 
     <div
       class="features"
@@ -38,7 +38,7 @@
       </div>
     </div>
 
-    <Content class="custom"/>
+    <Content class="theme-default-content custom"/>
 
     <div
       class="footer"
@@ -46,11 +46,11 @@
     >
       {{ data.footer }}
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
-import NavLink from './NavLink.vue'
+import NavLink from '@theme/components/NavLink.vue'
 
 export default {
   components: { NavLink },
@@ -75,6 +75,7 @@ export default {
   padding $navbarHeight 2rem 0
   max-width 960px
   margin 0px auto
+  display block
   .hero
     text-align center
     img
