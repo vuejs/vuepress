@@ -27,7 +27,7 @@ VuePress 由两部分组成：第一部分是一个[极简静态网站生成器]
 
 **Vue驱动的自定义主题系统**
 
-* [网站和页面的元数据](../theme/writing-a-theme.md#网站和页面的元数据a)
+* [网站和页面的元数据](../theme/writing-a-theme.md#网站和页面的元数据)
 * [内容摘抄](../theme/writing-a-theme.md#内容摘抄)
 
 **默认主题**
