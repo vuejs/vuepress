@@ -2,7 +2,7 @@
   <main class="page">
     <slot name="top"/>
 
-    <Content/>
+    <Content class="content"/>
 
     <footer class="page-edit">
       <div
