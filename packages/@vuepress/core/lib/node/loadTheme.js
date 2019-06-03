@@ -59,9 +59,9 @@ module.exports = function loadTheme (ctx) {
 }
 
 function normalizeThemePath (resolved) {
-  const { entry, name, fromDep } = resolved
+  const { entry, fromDep } = resolved
   if (fromDep) {
-    return parse(require.resolve(name)).dir
+    return parse(require.resolve(entry)).dir
   } else if (entry.endsWith('.js') || entry.endsWith('.vue')) {
     return parse(entry).dir
   } else {
