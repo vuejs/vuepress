@@ -190,7 +190,7 @@ export function normalizeConfig (component, rawConfig) {
  * @param {any} value
  */
 export function setGlobalInfo (key, value) {
-  if (!window.__VUEPRESS__ || typeof window === 'undefined') {
+  if (typeof window === 'undefined' || !window.__VUEPRESS__) {
     return
   }
   window.__VUEPRESS__[key] = value
