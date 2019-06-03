@@ -1,6 +1,6 @@
 {
   "name": "vuepress",
-  "version": "1.0.0-alpha.49",
+  "version": "1.0.0-alpha.50",
   "description": "Minimalistic doc generator with Vue component based layout system",
   "main": "index.js",
   "repository": {

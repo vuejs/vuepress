@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/markdown",
-  "version": "1.0.0-alpha.49",
+  "version": "1.0.0-alpha.50",
   "description": "markdown for vuepress",
   "main": "index.js",
   "publishConfig": {
