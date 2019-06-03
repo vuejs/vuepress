@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/test-utils",
-  "version": "1.0.0-alpha.48",
+  "version": "1.0.0-alpha.49",
   "description": "test-utils for vuepress",
   "main": "index.js",
   "publishConfig": {
