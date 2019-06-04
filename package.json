@@ -3,8 +3,7 @@
   "workspaces": [
     "packages/@vuepress/*",
     "packages/vuepress",
-    "packages/docs",
-    "packages/blog"
+    "packages/docs"
   ],
   "description": "Minimalistic doc generator with Vue component based layout system",
   "scripts": {
