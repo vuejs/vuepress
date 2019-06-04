@@ -3,7 +3,7 @@ const { readdirSync } = require('fs')
 const chalk = require('chalk')
 const execa = require('execa')
 
-const PRIVATE_PACKAGES = ['theme-vue', 'theme-blog', '.DS_Store']
+const PRIVATE_PACKAGES = ['theme-vue', '.DS_Store']
 
 const scopePackages = readdirSync(
   join(__dirname, '../packages/@vuepress')
