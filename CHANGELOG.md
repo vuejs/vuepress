@@ -1,3 +1,29 @@
+<a name="1.0.0-alpha.50"></a>
+# [1.0.0-alpha.50](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.49...v1.0.0-alpha.50) (2019-06-04)
+
+
+### Bug Fixes
+
+* **$core:** window is not defined ([d30e078](https://github.com/vuejs/vuepress/commit/d30e078))
+
+<a name="1.0.0-alpha.49"></a>
+# [1.0.0-alpha.49](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.48...v1.0.0-alpha.49) (2019-06-03)
+
+
+### Bug Fixes
+
+* **$core:** cannot load theme with shortcut. ([7eed1f4](https://github.com/vuejs/vuepress/commit/7eed1f4))
+* **$core:** cannot retrieve the correct theme name when them path is a local absolute path linked to a javascript file. ([50f64b4](https://github.com/vuejs/vuepress/commit/50f64b4))
+
+
+### Features
+
+* **$core:** global variable "__VUEPRESS__" to store runtime key infos ([bd0bdf9](https://github.com/vuejs/vuepress/commit/bd0bdf9))
+* **$core:** safer class name of content outlet ([7d0542e](https://github.com/vuejs/vuepress/commit/7d0542e))
+* **$theme-default:** using '.theme-default-content' to replace '.content' in `<Content />` outlet. ([85ff630](https://github.com/vuejs/vuepress/commit/85ff630))
+
+
+
 <a name="1.0.0-alpha.48"></a>
 # [1.0.0-alpha.48](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.47...v1.0.0-alpha.48) (2019-05-14)
 
