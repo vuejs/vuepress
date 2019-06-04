@@ -46,9 +46,16 @@ Each markdown file is compiled into HTML with [markdown-it](https://github.com/m
 * [Last Updated](../theme/default-theme-config.md#last-updated)
 * [Multi-Language Support](../guide/i18n.md)
 
+**Blog theme**
+
+* [Docuementation](https://vuepress-theme-blog.ulivz.com/)
+* [Live Example](https://ulivz.com/)
+
+
 **Plugin**
 
 * [Powerful Plugin API](../plugin/README.md)
+* [Blog Plugin](https://vuepress-plugin-blog.ulivz.com/)
 * [Search Plugin](../plugin/official/plugin-search.md)
 * [PWA Plugin](../plugin/official/plugin-pwa.md)
 * [Google Analytics Plugin](../plugin/official/plugin-google-analytics.md)

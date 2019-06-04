@@ -42,9 +42,15 @@ VuePress 由两部分组成：第一部分是一个[极简静态网站生成器]
 * [最后更新时间](../theme/default-theme-config.md#最后更新时间)
 * [多语言支持](../guide/i18n.md)
 
+**博客主题**
+
+* [文档](https://vuepress-theme-blog.ulivz.com/)
+* [在线案例](https://ulivz.com/)
+
 **Plugin**
 
 * [强大的 Plugin API](../plugin/README.md)
+* [博客插件](https://vuepress-plugin-blog.ulivz.com/)
 * [PWA 插件](../plugin/official/plugin-pwa.md)
 * [Google Analytics 插件](../plugin/official/plugin-google-analytics.md)
 * ...
