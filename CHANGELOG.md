@@ -1,4 +1,19 @@
 <a name=""></a>
+# [](https://github.com/vuejs/vuepress/compare/v1.0.0-beta.2...v) (2019-06-05)
+
+
+
+<a name="1.0.0-beta.2"></a>
+# [1.0.0-beta.2](https://github.com/vuejs/vuepress/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2019-06-05)
+
+
+### Bug Fixes
+
+* **$core:** failed to render `<Content />` with dynamic pageKey from current $page. ([83b02ba](https://github.com/vuejs/vuepress/commit/83b02ba))
+
+
+
+<a name=""></a>
 # [](https://github.com/vuejs/vuepress/compare/v1.0.0-beta.1...v) (2019-06-05)
 
 
