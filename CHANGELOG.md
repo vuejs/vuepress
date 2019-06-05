@@ -1,3 +1,23 @@
+<a name=""></a>
+# [](https://github.com/vuejs/vuepress/compare/v1.0.0-beta.1...v) (2019-06-05)
+
+
+<a name="1.0.0-beta.1"></a>
+# [1.0.0-beta.1](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.50...v1.0.0-beta.1) (2019-06-04)
+
+### Features
+
+* **New Blog Plugin**: [@vuepress/plugin-blog](https://github.com/ulivz/vuepress-plugin-blog)
+* **Default Blog Theme**: [@vuepress/plugin-blog](https://github.com/ulivz/vuepress-theme-blog)
+
+> Here is a VuePress Blog Theme implemented in around 70 lines**: https://github.com/ulivz/70-lines-of-vuepress-blog-theme
+
+
+### BREAKING CHANGES
+
+* Deprecated `@vuepress/plugin-blog` at alpha stage. ([10dfb66](https://github.com/vuejs/vuepress/commit/10dfb66))
+* Deprecated `@vuepress/plugin-pagination` at alpha stage. ([3722192](https://github.com/vuejs/vuepress/commit/3722192))
+
 <a name="1.0.0-alpha.50"></a>
 # [1.0.0-alpha.50](https://github.com/vuejs/vuepress/compare/v1.0.0-alpha.49...v1.0.0-alpha.50) (2019-06-04)
 
