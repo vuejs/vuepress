@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import { setGlobalInfo } from '@app/util'
 
 export default {
@@ -24,7 +25,7 @@ export default {
     layout () {
       const layout = this.getLayout()
       setGlobalInfo('layout', layout)
-      return layout
+      return Vue.component(layout)
     }
   }
 }
