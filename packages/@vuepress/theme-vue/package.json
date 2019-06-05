@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/theme-vue",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "description": "VuePress theme for official Vue projects",
   "main": "index.js",
   "publishConfig": {
@@ -30,6 +30,6 @@
   },
   "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/theme-vue#readme",
   "dependencies": {
-    "@vuepress/theme-default": "^1.0.0-beta.1"
+    "@vuepress/theme-default": "^1.0.0-beta.2"
   }
 }
