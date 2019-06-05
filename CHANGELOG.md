@@ -8,10 +8,10 @@
 ### Features
 
 * **New Blog Plugin**: [@vuepress/plugin-blog](https://github.com/ulivz/vuepress-plugin-blog)
+  * A VuePress Blog Theme implemented in around 70 lines**: https://github.com/ulivz/70-lines-of-vuepress-blog-theme
+
 * **Default Blog Theme**: [@vuepress/plugin-blog](https://github.com/ulivz/vuepress-theme-blog)
-
-> Here is a VuePress Blog Theme implemented in around 70 lines**: https://github.com/ulivz/70-lines-of-vuepress-blog-theme
-
+  * Live Example: http://example.vuepress-theme-blog.ulivz.com
 
 ### BREAKING CHANGES
 
