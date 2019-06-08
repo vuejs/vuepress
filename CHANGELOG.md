@@ -1,3 +1,8 @@
+
+# [1.0.0](https://github.com/vuejs/vuepress/compare/v1.0.0-rc.1...v1.0.0) (2019-06-08)
+
+
+
 # [1.0.0-rc.1](https://github.com/vuejs/vuepress/compare/v1.0.0-beta.2...v1.0.0-rc.1) (2019-06-08)
 
 It seems no any changes here.
