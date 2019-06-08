@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-nprogress",
-  "version": "1.0.0-rc.1",
+  "version": "1.0.0",
   "description": "nprogress plugin for vuepress",
   "main": "index.js",
   "publishConfig": {

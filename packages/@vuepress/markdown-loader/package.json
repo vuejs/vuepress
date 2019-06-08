@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/markdown-loader",
-  "version": "1.0.0-rc.1",
+  "version": "1.0.0",
   "description": "markdown-loader for vuepress",
   "main": "index.js",
   "publishConfig": {
@@ -18,7 +18,7 @@
     "generator"
   ],
   "dependencies": {
-    "@vuepress/markdown": "^1.0.0-rc.1",
+    "@vuepress/markdown": "^1.0.0",
     "loader-utils": "^1.1.0",
     "lru-cache": "^5.1.1"
   },
