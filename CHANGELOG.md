@@ -1,7 +1,6 @@
-<a name=""></a>
-# [](https://github.com/vuejs/vuepress/compare/v1.0.0-beta.2...v) (2019-06-05)
+# [1.0.0-rc.1](https://github.com/vuejs/vuepress/compare/v1.0.0-beta.2...v1.0.0-rc.1) (2019-06-08)
 
-
+It seems no any changes here.
 
 <a name="1.0.0-beta.2"></a>
 # [1.0.0-beta.2](https://github.com/vuejs/vuepress/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2019-06-05)
