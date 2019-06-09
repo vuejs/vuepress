@@ -14,12 +14,6 @@
 
 > This is the branch for `VuePress 1.x` and docs are available at https://v1.vuepress.vuejs.org.
 
-## Status: beta
-
-Most of the planned features in place but there may still be bugs. API may still change until we reach RC phase. Do not use in production yet unless you are adventurous.
-
-For 0.x, it's moved to [0.x branch](https://github.com/vuejs/vuepress/tree/0.x) and still maintained, the website is: https://vuepress.vuejs.org.
-
 ## Install
 
 ```bash
