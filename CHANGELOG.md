@@ -1,3 +1,15 @@
+## [1.0.1](https://github.com/vuejs/vuepress/compare/v1.0.0...v1.0.1) (2019-06-10)
+
+
+### Bug Fixes
+
+* **$theme-default:** using '.theme-default-content' to replace '.content' in 404 layout ([#1646](https://github.com/vuejs/vuepress/issues/1646)) ([f0d1344](https://github.com/vuejs/vuepress/commit/f0d1344))
+
+
+### Features
+
+* **$theme-default:** enhance the styles of `blockquote` ([9d20d5f](https://github.com/vuejs/vuepress/commit/9d20d5f))
+
 
 # [1.0.0](https://github.com/vuejs/vuepress/compare/v1.0.0-rc.1...v1.0.0) (2019-06-08)
 
