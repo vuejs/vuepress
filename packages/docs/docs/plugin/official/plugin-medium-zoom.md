@@ -16,9 +16,28 @@ yarn add -D @vuepress/plugin-medium-zoom@next
 
 ## Usage
 
+**Simple**:
+
 ```javascript
 module.exports = {
   plugins: ['@vuepress/medium-zoom'] 
+}
+```
+
+**With options**:
+
+```javascript
+module.exports = {
+  plugins: {
+    '@vuepress/medium-zoom': {
+      selector: 'img.zoom-custom-imgs',
+
+      // medium-zoom options here (https://github.com/francoischalifour/medium-zoom#options)
+      options: {
+        margin: 16
+      }
+    }
+  }
 }
 ```
 
@@ -28,3 +47,7 @@ module.exports = {
 
 - Type: `string`
 - Default: `.content img`
+
+### options
+
+Other `medium-zoom` options. [See documentation](https://github.com/francoischalifour/medium-zoom#options).
