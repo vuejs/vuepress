@@ -30,11 +30,16 @@ Check out [Awesome Vuepress](https://github.com/ulivz/awesome-vuepress) to find 
 > Please make sure your version of Node.js is greater than 8.
 
 ``` bash
+yarn bootstrap # Install and link dependencies for this lerna repo
 yarn dev  # serves VuePress' own docs with itself
 yarn test # make sure your code change pass the test
 ```
 
 If you intend to make `"substantial"` changes to VuePress or its documentation, please checkout [VuePress RFCs](./rfcs/README.md).
+
+Thank you to all the people who already contributed to Vue!
+
+![contributors](https://opencollective.com/vuepress/contributors.svg?width=890)
 
 ## License
 
