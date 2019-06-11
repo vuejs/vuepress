@@ -12,7 +12,14 @@
   <a href="https://discordapp.com/invite/HBherRA"><img src="https://img.shields.io/badge/Discord-join%20chat-738bd7.svg" alt="vuepress channel on Discord"></a>
 </p>
 
-> This is the branch for `VuePress 1.x` and docs are available at https://v1.vuepress.vuejs.org.
+<h2 align="center">Supporting VuePress</h2>
+
+Maintaining and developing new features to VuePress takes a considerable amount of time (if you know that Gastby's team is a company), and I am currently exploring the possibility of working on VuePress fulltime.
+
+- [Sponsor ULIVZ on Patreon](https://www.patreon.com/ulivz)
+- [Sponsor Vue.js](https://vuejs.org/support-vuejs)
+
+> "VuePress is much more than that." —— ULIVZ
 
 ## Install
 
@@ -23,11 +30,14 @@ yarn add vuepress@next -D  # Install 1.x.
 
 ## Showcase
 
-Check out [Awesome Vuepress](https://github.com/ulivz/awesome-vuepress) to find awesome things related to VuePress 1.x .
+- [Awesome Vuepress](https://github.com/ulivz/awesome-vuepress)
+- [vuepress.gallery](https://vuepress.gallery) (by [@vicbergquist](https://twitter.com/vicbergquist))
 
-## Development
+## Documentation
 
-> Please make sure your version of Node.js is greater than 8.
+This is the branch for `VuePress 1.x` and docs are available at https://v1.vuepress.vuejs.org.
+
+## Contribution
 
 ``` bash
 yarn bootstrap # Install and link dependencies for this lerna repo
@@ -37,7 +47,9 @@ yarn test # make sure your code change pass the test
 
 If you intend to make `"substantial"` changes to VuePress or its documentation, please checkout [VuePress RFCs](./rfcs/README.md).
 
-Thank you to all the people who already contributed to Vue!
+If you have a Vue-related project/component/tool, add it with a pull request to [this curated list](https://github.com/ulivz/awesome-vuepress)!
+
+Thank you to all the people who already contributed to VuePress!
 
 ![contributors](https://opencollective.com/vuepress/contributors.svg?width=890)
 
