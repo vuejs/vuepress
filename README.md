@@ -47,7 +47,7 @@ yarn test # make sure your code change pass the test
 
 If you intend to make `"substantial"` changes to VuePress or its documentation, please checkout [VuePress RFCs](./rfcs/README.md).
 
-If you have a Vue-related project/component/tool, add it with a pull request to [this curated list](https://github.com/ulivz/awesome-vuepress)!
+If you have a VuePress-related project/component/tool, add it with a pull request to [this curated list](https://github.com/ulivz/awesome-vuepress)!
 
 Thank you to all the people who already contributed to VuePress!
 
