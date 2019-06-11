@@ -31,8 +31,8 @@ module.exports = {
   plugins: {
     '@vuepress/medium-zoom': {
       selector: 'img.zoom-custom-imgs',
-
-      // medium-zoom options here (https://github.com/francoischalifour/medium-zoom#options)
+      // medium-zoom options here
+      // See: https://github.com/francoischalifour/medium-zoom#options
       options: {
         margin: 16
       }
@@ -46,8 +46,13 @@ module.exports = {
 ### selector
 
 - Type: `string`
-- Default: `.content img`
+- Default: `.theme-default-content img`
+
+Note that `.theme-default-content` is the class name of [`<Content />`](../../guide/using-vue.md#content) component in default theme.
 
 ### options
 
-Other `medium-zoom` options. [See documentation](https://github.com/francoischalifour/medium-zoom#options).
+- Type: `object`
+- Default: `undefined`
+
+[Options](https://github.com/francoischalifour/medium-zoom#options) for [medium-zoom](https://github.com/francoischalifour/medium-zoom).
