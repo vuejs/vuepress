@@ -12,6 +12,11 @@ module.exports = ctx => ({
       lang: 'zh-CN',
       title: 'VuePress 1.x',
       description: 'Vue 驱动的静态网站生成器'
+    },
+    '/ru/': {
+      lang: 'ru-RU',
+      title: 'VuePress 1.x',
+      description: 'Статический генератор сайтов на Vue'
     }
   },
   head: [
@@ -61,6 +66,19 @@ module.exports = ctx => ({
           '/zh/plugin/': getPluginSidebar('插件', '介绍', '官方插件'),
           '/zh/theme/': getThemeSidebar('主题', '介绍')
         }
+      },
+      '/ru/': {
+        label: 'Русский',
+        selectText: 'Выберите язык',
+        editLinkText: 'Редактировать эту страницу на GitHub',
+        lastUpdated: 'Последнее обновление',
+        nav: require('./nav/ru'),
+        sidebar: {
+          '/ru/api/': getApiSidebar(),
+          '/ru/guide/': getGuideSidebar('Руководство', 'Продвинутое'),
+          '/ru/plugin/': getPluginSidebar('Плагины', 'Введение', 'Официальные плагины'),
+          '/ru/theme/': getThemeSidebar('Темы', 'Введение'),
+        }
       }
     }
   },
@@ -88,6 +106,7 @@ module.exports = ctx => ({
   extraWatchFiles: [
     '.vuepress/nav/en.js',
     '.vuepress/nav/zh.js',
+    '.vuepress/nav/ru.js',
   ]
 })
 
