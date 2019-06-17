@@ -2,12 +2,12 @@
 en: 33dfbdcbb8341c9d018380ad60b9e74f1ff8a633
 lang: ru-RU
 title: active-header-links
-metaTitle: Плагин для автоматической активации ссылок на боковую панель при прокрутке страницы | VuePress
+metaTitle: Плагин для автоматической активации ссылок на боковой панели при прокрутке страницы | VuePress
 ---
 
 # [@vuepress/plugin-active-header-links](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-active-header-links)
 
-> Плагин для автоматической активации ссылок на боковую панель при прокрутке страницы
+> Плагин для автоматической активации ссылок на боковой панели при прокрутке страницы
 
 ## Установка
 

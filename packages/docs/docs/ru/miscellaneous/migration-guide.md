@@ -10,7 +10,7 @@ sidebar: auto
 
 ### ga <Badge text="replaced"/>
 
-GA был разделен на отдельный плагин [@vuepress/plugin-google-analytics](../plugin/official/plugin-google-analytics.md).
+GA был отделен в отдельный плагин [@vuepress/plugin-google-analytics](../plugin/official/plugin-google-analytics.md).
 
 ::: upgrade
 
@@ -54,7 +54,7 @@ module.exports = {
 
 ### serviceWorker <Badge text="replaced"/>
 
-Функции, связанные с Service Worker, были разделены на отдельный плагин [@vuepress/plugin-pwa](../plugin/official/plugin-pwa.md).
+Функции, связанные с Service Worker, были отделены в отдельный плагин [@vuepress/plugin-pwa](../plugin/official/plugin-pwa.md).
 
 ::: upgrade
 Смотрите [@vuepress/plugin-pwa > Миграция с 0.x](../plugin/official/plugin-pwa.md#миграция-с-0-x)

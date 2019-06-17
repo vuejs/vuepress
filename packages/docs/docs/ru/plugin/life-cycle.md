@@ -19,7 +19,7 @@ module.exports = {
 ```
 
 ::: tip
-Хук `ready` выполняется после инициализации приложения и перед выполнением некоторых конкретных функциональных API. Эти функциональные API включают в себя:
+Хук `ready` выполняется после инициализации приложения и перед выполнением некоторых конкретных функциональных API. Функциональные API включают в себя:
 
 - [clientDynamicModules](./option-api.md#clientdynamicmodules)
 - [enhanceAppFiles](./option-api.md#enhanceappfiles)

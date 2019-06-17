@@ -33,7 +33,7 @@ module.exports = {
 ```
 
 ::: tip
-Пожалуйста, имейте в виду [GDPR (реформа правил защиты данных ЕС в 2018 году)](https://ec.europa.eu/commission/priorities/justice-and-fundamental-rights/data-protection/2018-reform-eu-data-protection-rules_en) и рассмотрите возможность настройки Google Analytics для [анонимизации IP-адресов](https://support.google.com/analytics/answer/2763052?hl=ru), где это уместно и/или необходимо.
+Пожалуйста, учитывайте [GDPR (реформа правил защиты данных ЕС в 2018 году)](https://ec.europa.eu/commission/priorities/justice-and-fundamental-rights/data-protection/2018-reform-eu-data-protection-rules_en) и рассмотрите возможность настройки Google Analytics для [анонимизации IP-адресов](https://support.google.com/analytics/answer/2763052?hl=ru), где это уместно и/или необходимо.
 :::
 
 ## Опции

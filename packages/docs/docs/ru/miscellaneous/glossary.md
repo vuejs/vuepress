@@ -33,7 +33,7 @@ sidebar: auto
 Текущая страница основана на URL, сгенерированном структурой каталогов.
 
 ::: tip
-При динамическом создании маршрутов в течение периода сборки, URL страницы (`$page.path`) будет сначала использовать `$page.frontmatter.permalink`, а если он не существует, он будет понижен до `$page.regularPath`.
+При динамическом создании маршрутов в течение периода сборки, URL страницы (`$page.path`) будет сначала использовать `$page.frontmatter.permalink`, а если он отстуствует, тогда `$page.regularPath`.
 :::
 
 ## headers
@@ -52,7 +52,7 @@ sidebar: auto
 
 - Доступ: `$themeConfig | Context.themeConfig`
 
-Значение `themeConfig` в `.vuepress/config.js`, т.е. конфигурация темы пользователя.
+Значение `themeConfig` в `.vuepress/config.js`, т.е. настройка темы пользователя.
 
 ## themePath
 
@@ -76,5 +76,5 @@ sidebar: auto
 
 - Доступ: `Context.themeAPI.parentTheme.entry`
 
-Если текущая тема является производной темой, `parentThemePath` ссылается на конфигурацию темы родительской темы.
+Если текущая тема является производной темой, `parentThemePath` ссылается на конфигурацию родительской темы.
 

@@ -31,7 +31,7 @@ module.exports = {
 - Тип: `Array | String`
 - По умолчанию: `[]`
 
-Все компоненты в этом каталоге будут зарегистрированы как глобальные компоненты, именование компонентов будет соответствовать компонентам, найденным в [.vuepress/components](https://vuepress.vuejs.org/guide/using-vue.html#using-components).
+Все компоненты в этом каталоге будут зарегистрированы, как глобальные компоненты, именование компонентов будет соответствовать компонентам, найденным в [.vuepress/components](https://vuepress.vuejs.org/guide/using-vue.html#using-components).
 
 ``` js
 module.exports = {
@@ -51,7 +51,7 @@ module.exports = {
 - Тип: `{ name: string, path: string }`
 - По умолчанию: `[]`
 
-Зарегистрируйте глобальные компоненты по явному имени и пути.
+Зарегистрируйте глобальные компоненты по явно указанному имени и пути.
 
 ``` js
 module.exports = {
