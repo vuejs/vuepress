@@ -33,7 +33,7 @@ module.exports = class DevLogPlugin {
         + (
           isFirst
             ? ''
-            : `${chalk.gray(`(${displayUrl})`)}`
+            : `${chalk.gray(`${displayUrl}`)}`
         )
       )
       if (isFirst) {
