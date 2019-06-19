@@ -26,7 +26,7 @@ Note that this plugin has been included in **default theme**, the search box you
 // .vuepress/config.js or themePath/index.js
 module.exports = {
   plugins: [
-    ['@vuepress/search', {
+    ['@vuepress/search': {
       searchMaxSuggestions: 10      
     }]
   ]
