@@ -80,7 +80,7 @@ module.exports = class ThemeAPI {
         isInternal: true
       }
       logger.warn(
-        `[vuepress] Cannot resolve Layout.vue file in \n ${Layout.path},`
+        `[vuepress] Cannot resolve Layout.vue file in \n ${Layout.path}, `
         + `fallback to default layout: ${fallbackLayoutPath}`
       )
     }

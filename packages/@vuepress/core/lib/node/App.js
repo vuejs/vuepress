@@ -385,7 +385,7 @@ module.exports = class App {
       return current
     }
     if (this.themeAPI.existsParentTheme) {
-      const parent = path.resolve(this.themeAPI.theme.path, filepath)
+      const parent = path.resolve(this.themeAPI.parentTheme.path, filepath)
       if (fs.existsSync(parent)) {
         return parent
       }
