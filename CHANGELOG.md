@@ -1,3 +1,19 @@
+## [1.0.2](https://github.com/vuejs/vuepress/compare/v1.0.1...v1.0.2) (2019-06-22)
+
+
+### Bug Fixes
+
+* **$core:** cannot resolve agreement file from parent theme ([1aaa6e3](https://github.com/vuejs/vuepress/commit/1aaa6e3))
+* **$core:** url display in dev log ([#1670](https://github.com/vuejs/vuepress/issues/1670)) ([17ba325](https://github.com/vuejs/vuepress/commit/17ba325))
+* **$plugin-medium-zoom:** doesn't work with default plugin options in default theme ([42f19e0](https://github.com/vuejs/vuepress/commit/42f19e0))
+
+
+### Features
+
+* **$plugin-medium-zoom:** custom options ([#1649](https://github.com/vuejs/vuepress/issues/1649)) ([54bb2f3](https://github.com/vuejs/vuepress/commit/54bb2f3))
+
+
+
 ## [1.0.1](https://github.com/vuejs/vuepress/compare/v1.0.0...v1.0.1) (2019-06-10)
 
 
