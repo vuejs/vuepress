@@ -1,10 +1,14 @@
-# Развертывание
+---
+en: b3d84283f4742954bd7658ac71d4a406c614bc6a
+---
+
+# Публикация
 
 Следующие руководства основаны на нескольких общих предположениях:
 
-- Вы размещаете свои документы в каталоге `docs` вашего проекта;
-- Вы используете выходное местоположение сборки по умолчанию (`.vuepress/dist`);
-- VuePress установлен как локальная зависимость в вашем проекте, и вы настроили следующие сценарии npm:
+- Вы размещаете свою документацию в каталоге `docs` вашего проекта;
+- Вы используете каталог сборки по умолчанию (`.vuepress/dist`);
+- VuePress установлен, как локальная зависимость в вашем проекте, и вы настроили следующие скрипты npm:
 
 ``` json
 {
@@ -18,55 +22,55 @@
 
 1. Установите правильный `base` в `docs/.vuepress/config.js`.
 
-   Если вы развертываете в `https://<USERNAME>.github.io/`, вы можете опустить `base`, так как по умолчанию используется `"/"`.
+   Если вы публикуете в `https://<USERNAME>.github.io/`, вы можете опустить `base`, так как по умолчанию используется `"/"`.
 
-   Если вы развертываете в `https://<USERNAME>.github.io/<REPO>/`, (т.е. ваш репозиторий находится в `https://github.com/<USERNAME>/<REPO>`), установите `base`, как `"/<REPO>/"`.
+   Если вы публикуете в `https://<USERNAME>.github.io/<REPO>/`, (т.е. ваш репозиторий находится в `https://github.com/<USERNAME>/<REPO>`), установите `base`, как `"/<REPO>/"`.
 
-2. Внутри вашего проекта создайте `deploy.sh` со следующим содержимым (с выделенными строками без комментариев) и запустите его для развертывания:
+2. Внутри вашего проекта создайте `deploy.sh` со следующим содержимым (с выделенными строками без комментариев) и запустите его для публикации:
 
 ``` bash{13,20,23}
 #!/usr/bin/env sh
 
-# прервать, при ошибках
+# прервать выполнение, при ошибках
 set -e
 
-# сбока
+# сборка
 npm run docs:build
 
-# переход в выходной каталог сборки
+# переход в каталог сборки
 cd docs/.vuepress/dist
 
-# если вы развертываете на пользовательский домен
+# если вы публикуете на пользовательский домен
 # echo 'www.example.com' > CNAME
 
 git init
 git add -A
 git commit -m 'deploy'
 
-# если вы развертываете по адресу https://<USERNAME>.github.io
+# если вы публикуете по адресу https://<USERNAME>.github.io
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
 
-# если вы развертываете по адресу https://<USERNAME>.github.io/<REPO>
+# если вы публикуете по адресу https://<USERNAME>.github.io/<REPO>
 # git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
 
 cd -
 ```
 
 ::: tip Совет
-Вы также можете запустить приведенный выше скрипт в настройке CI, чтобы включить автоматическое развертывание при каждом нажатии.
+Вы также можете указать приведенный выше скрипт в настройках CI, чтобы автоматически публиковать сайт.
 :::
 
 ## GitLab Pages и GitLab CI
 
 1. Установите правильный `base` в `docs/.vuepress/config.js`.
 
-   Если вы развертываете в `https://<USERNAME or GROUP>.gitlab.io/`, вы можете опустить `base`, так как по умолчанию используется `"/"`.
+   Если вы публикуете в `https://<USERNAME or GROUP>.gitlab.io/`, вы можете опустить `base`, так как по умолчанию используется `"/"`.
     
-   Если вы развертываете в `https://<USERNAME or GROUP>.gitlab.io/<REPO>/`, (т.е. ваш репозиторий находится в `https://gitlab.com/<USERNAME>/<REPO>`), установите `base`, как `"/<REPO>/"`.
+   Если вы публикуете в `https://<USERNAME or GROUP>.gitlab.io/<REPO>/`, (т.е. ваш репозиторий находится в `https://gitlab.com/<USERNAME>/<REPO>`), установите `base`, как `"/<REPO>/"`.
 
 2. Установите `dest` в `.vuepress/config.js`, как `public`.
 
-3. Создайте файл с именем `.gitlab-ci.yml` в корне вашего проекта с содержанием ниже. Это создаст и развернет ваш сайт всякий раз, когда вы вносите изменения в свой контент.
+3. Создайте файл с именем `.gitlab-ci.yml` в корне вашего проекта с содержанием, приведенным ниже. Это создаст и опубликует ваш сайт каждый раз, когда вы вносите изменения в свой проект.
 
 ``` yaml
 image: node:9.11.1
@@ -94,13 +98,13 @@ pages:
   - **Build Command:** `npm run docs:build` или `yarn docs:build`
   - **Publish directory:** `docs/.vuepress/dist`
 
-2. Нажмите кнопку развертывания!
+2. Нажмите кнопку публикации!
 
 ## Google Firebase
 
 1. Убедитесь, что у вас установлен [firebase-tools](https://www.npmjs.com/package/firebase-tools).
 
-2. Создайте `firebase.json` и `.firebaserc` в корне вашего проекта со следующим содержанием:
+2. Создайте `firebase.json` и `.firebaserc` в корне вашего проекта со следующим содержимым:
 
 `firebase.json`:
 ```json
@@ -121,7 +125,7 @@ pages:
 }
 ```
 
-3. После запуска `yarn docs:build` или `npm run docs:build` выполните развертывание с помощью команды `firebase deploy`.
+3. После запуска `yarn docs:build` или `npm run docs:build` выполните публикацию с помощью команды `firebase deploy`.
 
 ## Surge
 
@@ -129,9 +133,9 @@ pages:
 
 2. Запустите `yarn docs:build` или `npm run docs:build`.
 
-3. Разверните на surge, набрав `surge docs/.vuepress/dist`.
+3. Опубликуйте на surge, выполнив `surge docs/.vuepress/dist`.
 
-Вы также можете выполнить развертывание в [пользовательский домен](http://surge.sh/help/adding-a-custom-domain), добавив `surge docs/.vuepress/dist yourdomain.com`.
+Вы также можете выполнить публикацию на [пользовательский домен](http://surge.sh/help/adding-a-custom-domain), добавив `surge docs/.vuepress/dist yourdomain.com`.
 
 ## Heroku
 
@@ -154,7 +158,7 @@ pages:
  }
  ```
 
-Это конфигурация вашего сайта. Смотрите больше в [heroku-buildpack-static](https://github.com/heroku/heroku-buildpack-static).
+Это конфигурация вашего сайта. Узнайте больше о [heroku-buildpack-static](https://github.com/heroku/heroku-buildpack-static).
 
 5. Настройте ваш Heroku git remote:
 
@@ -171,12 +175,12 @@ heroku apps:create example
 heroku buildpacks:set https://github.com/heroku/heroku-buildpack-static.git
 ```
 
-6. Развертывание вашего сайта
+6. Публикация вашего сайта
 
 ``` bash
-# публикация сайт
+# публикация сайта
 git push heroku master
 
-# открытие браузера для просмотра версии Heroku CI на приборной панели
+# открытие браузера для просмотра версии Heroku CI на рабочей панели
 heroku open
 ```

@@ -1,4 +1,5 @@
 ---
+en: 3651cc3ba85ca36b541ee14e1a230af4bfc5f448
 home: true
 heroImage: /hero.png
 actionText: Приступить →
@@ -21,7 +22,7 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
   </div>
   <div class="feature">
     <h2>Производительный</h2>
-    <p>VuePress генерирует предварительно визуализированный статический HTML для каждой страницы и запускается как SPA после загрузки страницы.</p>
+    <p>VuePress предварительно генерирует обычный HTML для каждого markdown-файла, а после загрузки страницы запускается как полноценное SPA.</p>
   </div>
 </div>
 
