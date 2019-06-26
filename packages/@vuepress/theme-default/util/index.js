@@ -1,7 +1,7 @@
 export const hashRE = /#.*$/
 export const extRE = /\.(md|html)$/
 export const endingSlashRE = /\/$/
-export const outboundRE = /^(https?:|mailto:|tel:)/
+export const outboundRE = /^(https?:|mailto:|tel:|[a-zA-Z]{4,}:)/
 
 export function normalize (path) {
   return decodeURI(path)
