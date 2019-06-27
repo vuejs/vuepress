@@ -31,9 +31,9 @@ This is the `$page` value of the page you see now:
 {
   "title": "Global Computed",
   "frontmatter": {},
-  "regularPath": "/miscellaneous/global-computed.html",
+  "regularPath": "/guide/global-computed.html",
   "key": "v-d4cbeb69eff3d",
-  "path": "/miscellaneous/global-computed.html",
+  "path": "/guide/global-computed.html",
   "headers": [
     {
       "level": 2,
