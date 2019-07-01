@@ -24,8 +24,7 @@ Maintaining and developing new features to VuePress takes a considerable amount 
 ## Install
 
 ```bash
-yarn add vuepress -D       # Install 0.x
-yarn add vuepress@next -D  # Install 1.x.
+yarn add vuepress -D
 ```
 
 ## Showcase
