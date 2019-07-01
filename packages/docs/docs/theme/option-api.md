@@ -24,7 +24,7 @@ module.exports = (themeConfig, ctx) => {
 
 
 ::: tip
-1. You should see the difference between `themeEntry` and `themeConfig`, the former is a configuration for ths theme itself, which is provided by VuePress. the latter is the user's configuration for the theme, which is implemented by the currently used theme, e.g. [Default Theme Config](./default-theme-config.md).
+1. You should see the difference between `themeEntry` and `themeConfig`, the former is a configuration for the theme itself, which is provided by VuePress. the latter is the user's configuration for the theme, which is implemented by the currently used theme, e.g. [Default Theme Config](./default-theme-config.md).
 
 2. In addition to the options listed in this section, `themeEntry` also supports all [Option API](../plugin/option-api.md) and [Life Cycle](../plugin/life-cycle.md) supported by plugins.
 :::
