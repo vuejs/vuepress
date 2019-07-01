@@ -48,7 +48,7 @@ Each markdown file is compiled into HTML with [markdown-it](https://github.com/m
 
 **Blog theme**
 
-* [Docuementation](https://vuepress-theme-blog.ulivz.com/)
+* [Documentation](https://vuepress-theme-blog.ulivz.com/)
 * [Live Example](https://ulivz.com/)
 
 
