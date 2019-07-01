@@ -45,7 +45,7 @@ Please note the capitalization of the directory name.
 - `docs/.vuepress/enhanceApp.js`: App level enhancement.
 
 ::: warning Note
-When customizing `templates/ssr.html`, or `templates/dev.html`, it is best to modify it on the basis of the [default template files](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/core/lib/app/index.dev.html), otherwise it may cause a build failure.
+When customizing `templates/ssr.html`, or `templates/dev.html`, it is best to modify it on the basis of the [default template files](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/core/lib/client/index.dev.html), otherwise it may cause a build failure.
 :::
 
 ## Default Page Routing
