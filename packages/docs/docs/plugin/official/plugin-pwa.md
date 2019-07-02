@@ -105,9 +105,9 @@ module.exports = {
 module.exports = {
   themeConfig: {
 -   serviceWorker: {
--     updatePopup: { 
--        message: "New content is available.", 
--        buttonText: "Refresh" 
+-     updatePopup: {
+-        message: "New content is available.",
+-        buttonText: "Refresh"
 -     }
 -   }
   },
@@ -179,7 +179,7 @@ Feel free to submit PRs to improve the default [i18n configuration](https://gith
 
 ## Customize the UI of SW-Update Popup
 
-The default sw-update popup component provides a default slot which gives you the ability to fully control the appearence of the popup.
+The default sw-update popup component provides a default slot which gives you the ability to fully control the appearance of the popup.
 
 First, you need to create a global component (e.g. `MySWUpdatePopup`) at `.vuepress/components`. A simple component created based on the default component is as follows:
 
