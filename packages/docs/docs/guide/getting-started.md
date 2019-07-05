@@ -10,7 +10,7 @@ If you just want to play around with VuePress, you can install it globally:
 
 ``` bash
 # install globally
-yarn global add vuepress@next # OR npm install -g vuepress@next
+yarn global add vuepress # OR npm install -g vuepress
 
 # create a markdown file
 echo '# Hello VuePress' > README.md
@@ -28,7 +28,7 @@ If you have an existing project and would like to keep documentation inside the 
 
 ``` bash
 # install as a local dependency
-yarn add -D vuepress@next # OR npm install -D vuepress@next
+yarn add -D vuepress # OR npm install -D vuepress
 
 # create a docs directory
 mkdir docs
