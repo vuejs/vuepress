@@ -374,37 +374,6 @@ Note that it's `off` by default. If given a `string`, it will be displayed as a 
 
 - [@vuepress/plugin-last-updated](../plugin/official/plugin-last-updated.md)
 
-## Service Worker
-
-The `themeConfig.serviceWorker` option allows you to configure the service worker.
-
-::: tip
-Please do not confuse this option with [Config > serviceWorker](../config/README.md#serviceworker), [Config > serviceWorker](../config/README.md#serviceworker) is **site-level**, while this option is **theme-level**.
-:::
-
-### Popup UI to refresh contents <Badge text="0.13.0+"/> <Badge text="beta" type="warn"/>
-
-The `themeConfig.serviceWorker.updatePopup` option enables a popup to refresh site content. The popup will be shown when the site is updated (i.e. service worker is updated). It provides a `refresh` button to allow users to refresh contents immediately.
-
-::: tip NOTE
-If without the `refresh` button, the new service worker will be active after all [clients](https://developer.mozilla.org/en-US/docs/Web/API/Clients) are closed. This means that visitors cannot see new contents until they close all tabs of your site. But the `refresh` button activates the new service worker immediately.
-:::
-
-``` js
-module.exports = {
-  themeConfig: {
-    serviceWorker: {
-      updatePopup: true // Boolean | Object, default to undefined.
-      // If set to true, the default text config will be: 
-      // updatePopup: { 
-      //    message: "New content is available.", 
-      //    buttonText: "Refresh" 
-      // }
-    }
-  }
-}
-```
-
 ## Prev / Next Links
 
 Prev and next links are automatically inferred based on the sidebar order of the active page. You can also explicitly overwrite or disable them using `YAML front matter`:
