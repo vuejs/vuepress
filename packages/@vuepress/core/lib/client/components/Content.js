@@ -21,7 +21,7 @@ export default {
       Vue.component(pageKey, getPageAsyncComponent(pageKey))
     }
 
-    if (pageKey) {
+    if (Vue.component(pageKey)) {
       return h(pageKey)
     }
     return h('')

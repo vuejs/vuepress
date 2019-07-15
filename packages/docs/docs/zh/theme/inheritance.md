@@ -27,6 +27,7 @@
 假设你想创建一个继承自 VuePress 默认主题的派生主题，你只需要在你的主题配置中配置 [extend](./option-api.md#extend) 选项：
 
 ```js
+// themePath/index.js
 module.exports = {
   extend: '@vuepress/theme-default'
 }

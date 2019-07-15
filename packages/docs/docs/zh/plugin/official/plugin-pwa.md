@@ -22,6 +22,37 @@ module.exports = {
 }
 ```
 
+::: tip
+为了让你的网站完全地兼容 PWA，你需要:
+
+- 在 `.vuepress/public` 提供 Manifest 和 icons
+- 在 `.vuepress/config.js` 添加正確的 [head links](/config/#head)(参见下面例子).
+
+更多细节，请参见 [MDN docs about the Web App Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest).
+:::
+
+这是一个在VuePress中完全地兼容 PWA 的例子：
+
+```javascript
+module.exports = {
+  head: [
+    ['link', { rel: 'icon', href: '/logo.png' }],
+    ['link', { rel: 'manifest', href: '/manifest.json' }],
+    ['meta', { name: 'theme-color', content: '#3eaf7c' }],
+    ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
+    ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
+    ['link', { rel: 'apple-touch-icon', href: '/icons/apple-touch-icon-152x152.png' }],
+    ['link', { rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#3eaf7c' }],
+    ['meta', { name: 'msapplication-TileImage', content: '/icons/msapplication-icon-144x144.png' }],
+    ['meta', { name: 'msapplication-TileColor', content: '#000000' }]
+  ],
+  ['@vuepress/pwa', {
+      serviceWorker: true,
+      updatePopup: true
+  }],
+}
+```
+
 ## 选项
 
 ### serviceWorker
@@ -39,9 +70,8 @@ module.exports = {
 - `sw-offline`
 - `sw-error`
 
-::: tip PWA NOTES
-`serviceWorker` 选项仅仅用来控制 service worker，为了让你的网站完全地兼容 PWA，你需要在 `.vuepress/public` 提供 Manifest 和 icons，更多细节，请参见 [MDN docs about the Web App Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest).
-此外，只有您能够使用 SSL 部署您的站点时才能启用此功能，因为 service worker 只能在 HTTPs 的 URL 下注册。
+::: tip
+只有在你能够使用 SSL 部署您的站点时才能启用此功能，因为 service worker 只能在 HTTPs 的 URL 下注册。
 :::
 
 ### generateSWConfig

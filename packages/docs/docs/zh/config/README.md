@@ -14,7 +14,7 @@ sidebar: auto
 
 部署站点的基础路径，如果你想让你的网站部署到一个子路径下，你将需要设置它。如 GitHub pages，如果你想将你的网站部署到 `https://foo.github.io/bar/`，那么 `base` 应该被设置成 `"/bar/"`，它的值应当总是以斜杠开始，并以斜杠结束。
 
-`base` 将会自动地作为前缀插入到所有以 `/` 开始的其他选项的链接中，所以你只需要指定一次。
+`base` 将会作为前缀自动地插入到所有以 `/` 开始的其他选项的链接中，所以你只需要指定一次。
 
 **参考:**
 
@@ -131,7 +131,7 @@ module.exports = {
 
 ### palette.styl
 
-如果要对[默认预设](https://github.com/vuejs/vuepress/blob/master/packages/@vuepress/core/lib/app/style/config.styl)的样式应用简单的颜色替换，或者定义一些颜色变量供以后使用，你可以创建一个 `.vuepress/styles/palette.styl` 文件。
+如果要对[默认预设](https://github.com/vuejs/vuepress/blob/master/packages/@vuepress/core/lib/client/style/config.styl)的样式应用简单的颜色替换，或者定义一些颜色变量供以后使用，你可以创建一个 `.vuepress/styles/palette.styl` 文件。
 
 你可以调整一些颜色变量:
 

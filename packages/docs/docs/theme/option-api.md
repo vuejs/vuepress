@@ -24,9 +24,9 @@ module.exports = (themeConfig, ctx) => {
 
 
 ::: tip
-1. You should see the difference between `themeEntry` and `themeConfig`, the former is a configuration for the theme itself, which is provided by VuePress. the latter is the user's configuration for the theme, which is implemented by the currently used theme, e.g. [Default Theme Config](./default-theme-config.md).
+1. You should see the difference between `themeEntry` and `themeConfig`, the former is a configuration for the theme itself, provided by VuePress. The latter is the user’s configuration for the theme, implemented by the used theme, for example [Default Theme Config](./default-theme-config.md).
 
-2. In addition to the options listed in this section, `themeEntry` also supports all [Option API](../plugin/option-api.md) and [Life Cycle](../plugin/life-cycle.md) supported by plugins.
+2. Along with the options listed in this section, `themeEntry` also supports all [Option API](../plugin/option-api.md) and [Lifecycle](../plugin/life-cycle.md) supported by plugins.
 :::
 
 ## plugins
@@ -41,7 +41,7 @@ module.exports = (themeConfig, ctx) => {
 ---
 
 ::: warning
-You probably don't need to use following options tagged with <Badge text="Danger Zone" vertical="middle"/> unless you know what you are doing!
+You probably don’t need to use following options tagged with <Badge text="Danger Zone" vertical="middle"/> unless you know what you are doing!
 :::
 
 ## devTemplate <Badge text="Danger Zone"/>
@@ -73,7 +73,7 @@ module.exports = {
 }
 ```
 
-VuePress provides the ability to inherit one theme from another. VuePress will follow the concept of `override` and automatically help you prioritize various thematic attributes, e.g. styles and layout components.
+VuePress provides the ability to inherit one theme from another. VuePress will follow the concept of `override` and automatically help you prioritize thematic attributes, for example styles and layout components.
 
 **Also see:**
 
@@ -95,7 +95,7 @@ module.exports = {
 Global layout component is a component responsible for the global layout strategy. The [default global layout](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/core/lib/app/components/GlobalLayout.vue) will help you render different layouts according to [$frontmatter.layout](../guide/frontmatter.md#layout), so in most cases you do not need to configure this option.
 
 For example, when you want to set a global header and footer for your theme, you can do this:
-  
+
 ```vue
 <!-- themePath/layouts/GlobalLayout.vue -->
 <template>

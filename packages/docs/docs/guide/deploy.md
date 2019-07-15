@@ -1,6 +1,6 @@
 # Deploying
 
-The following guides are based on a few shared assumptions:
+The following guides are based on some shared assumptions:
 
 - You are placing your docs inside the `docs` directory of your project;
 - You are using the default build output location (`.vuepress/dist`);
@@ -20,7 +20,7 @@ The following guides are based on a few shared assumptions:
 
    If you are deploying to `https://<USERNAME>.github.io/`, you can omit `base` as it defaults to `"/"`.
 
-   If you are deploying to `https://<USERNAME>.github.io/<REPO>/`, (i.e. your repository is at `https://github.com/<USERNAME>/<REPO>`), set `base` to `"/<REPO>/"`.
+   If you are deploying to `https://<USERNAME>.github.io/<REPO>/`, (that is your repository is at `https://github.com/<USERNAME>/<REPO>`), set `base` to `"/<REPO>/"`.
 
 2. Inside your project, create `deploy.sh` with the following content (with highlighted lines uncommented appropriately) and run it to deploy:
 
@@ -62,7 +62,7 @@ You can also run the above script in your CI setup to enable automatic deploymen
 
    If you are deploying to `https://<USERNAME or GROUP>.github.io/`, you can omit `base` as it defaults to `"/"`.
 
-   If you are deploying to `https://<USERNAME or GROUP>.github.io/<REPO>/`, (i.e. your repository is at `https://github.com/<USERNAME>/<REPO>`), set `base` to `"/<REPO>/"`.
+   If you are deploying to `https://<USERNAME or GROUP>.github.io/<REPO>/`, (that is your repository is at `https://github.com/<USERNAME>/<REPO>`), set `base` to `"/<REPO>/"`.
 
 2. Create a file named `.travis.yml` in the root of your project.
 
@@ -90,7 +90,7 @@ deploy:
 
    If you are deploying to `https://<USERNAME or GROUP>.gitlab.io/`, you can omit `base` as it defaults to `"/"`.
 
-   If you are deploying to `https://<USERNAME or GROUP>.gitlab.io/<REPO>/`, (i.e. your repository is at `https://gitlab.com/<USERNAME>/<REPO>`), set `base` to `"/<REPO>/"`.
+   If you are deploying to `https://<USERNAME or GROUP>.gitlab.io/<REPO>/`, (that is your repository is at `https://gitlab.com/<USERNAME>/<REPO>`), set `base` to `"/<REPO>/"`.
 
 2. Set `dest` in `.vuepress/config.js` to `public`.
 
@@ -153,7 +153,7 @@ pages:
 
 ## Surge
 
-1. First install [surge](https://www.npmjs.com/package/surge), if you haven't already.
+1. First install [surge](https://www.npmjs.com/package/surge), if you haven’t already.
 
 2. Run `yarn docs:build` or `npm run docs:build`.
 
@@ -182,7 +182,7 @@ You can also deploy to a [custom domain](http://surge.sh/help/adding-a-custom-do
  }
  ```
 
-This is the configuration of your site. see more at [heroku-buildpack-static](https://github.com/heroku/heroku-buildpack-static).
+This is the configuration of your site. See more at [heroku-buildpack-static](https://github.com/heroku/heroku-buildpack-static).
 
 5. Set up your Heroku git remote:
 
@@ -211,4 +211,4 @@ heroku open
 
 ## Now
 
-Please refer to [Deploy an example vuepress website with Now](https://zeit.co/examples/vuepress/).
+Please check out [Deploy an example VuePress site with Now](https://zeit.co/examples/vuepress/).

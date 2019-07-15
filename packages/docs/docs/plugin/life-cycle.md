@@ -1,4 +1,4 @@
-# Life Cycle
+# Lifecycle
 
 ## ready
 

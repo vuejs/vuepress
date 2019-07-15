@@ -2,7 +2,7 @@
 
 ## Background
 
-Before 1.x.x, VuePress retrieves all markdown files in the documents source directory and defines the page links based on the file hierarchy. e.g. if you have the following file structure:
+Before 1.x.x, VuePress retrieves all Markdown files in the documents source directory and defines the page links based on the file hierarchy. For example if you have the following file structure:
 
 ```
 ├── package.json
@@ -21,7 +21,7 @@ Then you will get following available pages:
 /source/_post/intro-vuepress.html
 ```
 
-However, for a blog system, we hope that the link of a post can be customized. VuePress started supporting this feature from `1.0.0`. which is known as `permalink`. Then, the actual pages would be:
+Yet, for a blog system, we hope that the link of a post can be customized. VuePress started supporting this feature, known as permalink, from `1.0.0`. Then, the actual pages would be:
 
 ```
 /source/
@@ -29,11 +29,11 @@ However, for a blog system, we hope that the link of a post can be customized. V
 /source/2018/4/1/intro-vuepress.html
 ```
 
-It seems that we have seen the shadow of the blog. Let's continue to look down.
+We have seen the shadow of the blog. Let’s continue to look down.
 
 ## Permalinks
 
-A permalink is a URL that is intended to remain unchanged for many years into the future, yielding a hyperlink that is less susceptible to link root<sup>[1]</sup>. VuePress supports a flexible way to build permalinks, allowing you to leverage various template variables.
+A permalink is a URL that is intended to remain unchanged for a long time, yielding a hyperlink that is less susceptible to link root<sup>[1]</sup>. VuePress supports a flexible way to build permalinks, allowing you to use template variables.
 
 The default permalink is `/:regular`.
 
@@ -48,7 +48,7 @@ module.exports = {
 }
 ```
 
-Alternatively, you can also set permalink on a page only, and it will have a higher priority than the global settings.
+You can also set permalink on a page only, and it will have a higher priority than the global settings.
 
 📝 __hello.md__:
 

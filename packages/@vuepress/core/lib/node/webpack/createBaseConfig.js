@@ -144,6 +144,10 @@ module.exports = function createBaseConfig (context, isServer) {
           if (/\.vue\.js$/.test(filePath)) {
             return false
           }
+          // transpile all core files
+          if (/(@vuepress|vuepress-)\/^((?!node_modules).)*\.js$/.test(filePath)) {
+            return false
+          }
           // Don't transpile node_modules
           return /node_modules/.test(filePath)
         }).end()
@@ -310,5 +314,5 @@ function getLastCommitHash () {
 }
 
 function getModulePaths () {
-  return [path.resolve(process.cwd(), 'node_modules')].concat(module.paths)
+  return module.paths.concat([path.resolve(process.cwd(), 'node_modules')])
 }
