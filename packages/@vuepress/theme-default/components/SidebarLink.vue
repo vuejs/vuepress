@@ -32,12 +32,13 @@ export default {
       ? renderExternal(h, item.path, item.title || item.path)
       : renderLink(h, item.path, item.title || item.path, active)
 
-    const configDepth = $page.frontmatter.sidebarDepth
-      || sidebarDepth
-      || $themeLocaleConfig.sidebarDepth
-      || $themeConfig.sidebarDepth
-
-    const maxDepth = configDepth == null ? 1 : configDepth
+    const maxDepth = [
+      $page.frontmatter.sidebarDepth,
+      sidebarDepth,
+      $themeLocaleConfig.sidebarDepth,
+      $themeConfig.sidebarDepth,
+      1
+    ].find(depth => depth !== undefined);
 
     const displayAllHeaders = $themeLocaleConfig.displayAllHeaders
       || $themeConfig.displayAllHeaders
