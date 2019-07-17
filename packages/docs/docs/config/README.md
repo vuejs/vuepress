@@ -131,7 +131,7 @@ module.exports = {
 }
 ```
 
-### pattern
+### patterns
 
 - Type: `Array`
 - Default: `['**/*.md', '**/*.vue']`
