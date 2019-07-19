@@ -233,7 +233,7 @@ module.exports = function createBaseConfig (context, isServer) {
           localIdentName: `[local]_[hash:base64:8]`,
           importLoaders: 1,
           sourceMap: !isProd,
-          exportOnlyLocals: isServer
+          onlyLocals: isServer
         })
 
       rule.use('postcss-loader').loader('postcss-loader').options(Object.assign({
