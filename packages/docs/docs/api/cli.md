@@ -17,7 +17,7 @@ See [port](../config/README.md#port).
 See [temp](../config/README.md#temp).
 
 ### -c, --cache `[cache]`
-### -no--cache
+### --no-cache
 See [cache](../config/README.md#cache).
 
 ### --dest `<dest>`
