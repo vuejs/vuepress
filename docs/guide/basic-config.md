@@ -22,7 +22,7 @@ module.exports = {
 }
 ```
 
-If you've got the dev server running, you should see the page now has a header with the title and a search box. VuePress comes with built-in headers-based search - it automatically builds a simple search index from the title, `h2` and `h3` headers from all the pages.
+If you've got the dev server running, you should see the page now has a header with the title and a search box. The will be rendered as a `<meta>` tag in the page HTML. VuePress comes with built-in headers-based search - it automatically builds a simple search index from the title, `h2` and `h3` headers from all the pages.
 
 Consult the [Config Reference](../config/README.md) for a full list of options.
 
