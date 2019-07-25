@@ -20,7 +20,7 @@ yarn add -D @vuepress/plugin-medium-zoom@next
 
 ```javascript
 module.exports = {
-  plugins: ['@vuepress/medium-zoom'] 
+  plugins: ['@vuepress/medium-zoom']
 }
 ```
 
@@ -46,7 +46,7 @@ module.exports = {
 ### selector
 
 - Type: `string`
-- Default: `.theme-default-content img`
+- Default: `.theme-default-content :not(a) > img`
 
 Note that `.theme-default-content` is the class name of [`<Content />`](../../guide/using-vue.md#content) component in default theme.
 
