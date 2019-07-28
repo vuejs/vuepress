@@ -310,5 +310,5 @@ function getLastCommitHash () {
 }
 
 function getModulePaths () {
-  return [path.resolve(process.cwd(), 'node_modules')].concat(module.paths)
+  return module.paths.concat([path.resolve(process.cwd(), 'node_modules')])
 }
