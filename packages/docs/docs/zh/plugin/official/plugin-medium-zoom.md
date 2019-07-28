@@ -22,7 +22,7 @@ yarn add -D @vuepress/plugin-medium-zoom@next
 
 ```javascript
 module.exports = {
-  plugins: ['@vuepress/medium-zoom'] 
+  plugins: ['@vuepress/medium-zoom']
 }
 ```
 
@@ -45,10 +45,10 @@ module.exports = {
 
 ## 选项
 
-### selector 
+### selector
 
 - 类型: `string`
-- 默认值: `.theme-default-content img`
+- 默认值: `.theme-default-content :not(a) > img`
 
 值得注意的是， `.theme-default-content` 是默认主题添加给 [`<Content />`](../../guide/using-vue.md#content) 组件的 class name。
 
