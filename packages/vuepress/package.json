@@ -41,7 +41,7 @@
   "collective": {
     "type": "opencollective",
     "url": "https://opencollective.com/vuepress"
-  }
+  },
   "engines": {
     "node": ">=8.6"
   },
