@@ -48,10 +48,6 @@ If you intend to make `"substantial"` changes to VuePress or its documentation, 
 
 If you have a VuePress-related project/component/tool, add it with a pull request to [this curated list](https://github.com/ulivz/awesome-vuepress)!
 
-Thank you to all the people who already contributed to VuePress!
-
-![contributors](https://opencollective.com/vuepress/contributors.svg?width=890)
-
 ## Contributors
 
 ### Code Contributors
