@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <a href="https://npmcharts.com/compare/vuepress?minimal=true"><img src="https://img.shields.io/npm/dm/vuepress.svg" alt="Downloads"></a>
+  <a href="https://npmcharts.com/compare/vuepress?minimal=true"><a href="https://opencollective.com/vuepress" alt="Financial Contributors on Open Collective"><img src="https://opencollective.com/vuepress/all/badge.svg?label=financial+contributors" /></a> <img src="https://img.shields.io/npm/dm/vuepress.svg" alt="Downloads"></a>
   <a href="https://www.npmjs.com/package/vuepress"><img src="https://img.shields.io/npm/v/vuepress.svg" alt="Version"></a>
   <a href="https://www.npmjs.com/package/vuepress"><img src="https://badgen.net/npm/v/vuepress/next" alt="npm next version"></a>
   <a href="https://www.npmjs.com/package/vuepress"><img src="https://img.shields.io/npm/l/vuepress.svg" alt="License"></a>
@@ -51,6 +51,36 @@ If you have a VuePress-related project/component/tool, add it with a pull reques
 Thank you to all the people who already contributed to VuePress!
 
 ![contributors](https://opencollective.com/vuepress/contributors.svg?width=890)
+
+## Contributors
+
+### Code Contributors
+
+This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
+<a href="https://github.com/vuejs/vuepress/graphs/contributors"><img src="https://opencollective.com/vuepress/contributors.svg?width=890&button=false" /></a>
+
+### Financial Contributors
+
+Become a financial contributor and help us sustain our community. [[Contribute](https://opencollective.com/vuepress/contribute)]
+
+#### Individuals
+
+<a href="https://opencollective.com/vuepress"><img src="https://opencollective.com/vuepress/individuals.svg?width=890"></a>
+
+#### Organizations
+
+Support this project with your organization. Your logo will show up here with a link to your website. [[Contribute](https://opencollective.com/vuepress/contribute)]
+
+<a href="https://opencollective.com/vuepress/organization/0/website"><img src="https://opencollective.com/vuepress/organization/0/avatar.svg"></a>
+<a href="https://opencollective.com/vuepress/organization/1/website"><img src="https://opencollective.com/vuepress/organization/1/avatar.svg"></a>
+<a href="https://opencollective.com/vuepress/organization/2/website"><img src="https://opencollective.com/vuepress/organization/2/avatar.svg"></a>
+<a href="https://opencollective.com/vuepress/organization/3/website"><img src="https://opencollective.com/vuepress/organization/3/avatar.svg"></a>
+<a href="https://opencollective.com/vuepress/organization/4/website"><img src="https://opencollective.com/vuepress/organization/4/avatar.svg"></a>
+<a href="https://opencollective.com/vuepress/organization/5/website"><img src="https://opencollective.com/vuepress/organization/5/avatar.svg"></a>
+<a href="https://opencollective.com/vuepress/organization/6/website"><img src="https://opencollective.com/vuepress/organization/6/avatar.svg"></a>
+<a href="https://opencollective.com/vuepress/organization/7/website"><img src="https://opencollective.com/vuepress/organization/7/avatar.svg"></a>
+<a href="https://opencollective.com/vuepress/organization/8/website"><img src="https://opencollective.com/vuepress/organization/8/avatar.svg"></a>
+<a href="https://opencollective.com/vuepress/organization/9/website"><img src="https://opencollective.com/vuepress/organization/9/avatar.svg"></a>
 
 ## License
 

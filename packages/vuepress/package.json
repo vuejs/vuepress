@@ -8,6 +8,9 @@
     "url": "git+https://github.com/vuejs/vuepress.git",
     "directory": "packages/vuepress"
   },
+  "scripts": {
+    "postinstall": "opencollective-postinstall || true"
+  },
   "keywords": [
     "documentation",
     "vue",
@@ -32,7 +35,12 @@
     "@vuepress/core": "^1.0.2",
     "@vuepress/theme-default": "^1.0.2",
     "cac": "^6.3.9",
-    "envinfo": "^7.2.0"
+    "envinfo": "^7.2.0",
+    "opencollective-postinstall": "^2.0.2"
+  },
+  "collective": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/vuepress"
   },
   "engines": {
     "node": ">=8.6"
