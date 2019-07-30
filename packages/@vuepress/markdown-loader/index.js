@@ -21,8 +21,7 @@ module.exports = function (src) {
   const isProd = process.env.NODE_ENV === 'production'
   const isServer = this.target === 'node'
   const options = getOptions(this)
-  const { sourceDir } = options
-  const { markdownConfig } = options
+  const { sourceDir, extractHeaders: extractHeadersPattern = ['h2', 'h3'] } = options
   let { markdown } = options
   if (!markdown) {
     markdown = md()
@@ -43,11 +42,7 @@ module.exports = function (src) {
 
   if (!isProd && !isServer) {
     const inferredTitle = inferTitle(frontmatter.data, frontmatter.content)
-    let headersToExtract = ['h2', 'h3']
-    if (markdownConfig && markdownConfig.extractHeaders) {
-      headersToExtract = markdownConfig.extractHeaders
-    }
-    const headers = extractHeaders(content, headersToExtract, markdown)
+    const headers = extractHeaders(content, extractHeadersPattern, markdown)
     delete frontmatter.content
 
     // diff frontmatter and title, since they are not going to be part of the

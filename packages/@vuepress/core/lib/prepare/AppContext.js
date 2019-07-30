@@ -73,6 +73,7 @@ module.exports = class AppContext {
 
     this.base = this.siteConfig.base || '/'
     this.themeConfig = this.siteConfig.themeConfig || {}
+    this.extractHeaders = this.siteConfig.markdown && this.siteConfig.markdown.extractHeaders
 
     const rawOutDir = this.cliOptions.dest || this.siteConfig.dest
     this.outDir = rawOutDir
