@@ -11,11 +11,11 @@
     :href="link"
     @focusout="focusoutAction"
     class="nav-link external"
-    :target="isMailto(link) || isTel(link) ? null : '_blank'"
-    :rel="isMailto(link) || isTel(link) ? null : 'noopener noreferrer'"
+    :target="target"
+    :rel="rel"
   >
     {{ item.text }}
-    <OutboundLink/>
+    <OutboundLink v-if="isTargetBlank"/>
   </a>
 </template>
 
@@ -39,6 +39,18 @@ export default {
         return Object.keys(this.$site.locales).some(rootLink => rootLink === this.link)
       }
       return this.link === '/'
+    },
+
+    target () {
+      return isMailto(this.link) || isTel(this.link) ? null : this.item.target || '_blank'
+    },
+
+    isTargetBlank () {
+      return this.target === '_blank'
+    },
+
+    rel () {
+      return isMailto(this.link) || isTel(this.link) ? null : this.item.rel || 'noopener noreferrer'
     }
   },
 
