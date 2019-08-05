@@ -7,7 +7,8 @@
     "dev": "vuepress dev docs --temp .temp",
     "build": "vuepress build docs --temp .temp",
     "view-info": "vuepress view-info docs --temp .temp",
-    "show-help": "vuepress --help"
+    "show-help": "vuepress --help",
+    "lint-md": "textlint ./docs/**/*.md"
   },
   "repository": {
     "type": "git",
