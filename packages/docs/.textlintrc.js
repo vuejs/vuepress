@@ -7,11 +7,15 @@ module.exports = {
     'en-capitalization': {
       allowHeading: false
     },
-    'stop-words': true,
+    'stop-words': {
+      severity: 'warning'
+    },
     terminology: {
       terms: `${__dirname}/.textlint.terms.json`
     },
-    'write-good': true
+    'write-good': {
+      severity: 'warning'
+    }
   },
   filters: {
     comments: true
