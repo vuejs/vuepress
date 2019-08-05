@@ -1,11 +1,11 @@
 module.exports = {
   rules: {
     '@textlint-rule/no-unmatched-pair': true,
-    'apostrophe': true,
+    apostrophe: true,
     'common-misspellings': true,
-    'diacritics': true,
+    diacritics: true,
     'en-capitalization': {
-      'allowHeading': false
+      allowHeading: false
     },
     'stop-words': true,
     'terminology': true,
