@@ -30,7 +30,10 @@
         v-if="isAlgoliaSearch"
         :options="algolia"
       />
-      <SearchBox v-else-if="$site.themeConfig.search !== false && $page.frontmatter.search !== false"/>
+      <SearchBox
+        v-else-if="$site.themeConfig.search !== false && $page.frontmatter.search !== false"
+        v-bind="searchOptions"
+      />
       <NavLinks class="can-hide"/>
     </div>
   </header>
@@ -67,6 +70,9 @@ export default {
   },
 
   computed: {
+    searchOptions () {
+      return this.$themeLocaleConfig.searchOptions || this.$site.themeConfig.searchOptions || {}
+    },
     algolia () {
       return this.$themeLocaleConfig.algolia || this.$site.themeConfig.algolia || {}
     },

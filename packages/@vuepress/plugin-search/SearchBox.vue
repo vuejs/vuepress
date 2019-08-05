@@ -6,6 +6,7 @@
       :value="query"
       :class="{ 'focused': focused }"
       autocomplete="off"
+      :placeholder="placeholder"
       spellcheck="false"
       @focus="focused = true"
       @blur="focused = false"
@@ -38,6 +39,10 @@
 <script>
 /* global SEARCH_MAX_SUGGESTIONS, SEARCH_PATHS */
 export default {
+  props: {
+    placeholder: String,
+    default: null
+  },
   data () {
     return {
       query: '',
