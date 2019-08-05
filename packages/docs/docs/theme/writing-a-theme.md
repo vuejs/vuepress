@@ -9,11 +9,11 @@ To write a theme, create a `.vuepress/theme` directory in your docs root, and th
        └─ Layout.vue
 :::
 
-From there it's the same as developing a normal Vue application. It is entirely up to you how to organize your theme.
+From there it’s the same as developing a normal Vue application. It is entirely up to you how to organize your theme.
 
 ## Content Outlet
 
-The compiled content of the current `.md` file being rendered will be available as a special `<Content/>` global component. You will need to render it somewhere in your layout in order to display the content of the page. The simplest theme can be just a single `Layout.vue` component with the following content:
+The compiled content of the current `.md` file being rendered will be available as a special `<Content/>` global component. You will need to render it somewhere in your layout to display the content of the page. The simplest theme can be just a single `Layout.vue` component with the following content:
 
 ``` html
 <template>
@@ -31,7 +31,7 @@ The compiled content of the current `.md` file being rendered will be available 
 
 Just one `Layout.vue` might not be enough, and you might also want to define more layout components in the theme for using on different pages. You may also want to customize the [palette](../config/README.md#palette-styl), and even apply some plugins.
 
-So it's time to reorganize your theme, an agreed theme directory structure is as follows:
+So it’s time to reorganize your theme, an agreed theme directory structure is as follows:
 
 ::: vue
 theme
@@ -62,7 +62,7 @@ theme
 - `theme/enhanceApp.js`: Theme level enhancements.
 
 ::: warning Note
-When you publish your theme as an NPM package, if you don't have any theme configuration, that means you don't have `theme/index.js`, you'll need to set the `"main"` field  to `layouts/Layout.vue` in `package.json`, only in this way VuePress can correctly resolve the theme.
+When you publish your theme as an npm package, if you don’t have any theme configuration, that means you don’t have `theme/index.js`, you’ll need to set the `"main"` field  to `layouts/Layout.vue` in `package.json`, only in this way VuePress can correctly resolve the theme.
 ```json
 {
   ...
@@ -87,7 +87,7 @@ theme
 
 Then, all the pages will use `Layout.vue` as layout component by default, while the routes not matching will use `404.vue`.
 
-If you want to switch the layout of some pages to `AnotherLayout.vue`, you just need to update the frontmatter of this page:
+To switch the layout of some pages to `AnotherLayout.vue`, you just need to update the frontmatter of this page:
 
 ```markdown
 ---
@@ -96,7 +96,7 @@ layout: AnotherLayout
 ````
 
 ::: tip
-Each layout component may render distinct pages. If you want to apply some global UI (e.g. global header), consider using [globalLayout](./option-api.md#globallayout)。
+Each layout component may render distinct pages. To apply some global UI (for example global header), consider using [globalLayout](./option-api.md#globallayout)。
 :::
 
 ## Apply plugins
@@ -153,15 +153,15 @@ This is the `$page` object for this page you are looking at:
 
 If the user provided `themeConfig` in `.vuepress/config.js`, it will also be available as `$site.themeConfig`. You can use this to allow users to customize behavior of your theme - for example, specifying categories and page order. You can then use these data together with `$site.pages` to dynamically construct navigation links.
 
-Finally, don't forget that `this.$route` and `this.$router` are also available as part of Vue Router's API.
+Finally, don’t forget that `this.$route` and `this.$router` are also available as part of Vue Router’s API.
 
 ::: tip
-  `lastUpdated` is the UNIX timestamp of this file's last git commit, for more details, refer to [Last Updated](../theme/default-theme-config.md#last-updated).
+  `lastUpdated` is the UNIX timestamp of this file’s last git commit, for more details, refer to [Last Updated](../theme/default-theme-config.md#last-updated).
 :::
 
 ## Content Excerpt
 
-If a markdown file contains a `<!-- more -->` comment, any content above the comment will be extracted and exposed as `$page.excerpt`. If you are building custom theme for blogging, this data can be used to render a post list with excerpts.
+If a Markdown file contains a `<!-- more -->` comment, any content above the comment will be extracted and exposed as `$page.excerpt`. If you are building custom theme for blogging, this data can be used to render a post list with excerpts.
 
 ## App Level Enhancements
 

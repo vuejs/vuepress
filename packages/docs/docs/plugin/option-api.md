@@ -7,7 +7,7 @@
 
 The name of the plugin.
 
-Internally, vuepress will use the plugin's package name as the plugin name. When your plugin is a local plugin (i.e. using a pure plugin function directly), please be sure to configure this option, that is good for debug tracking.
+Internally, VuePress will use the plugin’s package name as the plugin name. When your plugin is a local plugin (that is using a pure plugin function directly), please be sure to configure this option, that is good for debug tracking.
 
 ```js
 // .vuepress/config.js
@@ -137,7 +137,7 @@ module.exports = (options, context) => ({
 - Type: `Function`
 - Default: undefined
 
-Equivalent to [before](https://webpack.js.org/configuration/dev-server/#devserver-before) in [webpack-dev-server](https://github.com/webpack/webpack-dev-server). you can use it to define custom handlers before all middleware is executed:
+Equivalent to [before](https://webpack.js.org/configuration/dev-server/#devserver-before) in [webpack-dev-server](https://github.com/webpack/webpack-dev-server). You can use it to define custom handlers before all middleware is executed:
 
 ```js
 module.exports = {
@@ -155,7 +155,7 @@ module.exports = {
 - Type: `Function`
 - Default: undefined
 
-Equivalent to [after](https://webpack.js.org/configuration/dev-server/#devserver-after) in [webpack-dev-server](https://github.com/webpack/webpack-dev-server). you can use it to execute custom middleware after all other middleware:
+Equivalent to [after](https://webpack.js.org/configuration/dev-server/#devserver-after) in [webpack-dev-server](https://github.com/webpack/webpack-dev-server). You can use it to execute custom middleware after all other middleware:
 
 ```js
 module.exports = {
@@ -187,7 +187,7 @@ module.exports = {
 - Type: `Function`
 - Default: `undefined`
 
-Modify the internal markdown config with [markdown-it-chain](https://github.com/ulivz/markdown-it-chain) —— A chaining API like [webpack-chain](https://github.com/mozilla-neutrino/webpack-chain) but for [markdown-it](https://github.com/markdown-it/markdown-it).
+Modify the internal Markdown config with [markdown-it-chain](https://github.com/ulivz/markdown-it-chain) —— A chaining API like [webpack-chain](https://github.com/mozilla-neutrino/webpack-chain) but for [markdown-it](https://github.com/markdown-it/markdown-it).
 
 ```js
 module.exports = {
@@ -272,7 +272,7 @@ module.exports = (options, context) => ({
 })
 ```
 
-Then you can use this module at client side code by:
+Then you can use this module at client-side code by:
 
 ``` js
 import { SOURCE_DIR } from '@dynamic/constants'
@@ -312,7 +312,7 @@ module.exports = {
 These fields starting with an `_` means you can only access them during build time.
 :::
 
-e.g.
+For example:
 
 ``` js
 module.exports = {
@@ -329,7 +329,7 @@ Then you can use this value via `this.$page.size` in any Vue component.
 - Type: `String`
 - Default: `undefined`
 
-A path to the mixin file which allow you to control the life cycle of root component.
+A path to the mixin file which allows you to control the lifecycle of root component.
 
 ``` js
 // plugin's entry
@@ -353,7 +353,7 @@ export default {
 - Type: `Array|AsyncFunction`
 - Default: `undefined`
 
-Add a page pointing to a markdown file:
+Add a page pointing to a Markdown file:
 
 ```js
 const path = require('path')
@@ -407,7 +407,7 @@ module.exports = {
 - Type: `Array|String`
 - Default: `undefined`
 
-You might want to inject some global UI fixed somewhere on the page, e.g. `back-to-top`, `popup`. In VuePress, **a global UI is a Vue component**, you can directly define the component's name(s) in this option, e.g.
+You might want to inject some global UI fixed somewhere on the page, for example `back-to-top`, `popup`. In VuePress, **a global UI is a Vue component**, you can directly define the component’s name(s) in this option, for example:
 
 ``` js
 module.exports = {
@@ -435,7 +435,7 @@ Then, VuePress will automatically inject these components behind the layout comp
 - Type: `function`
 - Default: `undefined`
 
-Register a extra command to enhance the CLI of vuepress. The function will be called with a [CAC](https://github.com/cacjs/cac)'s instance as the first argument.
+Register a extra command to enhance the CLI of VuePress. The function will be called with a [CAC](https://github.com/cacjs/cac)'s instance as the first argument.
 
 ```js
 module.exports = {

@@ -2,6 +2,8 @@
 
 VuePress follows the principle of **"Convention is better than configuration"**, the recommended document structure is as follows:
 
+<!-- textlint-disable terminology -->
+
 ::: vue
 .
 ├── docs
@@ -26,6 +28,8 @@ VuePress follows the principle of **"Convention is better than configuration"**,
 │ 
 └── package.json
 :::
+
+<!-- textlint-enable -->
 
 ::: warning Note
 Please note the capitalization of the directory name.
@@ -58,7 +62,7 @@ For the above directory structure, the default page routing paths are as follows
 | `/guide/README.md` | `/guide/` |
 | `/config.md` | `/config.html` |
 
-**Also see:** 
+**Also see:**
 
 - [Config](../config/README.md)
 - [Theme](../theme/)

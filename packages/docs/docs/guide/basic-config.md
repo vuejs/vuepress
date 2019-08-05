@@ -2,7 +2,7 @@
 
 ## Config File
 
-Without any configuration, the page is pretty minimal, and the user has no way to navigate around the site. To customize your site, let's first create a `.vuepress` directory inside your docs directory. This is where all VuePress-specific files will be placed in. Your project structure is probably like this:
+Without any configuration, the page is pretty minimal, and the user has no way to navigate around the site. To customize your site, let’s first create a `.vuepress` directory inside your docs directory. This is where all VuePress-specific files will be placed in. Your project structure is probably like this:
 
 ```
 .
@@ -22,7 +22,7 @@ module.exports = {
 }
 ```
 
-If you've got the dev server running, you should see the page now has a header with the title and a search box. VuePress comes with built-in headers-based search - it automatically builds a simple search index from the title, `h2` and `h3` headers from all the pages.
+If you’ve got the dev server running, you should see the page now has a header with the title and a search box. VuePress comes with built-in headers-based search - it automatically builds a simple search index from the title, `h2` and `h3` headers from all the pages.
 
 Consult the [Config Reference](../config/README.md) for a full list of options.
 
@@ -34,7 +34,7 @@ You can also use YAML (`.vuepress/config.yml`) or TOML (`.vuepress/config.toml`)
 
 A VuePress theme is responsible for all the layout and interactivity details of your site. VuePress ships with a default theme (you are looking at it right now) which is designed for technical documentation. It exposes a number of options that allow you to customize the navbar, sidebar and homepage, etc. For details, check out the [Default Theme Config](../theme/default-theme-config.md) page.
 
-If you wish to develop a custom theme, see [Writing a theme](../theme/writing-a-theme.md).
+To develop a custom theme, see [Writing a theme](../theme/writing-a-theme.md).
 
 ## App Level Enhancements
 

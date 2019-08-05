@@ -135,7 +135,7 @@ module.exports = {
 
 ### palette.styl
 
-If you wish to apply simple color overrides to the styling of the [default preset](https://github.com/vuejs/vuepress/blob/master/packages/@vuepress/core/lib/client/style/config.styl) or define some color variables for using later, you can create an `.vuepress/styles/palette.styl` file.
+To apply simple color overrides to the styling of the [default preset](https://github.com/vuejs/vuepress/blob/master/packages/@vuepress/core/lib/client/style/config.styl) or define some color variables for using later, you can create a `.vuepress/styles/palette.styl` file.
 
 There are a few color variables you can tweak:
 
@@ -148,12 +148,12 @@ $codeBgColor = #282c34
 ```
 
 ::: danger Note
-You should ONLY write color variables in this file. since `palette.styl` will be imported at the end of the root stylus config file, as a config, it will be used by multiple files, so once you wrote styles here, your style would be duplicated by multiple times.
+You should ONLY write color variables in this file. Since `palette.styl` will be imported at the end of the root Stylus config file, as a config, it will be used by multiple files, so once you wrote styles here, your style would be duplicated by multiple times.
 :::
 
 ### index.styl
 
-VuePress provides a convenient way to add extra styles. you can create an `.vuepress/styles/index.styl` file for that. This is a [Stylus](http://stylus-lang.com/) file but you can use normal CSS syntax as well.
+VuePress provides a convenient way to add extra styles. You can create a `.vuepress/styles/index.styl` file for that. This is a [Stylus](http://stylus-lang.com/) file but you can use normal CSS syntax as well.
 
 ```stylus
 .content {
@@ -163,7 +163,7 @@ VuePress provides a convenient way to add extra styles. you can create an `.vuep
 
 **Also see:**
 
-- [Why can't `palette.styl` and `index.styl` merge into one API?](../faq/README.md#why-can-t-palette-styl-and-index-styl-merge-into-one-api)
+- [Why can’t `palette.styl` and `index.styl` merge into one API?](../faq/README.md#why-can-t-palette-styl-and-index-styl-merge-into-one-api)
 
 ## Theming
 
@@ -223,7 +223,7 @@ Function for transforming [header](../miscellaneous/glossary.md#headers) texts i
 - Type: `Object`
 - Default: `{ permalink: true, permalinkBefore: true, permalinkSymbol: '#' }`
 
-Options for [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor). (Note: prefer `markdown.slugify` if you want to customize header ids.)
+Options for [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor). (Note: prefer `markdown.slugify` to customize header ids.)
 
 ### markdown.externalLinks
 
@@ -237,7 +237,7 @@ The key and value pair will be added to `<a>` tags that point to an external lin
 - Type: `Object`
 - Default: `{ includeLevel: [2, 3] }`
 
-Options for [markdown-it-table-of-contents](https://github.com/Oktavilla/markdown-it-table-of-contents). (Note: prefer `markdown.slugify` if you want to customize header ids.)
+Options for [markdown-it-table-of-contents](https://github.com/Oktavilla/markdown-it-table-of-contents). (Note: prefer `markdown.slugify` to customize header ids.)
 
 ### markdown.plugins
 
@@ -256,7 +256,7 @@ module.exports = {
 }
 ```
 
-or
+Or
 
 ``` js
 module.exports = {
@@ -276,7 +276,7 @@ module.exports = {
 - Type: `Function`
 - Default: `undefined`
 
-A function to modify default config or apply additional plugins to the [markdown-it](https://github.com/markdown-it/markdown-it) instance used to render source files. e.g.
+A function to modify default config or apply additional plugins to the [markdown-it](https://github.com/markdown-it/markdown-it) instance used to render source files. For example:
 
 ``` js
 module.exports = {
@@ -306,7 +306,7 @@ VuePress comes with built-in webpack config for the CSS pre-processors listed be
 
 Options for [postcss-loader](https://github.com/postcss/postcss-loader). Note specifying this value will overwrite autoprefixer and you will need to include it yourself.
 
-### stylus
+### Stylus
 
 - Type: `Object`
 - Default: `{ preferPathResolver: 'webpack' }`
@@ -320,7 +320,7 @@ Options for [stylus-loader](https://github.com/shama/stylus-loader).
 
 Options for [sass-loader](https://github.com/webpack-contrib/sass-loader) to load `*.scss` files.
 
-### sass
+### Sass
 
 - Type: `Object`
 - Default: `{ indentedSyntax: true }`
