@@ -1,6 +1,6 @@
 # Plugin
 
-Plugins usually add global-level functionality to VuePress. There is no strictly defined scope for a plugin - there are typically several types of plugins:
+Plugins generally add global-level functionality to VuePress. There is no strictly defined scope for a plugin - there are typically several types of plugins:
 
 1. Extend the page’s metadata generated at compile time. For example [@vuepress/plugin-last-updated](./official/plugin-last-updated.md);
 2. Generate extra files before or after compilation. For example [@vuepress/plugin-pwa](./official/plugin-pwa.md);

@@ -1,6 +1,6 @@
 # Markdown Slot
 
-VuePress implements a content distribution API for Markdown. With this feature, you can split your document into multiple fragments to facilitate flexible composition in the layout component.
+VuePress implements a content distribution API for Markdown. With this feature, you can split your document into fragments, allowing flexible composition in the layout component.
 
 ## Why do I need Markdown Slot?
 
@@ -100,6 +100,10 @@ Then the rendered HTML of this page will be:
 </div>
 ```
 
+<!-- textlint-disable en-capitalization -->
+
 Note that:
 1. Unlike the slot mechanism provided by [Vue](https://vuejs.org/v2/guide/components-slots.html) itself, each content distribution is wrapped in a `div` whose class is `content` with the name of the slot.
 2. Please ensure the uniqueness of the slot defined.
+
+<!-- textlint-enable -->

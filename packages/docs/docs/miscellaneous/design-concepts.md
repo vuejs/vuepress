@@ -12,7 +12,7 @@ The design concepts of VuePress 1.x are mainly reflected in the following aspect
 
 ## Pluggable
 
-VuePress 1.0 has been rewritten extensively, and the most important one is the introduction of the [Plugin API](../plugin/README.md). So what’re the benefits of plugins?
+VuePress 1.0 has been rewritten extensively, and the most important one is the introduction of the [Plugin API](../plugin/README.md). What are the benefits of plugins?
 
 ### Decoupling
 
@@ -90,22 +90,26 @@ Senior users have found that both theme developers and regular users have the ab
 
 For `templates/*`, follow the certain loading priority. Taking `templates/ssr.html` as an example:
 
+<!-- textlint-disable en-capitalization, terminology -->
+
 @flowstart
 cond1=>condition: User’s ssr.html
 exists?
-Cond2=>condition: Theme’s ssr.html
+cond2=>condition: Theme’s ssr.html
 exists?
-Stage1=>operation: Using user’s ssr.html
+stage1=>operation: Using user’s ssr.html
 stage2=>operation: Using theme’s ssr.html
-stage3=>operation: Using default ssr.HTML
+stage3=>operation: Using default ssr.html
 
-Cond1(no, right)->cond2(no)->stage3
+cond1(no, right)->cond2(no)->stage3
 cond1(yes, bottom)->stage1
 cond2(yes, bottom)->stage2
 @flowend
 
+<!-- textlint-enable -->
+
 ::: warning Note
-When customizing `templates/ssr.html`, or `templates/dev.html`, it is best to modify it on the basis of the [default template files](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/core/lib/app/index.dev.html), otherwise it may cause a build failure.
+When customizing `templates/ssr.html`, or `templates/dev.html`, it’s best to edit it on the basis of the [default template files](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/core/lib/app/index.dev.html), otherwise it may cause a build failure.
 :::
 
 ### Overriding
@@ -192,6 +196,6 @@ With the goal of decoupling, we were able to separate VuePress into the followin
 - [@vuepress/core](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/core)：Including the core implementation of `dev`, `build` and `Plugin API`;
 - [@vuepress/theme-default](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/theme-default)：The default theme you see now.
 
-Of course, for most users, you don’t need to care about these three libraries, package [VuePress](https://www.npmjs.com/search?Q=vuepress) has already assembled them together, so you can use VuePress like `0.x`.
+Of course, for most users, you don’t need to worry about these three libraries. The [VuePress](https://www.npmjs.com/search?Q=vuepress) package has already assembled them together, so you can use VuePress like `0.x`.
 
 

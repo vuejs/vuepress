@@ -28,7 +28,7 @@ module.exports = {
 - Type: `array`
 - Default: `undefined`
 
-A plugin can contain multiple plugins like a preset.
+A plugin can contain several plugins like a preset.
 
 ```js
 // A plugin
@@ -45,7 +45,7 @@ module.exports = {
 - Type: `Function`
 - Default: undefined
 
-Modify the internal webpack config with [webpack-chain](https://github.com/mozilla-neutrino/webpack-chain).
+Edit the internal webpack config with [webpack-chain](https://github.com/mozilla-neutrino/webpack-chain).
 
 ```js
 module.exports = {
@@ -56,7 +56,7 @@ module.exports = {
 ```
 
 ::: tip
-Since VuePress is a Vue-SSR based application, there will be two webpack configurations, `isServer` is used to determine whether the current webpack config is applied to the server or client.
+Since VuePress is a Vue-SSR based application, there needs to be two webpack configurations, `isServer` is used to determine whether the current webpack config is applied to the server or client.
 
 **Also see:**
 
@@ -82,7 +82,7 @@ module.exports = {
 }
 ```
 
-VuePress specifically opened up a more concise `define` option, note that the values has been automatically processed by `JSON.stringify`.
+VuePress opened up a more concise `define` option, note that the values has been automatically processed by `JSON.stringify`.
 
 - Object Usage:
 
@@ -171,7 +171,7 @@ module.exports = {
 - Type: `Function`
 - Default: `undefined`
 
-A function to modify default config or apply additional plugins to the [markdown-it](https://github.com/markdown-it/markdown-it) instance used to render source files. Example:
+A function to edit default config or apply extra plugins to the [markdown-it](https://github.com/markdown-it/markdown-it) instance used to render source files. Example:
 
 ```js
 module.exports = {
@@ -187,7 +187,7 @@ module.exports = {
 - Type: `Function`
 - Default: `undefined`
 
-Modify the internal Markdown config with [markdown-it-chain](https://github.com/ulivz/markdown-it-chain) —— A chaining API like [webpack-chain](https://github.com/mozilla-neutrino/webpack-chain) but for [markdown-it](https://github.com/markdown-it/markdown-it).
+Edit the internal Markdown config with [markdown-it-chain](https://github.com/ulivz/markdown-it-chain) —— A chaining API like [webpack-chain](https://github.com/mozilla-neutrino/webpack-chain) but for [markdown-it](https://github.com/markdown-it/markdown-it).
 
 ```js
 module.exports = {
@@ -237,7 +237,7 @@ module.exports = {
 }
 ```
 
-This option also supports dynamic code which allows you to do more things with the ability to touch the compilation context:
+This option also supports dynamic code which allows you to do more, with the ability to touch the compilation context:
 
 ```js
 module.exports = (option, context) => {
@@ -283,7 +283,7 @@ import { SOURCE_DIR } from '@dynamic/constants'
 - Type: `Function`
 - Default: `undefined`
 
-A function used to extend or modify the [$page](../guide/global-computed.md#page) object. This function will be invoking once for each page at compile time.
+A function used to extend or edit the [$page](../guide/global-computed.md#page) object. This function will be invoking once for each page at compile time.
 
 ```js
 module.exports = {

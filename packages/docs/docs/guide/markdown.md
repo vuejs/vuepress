@@ -52,9 +52,9 @@ Outbound links automatically gets `target="_blank" rel="noopener noreferrer"`:
 
 You can customize the attributes added to external links by setting [config.markdown.externalLinks](../config/README.md#markdown-externallinks).
 
-## Front Matter
+## Frontmatter
 
-[YAML front matter](https://jekyllrb.com/docs/frontmatter/) is supported out of the box:
+[YAML frontmatter](https://jekyllrb.com/docs/frontmatter/) is supported out of the box:
 
 ``` yaml
 ---
@@ -65,7 +65,7 @@ lang: en-US
 
 This data will be available to the rest of the page, along with all custom and theming components.
 
-For more details, check out the [Front Matter](./frontmatter.md) page.
+For more details, check out the [Frontmatter](./frontmatter.md) page.
 
 ## GitHub-Style Tables
 

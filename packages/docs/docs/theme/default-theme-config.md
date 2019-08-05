@@ -8,7 +8,7 @@ All options listed on this page apply to the default theme only. If you are usin
 
 ## Homepage
 
-The default theme provides a homepage layout (which is used on [the homepage of this very site](../README.md)). To use it, specify `home: true` plus some other metadata in your root `README.md`'s [YAML front matter](../guide/markdown.md#front-matter). This is an example of how it works:
+The default theme provides a homepage layout (used on [the homepage of this site](../README.md)). To use it, specify `home: true` plus some other metadata in your root `README.md`'s [YAML frontmatter](../guide/markdown.md#front-matter). This is an example of how it works:
 
 ``` yaml
 ---
@@ -29,13 +29,13 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 ---
 ```
 
-Any additional content after the `YAML front matter` will be parsed as normal Markdown and rendered after the features section.
+Any extra content after the `YAML front matter` will be parsed as normal Markdown and rendered after the features section.
 
-To use a completely custom homepage layout, you can also use a [Custom Layout](#custom-layout-for-specific-pages).
+To use a fully custom homepage layout, you can also use a [Custom Layout](#custom-layout-for-specific-pages).
 
 ## Navbar
 
-The Navbar may contain your page title, [Search Box](#search-box), [Navbar Links](#navbar-links), [Languages](../guide/i18n.md) and [Repository Link](#git-repo-and-edit-links), all of them depends on your configuration.
+The Navbar may contain your page title, [Search Box](#search-box), [Navbar Links](#navbar-links), [Languages](../guide/i18n.md) and [Repository Link](#git-repo-and-edit-links), they all depend on your configuration.
 
 ### Navbar Links
 
@@ -72,7 +72,7 @@ module.exports = {
 }
 ```
 
-In addition, you can have sub groups inside a dropdown by having nested items:
+You can also have sub groups inside a dropdown by having nested items:
 
 ```js
 module.exports = {
@@ -167,12 +167,12 @@ module.exports = {
 ```
 
 ::: tip
-  It is worth mentioning that when you disable this option, the corresponding script of this functionality will not be loaded. This is a small point in our performance optimization.
+  It’s worth mentioning that when you disable this option, the corresponding script of this functionality will not be loaded. This is a small point in our performance optimization.
 :::
 
 ### Sidebar Groups
 
-You can divide sidebar links into multiple groups by using objects:
+You can divide sidebar links into several groups by using objects:
 
 ``` js
 // .vuepress/config.js
@@ -349,7 +349,7 @@ module.exports = {
 Unlike the [built-in search](#built-in-search) engine which works out of the box, [Algolia DocSearch](https://community.algolia.com/docsearch/) requires you to submit your site to them for indexing before it starts working.
 :::
 
-For more options, refer to [Algolia DocSearch’s documentation](https://github.com/algolia/docsearch#docsearch-options).
+For more options, check out [Algolia DocSearch’s documentation](https://github.com/algolia/docsearch#docsearch-options).
 
 ## Last Updated
 
@@ -366,7 +366,7 @@ module.exports = {
 Note that it’s `off` by default. If given a `string`, it will be displayed as a prefix (default value: `Last Updated`).
 
 ::: warning
-  Since `lastUpdated` is based on `git`, you can only use it in a `git` repository. Also, since the timestamp used comes from the git commit, it will display only after a first commit for a given page, and update only on subsequent commits of that page.
+  Since `lastUpdated` is based on `git`, you can only use it in a `git` repository. Also, since the timestamp used comes from the git commit, it will display only after a first commit for a given page, and update only on ensuing commits of that page.
 :::
 
 
@@ -448,7 +448,7 @@ These styles are written in [index.styl](/config/#index-styl), a file that allow
 
 ## Custom Layout for Specific Pages
 
-By default the content of each `*.md` file is rendered in a `<div class="page">` container, along with the sidebar, auto-generated edit links and prev/next links. To use a completely custom component in place of the page, you can again specify the component to use using `YAML front matter`:
+By default the content of each `*.md` file is rendered in a `<div class="page">` container, along with the sidebar, auto-generated edit links and prev/next links. To use a fully custom component in place of the page, you can again specify the component to use using `YAML front matter`:
 
 ``` yaml
 ---

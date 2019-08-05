@@ -96,4 +96,4 @@ See [dest](../config/README.md#dest).
 - Type: `object`
 - Required: `{}`
 
-It’s very useful when you’re writing tests and don’t want to depend on actual config file, for all options please head [siteConfig](../config/README.md).
+It’s useful when you’re writing tests and don’t want to depend on actual config file, for all options please head [siteConfig](../config/README.md).

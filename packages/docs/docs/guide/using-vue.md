@@ -168,7 +168,7 @@ yarn add -D pug pug-plain-loader
 ::: tip
 If you are a Stylus user, you don’t need to install `stylus` and `stylus-loader` in your project because VuePress uses Stylus internally.
 
-For pre-processors that do not have built-in webpack config support, you will need to [extend the internal webpack config](../config/README.md#configurewebpack) in addition to installing the necessary dependencies.
+For pre-processors that do not have built-in webpack config support, you will need to [extend the internal webpack config](../config/README.md#configurewebpack) and install the necessary dependencies.
 :::
 
 ## Script & Style Hoisting
@@ -197,7 +197,7 @@ export default {
 
 ### OutboundLink <Badge text="stable"/>
 
-It(<OutboundLink/>) is used to indicate that this is an external link. In VuePress, this component has been followed by every external link.
+It(<OutboundLink/>) is used to specify that this is an external link. In VuePress, this component has been followed by every external link.
 
 ### ClientOnly <Badge text="stable"/>
 
@@ -212,7 +212,7 @@ See [Browser API Access Restrictions](#browser-api-access-restrictions).
 
 - **Usage**：
 
-Specify a specific slot for a specific page (.md) for rendering. This will be very useful when you use [Custom Layout](../theme/default-theme-config.md#custom-layout-for-specific-pages) or [Writing a theme](../theme/writing-a-theme.md)
+Specify a specific slot for a specific page (.md) for rendering. This will be useful when you use [Custom Layout](../theme/default-theme-config.md#custom-layout-for-specific-pages) or [Writing a theme](../theme/writing-a-theme.md)
 
 ``` vue
 <Content/>

@@ -1,6 +1,6 @@
 # Deploying
 
-The following guides are based on a few shared assumptions:
+The following guides are based on some shared assumptions:
 
 - You are placing your docs inside the `docs` directory of your project;
 - You are using the default build output location (`.vuepress/dist`);
@@ -211,4 +211,4 @@ heroku open
 
 ## Now
 
-Please refer to [Deploy an example VuePress site with Now](https://zeit.co/examples/vuepress/).
+Please check out [Deploy an example VuePress site with Now](https://zeit.co/examples/vuepress/).

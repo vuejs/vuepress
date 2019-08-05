@@ -4,7 +4,7 @@ sidebar: auto
 
 # Glossary
 
-You may encounter some unfamiliar concepts in the documentation. This section lists the common terms in the documentation for easy access, learning and plugin/theme development.
+You may stumble upon some unfamiliar concepts in the documentation. This section lists the common terms in the documentation for easy access, learning and plugin/theme development.
 
 ## layout
 
@@ -16,7 +16,7 @@ Name of the layout component used by the current page.
 
 - Access: `$page.frontmatter`
 
-Configuration wrapped by `---` in the `markdown` file of the current page, which is generally used to do some page-level configuration. For more details, please see [Front Matter](../guide/frontmatter.md).
+Configuration wrapped by `---` in the `markdown` file of the current page, generally used to do some page-level configuration. For more details, please see [Frontmatter](../guide/frontmatter.md).
 
 ## permalink
 
@@ -56,7 +56,7 @@ Value of `themeConfig` in `.vuepress/config.js`, i.e., user’s theme configurat
 
 - Access: `Context.themeAPI.theme.path`
 
-Root path (absolute path) of the currently used theme.
+Root path (absolute path) of the used theme.
 
 ## themeEntry
 
