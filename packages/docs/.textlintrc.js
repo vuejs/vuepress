@@ -8,7 +8,9 @@ module.exports = {
       allowHeading: false
     },
     'stop-words': true,
-    'terminology': true,
+    terminology: {
+      terms: `${__dirname}/.textlint.terms.json`
+    },
     'write-good': true
   }
 }
