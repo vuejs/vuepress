@@ -12,5 +12,8 @@ module.exports = {
       terms: `${__dirname}/.textlint.terms.json`
     },
     'write-good': true
+  },
+  filters: {
+    comments: true
   }
 }
