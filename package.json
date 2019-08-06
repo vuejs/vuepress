@@ -50,6 +50,7 @@
     "@types/semver": "^6.0.0",
     "@types/hash-sum": "^1.0.0",
     "@types/globby": "^9.1.0",
-    "@types/escape-html": "^0.0.20"
+    "@types/escape-html": "^0.0.20",
+    "all-contributors-cli": "^6.8.1"
   }
 }

@@ -1,0 +1,42 @@
+{
+  "projectName": "VuePress",
+  "projectOwner": "Ulivz",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitConvention": "none",
+  "contributors": [
+    {
+      "login": "yyx990803",
+      "name": "Evan You",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/499550?v=4",
+      "profile": "http://evanyou.me",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "ulivz",
+      "name": "ULIVZ",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/23133919?v=4",
+      "profile": "http://ulivz.com",
+      "contributions": [
+        "code", "doc"
+      ]
+    },
+    {
+      "login": "jlooper",
+      "name": "Jen Looper",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1450004?v=4",
+      "profile": "http://www.jenlooper.com",
+      "contributions": [
+        "doc", "design"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7
+}
