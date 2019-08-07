@@ -43,13 +43,6 @@
     "lint-staged": "^8.1.5",
     "minimist": "^1.2.0",
     "typescript": "^3.2.2",
-    "@types/node": "^10.12.12",
-    "@types/lru-cache": "^4.1.1",
-    "@types/fs-extra": "^5.0.4",
-    "@types/semver": "^6.0.0",
-    "@types/hash-sum": "^1.0.0",
-    "@types/globby": "^9.1.0",
-    "@types/escape-html": "^0.0.20",
     "all-contributors-cli": "^6.8.1"
   }
 }
