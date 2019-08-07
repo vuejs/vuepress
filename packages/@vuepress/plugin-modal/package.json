@@ -1,0 +1,26 @@
+{
+  "name": "@vuepress/plugin-modal",
+  "version": "1.0.3",
+  "description": "modal plugin for vuepress",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuejs/vuepress.git",
+    "directory": "packages/@vuepress/plugin-modal"
+  },
+  "keywords": [
+    "documentation",
+    "vue",
+    "vuepress",
+    "generator"
+  ],
+  "author": "Hatice Edis <hedis285@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vuejs/vuepress/issues"
+  },
+  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/plugin-modal#readme"
+}
