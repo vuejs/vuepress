@@ -25,7 +25,8 @@
       "avatar_url": "https://avatars1.githubusercontent.com/u/23133919?v=4",
       "profile": "http://ulivz.com",
       "contributions": [
-        "code", "doc"
+        "code",
+        "doc"
       ]
     },
     {
@@ -34,7 +35,8 @@
       "avatar_url": "https://avatars2.githubusercontent.com/u/1450004?v=4",
       "profile": "http://www.jenlooper.com",
       "contributions": [
-        "doc", "design"
+        "doc",
+        "design"
       ]
     },
     {
@@ -43,7 +45,8 @@
       "avatar_url": "https://avatars0.githubusercontent.com/u/5370675?v=4",
       "profile": "https://frontstuff.io/",
       "contributions": [
-        "code", "doc"
+        "code",
+        "doc"
       ]
     },
     {
@@ -54,6 +57,16 @@
       "contributions": [
         "code",
         "question"
+      ]
+    },
+    {
+      "login": "sobolevn",
+      "name": "Nikita Sobolev",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/4660275?v=4",
+      "profile": "https://sobolevn.me",
+      "contributions": [
+        "code",
+        "doc"
       ]
     }
   ],
