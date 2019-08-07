@@ -3,13 +3,13 @@
 This project uses a monorepo setup that requires using [Yarn](https://yarnpkg.com) because it relies on [Yarn workspaces](https://yarnpkg.com/blog/2017/08/02/introducing-workspaces/).
 
 ``` sh
-# Install dependencies & Compile utilities wrote by TypeScript.
+# Install dependencies & compile TypeScript utilities.
 yarn bootstrap
 
 # Clean dependencies.
 yarn clean
 
-# Useful when created new sub module.
+# Useful when creating new submodules.
 yarn boot
 
 # Serve the docs.
@@ -24,28 +24,27 @@ yarn test
 
 ## Core packages
 
-- **docs**: Docs of VuePress (Do not publish to NPM.)
-- **vuepress**: CLI of VuePress.
+- **docs**: Docs of VuePress (do not publish to npm).
+- **vuepress**: VuePress CLI.
 - **packages**
-  - `core`: Containing Node.js API, Plugin API, Theme API, Client SPA, etc.
-  - `markdown`: Internal Markdown Compiler.
-  - `markdown-loader`: Internal Markdown Compiler.
-  - `plugin-active-header-links`: A plugin for active sidebar heading links.
-  - `plugin-google-analytics`: GA integration.
-  - `plugin-last-updated`: Implementaion of "lastUpdated".
-  - `plugin-medium-zoom`: medium-zoom integration.
-  - `plugin-nprogress`: nprogress integration.
+  - `core`: containing the Node.js API, the Plugin API, the Theme API, the Client SPA, etc.
+  - `markdown`: internal Markdown compiler.
+  - `markdown-loader`: internal Markdown loader.
+  - `plugin-active-header-links`: a plugin for active sidebar heading links.
+  - `plugin-google-analytics`: Google Analytics integration.
+  - `plugin-last-updated`: implementation of "last updated" feature.
+  - `plugin-medium-zoom`: `medium-zoom` integration.
+  - `plugin-nprogress`: `nprogress` integration.
   - `plugin-pwa`: PWA plugin.
-  - `plugin-search`: Search plugin, providing the `<SearchBox />` component.
-  - `shared-utils`: Utilities wrote by TS.
-  - `test-utils`: Test Utilities.
-  - `theme-default`: Default Theme.
-  - `theme-vue`: A theme tweak from default theme and used for Vue official project.
+  - `plugin-search`: search plugin, providing the `SearchBox` component.
+  - `shared-utils`: TypeScript utilities.
+  - `test-utils`: test utilities.
+  - `theme-default`: default theme.
+  - `theme-vue`: a theme tweak from default theme, used for the official Vue project.
 
-## Core packages Not in Main Project
+## Core packages not in main project
 
-> Previously, for quick iteration, these proejcts are still in ULIVZ's workspace. In the future, we may build an 
-independent Github Group.
+> Previously, for quick iteration, these projects were kept in ULIVZ's workspace. In the future, we may want to build an independent GitHub group.
 
 - [awesome-vuepress](https://github.com/ulivz/awesome-vuepress)
 - [@vuepress/plugin-blog](https://github.com/ulivz/vuepress-plugin-blog)
