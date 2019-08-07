@@ -12,7 +12,7 @@ If you are using or demoing components that are not SSR friendly (for example co
 </ClientOnly>
 ```
 
-Note this does not fix components or libraries that access Browser APIs **on import** - in order to use code that assumes a browser environment on import, you need to dynamically import them in proper lifecycle hooks:
+Note this does not fix components or libraries that access Browser APIs **on import** - to use code that assumes a browser environment on import, you need to dynamically import them in proper lifecycle hooks:
 
 ``` vue
 <script>
@@ -30,7 +30,7 @@ export default {
 
 ### Interpolation
 
-Each markdown file is first compiled into HTML and then passed on as a Vue component to `vue-loader`. This means you can use Vue-style interpolation in text:
+Each Markdown file is first compiled into HTML and then passed on as a Vue component to `vue-loader`. This means you can use Vue-style interpolation in text:
 
 **Input**
 
@@ -78,7 +78,7 @@ The compiled component does not have any private data but does have access to th
 
 ## Escaping
 
-By default, fenced code blocks are automatically wrapped with `v-pre`. If you want to display raw mustaches or Vue-specific syntax inside inline code snippets or plain text, you need to wrap a paragraph with the `v-pre` custom container:
+By default, fenced code blocks are automatically wrapped with `v-pre`. To display raw mustaches or Vue-specific syntax inside inline code snippets or plain text, you need to wrap a paragraph with the `v-pre` custom container:
 
 **Input**
 
@@ -108,7 +108,7 @@ Any `*.vue` files found in `.vuepress/components` are automatically registered a
          └─ Bar.vue
 ```
 
-Inside any markdown file you can then directly use the components (names are inferred from filenames):
+Inside any Markdown file you can then directly use the components (names are inferred from filenames):
 
 ``` md
 <demo-1/>
@@ -123,14 +123,14 @@ Inside any markdown file you can then directly use the components (names are inf
 <Foo-Bar/>
 
 ::: warning IMPORTANT
-Make sure a custom component's name either contains a hyphen or is in PascalCase. Otherwise it will be treated as an inline element and wrapped inside a `<p>` tag, which will lead to hydration mismatch because `<p>` does not allow block elements to be placed inside it.
+Make sure a custom component’s name either contains a hyphen or is in PascalCase. Otherwise it will be treated as an inline element and wrapped inside a `<p>` tag, which will lead to hydration mismatch because `<p>` does not allow block elements to be placed inside it.
 :::
 
 ### Using Components In Headers
 
 You can use Vue components in the headers, but note the difference between the following two ways:
 
-| markdown | Output HTML | Parsed Header |
+| Markdown | Output HTML | Parsed Header |
 |--------|-------------|----------------|
 | <pre v-pre><code> # text &lt;Tag/&gt; </code></pre> | `<h1>text <Tag/></h1>` | `text` |
 | <pre v-pre><code> # text \`&lt;Tag/&gt;\` </code></pre> | `<h1>text <code>&lt;Tag/&gt;</code></h1>` | `text <Tag/>` |
@@ -150,7 +150,7 @@ VuePress has built-in webpack config for the following pre-processors: `sass`, `
 yarn add -D sass-loader node-sass
 ```
 
-Now you can use the following in markdown and theme components:
+Now you can use the following in Markdown and theme components:
 
 ``` vue
 <style lang="sass">
@@ -166,14 +166,14 @@ yarn add -D pug pug-plain-loader
 ```
 
 ::: tip
-If you are a Stylus user, you don't need to install `stylus` and `stylus-loader` in your project because VuePress uses Stylus internally.
+If you are a Stylus user, you don’t need to install `stylus` and `stylus-loader` in your project because VuePress uses Stylus internally.
 
-For pre-processors that do not have built-in webpack config support, you will need to [extend the internal webpack config](../config/README.md#configurewebpack) in addition to installing the necessary dependencies.
+For pre-processors that do not have built-in webpack config support, you will need to [extend the internal webpack config](../config/README.md#configurewebpack) and install the necessary dependencies.
 :::
 
 ## Script & Style Hoisting
 
-Sometimes you may need to apply some JavaScript or CSS only to the current page. In those cases, you can directly write root-level `<script>` or `<style>` blocks in the markdown file, and they will be hoisted out of the compiled HTML and used as the `<script>` and `<style>` blocks for the resulting Vue single-file component.
+Sometimes you may need to apply some JavaScript or CSS only to the current page. In those cases, you can directly write root-level `<script>` or `<style>` blocks in the Markdown file, and they will be hoisted out of the compiled HTML and used as the `<script>` and `<style>` blocks for the resulting Vue single-file component.
 
 <p class="demo" :class="$style.example"></p>
 
@@ -197,7 +197,7 @@ export default {
 
 ### OutboundLink <Badge text="stable"/>
 
-It(<OutboundLink/>) is used to indicate that this is an external link. In VuePress, this component has been followed by every external link.
+It(<OutboundLink/>) is used to specify that this is an external link. In VuePress, this component has been followed by every external link.
 
 ### ClientOnly <Badge text="stable"/>
 
@@ -207,12 +207,12 @@ See [Browser API Access Restrictions](#browser-api-access-restrictions).
 
 - **Props**:
 
-  - `pageKey` - string, [page](./global-computed.md#page)'s hash key, defaults to current page's key.
-  - `slotKey` - string, key of [markdown slot](./markdown-slot.md). defaults to [default slot](./markdown-slot.md#default-slot-content).
+  - `pageKey` - string, [page](./global-computed.md#page)'s hash key, defaults to current page’s key.
+  - `slotKey` - string, key of [Markdown slot](./markdown-slot.md). Defaults to [default slot](./markdown-slot.md#default-slot-content).
 
 - **Usage**：
 
-Specify a specific slot for a specific page (.md) for rendering. This will be very useful when you use [Custom Layout](../theme/default-theme-config.md#custom-layout-for-specific-pages) or [Writing a theme](../theme/writing-a-theme.md)
+Specify a specific slot for a specific page (.md) for rendering. This will be useful when you use [Custom Layout](../theme/default-theme-config.md#custom-layout-for-specific-pages) or [Writing a theme](../theme/writing-a-theme.md)
 
 ``` vue
 <Content/>

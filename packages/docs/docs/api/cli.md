@@ -1,4 +1,4 @@
-# Command Line Interface
+# Command-line Interface
 
 ## Usage
 
@@ -40,7 +40,7 @@ See [host](../config/README.md#host).
 Open browser when ready.
 
 ### --no-clear-screen
-do not clear screen when dev server is ready.
+Do not clear screen when dev server is ready.
 
 ## eject
 

@@ -7,6 +7,7 @@
   ],
   "description": "Minimalistic doc generator with Vue component based layout system",
   "scripts": {
+    "precommit": "lint-staged",
     "bootstrap": "yarn && lerna bootstrap && yarn tsc",
     "clean": "lerna clean && rm -rf node_modules",
     "boot": "node scripts/bootstrap.js",
@@ -24,25 +25,23 @@
     "test": "node scripts/test.js",
     "tsc": "lerna run tsc"
   },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,vue}": [
-      "eslint --fix",
-      "git add"
-    ]
-  },
   "devDependencies": {
+    "@types/escape-html": "^0.0.20",
+    "@types/fs-extra": "^5.0.4",
+    "@types/globby": "^9.1.0",
+    "@types/hash-sum": "^1.0.0",
+    "@types/lru-cache": "^4.1.1",
+    "@types/node": "^10.12.12",
+    "@types/semver": "^6.0.0",
     "conventional-changelog-cli": "^2.0.21",
     "eslint": "^4.19.1",
     "eslint-plugin-jest": "^21.15.1",
     "eslint-plugin-vue-libs": "^3.0.0",
+    "husky": "^3.0.2",
+    "inquirer": "^6.2.0",
     "lerna": "3.13.4",
     "lint-staged": "^8.1.5",
     "minimist": "^1.2.0",
-    "yorkie": "^2.0.0",
-    "inquirer": "^6.2.0",
     "typescript": "^3.2.2",
     "@types/node": "^10.12.12",
     "@types/lru-cache": "^4.1.1",

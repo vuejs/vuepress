@@ -4,10 +4,12 @@
   "name": "docs",
   "description": "docs of VuePress",
   "scripts": {
+    "precommit": "lint-staged",
     "dev": "vuepress dev docs --temp .temp",
     "build": "vuepress build docs --temp .temp",
     "view-info": "vuepress view-info docs --temp .temp",
-    "show-help": "vuepress --help"
+    "show-help": "vuepress --help",
+    "lint-md": "textlint ./docs/**/*.md"
   },
   "repository": {
     "type": "git",
@@ -25,11 +27,22 @@
   },
   "homepage": "https://github.com/vuejs/vuepress#readme",
   "devDependencies": {
+    "@textlint-rule/textlint-rule-no-unmatched-pair": "^1.0.7",
     "@vuepress/plugin-back-to-top": "^1.0.3",
     "@vuepress/plugin-google-analytics": "^1.0.3",
     "@vuepress/plugin-medium-zoom": "^1.0.3",
     "@vuepress/plugin-pwa": "^1.0.3",
     "@vuepress/theme-vue": "^1.0.3",
+    "lint-staged": "^8.1.5",
+    "textlint": "^11.3.1",
+    "textlint-filter-rule-comments": "^1.2.2",
+    "textlint-rule-apostrophe": "^1.0.0",
+    "textlint-rule-common-misspellings": "^1.0.1",
+    "textlint-rule-diacritics": "^1.0.0",
+    "textlint-rule-en-capitalization": "^2.0.2",
+    "textlint-rule-stop-words": "^1.0.17",
+    "textlint-rule-terminology": "^1.1.30",
+    "textlint-rule-write-good": "^1.6.2",
     "vue-toasted": "^1.1.25",
     "vuepress": "^1.0.3",
     "vuepress-plugin-flowchart": "^1.4.2"

@@ -8,7 +8,7 @@ All options listed on this page apply to the default theme only. If you are usin
 
 ## Homepage
 
-The default theme provides a homepage layout (which is used on [the homepage of this very website](../README.md)). To use it, specify `home: true` plus some other metadata in your root `README.md`'s [YAML front matter](../guide/markdown.md#front-matter). This is an example of how it works:
+The default theme provides a homepage layout (used on [the homepage of this site](../README.md)). To use it, specify `home: true` plus some other metadata in your root `README.md`'s [YAML frontmatter](../guide/markdown.md#front-matter). This is an example of how it works:
 
 ``` yaml
 ---
@@ -29,13 +29,13 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 ---
 ```
 
-Any additional content after the `YAML front matter` will be parsed as normal markdown and rendered after the features section.
+Any extra content after the `YAML front matter` will be parsed as normal Markdown and rendered after the features section.
 
-If you want to use a completely custom homepage layout, you can also use a [Custom Layout](#custom-layout-for-specific-pages).
+To use a fully custom homepage layout, you can also use a [Custom Layout](#custom-layout-for-specific-pages).
 
 ## Navbar
 
-The Navbar may contain your page title, [Search Box](#search-box), [Navbar Links](#navbar-links), [Languages](../guide/i18n.md) and [Repository Link](#git-repo-and-edit-links), all of them depends on your configuration.
+The Navbar may contain your page title, [Search Box](#search-box), [Navbar Links](#navbar-links), [Languages](../guide/i18n.md) and [Repository Link](#git-repo-and-edit-links), they all depend on your configuration.
 
 ### Navbar Links
 
@@ -72,7 +72,7 @@ module.exports = {
 }
 ```
 
-In addition, you can have sub groups inside a dropdown by having nested items:
+You can also have sub groups inside a dropdown by having nested items:
 
 ```js
 module.exports = {
@@ -128,7 +128,7 @@ module.exports = {
 }
 ```
 
-You can omit the `.md` extension, and paths ending with `/` are inferred as `*/README.md`. The text for the link is automatically inferred (either from the first header in the page or explicit title in `YAML front matter`). If you wish to explicitly specify the link text, use an Array in form of `[link, text]`.
+You can omit the `.md` extension, and paths ending with `/` are inferred as `*/README.md`. The text for the link is automatically inferred (either from the first header in the page or explicit title in `YAML front matter`). To explicitly specify the link text, use an array in form of `[link, text]`.
 
 ### Nested Header Links
 
@@ -167,12 +167,12 @@ module.exports = {
 ```
 
 ::: tip
-  It is worth mentioning that when you disable this option, the corresponding script of this functionality will not be loaded. This is a small point in our performance optimization.
+  It’s worth mentioning that when you disable this option, the corresponding script of this functionality will not be loaded. This is a small point in our performance optimization.
 :::
 
 ### Sidebar Groups
 
-You can divide sidebar links into multiple groups by using objects:
+You can divide sidebar links into several groups by using objects:
 
 ``` js
 // .vuepress/config.js
@@ -207,7 +207,7 @@ A sidebar group config also supports [sidebarDepth](#nested-header-links) field 
 
 ### Multiple Sidebars
 
-If you wish to display different sidebars for different sections of content, first organize your pages into directories for each desired section:
+To display different sidebars for different sections of content, first organize your pages into directories for each desired section:
 
 ```
 .
@@ -262,7 +262,7 @@ VuePress checks each sidebar config from top to bottom. If the fallback configur
 
 ### Auto Sidebar for Single Pages
 
-If you wish to automatically generate a sidebar that contains only the header links for the current page, you can use `YAML front matter` on that page:
+To automatically generate a sidebar that contains only the header links for the current page, you can use `YAML front matter` on that page:
 
 ``` yaml
 ---
@@ -346,14 +346,14 @@ module.exports = {
 ```
 
 ::: warning Note
-Unlike the [built-in search](#built-in-search) engine which works out of the box, [Algolia DocSearch](https://community.algolia.com/docsearch/) requires you to submit your site to them for indexing before it starts working. 
+Unlike the [built-in search](#built-in-search) engine which works out of the box, [Algolia DocSearch](https://community.algolia.com/docsearch/) requires you to submit your site to them for indexing before it starts working.
 :::
 
-For more options, refer to [Algolia DocSearch's documentation](https://github.com/algolia/docsearch#docsearch-options).
+For more options, check out [Algolia DocSearch’s documentation](https://github.com/algolia/docsearch#docsearch-options).
 
 ## Last Updated
 
-The `themeConfig.lastUpdated` option allows you to get the UNIX timestamp(ms) of each file's last `git` commit, and it will also display at the bottom of each page in an appropriate format:
+The `themeConfig.lastUpdated` option allows you to get the UNIX timestamp(ms) of each file’s last `git` commit, and it will also display at the bottom of each page in an appropriate format:
 
 ``` js
 module.exports = {
@@ -363,10 +363,10 @@ module.exports = {
 }
 ```
 
-Note that it's `off` by default. If given a `string`, it will be displayed as a prefix (default value: `Last Updated`).
+Note that it’s `off` by default. If given a `string`, it will be displayed as a prefix (default value: `Last Updated`).
 
 ::: warning
-  Since `lastUpdated` is based on `git`, you can only use it in a `git` repository. Also, since the timestamp used comes from the git commit, it will display only after a first commit for a given page, and update only on subsequent commits of that page.
+  Since `lastUpdated` is based on `git`, you can only use it in a `git` repository. Also, since the timestamp used comes from the git commit, it will display only after a first commit for a given page, and update only on ensuing commits of that page.
 :::
 
 
@@ -385,7 +385,7 @@ next: false
 ---
 ```
 
-## Git Repo and Edit Links
+## Git repository and Edit Links
 
 Providing `themeConfig.repo` auto generates a GitHub link in the navbar and "Edit this page" links at the bottom of each page.
 
@@ -448,7 +448,7 @@ These styles are written in [index.styl](/config/#index-styl), a file that allow
 
 ## Custom Layout for Specific Pages
 
-By default the content of each `*.md` file is rendered in a `<div class="page">` container, along with the sidebar, auto-generated edit links and prev/next links. If you wish to use a completely custom component in place of the page, you can again specify the component to use using `YAML front matter`:
+By default the content of each `*.md` file is rendered in a `<div class="page">` container, along with the sidebar, auto-generated edit links and prev/next links. To use a fully custom component in place of the page, you can again specify the component to use using `YAML front matter`:
 
 ``` yaml
 ---
@@ -460,8 +460,8 @@ This will render `.vuepress/components/SpecialLayout.vue` for the given page.
 
 ## Ejecting
 
-You can copy the default theme source code into `.vuepress/theme` to fully customize the theme using the `vuepress eject [targetDir]` command. 
+You can copy the default theme source code into `.vuepress/theme` to fully customize the theme using the `vuepress eject [targetDir]` command.
 
 ::: warning
-Once you eject, you are on your own and **won't** be receiving future updates or bug fixes to the default theme even if you upgrade VuePress.
+Once you eject, you are on your own and **won’t** be receiving future updates or bugfixes to the default theme even if you upgrade VuePress.
 :::
