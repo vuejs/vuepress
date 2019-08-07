@@ -56,9 +56,18 @@ yarn test
 
 > TODO
 
-### Pull Request
+### Pull requests
 
-> TODO
+- Create a feature branch from the default branch (`master`) and merge back against that branch.
+- It's OK to have multiple small commits as you work on the PR - GitHub automatically squashes them before merging.
+- Make sure tests pass.
+- If adding a new feature:
+  - Add accompanying test case(s).
+  - Provide a convincing reason to add this feature. Ideally, you should open a suggestion issue first and have it approved before working on it.
+- If fixing bug:
+  - If you are resolving an open issue, add `(fix #xxxx)` (`#xxxx` being the issue ID) in your PR title for a better release log, e.g. `chore(feat): implement SSR (fix #1234)`.
+  - Provide a detailed description of the bug in the PR. Live demo preferred.
+  - Add appropriate test coverage if applicable.
 
 ### Substantial Changes
 
