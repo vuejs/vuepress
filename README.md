@@ -37,7 +37,7 @@ This is the branch for `VuePress 1.x` and docs are available at https://v1.vuepr
 
 ## Contribution
 
-``` bash
+```bash
 yarn bootstrap # Install and link dependencies for this lerna repo
 yarn dev  # serves VuePress' own docs with itself
 yarn test # make sure your code change pass the test
@@ -48,6 +48,26 @@ If you intend to make `"substantial"` changes to VuePress or its documentation, 
 If you have a VuePress-related project/component/tool, add it with a pull request to [this curated list](https://github.com/ulivz/awesome-vuepress)!
 
 ## Contributors
+
+### Core Team
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="http://evanyou.me"><img src="https://avatars1.githubusercontent.com/u/499550?v=4" width="100px;" alt="Evan You"/><br /><sub><b>Evan You</b></sub></a><br /><a href="https://github.com/Ulivz/VuePress/commits?author=yyx990803" title="Code">💻</a></td>
+    <td align="center"><a href="http://ulivz.com"><img src="https://avatars1.githubusercontent.com/u/23133919?v=4" width="100px;" alt="ULIVZ"/><br /><sub><b>ULIVZ</b></sub></a><br /><a href="https://github.com/Ulivz/VuePress/commits?author=ulivz" title="Code">💻</a> <a href="https://github.com/Ulivz/VuePress/commits?author=ulivz" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://www.jenlooper.com"><img src="https://avatars2.githubusercontent.com/u/1450004?v=4" width="100px;" alt="Jen Looper"/><br /><sub><b>Jen Looper</b></sub></a><br /><a href="https://github.com/Ulivz/VuePress/commits?author=jlooper" title="Documentation">📖</a> <a href="#design-jlooper" title="Design">🎨</a></td>
+    <td align="center"><a href="https://frontstuff.io/"><img src="https://avatars0.githubusercontent.com/u/5370675?v=4" width="100px;" alt="Sarah Dayan"/><br /><sub><b>Sarah Dayan</b></sub></a><br /><a href="https://github.com/Ulivz/VuePress/commits?author=sarahdayan" title="Code">💻</a> <a href="https://github.com/Ulivz/VuePress/commits?author=sarahdayan" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://www.franck-abgrall.me/"><img src="https://avatars3.githubusercontent.com/u/9840435?v=4" width="100px;" alt="Franck Abgrall"/><br /><sub><b>Franck Abgrall</b></sub></a><br /><a href="https://github.com/Ulivz/VuePress/commits?author=kefranabg" title="Code">💻</a> <a href="#question-kefranabg" title="Answering Questions">💬</a></td>
+    <td align="center"><a href="https://sobolevn.me"><img src="https://avatars1.githubusercontent.com/u/4660275?v=4" width="100px;" alt="Nikita Sobolev"/><br /><sub><b>Nikita Sobolev</b></sub></a><br /><a href="https://github.com/Ulivz/VuePress/commits?author=sobolevn" title="Code">💻</a> <a href="https://github.com/Ulivz/VuePress/commits?author=sobolevn" title="Documentation">📖</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ### Code Contributors
 

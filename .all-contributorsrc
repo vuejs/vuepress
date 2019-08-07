@@ -1,0 +1,74 @@
+{
+  "projectName": "VuePress",
+  "projectOwner": "Ulivz",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitConvention": "none",
+  "contributors": [
+    {
+      "login": "yyx990803",
+      "name": "Evan You",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/499550?v=4",
+      "profile": "http://evanyou.me",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "ulivz",
+      "name": "ULIVZ",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/23133919?v=4",
+      "profile": "http://ulivz.com",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    },
+    {
+      "login": "jlooper",
+      "name": "Jen Looper",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1450004?v=4",
+      "profile": "http://www.jenlooper.com",
+      "contributions": [
+        "doc",
+        "design"
+      ]
+    },
+    {
+      "login": "sarahdayan",
+      "name": "Sarah Dayan",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/5370675?v=4",
+      "profile": "https://frontstuff.io/",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    },
+    {
+      "login": "kefranabg",
+      "name": "Franck Abgrall",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/9840435?v=4",
+      "profile": "https://www.franck-abgrall.me/",
+      "contributions": [
+        "code",
+        "question"
+      ]
+    },
+    {
+      "login": "sobolevn",
+      "name": "Nikita Sobolev",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/4660275?v=4",
+      "profile": "https://sobolevn.me",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7
+}
