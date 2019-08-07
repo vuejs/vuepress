@@ -25,7 +25,7 @@ For now theme inheritance doesn't support high-order inheritance, that means, a 
 
 ## Usage
 
-Suppose you want to create a theme inherited from the default theme, you just need to configure the [extend](./option-api.md#extend) option in your theme configuration:
+Suppose you want to create a theme inherited from the default theme, you just need to configure the [extend](./option-api.md#extend) option in your theme configuration (`.vuepress/theme/index.js`):
 
 ```js
 module.exports = {
