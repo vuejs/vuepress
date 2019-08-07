@@ -68,7 +68,17 @@
         "code",
         "doc"
       ]
-    }
+    },
+    {
+      "login": "f3ltron",
+      "name": "Giraud Florent",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/11556276?s=460&v=4",
+      "profile": "https://github.com/f3ltron",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    },
   ],
   "contributorsPerLine": 7
 }
