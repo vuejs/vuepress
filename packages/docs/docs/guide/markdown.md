@@ -111,7 +111,11 @@ A list of all emojis available can be found [here](https://github.com/markdown-i
 
 **Output**
 
+<!--lint disable no-shortcut-reference-link no-undefined-references-->
+
 [[toc]]
+
+<!--lint enable no-shortcut-reference-link no-undefined-references-->
 
 Rendering of TOC can be configured using the [`markdown.toc`](../config/README.md#markdown-toc) option.
 
@@ -311,7 +315,11 @@ It also supports [line highlighting](#line-highlighting-in-code-blocks):
 
 **Output**
 
+<!--lint disable strong-marker-->
+
 <<< @/../@vuepress/markdown/__tests__/fragments/snippet.js{2}
+
+<!--lint enable strong-marker-->
 
 ::: tip
 Since the import of the code snippets will be executed before webpack compilation, you can’t use the path alias in webpack. The default value of `@` is `process.cwd()`.

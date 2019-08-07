@@ -8,7 +8,7 @@ We have two main reasons to support this feature:
 
 2. In [0.x](https://vuepress.vuejs.org/guide/custom-themes.html#site-and-page-metadata), only one `Layout.vue` is needed for a theme, so we can achieve simple expansion by directly wrapping `Layout.vue` of another theme.
 
- By 1.x, the elements of a theme has become more complex, we have started to have [theme level configuration](./option-api.md), which supports plugins, custom global layout, etc. We have also introduced the [directory structure conventions](./writing-a-theme.md#directory-structure) on theme development, such as `styles/index.styl`, under this background, we can not achieve inheritance as 0.x did.
+   By 1.x, the elements of a theme has become more complex, we have started to have [theme level configuration](./option-api.md), which supports plugins, custom global layout, etc. We have also introduced the [directory structure conventions](./writing-a-theme.md#directory-structure) on theme development, such as `styles/index.styl`, under this background, we can not achieve inheritance as 0.x did.
 
 Consequently, we need to provide a reasonable and reliable theme inheritance strategy.
 

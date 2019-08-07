@@ -34,13 +34,13 @@ module.exports = {
 ``` js
 module.exports = {
   plugins: [
-    [ 
-      'register-components', 
+    [
+      'register-components',
       {
         componentsDir: somepath
       }
     ]
-  ] 
+  ]
 }
 ```
 
@@ -54,8 +54,8 @@ module.exports = {
 ``` js
 module.exports = {
   plugins: [
-    [ 
-      'register-components', 
+    [
+      'register-components',
       {
         components: [
           {

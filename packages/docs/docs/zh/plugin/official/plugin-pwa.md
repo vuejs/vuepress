@@ -74,7 +74,7 @@ type popupConfig = normalPopupConfig | localedPopupConfig
 
 本选项开启了一个用于刷新内容的弹窗。这个弹窗将会在站点有内容更新时显示出来，并提供了一个 `refresh` 按钮，允许用户立即刷新内容。
 
->如果没有“刷新”按钮，则只有在所有的 [Clients](https://developer.mozilla.org/en-US/docs/Web/API/Clients) 被关闭后，新的 Service Worker 才会处于活动状态。这意味着用户在关闭你网站的所有标签之前无法看到新内容。但是 `refresh` 按钮会立即激活新的 Service Worker。
+> 如果没有“刷新”按钮，则只有在所有的 [Clients](https://developer.mozilla.org/en-US/docs/Web/API/Clients) 被关闭后，新的 Service Worker 才会处于活动状态。这意味着用户在关闭你网站的所有标签之前无法看到新内容。但是 `refresh` 按钮会立即激活新的 Service Worker。
 
 ### popupComponent
 
@@ -104,9 +104,9 @@ module.exports = {
 module.exports = {
   themeConfig: {
 -   serviceWorker: {
--     updatePopup: { 
--        message: "New content is available.", 
--        buttonText: "Refresh" 
+-     updatePopup: {
+-        message: "New content is available.",
+-        buttonText: "Refresh"
 -     }
 -   }
   },

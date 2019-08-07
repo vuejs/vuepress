@@ -58,13 +58,13 @@ Hello!
 
 | 变量 | 介绍 |
 | --- | --- |
-|:year|文章发布的年份 (4数字)|
-|:month|文章发布的月份 (2数字)|
-|:i_month|文章发布的月份 (前面不带0)|
-|:day| 文章发布的日份 (2数字)|
-|:i_day|文章发布的日份 (前面不带0)|
-|:slug| 蛞蝓化文件路径 (不带扩展名)|
-|:regular|VuePress默认的生成永久链接的方式，具体实现看 [这里][2]
+| :year | 文章发布的年份 (4数字) |
+| :month | 文章发布的月份 (2数字) |
+| :i_month | 文章发布的月份 (前面不带0) |
+| :day | 文章发布的日份 (2数字) |
+| :i_day | 文章发布的日份 (前面不带0) |
+| :slug | 蛞蝓化文件路径 (不带扩展名) |
+| :regular | VuePress默认的生成永久链接的方式，具体实现看 [这里][2] |
 
 [1]:https://en.wikipedia.org/wiki/Link_rot
 [2]:https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/shared-utils/src/fileToPath.ts

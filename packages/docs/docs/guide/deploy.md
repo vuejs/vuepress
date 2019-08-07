@@ -119,8 +119,8 @@ pages:
 
 1. On Netlify, setup up a new project from GitHub with the following settings:
 
-  - **Build Command:** `npm run docs:build` or `yarn docs:build`
-  - **Publish directory:** `docs/.vuepress/dist`
+- **Build Command:** `npm run docs:build` or `yarn docs:build`
+- **Publish directory:** `docs/.vuepress/dist`
 
 2. Hit the deploy button!
 
@@ -169,18 +169,18 @@ You can also deploy to a [custom domain](http://surge.sh/help/adding-a-custom-do
 
 3. Run `heroku login` and fill in your Heroku credentials:
 
- ``` bash
- heroku login
- ```
+   ``` bash
+   heroku login
+   ```
 
 4. Create a file called `static.json` in the root of your project with the content below:
 
- `static.json`:
- ```json
- {
-   "root": "./docs/.vuepress/dist"
- }
- ```
+   `static.json`:
+   ```json
+   {
+     "root": "./docs/.vuepress/dist"
+   }
+   ```
 
 This is the configuration of your site. See more at [heroku-buildpack-static](https://github.com/heroku/heroku-buildpack-static).
 
