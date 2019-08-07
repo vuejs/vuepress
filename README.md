@@ -62,6 +62,7 @@ If you have a VuePress-related project/component/tool, add it with a pull reques
     <td align="center"><a href="https://frontstuff.io/"><img src="https://avatars0.githubusercontent.com/u/5370675?v=4" width="100px;" alt="Sarah Dayan"/><br /><sub><b>Sarah Dayan</b></sub></a><br /><a href="https://github.com/Ulivz/VuePress/commits?author=sarahdayan" title="Code">💻</a> <a href="https://github.com/Ulivz/VuePress/commits?author=sarahdayan" title="Documentation">📖</a></td>
     <td align="center"><a href="https://www.franck-abgrall.me/"><img src="https://avatars3.githubusercontent.com/u/9840435?v=4" width="100px;" alt="Franck Abgrall"/><br /><sub><b>Franck Abgrall</b></sub></a><br /><a href="https://github.com/Ulivz/VuePress/commits?author=kefranabg" title="Code">💻</a> <a href="#question-kefranabg" title="Answering Questions">💬</a></td>
     <td align="center"><a href="https://sobolevn.me"><img src="https://avatars1.githubusercontent.com/u/4660275?v=4" width="100px;" alt="Nikita Sobolev"/><br /><sub><b>Nikita Sobolev</b></sub></a><br /><a href="https://github.com/Ulivz/VuePress/commits?author=sobolevn" title="Code">💻</a> <a href="https://github.com/Ulivz/VuePress/commits?author=sobolevn" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/f3ltron"><img src="https://avatars1.githubusercontent.com/u/11556276?v=4" width="100px;" alt="Giraud Florent"/><br /><sub><b>Giraud Florent</b></sub></a><br /><a href="https://github.com/Ulivz/VuePress/commits?author=f3ltron" title="Code">💻</a></td>
   </tr>
 </table>
 
