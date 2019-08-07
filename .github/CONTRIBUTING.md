@@ -77,10 +77,6 @@ yarn test
 
 > TODO
 
-## Commit Specification
+## Commit specification
 
-> TODO
-
-
-
-
+Commit messages should follow the [commit message convention](./COMMIT_CONVENTION.md) so that changelogs can be automatically generated.
