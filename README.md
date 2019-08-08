@@ -37,6 +37,8 @@ This is the branch for `VuePress 1.x` and docs are available at https://v1.vuepr
 
 ## Contribution
 
+Want to contribute? Check our [issues for beginners](https://github.com/vuejs/vuepress/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22)!
+
 ```bash
 yarn bootstrap # Install and link dependencies for this lerna repo
 yarn dev  # serves VuePress' own docs with itself
