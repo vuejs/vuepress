@@ -11,7 +11,7 @@
     "show-help": "vuepress --help",
     "lint-md:wording": "textlint ./docs/**/*.md",
     "lint-md:style": "remark --quiet --frail .",
-    "lint-md": "pwd"
+    "lint-md": "yarn lint-md:style && yarn lint-md:wording"
   },
   "repository": {
     "type": "git",
