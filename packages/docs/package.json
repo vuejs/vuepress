@@ -9,7 +9,9 @@
     "build": "vuepress build docs --temp .temp",
     "view-info": "vuepress view-info docs --temp .temp",
     "show-help": "vuepress --help",
-    "lint-md": "textlint ./docs/**/*.md"
+    "lint-md:wording": "textlint ./docs/**/*.md",
+    "lint-md:style": "remark --quiet --frail .",
+    "lint-md": "yarn lint-md:style && yarn lint-md:wording"
   },
   "repository": {
     "type": "git",
@@ -34,6 +36,10 @@
     "@vuepress/plugin-pwa": "^1.0.3",
     "@vuepress/theme-vue": "^1.0.3",
     "lint-staged": "^8.1.5",
+    "remark-cli": "^7.0.0",
+    "remark-lint": "^6.0.5",
+    "remark-preset-lint-consistent": "^2.0.3",
+    "remark-preset-lint-recommended": "^3.0.3",
     "textlint": "^11.3.1",
     "textlint-filter-rule-comments": "^1.2.2",
     "textlint-rule-apostrophe": "^1.0.0",

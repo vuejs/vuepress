@@ -6,7 +6,7 @@
 
 1. VuePress 为开发者提供了一个[默认主题](./default-theme-config.md)，它能在大多数场景下满足了文档编写者的需求。即便如此，仍然还是会有不少用户选择将其 eject 出来进行修改，即使他们可能只是想要修改其中的某个组件。
 2. 在 [0.x](https://vuepress.vuejs.org/guide/custom-themes.html#site-and-page-metadata) 中，主题的入口只需要一个 `Layout.vue`，所以我们可以通过包装另一个主题的 `Layout.vue` 来实现简单的拓展。
-  
+
    到了 1.x 中，一个主题的元素开始变得复杂，我们开始有了[主题级别的配置](./option-api.md)，它支持为主题添加插件、自定义 GlobalLayout 等。除此之外，我们还有一些引入了主题开发的 [目录结构的约定](./writing-a-theme.md#目录结构)，如 `styles/index.styl`，在这样的背景下，我们无法使用 0.x 的方式来实现继承了。
 
 因此，我们需要提供一种合理、可靠的主题继承方案。
@@ -122,7 +122,7 @@ theme
 │   └── `Layout.vue`
 ├── package.json
 └── index.js
-::: 
+:::
 
 那么，在该主题中的任意 Vue 组件中，**你都应该通过 `@theme` 来访问主题根目录**：
 
@@ -139,7 +139,7 @@ import Home from '@theme/components/Navbar.vue'
 theme
 └── components
     └── `Navbar.vue`
-::: 
+:::
 
 `@theme/components/Navbar.vue` 会自动地映射到子主题中的 Navbar 组件，当你移除这个组件时，`@theme/components/Navbar.vue` 又会自动恢复为父主题中的 Navbar 组件。
 
