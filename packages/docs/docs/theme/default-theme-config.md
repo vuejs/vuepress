@@ -409,17 +409,23 @@ module.exports = {
     docsBranch: 'master',
     // defaults to false, set to true to enable
     editLinks: true,
+    // default value is true. Allows to hide next page links on all pages
+    nextLinks: false,
+    // default value is true. Allows to hide prev page links on all pages
+    prevLinks: false,
     // custom text for edit link. Defaults to "Edit this page"
     editLinkText: 'Help us improve this page!'
   }
 }
 ```
 
-You can also hide the edit link on a specific page via `YAML front matter`:
+You can overwrite the following properties on specific pages via `YAML front matter`:
 
 ``` yaml
 ---
-editLink: false
+editLink: false # Will overwrite 'editLinks' from themeConfig
+prev: true # Will overwrite 'prevLinks' property from themeConfig
+next: ./my-next-page # Will overwrite 'nextLinks' property from themeConfig
 ---
 ```
 
