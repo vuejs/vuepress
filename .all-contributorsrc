@@ -131,6 +131,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "bencodezen",
+      "name": "Ben Hong",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/4836334?s=460&v=4",
+      "profile": "https://www.bencodezen.io",
+      "contributions": [
+        "doc",
+        "blog"
+      ]
     }
   ],
   "contributorsPerLine": 7
