@@ -18,7 +18,7 @@ yarn add -D @vuepress/plugin-pwa@next
 
 ```javascript
 module.exports = {
-  head: [['link', { rel: 'manifest', href: '/manifest.json' }]]
+  head: [['link', { rel: 'manifest', href: '/manifest.json' }]],
   plugins: ['@vuepress/pwa']
 }
 ```
