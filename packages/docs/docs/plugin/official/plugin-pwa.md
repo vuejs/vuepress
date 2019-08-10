@@ -22,6 +22,37 @@ module.exports = {
 }
 ```
 
+::: tip PWA NOTES
+To make your site fully PWA-compliant, you will need to:
+
+- provide a Web App Manifest and icons in `.vuepress/public`
+- add correct [head links](/config/#head) in `.vuepress/config.js` (see example below)
+
+For more details, see [MDN docs about the Web App Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest).
+:::
+
+Here is an example of a fully PWA-compliant configuration with VuePress:
+
+```javascript
+module.exports = {
+  head: [
+    ['link', { rel: 'icon', href: `/logo.png` }],
+    ['link', { rel: 'manifest', href: '/manifest.json' }],
+    ['meta', { name: 'theme-color', content: '#3eaf7c' }],
+    ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
+    ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
+    ['link', { rel: 'apple-touch-icon', href: `/icons/apple-touch-icon-152x152.png` }],
+    ['link', { rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#3eaf7c' }],
+    ['meta', { name: 'msapplication-TileImage', content: '/icons/msapplication-icon-144x144.png' }],
+    ['meta', { name: 'msapplication-TileColor', content: '#000000' }]
+  ],
+  ['@vuepress/pwa', {
+      serviceWorker: true,
+      updatePopup: true
+  }],
+}
+```
+
 ## Options
 
 ### serviceWorker
@@ -40,9 +71,7 @@ There is a aliased module `@sw-event` module that will also be emitting the foll
 - `sw-error`
 
 ::: tip PWA NOTES
-The `serviceWorker` option only handles the service worker. To make your site fully PWA-compliant, you will need to provide the Web App Manifest and icons in `.vuepress/public`. For more details, see [MDN docs about the Web App Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest).
-
-Also, only enable this if you are able to deploy your site with SSL, since service worker can only be registered under HTTPs URLs.
+Enable this option only if you are able to deploy your site with SSL, since service worker can only be registered under HTTPs URLs.
 :::
 
 ### generateSWConfig
