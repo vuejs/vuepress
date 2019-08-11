@@ -70,7 +70,7 @@ There is a aliased module `@sw-event` module that will also be emitting the foll
 - `sw-offline`
 - `sw-error`
 
-::: tip PWA NOTES
+::: tip
 Since you can only register service workers under HTTPs URLs, make sure you can deploy your site with SSL before enabling this option.
 :::
 
