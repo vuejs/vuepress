@@ -101,9 +101,9 @@ jobs:
       - attach_workspace:
           at: ~/project
       - run:
-        name: 'Run md linter'
-        command: yarn workspace docs lint-md
-
+          name: 'Run md linter'
+          command: yarn workspace docs lint-md
+        
   #------------------------------------------------------------
   # 3. Build VuePress
   #------------------------------------------------------------
