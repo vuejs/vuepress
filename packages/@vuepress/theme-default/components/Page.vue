@@ -150,11 +150,6 @@ export default {
   }
 }
 
-const LINK_TYPES = {
-  NEXT: 'next',
-  PREV: 'prev'
-}
-
 function resolvePrev (page, items) {
   return find(page, items, -1)
 }
@@ -163,16 +158,27 @@ function resolveNext (page, items) {
   return find(page, items, 1)
 }
 
+const LINK_TYPES = {
+  NEXT: {
+    resolveLink: resolveNext,
+    getThemeLinkConfig: ({ nextLinks }) => nextLinks,
+    getPageLinkConfig: ({ frontmatter }) => frontmatter.next
+  },
+  PREV: {
+    resolveLink: resolvePrev,
+    getThemeLinkConfig: ({ prevLinks }) => prevLinks,
+    getPageLinkConfig: ({ frontmatter }) => frontmatter.prev
+  }
+}
+
 function resolvePageLink (linkType, { $themeConfig, $page, $route, $site, sidebarItems }) {
-  const resolveLink = linkType === LINK_TYPES.NEXT ? resolveNext : resolvePrev
+  const { resolveLink, getThemeLinkConfig, getPageLinkConfig } = linkType
 
   // Get link config from theme
-  const { nextLinks, prevLinks } = $themeConfig
-  const themeLinkConfig = linkType === LINK_TYPES.NEXT ? nextLinks : prevLinks
+  const themeLinkConfig = getThemeLinkConfig($themeConfig)
 
   // Get link config from current page
-  const { next, prev } = $page.frontmatter
-  const pageLinkConfig = linkType === LINK_TYPES.NEXT ? next : prev
+  const pageLinkConfig = getPageLinkConfig($page)
 
   // Page link config will overwrite global theme link config if defined
   const link = isNil(pageLinkConfig) ? themeLinkConfig : pageLinkConfig
