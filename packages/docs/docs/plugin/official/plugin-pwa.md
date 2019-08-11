@@ -23,7 +23,7 @@ module.exports = {
 ```
 
 ::: tip
-To make your site fully PWA-compliant, you will need to:
+To make your site fully PWA-compliant, you need to:
 
 - provide a Web App Manifest and icons in `.vuepress/public`
 - add correct [head links](/config/#head) in `.vuepress/config.js` (see example below)
