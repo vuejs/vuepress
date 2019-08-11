@@ -25,7 +25,7 @@ module.exports = {
 ::: tip
 To make your site fully PWA-compliant, you need to:
 
-- provide a Web App Manifest and icons in `.vuepress/public`
+- provide a web app manifest and icons in `.vuepress/public`,
 - add correct [head links](/config/#head) in `.vuepress/config.js` (see example below)
 
 For more details, see [MDN docs about the Web App Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest).
