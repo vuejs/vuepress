@@ -71,7 +71,7 @@ There is a aliased module `@sw-event` module that will also be emitting the foll
 - `sw-error`
 
 ::: tip PWA NOTES
-Enable this option only if you are able to deploy your site with SSL, since service worker can only be registered under HTTPs URLs.
+Since you can only register service workers under HTTPs URLs, make sure you can deploy your site with SSL before enabling this option.
 :::
 
 ### generateSWConfig
