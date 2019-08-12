@@ -12,8 +12,6 @@
 </template>
 
 <script>
-import 'docsearch.js/dist/cdn/docsearch.min.css'
-import * as docsearch from 'docsearch.js/dist/cdn/docsearch.min.js'
 export default {
   props: ['options'],
 
