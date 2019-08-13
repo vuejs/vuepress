@@ -78,6 +78,71 @@
         "code"
       ]
     },
+    {
+      "login": "CodesOfRa",
+      "name": "Ramona",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/945186?v=4",
+      "profile": "https://twitter.com/CodesOfRa",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "fatihacet",
+      "name": "Fatih Acet",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/712419?v=4",
+      "profile": "https://fatihacet.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "filrak",
+      "name": "Filip Rakowski",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/15185752?v=4",
+      "profile": "https://rakowski.dev",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "farcaller",
+      "name": "Vladimir Pouzanov",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/693?v=4",
+      "profile": "http://farcaller.net/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "vicbergquist",
+      "name": "Victoria Bergquist",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/25737281?v=4",
+      "profile": "https://twitter.com/vicbergquist",
+      "contributions": [
+        "code",
+        "design"
+      ]
+    },
+    {
+      "login": "newsbielt703",
+      "name": "Billyyyyy3320",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/38957202?v=4",
+      "profile": "https://billychin.netlify.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "bencodezen",
+      "name": "Ben Hong",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/4836334?v=4",
+      "profile": "http://www.bencodezen.io",
+      "contributions": [
+        "code",
+        "blog"
+      ]
+    }
   ],
   "contributorsPerLine": 7
 }

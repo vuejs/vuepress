@@ -66,6 +66,15 @@ If you have a VuePress-related project/component/tool, add it with a pull reques
     <td align="center"><a href="https://sobolevn.me"><img src="https://avatars1.githubusercontent.com/u/4660275?v=4" width="100px;" alt="Nikita Sobolev"/><br /><sub><b>Nikita Sobolev</b></sub></a><br /><a href="https://github.com/Ulivz/VuePress/commits?author=sobolevn" title="Code">💻</a> <a href="https://github.com/Ulivz/VuePress/commits?author=sobolevn" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/f3ltron"><img src="https://avatars1.githubusercontent.com/u/11556276?v=4" width="100px;" alt="Giraud Florent"/><br /><sub><b>Giraud Florent</b></sub></a><br /><a href="https://github.com/Ulivz/VuePress/commits?author=f3ltron" title="Code">💻</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://twitter.com/CodesOfRa"><img src="https://avatars0.githubusercontent.com/u/945186?v=4" width="100px;" alt="Ramona"/><br /><sub><b>Ramona</b></sub></a><br /><a href="https://github.com/Ulivz/VuePress/commits?author=CodesOfRa" title="Code">💻</a></td>
+    <td align="center"><a href="https://fatihacet.com"><img src="https://avatars3.githubusercontent.com/u/712419?v=4" width="100px;" alt="Fatih Acet"/><br /><sub><b>Fatih Acet</b></sub></a><br /><a href="https://github.com/Ulivz/VuePress/commits?author=fatihacet" title="Code">💻</a></td>
+    <td align="center"><a href="https://rakowski.dev"><img src="https://avatars2.githubusercontent.com/u/15185752?v=4" width="100px;" alt="Filip Rakowski"/><br /><sub><b>Filip Rakowski</b></sub></a><br /><a href="https://github.com/Ulivz/VuePress/commits?author=filrak" title="Code">💻</a></td>
+    <td align="center"><a href="http://farcaller.net/"><img src="https://avatars2.githubusercontent.com/u/693?v=4" width="100px;" alt="Vladimir Pouzanov"/><br /><sub><b>Vladimir Pouzanov</b></sub></a><br /><a href="https://github.com/Ulivz/VuePress/commits?author=farcaller" title="Code">💻</a></td>
+    <td align="center"><a href="https://twitter.com/vicbergquist"><img src="https://avatars0.githubusercontent.com/u/25737281?v=4" width="100px;" alt="Victoria Bergquist"/><br /><sub><b>Victoria Bergquist</b></sub></a><br /><a href="https://github.com/Ulivz/VuePress/commits?author=vicbergquist" title="Code">💻</a> <a href="#design-vicbergquist" title="Design">🎨</a></td>
+    <td align="center"><a href="https://billychin.netlify.com/"><img src="https://avatars0.githubusercontent.com/u/38957202?v=4" width="100px;" alt="Billyyyyy3320"/><br /><sub><b>Billyyyyy3320</b></sub></a><br /><a href="https://github.com/Ulivz/VuePress/commits?author=newsbielt703" title="Code">💻</a></td>
+    <td align="center"><a href="http://www.bencodezen.io"><img src="https://avatars0.githubusercontent.com/u/4836334?v=4" width="100px;" alt="Ben Hong"/><br /><sub><b>Ben Hong</b></sub></a><br /><a href="https://github.com/Ulivz/VuePress/commits?author=bencodezen" title="Code">💻</a> <a href="#blog-bencodezen" title="Blogposts">📝</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-enable -->
