@@ -37,7 +37,8 @@ export default {
               'facetFilters': [`lang:${lang}`].concat(algoliaOptions.facetFilters || [])
             }, algoliaOptions),
             handleSelected: (input, event, suggestion) => {
-              this.$router.push(new URL(suggestion.url).pathname)
+              const { pathname, hash } = new URL(suggestion.url)
+              this.$router.push(`${pathname}${hash}`)
             }
           }
         ))
