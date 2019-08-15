@@ -142,6 +142,15 @@
         "code",
         "blog"
       ]
+    },
+    {
+      "login": "edisdev",
+      "name": "Hatice Edis",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/21293903?s=400&u=e8f9becc1bdbe4f9cfb92eb95215615ff01afd08&v=4",
+      "profile": "http://edisdev.github.io",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
