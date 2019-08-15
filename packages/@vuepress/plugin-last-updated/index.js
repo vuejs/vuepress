@@ -10,6 +10,7 @@ module.exports = (options = {}, context) => ({
         ? transformer(timestamp, $lang)
         : defaultTransformer(timestamp, $lang)
       $page.lastUpdated = lastUpdated
+      $page.lastUpdatedTstamp = timestamp
     }
   }
 })
