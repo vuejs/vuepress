@@ -142,7 +142,18 @@
         "code",
         "blog"
       ]
-    }
+    },
+    {
+      "login": "vinayakkulkarni",
+      "name": "Vinayak Kulkarni",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/19776877?v=4",
+      "profile": "https://twitter.com/_vinayak_k",
+      "contributions": [
+        "plugin",
+        "code",
+        "blog"
+      ]
+    },
   ],
   "contributorsPerLine": 7
 }
