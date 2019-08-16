@@ -74,6 +74,7 @@ If you have a VuePress-related project/component/tool, add it with a pull reques
     <td align="center"><a href="https://twitter.com/vicbergquist"><img src="https://avatars0.githubusercontent.com/u/25737281?v=4" width="100px;" alt="Victoria Bergquist"/><br /><sub><b>Victoria Bergquist</b></sub></a><br /><a href="https://github.com/Ulivz/VuePress/commits?author=vicbergquist" title="Code">💻</a> <a href="#design-vicbergquist" title="Design">🎨</a></td>
     <td align="center"><a href="https://billychin.netlify.com/"><img src="https://avatars0.githubusercontent.com/u/38957202?v=4" width="100px;" alt="Billyyyyy3320"/><br /><sub><b>Billyyyyy3320</b></sub></a><br /><a href="https://github.com/Ulivz/VuePress/commits?author=newsbielt703" title="Code">💻</a></td>
     <td align="center"><a href="http://www.bencodezen.io"><img src="https://avatars0.githubusercontent.com/u/4836334?v=4" width="100px;" alt="Ben Hong"/><br /><sub><b>Ben Hong</b></sub></a><br /><a href="https://github.com/Ulivz/VuePress/commits?author=bencodezen" title="Code">💻</a> <a href="#blog-bencodezen" title="Blogposts">📝</a></td>
+    <td align="center"><a href="http://www.github.com/vinayakkulkarni"><img src="https://avatars2.githubusercontent.com/u/19776877?v=4" width="100px;" alt="Vinayak Kulkarni"/><br /><sub><b>Vinayak Kulkarni</b></sub></a><br /><a href="https://github.com/Ulivz/VuePress/commits?author=vinayakkulkarni" title="Code">💻</a></td>
   </tr>
 </table>
 
