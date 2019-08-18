@@ -9,7 +9,11 @@ describe('Plugin', () => {
   test('registerOption', () => {
     const api = new PluginAPI()
     const readyHandler = () => {}
+    const initHandler = () => {}
+    api.registerOption(PLUGIN_OPTION_MAP.INIT.key, initHandler)
     api.registerOption(PLUGIN_OPTION_MAP.READY.key, readyHandler)
+    expect(api.options.init.values).toHaveLength(1)
+    expect(api.options.init.values[0]).toBe(readyHandler)
     expect(api.options.ready.values).toHaveLength(1)
     expect(api.options.ready.values[0]).toBe(readyHandler)
   })
