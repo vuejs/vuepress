@@ -1,5 +1,22 @@
 # Lifecycle
 
+## int
+
+- Type: `AsyncFunction`
+- Scope：`dev|build`
+
+```js
+module.exports = {
+  async init() {
+    // ...
+  }
+}
+```
+
+::: tip
+The `init` hook is executed before the build process.
+:::
+
 ## ready
 
 - Type: `AsyncFunction`
