@@ -105,6 +105,9 @@ module.exports = class App {
     this.applyUserPlugins()
     this.pluginAPI.initialize()
 
+    // invoke init hook
+    await this.pluginAPI.applyAsyncOption('init')
+
     this.markdown = createMarkdown(this)
 
     await this.resolvePages()

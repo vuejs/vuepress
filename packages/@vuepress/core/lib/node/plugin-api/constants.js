@@ -2,6 +2,7 @@
 
 const PLUGIN_OPTION_META_MAP = {
   // hooks
+  INIT: { name: 'init', types: [Function], async: true },
   READY: { name: 'ready', types: [Function], async: true },
   COMPILED: { name: 'compiled', types: [Function] },
   UPDATED: { name: 'updated', types: [Function] },

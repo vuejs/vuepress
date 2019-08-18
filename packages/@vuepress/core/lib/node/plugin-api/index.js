@@ -193,6 +193,7 @@ module.exports = class PluginAPI {
     shortcut,
 
     // hooks
+    init,
     ready,
     compiled,
     updated,
@@ -222,6 +223,7 @@ module.exports = class PluginAPI {
     }
 
     this
+      .registerOption(PLUGIN_OPTION_MAP.INIT.key, init, pluginName)
       .registerOption(PLUGIN_OPTION_MAP.READY.key, ready, pluginName)
       .registerOption(PLUGIN_OPTION_MAP.COMPILED.key, compiled, pluginName)
       .registerOption(PLUGIN_OPTION_MAP.UPDATED.key, updated, pluginName)
