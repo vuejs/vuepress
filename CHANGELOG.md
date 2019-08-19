@@ -17,8 +17,7 @@
 ### Features
 
 * **$theme-default:** support custom URL scheme for external links ([#1677](https://github.com/vuejs/vuepress/issues/1677)) ([27f005b](https://github.com/vuejs/vuepress/commit/27f005b))
-* **$theme-default:** use router for Algolia search to reach no refresh ([#1706](https://github
-.com/vuejs/vuepress/issues/1706)) ([644142b](https://github.com/vuejs/vuepress/commit/644142b))
+* **$theme-default:** use router for Algolia search to reach no refresh ([#1706](https://github.com/vuejs/vuepress/issues/1706)) ([644142b](https://github.com/vuejs/vuepress/commit/644142b))
 
 
 
