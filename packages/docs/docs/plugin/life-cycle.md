@@ -1,6 +1,6 @@
 # Lifecycle
 
-## int
+## init
 
 - Type: `AsyncFunction`
 - Scope：`dev|build`
