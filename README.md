@@ -45,6 +45,8 @@ yarn dev  # serves VuePress' own docs with itself
 yarn test # make sure your code change pass the test
 ```
 
+If you don't have a local checkout, you can also open [VuePress in Gitpod](https://gitpod.io/#https://github.com/vuejs/vuepress/blob/master/packages/docs/docs/README.md), a free online IDE for GitHub.
+
 If you intend to make `"substantial"` changes to VuePress or its documentation, please checkout [VuePress RFCs](./rfcs/README.md).
 
 If you have a VuePress-related project/component/tool, add it with a pull request to [this curated list](https://github.com/ulivz/awesome-vuepress)!
