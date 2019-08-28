@@ -126,7 +126,7 @@ module.exports = {
 }
 ```
 
-你可以省略 `.md` 拓展名，同时以 `/` 结尾的路径将会被视为 `*/README.md`，这个链接的文字将会被自动获取到（无论你是声明为页面的第一个 header，还是明确地在 `YAML front matter` 中指定页面的标题）。如果你想要显示地指定链接的文字，使用一个格式为 `[link, text]` 的数组。
+你可以省略 `.md` 拓展名，同时以 `/` 结尾的路径将会被视为 `*/README.md`，这个链接的文字将会被自动获取到（无论你是声明为页面的第一个 header，还是明确地在 `YAML front matter` 中指定页面的标题）。如果你想要显式地指定链接的文字，使用一个格式为 `[link, text]` 的数组。
 
 ### 嵌套的标题链接
 
@@ -297,7 +297,7 @@ sidebar: false
 
 ### 内置搜索
 
-你可以通过设置 `themeConfig.search: false` 来禁用默认的搜索框，或是通过 `themeConfig.searchMaxSuggestions` 来调整默认搜索框显示的搜索结果数量：
+你可以通过设置 `themeConfig.search: false` 来禁用默认的搜索框，或者通过 `themeConfig.searchMaxSuggestions` 来调整默认搜索框显示的搜索结果数量：
 
 ``` js
 module.exports = {
