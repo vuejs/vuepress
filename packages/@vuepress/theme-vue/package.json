@@ -28,8 +28,5 @@
   "bugs": {
     "url": "https://github.com/vuejs/vuepress/issues"
   },
-  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/theme-vue#readme",
-  "dependencies": {
-    "@vuepress/theme-default": "^1.0.3"
-  }
+  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/theme-vue#readme"
 }

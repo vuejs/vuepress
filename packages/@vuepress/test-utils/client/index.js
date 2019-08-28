@@ -1,7 +1,7 @@
 import createLocalVue from './createLocalVue'
 import mockComponent from './mockComponent'
 
-export {
+export default {
   createLocalVue,
   mockComponent
 }

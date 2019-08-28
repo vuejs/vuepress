@@ -1,30 +1,48 @@
 import { mount, RouterLinkStub } from '@vue/test-utils'
-import { createLocalVue } from '@vuepress/test-utils/client'
-import NavLink from '../../components/NavLink.vue'
+import DropdownLink from '../../components/DropdownLink.vue'
+// import createLocalVue from "@vuepress/test-utils/client/createLocalVue";
 
-describe('NavLink', () => {
-  test('renders nav link with internal link', () => {
+import Router from 'vue-router'
+import VuePress from '@vuepress/core/lib/client/plugins/VuePress'
+import dataMixin from '@vuepress/core/lib/client/dataMixin'
+import { createLocalVue } from '@vue/test-utils'
+
+import mockComponent from './mockComponent'
+import siteData from './siteData'
+import ClientComputedMixin from '@vuepress/core/lib/node/ClientComputedMixin'
+
+const LocalVue = function () {
+  const localVue = createLocalVue()
+  localVue.use(Router)
+  localVue.use(VuePress)
+
+  // register global component
+  localVue.component('OutboundLink', mockComponent('outbound-link'))
+  localVue.component(siteData.pages[0].key, mockComponent('page-component'))
+  localVue.mixin(dataMixin(ClientComputedMixin, siteData, localVue))
+  return localVue
+}
+
+describe('DropdownLink', () => {
+  test('renders dropdown link.', () => {
     const item = {
-      link: '/',
-      text: 'VuePress'
+      text: 'VuePress',
+      items: [
+        {
+          text: 'Guide',
+          link: '/guide/'
+        },
+        {
+          text: 'Config Reference',
+          link: '/config/'
+        }
+      ]
     }
-    const wrapper = mount(NavLink, {
-      localVue: createLocalVue(),
+    const wrapper = mount(DropdownLink, {
+      localVue: LocalVue(),
       stubs: {
         'router-link': RouterLinkStub
       },
-      propsData: { item }
-    })
-    expect(wrapper.html()).toMatchSnapshot()
-  })
-
-  test('renders nav link with external link', () => {
-    const item = {
-      link: 'http://vuejs.org/',
-      text: 'Vue'
-    }
-    const wrapper = mount(NavLink, {
-      localVue: createLocalVue(),
       propsData: { item }
     })
     expect(wrapper.html()).toMatchSnapshot()

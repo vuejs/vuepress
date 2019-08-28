@@ -4,11 +4,9 @@
   "description": "shared-utils for vuepress",
   "main": "lib/index.js",
   "files": [
-    "lib",
-    "types"
+    "lib"
   ],
   "scripts": {
-    "tsc": "tsc",
     "update-index": "node scripts/update-index.js"
   },
   "publishConfig": {

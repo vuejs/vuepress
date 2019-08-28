@@ -1,4 +1,4 @@
-import { isIndexFile } from '../src/isIndexFile'
+import { isIndexFile } from '../lib/isIndexFile'
 
 test('isIndexFile', () => {
   [

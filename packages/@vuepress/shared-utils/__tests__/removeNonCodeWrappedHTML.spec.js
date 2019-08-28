@@ -1,7 +1,7 @@
-import removeNonCodeWrappedHTML from '../src/removeNonCodeWrappedHTML'
+import removeNonCodeWrappedHTML from '../lib/removeNonCodeWrappedHTML'
 
 test('removeNonCodeWrappedHTML', () => {
-  const asserts: Record<string, string> = {
+  const asserts = {
     // Remove tail html
     '# H1 <Comp></Comp>': '# H1 ',
     '# H1<Comp></Comp>': '# H1',

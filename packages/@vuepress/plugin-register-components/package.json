@@ -22,8 +22,5 @@
   "bugs": {
     "url": "https://github.com/vuejs/vuepress/issues"
   },
-  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/plugin-register-components#readme",
-  "dependencies": {
-    "@vuepress/shared-utils": "^1.0.3"
-  }
+  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/plugin-register-components#readme"
 }

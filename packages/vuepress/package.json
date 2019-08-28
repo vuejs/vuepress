@@ -32,8 +32,6 @@
   },
   "homepage": "https://github.com/vuejs/vuepress#readme",
   "dependencies": {
-    "@vuepress/core": "^1.0.3",
-    "@vuepress/theme-default": "^1.0.3",
     "cac": "^6.3.9",
     "envinfo": "^7.2.0",
     "opencollective-postinstall": "^2.0.2"

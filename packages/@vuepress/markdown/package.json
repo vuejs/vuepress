@@ -19,16 +19,12 @@
     "markdown"
   ],
   "dependencies": {
-    "@vuepress/shared-utils": "^1.0.3",
     "markdown-it": "^8.4.1",
     "markdown-it-anchor": "^5.0.2",
     "markdown-it-chain": "^1.3.0",
     "markdown-it-emoji": "^1.4.0",
     "markdown-it-table-of-contents": "^0.4.0",
     "prismjs": "^1.13.0"
-  },
-  "devDependencies": {
-    "@vuepress/test-utils": "^1.0.3"
   },
   "author": "Evan You",
   "maintainers": [

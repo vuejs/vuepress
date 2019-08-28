@@ -1,17 +1,18 @@
 // Midified from https://github.com/vuejs/vue-cli/blob/dev/packages/@0vue/cli-shared-utils/lib/module.js
 
-import semver from 'semver'
-import env from './env'
+const semver = require('semver')
+const env = require('./env')
 
-function resolveFallback (request: string, options: { paths: string[] }) {
+function resolveFallback (request, options) {
   const Module = require('module')
   const isMain = false
   const fakeParent = new Module('', null)
 
-  const paths: string[] = []
+  const paths = []
+  options.paths = []
 
   for (let i = 0; i < options.paths.length; i++) {
-    const path = (options.paths)[i]
+    const path = options.paths[i]
     fakeParent.paths = Module._nodeModulePaths(path)
     const lookupPaths = Module._resolveLookupPaths(request, fakeParent, true)
 
@@ -25,7 +26,6 @@ function resolveFallback (request: string, options: { paths: string[] }) {
   const filename = Module._findPath(request, paths, isMain)
   if (!filename) {
     const err = new Error(`Cannot find module '${request}'`)
-    // @ts-ignores
     err.code = 'MODULE_NOT_FOUND'
     throw err
   }
@@ -36,21 +36,19 @@ const resolve = semver.satisfies(process.version, '>=10.0.0')
   ? require.resolve
   : resolveFallback
 
-export function resolveModule (request: string, context: string): string {
-  let resolvedPath
-
+function resolveModule (request, context) {
   if (env.isTest) {
     return require.resolve(request)
   }
 
   // module.paths is for globally install packages.
   const paths = [context || process.cwd(), ...module.paths]
-  resolvedPath = resolve(request, { paths })
+  const resolvedPath = resolve(request, { paths })
 
   return resolvedPath
 }
 
-export function loadModule (request: string, context: string, force = false) {
+function loadModule (request, context, force = false) {
   const resolvedPath = resolveModule(request, context)
   if (resolvedPath) {
     if (force) {
@@ -60,21 +58,27 @@ export function loadModule (request: string, context: string, force = false) {
   }
 }
 
-export function clearModule (request: string, context: string) {
+function clearModule (request, context) {
   const resolvedPath = resolveModule(request, context)
   if (resolvedPath) {
     clearRequireCache(resolvedPath)
   }
 }
 
-function clearRequireCache (id: string, map = new Map()) {
+function clearRequireCache (id, map = new Map()) {
   const module = require.cache[id]
   if (module) {
     map.set(id, true)
     // Clear children modules
-    module.children.forEach((child: any) => {
+    module.children.forEach(child => {
       if (!map.get(child.id)) clearRequireCache(child.id, map)
     })
     delete require.cache[id]
   }
+}
+
+module.exports = {
+  clearModule,
+  loadModule,
+  resolveModule
 }

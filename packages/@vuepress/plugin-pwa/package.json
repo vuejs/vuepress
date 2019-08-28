@@ -18,7 +18,6 @@
     "generator"
   ],
   "dependencies": {
-    "@vuepress/shared-utils": "^1.0.3",
     "register-service-worker": "^1.5.2",
     "workbox-build": "^4.3.1"
   },

@@ -1,7 +1,7 @@
-import deeplyParseHeaders from '../src/deeplyParseHeaders'
+import deeplyParseHeaders from '../lib/deeplyParseHeaders'
 
 test('deeplyParseHeaders', () => {
-  const asserts: Record<string, string> = {
+  const asserts = {
     // Remove tail html
     '# `H1` <Comp></Comp>': '# H1',
     '# *H1* <Comp/>': '# H1',

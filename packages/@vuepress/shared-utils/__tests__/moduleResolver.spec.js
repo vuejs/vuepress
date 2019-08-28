@@ -11,16 +11,16 @@ import {
   getThemeResolver,
   getPluginResolver,
   resolveScopePackage
-} from '../src/moduleResolver'
+} from '../lib/moduleResolver'
 import hash from 'hash-sum'
 
 const MOCK_RELATIVE = '../../../../__mocks__'
 
-function loadMockModule (name: string) {
+function loadMockModule (name) {
   return require(`${MOCK_RELATIVE}/${name}`)
 }
 
-function resolveMockModule (name: string) {
+function resolveMockModule (name) {
   return require.resolve(path.resolve(__dirname, `${MOCK_RELATIVE}/${name}/`))
 }
 
@@ -46,14 +46,14 @@ describe('resolveScopePackage', () => {
 
   test('incorrect format', () => {
     const pkg2 = resolveScopePackage('vuepress/plugin-a')
-    expect(pkg2).toEqual({ "name": "", "org": "" })
+    expect(pkg2).toEqual({ name: '', org: '' })
 
     const pkg3 = resolveScopePackage('vuepress-plugin-a')
-    expect(pkg3).toEqual({ "name": "", "org": "" })
+    expect(pkg3).toEqual({ name: '', org: '' })
   })
 })
 
-const getBaseAsserts = (type: string) => [
+const getBaseAsserts = type => [
   { input: 'a', output: ['a', `vuepress-${type}-a`] },
   { input: `vuepress-${type}-a`, output: ['a', `vuepress-${type}-a`] },
   { input: '@vuepress/a', output: ['@vuepress/a', `@vuepress/${type}-a`] },
@@ -127,7 +127,9 @@ describe('resolvePlugin', () => {
   })
 
   test('aosolute path', () => {
-    const resolved = resolvePlugin(path.resolve(__dirname, 'fixtures/plugin-a'))
+    const resolved = resolvePlugin(
+      path.resolve(__dirname, 'fixtures/plugin-a')
+    )
     expect(resolved.entry).toBe(require('./fixtures/plugin-a'))
   })
 
