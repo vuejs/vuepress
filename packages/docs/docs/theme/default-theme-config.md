@@ -376,7 +376,7 @@ Note that it’s `off` by default. If given a `string`, it will be displayed as 
 
 ## Prev / Next Links
 
-Prev and next links are automatically inferred based on the sidebar order of the active page. You can also explicitly overwrite or disable them using `YAML front matter`:
+Prev and next links are automatically inferred based on the sidebar order of the active page. You can also explicitly overwrite or disable them globally with [theme config](/theme/default-theme-config.html#git-repository-and-edit-links) or on specific pages using `YAML front matter`:
 
 ``` yaml
 ---
