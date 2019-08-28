@@ -4,17 +4,9 @@ module.exports = {
   rootDir: path.resolve(__dirname, '..'),
   verbose: true,
   testURL: 'http://localhost/',
-  moduleFileExtensions: [
-    'js',
-    'vue',
-    'ts',
-    'json'
-  ],
+  moduleFileExtensions: ['js', 'vue', 'ts', 'json'],
   testRegex: '(/__test__/.*|(\\.|/)(test|spec))\\.(ts|js)?$',
-  testPathIgnorePatterns: [
-    'test.js',
-    path.resolve(__dirname, '../test')
-  ],
+  testPathIgnorePatterns: ['test.js', path.resolve(__dirname, '../test')],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1'
   },
@@ -23,7 +15,5 @@ module.exports = {
     '.*\\.(vue)$': '<rootDir>/node_modules/vue-jest',
     '^.+\\.ts?$': '<rootDir>/node_modules/ts-jest'
   },
-  snapshotSerializers: [
-    '<rootDir>/node_modules/jest-serializer-vue'
-  ]
+  snapshotSerializers: ['<rootDir>/node_modules/jest-serializer-vue']
 }
