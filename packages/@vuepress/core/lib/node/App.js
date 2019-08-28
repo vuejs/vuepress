@@ -9,9 +9,14 @@ const loadConfig = require('./loadConfig')
 const loadTheme = require('./loadTheme')
 const { getCacheLoaderOptions } = require('./CacheLoader')
 const {
-  fs, path, logger, chalk, globby, sort,
+  fs,
+  path,
+  logger,
+  chalk,
+  globby,
+  sort,
   datatypes: { isFunction },
-  fallback: { fsExistsFallback }
+  fallback
 } = require('@vuepress/shared-utils')
 
 const Page = require('./Page')
@@ -39,10 +44,13 @@ module.exports = class App {
 
   constructor (options = {}) {
     this.options = options
-    this.sourceDir = this.options.sourceDir || path.join(__dirname, 'docs.fallback')
+    this.sourceDir
+      = this.options.sourceDir || path.join(__dirname, 'docs.fallback')
     logger.debug('sourceDir', this.sourceDir)
     if (!fs.existsSync(this.sourceDir)) {
-      logger.warn(`Source directory doesn't exist: ${chalk.yellow(this.sourceDir)}`)
+      logger.warn(
+        `Source directory doesn't exist: ${chalk.yellow(this.sourceDir)}`
+      )
     }
 
     const { tempPath, writeTemp } = createTemp(options.temp)
@@ -83,7 +91,9 @@ module.exports = class App {
       : require('path').resolve(this.sourceDir, '.vuepress/dist')
     this.pages = [] // Array<Page>
     this.pluginAPI = new PluginAPI(this)
-    this.ClientComputedMixinConstructor = ClientComputedMixin(this.getSiteData())
+    this.ClientComputedMixinConstructor = ClientComputedMixin(
+      this.getSiteData()
+    )
   }
 
   /**
@@ -111,9 +121,11 @@ module.exports = class App {
 
     await this.pluginAPI.applyAsyncOption('additionalPages', this)
     await Promise.all(
-      this.pluginAPI.getOption('additionalPages').appliedValues.map(async (options) => {
-        await this.addPage(options)
-      })
+      this.pluginAPI
+        .getOption('additionalPages')
+        .appliedValues.map(async options => {
+          await this.addPage(options)
+        })
     )
     await this.pluginAPI.applyAsyncOption('ready')
     await Promise.all([
@@ -133,14 +145,14 @@ module.exports = class App {
     const themeConfig = this.themeConfig
     const siteConfig = this.siteConfig
 
-    const shouldUseLastUpdated = (
-      themeConfig.lastUpdated
-      || Object.keys(siteConfig.locales && themeConfig.locales || {})
-        .some(base => themeConfig.locales[base].lastUpdated)
-    )
+    const shouldUseLastUpdated
+      = themeConfig.lastUpdated
+      || Object.keys((siteConfig.locales && themeConfig.locales) || {}).some(
+        base => themeConfig.locales[base].lastUpdated
+      )
 
     this.pluginAPI
-    // internl core plugins
+      // internl core plugins
       .use(require('./internal-plugins/siteData'))
       .use(require('./internal-plugins/routes'))
       .use(require('./internal-plugins/rootMixins'))
@@ -167,7 +179,8 @@ module.exports = class App {
         componentsDir: [
           path.resolve(this.sourceDir, '.vuepress/components'),
           path.resolve(this.themeAPI.theme.path, 'global-components'),
-          this.themeAPI.existsParentTheme && path.resolve(this.themeAPI.parentTheme.path, 'global-components')
+          this.themeAPI.existsParentTheme
+            && path.resolve(this.themeAPI.parentTheme.path, 'global-components')
         ]
       })
   }
@@ -186,7 +199,11 @@ module.exports = class App {
     this.pluginAPI
       .use(this.themeAPI.theme.entry)
       .use(this.themeAPI.vuepressPlugin)
-      .use(Object.assign({}, this.siteConfig, { name: '@vuepress/internal-site-config' }))
+      .use(
+        Object.assign({}, this.siteConfig, {
+          name: '@vuepress/internal-site-config'
+        })
+      )
   }
 
   /**
@@ -218,7 +235,15 @@ module.exports = class App {
    */
 
   resolveCacheLoaderOptions () {
-    Object.assign(this, (getCacheLoaderOptions(this.siteConfig, this.options, this.cwd, this.isProd)))
+    Object.assign(
+      this,
+      getCacheLoaderOptions(
+        this.siteConfig,
+        this.options,
+        this.cwd,
+        this.isProd
+      )
+    )
   }
 
   /**
@@ -235,23 +260,17 @@ module.exports = class App {
    */
 
   resolveTemplates () {
-    this.devTemplate = this.resolveCommonAgreementFilePath(
-      'devTemplate',
-      {
-        defaultValue: this.getLibFilePath('client/index.dev.html'),
-        siteAgreement: 'templates/dev.html',
-        themeAgreement: 'templates/dev.html'
-      }
-    )
+    this.devTemplate = this.resolveCommonAgreementFilePath('devTemplate', {
+      defaultValue: this.getLibFilePath('client/index.dev.html'),
+      siteAgreement: 'templates/dev.html',
+      themeAgreement: 'templates/dev.html'
+    })
 
-    this.ssrTemplate = this.resolveCommonAgreementFilePath(
-      'ssrTemplate',
-      {
-        defaultValue: this.getLibFilePath('client/index.ssr.html'),
-        siteAgreement: 'templates/ssr.html',
-        themeAgreement: 'templates/ssr.html'
-      }
-    )
+    this.ssrTemplate = this.resolveCommonAgreementFilePath('ssrTemplate', {
+      defaultValue: this.getLibFilePath('client/index.ssr.html'),
+      siteAgreement: 'templates/ssr.html',
+      themeAgreement: 'templates/ssr.html'
+    })
 
     logger.debug('SSR Template File: ' + chalk.gray(this.ssrTemplate))
     logger.debug('DEV Template File: ' + chalk.gray(this.devTemplate))
@@ -265,14 +284,11 @@ module.exports = class App {
    */
 
   resolveGlobalLayout () {
-    this.globalLayout = this.resolveCommonAgreementFilePath(
-      'globalLayout',
-      {
-        defaultValue: this.getLibFilePath('client/components/GlobalLayout.vue'),
-        siteAgreement: `components/GlobalLayout.vue`,
-        themeAgreement: `layouts/GlobalLayout.vue`
-      }
-    )
+    this.globalLayout = this.resolveCommonAgreementFilePath('globalLayout', {
+      defaultValue: this.getLibFilePath('client/components/GlobalLayout.vue'),
+      siteAgreement: `components/GlobalLayout.vue`,
+      themeAgreement: `layouts/GlobalLayout.vue`
+    })
 
     logger.debug('globalLayout: ' + chalk.gray(this.globalLayout))
   }
@@ -287,24 +303,25 @@ module.exports = class App {
    * @returns {string | void}
    */
 
-  resolveCommonAgreementFilePath (configKey, {
-    defaultValue,
-    siteAgreement,
-    themeAgreement
-  }) {
+  resolveCommonAgreementFilePath (
+    configKey,
+    { defaultValue, siteAgreement, themeAgreement }
+  ) {
     const siteConfigValue = this.siteConfig[configKey]
     siteAgreement = this.resolveSiteAgreementFile(siteAgreement)
 
     const themeConfigValue = this.getThemeConfigValue(configKey)
     themeAgreement = this.resolveThemeAgreementFile(themeAgreement)
 
-    return fsExistsFallback([
-      siteConfigValue,
-      siteAgreement,
-      themeConfigValue,
-      themeAgreement,
-      defaultValue
-    ].map(v => v))
+    return fallback.fsExistsFallback(
+      [
+        siteConfigValue,
+        siteAgreement,
+        themeConfigValue,
+        themeAgreement,
+        defaultValue
+      ].map(v => v)
+    )
   }
 
   /**
@@ -327,10 +344,12 @@ module.exports = class App {
     }
     const pageFiles = sort(await globby(patterns, { cwd: this.sourceDir }))
 
-    await Promise.all(pageFiles.map(async (relative) => {
-      const filePath = path.resolve(this.sourceDir, relative)
-      await this.addPage({ filePath, relative })
-    }))
+    await Promise.all(
+      pageFiles.map(async relative => {
+        const filePath = path.resolve(this.sourceDir, relative)
+        await this.addPage({ filePath, relative })
+      })
+    )
   }
 
   /**
@@ -367,8 +386,10 @@ module.exports = class App {
    */
 
   getThemeConfigValue (key) {
-    return this.themeAPI.theme.entry[key]
-      || this.themeAPI.existsParentTheme && this.themeAPI.parentTheme.entry[key]
+    return (
+      this.themeAPI.theme.entry[key]
+      || (this.themeAPI.existsParentTheme && this.themeAPI.parentTheme.entry[key])
+    )
   }
 
   /**
@@ -462,12 +483,16 @@ module.exports = class App {
     const error = await new Promise(resolve => {
       try {
         this.devProcess
-            .on('fileChanged', ({ type, target }) => {
-              console.log(`Reload due to ${chalk.red(type)} ${chalk.cyan(path.relative(this.sourceDir, target))}`)
-              this.process()
-            })
-            .createServer()
-            .listen(resolve)
+          .on('fileChanged', ({ type, target }) => {
+            console.log(
+              `Reload due to ${chalk.red(type)} ${chalk.cyan(
+                path.relative(this.sourceDir, target)
+              )}`
+            )
+            this.process()
+          })
+          .createServer()
+          .listen(resolve)
       } catch (err) {
         resolve(err)
       }
@@ -493,4 +518,3 @@ module.exports = class App {
     return this
   }
 }
-

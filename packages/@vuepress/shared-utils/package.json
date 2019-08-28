@@ -3,7 +3,6 @@
   "version": "1.0.3",
   "description": "shared-utils for vuepress",
   "main": "lib/index.js",
-  "types": "types/index.d.ts",
   "files": [
     "lib",
     "types"

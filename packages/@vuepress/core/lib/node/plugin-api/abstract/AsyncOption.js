@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-const { logger, chalk, datatypes: { isFunction }} = require('@vuepress/shared-utils')
+const { logger, chalk, datatypes } = require('@vuepress/shared-utils')
 const Option = require('./Option')
 
 /**
@@ -29,12 +29,12 @@ class AsyncOption extends Option {
       try {
         this.add(
           name,
-          isFunction(value)
-            ? await value(...args)
-            : value
+          datatypes.isFunction(value) ? await value(...args) : value
         )
       } catch (error) {
-        logger.error(`${chalk.cyan(name)} apply ${chalk.cyan(this.key)} failed.`)
+        logger.error(
+          `${chalk.cyan(name)} apply ${chalk.cyan(this.key)} failed.`
+        )
         throw error
       }
     }
@@ -55,19 +55,21 @@ class AsyncOption extends Option {
     this.items = []
     this.appliedItems = this.items
 
-    await Promise.all(rawItems.map(async ({ name, value }) => {
-      try {
-        this.add(
-          name,
-          isFunction(value)
-            ? await value(...args)
-            : value
-        )
-      } catch (error) {
-        logger.error(`${chalk.cyan(name)} apply ${chalk.cyan(this.key)} failed.`)
-        throw error
-      }
-    })).catch(error => {
+    await Promise.all(
+      rawItems.map(async ({ name, value }) => {
+        try {
+          this.add(
+            name,
+            datatypes.isFunction(value) ? await value(...args) : value
+          )
+        } catch (error) {
+          logger.error(
+            `${chalk.cyan(name)} apply ${chalk.cyan(this.key)} failed.`
+          )
+          throw error
+        }
+      })
+    ).catch(error => {
       throw error
     })
 

@@ -5,8 +5,11 @@
  */
 
 const {
-  path, toAbsolutePath, chalk, logger,
-  datatypes: { isString, isBoolean }
+  path,
+  toAbsolutePath,
+  chalk,
+  logger,
+  datatypes
 } = require('@vuepress/shared-utils')
 
 /**
@@ -16,15 +19,20 @@ const {
  */
 
 exports.getCacheLoaderOptions = function (siteConfig, options, cwd, isProd) {
-  const defaultCacheDirectory = path.resolve(__dirname, '../../node_modules/.cache/vuepress')
+  const defaultCacheDirectory = path.resolve(
+    __dirname,
+    '../../node_modules/.cache/vuepress'
+  )
   let cache = options.cache || siteConfig.cache || defaultCacheDirectory
 
-  if (isBoolean(cache)) {
+  if (datatypes.isBoolean(cache)) {
     if (cache === true) {
       cache = defaultCacheDirectory
     }
-  } else if (!isString(cache)) {
-    throw new Error(`expected cache option to be string or boolean, but got ${typeof cache}`)
+  } else if (!datatypes.isString(cache)) {
+    throw new Error(
+      `expected cache option to be string or boolean, but got ${typeof cache}`
+    )
   }
 
   const cacheDirectory = toAbsolutePath(cache, cwd)
@@ -33,25 +41,14 @@ exports.getCacheLoaderOptions = function (siteConfig, options, cwd, isProd) {
     'cache-loader': require('cache-loader/package.json').version,
     'vue-loader': require('cache-loader/package.json').version,
     isProd,
-    config: (
-      (
-        siteConfig.markdown
-          ? JSON.stringify(siteConfig.markdown)
-          : ''
-      )
-      + (
-        siteConfig.markdown && siteConfig.markdown.extendMarkdown
-          ? siteConfig.markdown.extendMarkdown.toString()
-          : ''
-      )
-      + (
-        siteConfig.extendMarkdown
-          ? siteConfig.extendMarkdown.toString()
-          : ''
-      )
+    config:
+      (siteConfig.markdown ? JSON.stringify(siteConfig.markdown) : '')
+      + (siteConfig.markdown && siteConfig.markdown.extendMarkdown
+        ? siteConfig.markdown.extendMarkdown.toString()
+        : '')
+      + (siteConfig.extendMarkdown ? siteConfig.extendMarkdown.toString() : '')
       + (siteConfig.chainWebpack || '').toString()
       + (siteConfig.configureWebpack || '').toString()
-    )
   })
 
   logger.debug('Cache directory: ' + chalk.gray(cacheDirectory))

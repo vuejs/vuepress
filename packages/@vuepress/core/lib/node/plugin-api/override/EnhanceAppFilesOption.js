@@ -9,7 +9,7 @@ const {
   fs,
   chalk,
   logger,
-  codegen: { pathsToModuleCode },
+  codegen,
   datatypes: { isPlainObject }
 } = require('@vuepress/shared-utils')
 
@@ -27,14 +27,13 @@ module.exports = class EnhanceAppFilesOption extends AsyncOption {
     async function writeEnhancer (name, content, hasDefaultExport = true) {
       return await ctx.writeTemp(
         `app-enhancers/${name}.js`,
-        hasDefaultExport
-          ? content
-          : content + '\nexport default {}'
+        hasDefaultExport ? content : content + '\nexport default {}'
       )
     }
 
     // 1. write enhance app files.
-    for (const { value: enhanceAppFile, name: pluginName } of this.appliedItems) {
+    for (const { value: enhanceAppFile, name: pluginName } of this
+      .appliedItems) {
       let destPath
 
       // 1.1 dynamic code
@@ -46,7 +45,11 @@ module.exports = class EnhanceAppFilesOption extends AsyncOption {
         if (hasDefaultExport(content)) {
           destPath = await writeEnhancer(name, content)
         } else {
-          destPath = await writeEnhancer(name, content, false /* do not contain default export*/)
+          destPath = await writeEnhancer(
+            name,
+            content,
+            false /* do not contain default export*/
+          )
         }
         // 1.2 pointing to a file
       } else {
@@ -68,7 +71,7 @@ module.exports = class EnhanceAppFilesOption extends AsyncOption {
         } else {
           logger.developer(
             chalk.gray(`[${pluginName}] `)
-            + `${chalk.cyan(enhanceAppFile)} Not Found.`
+              + `${chalk.cyan(enhanceAppFile)} Not Found.`
           )
         }
       }
@@ -79,10 +82,15 @@ module.exports = class EnhanceAppFilesOption extends AsyncOption {
     }
 
     // 2. write entry file.
-    await ctx.writeTemp('internal/app-enhancers.js', pathsToModuleCode(manifest))
+    await ctx.writeTemp(
+      'internal/app-enhancers.js',
+      codegen.pathsToModuleCode(manifest)
+    )
   }
 }
 
 function hasDefaultExport (content) {
-  return content.includes('export default') || content.includes('module.exports')
+  return (
+    content.includes('export default') || content.includes('module.exports')
+  )
 }

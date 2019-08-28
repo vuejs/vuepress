@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-const { logger, chalk, compose, datatypes: { isFunction }} = require('@vuepress/shared-utils')
+const { logger, chalk, compose, datatypes } = require('@vuepress/shared-utils')
 
 /**
  * Expose synchronous option class.
@@ -87,7 +87,7 @@ class Option {
    */
 
   get entries () {
-    return this.items.map(({ name, value }) => ([name, value]))
+    return this.items.map(({ name, value }) => [name, value])
   }
 
   /**
@@ -104,14 +104,11 @@ class Option {
 
     for (const { name, value } of rawItems) {
       try {
-        this.add(
-          name,
-          isFunction(value)
-            ? value(...args)
-            : value
-        )
+        this.add(name, datatypes.isFunction(value) ? value(...args) : value)
       } catch (error) {
-        logger.error(`${chalk.cyan(name)} apply ${chalk.cyan(this.key)} failed.`)
+        logger.error(
+          `${chalk.cyan(name)} apply ${chalk.cyan(this.key)} failed.`
+        )
         throw error
       }
     }
