@@ -120,6 +120,7 @@ export default {
 
   methods: {
     toggleSidebar (to) {
+      this.$emit("toggle-sidebar", this.isSidebarOpen)
       this.isSidebarOpen = typeof to === 'boolean' ? to : !this.isSidebarOpen
     },
 
