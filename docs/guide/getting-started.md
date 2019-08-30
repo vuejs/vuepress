@@ -8,9 +8,12 @@ VuePress requires Node.js >= 8.
 
 If you just want to play around with VuePress, you can install it globally:
 
+> Note: This document is specified by vuepress v0.x, so you need to specify version of vuepress. 
+> We have released vuepress v1! New version are updating here: https://v1.vuepress.vuejs.org/
+
 ``` bash
 # install globally
-yarn global add vuepress # OR npm install -g vuepress
+yarn global add vuepress@0 # OR npm install -g vuepress@0
 
 # create a markdown file
 echo '# Hello VuePress' > README.md
