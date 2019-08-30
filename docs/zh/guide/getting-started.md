@@ -8,9 +8,12 @@
 
 如果你只是想尝试一下 VuePress，你可以全局安装它：
 
+> 请注意本文档基于vuepress v0.x版本，所以你需要在安装时指定版本为v0。
+> 我们已经发布了vuepress v1.x版本，新版本在这里更新：https://v1.vuepress.vuejs.org/zh/
+
 ``` bash
 # 安装
-yarn global add vuepress # 或者：npm install -g vuepress
+yarn global add vuepress@0 # 或者：npm install -g vuepress@0
 
 # 新建一个 markdown 文件
 echo '# Hello VuePress!' > README.md
