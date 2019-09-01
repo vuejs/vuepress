@@ -73,6 +73,7 @@ language: node_js
 node_js:
   - lts/*
 script:
+  - npm install
   - npm run docs:build
 deploy:
   provider: pages
