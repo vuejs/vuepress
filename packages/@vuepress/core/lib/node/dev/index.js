@@ -76,8 +76,6 @@ module.exports = class DevProcess extends EventEmitter {
     })
     this.pagesWatcher.on('add', target => this.handleUpdate('add', target))
     this.pagesWatcher.on('unlink', target => this.handleUpdate('unlink', target))
-    this.pagesWatcher.on('addDir', target => this.handleUpdate('addDir', target))
-    this.pagesWatcher.on('unlinkDir', target => this.handleUpdate('unlinkDir', target))
   }
 
   /**
