@@ -451,9 +451,9 @@ editLink: false
 
 ## Simple CSS Override
 
-If you wish to apply simple overrides to the styling of the default theme, you can create an `.vuepress/override.styl` file. This is a [Stylus](http://stylus-lang.com/) file but you can use normal CSS syntax as well.
+If you wish to apply simple overrides to the styling of the default theme, you can create a `.vuepress/styles/palette.styl` file. This is a [Stylus](http://stylus-lang.com/) file but you can use normal CSS syntax here too.
 
-There are a few color variables you can tweak:
+There are four default color variables you can tweak:
 
 ``` stylus
 // showing default values
@@ -465,7 +465,7 @@ $codeBgColor = #282c34
 
 ### Existing issues <Badge text="< 0.12.0" type='error'/>
 
-In order to override the default variables mentioned above, `override.styl` will be imported at the end of the `config.styl` in default theme, and this file will be used by multiple files, so once you wrote styles here, your style would be duplicated by multiple times. See [#637](https://github.com/vuejs/vuepress/issues/637).
+In order to override the default variables mentioned above, `override.styl` or `palette.styl` will be imported at the end of the `config.styl` in the default theme, and this file will be used by multiple files, so when you write styles in this file, your styles will be duplicated multiple times. See [#637](https://github.com/vuejs/vuepress/issues/637).
 
 ### Migrate your styles to `style.styl` <Badge text="0.12.0+"/>
 
