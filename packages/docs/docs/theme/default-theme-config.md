@@ -351,6 +351,18 @@ Unlike the [built-in search](#built-in-search) engine which works out of the box
 
 For more options, check out [Algolia DocSearch’s documentation](https://github.com/algolia/docsearch#docsearch-options).
 
+### Search Placeholder
+
+You can define a placeholder for the search box by adding the `searchPlaceholder` attribute:
+
+``` js
+module.exports = {
+  themeConfig: {
+    searchPlaceholder: 'Search...'
+  }
+}
+```
+
 ## Last Updated
 
 The `themeConfig.lastUpdated` option allows you to get the UNIX timestamp(ms) of each file’s last `git` commit, and it will also display at the bottom of each page in an appropriate format:
