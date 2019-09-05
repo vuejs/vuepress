@@ -4,7 +4,6 @@
     :class="{ open }"
   >
     <a
-      href="void:javascript"
       class="dropdown-title"
       :aria-label="dropdownName"
       @click="toggle"
@@ -69,7 +68,7 @@ export default {
       required: true
     },
     dropdownName: {
-      default: '',
+      default: 'Dropdown',
       type: String
     }
   },
