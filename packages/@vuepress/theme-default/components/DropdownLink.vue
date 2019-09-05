@@ -4,7 +4,9 @@
     :class="{ open }"
   >
     <a
+      href="void:javascript"
       class="dropdown-title"
+      :aria-label="dropdownName"
       @click="toggle"
     >
       <span class="title">{{ item.text }}</span>
@@ -65,6 +67,10 @@ export default {
   props: {
     item: {
       required: true
+    },
+    dropdownName: {
+      default: '',
+      type: String
     }
   },
 
