@@ -4,53 +4,31 @@ module.exports = [
     link: "/guide/"
   },
   {
-    text: "Config Reference",
-    link: "/config/"
-  },
-  {
-    text: "Plugin",
-    link: "/plugin/"
-  },
-  {
-    text: "Theme",
-    link: "/theme/"
+    text: "Plugins / Themes",
+    link: "/market/"
   },
   {
     text: "Learn More",
     items: [
       {
-        text: "API",
-        items: [
-          {
-            text: "CLI",
-            link: "/api/cli.html"
-          },
-          {
-            text: "Node",
-            link: "/api/node.html"
-          }
-        ]
+        text: "Config reference",
+        link: "/config/index.html"
+      },
+      {
+        text: "Api",
+        link: "/api/cli.html"
+      },
+      {
+        text: "Create a plugin",
+        link: "/plugin/index.html"
+      },
+      {
+        text: "Create a theme",
+        link: "/theme/index.html"
       },
       {
         text: "Contributing Guide",
-        items: [
-          {
-            text: "Local Development",
-            link: "/miscellaneous/local-development.html"
-          },
-          {
-            text: "Design Concepts",
-            link: "/miscellaneous/design-concepts.html"
-          },
-          {
-            text: "FAQ",
-            link: "/faq/"
-          },
-          {
-            text: "Glossary",
-            link: "/miscellaneous/glossary.html"
-          }
-        ]
+        link: "/miscellaneous/local-development.html"
       },
       {
         text: "Miscellaneous",
