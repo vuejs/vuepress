@@ -8,20 +8,7 @@ Headers automatically get anchor links applied. Rendering of anchors can be conf
 
 ### Internal Links
 
-Inbound links ending in `.md` or `.html` are converted to `<router-link>` for SPA navigation.
-
-Each sub-directory in your static site should contain a `README.md`. It will automatically be converted to `index.html`.
-
-::: tip
-When writing the relative path to a directory's `index.html`, don't forget to close it off with a `/`, otherwise you will get a 404. For example, use `/config/` instead of `/config`.
-:::
-
-If you want to link to another markdown file within a directory, remember to:
-
-1.  Append it with either `.html` or `.md`
-2.  Make sure the case matches since the path is case-sensitive
-
-#### Example
+Internal links are converted to `<router-link>` for SPA navigation. Also, every `README.md` or `index.md` contained in each sub-directory will automatically be converted to `index.html`, with corresponding URL `/`.
 
 Given the following directory structure:
 
@@ -38,13 +25,23 @@ Given the following directory structure:
    └─ four.md
 ```
 
+And providing you are in `foo/one.md`:
+
 ```md
 [Home](/) <!-- Sends the user to the root README.md -->
 [foo](/foo/) <!-- Sends the user to index.html of directory foo -->
-[foo heading anchor](/foo/#heading) <!-- Anchors user to a heading in the foo README file -->
-[foo - one](/foo/one.html) <!-- You can append .html -->
-[foo - two](/foo/two.md) <!-- Or you can append .md -->
+[foo heading](./#heading) <!-- Anchors user to a heading in the foo README file -->
+[bar - three](../bar/three.md) <!-- You can append .md (recommended) -->
+[bar - four](../bar/four.html) <!-- Or you can append .html -->
 ```
+
+### Redirection for URLs <Badge text="1.0.0-alpha.37"/>
+
+VuePress supports redirecting to clean links. If a link `/foo` is not found, VuePress will look for a existing `/foo/` or `/foo.html`. Conversely, when one of `/foo/` or `/foo.html` is not found, VuePress will also try the other. With this feature, we can customize your website’s URLs with the official plugin [vuepress-plugin-clean-urls](https://vuepress.github.io/plugins/clean-urls/).
+
+::: tip
+Regardless of whether the permalink and clean-urls plugins are used, your relative path should be defined by the current file structure. In the above example, even though you set the path of `/foo/one.md` to `/foo/one/`, you should still access `/foo/two.md` via `./two.md`.
+:::
 
 ### External Links
 
@@ -55,9 +52,9 @@ Outbound links automatically gets `target="_blank" rel="noopener noreferrer"`:
 
 You can customize the attributes added to external links by setting [config.markdown.externalLinks](../config/README.md#markdown-externallinks).
 
-## Front Matter
+## Frontmatter
 
-[YAML front matter](https://jekyllrb.com/docs/frontmatter/) is supported out of the box:
+[YAML frontmatter](https://jekyllrb.com/docs/frontmatter/) is supported out of the box:
 
 ``` yaml
 ---
@@ -68,7 +65,7 @@ lang: en-US
 
 This data will be available to the rest of the page, along with all custom and theming components.
 
-For more details, check out the [Front Matter](./frontmatter.md) page.
+For more details, check out the [Frontmatter](./frontmatter.md) page.
 
 ## GitHub-Style Tables
 
@@ -114,11 +111,15 @@ A list of all emojis available can be found [here](https://github.com/markdown-i
 
 **Output**
 
+<!--lint disable no-shortcut-reference-link no-undefined-references-->
+
 [[toc]]
+
+<!--lint enable no-shortcut-reference-link no-undefined-references-->
 
 Rendering of TOC can be configured using the [`markdown.toc`](../config/README.md#markdown-toc) option.
 
-## Custom Containers
+## Custom Containers <Badge text="default theme"/>
 
 **Input**
 
@@ -162,9 +163,13 @@ Danger zone, do not proceed
 Danger zone, do not proceed
 :::
 
+**Also see:**
+
+- [vuepress-plugin-container](https://vuepress.github.io/plugins/container/)
+
 ## Syntax Highlighting in Code Blocks
 
-VuePress uses [Prism](https://prismjs.com/) to highlight language syntax in markdown code blocks, using coloured text. Prism supports a wide variety of programming languages. All you need to do is append a valid language alias to the beginning backticks for the code block:
+VuePress uses [Prism](https://prismjs.com/) to highlight language syntax in Markdown code blocks, using coloured text. Prism supports a wide variety of programming languages. All you need to do is append a valid language alias to the beginning backticks for the code block:
 
 **Input**
 
@@ -214,7 +219,7 @@ export default {
 </ul>
 ```
 
-Check out [the list of valid languages](https://prismjs.com/#languages-list) on the Prism website.
+Check out [the list of valid languages](https://prismjs.com/#languages-list) on the Prism site.
 
 ## Line Highlighting in Code Blocks
 
@@ -288,7 +293,7 @@ module.exports = {
   }
 </style>
 
-## Import Code Snippets <Badge text="beta" type="warn"/> <Badge text="0.10.1+" type="tip"/>
+## Import Code Snippets <Badge text="beta" type="warn"/>
 
 You can import code snippets from existing files via following syntax:
 
@@ -310,16 +315,20 @@ It also supports [line highlighting](#line-highlighting-in-code-blocks):
 
 **Output**
 
+<!--lint disable strong-marker-->
+
 <<< @/../@vuepress/markdown/__tests__/fragments/snippet.js{2}
 
+<!--lint enable strong-marker-->
+
 ::: tip
-  Since the import of the code snippets will be executed before webpack compilation, you can't use the path alias in webpack. The default value of `@` is `process.cwd()`.
+Since the import of the code snippets will be executed before webpack compilation, you can’t use the path alias in webpack. The default value of `@` is `process.cwd()`.
 :::
 
 
 ## Advanced Configuration
 
-VuePress uses [markdown-it](https://github.com/markdown-it/markdown-it) as the markdown renderer. A lot of the extensions above are implemented via custom plugins. You can further customize the `markdown-it` instance using the `markdown` option in `.vuepress/config.js`:
+VuePress uses [markdown-it](https://github.com/markdown-it/markdown-it) as the Markdown renderer. A lot of the extensions above are implemented via custom plugins. You can further customize the `markdown-it` instance using the `markdown` option in `.vuepress/config.js`:
 
 ``` js
 module.exports = {

@@ -1,31 +1,30 @@
-"use strict";
+'use strict'
 
 /**
  * Module dependencies.
  */
 
-const Config = require("markdown-it-chain");
-const LRUCache = require("lru-cache");
-const highlight = require("./lib/highlight");
-const { PLUGINS, REQUIRED_PLUGINS } = require("./lib/constant");
-const highlightLinesPlugin = require("./lib/highlightLines");
-const preWrapperPlugin = require("./lib/preWrapper");
-const lineNumbersPlugin = require("./lib/lineNumbers");
-const componentPlugin = require("./lib/component");
-const hoistScriptStylePlugin = require("./lib/hoist");
-const convertRouterLinkPlugin = require("./lib/link");
-const containersPlugin = require("./lib/containers");
-const snippetPlugin = require("./lib/snippet");
-const emojiPlugin = require("markdown-it-emoji");
-const anchorPlugin = require("markdown-it-anchor");
-const tocPlugin = require("markdown-it-table-of-contents");
+const Config = require('markdown-it-chain')
+const highlight = require('./lib/highlight')
+const { PLUGINS, REQUIRED_PLUGINS } = require('./lib/constant')
+const highlightLinesPlugin = require('./lib/highlightLines')
+const preWrapperPlugin = require('./lib/preWrapper')
+const lineNumbersPlugin = require('./lib/lineNumbers')
+const componentPlugin = require('./lib/component')
+const hoistScriptStylePlugin = require('./lib/hoist')
+const convertRouterLinkPlugin = require('./lib/link')
+const snippetPlugin = require('./lib/snippet')
+const emojiPlugin = require('markdown-it-emoji')
+const anchorPlugin = require('markdown-it-anchor')
+const tocPlugin = require('markdown-it-table-of-contents')
 const {
-  parseHeaders,
   slugify: _slugify,
+  parseHeaders,
   logger,
   chalk,
-  hash
-} = require("@vuepress/shared-utils");
+  normalizeConfig,
+  moduleResolver: { getMarkdownItResolver }
+} = require('@vuepress/shared-utils')
 
 /**
  * Create markdown by config.
@@ -36,16 +35,19 @@ module.exports = (markdown = {}) => {
     externalLinks,
     anchor,
     toc,
+    plugins,
     lineNumbers,
     beforeInstantiate,
     afterInstantiate
-  } = markdown;
+  } = markdown
+
+  const resolver = getMarkdownItResolver()
 
   // allow user config slugify
-  const slugify = markdown.slugify || _slugify;
+  const slugify = markdown.slugify || _slugify
 
   // using chainedAPI
-  const config = new Config();
+  const config = new Config()
 
   config.options
     .html(true)
@@ -72,8 +74,8 @@ module.exports = (markdown = {}) => {
     .use(convertRouterLinkPlugin, [
       Object.assign(
         {
-          target: "_blank",
-          rel: "noopener noreferrer"
+          target: '_blank',
+          rel: 'noopener noreferrer'
         },
         externalLinks
       )
@@ -82,10 +84,6 @@ module.exports = (markdown = {}) => {
 
     .plugin(PLUGINS.HOIST_SCRIPT_STYLE)
     .use(hoistScriptStylePlugin)
-    .end()
-
-    .plugin(PLUGINS.CONTAINERS)
-    .use(containersPlugin)
     .end()
 
     .plugin(PLUGINS.EMOJI)
@@ -99,7 +97,7 @@ module.exports = (markdown = {}) => {
           slugify,
           permalink: true,
           permalinkBefore: true,
-          permalinkSymbol: "#"
+          permalinkSymbol: '#'
         },
         anchor
       )
@@ -117,84 +115,79 @@ module.exports = (markdown = {}) => {
         toc
       )
     ])
-    .end();
+    .end()
 
   if (lineNumbers) {
-    config.plugin(PLUGINS.LINE_NUMBERS).use(lineNumbersPlugin);
+    config.plugin(PLUGINS.LINE_NUMBERS).use(lineNumbersPlugin)
   }
 
-  beforeInstantiate && beforeInstantiate(config);
+  beforeInstantiate && beforeInstantiate(config)
 
-  const md = config.toMd(require("markdown-it"), markdown);
+  const md = config.toMd(require('markdown-it'), markdown)
 
-  afterInstantiate && afterInstantiate(md);
-
-  // override parse to allow cache
-  const parse = md.parse;
-  const cache = new LRUCache({ max: 1000 });
-  md.parse = (src, env) => {
-    const key = hash(src + env.relPath);
-    const cached = cache.get(key);
-    if (cached) {
-      return cached;
+  const pluginsConfig = normalizeConfig(plugins || [])
+  pluginsConfig.forEach(([pluginRaw, pluginOptions]) => {
+    const plugin = resolver.resolve(pluginRaw)
+    if (plugin.entry) {
+      md.use(plugin.entry, pluginOptions)
     } else {
-      const tokens = parse.call(md, src, env);
-      cache.set(key, tokens);
-      return tokens;
+      // TODO: error handling
     }
-  };
+  })
 
-  module.exports.dataReturnable(md);
+  afterInstantiate && afterInstantiate(md)
+
+  module.exports.dataReturnable(md)
 
   // expose slugify
-  md.slugify = slugify;
+  md.slugify = slugify
 
-  return md;
-};
+  return md
+}
 
-module.exports.dataReturnable = function dataReturnable(md) {
+module.exports.dataReturnable = function dataReturnable (md) {
   // override render to allow custom plugins return data
-  const render = md.render;
+  const render = md.render
   md.render = (...args) => {
-    md.$data = {};
-    md.$data.__data_block = {};
-    md.$dataBlock = md.$data.__data_block;
-    const html = render.call(md, ...args);
+    md.$data = {}
+    md.$data.__data_block = {}
+    md.$dataBlock = md.$data.__data_block
+    const html = render.call(md, ...args)
     return {
       html,
       data: md.$data,
       dataBlockString: toDataBlockString(md.$dataBlock)
-    };
-  };
-};
-
-function toDataBlockString(ob) {
-  if (Object.keys(ob).length === 0) {
-    return "";
+    }
   }
-  return `<data>${JSON.stringify(ob)}</data>`;
 }
 
-function isRequiredPlugin(plugin) {
-  return REQUIRED_PLUGINS.includes(plugin);
+function toDataBlockString (ob) {
+  if (Object.keys(ob).length === 0) {
+    return ''
+  }
+  return `<data>${JSON.stringify(ob)}</data>`
 }
 
-function removePlugin(config, plugin) {
+function isRequiredPlugin (plugin) {
+  return REQUIRED_PLUGINS.includes(plugin)
+}
+
+function removePlugin (config, plugin) {
   logger.debug(
     `Built-in markdown-it plugin ${chalk.green(plugin)} was removed.`
-  );
-  config.plugins.delete(plugin);
+  )
+  config.plugins.delete(plugin)
 }
 
-function removeAllBuiltInPlugins(config) {
+function removeAllBuiltInPlugins (config) {
   Object.keys(PLUGINS).forEach(key => {
     if (!isRequiredPlugin(PLUGINS[key])) {
-      removePlugin(config, PLUGINS[key]);
+      removePlugin(config, PLUGINS[key])
     }
-  });
+  })
 }
 
-module.exports.isRequiredPlugin = isRequiredPlugin;
-module.exports.removePlugin = removePlugin;
-module.exports.removeAllBuiltInPlugins = removeAllBuiltInPlugins;
-module.exports.PLUGINS = PLUGINS;
+module.exports.isRequiredPlugin = isRequiredPlugin
+module.exports.removePlugin = removePlugin
+module.exports.removeAllBuiltInPlugins = removeAllBuiltInPlugins
+module.exports.PLUGINS = PLUGINS

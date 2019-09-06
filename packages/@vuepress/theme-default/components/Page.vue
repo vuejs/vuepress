@@ -2,7 +2,7 @@
   <main class="page">
     <slot name="top"/>
 
-    <Content/>
+    <Content class="theme-default-content"/>
 
     <footer class="page-edit">
       <div
@@ -62,7 +62,10 @@
 </template>
 
 <script>
-import { resolvePage, normalize, outboundRE, endingSlashRE } from '../util'
+import isString from 'lodash/isString'
+import isNil from 'lodash/isNil'
+
+import { resolvePage, outboundRE, endingSlashRE } from '../util'
 
 export default {
   props: ['sidebarItems'],
@@ -83,25 +86,11 @@ export default {
     },
 
     prev () {
-      const prev = this.$page.frontmatter.prev
-      if (prev === false) {
-        return
-      } else if (prev) {
-        return resolvePage(this.$site.pages, prev, this.$route.path)
-      } else {
-        return resolvePrev(this.$page, this.sidebarItems)
-      }
+      return resolvePageLink(LINK_TYPES.PREV, this)
     },
 
     next () {
-      const next = this.$page.frontmatter.next
-      if (next === false) {
-        return
-      } else if (next) {
-        return resolvePage(this.$site.pages, next, this.$route.path)
-      } else {
-        return resolveNext(this.$page, this.sidebarItems)
-      }
+      return resolvePageLink(LINK_TYPES.NEXT, this)
     },
 
     editLink () {
@@ -116,14 +105,8 @@ export default {
         docsRepo = repo
       } = this.$site.themeConfig
 
-      let path = normalize(this.$page.path)
-      if (endingSlashRE.test(path)) {
-        path += 'README.md'
-      } else {
-        path += '.md'
-      }
-      if (docsRepo && editLinks) {
-        return this.createEditLink(repo, docsRepo, docsDir, docsBranch, path)
+      if (docsRepo && editLinks && this.$page.relativePath) {
+        return this.createEditLink(repo, docsRepo, docsDir, docsBranch, this.$page.relativePath)
       }
     },
 
@@ -146,8 +129,8 @@ export default {
         return (
           base.replace(endingSlashRE, '')
            + `/src`
-           + `/${docsBranch}`
-           + (docsDir ? '/' + docsDir.replace(endingSlashRE, '') : '')
+           + `/${docsBranch}/`
+           + (docsDir ? docsDir.replace(endingSlashRE, '') + '/' : '')
            + path
            + `?mode=edit&spa=0&at=${docsBranch}&fileviewer=file-view-default`
         )
@@ -156,11 +139,11 @@ export default {
       const base = outboundRE.test(docsRepo)
         ? docsRepo
         : `https://github.com/${docsRepo}`
-
       return (
         base.replace(endingSlashRE, '')
-        + `/edit/${docsBranch}`
-        + (docsDir ? '/' + docsDir.replace(endingSlashRE, '') : '')
+        + `/edit`
+        + `/${docsBranch}/`
+        + (docsDir ? docsDir.replace(endingSlashRE, '') + '/' : '')
         + path
       )
     }
@@ -173,6 +156,40 @@ function resolvePrev (page, items) {
 
 function resolveNext (page, items) {
   return find(page, items, 1)
+}
+
+const LINK_TYPES = {
+  NEXT: {
+    resolveLink: resolveNext,
+    getThemeLinkConfig: ({ nextLinks }) => nextLinks,
+    getPageLinkConfig: ({ frontmatter }) => frontmatter.next
+  },
+  PREV: {
+    resolveLink: resolvePrev,
+    getThemeLinkConfig: ({ prevLinks }) => prevLinks,
+    getPageLinkConfig: ({ frontmatter }) => frontmatter.prev
+  }
+}
+
+function resolvePageLink (linkType, { $themeConfig, $page, $route, $site, sidebarItems }) {
+  const { resolveLink, getThemeLinkConfig, getPageLinkConfig } = linkType
+
+  // Get link config from theme
+  const themeLinkConfig = getThemeLinkConfig($themeConfig)
+
+  // Get link config from current page
+  const pageLinkConfig = getPageLinkConfig($page)
+
+  // Page link config will overwrite global theme link config if defined
+  const link = isNil(pageLinkConfig) ? themeLinkConfig : pageLinkConfig
+
+  if (link === false) {
+    return
+  } else if (isString(link)) {
+    return resolvePage($site.pages, link, $route.path)
+  } else {
+    return resolveLink($page, sidebarItems)
+  }
 }
 
 function find (page, items, offset) {

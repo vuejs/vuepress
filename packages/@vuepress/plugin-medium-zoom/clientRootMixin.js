@@ -1,4 +1,4 @@
-/* global SELECTOR */
+/* global SELECTOR, OPTIONS */
 
 import './style.css'
 import zoom from 'medium-zoom'
@@ -20,7 +20,7 @@ export default {
         if (this.zoom) {
           this.zoom.detach()
         }
-        this.zoom = zoom(SELECTOR)
+        this.zoom = zoom(SELECTOR, OPTIONS)
       }, 1000)
     }
   }

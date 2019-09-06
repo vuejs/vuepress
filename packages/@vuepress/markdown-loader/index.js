@@ -6,10 +6,11 @@
 
 const { EventEmitter } = require('events')
 const { getOptions } = require('loader-utils')
-const { fs, path, parseFrontmatter, inferTitle, extractHeaders } = require('@vuepress/shared-utils')
+const { fs, path, hash, parseFrontmatter, inferTitle, extractHeaders } = require('@vuepress/shared-utils')
 const LRU = require('lru-cache')
 const md = require('@vuepress/markdown')
 
+const cache = new LRU({ max: 1000 })
 const devCache = new LRU({ max: 1000 })
 
 /**
@@ -31,27 +32,35 @@ module.exports = function (src) {
   // vue-loader, and will be applied on the same file multiple times when
   // selecting the individual blocks.
   const file = this.resourcePath
-  const { content, data } = parseFrontmatter(src)
+  const key = hash(file + src)
+  const cached = cache.get(key)
+  if (cached && (isProd || /\?vue/.test(this.resourceQuery))) {
+    return cached
+  }
+
+  const frontmatter = parseFrontmatter(src)
+  const content = frontmatter.content
 
   if (!isProd && !isServer) {
-    const inferredTitle = inferTitle(data, content)
+    const inferredTitle = inferTitle(frontmatter.data, frontmatter.content)
     const headers = extractHeaders(content, ['h2', 'h3'], markdown)
+    delete frontmatter.content
 
     // diff frontmatter and title, since they are not going to be part of the
     // returned component, changes in frontmatter do not trigger proper updates
     const cachedData = devCache.get(file)
     if (cachedData && (
       cachedData.inferredTitle !== inferredTitle
-      || JSON.stringify(cachedData.frontmatterData) !== JSON.stringify(data)
+      || JSON.stringify(cachedData.frontmatterData) !== JSON.stringify(frontmatter.data)
       || headersChanged(cachedData.headers, headers)
     )) {
       // frontmatter changed... need to do a full reload
-      module.exports.frontmatterEmitter.emit('update')
+      module.exports.frontmatterEmitter.emit('update', file)
     }
 
     devCache.set(file, {
       headers,
-      frontmatterData: data,
+      frontmatterData: frontmatter.data,
       inferredTitle
     })
   }
@@ -64,8 +73,8 @@ module.exports = function (src) {
     dataBlockString
   } = markdown.render(content, {
     loader,
-    frontmatter: data,
-    relPath: path.relative(sourceDir, file)
+    frontmatter: frontmatter.data,
+    relativePath: path.relative(sourceDir, file).replace(/\\/g, '/')
   })
 
   // check if relative links are valid
@@ -105,6 +114,7 @@ module.exports = function (src) {
     + (hoistedTags || []).join('\n')
     + `\n${dataBlockString}\n`
   )
+  cache.set(key, res)
   return res
 }
 

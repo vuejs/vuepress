@@ -1,8 +1,6 @@
 // Midified from https://github.com/vuejs/vue-cli/blob/dev/packages/@0vue/cli-shared-utils/lib/module.js
 
 import semver from 'semver'
-import path from 'upath'
-import fs from 'fs-extra'
 import env from './env'
 
 function resolveFallback (request: string, options: { paths: string[] }) {
@@ -40,15 +38,9 @@ const resolve = semver.satisfies(process.version, '>=10.0.0')
 
 export function resolveModule (request: string, context: string): string {
   let resolvedPath
-  // TODO
-  // Temporary workaround for jest cannot resolve module path from '__mocks__'
-  // when using 'require.resolve'.
-  if (env.isTest && request !== '@vuepress/theme-default') {
-    resolvedPath = path.resolve(__dirname, '../../../../__mocks__', request)
-    if (!fs.existsSync(`${resolvedPath}.js`) && !fs.existsSync(`${resolvedPath}/index.js`)) {
-      throw new Error(`Cannot find module '${request}'`)
-    }
-    return resolvedPath
+
+  if (env.isTest) {
+    return require.resolve(request)
   }
 
   // module.paths is for globally install packages.

@@ -35,7 +35,11 @@ export default {
             // #697 Make docsearch work well at i18n mode.
             algoliaOptions: Object.assign({
               'facetFilters': [`lang:${lang}`].concat(algoliaOptions.facetFilters || [])
-            }, algoliaOptions)
+            }, algoliaOptions),
+            handleSelected: (input, event, suggestion) => {
+              const { pathname, hash } = new URL(suggestion.url)
+              this.$router.push(`${pathname}${hash}`)
+            }
           }
         ))
       })

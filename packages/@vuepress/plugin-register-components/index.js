@@ -1,16 +1,14 @@
 const { fs, path, globby, datatypes: { isString }} = require('@vuepress/shared-utils')
 
 function fileToComponentName (file) {
-  return file
-    .replace(/\/|\\/g, '-')
-    .replace(/\.vue$/, '')
+  return file.replace(/\/|\\/g, '-')
 }
 
 async function resolveComponents (componentDir) {
   if (!fs.existsSync(componentDir)) {
     return
   }
-  return (await globby(['**/*.vue'], { cwd: componentDir }))
+  return (await globby(['**/*.vue'], { cwd: componentDir })).map(file => file.slice(0, -4))
 }
 
 // Since this plugin can ben used by multiple times, we need to
@@ -22,7 +20,7 @@ module.exports = (options, context) => ({
   multiple: true,
 
   async enhanceAppFiles () {
-    const { componentsDir = [], components = [] } = options
+    const { componentsDir = [], components = [], getComponentName = fileToComponentName } = options
     const baseDirs = Array.isArray(componentsDir) ? componentsDir : [componentsDir]
 
     function importCode (name, absolutePath) {
@@ -30,7 +28,7 @@ module.exports = (options, context) => ({
     }
 
     function genImport (baseDir, file) {
-      const name = fileToComponentName(file)
+      const name = getComponentName(file)
       const absolutePath = path.resolve(baseDir, file)
       const code = importCode(name, absolutePath)
       return code

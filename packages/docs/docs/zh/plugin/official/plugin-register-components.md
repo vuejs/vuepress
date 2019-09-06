@@ -10,8 +10,8 @@ metaTitle: 注册组件的插件 | VuePress
 ## 安装
 
 ```bash
-yarn add -D @vuepress/plugin-register-components
-# OR npm install -D @vuepress/plugin-register-components
+yarn add -D @vuepress/plugin-register-components@next
+# OR npm install -D @vuepress/plugin-register-components@next
 ```
 
 ## 使用
@@ -34,13 +34,13 @@ module.exports = {
 ``` js
 module.exports = {
   plugins: [
-    [ 
-      'register-components', 
+    [
+      'register-components',
       {
         componentsDir: somepath
       }
     ]
-  ] 
+  ]
 }
 ```
 
@@ -54,8 +54,8 @@ module.exports = {
 ``` js
 module.exports = {
   plugins: [
-    [ 
-      'register-components', 
+    [
+      'register-components',
       {
         components: [
           {
@@ -68,3 +68,10 @@ module.exports = {
   ]
 }
 ```
+
+### getComponentName
+
+- 类型: `(file: string) => string`
+- 默认值: `file => file.replace(/\/|\\/g, '-')`
+
+自定义 `componentsDir` 中注册的组件的名称。

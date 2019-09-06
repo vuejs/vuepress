@@ -11,7 +11,7 @@ module.exports = (md, externalAttrs) => {
   let hasOpenExternalLink = false
 
   md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
-    const { relPath } = env
+    const { relativePath } = env
     const token = tokens[idx]
     const hrefIndex = token.attrIndex('href')
     if (hrefIndex >= 0) {
@@ -28,13 +28,13 @@ module.exports = (md, externalAttrs) => {
         }
       } else if (isSourceLink) {
         hasOpenRouterLink = true
-        tokens[idx] = toRouterLink(token, link, relPath)
+        tokens[idx] = toRouterLink(token, link, relativePath)
       }
     }
     return self.renderToken(tokens, idx, options)
   }
 
-  function toRouterLink (token, link, relPath) {
+  function toRouterLink (token, link, relativePath) {
     link[0] = 'to'
     let to = link[1]
 
@@ -44,8 +44,8 @@ module.exports = (md, externalAttrs) => {
 
     // relative path usage.
     if (!to.startsWith('/')) {
-      to = relPath
-        ? url.resolve('/' + relPath, to)
+      to = relativePath
+        ? url.resolve('/' + relativePath, to)
         : ensureBeginningDotSlash(to)
     }
 
