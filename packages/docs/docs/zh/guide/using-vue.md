@@ -213,7 +213,7 @@ export default {
 - **Usage**：
 
 指定一个指定页面的特定 slot 用于渲染，当你使用 [自定义布局](../theme/default-theme-config.md#特定页面的自定义布局) 或者自定义主题时，这将非常有用。
- 
+
 
 ``` vue
 <Content/>
@@ -230,9 +230,9 @@ export default {
 
 - **Props**:
 
-   - `text` - string
-   - `type` - string, 可选值： `"tip"|"warn"|"error"`，默认值是： `"tip"`
-   - `vertical` - string, 可选值： `"top"|"middle"`，默认值是： `"top"`
+  - `text` - string
+  - `type` - string, 可选值： `"tip"|"warn"|"error"`，默认值是： `"tip"`
+  - `vertical` - string, 可选值： `"top"|"middle"`，默认值是： `"top"`
 
 - **Usage**:
 

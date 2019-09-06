@@ -179,7 +179,7 @@ module.exports = {
   plugins: [
     'vuepress-plugin-xxx',
     { name: 'bar' }
-  ] 
+  ]
 }
 ```
 

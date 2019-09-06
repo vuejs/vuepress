@@ -27,7 +27,7 @@ Note that this plugin has been included in **default theme**, the search box you
 module.exports = {
   plugins: [
     ['@vuepress/search', {
-      searchMaxSuggestions: 10      
+      searchMaxSuggestions: 10
     }]
   ]
 }
@@ -74,17 +74,17 @@ Set up searchable paths with regular expressions. If no test expression is provi
 
 ```bash
 docs/
-├── .vuepress/            
+├── .vuepress/
 │    └── ...
 │
-├── master/               
+├── master/
 │    └── ...
 │
-├── 1.0/               
+├── 1.0/
 │    └── ...
 │
-└── 2.0/               
-     └── ...                       
+└── 2.0/
+     └── ...
 ```
 
 You can set up searchable paths with `test` as:

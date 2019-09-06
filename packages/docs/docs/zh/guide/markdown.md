@@ -109,7 +109,11 @@ lang: en-US
 
 **输出**
 
+<!--lint disable no-shortcut-reference-link no-undefined-references-->
+
 [[toc]]
+
+<!--lint enable no-shortcut-reference-link no-undefined-references-->
 
 目录（Table of Contents）的渲染可以通过  [`markdown.toc`](../config/README.md#markdown-toc) 选项来配置。
 
@@ -253,7 +257,7 @@ module.exports = {
   markdown: {
     lineNumbers: true
   }
-}  
+}
 ```
 
 <!-- TODO Support line numbers for specific fence block -->
@@ -299,7 +303,7 @@ module.exports = {
 它也支持 [行高亮](#代码块中的行高亮)：
 
 ``` md
-<<< @/filepath{highlightLines} 
+<<< @/filepath{highlightLines}
 ```
 
 **输入**
@@ -310,7 +314,11 @@ module.exports = {
 
 **输出**
 
+<!--lint disable strong-marker-->
+
 <<< @/../@vuepress/markdown/__tests__/fragments/snippet.js{2}
+
+<!--lint enable strong-marker-->
 
 ::: tip 注意
 由于代码段的导入将在 webpack 编译之前执行，因此你无法使用 webpack 中的路径别名，此处的 `@` 默认值是 `process.cwd()`。

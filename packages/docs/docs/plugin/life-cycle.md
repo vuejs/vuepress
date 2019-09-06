@@ -39,7 +39,7 @@ module.exports = {
 - Type: `AsyncFunction`
 - Scope：`build`
 
- Called when a (production) build finishes, with an array of generated page HTML paths.
+  Called when a (production) build finishes, with an array of generated page HTML paths.
 
 ``` js
 module.exports = {
