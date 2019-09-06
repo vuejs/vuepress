@@ -1,3 +1,27 @@
+# [](https://github.com/vuejs/vuepress/compare/v1.0.4...v) (2019-09-06)
+
+
+
+## [1.0.4](https://github.com/vuejs/vuepress/compare/v1.0.3...v1.0.4) (2019-09-06)
+
+
+### Bug Fixes
+
+* **$core:** do not transpile core packages' dependencies ([b69b107](https://github.com/vuejs/vuepress/commit/b69b107))
+* **avatar:** fix url ([45e31b4](https://github.com/vuejs/vuepress/commit/45e31b4))
+* **contributors:** fix for good contributions ([a709a4f](https://github.com/vuejs/vuepress/commit/a709a4f))
+* **contributors:** fix url parameters ([db71238](https://github.com/vuejs/vuepress/commit/db71238))
+* add missing hash in [#1706](https://github.com/vuejs/vuepress/issues/1706) ([#1780](https://github.com/vuejs/vuepress/issues/1780)) ([25777e4](https://github.com/vuejs/vuepress/commit/25777e4))
+* contributors commit link ([#1809](https://github.com/vuejs/vuepress/issues/1809)) ([bb61182](https://github.com/vuejs/vuepress/commit/bb61182))
+
+
+### Features
+
+* **$core:** use any custom protocol for outboundRE ([#1731](https://github.com/vuejs/vuepress/issues/1731)) ([120d885](https://github.com/vuejs/vuepress/commit/120d885))
+* Disable next and prev links from global config ([#1761](https://github.com/vuejs/vuepress/issues/1761)) ([92a1c02](https://github.com/vuejs/vuepress/commit/92a1c02))
+
+
+
 # [](https://github.com/vuejs/vuepress/compare/v1.0.3...v) (2019-07-29)
 
 
