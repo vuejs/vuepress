@@ -9,7 +9,8 @@ const {
   path: { resolve, parse },
   moduleResolver: { getThemeResolver },
   datatypes: { isString },
-  logger, chalk
+  logger,
+  chalk
 } = require('@vuepress/shared-utils')
 const ThemeAPI = require('./theme-api')
 
@@ -37,7 +38,7 @@ module.exports = function loadTheme (ctx) {
   if (!theme.path) {
     throw new Error(
       '[vuepress] You must specify a theme, or create a local custom theme. \n'
-      + 'For more details, refer to https://vuepress.vuejs.org/guide/custom-themes.html#custom-themes. \n'
+        + 'For more details, refer to https://vuepress.vuejs.org/guide/custom-themes.html#custom-themes. \n'
     )
   }
 
@@ -55,7 +56,7 @@ module.exports = function loadTheme (ctx) {
 
   logger.debug('theme', theme.name, theme.path)
   logger.debug('parentTheme', parentTheme.name, parentTheme.path)
-  return new ThemeAPI(theme, parentTheme, ctx)
+  return new ThemeAPI(theme, parentTheme)
 }
 
 function normalizeThemePath (resolved) {
@@ -82,10 +83,11 @@ function resolveTheme (ctx, resolver, ignoreLocal, theme) {
   /**
    * 1. From `.vuepress/theme` directory.
    */
-  if (!ignoreLocal
+  if (
+    !ignoreLocal
     && !fs.existsSync(theme)
     && fs.existsSync(localThemePath)
-    && (fs.readdirSync(localThemePath)).length > 0
+    && fs.readdirSync(localThemePath).length > 0
   ) {
     path = localThemePath
     name = shortcut = 'local'

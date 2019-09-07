@@ -6,9 +6,8 @@ const {
 const readdirSync = dir => (fs.existsSync(dir) && fs.readdirSync(dir)) || []
 
 module.exports = class ThemeAPI {
-  constructor (theme, parentTheme, context) {
+  constructor (theme, parentTheme) {
     this.theme = theme
-    this.context = context
     this.parentTheme = parentTheme || {}
     this.existsParentTheme = !!this.parentTheme.path
     this.vuepressPlugin = {
