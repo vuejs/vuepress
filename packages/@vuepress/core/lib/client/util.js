@@ -182,3 +182,16 @@ export function normalizeConfig (component, rawConfig) {
   }
   return rawConfig
 }
+
+/**
+ * Set global info in `window.__VUEPRESS__` for debugging.
+ *
+ * @param {string}key
+ * @param {any} value
+ */
+export function setGlobalInfo (key, value) {
+  if (typeof window === 'undefined' || !window.__VUEPRESS__) {
+    return
+  }
+  window.__VUEPRESS__[key] = value
+}

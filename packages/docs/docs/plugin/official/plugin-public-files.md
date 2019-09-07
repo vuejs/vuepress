@@ -18,64 +18,77 @@ yarn add -D @vuepress/plugin-public-files
 
 ### Default Usage
 
-``` js
+```js
 module.exports = {
   plugins: [
     // includes all files in `sourceDir`
     // ignore dotfiles and markdown
-    '@vuepress/public-files'
-  ] 
-}
+    "@vuepress/public-files"
+  ]
+};
 ```
 
 ### An Array of Patterns
 
-``` js
+```js
 module.exports = {
   plugins: [
-    ['@vuepress/public-files', [
-      '.vuepress/another-public',
-      '.vuepress/one-more-public',
-      '.vuepress/public-file.txt'
-    ]]
+    [
+      "@vuepress/public-files",
+      [
+        ".vuepress/another-public",
+        ".vuepress/one-more-public",
+        ".vuepress/public-file.txt"
+      ]
+    ]
   ]
-}
+};
 ```
 
 ### object style of pattern
 
 See: [https://github.com/webpack-contrib/copy-webpack-plugin#patterns](https://github.com/webpack-contrib/copy-webpack-plugin#patterns)
 
-``` js
+```js
 module.exports = {
   plugins: [
-    ['@vuepress/public-files', {
-      from: '_assets', // resolved based on sourceDir
-      to: 'assets', // resolved based on outDir
-      ignore: [/* glob patterns to be ignored */],
-    }],
-  ],
-}
+    [
+      "@vuepress/public-files",
+      {
+        from: "_assets", // resolved based on sourceDir
+        to: "assets", // resolved based on outDir
+        ignore: [
+          /* glob patterns to be ignored */
+        ]
+      }
+    ]
+  ]
+};
 ```
 
-::: TIP
+::: tip
 In fact we support specifying a list of strings or objects.
 :::
 
 ### Use Multiple Times
 
-``` js
+```js
 module.exports = {
   plugins: [
-    ['@vuepress/public-files', [
-      '.vuepress/another-public',
-      '.vuepress/one-more-public',
-    ]],
-    ['@vuepress/public-files', {
-      from: '_assets',
-      to: 'assets',
-      ignore: [/* globs */],
-    }],
-  ],
-}
+    [
+      "@vuepress/public-files",
+      [".vuepress/another-public", ".vuepress/one-more-public"]
+    ],
+    [
+      "@vuepress/public-files",
+      {
+        from: "_assets",
+        to: "assets",
+        ignore: [
+          /* globs */
+        ]
+      }
+    ]
+  ]
+};
 ```

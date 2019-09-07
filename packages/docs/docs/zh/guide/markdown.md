@@ -8,7 +8,7 @@
 
 ### 内部链接
 
-网站内部的的链接，将会被转换成 `<router-link>` 用于 SPA 导航。同时，站内的每一个文件夹下的 `README.md` 或者 `index.md` 文件都会被自动编译为 `index.html`，对应的链接将被视为 `/`。
+网站内部的链接，将会被转换成 `<router-link>` 用于 SPA 导航。同时，站内的每一个文件夹下的 `README.md` 或者 `index.md` 文件都会被自动编译为 `index.html`，对应的链接将被视为 `/`。
 
 以如下的文件结构为例：
 
@@ -103,21 +103,19 @@ lang: en-US
 
 **输入**
 
-```md
-[[toc]]
 ```
-
-或者
-
-```md
-<TOC/>
+[[toc]]
 ```
 
 **输出**
 
+<!--lint disable no-shortcut-reference-link no-undefined-references-->
+
 [[toc]]
 
-目录（Table of Contents）的渲染可以通过  [`markdown.toc`](../config/README.md#markdown-toc) 选项来配置，也可以在 [TOC 组件](./using-vue.md#toc)中直接传入，如 `<TOC list-type="ol" :include-level="[2, Infinity]"/>`。
+<!--lint enable no-shortcut-reference-link no-undefined-references-->
+
+目录（Table of Contents）的渲染可以通过  [`markdown.toc`](../config/README.md#markdown-toc) 选项来配置。
 
 ## 自定义容器 <Badge text="默认主题"/>
 
@@ -259,7 +257,7 @@ module.exports = {
   markdown: {
     lineNumbers: true
   }
-}  
+}
 ```
 
 <!-- TODO Support line numbers for specific fence block -->
@@ -305,7 +303,7 @@ module.exports = {
 它也支持 [行高亮](#代码块中的行高亮)：
 
 ``` md
-<<< @/filepath{highlightLines} 
+<<< @/filepath{highlightLines}
 ```
 
 **输入**
@@ -316,7 +314,11 @@ module.exports = {
 
 **输出**
 
+<!--lint disable strong-marker-->
+
 <<< @/../@vuepress/markdown/__tests__/fragments/snippet.js{2}
+
+<!--lint enable strong-marker-->
 
 ::: tip 注意
 由于代码段的导入将在 webpack 编译之前执行，因此你无法使用 webpack 中的路径别名，此处的 `@` 默认值是 `process.cwd()`。

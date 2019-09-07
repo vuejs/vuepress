@@ -8,8 +8,7 @@ export default {
     return h('div',
       {
         class: [
-          'content',
-          props.slotKey
+          `content__${props.slotKey}`
         ]
       },
       slots()[props.slotKey]

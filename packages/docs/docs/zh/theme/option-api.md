@@ -95,7 +95,7 @@ module.exports = {
 
 举例来说，当你想为当前主题设置全局的 header 和 footer 时，你可以这样做：
 
-  
+
 ```vue
 <!-- themePath/layouts/GlobalLayout.vue -->
 <template>
