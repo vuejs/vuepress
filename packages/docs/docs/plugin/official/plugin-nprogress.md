@@ -5,7 +5,7 @@ metaTitle: Nprogress Plugin | VuePress
 
 # [@vuepress/plugin-nprogress](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-nprogress)
 
-> Nprogress plugin
+> A progress bar plugin based on [nprogress](https://github.com/rstacruz/nprogress). <Badge text="1.0.0-alpha.31+"/>
 
 ## Install
 
@@ -34,6 +34,6 @@ Set `$nprogressColor` in your __site__ or __theme__ `palette.styl` file to chang
 $nprogressColor = red
 ```
 
-**Also see:**
+__Also see:__
 
 - [Config Reference > Styling](../../config/README.md#styling)

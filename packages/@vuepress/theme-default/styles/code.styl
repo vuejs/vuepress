@@ -1,4 +1,4 @@
-.content
+{$contentClass}
   code
     color lighten($textColor, 20%)
     padding 0.25rem 0.5rem
@@ -12,7 +12,7 @@
       &.inserted
         color $accentColor
 
-.content
+{$contentClass}
   pre, pre[class*="language-"]
     line-height 1.4
     padding 1.25rem 1.5rem
@@ -133,3 +133,5 @@ div[class~="language-bash"]:before
 
 div[class~="language-php"]:before
   content "php"
+
+@import '~prismjs/themes/prism-tomorrow.css'

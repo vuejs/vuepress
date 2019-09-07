@@ -7,6 +7,7 @@
 module.exports = function createClientConfig (ctx) {
   const { env } = require('@vuepress/shared-utils')
   const createBaseConfig = require('./createBaseConfig')
+  const safeParser = require('postcss-safe-parser')
 
   const config = createBaseConfig(ctx)
 
@@ -49,7 +50,7 @@ module.exports = function createClientConfig (ctx) {
       .use(require('optimize-css-assets-webpack-plugin'), [{
         canPrint: false,
         cssProcessorOptions: {
-          safe: true,
+          parser: safeParser,
           autoprefixer: { disable: true },
           mergeLonghand: false
         }

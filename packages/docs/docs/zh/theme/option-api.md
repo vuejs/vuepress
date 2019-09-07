@@ -47,14 +47,14 @@ module.exports = (themeConfig, ctx) => {
 - 类型: `String`
 - 默认值: undefined
 
-dev 模式下使用的 HTML 模板路径，默认模板见 [这里](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/core/lib/app/index.dev.html)。
+dev 模式下使用的 HTML 模板路径，默认模板见 [这里](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/core/lib/client/index.dev.html)。
 
 ## ssrTemplate <Badge text="Danger Zone"/>
 
 - 类型: `String`
 - 默认值: undefined
 
-build 模式下使用的 HTML 模板路径，默认模板见 [这里](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/core/lib/app/index.ssr.html)。
+build 模式下使用的 HTML 模板路径，默认模板见 [这里](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/core/lib/client/index.ssr.html)。
 
 **参考:**
 
@@ -95,7 +95,7 @@ module.exports = {
 
 举例来说，当你想为当前主题设置全局的 header 和 footer 时，你可以这样做：
 
-  
+
 ```vue
 <!-- themePath/layouts/GlobalLayout.vue -->
 <template>

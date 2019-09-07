@@ -16,7 +16,7 @@ module.exports = function createServerConfig (ctx) {
 
   config
     .target('node')
-    .externals([/^vue|vue-router$/])
+    .externals([/^(vue|vue-router)$/])
     .devtool('source-map')
 
   // no need to minimize server build

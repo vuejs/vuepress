@@ -1,12 +1,13 @@
 <template>
   <main class="page">
-    <slot name="top"/>
+    <slot name="top" />
 
-    <Content/>
-    <PageEdit/>
-    <PageNav v-bind="{ sidebarItems }"/>
+    <Content />
+    <PageEdit />
 
-    <slot name="bottom"/>
+    <PageNav v-bind="{ sidebarItems }" />
+
+    <slot name="bottom" />
   </main>
 </template>
 
@@ -21,7 +22,8 @@ export default {
 </script>
 
 <style lang="stylus">
-.page
-  padding-bottom 2rem
-  display block
+.page {
+  padding-bottom: 2rem;
+  display: block;
+}
 </style>
