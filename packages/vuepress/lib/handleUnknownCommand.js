@@ -35,6 +35,7 @@ module.exports = async function (cli, options) {
       sourceDir = pwd
     }
 
+    /* Prepare Context START */
     logger.setOptions({ logLevel: 1 })
 
     if (sourceDir) {
@@ -44,6 +45,7 @@ module.exports = async function (cli, options) {
     }
 
     logger.setOptions({ logLevel: 3 })
+    /* Prepare Context END */
   }
 }
 
@@ -104,12 +106,19 @@ function registerUnknownCommands (cli, options) {
     logger.debug('Custom command', chalk.cyan(commandName))
     CLI({
       async beforeParse (subCli) {
+        /* Prepare Context START */
+        logger.setOptions({ logLevel: 1 })
+
         const app = createApp({
           sourceDir: sourceDir,
           ...options,
           ...commandoptions
         })
         await app.process()
+
+        logger.setOptions({ logLevel: 3 })
+        /* Prepare Context END */
+
         app.pluginAPI.applySyncOption('extendCli', subCli, app)
         console.log()
       },

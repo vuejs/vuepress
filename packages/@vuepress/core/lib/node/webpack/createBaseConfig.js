@@ -127,7 +127,10 @@ module.exports = function createBaseConfig (context, isServer) {
       .loader('pug-plain-loader')
       .end()
 
-  if (!siteConfig.evergreen) {
+  const evergreen = typeof siteConfig.evergreen === 'function'
+    ? siteConfig.evergreen()
+    : siteConfig.evergreen
+  if (!evergreen) {
     const libDir = path.join(__dirname, '..')
     config.module
       .rule('js')
@@ -139,6 +142,10 @@ module.exports = function createBaseConfig (context, isServer) {
           }
           // always transpile js in vue files
           if (/\.vue\.js$/.test(filePath)) {
+            return false
+          }
+          // transpile all core files
+          if (/(@vuepress|vuepress-)\/^((?!node_modules).)*\.js$/.test(filePath)) {
             return false
           }
           // Don't transpile node_modules
@@ -224,12 +231,13 @@ module.exports = function createBaseConfig (context, isServer) {
       }
 
       rule.use('css-loader')
-        .loader(isServer ? 'css-loader/locals' : 'css-loader')
+        .loader('css-loader')
         .options({
           modules,
           localIdentName: `[local]_[hash:base64:8]`,
           importLoaders: 1,
-          sourceMap: !isProd
+          sourceMap: !isProd,
+          exportOnlyLocals: isServer
         })
 
       rule.use('postcss-loader').loader('postcss-loader').options(Object.assign({
@@ -306,5 +314,5 @@ function getLastCommitHash () {
 }
 
 function getModulePaths () {
-  return [path.resolve(process.cwd(), 'node_modules')].concat(module.paths)
+  return module.paths.concat([path.resolve(process.cwd(), 'node_modules')])
 }

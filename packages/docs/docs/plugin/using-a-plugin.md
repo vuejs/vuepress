@@ -12,7 +12,7 @@ module.exports = {
 
 ## Use plugins from a dependency
 
-A plugin can be published on npm in `CommonJS` format as `vuepress-plugin-xxx`. you can use it:
+A plugin can be published on npm in `CommonJS` format as `vuepress-plugin-xxx`. You can use it:
 
 ``` js
 module.exports = {
@@ -75,7 +75,7 @@ module.exports = {
 }
 ```
 
-Since this style is consistent with [babel's Plugin/Preset Options](https://babeljs.io/docs/en/plugins#plugin-preset-options), we call it `Babel Style`.
+Since this style is consistent with [babel’s Plugin/Preset Options](https://babeljs.io/docs/en/plugins#plugin-preset-options), we call it `Babel Style`.
 
 ### Object Style
 

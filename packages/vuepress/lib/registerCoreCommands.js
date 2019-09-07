@@ -4,6 +4,9 @@
  * Module dependencies.
  */
 
+const { chalk } = require('@vuepress/shared-utils')
+const envinfo = require('envinfo')
+
 const { dev, build, eject } = require('@vuepress/core')
 const { path, logger, env } = require('@vuepress/shared-utils')
 const { wrapCommand } = require('./util')
@@ -44,6 +47,7 @@ module.exports = function (cli, options) {
     .option('-d, --dest <dest>', 'specify build output dir (default: .vuepress/dist)')
     .option('-t, --temp <temp>', 'set the directory of the temporary file')
     .option('-c, --cache [cache]', 'set the directory of cache')
+    .option('--dest <dest>', 'the output directory for build process')
     .option('--no-cache', 'clean the cache before build')
     .option('--debug', 'build in development mode for debugging')
     .option('--silent', 'build static site in silent mode')
@@ -67,5 +71,29 @@ module.exports = function (cli, options) {
     .option('--debug', 'eject in debug mode')
     .action((dir = '.') => {
       wrapCommand(eject)(path.resolve(dir))
+    })
+
+  cli
+    .command('info', 'Shows debugging information about the local environment')
+    .action(() => {
+      console.log(chalk.bold('\nEnvironment Info:'))
+      envinfo.run(
+        {
+          System: ['OS', 'CPU'],
+          Binaries: ['Node', 'Yarn', 'npm'],
+          Browsers: ['Chrome', 'Edge', 'Firefox', 'Safari'],
+          npmGlobalPackages: ['vuepress'],
+          npmPackages: [
+            'vuepress',
+            '@vuepress/core',
+            '@vuepress/theme-default'
+          ]
+        },
+        {
+          showNotFound: true,
+          duplicates: true,
+          fullTree: true
+        }
+      ).then(console.log)
     })
 }

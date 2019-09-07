@@ -10,7 +10,7 @@
 
 ``` bash
 # 安装
-yarn global add vuepress@next # 或者：npm install -g vuepress@next
+yarn global add vuepress # 或者：npm install -g vuepress
 
 # 新建一个 markdown 文件
 echo '# Hello VuePress!' > README.md
@@ -28,7 +28,7 @@ vuepress build .
 
 ``` bash
 # 将 VuePress 作为一个本地依赖安装
-yarn add -D vuepress@next # 或者：npm install -D vuepress@next
+yarn add -D vuepress # 或者：npm install -D vuepress
 
 # 新建一个 docs 文件夹
 mkdir docs

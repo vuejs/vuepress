@@ -15,7 +15,7 @@ metaTitle: Last-Updated 插件 | VuePress
 
 ```js
 module.exports = {
-  plugins: ['@vuepress/last-updated'] 
+  plugins: ['@vuepress/last-updated']
 }
 ```
 
@@ -35,7 +35,7 @@ const moment = require('moment');
 
 module.exports = {
   plugins: [
-    [ 
+    [
       '@vuepress/last-updated',
       {
         transformer: (timestamp, lang) => {

@@ -12,14 +12,14 @@ sidebar: auto
 - 类型: `string`
 - 默认值: `/`
 
-部署站点的基础路径，如果你想让你的网站部署到一个子路径下，你将需要设置它。如 Github pages，如果你想将你的网站部署到 `https://foo.github.io/bar/`，那么 `base` 应该被设置成 `"/bar/"`，它的值应当总是以斜杠开始，并以斜杠结束。
+部署站点的基础路径，如果你想让你的网站部署到一个子路径下，你将需要设置它。如 GitHub pages，如果你想将你的网站部署到 `https://foo.github.io/bar/`，那么 `base` 应该被设置成 `"/bar/"`，它的值应当总是以斜杠开始，并以斜杠结束。
 
-`base` 将会自动地作为前缀插入到所有以 `/` 开始的其他选项的链接中，所以你只需要指定一次。
+`base` 将会作为前缀自动地插入到所有以 `/` 开始的其他选项的链接中，所以你只需要指定一次。
 
 **参考:**
 
 - [Base URL](../guide/assets.md#基础路径)
-- [部署指南 > Github Pages](../guide/deploy.md#github-pages)
+- [部署指南 > GitHub Pages](../guide/deploy.md#github-pages)
 
 ### title
 
@@ -66,8 +66,8 @@ module.exports = {
 
 ### temp
 
-- Type: `number`
-- Default: `@vuepress/core/.temp`
+- Type: `string`
+- Default: `/path/to/@vuepress/core/.temp`
 
 指定客户端文件的临时目录。
 
@@ -77,17 +77,6 @@ module.exports = {
 - 默认值: `.vuepress/dist`
 
 指定 `vuepress build` 的输出目录。如果传入的是相对路径，则会基于 `process.cwd()` 进行解析。
-
-### ga
-
-- 类型: `string`
-- 默认值: `undefined`
-
-提供一个 Google Analytics ID 来使 GA 生效。
-
-::: tip 提示
-请留意 [GDPR (2018年欧盟数据保护规则改革)](https://ec.europa.eu/commission/priorities/justice-and-fundamental-rights/data-protection/2018-reform-eu-data-protection-rules_en), 在合适或者需要的情况下，考虑将 Google Analytics 设置为[匿名化的 IP](https://support.google.com/analytics/answer/2763052?hl=zh-Hans)。
-:::
 
 ### locales
 
@@ -120,11 +109,29 @@ vuepress dev docs --no-cache     # 在每次构建前删除 cache
 ```
 :::
 
+### extraWatchFiles
+
+- 类型: `Array`
+- 默认值: `[]`
+
+指定额外的需要被监听的文件。
+
+你可以监听任何想监听的文件，文件变动将会触发 `vuepress` 重新构建，并实时更新。
+
+``` js
+module.exports = {
+  extraWatchFiles: [
+    '.vuepress/foo.js', // 使用相对路径
+    '/path/to/bar.js'   // 使用绝对路径
+  ]
+}
+```
+
 ## Styling
 
 ### palette.styl
 
-如果要对[默认预设](https://github.com/vuejs/vuepress/blob/master/packages/@vuepress/core/lib/app/style/config.styl)的样式应用简单的颜色替换，或者定义一些颜色变量供以后使用，你可以创建一个 `.vuepress/styles/palette.styl` 文件。
+如果要对[默认预设](https://github.com/vuejs/vuepress/blob/master/packages/@vuepress/core/lib/client/style/config.styl)的样式应用简单的颜色替换，或者定义一些颜色变量供以后使用，你可以创建一个 `.vuepress/styles/palette.styl` 文件。
 
 你可以调整一些颜色变量:
 
@@ -142,7 +149,7 @@ $codeBgColor = #282c34
 
 ### index.styl
 
-VuePress 提供了一种添加额外样式的简便方法。你可以创建一个 `.vuepress/styles/index.styl` 文件。这是一个 [Stylus](http://stylus-lang.com/) 文件，但你也可以使用正常的 CSS 语法。 
+VuePress 提供了一种添加额外样式的简便方法。你可以创建一个 `.vuepress/styles/index.styl` 文件。这是一个 [Stylus](http://stylus-lang.com/) 文件，但你也可以使用正常的 CSS 语法。
 
 ```stylus
 .content {
@@ -220,17 +227,9 @@ VuePress 提供了一种添加额外样式的简便方法。你可以创建一�
 ### markdown.toc
 
 - 类型: `Object`
+- 默认值: `{ includeLevel: [2, 3] }`
 
-这个值将会控制 `[[TOC]]` 默认行为。它包含下面的选项：
-
-- includeLevel: [number, number]，决定哪些级别的标题会被显示在目录中，默认值为 `[2, 3]`。
-- containerClass: string，决定了目录容器的类名，默认值为 `table-of-contents`。
-- markerPattern: RegExp，决定了标题匹配的正则表达式，默认值为 `/^\[\[toc\]\]/im`。
-- listType: string 或 Array，决定了各级列表的标签，默认值为 `"ul"`。
-- containerHeaderHtml: string，在目录开头插入的 HTML 字符串，默认值为 `""`。
-- containerFooterHtml: string，在目录结尾插入的 HTML 字符串，默认值为 `""`。
-
-此外，我们还提供了[全局组件 TOC](../guide/using-vue.md#toc)，可以通过直接向 `<TOC>` 传递属性实现更加自由的控制。
+[markdown-it-table-of-contents](https://github.com/Oktavilla/markdown-it-table-of-contents) 的选项。
 
 ### markdown.plugins
 
@@ -359,7 +358,7 @@ module.exports = {
 
 ### evergreen
 
-- 类型: `boolean`
+- 类型: `boolean | Function`
 - 默认值: `false`
 
 如果你的对象只有那些 “常青树” 浏览器，你可以将其设置成 `true`，这将会禁止 ESNext 到 ES5 的转译以及对 IE 的 polyfills，同时会带来更快的构建速度和更小的文件体积。
