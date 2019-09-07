@@ -3,16 +3,29 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import { setGlobalInfo } from '@app/util'
+
 export default {
-  computed: {
-    layout () {
+  methods: {
+    getLayout () {
       if (this.$page.path) {
-        if (this.$vuepress.isLayoutExists(this.$page.frontmatter.layout)) {
-          return this.$page.frontmatter.layout
+        const layout = this.$page.frontmatter.layout
+        if (layout && (this.$vuepress.getLayoutAsyncComponent(layout)
+          || this.$vuepress.getVueComponent(layout))) {
+          return layout
         }
         return 'Layout'
       }
       return 'NotFound'
+    }
+  },
+
+  computed: {
+    layout () {
+      const layout = this.getLayout()
+      setGlobalInfo('layout', layout)
+      return Vue.component(layout)
     }
   }
 }

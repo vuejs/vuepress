@@ -37,7 +37,7 @@ module.exports = class Page {
    */
 
   constructor ({
-    path,
+    path: _path,
     meta,
     title,
     content,
@@ -58,10 +58,14 @@ module.exports = class Page {
 
     if (relative) {
       this.regularPath = encodeURI(fileToPath(relative))
-    } else if (path) {
-      this.regularPath = encodeURI(path)
+    } else if (_path) {
+      this.regularPath = encodeURI(_path)
     } else if (permalink) {
       this.regularPath = encodeURI(permalink)
+    }
+
+    if (filePath) {
+      this.relativePath = path.relative(context.sourceDir, filePath).replace(/\\/g, '/')
     }
 
     this.key = 'v-' + hash(`${this._filePath}${this.regularPath}`)
@@ -85,11 +89,7 @@ module.exports = class Page {
     enhancers = [],
     preRender = {}
   }) {
-    // relative path
-    let relPath
-
     if (this._filePath) {
-      relPath = path.relative(this._context.sourceDir, this._filePath)
       logger.developer(`static_route`, chalk.cyan(this.path))
       this._content = await fs.readFile(this._filePath, 'utf-8')
     } else if (this._content) {
@@ -124,7 +124,7 @@ module.exports = class Page {
         if (excerpt) {
           const { html } = markdown.render(excerpt, {
             frontmatter: this.frontmatter,
-            relPath
+            relativePath: this.relativePath
           })
           this.excerpt = html
         }
@@ -147,6 +147,17 @@ module.exports = class Page {
   }
 
   /**
+   * name of page's parent directory.
+   *
+   * @returns {string}
+   * @api public
+   */
+
+  get dirname () {
+    return path.basename(path.dirname(this._filePath || this.regularPath))
+  }
+
+  /**
    * file name of page's source markdown file, or the last cut of regularPath.
    *
    * @returns {string}
@@ -165,7 +176,19 @@ module.exports = class Page {
    */
 
   get slug () {
-    return slugify(this.strippedFilename)
+    const strippedFilename = this.strippedFilename
+
+    if (/^(index|readme)$/i.test(strippedFilename)) {
+      const strippedFilename = this.stripFilename(
+        path.basename(path.dirname(this._filePath || this.regularPath))
+      )
+
+      if (strippedFilename) {
+        return slugify(strippedFilename)
+      }
+    }
+
+    return slugify(strippedFilename)
   }
 
   /**
@@ -179,8 +202,7 @@ module.exports = class Page {
    */
 
   get strippedFilename () {
-    const match = this.filename.match(DATE_RE)
-    return match ? match[3] : this.filename
+    return this.stripFilename(this.filename)
   }
 
   /**
@@ -191,7 +213,23 @@ module.exports = class Page {
    */
 
   get date () {
-    return inferDate(this.frontmatter, this.filename)
+    return inferDate(this.frontmatter, this.filename, this.dirname)
+  }
+
+  /**
+   * stripped file name.
+   *
+   * If filename was yyyy-MM-dd-[title], the date prefix will be stripped.
+   * If filename was yyyy-MM-[title], the date prefix will be stripped.
+   *
+   * @param {string} fileName
+   * @returns {string}
+   * @private
+   */
+  stripFilename (fileName) {
+    const match = fileName.match(DATE_RE)
+
+    return match ? match[3] : fileName
   }
 
   /**

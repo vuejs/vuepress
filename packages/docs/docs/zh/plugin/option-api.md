@@ -11,7 +11,7 @@ metaTitle: Option API | Plugin
 
 插件的名字。
 
-在内部，VuePress 将会使用插件的包名作为插件的名称。当你你插件是一个本地插件（即直接使用了一个纯函数）时，请确保设定了该选项，这对调试更有利。
+在内部，VuePress 将会使用插件的包名作为插件的名称。当你的插件是一个本地插件（即直接使用了一个纯函数）时，请确保设定了该选项，这对调试更有利。
 
 ```js
 // .vuepress/config.js
@@ -241,7 +241,7 @@ module.exports = {
 }
 ```
 
-此选项还支持动态代码，允许你使用触摸编译上下文的能力来做更多的事：
+此选项还支持动态代码，允许你使用贴近编译上下文的能力来做更多的事：
 
 ```js
 module.exports = (option, context) => {
@@ -302,10 +302,10 @@ module.exports = {
       regularPath,         // 当前页面遵循文件层次结构的默认链接
       path,                // 当前页面的实际链接（在 permalink 不存在时，使用 regularPath ）
     } = $page
-   
+
     // 1. Add extra fields.
     $page.xxx = 'xxx'
-    
+
     // 2. Change frontmatter.
     frontmatter.sidebar = 'auto'
   }
@@ -333,7 +333,7 @@ module.exports = {
 - 类型: `String`
 - 默认值: `undefined`
 
-指向 `mixin` 文件的路径，它让你你可以控制根组件的生命周期：
+指向 `mixin` 文件的路径，它让你可以控制根组件的生命周期：
 
 ``` js
 // 插件的入口
@@ -411,7 +411,7 @@ module.exports = {
 - 类型: `Array|String`
 - 默认值: `undefined`
 
-你可能想注入某些全局的 UI，并固定在页面中的某处，如  `back-to-top`, `popup`。在 VuePress 中，**一个全局 UI 就是一个 Vue 组件。**你可以直接配置该全局组件的名称，如：
+你可能想注入某些全局的 UI，并固定在页面中的某处，如  `back-to-top`, `popup`。在 VuePress 中，**一个全局 UI 就是一个 Vue 组件**。你可以直接配置该全局组件的名称，如：
 
 ``` js
 module.exports = {
@@ -439,7 +439,7 @@ VuePress 将会自动将这些组件注入到布局组件的隔壁：
 - 类型: `function`
 - 默认值: `undefined`
 
-注册一个额外的 command 来增强 vuepress 的 CLI。这个函数将会以一个 [CAC](https://github.com/cacjs/cac) 的实例作为第一个参数被调用。
+注册一个额外的 command 来增强 VuePress 的 CLI。这个函数将会以一个 [CAC](https://github.com/cacjs/cac) 的实例作为第一个参数被调用。
 
 ```js
 module.exports = {

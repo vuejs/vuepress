@@ -18,6 +18,7 @@ describe('App', () => {
         theme: '@vuepress/default',
         emp: docsTempPath
       })
+      await app.process()
       expect(app.sourceDir).toBe(docsPath)
     }))
   })

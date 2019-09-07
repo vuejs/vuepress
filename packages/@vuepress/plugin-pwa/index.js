@@ -40,7 +40,8 @@ module.exports = (options, context) => ({
       await wbb.generateSW({
         swDest: swFilePath,
         globDirectory: outDir,
-        globPatterns: ['**\/*.{js,css,html,png,jpg,jpeg,gif,svg,woff,woff2,eot,ttf,otf}']
+        globPatterns: ['**\/*.{js,css,html,png,jpg,jpeg,gif,svg,woff,woff2,eot,ttf,otf}'],
+        ...(options.generateSWConfig || {})
       })
       await fs.writeFile(
         swFilePath,

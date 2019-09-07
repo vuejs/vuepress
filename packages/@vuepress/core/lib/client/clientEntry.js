@@ -4,7 +4,7 @@ import { createApp } from './app'
 
 const { app, router } = createApp(false /* isServer */)
 
-window.__VUEPRESS_VERSION__ = {
+window.__VUEPRESS__ = {
   version: VUEPRESS_VERSION,
   hash: LAST_COMMIT_HASH
 }

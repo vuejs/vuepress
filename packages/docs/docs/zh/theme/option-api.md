@@ -4,7 +4,7 @@ metaTitle: Configuration | Theme
 
 # 主题的配置
 
-和插件几乎一样，主题的配置文件 `themeEntry` 应该导出一个普通的 JavaScript 对象（`#1`），它也可以是一个返回对象的函数（`#2`），这个函数接受用户在 `siteConfig.themeConfig` 为第一个参数、包含编译期上下文的 [ctx](./context-api.md) 对象作为第二个参数。
+和插件几乎一样，主题的配置文件 `themeEntry` 应该导出一个普通的 JavaScript 对象（`#1`），它也可以是一个返回对象的函数（`#2`），这个函数接受用户在 `siteConfig.themeConfig` 为第一个参数、包含编译期上下文的 [ctx](../plugin/context-api.md) 对象作为第二个参数。
 
 ``` js
 // #1
@@ -47,14 +47,14 @@ module.exports = (themeConfig, ctx) => {
 - 类型: `String`
 - 默认值: undefined
 
-dev 模式下使用的 HTML 模板路径，默认模板见 [这里](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/core/lib/app/index.dev.html)。
+dev 模式下使用的 HTML 模板路径，默认模板见 [这里](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/core/lib/client/index.dev.html)。
 
 ## ssrTemplate <Badge text="Danger Zone"/>
 
 - 类型: `String`
 - 默认值: undefined
 
-build 模式下使用的 HTML 模板路径，默认模板见 [这里](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/core/lib/app/index.ssr.html)。
+build 模式下使用的 HTML 模板路径，默认模板见 [这里](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/core/lib/client/index.ssr.html)。
 
 **参考:**
 
@@ -95,7 +95,7 @@ module.exports = {
 
 举例来说，当你想为当前主题设置全局的 header 和 footer 时，你可以这样做：
 
-  
+
 ```vue
 <!-- themePath/layouts/GlobalLayout.vue -->
 <template>
@@ -111,7 +111,8 @@ export default {
   computed: {
     layout () {
       if (this.$page.path) {
-        if (this.$vuepress.isLayoutExists(this.$frontmatter.layout)) {
+        if (this.$frontmatter.layout) {
+          // 你也可以像默认的 globalLayout 一样首先检测 layout 是否存在
           return this.$frontmatter.layout
         }
         return 'Layout'

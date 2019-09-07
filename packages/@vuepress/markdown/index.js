@@ -5,7 +5,6 @@
  */
 
 const Config = require('markdown-it-chain')
-const LRUCache = require('lru-cache')
 const highlight = require('./lib/highlight')
 const { PLUGINS, REQUIRED_PLUGINS } = require('./lib/constant')
 const highlightLinesPlugin = require('./lib/highlightLines')
@@ -15,10 +14,15 @@ const componentPlugin = require('./lib/component')
 const hoistScriptStylePlugin = require('./lib/hoist')
 const convertRouterLinkPlugin = require('./lib/link')
 const snippetPlugin = require('./lib/snippet')
-const tocPlugin = require('./lib/tableOfContents')
 const emojiPlugin = require('markdown-it-emoji')
 const anchorPlugin = require('markdown-it-anchor')
-const { slugify: _slugify, logger, chalk, hash } = require('@vuepress/shared-utils')
+const tocPlugin = require('markdown-it-table-of-contents')
+const {
+  slugify: _slugify,
+  parseHeaders,
+  logger, chalk, normalizeConfig,
+  moduleResolver: { getMarkdownItResolver }
+} = require('@vuepress/shared-utils')
 
 /**
  * Create markdown by config.
@@ -29,10 +33,13 @@ module.exports = (markdown = {}) => {
     externalLinks,
     anchor,
     toc,
+    plugins,
     lineNumbers,
     beforeInstantiate,
     afterInstantiate
   } = markdown
+
+  const resolver = getMarkdownItResolver()
 
   // allow user config slugify
   const slugify = markdown.slugify || _slugify
@@ -87,7 +94,11 @@ module.exports = (markdown = {}) => {
       .end()
 
     .plugin(PLUGINS.TOC)
-      .use(tocPlugin, [toc])
+      .use(tocPlugin, [Object.assign({
+        slugify,
+        includeLevel: [2, 3],
+        format: parseHeaders
+      }, toc)])
       .end()
 
   if (lineNumbers) {
@@ -100,22 +111,17 @@ module.exports = (markdown = {}) => {
 
   const md = config.toMd(require('markdown-it'), markdown)
 
-  afterInstantiate && afterInstantiate(md)
-
-  // override parse to allow cache
-  const parse = md.parse
-  const cache = new LRUCache({ max: 1000 })
-  md.parse = (src, env) => {
-    const key = hash(src + env.relPath)
-    const cached = cache.get(key)
-    if (cached) {
-      return cached
+  const pluginsConfig = normalizeConfig(plugins || [])
+  pluginsConfig.forEach(([pluginRaw, pluginOptions]) => {
+    const plugin = resolver.resolve(pluginRaw)
+    if (plugin.entry) {
+      md.use(plugin.entry, pluginOptions)
     } else {
-      const tokens = parse.call(md, src, env)
-      cache.set(key, tokens)
-      return tokens
+      // TODO: error handling
     }
-  }
+  })
+
+  afterInstantiate && afterInstantiate(md)
 
   module.exports.dataReturnable(md)
 

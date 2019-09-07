@@ -22,7 +22,7 @@ exports.flattenPlugin = function (
   pluginContext,
   self
 ) {
-  const { valid, warnMsg } = assertTypes(pluginOptions, [Object, Boolean])
+  const { valid, warnMsg } = assertTypes(pluginOptions, [Object, Array, Boolean])
   if (!valid) {
     if (pluginOptions !== undefined) {
       logger.warn(
@@ -43,6 +43,14 @@ exports.flattenPlugin = function (
     // 'Object.create' here is to give each plugin a separate context,
     // but also own the inheritance context.
     config = config(pluginOptions, Object.create(pluginContext), self)
+    const { valid, warnMsg } = assertTypes(config, [Object])
+    if (!valid) {
+      logger.warn(
+        `[${chalk.gray(shortcut)}] `
+        + `Invalid value for plugin: ${warnMsg}`
+      )
+      config = {}
+    }
   }
 
   // respect name in local plugin config
@@ -56,35 +64,4 @@ exports.flattenPlugin = function (
     enabled,
     $$options: pluginOptions /* used for test */
   })
-}
-
-/**
- * Normalize plugins config in `.vuepress/config.js`
- *
- * @param pluginsConfig
- */
-
-exports.normalizePluginsConfig = function (pluginsConfig) {
-  const { valid, warnMsg } = assertTypes(pluginsConfig, [Object, Array])
-  if (!valid) {
-    if (pluginsConfig !== undefined) {
-      logger.warn(
-        `[${chalk.gray('config')}] `
-        + `Invalid value for "plugin" field : ${warnMsg}`
-      )
-    }
-    pluginsConfig = []
-    return pluginsConfig
-  }
-
-  if (Array.isArray(pluginsConfig)) {
-    pluginsConfig = pluginsConfig.map(item => {
-      return Array.isArray(item) ? item : [item]
-    })
-  } else if (typeof pluginsConfig === 'object') {
-    pluginsConfig = Object.keys(pluginsConfig).map(item => {
-      return [item, pluginsConfig[item]]
-    })
-  }
-  return pluginsConfig
 }
