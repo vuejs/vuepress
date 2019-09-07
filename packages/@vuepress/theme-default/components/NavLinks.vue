@@ -7,16 +7,17 @@
     <div
       class="nav-item"
       v-for="(item, index) in userLinks"
-      :tabindex="tabIndexStart + index"
       :key="item.link"
     >
       <DropdownLink
         v-if="item.type === 'links'"
         :item="item"
+        :tab-index="tabIndexStart + index"
         dropdownName="Select Dropdown"
       />
       <NavLink
         v-else
+        :tabindex="tabIndexStart + index"
         :item="item"
       />
     </div>

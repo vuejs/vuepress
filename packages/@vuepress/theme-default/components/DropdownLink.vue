@@ -7,6 +7,7 @@
       class="dropdown-title"
       :aria-label="dropdownName"
       @click="toggle"
+      :tabindex="tabIndex"
     >
       <span class="title">{{ item.text }}</span>
       <span
@@ -36,12 +37,13 @@
               :key="childSubItem.link"
               v-for="childSubItem in subItem.items"
             >
-              <NavLink :item="childSubItem"/>
+              <NavLink :tabindex="tabIndex" :item="childSubItem"/>
             </li>
           </ul>
 
           <NavLink
             v-else
+            :tabindex="tabIndex"
             :item="subItem"
           />
         </li>
@@ -70,6 +72,10 @@ export default {
     dropdownName: {
       default: 'Dropdown',
       type: String
+    },
+    tabIndex: {
+      default: 0,
+      type: Number
     }
   },
 
@@ -154,7 +160,8 @@ export default {
 @media (min-width: $MQMobile)
   .dropdown-wrapper
     height 1.8rem
-    &:hover .nav-dropdown
+    &:hover .nav-dropdown,
+    &:focus-within .nav-dropdown
       // override the inline style.
       display block !important
     .dropdown-title .arrow
