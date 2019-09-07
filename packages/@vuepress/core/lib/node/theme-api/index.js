@@ -1,5 +1,9 @@
-const { logger, fs, path: { resolve }} = require('@vuepress/shared-utils')
-const readdirSync = dir => fs.existsSync(dir) && fs.readdirSync(dir) || []
+const {
+  logger,
+  fs,
+  path: { resolve }
+} = require('@vuepress/shared-utils')
+const readdirSync = dir => (fs.existsSync(dir) && fs.readdirSync(dir)) || []
 
 module.exports = class ThemeAPI {
   constructor (theme, parentTheme) {
@@ -30,12 +34,12 @@ module.exports = class ThemeAPI {
     this.componentMap = this.getComponents()
     this.layoutComponentMap = this.getLayoutComponentMap()
 
-    Object.keys(this.componentMap).forEach((name) => {
+    Object.keys(this.componentMap).forEach(name => {
       const { filename, path } = this.componentMap[name]
       alias[`@theme/components/${filename}`] = path
     })
 
-    Object.keys(this.layoutComponentMap).forEach((name) => {
+    Object.keys(this.layoutComponentMap).forEach(name => {
       const { filename, path } = this.layoutComponentMap[name]
       alias[`@theme/layouts/${filename}`] = path
     })
@@ -44,13 +48,9 @@ module.exports = class ThemeAPI {
   }
 
   getComponents () {
-    const componentDirs = [
-      resolve(this.theme.path, 'components')
-    ]
+    const componentDirs = [resolve(this.theme.path, 'components')]
     if (this.existsParentTheme) {
-      componentDirs.unshift(
-        resolve(this.parentTheme.path, 'components'),
-      )
+      componentDirs.unshift(resolve(this.parentTheme.path, 'components'))
     }
     return resolveSFCs(componentDirs)
   }
@@ -63,15 +63,15 @@ module.exports = class ThemeAPI {
     if (this.existsParentTheme) {
       layoutDirs.unshift(
         resolve(this.parentTheme.path, '.'),
-        resolve(this.parentTheme.path, 'layouts'),
+        resolve(this.parentTheme.path, 'layouts')
       )
     }
     // built-in named layout or not.
     const layoutComponentMap = resolveSFCs(layoutDirs)
 
-    const { Layout = {}, NotFound = {}} = layoutComponentMap
+    const { Layout, NotFound } = layoutComponentMap
     // layout component does not exist.
-    if (!Layout || !fs.existsSync(Layout.path)) {
+    if (!Layout) {
       const fallbackLayoutPath = resolve(__dirname, 'Layout.fallback.vue')
       layoutComponentMap.Layout = {
         filename: 'Layout.vue',
@@ -81,10 +81,10 @@ module.exports = class ThemeAPI {
       }
       logger.warn(
         `[vuepress] Cannot resolve Layout.vue file in \n ${Layout.path}, `
-        + `fallback to default layout: ${fallbackLayoutPath}`
+          + `fallback to default layout: ${fallbackLayoutPath}`
       )
     }
-    if (!NotFound || !fs.existsSync(NotFound.path)) {
+    if (!NotFound) {
       layoutComponentMap.NotFound = {
         filename: 'NotFound.vue',
         componentName: 'NotFound',
@@ -104,25 +104,28 @@ module.exports = class ThemeAPI {
  */
 
 function resolveSFCs (dirs) {
-  return dirs.map(
-    layoutDir => readdirSync(layoutDir)
-      .filter(filename => filename.endsWith('.vue'))
-      .map(filename => {
-        const componentName = getComponentName(filename)
-        return {
-          filename,
-          componentName,
-          isInternal: isInternal(componentName),
-          path: resolve(layoutDir, filename)
-        }
-      })
-  ).reduce((arr, next) => {
-    arr.push(...next)
-    return arr
-  }, []).reduce((map, component) => {
-    map[component.componentName] = component
-    return map
-  }, {})
+  return dirs
+    .map(layoutDir =>
+      readdirSync(layoutDir)
+        .filter(filename => filename.endsWith('.vue'))
+        .map(filename => {
+          const componentName = getComponentName(filename)
+          return {
+            filename,
+            componentName,
+            isInternal: isInternal(componentName),
+            path: resolve(layoutDir, filename)
+          }
+        })
+    )
+    .reduce((arr, next) => {
+      arr.push(...next)
+      return arr
+    }, [])
+    .reduce((map, component) => {
+      map[component.componentName] = component
+      return map
+    }, {})
 }
 
 /**
