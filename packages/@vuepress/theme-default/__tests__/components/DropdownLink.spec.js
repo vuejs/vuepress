@@ -22,7 +22,7 @@ describe('DropdownLink', () => {
       stubs: {
         'router-link': RouterLinkStub
       },
-      propsData: { item, dropdownName: 'Languages' }
+      propsData: { item, dropdownName: 'Languages', tabIndex: 8 }
     })
     expect(wrapper.html()).toMatchSnapshot()
   })
