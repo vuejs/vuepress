@@ -90,7 +90,7 @@ You will maybe find some difficulty with link. If you encounter something like `
 You already have VuePress registered:
 
 - If you already link VuePress from [Link](#link). It’s totally fine. If you make changes because it is symlink you dont have to re run something. You will have to rerun yarn tsc if you update shared-utils package. Nothing more
-- If you didn't do anything. You already have VuePress linked somewhere. What you have to do is deleting folder where you ran `yarn link` or `yarn unlink`.
+- If you didn’t do anything. You already have VuePress linked somewhere. What you have to do is deleting folder where you ran `yarn link` or `yarn unlink`.
 
 ## More
 
