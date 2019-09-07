@@ -376,7 +376,7 @@ Note that it’s `off` by default. If given a `string`, it will be displayed as 
 
 ## Prev / Next Links
 
-Prev and next links are automatically inferred based on the sidebar order of the active page. You can also explicitly overwrite or disable them using `YAML front matter`:
+Prev and next links are automatically inferred based on the sidebar order of the active page. You can also explicitly overwrite or disable them globally with [theme config](/theme/default-theme-config.html#git-repository-and-edit-links) or on specific pages using `YAML front matter`:
 
 ``` yaml
 ---
@@ -409,17 +409,23 @@ module.exports = {
     docsBranch: 'master',
     // defaults to false, set to true to enable
     editLinks: true,
+    // default value is true. Allows to hide next page links on all pages
+    nextLinks: false,
+    // default value is true. Allows to hide prev page links on all pages
+    prevLinks: false,
     // custom text for edit link. Defaults to "Edit this page"
     editLinkText: 'Help us improve this page!'
   }
 }
 ```
 
-You can also hide the edit link on a specific page via `YAML front matter`:
+You can overwrite the following properties on specific pages via `YAML front matter`:
 
 ``` yaml
 ---
-editLink: false
+editLink: false # Will overwrite 'editLinks' from themeConfig
+prev: true # Will overwrite 'prevLinks' property from themeConfig
+next: ./my-next-page # Will overwrite 'nextLinks' property from themeConfig
 ---
 ```
 

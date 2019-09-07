@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-medium-zoom",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "medium-zoom plugin for vuepress",
   "main": "index.js",
   "publishConfig": {
