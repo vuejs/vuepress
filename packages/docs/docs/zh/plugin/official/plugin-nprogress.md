@@ -34,6 +34,6 @@ module.exports = {
 $nprogressColor = red
 ```
 
-**参考：**
+__参考：__
 
 - [配置 > Styling](../../config/README.md#styling)

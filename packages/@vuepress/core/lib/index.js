@@ -1,6 +1,7 @@
 'use strict'
 
 const App = require('./node/App')
+const { version } = require('../package')
 const { logger } = require('@vuepress/shared-utils')
 
 function createApp (options) {
@@ -20,6 +21,7 @@ async function build (options) {
   return app.build()
 }
 
+exports.version = version
 exports.createApp = createApp
 exports.dev = dev
 exports.build = build

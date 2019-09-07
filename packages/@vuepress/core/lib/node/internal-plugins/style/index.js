@@ -30,14 +30,23 @@ module.exports = (options, ctx) => ({
       ? `@import(${JSON.stringify(userStyle.replace(/[\\]+/g, '/'))})`
       : ''
 
-    let styleContent = themeStyleContent + userStyleContent
+    const nullComment = '// null'
+
+    // user's styles can override theme's styles.
+    let styleContent = '// Theme\'s Styles\n'
+      + (themeStyleContent || nullComment)
+      + '\n\n// User\'s Styles\n'
+      + (userStyleContent || nullComment)
 
     if (themeAPI.existsParentTheme) {
       const parentThemeStyle = path.resolve(themeAPI.parentTheme.path, 'styles/index.styl')
       const parentThemeStyleContent = fs.existsSync(parentThemeStyle)
         ? `@import(${JSON.stringify(parentThemeStyle.replace(/[\\]+/g, '/'))})`
         : ''
-      styleContent = parentThemeStyleContent + styleContent
+
+      styleContent = '// Parent Theme\'s Styles\n'
+        + (parentThemeStyleContent || nullComment)
+        + '\n\n' + styleContent
     }
 
     await writeTemp('style.styl', styleContent)

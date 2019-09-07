@@ -10,7 +10,7 @@ sidebar: auto
 
 GA 已经被分离为一个单独的插件 [@vuepress/plugin-google-analytics](../plugin/official/plugin-google-analytics.md)。
 
-::: upgrade 
+::: upgrade
 
 1. 安装 `@vuepress/plugin-google-analytics`:
 

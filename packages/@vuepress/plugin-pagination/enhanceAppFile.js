@@ -62,7 +62,8 @@ export default ({ Vue }) => {
       $pagination () {
         const { pages } = this.$site
         const pagination = new Pagination(paginationMeta, {
-          pages, route: this.$route
+          pages,
+          route: this.$route
         })
         return pagination
       }

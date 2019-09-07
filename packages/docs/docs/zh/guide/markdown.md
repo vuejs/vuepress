@@ -8,7 +8,7 @@
 
 ### 内部链接
 
-网站内部的的链接，将会被转换成 `<router-link>` 用于 SPA 导航。同时，站内的每一个文件夹下的 `README.md` 或者 `index.md` 文件都会被自动编译为 `index.html`，对应的链接将被视为 `/`。
+网站内部的链接，将会被转换成 `<router-link>` 用于 SPA 导航。同时，站内的每一个文件夹下的 `README.md` 或者 `index.md` 文件都会被自动编译为 `index.html`，对应的链接将被视为 `/`。
 
 以如下的文件结构为例：
 
@@ -37,7 +37,7 @@
 
 ### 链接的重定向 <Badge text="1.0.0-alpha.37"/>
 
-VuePress 支持重定向到干净链接。如果一个链接 `/foo` 找不到，VuePress 会自行寻找一个可用的 `/foo/` 或 `/foo.html`。反过来，当 `/foo/` 或 `/foo.html` 中的一个找不到时，VuePress 也会尝试寻找另一个。借助这种特性，我们可以通过官方插件 [@vuepress/plugin-clean-urls](../plugin/official/plugin-clean-urls.md) 定制你的网站路径。
+VuePress 支持重定向到干净链接。如果一个链接 `/foo` 找不到，VuePress 会自行寻找一个可用的 `/foo/` 或 `/foo.html`。反过来，当 `/foo/` 或 `/foo.html` 中的一个找不到时，VuePress 也会尝试寻找另一个。借助这种特性，我们可以通过官方插件 [vuepress-plugin-clean-urls](https://vuepress.github.io/plugins/clean-urls/) 定制你的网站路径。
 
 ::: tip 注意
 无论是否使用了 permalink 和 clean-urls 插件，你的相对路径都应该依赖于当前的文件结构来定义。在上面的例子中，即使你将 `/foo/one.md` 的路径设为了 `/foo/one/`，你依然应该通过 `./two.md` 来访问 `/foo/two.md`。
@@ -103,21 +103,19 @@ lang: en-US
 
 **输入**
 
-```md
-[[toc]]
 ```
-
-或者
-
-```md
-<TOC/>
+[[toc]]
 ```
 
 **输出**
 
+<!--lint disable no-shortcut-reference-link no-undefined-references-->
+
 [[toc]]
 
-目录（Table of Contents）的渲染可以通过  [`markdown.toc`](../config/README.md#markdown-toc) 选项来配置，也可以在 [TOC 组件](./using-vue.md#toc)中直接传入，如 `<TOC list-type="ol" :include-level="[2, Infinity]"/>`。
+<!--lint enable no-shortcut-reference-link no-undefined-references-->
+
+目录（Table of Contents）的渲染可以通过  [`markdown.toc`](../config/README.md#markdown-toc) 选项来配置。
 
 ## 自定义容器 <Badge text="默认主题"/>
 
@@ -165,7 +163,7 @@ Danger zone, do not proceed
 
 **参考:**
 
-- [@vuepress/plugin-container](../plugin/official/plugin-container.md)
+- [vuepress-plugin-container](https://vuepress.github.io/plugins/container/)
 
 ## 代码块中的语法高亮
 
@@ -259,7 +257,7 @@ module.exports = {
   markdown: {
     lineNumbers: true
   }
-}  
+}
 ```
 
 <!-- TODO Support line numbers for specific fence block -->
@@ -305,7 +303,7 @@ module.exports = {
 它也支持 [行高亮](#代码块中的行高亮)：
 
 ``` md
-<<< @/filepath{highlightLines} 
+<<< @/filepath{highlightLines}
 ```
 
 **输入**
@@ -316,7 +314,11 @@ module.exports = {
 
 **输出**
 
+<!--lint disable strong-marker-->
+
 <<< @/../@vuepress/markdown/__tests__/fragments/snippet.js{2}
+
+<!--lint enable strong-marker-->
 
 ::: tip 注意
 由于代码段的导入将在 webpack 编译之前执行，因此你无法使用 webpack 中的路径别名，此处的 `@` 默认值是 `process.cwd()`。

@@ -1,15 +1,15 @@
 # Global Computed
 
-In VuePress, some core [computed](https://vuejs.org/v2/guide/computed.html#Computed-Properties) properties are built in for use by [default theme](../theme/default-theme-config.md) or custom themes.
+In VuePress, some core [computed](https://vuejs.org/v2/guide/computed.html#Computed-Properties) properties are built-in for use by [default theme](../theme/default-theme-config.md) or custom themes.
 
 ## $site
 
-This is the `$site` value of the website you see now:
+This is the `$site` value of the site you see now:
 
 ``` json
 {
   "title": "VuePress",
-  "description": "Vue 驱动的静态网站生成器",
+  "description": "Vue-powered static site generator",
   "base": "/",
   "pages": [
     {
@@ -31,9 +31,9 @@ This is the `$page` value of the page you see now:
 {
   "title": "Global Computed",
   "frontmatter": {},
-  "regularPath": "/miscellaneous/global-computed.html",
+  "regularPath": "/guide/global-computed.html",
   "key": "v-d4cbeb69eff3d",
-  "path": "/miscellaneous/global-computed.html",
+  "path": "/guide/global-computed.html",
   "headers": [
     {
       "level": 2,
@@ -80,4 +80,4 @@ The `content` value of the `<meta name= "description" content= "...">` for the c
 
 ## $themeConfig
 
-i.e. `siteConfig.themeConfig`。
+That is `siteConfig.themeConfig`。
