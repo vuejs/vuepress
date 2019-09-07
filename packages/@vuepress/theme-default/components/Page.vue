@@ -2,7 +2,7 @@
   <main class="page">
     <slot name="top" />
 
-    <Content />
+    <Content class="theme-default-content" />
     <PageEdit />
 
     <PageNav v-bind="{ sidebarItems }" />
@@ -22,6 +22,8 @@ export default {
 </script>
 
 <style lang="stylus">
+@require '../styles/wrapper.styl';
+
 .page {
   padding-bottom: 2rem;
   display: block;
