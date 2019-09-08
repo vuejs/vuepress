@@ -1,9 +1,15 @@
+---
+sidebar: auto
+---
+
 # Node.js API <Badge text="1.0.0-alpha.44+"/>
+
+<Bit />
 
 ## Usage
 
 ```js
-const { createApp, dev, build, eject } = require('vuepress')
+const { createApp, dev, build, eject } = require("vuepress");
 ```
 
 ## Methods
@@ -24,16 +30,15 @@ Launch a dev process with current app context.
 
 Launch a build process with current app context.
 
-
 ### dev(\[options]): Promise\<App>
 
 Start a development server, actually it’s implemented by `createApp`:
 
 ```js
-async function dev (options) {
-  const app = createApp(options)
-  await app.process()
-  return app.dev()
+async function dev(options) {
+  const app = createApp(options);
+  await app.process();
+  return app.dev();
 }
 ```
 
@@ -42,17 +47,16 @@ async function dev (options) {
 Build your source files as a static site, actually it’s implemented by `createApp`:
 
 ```js
-async function build (options) {
-  const app = createApp(options)
-  await app.process()
-  return app.build()
+async function build(options) {
+  const app = createApp(options);
+  await app.process();
+  return app.build();
 }
 ```
 
 ### eject(targetDir): Promise\<void>
 
 Copy the default theme into `{targetDir}/.vuepress/theme` for customization.
-
 
 ## Options
 

@@ -5,7 +5,7 @@ module.exports = [
   },
   {
     text: "Plugins / Themes",
-    link: "/market/"
+    link: "/plugin/market/official/plugin-active-header-links"
   },
   {
     text: "Learn More",
@@ -15,7 +15,7 @@ module.exports = [
         link: "/config/index.html"
       },
       {
-        text: "Api",
+        text: "Cli",
         link: "/api/cli.html"
       },
       {
@@ -25,6 +25,10 @@ module.exports = [
       {
         text: "Create a theme",
         link: "/theme/index.html"
+      },
+      {
+        text: "NodeJS Api",
+        link: "/api/node.html"
       },
       {
         text: "Contributing Guide",

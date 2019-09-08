@@ -1,4 +1,10 @@
+---
+sidebar: auto
+---
+
 # Command-line Interface
+
+<Bit />
 
 ## Usage
 
@@ -11,22 +17,29 @@ vuepress <command> targetDir [options]
 Build dir as a static site.
 
 ### -p, --port `<port>`
+
 See [port](../config/README.md#port).
 
 ### -t, --temp `<temp>`
+
 See [temp](../config/README.md#temp).
 
 ### -c, --cache `[cache]`
+
 ### --no-cache
+
 See [cache](../config/README.md#cache).
 
 ### --dest `<dest>`
+
 See [dest](../config/README.md#dest).
 
 ### --debug
+
 Start development server in debug mode.
 
 ### --silent
+
 Start development server in silent mode.
 
 ## dev
@@ -34,12 +47,15 @@ Start development server in silent mode.
 Start a development server. All options from `vuepress build` are available. And there are several options specifically for dev:
 
 ### --host `<host>`
+
 See [host](../config/README.md#host).
 
 ### --open
+
 Open browser when ready.
 
 ### --no-clear-screen
+
 Do not clear screen when dev server is ready.
 
 ## eject
