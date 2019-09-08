@@ -16,7 +16,7 @@ VuePress 1.0 进行了大范围的重写，其中最重要的就是引入 [Plugi
 
 ### 解耦
 
-有了插件，我们可以将很多核心功能用插件来实现，你可以在[这里](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/core/lib/internal-plugins)看到很多内置的插件，这些插件涵盖了很多 VuePress 的核心功能，在以前，它们糅合在代码库的各个地方，但现在，它们一目了然。
+有了插件，我们可以将很多核心功能用插件来实现，你可以在[这里](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/core/lib/node/internal-plugins)看到很多内置的插件，这些插件涵盖了很多 VuePress 的核心功能，在以前，它们糅合在代码库的各个地方，但现在，它们一目了然。
 
 ### 配置的管理
 
