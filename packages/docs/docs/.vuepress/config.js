@@ -77,7 +77,9 @@ module.exports = ctx => ({
         nav: require("./nav/zh"),
         sidebar: {
           "/zh/guide/": getGuideSidebar("指南", "深入"),
+          "/zh/plugin/market/": getPluginMarketSidebar("/zh"),
           "/zh/plugin/": getPluginSidebar("插件", "介绍"),
+          "/zh/theme/market/": getPluginMarketSidebar("/zh"),
           "/zh/theme/": getThemeSidebar("主题", "介绍")
         }
       }
@@ -166,33 +168,33 @@ function getPluginSidebar(pluginTitle, pluginIntro) {
   ];
 }
 
-function getPluginMarketSidebar() {
+function getPluginMarketSidebar(lang = "", Plugins = "Plugins", Themes = "Themes", Official = "Official", Community = "Community") {
   return [
     {
-      title: "Plugins",
+      title: Plugins,
       collapsable: true,
       children: [
         {
-          title: "Official",
+          title: Official,
           collapsable: true,
           children: [
-            "/plugin/market/official/plugin-active-header-links",
-            "/plugin/market/official/plugin-back-to-top",
-            "/plugin/market/official/plugin-google-analytics",
-            "/plugin/market/official/plugin-last-updated",
-            "/plugin/market/official/plugin-medium-zoom",
-            "/plugin/market/official/plugin-nprogress",
-            "/plugin/market/official/plugin-pwa",
-            "/plugin/market/official/plugin-register-components",
-            "/plugin/market/official/plugin-search"
+            lang + "/plugin/market/official/plugin-active-header-links",
+            lang + "/plugin/market/official/plugin-back-to-top",
+            lang + "/plugin/market/official/plugin-google-analytics",
+            lang + "/plugin/market/official/plugin-last-updated",
+            lang + "/plugin/market/official/plugin-medium-zoom",
+            lang + "/plugin/market/official/plugin-nprogress",
+            lang + "/plugin/market/official/plugin-pwa",
+            lang + "/plugin/market/official/plugin-register-components",
+            lang + "/plugin/market/official/plugin-search"
           ]
         },
         {
-          title: "Community",
+          title: Community,
           collapsable: true,
           children: [
             [
-              "/plugin/market/before-writing-plugin",
+              lang +  "/plugin/market/before-writing-plugin",
               "You want to create a plugin ?"
             ]
           ]
@@ -200,20 +202,20 @@ function getPluginMarketSidebar() {
       ]
     },
     {
-      title: "Themes",
+      title: Themes,
       collapsable: true,
       children: [
         {
-          title: "Official",
+          title: Official,
           collapsable: true,
-          children: ["/theme/market/official/default-theme"]
+          children: [lang + "/theme/market/official/default-theme"]
         },
         {
-          title: "Community",
+          title: Community,
           collapsable: true,
           children: [
             [
-              "/theme/market/before-writing-theme",
+              lang + "/theme/market/before-writing-theme",
               "You want to create a theme ?"
             ]
           ]

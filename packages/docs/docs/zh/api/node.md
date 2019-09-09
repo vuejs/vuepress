@@ -1,4 +1,10 @@
+---
+sidebar: auto
+---
+
 # Node.js API <Badge text="1.0.0-alpha.44+"/>
+
+<Bit />
 
 ## 使用
 
