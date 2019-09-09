@@ -45,7 +45,7 @@
     "cross-spawn": "^6.0.5",
     "css-loader": "^2.1.1",
     "file-loader": "^3.0.1",
-    "js-yaml": "^3.11.0",
+    "js-yaml": "^3.13.1",
     "lru-cache": "^5.1.1",
     "mini-css-extract-plugin": "0.6.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
