@@ -1,3 +1,4 @@
+const path = require('path')
 const spawn = require('cross-spawn')
 
 module.exports = (options = {}, context) => ({
@@ -21,7 +22,11 @@ function defaultTransformer (timestamp, lang) {
 function getGitLastUpdatedTimeStamp (filePath) {
   let lastUpdated
   try {
-    lastUpdated = parseInt(spawn.sync('git', ['log', '-1', '--format=%ct', filePath]).stdout.toString('utf-8')) * 1000
+    lastUpdated = parseInt(spawn.sync(
+      'git',
+      ['log', '-1', '--format=%at', path.basename(filePath)],
+      { cwd: path.dirname(filePath) }
+    ).stdout.toString('utf-8')) * 1000
   } catch (e) { /* do not handle for now */ }
   return lastUpdated
 }
