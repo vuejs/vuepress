@@ -6,7 +6,7 @@ VuePress requires Node.js >= 8.
 
 ## Global Installation
 
-If you just want to play around with VuePress, you can install it globally:
+If you only want to play around with VuePress, you can install it globally:
 
 ``` bash
 # install globally
@@ -37,7 +37,7 @@ echo '# Hello VuePress' > docs/README.md
 ```
 
 ::: warning
-It is currently recommended to use [Yarn](https://yarnpkg.com/en/) instead of npm when installing VuePress into an existing project that has webpack 3.x as a dependency. Npm fails to generate the correct dependency tree in this case.
+We currently recommend using [Yarn](https://yarnpkg.com/en/) instead of npm when installing VuePress into an existing project that has webpack 3.x as a dependency, because npm fails to generate the correct dependency tree in this case.
 :::
 
 Then, add some scripts to `package.json`:

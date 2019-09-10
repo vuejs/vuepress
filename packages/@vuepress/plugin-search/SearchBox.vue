@@ -5,6 +5,7 @@
       aria-label="Search"
       :value="query"
       :class="{ 'focused': focused }"
+      :placeholder="placeholder"
       autocomplete="off"
       spellcheck="false"
       @focus="focused = true"
@@ -43,10 +44,14 @@ export default {
     return {
       query: "",
       focused: false,
-      focusIndex: 0
-    };
+      focusIndex: 0,
+      placeholder: undefined
+    }
   },
 
+  mounted () {
+    this.placeholder = this.$site.themeConfig.searchPlaceholder || ''
+  },
   computed: {
     showSuggestions() {
       return this.focused && this.suggestions && this.suggestions.length;

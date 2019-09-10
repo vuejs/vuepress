@@ -1,6 +1,6 @@
-# Front Matter
+# Frontmatter
 
-Any markdown file that contains a YAML front matter block will be processed by [gray-matter](https://github.com/jonschlinkert/gray-matter). The front matter must be the first thing in the markdown file and must take the form of valid YAML set between triple-dashed lines. Here is a basic example:
+Any Markdown file that contains a YAML frontmatter block will be processed by [gray-matter](https://github.com/jonschlinkert/gray-matter). The frontmatter must be the first thing in the Markdown file and must take the form of valid YAML set between triple-dashed lines. Here is a basic example:
 
 ```markdown
 ---
@@ -12,14 +12,14 @@ lang: en-US
 Between these triple-dashed lines, you can set predefined variables (see [below](#predefined-variables) for a reference), or even create custom ones of your own. These variables will then be available to you to access using <code>[$frontmatter](./global-computed.md#frontmatter)</code> at the rest of the page, plus all custom and theming components.
 
 ::: tip
-Front matter variables are **optional** in VuePress.
+frontmatter variables are **optional** in VuePress.
 :::
 
-## Alternative Front Matter Formats
+## Alternative frontmatter Formats
 
-In addition, VuePress also supports JSON or [TOML](https://github.com/toml-lang/toml) front matter.
+VuePress also supports JSON or [TOML](https://github.com/toml-lang/toml) frontmatter.
 
-JSON front matter needs to start and end in curly braces:
+JSON frontmatter needs to start and end in curly braces:
 
 ```
 ---
@@ -30,7 +30,7 @@ JSON front matter needs to start and end in curly braces:
 ---
 ```
 
-TOML front matter needs to be explicitly marked as TOML:
+TOML frontmatter needs to be explicitly marked as TOML:
 
 ```
 ---toml

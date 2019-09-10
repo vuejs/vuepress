@@ -2,6 +2,8 @@
 
 VuePress follows the principle of **"Convention is better than configuration"**, the recommended document structure is as follows:
 
+<!-- textlint-disable terminology -->
+
 ::: vue
 .
 ├── docs
@@ -27,11 +29,13 @@ VuePress follows the principle of **"Convention is better than configuration"**,
 └── package.json
 :::
 
+<!-- textlint-enable -->
+
 ::: warning Note
 Please note the capitalization of the directory name.
 :::
 
-- `docs/.vuepress`: It is used to store global configuration, components, static resources, etc.
+- `docs/.vuepress`: It’s used to store global configuration, components, static resources, etc.
 - `docs/.vuepress/components`: The Vue components in this directory will be automatically registered as global components.
 - `docs/.vuepress/theme`: Used to store local theme.
 - `docs/.vuepress/styles`: Stores style related files.
@@ -45,7 +49,7 @@ Please note the capitalization of the directory name.
 - `docs/.vuepress/enhanceApp.js`: App level enhancement.
 
 ::: warning Note
-When customizing `templates/ssr.html`, or `templates/dev.html`, it is best to modify it on the basis of the [default template files](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/core/lib/client/index.dev.html), otherwise it may cause a build failure.
+When customizing `templates/ssr.html`, or `templates/dev.html`, it’s best to edit it on the basis of the [default template files](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/core/lib/client/index.dev.html), otherwise it may cause a build failure.
 :::
 
 ## Default Page Routing
@@ -58,7 +62,7 @@ For the above directory structure, the default page routing paths are as follows
 | `/guide/README.md` | `/guide/` |
 | `/config.md` | `/config.html` |
 
-**Also see:** 
+**Also see:**
 
 - [Config](../config/README.md)
 - [Theme](../theme/)

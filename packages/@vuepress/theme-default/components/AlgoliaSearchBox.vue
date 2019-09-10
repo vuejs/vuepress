@@ -7,6 +7,7 @@
     <input
       id="algolia-search-input"
       class="search-query"
+      :placeholder="placeholder"
     >
   </form>
 </template>
@@ -15,8 +16,15 @@
 export default {
   props: ['options'],
 
+  data () {
+    return {
+      placeholder: undefined
+    }
+  },
+
   mounted () {
     this.initialize(this.options, this.$lang)
+    this.placeholder = this.$site.themeConfig.searchPlaceholder || ''
   },
 
   methods: {
@@ -37,7 +45,8 @@ export default {
               'facetFilters': [`lang:${lang}`].concat(algoliaOptions.facetFilters || [])
             }, algoliaOptions),
             handleSelected: (input, event, suggestion) => {
-              this.$router.push(new URL(suggestion.url).pathname)
+              const { pathname, hash } = new URL(suggestion.url)
+              this.$router.push(`${pathname}${hash}`)
             }
           }
         ))

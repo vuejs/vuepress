@@ -14,7 +14,7 @@ sidebar: auto
 - Type: `string`
 - Default: `/`
 
-The base URL the site will be deployed at. You will need to set this if you plan to deploy your site under a sub path, for example, GitHub pages. If you plan to deploy your site to `https://foo.github.io/bar/`, then `base` should be set to `"/bar/"`. It should always start and end with a slash.
+The base URL the site will be deployed at. You will need to set this if you plan to deploy your site under a sub path, for example, GitHub pages. If you plan to deploy your site to `https://foo.github.io/bar/`, then you should set `base` to `"/bar/"`. It should always start and end with a slash.
 
 The `base` is automatically prepended to all the URLs that start with `/` in other options, so you only need to specify it once.
 
@@ -35,14 +35,14 @@ Title for the site. This will be the prefix for all page titles, and displayed i
 - Type: `string`
 - Default: `undefined`
 
-Description for the site. This will be rendered as a `<meta>` tag in the page HTML.
+Description for the site. This will render as a `<meta>` tag in the page HTML.
 
 ### head
 
 - Type: `Array`
 - Default: `[]`
 
-Extra tags to be injected to the page HTML `<head>`. Each tag can be specified in the form of `[tagName, { attrName: attrValue }, innerHTML?]`. For example, to add a custom favicon:
+Extra tags to inject into the page HTML `<head>`. You can specify each tag in the form of `[tagName, { attrName: attrValue }, innerHTML?]`. For example, to add a custom favicon:
 
 ``` js
 module.exports = {
@@ -102,10 +102,10 @@ A function to control what files should have `<link rel="preload">` resource hin
 
 VuePress uses [cache-loader](https://github.com/webpack-contrib/cache-loader) by default to greatly speed up the compilation of webpack.
 
-This option can be used to specify the path to the cache, and can also remove the cache before each build by setting it to `false`.
+You can use this option to specify the path to the cache, and can also remove the cache before each build by setting it to `false`.
 
 ::: tip
-This option can also be used through the CLI:
+You can also use this option through the CLI:
 
 ```bash
 vuepress dev docs --cache .cache # set cache path
@@ -118,7 +118,7 @@ vuepress dev docs --no-cache     # remove cache before each build.
 - Type: `Array`
 - Default: `[]`
 
-Specify extra files to be watched.
+Specify extra files to watch.
 
 You can watch any file if you want. File changes will trigger `vuepress` rebuilding and real-time updates.
 
@@ -135,9 +135,9 @@ module.exports = {
 
 ### palette.styl
 
-If you wish to apply simple color overrides to the styling of the [default preset](https://github.com/vuejs/vuepress/blob/master/packages/@vuepress/core/lib/client/style/config.styl) or define some color variables for using later, you can create an `.vuepress/styles/palette.styl` file.
+To apply simple color overrides to the styling of the [default preset](https://github.com/vuejs/vuepress/blob/master/packages/@vuepress/core/lib/client/style/config.styl) or define some color variables for using later, you can create a `.vuepress/styles/palette.styl` file.
 
-There are a few color variables you can tweak:
+There are some color variables you can tweak:
 
 ``` stylus
 // showing default values
@@ -148,12 +148,12 @@ $codeBgColor = #282c34
 ```
 
 ::: danger Note
-You should ONLY write color variables in this file. since `palette.styl` will be imported at the end of the root stylus config file, as a config, it will be used by multiple files, so once you wrote styles here, your style would be duplicated by multiple times.
+You should ONLY write color variables in this file. Since `palette.styl` will be imported at the end of the root Stylus config file, as a config, several files will use it, so once you wrote styles here, your style would be duplicated by multiple times.
 :::
 
 ### index.styl
 
-VuePress provides a convenient way to add extra styles. you can create an `.vuepress/styles/index.styl` file for that. This is a [Stylus](http://stylus-lang.com/) file but you can use normal CSS syntax as well.
+VuePress provides a convenient way to add extra styles. You can create a `.vuepress/styles/index.styl` file for that. This is a [Stylus](http://stylus-lang.com/) file but you can use normal CSS syntax as well.
 
 ```stylus
 .content {
@@ -163,7 +163,7 @@ VuePress provides a convenient way to add extra styles. you can create an `.vuep
 
 **Also see:**
 
-- [Why can't `palette.styl` and `index.styl` merge into one API?](../faq/README.md#why-can-t-palette-styl-and-index-styl-merge-into-one-api)
+- [Why can’t `palette.styl` and `index.styl` merge into one API?](../faq/README.md#why-can-t-palette-styl-and-index-styl-merge-into-one-api)
 
 ## Theming
 
@@ -196,7 +196,7 @@ Provide config options to the used theme. The options will vary depending on the
 - Type: `Object|Array`
 - Default: `undefined`
 
-Please refer to [Plugin > Using a plugin](../plugin/using-a-plugin.md) to learn how to use a plugin.
+Please check out [Plugin > Using a plugin](../plugin/using-a-plugin.md) to learn how to use a plugin.
 
 ## Markdown
 
@@ -223,7 +223,7 @@ Function for transforming [header](../miscellaneous/glossary.md#headers) texts i
 - Type: `Object`
 - Default: `{ permalink: true, permalinkBefore: true, permalinkSymbol: '#' }`
 
-Options for [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor). (Note: prefer `markdown.slugify` if you want to customize header ids.)
+Options for [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor). (Note: prefer `markdown.slugify` to customize header ids.)
 
 ### markdown.externalLinks
 
@@ -237,11 +237,11 @@ The key and value pair will be added to `<a>` tags that point to an external lin
 - Type: `Object`
 - Default: `{ includeLevel: [2, 3] }`
 
-Options for [markdown-it-table-of-contents](https://github.com/Oktavilla/markdown-it-table-of-contents). (Note: prefer `markdown.slugify` if you want to customize header ids.)
+Options for [markdown-it-table-of-contents](https://github.com/Oktavilla/markdown-it-table-of-contents). (Note: prefer `markdown.slugify` to customize header ids.)
 
 ### markdown.plugins
 
-You can install any markdown-it plugins through `markdown.plugins` option. It is similar with [using VuePress plugins](../plugin/using-a-plugin.html#using-a-plugin). You can either use Babel style or object style. The `markdown-it-` prefix is optional and can omit in the list.
+You can install any markdown-it plugins through `markdown.plugins` option. It’s similar with [using VuePress plugins](../plugin/using-a-plugin.html#using-a-plugin). You can either use Babel style or object style. The `markdown-it-` prefix is optional and can omit in the list.
 
 ``` js
 module.exports = {
@@ -256,7 +256,7 @@ module.exports = {
 }
 ```
 
-or
+Or
 
 ``` js
 module.exports = {
@@ -276,7 +276,7 @@ module.exports = {
 - Type: `Function`
 - Default: `undefined`
 
-A function to modify default config or apply additional plugins to the [markdown-it](https://github.com/markdown-it/markdown-it) instance used to render source files. e.g.
+A function to edit default config or apply extra plugins to the [markdown-it](https://github.com/markdown-it/markdown-it) instance used to render source files. For example:
 
 ``` js
 module.exports = {
@@ -306,7 +306,7 @@ VuePress comes with built-in webpack config for the CSS pre-processors listed be
 
 Options for [postcss-loader](https://github.com/postcss/postcss-loader). Note specifying this value will overwrite autoprefixer and you will need to include it yourself.
 
-### stylus
+### Stylus
 
 - Type: `Object`
 - Default: `{ preferPathResolver: 'webpack' }`
@@ -320,7 +320,7 @@ Options for [stylus-loader](https://github.com/shama/stylus-loader).
 
 Options for [sass-loader](https://github.com/webpack-contrib/sass-loader) to load `*.scss` files.
 
-### sass
+### Sass
 
 - Type: `Object`
 - Default: `{ indentedSyntax: true }`
@@ -339,7 +339,7 @@ Options for [less-loader](https://github.com/webpack-contrib/less-loader).
 - Type: `Object | Function`
 - Default: `undefined`
 
-Modify the internal webpack config. If the value is an Object, it will be merged into the final config using [webpack-merge](https://github.com/survivejs/webpack-merge); If the value is a function, it will receive the config as the 1st argument and an `isServer` flag as the 2nd argument. You can either mutate the config directly, or return an object to be merged:
+Edit the internal webpack config. If the value is an Object, it will be merged into the final config using [webpack-merge](https://github.com/survivejs/webpack-merge); If the value is a function, it will receive the config as the 1st argument and an `isServer` flag as the 2nd argument. You can either mutate the config directly, or return an object to merge:
 
 ``` js
 module.exports = {
@@ -356,7 +356,7 @@ module.exports = {
 - Type: `Function`
 - Default: `undefined`
 
-Modify the internal webpack config with [webpack-chain](https://github.com/mozilla-neutrino/webpack-chain).
+Edit the internal webpack config with [webpack-chain](https://github.com/mozilla-neutrino/webpack-chain).
 
 ``` js
 module.exports = {

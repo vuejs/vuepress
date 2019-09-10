@@ -116,8 +116,8 @@ pages:
 
 1. 在 Netlify 中, 创建一个新的 GitHub 项目，使用以下设置：
 
-  - **Build Command:** `npm run build:docs` 或者 `yarn build:docs`
-  - **Publish directory:** `docs/.vuepress/dist`
+- **Build Command:** `npm run build:docs` 或者 `yarn build:docs`
+- **Publish directory:** `docs/.vuepress/dist`
 
 2. 点击 deploy 按钮！
 
@@ -167,9 +167,9 @@ pages:
 
 3. 运行 `heroku login` 并填写你的 Heroku 证书：
 
- ``` bash
- heroku login
- ```
+   ``` bash
+   heroku login
+   ```
 
 4. 在你的项目根目录中，创建一个名为 `static.json` 的文件，并包含下述内容：
 
