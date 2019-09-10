@@ -4,11 +4,13 @@
     :to="link"
     v-if="!isExternal(link)"
     :exact="exact"
+    :tabindex="isNotFocusableLink ? -1  : ''"
   >{{ item.text }}</router-link>
   <a
     v-else
     :href="link"
     class="nav-link external"
+    :tabindex="isNotFocusableLink ? -1  : ''"
     :target="isMailto(link) || isTel(link) ? null : '_blank'"
     :rel="isMailto(link) || isTel(link) ? null : 'noopener noreferrer'"
   >
@@ -30,6 +32,10 @@ export default {
   computed: {
     link () {
       return ensureExt(this.item.link)
+    },
+
+    isNotFocusableLink () {
+      return !!this.item.notFocusable
     },
 
     exact () {

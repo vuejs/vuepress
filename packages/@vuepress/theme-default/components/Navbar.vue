@@ -5,7 +5,6 @@
     <router-link
       :to="$localePath"
       class="home-link"
-      tabindex="1"
     >
       <img
         class="logo"
@@ -29,10 +28,9 @@
     >
       <AlgoliaSearchBox
         v-if="isAlgoliaSearch"
-        tabindex="2"
         :options="algolia"
       />
-      <SearchBox tabindex="1" v-else-if="$site.themeConfig.search !== false && $page.frontmatter.search !== false"/>
+      <SearchBox v-else-if="$site.themeConfig.search !== false && $page.frontmatter.search !== false"/>
       <NavLinks class="can-hide"/>
     </div>
   </header>

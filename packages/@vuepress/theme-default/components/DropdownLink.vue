@@ -3,18 +3,18 @@
     class="dropdown-wrapper"
     :class="{ open }"
   >
-    <a
+    <button
       class="dropdown-title"
       :aria-label="dropdownName"
+      :tabindex="!!item.notFocusable ? -1  : ''"
       @click="toggle"
-      :tabindex="tabIndex"
     >
       <span class="title">{{ item.text }}</span>
       <span
         class="arrow"
         :class="open ? 'down' : 'right'"
       ></span>
-    </a>
+    </button>
 
     <DropdownTransition>
       <ul
@@ -37,13 +37,12 @@
               :key="childSubItem.link"
               v-for="childSubItem in subItem.items"
             >
-              <NavLink :tabindex="tabIndex" :item="childSubItem"/>
+              <NavLink :item="childSubItem"/>
             </li>
           </ul>
 
           <NavLink
             v-else
-            :tabindex="tabIndex"
             :item="subItem"
           />
         </li>
@@ -72,10 +71,6 @@ export default {
     dropdownName: {
       default: 'Dropdown',
       type: String
-    },
-    tabIndex: {
-      default: 0,
-      type: Number
     }
   },
 
@@ -92,6 +87,11 @@ export default {
   cursor pointer
   .dropdown-title
     display block
+    font-size 0.9rem
+    background transparent
+    border none
+    font-weight 500
+    color $textColor
     &:hover
       border-color transparent
     .arrow

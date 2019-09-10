@@ -6,18 +6,16 @@
     <!-- user links -->
     <div
       class="nav-item"
-      v-for="(item, index) in userLinks"
+      v-for="item in userLinks"
       :key="item.link"
     >
       <DropdownLink
         v-if="item.type === 'links'"
         :item="item"
-        :tab-index="tabIndexStart + index"
         dropdownName="Select Dropdown"
       />
       <NavLink
         v-else
-        :tabindex="tabIndexStart + index"
         :item="item"
       />
     </div>
@@ -28,7 +26,6 @@
       :href="repoLink"
       class="repo-link"
       target="_blank"
-      :tabindex="tabIndexStart + userLinks.length"
       rel="noopener noreferrer"
     >
       {{ repoLabel }}
@@ -44,13 +41,6 @@ import NavLink from '@theme/components/NavLink.vue'
 
 export default {
   components: { NavLink, DropdownLink },
-
-  props: {
-    tabIndexStart: {
-      default: 3,
-      type: Number
-    }
-  },
 
   computed: {
     userNav () {
