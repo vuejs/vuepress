@@ -34,7 +34,7 @@
       </li>
     </ul>
   </div>
-</template> 
+</template>
 
 <script>
 /* global SEARCH_MAX_SUGGESTIONS, SEARCH_PATHS */
