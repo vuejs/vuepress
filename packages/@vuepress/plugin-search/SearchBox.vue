@@ -8,7 +8,7 @@
       :placeholder="placeholder"
       autocomplete="off"
       spellcheck="false"
-      @focus="focused = true"
+      @focus="focused = true; focusIndex = 0"
       @blur="focused = false"
       @keyup.enter="go(focusIndex)"
       @keyup.up="onUp"
