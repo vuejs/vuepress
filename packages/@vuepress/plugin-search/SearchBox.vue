@@ -46,7 +46,7 @@ export default {
       focused: false,
       focusIndex: 0,
       placeholder: undefined
-    }
+    };
   },
 
   mounted () {
