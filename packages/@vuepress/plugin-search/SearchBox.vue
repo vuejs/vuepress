@@ -5,6 +5,7 @@
       aria-label="Search"
       :value="query"
       :class="{ 'focused': focused }"
+      :placeholder="placeholder"
       autocomplete="off"
       spellcheck="false"
       @focus="focused = true"
@@ -43,11 +44,13 @@ export default {
     return {
       query: '',
       focused: false,
-      focusIndex: 0
+      focusIndex: 0,
+      placeholder: undefined
     }
   },
 
   mounted () {
+    this.placeholder = this.$site.themeConfig.searchPlaceholder || ''
     document.addEventListener('keydown', event => {
       if (event.srcElement === document.body && SEARCH_HOTKEYS.includes(event.key)) {
         this.$refs.input.focus()
