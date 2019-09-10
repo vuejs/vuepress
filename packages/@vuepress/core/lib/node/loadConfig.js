@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-const { fs, path } = require('@vuepress/shared-utils')
+const { fs, path, logger } = require('@vuepress/shared-utils')
 const yamlParser = require('js-yaml')
 const tomlParser = require('toml')
 
@@ -29,7 +29,9 @@ module.exports = function loadConfig (vuepressDir, bustCache = true) {
     siteConfig = parseConfig(configTomlPath)
   } else if (fs.existsSync(configPath)) {
     if (typeof require(configPath).then === 'function') {
-      siteConfig = require(configPath).then((config) => config)
+      siteConfig = require(configPath).then((config) => config).catch(()=>{
+        logger.error('Sorry ! We were unable to load your async configuration');
+      })
     } else {
       siteConfig = require(configPath)
     }
