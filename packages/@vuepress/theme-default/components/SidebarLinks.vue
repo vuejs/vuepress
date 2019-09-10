@@ -88,7 +88,7 @@ function descendantIsActive (route, item) {
   if (item.type === 'group') {
     return item.children.some(child => {
       if (child.type === 'group') {
-        return descendantIsActive(route, c)
+        return descendantIsActive(route, child)
       } else {
         return child.type === 'page' && isActive(route, child.path)
       }
