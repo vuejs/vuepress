@@ -48,7 +48,8 @@ module.exports = {
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Guide', link: '/guide/' },
-      { text: 'External', link: 'https://google.com' },
+      { text: 'Theme', link: '/theme/', notFocusable: true },  // for remove focus a link
+      { text: 'External', link: 'https://google.com' }
     ]
   }
 }
