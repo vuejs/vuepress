@@ -47,7 +47,7 @@ export default {
     }
   },
 
-  created () {
+  mounted () {
     document.addEventListener('keydown', event => {
       if (event.srcElement === document.body && SEARCH_HOTKEYS.includes(event.key)) {
         this.$refs.input.focus()
