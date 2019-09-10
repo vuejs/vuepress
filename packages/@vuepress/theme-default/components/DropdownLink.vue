@@ -5,8 +5,9 @@
   >
     <button
       class="dropdown-title"
+      type="button"
       :aria-label="dropdownName"
-      :tabindex="!!item.notFocusable ? -1  : ''"
+      :tabindex="!!item.notFocusable ? -1  : null"
       @click="toggle"
     >
       <span class="title">{{ item.text }}</span>

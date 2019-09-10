@@ -4,13 +4,13 @@
     :to="link"
     v-if="!isExternal(link)"
     :exact="exact"
-    :tabindex="isNotFocusableLink ? -1  : ''"
+    :tabindex="isNotFocusableLink ? -1  : null"
   >{{ item.text }}</router-link>
   <a
     v-else
     :href="link"
     class="nav-link external"
-    :tabindex="isNotFocusableLink ? -1  : ''"
+    :tabindex="isNotFocusableLink ? -1  : null"
     :target="isMailto(link) || isTel(link) ? null : '_blank'"
     :rel="isMailto(link) || isTel(link) ? null : 'noopener noreferrer'"
   >

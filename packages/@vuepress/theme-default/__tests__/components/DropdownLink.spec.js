@@ -13,7 +13,8 @@ describe('DropdownLink', () => {
         },
         {
           text: 'Config Reference',
-          link: '/config/'
+          link: '/config/',
+          notFocusable: true
         }
       ]
     }
@@ -22,7 +23,7 @@ describe('DropdownLink', () => {
       stubs: {
         'router-link': RouterLinkStub
       },
-      propsData: { item, dropdownName: 'Languages', tabIndex: 8 }
+      propsData: { item, dropdownName: 'Languages' }
     })
     expect(wrapper.html()).toMatchSnapshot()
   })
