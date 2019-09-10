@@ -12,6 +12,7 @@
       @keyup.enter="go(focusIndex)"
       @keyup.up="onUp"
       @keyup.down="onDown"
+      ref="input"
     >
     <ul
       class="suggestions"
@@ -44,6 +45,15 @@ export default {
       focused: false,
       focusIndex: 0
     }
+  },
+
+  created () {
+    document.addEventListener('keydown', event => {
+      if (event.srcElement === document.body && SEARCH_HOTKEYS.includes(event.key)) {
+        this.$refs.input.focus()
+        event.preventDefault()
+      }
+    })
   },
 
   computed: {
