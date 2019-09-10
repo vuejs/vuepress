@@ -280,7 +280,7 @@ import { SOURCE_DIR } from '@dynamic/constants'
 
 ## extendPageData
 
-- Type: `Function`
+- Type: `Function|AsyncFunction`
 - Default: `undefined`
 
 A function used to extend or edit the [$page](../guide/global-computed.md#page) object. This function will be invoking once for each page at compile time.
@@ -304,6 +304,16 @@ module.exports = {
 
     // 2. Change frontmatter.
     frontmatter.sidebar = 'auto'
+  }
+}
+```
+
+Note that `extendPageData` can also be defined as an asynchronous function.
+
+```js
+module.exports = {
+  async extendPageData ($page) {
+    $page.xxx = await getAsyncData()
   }
 }
 ```
