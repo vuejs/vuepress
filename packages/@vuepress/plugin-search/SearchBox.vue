@@ -67,7 +67,7 @@ export default {
       }
 
       const { pages } = this.$site
-      const max = SEARCH_MAX_SUGGESTIONS
+      const max = this.$site.themeConfig.searchMaxSuggestions || SEARCH_MAX_SUGGESTIONS
       const localePath = this.$localePath
       const matches = item => (
         item.title
