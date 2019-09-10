@@ -90,7 +90,7 @@ function descendantIsActive (route, item) {
       if (child.type === 'group') {
         return descendantIsActive(route, c)
       } else {
-        return c.type === 'page' && isActive(route, c.path)
+        return child.type === 'page' && isActive(route, child.path)
       }
     })
   }
