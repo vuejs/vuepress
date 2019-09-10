@@ -37,7 +37,7 @@
 </template>
 
 <script>
-/* global SEARCH_MAX_SUGGESTIONS, SEARCH_PATHS */
+/* global SEARCH_MAX_SUGGESTIONS, SEARCH_PATHS, SEARCH_HOTKEYS */
 export default {
   data () {
     return {
