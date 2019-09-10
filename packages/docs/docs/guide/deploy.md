@@ -66,14 +66,17 @@ You can also run the above script in your CI setup to enable automatic deploymen
 
 2. Create a file named `.travis.yml` in the root of your project.
 
-3. Use GitHub Pages deploy provider template and follow the [travis documentation](https://docs.travis-ci.com/user/deployment/pages/).
+3. Run `npm install` locally and commit `package-lock.json` as it’s required for `npm ci`.
+
+4. Use GitHub Pages deploy provider template and follow the [travis documentation](https://docs.travis-ci.com/user/deployment/pages/).
 
 ``` yaml
 language: node_js
 node_js:
   - lts/*
+install:
+  - npm ci
 script:
-  - npm install
   - npm run docs:build
 deploy:
   provider: pages
