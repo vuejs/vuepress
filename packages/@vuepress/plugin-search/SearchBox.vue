@@ -142,7 +142,7 @@ export default {
       return searchPaths.filter(path => {
         return page.path.match(path)
       }).length > 0
-    }, 
+    },
 
     onHotkey (event) {
       if (event.srcElement === document.body && SEARCH_HOTKEYS.includes(event.key)) {
