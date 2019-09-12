@@ -37,7 +37,6 @@ export default {
         ? this.$site.themeConfig.editLinks
         : this.$page.frontmatter.editLink
 
-
       const {
         repo,
         docsDir = '',
