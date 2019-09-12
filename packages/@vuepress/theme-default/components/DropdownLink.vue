@@ -7,7 +7,6 @@
       class="dropdown-title"
       type="button"
       :aria-label="dropdownName"
-      :tabindex="!!item.notFocusable ? -1  : null"
       @click="toggle"
     >
       <span class="title">{{ item.text }}</span>
@@ -36,14 +35,17 @@
             <li
               class="dropdown-subitem"
               :key="childSubItem.link"
-              v-for="childSubItem in subItem.items"
+              v-for="(childSubItem, subIndex) in subItem.items"
             >
-              <NavLink :item="childSubItem"/>
+              <NavLink
+                @keypressTab="focusoutDropdown((index + 2) * (subIndex + 1))"
+                :item="childSubItem"/>
             </li>
           </ul>
 
           <NavLink
             v-else
+            @keypressTab="focusoutDropdown(index + 1)"
             :item="subItem"
           />
         </li>
@@ -75,9 +77,27 @@ export default {
     }
   },
 
+  computed: {
+    AllItemsCount () {
+      return this.item.items.reduce((totalCount, item) => {
+        return item.items ? totalCount + item.items.length : totalCount + 1
+      }, 0)
+    }
+  },
+
   methods: {
     toggle () {
       this.open = !this.open
+    },
+
+    focusoutDropdown (index) {
+      if (this.AllItemsCount === index) this.open = false
+    }
+  },
+
+  watch: {
+    $route () {
+      this.open = false
     }
   }
 }
@@ -162,9 +182,11 @@ export default {
   .dropdown-wrapper
     height 1.8rem
     &:hover .nav-dropdown,
-    &:focus-within .nav-dropdown
+    &.open .nav-dropdown
       // override the inline style.
       display block !important
+    &.open:blur
+      display none
     .dropdown-title .arrow
       // make the arrow always down at desktop
       border-left 4px solid transparent

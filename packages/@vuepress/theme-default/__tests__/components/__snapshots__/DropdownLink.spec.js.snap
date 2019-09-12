@@ -6,7 +6,7 @@ exports[`DropdownLink renders dropdown link. 1`] = `
     <li class="dropdown-item">
       <!----> <a class="nav-link">Guide</a></li>
     <li class="dropdown-item">
-      <!----> <a tabindex="-1" class="nav-link">Config Reference</a></li>
+      <!----> <a class="nav-link">Config Reference</a></li>
   </ul>
 </div>
 `;

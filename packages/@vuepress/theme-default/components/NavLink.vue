@@ -2,15 +2,15 @@
   <router-link
     class="nav-link"
     :to="link"
+    @keyup.tab.native="keypressTab"
     v-if="!isExternal(link)"
     :exact="exact"
-    :tabindex="isNotFocusableLink ? -1  : null"
   >{{ item.text }}</router-link>
   <a
     v-else
     :href="link"
+    @keyup.tab.prevent="keypressTab"
     class="nav-link external"
-    :tabindex="isNotFocusableLink ? -1  : null"
     :target="isMailto(link) || isTel(link) ? null : '_blank'"
     :rel="isMailto(link) || isTel(link) ? null : 'noopener noreferrer'"
   >
@@ -34,10 +34,6 @@ export default {
       return ensureExt(this.item.link)
     },
 
-    isNotFocusableLink () {
-      return !!this.item.notFocusable
-    },
-
     exact () {
       if (this.$site.locales) {
         return Object.keys(this.$site.locales).some(rootLink => rootLink === this.link)
@@ -49,7 +45,10 @@ export default {
   methods: {
     isExternal,
     isMailto,
-    isTel
+    isTel,
+    keypressTab () {
+      this.$emit('keypressTab')
+    }
   }
 }
 </script>

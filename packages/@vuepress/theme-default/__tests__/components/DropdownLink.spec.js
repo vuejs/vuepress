@@ -13,8 +13,7 @@ describe('DropdownLink', () => {
         },
         {
           text: 'Config Reference',
-          link: '/config/',
-          notFocusable: true
+          link: '/config/'
         }
       ]
     }
