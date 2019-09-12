@@ -95,6 +95,13 @@ You can set up searchable paths with `test` as:
 
 Otherwise,  the default search will return duplicates, once you can have similar content between folders `/master/`, `/1.0/` and `/2.0/`.
 
+### searchHotkeys
+
+- Type: `Array<string>`
+- Default: `['s', '/']`
+
+Configure the hotkeys which when pressed will focus the search box. Set to an empty array to disable this feature.
+
 ## Tips
 
 ### Tweak the default colors.
