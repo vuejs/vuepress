@@ -13,11 +13,15 @@
 </template>
 <script>
 import { endingSlashRE, outboundRE } from '../util'
+import { format } from '@dynamic/lastUpdated'
 
 export default {
   name: 'PageEdit',
   computed: {
     lastUpdated () {
+      if (format) {
+        return format(this.$page.lastUpdated)
+      }
       return this.$page.lastUpdated
     },
 

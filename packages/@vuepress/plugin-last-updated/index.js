@@ -12,6 +12,13 @@ module.exports = (options = {}, context) => ({
         : defaultTransformer(timestamp, $lang)
       $page.lastUpdated = lastUpdated
     }
+  },
+  clientDynamicModules () {
+    const { format } = options
+    return {
+      name: 'lastUpdated.js',
+      content: typeof format === 'function' ? `export const format = ${format.toString()}` : ''
+    }
   }
 })
 
