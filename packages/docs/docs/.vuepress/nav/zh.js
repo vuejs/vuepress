@@ -54,7 +54,7 @@ module.exports = [
     ]
   },
   {
-    text: '0.x',
-    link: 'https://vuepress.vuejs.org/'
+    text: "0.x",
+    link: "https://v0.vuepress.vuejs.org/"
   }
 ];

@@ -5,6 +5,7 @@
       aria-label="Search"
       :value="query"
       :class="{ 'focused': focused }"
+      :placeholder="placeholder"
       autocomplete="off"
       spellcheck="false"
       @focus="focused = true"
@@ -12,6 +13,7 @@
       @keyup.enter="go(focusIndex)"
       @keyup.up="onUp"
       @keyup.down="onDown"
+      ref="input"
     >
     <ul
       class="suggestions"
@@ -36,14 +38,24 @@
 </template>
 
 <script>
-/* global SEARCH_MAX_SUGGESTIONS, SEARCH_PATHS */
+/* global SEARCH_MAX_SUGGESTIONS, SEARCH_PATHS, SEARCH_HOTKEYS */
 export default {
   data () {
     return {
       query: '',
       focused: false,
-      focusIndex: 0
+      focusIndex: 0,
+      placeholder: undefined
     }
+  },
+
+  mounted () {
+    this.placeholder = this.$site.themeConfig.searchPlaceholder || ''
+    document.addEventListener('keydown', this.onHotkey)
+  },
+
+  beforeDestroy () {
+    document.removeEventListener('keydown', this.onHotkey)
   },
 
   computed: {
@@ -62,10 +74,11 @@ export default {
       }
 
       const { pages } = this.$site
-      const max = SEARCH_MAX_SUGGESTIONS
+      const max = this.$site.themeConfig.searchMaxSuggestions || SEARCH_MAX_SUGGESTIONS
       const localePath = this.$localePath
       const matches = item => (
-        item.title
+        item
+        && item.title
         && item.title.toLowerCase().indexOf(query) > -1
       )
       const res = []
@@ -129,6 +142,13 @@ export default {
       return searchPaths.filter(path => {
         return page.path.match(path)
       }).length > 0
+    },
+
+    onHotkey (event) {
+      if (event.srcElement === document.body && SEARCH_HOTKEYS.includes(event.key)) {
+        this.$refs.input.focus()
+        event.preventDefault()
+      }
     },
 
     onUp () {

@@ -33,7 +33,7 @@ We have seen the shadow of the blog. Let’s continue to look down.
 
 ## Permalinks
 
-A permalink is a URL that is intended to remain unchanged for a long time, yielding a hyperlink that is less susceptible to link root<sup>[1][1]</sup>. VuePress supports a flexible way to build permalinks, allowing you to use template variables.
+A permalink is a URL that is intended to remain unchanged for a long time, yielding a hyperlink that is less susceptible to link rot<sup>[1][1]</sup>. VuePress supports a flexible way to build permalinks, allowing you to use template variables.
 
 The default permalink is `/:regular`.
 
