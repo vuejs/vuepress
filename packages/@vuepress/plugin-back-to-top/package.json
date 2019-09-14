@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-back-to-top",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "back-to-top plugin for vuepress",
   "main": "index.js",
   "publishConfig": {

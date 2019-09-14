@@ -1,6 +1,6 @@
 {
   "name": "vuepress",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "Minimalistic doc generator with Vue component based layout system",
   "main": "index.js",
   "repository": {
@@ -32,8 +32,8 @@
   },
   "homepage": "https://github.com/vuejs/vuepress#readme",
   "dependencies": {
-    "@vuepress/core": "^1.0.4",
-    "@vuepress/theme-default": "^1.0.4",
+    "@vuepress/core": "^1.1.0",
+    "@vuepress/theme-default": "^1.1.0",
     "cac": "^6.3.9",
     "envinfo": "^7.2.0",
     "opencollective-postinstall": "^2.0.2"
