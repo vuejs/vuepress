@@ -62,25 +62,7 @@ module.exports = {
     nav: [
       {
         text: 'Languages',
-        items: [
-          { text: 'Chinese', link: '/language/chinese/' },
-          { text: 'Japanese', link: '/language/japanese/' }
-        ]
-      }
-    ]
-  }
-}
-```
-
-You can change `aria-label` of dropdown button to with a custom aria-label. Default value is text property. if the dropdown menu consists of language items., default value is 'Select language'
-
-```js
-module.exports = {
-  themeConfig: {
-    nav: [
-      {
-        text: 'Languages',
-        ariaLabel: 'Language Menu'
+        ariaLabel: 'Language Menu',
         items: [
           { text: 'Chinese', link: '/language/chinese/' },
           { text: 'Japanese', link: '/language/japanese/' }

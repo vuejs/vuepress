@@ -58,24 +58,7 @@ module.exports = {
     nav: [
       {
         text: 'Languages',
-        items: [
-          { text: 'Chinese', link: '/language/chinese/' },
-          { text: 'Japanese', link: '/language/japanese/' }
-        ]
-      }
-    ]
-  }
-}
-```
-
-
-```js
-module.exports = {
-  themeConfig: {
-    nav: [
-      {
-        text: 'Languages',
-        ariaLabel: 'Language Menu'
+        ariaLabel: 'Language Menu',
         items: [
           { text: 'Chinese', link: '/language/chinese/' },
           { text: 'Japanese', link: '/language/japanese/' }
