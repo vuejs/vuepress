@@ -39,7 +39,7 @@ module.exports = ctx => ({
       '/': {
         label: 'English',
         selectText: 'Languages',
-        ariaLabel: "Languages",
+        ariaLabel: 'Select language',
         editLinkText: 'Edit this page on GitHub',
         lastUpdated: 'Last Updated',
         nav: require('./nav/en'),
