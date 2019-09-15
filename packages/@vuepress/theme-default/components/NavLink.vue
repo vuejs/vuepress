@@ -47,7 +47,7 @@ export default {
     isMailto,
     isTel,
     focusoutAction () {
-      this.$emit('focusout-navlink')
+      this.$emit('focusout')
     }
   }
 }

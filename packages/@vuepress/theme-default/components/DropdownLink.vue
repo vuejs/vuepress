@@ -35,17 +35,21 @@
             <li
               class="dropdown-subitem"
               :key="childSubItem.link"
-              v-for="(childSubItem, subIndex) in subItem.items"
+              v-for="childSubItem in subItem.items"
             >
               <NavLink
-                @focusout-navlink="focusoutNavLink(getSubItemIndex(index, subIndex))"
+                @focusout="
+                  isLastItemOfArray(childSubItem, subItem.items) &&
+                  isLastItemOfArray(subItem, item.items) &&
+                  toggle()
+                "
                 :item="childSubItem"/>
             </li>
           </ul>
 
           <NavLink
             v-else
-            @focusout-navlink="focusoutNavLink(index + 1)"
+            @focusout="isLastItemOfArray(subItem, item.items) && toggle()"
             :item="subItem"
           />
         </li>
@@ -57,6 +61,7 @@
 <script>
 import NavLink from '@theme/components/NavLink.vue'
 import DropdownTransition from '@theme/components/DropdownTransition.vue'
+import last from 'lodash/last'
 
 export default {
   components: { NavLink, DropdownTransition },
@@ -74,11 +79,6 @@ export default {
   },
 
   computed: {
-    allItemsCount () {
-      return this.item.items.reduce((totalCount, item) => {
-        return item.items ? totalCount + item.items.length : totalCount + 1
-      }, 0)
-    },
 
     dropdownAriaLabel () {
       return this.item.ariaLabel || this.item.text
@@ -90,15 +90,8 @@ export default {
       this.open = !this.open
     },
 
-    getSubItemIndex (index, subIndex) {
-      const items = [...this.item.items].splice(0, index) // find up to selected item
-      return items.reduce((totalCount, item) => {
-        return item.items ? totalCount + item.items.length : totalCount
-      }, 0) + subIndex + 1
-    },
-
-    focusoutNavLink (index) {
-      if (this.allItemsCount === index) this.open = false
+    isLastItemOfArray (item, array) {
+      return last(array) === item
     }
   },
 
