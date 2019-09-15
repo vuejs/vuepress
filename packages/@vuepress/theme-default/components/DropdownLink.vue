@@ -6,7 +6,7 @@
     <button
       class="dropdown-title"
       type="button"
-      :aria-label="dropdownArialLabel"
+      :aria-label="dropdownariaLabel"
       @click="toggle"
     >
       <span class="title">{{ item.text }}</span>
@@ -80,7 +80,7 @@ export default {
       }, 0)
     },
 
-    dropdownArialLabel () {
+    dropdownariaLabel () {
       return this.item.ariaLabel || this.item.text
     }
   },
