@@ -2,14 +2,14 @@
   <router-link
     class="nav-link"
     :to="link"
-    @keyup.tab.native="keypressTab"
+    @focusout.native="focusoutAction"
     v-if="!isExternal(link)"
     :exact="exact"
   >{{ item.text }}</router-link>
   <a
     v-else
     :href="link"
-    @keyup.tab.prevent="keypressTab"
+    @focusout="focusoutAction"
     class="nav-link external"
     :target="isMailto(link) || isTel(link) ? null : '_blank'"
     :rel="isMailto(link) || isTel(link) ? null : 'noopener noreferrer'"
@@ -46,8 +46,8 @@ export default {
     isExternal,
     isMailto,
     isTel,
-    keypressTab () {
-      this.$emit('keypressTab')
+    focusoutAction () {
+      this.$emit('focusout-navlink')
     }
   }
 }

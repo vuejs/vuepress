@@ -38,14 +38,14 @@
               v-for="(childSubItem, subIndex) in subItem.items"
             >
               <NavLink
-                @keypressTab="focusoutDropdown((index + 2) * (subIndex + 1))"
+                @focusout-navlink="focusoutNavLink(getSubItemIndex(index, subIndex))"
                 :item="childSubItem"/>
             </li>
           </ul>
 
           <NavLink
             v-else
-            @keypressTab="focusoutDropdown(index + 1)"
+            @focusout-navlink="focusoutNavLink(index + 1)"
             :item="subItem"
           />
         </li>
@@ -78,7 +78,7 @@ export default {
   },
 
   computed: {
-    AllItemsCount () {
+    allItemsCount () {
       return this.item.items.reduce((totalCount, item) => {
         return item.items ? totalCount + item.items.length : totalCount + 1
       }, 0)
@@ -90,8 +90,15 @@ export default {
       this.open = !this.open
     },
 
-    focusoutDropdown (index) {
-      if (this.AllItemsCount === index) this.open = false
+    getSubItemIndex (index, subIndex) {
+      const items = [...this.item.items].splice(0, index) // find up to selected item
+      return items.reduce((totalCount, item) => {
+        return item.items ? totalCount + item.items.length : totalCount
+      }, 0) + subIndex + 1
+    },
+
+    focusoutNavLink (index) {
+      if (this.allItemsCount === index) this.open = false
     }
   },
 
