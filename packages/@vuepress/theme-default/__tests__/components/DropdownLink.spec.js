@@ -5,7 +5,8 @@ import { createLocalVue } from '@vuepress/test-utils/client'
 describe('DropdownLink', () => {
   test('renders dropdown link.', () => {
     const item = {
-      text: 'VuePress',
+      text: 'Learn More',
+      ariaLabel: 'Learn More Select',
       items: [
         {
           text: 'Guide',

@@ -3,8 +3,10 @@
     class="dropdown-wrapper"
     :class="{ open }"
   >
-    <a
+    <button
       class="dropdown-title"
+      type="button"
+      :aria-label="dropdownAriaLabel"
       @click="toggle"
     >
       <span class="title">{{ item.text }}</span>
@@ -12,7 +14,7 @@
         class="arrow"
         :class="open ? 'down' : 'right'"
       ></span>
-    </a>
+    </button>
 
     <DropdownTransition>
       <ul
@@ -35,12 +37,19 @@
               :key="childSubItem.link"
               v-for="childSubItem in subItem.items"
             >
-              <NavLink :item="childSubItem"/>
+              <NavLink
+                @focusout="
+                  isLastItemOfArray(childSubItem, subItem.items) &&
+                  isLastItemOfArray(subItem, item.items) &&
+                  toggle()
+                "
+                :item="childSubItem"/>
             </li>
           </ul>
 
           <NavLink
             v-else
+            @focusout="isLastItemOfArray(subItem, item.items) && toggle()"
             :item="subItem"
           />
         </li>
@@ -52,6 +61,7 @@
 <script>
 import NavLink from '@theme/components/NavLink.vue'
 import DropdownTransition from '@theme/components/DropdownTransition.vue'
+import last from 'lodash/last'
 
 export default {
   components: { NavLink, DropdownTransition },
@@ -68,9 +78,26 @@ export default {
     }
   },
 
+  computed: {
+
+    dropdownAriaLabel () {
+      return this.item.ariaLabel || this.item.text
+    }
+  },
+
   methods: {
     toggle () {
       this.open = !this.open
+    },
+
+    isLastItemOfArray (item, array) {
+      return last(array) === item
+    }
+  },
+
+  watch: {
+    $route () {
+      this.open = false
     }
   }
 }
@@ -81,6 +108,11 @@ export default {
   cursor pointer
   .dropdown-title
     display block
+    font-size 0.9rem
+    background transparent
+    border none
+    font-weight 500
+    color $textColor
     &:hover
       border-color transparent
     .arrow
@@ -149,9 +181,12 @@ export default {
 @media (min-width: $MQMobile)
   .dropdown-wrapper
     height 1.8rem
-    &:hover .nav-dropdown
+    &:hover .nav-dropdown,
+    &.open .nav-dropdown
       // override the inline style.
       display block !important
+    &.open:blur
+      display none
     .dropdown-title .arrow
       // make the arrow always down at desktop
       border-left 4px solid transparent
