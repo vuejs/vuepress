@@ -17,6 +17,7 @@ module.exports = [
   },
   {
     text: "了解更多",
+    ariaLabel: "了解更多",
     items: [
       {
         text: "API",

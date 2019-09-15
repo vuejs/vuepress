@@ -6,7 +6,7 @@
     <button
       class="dropdown-title"
       type="button"
-      :aria-label="dropdownName"
+      :aria-label="dropdownArialLabel"
       @click="toggle"
     >
       <span class="title">{{ item.text }}</span>
@@ -70,10 +70,6 @@ export default {
   props: {
     item: {
       required: true
-    },
-    dropdownName: {
-      default: 'Dropdown',
-      type: String
     }
   },
 
@@ -82,6 +78,10 @@ export default {
       return this.item.items.reduce((totalCount, item) => {
         return item.items ? totalCount + item.items.length : totalCount + 1
       }, 0)
+    },
+
+    dropdownArialLabel () {
+      return this.item.ariaLabel || this.item.text
     }
   },
 

@@ -12,7 +12,6 @@
       <DropdownLink
         v-if="item.type === 'links'"
         :item="item"
-        dropdownName="Select Dropdown"
       />
       <NavLink
         v-else
@@ -55,6 +54,7 @@ export default {
         const themeLocales = this.$site.themeConfig.locales || {}
         const languageDropdown = {
           text: this.$themeLocaleConfig.selectText || 'Languages',
+          arialLabel: this.$themeLocaleConfig.selectText || 'Languages',
           items: Object.keys(locales).map(path => {
             const locale = locales[path]
             const text = themeLocales[path] && themeLocales[path].label || locale.lang
