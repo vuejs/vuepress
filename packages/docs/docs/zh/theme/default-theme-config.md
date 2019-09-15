@@ -68,6 +68,24 @@ module.exports = {
 }
 ```
 
+
+```js
+module.exports = {
+  themeConfig: {
+    nav: [
+      {
+        text: 'Languages',
+        ariaLabel: 'Language Menu'
+        items: [
+          { text: 'Chinese', link: '/language/chinese/' },
+          { text: 'Japanese', link: '/language/japanese/' }
+        ]
+      }
+    ]
+  }
+}
+```
+
 此外，你还可以通过嵌套的 `items` 来在 `下拉列表` 中设置分组：
 
 ```js
