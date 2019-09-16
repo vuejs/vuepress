@@ -11,8 +11,8 @@ metaTitle: Google Analytics Plugin | VuePress
 ## Install
 
 ```bash
-yarn add -D @vuepress/plugin-google-analytics@next
-# OR npm install -D @vuepress/plugin-google-analytics@next
+yarn add -D @vuepress/plugin-google-analytics
+# OR npm install -D @vuepress/plugin-google-analytics
 ```
 
 ## Usage
