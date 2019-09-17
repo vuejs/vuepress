@@ -48,7 +48,7 @@ export default {
     img
       display block
   .carbon-poweredby
-    color #999
+    color #767676
     display block
     margin-top 0.5em
 

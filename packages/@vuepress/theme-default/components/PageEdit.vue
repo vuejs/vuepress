@@ -121,7 +121,7 @@ export default {
 
     .time {
       font-weight: 400;
-      color: #aaa;
+      color: #767676;
     }
   }
 }

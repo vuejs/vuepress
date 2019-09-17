@@ -114,6 +114,7 @@ $navbar-horizontal-padding = 1.5rem
     right $navbar-horizontal-padding
     top $navbar-vertical-padding
     display flex
+    overflow-x scroll
     .search-box
       flex: 0 0 auto
       vertical-align top
@@ -124,7 +125,7 @@ $navbar-horizontal-padding = 1.5rem
     .can-hide
       display none
     .links
-      padding-left 1.5rem
+      overflow-x hidden
     .site-name
       width calc(100vw - 9.4rem)
       overflow hidden

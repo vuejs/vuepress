@@ -7,7 +7,7 @@
 
 <style>
 .icon.outbound {
-  color: #aaa;
+  color: #767676;
   display: inline-block;
   vertical-align: middle;
   position: relative;
