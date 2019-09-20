@@ -12,6 +12,7 @@
   </footer>
 </template>
 <script>
+import isNil from 'lodash/isNil'
 import { endingSlashRE, outboundRE } from '../util'
 
 export default {
@@ -32,18 +33,18 @@ export default {
     },
 
     editLink () {
-      if (this.$page.frontmatter.editLink === false) {
-        return
-      }
+      const showEditLink = isNil(this.$page.frontmatter.editLink)
+        ? this.$site.themeConfig.editLinks
+        : this.$page.frontmatter.editLink
+
       const {
         repo,
-        editLinks,
         docsDir = '',
         docsBranch = 'master',
         docsRepo = repo
       } = this.$site.themeConfig
 
-      if (docsRepo && editLinks && this.$page.relativePath) {
+      if (showEditLink && docsRepo && this.$page.relativePath) {
         return this.createEditLink(
           repo,
           docsRepo,
