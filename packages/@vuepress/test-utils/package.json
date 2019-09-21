@@ -29,9 +29,9 @@
     "jest": "^24.7.1",
     "jest-serializer-vue": "^2.0.2",
     "ts-jest": "^24.0.2",
-    "vue": "^2.5.16",
+    "vue": "^2.6.10",
     "vue-jest": "^4.0.0-beta.1",
-    "vue-template-compiler": "^2.5.16"
+    "vue-template-compiler": "^2.6.10"
   },
   "author": "ULIVZ <chl814@foxmail.com>",
   "license": "MIT",

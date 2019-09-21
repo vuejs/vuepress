@@ -1,7 +1,7 @@
 <template>
   <ParentLayout>
-    <CarbonAds slot="sidebar-top"/>
-    <BuySellAds slot="page-bottom"/>
+    <CarbonAds #sidebar-top/>
+    <BuySellAds #page-bottom/>
   </ParentLayout>
 </template>
 
