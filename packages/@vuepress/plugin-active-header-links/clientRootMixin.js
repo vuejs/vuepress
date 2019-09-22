@@ -1,6 +1,6 @@
 /* global AHL_SIDEBAR_LINK_SELECTOR, AHL_HEADER_ANCHOR_SELECTOR */
 
-import throttle from 'lodash.throttle'
+import debounce from 'lodash.debounce'
 
 export default {
   mounted () {
@@ -8,7 +8,7 @@ export default {
   },
 
   methods: {
-    onScroll: throttle(function () {
+    onScroll: debounce(function () {
       this.setActiveHash()
     }, 300),
 
