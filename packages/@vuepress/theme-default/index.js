@@ -41,6 +41,7 @@ module.exports = (options, ctx) => ({
         '/': 'WARNING',
         '/zh/': '警告'
       }
-    }]
+    }],
+    'smooth-scroll'
   ]
 })
