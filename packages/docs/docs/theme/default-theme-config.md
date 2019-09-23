@@ -442,6 +442,19 @@ next: ./my-next-page # Will overwrite 'nextLinks' property from themeConfig
 ---
 ```
 
+## Smooth Scrolling
+
+The `themeConfig.smoothScroll` option allows you to enable smooth scrolling.
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+    smoothScroll: true
+  }
+}
+```
+
 ## Custom Page Class
 
 Sometimes, you may need to add a unique class for a specific page so that you can target content on that page only in custom CSS. You can add a class to the theme container div with `pageClass` in `YAML front matter`:

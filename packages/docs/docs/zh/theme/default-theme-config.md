@@ -419,6 +419,19 @@ editLink: false
 ---
 ```
 
+## 页面滚动
+
+你可以通过 `themeConfig.smoothScroll` 选项来启用页面滚动效果。
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+    smoothScroll: true
+  }
+}
+```
+
 ## 自定义页面类
 
 有时候你可能需要为特定页面添加一个 CSS 类名，以方便针对该页面添加一些专门的 CSS。这种情况下你可以在该页面的 YAML front matter 中声明一个 `pageClass`：
