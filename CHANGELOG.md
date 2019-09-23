@@ -1,16 +1,10 @@
-# [](https://github.com/vuejs/vuepress/compare/v1.1.0...v) (2019-09-14)
-
-
-
 # [1.1.0](https://github.com/vuejs/vuepress/compare/v1.0.4...v1.1.0) (2019-09-14)
 
 
 ### Bug Fixes
 
-* **$js-yaml:** fix Security issue by bump js yaml version [#1845](https://github.com/vuejs/vuepress/issues/1845) ([#1846](https://github.com/vuejs/vuepress/issues/1846)) ([696717b](https://github.com/vuejs/vuepress/commit/696717b))
-* **$doc-deployment** fix Add `npm ci` instructions for Travis CI ([0434f15](https://github.com/vuejs/vuepress/commit/0434f15)), closes [#1844](https://github.com/vuejs/vuepress/issues/1844)
+* **$security:** fix Security issue by bump js yaml version (close: [#1845](https://github.com/vuejs/vuepress/issues/1845)) ([#1846](https://github.com/vuejs/vuepress/issues/1846)) ([696717b](https://github.com/vuejs/vuepress/commit/696717b))
 * **$theme-default** Search box max suggestions ([#1728](https://github.com/vuejs/vuepress/issues/1728)) ([ade328f](https://github.com/vuejs/vuepress/commit/ade328f))
-* **$docs:** Update link to the 0.x documentation ([#1852](https://github.com/vuejs/vuepress/issues/1852)) ([c7999cf](https://github.com/vuejs/vuepress/commit/c7999cf))
 * **$last-updated:** use file author time instead of submodule commit time ([#1640](https://github.com/vuejs/vuepress/issues/1640)) ([f964391](https://github.com/vuejs/vuepress/commit/f964391))
 * **$theme-default:** add text ellipsis to navbar ([#1683](https://github.com/vuejs/vuepress/issues/1683)) ([#1840](https://github.com/vuejs/vuepress/issues/1840)) ([74017c5](https://github.com/vuejs/vuepress/commit/74017c5))
 * **$theme-default:** Expand nested sidebar groups ([#1540](https://github.com/vuejs/vuepress/issues/1540)) ([eb231bf](https://github.com/vuejs/vuepress/commit/eb231bf))
@@ -18,15 +12,12 @@
 
 ### Features
 
-* **$config** Improve CI process ([#1759](https://github.com/vuejs/vuepress/issues/1759)) ([fe7301b](https://github.com/vuejs/vuepress/commit/fe7301b))
-* **$theme-default** renable algolia docSearch [#697](https://github.com/vuejs/vuepress/issues/697) ([68861f0](https://github.com/vuejs/vuepress/commit/68861f0))
-* **$config:** make extendPageData async ready without breaking changes ([#1546](https://github.com/vuejs/vuepress/issues/1546)) ([543fd6c](https://github.com/vuejs/vuepress/commit/543fd6c))
+* **core:** make extendPageData async ready without breaking changes ([#1546](https://github
+.com/vuejs/vuepress/issues/1546)) ([543fd6c](https://github.com/vuejs/vuepress/commit/543fd6c))
 * **$core:** better error log for layouts ([#1455](https://github.com/vuejs/vuepress/issues/1455)) ([3b68913](https://github.com/vuejs/vuepress/commit/3b68913))
-* **$plugin-search:** Add support for search hotkeys ([#1848](https://github.com/vuejs/vuepress/issues/1848)) ([1ba06ae](https://github.com/vuejs/vuepress/commit/1ba06ae))
+* **$plugin-search:** add support for search hotkeys ([#1848](https://github.com/vuejs/vuepress/issues/1848)) 
+([1ba06ae](https://github.com/vuejs/vuepress/commit/1ba06ae))
 
-
-
-# [](https://github.com/vuejs/vuepress/compare/v1.0.4...v) (2019-09-14)
 
 
 
@@ -36,11 +27,7 @@
 ### Bug Fixes
 
 * **$core:** Do not transpile core packages' dependencies ([b69b107](https://github.com/vuejs/vuepress/commit/b69b107))
-* **$avatar:** Fix url ([45e31b4](https://github.com/vuejs/vuepress/commit/45e31b4))
-* **$contributors:** Fix for good contributions ([a709a4f](https://github.com/vuejs/vuepress/commit/a709a4f))
-* **$contributors:** Fix url parameters ([db71238](https://github.com/vuejs/vuepress/commit/db71238))
 * **$core:** Add missing hash in [#1706](https://github.com/vuejs/vuepress/issues/1706) ([#1780](https://github.com/vuejs/vuepress/issues/1780)) ([25777e4](https://github.com/vuejs/vuepress/commit/25777e4))
-* **$contributors:** Fix contributors commit link ([#1809](https://github.com/vuejs/vuepress/issues/1809)) ([bb61182](https://github.com/vuejs/vuepress/commit/bb61182))
 
 
 ### Features
@@ -50,7 +37,6 @@
 
 
 
-# [](https://github.com/vuejs/vuepress/compare/v1.0.3...v) (2019-07-29)
 
 
 

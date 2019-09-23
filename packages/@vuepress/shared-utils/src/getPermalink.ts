@@ -9,6 +9,9 @@ interface PermalinkOption {
   localePath: string;
 }
 
+function removeLeadingSlash (path: string) {
+  return path.replace(/^\//, '')
+}
 // e.g.
 // filename: docs/_posts/evan you.md
 // content: # yyx 990803
@@ -39,8 +42,7 @@ export = function getPermalink ({
   const month = iMonth < 10 ? `0${iMonth}` : iMonth
   const day = iDay < 10 ? `0${iDay}` : iDay
 
-  // Remove leading slash
-  pattern = pattern.replace(/^\//, '')
+  pattern = removeLeadingSlash(pattern)
 
   const link =
     localePath +
@@ -53,7 +55,7 @@ export = function getPermalink ({
       .replace(/:minutes/, String(minutes))
       .replace(/:seconds/, String(seconds))
       .replace(/:slug/, slug)
-      .replace(/:regular/, regularPath)
+      .replace(/:regular/, removeLeadingSlash(regularPath))
 
   return ensureLeadingSlash(ensureEndingSlash(link))
 }
