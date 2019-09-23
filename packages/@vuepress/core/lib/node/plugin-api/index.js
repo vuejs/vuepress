@@ -86,7 +86,7 @@ module.exports = class PluginAPI {
       plugin = pluginRaw
     } else {
       try {
-        plugin = this.normalizePlugin(pluginRaw, pluginOptions)
+        plugin = this.normalizePlugin('plugin', pluginRaw, pluginOptions)
       } catch (e) {
         logger.warn(e.message)
         return this
@@ -117,10 +117,15 @@ module.exports = class PluginAPI {
    * @api public
    */
 
-  normalizePlugin (pluginRaw, pluginOptions = {}) {
+  normalizePlugin (type, pluginRaw, pluginOptions = {}) {
     let plugin = this._pluginResolver.resolve(pluginRaw)
     if (!plugin.entry) {
-      throw new Error(`[vuepress] cannot resolve plugin "${pluginRaw}"`)
+      if (plugin.error) {
+        logger.debug(plugin.error)
+        throw new Error(`An error was encounted in ${type} "${pluginRaw}"`)
+      } else {
+        throw new Error(`Cannot resolve ${type} "${pluginRaw}"`)
+      }
     }
     plugin = flattenPlugin(plugin, pluginOptions, this._pluginContext, this)
     plugin.$$normalized = true
