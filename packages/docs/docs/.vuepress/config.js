@@ -35,6 +35,7 @@ module.exports = ctx => ({
       apiKey: '3a539aab83105f01761a137c61004d85',
       indexName: 'vuepress'
     }) : null,
+    smoothScroll: true,
     locales: {
       '/': {
         label: 'English',
