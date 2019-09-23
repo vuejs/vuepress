@@ -26,21 +26,21 @@ VuePress正在使用包含了[Yarn 工作区](https://yarnpkg.com/zh-Hans/docs/w
     ls -la node_modules/@vuepress
 ```
 
-你将全部链接完成。
+您将全部链接完成。
 
 :::warning
 您必须注意应在子文件夹的package.json中声明所有依赖项。如果未声明来自软件包的依赖关系，则在发布到库中时将无法正常工作。
 :::
 
 :::warning
-有一个特殊的软件包您应该看一下，@vuepress shared-util是由Typescript编写的。
+您应该留意一个特殊的软件包，@vuepress shared-util是由Typescript编写的。
 :::
 
 安装完所有程序后，它将运行`yarn tsc`。该命令将告诉工作区的 @vuepress/shared-utils 来编译他的js。
 
 :::warning
 从这里开始，如果您要在此程序包中进行更改，则必须  
-始终运行`yarn tsc`或在单独的shell`yarn run tsc -w`中运行。剑刺到shared-utils有任何更改时，它将重新运行tsc
+始终运行`yarn tsc`或在单独的shell`yarn run tsc -w`中运行。当检测到shared-utils有任何更改时，它将重新运行tsc
 :::
 
 ## 链接
