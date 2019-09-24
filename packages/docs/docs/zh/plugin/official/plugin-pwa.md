@@ -216,7 +216,7 @@ module.exports = {
 <template>
   <SWUpdatePopup>
     <div
-      slot-scope="{ enabled, reload, message, buttonText }"
+      v-slot="{ enabled, reload, message, buttonText }"
       class="my-sw-update-popup">
       {{ message }}<br>
       <button @click="reload">{{ buttonText }}</button>

@@ -216,7 +216,7 @@ First, you need to create a global component (e.g. `MySWUpdatePopup`) at `.vuepr
 <template>
   <SWUpdatePopup>
     <div
-      slot-scope="{ enabled, reload, message, buttonText }"
+      v-slot="{ enabled, reload, message, buttonText }"
       class="my-sw-update-popup">
       {{ message }}<br>
       <button @click="reload">{{ buttonText }}</button>
