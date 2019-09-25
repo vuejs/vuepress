@@ -7,7 +7,7 @@ Plugins generally add global-level functionality to VuePress. There is no strict
 3. Inject global UI. For example [@vuepress/plugin-back-to-top](./official/plugin-back-to-top.md);
 4. Extend the CLI with custom commands. For example [vuepress-plugin-export](https://github.com/ulivz/vuepress-plugin-export).
 
-Here is also a litte slightly complicated plugin example [@vuepress/plugin-blog](https://vuepress-plugin-blog.ulivz.com) that uses compile-time metadata to generate some dynamic modules and initialize them on the client-side by using `enhanceAppFiles`.
+Here is also a little slightly complicated plugin example [@vuepress/plugin-blog](https://vuepress-plugin-blog.ulivz.com) that uses compile-time metadata to generate some dynamic modules and initialize them on the client-side by using `enhanceAppFiles`.
 
 The architecture of the whole plugin system is as follows:
 
