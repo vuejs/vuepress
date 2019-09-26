@@ -113,7 +113,6 @@ export default {
     cursor inherit
     padding inherit
     line-height 1.4rem
-    outline none
     background transparent
     border none
     font-weight 500
