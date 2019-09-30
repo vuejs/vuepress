@@ -26,6 +26,18 @@ export default {
 </script>
 ```
 
+or
+
+``` vue
+<script>
+export default {
+  components: {
+    'module': () => import('name of module')
+  }
+}
+</script>
+```
+
 ## Templating
 
 ### Interpolation
