@@ -1,6 +1,6 @@
 # Using a theme
 
-Using a theme is almost same as using a plugin.
+Using a theme is almost the same as using a plugin.
 
 ## Using a theme from a dependency
 
@@ -14,7 +14,7 @@ module.exports = {
 
 ## Theme Shorthand
 
-If you prefix the plugin with `vuepress-theme-`, you can use a shorthand to leave out that prefix:
+If you prefix the theme with `vuepress-theme-`, you can use a shorthand to leave out that prefix:
 
 ``` js
 module.exports = {
@@ -47,5 +47,5 @@ module.exports = {
 ```
 
 ::: warning Note
-The plugin whose name starts with `@vuepress/theme-` is an officially maintained theme.
+The theme whose name starts with `@vuepress/theme-` is an officially maintained theme.
 :::

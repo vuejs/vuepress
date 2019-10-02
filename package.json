@@ -3,29 +3,33 @@
   "workspaces": [
     "packages/@vuepress/*",
     "packages/vuepress",
-    "packages/docs",
-    "packages/blog"
+    "packages/docs"
   ],
   "description": "Minimalistic doc generator with Vue component based layout system",
   "scripts": {
+    "precommit": "lint-staged",
+    "bootstrap": "yarn && yarn tsc",
+    "lerna:bootstrap": "lerna bootstrap",
+    "clean": "lerna clean && rm -rf node_modules",
+    "packages:list": "lerna ls -l",
+    "packages:diff": "lerna diff",
+    "packages:changed": "lerna changed",
     "boot": "node scripts/bootstrap.js",
-    "dev": "yarn workspace docs dev",
-    "build": "yarn workspace docs build",
-    "dev:blog": "yarn workspace blog dev",
-    "build:blog": "yarn workspace blog build",
-    "lint": "eslint --fix packages/**/*.js packages/**/*.vue packages/**/bin/*",
-    "release": "yarn --pure-lockfile && node scripts/release.js",
-    "changelog": "node scripts/genChangelog.js run",
-    "test": "node scripts/test.js"
-  },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,vue}": [
-      "eslint --fix",
-      "git add"
-    ]
+    "remote-version": "node scripts/remote-version.js",
+    "dev": "yarn tsc && yarn dev:docs",
+    "dev:docs": "yarn workspace docs dev",
+    "build": "yarn tsc && yarn build:docs",
+    "build:docs": "yarn workspace docs build",
+    "view-info": "yarn tsc && yarn workspace docs view-info",
+    "show-help": "yarn workspace docs show-help",
+    "register-vuepress": "lerna exec --scope vuepress -- yarn link",
+    "lint": "yarn lint:check --fix",
+    "lint:check": "eslint packages --ext .js,.vue",
+    "release": "yarn --pure-lockfile && yarn tsc && node scripts/release.js",
+    "unregister-vuepress": "lerna exec --scope vuepress -- yarn unlink",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 2",
+    "test": "node scripts/test.js",
+    "tsc": "yarn workspace @vuepress/shared-utils tsc"
   },
   "devDependencies": {
     "@hawkeyesec/scanner-cli": "^1.7.1",
@@ -39,5 +43,15 @@
     "lint-staged": "^7.0.4",
     "minimist": "^1.2.0",
     "yorkie": "^2.0.0"
+    "@types/escape-html": "^0.0.20",
+    "@types/fs-extra": "^5.0.4",
+    "@types/globby": "^9.1.0",
+    "@types/hash-sum": "^1.0.0",
+    "@types/lru-cache": "^4.1.1",
+    "@types/node": "^10.12.12",
+    "@types/semver": "^6.0.0",
+    "husky": "^3.0.2",
+    "typescript": "^3.2.2",
+    "all-contributors-cli": "^6.8.1"
   }
 }

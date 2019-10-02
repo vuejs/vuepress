@@ -7,6 +7,10 @@ module.exports = (options, context) => ({
     }, options)
   },
 
+  alias: {
+    '@sw-event': path.resolve(__dirname, 'lib/event.js')
+  },
+
   define () {
     const { serviceWorker, updatePopup } = options
     const base = context.base || '/'
@@ -24,19 +28,20 @@ module.exports = (options, context) => ({
 
   globalUIComponents: options.popupComponent || 'SWUpdatePopup',
 
-  enhanceAppFiles: path.resolve(__dirname, 'lib/inject.js'),
+  enhanceAppFiles: path.resolve(__dirname, 'lib/enhanceAppFile.js'),
 
   async generated () {
     const { serviceWorker } = options
     const { outDir } = context
     const swFilePath = path.resolve(outDir, 'service-worker.js')
     if (serviceWorker) {
-      logger.wait('\nGenerating service worker...')
+      logger.wait('Generating service worker...')
       const wbb = require('workbox-build')
       await wbb.generateSW({
         swDest: swFilePath,
         globDirectory: outDir,
-        globPatterns: ['**\/*.{js,css,html,png,jpg,jpeg,gif,svg,woff,woff2,eot,ttf,otf}']
+        globPatterns: ['**\/*.{js,css,html,png,jpg,jpeg,gif,svg,woff,woff2,eot,ttf,otf}'],
+        ...(options.generateSWConfig || {})
       })
       await fs.writeFile(
         swFilePath,

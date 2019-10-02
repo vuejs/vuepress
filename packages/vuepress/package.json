@@ -1,11 +1,15 @@
 {
   "name": "vuepress",
-  "version": "1.0.0-alpha.16",
+  "version": "1.1.0",
   "description": "Minimalistic doc generator with Vue component based layout system",
-  "main": "vuepress.js",
+  "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vuejs/vuepress.git"
+    "url": "git+https://github.com/vuejs/vuepress.git",
+    "directory": "packages/vuepress"
+  },
+  "scripts": {
+    "postinstall": "opencollective-postinstall || true"
   },
   "keywords": [
     "documentation",
@@ -13,7 +17,7 @@
     "generator"
   ],
   "bin": {
-    "vuepress": "vuepress.js"
+    "vuepress": "cli.js"
   },
   "author": "Evan You",
   "maintainers": [
@@ -28,12 +32,18 @@
   },
   "homepage": "https://github.com/vuejs/vuepress#readme",
   "dependencies": {
-    "@vuepress/cli": "^1.0.0-alpha.16",
-    "@vuepress/core": "^1.0.0-alpha.16",
-    "@vuepress/theme-default": "^1.0.0-alpha.16"
+    "@vuepress/core": "^1.1.0",
+    "@vuepress/theme-default": "^1.1.0",
+    "cac": "^6.3.9",
+    "envinfo": "^7.2.0",
+    "opencollective-postinstall": "^2.0.2"
+  },
+  "collective": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/vuepress"
   },
   "engines": {
-    "node": ">=8"
+    "node": ">=8.6"
   },
   "browserslist": [
     ">1%"

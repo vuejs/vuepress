@@ -1,6 +1,6 @@
 import { Md } from './util'
 import link from '../lib/link.js'
-import { dataReturnable } from '../lib/index.js'
+import { dataReturnable } from '../index.js'
 
 const mdL = Md().use(link, {
   target: '_blank',
@@ -10,7 +10,7 @@ const mdL = Md().use(link, {
 dataReturnable(mdL)
 
 const internalLinkAsserts = {
-  // START abosolute path usage
+  // START absolute path usage
   '/': '/',
 
   '/foo/': '/foo/',
@@ -18,7 +18,7 @@ const internalLinkAsserts = {
 
   '/foo/two.md': '/foo/two.html',
   '/foo/two.html': '/foo/two.html',
-  // END abosolute path usage
+  // END absolute path usage
 
   // START relative path usage
   'README.md': './',

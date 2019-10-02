@@ -5,6 +5,7 @@
       aria-label="Search"
       :value="query"
       :class="{ 'focused': focused }"
+      :placeholder="placeholder"
       autocomplete="off"
       spellcheck="false"
       @focus="focused = true"
@@ -12,6 +13,7 @@
       @keyup.enter="go(focusIndex)"
       @keyup.up="onUp"
       @keyup.down="onDown"
+      ref="input"
     >
     <ul
       class="suggestions"
@@ -36,22 +38,32 @@
 </template>
 
 <script>
-/* global SEARCH_MAX_SUGGESTIONS */
+/* global SEARCH_MAX_SUGGESTIONS, SEARCH_PATHS, SEARCH_HOTKEYS */
 export default {
   data () {
     return {
       query: '',
       focused: false,
-      focusIndex: 0
+      focusIndex: 0,
+      placeholder: undefined
     }
+  },
+
+  mounted () {
+    this.placeholder = this.$site.themeConfig.searchPlaceholder || ''
+    document.addEventListener('keydown', this.onHotkey)
+  },
+
+  beforeDestroy () {
+    document.removeEventListener('keydown', this.onHotkey)
   },
 
   computed: {
     showSuggestions () {
       return (
-        this.focused &&
-        this.suggestions &&
-        this.suggestions.length
+        this.focused
+        && this.suggestions
+        && this.suggestions.length
       )
     },
 
@@ -62,11 +74,12 @@ export default {
       }
 
       const { pages } = this.$site
-      const max = SEARCH_MAX_SUGGESTIONS
+      const max = this.$site.themeConfig.searchMaxSuggestions || SEARCH_MAX_SUGGESTIONS
       const localePath = this.$localePath
       const matches = item => (
-        item.title &&
-        item.title.toLowerCase().indexOf(query) > -1
+        item
+        && item.title
+        && item.title.toLowerCase().indexOf(query) > -1
       )
       const res = []
       for (let i = 0; i < pages.length; i++) {
@@ -76,6 +89,12 @@ export default {
         if (this.getPageLocalePath(p) !== localePath) {
           continue
         }
+
+        // filter out results that do not match searchable paths
+        if (!this.isSearchable(p)) {
+          continue
+        }
+
         if (matches(p)) {
           res.push(p)
         } else if (p.headers) {
@@ -110,6 +129,26 @@ export default {
         }
       }
       return '/'
+    },
+
+    isSearchable (page) {
+      let searchPaths = SEARCH_PATHS
+
+      // all paths searchables
+      if (searchPaths === null) { return true }
+
+      searchPaths = Array.isArray(searchPaths) ? searchPaths : new Array(searchPaths)
+
+      return searchPaths.filter(path => {
+        return page.path.match(path)
+      }).length > 0
+    },
+
+    onHotkey (event) {
+      if (event.srcElement === document.body && SEARCH_HOTKEYS.includes(event.key)) {
+        this.$refs.input.focus()
+        event.preventDefault()
+      }
     },
 
     onUp () {
@@ -160,6 +199,7 @@ export default {
   input
     cursor text
     width 10rem
+    height: 2rem
     color lighten($textColor, 25%)
     display inline-block
     border 1px solid darken($borderColor, 10%)
@@ -214,6 +254,11 @@ export default {
         cursor text
         left 0
         width 10rem
+
+// Match IE11
+@media all and (-ms-high-contrast: none)
+  .search-box input
+    height 2rem
 
 @media (max-width: $MQNarrow) and (min-width: $MQMobile)
   .search-box

@@ -8,16 +8,16 @@ VuePress 实现了一套针对 Markdown 的内容分发 API。通过这个特性
 
 <diagram-markdown-slot-relationship/>
 
-Markdown 文件是元数据（页面内容、配置等）的提供者，而布局组件负责消费他们。我们可以通过 frontmatter 来定义一些普通数据类型的元数据，但对于 Markdown/HTML 这种涉及到编译前差异的复杂元数据，frontmatter 却无能能力。
+Markdown 文件是元数据（页面内容、配置等）的提供者，而布局组件负责消费他们。我们可以通过 frontmatter 来定义一些普通数据类型的元数据，但对于 Markdown / HTML 这种涉及到编译前后差异的复杂元数据，frontmatter 却无能能力。
 
-Markdown 插槽便是为了解决这一类问题。
+Markdown 插槽便解决了这一类问题。
 
 ## 具名插槽
 
 你可以通过下述的语法来定义一个具名 Markdown 插槽：
 
 ``` md
-::: slot [$name]
+::: slot name
 
 :::
 ```
@@ -25,8 +25,12 @@ Markdown 插槽便是为了解决这一类问题。
 在布局组件中利用 `Content` 组件来使用该插槽：
 
 ``` vue
-<Content slot="$name"/> 
+<Content slot-key="name"/>
 ```
+
+::: tip 提示
+这里我们使用的是 `slot-key` 而不是 `slot`，这是因为在 Vue 中，`slot` 是一个保留的 `prop` 名。
+:::
 
 ## 插槽的默认内容
 
@@ -44,13 +48,13 @@ Markdown 插槽便是为了解决这一类问题。
 <template>
   <div class="container">
     <header>
-      <Content slot="header"/>
+      <Content slot-key="header"/>
     </header>
     <main>
       <Content/>
     </main>
     <footer>
-      <Content slot="footer"/>
+      <Content slot-key="footer"/>
     </footer>
   </div>
 </template>

@@ -1,17 +1,19 @@
 # 默认主题配置
 
-::: tip 提示
+::: tip
 本页所列的选项仅对默认主题生效。如果你在使用一个自定义主题，选项可能会有不同。
 :::
 
 ## 首页
 
-默认的主题提供了一个首页（Homepage）的布局 (用于 [这个网站的主页](../README.md))。想要使用它，需要在你的根级 `README.md` 的 [YAML front matter](../guide/markdown.md#front-matter) 指定 `home: true`。以下是这个网站实际使用的数据：
+默认的主题提供了一个首页（Homepage）的布局 (用于 [这个网站的主页](../README.md))。想要使用它，需要在你的根级 `README.md` 的 [YAML front matter](../guide/markdown.md#front-matter) 指定 `home: true`。以下是一个如何使用的例子：
 
 ``` yaml
 ---
 home: true
 heroImage: /hero.png
+heroText: Hero 标题
+tagline: Hero 副标题
 actionText: 快速上手 →
 actionLink: /zh/guide/
 features:
@@ -56,9 +58,10 @@ module.exports = {
     nav: [
       {
         text: 'Languages',
+        ariaLabel: 'Language Menu',
         items: [
-          { text: 'Chinese', link: '/language/chinese' },
-          { text: 'Japanese', link: '/language/japanese' }
+          { text: 'Chinese', link: '/language/chinese/' },
+          { text: 'Japanese', link: '/language/japanese/' }
         ]
       }
     ]
@@ -160,7 +163,7 @@ module.exports = {
 }
 ```
 
-::: tip 
+::: tip
 值得一提的是，当你禁用此选项时，此功能的相应脚本将不会被加载，这是我们性能优化的一个小点。
 :::
 
@@ -175,8 +178,10 @@ module.exports = {
   themeConfig: {
     sidebar: [
       {
-        title: 'Group 1',
-        collapsable: false,
+        title: 'Group 1',   // 必要的
+        path: '/foo/',      // 可选的, 应该是一个绝对路径
+        collapsable: false, // 可选的, 默认值是 true,
+        sidebarDepth: 1,    // 可选的, 默认值是 1
         children: [
           '/'
         ]
@@ -191,6 +196,12 @@ module.exports = {
 ```
 
 侧边栏的每个子组默认是可折叠的，你可以设置 `collapsable: false` 来让一个组永远都是展开状态。
+
+一个侧边栏的子组配置同时支持 [sidebarDepth](#nested-header-links) 字段用于重写默认显示的侧边栏深度(`1`)。
+
+::: tip
+  从 `1.0.0-alpha.36` 开始，嵌套的侧边栏分组 <Badge text="beta"/> 也是支持的，但嵌套深度应小于 3，否则在控制台会收到警告。
+:::
 
 ### 多个侧边栏
 
@@ -304,6 +315,14 @@ module.exports = {
 }
 ```
 
+你可以通过 `YAML front matter` 来对单独的页面禁用内置的搜索框：
+
+```yaml
+---
+search: false
+---
+```
+
 ::: tip
 内置搜索只会为页面的标题、`h2` 和 `h3` 构建搜索索引，如果你需要全文搜索，你可以使用 [Algolia 搜索](#Algolia-搜索)。
 :::
@@ -344,39 +363,12 @@ module.exports = {
 请注意，`themeConfig.lastUpdated` 默认是关闭的，如果给定一个字符串，它将会作为前缀显示（默认值是：`Last Updated`）。
 
 ::: warning 使用须知
-  由于 `lastUpdated` 是基于 `git` 的, 所以你只能在一个基于 `git` 的项目中启用它。
+  由于 `lastUpdated` 是基于 `git` 的, 所以你只能在一个基于 `git` 的项目中启用它。此外，由于使用的时间戳来自 git commit，因此它将仅在给定页的第一次提交之后显示，并且仅在该页面后续提交更改时更新。
 :::
 
-## Service Worker
+**拓展阅读:**
 
-`themeConfig.serviceWorker` 允许你去配置 Service Worker。
-
-::: tip 提示
-请不要将本选项与 [Config > serviceWorker](../config/README.md#serviceworker) 混淆，[Config > serviceWorker](../config/README.md#serviceworker) 是网站级别的配置，而本选项是主题级别的配置。
-:::
-
-### 刷新内容的弹窗 <Badge text="0.13.0+"/> <Badge text="beta" type="warn"/>
-
-开启 `themeConfig.serviceWorker.updatePopup` 选项，将开启一个能够刷新内容的弹窗。当网站更新（即 Service Worker 更新）时，它会提供一个 `refresh` 按钮，允许用户立刻刷新内容。
-
-::: tip 提示
-如果没有 `refresh` 按钮，新的 service worker 将在所有的 [clients](https://developer.mozilla.org/en-US/docs/Web/API/Clients) 关闭后才会处于活动状态。这意味着访问者在关闭你网站的所有标签之前将无法看到新内容。但是，`refresh` 按钮可以立即激活新的 Service Worker。
-:::
-
-``` js
-module.exports = {
-  themeConfig: {
-    serviceWorker: {
-      updatePopup: true // Boolean | Object, 默认值是 undefined.
-      // 如果设置为 true, 默认的文本配置将是: 
-      // updatePopup: { 
-      //    message: "New content is available.", 
-      //    buttonText: "Refresh" 
-      // }
-    }
-  }
-}
-```
+- [@vuepress/plugin-last-updated](../plugin/official/plugin-last-updated.md)
 
 ## 上 / 下一篇链接
 
@@ -425,6 +417,19 @@ module.exports = {
 ---
 editLink: false
 ---
+```
+
+## 页面滚动
+
+你可以通过 `themeConfig.smoothScroll` 选项来启用页面滚动效果。
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+    smoothScroll: true
+  }
+}
 ```
 
 ## 自定义页面类

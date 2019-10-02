@@ -1,4 +1,4 @@
-# Life Cycle
+# Lifecycle
 
 ## ready
 
@@ -13,12 +13,11 @@ module.exports = {
 }
 ```
 
-::: tip 提示
+::: tip
+The `ready` hook is executed after the application is initialized and before some specific functional APIs are executed. These functional APIs include:
 
-`ready` 钩子在应用初始化之后，并在某些特定的函数式 API 执行之前执行。这些函数式 API 包括：
-
-- clientDynamicModules
-- enhanceAppFiles
+- [clientDynamicModules](./option-api.md#clientdynamicmodules)
+- [enhanceAppFiles](./option-api.md#enhanceappfiles)
 
 :::
 
@@ -40,9 +39,11 @@ module.exports = {
 - Type: `AsyncFunction`
 - Scope：`build`
 
-```js
+  Called when a (production) build finishes, with an array of generated page HTML paths.
+
+``` js
 module.exports = {
-  async generated() {
+  async generated (pagePaths) {
     // ...
   }
 }

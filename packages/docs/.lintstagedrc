@@ -1,0 +1,3 @@
+{
+  "docs/**/*.md": ["yarn lint-md", "git add"]
+}

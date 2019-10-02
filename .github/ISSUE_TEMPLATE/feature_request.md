@@ -19,4 +19,4 @@ about: Suggest an idea for this project
 
 #### How should this be implemented in your opinion?
 
-#### Are you willing to work on this yourself?**
+#### Are you willing to work on this yourself?

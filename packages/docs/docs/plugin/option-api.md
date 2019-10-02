@@ -7,14 +7,14 @@
 
 The name of the plugin.
 
-Internally, vuepress will use the plugin's package name as the plugin name. When your plugin is a local plugin (i.e. using a pure plugin function directly), please be sure to configure this option, that is good for debug tracking.
+Internally, VuePress will use the plugin’s package name as the plugin name. When your plugin is a local plugin (that is using a pure plugin function directly), please be sure to configure this option, that is good for debug tracking.
 
 ```js
 // .vuepress/config.js
 module.exports = {
   plugins: [
     [
-      (pluginOptions, ctx) => ({
+      (pluginOptions, context) => ({
         name: 'my-xxx-plugin'
         // ... the rest of options
       })
@@ -28,7 +28,7 @@ module.exports = {
 - Type: `array`
 - Default: `undefined`
 
-A plugin can contain multiple plugins like a preset.
+A plugin can contain several plugins like a preset.
 
 ```js
 // A plugin
@@ -40,27 +40,12 @@ module.exports = {
 }
 ```
 
-## enabled
-
-- Type: `boolean`
-- Default: true
-
-Configure whether to enable this plugin. e.g. if you want to enable a plugin only in development mode:
-
-```js
-module.exports = (options, ctx) => {
-  return {
-    enabled: !ctx.isProd
-  }
-}
-```
-
 ## chainWebpack
 
 - Type: `Function`
 - Default: undefined
 
-Modify the internal webpack config with [webpack-chain](https://github.com/mozilla-neutrino/webpack-chain).
+Edit the internal webpack config with [webpack-chain](https://github.com/mozilla-neutrino/webpack-chain).
 
 ```js
 module.exports = {
@@ -71,7 +56,7 @@ module.exports = {
 ```
 
 ::: tip
-Since VuePress is a Vue-SSR based application, there will be two webpack configurations, `isServer` is used to determine whether the current webpack config is applied to the server or client.
+Since VuePress is a Vue-SSR based application, there needs to be two webpack configurations, `isServer` is used to determine whether the current webpack config is applied to the server or client.
 
 **Also see:**
 
@@ -97,7 +82,7 @@ module.exports = {
 }
 ```
 
-VuePress specifically opened up a more concise `define` option, note that the values has been automatically processed by `JSON.stringify`.
+VuePress opened up a more concise `define` option, note that the values has been automatically processed by `JSON.stringify`.
 
 - Object Usage:
 
@@ -112,10 +97,10 @@ module.exports = {
 - Function Usage:
 
 ```js
-module.exports = (options, ctx) => ({
+module.exports = (options, context) => ({
   define () {
     return {
-      SW_BASE_URL: ctx.base || '/',
+      SW_BASE_URL: context.base || '/',
       SW_ENABLED: !!options.enabled,
     }
   }
@@ -130,9 +115,9 @@ module.exports = (options, ctx) => ({
 We can set aliases via [chainWebpack](#chainwebpack):
 
 ```js
-module.exports = (options, ctx) => ({
+module.exports = (options, context) => ({
   chainWebpack (config) {
-    config.resolve.alias.set('@theme', ctx.themePath)
+    config.resolve.alias.set('@pwd', process.cwd())
   }
 })
 ```
@@ -140,49 +125,43 @@ module.exports = (options, ctx) => ({
 But `alias` option makes this process more like configuration:
 
 ```js
-module.exports = (options, ctx) => ({
+module.exports = (options, context) => ({
   alias: {
-    '@theme': ctx.themePath
+    '@pwd': process.cwd()
   }
 })
 ```
 
-## enhanceDevServer
+## beforeDevServer
 
 - Type: `Function`
 - Default: undefined
 
-Enhance the underlying [Koa](https://github.com/koajs/koa) app.
+Equivalent to [before](https://webpack.js.org/configuration/dev-server/#devserver-before) in [webpack-dev-server](https://github.com/webpack/webpack-dev-server). You can use it to define custom handlers before all middleware is executed:
 
-``` js
+```js
 module.exports = {
-  enhanceDevServer (app) {
-    // ...
+  // ...
+  beforeDevServer(app, server) {
+    app.get('/path/to/your/custom', function(req, res) {
+      res.json({ custom: 'response' })
+    })
   }
 }
 ```
 
-A simple plugin to create a sub public directory is as follows:
+## afterDevServer
+
+- Type: `Function`
+- Default: undefined
+
+Equivalent to [after](https://webpack.js.org/configuration/dev-server/#devserver-after) in [webpack-dev-server](https://github.com/webpack/webpack-dev-server). You can use it to execute custom middleware after all other middleware:
 
 ```js
-const path = require('path')
-
-module.exports = (options, ctx) => {
-  const imagesAssetsPath = path.resolve(ctx.sourceDir, '.vuepress/images')
-
-  return {
-      // For development
-      enhanceDevServer (app) {
-        const mount = require('koa-mount')
-        const serveStatic = require('koa-static')
-        app.use(mount(path.join(ctx.base, 'images'), serveStatic(imagesAssetsPath)))
-      },
-
-      // For production
-      async generated () {
-        const { fs } = require('@vuepress/shared-utils')
-        await fs.copy(imagesAssetsPath, path.resolve(ctx.outDir, 'images'))
-      }
+module.exports = {
+  // ...
+  afterDevServer(app, server) {
+    // hacking now ...
   }
 }
 ```
@@ -192,7 +171,7 @@ module.exports = (options, ctx) => {
 - Type: `Function`
 - Default: `undefined`
 
-A function to modify default config or apply additional plugins to the [markdown-it](https://github.com/markdown-it/markdown-it) instance used to render source files. Example:
+A function to edit default config or apply extra plugins to the [markdown-it](https://github.com/markdown-it/markdown-it) instance used to render source files. Example:
 
 ```js
 module.exports = {
@@ -208,7 +187,7 @@ module.exports = {
 - Type: `Function`
 - Default: `undefined`
 
-Modify the internal markdown config with [markdown-it-chain](https://github.com/ulivz/markdown-it-chain) —— A chaining API like [webpack-chain](https://github.com/mozilla-neutrino/webpack-chain) but for [markdown-it](https://github.com/markdown-it/markdown-it).
+Edit the internal Markdown config with [markdown-it-chain](https://github.com/ulivz/markdown-it-chain) —— A chaining API like [webpack-chain](https://github.com/mozilla-neutrino/webpack-chain) but for [markdown-it](https://github.com/markdown-it/markdown-it).
 
 ```js
 module.exports = {
@@ -230,7 +209,7 @@ module.exports = {
     // Add extra markdown-it plugin
     config
       .plugin('sup')
-        .add(require('markdown-it-sup'))
+        .use(require('markdown-it-sup'))
 
     // Remove internal plugin
     config.plugins.delete('snippet')
@@ -240,35 +219,37 @@ module.exports = {
 
 **Also see:**
 
-- [Internal plugins in VuePress](https://github.com/vuejs/vuepress/blob/next/packages/%40vuepress/core/lib/markdown/index.js)
+- [Internal markdown-it plugins in VuePress](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/markdown/index.js)
 - [Config plugins](https://github.com/neutrinojs/webpack-chain#config-plugins)
 
 ## enhanceAppFiles
 
-- Type: `Array | AsyncFunction`
+- Type: `String | Array | AsyncFunction`
 - Default: `undefined`
 
-This option accepts an array containing the file paths, or a function that returns this array, which allows you to do some [App Level Enhancements](../guide/basic-config.md#theme-configuration).
+This option accepts absolute file path(s) pointing to the enhancement file(s), or a function that returns the path(s), which allows you to do some [App Level Enhancements](../guide/basic-config.md#app-level-enhancements).
 
 ``` js
+import { resolve } from 'path'
+
 module.exports = {
-  enhanceAppFiles: [
-    path.resolve(__dirname, 'client.js')
-  ]
+  enhanceAppFiles: resolve(__dirname, 'client.js')
 }
 ```
 
-The file can `export default` a hook function which will work like `.vuepress/enhanceApp.js`, or any client side code snippets.
-
-It's worth mentioning that in order for plugin developers to be able to do more things at compile time, this option also supports dynamic code:
+This option also supports dynamic code which allows you to do more, with the ability to touch the compilation context:
 
 ```js
-module.exports = (option, ctx) => {
+module.exports = (option, context) => {
   return {
-    enhanceAppFiles: [{
-      name: 'dynamic-code',
-      content: `export default ({ Vue }) => { Vue.mixin('$source', '${context.sourceDir}') }`
-    }]
+    enhanceAppFiles() {
+      return {
+         name: 'dynamic-code',
+         content: `export default ({ Vue }) => { Vue.mixin('$source', '${
+           context.sourceDir
+         }') }`
+       }
+    }
   }
 }
 ```
@@ -284,25 +265,25 @@ Sometimes, you may want to generate some client modules at compile time.
 module.exports = (options, context) => ({
   clientDynamicModules() {
     return {
-      name: 'constans.js',
+      name: 'constants.js',
       content: `export const SOURCE_DIR = '${context.sourceDir}'`
     }
   }
 })
 ```
 
-Then you can use this module at client side code by:
+Then you can use this module at client-side code by:
 
 ``` js
-import { SOURCE_DIR } from '@dynamic/constans'
+import { SOURCE_DIR } from '@dynamic/constants'
 ```
 
 ## extendPageData
 
-- Type: `Function`
+- Type: `Function|AsyncFunction`
 - Default: `undefined`
 
-A function used to extend or modify the [$page](../miscellaneous/global-computed.md#page) object. This function will be invoking once for each page at compile time.
+A function used to extend or edit the [$page](../guide/global-computed.md#page) object. This function will be invoking once for each page at compile time.
 
 ```js
 module.exports = {
@@ -317,12 +298,22 @@ module.exports = {
       regularPath,         // current page's default link (follow the file hierarchy)
       path,                // current page's real link (use regularPath when permalink does not exist)
     } = $page
-   
+
     // 1. Add extra fields.
-    page.xxx = 'xxx'
-    
+    $page.xxx = 'xxx'
+
     // 2. Change frontmatter.
     frontmatter.sidebar = 'auto'
+  }
+}
+```
+
+Note that `extendPageData` can also be defined as an asynchronous function.
+
+```js
+module.exports = {
+  async extendPageData ($page) {
+    $page.xxx = await getAsyncData()
   }
 }
 ```
@@ -331,12 +322,12 @@ module.exports = {
 These fields starting with an `_` means you can only access them during build time.
 :::
 
-e.g.
+For example:
 
 ``` js
 module.exports = {
   extendPageData ($page) {
-    $page.size = ($page.content.length / 1024).toFixed(2) + 'kb'
+    $page.size = ($page._content.length / 1024).toFixed(2) + 'kb'
   }
 }
 ```
@@ -348,7 +339,7 @@ Then you can use this value via `this.$page.size` in any Vue component.
 - Type: `String`
 - Default: `undefined`
 
-A path to the mixin file which allow you to control the life cycle of root component.
+A path to the mixin file which allows you to control the lifecycle of root component.
 
 ``` js
 // plugin's entry
@@ -369,10 +360,10 @@ export default {
 
 ## additionalPages
 
-- Type: `Array|Function`
+- Type: `Array|AsyncFunction`
 - Default: `undefined`
 
-Add a page pointing to a markdown file:
+Add a page pointing to a Markdown file:
 
 ```js
 const path = require('path')
@@ -392,14 +383,13 @@ Add a page with explicit content:
 ```js
 module.exports = {
   async additionalPages () {
-    const rp = require('request-promise');
-
-    // VuePress doesn't have request library built-in
+    // Note that VuePress doesn't have request library built-in
     // you need to install it yourself.
-    const content = await rp('https://github.com/vuejs/vuepress/blob/master/CHANGELOG.md');
+    const rp = require('request-promise')
+    const content = await rp('https://raw.githubusercontent.com/vuejs/vuepress/master/CHANGELOG.md')
     return [
       {
-        path: '/readme/',
+        path: '/changelog/',
         content
       }
     ]
@@ -427,7 +417,7 @@ module.exports = {
 - Type: `Array|String`
 - Default: `undefined`
 
-You might want to inject some global UI fixed somewhere on the page, e.g. `back-to-top`, `popup`. In VuePress, **a global UI is a Vue component**, you can directly define the component's name(s) in this option, e.g.
+You might want to inject some global UI fixed somewhere on the page, for example `back-to-top`, `popup`. In VuePress, **a global UI is a Vue component**, you can directly define the component’s name(s) in this option, for example:
 
 ``` js
 module.exports = {
@@ -446,6 +436,32 @@ Then, VuePress will automatically inject these components behind the layout comp
   <div class="global-ui">
     <Component-1/>
     <Component-2/>
-</div>
+  </div>
 </div>
 ```
+
+## extendCli
+
+- Type: `function`
+- Default: `undefined`
+
+Register a extra command to enhance the CLI of VuePress. The function will be called with a [CAC](https://github.com/cacjs/cac)'s instance as the first argument.
+
+```js
+module.exports = {
+  extendCli (cli) {
+    cli
+      .command('info [targetDir]', '')
+      .option('--debug', 'display info in debug mode')
+      .action((dir = '.') => {
+        console.log('Display info of your website')
+      })
+  }
+}
+```
+
+Now you can use `vuepress info [targetDir]` a in your project!
+
+::: tip
+Note that a custom command registered by a plugin requires VuePress to locate your site configuration like `vuepress dev` and `vuepress build`, so when developing a command, be sure to lead the user to pass `targetDir` as an CLI argument.
+:::

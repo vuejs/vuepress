@@ -18,6 +18,12 @@ module.exports = (options, ctx) => {
 
 Whether VuePress run in production environment mode.
 
+## ctx.pages
+
+- Type: `array`
+
+Contains a list of Page objects
+
 ## ctx.sourceDir
 
 - Type: `string`
@@ -35,12 +41,6 @@ Root directory where the temporary files are located.
 - Type: `string`
 
 Output path.
-
-## ctx.themePath
-
-- Type: `string`
-
-The path of the currently active theme.
 
 ## ctx.base
 

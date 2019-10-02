@@ -8,7 +8,5 @@ module.exports = (options = {}, context) => ({
     return { GA_ID }
   },
 
-  enhanceAppFiles: [
-    path.resolve(__dirname, 'inject.js')
-  ]
+  enhanceAppFiles: path.resolve(__dirname, 'enhanceAppFile.js')
 })

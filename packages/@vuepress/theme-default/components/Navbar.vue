@@ -22,25 +22,25 @@
 
     <div
       class="links"
-      :style="{
+      :style="linksWrapMaxWidth ? {
         'max-width': linksWrapMaxWidth + 'px'
-      }"
+      } : {}"
     >
       <AlgoliaSearchBox
         v-if="isAlgoliaSearch"
         :options="algolia"
       />
-      <SearchBox v-else-if="$site.themeConfig.search !== false"/>
+      <SearchBox v-else-if="$site.themeConfig.search !== false && $page.frontmatter.search !== false"/>
       <NavLinks class="can-hide"/>
     </div>
   </header>
 </template>
 
 <script>
-import SidebarButton from './SidebarButton.vue'
 import AlgoliaSearchBox from '@AlgoliaSearchBox'
 import SearchBox from '@SearchBox'
-import NavLinks from './NavLinks.vue'
+import SidebarButton from '@theme/components/SidebarButton.vue'
+import NavLinks from '@theme/components/NavLinks.vue'
 
 export default {
   components: { SidebarButton, NavLinks, SearchBox, AlgoliaSearchBox },
@@ -58,8 +58,8 @@ export default {
       if (document.documentElement.clientWidth < MOBILE_DESKTOP_BREAKPOINT) {
         this.linksWrapMaxWidth = null
       } else {
-        this.linksWrapMaxWidth = this.$el.offsetWidth - NAVBAR_VERTICAL_PADDING -
-          (this.$refs.siteName && this.$refs.siteName.offsetWidth || 0)
+        this.linksWrapMaxWidth = this.$el.offsetWidth - NAVBAR_VERTICAL_PADDING
+          - (this.$refs.siteName && this.$refs.siteName.offsetWidth || 0)
       }
     }
     handleLinksWrapWidth()
@@ -117,8 +117,6 @@ $navbar-horizontal-padding = 1.5rem
     .search-box
       flex: 0 0 auto
       vertical-align top
-    .nav-links
-      flex 1
 
 @media (max-width: $MQMobile)
   .navbar
@@ -127,4 +125,9 @@ $navbar-horizontal-padding = 1.5rem
       display none
     .links
       padding-left 1.5rem
+    .site-name
+      width calc(100vw - 9.4rem)
+      overflow hidden
+      white-space nowrap
+      text-overflow ellipsis
 </style>

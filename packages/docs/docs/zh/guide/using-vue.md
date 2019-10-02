@@ -58,7 +58,7 @@ export default {
 
 ### 访问网站以及页面的数据
 
-编译后的组件没有私有数据，但可以访问 [网站的元数据](./custom-themes.md#网站和页面的元数据)，举例来说：
+编译后的组件没有私有数据，但可以访问 [网站的元数据](../theme/writing-a-theme.md#网站和页面的元数据)，举例来说：
 
 **Input**
 
@@ -148,7 +148,7 @@ VuePress 对以下预处理器已经内置相关的 webpack 配置：`sass`、`s
 ``` bash
 yarn add -D sass-loader node-sass
 ```
- 
+
 然后你就可以在 Markdown 或是组件中使用如下代码：
 
 ``` vue
@@ -166,7 +166,7 @@ yarn add -D pug pug-plain-loader
 
 ::: tip
 需要指出的是，如果你是一个 `stylus` 用户，你并不需要在你的项目中安装 `stylus` 和 `stylus-loader`，因为 VuePress 已经内置了它们。
-  
+
 对于那些没有内置的预处理器，除了安装对应的依赖，你还需要 [拓展内部的 Webpack 配置](../config/README.md#configurewebpack)。
 :::
 
@@ -203,42 +203,45 @@ export default {
 
 参考 [浏览器的 API 访问限制](#浏览器的-api-访问限制)。
 
-### Content <Badge text="beta" type="warn"/>
+### Content <Badge text="1.0.0+"/>
 
 - **Props**:
 
-  - `custom` - boolean
+  - `pageKey` - string, 要渲染的 [page](./global-computed.md#page) 的 hash key, 默认值是当前页面的 key.
+  - `slotKey` - string, 页面的 [markdown slot](./markdown-slot.md) 的 key. 默认值是 [default slot](./markdown-slot.md#default-slot-content).
 
-- **用法**：   
-  
+- **Usage**：
 
-当前的 `.md` 文件渲染的内容，当你在使用 [自定义布局](../theme/default-theme-config.md#特定页面的自定义布局) 时，它将非常有用。
-   
+指定一个指定页面的特定 slot 用于渲染，当你使用 [自定义布局](../theme/default-theme-config.md#特定页面的自定义布局) 或者自定义主题时，这将非常有用。
+
+
 ``` vue
 <Content/>
 ```
 
-**参考:** 
+**参考:**
 
-- [自定义主题 > 获取渲染内容](./custom-themes.md#获取渲染内容)
+- [全局计算属性 > $page](./global-computed.md#page)
+- [Markdown 插槽](./markdown-slot.md)
+- [开发主题 > 获取渲染内容](../theme/writing-a-theme.md#获取渲染内容)
 
-  
-### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/>
+
+### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/> <Badge text="默认主题"/>
 
 - **Props**:
 
-   - `text` - string
-   - `type` - string, 可选值： `"tip"|"warn"|"error"`，默认值是： `"tip"`
-   - `vertical` - string, 可选值： `"top"|"middle"`，默认值是： `"top"`
+  - `text` - string
+  - `type` - string, 可选值： `"tip"|"warn"|"error"`，默认值是： `"tip"`
+  - `vertical` - string, 可选值： `"top"|"middle"`，默认值是： `"top"`
 
 - **Usage**:
 
 你可以在标题中，使用这个组件来为某些 API 添加一些状态：
-   
-``` md
-### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/>
-```  
 
-**参考:** 
+``` md
+### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/> <Badge text="默认主题"/>
+```
+
+**参考:**
 
 - [在标题中使用组件](#在标题中使用组件)

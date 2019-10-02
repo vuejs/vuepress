@@ -21,11 +21,11 @@
     >
       <slot
         name="sidebar-top"
-        slot="top"
+        #top
       />
       <slot
         name="sidebar-bottom"
-        slot="bottom"
+        #bottom
       />
     </Sidebar>
 
@@ -37,23 +37,21 @@
     >
       <slot
         name="page-top"
-        slot="top"
+        #top
       />
       <slot
         name="page-bottom"
-        slot="bottom"
+        #bottom
       />
     </Page>
   </div>
 </template>
 
 <script>
-import Vue from 'vue'
-import nprogress from 'nprogress'
-import Home from '../components/Home.vue'
-import Navbar from '../components/Navbar.vue'
-import Page from '../components/Page.vue'
-import Sidebar from '../components/Sidebar.vue'
+import Home from '@theme/components/Home.vue'
+import Navbar from '@theme/components/Navbar.vue'
+import Page from '@theme/components/Page.vue'
+import Sidebar from '@theme/components/Sidebar.vue'
 import { resolveSidebarItems } from '../util'
 
 export default {
@@ -70,26 +68,25 @@ export default {
       const { themeConfig } = this.$site
       const { frontmatter } = this.$page
       if (
-        frontmatter.navbar === false ||
-        themeConfig.navbar === false) {
+        frontmatter.navbar === false
+        || themeConfig.navbar === false) {
         return false
       }
       return (
-        this.$title ||
-        themeConfig.logo ||
-        themeConfig.repo ||
-        themeConfig.nav ||
-        this.$themeLocaleConfig.nav
+        this.$title
+        || themeConfig.logo
+        || themeConfig.repo
+        || themeConfig.nav
+        || this.$themeLocaleConfig.nav
       )
     },
 
     shouldShowSidebar () {
       const { frontmatter } = this.$page
       return (
-        !frontmatter.layout &&
-        !frontmatter.home &&
-        frontmatter.sidebar !== false &&
-        this.sidebarItems.length
+        !frontmatter.home
+        && frontmatter.sidebar !== false
+        && this.sidebarItems.length
       )
     },
 
@@ -116,20 +113,7 @@ export default {
   },
 
   mounted () {
-    window.addEventListener('scroll', this.onScroll)
-
-    // configure progress bar
-    nprogress.configure({ showSpinner: false })
-
-    this.$router.beforeEach((to, from, next) => {
-      if (to.path !== from.path && !Vue.component(to.name)) {
-        nprogress.start()
-      }
-      next()
-    })
-
     this.$router.afterEach(() => {
-      nprogress.done()
       this.isSidebarOpen = false
     })
   },
@@ -137,6 +121,7 @@ export default {
   methods: {
     toggleSidebar (to) {
       this.isSidebarOpen = typeof to === 'boolean' ? to : !this.isSidebarOpen
+      this.$emit('toggle-sidebar', this.isSidebarOpen)
     },
 
     // side swipe
@@ -161,6 +146,3 @@ export default {
   }
 }
 </script>
-
-<style src="prismjs/themes/prism-tomorrow.css"></style>
-<style src="../styles/theme.styl" lang="stylus"></style>

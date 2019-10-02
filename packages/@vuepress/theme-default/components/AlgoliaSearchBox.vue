@@ -2,10 +2,12 @@
   <form
     id="search-form"
     class="algolia-search-wrapper search-box"
+    role="search"
   >
     <input
       id="algolia-search-input"
       class="search-query"
+      :placeholder="placeholder"
     >
   </form>
 </template>
@@ -14,8 +16,15 @@
 export default {
   props: ['options'],
 
+  data () {
+    return {
+      placeholder: undefined
+    }
+  },
+
   mounted () {
     this.initialize(this.options, this.$lang)
+    this.placeholder = this.$site.themeConfig.searchPlaceholder || ''
   },
 
   methods: {
@@ -34,7 +43,11 @@ export default {
             // #697 Make docsearch work well at i18n mode.
             algoliaOptions: Object.assign({
               'facetFilters': [`lang:${lang}`].concat(algoliaOptions.facetFilters || [])
-            }, algoliaOptions)
+            }, algoliaOptions),
+            handleSelected: (input, event, suggestion) => {
+              const { pathname, hash } = new URL(suggestion.url)
+              this.$router.push(`${pathname}${hash}`)
+            }
           }
         ))
       })

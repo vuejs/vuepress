@@ -7,7 +7,7 @@ sidebar: auto
 VuePress 1.x 的设计理念主要体现在以下几个方面：
 
 1. 插件化
-2. 配置大于约定
+2. 约定大于配置
 3. 合理的优先级管理
 
 ## 插件化
@@ -16,7 +16,7 @@ VuePress 1.0 进行了大范围的重写，其中最重要的就是引入 [Plugi
 
 ### 解耦
 
-有了插件，我们可以将很多核心功能用插件来实现，你可以在[这里](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/core/lib/internal-plugins)看到很多内置的插件，这些插件涵盖了很多 VuePress 的核心功能，在以前，它们糅合在代码库的各个地方，但现在，它们一目了然。
+有了插件，我们可以将很多核心功能用插件来实现，你可以在[这里](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/core/lib/node/internal-plugins)看到很多内置的插件，这些插件涵盖了很多 VuePress 的核心功能，在以前，它们糅合在代码库的各个地方，但现在，它们一目了然。
 
 ### 配置的管理
 
@@ -78,7 +78,7 @@ module.exports = {
 
 ## 约定大于配置
 
-VuePress 1.0 开始引入一些约定，以减少用户过多的配置压力。对于这一点，最直观的体现是对[文档目录结构](../guide/directory-structure.md)和[主题目录结构](../theme/README.md#directory-structure)的约定。
+VuePress 1.0 开始引入一些约定，以减少用户过多的配置压力。对于这一点，最直观的体现是对[文档目录结构](../guide/directory-structure.md)和[主题目录结构](../theme/writing-a-theme.md#目录结构)的约定。
 
 未来我们可能还会结合社区的反馈来引入更多的约定，让我们拭目以待。
 
@@ -167,9 +167,9 @@ $accentColor = #f00
 // theme/index.js
 module.exports = {
   plugins: [
-    '@vuepress/i18n-ui',
-    { route: '/i18n-page/' }
-  ] 
+    'vuepress-plugin-xxx',
+    { name: 'foo' }
+  ]
 }
 ```
 
@@ -177,19 +177,18 @@ module.exports = {
 // .vuepress/config.js
 module.exports = {
   plugins: [
-    '@vuepress/i18n-ui',
-    { route: '/i18n/' }
-  ] 
+    'vuepress-plugin-xxx',
+    { name: 'bar' }
+  ]
 }
 ```
 
-i18n UI 最终的路由将是 `/i18n/`.
+name 的最终值将是 `bar`.
 
 ## 其他
 
-本着解耦的目标，引入 monorepo 后，我们也得以将 VuePress 分离成以下几个库：
+本着解耦的目标，引入 monorepo 后，我们也得以将 VuePress 分离成以下两个库：
 
-- [@vuepress/cli](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/cli): 命令行指令的管理；
 - [@vuepress/core](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/core)：包含 dev、build 的核心实现和 Plugin API；
 - [@vuepress/theme-default](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/theme-default)：你现在所看到的默认主题。
 
