@@ -42,7 +42,7 @@
     "lerna": "^3.16.4",
     "lint-staged": "^7.0.4",
     "minimist": "^1.2.0",
-    "yorkie": "^2.0.0"
+    "yorkie": "^2.0.0",
     "@types/escape-html": "^0.0.20",
     "@types/fs-extra": "^5.0.4",
     "@types/globby": "^9.1.0",
