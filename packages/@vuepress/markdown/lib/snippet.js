@@ -1,4 +1,4 @@
-const { fs, path } = require('@vuepress/shared-utils')
+const { fs, logger, path } = require('@vuepress/shared-utils')
 
 module.exports = function snippet (md, options = {}) {
   const fence = md.renderer.rules.fence
@@ -15,8 +15,10 @@ module.exports = function snippet (md, options = {}) {
       if (fs.existsSync(src)) {
         token.content = fs.readFileSync(src, 'utf8')
       } else {
-        token.content = 'Not found: ' + src
+        const errorMessage = `Not found: ${src}`
+        token.content = errorMessage
         token.info = ''
+        logger.error(errorMessage)
       }
     }
     return fence(...args)
