@@ -7,7 +7,8 @@
       </span>
 
       <span v-if="next" class="next">
-        <router-link v-if="next" :to="next.path">{{ next.title || next.path }}</router-link>→
+        <router-link v-if="next" :to="next.path">{{ next.title || next.path }}</router-link>
+        →
       </span>
     </p>
   </div>
