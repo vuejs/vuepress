@@ -28,7 +28,7 @@ yarn add vuepress -D
 
 ## Showcase
 
-- [Awesome Vuepress](https://github.com/ulivz/awesome-vuepress)
+- [Awesome VuePress](https://github.com/ulivz/awesome-vuepress)
 - [vuepress.gallery](https://vuepress.gallery) (by [@vicbergquist](https://twitter.com/vicbergquist))
 
 ## Documentation
