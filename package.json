@@ -40,7 +40,7 @@
     "@types/node": "^12.7.5",
     "@types/semver": "^6.0.0",
     "conventional-changelog-cli": "^2.0.23",
-    "eslint": "^6.4.0",
+    "eslint": "5.11.1",
     "eslint-plugin-jest": "^22.17.0",
     "eslint-plugin-vue-libs": "^4.0.0",
     "husky": "^3.0.5",
@@ -48,7 +48,6 @@
     "lerna": "3.16.4",
     "lint-staged": "^9.3.0",
     "minimist": "^1.2.0",
-    "typescript": "^3.6.3",
-    "all-contributors-cli": "^6.9.1"
+    "typescript": "^3.6.3"
   }
 }

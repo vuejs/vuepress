@@ -93,6 +93,7 @@ export default {
           ? repo
           : `https://github.com/${repo}`
       }
+      return null
     },
 
     repoLabel () {

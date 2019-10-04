@@ -53,6 +53,7 @@ export default {
           this.$page.relativePath
         )
       }
+      return null
     },
 
     editLinkText () {
