@@ -26,17 +26,34 @@ export default {
 </script>
 ```
 
-or
+If your module `export default` a Vue component, you can register it dynamically:
 
-``` vue
+```vue
+<template>
+  <component v-if="currentTabComponent" :is="currentTabComponent"></component>
+</template>
+
 <script>
 export default {
-  components: {
-    'module': () => import('name of module')
+  data() {
+    return {
+      dynamicComponent: null
+    }
+  },
+
+  mounted () {
+    import('./lib-that-access-window-on-import').then(module => {
+      this.dynamicComponent = module.default
+    })
   }
 }
 </script>
 ```
+
+**Also see:**
+
+- [Vue.js > Dynamic Components](https://vuejs.org/v2/guide/components.html#Dynamic-Components)
+
 
 ## Templating
 
