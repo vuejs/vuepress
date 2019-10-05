@@ -30,7 +30,7 @@ If your module `export default` a Vue component, you can register it dynamically
 
 ```vue
 <template>
-  <component v-if="currentTabComponent" :is="currentTabComponent"></component>
+  <component v-if="dynamicComponent" :is="dynamicComponent"></component>
 </template>
 
 <script>
