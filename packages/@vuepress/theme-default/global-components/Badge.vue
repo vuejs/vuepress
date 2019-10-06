@@ -32,9 +32,9 @@ export default {
   border-radius 3px
   padding 0 6px
   color white
-  background-color #2E845F
+  background-color #42b983
   &.tip, &.green
-    background-color #2E845F
+    background-color #42b983
   &.error
     background-color #DA5961
   &.warning, &.warn, &.yellow
