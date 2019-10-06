@@ -39,6 +39,7 @@
     "@types/node": "^12.7.5",
     "@types/semver": "^6.0.0",
     "conventional-changelog-cli": "^2.0.23",
+    "all-contributors-cli": "^6.9.1",
     "eslint": "5.11.1",
     "eslint-plugin-jest": "^22.17.0",
     "eslint-plugin-vue-libs": "^4.0.0",
