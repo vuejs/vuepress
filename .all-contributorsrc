@@ -30,12 +30,50 @@
       ]
     },
     {
-      "login": "jlooper",
-      "name": "Jen Looper",
-      "avatar_url": "https://avatars2.githubusercontent.com/u/1450004?v=4",
-      "profile": "http://www.jenlooper.com",
+      "login": "kefranabg",
+      "name": "Franck Abgrall",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/9840435?v=4",
+      "profile": "https://www.franck-abgrall.me/",
       "contributions": [
-        "doc",
+        "code",
+        "question"
+      ]
+    },
+    {
+      "login": "f3ltron",
+      "name": "Giraud Florent",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/11556276?v=4",
+      "profile": "https://github.com/f3ltron",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "newsbielt703",
+      "name": "Billyyyyy3320",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/38957202?v=4",
+      "profile": "https://billychin.netlify.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "bencodezen",
+      "name": "Ben Hong",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/4836334?v=4",
+      "profile": "http://www.bencodezen.io",
+      "contributions": [
+        "code",
+        "blog"
+      ]
+    },
+    {
+      "login": "vicbergquist",
+      "name": "Victoria Bergquist",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/25737281?v=4",
+      "profile": "https://twitter.com/vicbergquist",
+      "contributions": [
+        "code",
         "design"
       ]
     },
@@ -50,16 +88,6 @@
       ]
     },
     {
-      "login": "kefranabg",
-      "name": "Franck Abgrall",
-      "avatar_url": "https://avatars3.githubusercontent.com/u/9840435?v=4",
-      "profile": "https://www.franck-abgrall.me/",
-      "contributions": [
-        "code",
-        "question"
-      ]
-    },
-    {
       "login": "sobolevn",
       "name": "Nikita Sobolev",
       "avatar_url": "https://avatars1.githubusercontent.com/u/4660275?v=4",
@@ -67,15 +95,6 @@
       "contributions": [
         "code",
         "doc"
-      ]
-    },
-    {
-      "login": "f3ltron",
-      "name": "Giraud Florent",
-      "avatar_url": "https://avatars1.githubusercontent.com/u/11556276?v=4",
-      "profile": "https://github.com/f3ltron",
-      "contributions": [
-        "code"
       ]
     },
     {
@@ -115,35 +134,6 @@
       ]
     },
     {
-      "login": "vicbergquist",
-      "name": "Victoria Bergquist",
-      "avatar_url": "https://avatars0.githubusercontent.com/u/25737281?v=4",
-      "profile": "https://twitter.com/vicbergquist",
-      "contributions": [
-        "code",
-        "design"
-      ]
-    },
-    {
-      "login": "newsbielt703",
-      "name": "Billyyyyy3320",
-      "avatar_url": "https://avatars0.githubusercontent.com/u/38957202?v=4",
-      "profile": "https://billychin.netlify.com/",
-      "contributions": [
-        "code"
-      ]
-    },
-    {
-      "login": "bencodezen",
-      "name": "Ben Hong",
-      "avatar_url": "https://avatars0.githubusercontent.com/u/4836334?v=4",
-      "profile": "http://www.bencodezen.io",
-      "contributions": [
-        "code",
-        "blog"
-      ]
-    },
-    {
       "login": "vinayakkulkarni",
       "name": "Vinayak Kulkarni",
       "avatar_url": "https://avatars2.githubusercontent.com/u/19776877?v=4",
@@ -153,7 +143,7 @@
         "code",
         "blog"
       ]
-    },
+    }
   ],
   "contributorsPerLine": 7
 }
