@@ -49,9 +49,9 @@ export default {
     nav () {
       const { locales } = this.$site
       if (locales && Object.keys(locales).length > 1) {
-        const currentLink = this.$page.path
-        const routes = this.$router.options.routes
+        const currentLink = this.$route.fullPath
         const themeLocales = this.$site.themeConfig.locales || {}
+        const localeConfigPath = this.$localeConfig.path
         const languageDropdown = {
           text: this.$themeLocaleConfig.selectText || 'Languages',
           ariaLabel: this.$themeLocaleConfig.ariaLabel || 'Select language',
@@ -64,11 +64,7 @@ export default {
               link = currentLink
             } else {
               // Try to stay on the same page
-              link = currentLink.replace(this.$localeConfig.path, path)
-              // fallback to homepage
-              if (!routes.some(route => route.path === link)) {
-                link = path
-              }
+              link = currentLink.replace(localeConfigPath, path)
             }
             return { text, link }
           })
