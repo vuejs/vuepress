@@ -62,11 +62,11 @@ If you have a VuePress-related project/component/tool, add it with a pull reques
   <tr>
     <td align="center"><a href="http://evanyou.me"><img src="https://avatars1.githubusercontent.com/u/499550?v=4" width="100px;" alt="Evan You"/><br /><sub><b>Evan You</b></sub></a><br /><a href="https://github.com/vuejs/vuepress/commits?author=yyx990803" title="Code">💻</a></td>
     <td align="center"><a href="http://ulivz.com"><img src="https://avatars1.githubusercontent.com/u/23133919?v=4" width="100px;" alt="ULIVZ"/><br /><sub><b>ULIVZ</b></sub></a><br /><a href="https://github.com/vuejs/vuepress/commits?author=ulivz" title="Code">💻</a> <a href="https://github.com/vuejs/vuepress/commits?author=ulivz" title="Documentation">📖</a></td>
-    <td align="center"><a href="http://www.jenlooper.com"><img src="https://avatars2.githubusercontent.com/u/1450004?v=4" width="100px;" alt="Jen Looper"/><br /><sub><b>Jen Looper</b></sub></a><br /><a href="https://github.com/vuejs/vuepress/commits?author=jlooper" title="Documentation">📖</a> <a href="#design-jlooper" title="Design">🎨</a></td>
     <td align="center"><a href="https://frontstuff.io/"><img src="https://avatars0.githubusercontent.com/u/5370675?v=4" width="100px;" alt="Sarah Dayan"/><br /><sub><b>Sarah Dayan</b></sub></a><br /><a href="https://github.com/vuejs/vuepress/commits?author=sarahdayan" title="Code">💻</a> <a href="https://github.com/vuejs/vuepress/commits?author=sarahdayan" title="Documentation">📖</a></td>
     <td align="center"><a href="https://www.franck-abgrall.me/"><img src="https://avatars3.githubusercontent.com/u/9840435?v=4" width="100px;" alt="Franck Abgrall"/><br /><sub><b>Franck Abgrall</b></sub></a><br /><a href="https://github.com/vuejs/vuepress/commits?author=kefranabg" title="Code">💻</a> <a href="#question-kefranabg" title="Answering Questions">💬</a></td>
     <td align="center"><a href="https://sobolevn.me"><img src="https://avatars1.githubusercontent.com/u/4660275?v=4" width="100px;" alt="Nikita Sobolev"/><br /><sub><b>Nikita Sobolev</b></sub></a><br /><a href="https://github.com/vuejs/vuepress/commits?author=sobolevn" title="Code">💻</a> <a href="https://github.com/vuejs/vuepress/commits?author=sobolevn" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/f3ltron"><img src="https://avatars1.githubusercontent.com/u/11556276?v=4" width="100px;" alt="Giraud Florent"/><br /><sub><b>Giraud Florent</b></sub></a><br /><a href="https://github.com/vuejs/vuepress/commits?author=f3ltron" title="Code">💻</a></td>
+    <td align="center"><a href="http://www.github.com/vinayakkulkarni"><img src="https://avatars2.githubusercontent.com/u/19776877?v=4" width="100px;" alt="Vinayak Kulkarni"/><br /><sub><b>Vinayak Kulkarni</b></sub></a><br /><a href="https://github.com/Ulivz/VuePress/commits?author=vinayakkulkarni" title="Code">💻</a></td>
   </tr>
   <tr>
     <td align="center"><a href="https://twitter.com/CodesOfRa"><img src="https://avatars0.githubusercontent.com/u/945186?v=4" width="100px;" alt="Ramona"/><br /><sub><b>Ramona</b></sub></a><br /><a href="https://github.com/vuejs/vuepress/commits?author=CodesOfRa" title="Code">💻</a></td>
@@ -77,9 +77,7 @@ If you have a VuePress-related project/component/tool, add it with a pull reques
     <td align="center"><a href="https://billychin.netlify.com/"><img src="https://avatars0.githubusercontent.com/u/38957202?v=4" width="100px;" alt="Billyyyyy3320"/><br /><sub><b>Billyyyyy3320</b></sub></a><br /><a href="https://github.com/vuejs/vuepress/commits?author=newsbielt703" title="Code">💻</a></td>
     <td align="center"><a href="http://www.bencodezen.io"><img src="https://avatars0.githubusercontent.com/u/4836334?v=4" width="100px;" alt="Ben Hong"/><br /><sub><b>Ben Hong</b></sub></a><br /><a href="https://github.com/vuejs/vuepress/commits?author=bencodezen" title="Code">💻</a> <a href="#blog-bencodezen" title="Blogposts">📝</a></td>
   </tr>
-  <tr>
-    <td align="center"><a href="http://www.github.com/vinayakkulkarni"><img src="https://avatars2.githubusercontent.com/u/19776877?v=4" width="100px;" alt="Vinayak Kulkarni"/><br /><sub><b>Vinayak Kulkarni</b></sub></a><br /><a href="https://github.com/Ulivz/VuePress/commits?author=vinayakkulkarni" title="Code">💻</a></td>
-  </tr>
+  
 </table>
 
 <!-- markdownlint-enable -->
