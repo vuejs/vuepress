@@ -33,7 +33,7 @@ yarn add vuepress -D
 
 ## Documentation
 
-This is the branch for `VuePress 1.x` and docs are available at https://v1.vuepress.vuejs.org.
+Docs are available at https://vuepress.vuejs.org/ - we are still working on refining it and contributions are welcome!
 
 ## Contribution
 
