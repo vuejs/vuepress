@@ -15,10 +15,9 @@ module.exports = function snippet (md, options = {}) {
       if (fs.existsSync(src)) {
         token.content = fs.readFileSync(src, 'utf8')
       } else {
-        const errorMessage = `Not found: ${src}`
-        token.content = errorMessage
+        token.content = `Code snippet path not found: ${src}`
         token.info = ''
-        logger.error(errorMessage)
+        logger.error(token.content)
       }
     }
     return fence(...args)
