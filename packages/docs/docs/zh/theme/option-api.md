@@ -91,7 +91,7 @@ module.exports = {
 }
 ```
 
-全局布局组件是负责管理全局布局方案的一个组件，VuePress [默认的 globalLayout](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/core/lib/app/components/GlobalLayout.vue)会帮你根据 [$frontmatter.layout](../guide/frontmatter.md#layout) 来渲染不同的布局，所以大部分情况下你不要配置此选项。
+全局布局组件是负责管理全局布局方案的一个组件，VuePress [默认的 globalLayout](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/core/lib/client/components/GlobalLayout.vue)会帮你根据 [$frontmatter.layout](../guide/frontmatter.md#layout) 来渲染不同的布局，所以大部分情况下你不要配置此选项。
 
 举例来说，当你想为当前主题设置全局的 header 和 footer 时，你可以这样做：
 
