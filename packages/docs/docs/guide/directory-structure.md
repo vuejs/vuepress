@@ -54,13 +54,23 @@ When customizing `templates/ssr.html`, or `templates/dev.html`, it’s best to e
 
 ## Default Page Routing
 
-For the above directory structure, the default page routing paths are as follows:
+For the above directory structure, there are different default routes, depending on the way VuePress is invoked:
+
+    $ vuepress dev
 
 | Relative Path | Page Routing |
-|---|---|
+| ----------- | ----------- |
 | `/README.md` | `/` |
-| `/guide/README.md` | `/guide/` |
-| `/config.md` | `/config.html` |
+| `/docs/README.md` | `/docs/` |
+| `/docs/guide/README.md` | `/docs/guide/` |
+
+    $ yarn docs:dev
+
+| Relative Path | Page Routing |
+| ----------- | ----------- |
+| `/README.md` | \<`unreachable`\> |
+| `/docs/README.md` | `/` |
+| `/docs/guide/README.md` | `/guide/` |
 
 **Also see:**
 
