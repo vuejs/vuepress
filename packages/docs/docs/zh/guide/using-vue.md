@@ -26,7 +26,7 @@ export default {
 </script>
 ```
 
-如果您的模块通过 `export default` 导出默认的 Vue 组件，则您可以动态注册它：
+如果你的模块通过 `export default` 导出一个 Vue 组件，那么你可以动态注册它：
 
 ```vue
 <template>
