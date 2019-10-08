@@ -56,7 +56,7 @@ module.exports = class App {
   /**
    * Resolve user config and initialize.
    *
-   * @returns {void}
+   * @returns {Promise<void>}
    * @api private
    */
 
