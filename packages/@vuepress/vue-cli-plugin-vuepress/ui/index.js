@@ -17,4 +17,16 @@ module.exports = api => {
     onRead,
     onWrite
   })
+
+  api.describeTask({
+    match: /dev/,
+    description: 'Run VuePress in dev mode',
+    link: 'https://vuepress.vuejs.org/guide/getting-started.html#inside-an-existing-project'
+  })
+
+  api.describeTask({
+    match: /build/,
+    description: 'Build static VuePress website',
+    link: 'https://vuepress.vuejs.org/guide/getting-started.html#inside-an-existing-project'
+  })
 }
