@@ -1,0 +1,26 @@
+{
+  "name": "@vuepress/vue-cli-plugin-vuepress",
+  "version": "1.1.0",
+  "description": "vue-cli plugin for VuePress",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuejs/vuepress.git",
+    "directory": "packages/@vuepress/vue-cli-plugin-vuepress"
+  },
+  "keywords": [
+    "vuepress",
+    "vue",
+    "vue-cli",
+    "bootstrap"
+  ],
+  "author": "Franck Abgrall",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vuejs/vuepress/issues"
+  },
+  "homepage": "https://github.com/vuejs/vuepress#readme"
+}

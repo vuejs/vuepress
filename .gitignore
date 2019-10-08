@@ -5,3 +5,4 @@ node_modules
 TODOs.md
 packages/@vuepress/shared-utils/lib/
 types
+.vscode
