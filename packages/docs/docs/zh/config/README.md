@@ -127,6 +127,13 @@ module.exports = {
 }
 ```
 
+### patterns
+
+- Type: `Array`
+- Default: `['**/*.md', '**/*.vue']`
+
+Specify which pattern of files you want to be resolved.
+
 ## Styling
 
 ### palette.styl

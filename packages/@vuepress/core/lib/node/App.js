@@ -316,7 +316,9 @@ module.exports = class App {
 
   async resolvePages () {
     // resolve pageFiles
-    const patterns = ['**/*.md', '**/*.vue', '!.vuepress', '!node_modules']
+    const patterns = this.siteConfig.patterns ? this.siteConfig.patterns : ['**/*.md', '**/*.vue']
+    patterns.push('!.vuepress', '!node_modules')
+
     if (this.siteConfig.dest) {
       // #654 exclude dest folder when dest dir was set in
       // sourceDir but not in '.vuepress'
