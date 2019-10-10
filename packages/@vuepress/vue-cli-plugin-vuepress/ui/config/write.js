@@ -1,3 +1,4 @@
+
 module.exports = async ({ api, prompts }) => {
   const result = {}
   for (const prompt of prompts) {

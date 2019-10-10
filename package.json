@@ -53,5 +53,8 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+  "dependencies": {
+    "lodash": "^4.17.15"
   }
 }
