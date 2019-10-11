@@ -22,10 +22,10 @@ export default {
 </script>
 
 <style lang="stylus">
-@require '../styles/wrapper.styl';
+@require '../styles/wrapper.styl'
 
-.page {
-  padding-bottom: 2rem;
-  display: block;
-}
+.page
+  padding-bottom 2rem
+  display block
+
 </style>
