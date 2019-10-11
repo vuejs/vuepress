@@ -56,17 +56,17 @@ module.exports = class App {
   /**
    * Resolve user config and initialize.
    *
-   * @returns {void}
+   * @returns {Promise<void>}
    * @api private
    */
 
-  resolveConfigAndInitialize () {
+  async resolveConfigAndInitialize () {
     if (this.options.siteConfig) {
       this.siteConfig = this.options.siteConfig
     } else {
       let siteConfig = loadConfig(this.vuepressDir)
       if (isFunction(siteConfig)) {
-        siteConfig = siteConfig(this)
+        siteConfig = await siteConfig(this)
       }
       this.siteConfig = siteConfig
     }
@@ -95,7 +95,7 @@ module.exports = class App {
    */
 
   async process () {
-    this.resolveConfigAndInitialize()
+    await this.resolveConfigAndInitialize()
     this.normalizeHeadTagUrls()
     this.themeAPI = loadTheme(this)
     this.resolveTemplates()
