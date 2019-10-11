@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/theme-default",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Default theme for VuePress",
   "main": "index.js",
   "publishConfig": {
@@ -30,9 +30,9 @@
   },
   "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/theme-default#readme",
   "dependencies": {
-    "@vuepress/plugin-active-header-links": "^1.1.0",
-    "@vuepress/plugin-nprogress": "^1.1.0",
-    "@vuepress/plugin-search": "^1.1.0",
+    "@vuepress/plugin-active-header-links": "^1.2.0",
+    "@vuepress/plugin-nprogress": "^1.2.0",
+    "@vuepress/plugin-search": "^1.2.0",
     "docsearch.js": "^2.5.2",
     "lodash": "^4.17.15",
     "stylus": "^0.54.5",
