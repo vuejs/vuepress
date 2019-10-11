@@ -3,7 +3,7 @@
     class="nav-link"
     :to="link"
     @focusout.native="focusoutAction"
-    v-if="!isExternal(link)"
+    v-if="isInternal"
     :exact="exact"
   >{{ item.text }}</router-link>
   <a
@@ -42,7 +42,8 @@ export default {
     },
 
     target () {
-      return isMailto(this.link) || isTel(this.link) ? null : this.item.target || '_blank'
+      return isMailto(this.link) || isTel(this.link) ? null : this.item.target
+      || (isExternal(this.link) ? '_blank' : '')
     },
 
     isTargetBlank () {
@@ -50,14 +51,16 @@ export default {
     },
 
     rel () {
-      return isMailto(this.link) || isTel(this.link) ? null : this.item.rel || 'noopener noreferrer'
+      return isMailto(this.link) || isTel(this.link) ? null : this.item.rel
+      || (this.isTargetBlank ? 'noopener noreferrer' : '')
+    },
+
+    isInternal () {
+      return !isExternal(this.link) && !this.isTargetBlank
     }
   },
 
   methods: {
-    isExternal,
-    isMailto,
-    isTel,
     focusoutAction () {
       this.$emit('focusout')
     }
