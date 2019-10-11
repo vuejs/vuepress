@@ -1,16 +1,15 @@
 const get = require('lodash/get')
 
-const isDefaultTheme = answer => answer.theme === null
+const GROUP_NAME = 'Navigation settings'
 
 module.exports = data => ([
   {
-    when: isDefaultTheme,
     name: 'themeConfig.navbar',
     type: 'confirm',
-    message: 'Navbar',
+    message: 'Show navigation bar',
     description: 'Disable the navbar globally.',
     link: 'https://vuepress.vuejs.org/theme/default-theme-config.html#disable-the-navbar',
-    group: 'Theme settings',
+    group: GROUP_NAME,
     value: get(data, 'config.themeConfig.navbar'),
     default: true
   }

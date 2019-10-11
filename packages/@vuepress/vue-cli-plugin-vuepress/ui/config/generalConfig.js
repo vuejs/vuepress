@@ -1,5 +1,7 @@
 const { required } = require('./validators')
 
+const GROUP_NAME = 'General settings'
+
 module.exports = data => ([
   {
     name: 'title',
@@ -7,7 +9,7 @@ module.exports = data => ([
     message: 'Title',
     description: 'Title for the site.',
     link: 'https://vuepress.vuejs.org/config/#title',
-    group: 'General settings',
+    group: GROUP_NAME,
     value: data.config.title,
     validate: required
   },
@@ -17,7 +19,7 @@ module.exports = data => ([
     message: 'Description',
     description: 'Description for the site.',
     link: 'https://vuepress.vuejs.org/config/#description',
-    group: 'General settings',
+    group: GROUP_NAME,
     value: data.config.description,
     validate: required
   },
@@ -34,7 +36,7 @@ module.exports = data => ([
       }
     ],
     link: 'https://vuepress.vuejs.org/theme/using-a-theme.html',
-    group: 'General settings',
+    group: GROUP_NAME,
     value: data.config.theme
   }
 ])
