@@ -1,3 +1,27 @@
+# [1.2.0](https://github.com/vuejs/vuepress/compare/v1.1.0...v1.2.0) (2019-10-11)
+
+
+### Bug Fixes
+
+* **$core:** optimize error log (close: [#1296](https://github.com/vuejs/vuepress/issues/1296)) ([#1413](https://github.com/vuejs/vuepress/issues/1413)) ([51de6cf](https://github.com/vuejs/vuepress/commit/51de6cf))
+* **$markdown:** notify error when not found snippet (close: [#1872](https://github.com/vuejs/vuepress/issues/1872)) ([#1910](https://github.com/vuejs/vuepress/issues/1910)) ([6aaa7d7](https://github.com/vuejs/vuepress/commit/6aaa7d7))
+* **$theme-default:** regression of arrow spacing consistent (close: [#1427](https://github.com/vuejs/vuepress/issues/1427)) ([#1907](https://github.com/vuejs/vuepress/issues/1907)) ([dbda574](https://github.com/vuejs/vuepress/commit/dbda574))
+* **$theme-default:** make dropdown-title's UI consistent with nav-link ([#1890](https://github.com/vuejs/vuepress/issues/1890)) ([757e880](https://github.com/vuejs/vuepress/commit/757e880))
+* **$theme-default:** make navbar dropdown links accessible ([#1837](https://github.com/vuejs/vuepress/issues/1837)) ([a8ce645](https://github.com/vuejs/vuepress/commit/a8ce645))
+* **$theme-default:** regression of custom container default title ([#1875](https://github.com/vuejs/vuepress/issues/1875)) ([e0ef407](https://github.com/vuejs/vuepress/commit/e0ef407))
+
+
+### Features
+
+* **$core:** config "pattern" of resolved files (close: [#1700](https://github.com/vuejs/vuepress/issues/1700))([#1705](https://github.com/vuejs/vuepress/issues/1705)) ([1f3e4e2](https://github.com/vuejs/vuepress/commit/1f3e4e2))
+* **$core:** support async function exported in vuepress config (close: [#1185](https://github.com/vuejs/vuepress/issues/1185)) ([#1925](https://github.com/vuejs/vuepress/issues/1925)) ([cdbfd75](https://github.com/vuejs/vuepress/commit/cdbfd75))
+* **$core:** Upgrade vue version to `2.6.10` ([#1876](https://github.com/vuejs/vuepress/issues/1876)) ([c17c70e](https://github.com/vuejs/vuepress/commit/c17c70e))
+* **$theme-default:** smooth scroll (close [#567](https://github.com/vuejs/vuepress/issues/567)) ([#1881](https://github.com/vuejs/vuepress/issues/1881)) ([2e3efb4](https://github.com/vuejs/vuepress/commit/2e3efb4))
+* **$theme-default:**: enable editLink on specific page via frontmatter (close: [#1762]((https://github.com/vuejs/vuepress/issues/1825))) ([#1825](https://github.com/vuejs/vuepress/issues/1825)) ([0e8a442](https://github.com/vuejs/vuepress/commit/0e8a442))
+* **$markdown:** Highlight `kotlin` code on snippets import (close: [#1831](https://github.com/vuejs/vuepress/issues/1831))([#1874](https://github.com/vuejs/vuepress/issues/1874)) ([f913fea](https://github.com/vuejs/vuepress/commit/f913fea))
+* **$shared-utils:** resolve regularPath when getting permalink ([#1786](https://github.com/vuejs/vuepress/issues/1786)) ([c6ce6cf](https://github.com/vuejs/vuepress/commit/c6ce6cf))
+
+
 # [1.1.0](https://github.com/vuejs/vuepress/compare/v1.0.4...v1.1.0) (2019-09-14)
 
 
