@@ -156,7 +156,7 @@ module.exports = {
 ```
 
 ### Extract Headers
- While preparing the page, headers are extracted from the markdown file and stored in `this.$page.headers`. By default, VuePress will extract `h2` and `h3` elements for you.
+ While preparing the page, headers are extracted from the Markdown file and stored in `this.$page.headers`. By default, VuePress will extract `h2` and `h3` elements for you.
  You can override the headers it pulls out in your `markdown` options.
  ``` js
 module.exports = {
