@@ -34,11 +34,11 @@ export default {
   color white
   background-color #42b983
   &.tip, &.green
-    background-color #42b983
+    background-color $badgeTip
   &.error
-    background-color #DA5961 //#f66
+    background-color $badgeError
   &.warning, &.warn, &.yellow
-    background-color darken(#ffe564, 35%)
+    background-color $badgeWarning
   & + &
     margin-left 5px
 </style>
