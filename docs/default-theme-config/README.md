@@ -461,8 +461,6 @@ $accentColor = #3eaf7c
 $textColor = #2c3e50
 $borderColor = #eaecef
 $codeBgColor = #282c34
-
-// badges colors
 $badgeTip = #42b983
 $badgeWarning = darken(#ffe564, 35%)
 $badgeError = #DA596
