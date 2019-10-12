@@ -15,7 +15,7 @@
     :rel="rel"
   >
     {{ item.text }}
-    <OutboundLink v-if="isTargetBlank"/>
+    <OutboundLink v-if="isBlankTarget"/>
   </a>
 </template>
 
@@ -41,22 +41,36 @@ export default {
       return this.link === '/'
     },
 
-    target () {
-      return isMailto(this.link) || isTel(this.link) ? null : this.item.target
-      || (isExternal(this.link) ? '_blank' : '')
+    isNonHttpURI () {
+      return isMailto(this.link) || isTel(this.link)
     },
 
-    isTargetBlank () {
+    isBlankTarget () {
       return this.target === '_blank'
     },
 
-    rel () {
-      return isMailto(this.link) || isTel(this.link) ? null : this.item.rel
-      || (this.isTargetBlank ? 'noopener noreferrer' : '')
+    isInternal () {
+      return !isExternal(this.link) && !this.isBlankTarget
     },
 
-    isInternal () {
-      return !isExternal(this.link) && !this.isTargetBlank
+    target () {
+      if (this.isNonHttpURI) {
+        return null
+      }
+      if (this.item.target) {
+        return this.item.target
+      }
+      return isExternal(this.link) ? '_blank' : ''
+    },
+
+    rel () {
+      if (this.isNonHttpURI) {
+        return null
+      }
+      if (this.item.rel) {
+        return this.item.rel
+      }
+      return this.isBlankTarget ? 'noopener noreferrer' : ''
     }
   },
 
