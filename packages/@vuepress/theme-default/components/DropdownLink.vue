@@ -39,8 +39,8 @@
             >
               <NavLink
                 @focusout="
-                  isLastItemOfArray(childSubItem, subItem.items) &&
-                  isLastItemOfArray(subItem, item.items) &&
+                  isOpenAndLastItemOfArray(childSubItem, subItem.items) &&
+                  isOpenAndLastItemOfArray(subItem, item.items) &&
                   toggle()
                 "
                 :item="childSubItem"/>
@@ -49,7 +49,7 @@
 
           <NavLink
             v-else
-            @focusout="isLastItemOfArray(subItem, item.items) && toggle()"
+            @focusout="isOpenAndLastItemOfArray(subItem, item.items) && toggle()"
             :item="subItem"
           />
         </li>
@@ -90,8 +90,8 @@ export default {
       this.open = !this.open
     },
 
-    isLastItemOfArray (item, array) {
-      return last(array) === item
+    isOpenAndLastItemOfArray (item, array) {
+      return this.open && last(array) === item
     }
   },
 
