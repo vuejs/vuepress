@@ -1,6 +1,6 @@
 // markdown-it plugin for wrapping <pre> ... </pre>.
 //
-// If your plugin was chained before preWrapper, you can add additional eleemnt directly.
+// If your plugin was chained before preWrapper, you can add additional element directly.
 // If your plugin was chained after preWrapper, you can use these slots:
 //   1. <!--beforebegin-->
 //   2. <!--afterbegin-->
