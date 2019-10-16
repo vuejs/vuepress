@@ -68,6 +68,7 @@ export default {
   methods: {
     createEditLink (repo, docsRepo, docsDir, docsBranch, path) {
       const bitbucket = /bitbucket.org/
+      const azurerepos = /dev\.azure\.com|\w+\.visualstudio\.com/
       if (bitbucket.test(repo)) {
         const base = outboundRE.test(docsRepo) ? docsRepo : repo
         return (
@@ -77,6 +78,17 @@ export default {
           + (docsDir ? docsDir.replace(endingSlashRE, '') + '/' : '')
           + path
           + `?mode=edit&spa=0&at=${docsBranch}&fileviewer=file-view-default`
+        )
+      }
+
+      if (azurerepos.test(repo)) {
+        const base = outboundRE.test(docsRepo) ? docsRepo : repo
+        return (
+          base.replace(endingSlashRE, '')
+          + `?path=`
+          + (docsDir ? docsDir.replace(endingSlashRE, '') + '/' : '')
+          + path
+          + `&version=GBmaster`
         )
       }
 
