@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`preWrapper should wrap code with quadruple space 1`] = `
+<!--beforebegin-->
+<div class="language- extra-class">
+  <!--afterbegin--><pre><code>new Vue()
+</code></pre>
+  <!--beforeend-->
+</div>
+<!--afterend-->
+`;
+
+exports[`preWrapper should wrap code with triple back quote 1`] = `
+<!--beforebegin-->
+<div class="language-js extra-class">
+  <!--afterbegin--><pre><code class="language-js">new Vue()
+</code></pre>
+  <!--beforeend-->
+</div>
+<!--afterend-->
+`;
