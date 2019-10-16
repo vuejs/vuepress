@@ -54,6 +54,20 @@ module.exports = {
 }
 ```
 
+Outbound links automatically get `target="_blank" rel="noopener noreferrer"`. You can offer `target` and `rel` to customize the attributes:
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+    nav: [
+      { text: 'External', link: 'https://google.com', target:'_self', rel:'' },
+      { text: 'Guide', link: '/guide/', target:'_blank' }
+    ]
+  }
+}
+```
+
 These links can also be dropdown menus if you provide an array of `items` instead of a `link`:
 
 ```js

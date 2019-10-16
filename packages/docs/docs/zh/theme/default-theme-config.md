@@ -48,6 +48,21 @@ module.exports = {
     ]
   }
 }
+
+
+```
+外部链接 `<a>` 标签的特性将默认包含`target="_blank" rel="noopener noreferrer"`，你可以提供 `target` 与 `rel`，它们将被作为特性被增加到 `<a>` 标签上：
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+    nav: [
+      { text: 'External', link: 'https://google.com', target:'_self', rel:'' },
+      { text: 'Guide', link: '/guide/', target:'_blank' }
+    ]
+  }
+}
 ```
 
 当你提供了一个 `items` 数组而不是一个单一的 `link` 时，它将显示为一个 `下拉列表` ：
