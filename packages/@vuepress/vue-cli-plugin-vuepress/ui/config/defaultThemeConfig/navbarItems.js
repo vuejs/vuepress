@@ -24,7 +24,6 @@ module.exports = data => times(NAVBAR_LINKS_COUNT, count => {
     name: `themeConfig.nav.${count}.text`,
     type: 'input',
     message: `Item ${count + 1}: text`,
-    description: 'This is the text of the link.',
     link: 'https://vuepress.vuejs.org/theme/default-theme-config.html#navbar',
     group: NAVLINKS_GROUP_NAME,
     value: get(data, `config.themeConfig.nav[${count}].text`)

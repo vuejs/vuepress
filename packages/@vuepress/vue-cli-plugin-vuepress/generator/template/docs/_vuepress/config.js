@@ -1,7 +1,4 @@
 module.exports = {
   title: '<%= title %>',
-  description: '<%= description %>',
-  themeConfig: {
-    nav: []
-  }
+  description: '<%= description %>'
 }
