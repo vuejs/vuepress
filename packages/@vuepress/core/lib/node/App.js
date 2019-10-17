@@ -154,7 +154,7 @@ module.exports = class App {
       .use(require('./internal-plugins/frontmatterBlock'))
       .use('container', {
         type: 'slot',
-        before: info => `<template #${info}>`,
+        before: info => `<template slot="${info}">`,
         after: '</template>'
       })
       .use('container', {
