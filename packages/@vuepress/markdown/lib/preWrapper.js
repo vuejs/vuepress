@@ -15,8 +15,7 @@ module.exports = md => {
     return `<!--beforebegin--><div class="language-${token.info.trim()} extra-class">`
     + `<!--afterbegin-->${rawCode}<!--beforeend--></div><!--afterend-->`
   }
-  const fence = md.renderer.rules.fence
+  const { fence, code_block: codeBlock } = md.renderer.rules
   md.renderer.rules.fence = wrap(fence)
-  const codeBlock = md.renderer.rules.code_block
   md.renderer.rules.code_block = wrap(codeBlock)
 }
