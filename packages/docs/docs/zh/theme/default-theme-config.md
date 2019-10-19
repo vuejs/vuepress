@@ -434,7 +434,7 @@ editLink: false
 ---
 ```
 
-## 页面滚动
+## 页面滚动 <Badge text="1.2.0+" />
 
 你可以通过 `themeConfig.smoothScroll` 选项来启用页面滚动效果。
 

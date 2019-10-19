@@ -456,7 +456,7 @@ next: ./my-next-page # Will overwrite 'nextLinks' property from themeConfig
 ---
 ```
 
-## Smooth Scrolling
+## Smooth Scrolling <Badge text="1.2.0+" />
 
 The `themeConfig.smoothScroll` option allows you to enable smooth scrolling.
 
