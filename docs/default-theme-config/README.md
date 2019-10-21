@@ -461,6 +461,9 @@ $accentColor = #3eaf7c
 $textColor = #2c3e50
 $borderColor = #eaecef
 $codeBgColor = #282c34
+$badgeTip = #42b983
+$badgeWarning = darken(#ffe564, 35%)
+$badgeError = #DA596
 ```
 
 ### Existing issues <Badge text="< 0.12.0" type='error'/>
