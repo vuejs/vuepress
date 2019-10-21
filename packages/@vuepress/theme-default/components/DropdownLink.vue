@@ -7,7 +7,7 @@
       class="dropdown-title"
       type="button"
       :aria-label="dropdownAriaLabel"
-      @click="toggle"
+      @click="setOpen(!open)"
     >
       <span class="title">{{ item.text }}</span>
       <span
@@ -41,7 +41,7 @@
                 @focusout="
                   isLastItemOfArray(childSubItem, subItem.items) &&
                   isLastItemOfArray(subItem, item.items) &&
-                  toggle()
+                  setOpen(false)
                 "
                 :item="childSubItem"/>
             </li>
@@ -49,7 +49,7 @@
 
           <NavLink
             v-else
-            @focusout="isLastItemOfArray(subItem, item.items) && toggle()"
+            @focusout="isLastItemOfArray(subItem, item.items) && setOpen(false)"
             :item="subItem"
           />
         </li>
@@ -86,8 +86,8 @@ export default {
   },
 
   methods: {
-    toggle () {
-      this.open = !this.open
+    setOpen (value) {
+      this.open = value
     },
 
     isLastItemOfArray (item, array) {
