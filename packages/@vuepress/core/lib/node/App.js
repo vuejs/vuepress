@@ -344,6 +344,7 @@ module.exports = class App {
 
   async addPage (options) {
     options.permalinkPattern = this.siteConfig.permalink
+    options.extractHeaders = this.siteConfig.markdown && this.siteConfig.markdown.extractHeaders
     const page = new Page(options, this)
     await page.process({
       markdown: this.markdown,

@@ -34,6 +34,7 @@ module.exports = function createBaseConfig (context, isServer) {
   const inlineLimit = 10000
 
   const config = new Config()
+  const extractHeaders = siteConfig.markdown && siteConfig.markdown.extractHeaders
 
   config
     .mode(isProd && !env.isDebug ? 'production' : 'development')
@@ -118,7 +119,7 @@ module.exports = function createBaseConfig (context, isServer) {
   mdRule
     .use('markdown-loader')
       .loader(require.resolve('@vuepress/markdown-loader'))
-      .options({ sourceDir, markdown })
+      .options({ sourceDir, markdown, extractHeaders })
 
   config.module
     .rule('pug')
