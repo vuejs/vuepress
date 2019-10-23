@@ -70,7 +70,7 @@ function renderLink (h, to, text, active, level) {
   if (level > 2) {
     component.style = {
       'padding-left': level + 'rem'
-    } 
+    }
   }
 
   return h('router-link', component, text)
