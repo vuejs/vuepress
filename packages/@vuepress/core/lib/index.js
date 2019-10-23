@@ -16,6 +16,7 @@ async function dev (options) {
 }
 
 async function build (options) {
+  process.env.NODE_ENV = 'production'
   const app = createApp(options)
   await app.process()
   return app.build()
