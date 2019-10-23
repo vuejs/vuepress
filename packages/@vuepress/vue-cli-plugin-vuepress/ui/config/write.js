@@ -13,5 +13,22 @@ module.exports = async ({ api, prompts }) => {
     result['themeConfig.sidebar'] = 'auto'
   }
 
+  convertNumberProps(result)
+
   api.setData('config', result)
+}
+
+const NUMBER_PROPERTIES = [
+  'port',
+  'themeConfig.searchMaxSuggestions'
+]
+
+function convertNumberProps (result) {
+  NUMBER_PROPERTIES.forEach(prop => {
+    result[prop] = Number(result[prop])
+
+    if (isNaN(result[prop])) {
+      result[prop] = undefined
+    }
+  })
 }
