@@ -148,9 +148,9 @@ $accentColor = #3eaf7c
 $textColor = #2c3e50
 $borderColor = #eaecef
 $codeBgColor = #282c34
-$badgeTip = #42b983
-$badgeWarning = darken(#ffe564, 35%)
-$badgeError = #DA5961
+$badgeTipColor = #42b983
+$badgeWarningColor = darken(#ffe564, 35%)
+$badgeErrorColor = #DA5961
 ```
 
 ::: danger Note
