@@ -37,6 +37,19 @@ To use a fully custom homepage layout, you can also use a [Custom Layout](#custo
 
 The Navbar may contain your page title, [Search Box](#search-box), [Navbar Links](#navbar-links), [Languages](../guide/i18n.md) and [Repository Link](#git-repo-and-edit-links), they all depend on your configuration.
 
+### Navbar Logo
+
+You can add a logo to the navbar via `themeConfig.logo`. Logo can be placed in [public folder](../guide/assets.md#public-files).
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+    logo: '/assets/img/logo.png',
+  }
+}
+```
+
 ### Navbar Links
 
 You can add links to the navbar via `themeConfig.nav`:
