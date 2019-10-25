@@ -307,7 +307,7 @@ This option is also included in [Plugin API](../plugin/option-api.md#extendmarkd
 
 While preparing the page, headers are extracted from the Markdown file and stored in `this.$page.headers`. By default, VuePress will extract `h2` and `h3` elements for you. You can override the headers it pulls out in your `markdown` options.
  
- ``` js
+``` js
 module.exports = {
   markdown: {
     extractHeaders: [ 'h2', 'h3', 'h4' ]
