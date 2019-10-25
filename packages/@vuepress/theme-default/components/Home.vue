@@ -9,7 +9,7 @@
 
       <h1 v-if="data.heroText !== null" id="main-title">{{ data.heroText || $title || 'Hello' }}</h1>
 
-      <p class="description">
+      <p v-if="data.tagline !== null" class="description">
         {{ data.tagline || $description || 'Welcome to your VuePress site' }}
       </p>
 
