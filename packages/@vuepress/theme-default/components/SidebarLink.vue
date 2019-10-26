@@ -55,7 +55,7 @@ export default {
 }
 
 function renderLink (h, to, text, active, level) {
-  return h('router-link', {
+  const component = {
     props: {
       to,
       activeClass: '',
@@ -64,11 +64,16 @@ function renderLink (h, to, text, active, level) {
     class: {
       active,
       'sidebar-link': true
-    },
-    style: {
+    }
+  }
+
+  if (level > 2) {
+    component.style = {
       'padding-left': level + 'rem'
     }
-  }, text)
+  }
+
+  return h('router-link', component, text)
 }
 
 function renderChildren (h, children, path, route, maxDepth, depth = 1) {
