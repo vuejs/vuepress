@@ -292,6 +292,21 @@ module.exports = {
 这个选项也被 [Plugin API](../plugin/option-api.md#extendmarkdown) 所支持。
 :::
 
+### markdown.extractHeaders
+
+- 类型: `Array`
+- 默认值: `['h2', 'h3']`
+
+Markdown 文件的 headers (标题 & 小标题) 会在准备阶段被提取出来，并存储在 `this.$page.headers` 中。默认情况下，VuePress 会提取 `h2` 和 `h3` 标题。你可以通过这个选项来修改提取出的标题级别。
+ 
+``` js
+module.exports = {
+  markdown: {
+    extractHeaders: [ 'h2', 'h3', 'h4' ]
+  }
+}
+```
+
 ## 构建流程
 
 ### postcss
