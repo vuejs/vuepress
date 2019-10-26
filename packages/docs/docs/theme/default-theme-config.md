@@ -29,7 +29,7 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 ---
 ```
 
-You can disable `title` and `subtitle` by setting the correspoding fields to `null`.
+You can disable `title` and `subtitle` by setting the corresponding field to `null`.
 
 Any extra content after the `YAML front matter` will be parsed as normal Markdown and rendered after the features section.
 
