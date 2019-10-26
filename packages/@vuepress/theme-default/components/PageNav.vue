@@ -3,11 +3,13 @@
     <p class="inner">
       <span v-if="prev" class="prev">
         ←
-        <router-link v-if="prev" class="prev" :to="prev.path">{{ prev.title || prev.path }}</router-link>
+        <router-link v-if="prev.type === 'page'" class="prev" :to="prev.path">{{ prev.title || prev.path }}</router-link>
+        <a v-else :href="prev.path" target="_blank" rel='noopener noreferrer'>{{ prev.path }}</a>
       </span>
 
       <span v-if="next" class="next">
-        <router-link v-if="next" :to="next.path">{{ next.title || next.path }}</router-link>
+        <router-link v-if="next.type === 'page'" :to="next.path">{{ next.title || next.path }}</router-link>
+        <a v-else :href="next.path" target="_blank" rel='noopener noreferrer'>{{ next.path }}</a>
         →
       </span>
     </p>
@@ -98,6 +100,7 @@ function flatten (items, res) {
   }
 }
 </script>
+
 <style lang="stylus">
 @require '../styles/wrapper.styl'
 
