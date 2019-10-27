@@ -4,7 +4,7 @@
       <span v-if="prev" class="prev">
         ←
         <router-link v-if="prev.type === 'page'" class="prev" :to="prev.path">{{ prev.title || prev.path }}</router-link>
-        <a v-else :href="prev.path" target="_blank" rel='noopener noreferrer'>{{ prev.path }}</a>
+        <a v-else :href="prev.path" target="_blank" rel='noopener noreferrer'>{{ prev.title || prev.path }}</a>
       </span>
 
       <span v-if="next" class="next">
