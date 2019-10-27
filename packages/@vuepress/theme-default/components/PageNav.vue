@@ -9,7 +9,7 @@
 
       <span v-if="next" class="next">
         <router-link v-if="next.type === 'page'" :to="next.path">{{ next.title || next.path }}</router-link>
-        <a v-else :href="next.path" target="_blank" rel='noopener noreferrer'>{{ next.path }}</a>
+        <a v-else :href="next.path" target="_blank" rel='noopener noreferrer'>{{ next.title || next.path }}</a>
         →
       </span>
     </p>
