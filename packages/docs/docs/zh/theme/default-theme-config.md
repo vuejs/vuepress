@@ -33,9 +33,9 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 
 导航栏可能包含你的页面标题、[搜索框](#搜索框)、 [导航栏链接](#导航栏链接)、[多语言切换](../guide/i18n.md)、[仓库链接](#git-仓库和编辑链接)，它们均取决于你的配置。
 
-### 导航栏标志
+### 导航栏 Logo
 
-你可以通过 `themeConfig.logo` 增加导航栏标志（Logo），标志可以被放置在[公共文件](../guide/assets.md#public-files)：
+你可以通过 `themeConfig.logo` 增加导航栏 Logo ，Logo 可以被放置在[公共文件目录](../guide/assets.md#public-files)：
 
 ``` js
 // .vuepress/config.js
