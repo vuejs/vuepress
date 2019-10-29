@@ -1,4 +1,5 @@
-const { required, isNumber } = require('../validators')
+const { required, isNumber, isJSON } = require('../validators')
+const { getJSONObj } = require('../utils')
 
 const GROUP_NAME = 'Basic settings'
 
@@ -7,7 +8,7 @@ module.exports = data => ([
     name: 'base',
     type: 'input',
     message: 'Base',
-    description: 'The base URL the site will be deployed at. You will need to set this if you plan to deploy your site under a sub path, for example, GitHub pages. If you plan to deploy your site to https://foo.github.io/bar/, then you should set base to "/bar/". It should always start and end with a slash.The base is automatically prepended to all the URLs that start with / in other options, so you only need to specify it once.',
+    description: 'The base URL the site will be deployed at.',
     link: 'https://vuepress.vuejs.org/config/#base',
     group: GROUP_NAME,
     value: data.config.base,
@@ -32,6 +33,18 @@ module.exports = data => ([
     group: GROUP_NAME,
     value: data.config.description,
     validate: required
+  },
+  {
+    name: 'head',
+    type: 'editor',
+    message: 'Head',
+    description: 'Extra tags to inject into the page HTML <head>.',
+    link: 'https://vuepress.vuejs.org/config/#head',
+    group: GROUP_NAME,
+    value: getJSONObj(data, 'config.head'),
+    transform: JSON.parse,
+    validate: isJSON,
+    default: '[]'
   },
   {
     name: 'host',
@@ -72,6 +85,28 @@ module.exports = data => ([
     link: 'https://vuepress.vuejs.org/config/#dest',
     group: GROUP_NAME,
     value: data.config.dest
+  },
+  {
+    name: 'locales',
+    type: 'editor',
+    message: 'Locales',
+    description: 'Specify locales for i18n support.',
+    link: 'https://vuepress.vuejs.org/config/#locales',
+    group: GROUP_NAME,
+    value: getJSONObj(data, 'config.locales'),
+    transform: JSON.parse,
+    validate: isJSON,
+    default: undefined
+  },
+  {
+    name: 'cache',
+    type: 'confirm',
+    message: 'Cache',
+    description: 'VuePress uses cache-loader by default to greatly speed up the compilation of webpack. You can use this option to specify the path to the cache, and can also remove the cache before each build by setting it to false.',
+    link: 'https://vuepress.vuejs.org/config/#cache',
+    group: GROUP_NAME,
+    value: data.config.cache,
+    default: true
   },
   {
     name: 'theme',

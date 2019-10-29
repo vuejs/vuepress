@@ -1,6 +1,7 @@
 const get = require('lodash/get')
 
 const { isJSON } = require('../validators')
+const { getJSONObj } = require('../utils')
 
 const GROUP_NAME = 'Markdown settings'
 
@@ -22,7 +23,7 @@ module.exports = data => ([
     description: 'Options for markdown-it-table-of-contents (Note: prefer markdown.slugify to customize header ids).',
     link: 'https://vuepress.vuejs.org/config/#markdown-toc',
     group: GROUP_NAME,
-    value: get(data, 'config.markdown.toc'),
+    value: getJSONObj(data, 'config.markdown.toc'),
     validate: isJSON,
     transform: JSON.parse,
     default: `{
