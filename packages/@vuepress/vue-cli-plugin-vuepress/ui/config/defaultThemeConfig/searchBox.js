@@ -1,6 +1,8 @@
 
 const get = require('lodash/get')
 
+const { isNumber } = require('../validators')
+
 const GROUP_NAME = 'Search box'
 
 module.exports = data => ([
@@ -22,7 +24,9 @@ module.exports = data => ([
     link: 'https://vuepress.vuejs.org/theme/default-theme-config.html#built-in-search',
     group: GROUP_NAME,
     value: get(data, 'config.themeConfig.searchMaxSuggestions'),
-    default: '5'
+    default: '5',
+    validate: isNumber,
+    transform: Number
   },
   {
     name: 'themeConfig.searchPlaceholder',

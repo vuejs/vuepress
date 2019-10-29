@@ -1,4 +1,4 @@
-const { required } = require('../validators')
+const { required, isNumber } = require('../validators')
 
 const GROUP_NAME = 'Basic settings'
 
@@ -51,7 +51,9 @@ module.exports = data => ([
     link: 'https://vuepress.vuejs.org/config/#port',
     group: GROUP_NAME,
     value: data.config.port,
-    default: '8080'
+    default: '8080',
+    validate: isNumber,
+    transform: Number
   },
   {
     name: 'temp',
