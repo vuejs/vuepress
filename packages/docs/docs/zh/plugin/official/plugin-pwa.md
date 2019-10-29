@@ -46,7 +46,7 @@ module.exports = {
     ['meta', { name: 'msapplication-TileImage', content: '/icons/msapplication-icon-144x144.png' }],
     ['meta', { name: 'msapplication-TileColor', content: '#000000' }]
   ],
-  ['@vuepress/pwa', {
+  plugins: ['@vuepress/pwa', {
       serviceWorker: true,
       updatePopup: true
   }],
@@ -216,7 +216,7 @@ module.exports = {
 <template>
   <SWUpdatePopup>
     <div
-      slot-scope="{ enabled, reload, message, buttonText }"
+      v-slot="{ enabled, reload, message, buttonText }"
       class="my-sw-update-popup">
       {{ message }}<br>
       <button @click="reload">{{ buttonText }}</button>

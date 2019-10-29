@@ -33,6 +33,19 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 
 导航栏可能包含你的页面标题、[搜索框](#搜索框)、 [导航栏链接](#导航栏链接)、[多语言切换](../guide/i18n.md)、[仓库链接](#git-仓库和编辑链接)，它们均取决于你的配置。
 
+### 导航栏 Logo
+
+你可以通过 `themeConfig.logo` 增加导航栏 Logo ，Logo 可以被放置在[公共文件目录](../guide/assets.md#public-files)：
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+    logo: '/assets/img/logo.png',
+  }
+}
+```
+
 ### 导航栏链接
 
 你可以通过 `themeConfig.nav` 增加一些导航栏链接:
@@ -45,6 +58,21 @@ module.exports = {
       { text: 'Home', link: '/' },
       { text: 'Guide', link: '/guide/' },
       { text: 'External', link: 'https://google.com' },
+    ]
+  }
+}
+
+
+```
+外部链接 `<a>` 标签的特性将默认包含`target="_blank" rel="noopener noreferrer"`，你可以提供 `target` 与 `rel`，它们将被作为特性被增加到 `<a>` 标签上：
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+    nav: [
+      { text: 'External', link: 'https://google.com', target:'_self', rel:'' },
+      { text: 'Guide', link: '/guide/', target:'_blank' }
     ]
   }
 }
@@ -417,6 +445,19 @@ module.exports = {
 ---
 editLink: false
 ---
+```
+
+## 页面滚动 <Badge text="1.2.0+" />
+
+你可以通过 `themeConfig.smoothScroll` 选项来启用页面滚动效果。
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+    smoothScroll: true
+  }
+}
 ```
 
 ## 自定义页面类

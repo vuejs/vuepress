@@ -37,6 +37,19 @@ To use a fully custom homepage layout, you can also use a [Custom Layout](#custo
 
 The Navbar may contain your page title, [Search Box](#search-box), [Navbar Links](#navbar-links), [Languages](../guide/i18n.md) and [Repository Link](#git-repo-and-edit-links), they all depend on your configuration.
 
+### Navbar Logo
+
+You can add a logo to the navbar via `themeConfig.logo`. Logo can be placed in [public folder](../guide/assets.md#public-files).
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+    logo: '/assets/img/logo.png',
+  }
+}
+```
+
 ### Navbar Links
 
 You can add links to the navbar via `themeConfig.nav`:
@@ -49,6 +62,20 @@ module.exports = {
       { text: 'Home', link: '/' },
       { text: 'Guide', link: '/guide/' },
       { text: 'External', link: 'https://google.com' }
+    ]
+  }
+}
+```
+
+Outbound links automatically get `target="_blank" rel="noopener noreferrer"`. You can offer `target` and `rel` to customize the attributes:
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+    nav: [
+      { text: 'External', link: 'https://google.com', target:'_self', rel:'' },
+      { text: 'Guide', link: '/guide/', target:'_blank' }
     ]
   }
 }
@@ -440,6 +467,19 @@ editLink: false # Will overwrite 'editLinks' from themeConfig
 prev: true # Will overwrite 'prevLinks' property from themeConfig
 next: ./my-next-page # Will overwrite 'nextLinks' property from themeConfig
 ---
+```
+
+## Smooth Scrolling <Badge text="1.2.0+" />
+
+The `themeConfig.smoothScroll` option allows you to enable smooth scrolling.
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+    smoothScroll: true
+  }
+}
 ```
 
 ## Custom Page Class

@@ -19,14 +19,12 @@
       :items="sidebarItems"
       @toggle-sidebar="toggleSidebar"
     >
-      <slot
-        name="sidebar-top"
-        slot="top"
-      />
-      <slot
-        name="sidebar-bottom"
-        slot="bottom"
-      />
+      <template #top>
+        <slot name="sidebar-top" />
+      </template>
+      <template #bottom>
+        <slot name="sidebar-bottom"/>
+      </template>
     </Sidebar>
 
     <Home v-if="$page.frontmatter.home"/>
@@ -35,14 +33,12 @@
       v-else
       :sidebar-items="sidebarItems"
     >
-      <slot
-        name="page-top"
-        slot="top"
-      />
-      <slot
-        name="page-bottom"
-        slot="bottom"
-      />
+      <template #top>
+        <slot name="page-top"/>
+      </template>
+      <template #bottom>
+        <slot name="page-bottom"/>
+      </template>
     </Page>
   </div>
 </template>

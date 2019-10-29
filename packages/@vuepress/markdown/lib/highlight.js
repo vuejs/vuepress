@@ -12,36 +12,31 @@ function wrap (code, lang) {
   return `<pre v-pre class="language-${lang}"><code>${code}</code></pre>`
 }
 
+function getLangCodeFromExtension (extension) {
+  const extensionMap = {
+    vue: 'markup',
+    html: 'markup',
+    md: 'markdown',
+    rb: 'ruby',
+    ts: 'typescript',
+    py: 'python',
+    sh: 'bash',
+    yml: 'yaml',
+    styl: 'stylus',
+    kt: 'kotlin'
+  }
+
+  return extensionMap[extension] || extension
+}
+
 module.exports = (str, lang) => {
   if (!lang) {
     return wrap(str, 'text')
   }
   lang = lang.toLowerCase()
   const rawLang = lang
-  if (lang === 'vue' || lang === 'html') {
-    lang = 'markup'
-  }
-  if (lang === 'md') {
-    lang = 'markdown'
-  }
-  if (lang === 'rb') {
-    lang = 'ruby'
-  }
-  if (lang === 'ts') {
-    lang = 'typescript'
-  }
-  if (lang === 'py') {
-    lang = 'python'
-  }
-  if (lang === 'sh') {
-    lang = 'bash'
-  }
-  if (lang === 'yml') {
-    lang = 'yaml'
-  }
-  if (lang === 'styl') {
-    lang = 'stylus'
-  }
+
+  lang = getLangCodeFromExtension(lang)
 
   if (!prism.languages[lang]) {
     try {

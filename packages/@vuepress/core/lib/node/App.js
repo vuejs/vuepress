@@ -56,17 +56,17 @@ module.exports = class App {
   /**
    * Resolve user config and initialize.
    *
-   * @returns {void}
+   * @returns {Promise<void>}
    * @api private
    */
 
-  resolveConfigAndInitialize () {
+  async resolveConfigAndInitialize () {
     if (this.options.siteConfig) {
       this.siteConfig = this.options.siteConfig
     } else {
       let siteConfig = loadConfig(this.vuepressDir)
       if (isFunction(siteConfig)) {
-        siteConfig = siteConfig(this)
+        siteConfig = await siteConfig(this)
       }
       this.siteConfig = siteConfig
     }
@@ -95,7 +95,7 @@ module.exports = class App {
    */
 
   async process () {
-    this.resolveConfigAndInitialize()
+    await this.resolveConfigAndInitialize()
     this.normalizeHeadTagUrls()
     this.themeAPI = loadTheme(this)
     this.resolveTemplates()
@@ -154,7 +154,7 @@ module.exports = class App {
       .use(require('./internal-plugins/frontmatterBlock'))
       .use('container', {
         type: 'slot',
-        before: info => `<template slot="${info}">`,
+        before: info => `<template #${info}>`,
         after: '</template>'
       })
       .use('container', {
@@ -316,7 +316,9 @@ module.exports = class App {
 
   async resolvePages () {
     // resolve pageFiles
-    const patterns = ['**/*.md', '**/*.vue', '!.vuepress', '!node_modules']
+    const patterns = this.siteConfig.patterns ? this.siteConfig.patterns : ['**/*.md', '**/*.vue']
+    patterns.push('!.vuepress', '!node_modules')
+
     if (this.siteConfig.dest) {
       // #654 exclude dest folder when dest dir was set in
       // sourceDir but not in '.vuepress'
@@ -342,6 +344,7 @@ module.exports = class App {
 
   async addPage (options) {
     options.permalinkPattern = this.siteConfig.permalink
+    options.extractHeaders = this.siteConfig.markdown && this.siteConfig.markdown.extractHeaders
     const page = new Page(options, this)
     await page.process({
       markdown: this.markdown,

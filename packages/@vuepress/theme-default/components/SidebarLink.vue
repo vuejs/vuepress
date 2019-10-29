@@ -54,8 +54,8 @@ export default {
   }
 }
 
-function renderLink (h, to, text, active) {
-  return h('router-link', {
+function renderLink (h, to, text, active, level) {
+  const component = {
     props: {
       to,
       activeClass: '',
@@ -65,7 +65,15 @@ function renderLink (h, to, text, active) {
       active,
       'sidebar-link': true
     }
-  }, text)
+  }
+
+  if (level > 2) {
+    component.style = {
+      'padding-left': level + 'rem'
+    }
+  }
+
+  return h('router-link', component, text)
 }
 
 function renderChildren (h, children, path, route, maxDepth, depth = 1) {
@@ -73,7 +81,7 @@ function renderChildren (h, children, path, route, maxDepth, depth = 1) {
   return h('ul', { class: 'sidebar-sub-headers' }, children.map(c => {
     const active = isActive(route, path + '#' + c.slug)
     return h('li', { class: 'sidebar-sub-header' }, [
-      renderLink(h, path + '#' + c.slug, c.title, active),
+      renderLink(h, path + '#' + c.slug, c.title, active, c.level - 1),
       renderChildren(h, c.children, path, route, maxDepth, depth + 1)
     ])
   }))
