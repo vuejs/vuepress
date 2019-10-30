@@ -50,7 +50,7 @@ module.exports = data => ([
     name: 'markdown.externalLinks',
     type: 'editor',
     message: 'External links',
-    description: "The key and value pair will be added to &lt;a&gt; tags that point to an external link. The default option will open external links in a new window.",
+    description: 'The key and value pair will be added to &lt;a&gt; tags that point to an external link. The default option will open external links in a new window.',
     link: 'https://vuepress.vuejs.org/config/#markdown-externallinks',
     group: GROUP_NAME,
     value: getJSONObj(data, 'config.markdown.externalLinks'),
