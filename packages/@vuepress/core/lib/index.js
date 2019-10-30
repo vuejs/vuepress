@@ -10,6 +10,7 @@ function createApp (options) {
 }
 
 async function dev (options) {
+  process.env.NODE_ENV = 'development'
   const app = createApp(options)
   await app.process()
   return app.dev()
