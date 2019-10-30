@@ -1,16 +1,21 @@
 const get = require('lodash/get')
 
+const { isJSON } = require('../validators')
+const { getJSONObj } = require('../utils')
+
 const GROUP_NAME = 'Sidebar settings'
 
 module.exports = data => ([
   {
     name: 'themeConfig.sidebar',
-    type: 'confirm',
-    message: 'Auto sidebar for single pages',
-    description: 'Automatically generate a sidebar that represent your pages structure.',
-    link: 'https://vuepress.vuejs.org/theme/default-theme-config.html#auto-sidebar-for-single-pages',
+    type: 'editor',
+    message: 'Sidebar links',
+    description: 'The basic configuration expects an Array of links. You can find examples and more infos here:',
+    link: 'https://vuepress.vuejs.org/theme/default-theme-config.html#sidebar',
     group: GROUP_NAME,
-    value: get(data, 'config.themeConfig.sidebar')
+    value: getJSONObj(data, 'config.themeConfig.sidebar'),
+    transform: (data) => data === 'auto' ? data : JSON.parse(data),
+    validate: data => data === 'auto' || isJSON(data)
   },
   {
     name: 'themeConfig.displayAllHeaders',

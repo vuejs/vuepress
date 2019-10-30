@@ -1,6 +1,6 @@
 const get = require('lodash/get')
 
-const GROUP_NAME = 'Navigation settings'
+const GROUP_NAME = 'Navbar settings'
 
 module.exports = data => ([
   {
@@ -12,5 +12,14 @@ module.exports = data => ([
     group: GROUP_NAME,
     value: get(data, 'config.themeConfig.navbar'),
     default: true
+  },
+  {
+    name: 'themeConfig.logo',
+    type: 'confirm',
+    message: 'Logo path',
+    description: 'You can add a logo to the navbar. Logo can be placed in public folder.',
+    link: 'https://vuepress.vuejs.org/theme/default-theme-config.html#navbar-logo',
+    group: GROUP_NAME,
+    value: get(data, 'config.themeConfig.logo')
   }
 ])

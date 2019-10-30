@@ -5,6 +5,7 @@ const isJSON = input => {
     JSON.parse(input)
     return true
   } catch (e) {
+    console.error(e)
     return 'This input must be a valid JSON object'
   }
 }

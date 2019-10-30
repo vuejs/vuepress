@@ -10,8 +10,8 @@ const { isDefaultTheme } = require('./utils')
 module.exports = data => {
   const promptItems = flattenDeep([
     navigation(data),
-    sidebar(data),
     navbarItems(data),
+    sidebar(data),
     searchBox(data),
     pages(data)
   ])
