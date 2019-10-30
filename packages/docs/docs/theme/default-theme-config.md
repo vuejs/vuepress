@@ -414,7 +414,7 @@ next: false
 
 ## Git repository and Edit Links
 
-Providing `themeConfig.repo` auto generates a GitHub link in the navbar and "Edit this page" links at the bottom of each page.
+Providing `themeConfig.repo` auto generates a repo link in the navbar and "Edit this page" links at the bottom of each page.
 
 ``` js
 // .vuepress/config.js
@@ -423,7 +423,7 @@ module.exports = {
     // Assumes GitHub. Can also be a full GitLab url.
     repo: 'vuejs/vuepress',
     // Customising the header label
-    // Defaults to "GitHub"/"GitLab"/"Bitbucket" depending on `themeConfig.repo`
+    // Defaults to "GitHub"/"GitLab"/"Bitbucket"/"Azure Repos" depending on `themeConfig.repo`
     repoLabel: 'Contribute!',
 
     // Optional options for generating "Edit this page" link
