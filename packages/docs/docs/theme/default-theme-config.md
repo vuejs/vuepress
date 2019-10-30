@@ -414,7 +414,7 @@ next: false
 
 ## Git repository and Edit Links
 
-Providing `themeConfig.repo` auto generates a repo link in the navbar and "Edit this page" links at the bottom of each page.
+Providing `themeConfig.repo` auto generates a repository link in the navbar and "Edit this page" links at the bottom of each page.
 
 ``` js
 // .vuepress/config.js
