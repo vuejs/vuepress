@@ -122,7 +122,7 @@ module.exports = class PluginAPI {
     if (!plugin.entry) {
       if (plugin.error) {
         logger.debug(plugin.error)
-        throw new Error(`An error was encounted in ${type} "${pluginRaw}"`)
+        throw new Error(`An error was encountered in ${type} "${pluginRaw}"`)
       } else {
         throw new Error(`Cannot resolve ${type} "${pluginRaw}"`)
       }
