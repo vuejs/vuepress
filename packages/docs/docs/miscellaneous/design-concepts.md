@@ -156,7 +156,7 @@ The final generated CSS is as follows:
   font-size: 14px;
 }
 
-/* theme/styles/index.styl */
+/* .vuepress/styles/index.styl */
 .content {
   font-size: 15px;
 }
