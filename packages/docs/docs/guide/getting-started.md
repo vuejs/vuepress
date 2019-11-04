@@ -24,7 +24,7 @@ vuepress build
 
 ## Inside an Existing Project
 
-If you have an existing project and would like to keep documentation inside the project, you should install VuePress as a local dependency. This setup also allows you to use CI or services like Netlify for automatic deployment on push.
+If you have an existing project and would like to keep documentation inside the project, you should install VuePress as a local dependency. This setup also allows you to use CI or services like [Netlify](https://netlify.com) for automatic deployment on push.
 
 ``` bash
 # install as a local dependency
