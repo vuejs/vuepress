@@ -4,9 +4,9 @@ sidebar: auto
 
 # Local Development
 
-## Informations
+## Information
 
-If you here youh may be intereset of improve core VuePress.
+If you here you may be interested in improving core VuePress.
 
 VuePress is using a combo with [Yarn workspaces](https://yarnpkg.com/lang/en/docs/workspaces/) and [Lerna](https://github.com/lerna/lerna).
 
