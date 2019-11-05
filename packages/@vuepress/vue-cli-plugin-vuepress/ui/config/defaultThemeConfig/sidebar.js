@@ -1,6 +1,6 @@
 const get = require('lodash/get')
 
-const { isJSON } = require('../validators')
+const { isJSONOrAuto } = require('../validators')
 const { getJSONObj } = require('../utils')
 
 const GROUP_NAME = 'Sidebar settings'
@@ -10,12 +10,12 @@ module.exports = data => ([
     name: 'themeConfig.sidebar',
     type: 'editor',
     message: 'Sidebar links',
-    description: 'The basic configuration expects an Array of links. You can find examples and more infos here:',
+    description: 'The basic configuration expects an Array of links (Use \"auto\" value to automatically generate a sidebar that contains only the header links for the current page). You can find examples and more infos here:',
     link: 'https://vuepress.vuejs.org/theme/default-theme-config.html#sidebar',
     group: GROUP_NAME,
-    value: getJSONObj(data, 'config.themeConfig.sidebar'),
-    transform: (data) => data === 'auto' ? data : JSON.parse(data),
-    validate: data => data === 'auto' || isJSON(data)
+    value: data === 'auto' ? get(data, 'config.themeConfig.sidebar') : getJSONObj(data, 'config.themeConfig.sidebar'),
+    transform: data => data === 'auto' ? data : JSON.parse(data),
+    validate: data => isJSONOrAuto(data)
   },
   {
     name: 'themeConfig.displayAllHeaders',
@@ -36,5 +36,15 @@ module.exports = data => ([
     group: GROUP_NAME,
     value: get(data, 'config.themeConfig.activeHeaderLinks'),
     default: true
+  },
+  {
+    name: 'themeConfig.smoothScroll',
+    type: 'confirm',
+    message: 'Smooth scrolling',
+    description: 'Allows to enable smooth scrolling',
+    link: 'https://vuepress.vuejs.org/theme/default-theme-config.html#smooth-scrolling',
+    group: GROUP_NAME,
+    value: get(data, 'config.themeConfig.smoothScroll'),
+    default: false
   }
 ])
