@@ -1,8 +1,9 @@
 const generalConfig = require('./generalConfig')
-const defaultThemeConfig = require('./defaultThemeConfig')
 const markdownConfig = require('./markdownConfig')
+const defaultThemeConfig = require('./defaultThemeConfig')
+const blogThemeConfig = require('./blogThemeConfig')
 
-module.exports = ({ data }) => {
+module.exports = () => ({ data }) => {
   const tabs = [
     {
       id: 'generalConfig',
@@ -17,10 +18,13 @@ module.exports = ({ data }) => {
       prompts: [markdownConfig]
     },
     {
-      id: 'defaultThemeConfig',
+      id: 'themeConfig',
       label: 'Theme',
       icon: 'palette',
-      prompts: [defaultThemeConfig]
+      prompts: [
+        defaultThemeConfig,
+        blogThemeConfig
+      ]
     }
   ]
 

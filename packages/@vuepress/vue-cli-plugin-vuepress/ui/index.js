@@ -15,8 +15,8 @@ module.exports = api => {
         js: ['docs/.vuepress/config.js']
       }
     },
-    onRead,
-    onWrite
+    onRead: onRead(api),
+    onWrite: onWrite(api)
   })
 
   describeTasks(api)

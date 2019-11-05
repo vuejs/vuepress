@@ -1,7 +1,7 @@
 const times = require('lodash/times')
 const get = require('lodash/get')
 
-const { isDefaultTheme } = require('./utils')
+const { isDefaultTheme } = require('../utils')
 
 const isNavBarVisible = answer => answer.themeConfig.navbar === true
 const isPreviousLinkDefined = (answer, previousLinkIndex) => previousLinkIndex === -1

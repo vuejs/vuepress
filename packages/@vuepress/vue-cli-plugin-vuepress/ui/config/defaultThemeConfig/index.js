@@ -5,7 +5,7 @@ const sidebar = require('./sidebar')
 const navigation = require('./navigation')
 const searchBox = require('./searchBox')
 const pages = require('./pages')
-const { isDefaultTheme } = require('./utils')
+const { isDefaultTheme } = require('../utils')
 
 module.exports = data => {
   const promptItems = flattenDeep([
