@@ -82,7 +82,7 @@ function find (page, items, offset) {
   flatten(items, res)
   for (let i = 0; i < res.length; i++) {
     const cur = res[i]
-    if (cur.type === 'page' && cur.path === decodeURIComponent(page.path)) {
+    if (cur.type === 'page' && decodeURIComponent(cur.path) === decodeURIComponent(page.path)) {
       return res[i + offset]
     }
   }
