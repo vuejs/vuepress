@@ -54,7 +54,7 @@ module.exports = siteData => {
       for (const path in locales) {
         if (path === '/') {
           defaultLang = locales[path]
-        } else if (this.$page.path.indexOf(path) === 0) {
+        } else if (this.$page.path.indexOf(path) === 0 || (!this.$page.path && this.$route.path.indexOf(path) === 0)) {
           targetLang = locales[path]
         }
       }

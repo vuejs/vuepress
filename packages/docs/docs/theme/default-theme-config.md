@@ -454,7 +454,13 @@ module.exports = {
     // default value is true. Allows to hide prev page links on all pages
     prevLinks: false,
     // custom text for edit link. Defaults to "Edit this page"
-    editLinkText: 'Help us improve this page!'
+    editLinkText: 'Help us improve this page!',
+
+    // Optional options fot the 404 page
+
+    // custom text for 404 page link. Defaults to "Take me home."
+    notFoundLinkText: 'Take me home.',
+    notFoundMessages: [/* ... */]
   }
 }
 ```
