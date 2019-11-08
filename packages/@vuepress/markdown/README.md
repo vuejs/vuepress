@@ -1,6 +1,6 @@
 # @vuepress/markdown
 
-> markdown library for vuepress
+> markdown library for VuePress
 
 ## Public API
 
