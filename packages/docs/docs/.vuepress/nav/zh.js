@@ -36,8 +36,8 @@ module.exports = [
         text: "开发指南",
         items: [
           {
-            text: "Local Development",
-            link: "/miscellaneous/local-development.html"
+            text: "本地开发",
+            link: "/zh/miscellaneous/local-development.html"
           },
           {
             text: "设计理念",
