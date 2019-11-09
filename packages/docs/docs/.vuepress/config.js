@@ -87,6 +87,7 @@ module.exports = ctx => ({
       before: info => `<UpgradePath title="${info}">`,
       after: '</UpgradePath>',
     }],
+    ['flowchart'],
   ],
   extraWatchFiles: [
     '.vuepress/nav/en.js',
