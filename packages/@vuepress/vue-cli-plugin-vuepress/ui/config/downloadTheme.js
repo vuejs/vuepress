@@ -1,22 +1,30 @@
+const fs = require('fs')
 const util = require('util')
 const exec = util.promisify(require('child_process').exec)
-const fs = require('fs')
+const has = require('lodash/has')
+const { getPackageJson } = require('./utils')
 
-const shouldDownloadTheme = (prompt, result) => prompt.id === 'theme' && result.theme !== undefined
+/**
+ * Check if theme is already in package.json
+ *
+ * @param {string} theme
+ */
+const shouldDownloadTheme = async themeName => {
+  const packageJson = await getPackageJson()
+  const isThemeAlreadyDownloaded = has(packageJson, `devDependencies.${themeName}`)
+  || has(packageJson, `dependencies.${themeName}`)
 
-const fileExists = fileName => {
-  try {
-    if (fs.existsSync(fileName)) {
-      return true
-    }
-  } catch (err) {
-    console.error(err)
-  }
-  return false
+  return !isThemeAlreadyDownloaded
 }
 
+/**
+ * Download theme with npm or yarn
+ *
+ * @param {string} themeName
+ * @param {Object} api
+ */
 const downloadTheme = async (themeName, api) => {
-  const packageManager = fileExists('yarn.lock', api) ? 'yarn' : 'npm'
+  const packageManager = fs.existsSync('yarn.lock') ? 'yarn' : 'npm'
   const option = packageManager === 'yarn' ? 'add' : 'i'
   const command = `${packageManager} ${option} ${themeName} -D`
 

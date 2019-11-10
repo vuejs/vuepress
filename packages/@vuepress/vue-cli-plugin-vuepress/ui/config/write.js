@@ -9,7 +9,8 @@ module.exports = mainAPI => async ({ api, prompts }) => {
     if (!prompt.error && prompt.valueChanged) {
       result[prompt.id] = await api.getAnswer(prompt.id, prompt.raw.transform)
 
-      if (shouldDownloadTheme(prompt, result)) {
+      // Check if theme field has changed
+      if (prompt.id === 'theme' && await shouldDownloadTheme(result.theme)) {
         await downloadTheme(result[prompt.id], mainAPI)
       }
     }

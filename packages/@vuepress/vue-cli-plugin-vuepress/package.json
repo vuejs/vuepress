@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/vuejs/vuepress/issues"
   },
-  "homepage": "https://github.com/vuejs/vuepress#readme"
+  "homepage": "https://github.com/vuejs/vuepress#readme",
+  "dependencies": {
+    "load-json-file": "^6.2.0"
+  }
 }
