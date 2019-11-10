@@ -460,7 +460,12 @@ module.exports = {
 
     // custom text for 404 page link. Defaults to "Take me home."
     notFoundLinkText: 'Take me home.',
-    notFoundMessages: [/* ... */]
+    notFoundMessages: [
+      'There\'s nothing here.',
+      'How did we get here?',
+      'That\'s a Four-Oh-Four.',
+      'Looks like we\'ve got some broken links.'
+    ]
   }
 }
 ```
