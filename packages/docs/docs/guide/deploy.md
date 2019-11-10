@@ -121,7 +121,7 @@ pages:
 
 ## Netlify
 
-1. On Netlify, setup up a new project from GitHub with the following settings:
+1. On [Netlify](https://netlify.com), setup up a new project from GitHub with the following settings:
 
 - **Build Command:** `npm run docs:build` or `yarn docs:build`
 - **Publish directory:** `docs/.vuepress/dist`
