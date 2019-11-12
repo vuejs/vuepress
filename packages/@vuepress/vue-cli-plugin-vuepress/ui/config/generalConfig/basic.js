@@ -7,17 +7,14 @@ module.exports = data => ([
     name: 'theme',
     type: 'list',
     message: 'VuePress theme',
-    description: `Select a VuePress theme you want to use.
-⚠️ Changing theme requires to start VuePress again ⚠️`,
+    description: 'Only default-theme is available for now in vue UI.',
+    // `Select a VuePress theme you want to use.
+    // ⚠️ Changing theme requires to start VuePress again ⚠️`,
     default: null,
     choices: [
       {
         name: 'Default theme',
         value: null
-      },
-      {
-        name: '@vuepress/theme-blog',
-        value: '@vuepress/theme-blog'
       }
     ],
     link: 'https://vuepress.vuejs.org/theme/using-a-theme.html',

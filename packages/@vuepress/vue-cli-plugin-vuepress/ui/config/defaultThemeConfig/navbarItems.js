@@ -1,8 +1,6 @@
 const times = require('lodash/times')
 const get = require('lodash/get')
 
-const { isDefaultTheme } = require('../utils')
-
 const isNavBarVisible = answer => answer.themeConfig.navbar === true
 const isPreviousLinkDefined = (answer, previousLinkIndex) => previousLinkIndex === -1
 || (
@@ -14,9 +12,7 @@ const NAVLINKS_GROUP_NAME = 'Navbar items'
 const NAVBAR_LINKS_COUNT = 10
 
 module.exports = data => times(NAVBAR_LINKS_COUNT, count => {
-  const shouldDisplayItem = answer =>
-    isDefaultTheme(answer)
-  && isNavBarVisible(answer)
+  const shouldDisplayItem = answer => isNavBarVisible(answer)
   && isPreviousLinkDefined(answer, count - 1)
 
   return [{

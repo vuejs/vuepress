@@ -11,7 +11,10 @@ const getJSONObj = (data, prop) => {
 /* Check themes */
 
 const isDefaultTheme = answer => answer.theme === null
-const isBlogTheme = answer => answer.theme === '@vuepress/blog'
+
+/* Prompt value transformers */
+
+const emptyStringToUndefined = data => data === '' ? undefined : data
 
 /* Miscellaneous */
 
@@ -26,6 +29,6 @@ const getPackageJson = async () => {
 module.exports = {
   getJSONObj,
   isDefaultTheme,
-  isBlogTheme,
-  getPackageJson
+  getPackageJson,
+  emptyStringToUndefined
 }

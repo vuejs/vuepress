@@ -17,6 +17,7 @@ module.exports = data => ([
     default: true
   },
   {
+    when: answer => get(answer, 'themeConfig.search'),
     name: 'themeConfig.searchMaxSuggestions',
     type: 'input',
     message: 'Max suggestions',
@@ -29,6 +30,7 @@ module.exports = data => ([
     transform: Number
   },
   {
+    when: answer => get(answer, 'themeConfig.search'),
     name: 'themeConfig.searchPlaceholder',
     type: 'input',
     message: 'Search placeholder',

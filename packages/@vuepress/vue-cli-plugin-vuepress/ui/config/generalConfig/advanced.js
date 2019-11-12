@@ -1,5 +1,5 @@
 const { isNumber, isJSON } = require('../validators')
-const { getJSONObj } = require('../utils')
+const { getJSONObj, emptyStringToUndefined } = require('../utils')
 
 const GROUP_NAME = 'Advanced settings'
 
@@ -12,7 +12,8 @@ module.exports = data => ([
     link: 'https://vuepress.vuejs.org/config/#base',
     group: GROUP_NAME,
     value: data.config.base,
-    default: '/'
+    default: '/',
+    transform: emptyStringToUndefined
   },
   {
     name: 'host',
@@ -28,7 +29,7 @@ module.exports = data => ([
     name: 'port',
     type: 'input',
     message: 'Port',
-    description: 'Specify the port to use for the dev server.',
+    description: 'Specify the port to use for the dev server. ⚠️ Restart required.',
     link: 'https://vuepress.vuejs.org/config/#port',
     group: GROUP_NAME,
     value: data.config.port,
@@ -40,10 +41,11 @@ module.exports = data => ([
     name: 'temp',
     type: 'input',
     message: 'Temp',
-    description: 'Specify the temporary directory for client.',
+    description: 'Specify the temporary directory for client. ⚠️ Restart required.',
     link: 'https://vuepress.vuejs.org/config/#temp',
     group: GROUP_NAME,
-    value: data.config.temp
+    value: data.config.temp,
+    transform: emptyStringToUndefined
   },
   {
     name: 'dest',
@@ -52,13 +54,14 @@ module.exports = data => ([
     description: 'Specify the output directory for vuepress build. If a relative path is specified, it will be resolved based on process.cwd().',
     link: 'https://vuepress.vuejs.org/config/#dest',
     group: GROUP_NAME,
-    value: data.config.dest
+    value: data.config.dest,
+    transform: emptyStringToUndefined
   },
   {
     name: 'cache',
     type: 'confirm',
     message: 'Cache',
-    description: 'VuePress uses cache-loader by default to greatly speed up the compilation of webpack. You can use this option to specify the path to the cache, and can also remove the cache before each build by setting it to false.',
+    description: 'VuePress uses cache-loader by default to greatly speed up the compilation of webpack. Remove the cache before each build by setting it to false.',
     link: 'https://vuepress.vuejs.org/config/#cache',
     group: GROUP_NAME,
     value: data.config.cache,
@@ -92,7 +95,7 @@ module.exports = data => ([
     name: 'extraWatchFiles',
     type: 'editor',
     message: 'Watch extra files',
-    description: 'Specify extra files to watch. You can watch any file if you want. File changes will trigger vuepress rebuilding and real-time updates.',
+    description: 'Specify extra files to watch. You can watch any file if you want. File changes will trigger vuepress rebuilding and real-time updates. ⚠️ Restart required.',
     link: 'https://vuepress.vuejs.org/config/#extrawatchfiles',
     group: GROUP_NAME,
     value: getJSONObj(data, 'config.extraWatchFiles'),
@@ -104,7 +107,7 @@ module.exports = data => ([
     name: 'patterns',
     type: 'input',
     message: 'Patterns',
-    description: 'Specify which pattern of files you want to be resolved.',
+    description: 'Specify which pattern of files you want to be resolved. ⚠️ Restart required.',
     link: 'https://vuepress.vuejs.org/config/#extrawatchfiles',
     group: GROUP_NAME,
     value: getJSONObj(data, 'config.patterns'),

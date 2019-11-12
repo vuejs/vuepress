@@ -6,11 +6,11 @@ module.exports = mainAPI => async ({ api, prompts }) => {
   result['themeConfig.nav'] = []
 
   for (const prompt of prompts) {
-    if (!prompt.error && prompt.valueChanged) {
+    if (!prompt.error) {
       result[prompt.id] = await api.getAnswer(prompt.id, prompt.raw.transform)
 
-      // Check if theme field has changed
-      if (prompt.id === 'theme' && await shouldDownloadTheme(result.theme)) {
+      // Check if VuePress theme field has changed
+      if (prompt.id === 'theme' && prompt.valueChanged && await shouldDownloadTheme(result.theme)) {
         await downloadTheme(result[prompt.id], mainAPI)
       }
     }

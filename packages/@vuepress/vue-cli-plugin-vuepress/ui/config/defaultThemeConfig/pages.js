@@ -1,5 +1,7 @@
 const get = require('lodash/get')
 
+const { emptyStringToUndefined } = require('../utils')
+
 const GROUP_NAME = 'Pages settings'
 
 module.exports = data => ([
@@ -38,7 +40,8 @@ module.exports = data => ([
     description: 'Use this field if your doc is in a different repo from your main project.',
     link: 'https://vuepress.vuejs.org/theme/default-theme-config.html#git-repository-and-edit-links',
     group: GROUP_NAME,
-    value: get(data, 'config.themeConfig.docsRepo')
+    value: get(data, 'config.themeConfig.docsRepo'),
+    transform: emptyStringToUndefined
   },
   {
     when: answer => get(answer, 'themeConfig.docsRepo'),
@@ -72,6 +75,17 @@ module.exports = data => ([
     default: false
   },
   {
+    when: answer => get(answer, 'themeConfig.editLinks'),
+    name: 'themeConfig.editLinkText',
+    type: 'input',
+    message: 'Edit link text',
+    description: 'Allows to custom text for edit links',
+    link: 'https://vuepress.vuejs.org/theme/default-theme-config.html#git-repository-and-edit-links',
+    group: GROUP_NAME,
+    value: get(data, 'config.themeConfig.editLinkText'),
+    default: 'Edit this page'
+  },
+  {
     name: 'themeConfig.nextLinks',
     type: 'confirm',
     message: 'Next links',
@@ -90,16 +104,5 @@ module.exports = data => ([
     group: GROUP_NAME,
     value: get(data, 'config.themeConfig.prevLinks'),
     default: true
-  },
-  {
-    when: answer => get(answer, 'themeConfig.nextLinks') || get(answer, 'themeConfig.prevLinks'),
-    name: 'themeConfig.editLinkText',
-    type: 'input',
-    message: 'Edit link text',
-    description: 'Allows to custom text for edit links',
-    link: 'https://vuepress.vuejs.org/theme/default-theme-config.html#git-repository-and-edit-links',
-    group: GROUP_NAME,
-    value: get(data, 'config.themeConfig.editLinkText'),
-    default: 'Edit this page'
   }
 ])

@@ -10,7 +10,7 @@ module.exports = data => ([
     name: 'themeConfig.sidebar',
     type: 'editor',
     message: 'Sidebar links',
-    description: 'The basic configuration expects an Array of links (Use \"auto\" value to automatically generate a sidebar that contains only the header links for the current page). You can find examples and more infos here:',
+    description: 'The basic configuration expects an Array of links. You can also use \"auto\" value to automatically generate a sidebar that contains only the header links for the current page. Find examples and more infos here:',
     link: 'https://vuepress.vuejs.org/theme/default-theme-config.html#sidebar',
     group: GROUP_NAME,
     value: data === 'auto' ? get(data, 'config.themeConfig.sidebar') : getJSONObj(data, 'config.themeConfig.sidebar'),

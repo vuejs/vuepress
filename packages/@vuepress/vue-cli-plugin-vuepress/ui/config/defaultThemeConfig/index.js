@@ -17,7 +17,15 @@ module.exports = data => {
   ])
 
   return promptItems.map(item => ({
-    when: isDefaultTheme,
-    ...item
+    ...item,
+    when: answer => {
+      if (!isDefaultTheme(answer)) {
+        return false
+      } else if (item.when) {
+        return item.when(answer)
+      }
+
+      return true
+    }
   }))
 }

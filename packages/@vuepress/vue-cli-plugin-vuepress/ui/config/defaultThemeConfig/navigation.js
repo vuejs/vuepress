@@ -15,7 +15,7 @@ module.exports = data => ([
   },
   {
     name: 'themeConfig.logo',
-    type: 'confirm',
+    type: 'input',
     message: 'Logo path',
     description: 'You can add a logo to the navbar. Logo can be placed in public folder.',
     link: 'https://vuepress.vuejs.org/theme/default-theme-config.html#navbar-logo',
