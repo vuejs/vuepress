@@ -23,12 +23,23 @@ module.exports = function loadConfig (vuepressDir, bustCache = true) {
 
   // resolve siteConfig
   let siteConfig = {}
+  let numberOfConfigs = 0
+
   if (fs.existsSync(configYmlPath)) {
     siteConfig = parseConfig(configYmlPath)
-  } else if (fs.existsSync(configTomlPath)) {
+    numberOfConfigs++
+  }
+  if (fs.existsSync(configTomlPath)) {
     siteConfig = parseConfig(configTomlPath)
-  } else if (fs.existsSync(configPath)) {
+    numberOfConfigs++
+  }
+  if (fs.existsSync(configPath)) {
     siteConfig = require(configPath)
+    numberOfConfigs++
+  }
+
+  if (numberOfConfigs > 1) {
+    console.warn(`It seems like there are multiple config files (*.yml, *.toml, *.js) in your ${vuepressDir} directory. Be aware that only one of them will be applied.`)
   }
 
   return siteConfig

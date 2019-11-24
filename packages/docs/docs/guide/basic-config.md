@@ -30,6 +30,10 @@ Check out the [Config Reference](../config/README.md) for a full list of options
 You can also use YAML (`.vuepress/config.yml`) or TOML (`.vuepress/config.toml`) formats for the configuration file.
 :::
 
+::: warning Note
+Be aware that although there are multiple config formats available, only one config file can be applied at a time.
+:::
+
 ## Theme Configuration
 
 A VuePress theme owns all the layout and interactivity details of your site. VuePress ships with a default theme (you are looking at it right now), designed for technical documentation. It exposes many options that allow you to customize the navbar, sidebar and homepage, etc. For details, check out the [Default Theme Config](../theme/default-theme-config.md) page.
