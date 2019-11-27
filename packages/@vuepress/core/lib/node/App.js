@@ -46,10 +46,6 @@ module.exports = class App {
       logger.warn(`Source directory doesn't exist: ${chalk.yellow(this.sourceDir)}`)
     }
 
-    const { tempPath, writeTemp } = createTemp(options.temp)
-    this.tempPath = tempPath
-    this.writeTemp = writeTemp
-
     this.vuepressDir = path.resolve(this.sourceDir, '.vuepress')
     this.libDir = path.join(__dirname, '../')
   }
@@ -78,10 +74,18 @@ module.exports = class App {
     this.base = this.siteConfig.base || '/'
     this.themeConfig = this.siteConfig.themeConfig || {}
 
+    // resolve tempPath
+    const rawTemp = this.options.temp || this.siteConfig.temp
+    const { tempPath, writeTemp } = createTemp(rawTemp)
+    this.tempPath = tempPath
+    this.writeTemp = writeTemp
+
+    // resolve outDir
     const rawOutDir = this.options.dest || this.siteConfig.dest
     this.outDir = rawOutDir
       ? require('path').resolve(this.cwd, rawOutDir)
       : require('path').resolve(this.sourceDir, '.vuepress/dist')
+
     this.pages = [] // Array<Page>
     this.pluginAPI = new PluginAPI(this)
     this.ClientComputedMixinConstructor = ClientComputedMixin(this.getSiteData())
