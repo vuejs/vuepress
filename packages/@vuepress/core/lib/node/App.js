@@ -46,10 +46,6 @@ module.exports = class App {
       logger.warn(`Source directory doesn't exist: ${chalk.yellow(this.sourceDir)}`)
     }
 
-    const { tempPath, writeTemp } = createTemp(options.temp)
-    this.tempPath = tempPath
-    this.writeTemp = writeTemp
-
     this.vuepressDir = path.resolve(this.sourceDir, '.vuepress')
     this.libDir = path.join(__dirname, '../')
   }
@@ -71,6 +67,10 @@ module.exports = class App {
       }
       this.siteConfig = siteConfig
     }
+
+    const { tempPath, writeTemp } = createTemp(this.options.temp ? this.options.temp : this.siteConfig.temp)
+    this.tempPath = tempPath
+    this.writeTemp = writeTemp
 
     // TODO custom cwd.
     this.cwd = process.cwd()
