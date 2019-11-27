@@ -336,7 +336,19 @@ sidebar: false
 
 ### Built-in Search
 
-You can disable the built-in search box with `themeConfig.search: false`, and customize how many suggestions will be shown with `themeConfig.searchMaxSuggestions`:
+You can add a placeholder to the built-in search by adding the `searchOptions.placeholder' field like this:
+
+``` js
+module.exports = {
+  themeConfig: {
+    searchOptions: {
+      placeholder: 'Some text...'
+    }
+  }
+}
+```
+
+You can also disable the built-in search box with `themeConfig.search: false`, and customize how many suggestions will be shown with `themeConfig.searchMaxSuggestions`:
 
 ``` js
 module.exports = {
