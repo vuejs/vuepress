@@ -31,7 +31,7 @@ You can also use YAML (`.vuepress/config.yml`) or TOML (`.vuepress/config.toml`)
 :::
 
 ::: warning Note
-Be aware that although there are multiple config formats available, only one config file can be applied at a time.
+Be aware that although there are multiple config formats available, only one config file can be applied at a time. The priority is *.js > *.toml > *.yml.
 :::
 
 ## Theme Configuration

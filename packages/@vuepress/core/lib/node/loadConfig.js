@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-const { fs, path } = require('@vuepress/shared-utils')
+const { fs, path, logger } = require('@vuepress/shared-utils')
 const yamlParser = require('js-yaml')
 const tomlParser = require('toml')
 
@@ -39,7 +39,7 @@ module.exports = function loadConfig (vuepressDir, bustCache = true) {
   }
 
   if (numberOfConfigs > 1) {
-    console.warn(`It seems like there are multiple config files (*.yml, *.toml, *.js) in your ${vuepressDir} directory. Be aware that only one of them will be applied.`)
+    logger.warn(`It seems like there are multiple config files (*.yml, *.toml, *.js) in your ${vuepressDir} directory. Be aware that only one of the config files will be applied, the priority is *.js > *.toml > *.yml.`)
   }
 
   return siteConfig
