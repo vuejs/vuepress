@@ -38,6 +38,7 @@ module.exports = class App {
    */
 
   constructor (options = {}) {
+    this.isProd = process.env.NODE_ENV === 'production'
     this.options = options
     this.sourceDir = this.options.sourceDir || path.join(__dirname, 'docs.fallback')
     logger.debug('sourceDir', this.sourceDir)
@@ -459,7 +460,6 @@ module.exports = class App {
    */
 
   async dev () {
-    this.isProd = false
     this.devProcess = new DevProcess(this)
     await this.devProcess.process()
     const error = await new Promise(resolve => {
@@ -489,7 +489,6 @@ module.exports = class App {
    */
 
   async build () {
-    this.isProd = true
     this.buildProcess = new BuildProcess(this)
     await this.buildProcess.process()
     await this.buildProcess.render()
