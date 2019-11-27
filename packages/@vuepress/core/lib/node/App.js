@@ -68,20 +68,24 @@ module.exports = class App {
       this.siteConfig = siteConfig
     }
 
-    const { tempPath, writeTemp } = createTemp(this.options.temp || this.siteConfig.temp)
-    this.tempPath = tempPath
-    this.writeTemp = writeTemp
-
     // TODO custom cwd.
     this.cwd = process.cwd()
 
     this.base = this.siteConfig.base || '/'
     this.themeConfig = this.siteConfig.themeConfig || {}
 
+    // resolve tempPath
+    const rawTemp = this.options.temp || this.siteConfig.temp
+    const { tempPath, writeTemp } = createTemp(rawTemp)
+    this.tempPath = tempPath
+    this.writeTemp = writeTemp
+
+    // resolve outDir
     const rawOutDir = this.options.dest || this.siteConfig.dest
     this.outDir = rawOutDir
       ? require('path').resolve(this.cwd, rawOutDir)
       : require('path').resolve(this.sourceDir, '.vuepress/dist')
+
     this.pages = [] // Array<Page>
     this.pluginAPI = new PluginAPI(this)
     this.ClientComputedMixinConstructor = ClientComputedMixin(this.getSiteData())
