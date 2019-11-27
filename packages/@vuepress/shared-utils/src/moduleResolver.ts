@@ -191,7 +191,7 @@ class ModuleResolver {
     if (req.startsWith('@')) {
       const pkg = resolveScopePackage(req)
       if (pkg) {
-        // speicial handling for default org.
+        // special handling for default org.
         if (this.org && pkg.org === this.org) {
           shortcut = pkg.name.startsWith(`${this.type}-`)
             ? pkg.name.slice(this.typePrefixLength)

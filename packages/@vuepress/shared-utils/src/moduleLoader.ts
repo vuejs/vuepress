@@ -1,4 +1,4 @@
-// Midified from https://github.com/vuejs/vue-cli/blob/dev/packages/@0vue/cli-shared-utils/lib/module.js
+// Modified from https://github.com/vuejs/vue-cli/blob/dev/packages/@0vue/cli-shared-utils/lib/module.js
 
 import semver from 'semver'
 import env from './env'

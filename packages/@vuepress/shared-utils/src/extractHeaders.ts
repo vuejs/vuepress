@@ -2,7 +2,7 @@ import LRU from 'lru-cache'
 import deeplyParseHeaders from './deeplyParseHeaders'
 
 /**
- * Extract heeaders from markdown source content.
+ * Extract headers from markdown source content.
  *
  * @param {string} content
  * @param {array} include
