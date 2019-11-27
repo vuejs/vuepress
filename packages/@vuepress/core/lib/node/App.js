@@ -68,7 +68,7 @@ module.exports = class App {
       this.siteConfig = siteConfig
     }
 
-    const { tempPath, writeTemp } = createTemp(this.options.temp ? this.options.temp : this.siteConfig.temp)
+    const { tempPath, writeTemp } = createTemp(this.options.temp || this.siteConfig.temp)
     this.tempPath = tempPath
     this.writeTemp = writeTemp
 
