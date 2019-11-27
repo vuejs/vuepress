@@ -3,7 +3,8 @@ const { logger, fs, path } = require('@vuepress/shared-utils')
 module.exports = (options, context) => ({
   ready () {
     options = Object.assign({
-      serviceWorker: true
+      serviceWorker: true,
+      popupComponent: 'SWUpdatePopup'
     }, options)
   },
 
@@ -26,7 +27,7 @@ module.exports = (options, context) => ({
   //   { name: 'SWUpdatePopup', path: path.resolve(__dirname, 'lib/SWUpdatePopup.vue') }
   // ],
 
-  globalUIComponents: options.popupComponent || 'SWUpdatePopup',
+  globalUIComponents: options.updatePopup ? options.popupComponent : undefined,
 
   enhanceAppFiles: path.resolve(__dirname, 'lib/enhanceAppFile.js'),
 
