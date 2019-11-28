@@ -10,6 +10,10 @@ node_modules
 # Meta files
 TODOs.md
 
+# Editors
+.vscode
+.idea
+
 # VuePress temp directory
 .temp
 
