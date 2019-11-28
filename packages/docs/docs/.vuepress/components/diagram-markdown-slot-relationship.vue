@@ -45,5 +45,3 @@
     </svg>
   </svg-container>
 </template>
-
-

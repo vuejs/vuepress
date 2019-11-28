@@ -140,16 +140,13 @@ describe('Page', () => {
 
     test('should log when enhancing when failing', async () => {
       const error = { errorMessage: 'this is an error message' }
-      expect.assertions(1)
-      try {
-        await page.enhance([{
-          pluginName: 'error-plugin',
-          value: jest.fn().mockRejectedValue(error)
-        }])
-      } catch (e) {
-        expect(console.log).toHaveBeenCalledWith(error)
-      }
+
+      await expect(page.enhance([{
+        pluginName: 'error-plugin',
+        value: jest.fn().mockRejectedValue(error)
+      }])).rejects.toThrow()
+
+      expect(console.log).toHaveBeenCalledWith(error)
     })
   })
 })
-
