@@ -33,32 +33,21 @@ jobs:
           key: v1-deps-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
-          
+
       - persist_to_workspace:
           root: ~/project
           paths:
             - node_modules
             - packages/*/node_modules
             - packages/@vuepress/*/node_modules
-  
+
   #------------------------------------------------------------
   # 2. Run parallel jobs:
-  #   => lerna-boostrap
   #   => tsc
   #   => tests
   #   => linter
   #   => docs linter
   #------------------------------------------------------------
-
-  lerna-bootstrap:
-    <<: *defaults
-    steps:
-      - checkout
-      - attach_workspace:
-          at: ~/project
-      - run:
-          name: 'Lerna bootstrap'
-          command: yarn lerna:bootstrap
 
   run-tsc:
     <<: *defaults
@@ -92,8 +81,8 @@ jobs:
           at: ~/project
       - run:
           name: 'Run linter'
-          command: yarn lint:check
-  
+          command: yarn lint
+
   run-docs-linter-check:
     <<: *defaults
     steps:
@@ -103,7 +92,7 @@ jobs:
       - run:
           name: 'Run md linter'
           command: yarn workspace docs lint-md
-        
+
   #------------------------------------------------------------
   # 3. Build VuePress
   #------------------------------------------------------------
@@ -127,9 +116,8 @@ workflows:
   build:
     jobs:
       - install-dependencies
-      - lerna-bootstrap: { requires: [install-dependencies] }
       - run-linter-check: { requires: [install-dependencies] }
       - run-docs-linter-check: { requires: [install-dependencies] }
       - run-tsc: { requires: [install-dependencies] }
       - run-tests: { requires: [run-tsc] }
-      - build: { requires: [run-tests, run-linter-check, run-docs-linter-check, lerna-bootstrap] }
+      - build: { requires: [run-tests, run-linter-check, run-docs-linter-check] }
