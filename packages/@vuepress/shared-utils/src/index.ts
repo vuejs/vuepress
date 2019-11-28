@@ -68,5 +68,5 @@ export {
   globby,
   hash,
   escapeHtml,
-  semver,
+  semver
 }

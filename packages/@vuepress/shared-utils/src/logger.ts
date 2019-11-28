@@ -7,7 +7,7 @@
 import chalk from 'chalk'
 
 interface LoggerOptions {
-  logLevel: number
+  logLevel: number;
 }
 
 class Logger {
@@ -90,7 +90,6 @@ class Logger {
     if (this.options.logLevel < 3) {
       return
     }
-    // @ts-ignore
     console.log(chalk[color](label), ...args)
   }
 
@@ -107,4 +106,3 @@ class Logger {
  */
 
 export = new Logger()
-

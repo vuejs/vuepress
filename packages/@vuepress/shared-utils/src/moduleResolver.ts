@@ -17,7 +17,29 @@ import {
   assertTypes
 } from './datatypes'
 
+/**
+ * Parse info of scope package.
+ */
+
 const SCOPE_PACKAGE_RE = /^@(.*)\/(.*)/
+
+export interface ScopePackage {
+  org: string;
+  name: string;
+}
+
+export function resolveScopePackage (name: string) {
+  if (SCOPE_PACKAGE_RE.test(name)) {
+    return {
+      org: RegExp.$1,
+      name: RegExp.$2
+    }
+  }
+  return {
+    org: '',
+    name: ''
+  }
+}
 
 /**
  * Common module constructor.
@@ -33,20 +55,20 @@ export class CommonModule {
   ) {}
 }
 
-function getNoopModule(error?: Error) {
+function getNoopModule (error?: Error) {
   return new CommonModule(null, null, null, null, error)
 }
 
 export interface NormalizedModuleRequest {
-  name: string | null
-  shortcut: string | null
+  name: string | null;
+  shortcut: string | null;
 }
 
 /**
  * Expose ModuleResolver.
  */
 
-type Type = String | Number | Boolean | RegExp | Function | Object | Record<string, any> | Array<any>
+type Type = string | number | boolean | RegExp | Function | Record<string, any> | Record<string, any> | Array<any>
 
 class ModuleResolver {
   private nonScopePrefix: string
@@ -162,8 +184,8 @@ class ModuleResolver {
     const { shortcut, name } = this.normalizeName(req)
     try {
       const entry = this.load
-        ? loadModule(<string>name, this.cwd)
-        : resolveModule(<string>name, this.cwd)
+        ? loadModule(name as string, this.cwd)
+        : resolveModule(name as string, this.cwd)
       return new CommonModule(entry, name, shortcut, true /* fromDep */)
     } catch (error) {
       return getNoopModule(error)
@@ -185,8 +207,8 @@ class ModuleResolver {
    */
 
   normalizeName (req: string): NormalizedModuleRequest {
-    let name = null
-    let shortcut = null
+    let name: string | null = null
+    let shortcut: string | null = null
 
     if (req.startsWith('@')) {
       const pkg = resolveScopePackage(req)
@@ -234,28 +256,6 @@ class ModuleResolver {
       name: null,
       shortcut: null
     }
-  }
-}
-
-/**
- * Parse info of scope package.
- */
-
-export interface ScopePackage {
-  org: string;
-  name: string;
-}
-
-export function resolveScopePackage (name: string) {
-  if (SCOPE_PACKAGE_RE.test(name)) {
-    return {
-      org: RegExp.$1,
-      name: RegExp.$2
-    }
-  }
-  return {
-    org: '',
-    name: ''
   }
 }
 

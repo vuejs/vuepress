@@ -1,6 +1,5 @@
 // string.js slugify drops non ascii chars so we have to
 // use a custom implementation here
-// @ts-ignore
 import { remove as removeDiacritics } from 'diacritics'
 
 // eslint-disable-next-line no-control-regex

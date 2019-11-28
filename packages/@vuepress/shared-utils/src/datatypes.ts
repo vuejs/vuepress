@@ -31,7 +31,7 @@ export const getType = function (fn: any) {
  *   ['Function', 'Object']           => 'Function or Object'
  *   ['Function', 'Object', 'Number'] => 'Function, Object or Number'
  */
-type Type = String | Number | Boolean | RegExp | Function | Record<string, any> | Array<any>
+type Type = string | number | boolean | RegExp | Function | Record<string, any> | Array<any>
 
 function toNaturalMultiTypesLanguage (types: Type[]) {
   const len = types.length
@@ -47,7 +47,7 @@ export function assertTypes (value: any, types: Type[]) {
   let valid
   let warnMsg
   let actualType = toRawType(value)
-  const expectedTypes = []
+  const expectedTypes: Type[] = []
   if (actualType === 'AsyncFunction') {
     actualType = 'Function'
   }
@@ -60,9 +60,9 @@ export function assertTypes (value: any, types: Type[]) {
   }
 
   if (!valid) {
-    warnMsg =
-      `expected a ${chalk.green(toNaturalMultiTypesLanguage(expectedTypes))} ` +
-      `but got ${chalk.yellow(actualType)}.`
+    warnMsg
+      = `expected a ${chalk.green(toNaturalMultiTypesLanguage(expectedTypes))} `
+      + `but got ${chalk.yellow(actualType)}.`
   }
 
   return { valid, warnMsg }

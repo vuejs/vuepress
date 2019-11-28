@@ -46,10 +46,10 @@ describe('resolveScopePackage', () => {
 
   test('incorrect format', () => {
     const pkg2 = resolveScopePackage('vuepress/plugin-a')
-    expect(pkg2).toEqual({ "name": "", "org": "" })
+    expect(pkg2).toEqual({ 'name': '', 'org': '' })
 
     const pkg3 = resolveScopePackage('vuepress-plugin-a')
-    expect(pkg3).toEqual({ "name": "", "org": "" })
+    expect(pkg3).toEqual({ 'name': '', 'org': '' })
   })
 })
 
@@ -123,11 +123,13 @@ describe('resolvePlugin', () => {
 
   test('relative path', () => {
     const resolved = resolvePlugin('./plugin-a')
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     expect(resolved.entry).toBe(require('./fixtures/plugin-a'))
   })
 
   test('aosolute path', () => {
     const resolved = resolvePlugin(path.resolve(__dirname, 'fixtures/plugin-a'))
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     expect(resolved.entry).toBe(require('./fixtures/plugin-a'))
   })
 

@@ -1,7 +1,6 @@
 import os from 'os'
 
 class Performance {
-  // @ts-ignore
   private _totalMemory: number
   private _startFreeMemory: number
   private _endFreeMemory: number

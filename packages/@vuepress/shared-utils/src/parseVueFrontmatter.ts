@@ -1,4 +1,3 @@
-// @ts-ignore
 import { parse as _parse } from '@vue/component-compiler-utils'
 import parseFrontmatter from './parseFrontmatter'
 
