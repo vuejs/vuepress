@@ -1,36 +1,53 @@
 {
   "private": true,
+  "description": "Minimalistic doc generator with Vue component based layout system",
   "workspaces": [
     "packages/@vuepress/*",
     "packages/vuepress",
     "packages/docs"
   ],
-  "description": "Minimalistic doc generator with Vue component based layout system",
   "scripts": {
-    "bootstrap": "yarn && yarn tsc",
-    "lerna:bootstrap": "lerna bootstrap",
-    "clean": "lerna clean && rm -rf node_modules",
-    "packages:list": "lerna ls -l",
-    "packages:diff": "lerna diff",
-    "packages:changed": "lerna changed",
     "boot": "node scripts/bootstrap.js",
-    "remote-version": "node scripts/remote-version.js",
-    "dev": "yarn tsc && yarn dev:docs",
-    "dev:docs": "yarn workspace docs dev",
+    "bootstrap": "yarn && yarn tsc",
     "build": "yarn tsc && yarn build:docs",
     "build:docs": "yarn workspace docs build",
-    "view-info": "yarn tsc && yarn workspace docs view-info",
-    "show-help": "yarn workspace docs show-help",
-    "register-vuepress": "lerna exec --scope vuepress -- yarn link",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 2",
+    "clean": "lerna clean && rm -rf node_modules",
+    "dev": "yarn tsc && yarn dev:docs",
+    "dev:docs": "yarn workspace docs dev",
+    "lerna:bootstrap": "lerna bootstrap",
     "lint": "yarn lint:check --fix",
     "lint:check": "eslint packages --ext .js,.vue",
+    "packages:changed": "lerna changed",
+    "packages:diff": "lerna diff",
+    "packages:list": "lerna ls -l",
+    "register-vuepress": "lerna exec --scope vuepress -- yarn link",
     "release": "yarn --pure-lockfile && yarn tsc && node scripts/release.js",
-    "unregister-vuepress": "lerna exec --scope vuepress -- yarn unlink",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 2",
+    "remote-version": "node scripts/remote-version.js",
+    "show-help": "yarn workspace docs show-help",
     "test": "node scripts/test.js",
-    "tsc": "yarn workspace @vuepress/shared-utils tsc"
+    "tsc": "yarn workspace @vuepress/shared-utils tsc",
+    "unregister-vuepress": "lerna exec --scope vuepress -- yarn unlink",
+    "view-info": "yarn tsc && yarn workspace docs view-info"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,vue}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "package.json": [
+      "sort-package-json",
+      "git add"
+    ]
   },
   "devDependencies": {
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
     "@types/escape-html": "^0.0.20",
     "@types/fs-extra": "^5.0.4",
     "@types/globby": "^9.1.0",
@@ -38,21 +55,19 @@
     "@types/lru-cache": "^5.1.0",
     "@types/node": "^12.7.5",
     "@types/semver": "^6.0.0",
-    "conventional-changelog-cli": "^2.0.23",
+    "@typescript-eslint/eslint-plugin": "^2.9.0",
+    "@typescript-eslint/parser": "^2.9.0",
     "all-contributors-cli": "^6.9.1",
-    "eslint": "5.11.1",
-    "eslint-plugin-jest": "^22.17.0",
+    "conventional-changelog-cli": "^2.0.23",
+    "eslint": "^6.7.1",
+    "eslint-plugin-jest": "^23.0.5",
     "eslint-plugin-vue-libs": "^4.0.0",
     "husky": "^3.0.5",
     "inquirer": "^7.0.0",
     "lerna": "3.16.4",
     "lint-staged": "^9.3.0",
     "minimist": "^1.2.0",
+    "sort-package-json": "^1.24.0",
     "typescript": "^3.6.3"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   }
 }
