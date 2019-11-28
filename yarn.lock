@@ -2086,6 +2086,11 @@
   version "3.5.27"
   resolved "https://registry.yarnpkg.com/@types/bluebird/-/bluebird-3.5.27.tgz#61eb4d75dc6bfbce51cf49ee9bbebe941b2cb5d0"
 
+"@types/diacritics@^1.3.1":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@types/diacritics/-/diacritics-1.3.1.tgz#925fbaf4bfbaafbcafe5ac1be67c58c965a0ad40"
+  integrity sha512-tAH+RY51Zbz7ZSzN7yxQBKEue78U6weZ1UUBNjFoitoLbJGFJCKI7KVHwGsnYo4s2xSFr9KGEkjst2FolpYqyA==
+
 "@types/escape-html@^0.0.20":
   version "0.0.20"
   resolved "https://registry.yarnpkg.com/@types/escape-html/-/escape-html-0.0.20.tgz#cae698714dd61ebee5ab3f2aeb9a34ba1011735a"
