@@ -71,7 +71,6 @@ You can also run the above script in your CI setup to enable automatic deploymen
 4. Use GitHub Pages deploy provider template and follow the [travis documentation](https://docs.travis-ci.com/user/deployment/pages/).
 
 ``` yaml
-os: linux
 language: node_js
 node_js:
   - lts/*
@@ -81,7 +80,7 @@ script:
   - npm run docs:build
 deploy:
   provider: pages
-  cleanup: false
+  skip_cleanup: true
   local_dir: docs/.vuepress/dist
   github_token: $GITHUB_TOKEN # a token generated on github allowing travis to push code on you repository
   keep_history: true
