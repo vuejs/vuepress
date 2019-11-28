@@ -10,10 +10,6 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['**/__tests__/**/*.spec.js'],
-      extends: ['plugin:jest/recommended']
-    },
-    {
       files: ['*.ts'],
       extends: [
         'plugin:@typescript-eslint/recommended'
@@ -21,7 +17,17 @@ module.exports = {
       parser: 'vue-eslint-parser',
       parserOptions: {
         parser: '@typescript-eslint/parser'
+      },
+      rules: {
+        'no-useless-constructor': 'off'
       }
+    },
+    {
+      files: [
+        '**/__tests__/**/*.spec.js',
+        '**/__tests__/**/*.spec.ts'
+      ],
+      extends: ['plugin:jest/recommended']
     }
   ]
 }

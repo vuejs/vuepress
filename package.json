@@ -8,21 +8,19 @@
   ],
   "scripts": {
     "boot": "node scripts/bootstrap.js",
-    "bootstrap": "yarn && yarn tsc",
     "build": "yarn tsc && yarn build:docs",
     "build:docs": "yarn workspace docs build",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 2",
     "clean": "lerna clean && rm -rf node_modules",
     "dev": "yarn tsc && yarn dev:docs",
     "dev:docs": "yarn workspace docs dev",
-    "lerna:bootstrap": "lerna bootstrap",
-    "lint": "yarn lint:check --fix",
-    "lint:check": "eslint packages --ext .js,.vue",
+    "lint": "eslint packages --ext .js,.ts,.vue",
     "packages:changed": "lerna changed",
     "packages:diff": "lerna diff",
     "packages:list": "lerna ls -l",
+    "prepublishOnly": "yarn --pure-lockfile && yarn lint && yarn test && yarn build",
     "register-vuepress": "lerna exec --scope vuepress -- yarn link",
-    "release": "yarn --pure-lockfile && yarn tsc && node scripts/release.js",
+    "release": "node scripts/release.js",
     "remote-version": "node scripts/remote-version.js",
     "show-help": "yarn workspace docs show-help",
     "test": "node scripts/test.js",
@@ -36,7 +34,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,vue}": [
+    "*.{js,ts,vue}": [
       "eslint --fix",
       "git add"
     ],
