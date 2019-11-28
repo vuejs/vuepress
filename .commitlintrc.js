@@ -9,8 +9,12 @@ module.exports = {
   ],
   rules: {
     'scope-enum': [
-      'cli',
-      ...VuepressPackages
-    ].map(name => `$${name}`)
+      2,
+      'always',
+      [
+        'cli',
+        ...VuepressPackages
+      ].map(name => `$${name}`)
+    ]
   }
 }
