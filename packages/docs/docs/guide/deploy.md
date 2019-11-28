@@ -80,10 +80,10 @@ script:
   - npm run docs:build
 deploy:
   provider: pages
-  skip-cleanup: true
+  skip_cleanup: true
   local_dir: docs/.vuepress/dist
-  github-token: $GITHUB_TOKEN # a token generated on github allowing travis to push code on you repository
-  keep-history: true
+  github_token: $GITHUB_TOKEN # a token generated on github allowing travis to push code on you repository
+  keep_history: true
   on:
     branch: master
 ```
