@@ -48,6 +48,11 @@ module.exports = (options, ctx) => {
           '/zh/': '警告'
         }
       }],
+      ['container', {
+        type: 'details',
+        before: info => `<details class="custom-block details">${info ? `<summary>${info}</summary>` : ''}\n`,
+        after: () => '</details>\n'
+      }],
       ['smooth-scroll', enableSmoothScroll]
     ]
   }

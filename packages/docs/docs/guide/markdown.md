@@ -123,7 +123,7 @@ Rendering of TOC can be configured using the [`markdown.toc`](../config/README.m
 
 **Input**
 
-```
+```md
 ::: tip
 This is a tip
 :::
@@ -134,6 +134,10 @@ This is a warning
 
 ::: danger
 This is a dangerous warning
+:::
+
+::: details
+This is a details block, which does not work in IE / Edge
 :::
 ```
 
@@ -151,16 +155,32 @@ This is a warning
 This is a dangerous warning
 :::
 
+::: details
+This is a details block, which does not work in IE / Edge
+:::
+
 You can also customize the title of the block:
 
-```
+````md
 ::: danger STOP
 Danger zone, do not proceed
 :::
+
+::: details Click me to view the code
+```js
+console.log('Hello, VuePress!')
 ```
+:::
+````
 
 ::: danger STOP
 Danger zone, do not proceed
+:::
+
+::: details Click me to view the code
+```js
+console.log('Hello, VuePress!')
+```
 :::
 
 **Also see:**
