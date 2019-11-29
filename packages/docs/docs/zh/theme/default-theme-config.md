@@ -27,6 +27,8 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 ---
 ```
 
+你可以将相应的内容设置为 `null` 来禁用标题和副标题。
+
 任何 `YAML front matter` 之后额外的内容将会以普通的 markdown 被渲染，并插入到 `features` 的后面。
 
 ## 导航栏
