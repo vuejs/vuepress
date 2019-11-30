@@ -49,7 +49,7 @@ If you don't have a local checkout, you can also open [VuePress in Gitpod](https
 
 If you intend to make `"substantial"` changes to VuePress or its documentation, please checkout [VuePress RFCs](./rfcs/README.md).
 
-If you have a VuePress-related project/component/tool, add it with a pull request to [this curated list](https://github.com/ulivz/awesome-vuepress)!
+If you have a VuePress-related project/component/tool, add it with a pull request to [this curated list](https://github.com/vuepressjs/awesome-vuepress)!
 
 ## Contributors
 
