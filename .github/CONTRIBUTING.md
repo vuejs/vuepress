@@ -58,9 +58,9 @@ These projects are now available under [VuePress](https://github.com/vuepressjs)
 
 ### Issue
 
-Use one of the [issues templates](https://github.com/vuejs/vuepress/issues/new/choose) when you open a issue, and **do not delete the issue template**.
+Use one of the [issues templates](https://github.com/vuejs/vuepress/issues/new/choose) when you open a issue. And please ask questions on the [StackOverflow](https://stackoverflow.com/questions/ask?tags=vuepress).
 
-Please ask questions on the [StackOverflow](https://stackoverflow.com/questions/ask?tags=vuepress).
+We'll close your issue if you delete the template or it contains questions.
 
 ### Pull Requests
 
@@ -77,7 +77,7 @@ Please ask questions on the [StackOverflow](https://stackoverflow.com/questions/
 
 ### Substantial Changes
 
-> RFC flow, TODO
+Check out [RFC flow](https://github.com/vuejs/vuepress/tree/master/rfcs) for more detail.
 
 ## Code Specification
 

@@ -28,7 +28,7 @@ yarn add vuepress -D
 
 ## Showcase
 
-- [Awesome VuePress](https://github.com/ulivz/awesome-vuepress)
+- [Awesome VuePress](https://github.com/vuepressjs/awesome-vuepress)
 - [vuepress.gallery](https://vuepress.gallery) (by [@vicbergquist](https://twitter.com/vicbergquist))
 
 ## Documentation
@@ -37,10 +37,10 @@ Docs are available at https://vuepress.vuejs.org/ - we are still working on refi
 
 ## Contribution
 
-Want to contribute? Check our [issues for beginners](https://github.com/vuejs/vuepress/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22)!
+Want to contribute? Check our [Contributing Guide](.github/CONTRIBUTING.md) and [issues for beginners](https://github.com/vuejs/vuepress/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22)!
 
 ```bash
-yarn bootstrap # Install and link dependencies for this lerna repo
+yarn install # install all dependencies
 yarn dev  # serves VuePress' own docs with itself
 yarn test # make sure your code change pass the test
 ```
