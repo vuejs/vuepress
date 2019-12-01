@@ -23,12 +23,12 @@ module.exports = {
 ```
 
 ### Passing Options
+
 ```javascript
 module.exports = {
   plugins: ['@vuepress/active-header-links', {
     sidebarLinkSelector: '.sidebar-link',
-    headerAnchorSelector: '.header-anchor',
-    headerTopOffset: 120
+    headerAnchorSelector: '.header-anchor'
   }]
 }
 ```
@@ -44,4 +44,3 @@ module.exports = {
 
 - Type: `string`
 - Default: `.header-anchor`
-
