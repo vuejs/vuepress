@@ -15,20 +15,20 @@ Here is also a little slightly complicated plugin example [@vuepress/plugin-blog
 
 ## Out of the Box
 
-To keep things at minimal, not all of the official plugins are shipped with VuePress. Here is the list of plugins that are pre-installed in the VuePress and the default theme, **plugins that are not in the list below need to be installed manually**(e.g. @vuepress/plugin-back-to-top).
+To keep things at minimal, not all of the official plugins are shipped with VuePress. Here is the list of plugins that are pre-installed in the VuePress and the default theme, **plugins that are not in the list below need to be installed manually**(e.g. [@vuepress/plugin-back-to-top](./official/plugin-back-to-top.md)).
 
 ### Plugins that come with VuePress
 
-- @vuepress/plugin-last-updated
-- @vuepress/plugin-register-components
+- [@vuepress/plugin-last-updated](./official/plugin-last-updated.md)
+- [@vuepress/plugin-register-components](./official/plugin-register-components.md)
 
 ### Plugins that come with the defualt theme
 
-- @vuepress/plugin-active-header-links
-- @vuepress/plugin-nprogress
-- @vuepress/plugin-search
-- vuepress-plugin-container
-- vuepress-plugin-smooth-scroll
+- [@vuepress/plugin-active-header-links](./official/plugin-active-header-links.md)
+- [@vuepress/plugin-nprogress](./official/plugin-nprogress.md)
+- [@vuepress/plugin-search](./official/plugin-search.md)
+- [vuepress-plugin-container](https://github.com/vuepress/vuepress-community/tree/master/packages/vuepress-plugin-container)
+- [vuepress-plugin-smooth-scroll](https://github.com/vuepress/vuepress-community/tree/master/packages/vuepress-plugin-smooth-scroll)
 
 ## Architecture
 
