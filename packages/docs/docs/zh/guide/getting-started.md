@@ -12,6 +12,9 @@
 # 安装
 yarn global add vuepress # 或者：npm install -g vuepress
 
+# 创建项目文件夹
+mkdir vuepress-starter && cd vuepress-starter
+
 # 新建一个 markdown 文件
 echo '# Hello VuePress!' > README.md
 
