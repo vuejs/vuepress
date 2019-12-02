@@ -63,7 +63,7 @@ yarn docs:dev # OR npm run docs:dev
 To generate static assets, run:
 
 ``` bash
-yarn docs:build # Or npm run docs:build
+yarn docs:build # OR npm run docs:build
 ```
 
 By default, the built files will be in `.vuepress/dist`, which can be configured via the `dest` field in `.vuepress/config.js`. The built files can be deployed to any static file server. See [Deployment Guide](deploy.md) for guides on deploying to popular services.
