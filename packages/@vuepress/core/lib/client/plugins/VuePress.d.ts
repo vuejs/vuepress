@@ -1,4 +1,4 @@
-import { Store } from './Store';
+import { Store } from './Store'
 import { AsyncComponent } from 'vue'
 
 declare class VuePress extends Store {
@@ -13,7 +13,7 @@ declare class VuePress extends Store {
   registerPageAsyncComponent (pageKey: string): void;
 }
 
-declare module "vue/types/vue" {
+declare module 'vue/types/vue' {
   export interface Vue {
     $vuepress: VuePress;
   }

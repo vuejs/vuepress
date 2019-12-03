@@ -18,7 +18,7 @@ module.exports = function createJestRunner (jestArgs) {
 function getChildProcesExecArgv () {
   const execArgv = process.execArgv.slice(0)
   const inspectArgvIndex = execArgv.findIndex(argv =>
-    argv.includes('--inspect-brk'),
+    argv.includes('--inspect-brk')
   )
 
   if (inspectArgvIndex > -1) {

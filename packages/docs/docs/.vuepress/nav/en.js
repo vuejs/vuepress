@@ -1,75 +1,75 @@
 module.exports = [
   {
-    text: "Guide",
-    link: "/guide/"
+    text: 'Guide',
+    link: '/guide/'
   },
   {
-    text: "Config Reference",
-    link: "/config/"
+    text: 'Config Reference',
+    link: '/config/'
   },
   {
-    text: "Plugin",
-    link: "/plugin/"
+    text: 'Plugin',
+    link: '/plugin/'
   },
   {
-    text: "Theme",
-    link: "/theme/"
+    text: 'Theme',
+    link: '/theme/'
   },
   {
-    text: "Learn More",
-    ariaLabel: "Learn More",
+    text: 'Learn More',
+    ariaLabel: 'Learn More',
     items: [
       {
-        text: "API",
+        text: 'API',
         items: [
           {
-            text: "CLI",
-            link: "/api/cli.html"
+            text: 'CLI',
+            link: '/api/cli.html'
           },
           {
-            text: "Node",
-            link: "/api/node.html"
+            text: 'Node',
+            link: '/api/node.html'
           }
         ]
       },
       {
-        text: "Contributing Guide",
+        text: 'Contributing Guide',
         items: [
           {
-            text: "Local Development",
-            link: "/miscellaneous/local-development.html"
+            text: 'Local Development',
+            link: '/miscellaneous/local-development.html'
           },
           {
-            text: "Design Concepts",
-            link: "/miscellaneous/design-concepts.html"
+            text: 'Design Concepts',
+            link: '/miscellaneous/design-concepts.html'
           },
           {
-            text: "FAQ",
-            link: "/faq/"
+            text: 'FAQ',
+            link: '/faq/'
           },
           {
-            text: "Glossary",
-            link: "/miscellaneous/glossary.html"
+            text: 'Glossary',
+            link: '/miscellaneous/glossary.html'
           }
         ]
       },
       {
-        text: "Miscellaneous",
+        text: 'Miscellaneous',
         items: [
           {
-            text: "Migrate from 0.x",
-            link: "/miscellaneous/migration-guide.html"
+            text: 'Migrate from 0.x',
+            link: '/miscellaneous/migration-guide.html'
           },
           {
-            text: "Changelog",
-            link: "https://github.com/vuejs/vuepress/blob/master/CHANGELOG.md"
+            text: 'Changelog',
+            link: 'https://github.com/vuejs/vuepress/blob/master/CHANGELOG.md'
           }
         ]
       }
     ]
   },
   {
-    text: "0.x",
-    link: "https://v0.vuepress.vuejs.org/"
+    text: '0.x',
+    link: 'https://v0.vuepress.vuejs.org/'
   }
-];
+]

@@ -90,7 +90,7 @@ module.exports = {
 - 类型: `Function`
 - 默认值: `() => true`
 
-一个函数，用来控制对于哪些文件，是需要生成 `<link rel="prefetch">` 资源提示的。请参考 [shouldPrefetch](https://ssr.vuejs.org/zh/api/#shouldpreload)。
+一个函数，用来控制对于哪些文件，是需要生成 `<link rel="prefetch">` 资源提示的。请参考 [shouldPrefetch](https://ssr.vuejs.org/zh/api/#shouldprefetch)。
 
 ### cache
 
@@ -148,6 +148,9 @@ $accentColor = #3eaf7c
 $textColor = #2c3e50
 $borderColor = #eaecef
 $codeBgColor = #282c34
+$badgeTipColor = #42b983
+$badgeWarningColor = darken(#ffe564, 35%)
+$badgeErrorColor = #DA5961
 ```
 
 ::: danger Note
@@ -291,6 +294,21 @@ module.exports = {
 ::: tip
 这个选项也被 [Plugin API](../plugin/option-api.md#extendmarkdown) 所支持。
 :::
+
+### markdown.extractHeaders
+
+- 类型: `Array`
+- 默认值: `['h2', 'h3']`
+
+Markdown 文件的 headers (标题 & 小标题) 会在准备阶段被提取出来，并存储在 `this.$page.headers` 中。默认情况下，VuePress 会提取 `h2` 和 `h3` 标题。你可以通过这个选项来修改提取出的标题级别。
+ 
+``` js
+module.exports = {
+  markdown: {
+    extractHeaders: [ 'h2', 'h3', 'h4' ]
+  }
+}
+```
 
 ## 构建流程
 

@@ -38,16 +38,13 @@ module.exports = class App {
    */
 
   constructor (options = {}) {
+    this.isProd = process.env.NODE_ENV === 'production'
     this.options = options
     this.sourceDir = this.options.sourceDir || path.join(__dirname, 'docs.fallback')
     logger.debug('sourceDir', this.sourceDir)
     if (!fs.existsSync(this.sourceDir)) {
       logger.warn(`Source directory doesn't exist: ${chalk.yellow(this.sourceDir)}`)
     }
-
-    const { tempPath, writeTemp } = createTemp(options.temp)
-    this.tempPath = tempPath
-    this.writeTemp = writeTemp
 
     this.vuepressDir = path.resolve(this.sourceDir, '.vuepress')
     this.libDir = path.join(__dirname, '../')
@@ -77,10 +74,18 @@ module.exports = class App {
     this.base = this.siteConfig.base || '/'
     this.themeConfig = this.siteConfig.themeConfig || {}
 
+    // resolve tempPath
+    const rawTemp = this.options.temp || this.siteConfig.temp
+    const { tempPath, writeTemp } = createTemp(rawTemp)
+    this.tempPath = tempPath
+    this.writeTemp = writeTemp
+
+    // resolve outDir
     const rawOutDir = this.options.dest || this.siteConfig.dest
     this.outDir = rawOutDir
       ? require('path').resolve(this.cwd, rawOutDir)
       : require('path').resolve(this.sourceDir, '.vuepress/dist')
+
     this.pages = [] // Array<Page>
     this.pluginAPI = new PluginAPI(this)
     this.ClientComputedMixinConstructor = ClientComputedMixin(this.getSiteData())
@@ -459,7 +464,6 @@ module.exports = class App {
    */
 
   async dev () {
-    this.isProd = false
     this.devProcess = new DevProcess(this)
     await this.devProcess.process()
     const error = await new Promise(resolve => {
@@ -489,7 +493,6 @@ module.exports = class App {
    */
 
   async build () {
-    this.isProd = true
     this.buildProcess = new BuildProcess(this)
     await this.buildProcess.process()
     await this.buildProcess.render()

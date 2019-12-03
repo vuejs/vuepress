@@ -4,9 +4,9 @@ sidebar: auto
 
 # Local Development
 
-## Informations
+## Information
 
-If you here youh may be intereset of improve core VuePress.
+If you here you may be interested in improving core VuePress.
 
 VuePress is using a combo with [Yarn workspaces](https://yarnpkg.com/lang/en/docs/workspaces/) and [Lerna](https://github.com/lerna/lerna).
 
@@ -29,7 +29,7 @@ Check the link by running the following command:
 You will all symlinks
 
 :::warning
-You have to take care to declare all dependencies inside subFolders package.json. When publish the lib if dependencie from a package is not declare it will just not work.
+You have to take care to declare all dependencies inside subFolders package.json. When publish the lib if dependencies from a package is not declare it will just not work.
 :::
 
 :::warning

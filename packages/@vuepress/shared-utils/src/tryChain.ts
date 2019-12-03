@@ -13,7 +13,7 @@ export = function tryChain<T, U> (resolvers: Array<Resolver<T, U>>, arg: T): U |
       continue
     }
     try {
-      response = (<Provider<T, U>>provider)(arg)
+      response = (provider as Provider<T, U>)(arg)
       return response
     } catch (e) {
     }

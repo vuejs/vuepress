@@ -1,6 +1,6 @@
 # @vuepress/markdown-loader
 
-> markdown-loader for vuepress
+> markdown-loader for VuePress
 
 ## Usage
 

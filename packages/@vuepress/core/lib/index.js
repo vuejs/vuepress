@@ -10,12 +10,18 @@ function createApp (options) {
 }
 
 async function dev (options) {
+  if (process.env.NODE_ENV === undefined) {
+    process.env.NODE_ENV = 'development'
+  }
   const app = createApp(options)
   await app.process()
   return app.dev()
 }
 
 async function build (options) {
+  if (process.env.NODE_ENV === undefined) {
+    process.env.NODE_ENV = 'production'
+  }
   const app = createApp(options)
   await app.process()
   return app.build()

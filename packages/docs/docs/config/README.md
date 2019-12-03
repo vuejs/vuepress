@@ -93,7 +93,7 @@ Specify locales for i18n support. For more details, see the guide on [Internatio
 - Type: `Function`
 - Default: `() => true`
 
-A function to control what files should have `<link rel="preload">` resource hints generated. See [shouldPrefetch](https://ssr.vuejs.org/api/#shouldprefetch).
+A function to control what files should have `<link rel="prefetch">` resource hints generated. See [shouldPrefetch](https://ssr.vuejs.org/api/#shouldprefetch).
 
 ### cache
 
@@ -152,6 +152,9 @@ $accentColor = #3eaf7c
 $textColor = #2c3e50
 $borderColor = #eaecef
 $codeBgColor = #282c34
+$badgeTipColor = #42b983
+$badgeWarningColor = darken(#ffe564, 35%)
+$badgeErrorColor = #DA5961
 ```
 
 ::: danger Note
@@ -299,6 +302,21 @@ module.exports = {
 ::: tip
 This option is also included in [Plugin API](../plugin/option-api.md#extendmarkdown).
 :::
+
+### markdown.extractHeaders
+
+- Type: `Array`
+- Default: `['h2', 'h3']`
+
+While preparing the page, headers are extracted from the Markdown file and stored in `this.$page.headers`. By default, VuePress will extract `h2` and `h3` elements for you. You can override the headers it pulls out in your `markdown` options.
+ 
+``` js
+module.exports = {
+  markdown: {
+    extractHeaders: [ 'h2', 'h3', 'h4' ]
+  }
+}
+```
 
 ## Build Pipeline
 

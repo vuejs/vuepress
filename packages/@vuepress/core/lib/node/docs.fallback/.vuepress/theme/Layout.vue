@@ -1,3 +1,3 @@
 <template>
-  <Content/>
+  <Content />
 </template>

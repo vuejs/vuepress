@@ -4,9 +4,13 @@ exports[`DropdownLink renders dropdown link. 1`] = `
 <div class="dropdown-wrapper"><button type="button" aria-label="Learn More Select" class="dropdown-title"><span class="title">Learn More</span> <span class="arrow right"></span></button>
   <ul class="nav-dropdown" style="display: none;" name="dropdown">
     <li class="dropdown-item">
-      <!----> <a class="nav-link">Guide</a></li>
+      <!----> <a class="nav-link">
+        Guide
+      </a></li>
     <li class="dropdown-item">
-      <!----> <a class="nav-link">Config Reference</a></li>
+      <!----> <a class="nav-link">
+        Config Reference
+      </a></li>
   </ul>
 </div>
 `;

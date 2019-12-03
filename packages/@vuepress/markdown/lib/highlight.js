@@ -23,7 +23,8 @@ function getLangCodeFromExtension (extension) {
     sh: 'bash',
     yml: 'yaml',
     styl: 'stylus',
-    kt: 'kotlin'
+    kt: 'kotlin',
+    rs: 'rust'
   }
 
   return extensionMap[extension] || extension

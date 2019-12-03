@@ -1,5 +1,5 @@
 <template>
-  <component :is="layout"/>
+  <component :is="layout" />
 </template>
 
 <script>
@@ -7,6 +7,16 @@ import Vue from 'vue'
 import { setGlobalInfo } from '@app/util'
 
 export default {
+  name: 'GlobalLayout',
+
+  computed: {
+    layout () {
+      const layout = this.getLayout()
+      setGlobalInfo('layout', layout)
+      return Vue.component(layout)
+    }
+  },
+
   methods: {
     getLayout () {
       if (this.$page.path) {
@@ -18,14 +28,6 @@ export default {
         return 'Layout'
       }
       return 'NotFound'
-    }
-  },
-
-  computed: {
-    layout () {
-      const layout = this.getLayout()
-      setGlobalInfo('layout', layout)
-      return Vue.component(layout)
     }
   }
 }

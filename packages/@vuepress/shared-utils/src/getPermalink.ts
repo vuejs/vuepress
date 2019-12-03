@@ -44,9 +44,9 @@ export = function getPermalink ({
 
   pattern = removeLeadingSlash(pattern)
 
-  const link =
-    localePath +
-    pattern
+  const link
+    = localePath
+    + pattern
       .replace(/:year/, String(year))
       .replace(/:month/, String(month))
       .replace(/:i_month/, String(iMonth))

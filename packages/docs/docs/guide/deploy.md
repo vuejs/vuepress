@@ -80,10 +80,10 @@ script:
   - npm run docs:build
 deploy:
   provider: pages
-  skip-cleanup: true
+  skip_cleanup: true
   local_dir: docs/.vuepress/dist
-  github-token: $GITHUB_TOKEN # a token generated on github allowing travis to push code on you repository
-  keep-history: true
+  github_token: $GITHUB_TOKEN # A token generated on GitHub allowing Travis to push code on you repository. Set in the Travis settings page of your repository, as a secure variable
+  keep_history: true
   on:
     branch: master
 ```
@@ -121,7 +121,7 @@ pages:
 
 ## Netlify
 
-1. On Netlify, setup up a new project from GitHub with the following settings:
+1. On [Netlify](https://netlify.com), setup up a new project from GitHub with the following settings:
 
 - **Build Command:** `npm run docs:build` or `yarn docs:build`
 - **Publish directory:** `docs/.vuepress/dist`

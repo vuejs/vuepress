@@ -54,13 +54,24 @@ When customizing `templates/ssr.html`, or `templates/dev.html`, it’s best to e
 
 ## Default Page Routing
 
+Here we take `docs` directory as the `targetDir` (See [Command-line Interface](../api/cli.md#usage)), and all the "Relative Path" below are relative to `docs` directory. Add `scripts` in `package.json` that located in the project root directory:
+
+```json
+{
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
+  }
+}
+```
+
 For the above directory structure, the default page routing paths are as follows:
 
-| Relative Path | Page Routing |
-|---|---|
-| `/README.md` | `/` |
-| `/guide/README.md` | `/guide/` |
-| `/config.md` | `/config.html` |
+|    Relative Path   |  Page Routing  |
+|--------------------|----------------|
+| `/README.md`       | `/`            |
+| `/guide/README.md` | `/guide/`      |
+| `/config.md`       | `/config.html` |
 
 **Also see:**
 

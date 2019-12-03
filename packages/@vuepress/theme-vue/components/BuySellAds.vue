@@ -3,11 +3,17 @@
 const ID = 'bsa-cpc-script'
 
 export default {
-  render (h) {
-    return h('div', { class: 'bsa-cpc-wrapper' }, [
-      h('div', { ref: 'ads', class: 'bsa-cpc' })
-    ])
+  name: 'BuySellAds',
+
+  watch: {
+    '$route' (to, from) {
+      if (to.path !== from.path) {
+        this.$refs.ads.innerHTML = ''
+        this.load()
+      }
+    }
   },
+
   mounted () {
     if (!document.getElementById(ID)) {
       const s = document.createElement('script')
@@ -21,14 +27,7 @@ export default {
       this.load()
     }
   },
-  watch: {
-    '$route' (to, from) {
-      if (to.path !== from.path) {
-        this.$refs.ads.innerHTML = ''
-        this.load()
-      }
-    }
-  },
+
   methods: {
     load () {
       if (typeof _bsa !== 'undefined' && _bsa) {
@@ -39,6 +38,12 @@ export default {
         })
       }
     }
+  },
+
+  render (h) {
+    return h('div', { class: 'bsa-cpc-wrapper' }, [
+      h('div', { ref: 'ads', class: 'bsa-cpc' })
+    ])
   }
 }
 </script>

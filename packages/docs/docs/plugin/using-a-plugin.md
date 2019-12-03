@@ -16,7 +16,7 @@ A plugin can be published on npm in `CommonJS` format as `vuepress-plugin-xxx`. 
 
 ``` js
 module.exports = {
-  plugins: [ 'vuepress-plugin-xx' ]
+  plugins: [ 'vuepress-plugin-xxx' ]
 }
 ```
 

@@ -1,21 +1,23 @@
 <template>
-  <router-link
+  <RouterLink
+    v-if="isInternal"
     class="nav-link"
     :to="link"
-    @focusout.native="focusoutAction"
-    v-if="isInternal"
     :exact="exact"
-  >{{ item.text }}</router-link>
+    @focusout.native="focusoutAction"
+  >
+    {{ item.text }}
+  </RouterLink>
   <a
     v-else
     :href="link"
-    @focusout="focusoutAction"
     class="nav-link external"
     :target="target"
     :rel="rel"
+    @focusout="focusoutAction"
   >
     {{ item.text }}
-    <OutboundLink v-if="isBlankTarget"/>
+    <OutboundLink v-if="isBlankTarget" />
   </a>
 </template>
 
@@ -23,6 +25,8 @@
 import { isExternal, isMailto, isTel, ensureExt } from '../util'
 
 export default {
+  name: 'NavLink',
+
   props: {
     item: {
       required: true

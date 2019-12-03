@@ -10,8 +10,8 @@ metaTitle: Back-To-Top 插件 | VuePress
 ## 安装
 
 ```bash
-yarn add -D @vuepress/plugin-back-to-top@next
-# OR npm install -D @vuepress/plugin-back-to-top@next
+yarn add -D @vuepress/plugin-back-to-top
+# OR npm install -D @vuepress/plugin-back-to-top
 ```
 
 ## 使用

@@ -2,8 +2,10 @@
 export default {
   functional: true,
   props: {
-    title: String,
-    required: true
+    title: {
+      type: String,
+      required: true
+    }
   },
   render (h, { props, slots }) {
     return h('div',

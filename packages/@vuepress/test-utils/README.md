@@ -1,3 +1,3 @@
 # @vuepress/test-utils
 
-> test-utils for vuepress
+> test-utils for VuePress

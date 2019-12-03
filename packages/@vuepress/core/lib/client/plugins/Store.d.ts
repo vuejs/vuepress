@@ -11,5 +11,3 @@ export declare class Store {
 
   $on: typeof Vue.prototype.$on;
 }
-
-

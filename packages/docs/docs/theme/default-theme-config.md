@@ -29,6 +29,8 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 ---
 ```
 
+You can disable `title` and `subtitle` by setting the corresponding field to `null`.
+
 Any extra content after the `YAML front matter` will be parsed as normal Markdown and rendered after the features section.
 
 To use a fully custom homepage layout, you can also use a [Custom Layout](#custom-layout-for-specific-pages).
@@ -36,6 +38,19 @@ To use a fully custom homepage layout, you can also use a [Custom Layout](#custo
 ## Navbar
 
 The Navbar may contain your page title, [Search Box](#search-box), [Navbar Links](#navbar-links), [Languages](../guide/i18n.md) and [Repository Link](#git-repo-and-edit-links), they all depend on your configuration.
+
+### Navbar Logo
+
+You can add a logo to the navbar via `themeConfig.logo`. Logo can be placed in [public folder](../guide/assets.md#public-files).
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+    logo: '/assets/img/logo.png',
+  }
+}
+```
 
 ### Navbar Links
 
@@ -165,17 +180,6 @@ The sidebar only displays links for headers in the current active page. You can 
 module.exports = {
   themeConfig: {
     displayAllHeaders: true // Default: false
-  }
-}
-```
-
-### Extract Headers
- While preparing the page, headers are extracted from the Markdown file and stored in `this.$page.headers`. By default, VuePress will extract `h2` and `h3` elements for you.
- You can override the headers it pulls out in your `markdown` options.
- ``` js
-module.exports = {
-  markdown: {
-    extractHeaders: [ 'h2', 'h3', 'h4' ]
   }
 }
 ```
