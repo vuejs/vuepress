@@ -10,8 +10,8 @@ metaTitle: PWA 插件 | VuePress
 ## 安装
 
 ```bash
-yarn add -D @vuepress/plugin-pwa@next
-# OR npm install -D @vuepress/plugin-pwa@next
+yarn add -D @vuepress/plugin-pwa
+# OR npm install -D @vuepress/plugin-pwa
 ```
 
 ## 使用
@@ -19,6 +19,37 @@ yarn add -D @vuepress/plugin-pwa@next
 ```javascript
 module.exports = {
   plugins: ['@vuepress/pwa']
+}
+```
+
+::: tip
+为了让你的网站完全地兼容 PWA，你需要:
+
+- 在 `.vuepress/public` 提供 Manifest 和 icons
+- 在 `.vuepress/config.js` 添加正確的 [head links](/config/#head)(参见下面例子).
+
+更多细节，请参见 [MDN docs about the Web App Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest).
+:::
+
+这是一个在VuePress中完全地兼容 PWA 的例子：
+
+```javascript
+module.exports = {
+  head: [
+    ['link', { rel: 'icon', href: '/logo.png' }],
+    ['link', { rel: 'manifest', href: '/manifest.json' }],
+    ['meta', { name: 'theme-color', content: '#3eaf7c' }],
+    ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
+    ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
+    ['link', { rel: 'apple-touch-icon', href: '/icons/apple-touch-icon-152x152.png' }],
+    ['link', { rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#3eaf7c' }],
+    ['meta', { name: 'msapplication-TileImage', content: '/icons/msapplication-icon-144x144.png' }],
+    ['meta', { name: 'msapplication-TileColor', content: '#000000' }]
+  ],
+  plugins: ['@vuepress/pwa', {
+      serviceWorker: true,
+      updatePopup: true
+  }],
 }
 ```
 
@@ -39,9 +70,8 @@ module.exports = {
 - `sw-offline`
 - `sw-error`
 
-::: tip PWA NOTES
-`serviceWorker` 选项仅仅用来控制 service worker，为了让你的网站完全地兼容 PWA，你需要在 `.vuepress/public` 提供 Manifest 和 icons，更多细节，请参见 [MDN docs about the Web App Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest).
-此外，只有您能够使用 SSL 部署您的站点时才能启用此功能，因为 service worker 只能在 HTTPs 的 URL 下注册。
+::: tip
+只有在你能够使用 SSL 部署您的站点时才能启用此功能，因为 service worker 只能在 HTTPs 的 URL 下注册。
 :::
 
 ### generateSWConfig
@@ -74,7 +104,7 @@ type popupConfig = normalPopupConfig | localedPopupConfig
 
 本选项开启了一个用于刷新内容的弹窗。这个弹窗将会在站点有内容更新时显示出来，并提供了一个 `refresh` 按钮，允许用户立即刷新内容。
 
->如果没有“刷新”按钮，则只有在所有的 [Clients](https://developer.mozilla.org/en-US/docs/Web/API/Clients) 被关闭后，新的 Service Worker 才会处于活动状态。这意味着用户在关闭你网站的所有标签之前无法看到新内容。但是 `refresh` 按钮会立即激活新的 Service Worker。
+> 如果没有“刷新”按钮，则只有在所有的 [Clients](https://developer.mozilla.org/en-US/docs/Web/API/Clients) 被关闭后，新的 Service Worker 才会处于活动状态。这意味着用户在关闭你网站的所有标签之前无法看到新内容。但是 `refresh` 按钮会立即激活新的 Service Worker。
 
 ### popupComponent
 
@@ -104,9 +134,9 @@ module.exports = {
 module.exports = {
   themeConfig: {
 -   serviceWorker: {
--     updatePopup: { 
--        message: "New content is available.", 
--        buttonText: "Refresh" 
+-     updatePopup: {
+-        message: "New content is available.",
+-        buttonText: "Refresh"
 -     }
 -   }
   },
@@ -184,9 +214,9 @@ module.exports = {
 
 ```vue
 <template>
-  <SWUpdatePopup>
+  <SWUpdatePopup v-slot="{ enabled, reload, message, buttonText }">
     <div
-      slot-scope="{ enabled, reload, message, buttonText }"
+      v-if="enabled"
       class="my-sw-update-popup">
       {{ message }}<br>
       <button @click="reload">{{ buttonText }}</button>

@@ -115,3 +115,17 @@ meta:
 - 默认值: `undefined`
 
 参考: [默认值 Theme Config > Sidebar](../theme/default-theme-config.md#侧边栏).
+
+### prev
+
+- 类型: `boolean|string`
+- 默认值: `undefined`
+
+参考: [默认值 Theme Config > Prev / Next Links](../theme/default-theme-config.md#上-下一篇链接).
+
+### next
+
+- 类型: `boolean|string`
+- 默认值: `undefined`
+
+参考: [默认值 Theme Config > Prev / Next Links](../theme/default-theme-config.md#上-下一篇链接).

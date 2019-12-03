@@ -14,7 +14,7 @@ sidebar: auto
 
 部署站点的基础路径，如果你想让你的网站部署到一个子路径下，你将需要设置它。如 GitHub pages，如果你想将你的网站部署到 `https://foo.github.io/bar/`，那么 `base` 应该被设置成 `"/bar/"`，它的值应当总是以斜杠开始，并以斜杠结束。
 
-`base` 将会自动地作为前缀插入到所有以 `/` 开始的其他选项的链接中，所以你只需要指定一次。
+`base` 将会作为前缀自动地插入到所有以 `/` 开始的其他选项的链接中，所以你只需要指定一次。
 
 **参考:**
 
@@ -90,7 +90,7 @@ module.exports = {
 - 类型: `Function`
 - 默认值: `() => true`
 
-一个函数，用来控制对于哪些文件，是需要生成 `<link rel="prefetch">` 资源提示的。请参考 [shouldPrefetch](https://ssr.vuejs.org/zh/api/#shouldpreload)。
+一个函数，用来控制对于哪些文件，是需要生成 `<link rel="prefetch">` 资源提示的。请参考 [shouldPrefetch](https://ssr.vuejs.org/zh/api/#shouldprefetch)。
 
 ### cache
 
@@ -127,11 +127,18 @@ module.exports = {
 }
 ```
 
+### patterns
+
+- Type: `Array`
+- Default: `['**/*.md', '**/*.vue']`
+
+Specify which pattern of files you want to be resolved.
+
 ## Styling
 
 ### palette.styl
 
-如果要对[默认预设](https://github.com/vuejs/vuepress/blob/master/packages/@vuepress/core/lib/app/style/config.styl)的样式应用简单的颜色替换，或者定义一些颜色变量供以后使用，你可以创建一个 `.vuepress/styles/palette.styl` 文件。
+如果要对[默认预设](https://github.com/vuejs/vuepress/blob/master/packages/@vuepress/core/lib/client/style/config.styl)的样式应用简单的颜色替换，或者定义一些颜色变量供以后使用，你可以创建一个 `.vuepress/styles/palette.styl` 文件。
 
 你可以调整一些颜色变量:
 
@@ -141,6 +148,9 @@ $accentColor = #3eaf7c
 $textColor = #2c3e50
 $borderColor = #eaecef
 $codeBgColor = #282c34
+$badgeTipColor = #42b983
+$badgeWarningColor = darken(#ffe564, 35%)
+$badgeErrorColor = #DA5961
 ```
 
 ::: danger Note
@@ -284,6 +294,21 @@ module.exports = {
 ::: tip
 这个选项也被 [Plugin API](../plugin/option-api.md#extendmarkdown) 所支持。
 :::
+
+### markdown.extractHeaders
+
+- 类型: `Array`
+- 默认值: `['h2', 'h3']`
+
+Markdown 文件的 headers (标题 & 小标题) 会在准备阶段被提取出来，并存储在 `this.$page.headers` 中。默认情况下，VuePress 会提取 `h2` 和 `h3` 标题。你可以通过这个选项来修改提取出的标题级别。
+ 
+``` js
+module.exports = {
+  markdown: {
+    extractHeaders: [ 'h2', 'h3', 'h4' ]
+  }
+}
+```
 
 ## 构建流程
 

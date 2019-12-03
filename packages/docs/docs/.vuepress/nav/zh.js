@@ -1,7 +1,7 @@
 module.exports = [
   {
     text: '指南',
-    link: '/zh/guide/',
+    link: '/zh/guide/'
   },
   {
     text: '配置',
@@ -17,6 +17,7 @@ module.exports = [
   },
   {
     text: '了解更多',
+    ariaLabel: '了解更多',
     items: [
       {
         text: 'API',
@@ -28,24 +29,28 @@ module.exports = [
           {
             text: 'Node',
             link: '/zh/api/node.html'
-          },
+          }
         ]
       },
       {
         text: '开发指南',
         items: [
           {
+            text: '本地开发',
+            link: '/zh/miscellaneous/local-development.html'
+          },
+          {
             text: '设计理念',
             link: '/zh/miscellaneous/design-concepts.html'
           },
           {
             text: 'FAQ',
-            link: '/zh/faq/',
+            link: '/zh/faq/'
           },
           {
             text: '术语',
             link: '/zh/miscellaneous/glossary.html'
-          },
+          }
         ]
       },
       {
@@ -65,6 +70,6 @@ module.exports = [
   },
   {
     text: '0.x',
-    link: 'https://vuepress.vuejs.org/'
-  },
+    link: 'https://v0.vuepress.vuejs.org/'
+  }
 ]

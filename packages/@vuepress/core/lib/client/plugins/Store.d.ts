@@ -1,4 +1,4 @@
-import Vue from 'Vue'
+import Vue from 'vue'
 
 export declare class Store {
   store: Vue;
@@ -11,5 +11,3 @@ export declare class Store {
 
   $on: typeof Vue.prototype.$on;
 }
-
-

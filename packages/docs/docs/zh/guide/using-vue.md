@@ -26,6 +26,32 @@ export default {
 </script>
 ```
 
+如果你的模块通过 `export default` 导出一个 Vue 组件，那么你可以动态注册它：
+
+```vue
+<template>
+  <component v-if="dynamicComponent" :is="dynamicComponent"></component>
+</template>
+<script>
+export default {
+  data() {
+    return {
+      dynamicComponent: null
+    }
+  },
+  mounted () {
+    import('./lib-that-access-window-on-import').then(module => {
+      this.dynamicComponent = module.default
+    })
+  }
+}
+</script>
+```
+
+**参考:**
+
+- [Vue.js > 动态组件](https://cn.vuejs.org/v2/guide/components.html#动态组件)
+
 ## 模板语法
 
 ### 插值
@@ -203,7 +229,7 @@ export default {
 
 参考 [浏览器的 API 访问限制](#浏览器的-api-访问限制)。
 
-### Content <Badge text="1.0.0+"/>
+### Content
 
 - **Props**:
 
@@ -213,7 +239,7 @@ export default {
 - **Usage**：
 
 指定一个指定页面的特定 slot 用于渲染，当你使用 [自定义布局](../theme/default-theme-config.md#特定页面的自定义布局) 或者自定义主题时，这将非常有用。
- 
+
 
 ``` vue
 <Content/>
@@ -226,20 +252,20 @@ export default {
 - [开发主题 > 获取渲染内容](../theme/writing-a-theme.md#获取渲染内容)
 
 
-### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/> <Badge text="默认主题"/>
+### Badge <Badge text="beta" type="warn"/> <Badge text="默认主题"/>
 
 - **Props**:
 
-   - `text` - string
-   - `type` - string, 可选值： `"tip"|"warn"|"error"`，默认值是： `"tip"`
-   - `vertical` - string, 可选值： `"top"|"middle"`，默认值是： `"top"`
+  - `text` - string
+  - `type` - string, 可选值： `"tip"|"warn"|"error"`，默认值是： `"tip"`
+  - `vertical` - string, 可选值： `"top"|"middle"`，默认值是： `"top"`
 
 - **Usage**:
 
 你可以在标题中，使用这个组件来为某些 API 添加一些状态：
 
 ``` md
-### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/> <Badge text="默认主题"/>
+### Badge <Badge text="beta" type="warn"/> <Badge text="默认主题"/>
 ```
 
 **参考:**

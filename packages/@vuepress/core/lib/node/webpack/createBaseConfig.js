@@ -34,6 +34,7 @@ module.exports = function createBaseConfig (context, isServer) {
   const inlineLimit = 10000
 
   const config = new Config()
+  const extractHeaders = siteConfig.markdown && siteConfig.markdown.extractHeaders
 
   config
     .mode(isProd && !env.isDebug ? 'production' : 'development')
@@ -118,7 +119,7 @@ module.exports = function createBaseConfig (context, isServer) {
   mdRule
     .use('markdown-loader')
       .loader(require.resolve('@vuepress/markdown-loader'))
-      .options({ sourceDir, markdown })
+      .options({ sourceDir, markdown, extractHeaders })
 
   config.module
     .rule('pug')
@@ -142,6 +143,10 @@ module.exports = function createBaseConfig (context, isServer) {
           }
           // always transpile js in vue files
           if (/\.vue\.js$/.test(filePath)) {
+            return false
+          }
+          // transpile all core files
+          if (/(@vuepress|vuepress-)\/^((?!node_modules).)*\.js$/.test(filePath)) {
             return false
           }
           // Don't transpile node_modules
@@ -310,5 +315,5 @@ function getLastCommitHash () {
 }
 
 function getModulePaths () {
-  return [path.resolve(process.cwd(), 'node_modules')].concat(module.paths)
+  return module.paths.concat([path.resolve(process.cwd(), 'node_modules')])
 }

@@ -19,7 +19,7 @@ const jestRunner = createJestRunner([
   ...(regex ? [regex] : [])
 ])
 
-// ensure the basic temp files were genereatod
+// ensure the basic temp files were generated
 createApp({
   temp: '.temp'
 })
@@ -29,4 +29,3 @@ createApp({
     console.error(err)
     process.exit(1)
   })
-

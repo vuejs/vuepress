@@ -5,12 +5,12 @@ module.exports = ctx => ({
   locales: {
     '/': {
       lang: 'en-US',
-      title: 'VuePress 1.x',
+      title: 'VuePress',
       description: 'Vue-powered Static Site Generator'
     },
     '/zh/': {
       lang: 'zh-CN',
-      title: 'VuePress 1.x',
+      title: 'VuePress',
       description: 'Vue 驱动的静态网站生成器'
     }
   },
@@ -31,14 +31,16 @@ module.exports = ctx => ({
     editLinks: true,
     docsDir: 'packages/docs/docs',
     // #697 Provided by the official algolia team.
-    // algolia: ctx.isProd ? ({
-    //   apiKey: '3a539aab83105f01761a137c61004d85',
-    //   indexName: 'vuepress'
-    // }) : null,
+    algolia: ctx.isProd ? ({
+      apiKey: '3a539aab83105f01761a137c61004d85',
+      indexName: 'vuepress'
+    }) : null,
+    smoothScroll: true,
     locales: {
       '/': {
         label: 'English',
         selectText: 'Languages',
+        ariaLabel: 'Select language',
         editLinkText: 'Edit this page on GitHub',
         lastUpdated: 'Last Updated',
         nav: require('./nav/en'),
@@ -46,12 +48,13 @@ module.exports = ctx => ({
           '/api/': getApiSidebar(),
           '/guide/': getGuideSidebar('Guide', 'Advanced'),
           '/plugin/': getPluginSidebar('Plugin', 'Introduction', 'Official Plugins'),
-          '/theme/': getThemeSidebar('Theme', 'Introduction'),
+          '/theme/': getThemeSidebar('Theme', 'Introduction')
         }
       },
       '/zh/': {
         label: '简体中文',
         selectText: '选择语言',
+        ariaLabel: '选择语言',
         editLinkText: '在 GitHub 上编辑此页',
         lastUpdated: '上次更新',
         nav: require('./nav/zh'),
@@ -77,17 +80,18 @@ module.exports = ctx => ({
     ['container', {
       type: 'vue',
       before: '<pre class="vue-container"><code>',
-      after: '</code></pre>',
+      after: '</code></pre>'
     }],
     ['container', {
       type: 'upgrade',
       before: info => `<UpgradePath title="${info}">`,
-      after: '</UpgradePath>',
+      after: '</UpgradePath>'
     }],
+    ['flowchart']
   ],
   extraWatchFiles: [
     '.vuepress/nav/en.js',
-    '.vuepress/nav/zh.js',
+    '.vuepress/nav/zh.js'
   ]
 })
 
@@ -112,7 +116,7 @@ function getGuideSidebar (groupA, groupB) {
         'markdown',
         'using-vue',
         'i18n',
-        'deploy',
+        'deploy'
       ]
     },
     {
@@ -150,7 +154,7 @@ function getPluginSidebar (pluginTitle, pluginIntro, officialPluginTitle) {
     {
       title: officialPluginTitle,
       collapsable: false,
-      children: officalPlugins,
+      children: officalPlugins
     }
   ]
 }
@@ -169,6 +173,6 @@ function getThemeSidebar (groupA, introductionA) {
         'default-theme-config',
         'inheritance'
       ]
-    },
+    }
   ]
 }

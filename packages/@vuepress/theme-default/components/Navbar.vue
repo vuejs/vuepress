@@ -1,24 +1,24 @@
 <template>
   <header class="navbar">
-    <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
+    <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')" />
 
-    <router-link
+    <RouterLink
       :to="$localePath"
       class="home-link"
     >
       <img
-        class="logo"
         v-if="$site.themeConfig.logo"
+        class="logo"
         :src="$withBase($site.themeConfig.logo)"
         :alt="$siteTitle"
       >
       <span
+        v-if="$siteTitle"
         ref="siteName"
         class="site-name"
-        v-if="$siteTitle"
         :class="{ 'can-hide': $site.themeConfig.logo }"
       >{{ $siteTitle }}</span>
-    </router-link>
+    </RouterLink>
 
     <div
       class="links"
@@ -30,8 +30,8 @@
         v-if="isAlgoliaSearch"
         :options="algolia"
       />
-      <SearchBox v-else-if="$site.themeConfig.search !== false && $page.frontmatter.search !== false"/>
-      <NavLinks class="can-hide"/>
+      <SearchBox v-else-if="$site.themeConfig.search !== false && $page.frontmatter.search !== false" />
+      <NavLinks class="can-hide" />
     </div>
   </header>
 </template>
@@ -43,11 +43,28 @@ import SidebarButton from '@theme/components/SidebarButton.vue'
 import NavLinks from '@theme/components/NavLinks.vue'
 
 export default {
-  components: { SidebarButton, NavLinks, SearchBox, AlgoliaSearchBox },
+  name: 'Navbar',
+
+  components: {
+    SidebarButton,
+    NavLinks,
+    SearchBox,
+    AlgoliaSearchBox
+  },
 
   data () {
     return {
       linksWrapMaxWidth: null
+    }
+  },
+
+  computed: {
+    algolia () {
+      return this.$themeLocaleConfig.algolia || this.$site.themeConfig.algolia || {}
+    },
+
+    isAlgoliaSearch () {
+      return this.algolia && this.algolia.apiKey && this.algolia.indexName
     }
   },
 
@@ -64,16 +81,6 @@ export default {
     }
     handleLinksWrapWidth()
     window.addEventListener('resize', handleLinksWrapWidth, false)
-  },
-
-  computed: {
-    algolia () {
-      return this.$themeLocaleConfig.algolia || this.$site.themeConfig.algolia || {}
-    },
-
-    isAlgoliaSearch () {
-      return this.algolia && this.algolia.apiKey && this.algolia.indexName
-    }
   }
 }
 
@@ -125,4 +132,9 @@ $navbar-horizontal-padding = 1.5rem
       display none
     .links
       padding-left 1.5rem
+    .site-name
+      width calc(100vw - 9.4rem)
+      overflow hidden
+      white-space nowrap
+      text-overflow ellipsis
 </style>

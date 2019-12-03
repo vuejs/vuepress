@@ -102,5 +102,51 @@ describe('Page', () => {
     expect(page._content.startsWith('---')).toBe(true)
     expect(page._strippedContent.startsWith('---')).toBe(false)
   })
-})
 
+  describe('enhance - ', () => {
+    let page
+    let enhancers
+
+    beforeEach(() => {
+      page = new Page({ path: '/' }, app)
+      enhancers = [
+        {
+          pluginName: 'foo',
+          value: jest.fn()
+        },
+        {
+          pluginName: 'foo',
+          value: jest.fn()
+        }
+      ]
+      global.console.log = jest.fn()
+    })
+
+    test('should loop over sync enhancers', async () => {
+      await page.enhance(enhancers)
+
+      return enhancers.map(enhancer => expect(enhancer.value).toHaveBeenCalled())
+    })
+
+    test('should loop over sync and async enhancers', async () => {
+      const mixedEnhancers = [...enhancers, {
+        pluginName: 'blog',
+        value: jest.fn().mockResolvedValue({})
+      }]
+      await page.enhance(mixedEnhancers)
+
+      return mixedEnhancers.map(enhancer => expect(enhancer.value).toHaveBeenCalled())
+    })
+
+    test('should log when enhancing when failing', async () => {
+      const error = { errorMessage: 'this is an error message' }
+
+      await expect(page.enhance([{
+        pluginName: 'error-plugin',
+        value: jest.fn().mockRejectedValue(error)
+      }])).rejects.toThrow()
+
+      expect(console.log).toHaveBeenCalledWith(error)
+    })
+  })
+})

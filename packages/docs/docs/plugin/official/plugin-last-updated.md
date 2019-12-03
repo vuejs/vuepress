@@ -5,7 +5,7 @@ metaTitle: Last-Updated Plugin | VuePress
 
 # [@vuepress/plugin-last-updated](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-last-updated)
 
-> last-updated plugin for vuepress
+> last-updated plugin for VuePress
 
 If you use the default theme, you don't need to install this plugin, because the plugin is already included in the `core` of VuePress, and you should use the [themeConfig.lastUpdated](../../theme/default-theme-config.md#last-updated) option directly.
 
@@ -15,7 +15,7 @@ If you use it at your custom theme, you'll need to handle the UI by yourself, an
 
 ```js
 module.exports = {
-  plugins: ['@vuepress/last-updated'] 
+  plugins: ['@vuepress/last-updated']
 }
 ```
 
@@ -35,7 +35,7 @@ const moment = require('moment');
 
 module.exports = {
   plugins: [
-    [ 
+    [
       '@vuepress/last-updated',
       {
         transformer: (timestamp, lang) => {

@@ -67,14 +67,14 @@ module.exports = (md, externalAttrs) => {
     routerLinks.push(to)
 
     return Object.create(token, {
-      tag: { value: 'router-link' }
+      tag: { value: 'RouterLink' }
     })
   }
 
   md.renderer.rules.link_close = (tokens, idx, options, env, self) => {
     const token = tokens[idx]
     if (hasOpenRouterLink) {
-      token.tag = 'router-link'
+      token.tag = 'RouterLink'
       hasOpenRouterLink = false
     }
     if (hasOpenExternalLink) {

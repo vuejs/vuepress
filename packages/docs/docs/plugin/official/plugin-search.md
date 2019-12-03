@@ -10,8 +10,8 @@ metaTitle: Search Plugin | VuePress
 ## Install
 
 ```bash
-yarn add -D @vuepress/plugin-search@next
-# OR npm install -D @vuepress/plugin-search@next
+yarn add -D @vuepress/plugin-search
+# OR npm install -D @vuepress/plugin-search
 ```
 
 ::: tip
@@ -27,7 +27,7 @@ Note that this plugin has been included in **default theme**, the search box you
 module.exports = {
   plugins: [
     ['@vuepress/search', {
-      searchMaxSuggestions: 10      
+      searchMaxSuggestions: 10
     }]
   ]
 }
@@ -74,17 +74,17 @@ Set up searchable paths with regular expressions. If no test expression is provi
 
 ```bash
 docs/
-├── .vuepress/            
+├── .vuepress/
 │    └── ...
 │
-├── master/               
+├── master/
 │    └── ...
 │
-├── 1.0/               
+├── 1.0/
 │    └── ...
 │
-└── 2.0/               
-     └── ...                       
+└── 2.0/
+     └── ...
 ```
 
 You can set up searchable paths with `test` as:
@@ -94,6 +94,13 @@ You can set up searchable paths with `test` as:
 
 
 Otherwise,  the default search will return duplicates, once you can have similar content between folders `/master/`, `/1.0/` and `/2.0/`.
+
+### searchHotkeys
+
+- Type: `Array<string>`
+- Default: `['s', '/']`
+
+Configure the hotkeys which when pressed will focus the search box. Set to an empty array to disable this feature.
 
 ## Tips
 

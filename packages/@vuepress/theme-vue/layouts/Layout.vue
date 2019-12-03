@@ -1,7 +1,11 @@
 <template>
   <ParentLayout>
-    <CarbonAds slot="sidebar-top"/>
-    <BuySellAds slot="page-bottom"/>
+    <template #sidebar-top>
+      <CarbonAds />
+    </template>
+    <template #page-bottom>
+      <BuySellAds />
+    </template>
   </ParentLayout>
 </template>
 
@@ -11,6 +15,8 @@ import CarbonAds from '@theme/components/CarbonAds.vue'
 import BuySellAds from '@theme/components/BuySellAds.vue'
 
 export default {
+  name: 'Layout',
+
   components: {
     ParentLayout,
     CarbonAds,

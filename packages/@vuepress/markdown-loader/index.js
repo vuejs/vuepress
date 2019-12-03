@@ -22,7 +22,7 @@ module.exports = function (src) {
   const isServer = this.target === 'node'
   const options = getOptions(this)
   const loader = Object.create(this)
-  const { sourceDir } = options
+  const { sourceDir, extractHeaders: extractHeadersPattern = ['h2', 'h3'] } = options
   let { markdown } = options
   if (!markdown) {
     markdown = md()
@@ -43,7 +43,7 @@ module.exports = function (src) {
 
   if (!isProd && !isServer) {
     const inferredTitle = inferTitle(frontmatter.data, frontmatter.content)
-    const headers = extractHeaders(content, ['h2', 'h3'], markdown)
+    const headers = extractHeaders(content, extractHeadersPattern, markdown)
     delete frontmatter.content
 
     // diff frontmatter and title, since they are not going to be part of the

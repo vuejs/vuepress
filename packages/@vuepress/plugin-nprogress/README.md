@@ -1,3 +1,3 @@
 # @vuepress/plugin-nprogress
 
-> nprogress plugin for vuepress
+> nprogress plugin for VuePress

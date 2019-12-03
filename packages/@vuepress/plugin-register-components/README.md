@@ -1,4 +1,4 @@
 # @vuepress/plugin-register-components
 
-> register-components plugin for vuepress
+> register-components plugin for VuePress
 

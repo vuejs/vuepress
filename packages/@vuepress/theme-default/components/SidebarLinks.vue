@@ -1,9 +1,12 @@
 <template>
   <ul
-    class="sidebar-links"
     v-if="items.length"
+    class="sidebar-links"
   >
-    <li v-for="(item, i) in items" :key="i">
+    <li
+      v-for="(item, i) in items"
+      :key="i"
+    >
       <SidebarGroup
         v-if="item.type === 'group'"
         :item="item"
@@ -14,7 +17,7 @@
       />
       <SidebarLink
         v-else
-        :sidebarDepth="sidebarDepth"
+        :sidebar-depth="sidebarDepth"
         :item="item"
       />
     </li>
@@ -43,14 +46,14 @@ export default {
     }
   },
 
-  created () {
-    this.refreshIndex()
-  },
-
   watch: {
     '$route' () {
       this.refreshIndex()
     }
+  },
+
+  created () {
+    this.refreshIndex()
   },
 
   methods: {
@@ -77,10 +80,23 @@ export default {
 function resolveOpenGroupIndex (route, items) {
   for (let i = 0; i < items.length; i++) {
     const item = items[i]
-    if (item.type === 'group' && item.children.some(c => c.type === 'page' && isActive(route, c.path))) {
+    if (descendantIsActive(route, item)) {
       return i
     }
   }
   return -1
+}
+
+function descendantIsActive (route, item) {
+  if (item.type === 'group') {
+    return item.children.some(child => {
+      if (child.type === 'group') {
+        return descendantIsActive(route, child)
+      } else {
+        return child.type === 'page' && isActive(route, child.path)
+      }
+    })
+  }
+  return false
 }
 </script>

@@ -1,12 +1,14 @@
 <template>
   <div class="search-box">
     <input
-      @input="query = $event.target.value"
+      ref="input"
       aria-label="Search"
       :value="query"
       :class="{ 'focused': focused }"
+      :placeholder="placeholder"
       autocomplete="off"
       spellcheck="false"
+      @input="query = $event.target.value"
       @focus="focused = true"
       @blur="focused = false"
       @keyup.enter="go(focusIndex)"
@@ -14,21 +16,28 @@
       @keyup.down="onDown"
     >
     <ul
-      class="suggestions"
       v-if="showSuggestions"
+      class="suggestions"
       :class="{ 'align-right': alignRight }"
       @mouseleave="unfocus"
     >
       <li
-        class="suggestion"
         v-for="(s, i) in suggestions"
+        :key="i"
+        class="suggestion"
         :class="{ focused: i === focusIndex }"
         @mousedown="go(i)"
         @mouseenter="focus(i)"
       >
-        <a :href="s.path" @click.prevent>
+        <a
+          :href="s.path"
+          @click.prevent
+        >
           <span class="page-title">{{ s.title || s.path }}</span>
-          <span v-if="s.header" class="header">&gt; {{ s.header.title }}</span>
+          <span
+            v-if="s.header"
+            class="header"
+          >&gt; {{ s.header.title }}</span>
         </a>
       </li>
     </ul>
@@ -36,13 +45,16 @@
 </template>
 
 <script>
-/* global SEARCH_MAX_SUGGESTIONS, SEARCH_PATHS */
+/* global SEARCH_MAX_SUGGESTIONS, SEARCH_PATHS, SEARCH_HOTKEYS */
 export default {
+  name: 'SearchBox',
+
   data () {
     return {
       query: '',
       focused: false,
-      focusIndex: 0
+      focusIndex: 0,
+      placeholder: undefined
     }
   },
 
@@ -62,7 +74,7 @@ export default {
       }
 
       const { pages } = this.$site
-      const max = SEARCH_MAX_SUGGESTIONS
+      const max = this.$site.themeConfig.searchMaxSuggestions || SEARCH_MAX_SUGGESTIONS
       const localePath = this.$localePath
 
       const matchTest = (q, domain) => {
@@ -142,6 +154,15 @@ export default {
     }
   },
 
+  mounted () {
+    this.placeholder = this.$site.themeConfig.searchPlaceholder || ''
+    document.addEventListener('keydown', this.onHotkey)
+  },
+
+  beforeDestroy () {
+    document.removeEventListener('keydown', this.onHotkey)
+  },
+
   methods: {
     getPageLocalePath (page) {
       for (const localePath in this.$site.locales || {}) {
@@ -163,6 +184,13 @@ export default {
       return searchPaths.filter(path => {
         return page.path.match(path)
       }).length > 0
+    },
+
+    onHotkey (event) {
+      if (event.srcElement === document.body && SEARCH_HOTKEYS.includes(event.key)) {
+        this.$refs.input.focus()
+        event.preventDefault()
+      }
     },
 
     onUp () {

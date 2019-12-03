@@ -18,7 +18,6 @@ const { normalizeHeadTag, applyUserWebpackConfig } = require('../util/index')
 module.exports = class Build extends EventEmitter {
   constructor (context) {
     super()
-    process.env.NODE_ENV = 'production'
     this.context = context
     this.outDir = this.context.outDir
   }
