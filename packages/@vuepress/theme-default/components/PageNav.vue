@@ -3,7 +3,7 @@
     <p class="inner">
       <span v-if="prev" class="prev">
         ←
-        <a v-if="prev.type === 'external'" class="prev" :href="prev.path" target="_blank" rel='noopener noreferrer'>{{ prev.title || prev.path }}</a>
+        <a v-if="prev.type === 'external'" class="prev" :href="prev.path" target="_blank" rel='noopener noreferrer'>{{ prev.title || prev.path }}<OutboundLink /></a>
         <router-link v-else class="prev" :to="prev.path">{{ prev.title || prev.path }}</router-link>
       </span>
 
