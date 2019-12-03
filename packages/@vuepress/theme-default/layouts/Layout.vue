@@ -13,7 +13,7 @@
     <div
       class="sidebar-mask"
       @click="toggleSidebar(false)"
-    ></div>
+    />
 
     <Sidebar
       :items="sidebarItems"
@@ -23,21 +23,21 @@
         <slot name="sidebar-top" />
       </template>
       <template #bottom>
-        <slot name="sidebar-bottom"/>
+        <slot name="sidebar-bottom" />
       </template>
     </Sidebar>
 
-    <Home v-if="$page.frontmatter.home"/>
+    <Home v-if="$page.frontmatter.home" />
 
     <Page
       v-else
       :sidebar-items="sidebarItems"
     >
       <template #top>
-        <slot name="page-top"/>
+        <slot name="page-top" />
       </template>
       <template #bottom>
-        <slot name="page-bottom"/>
+        <slot name="page-bottom" />
       </template>
     </Page>
   </div>
@@ -51,7 +51,14 @@ import Sidebar from '@theme/components/Sidebar.vue'
 import { resolveSidebarItems } from '../util'
 
 export default {
-  components: { Home, Page, Sidebar, Navbar },
+  name: 'Layout',
+
+  components: {
+    Home,
+    Page,
+    Sidebar,
+    Navbar
+  },
 
   data () {
     return {

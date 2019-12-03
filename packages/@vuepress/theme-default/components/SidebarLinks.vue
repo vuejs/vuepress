@@ -1,9 +1,12 @@
 <template>
   <ul
-    class="sidebar-links"
     v-if="items.length"
+    class="sidebar-links"
   >
-    <li v-for="(item, i) in items" :key="i">
+    <li
+      v-for="(item, i) in items"
+      :key="i"
+    >
       <SidebarGroup
         v-if="item.type === 'group'"
         :item="item"
@@ -14,7 +17,7 @@
       />
       <SidebarLink
         v-else
-        :sidebarDepth="sidebarDepth"
+        :sidebar-depth="sidebarDepth"
         :item="item"
       />
     </li>
@@ -43,14 +46,14 @@ export default {
     }
   },
 
-  created () {
-    this.refreshIndex()
-  },
-
   watch: {
     '$route' () {
       this.refreshIndex()
     }
+  },
+
+  created () {
+    this.refreshIndex()
   },
 
   methods: {

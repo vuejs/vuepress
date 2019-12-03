@@ -5,7 +5,7 @@
     @after-enter="unsetHeight"
     @before-leave="setHeight"
   >
-    <slot/>
+    <slot />
   </transition>
 </template>
 

@@ -1,10 +1,10 @@
 <template>
   <ParentLayout>
     <template #sidebar-top>
-      <CarbonAds/>
+      <CarbonAds />
     </template>
     <template #page-bottom>
-      <BuySellAds/>
+      <BuySellAds />
     </template>
   </ParentLayout>
 </template>
@@ -15,6 +15,8 @@ import CarbonAds from '@theme/components/CarbonAds.vue'
 import BuySellAds from '@theme/components/BuySellAds.vue'
 
 export default {
+  name: 'Layout',
+
   components: {
     ParentLayout,
     CarbonAds,
