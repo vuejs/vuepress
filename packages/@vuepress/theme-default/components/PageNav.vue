@@ -8,7 +8,7 @@
       </span>
 
       <span v-if="next" class="next">
-        <a v-if="next.type === 'external'" :href="next.path" target="_blank" rel='noopener noreferrer'>{{ next.title || next.path }}</a>
+        <a v-if="next.type === 'external'" :href="next.path" target="_blank" rel='noopener noreferrer'>{{ next.title || next.path }}<OutboundLink /></a>
         <router-link v-else :to="next.path">{{ next.title || next.path }}</router-link>
         →
       </span>
