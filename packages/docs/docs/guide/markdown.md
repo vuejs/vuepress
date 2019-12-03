@@ -35,7 +35,7 @@ And providing you are in `foo/one.md`:
 [bar - four](../bar/four.html) <!-- Or you can append .html -->
 ```
 
-### Redirection for URLs <Badge text="1.0.0-alpha.37"/>
+### Redirection for URLs
 
 VuePress supports redirecting to clean links. If a link `/foo` is not found, VuePress will look for a existing `/foo/` or `/foo.html`. Conversely, when one of `/foo/` or `/foo.html` is not found, VuePress will also try the other. With this feature, we can customize your website’s URLs with the official plugin [vuepress-plugin-clean-urls](https://vuepress.github.io/plugins/clean-urls/).
 

@@ -5,7 +5,7 @@ metaTitle: Nprogress 插件 | VuePress
 
 # [@vuepress/plugin-nprogress](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-nprogress)
 
-> 一个基于 [nprogress](https://github.com/rstacruz/nprogress) 的进度条插件。<Badge text="1.0.0-alpha.31+"/>
+> 一个基于 [nprogress](https://github.com/rstacruz/nprogress) 的进度条插件。
 
 ## 安装
 

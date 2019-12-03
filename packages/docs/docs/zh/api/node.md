@@ -1,4 +1,4 @@
-# Node.js API <Badge text="1.0.0-alpha.44+"/>
+# Node.js API
 
 ## 使用
 
@@ -97,4 +97,3 @@ async function build (options) {
 - 默认值: `{}`
 
 当你想编写测试且不想依赖于实际的配置文件时，它将非常有用。想要查看所有的配置选项，请移步 [siteConfig](../config/README.md)。
-

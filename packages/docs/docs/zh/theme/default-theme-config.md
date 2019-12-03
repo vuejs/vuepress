@@ -169,7 +169,7 @@ sidebarDepth: 2
 ---
 ```
 
-### 显示所有页面的标题链接 <Badge text="0.11.0+"/>
+### 显示所有页面的标题链接
 
 默认情况下，侧边栏只会显示由当前活动页面的标题（headers）组成的链接，你可以将 `themeConfig.displayAllHeaders` 设置为 `true` 来显示所有页面的标题链接：
 
@@ -230,7 +230,7 @@ module.exports = {
 一个侧边栏的子组配置同时支持 [sidebarDepth](#nested-header-links) 字段用于重写默认显示的侧边栏深度(`1`)。
 
 ::: tip
-  从 `1.0.0-alpha.36` 开始，嵌套的侧边栏分组 <Badge text="beta"/> 也是支持的，但嵌套深度应小于 3，否则在控制台会收到警告。
+  嵌套的侧边栏分组 <Badge text="beta"/> 也是支持的，但嵌套深度应小于 3，否则在控制台会收到警告。
 :::
 
 ### 多个侧边栏
