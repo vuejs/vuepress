@@ -116,3 +116,17 @@ See: [Default Theme Config > Disable the Navbar](../theme/default-theme-config.m
 - Default: `undefined`
 
 See: [Default Theme Config > Sidebar](../theme/default-theme-config.md#sidebar).
+
+### prev
+
+- Type: `boolean|string`
+- Default: `undefined`
+
+See: [Default Theme Config > Prev / Next Links](../theme/default-theme-config.md#prev-next-links).
+
+### next
+
+- Type: `boolean|string`
+- Default: `undefined`
+
+See: [Default Theme Config > Prev / Next Links](../theme/default-theme-config.md#prev-next-links).
