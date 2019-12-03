@@ -65,7 +65,7 @@ cd -
    如果你打算发布到 `https://<USERNAME or GROUP>.github.io/<REPO>/`（也就是说你的仓库在 `https://github.com/<USERNAME>/<REPO>`），则将 `base` 设置为 `"/<REPO>/"`。
 
 2. 在项目的根目录创建一个名为 `.travis.yml` 的文件；
-3. 在本地执行 `npm install` 并且在提交中包含 `package-lock.json` 因为 `npm ci` 需要它才能正确执行.
+3. 在本地执行 `yarn` 或 `npm install` 并且提交生成的 lock 文件（即 `yarn.lock` 或 `package-lock.json`）；
 4. 使用 GitHub Pages 部署提供程序模板并遵循 [Travis 文档](https://docs.travis-ci.com/user/deployment/pages/)。
 
 ``` yaml
@@ -73,9 +73,9 @@ language: node_js
 node_js:
   - lts/*
 install:
-  - npm ci
+  - yarn install # npm ci
 script:
-  - npm run docs:build
+  - yarn docs:build # npm run docs:build
 deploy:
   provider: pages
   skip_cleanup: true
@@ -106,8 +106,8 @@ pages:
    - node_modules/
 
  script:
- - npm install
- - npm run docs:build
+ - yarn install # npm install
+ - yarn docs:build # npm run docs:build
  artifacts:
    paths:
    - public
@@ -119,7 +119,7 @@ pages:
 
 1. 在 Netlify 中, 创建一个新的 GitHub 项目，使用以下设置：
 
-- **Build Command:** `npm run build:docs` 或者 `yarn build:docs`
+- **Build Command:** `yarn build:docs` 或者 `npm run build:docs`
 - **Publish directory:** `docs/.vuepress/dist`
 
 2. 点击 deploy 按钮！
