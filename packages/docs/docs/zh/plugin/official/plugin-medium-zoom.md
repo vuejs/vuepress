@@ -16,8 +16,6 @@ yarn add -D @vuepress/plugin-medium-zoom
 
 ## 使用
 
-## Usage
-
 **简单使用**:
 
 ```javascript
