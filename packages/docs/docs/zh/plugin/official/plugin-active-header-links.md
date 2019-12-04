@@ -22,6 +22,17 @@ module.exports = {
 }
 ```
 
+### 配置选项
+
+```javascript
+module.exports = {
+  plugins: ['@vuepress/active-header-links', {
+    sidebarLinkSelector: '.sidebar-link',
+    headerAnchorSelector: '.header-anchor'
+  }]
+}
+```
+
 ## 选项
 
 ### sidebarLinkSelector
