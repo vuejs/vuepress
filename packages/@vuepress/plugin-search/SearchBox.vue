@@ -78,38 +78,37 @@ export default {
       const localePath = this.$localePath
 
       const matchTest = (q, domain) => {
-
         const escapeRegExp = (s) => {
-          return s.replace(/[-/\\^$*+?.()|[\]{}]/g, "\\$&");
+          return s.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')
         }
 
         const words = q
           .split(/\s+/g)
           .map(s => s.trim())
-          .filter(s => !!s);
-        const hasTrailingSpace = q.endsWith(" ");
+          .filter(s => !!s)
+        const hasTrailingSpace = q.endsWith(' ')
         const searchRegex = new RegExp(
           words
             .map((word, i) => {
               if (i + 1 === words.length && !hasTrailingSpace) {
                 // The last word - ok with the word being "startswith"-like
-                return `(?=.*\\b${escapeRegExp(word)})`;
+                return `(?=.*\\b${escapeRegExp(word)})`
               } else {
                 // Not the last word - expect the whole word exactly
-                return `(?=.*\\b${escapeRegExp(word)}\\b)`;
+                return `(?=.*\\b${escapeRegExp(word)}\\b)`
               }
             })
-            .join("") + ".+",
-          "gi"
-        );
-          return searchRegex.test(domain);
+            .join('') + '.+',
+          'gi'
+        )
+        return searchRegex.test(domain)
       }
 
       const matches = (item, additionalStr = null) => {
-        let domain;
-        domain = (item.title) ? item.title : "";
-        domain = (item.frontmatter && item.frontmatter.tags) ? domain + " " + item.frontmatter.tags.join(" ") : domain;
-        if(additionalStr) domain = domain + " " + additionalStr;
+        let domain
+        domain = (item.title) ? item.title : ''
+        domain = (item.frontmatter && item.frontmatter.tags) ? domain + ' ' + item.frontmatter.tags.join(' ') : domain
+        if (additionalStr) domain = domain + ' ' + additionalStr
 
         return matchTest(query, domain)
       }
@@ -134,7 +133,7 @@ export default {
           for (let j = 0; j < p.headers.length; j++) {
             if (res.length >= max) break
             const h = p.headers[j]
-            if (h.title && matches(p,h.title)) {
+            if (h.title && matches(p, h.title)) {
               res.push(Object.assign({}, p, {
                 path: p.path + '#' + h.slug,
                 header: h
