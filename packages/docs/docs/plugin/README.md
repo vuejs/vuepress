@@ -22,7 +22,7 @@ To keep things at a minimum, not all of the official plugins are shipped with Vu
 - [@vuepress/plugin-last-updated](./official/plugin-last-updated.md)
 - [@vuepress/plugin-register-components](./official/plugin-register-components.md)
 
-### Plugins that come with the defualt theme
+### Plugins that come with the default theme
 
 - [@vuepress/plugin-active-header-links](./official/plugin-active-header-links.md)
 - [@vuepress/plugin-nprogress](./official/plugin-nprogress.md)
