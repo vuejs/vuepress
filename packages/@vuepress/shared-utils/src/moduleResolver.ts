@@ -212,19 +212,17 @@ class ModuleResolver {
 
     if (req.startsWith('@')) {
       const pkg = resolveScopePackage(req)
-      if (pkg) {
-        // special handling for default org.
-        if (this.org && pkg.org === this.org) {
-          shortcut = pkg.name.startsWith(`${this.type}-`)
-            ? pkg.name.slice(this.typePrefixLength)
-            : pkg.name
-          name = `${this.scopePrefix}${shortcut}`
-        } else {
-          shortcut = this.getShortcut(pkg.name)
-          name = `@${pkg.org}/${this.nonScopePrefix}${shortcut}`
-        }
-        shortcut = `@${pkg.org}/${shortcut}`
+      // special handling for default org.
+      if (this.org && pkg.org === this.org) {
+        shortcut = pkg.name.startsWith(`${this.type}-`)
+          ? pkg.name.slice(this.typePrefixLength)
+          : pkg.name
+        name = `${this.scopePrefix}${shortcut}`
+      } else {
+        shortcut = this.getShortcut(pkg.name)
+        name = `@${pkg.org}/${this.nonScopePrefix}${shortcut}`
       }
+      shortcut = `@${pkg.org}/${shortcut}`
     } else {
       shortcut = this.getShortcut(req)
       name = `${this.nonScopePrefix}${shortcut}`
