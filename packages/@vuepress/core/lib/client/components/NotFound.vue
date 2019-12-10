@@ -13,36 +13,17 @@
 </template>
 
 <script>
-export default {
-  computed: {
-    localePath () {
-      return this.$localePath || '/'
-    },
-    notFoundLinkText () {
-      return (
-        this.$themeLocaleConfig.notFoundLinkText
-        || this.$site.themeConfig.notFoundLinkText
-        || `Take me home.`
-      )
-    },
-    notFoundMessages () {
-      const messages = [
-        "There's nothing here.",
-        'How did we get here?',
-        "That's a Four-Oh-Four.",
-        "Looks like we've got some broken links."
-      ]
+const msgs = [
+  `There's nothing here.`,
+  `How did we get here?`,
+  `That's a Four-Oh-Four.`,
+  `Looks like we've got some broken links.`
+]
 
-      return (
-        this.$themeLocaleConfig.notFoundMessages
-        || this.$site.themeConfig.notFoundMessages
-        || messages
-      )
-    }
-  },
+export default {
   methods: {
     getMsg () {
-      return this.notFoundMessages[Math.floor(Math.random() * this.notFoundMessages.length)]
+      return msgs[Math.floor(Math.random() * msgs.length)]
     }
   }
 }
