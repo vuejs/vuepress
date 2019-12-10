@@ -1,4 +1,4 @@
-# Node.js API <Badge text="1.0.0-alpha.44+"/>
+# Node.js API
 
 ## Usage
 

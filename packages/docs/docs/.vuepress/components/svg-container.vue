@@ -1,13 +1,13 @@
 <template>
   <div class="svg-container">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
 <style lang="stylus">
-  .svg-container
-    margin 30px auto
-    text-align center
-    & > svg
-      max-width 100%
+.svg-container
+  margin 30px auto
+  text-align center
+  & > svg
+    max-width 100%
 </style>

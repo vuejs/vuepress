@@ -29,6 +29,8 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 ---
 ```
 
+You can disable `title` and `subtitle` by setting the corresponding field to `null`.
+
 Any extra content after the `YAML front matter` will be parsed as normal Markdown and rendered after the features section.
 
 To use a fully custom homepage layout, you can also use a [Custom Layout](#custom-layout-for-specific-pages).
@@ -170,7 +172,7 @@ sidebarDepth: 2
 ---
 ```
 
-### Displaying Header Links of All Pages <Badge text="0.11.0+"/>
+### Displaying Header Links of All Pages
 
 The sidebar only displays links for headers in the current active page. You can display all header links for every page with `themeConfig.displayAllHeaders: true`:
 
@@ -230,7 +232,7 @@ Sidebar groups are collapsable by default. You can force a group to be always op
 A sidebar group config also supports [sidebarDepth](#nested-header-links) field to override the default sidebar depth (`1`).
 
 ::: tip
-   From `1.0.0-alpha.36` on, nested sidebar group <Badge text="beta"/> is also supported, but the nesting depth should be less than 3, otherwise the console will receive a warning.
+   Nested sidebar group <Badge text="beta"/> is also supported, but the nesting depth should be less than 3, otherwise the console will receive a warning.
 :::
 
 ### Multiple Sidebars

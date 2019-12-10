@@ -5,13 +5,13 @@ metaTitle: Nprogress Plugin | VuePress
 
 # [@vuepress/plugin-nprogress](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-nprogress)
 
-> A progress bar plugin based on [nprogress](https://github.com/rstacruz/nprogress). <Badge text="1.0.0-alpha.31+"/>
+> A progress bar plugin based on [nprogress](https://github.com/rstacruz/nprogress).
 
 ## Install
 
 ```bash
-yarn add -D @vuepress/plugin-nprogress@next
-# OR npm install -D @vuepress/plugin-nprogress@next
+yarn add -D @vuepress/plugin-nprogress
+# OR npm install -D @vuepress/plugin-nprogress
 ```
 
 ## Usage

@@ -1,6 +1,6 @@
 # @vuepress/theme-default
 
-> theme-default for vuepress
+> theme-default for VuePress
 
 ## Plugins
 

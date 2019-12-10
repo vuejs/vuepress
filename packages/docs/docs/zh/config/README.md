@@ -90,7 +90,7 @@ module.exports = {
 - 类型: `Function`
 - 默认值: `() => true`
 
-一个函数，用来控制对于哪些文件，是需要生成 `<link rel="prefetch">` 资源提示的。请参考 [shouldPrefetch](https://ssr.vuejs.org/zh/api/#shouldpreload)。
+一个函数，用来控制对于哪些文件，是需要生成 `<link rel="prefetch">` 资源提示的。请参考 [shouldPrefetch](https://ssr.vuejs.org/zh/api/#shouldprefetch)。
 
 ### cache
 

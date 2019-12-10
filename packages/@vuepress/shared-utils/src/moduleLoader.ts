@@ -1,9 +1,10 @@
-// Midified from https://github.com/vuejs/vue-cli/blob/dev/packages/@0vue/cli-shared-utils/lib/module.js
+// Modified from https://github.com/vuejs/vue-cli/blob/dev/packages/@0vue/cli-shared-utils/lib/module.js
 
 import semver from 'semver'
 import env from './env'
 
 function resolveFallback (request: string, options: { paths: string[] }) {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   const Module = require('module')
   const isMain = false
   const fakeParent = new Module('', null)
@@ -24,12 +25,23 @@ function resolveFallback (request: string, options: { paths: string[] }) {
 
   const filename = Module._findPath(request, paths, isMain)
   if (!filename) {
-    const err = new Error(`Cannot find module '${request}'`)
-    // @ts-ignores
+    const err: Error & { code?: string } = new Error(`Cannot find module '${request}'`)
     err.code = 'MODULE_NOT_FOUND'
     throw err
   }
   return filename
+}
+
+function clearRequireCache (id: string, map = new Map()) {
+  const module = require.cache[id]
+  if (module) {
+    map.set(id, true)
+    // Clear children modules
+    module.children.forEach((child: any) => {
+      if (!map.get(child.id)) clearRequireCache(child.id, map)
+    })
+    delete require.cache[id]
+  }
 }
 
 const resolve = semver.satisfies(process.version, '>=10.0.0')
@@ -37,15 +49,13 @@ const resolve = semver.satisfies(process.version, '>=10.0.0')
   : resolveFallback
 
 export function resolveModule (request: string, context: string): string {
-  let resolvedPath
-
   if (env.isTest) {
     return require.resolve(request)
   }
 
   // module.paths is for globally install packages.
   const paths = [context || process.cwd(), ...module.paths]
-  resolvedPath = resolve(request, { paths })
+  const resolvedPath = resolve(request, { paths })
 
   return resolvedPath
 }
@@ -64,17 +74,5 @@ export function clearModule (request: string, context: string) {
   const resolvedPath = resolveModule(request, context)
   if (resolvedPath) {
     clearRequireCache(resolvedPath)
-  }
-}
-
-function clearRequireCache (id: string, map = new Map()) {
-  const module = require.cache[id]
-  if (module) {
-    map.set(id, true)
-    // Clear children modules
-    module.children.forEach((child: any) => {
-      if (!map.get(child.id)) clearRequireCache(child.id, map)
-    })
-    delete require.cache[id]
   }
 }

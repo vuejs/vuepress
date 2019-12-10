@@ -12,12 +12,12 @@ sidebar: auto
 
 描述 stylus 编译器编译顺序的简单图表如下：
 
-@flowstart <br />
-阶段1=>操作: palette.styl <br />
-阶段2=>操作: 默认 app 样式 <br />
-阶段3=>操作: index.styl <br />
+@flowstart
+stage1=>operation: palette.styl
+stage2=>operation: 默认 app 样式
+stage3=>operation: index.styl
 
-阶段1->阶段2->阶段3 <br />
+stage1->stage2->stage3
 @flowend
 
 <br>

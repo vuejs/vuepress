@@ -10,8 +10,8 @@ metaTitle: A plugin of automatically activating sidebar links when page scrolls 
 ## Install
 
 ```bash
-yarn add -D @vuepress/plugin-active-header-links@next
-# OR npm install -D @vuepress/plugin-active-header-links@next
+yarn add -D @vuepress/plugin-active-header-links
+# OR npm install -D @vuepress/plugin-active-header-links
 ```
 
 ## Usage
@@ -23,12 +23,12 @@ module.exports = {
 ```
 
 ### Passing Options
+
 ```javascript
 module.exports = {
   plugins: ['@vuepress/active-header-links', {
     sidebarLinkSelector: '.sidebar-link',
-    headerAnchorSelector: '.header-anchor',
-    headerTopOffset: 120
+    headerAnchorSelector: '.header-anchor'
   }]
 }
 ```
@@ -44,4 +44,3 @@ module.exports = {
 
 - Type: `string`
 - Default: `.header-anchor`
-

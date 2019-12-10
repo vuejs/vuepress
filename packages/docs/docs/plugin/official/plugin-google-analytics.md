@@ -15,6 +15,10 @@ yarn add -D @vuepress/plugin-google-analytics
 # OR npm install -D @vuepress/plugin-google-analytics
 ```
 
+::: warning
+We currently recommend using [Yarn](https://yarnpkg.com/en/) instead of npm to install all dependencies if you are using Google Analytics Plugin, because npm fails to generate the correct dependency tree in this case.
+:::
+
 ## Usage
 
 ```javascript

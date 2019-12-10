@@ -6,6 +6,7 @@ import SWUpdateEvent from './SWUpdateEvent'
 import event from './event'
 
 if (SW_UPDATE_POPUP) {
+  // eslint-disable-next-line vue/match-component-file-name
   Vue.component('SWUpdatePopup', () => import('./SWUpdatePopup.vue'))
 }
 

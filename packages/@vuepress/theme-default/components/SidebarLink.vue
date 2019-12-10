@@ -73,7 +73,7 @@ function renderLink (h, to, text, active, level) {
     }
   }
 
-  return h('router-link', component, text)
+  return h('RouterLink', component, text)
 }
 
 function renderChildren (h, children, path, route, maxDepth, depth = 1) {

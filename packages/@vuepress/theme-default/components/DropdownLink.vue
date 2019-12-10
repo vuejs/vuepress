@@ -13,44 +13,47 @@
       <span
         class="arrow"
         :class="open ? 'down' : 'right'"
-      ></span>
+      />
     </button>
 
     <DropdownTransition>
       <ul
-        class="nav-dropdown"
         v-show="open"
+        class="nav-dropdown"
       >
         <li
-          class="dropdown-item"
-          :key="subItem.link || index"
           v-for="(subItem, index) in item.items"
+          :key="subItem.link || index"
+          class="dropdown-item"
         >
-          <h4 v-if="subItem.type === 'links'">{{ subItem.text }}</h4>
+          <h4 v-if="subItem.type === 'links'">
+            {{ subItem.text }}
+          </h4>
 
           <ul
-            class="dropdown-subitem-wrapper"
             v-if="subItem.type === 'links'"
+            class="dropdown-subitem-wrapper"
           >
             <li
-              class="dropdown-subitem"
-              :key="childSubItem.link"
               v-for="childSubItem in subItem.items"
+              :key="childSubItem.link"
+              class="dropdown-subitem"
             >
               <NavLink
+                :item="childSubItem"
                 @focusout="
                   isLastItemOfArray(childSubItem, subItem.items) &&
-                  isLastItemOfArray(subItem, item.items) &&
-                  setOpen(false)
+                    isLastItemOfArray(subItem, item.items) &&
+                    setOpen(false)
                 "
-                :item="childSubItem"/>
+              />
             </li>
           </ul>
 
           <NavLink
             v-else
-            @focusout="isLastItemOfArray(subItem, item.items) && setOpen(false)"
             :item="subItem"
+            @focusout="isLastItemOfArray(subItem, item.items) && setOpen(false)"
           />
         </li>
       </ul>
@@ -64,12 +67,11 @@ import DropdownTransition from '@theme/components/DropdownTransition.vue'
 import last from 'lodash/last'
 
 export default {
-  components: { NavLink, DropdownTransition },
+  name: 'DropdownLink',
 
-  data () {
-    return {
-      open: false
-    }
+  components: {
+    NavLink,
+    DropdownTransition
   },
 
   props: {
@@ -78,10 +80,21 @@ export default {
     }
   },
 
-  computed: {
+  data () {
+    return {
+      open: false
+    }
+  },
 
+  computed: {
     dropdownAriaLabel () {
       return this.item.ariaLabel || this.item.text
+    }
+  },
+
+  watch: {
+    $route () {
+      this.open = false
     }
   },
 
@@ -92,12 +105,6 @@ export default {
 
     isLastItemOfArray (item, array) {
       return last(array) === item
-    }
-  },
-
-  watch: {
-    $route () {
-      this.open = false
     }
   }
 }

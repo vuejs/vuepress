@@ -66,7 +66,7 @@ You can also run the above script in your CI setup to enable automatic deploymen
 
 2. Create a file named `.travis.yml` in the root of your project.
 
-3. Run `npm install` locally and commit `package-lock.json` as it’s required for `npm ci`.
+3. Run `yarn` or `npm install` locally and commit the generated lockfile (i.e. `yarn.lock` or `package-lock.json`).
 
 4. Use GitHub Pages deploy provider template and follow the [travis documentation](https://docs.travis-ci.com/user/deployment/pages/).
 
@@ -75,15 +75,15 @@ language: node_js
 node_js:
   - lts/*
 install:
-  - npm ci
+  - yarn install # npm ci
 script:
-  - npm run docs:build
+  - yarn docs:build # npm run docs:build
 deploy:
   provider: pages
-  skip-cleanup: true
+  skip_cleanup: true
   local_dir: docs/.vuepress/dist
-  github-token: $GITHUB_TOKEN # a token generated on github allowing travis to push code on you repository
-  keep-history: true
+  github_token: $GITHUB_TOKEN # A token generated on GitHub allowing Travis to push code on you repository. Set in the Travis settings page of your repository, as a secure variable
+  keep_history: true
   on:
     branch: master
 ```
@@ -109,8 +109,8 @@ pages:
     - node_modules/
 
   script:
-  - npm install
-  - npm run docs:build
+  - yarn install # npm install
+  - yarn docs:build # npm run docs:build
   artifacts:
     paths:
     - public
@@ -121,9 +121,9 @@ pages:
 
 ## Netlify
 
-1. On Netlify, setup up a new project from GitHub with the following settings:
+1. On [Netlify](https://netlify.com), setup up a new project from GitHub with the following settings:
 
-- **Build Command:** `npm run docs:build` or `yarn docs:build`
+- **Build Command:** `yarn docs:build` or `npm run docs:build`
 - **Publish directory:** `docs/.vuepress/dist`
 
 2. Hit the deploy button!

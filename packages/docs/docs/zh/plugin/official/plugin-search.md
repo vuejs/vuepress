@@ -10,8 +10,8 @@ metaTitle: Search 插件 | VuePress
 ## 安装
 
 ```bash
-yarn add -D @vuepress/plugin-search@next
-# OR npm install -D @vuepress/plugin-search@next
+yarn add -D @vuepress/plugin-search
+# OR npm install -D @vuepress/plugin-search
 ```
 
 ::: tip

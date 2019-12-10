@@ -8,8 +8,8 @@ import parseEmojis from './parseEmojis'
 // sidebar or title.
 //
 // But header's parsing in the markdown content is done by the markdown
-// loader based on markdown-it. markdown-it parser will will always keep
-// HTML in headers, so in VuePress, after being parsed by the markdiwn
+// loader based on markdown-it. markdown-it parser will always keep
+// HTML in headers, so in VuePress, after being parsed by the markdown
 // loader, the raw HTML in headers will finally be parsed by Vue-loader.
 // so that we can write HTML/Vue in the header. One exception is the HTML
 // wrapped by <code>(markdown token: '`') tag.

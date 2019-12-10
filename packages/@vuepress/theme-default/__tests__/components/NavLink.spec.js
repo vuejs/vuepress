@@ -11,7 +11,7 @@ describe('NavLink', () => {
     const wrapper = mount(NavLink, {
       localVue: createLocalVue(),
       stubs: {
-        'router-link': RouterLinkStub
+        'RouterLink': RouterLinkStub
       },
       propsData: { item }
     })

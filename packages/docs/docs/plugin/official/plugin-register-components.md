@@ -5,13 +5,13 @@ metaTitle: Register Components Plugin | VuePress
 
 # [@vuepress/plugin-register-components](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-register-components)
 
-> register-components plugin for vuepress
+> register-components plugin for VuePress
 
 ## Install
 
 ```bash
-yarn add -D @vuepress/plugin-register-components@next
-# OR npm install -D @vuepress/plugin-register-components@next
+yarn add -D @vuepress/plugin-register-components
+# OR npm install -D @vuepress/plugin-register-components
 ```
 
 ## Usage

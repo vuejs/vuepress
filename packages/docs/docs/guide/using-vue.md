@@ -232,7 +232,7 @@ It(<OutboundLink/>) is used to specify that this is an external link. In VuePres
 
 See [Browser API Access Restrictions](#browser-api-access-restrictions).
 
-### Content <Badge text="1.0.0+"/>
+### Content
 
 - **Props**:
 
@@ -254,7 +254,7 @@ Specify a specific slot for a specific page (.md) for rendering. This will be us
 - [Writing a theme > Content Outlet](../theme/writing-a-theme.md#content-outlet)
 
 
-### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/> <Badge text="default theme"/>
+### Badge <Badge text="beta" type="warn"/> <Badge text="default theme"/>
 
 - **Props**:
 
@@ -267,7 +267,7 @@ Specify a specific slot for a specific page (.md) for rendering. This will be us
 You can use this component in header to add some status for some API:
 
 ``` md
-### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/> <Badge text="default theme"/>
+### Badge <Badge text="beta" type="warn"/> <Badge text="default theme"/>
 ```
 
 **Also see:**

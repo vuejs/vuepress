@@ -10,8 +10,8 @@ metaTitle: 页面滚动时自动激活侧边栏链接的插件 | VuePress
 ## 安装
 
 ```bash
-yarn add -D @vuepress/plugin-active-header-links@next
-# OR npm install -D @vuepress/plugin-active-header-links@next
+yarn add -D @vuepress/plugin-active-header-links
+# OR npm install -D @vuepress/plugin-active-header-links
 ```
 
 ## 使用
@@ -19,6 +19,17 @@ yarn add -D @vuepress/plugin-active-header-links@next
 ```javascript
 module.exports = {
   plugins: ['@vuepress/active-header-links']
+}
+```
+
+### 配置选项
+
+```javascript
+module.exports = {
+  plugins: ['@vuepress/active-header-links', {
+    sidebarLinkSelector: '.sidebar-link',
+    headerAnchorSelector: '.header-anchor'
+  }]
 }
 ```
 

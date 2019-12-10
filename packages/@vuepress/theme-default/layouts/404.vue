@@ -2,8 +2,10 @@
   <div class="theme-container">
     <div class="theme-default-content">
       <h1>404</h1>
+
       <blockquote>{{ getMsg() }}</blockquote>
-      <router-link :to="localePath">{{ notFoundLinkText }}</router-link>
+
+      <RouterLink :to="localePath">{{ notFoundLinkText }}</RouterLink>
     </div>
   </div>
 </template>

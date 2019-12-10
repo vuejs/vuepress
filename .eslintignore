@@ -1,2 +1,6 @@
 **/node_modules
+!.eslintrc.js
+!.commitlintrc.js
+!.vuepress
 packages/@vuepress/shared-utils/lib
+packages/@vuepress/shared-utils/types

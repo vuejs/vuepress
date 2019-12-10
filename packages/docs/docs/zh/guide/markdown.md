@@ -35,7 +35,7 @@
 [bar - four](../bar/four.html) <!-- 也可以用 .html -->
 ```
 
-### 链接的重定向 <Badge text="1.0.0-alpha.37"/>
+### 链接的重定向
 
 VuePress 支持重定向到干净链接。如果一个链接 `/foo` 找不到，VuePress 会自行寻找一个可用的 `/foo/` 或 `/foo.html`。反过来，当 `/foo/` 或 `/foo.html` 中的一个找不到时，VuePress 也会尝试寻找另一个。借助这种特性，我们可以通过官方插件 [vuepress-plugin-clean-urls](https://vuepress.github.io/plugins/clean-urls/) 定制你的网站路径。
 
@@ -99,6 +99,8 @@ lang: en-US
 
 :tada: :100:
 
+你可以在[这个列表](https://github.com/markdown-it/markdown-it-emoji/blob/master/lib/data/full.json)找到所有可用的 Emoji。
+
 ## 目录
 
 **输入**
@@ -121,44 +123,64 @@ lang: en-US
 
 **输入**
 
-```
+```md
 ::: tip
-This is a tip
+这是一个提示
 :::
 
 ::: warning
-This is a warning
+这是一个警告
 :::
 
 ::: danger
-This is a dangerous warning
+这是一个危险警告
+:::
+
+::: details
+这是一个详情块，在 IE / Edge 中不生效
 :::
 ```
 
 **输出**
 
 ::: tip
-This is a tip
+这是一个提示
 :::
 
 ::: warning
-This is a warning
+这是一个警告
 :::
 
 ::: danger
-This is a dangerous thing
+这是一个危险警告
+:::
+
+::: details
+这是一个详情块，在 IE / Edge 中不生效
 :::
 
 你也可以自定义块中的标题：
 
-```
+````md
 ::: danger STOP
-Danger zone, do not proceed
+危险区域，禁止通行
 :::
+
+::: details 点击查看代码
+```js
+console.log('你好，VuePress！')
 ```
+:::
+````
 
 ::: danger STOP
-Danger zone, do not proceed
+危险区域，禁止通行
+:::
+
+::: details 点击查看代码
+```js
+console.log('你好，VuePress！')
+```
 :::
 
 **参考:**

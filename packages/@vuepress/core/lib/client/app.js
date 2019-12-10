@@ -38,6 +38,7 @@ Vue.use(VuePress)
 Vue.mixin(dataMixin(ClientComputedMixin, siteData))
 // component for rendering markdown content and setting title etc.
 
+/* eslint-disable vue/match-component-file-name */
 Vue.component('Content', Content)
 Vue.component('ContentSlotsDistributor', ContentSlotsDistributor)
 Vue.component('OutboundLink', OutboundLink)
@@ -46,6 +47,7 @@ Vue.component('ClientOnly', ClientOnly)
 // core components
 Vue.component('Layout', getLayoutAsyncComponent('Layout'))
 Vue.component('NotFound', getLayoutAsyncComponent('NotFound'))
+/* eslint-disable-next-line vue/match-component-file-name */
 
 // global helper for adding base path to absolute urls
 Vue.prototype.$withBase = function (path) {
@@ -102,7 +104,7 @@ export function createApp (isServer) {
       router,
       render (h) {
         return h('div', { attrs: { id: 'app' }}, [
-          h('router-view', { ref: 'layout' }),
+          h('RouterView', { ref: 'layout' }),
           h('div', { class: 'global-ui' }, globalUIComponents.map(component => h(component)))
         ])
       }

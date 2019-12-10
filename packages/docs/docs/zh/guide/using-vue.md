@@ -229,7 +229,7 @@ export default {
 
 参考 [浏览器的 API 访问限制](#浏览器的-api-访问限制)。
 
-### Content <Badge text="1.0.0+"/>
+### Content
 
 - **Props**:
 
@@ -252,7 +252,7 @@ export default {
 - [开发主题 > 获取渲染内容](../theme/writing-a-theme.md#获取渲染内容)
 
 
-### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/> <Badge text="默认主题"/>
+### Badge <Badge text="beta" type="warn"/> <Badge text="默认主题"/>
 
 - **Props**:
 
@@ -265,7 +265,7 @@ export default {
 你可以在标题中，使用这个组件来为某些 API 添加一些状态：
 
 ``` md
-### Badge <Badge text="beta" type="warn"/> <Badge text="0.10.1+"/> <Badge text="默认主题"/>
+### Badge <Badge text="beta" type="warn"/> <Badge text="默认主题"/>
 ```
 
 **参考:**

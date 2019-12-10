@@ -1,33 +1,32 @@
 {
-  "private": true,
-  "version": "1.2.0",
   "name": "docs",
+  "version": "1.2.0",
+  "private": true,
   "description": "docs of VuePress",
-  "scripts": {
-    "precommit": "lint-staged",
-    "dev": "vuepress dev docs --temp .temp",
-    "build": "vuepress build docs --temp .temp",
-    "view-info": "vuepress view-info docs --temp .temp",
-    "show-help": "vuepress --help",
-    "lint-md:wording": "textlint ./docs/**/*.md",
-    "lint-md:style": "remark --quiet --frail .",
-    "lint-md": "yarn lint-md:style && yarn lint-md:wording"
+  "keywords": [
+    "documentation",
+    "generator",
+    "vue"
+  ],
+  "homepage": "https://github.com/vuejs/vuepress#readme",
+  "bugs": {
+    "url": "https://github.com/vuejs/vuepress/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vuejs/vuepress.git"
   },
-  "keywords": [
-    "documentation",
-    "vue",
-    "generator"
-  ],
-  "author": "Evan You",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/vuejs/vuepress/issues"
+  "author": "Evan You",
+  "scripts": {
+    "build": "vuepress build docs --temp .temp",
+    "dev": "vuepress dev docs --temp .temp",
+    "lint-md": "yarn lint-md:style && yarn lint-md:wording",
+    "lint-md:style": "remark --quiet --frail .",
+    "lint-md:wording": "textlint ./docs/**/*.md",
+    "show-help": "vuepress --help",
+    "view-info": "vuepress view-info docs --temp .temp"
   },
-  "homepage": "https://github.com/vuejs/vuepress#readme",
   "devDependencies": {
     "@textlint-rule/textlint-rule-no-unmatched-pair": "^1.0.7",
     "@vuepress/plugin-back-to-top": "^1.2.0",
@@ -35,7 +34,6 @@
     "@vuepress/plugin-medium-zoom": "^1.2.0",
     "@vuepress/plugin-pwa": "^1.2.0",
     "@vuepress/theme-vue": "^1.2.0",
-    "lint-staged": "^8.1.5",
     "remark-cli": "^7.0.0",
     "remark-lint": "^6.0.5",
     "remark-preset-lint-consistent": "^2.0.3",

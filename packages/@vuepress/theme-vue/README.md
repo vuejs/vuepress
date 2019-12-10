@@ -1,3 +1,3 @@
 # @vuepress/theme-vue
 
-> theme-vue for vuepress
+> theme-vue for VuePress

@@ -55,13 +55,13 @@ module.exports = ctx => ({
           '/api/': getApiSidebar(),
           '/guide/': getGuideSidebar('Guide', 'Advanced'),
           '/plugin/': getPluginSidebar('Plugin', 'Introduction', 'Official Plugins'),
-          '/theme/': getThemeSidebar('Theme', 'Introduction'),
+          '/theme/': getThemeSidebar('Theme', 'Introduction')
         }
       },
       '/zh/': {
         label: '简体中文',
         selectText: '选择语言',
-        ariaLabel: "选择语言",
+        ariaLabel: '选择语言',
         editLinkText: '在 GitHub 上编辑此页',
         notFoundLinkText: 'Take me home.',
         notFoundMessages: [
@@ -94,17 +94,18 @@ module.exports = ctx => ({
     ['container', {
       type: 'vue',
       before: '<pre class="vue-container"><code>',
-      after: '</code></pre>',
+      after: '</code></pre>'
     }],
     ['container', {
       type: 'upgrade',
       before: info => `<UpgradePath title="${info}">`,
-      after: '</UpgradePath>',
+      after: '</UpgradePath>'
     }],
+    ['flowchart']
   ],
   extraWatchFiles: [
     '.vuepress/nav/en.js',
-    '.vuepress/nav/zh.js',
+    '.vuepress/nav/zh.js'
   ]
 })
 
@@ -129,7 +130,7 @@ function getGuideSidebar (groupA, groupB) {
         'markdown',
         'using-vue',
         'i18n',
-        'deploy',
+        'deploy'
       ]
     },
     {
@@ -167,7 +168,7 @@ function getPluginSidebar (pluginTitle, pluginIntro, officialPluginTitle) {
     {
       title: officialPluginTitle,
       collapsable: false,
-      children: officalPlugins,
+      children: officalPlugins
     }
   ]
 }
@@ -186,6 +187,6 @@ function getThemeSidebar (groupA, introductionA) {
         'default-theme-config',
         'inheritance'
       ]
-    },
+    }
   ]
 }

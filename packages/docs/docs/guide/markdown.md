@@ -35,7 +35,7 @@ And providing you are in `foo/one.md`:
 [bar - four](../bar/four.html) <!-- Or you can append .html -->
 ```
 
-### Redirection for URLs <Badge text="1.0.0-alpha.37"/>
+### Redirection for URLs
 
 VuePress supports redirecting to clean links. If a link `/foo` is not found, VuePress will look for a existing `/foo/` or `/foo.html`. Conversely, when one of `/foo/` or `/foo.html` is not found, VuePress will also try the other. With this feature, we can customize your website’s URLs with the official plugin [vuepress-plugin-clean-urls](https://vuepress.github.io/plugins/clean-urls/).
 
@@ -123,7 +123,7 @@ Rendering of TOC can be configured using the [`markdown.toc`](../config/README.m
 
 **Input**
 
-```
+```md
 ::: tip
 This is a tip
 :::
@@ -134,6 +134,10 @@ This is a warning
 
 ::: danger
 This is a dangerous warning
+:::
+
+::: details
+This is a details block, which does not work in IE / Edge
 :::
 ```
 
@@ -151,16 +155,32 @@ This is a warning
 This is a dangerous warning
 :::
 
+::: details
+This is a details block, which does not work in IE / Edge
+:::
+
 You can also customize the title of the block:
 
-```
+````md
 ::: danger STOP
 Danger zone, do not proceed
 :::
+
+::: details Click me to view the code
+```js
+console.log('Hello, VuePress!')
 ```
+:::
+````
 
 ::: danger STOP
 Danger zone, do not proceed
+:::
+
+::: details Click me to view the code
+```js
+console.log('Hello, VuePress!')
+```
 :::
 
 **Also see:**
