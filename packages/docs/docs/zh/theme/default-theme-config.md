@@ -402,7 +402,23 @@ module.exports = {
 
 ## 上 / 下一篇链接
 
-上一篇和下一篇文章的链接将会自动地根据当前页面的侧边栏的顺序来获取。你也可以使用 `YAML front matter` 来明确地重写或者禁用它：
+上一篇和下一篇文章的链接将会自动地根据当前页面的侧边栏的顺序来获取。
+
+你可以通过 `themeConfig.nextLinks` 和 `themeConfig.prevLinks` 来全局禁用它们：
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+    // 默认值是 true 。设置为 false 来禁用所有页面的 下一篇 链接
+    nextLinks: false,
+    // 默认值是 true 。设置为 false 来禁用所有页面的 上一篇 链接
+    prevLinks: false
+  }
+}
+```
+
+你也可以使用 `YAML front matter` 来明确地重写或者禁用它们：
 
 ``` yaml
 ---

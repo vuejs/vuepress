@@ -418,7 +418,23 @@ Note that it’s `off` by default. If given a `string`, it will be displayed as 
 
 ## Prev / Next Links
 
-Prev and next links are automatically inferred based on the sidebar order of the active page. You can also explicitly overwrite or disable them globally with [theme config](/theme/default-theme-config.html#git-repository-and-edit-links) or on specific pages using `YAML front matter`:
+Prev and next links are automatically inferred based on the sidebar order of the active page.
+
+You can disable them globally with `themeConfig.nextLinks` and `themeConfig.prevLinks`:
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+    // default value is true. Set it to false to hide next page links on all pages
+    nextLinks: false,
+    // default value is true. Set it to false to hide prev page links on all pages
+    prevLinks: false
+  }
+}
+```
+
+You can also explicitly overwrite or disable them for individual pages with `YAML front matter`:
 
 ``` yaml
 ---
@@ -451,10 +467,6 @@ module.exports = {
     docsBranch: 'master',
     // defaults to false, set to true to enable
     editLinks: true,
-    // default value is true. Allows to hide next page links on all pages
-    nextLinks: false,
-    // default value is true. Allows to hide prev page links on all pages
-    prevLinks: false,
     // custom text for edit link. Defaults to "Edit this page"
     editLinkText: 'Help us improve this page!'
   }
