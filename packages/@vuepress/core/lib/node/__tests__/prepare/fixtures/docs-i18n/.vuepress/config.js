@@ -24,10 +24,10 @@ module.exports = {
         lastUpdated: 'Last Updated',
         notFoundLinkText: 'Take me home.',
         notFoundMessages: [
-          "There's nothing here.",
-          'How did we get here?',
-          "That's a Four-Oh-Four.",
-          "Looks like we've got some broken links."
+          `There's nothing here.`,
+          `How did we get here?`,
+          `That's a Four-Oh-Four.`,
+          `Looks like we've got some broken links.`
         ]
       },
       '/zh/': {

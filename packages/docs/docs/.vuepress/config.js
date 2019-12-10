@@ -44,10 +44,10 @@ module.exports = ctx => ({
         editLinkText: 'Edit this page on GitHub',
         notFoundLinkText: 'Take me home.',
         notFoundMessages: [
-          "There's nothing here.",
-          'How did we get here?',
-          "That's a Four-Oh-Four.",
-          "Looks like we've got some broken links."
+          `There's nothing here.`,
+          `How did we get here?`,
+          `That's a Four-Oh-Four.`,
+          `Looks like we've got some broken links.`
         ],
         lastUpdated: 'Last Updated',
         nav: require('./nav/en'),
