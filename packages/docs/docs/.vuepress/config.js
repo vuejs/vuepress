@@ -45,7 +45,7 @@ module.exports = ctx => ({
         notFoundLinkText: 'Take me home.',
         notFoundMessages: [
           "There's nothing here.",
-          "How did we get here?",
+          'How did we get here?',
           "That's a Four-Oh-Four.",
           "Looks like we've got some broken links."
         ],
@@ -63,12 +63,12 @@ module.exports = ctx => ({
         selectText: '选择语言',
         ariaLabel: '选择语言',
         editLinkText: '在 GitHub 上编辑此页',
-        notFoundLinkText: 'Take me home.',
+        notFoundLinkText: '返回首页',
         notFoundMessages: [
-          "There's nothing here.",
-          "How did we get here?",
-          "That's a Four-Oh-Four.",
-          "Looks like we've got some broken links."
+          '这里什么都没有。',
+          '你怎么到这来了？',
+          '这是一个 404 页面。',
+          '看起来这是一个错误的链接。'
         ],
         lastUpdated: '上次更新',
         nav: require('./nav/zh'),

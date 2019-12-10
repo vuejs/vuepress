@@ -5,7 +5,9 @@
 
       <blockquote>{{ getMsg() }}</blockquote>
 
-      <RouterLink :to="localePath">{{ notFoundLinkText }}</RouterLink>
+      <RouterLink :to="localePath">
+        {{ notFoundLinkText }}
+      </RouterLink>
     </div>
   </div>
 </template>
