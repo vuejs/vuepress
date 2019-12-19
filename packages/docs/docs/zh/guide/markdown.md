@@ -314,7 +314,7 @@ module.exports = {
   }
 </style>
 
-## 导入代码段 <Badge text="beta" type="warn"/>
+## 导入代码段 <Badge text="beta" type="warning"/>
 
 你可以通过下述的语法导入已经存在的文件中的代码段：
 

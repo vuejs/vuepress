@@ -1,4 +1,4 @@
-# 主题的继承 <Badge type="warn" text="beta" />
+# 主题的继承 <Badge type="warning" text="beta" />
 
 ## 动机
 

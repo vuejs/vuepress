@@ -1,4 +1,4 @@
-# Theme Inheritance <Badge type="warn" text="beta" />
+# Theme Inheritance <Badge type="warning" text="beta" />
 
 ## Motivation
 

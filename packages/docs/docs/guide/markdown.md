@@ -313,7 +313,7 @@ module.exports = {
   }
 </style>
 
-## Import Code Snippets <Badge text="beta" type="warn"/>
+## Import Code Snippets <Badge text="beta" type="warning"/>
 
 You can import code snippets from existing files via following syntax:
 
