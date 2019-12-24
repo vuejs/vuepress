@@ -144,7 +144,7 @@ Specify which pattern of files you want to be resolved.
 
 To apply simple overrides to the styling of the [default preset](https://github.com/vuejs/vuepress/blob/master/packages/@vuepress/core/lib/client/style/config.styl) or define some variables to use later, you can create a `.vuepress/styles/palette.styl` file.
 
-There are some pre-defined variables you can tweak:
+There are some predefined variables you can tweak:
 
 ``` stylus
 // colors
