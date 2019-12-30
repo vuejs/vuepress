@@ -6,15 +6,15 @@ const usedPorts = []
  * Run jest
  *
  * @param {array} jestArgs an array of Jest CLI options
- * @param {array} rawArgs the processed process.argv - contains '--inspect-brk' for debug
+ * @param {array} debug whether start with '--inspect-brk' or not
  */
 
-module.exports = function createJestRunner (jestArgs, rawArgs) {
+module.exports = function createJestRunner (jestArgs, debug) {
   return async function () {
     const execArgv = getChildProcessExecArgv()
-    const args = [...execArgv, ...jestArgs]
+    const args = [require.resolve('jest-cli/bin/jest'), ...execArgv, ...jestArgs]
+    if (debug) args.unshift('--inspect-brk')
     console.log(`running node with args: ${args.join(' ')}`)
-    args.unshift(...rawArgs, require.resolve('jest-cli/bin/jest'))
     await execa('node', args, {
       stdio: 'inherit'
     })
