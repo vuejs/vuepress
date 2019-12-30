@@ -11,7 +11,7 @@ const usedPorts = []
 
 module.exports = function createJestRunner (jestArgs, rawArgs) {
   return async function () {
-    const execArgv = getChildProcesExecArgv()
+    const execArgv = getChildProcessExecArgv()
     const args = [...execArgv, ...jestArgs]
     console.log(`running node with args: ${args.join(' ')}`)
     args.unshift(...rawArgs, require.resolve('jest-cli/bin/jest'))
@@ -21,7 +21,7 @@ module.exports = function createJestRunner (jestArgs, rawArgs) {
   }
 }
 
-function getChildProcesExecArgv () {
+function getChildProcessExecArgv () {
   const execArgv = process.execArgv.slice(0)
   const inspectArgvIndex = execArgv.findIndex(argv =>
     argv.includes('--inspect-brk')
