@@ -1,9 +1,15 @@
 const execa = require('execa')
-const rawArgs = process.argv.slice(2)
 
 const usedPorts = []
 
-module.exports = function createJestRunner (jestArgs) {
+/**
+ * Run jest
+ *
+ * @param {array} jestArgs an array of Jest CLI options
+ * @param {array} rawArgs the processed process.argv - contains '--inspect-brk' for debug
+ */
+
+module.exports = function createJestRunner (jestArgs, rawArgs) {
   return async function () {
     const execArgv = getChildProcesExecArgv()
     const args = [...execArgv, ...jestArgs]

@@ -8,7 +8,7 @@ const args = minimist(rawArgs)
 let regex
 if (args.p) {
   const packages = (args.p || args.package).split(',').join('|')
-  regex = `.*@vuepress/(${packages}|plugin-(${packages}))/.*\\.spec\\.js$`
+  regex = `.*@vuepress/(${packages}|plugin-(${packages}))/.*\\.spec\\.(js|ts)$`
   const i = rawArgs.indexOf('-p')
   rawArgs.splice(i, 2)
 }
@@ -17,7 +17,7 @@ const jestRunner = createJestRunner([
   '--config', 'scripts/jest.config.js',
   '--runInBand',
   ...(regex ? [regex] : [])
-])
+], rawArgs)
 
 // ensure the basic temp files were generated
 createApp({
