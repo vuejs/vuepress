@@ -54,7 +54,7 @@ module.exports = (options, ctx) => ({
 **Example:**
 
 - [@vuepress/plugin-register-components](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-register-components/index.js#L24): Automatically registering components on the client-side.
-- [@vuepress/plugin-pagination](https://github.com/vuejs/vuepress/blob/master/packages/@vuepress/plugin-pagination/index.js#L14): Automatically insert Vue plugins to expand the API of the client.
+- [@vuepress/plugin-google-analytics](https://github.com/vuejs/vuepress/blob/master/packages/@vuepress/plugin-google-analytics/enhanceAppFile.js): Automatically set up Google Analytics.
 
 ## When do I need to use `clientDynamicModules`?
 
@@ -63,5 +63,5 @@ module.exports = (options, ctx) => ({
 
 **Example:**
 
-- [@vuepress/plugin-blog](https://github.com/ulivz/vuepress-plugin-blog/blob/master/src/index.ts#L167): Using compile-time metadata to generate some dynamic blog-related modules and initialize them on the client-side by using `enhanceAppFiles`.
+- [@vuepress/plugin-blog](https://github.com/vuepressjs/vuepress-plugin-blog/blob/master/src/node/index.ts#L208): Using compile-time metadata to generate some dynamic blog-related modules and initialize them on the client-side by using `enhanceAppFiles`.
 
