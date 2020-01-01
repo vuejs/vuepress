@@ -14,7 +14,7 @@ The following guides are based on some shared assumptions:
 }
 ```
 
-## GitHub Pages
+## GitHub/GitLab Pages
 
 1. Set correct `base` in `docs/.vuepress/config.js`.
 
