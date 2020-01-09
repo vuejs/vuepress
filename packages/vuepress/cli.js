@@ -15,7 +15,7 @@ CLI({
   async beforeParse (cli) {
     const pkg = require('@vuepress/core/package.json')
     checkEnv(pkg)
-    updateNotifier({pkg}).notify()
+    updateNotifier({ pkg }).notify()
     registerCoreCommands(cli, OPTIONS)
     await handleUnknownCommand(cli, OPTIONS)
     cli.version(pkg.version).help()
