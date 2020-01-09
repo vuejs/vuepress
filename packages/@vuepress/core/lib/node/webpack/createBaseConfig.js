@@ -149,7 +149,7 @@ module.exports = function createBaseConfig (context, isServer) {
           // i.e.
           // @vuepress/*
           // vuepress-*
-          if (/(@vuepress\/[^\/]*|vuepress-[^\/]*)\/(?!node_modules).*\.js$/.test(filePath)) {
+          if (/(@vuepress[\/\\][^\/\\]*|vuepress-[^\/\\]*)[\/\\](?!node_modules).*\.js$/.test(filePath)) {
             return false
           }
           // Don't transpile node_modules
