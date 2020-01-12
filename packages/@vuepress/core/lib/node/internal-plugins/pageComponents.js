@@ -8,7 +8,8 @@ module.exports = (options, ctx) => {
     async clientDynamicModules () {
       const code = `export default {\n${pages
         .filter(({ _filePath }) => _filePath)
-        .map(({ key, _filePath }) => `  ${JSON.stringify(key)}: () => import(${JSON.stringify(_filePath)})`)
+        .map(({ key, _filePath, relativePath }) =>
+          `  ${JSON.stringify(key)}: () => import( /* webpackChunkName: "${relativePath}" */ ${JSON.stringify(_filePath)})`)
         .join(',\n')} \n}`
       return { name: 'page-components.js', content: code, dirname: 'internal' }
     }
