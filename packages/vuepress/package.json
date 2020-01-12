@@ -36,7 +36,8 @@
     "@vuepress/theme-default": "^1.2.0",
     "cac": "^6.3.9",
     "envinfo": "^7.2.0",
-    "opencollective-postinstall": "^2.0.2"
+    "opencollective-postinstall": "^2.0.2",
+    "update-notifier": "^4.0.0"
   },
   "collective": {
     "type": "opencollective",
