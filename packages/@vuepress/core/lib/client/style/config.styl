@@ -1,26 +1,26 @@
+@require '~@temp/palette.styl'
+
 // colors
-$accentColor = #3eaf7c
-$textColor = #2c3e50
-$borderColor = #eaecef
-$codeBgColor = #282c34
-$arrowBgColor = #ccc
-$badgeTipColor = #42b983
-$badgeWarningColor = darken(#ffe564, 35%)
-$badgeErrorColor = #DA5961
+$accentColor ?= #3eaf7c
+$textColor ?= #2c3e50
+$borderColor ?= #eaecef
+$codeBgColor ?= #282c34
+$arrowBgColor ?= #ccc
+$badgeTipColor ?= #42b983
+$badgeWarningColor ?= darken(#ffe564, 35%)
+$badgeErrorColor ?= #DA5961
 
 // layout
-$navbarHeight = 3.6rem
-$sidebarWidth = 20rem
-$contentWidth = 740px
-$homePageWidth = 960px
+$navbarHeight ?= 3.6rem
+$sidebarWidth ?= 20rem
+$contentWidth ?= 740px
+$homePageWidth ?= 960px
 
 // responsive breakpoints
-$MQNarrow = 959px
-$MQMobile = 719px
-$MQMobileNarrow = 419px
+$MQNarrow ?= 959px
+$MQMobile ?= 719px
+$MQMobileNarrow ?= 419px
 
 // code
-$lineNumbersWrapperWidth = 3.5rem
-$codeLang = js ts html md vue css sass scss less stylus go java c sh yaml py docker dockerfile makefile
-
-@import '~@temp/palette.styl'
+$lineNumbersWrapperWidth ?= 3.5rem
+$codeLang ?= js ts html md vue css sass scss less stylus go java c sh yaml py docker dockerfile makefile
