@@ -53,7 +53,8 @@ export default {
         repo,
         docsDir = '',
         docsBranch = 'master',
-        docsRepo = repo
+        docsRepo = repo,
+        editReplace = '/edit'
       } = this.$site.themeConfig
 
       if (showEditLink && docsRepo && this.$page.relativePath) {
@@ -62,7 +63,8 @@ export default {
           docsRepo,
           docsDir,
           docsBranch,
-          this.$page.relativePath
+          this.$page.relativePath,
+          editReplace
         )
       }
       return null
@@ -78,7 +80,7 @@ export default {
   },
 
   methods: {
-    createEditLink (repo, docsRepo, docsDir, docsBranch, path) {
+    createEditLink (repo, docsRepo, docsDir, docsBranch, path, editReplace) {
       const bitbucket = /bitbucket.org/
       if (bitbucket.test(repo)) {
         const base = outboundRE.test(docsRepo) ? docsRepo : repo
@@ -97,7 +99,7 @@ export default {
         : `https://github.com/${docsRepo}`
       return (
         base.replace(endingSlashRE, '')
-        + `/edit`
+        + `${editReplace}`
         + `/${docsBranch}/`
         + (docsDir ? docsDir.replace(endingSlashRE, '') + '/' : '')
         + path
