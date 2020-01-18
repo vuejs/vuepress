@@ -40,7 +40,7 @@ See [host](../config/README.md#host).
 Open browser when ready.
 
 ### --no-clear-screen
-Do not clear screen when dev server is ready.
+Do not clear screen when dev server is ready. Note that dev server will not clear screen if you start it in debug mode.
 
 ## eject
 
