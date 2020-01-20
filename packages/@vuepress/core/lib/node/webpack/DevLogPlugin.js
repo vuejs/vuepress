@@ -17,7 +17,7 @@ module.exports = class DevLogPlugin {
 
   apply (compiler) {
     let isFirst = true
-    const { displayHost, port, publicPath, clearScreen: shouldClearScreen = true } = this.options
+    const { displayHost, port, publicPath, clearScreen: shouldClearScreen } = this.options
 
     compiler.hooks.done.tap('vuepress-log', stats => {
       if (shouldClearScreen) {
