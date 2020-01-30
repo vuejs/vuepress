@@ -1,43 +1,43 @@
 {
   "name": "@vuepress/theme-default",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Default theme for VuePress",
-  "main": "index.js",
-  "publishConfig": {
-    "access": "public"
+  "keywords": [
+    "documentation",
+    "generator",
+    "vue",
+    "vuepress"
+  ],
+  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/theme-default#readme",
+  "bugs": {
+    "url": "https://github.com/vuejs/vuepress/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vuejs/vuepress.git",
     "directory": "packages/@vuepress/theme-default"
   },
-  "keywords": [
-    "documentation",
-    "vue",
-    "vuepress",
-    "generator"
-  ],
-  "author": "Evan You",
-  "maintainers": [
-    {
-      "name": "ULIVZ",
-      "email": "chl814@foxmail.com"
-    }
-  ],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/vuejs/vuepress/issues"
-  },
-  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/theme-default#readme",
+  "author": "Evan You",
+  "main": "index.js",
   "dependencies": {
-    "@vuepress/plugin-active-header-links": "^1.2.0",
-    "@vuepress/plugin-nprogress": "^1.2.0",
-    "@vuepress/plugin-search": "^1.2.0",
+    "@vuepress/plugin-active-header-links": "^1.3.0",
+    "@vuepress/plugin-nprogress": "^1.3.0",
+    "@vuepress/plugin-search": "^1.3.0",
     "docsearch.js": "^2.5.2",
     "lodash": "^4.17.15",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "vuepress-plugin-container": "^2.0.2",
     "vuepress-plugin-smooth-scroll": "^0.0.3"
-  }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "maintainers": [
+    {
+      "name": "ULIVZ",
+      "email": "chl814@foxmail.com"
+    }
+  ]
 }
