@@ -25,7 +25,7 @@ yarn add vuepress -D
 
 ## Documentation
 
-Docs are available at https://vuepress.vuejs.org/ - we are still working on refining it and contributions are welcome!
+Check out our docs at https://vuepress.vuejs.org/.
 
 ## Contribution
 
