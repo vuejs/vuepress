@@ -62,18 +62,20 @@ If you have a VuePress-related project/component/tool, add it with a pull reques
   </tr>
   <tr>
     <td align="center"><a href="https://frontstuff.io/"><img src="https://avatars0.githubusercontent.com/u/5370675?v=4" width="100px;" alt="Sarah Dayan"/><br /><sub><b>Sarah Dayan</b></sub></a><br /><a href="https://github.com/vuejs/vuepress/commits?author=sarahdayan" title="Code">💻</a> <a href="https://github.com/vuejs/vuepress/commits?author=sarahdayan" title="Documentation">📖</a></td>
+    <td align="center"><img src="https://avatars0.githubusercontent.com/u/18205362?s=400&v=4" width="100px;" alt="meteorlxy"/><br /><sub><b>meteorlxy</b></sub><br /><a href="https://github.com/vuejs/vuepress/commits?author=meteorlxy" title="Code">💻</a></td>
     <td align="center"><a href="https://sobolevn.me"><img src="https://avatars1.githubusercontent.com/u/4660275?v=4" width="100px;" alt="Nikita Sobolev"/><br /><sub><b>Nikita Sobolev</b></sub></a><br /><a href="https://github.com/vuejs/vuepress/commits?author=sobolevn" title="Code">💻</a> <a href="https://github.com/vuejs/vuepress/commits?author=sobolevn" title="Documentation">📖</a></td>
     <td align="center"><a href="https://twitter.com/CodesOfRa"><img src="https://avatars0.githubusercontent.com/u/945186?v=4" width="100px;" alt="Ramona"/><br /><sub><b>Ramona</b></sub></a><br /><a href="https://github.com/vuejs/vuepress/commits?author=CodesOfRa" title="Code">💻</a></td>
     <td align="center"><a href="https://fatihacet.com"><img src="https://avatars3.githubusercontent.com/u/712419?v=4" width="100px;" alt="Fatih Acet"/><br /><sub><b>Fatih Acet</b></sub></a><br /><a href="https://github.com/vuejs/vuepress/commits?author=fatihacet" title="Code">💻</a></td>
     <td align="center"><a href="https://rakowski.dev"><img src="https://avatars2.githubusercontent.com/u/15185752?v=4" width="100px;" alt="Filip Rakowski"/><br /><sub><b>Filip Rakowski</b></sub></a><br /><a href="https://github.com/vuejs/vuepress/commits?author=filrak" title="Code">💻</a></td>
     <td align="center"><a href="http://farcaller.net/"><img src="https://avatars2.githubusercontent.com/u/693?v=4" width="100px;" alt="Vladimir Pouzanov"/><br /><sub><b>Vladimir Pouzanov</b></sub></a><br /><a href="https://github.com/vuejs/vuepress/commits?author=farcaller" title="Code">💻</a></td>
+  </tr>
+  <tr>
     <td align="center"><a href="https://twitter.com/_vinayak_k"><img src="https://avatars2.githubusercontent.com/u/19776877?v=4" width="100px;" alt="Vinayak Kulkarni"/><br /><sub><b>Vinayak Kulkarni</b></sub></a><br /><a href="#plugin-vinayakkulkarni" title="Plugin/utility libraries">🔌</a> <a href="https://github.com/vuejs/vuepress/commits?author=vinayakkulkarni" title="Code">💻</a> <a href="#blog-vinayakkulkarni" title="Blogposts">📝</a></td>
   </tr>
 </table>
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
-
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ### Code Contributors
