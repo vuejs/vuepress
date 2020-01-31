@@ -17,15 +17,15 @@
 yarn add vuepress -D
 ```
 
+## Documentation
+
+Check out our docs at https://vuepress.vuejs.org/.
+
 ## Showcase
 
 - [Awesome VuePress](https://github.com/ulivz/awesome-vuepress)
 - [vuepress.gallery](https://vuepress.gallery) (by [@vicbergquist](https://twitter.com/vicbergquist))
 - [vuepress.tools](https://vuepress.tools/) (By [Ahmad Mostafa](https://ahmadmostafa.com))
-
-## Documentation
-
-Check out our docs at https://vuepress.vuejs.org/.
 
 ## Contribution
 
