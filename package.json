@@ -26,6 +26,7 @@
     "test": "node scripts/test.js",
     "tsc": "yarn workspace @vuepress/shared-utils tsc",
     "unregister-vuepress": "lerna exec --scope vuepress -- yarn unlink",
+    "update-core-team": "all-contributors generate",
     "view-info": "yarn tsc && yarn workspace docs view-info"
   },
   "husky": {
