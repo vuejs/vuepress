@@ -1,0 +1,17 @@
+version: 1
+update_configs:
+  # Keep package.json (& lockfiles) up to date as soon as
+  # new versions are published to the npm registry
+  - package_manager: "javascript"
+    directory: "/"
+    update_schedule: "live"
+    # Apply default reviewer and label to created
+    # pull requests
+    default_reviewers:
+      - "vinayakkulkarni"
+    default_labels:
+      - "dependencies"
+    commit_message:
+      prefix: "fix"
+      prefix_development: "chore"
+      include_scope: true
