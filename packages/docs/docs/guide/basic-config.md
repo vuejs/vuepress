@@ -41,6 +41,7 @@ To develop a custom theme, see [Writing a theme](../theme/writing-a-theme.md).
 Since the VuePress app is a standard Vue app, you can apply app-level enhancements by creating a file `.vuepress/enhanceApp.js`, which will be imported into the app if it’s present. The file should `export default` a hook function which will receive an object containing some app-level values. You can use this hook to install extra Vue plugins, register global components, or add extra router hooks:
 
 ``` js
+// async function is also supported, too
 export default ({
   Vue, // the version of Vue being used in the VuePress app
   options, // the options for the root Vue instance
