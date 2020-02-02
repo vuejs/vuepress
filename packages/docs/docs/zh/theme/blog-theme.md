@@ -2,7 +2,7 @@
 
 ## 网站
 
-- [文檔](https://vuepress-theme-blog.ulivz.com)
+- [文档](https://vuepress-theme-blog.ulivz.com)
 - [线上范例](https://example.vuepress-theme-blog.ulivz.com/)
 - [线上范例 - ULIVZ's space](https://ulivz.com/)
 - [线上范例 - Billyyyyy3320's space](https://billyyyyy3320.com/)
