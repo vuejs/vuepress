@@ -89,10 +89,12 @@ module.exports = class Build extends EventEmitter {
     // render pages
     logger.wait('Rendering static HTML...')
 
-    const pagePaths = []
+    const pagePathsPromises = []
     for (const page of this.context.pages) {
-      pagePaths.push(await this.renderPage(page))
+      pagePathsPromises.push(this.renderPage(page))
     }
+
+    const pagePaths = await Promise.all(pagePathsPromises)
 
     readline.clearLine(process.stdout, 0)
     readline.cursorTo(process.stdout, 0)
@@ -134,9 +136,6 @@ module.exports = class Build extends EventEmitter {
 
   async renderPage (page) {
     const pagePath = decodeURIComponent(page.path)
-    readline.clearLine(process.stdout, 0)
-    readline.cursorTo(process.stdout, 0)
-    process.stdout.write(`Rendering page: ${pagePath}`)
 
     // #565 Avoid duplicate description meta at SSR.
     const meta = (page.frontmatter && page.frontmatter.meta || []).filter(item => item.name !== 'description')
