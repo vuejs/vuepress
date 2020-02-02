@@ -135,7 +135,7 @@ module.exports = function createBaseConfig (context, isServer) {
     const libDir = path.join(__dirname, '..')
     config.module
       .rule('js')
-        .test(/\.js$/)
+        .test(/\.jsx?$/)
         .exclude.add(filePath => {
           // Always transpile lib directory
           if (filePath.startsWith(libDir)) {

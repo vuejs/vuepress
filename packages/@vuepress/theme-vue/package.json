@@ -1,35 +1,35 @@
 {
   "name": "@vuepress/theme-vue",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "VuePress theme for official Vue projects",
-  "main": "index.js",
-  "publishConfig": {
-    "access": "public"
+  "keywords": [
+    "documentation",
+    "generator",
+    "vue",
+    "vuepress"
+  ],
+  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/theme-vue#readme",
+  "bugs": {
+    "url": "https://github.com/vuejs/vuepress/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vuejs/vuepress.git",
     "directory": "packages/@vuepress/theme-vue"
   },
-  "keywords": [
-    "documentation",
-    "vue",
-    "vuepress",
-    "generator"
-  ],
+  "license": "MIT",
   "author": "Evan You",
+  "main": "index.js",
+  "dependencies": {
+    "@vuepress/theme-default": "^1.3.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "maintainers": [
     {
       "name": "ULIVZ",
       "email": "chl814@foxmail.com"
     }
-  ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/vuejs/vuepress/issues"
-  },
-  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/theme-vue#readme",
-  "dependencies": {
-    "@vuepress/theme-default": "^1.2.0"
-  }
+  ]
 }
