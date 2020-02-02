@@ -59,7 +59,7 @@ Vue.prototype.$withBase = function (path) {
   }
 }
 
-export function createApp (isServer) {
+export async function createApp (isServer) {
   const routerBase = typeof window !== 'undefined' && window.__VUEPRESS_ROUTER_BASE__
     ? window.__VUEPRESS_ROUTER_BASE__
     : (siteData.routerBase || siteData.base)
@@ -90,11 +90,11 @@ export function createApp (isServer) {
   const options = {}
 
   try {
-    appEnhancers.forEach(enhancer => {
-      if (typeof enhancer === 'function') {
-        enhancer({ Vue, options, router, siteData, isServer })
-      }
-    })
+    await Promise.all(
+      appEnhancers
+        .filter(enhancer => typeof enhancer === 'function')
+        .map(enhancer => enhancer({ Vue, options, router, siteData, isServer }))
+    )
   } catch (e) {
     console.error(e)
   }
