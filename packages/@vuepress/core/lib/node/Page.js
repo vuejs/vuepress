@@ -289,14 +289,19 @@ module.exports = class Page {
     const enhancerPromises = []
 
     for (const { name: pluginName, value: enhancer } of enhancers) {
-      try {
-        enhancerPromises.push(enhancer(this))
-      } catch (error) {
-        console.log(error)
-        throw new Error(`[${pluginName}] execute extendPageData failed.`)
-      }
+      const enhancerResult = enhancer(this)
+      const promise = enhancerResult instanceof Promise ? enhancerResult : Promise.resolve(enhancerResult)
+
+      enhancerPromises.push(promise.catch(e => {
+        console.log(e)
+        return new Error(`[${pluginName}] execute extendPageData failed.`)
+      }))
     }
 
-    return Promise.all(enhancerPromises)
+    const results = await Promise.all(enhancerPromises)
+    const enhancerError = results.find(result => result instanceof Error)
+    if (enhancerError) throw enhancerError
+
+    return results
   }
 }
