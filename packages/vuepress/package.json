@@ -23,7 +23,7 @@
     "vuepress": "cli.js"
   },
   "scripts": {
-    "postinstall": "opencollective-postinstall || true"
+    "postinstall": "opencollective-postinstall || exit 0"
   },
   "browserslist": [
     ">1%"
