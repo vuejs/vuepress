@@ -26,6 +26,7 @@ const { applyUserWebpackConfig } = require("../util/index");
 module.exports = class Build extends EventEmitter {
   constructor(context) {
     super();
+    process.env.NODE_ENV = "production";
     this.context = context;
     this.outDir = this.context.outDir;
   }
@@ -89,22 +90,22 @@ module.exports = class Build extends EventEmitter {
 
     // if the user does not have a custom 404.md, generate the theme's default
     if (!this.context.pages.some(p => p.path === "/404.html")) {
-      await this.context.addPage({ path: "/404.html" });
+      this.context.addPage({ path: "/404.html" });
     }
 
     // render pages
     logger.wait("Rendering static HTML...");
+
     let activeWorkers = 0;
     const pagePaths = [];
     const pagesPerThread = this.context.pages.length / threads;
 
     for (let i = 0; i < threads; i++) {
       const startIndex = i * pagesPerThread;
-      const endIndex =
-        startIndex + pagesPerThread > this.context.pages.length
-          ? this.context.pages.length + 1
-          : startIndex + pagesPerThread;
-      const pageData = this.context.pages.slice(startIndex, endIndex);
+      const pageData = this.context.pages.slice(
+        startIndex,
+        startIndex + pagesPerThread
+      );
       const pages = pageData.map(p => ({
         path: p.path,
         frontmatter: JSON.stringify(p.frontmatter)
@@ -124,19 +125,28 @@ module.exports = class Build extends EventEmitter {
       const worker = new Worker(path.join(__dirname, "./worker.js"));
       worker.postMessage(payload);
       activeWorkers++;
-      worker.on("message", paths => {
-        pagePaths.concat(paths);
+      worker.on("message", response => {
+        if (response.complete) {
+          pagePaths.concat(response.filePaths);
+        }
+        if (response.message) {
+          logger.wait(response.message);
+        }
       });
       worker.on("error", error => {
+        // readline.cursorTo(process.stdout, 0, i)
+        // readline.clearLine(process.stdout, 0)
         console.error(
           logger.error(
-            chalk.red(`Worker #${i} sent error: ${error}\n\n${error.stack}\n`),
+            chalk.red(`Worker #${i} sent error: ${error}\n\n${error.stack}`),
             false
           )
         );
       });
       worker.on("exit", code => {
         activeWorkers--;
+        // readline.cursorTo(process.stdout, 0, i)
+        // readline.clearLine(process.stdout, 0)
         if (code === 0) {
           logger.success(`Worker ${i} completed successfully.`);
         } else {
