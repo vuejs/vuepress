@@ -1,3 +1,46 @@
+# [](https://github.com/vuejs/vuepress/compare/v1.3.0...v) (2020-01-30)
+
+
+
+# [1.3.0](https://github.com/vuejs/vuepress/compare/v1.2.0...v1.3.0) (2020-01-30)
+
+
+### Bug Fixes
+
+* update known command list ([#2146](https://github.com/vuejs/vuepress/issues/2146)) ([2b25740](https://github.com/vuejs/vuepress/commit/2b25740))
+* **$cli:** inferUserDocsDirectory ignore all node_modules ([#2137](https://github.com/vuejs/vuepress/issues/2137)) ([df59909](https://github.com/vuejs/vuepress/commit/df59909))
+* **$core:** set NODE_ENV before creating app ([#1972](https://github.com/vuejs/vuepress/issues/1972)) ([245be8d](https://github.com/vuejs/vuepress/commit/245be8d))
+* **$core:** temp option in siteConfig has not effect (fix [#2038](https://github.com/vuejs/vuepress/issues/2038)) ([#2040](https://github.com/vuejs/vuepress/issues/2040)) ([0bb85a4](https://github.com/vuejs/vuepress/commit/0bb85a4))
+* **$default-theme:** deep sidebar links rendenring ([#1973](https://github.com/vuejs/vuepress/issues/1973)) ([0e5519a](https://github.com/vuejs/vuepress/commit/0e5519a))
+* **$docs:** Fixed typo ([#1997](https://github.com/vuejs/vuepress/issues/1997)) ([7d6e420](https://github.com/vuejs/vuepress/commit/7d6e420))
+* **$docs:** Uniforming VuePress labels in documentation (fix [#1998](https://github.com/vuejs/vuepress/issues/1998)) ([6a84126](https://github.com/vuejs/vuepress/commit/6a84126))
+* **$markdown:** Fix four spaces codeblocks rendering (Closes [#1921](https://github.com/vuejs/vuepress/issues/1921)) ([#1958](https://github.com/vuejs/vuepress/issues/1958)) ([7bc5825](https://github.com/vuejs/vuepress/commit/7bc5825))
+* **$plugin-google-analytics:** duplicate tracking of first page (fix [#2017](https://github.com/vuejs/vuepress/issues/2017)) ([#2039](https://github.com/vuejs/vuepress/issues/2039)) ([a69df21](https://github.com/vuejs/vuepress/commit/a69df21))
+* **$plugin-pwa:** no global-ui-component when updatePopup is disabled ([#2041](https://github.com/vuejs/vuepress/issues/2041)) ([6f9e478](https://github.com/vuejs/vuepress/commit/6f9e478))
+* **$shared-utils:** Add curly quotes to rSpecial ([#1934](https://github.com/vuejs/vuepress/issues/1934)) ([28a0ed9](https://github.com/vuejs/vuepress/commit/28a0ed9))
+* **$theme-default:** close dropdown-links when focusout on the last item (close [#1948](https://github.com/vuejs/vuepress/issues/1948)) ([#1952](https://github.com/vuejs/vuepress/issues/1952)) ([cd72acc](https://github.com/vuejs/vuepress/commit/cd72acc))
+* **$theme-default:** slots don't allow customization for Sidebar & Page (close: [#1950](https://github.com/vuejs/vuepress/issues/1950)) ([#1951](https://github.com/vuejs/vuepress/issues/1951)) ([890e85d](https://github.com/vuejs/vuepress/commit/890e85d))
+* **$theme-default:** use alias for nested SidebarLinks (close [#2049](https://github.com/vuejs/vuepress/issues/2049)) ([ceccca3](https://github.com/vuejs/vuepress/commit/ceccca3))
+* **$theme-default:** wrong algolia search route with base config ([#2007](https://github.com/vuejs/vuepress/issues/2007)) ([b00b277](https://github.com/vuejs/vuepress/commit/b00b277))
+
+
+### Features
+
+* **$cli:** Notify users of a newer release ([#2121](https://github.com/vuejs/vuepress/issues/2121)) ([7a09a72](https://github.com/vuejs/vuepress/commit/7a09a72))
+* **$cli:** run debug mode without clearing screen (close [#2100](https://github.com/vuejs/vuepress/issues/2100)) ([#2116](https://github.com/vuejs/vuepress/issues/2116)) ([c6a3cb5](https://github.com/vuejs/vuepress/commit/c6a3cb5))
+* **$core:** Add generator meta tag to ssr index.html template ([#2133](https://github.com/vuejs/vuepress/issues/2133)) ([2826cd7](https://github.com/vuejs/vuepress/commit/2826cd7))
+* add variable to config HomePage width (close [#2055](https://github.com/vuejs/vuepress/issues/2055)) ([#2086](https://github.com/vuejs/vuepress/issues/2086)) ([b72d145](https://github.com/vuejs/vuepress/commit/b72d145))
+* remove unnecessary check in moduleResolver.ts ([#2068](https://github.com/vuejs/vuepress/issues/2068)) ([bd71e43](https://github.com/vuejs/vuepress/commit/bd71e43))
+* **$config:** Allow overriding badges colors (close [#1940](https://github.com/vuejs/vuepress/issues/1940)) ([#1941](https://github.com/vuejs/vuepress/issues/1941)) ([89a4a8d](https://github.com/vuejs/vuepress/commit/89a4a8d))
+* **$markdown:** `extractHeaders` option (close: [#1903](https://github.com/vuejs/vuepress/issues/1903)) ([#1945](https://github.com/vuejs/vuepress/issues/1945)) ([d2fef5d](https://github.com/vuejs/vuepress/commit/d2fef5d))
+* **$markdown:** Support for Rust file extension ([73089a0](https://github.com/vuejs/vuepress/commit/73089a0))
+* **$theme-default:** allow optional subtitle ([#1981](https://github.com/vuejs/vuepress/issues/1981)) ([a28804c](https://github.com/vuejs/vuepress/commit/a28804c))
+* **$theme-default:** external links in prev/next (close [#1962](https://github.com/vuejs/vuepress/issues/1962))([#1984](https://github.com/vuejs/vuepress/issues/1984)) ([9f28814](https://github.com/vuejs/vuepress/commit/9f28814))
+* **$theme-default:** markdown details custom block (close [#768](https://github.com/vuejs/vuepress/issues/768)) ([#2044](https://github.com/vuejs/vuepress/issues/2044)) ([7f2a997](https://github.com/vuejs/vuepress/commit/7f2a997))
+* **$theme-default:** Support configuring target and rel for nav links (close [#1353](https://github.com/vuejs/vuepress/issues/1353)) ([#1734](https://github.com/vuejs/vuepress/issues/1734)) ([770ba72](https://github.com/vuejs/vuepress/commit/770ba72))
+
+
+
 # [1.2.0](https://github.com/vuejs/vuepress/compare/v1.1.0...v1.2.0) (2019-10-11)
 
 

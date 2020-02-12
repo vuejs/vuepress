@@ -1,29 +1,32 @@
 {
   "name": "@vuepress/test-utils",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "test-utils for vuepress",
-  "main": "index.js",
-  "publishConfig": {
-    "access": "public"
+  "keywords": [
+    "documentation",
+    "generator",
+    "vue",
+    "vuepress"
+  ],
+  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/test-utils#readme",
+  "bugs": {
+    "url": "https://github.com/vuejs/vuepress/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vuejs/vuepress.git",
     "directory": "packages/@vuepress/test-utils"
   },
-  "keywords": [
-    "documentation",
-    "vue",
-    "vuepress",
-    "generator"
-  ],
+  "license": "MIT",
+  "author": "ULIVZ <chl814@foxmail.com>",
+  "main": "index.js",
   "dependencies": {
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@types/jest": "^24.0.9",
     "@vue/test-utils": "^1.0.0-beta.29",
-    "@vuepress/core": "^1.2.0",
-    "@vuepress/shared-utils": "^1.2.0",
+    "@vuepress/core": "^1.3.0",
+    "@vuepress/shared-utils": "^1.3.0",
     "babel-jest": "^24.7.1",
     "execa": "^1.0.0",
     "jest": "^24.7.1",
@@ -33,10 +36,7 @@
     "vue-jest": "^4.0.0-beta.1",
     "vue-template-compiler": "^2.6.10"
   },
-  "author": "ULIVZ <chl814@foxmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/vuejs/vuepress/issues"
-  },
-  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/test-utils#readme"
+  "publishConfig": {
+    "access": "public"
+  }
 }
