@@ -213,6 +213,6 @@ git push heroku master
 heroku open
 ```
 
-## Now
+## ZEIT Now
 
-Please check out [Deploy an example VuePress site with Now](https://zeit.co/examples/vuepress/).
+Please check out [Deploy an example VuePress site with ZEIT Now](https://github.com/zeit/now/tree/master/examples/vuepress).
