@@ -47,17 +47,18 @@ module.exports = function (cli, options) {
     .option('-d, --dest <dest>', 'specify build output dir (default: .vuepress/dist)')
     .option('-t, --temp <temp>', 'set the directory of the temporary file')
     .option('-c, --cache [cache]', 'set the directory of cache')
+    .option('-w, --workers <#>', 'set the number of worker threads')
     .option('--dest <dest>', 'the output directory for build process')
     .option('--no-cache', 'clean the cache before build')
     .option('--debug', 'build in development mode for debugging')
     .option('--silent', 'build static site in silent mode')
     .action((sourceDir = '.', commandOptions) => {
-      const { debug, silent } = commandOptions
+      const { debug, silent, workers } = commandOptions
 
       logger.setOptions({ logLevel: silent ? 1 : debug ? 4 : 3 })
       logger.debug('global_options', options)
       logger.debug('build_options', commandOptions)
-      env.setOptions({ isDebug: debug, isTest: process.env.NODE_ENV === 'test' })
+      env.setOptions({ isDebug: debug, isTest: process.env.NODE_ENV === 'test', workerThreads: workers || 1 })
 
       wrapCommand(build)({
         sourceDir: path.resolve(sourceDir),

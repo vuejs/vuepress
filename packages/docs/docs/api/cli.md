@@ -16,6 +16,9 @@ See [port](../config/README.md#port).
 ### -t, --temp `<temp>`
 See [temp](../config/README.md#temp).
 
+### -w, --worker `<#>`
+Specifies the number of Node [worker_threads](https://nodejs.org/api/worker_threads.html) to use. Defaults to `1`.
+
 ### -c, --cache `[cache]`
 ### --no-cache
 See [cache](../config/README.md#cache).
