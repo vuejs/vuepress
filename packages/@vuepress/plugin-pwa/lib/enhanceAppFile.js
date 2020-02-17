@@ -1,11 +1,11 @@
-/* global SW_BASE_URL, SW_ENABLED, GA_ID, ga, SW_UPDATE_POPUP */
+/* global SW_BASE_URL, SW_ENABLED, GA_ID, ga, SW_UPDATE_POPUP, SW_POPUP_COMPONENT */
 
 import Vue from 'vue'
 import { register } from 'register-service-worker'
 import SWUpdateEvent from './SWUpdateEvent'
 import event from './event'
 
-if (SW_UPDATE_POPUP) {
+if (SW_UPDATE_POPUP && SW_POPUP_COMPONENT === 'SWUpdatePopup') {
   // eslint-disable-next-line vue/match-component-file-name
   Vue.component('SWUpdatePopup', () => import('./SWUpdatePopup.vue'))
 }
