@@ -210,6 +210,6 @@ git push heroku master
 heroku open
 ```
 
-## Now
+## ZEIT Now
 
-请查看 [用 Now 部署一个 VuePress 的示例站点](https://zeit.co/examples/vuepress/).
+请查看 [用 ZEIT Now 部署一个 VuePress 的示例站点](https://github.com/zeit/now/tree/master/examples/vuepress).
