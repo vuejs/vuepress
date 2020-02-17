@@ -141,12 +141,15 @@ module.exports = function createBaseConfig (context, isServer) {
           if (filePath.startsWith(libDir)) {
             return false
           }
-          // always transpile js in vue files
-          if (/\.vue\.js$/.test(filePath)) {
+          // always transpile js in vue files and md files
+          if (/\.(vue|md)\.js$/.test(filePath)) {
             return false
           }
-          // transpile all core files
-          if (/(@vuepress|vuepress-)\/^((?!node_modules).)*\.js$/.test(filePath)) {
+          // transpile all core packages and vuepress related packages.
+          // i.e.
+          // @vuepress/*
+          // vuepress-*
+          if (/(@vuepress[\/\\][^\/\\]*|vuepress-[^\/\\]*)[\/\\](?!node_modules).*\.js$/.test(filePath)) {
             return false
           }
           // Don't transpile node_modules
