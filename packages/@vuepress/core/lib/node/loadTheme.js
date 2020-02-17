@@ -63,7 +63,7 @@ function normalizeThemePath (resolved) {
   const { entry, name, fromDep } = resolved
   if (fromDep) {
     const packageRoot = require.resolve(`${name}/package.json`)
-    const { main } = require(packageRoot)
+    const { main = '' } = require(packageRoot)
     if (main.endsWith('.vue')) {
       // For those cases that "main" field is set to .vue file
       // e.g. `layouts/Layout.vue`
