@@ -4,7 +4,7 @@ This project uses a monorepo setup that requires using [Yarn](https://yarnpkg.co
 
 ``` sh
 # Install dependencies & compile TypeScript utilities.
-yarn bootstrap
+yarn boot
 
 # Clean dependencies.
 yarn clean

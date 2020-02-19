@@ -13,10 +13,10 @@ VuePress 正在使用包含了 [Yarn Workspaces](https://yarnpkg.com/zh-Hans/doc
 ## 初始化 package
 
 ```bash
- yarn bootstrap // 它将运行并安装根目录和所有 package 的依赖
+ yarn boot // 它将运行并安装根目录和所有 package 的依赖
 ```
 
-`yarn bootstrap` 将使用 `hoist`。它对你意味着什么？
+`yarn boot` 将使用 `hoist`。它对你意味着什么？
 
 它将重组工作空间根目录中的所有依赖项并链接所有 package。
 

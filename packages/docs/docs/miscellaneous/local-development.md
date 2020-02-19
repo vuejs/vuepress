@@ -13,10 +13,10 @@ VuePress is using a combo with [Yarn workspaces](https://yarnpkg.com/lang/en/doc
 ## Init packages
 
 ```bash
- yarn bootstrap // it will run and install into the root all packages subfolders
+ yarn boot // it will run and install into the root all packages subfolders
 ```
 
-`yarn bootstrap` will use hoisting. What does it mean for you ?
+`yarn boot` will use hoisting. What does it mean for you ?
 
 It will regroup all dependencies in the workspace root and link all packages.
 
