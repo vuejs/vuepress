@@ -1,3 +1,24 @@
+# [](https://github.com/vuejs/vuepress/compare/v1.3.1...v) (2020-02-20)
+
+
+
+## [1.3.1](https://github.com/vuejs/vuepress/compare/v1.3.0...v1.3.1) (2020-02-20)
+
+
+### Bug Fixes
+
+* **$core:** resolve jsx files by default (close [#2058](https://github.com/vuejs/vuepress/issues/2058)) ([#2059](https://github.com/vuejs/vuepress/issues/2059)) ([f083d8d](https://github.com/vuejs/vuepress/commit/f083d8d))
+* **$core:** transpile vuepress packages and md files (close [#1606](https://github.com/vuejs/vuepress/issues/1606), [#1990](https://github.com/vuejs/vuepress/issues/1990)) ([#2064](https://github.com/vuejs/vuepress/issues/2064)) ([0ca620f](https://github.com/vuejs/vuepress/commit/0ca620f))
+* **$plugin-pwa:** popup component does not work (close [#2172](https://github.com/vuejs/vuepress/issues/2172)) ([#2187](https://github.com/vuejs/vuepress/issues/2187)) ([560b3c6](https://github.com/vuejs/vuepress/commit/560b3c6))
+* **$theme-default:** non-ASCII hash causes wrong sidebar highlight (close [#2078](https://github.com/vuejs/vuepress/issues/2078))([#2166](https://github.com/vuejs/vuepress/issues/2166)) ([ca3679c](https://github.com/vuejs/vuepress/commit/ca3679c))
+
+
+### Features
+
+* **$core:** support async enhanceApp (close [#2074](https://github.com/vuejs/vuepress/issues/2074)) ([#2075](https://github.com/vuejs/vuepress/issues/2075)) ([2d53fbb](https://github.com/vuejs/vuepress/commit/2d53fbb))
+
+
+
 # [](https://github.com/vuejs/vuepress/compare/v1.3.0...v) (2020-01-30)
 
 
