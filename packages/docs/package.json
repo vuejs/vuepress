@@ -1,6 +1,6 @@
 {
   "name": "docs",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "private": true,
   "description": "docs of VuePress",
   "keywords": [
@@ -29,11 +29,11 @@
   },
   "devDependencies": {
     "@textlint-rule/textlint-rule-no-unmatched-pair": "^1.0.7",
-    "@vuepress/plugin-back-to-top": "^1.3.0",
-    "@vuepress/plugin-google-analytics": "^1.3.0",
-    "@vuepress/plugin-medium-zoom": "^1.3.0",
-    "@vuepress/plugin-pwa": "^1.3.0",
-    "@vuepress/theme-vue": "^1.3.0",
+    "@vuepress/plugin-back-to-top": "^1.3.1",
+    "@vuepress/plugin-google-analytics": "^1.3.1",
+    "@vuepress/plugin-medium-zoom": "^1.3.1",
+    "@vuepress/plugin-pwa": "^1.3.1",
+    "@vuepress/theme-vue": "^1.3.1",
     "remark-cli": "^7.0.0",
     "remark-lint": "^6.0.5",
     "remark-preset-lint-consistent": "^2.0.3",
@@ -48,7 +48,7 @@
     "textlint-rule-terminology": "^1.1.30",
     "textlint-rule-write-good": "^1.6.2",
     "vue-toasted": "^1.1.25",
-    "vuepress": "^1.3.0",
+    "vuepress": "^1.3.1",
     "vuepress-plugin-flowchart": "^1.4.2"
   }
 }
