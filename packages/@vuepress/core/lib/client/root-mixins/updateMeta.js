@@ -1,3 +1,5 @@
+import unionBy from 'lodash/unionBy'
+
 export default {
   created () {
     if (this.$ssrContext) {
@@ -8,8 +10,19 @@ export default {
   },
 
   mounted () {
+    // init currentMetaTags from DOM
+    this.currentMetaTags = [...document.querySelectorAll('meta')]
+
+    // indirectly init siteMetaTags from DOM
+    this.siteMetaTags = this.currentMetaTags.map(element => {
+      const siteMeta = {}
+      for (const attribute of element.attributes) {
+        siteMeta[attribute.name] = attribute.value
+      }
+      return siteMeta
+    })
+
     // update title / meta tags
-    this.currentMetaTags = new Set()
     this.updateMeta()
   },
 
@@ -17,22 +30,14 @@ export default {
     updateMeta () {
       document.title = this.$title
       document.documentElement.lang = this.$lang
-      const userMeta = this.$page.frontmatter.meta || []
-      const meta = userMeta.slice(0)
-      const useGlobalDescription = userMeta.filter(m => m.name === 'description').length === 0
 
-      // #665 Avoid duplicate description meta at runtime.
-      if (useGlobalDescription) {
-        meta.push({ name: 'description', content: this.$description })
-      }
+      const pageMetaTags = (this.$page.frontmatter.meta || []).slice(0)
+      // pageMetaTags have higher priority than siteMetaTags
+      // description needs special attention for it has too many entries
+      const newMetaTags = unionBy([{ name: 'description', content: this.$description }],
+        pageMetaTags, this.siteMetaTags, metaIdentifier)
 
-      // Including description meta coming from SSR.
-      const descriptionMetas = document.querySelectorAll('meta[name="description"]')
-      if (descriptionMetas.length) {
-        descriptionMetas.forEach(m => this.currentMetaTags.add(m))
-      }
-
-      this.currentMetaTags = new Set(updateMetaTags(meta, this.currentMetaTags))
+      this.currentMetaTags = updateMetaTags(newMetaTags, this.currentMetaTags)
     }
   },
 
@@ -47,14 +52,20 @@ export default {
   }
 }
 
-function updateMetaTags (meta, current) {
-  if (current) {
-    [...current].forEach(c => {
+/**
+ * Replace currentMetaTags with newMetaTags
+ * @param {Array<Object>} newMetaTags
+ * @param {Array<HTMLElement>} currentMetaTags
+ * @returns {Array<HTMLElement>}
+ */
+function updateMetaTags (newMetaTags, currentMetaTags) {
+  if (currentMetaTags) {
+    [...currentMetaTags].forEach(c => {
       document.head.removeChild(c)
     })
   }
-  if (meta) {
-    return meta.map(m => {
+  if (newMetaTags) {
+    return newMetaTags.map(m => {
       const tag = document.createElement('meta')
       Object.keys(m).forEach(key => {
         tag.setAttribute(key, m[key])
@@ -63,4 +74,18 @@ function updateMetaTags (meta, current) {
       return tag
     })
   }
+}
+
+/**
+ * Try to identify a meta tag by name, property or itemprop
+ *
+ * Return a complete string if none provided
+ * @param {Object} tag from frontmatter or siteMetaTags
+ * @returns {String}
+ */
+function metaIdentifier (tag) {
+  for (const item of ['name', 'property', 'itemprop']) {
+    if (tag.hasOwnProperty(item)) return tag[item] + item
+  }
+  return JSON.stringify(tag)
 }
