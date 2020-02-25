@@ -76,6 +76,8 @@ install:
   - yarn install # npm ci
 script:
   - yarn docs:build # npm run docs:build
+  # - echo 'www.example.com' > CNAME # 如果是发布到自定义域名
+
 deploy:
   provider: pages
   skip_cleanup: true
