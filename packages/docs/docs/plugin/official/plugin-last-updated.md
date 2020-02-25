@@ -55,3 +55,26 @@ If you are running in [i18n](../../guide/i18n.md) mode, you can also use the sec
 
 Note that in VuePress, we follow this spec: [W3C > Language tags in HTML and XML](https://en.wikipedia.org/wiki/Language_localisation), so `en-US` uses hyphens (`-`) instead of underscores (`_`). Please make sure that the library you are using follows this spec, otherwise please convert it yourself.
 :::
+
+### dateOptions
+
+- Type: `object`
+- Default: `undefined`
+
+You can also pass in an options object to customize the timestamp output. For more properties check [`Date.prototype.toLocaleString()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString) options argument
+
+```javascript
+
+module.exports = {
+  plugins: [
+    [
+      '@vuepress/last-updated',
+      {
+        dateOptions:{
+          hours12: false
+        }
+      }
+    ]
+  ]
+}
+```
