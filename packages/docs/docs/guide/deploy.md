@@ -13,6 +13,16 @@ The following guides are based on some shared assumptions:
   }
 }
 ```
+- You have a `.vuepress/config.js`, with a `base` set per your desired deployment platform, example file syntax as follows.
+```javascript
+module.exports = {
+    title: "VuePress Generated",
+    //description : "use for meta description",
+    base: "/"
+};
+
+```
+
 
 ## GitHub Pages
 
@@ -123,7 +133,7 @@ pages:
 
 1. On [Netlify](https://netlify.com), setup up a new project from GitHub with the following settings:
 
-- **Build Command:** `yarn docs:build` or `npm run docs:build`
+- **Build Command:** `vuepress build docs` or `yarn docs:build` or `npm run docs:build`
 - **Publish directory:** `docs/.vuepress/dist`
 
 2. Hit the deploy button!
