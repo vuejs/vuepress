@@ -290,7 +290,7 @@ module.exports = class Page {
       const enhancerResult = enhancer(this)
       const promise = enhancerResult instanceof Promise ? enhancerResult : Promise.resolve(enhancerResult)
 
-      promise.catch(e => {
+      return promise.catch(e => {
         console.log(e)
         return new Error(`[${pluginName}] execute extendPageData failed.`)
       })
