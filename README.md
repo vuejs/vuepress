@@ -23,16 +23,16 @@ Check out our docs at https://vuepress.vuejs.org/.
 
 ## Showcase
 
-- [Awesome VuePress](https://github.com/ulivz/awesome-vuepress)
+- [Awesome VuePress](https://github.com/vuepressjs/awesome-vuepress)
 - [vuepress.gallery](https://vuepress.gallery) (by [@vicbergquist](https://twitter.com/vicbergquist))
 - [vuepress.tools](https://vuepress.tools/) (By [Ahmad Mostafa](https://ahmadmostafa.com))
 
 ## Contribution
 
-Want to contribute? Check our [issues for beginners](https://github.com/vuejs/vuepress/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22)!
+Want to contribute? Check our [Contributing Guide](.github/CONTRIBUTING.md) and [issues for beginners](https://github.com/vuejs/vuepress/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22)!
 
 ```bash
-yarn bootstrap # Install and link dependencies for this lerna repo
+yarn install # install all dependencies
 yarn dev  # serves VuePress' own docs with itself
 yarn test # make sure your code change pass the test
 ```
@@ -41,7 +41,7 @@ If you don't have a local checkout, you can also open [VuePress in Gitpod](https
 
 If you intend to make `"substantial"` changes to VuePress or its documentation, please checkout [VuePress RFCs](./rfcs/README.md).
 
-If you have a VuePress-related project/component/tool, add it with a pull request to [this curated list](https://github.com/ulivz/awesome-vuepress)!
+If you have a VuePress-related project/component/tool, add it with a pull request to [this curated list](https://github.com/vuepressjs/awesome-vuepress)!
 
 ## Contributors
 
