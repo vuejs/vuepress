@@ -1,3 +1,4 @@
+// Reference: https://github.com/Oktavilla/markdown-it-table-of-contents
 const defaults = {
   includeLevel: [2, 3],
   containerClass: 'table-of-contents',
@@ -13,12 +14,12 @@ const defaults = {
 
 module.exports = (md, options) => {
   options = Object.assign({}, defaults, options)
-  const tocRegexp = options.markerPattern
-  let gstate
+  var gstate
+
+  // Insert TOC rules after emphasis
+  md.inline.ruler.after('emphasis', 'toc', toc)
 
   function toc (state, silent) {
-    var token
-
     /**
      * Reject if
      * 1. in validation mode
@@ -27,29 +28,27 @@ module.exports = (md, options) => {
      */
     if (silent // validation mode
       || state.src.charCodeAt(state.pos) !== 0x5B /* [ */
-      || !tocRegexp.test(state.src.substr(state.pos))) {
+      || !options.markerPattern.test(state.src.substr(state.pos))) {
       return false
     }
 
     // Build content
-    token = state.push('toc_open', 'toc', 1)
-    token.markup = '[[toc]]'
-    token = state.push('toc_body', '', 0)
-    token = state.push('toc_close', 'toc', -1)
+    state.push('toc_open', 'toc', 1)
+    state.push('toc_body', '', 0)
+    state.push('toc_close', 'toc', -1)
 
     // Update pos so the parser can continue
-    var newline = state.src.indexOf('\n', state.pos)
-    if (newline !== -1) {
-      state.pos = newline
-    } else {
-      state.pos = state.pos + state.posMax + 1
-    }
+    const newline = state.src.indexOf('\n', state.pos)
+
+    state.pos = newline !== -1
+      ? newline
+      : state.pos + state.posMax + 1
 
     return true
   }
 
   md.renderer.rules.toc_open = function () {
-    var tocOpenHtml = `<div class="${options.containerClass}">`
+    var tocOpenHtml = `</p><div class="${options.containerClass}">`
 
     if (options.containerHeaderHtml) {
       tocOpenHtml += options.containerHeaderHtml
@@ -65,7 +64,7 @@ module.exports = (md, options) => {
       tocFooterHtml = options.containerFooterHtml
     }
 
-    return tocFooterHtml + `</div>`
+    return tocFooterHtml + `</div><p>`
   }
 
   md.renderer.rules.toc_body = function () {
@@ -84,12 +83,12 @@ module.exports = (md, options) => {
          - heading 3
       - heading 1
       */
-      var tocBody = ''
-      var pos = 0
-      var tokenLength = gstate && gstate.tokens && gstate.tokens.length
+      let tocBody = ''
+      let pos = 0
+      const tokenLength = gstate && gstate.tokens && gstate.tokens.length
 
       while (pos < tokenLength) {
-        var tocHierarchy = renderChildsTokens(pos, gstate.tokens)
+        const tocHierarchy = renderChildsTokens(pos, gstate.tokens)
         pos = tocHierarchy[0]
         tocBody += tocHierarchy[1]
       }
@@ -108,8 +107,8 @@ module.exports = (md, options) => {
     var size = tokens.length
     var i = pos
     while (i < size) {
-      var token = tokens[i]
-      var heading = tokens[i - 1]
+      const token = tokens[i]
+      const heading = tokens[i - 1]
       var level = token.tag && parseInt(token.tag.substr(1, 1))
       if (token.type !== 'heading_close' || options.includeLevel.indexOf(level) === -1 || heading.type !== 'inline') {
         i++; continue // Skip if not matching criteria
@@ -135,8 +134,11 @@ module.exports = (md, options) => {
           headings.push(buffer)
         }
       }
-      var slugifiedContent = options.slugify(heading.content)
-      var link = '#' + slugifiedContent
+      let link = tokens[i - 2].attrGet('id')
+        ? tokens[i - 2].attrGet('id')
+        : options.slugify(heading.content)
+
+      link = '#' + link
       if (options.transformLink) {
         link = options.transformLink(link)
       }
@@ -151,10 +153,7 @@ module.exports = (md, options) => {
   }
 
   // Catch all the tokens for iteration later
-  md.core.ruler.push('grab_state', function (state) {
+  md.core.ruler.push('grab_state', state => {
     gstate = state
   })
-
-  // Insert TOC
-  md.inline.ruler.after('emphasis', 'toc', toc)
 }
