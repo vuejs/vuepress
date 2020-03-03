@@ -14,7 +14,7 @@ const defaults = {
 
 module.exports = (md, options) => {
   options = Object.assign({}, defaults, options)
-  var gstate
+  var gStateTokens
 
   // Insert TOC rules after emphasis
   md.inline.ruler.after('emphasis', 'toc', toc)
@@ -84,76 +84,56 @@ module.exports = (md, options) => {
       - heading 1
       */
       let tocBody = ''
-      let pos = 0
-      const tokenLength = gstate && gstate.tokens && gstate.tokens.length
 
-      while (pos < tokenLength) {
-        const tocHierarchy = renderChildsTokens(pos, gstate.tokens)
-        pos = tocHierarchy[0]
-        tocBody += tocHierarchy[1]
+      for (let pos = 0; pos < gStateTokens.length;) {
+        const [nextPos, subBody] = renderChildrenTokens(pos, gStateTokens)
+        pos = nextPos
+        tocBody += subBody
       }
 
       return tocBody
     } else {
-      return renderChildsTokens(0, gstate.tokens)[1]
+      return renderChildrenTokens(0, gStateTokens)[1]
     }
   }
 
-  function renderChildsTokens (pos, tokens) {
-    var headings = []
-    var buffer = ''
-    var currentLevel
-    var subHeadings
-    var size = tokens.length
-    var i = pos
-    while (i < size) {
-      const token = tokens[i]
-      const heading = tokens[i - 1]
-      var level = token.tag && parseInt(token.tag.substr(1, 1))
-      if (token.type !== 'heading_close' || options.includeLevel.indexOf(level) === -1 || heading.type !== 'inline') {
-        i++; continue // Skip if not matching criteria
-      }
-      if (!currentLevel) {
-        currentLevel = level// We init with the first found level
-      } else {
+  function renderChildrenTokens (pos, tokens) {
+    const headings = []
+    for (let i = pos, currentLevel; i < tokens.length; i++) {
+      const level = tokens[i].tag && parseInt(tokens[i].tag.substr(1, 1))
+      if (tokens[i].type === 'heading_close' && options.includeLevel.indexOf(level) > -1 && tokens[i - 1].type === 'inline') {
+        // init currentLevel at first round
+        currentLevel = currentLevel || level
+
         if (level > currentLevel) {
-          subHeadings = renderChildsTokens(i, tokens)
-          buffer += subHeadings[1]
-          i = subHeadings[0]
+          const [nextPos, subHeadings] = renderChildrenTokens(i, tokens)
+          i = nextPos
+          // nest ul into parent li
+          const last = headings.pop()
+          headings.push(last.slice(0, last.length - 5))
+          headings.push(subHeadings + '</li>')
           continue
-        }
-        if (level < currentLevel) {
-          // Finishing the sub headings
-          buffer += `</li>`
-          headings.push(buffer)
+        } else if (level < currentLevel) {
           return [i, `<${options.listType}>${headings.join('')}</${options.listType}>`]
         }
-        if (level === currentLevel) {
-          // Finishing the sub headings
-          buffer += `</li>`
-          headings.push(buffer)
-        }
-      }
-      let link = tokens[i - 2].attrGet('id')
-        ? tokens[i - 2].attrGet('id')
-        : options.slugify(heading.content)
 
-      link = '#' + link
-      if (options.transformLink) {
-        link = options.transformLink(link)
+        // get content from previous inline token
+        const content = tokens[i - 1].content
+        // instead of slugify the content directly, try to find id created by markdown-it-anchor first
+        let link = '#' + (tokens[i - 2].attrGet('id') || options.slugify(content))
+        link = typeof options.transformLink === 'function' ? options.transformLink(link) : link
+
+        let element = `<li><a href="${link}">`
+        element += typeof options.format === 'function' ? options.format(content) : content
+        element += `</a></li>`
+        headings.push(element)
       }
-      buffer = `<li><a href="${link}">`
-      buffer += typeof options.format === 'function' ? options.format(heading.content) : heading.content
-      buffer += `</a>`
-      i++
     }
-    buffer += buffer === '' ? '' : `</li>`
-    headings.push(buffer)
-    return [i, `<${options.listType}>${headings.join('')}</${options.listType}>`]
+    return [tokens.length, `<${options.listType}>${headings.join('')}</${options.listType}>`]
   }
 
   // Catch all the tokens for iteration later
   md.core.ruler.push('grab_state', state => {
-    gstate = state
+    gStateTokens = state.tokens.slice(0)
   })
 }
