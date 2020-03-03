@@ -227,6 +227,8 @@ module.exports = {
 }
 ```
 
+To actually get this example works, `foo` folder must exists. If not, sidebar will not be generated.
+
 Sidebar groups are collapsable by default. You can force a group to be always open with `collapsable: false`.
 
 A sidebar group config also supports [sidebarDepth](#nested-header-links) field to override the default sidebar depth (`1`).
