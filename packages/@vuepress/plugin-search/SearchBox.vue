@@ -121,6 +121,12 @@ export default {
     }
   },
 
+  watch: {
+    query: function () {
+      this.focusIndex = 0
+    }
+  },
+
   mounted () {
     this.placeholder = this.$site.themeConfig.searchPlaceholder || ''
     document.addEventListener('keydown', this.onHotkey)
