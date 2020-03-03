@@ -107,7 +107,7 @@ module.exports = (md, options) => {
 
         if (level > currentLevel) {
           const [nextPos, subHeadings] = renderChildrenTokens(i, tokens)
-          i = nextPos
+          i = nextPos - 1
           // nest ul into parent li
           const last = headings.pop()
           headings.push(last.slice(0, last.length - 5))
