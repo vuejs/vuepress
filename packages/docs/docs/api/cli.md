@@ -4,7 +4,7 @@ sidebarDepth: 3
 
 # Command-line Interface
 
-There are currently four cli commands in VuePress: [build](#build), [dev](#dev), [eject](#eject) and [info](#info).
+Currently, there are four cli commands in VuePress: [build](#build), [dev](#dev), [eject](#eject) and [info](#info).
 
 If they are not enough for you, you can also create [your own commands](#more-commands).
 
@@ -12,9 +12,15 @@ If they are not enough for you, you can also create [your own commands](#more-co
 
 ```bash
 vuepress <command> [options]
+
+Commands:
+  dev [targetDir]    start development server
+  build [targetDir]  build dir as static site
+  eject [targetDir]  copy the default theme into .vuepress/theme for customization.
+  info               Shows debugging information about the local environment
 ```
 
-You can always add `--help` flag to get to know more about cli commands.
+You can always add `--help` flag for more information.
 
 ## Commands
 
