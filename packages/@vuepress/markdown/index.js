@@ -19,7 +19,6 @@ const emojiPlugin = require('markdown-it-emoji')
 const anchorPlugin = require('markdown-it-anchor')
 const {
   slugify: _slugify,
-  parseHeaders,
   logger, chalk, normalizeConfig,
   moduleResolver: { getMarkdownItResolver }
 } = require('@vuepress/shared-utils')
@@ -94,10 +93,7 @@ module.exports = (markdown = {}) => {
       .end()
 
     .plugin(PLUGINS.TOC)
-      .use(tocPlugin, [Object.assign({
-        slugify,
-        format: parseHeaders
-      }, toc)])
+      .use(tocPlugin, [toc])
       .end()
 
   if (lineNumbers) {

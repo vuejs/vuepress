@@ -1,11 +1,13 @@
 // Reference: https://github.com/Oktavilla/markdown-it-table-of-contents
+const { slugify, parseHeaders } = require('@vuepress/shared-utils')
+
 const defaults = {
   includeLevel: [2, 3],
   containerClass: 'table-of-contents',
-  slugify: undefined,
+  slugify,
   markerPattern: /^\[\[toc\]\]/im,
   listType: 'ul',
-  format: undefined,
+  format: parseHeaders,
   forceFullToc: false,
   containerHeaderHtml: undefined,
   containerFooterHtml: undefined,
