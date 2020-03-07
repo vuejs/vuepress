@@ -12,8 +12,7 @@ export default (query, page, additionalStr = null) => {
     domain += ` ${additionalStr}`
   }
 
-  const result = matchTest(query, domain)
-  return result
+  return matchTest(query, domain)
 }
 
 const matchTest = (query, domain) => {
