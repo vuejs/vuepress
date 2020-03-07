@@ -78,7 +78,6 @@ export default {
       const { pages } = this.$site
       const max = this.$site.themeConfig.searchMaxSuggestions || SEARCH_MAX_SUGGESTIONS
       const localePath = this.$localePath
-
       const res = []
       for (let i = 0; i < pages.length; i++) {
         if (res.length >= max) break
