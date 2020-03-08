@@ -49,6 +49,13 @@ lang = "en-US"
 
 Title of current page.
 
+### tags
+
+- Type: `array`
+- Default: `undefined`
+
+You can use tags to improve [built-in search](/theme/default-theme-config.html#built-in-search).
+
 ### lang
 
 - Type: `string`
