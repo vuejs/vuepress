@@ -2,5 +2,5 @@ ports:
   - port: 8080
     onOpen: open-preview
 tasks:
-  - init: yarn bootstrap
+  - init: yarn install
     command: yarn dev
