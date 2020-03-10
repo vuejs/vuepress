@@ -286,13 +286,17 @@ module.exports = class Page {
    */
 
   async enhance (enhancers) {
-    for (const { name: pluginName, value: enhancer } of enhancers) {
-      try {
-        await enhancer(this)
-      } catch (error) {
-        console.log(error)
-        throw new Error(`[${pluginName}] execute extendPageData failed.`)
-      }
-    }
+    return Promise.all(
+      enhancers.map(
+        async ({ value: enhancer, name: pluginName }) => {
+          try {
+            await enhancer(this)
+          } catch (error) {
+            console.log(error)
+            throw new Error(`[${pluginName}] execute extendPageData failed.`)
+          }
+        }
+      )
+    )
   }
 }
