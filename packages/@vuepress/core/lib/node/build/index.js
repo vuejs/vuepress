@@ -89,12 +89,9 @@ module.exports = class Build extends EventEmitter {
     // render pages
     logger.wait('Rendering static HTML...')
 
-    const pagePathsPromises = []
-    for (const page of this.context.pages) {
-      pagePathsPromises.push(this.renderPage(page))
-    }
-
-    const pagePaths = await Promise.all(pagePathsPromises)
+    const pagePaths = await Promise.all(
+      this.context.pages.map(page => this.renderPage(page))
+    )
 
     readline.clearLine(process.stdout, 0)
     readline.cursorTo(process.stdout, 0)
