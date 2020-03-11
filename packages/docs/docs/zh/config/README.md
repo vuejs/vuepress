@@ -343,14 +343,14 @@ module.exports = {
 - 类型: `Object`
 - 默认值: `{}`
 
-加载 `*.scss` 文件的 [sass-loader](https://github.com/postcss/postcss-loader) 的选项。
+加载 `*.scss` 文件的 [sass-loader](https://github.com/webpack-contrib/sass-loader) 的选项。
 
 ### sass
 
 - 类型: `Object`
 - 默认值: `{ indentedSyntax: true }`
 
-加载 `*.sass` 文件的 [sass-loader](https://github.com/postcss/postcss-loader) 的选项。
+加载 `*.sass` 文件的 [sass-loader](https://github.com/webpack-contrib/sass-loader) 的选项。
 
 ### less
 
