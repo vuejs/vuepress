@@ -17,6 +17,12 @@ exports[`snippet import snippet 1`] = `
 </code></pre>
 `;
 
+exports[`snippet import snippet with region and highlight 1`] = `
+<pre><code class="language-js{1,3}">function foo () {
+  // ..
+}</code></pre>
+`;
+
 exports[`snippet import snippet with highlight multiple lines 1`] = `
 <div class="highlight-lines">
   <div class="highlighted">&nbsp;</div>
@@ -34,4 +40,17 @@ exports[`snippet import snippet with highlight single line 1`] = `
 </div>export default function () {
 // ..
 }
+`;
+
+exports[`snippet import snippet with indented region 1`] = `
+<pre><code class="language-html">&lt;section&gt;
+  &lt;h1&gt;Hello World&lt;/h1&gt;
+&lt;/section&gt;
+&lt;div&gt;Lorem Ipsum&lt;/div&gt;</code></pre>
+`;
+
+exports[`snippet import snippet with region 1`] = `
+<pre><code class="language-js">function foo () {
+  // ..
+}</code></pre>
 `;
