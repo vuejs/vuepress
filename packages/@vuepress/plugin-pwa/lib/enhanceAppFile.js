@@ -1,7 +1,6 @@
 /* global SW_BASE_URL, SW_ENABLED, GA_ID, ga, SW_UPDATE_POPUP, SW_POPUP_COMPONENT */
 
 import Vue from 'vue'
-import { register } from 'register-service-worker'
 import SWUpdateEvent from './SWUpdateEvent'
 import event from './event'
 
@@ -10,12 +9,13 @@ if (SW_UPDATE_POPUP && SW_POPUP_COMPONENT === 'SWUpdatePopup') {
   Vue.component('SWUpdatePopup', () => import('./SWUpdatePopup.vue'))
 }
 
-export default ({ router, isServer }) => {
-  // Register service worker
-  router.onReady(() => {
-    if (process.env.NODE_ENV === 'production'
-      && !isServer
-      && SW_ENABLED) {
+export default async ({ router, isServer }) => {
+  if (process.env.NODE_ENV === 'production' && !isServer && SW_ENABLED) {
+    // register-service-worker@1.7.0 references `window` in outer scope, so we have to import it dynamically in client
+    const { register } = await import('register-service-worker')
+
+    // Register service worker
+    router.onReady(() => {
       register(`${SW_BASE_URL}service-worker.js`, {
         registrationOptions: {},
         ready () {
@@ -49,6 +49,6 @@ export default ({ router, isServer }) => {
           }
         }
       })
-    }
-  })
+    })
+  }
 }
