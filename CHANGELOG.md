@@ -1,3 +1,27 @@
+# [](https://github.com/vuejs/vuepress/compare/v1.4.0...v) (2020-03-18)
+
+
+
+# [1.4.0](https://github.com/vuejs/vuepress/compare/v1.3.1...v1.4.0) (2020-03-18)
+
+
+### Bug Fixes
+
+* fail to test specific package ([#2099](https://github.com/vuejs/vuepress/issues/2099)) ([0aadf05](https://github.com/vuejs/vuepress/commit/0aadf05))
+* opencollective postinstall failure not being ignored on Windows([#2177](https://github.com/vuejs/vuepress/issues/2177)) ([a9759c0](https://github.com/vuejs/vuepress/commit/a9759c0))
+* **$plugin-pwa:** work with register-service-worker 1.7.0 (close [#2222](https://github.com/vuejs/vuepress/issues/2222)) ([#2229](https://github.com/vuejs/vuepress/issues/2229)) ([604052b](https://github.com/vuejs/vuepress/commit/604052b))
+* **$shared-utils:** Slugify em/en dash in urls ([#2174](https://github.com/vuejs/vuepress/issues/2174)) ([8d9968d](https://github.com/vuejs/vuepress/commit/8d9968d))
+* **$theme-default:** remove error logs for nested sidebar groups ([#2191](https://github.com/vuejs/vuepress/issues/2191)) ([c3a943c](https://github.com/vuejs/vuepress/commit/c3a943c))
+
+
+### Features
+
+* **$core:** Improve VuePress build time ([#2163](https://github.com/vuejs/vuepress/issues/2163)) ([76da780](https://github.com/vuejs/vuepress/commit/76da780))
+* **$plugin-last-updated:** add dateOptions to options ([#2192](https://github.com/vuejs/vuepress/issues/2192)) ([369c315](https://github.com/vuejs/vuepress/commit/369c315))
+* **$plugin-search:** improve the native search algorithm ([#1557](https://github.com/vuejs/vuepress/issues/1557)) ([e9fde5c](https://github.com/vuejs/vuepress/commit/e9fde5c))
+
+
+
 # [](https://github.com/vuejs/vuepress/compare/v1.3.1...v) (2020-02-20)
 
 
