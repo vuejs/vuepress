@@ -18,7 +18,7 @@ yarn test
 # Clean dependencies.
 yarn clean
 
-# Useful when creating new submodules.
+# Useful when creating new a package.
 yarn boot
 ```
 

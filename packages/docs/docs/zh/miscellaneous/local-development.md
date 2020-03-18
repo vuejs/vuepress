@@ -13,10 +13,10 @@ VuePress 正在使用包含了 [Yarn Workspaces](https://yarnpkg.com/zh-Hans/doc
 ## 初始化 package
 
 ```bash
- yarn bootstrap // 它将运行并安装根目录和所有 package 的依赖
+ yarn // 它将安装所有 package 的依赖
 ```
 
-`yarn bootstrap` 将使用 `hoist`。它对你意味着什么？
+`yarn` 将使用 `hoist`。它对你意味着什么？
 
 它将重组工作空间根目录中的所有依赖项并链接所有 package。
 
@@ -25,8 +25,6 @@ VuePress 正在使用包含了 [Yarn Workspaces](https://yarnpkg.com/zh-Hans/doc
 ```bash
     ls -la node_modules/@vuepress
 ```
-
-你将全部链接完成。
 
 ::: warning
 你必须注意应在子文件夹的 package.json 中声明所有依赖项。如果未声明 package 的 dependencies，则在发布到 npm 时将无法正常工作。

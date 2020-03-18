@@ -13,10 +13,10 @@ VuePress is using a combo with [Yarn workspaces](https://yarnpkg.com/lang/en/doc
 ## Init packages
 
 ```bash
- yarn bootstrap // it will run and install into the root all packages subfolders
+ yarn // it will install dependencies of all packages
 ```
 
-`yarn bootstrap` will use hoisting. What does it mean for you ?
+`yarn` will use hoisting. What does it mean for you ?
 
 It will regroup all dependencies in the workspace root and link all packages.
 
@@ -25,8 +25,6 @@ Check the link by running the following command:
 ```bash
     ls -la node_modules/@vuepress
 ```
-
-You will all symlinks
 
 :::warning
 You have to take care to declare all dependencies inside subFolders package.json. When publish the lib if dependencies from a package is not declare it will just not work.
