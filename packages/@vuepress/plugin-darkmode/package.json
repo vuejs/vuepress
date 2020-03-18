@@ -1,0 +1,25 @@
+{
+  "name": "@vuepress/plugin-darkmode",
+  "version": "1.4.0",
+  "description": "darkmode plugin for vuepress",
+  "keywords": [
+    "documentation",
+    "generator",
+    "vue",
+    "vuepress"
+  ],
+  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/plugin-darkmode#readme",
+  "bugs": {
+    "url": "https://github.com/vuejs/vuepress/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuejs/vuepress.git"
+  },
+  "license": "MIT",
+  "author": "Mr.Hope <zhangbowang1998@gmail.com>",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  }
+}

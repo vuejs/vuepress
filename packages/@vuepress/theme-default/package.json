@@ -22,6 +22,7 @@
   "main": "index.js",
   "dependencies": {
     "@vuepress/plugin-active-header-links": "^1.4.0",
+    "@vuepress/plugin-darkmode": "^1.4.0",
     "@vuepress/plugin-nprogress": "^1.4.0",
     "@vuepress/plugin-search": "^1.4.0",
     "docsearch.js": "^2.5.2",

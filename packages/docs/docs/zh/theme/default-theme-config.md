@@ -66,6 +66,7 @@ module.exports = {
 
 
 ```
+
 外部链接 `<a>` 标签的特性将默认包含`target="_blank" rel="noopener noreferrer"`，你可以提供 `target` 与 `rel`，它们将被作为特性被增加到 `<a>` 标签上：
 
 ``` js
@@ -196,7 +197,6 @@ module.exports = {
 ::: tip
 值得一提的是，当你禁用此选项时，此功能的相应脚本将不会被加载，这是我们性能优化的一个小点。
 :::
-
 
 ### 侧边栏分组
 
@@ -474,6 +474,19 @@ editLink: false
 module.exports = {
   themeConfig: {
     smoothScroll: true
+  }
+}
+```
+
+## 暗黑模式 <Badge text="1.4.0+" />
+
+你可以通过 `themeConfig.darkmode` 选项来启用暗黑模式。
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+    darkmode: true
   }
 }
 ```

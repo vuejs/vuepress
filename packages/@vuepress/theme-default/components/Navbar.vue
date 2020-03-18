@@ -26,6 +26,7 @@
         'max-width': linksWrapMaxWidth + 'px'
       } : {}"
     >
+      <DarkmodeSwitch v-if="isdarkmodeEnabled" />
       <AlgoliaSearchBox
         v-if="isAlgoliaSearch"
         :options="algolia"
@@ -65,6 +66,10 @@ export default {
 
     isAlgoliaSearch () {
       return this.algolia && this.algolia.apiKey && this.algolia.indexName
+    },
+
+    isdarkmodeEnabled () {
+      return this.$themeConfig.darkmode
     }
   },
 

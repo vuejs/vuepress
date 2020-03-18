@@ -1,0 +1,21 @@
+$night-bgcolor = #000
+$night-fontcolor = #9e9e9e
+$night-bordercolor = #9e9e9e
+$night-activecolor = #fff
+$contentClass ?= '.theme-default-content'
+
+bgcolor()
+  background-color $night-bgcolor
+
+fontcolor()
+  color $night-fontcolor
+
+bordercolor()
+  border-color $night-bordercolor !important
+
+boxshadow()
+  border 1px solid $night-bordercolor
+  box-shadow none
+
+  &:hover
+    box-shadow 0 2px 16px 0 rgba(255, 255, 255, 0.4)

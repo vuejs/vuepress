@@ -12,6 +12,7 @@ module.exports = (options, ctx) => {
         .some(base => themeConfig.locales[base].algolia)
   )
 
+  const enableDarkmode = themeConfig.darkmode === true
   const enableSmoothScroll = themeConfig.smoothScroll === true
 
   return {
@@ -53,6 +54,7 @@ module.exports = (options, ctx) => {
         before: info => `<details class="custom-block details">${info ? `<summary>${info}</summary>` : ''}\n`,
         after: () => '</details>\n'
       }],
+      ['@vuepress/darkmode', enableDarkmode],
       ['smooth-scroll', enableSmoothScroll]
     ]
   }

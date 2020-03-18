@@ -1,0 +1,20 @@
+.theme-night
+  // 侧边栏
+  .sidebar
+    bgcolor()
+    bordercolor()
+
+    .nav-links a
+      fontcolor()
+
+  .sidebar-heading
+    color $night-fontcolor
+
+  // 侧边栏链接
+  a.sidebar-link
+    fontcolor()
+
+  @media (min-width: $MQMobile)
+    .nav-links a
+      &:hover, &.router-link-active
+        color $accentColor
