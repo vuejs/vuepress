@@ -1,7 +1,3 @@
-# [](https://github.com/vuejs/vuepress/compare/v1.4.0...v) (2020-03-18)
-
-
-
 # [1.4.0](https://github.com/vuejs/vuepress/compare/v1.3.1...v1.4.0) (2020-03-18)
 
 
@@ -22,10 +18,6 @@
 
 
 
-# [](https://github.com/vuejs/vuepress/compare/v1.3.1...v) (2020-02-20)
-
-
-
 ## [1.3.1](https://github.com/vuejs/vuepress/compare/v1.3.0...v1.3.1) (2020-02-20)
 
 
@@ -40,10 +32,6 @@
 ### Features
 
 * **$core:** support async enhanceApp (close [#2074](https://github.com/vuejs/vuepress/issues/2074)) ([#2075](https://github.com/vuejs/vuepress/issues/2075)) ([2d53fbb](https://github.com/vuejs/vuepress/commit/2d53fbb))
-
-
-
-# [](https://github.com/vuejs/vuepress/compare/v1.3.0...v) (2020-01-30)
 
 
 
@@ -127,7 +115,7 @@
 * **core:** make extendPageData async ready without breaking changes ([#1546](https://github
 .com/vuejs/vuepress/issues/1546)) ([543fd6c](https://github.com/vuejs/vuepress/commit/543fd6c))
 * **$core:** better error log for layouts ([#1455](https://github.com/vuejs/vuepress/issues/1455)) ([3b68913](https://github.com/vuejs/vuepress/commit/3b68913))
-* **$plugin-search:** add support for search hotkeys ([#1848](https://github.com/vuejs/vuepress/issues/1848)) 
+* **$plugin-search:** add support for search hotkeys ([#1848](https://github.com/vuejs/vuepress/issues/1848))
 ([1ba06ae](https://github.com/vuejs/vuepress/commit/1ba06ae))
 
 
