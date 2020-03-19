@@ -5,14 +5,14 @@ export default {
   created () {
     if (this.$ssrContext) {
       const siteMetaTags = this.$site.headTags
-        .filter(item => item[0] === 'meta')
-        .map(item => item[1])
+        .filter(([headerType])=> headerType === 'meta')
+        .map(([_, headerValue])=> headerValue)
 
-      const meta = this.getMergedMetaTags(siteMetaTags)
+      const mergedMetaItems = this.getMergedMetaTags(siteMetaTags)
 
       this.$ssrContext.title = this.$title
       this.$ssrContext.lang = this.$lang
-      this.$ssrContext.pageMeta = renderPageMeta(meta)
+      this.$ssrContext.pageMeta = renderPageMeta(mergedMetaItems)
     }
   },
   // Other life cycles will only be called at client
@@ -45,7 +45,7 @@ export default {
     getMergedMetaTags (siteMeta) {
       const pageMeta = (this.$page.frontmatter.meta || []).slice(0)
       // pageMetaTags have higher priority than siteMetaTags
-      // description needs special attention for it has too many entries
+      // description needs special attention as it has too many entries
       return unionBy([{ name: 'description', content: this.$description }],
         pageMeta, siteMeta, metaIdentifier)
     }

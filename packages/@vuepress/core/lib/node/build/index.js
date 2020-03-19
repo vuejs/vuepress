@@ -79,7 +79,7 @@ module.exports = class Build extends EventEmitter {
     // pre-render head tags from user config
     // filter out meta tags for they will be injected in updateMeta.js
     this.userHeadTags = (this.context.siteConfig.head || [])
-      .filter(item => item[0] !== 'meta')
+      .filter(([headTagType]) => headTagType !== 'meta')
       .map(renderHeadTag)
       .join('\n    ')
 
