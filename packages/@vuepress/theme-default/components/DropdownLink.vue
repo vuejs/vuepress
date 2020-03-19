@@ -198,11 +198,8 @@ export default {
   .dropdown-wrapper
     height 1.8rem
     &:hover .nav-dropdown,
-    &.open .nav-dropdown
       // override the inline style.
       display block !important
-    &.open:blur
-      display none
     .dropdown-title .arrow
       // make the arrow always down at desktop
       border-left 4px solid transparent
