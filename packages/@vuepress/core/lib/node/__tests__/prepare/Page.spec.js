@@ -7,54 +7,51 @@ const {
   readFile
 } = require('./util')
 
-describe('Page', () => {
-  let app
-  let computed
+let app
+let computed
 
-  beforeAll(async () => {
-    app = new App()
-    await app.process()
-    computed = new app.ClientComputedMixinConstructor()
-  })
+beforeAll(async () => {
+  app = new App()
+  await app.process()
+  computed = new app.ClientComputedMixinConstructor()
+})
 
-  test('pure route', async () => {
-    const page = new Page({ path: '/' }, app)
+async function setupPage (options, processOption = {}) {
+  const page = new Page(options, app)
+  await page.process({ computed, ...processOption })
+  return page
+}
+
+describe('pure route', () => {
+  test('should get pure route', async () => {
+    const page = await setupPage({ path: '/' })
 
     expect(page.path).toBe('/')
     expect(page.regularPath).toBe('/')
-
-    await page.process({ computed })
-
-    expect(page.path).toBe('/')
-    expect(page.regularPath).toBe('/')
+    expect(page.frontmatter).toEqual({})
   })
 
-  test('pure route - encodeURI', async () => {
+  test('should encode the path', async () => {
     const path = '/尤/'
-    const page = new Page({ path }, app)
+    const encodePath = encodeURI(path)
+    const page = await setupPage({ path })
 
-    expect(page.path).toBe(encodeURI(path))
-    expect(page.regularPath).toBe(encodeURI(path))
+    expect(page.path).toBe(encodePath)
+    expect(page.regularPath).toBe(encodePath)
   })
 
-  test('pure route - custom frontmatter', async () => {
-    const frontmatter = { title: 'alpha' }
-    const page = new Page({
+  test('should be able to set custom frontmatter', async () => {
+    const frontmatter = { foo: 'alpha' }
+    const page = await setupPage({
       path: '/',
       frontmatter
-    }, app)
-    expect(page.frontmatter).toBe(frontmatter)
+    })
+
+    expect(page.frontmatter.foo).toBe(frontmatter.foo)
   })
 
-  test('pure route - enhancers', async () => {
+  test('should be able to use enhancers', async () => {
     const frontmatter = { title: 'alpha' }
-    const page = new Page({
-      path: '/',
-      frontmatter
-    }, app)
-
-    expect(page.frontmatter.title).toBe('alpha')
-
     const enhancers = [
       {
         name: 'plugin-a',
@@ -63,91 +60,128 @@ describe('Page', () => {
         }
       }
     ]
-    await page.process({ computed, enhancers })
+    const page = await setupPage({ path: '/', frontmatter }, { enhancers })
 
     expect(page.frontmatter.title).toBe('beta')
   })
+})
 
-  test('markdown page - pointing to a markdown file', async () => {
+describe('permalink', () => {
+  test('should be able to set permalink', async () => {
+    const page = await setupPage({ permalink: '/permalink' })
+
+    expect(page.path).toBe('/permalink')
+    expect(page.regularPath).toBe('/permalink')
+  })
+
+  test('should be able to set permalink from frontmatter', async () => {
+    const frontmatter = { permalink: '/permalink' }
+    const page = await setupPage({ path: '/', frontmatter })
+
+    expect(page.path).toBe('/permalink/')
+    expect(page.regularPath).toBe('/')
+  })
+})
+
+describe('markdown page', () => {
+  test('should be able to pointing to a markdown file', async () => {
     const { relative, filePath } = getDocument('README.md')
-    const page = new Page({ filePath, relative }, app)
+    console.log('relative', relative)
+    const markdown = getMarkdown()
+    const page = await setupPage({ filePath, relative }, { markdown })
 
     expect(page._filePath).toBe(filePath)
     expect(page.regularPath).toBe('/')
     expect(page.path).toBe('/')
     expect(page.frontmatter).toEqual({})
 
-    const markdown = getMarkdown()
-    await page.process({ computed, markdown })
-
-    expect(page.title).toBe('Home')
     const content = await readFile(filePath)
+
     expect(page._content).toBe(content)
     expect(page._strippedContent).toBe(content)
   })
 
-  test('markdown page - pointing to a markdown file with frontmatter', async () => {
+  test('should work with frontmatter when pointing to a markdown file', async () => {
     const { relative, filePath } = getDocument('alpha.md')
-    const page = new Page({ filePath, relative }, app)
+    const title = 'VuePress Alpha' // from fixture
+    const markdown = getMarkdown()
+    const page = await setupPage({ filePath, relative }, { markdown })
 
     expect(page._filePath).toBe(filePath)
     expect(page.regularPath).toBe('/alpha.html')
     expect(page.path).toBe('/alpha.html')
-    expect(page.frontmatter).toEqual({})
-
-    const markdown = getMarkdown()
-    await page.process({ computed, markdown })
-
-    expect(page.title).toBe(page.frontmatter.title)
+    expect(page.frontmatter.title).toBe(title)
     expect(page._content.startsWith('---')).toBe(true)
     expect(page._strippedContent.startsWith('---')).toBe(false)
   })
+})
 
-  describe('enhance - ', () => {
-    let page
-    let enhancers
+describe('enhancer', () => {
+  test('should loop over sync enhancers', async () => {
+    const page = await setupPage({ path: '/' })
+    const enhancers = [
+      {
+        name: 'foo',
+        value: jest.fn()
+      },
+      {
+        name: 'foo',
+        value: jest.fn()
+      }
+    ]
+    await page.enhance(enhancers)
 
-    beforeEach(() => {
-      page = new Page({ path: '/' }, app)
-      enhancers = [
-        {
-          name: 'foo',
-          value: jest.fn()
-        },
-        {
-          name: 'bar',
-          value: jest.fn()
-        }
-      ]
-      global.console.log = jest.fn()
-    })
+    return enhancers.map(enhancer => expect(enhancer.value).toHaveBeenCalled())
+  })
 
-    test('should loop over sync enhancers', async () => {
-      await page.enhance(enhancers)
+  test('should loop over sync and async enhancers', async () => {
+    const page = await setupPage({ path: '/' })
+    const enhancers = [
+      {
+        name: 'foo',
+        value: jest.fn()
+      },
+      {
+        name: 'foo',
+        value: jest.fn()
+      }
+    ]
+    const mixedEnhancers = [...enhancers, {
+      name: 'blog',
+      value: jest.fn().mockResolvedValue({})
+    }]
+    await page.enhance(mixedEnhancers)
 
-      return enhancers.map(enhancer => expect(enhancer.value).toHaveBeenCalled())
-    })
+    return mixedEnhancers.map(enhancer => expect(enhancer.value).toHaveBeenCalled())
+  })
 
-    test('should loop over sync and async enhancers', async () => {
-      const mixedEnhancers = [...enhancers, {
-        name: 'blog',
-        value: jest.fn().mockResolvedValue({})
-      }]
-      await page.enhance(mixedEnhancers)
+  test('should log and throw an error when enhancing fails', async () => {
+    global.console.log = jest.fn()
+    const pluginName = 'error-plugin'
 
-      return mixedEnhancers.map(enhancer => expect(enhancer.value).toHaveBeenCalled())
-    })
+    const page = await setupPage({ path: '/' })
+    const error = { errorMessage: 'this is an error message' }
 
-    test('should log and throw an error when enhancing fails', async () => {
-      const error = { errorMessage: 'this is an error message' }
-      const pluginName = 'error-plugin'
+    await expect(page.enhance([{
+      name: pluginName,
+      value: jest.fn().mockRejectedValue(error)
+    }])).rejects.toThrowError(`[${pluginName}] execute extendPageData failed.`)
 
-      await expect(page.enhance([{
-        name: pluginName,
-        value: jest.fn().mockRejectedValue(error)
-      }])).rejects.toThrowError(`[${pluginName}] execute extendPageData failed.`)
-
-      expect(console.log).toHaveBeenCalledWith(error)
-    })
+    expect(console.log).toHaveBeenCalledWith(error)
   })
 })
+
+// TODO permalink - driven by global pattern
+// TODO Title
+// TODO I18n
+// TODO Meta
+// TODO Add a page with explicit content
+// TODO Excerpt
+// TODO SFC
+// TODO Headers
+
+// TODO get date
+// TODO get strippedFilename
+// TODO get slug
+// TODO get filename
+// TODO get dirname
