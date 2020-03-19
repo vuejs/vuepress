@@ -5,8 +5,8 @@ export default {
   created () {
     if (this.$ssrContext) {
       const siteMetaTags = this.$site.headTags
-        .filter(([headerType])=> headerType === 'meta')
-        .map(([_, headerValue])=> headerValue)
+        .filter(([headerType]) => headerType === 'meta')
+        .map(([_, headerValue]) => headerValue)
 
       const mergedMetaItems = this.getMergedMetaTags(siteMetaTags)
 
