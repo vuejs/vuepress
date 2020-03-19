@@ -113,6 +113,14 @@ describe('markdown page', () => {
     expect(page._content.startsWith('---')).toBe(true)
     expect(page._strippedContent.startsWith('---')).toBe(false)
   })
+
+  test('should extract any content above <!-- more --> as excerpt', async () => {
+    const { relative, filePath } = getDocument('excerpt.md')
+    const markdown = getMarkdown()
+    const page = await setupPage({ filePath, relative }, { markdown })
+
+    expect(page.excerpt).toMatchSnapshot()
+  })
 })
 
 describe('title', () => {
@@ -250,7 +258,6 @@ describe('public api', () => {
 // TODO permalink - driven by global pattern
 // TODO I18n
 // TODO Add a page with explicit content
-// TODO Excerpt
 // TODO SFC
 // TODO Headers
 
