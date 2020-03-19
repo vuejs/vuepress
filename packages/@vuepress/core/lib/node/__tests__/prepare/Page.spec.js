@@ -86,7 +86,6 @@ describe('permalink', () => {
 describe('markdown page', () => {
   test('should be able to pointing to a markdown file', async () => {
     const { relative, filePath } = getDocument('README.md')
-    console.log('relative', relative)
     const markdown = getMarkdown()
     const page = await setupPage({ filePath, relative }, { markdown })
 
@@ -113,6 +112,30 @@ describe('markdown page', () => {
     expect(page.frontmatter.title).toBe(title)
     expect(page._content.startsWith('---')).toBe(true)
     expect(page._strippedContent.startsWith('---')).toBe(false)
+  })
+})
+
+describe('title', () => {
+  test('should be able to set title', async () => {
+    const title = 'VuePress'
+    const page = await setupPage({ path: '/', title })
+    expect(page.title).toBe(title)
+  })
+
+  test('should set title from frontmatter', async () => {
+    const title = 'VuePress Alpha' // from fixture
+    const { relative, filePath } = getDocument('alpha.md')
+    const markdown = getMarkdown()
+    const page = await setupPage({ filePath, relative }, { markdown })
+    expect(page.title).toBe(title)
+  })
+
+  test('should use first header in markdown to set title ', async () => {
+    const title = 'Home' // from fixture
+    const { relative, filePath } = getDocument('README.md')
+    const markdown = getMarkdown()
+    const page = await setupPage({ filePath, relative }, { markdown })
+    expect(page.title).toBe(title)
   })
 })
 
@@ -172,7 +195,6 @@ describe('enhancer', () => {
 })
 
 // TODO permalink - driven by global pattern
-// TODO Title
 // TODO I18n
 // TODO Meta
 // TODO Add a page with explicit content
