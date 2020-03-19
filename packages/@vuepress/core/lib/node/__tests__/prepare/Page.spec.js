@@ -194,16 +194,63 @@ describe('enhancer', () => {
   })
 })
 
+describe('public api', () => {
+  test('dirname', async () => {
+    const dirname = 'docs'
+    const { relative, filePath } = getDocument('README.md')
+    const markdown = getMarkdown()
+    const page = await setupPage({ filePath, relative }, { markdown })
+    expect(page.dirname).toBe(dirname)
+  })
+
+  test('filename', async () => {
+    const filename = 'README'
+    const { relative, filePath } = getDocument(`${filename}.md`)
+    const markdown = getMarkdown()
+    const page = await setupPage({ filePath, relative }, { markdown })
+    expect(page.filename).toBe(filename)
+  })
+
+  test('slug', async () => {
+    const markdown = getMarkdown()
+    const dirname = 'docs'
+    const indexPageFixture = getDocument('README.md')
+    const indexPage = await setupPage(
+      { filePath: indexPageFixture.filePath, relative: indexPageFixture.relative }, { markdown }
+    )
+    expect(indexPage.slug).toBe(dirname)
+
+    const filename = 'alpha'
+    const pageFixture = getDocument(`${filename}.md`)
+    const page = await setupPage(
+      { filePath: pageFixture.filePath, relative: pageFixture.relative }, { markdown }
+    )
+    expect(page.slug).toBe(filename)
+  })
+
+  test('strippedFilename', async () => {
+    const { relative, filePath } = getDocument('2020-01-01-date.md')
+    const markdown = getMarkdown()
+    const page = await setupPage({ filePath, relative }, { markdown })
+    expect(page.strippedFilename).toBe('date')
+  })
+
+  test('date', async () => {
+    const frontmatter = { date: '2020-01-01' }
+    const dateInFrontmatterPage = await setupPage({ path: '/', frontmatter })
+    expect(dateInFrontmatterPage.date).toBe('2020-01-01')
+
+    const { relative, filePath } = getDocument('2020-01-01-date.md')
+    const markdown = getMarkdown()
+    const dateInPathPage = await setupPage({ filePath, relative }, { markdown })
+    expect(dateInPathPage.date).toBe('2020-01-01')
+  })
+})
+
 // TODO permalink - driven by global pattern
 // TODO I18n
-// TODO Meta
 // TODO Add a page with explicit content
 // TODO Excerpt
 // TODO SFC
 // TODO Headers
 
-// TODO get date
-// TODO get strippedFilename
-// TODO get slug
-// TODO get filename
-// TODO get dirname
