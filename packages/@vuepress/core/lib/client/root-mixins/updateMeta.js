@@ -3,12 +3,12 @@ import unionBy from 'lodash/unionBy'
 export default {
   // created will be called on both client and ssr
   created () {
-    if (this.$ssrContext) {
-      const siteMetaTags = this.$site.headTags
-        .filter(([headerType]) => headerType === 'meta')
-        .map(([_, headerValue]) => headerValue)
+    this.siteMeta = this.$site.headTags
+      .filter(([headerType]) => headerType === 'meta')
+      .map(([_, headerValue]) => headerValue)
 
-      const mergedMetaItems = this.getMergedMetaTags(siteMetaTags)
+    if (this.$ssrContext) {
+      const mergedMetaItems = this.getMergedMetaTags()
 
       this.$ssrContext.title = this.$title
       this.$ssrContext.lang = this.$lang
@@ -20,15 +20,6 @@ export default {
     // init currentMetaTags from DOM
     this.currentMetaTags = [...document.querySelectorAll('meta')]
 
-    // indirectly init siteMetaTags from DOM
-    this.siteMetaTags = this.currentMetaTags.map(element => {
-      const siteMeta = {}
-      for (const attribute of element.attributes) {
-        siteMeta[attribute.name] = attribute.value
-      }
-      return siteMeta
-    })
-
     // update title / meta tags
     this.updateMeta()
   },
@@ -38,16 +29,16 @@ export default {
       document.title = this.$title
       document.documentElement.lang = this.$lang
 
-      const newMetaTags = this.getMergedMetaTags(this.siteMetaTags)
+      const newMetaTags = this.getMergedMetaTags()
       this.currentMetaTags = updateMetaTags(newMetaTags, this.currentMetaTags)
     },
 
-    getMergedMetaTags (siteMeta) {
+    getMergedMetaTags () {
       const pageMeta = this.$page.frontmatter.meta || []
       // pageMetaTags have higher priority than siteMetaTags
       // description needs special attention as it has too many entries
       return unionBy([{ name: 'description', content: this.$description }],
-        pageMeta, siteMeta, metaIdentifier)
+        pageMeta, this.siteMeta, metaIdentifier)
     }
   },
 
