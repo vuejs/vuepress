@@ -143,7 +143,6 @@ module.exports = class Build extends EventEmitter {
     const context = {
       url: page.path,
       userHeadTags: this.userHeadTags,
-      pageMeta: null,
       title: 'VuePress',
       lang: 'en',
       description: '',

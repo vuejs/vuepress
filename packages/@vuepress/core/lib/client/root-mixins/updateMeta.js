@@ -43,7 +43,7 @@ export default {
     },
 
     getMergedMetaTags (siteMeta) {
-      const pageMeta = (this.$page.frontmatter.meta || []).slice(0)
+      const pageMeta = this.$page.frontmatter.meta || []
       // pageMetaTags have higher priority than siteMetaTags
       // description needs special attention as it has too many entries
       return unionBy([{ name: 'description', content: this.$description }],
