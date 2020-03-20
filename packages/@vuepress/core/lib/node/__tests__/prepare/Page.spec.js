@@ -81,6 +81,21 @@ describe('permalink', () => {
     expect(page.path).toBe('/permalink/')
     expect(page.regularPath).toBe('/')
   })
+
+  test('should be able to set permalink from global pattern', async () => {
+    const permalinkPattern = '/:year/:month/:day/:slug'
+    const { relative, filePath } = getDocument('2020-01-01-date.md')
+    const markdown = getMarkdown()
+    const page = await setupPage({ filePath, relative, permalinkPattern }, { markdown })
+    expect(page.path).toBe('/2020/01/01/date/')
+    expect(page.regularPath).toBe('/2020-01-01-date.html')
+
+    const pageWithLocalePath = await setupPage(
+      { filePath, relative, permalinkPattern },
+      { computed: { setPage () {}, $localePath: '/zh/' }, markdown }
+    )
+    expect(pageWithLocalePath.path).toBe('/zh/2020/01/01/date/')
+  })
 })
 
 describe('markdown page', () => {
@@ -281,8 +296,4 @@ describe('public api', () => {
     expect(dateInPathPage.date).toBe('2020-01-01')
   })
 })
-
-// TODO permalink - driven by global pattern
-// TODO I18n
-// TODO SFC
 
