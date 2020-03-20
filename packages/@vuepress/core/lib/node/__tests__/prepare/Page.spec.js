@@ -100,6 +100,16 @@ describe('markdown page', () => {
     expect(page._strippedContent).toBe(content)
   })
 
+  test('should be able add a page with explicit content', async () => {
+    const { filePath } = getDocument('README.md')
+    const content = await readFile(filePath)
+    const markdown = getMarkdown()
+    const page = await setupPage({ content }, { markdown })
+
+    expect(page._content).toBe(content)
+    expect(page._strippedContent).toBe(content)
+  })
+
   test('should work with frontmatter when pointing to a markdown file', async () => {
     const { relative, filePath } = getDocument('alpha.md')
     const title = 'VuePress Alpha' // from fixture
@@ -274,6 +284,5 @@ describe('public api', () => {
 
 // TODO permalink - driven by global pattern
 // TODO I18n
-// TODO Add a page with explicit content
 // TODO SFC
 
