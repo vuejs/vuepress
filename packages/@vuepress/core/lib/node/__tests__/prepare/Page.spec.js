@@ -121,6 +121,23 @@ describe('markdown page', () => {
 
     expect(page.excerpt).toMatchSnapshot()
   })
+
+  test('should extract level 2 and 3 headers by default', async () => {
+    const { relative, filePath } = getDocument('alpha.md')
+    const markdown = getMarkdown()
+    const page = await setupPage({ filePath, relative }, { markdown })
+
+    expect(page.headers).toMatchSnapshot()
+  })
+
+  test('should extract headers by config', async () => {
+    const { relative, filePath } = getDocument('alpha.md')
+    const markdown = getMarkdown()
+    const extractHeaders = ['h1', 'h2']
+    const page = await setupPage({ filePath, relative, extractHeaders }, { markdown })
+
+    expect(page.headers).toMatchSnapshot()
+  })
 })
 
 describe('title', () => {
@@ -259,5 +276,4 @@ describe('public api', () => {
 // TODO I18n
 // TODO Add a page with explicit content
 // TODO SFC
-// TODO Headers
 
