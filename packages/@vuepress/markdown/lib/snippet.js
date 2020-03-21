@@ -62,7 +62,7 @@ function findRegion (lines, regionName) {
         }
       }
     } else if (testLine(line, regexp, regionName, true)) {
-      return { start, end: lineId }
+      return { start, end: lineId, regexp }
     }
   }
 
@@ -90,7 +90,10 @@ module.exports = function snippet (md, options = {}) {
 
           if (region) {
             content = dedent(
-              lines.slice(region.start, region.end).join('\n')
+              lines
+                .slice(region.start, region.end)
+                .filter(line => !region.regexp.test(line.trim()))
+                .join('\n')
             )
           }
         }
