@@ -1,18 +1,37 @@
 <template>
-  <div class="toggle toggle--darklight">
-    <input
-      id="toggle--darklight"
-      class="toggle--checkbox"
-      type="checkbox"
-      :checked="isLightmode"
-      @click="toggleDarkmode"
+  <div
+    class="darkmode-switch"
+    @click="toggleDarkmode"
+  >
+    <div
+      class="item day"
+      :class="{active: !isDarkmode}"
     >
-    <label
-      class="toggle--btn"
-      for="toggle--darklight"
+      <svg
+        class="icon"
+        viewBox="0 0 1024 1024"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M512 256a42.666667 42.666667 0 0 0 42.666667-42.666667V128a42.666667 42.666667 0 0 0-85.333334 0v85.333333a42.666667 42.666667 0 0 0 42.666667 42.666667zM896 469.333333h-85.333333a42.666667 42.666667 0 0 0 0 85.333334h85.333333a42.666667 42.666667 0 0 0 0-85.333334zM256 512a42.666667 42.666667 0 0 0-42.666667-42.666667H128a42.666667 42.666667 0 0 0 0 85.333334h85.333333a42.666667 42.666667 0 0 0 42.666667-42.666667zM265.386667 213.333333a42.666667 42.666667 0 0 0-59.306667 62.72l61.44 59.306667a42.666667 42.666667 0 0 0 31.146667 11.946667 42.666667 42.666667 0 0 0 30.72-13.226667 42.666667 42.666667 0 0 0 0-60.16zM725.333333 347.306667a42.666667 42.666667 0 0 0 29.44-11.946667l61.44-59.306667A42.666667 42.666667 0 0 0 758.613333 213.333333l-61.44 60.586667a42.666667 42.666667 0 0 0 0 60.16 42.666667 42.666667 0 0 0 28.16 13.226667zM512 768a42.666667 42.666667 0 0 0-42.666667 42.666667v85.333333a42.666667 42.666667 0 0 0 85.333334 0v-85.333333a42.666667 42.666667 0 0 0-42.666667-42.666667zM756.48 688.64a42.666667 42.666667 0 0 0-59.306667 61.44L758.613333 810.666667a42.666667 42.666667 0 0 0 29.44 11.946666 42.666667 42.666667 0 0 0 30.72-12.8 42.666667 42.666667 0 0 0 0-60.586666zM267.52 688.64l-61.44 59.306667a42.666667 42.666667 0 0 0 0 60.586666 42.666667 42.666667 0 0 0 30.72 12.8 42.666667 42.666667 0 0 0 28.586667-10.666666l61.44-59.306667a42.666667 42.666667 0 0 0-59.306667-61.44zM512 341.333333a170.666667 170.666667 0 1 0 170.666667 170.666667 170.666667 170.666667 0 0 0-170.666667-170.666667z"
+        />
+      </svg>
+    </div>
+    <div
+      class="item night"
+      :class="{ active: isDarkmode }"
     >
-      <span class="toggle--feature" />
-    </label>
+      <svg
+        class="icon"
+        viewBox="0 0 1024 1024"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M935.538601 630.40178c-11.43005-11.432249-28.673759-14.738607-43.531086-8.353536-46.733115 20.10317-96.362866 30.296859-147.50719 30.296859-99.589478 0-193.221796-38.783705-263.640252-109.20316-108.636744-108.636744-139.609745-270.022125-78.9083-411.148441 6.388069-14.85233 3.078713-32.098837-8.353536-43.532285-11.432249-11.432249-28.675758-14.743604-43.532285-8.354536-52.637312 22.64025-100.017388 54.809439-140.82552 95.616372-85.346135 85.346135-132.346869 198.821199-132.346869 319.519766 0 120.699566 47.001733 234.172631 132.347868 319.518766s198.821199 132.349067 319.517567 132.349067c120.699566 0 234.172431-47.002932 319.520765-132.351066 40.808132-40.810131 72.977122-88.190207 95.615373-140.82552C950.282205 659.081735 946.971849 641.834029 935.538601 630.40178z"
+          p-id="3638"
+        />
+      </svg>
+    </div>
   </div>
 </template>
 
@@ -21,12 +40,6 @@ export default {
   data: () => ({
     isDarkmode: { type: Boolean, default: false }
   }),
-
-  computed: {
-    isLightmode () {
-      return !this.isDarkmode
-    }
-  },
 
   mounted () {
     const darkmode = localStorage.getItem('darkmode')
@@ -65,139 +78,42 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.toggle
-  display block
+.darkmode-switch
+  display flex
+  flex-shrink 0
+  border-radius 4px
+  overflow hidden
   align-self center
-  text-align center
-  user-select none
-  margin-right .5rem
+  margin-right 0.5rem
+  height 22px
 
-.toggle--checkbox
-  display none
+  &:hover
+    cursor pointer
 
-.toggle--btn
-  display block
-  margin 0 auto
-  font-size 1.4em
-  transition all 350ms ease-in
+  .item
+    padding 3px
+    line-height 1
+    border 1px solid $accentColor
 
-.toggle--btn:hover
-  cursor pointer
+    &.day
+      border-top-left-radius 4px
+      border-bottom-left-radius 4px
 
-.toggle--btn, .toggle--btn:before, .toggle--btn:after, .toggle--checkbox, .toggle--checkbox:before, .toggle--checkbox:after, .toggle--feature, .toggle--feature:before, .toggle--feature:after
-  transition all 250ms ease-in
+    &.night
+      border-top-right-radius 4px
+      border-bottom-right-radius 4px
 
-.toggle--btn:before, .toggle--btn:after, .toggle--checkbox:before, .toggle--checkbox:after, .toggle--feature:before, .toggle--feature:after
-  content ''
-  display block
+    .icon
+      width 14px
+      height 14px
+      fill $accentColor
 
-.toggle--darklight .toggle--btn, .toggle--like .toggle--btn
-  position relative
-  height 17.5px
-  width 31.25px
-  border-radius 17.5px
+    &.active
+      background-color $accentColor
 
-.toggle--darklight .toggle--btn:before, .toggle--like .toggle--btn:before
-  position absolute
-  top 0.5px
-  left 1px
-  width 14px
-  height 14px
-  border-radius 50%
+      &:hover
+        cursor default
 
-.toggle--darklight .toggle--btn
-  border 1px solid #1c1c1c
-  background-color #3c4145
-
-.toggle--darklight .toggle--btn:before
-  background-color #fff
-  border 1.25px solid #e3e3c7
-
-.toggle--darklight .toggle--btn:after
-  position absolute
-  top 62%
-  left 9.75px
-  z-index 10
-  width 2.8px
-  height 2.8px
-  opacity 0
-  background-color #fff
-  border-radius 50%
-  box-shadow #fff 0 0, #fff 0.75px 0, #fff 1.5px 0, #fff 2.25px 0, #fff 2.75px 0, #fff 3.5px 0, #fff 4px 0, #fff 5.25px -0.25px 0 0.25px, #fff 4px -1.75px 0 -0.5px, #fff 1.75px -1.75px 0 0.25px, #d3d3d3 0 0 0 1px, #d3d3d3 1.5px 0 0 1px, #d3d3d3 2.75px 0 0 1px, #d3d3d3 4px 0 0 1px, #d3d3d3 5.25px -0.25px 0 1.25px, #d3d3d3 4px -1.75px 0 0.25px, #d3d3d3 1.75px -1.75px 0 1.25px
-  transition opacity 100ms ease-in
-
-@keyframes starry_star
-  50%
-    background-color rgba(255, 255, 255, 0.1)
-    box-shadow #fff 7.5px -0.75px 0 0, #fff 3px 2.5px 0 -0.25px, rgba(255, 255, 255, 0.1) 9.5px 4.5px 0 0.25px, #fff 8px 8.5px 0 0, rgba(255, 255, 255, 0.1) 5px 6px 0 -0.375px, #fff 1.25px 9.5px 0 0.25px
-
-@keyframes bounceIn
-  0%
-    opacity 0
-    transform scale(0.3)
-
-  50%
-    opacity 100
-    transform scale(1.1)
-
-  55%
-    transform scale(1.1)
-
-  75%
-    transform scale(0.9)
-
-  100%
-    opacity 100
-    transform scale(1)
-
-.toggle--darklight .toggle--feature
-  display block
-  position absolute
-  top 2.25px
-  left 52.5%
-  z-index 20
-  width 1px
-  height 1px
-  border-radius 50%
-  background-color #fff
-  box-shadow rgba(255, 255, 255, 0.1) 7.5px -0.75px 0 0, rgba(255, 255, 255, 0.1) 3px 2.5px 0 -0.25px, #fff 9.5px 4.5px 0 0.25px, rgba(255, 255, 255, 0.1) 8px 8.5px 0 0, #fff 5px 6px 0 0.375px, rgba(255, 255, 255, 0.1) 1.25px 9.5px 0 0.25px
-  animation starry_star 5s ease-in-out infinite
-
-.toggle--darklight .toggle--feature:before
-  position absolute
-  top -0.5px
-  left -6.25px
-  width 4.5px
-  height 4.5px
-  background-color #fff
-  border-radius 50%
-  border 1.25px solid #e3e3c7
-  box-shadow #e3e3c7 -7px 0 0 -0.75px, #e3e3c7 -2px 6px 0 -0.5px
-  transform-origin -1.5px 130%
-
-.toggle--darklight .toggle--checkbox:checked+.toggle--btn
-  background-color #9ee3fb
-  border 1px solid #86c3d7
-
-.toggle--darklight .toggle--checkbox:checked+.toggle--btn:before
-  left 13.75px
-  background-color #ffdf6d
-  border 1.25px solid #e1c348
-
-.toggle--darklight .toggle--checkbox:checked+.toggle--btn:after
-  opacity 100
-  animation-name bounceIn
-  animation-duration 0.6s
-  animation-delay 0.1s
-  animation-fill-mode backwards
-  animation-timing-function ease-in-out
-
-.toggle--darklight .toggle--checkbox:checked+.toggle--btn>.toggle--feature
-  opacity 0
-  box-shadow rgba(255, 255, 255, 0.1) 7.5px -0.75px 0 -1px, rgba(255, 255, 255, 0.1) 3px 2.5px 0 -1.25px, #fff 9.5px 4.5px 0 -0.75px, rgba(255, 255, 255, 0.1) 8px 8.5px 0 -1px, #fff 5px 6px 0 -1.375px, rgba(255, 255, 255, 0.1) 1.25px 9.5px 0 -0.75px
-  animation none
-
-.toggle--darklight .toggle--checkbox:checked+.toggle--btn>.toggle--feature:before
-  left 6.25px
-  transform rotate(70deg)
+      .icon
+        fill #fff
 </style>
