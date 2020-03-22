@@ -1,9 +1,8 @@
-.theme-night
+.theme-dark
   // 导航栏
   .navbar
     bgcolor()
-    box-shadow 0 1px 6px 0 rgba(223, 222, 219, 0.28)
-    border-bottom 1px solid $night-bordercolor
+    border-bottom 1px solid $nightBordercolor
 
     .site-name, .links
       bgcolor()
@@ -12,12 +11,14 @@
     .nav-links a
       fontcolor()
 
-  // 导航栏下拉菜单
+    @media (min-width: $MQMobile)
+      &:hover, &.router-link-active
+        borderColor()
+
   @media (min-width: $MQMobile)
     .dropdown-wrapper .nav-dropdown
       bgcolor()
-      box-shadow 0 1px 6px 0 rgba(223, 222, 219, 0.28)
-      border 1px solid $night-bordercolor !important
+      border 1px solid $nightBordercolor !important
 
   // 下拉列表
   .dropdown-wrapper .dropdown-title .title
@@ -26,10 +27,16 @@
   // 搜索框
   .search-box
     input
-      background-color #000 !important
+      fontcolor()
+      background-color $nightBgcolor !important
+
+      @media (min-width: $MQNarrow)
+        bordercolor()
+        background-color lighten($nightBgcolor, 10%) !important
 
       &:focus
-        border-color #9e9e9e
+        background-color lighten($nightBgcolor, 10%) !important
+        border-color $accentColor
 
     .suggestions
       background-color #000
