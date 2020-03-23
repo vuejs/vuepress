@@ -77,9 +77,11 @@ module.exports = class Build extends EventEmitter {
     })
 
     // pre-render head tags from user config
+    // filter out meta tags for they will be injected in updateMeta.js
     this.userHeadTags = (this.context.siteConfig.head || [])
+      .filter(([headTagType]) => headTagType !== 'meta')
       .map(renderHeadTag)
-      .join('\n  ')
+      .join('\n    ')
 
     // if the user does not have a custom 404.md, generate the theme's default
     if (!this.context.pages.some(p => p.path === '/404.html')) {
@@ -134,14 +136,9 @@ module.exports = class Build extends EventEmitter {
   async renderPage (page) {
     const pagePath = decodeURIComponent(page.path)
 
-    // #565 Avoid duplicate description meta at SSR.
-    const meta = (page.frontmatter && page.frontmatter.meta || []).filter(item => item.name !== 'description')
-    const pageMeta = renderPageMeta(meta)
-
     const context = {
       url: page.path,
       userHeadTags: this.userHeadTags,
-      pageMeta,
       title: 'VuePress',
       lang: 'en',
       description: '',
@@ -219,24 +216,6 @@ function renderAttrs (attrs = {}) {
   } else {
     return ''
   }
-}
-
-/**
- * Render meta tags
- *
- * @param {Array} meta
- * @returns {Array<string>}
- */
-
-function renderPageMeta (meta) {
-  if (!meta) return ''
-  return meta.map(m => {
-    let res = `<meta`
-    Object.keys(m).forEach(key => {
-      res += ` ${key}="${escape(m[key])}"`
-    })
-    return res + `>`
-  }).join('')
 }
 
 /**
