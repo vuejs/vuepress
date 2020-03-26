@@ -85,7 +85,7 @@ module.exports = class Build extends EventEmitter {
 
     // if the user does not have a custom 404.md, generate the theme's default
     if (!this.context.pages.some(p => p.path === '/404.html')) {
-      this.context.addPage({ path: '/404.html' })
+      await this.context.addPage({ path: '/404.html' })
     }
 
     // render pages
