@@ -1,0 +1,77 @@
+name: End-to-end tests
+on:
+  push:
+    branches: "*"
+
+jobs:
+  test:
+    runs-on: ubuntu-18.04
+
+    env:
+      FFMPEG_PATH: /usr/bin/ffmpeg # for recording video
+      QAW_ARTIFACT_PATH: ${{ github.workspace }}/artifacts # save video and logs
+
+    steps:
+      - name: Install browser dependencies
+        run: |
+          sudo apt update
+          # chromium dependencies
+          sudo apt-get install libgbm1
+          # webkit dependencies
+          sudo apt-get install libwoff1 libopus0 libwebp6 libwebpdemux2 libenchant1c2a libgudev-1.0-0 libsecret-1-0 libhyphen0 libgdk-pixbuf2.0-0 libegl1 libgles2 libevent-2.1-6 libnotify4 libvpx5 libxslt1.1
+          # ffmpeg
+          sudo apt-get install -y ffmpeg
+
+      - uses: actions/setup-node@v1
+
+      - name: Add yarn global bin to path
+        run: echo "::add-path::$(yarn global bin)"
+
+      - uses: actions/checkout@v2
+        with:
+          path: ./vuepress
+
+      - name: Install and register VuePress
+        run: |
+          yarn
+          yarn register-vuepress
+          yarn tsc
+        working-directory: ./vuepress
+
+      - name: Install end-to-end test dependencies
+        run: yarn
+        working-directory: ./vuepress/__e2e__
+
+      - name: Create test project
+        run: |
+          mkdir test_project
+          cd test_project
+          yarn init -y
+          yarn link vuepress
+          echo '# Hello VuePress' > README.md
+
+      - name: Run VuePress
+        run: vuepress dev &
+        working-directory: ./test_project
+
+      - name: Test first page
+        run: npx qawolf test --all-browsers --headless initialSetup
+        working-directory: ./vuepress/__e2e__
+
+      - name: Add another page
+        run: |
+          mkdir get_started
+          echo '# Get Started' > get_started/README.md
+          echo '[Get Started](/get_started/)' >> README.md
+        working-directory: ./test_project
+
+      - name: Test additional page
+        run: npx qawolf test --all-browsers --headless linkAndSearch
+        working-directory: ./vuepress/__e2e__
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@master
+        with:
+          name: e2e
+          path: ${{ github.workspace }}/artifacts
