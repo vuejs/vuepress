@@ -93,6 +93,57 @@ jobs:
           name: 'Run md linter'
           command: yarn workspace docs lint-md
 
+  run-e2e-tests:
+    working_directory: ~/project
+    docker:
+      - image: qawolf/playwright-ci:v0.8.0
+    environment:
+      FFMPEG_PATH: /usr/bin/ffmpeg # for recording video
+      QAW_ARTIFACT_PATH: /tmp/artifacts # for uploading video
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: 'Register VuePress'
+          command: yarn register-vuepress
+      - run:
+          name: 'Install end-to-end test dependencies'
+          command: yarn
+          working_directory: ~/project/__e2e__
+      - run:
+          name: 'Create test project'
+          command: |
+            mkdir test_project
+            cd test_project
+            yarn init -y
+            yarn link vuepress
+            echo '# Hello VuePress' > README.md
+      - run:
+          name: 'Run VuePress'
+          command: vuepress dev
+          background: true
+          working_directory: ~/project/test_project
+      - run:
+          name: 'Test first page'
+          command: |
+            yarn run wait-on http://localhost:8080
+            npx qawolf test --all-browsers --headless initialSetup
+          working_directory: ~/project/__e2e__
+      - run:
+          name: 'Add another page'
+          command: |
+            mkdir get_started
+            echo '# Get Started' > get_started/README.md
+            echo '[Get Started](/get_started/)' >> README.md
+          working_directory: ~/project/test_project
+      - run:
+          name: 'Test additional page'
+          command: npx qawolf test --all-browsers --headless linkAndSearch
+          working_directory: ~/project/__e2e__
+      - store_artifacts:
+          path: /tmp/artifacts
+
   #------------------------------------------------------------
   # 3. Build VuePress
   #------------------------------------------------------------
@@ -120,4 +171,5 @@ workflows:
       - run-docs-linter-check: { requires: [install-dependencies] }
       - run-tsc: { requires: [install-dependencies] }
       - run-tests: { requires: [run-tsc] }
-      - build: { requires: [run-tests, run-linter-check, run-docs-linter-check] }
+      - run-e2e-tests: { requires: [run-tsc] }
+      - build: { requires: [run-tests, run-e2e-tests, run-linter-check, run-docs-linter-check] }
