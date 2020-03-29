@@ -37,6 +37,7 @@ Here is an example of a fully PWA-compliant configuration with VuePress:
 module.exports = {
   head: [
     ['link', { rel: 'icon', href: '/logo.png' }],
+    ['link', { rel: 'icon', href: 'favicon.ico', type: 'image/x-icon' }],
     ['link', { rel: 'manifest', href: '/manifest.json' }],
     ['meta', { name: 'theme-color', content: '#3eaf7c' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
