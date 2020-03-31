@@ -81,7 +81,8 @@ module.exports = function snippet (md, options = {}) {
       if (loader) {
         loader.addDependency(src)
       }
-      if (fs.existsSync(src)) {
+      const isAFile = fs.lstatSync(src).isFile()
+      if (fs.existsSync(src) && isAFile) {
         let content = fs.readFileSync(src, 'utf8')
 
         if (regionName) {
@@ -100,7 +101,7 @@ module.exports = function snippet (md, options = {}) {
 
         token.content = content
       } else {
-        token.content = `Code snippet path not found: ${src}`
+        token.content = isAFile ? `Code snippet path not found: ${src}` : `Invalid code snippet option`
         token.info = ''
         logger.error(token.content)
       }
@@ -136,7 +137,7 @@ module.exports = function snippet (md, options = {}) {
      *
      * captures: ['/path/to/file.extension', 'extension', '#region', '{meta}']
      */
-    const rawPathRegexp = /^(.+(?:\.([a-z]+)))(?:(#[\w-]+))?(?: ?({\d(?:[,-]\d)?}))?$/
+    const rawPathRegexp = /^(.+(?:\.([a-z]+)))(?:(#[\w-]+))?(?: ?({\d+(?:[,-]\d+)?}))?$/
 
     const rawPath = state.src.slice(start, end).trim().replace(/^@/, root).trim()
     const [filename = '', extension = '', region = '', meta = ''] = (rawPathRegexp.exec(rawPath) || []).slice(1)

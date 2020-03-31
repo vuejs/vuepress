@@ -43,6 +43,12 @@ describe('snippet', () => {
     expect(output).toMatchSnapshot()
   })
 
+  test('import snippet with region and single line highlight > 10', () => {
+    const input = getFragment(__dirname, 'code-snippet-with-region-and-single-highlight.md')
+    const output = md.render(input)
+    expect(output).toMatchSnapshot()
+  })
+
   test('import snippet with indented region', () => {
     const input = getFragment(__dirname, 'code-snippet-with-indented-region.md')
     const output = md.render(input)
