@@ -1,13 +1,15 @@
 <template>
   <div class="theme-container">
     <div class="theme-default-content">
-      <h1>404</h1>
+      <ClientOnly>
+        <h1>404</h1>
 
-      <blockquote>{{ getMsg() }}</blockquote>
+        <blockquote>{{ getMsg() }}</blockquote>
 
-      <RouterLink :to="localePath">
-        {{ notFoundLinkText }}
-      </RouterLink>
+        <RouterLink :to="localePath">
+          {{ notFoundLinkText }}
+        </RouterLink>
+      </ClientOnly>
     </div>
   </div>
 </template>
