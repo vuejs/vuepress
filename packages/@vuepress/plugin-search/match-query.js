@@ -1,4 +1,3 @@
-
 import get from 'lodash/get'
 
 export default (query, page, additionalStr = null) => {
@@ -28,10 +27,10 @@ const matchTest = (query, domain) => {
       .map((word, index) => {
         if (words.length === index + 1 && !hasTrailingSpace) {
           // The last word - ok with the word being "startswith"-like
-          return `(?=.*\\b${escapeRegExp(word)})`
+          return `(?=.*${escapeRegExp(word)})`
         } else {
           // Not the last word - expect the whole word exactly
-          return `(?=.*\\b${escapeRegExp(word)}\\b)`
+          return `(?=.*${escapeRegExp(word)}.*)`
         }
       })
       .join('') + '.+',
@@ -39,4 +38,3 @@ const matchTest = (query, domain) => {
   )
   return searchRegex.test(domain)
 }
-
