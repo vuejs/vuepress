@@ -179,6 +179,10 @@ VuePress 提供了一种添加额外样式的简便方法。你可以创建一�
 }
 ```
 
+**还可以看看：**
+
+- [为什么不能把 `palette.styl` 和 `index.styl` 合并到一个 API?](../faq/#为什么不能把-palette-styl-和-index-styl-合并到一个-api)
+
 ## 主题
 
 ### theme
