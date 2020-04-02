@@ -55,8 +55,33 @@ export default {
   created () {
     this.refreshIndex()
   },
+  
+  mounted() {
+    this.isInViewPortOfOne()
+  },
+  
+  updated: function () {
+    this.isInViewPortOfOne()
+  },
 
   methods: {
+    isInViewPortOfOne () {
+        let el = document.getElementsByClassName("active sidebar-link")[1]
+        if (el ==null || el.offsetTop == undefined) {
+          el = document.getElementsByClassName("active sidebar-link")[0]
+        }
+        if (el ==null || el.offsetTop == undefined) return
+        
+        const viewPortHeight = document.getElementsByClassName("sidebar")[0].clientHeight || window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight 
+        const offsetTop = el.offsetTop
+        const scrollTop = document.getElementsByClassName("sidebar")[0].scrollTop
+
+        let isView = (offsetTop +15 <= viewPortHeight + scrollTop)
+        if (!isView) {
+          document.getElementsByClassName("sidebar")[0].scrollTop = (offsetTop + 36 - viewPortHeight)
+        }
+    },
+    
     refreshIndex () {
       const index = resolveOpenGroupIndex(
         this.$route,
