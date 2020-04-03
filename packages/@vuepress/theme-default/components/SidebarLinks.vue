@@ -66,19 +66,20 @@ export default {
 
   methods: {
     isInViewPortOfOne () {
+        let siderbarScroll = document.getElementsByClassName("sidebar")[0]
         let el = document.getElementsByClassName("active sidebar-link")[1]
         if (el ==null || el.offsetTop == undefined) {
           el = document.getElementsByClassName("active sidebar-link")[0]
         }
         if (el ==null || el.offsetTop == undefined) return
         
-        const viewPortHeight = document.getElementsByClassName("sidebar")[0].clientHeight || window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight 
-        const offsetTop = el.offsetTop
-        const scrollTop = document.getElementsByClassName("sidebar")[0].scrollTop
+        const viewPortHeight = siderbarScroll.clientHeight || window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight 
+        let offsetBottom = el.offsetTop + el.offsetHeight
+        let scrollTop = siderbarScroll.scrollTop
 
-        let isView = (offsetTop +15 <= viewPortHeight + scrollTop)
+        let isView = (offsetBottom <= viewPortHeight + scrollTop)
         if (!isView) {
-          document.getElementsByClassName("sidebar")[0].scrollTop = (offsetTop + 36 - viewPortHeight)
+          siderbarScroll.scrollTop = (offsetBottom+5 - viewPortHeight)
         }
     },
     
