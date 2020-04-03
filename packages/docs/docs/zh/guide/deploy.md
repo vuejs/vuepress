@@ -213,3 +213,17 @@ heroku open
 ## ZEIT Now
 
 请查看 [用 ZEIT Now 部署一个 VuePress 的示例站点](https://zeit.co/guides/deploying-vuepress-to-now).
+
+## 21云盒子
+
+1. 在 [21云盒子](https://www.21yunbox.com) 中, 创建一个新的 `静态网页` ，使用以下设置：
+
+- **构建命令:** `yarn && yarn docs:build`
+- **发布目录:** `docs/.vuepress/dist`
+
+2. 点击 "部署" 按钮！
+
+样例已经部署在 [https://vuepress.21yunbox.com](https://vuepress.21yunbox.com).
+
+请查看 [用 21云盒子 部署一个 VuePress 的样例](https://www.21yunbox.com/docs/#/deploy-vuepress).
+
