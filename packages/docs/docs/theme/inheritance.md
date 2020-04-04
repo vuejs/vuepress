@@ -129,7 +129,7 @@ Then, in any Vue components on the theme, **you should access the theme root dir
 
 ```vue
 <script>
-import Home from '@theme/components/Navbar.vue'
+import Navbar from '@theme/components/Navbar.vue'
 // ...
 </script>
 ```

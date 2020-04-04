@@ -129,7 +129,7 @@ theme
 
 ```vue
 <script>
-import Home from '@theme/components/Navbar.vue'
+import Navbar from '@theme/components/Navbar.vue'
 // ...
 </script>
 ```
