@@ -20,7 +20,7 @@ This section will help you build a basic VuePress documentation site from ground
 
 3. Install VuePress locally
 
-    Globally installed VuePress is no longer recommanded.
+    Globally installed VuePress is no longer recommended.
 
     ```bash
     yarn add -D vuepress # npm install -D vuepress
@@ -38,7 +38,7 @@ This section will help you build a basic VuePress documentation site from ground
 
 5. Add some [scripts](https://classic.yarnpkg.com/en/docs/package-json#toc-scripts) to `package.json`
 
-    This step is optional but highly recommanded, the rest of the documentaion will assume those scripts being added.
+    This step is optional but highly recommended, the rest of the documentaion will assume those scripts being added.
 
     ``` json
     {
@@ -57,12 +57,8 @@ This section will help you build a basic VuePress documentation site from ground
 
     VuePress will start a hot-reloading development server at [http://localhost:8080](http://localhost:8080).
 
-By now, you should have a basic but functional VuePress documentation site.
+By now, you should have a basic but functional VuePress documentation site. Next, learn about VuePress' recommended [directory structure](directory-structure.html) and the basics of [configuration](basic-config.html) in VuePress.
 
-To understand how to structure your documents and configurations, check out recommended [document structure](./directory-structure.html).
+You can also use [static assests](assets.html), [markdown extensions](markdown.html) and [Vue Component](using-vue.html) your VuePress documentation.
 
-To config your documentation site and gain more custimization. Visit [Basic Config](/basic-config.html)
-
-You can also use [static assests], markdown sytax and Vue Component your VuePress documentation.
-
-When your documentation site start to take shape, you may want to deloy it on a popular hosting services.
+When your documentation site start to take shape, you should also check out VuePress multi-language support at [Internationalization](i18n.html) and guides on how to [deploy](deploy.html) to popular services.
