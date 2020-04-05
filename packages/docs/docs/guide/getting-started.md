@@ -1,69 +1,68 @@
 # Getting Started
 
-::: warning COMPATIBILITY NOTE
-VuePress requires Node.js >= 8.
+::: warning Prerequisites
+VuePress requires [Node.js](https://nodejs.org/en/) >= 8.6.
 :::
 
-## Global Installation
+This section will help you build a basic VuePress documentation site from ground up. If you already have an existing project and would like to keep documentation inside the project, start from Step 3.
 
-If you only want to play around with VuePress, you can install it globally:
+1. Create and change into a new directory
 
-``` bash
-# install globally
-yarn global add vuepress # OR npm install -g vuepress
+    ```bash
+    mkdir vuepress-starter && cd vuepress-starter
+    ```
 
-# create the project folder
-mkdir vuepress-starter && cd vuepress-starter
+2. Initialize with your preferred package manager
 
-# create a markdown file
-echo '# Hello VuePress' > README.md
+    ```bash
+    yarn init # npm init
+    ```
 
-# start writing
-vuepress dev
+3. Install VuePress locally
 
-# build
-vuepress build
-```
+    Globally installed VuePress is no longer recommanded.
 
-## Inside an Existing Project
+    ```bash
+    yarn add -D vuepress # npm install -D vuepress
+    ```
 
-If you have an existing project and would like to keep documentation inside the project, you should install VuePress as a local dependency. This setup also allows you to use CI or services like [Netlify](https://netlify.com) for automatic deployment on push.
+    ::: warning
+    We currently recommend using [Yarn](https://classic.yarnpkg.com/lang/en/) instead of npm when installing VuePress into an existing project that has webpack 3.x as a dependency, because npm fails to generate the correct dependency tree in this case.
+    :::
 
-``` bash
-# install as a local dependency
-yarn add -D vuepress # OR npm install -D vuepress
+4. Create your first document
 
-# create a docs directory
-mkdir docs
-# create a markdown file
-echo '# Hello VuePress' > docs/README.md
-```
+    ```bash
+    mkdir docs && echo '# Hello VuePress' > docs/README.md
+    ```
 
-::: warning
-We currently recommend using [Yarn](https://yarnpkg.com/en/) instead of npm when installing VuePress into an existing project that has webpack 3.x as a dependency, because npm fails to generate the correct dependency tree in this case.
-:::
+5. Add some [scripts](https://classic.yarnpkg.com/en/docs/package-json#toc-scripts) to `package.json`
 
-Then, add some scripts to `package.json`:
+    This step is optional but highly recommanded, the rest of the documentaion will assume those scripts being added.
 
-``` json
-{
-  "scripts": {
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
-  }
-}
-```
+    ``` json
+    {
+      "scripts": {
+        "docs:dev": "vuepress dev docs",
+        "docs:build": "vuepress build docs"
+      }
+    }
+    ```
 
-You can now start writing with:
+6. Serve the documentation site in the local server
 
-``` bash
-yarn docs:dev # OR npm run docs:dev
-```
+    ```bash
+    yarn docs:dev # npm run docs:dev
+    ```
 
-To generate static assets, run:
+    VuePress will start a hot-reloading development server at [http://localhost:8080](http://localhost:8080).
 
-``` bash
-yarn docs:build # OR npm run docs:build
-```
+By now, you should have a basic but functional VuePress documentation site.
 
-By default, the built files will be in `.vuepress/dist`, which can be configured via the `dest` field in `.vuepress/config.js`. The built files can be deployed to any static file server. See [Deployment Guide](deploy.md) for guides on deploying to popular services.
+To understand how to structure your documents and configurations, check out recommended [document structure](./directory-structure.html).
+
+To config your documentation site and gain more custimization. Visit [Basic Config](/basic-config.html)
+
+You can also use [static assests], markdown sytax and Vue Component your VuePress documentation.
+
+When your documentation site start to take shape, you may want to deloy it on a popular hosting services.
