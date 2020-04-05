@@ -1,6 +1,6 @@
 # Getting Started
 
-::: warning Prerequisites
+::: warning Prerequisite
 VuePress requires [Node.js](https://nodejs.org/en/) >= 8.6.
 :::
 
@@ -8,13 +8,13 @@ This section will help you build a basic VuePress documentation site from ground
 
 1. Create and change into a new directory
 
-    ```bash
+    ``` bash
     mkdir vuepress-starter && cd vuepress-starter
     ```
 
 2. Initialize with your preferred package manager
 
-    ```bash
+    ``` bash
     yarn init # npm init
     ```
 
@@ -22,7 +22,7 @@ This section will help you build a basic VuePress documentation site from ground
 
     Globally installed VuePress is no longer recommended.
 
-    ```bash
+    ``` bash
     yarn add -D vuepress # npm install -D vuepress
     ```
 
@@ -32,7 +32,7 @@ This section will help you build a basic VuePress documentation site from ground
 
 4. Create your first document
 
-    ```bash
+    ``` bash
     mkdir docs && echo '# Hello VuePress' > docs/README.md
     ```
 
@@ -51,14 +51,14 @@ This section will help you build a basic VuePress documentation site from ground
 
 6. Serve the documentation site in the local server
 
-    ```bash
+    ``` bash
     yarn docs:dev # npm run docs:dev
     ```
 
     VuePress will start a hot-reloading development server at [http://localhost:8080](http://localhost:8080).
 
-By now, you should have a basic but functional VuePress documentation site. Next, learn about VuePress' recommended [directory structure](directory-structure.html) and the basics of [configuration](basic-config.html) in VuePress.
+By now, you should have a basic but functional VuePress documentation site. Next, learn about VuePress’ recommended [directory structure](directory-structure.html) and the basics of [configuration](basic-config.html) in VuePress.
 
-Once you're familiar with those concepts mentioned above, learn about how to manage your content with [static assests](assets.html), [markdown extensions](markdown.html) and [vue components](using-vue.html).
+Once you’re familiar with those concepts mentioned above, learn about how to enrich your content with [static assests](assets.html), [Markdown extensions](markdown.html) and [vue components](using-vue.html).
 
 And when your documentation site start to take shape, check out the [multi-language support](i18n.html) and guides for [deploying](deploy.html) your site to popular services.
