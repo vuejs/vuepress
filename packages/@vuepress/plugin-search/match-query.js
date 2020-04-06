@@ -18,13 +18,19 @@ export default (query, page, additionalStr = null) => {
 const matchTest = (query, domain) => {
   const escapeRegExp = str => str.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')
 
+  // eslint-disable-next-line no-control-regex
+  const nonASCIIRegExp = new RegExp('[^\x00-\x7F]')
+
   const words = query
     .split(/\s+/g)
     .map(str => str.trim())
     .filter(str => !!str)
-  const hasTrailingSpace = query.endsWith(' ')
-  const searchRegex = new RegExp(
-    words
+
+  if (!nonASCIIRegExp.test(query)) {
+    // if the query only has ASCII chars, treat as English
+    const hasTrailingSpace = query.endsWith(' ')
+    const searchRegex = new RegExp(
+      words
       .map((word, index) => {
         if (words.length === index + 1 && !hasTrailingSpace) {
           // The last word - ok with the word being "startswith"-like
@@ -35,8 +41,11 @@ const matchTest = (query, domain) => {
         }
       })
       .join('') + '.+',
-    'gi'
-  )
-  return searchRegex.test(domain)
+      'gi'
+    )
+    return searchRegex.test(domain)
+  } else {
+    // if the query has non-ASCII chars, treat as other languages
+    return words.some(word => domain.toLowerCase().indexOf(word) > -1)
+  }
 }
-
