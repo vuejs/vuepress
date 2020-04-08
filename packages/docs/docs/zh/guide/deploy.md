@@ -212,4 +212,9 @@ heroku open
 
 ## ZEIT Now
 
-请查看 [用 ZEIT Now 部署一个 VuePress 的示例站点](https://zeit.co/guides/deploying-vuepress-to-now).
+请查看 [用 ZEIT Now 部署一个 VuePress 的示例站点](https://zeit.co/guides/deploying-vuepress-to-now)。
+
+## 21 云盒子
+
+请查看 [21 云盒子 - 部署一个 VuePress 静态网页](https://www.21yunbox.com/docs/#/deploy-vuepress)。
+
