@@ -13,7 +13,7 @@ module.exports = {
       'always',
       [
         'cli',
-        'cn',
+        'zh',
         ...VuepressPackages
       ].map(name => `$${name}`)
     ]
