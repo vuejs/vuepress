@@ -211,7 +211,7 @@ module.exports = {
     sidebar: [
       {
         title: 'Group 1',   // required
-        path: '/foo/',      // optional, which should be a absolute path.
+        path: '/foo/',      // optional, which should be a absolute path, and the folder must exist
         collapsable: false, // optional, defaults to true
         sidebarDepth: 1,    // optional, defaults to 1
         children: [
@@ -226,8 +226,6 @@ module.exports = {
   }
 }
 ```
-
-To actually get this example works, `foo` folder must exists. If not, sidebar will not be generated.
 
 Sidebar groups are collapsable by default. You can force a group to be always open with `collapsable: false`.
 
