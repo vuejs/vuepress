@@ -35,7 +35,7 @@ VuePress 1.0 进行了大范围的重写，其中最重要的就是引入 [Plugi
 主题的根配置文件也是插件。
 
 ::: tip
-和 `.vuepress/config.js` 一样，`theme/config.js` 所支持的选项，也是在插件选项的基础上，又新增了一些特定的选项。用一张图来表达它们的关系就是：
+和 `.vuepress/config.js` 一样，`theme/index.js` 所支持的选项，也是在插件选项的基础上，又新增了一些特定的选项。用一张图来表达它们的关系就是：
 
 <svg viewBox="0 0 2806 912" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 51 (57462) - http://www.bohemiancoding.com/sketch -->
