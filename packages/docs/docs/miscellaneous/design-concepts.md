@@ -36,7 +36,7 @@ The options supported by `.vuepress/config.js` are actually based on the plugin 
 The root configuration file of the theme is also a plugin.
 
 ::: tip
-As with `.vuepress/config.js`, the options supported by `theme/config.js` are based on the plugin options and add some specific options. Using a graph to express their relationship:
+As with `.vuepress/config.js`, the options supported by `theme/index.js` are based on the plugin options and add some specific options. Using a graph to express their relationship:
 
 <svg viewBox="0 0 2806 912" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 51 (57462) - http://www.bohemiancoding.com/sketch -->
