@@ -35,7 +35,7 @@ module.exports = {
 module.exports = {
   plugins: [
     [
-      'register-components',
+      '@vuepress/register-components',
       {
         componentsDir: somepath
       }
@@ -43,6 +43,7 @@ module.exports = {
   ]
 }
 ```
+`somepath`是从`docs`目录开始,比如：`docs/.vuepress/components/custom-path/`
 
 ### components
 
@@ -55,7 +56,7 @@ module.exports = {
 module.exports = {
   plugins: [
     [
-      'register-components',
+      '@vuepress/register-components',
       {
         components: [
           {
