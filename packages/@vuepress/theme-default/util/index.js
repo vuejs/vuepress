@@ -20,6 +20,10 @@ export function isExternal (path) {
   return outboundRE.test(path)
 }
 
+export function isXML (path) {
+  return /\.xml$/.test(path)
+}
+
 export function isMailto (path) {
   return /^mailto:/.test(path)
 }
@@ -30,6 +34,9 @@ export function isTel (path) {
 
 export function ensureExt (path) {
   if (isExternal(path)) {
+    return path
+  }
+  if (isXML(path)) {
     return path
   }
   const hashMatch = path.match(hashRE)
