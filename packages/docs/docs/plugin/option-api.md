@@ -3,7 +3,7 @@
 ## name
 
 - Type: `string`
-- Default: undefined
+- Default: `undefined`
 
 The name of the plugin.
 
@@ -43,7 +43,7 @@ module.exports = {
 ## chainWebpack
 
 - Type: `Function`
-- Default: undefined
+- Default: `undefined`
 
 Edit the internal webpack config with [webpack-chain](https://github.com/mozilla-neutrino/webpack-chain).
 
@@ -66,7 +66,7 @@ Since VuePress is a Vue-SSR based application, there needs to be two webpack con
 ## define
 
 - Type: `Object | Function`
-- Default: undefined
+- Default: `undefined`
 
 Since using [DefinePlugin](https://webpack.js.org/plugins/define-plugin/) via [chainWebpack](#chainwebpack) would be a little complicated:
 
@@ -110,7 +110,7 @@ module.exports = (options, context) => ({
 ## alias
 
 - Type: `Object | Function`
-- Default: undefined
+- Default: `undefined`
 
 We can set aliases via [chainWebpack](#chainwebpack):
 
@@ -135,7 +135,7 @@ module.exports = (options, context) => ({
 ## beforeDevServer
 
 - Type: `Function`
-- Default: undefined
+- Default: `undefined`
 
 Equivalent to [before](https://webpack.js.org/configuration/dev-server/#devserver-before) in [webpack-dev-server](https://github.com/webpack/webpack-dev-server). You can use it to define custom handlers before all middleware is executed:
 
@@ -153,7 +153,7 @@ module.exports = {
 ## afterDevServer
 
 - Type: `Function`
-- Default: undefined
+- Default: `undefined`
 
 Equivalent to [after](https://webpack.js.org/configuration/dev-server/#devserver-after) in [webpack-dev-server](https://github.com/webpack/webpack-dev-server). You can use it to execute custom middleware after all other middleware:
 
