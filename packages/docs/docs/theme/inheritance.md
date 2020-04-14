@@ -109,7 +109,7 @@ You shouldn’t need to do this unless you know for sure that disabling plugins 
 In the scenario where you want to override your user theme config or you want to change the default values from the parent theme there is an easy way to do so.
 
 In your `theme/index.js`, you can override the `themeConfig` values.
-So let's say your theme is extending the default theme but you want sidebarDepth to be 0 then you would do:
+So let’s say your theme is extending the default theme but you want sidebarDepth to be 0 then you would do:
 
 ```js
 // theme/index.js
@@ -135,10 +135,10 @@ module.exports = (themeConfig) => {
 }
 ```
 
-Now, if the user sets `themeConfig: { sidebarDepth: 2 }` in it's `.vuepress/config.js`. The final value will be `2`. If he doesn't define it, then it will now default to `0`.
+Now, if the user sets `themeConfig: { sidebarDepth: 2 }` in it’s `.vuepress/config.js`. The final value will be `2`. If he doesn’t define it, then it will now default to `0`.
 
 ::: warning
-When overriding `themeConfig` values that are used by the parent theme, be sure that your default value is supported by it.
+When overriding `themeConfig` values that the parent theme uses, be sure that it supports your default value.
 :::
 
 ## Override Components
