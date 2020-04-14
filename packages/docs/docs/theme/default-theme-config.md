@@ -353,7 +353,7 @@ You can improve the search result by [setting `tags` in frontmatter](../guide/fr
 
 ```yaml
 ---
-tags: 
+tags:
   - configuration
   - theme
   - indexing
@@ -423,7 +423,6 @@ Note that it’s `off` by default. If given a `string`, it will be displayed as 
 ::: warning
   Since `lastUpdated` is based on `git`, you can only use it in a `git` repository. Also, since the timestamp used comes from the git commit, it will display only after a first commit for a given page, and update only on ensuing commits of that page.
 :::
-
 
 **Also see:**
 

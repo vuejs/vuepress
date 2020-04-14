@@ -30,7 +30,6 @@ Yes, your configuration file is also a plugin, so you can use the Plugin API dir
 The options supported by `.vuepress/config.js` are actually based on the plugin options and add some specific options.
 :::
 
-
 ### `theme/index.js` is also a plugin
 
 The root configuration file of the theme is also a plugin.
@@ -188,7 +187,6 @@ module.exports = {
 
 Then the final value of `name` option will be `bar`.
 
-
 ## Others
 
 With the goal of decoupling, we were able to separate VuePress into the following two libraries by introducing monorepo:
@@ -197,5 +195,3 @@ With the goal of decoupling, we were able to separate VuePress into the followin
 - [@vuepress/theme-default](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/theme-default)：The default theme you see now.
 
 Of course, for most users, you don’t need to worry about these three libraries. The [VuePress](https://www.npmjs.com/search?Q=vuepress) package has already assembled them together, so you can use VuePress like `0.x`.
-
-

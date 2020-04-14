@@ -9,7 +9,7 @@ lang: en-US
 ---
 ```
 
-在这些三条虚线之间，你可以设置预定义变量（参见[下面](#预定义变量)），甚至可以创建自己的自定义变量。 然后，您可以使用 <code> [$frontmatter](global-computed.md#frontmatter)</code> 在页面的其余部分、以及所有的自定义和主题组件访问这些变量。
+在这些三条虚线之间，你可以设置预定义变量（参见 [下面](#预定义变量)），甚至可以创建自己的自定义变量。 然后，您可以使用 <code>[$frontmatter](global-computed.md#frontmatter)</code> 在页面的其余部分、以及所有的自定义和主题组件访问这些变量。
 
 ::: tip
 在 VuePress 中，Front matter 是 **可选的**。
@@ -74,12 +74,12 @@ lang = "en-US"
 - 类型: `string`
 - 默认值: `siteConfig.permalink`
 
-参考: [Permalinks](./permalinks.md).
+参考: [永久链接](./permalinks.md).
 
 ### metaTitle
 
 - 类型: `string`
-- 默认值: <code>\`${page.title} | ${siteConfig.title}\`</code>
+- 默认值: `` `${page.title} | ${siteConfig.title}` ``
 
 重写默认的 meta title。
 
@@ -111,21 +111,21 @@ meta:
 
 ### sidebar
 
-- 类型: `boolean|'auto'`
+- 类型: `boolean | 'auto'`
 - 默认值: `undefined`
 
 参考: [默认主题配置 > 侧边栏](../theme/default-theme-config.md#侧边栏)。
 
 ### prev
 
-- 类型: `boolean|string`
+- 类型: `boolean | string`
 - 默认值: `undefined`
 
 参考: [默认主题配置 > 上 / 下一篇链接](../theme/default-theme-config.md#上-下一篇链接)。
 
 ### next
 
-- 类型: `boolean|string`
+- 类型: `boolean | string`
 - 默认值: `undefined`
 
 参考: [默认主题配置 > 上 / 下一篇链接](../theme/default-theme-config.md#上-下一篇链接)。

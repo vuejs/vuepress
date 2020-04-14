@@ -61,7 +61,7 @@ export default {
 ### searchMaxSuggestions
 
 - 类型: `number`
-- 默认值: 5
+- 默认值: `5`
 
 设置搜索的最大结果数。
 

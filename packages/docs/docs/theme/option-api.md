@@ -22,8 +22,8 @@ module.exports = (themeConfig, ctx) => {
 }
 ```
 
-
 ::: tip
+
 1. You should see the difference between `themeEntry` and `themeConfig`, the former is a configuration for the theme itself, provided by VuePress. The latter is the user’s configuration for the theme, implemented by the used theme, for example [Default Theme Config](./default-theme-config.md).
 
 2. Along with the options listed in this section, `themeEntry` also supports all [Option API](../plugin/option-api.md) and [Lifecycle](../plugin/life-cycle.md) supported by plugins.
@@ -31,8 +31,8 @@ module.exports = (themeConfig, ctx) => {
 
 ## plugins
 
-- Type: `Array|Object`
-- Default: undefined
+- Type: `Array | Object`
+- Default: `undefined`
 
 **Also see:**
 
@@ -47,14 +47,14 @@ You probably don’t need to use following options tagged with <Badge text="Dang
 ## devTemplate <Badge text="Danger Zone"/>
 
 - Type: `String`
-- Default: undefined
+- Default: `undefined`
 
 HTML template path used in `dev` mode, default template see [here](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/core/lib/client/index.dev.html)
 
 ## ssrTemplate <Badge text="Danger Zone"/>
 
 - Type: `String`
-- Default: undefined
+- Default: `undefined`
 
 HTML template path used in `build` mode, default template see [here](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/core/lib/client/index.ssr.html)
 
@@ -65,7 +65,7 @@ HTML template path used in `build` mode, default template see [here](https://git
 ## extend <Badge text="Danger Zone"/>
 
 - Type: `String`
-- Default: undefined
+- Default: `undefined`
 
 ```js
 module.exports = {
@@ -83,7 +83,7 @@ VuePress provides the ability to inherit one theme from another. VuePress will f
 ## globalLayout <Badge text="Danger Zone"/>
 
 - Type: `String`
-- Default: undefined
+- Default: `undefined`
 
 ```js
 // themePath/index.js

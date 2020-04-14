@@ -71,7 +71,6 @@ Specify the port to use for the dev server.
 - Type: `string`
 - Default: `/path/to/@vuepress/core/.temp`
 
-
 Specify the temporary directory for client.
 
 ### dest
@@ -111,6 +110,7 @@ You can also use this option through the CLI:
 vuepress dev docs --cache .cache # set cache path
 vuepress dev docs --no-cache     # remove cache before each build.
 ```
+
 :::
 
 ### extraWatchFiles
@@ -215,7 +215,7 @@ Provide config options to the used theme. The options will vary depending on the
 
 ### plugins
 
-- Type: `Object|Array`
+- Type: `Object | Array`
 - Default: `undefined`
 
 Please check out [Plugin > Using a plugin](../plugin/using-a-plugin.md) to learn how to use a plugin.
@@ -321,7 +321,7 @@ This option is also included in [Plugin API](../plugin/option-api.md#extendmarkd
 - Default: `['h2', 'h3']`
 
 While preparing the page, headers are extracted from the Markdown file and stored in `this.$page.headers`. By default, VuePress will extract `h2` and `h3` elements for you. You can override the headers it pulls out in your `markdown` options.
- 
+
 ``` js
 module.exports = {
   markdown: {

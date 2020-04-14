@@ -16,7 +16,7 @@ yarn add -D @vuepress/plugin-active-header-links
 
 ## Usage
 
-```javascript
+```js
 module.exports = {
   plugins: ['@vuepress/active-header-links']
 }
@@ -24,7 +24,7 @@ module.exports = {
 
 ### Passing Options
 
-```javascript
+```js
 module.exports = {
   plugins: ['@vuepress/active-header-links', {
     sidebarLinkSelector: '.sidebar-link',

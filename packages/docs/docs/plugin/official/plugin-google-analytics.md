@@ -5,7 +5,6 @@ metaTitle: Google Analytics Plugin | VuePress
 
 # [@vuepress/plugin-google-analytics](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/plugin-google-analytics)
 
-
 > Google analytics plugin
 
 ## Install
@@ -21,7 +20,7 @@ We currently recommend using [Yarn](https://yarnpkg.com/en/) instead of npm to i
 
 ## Usage
 
-```javascript
+```js
 module.exports = {
   plugins: [
     [

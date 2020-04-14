@@ -131,6 +131,7 @@ pages:
 2. 在你项目的根目录下创建 `firebase.json` 和 `.firebaserc`，并包含以下内容：
 
 `firebase.json`:
+
 ```json
 {
  "hosting": {
@@ -141,6 +142,7 @@ pages:
 ```
 
 `.firebaserc`:
+
 ``` js
 {
  "projects": {
@@ -161,7 +163,6 @@ pages:
 
 你也可以通过 `surge docs/.vuepress/dist yourdomain.com` 来部署到 [自定义域名](http://surge.sh/help/adding-a-custom-domain)。
 
-
 ## Heroku
 
 1. 首先安装 [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)；
@@ -177,6 +178,7 @@ pages:
 4. 在你的项目根目录中，创建一个名为 `static.json` 的文件，并包含下述内容：
 
 `static.json`:
+
 ```json
 {
 "root": "./docs/.vuepress/dist"
@@ -217,4 +219,3 @@ heroku open
 ## 21 云盒子
 
 请查看 [21 云盒子 - 部署一个 VuePress 静态网页](https://www.21yunbox.com/docs/#/deploy-vuepress)。
-

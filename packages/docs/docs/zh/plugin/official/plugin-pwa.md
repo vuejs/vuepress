@@ -16,7 +16,7 @@ yarn add -D @vuepress/plugin-pwa
 
 ## 使用
 
-```javascript
+```js
 module.exports = {
   plugins: ['@vuepress/pwa']
 }
@@ -25,15 +25,15 @@ module.exports = {
 ::: tip
 为了让你的网站完全地兼容 PWA，你需要:
 
-- 在 `.vuepress/public` 提供 Manifest 和 icons
-- 在 `.vuepress/config.js` 添加正確的 [head links](/config/#head)(参见下面例子).
+- 在 `.vuepress/public` 提供 manifest.json 和 图标
+- 在 `.vuepress/config.js` 添加正确的 [head links](/config/#head)(参见下面例子).
 
 更多细节，请参见 [MDN docs about the Web App Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest).
 :::
 
 这是一个在VuePress中完全地兼容 PWA 的例子：
 
-```javascript
+```js
 module.exports = {
   head: [
     ['link', { rel: 'icon', href: '/logo.png' }],
@@ -62,7 +62,7 @@ module.exports = {
 
 如果设置为 `true`，VuePress 将自动生成并注册一个 [Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers/)，用于缓存页面的内容以供离线使用（仅会在生产环境中启用）。
 
-有一个别名化的模块 `@sw-event` 模块将会 emit 以下事件：
+有一个别名化的模块 `@sw-event` 模块将会触发以下事件：
 
 - `sw-ready`
 - `sw-cached`
@@ -71,7 +71,7 @@ module.exports = {
 - `sw-error`
 
 ::: tip
-只有在你能够使用 SSL 部署您的站点时才能启用此功能，因为 service worker 只能在 HTTPs 的 URL 下注册。
+只有在你能够使用 SSL 部署您的站点时才能启用此功能，因为 service worker 只能在 Https 的 URL 下注册。
 :::
 
 ### generateSWConfig
@@ -81,10 +81,9 @@ module.exports = {
 
 workbox-build 的 [generateSW config](https://developers.google.com/web/tools/workbox/modules/workbox-build#full_generatesw_config)。
 
-
 ### updatePopup
 
-- 类型: `boolean|popupConfig`
+- 类型: `boolean | popupConfig`
 - 默认值: `undefined`
 
 类型 `popupConfig` 的定义如下：

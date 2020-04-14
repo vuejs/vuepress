@@ -16,7 +16,7 @@ yarn add -D @vuepress/plugin-register-components
 
 ## 使用
 
-```javascript
+```js
 module.exports = {
   plugins: ['@vuepress/register-components']
 }

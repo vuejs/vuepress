@@ -63,7 +63,7 @@ Note that in VuePress, we follow this spec: [W3C > Language tags in HTML and XML
 
 You can also pass in an options object to customize the timestamp output. For more properties check [`Date.prototype.toLocaleString()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString) options argument
 
-```javascript
+```js
 
 module.exports = {
   plugins: [

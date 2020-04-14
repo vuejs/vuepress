@@ -18,7 +18,7 @@ yarn add -D @vuepress/plugin-medium-zoom
 
 **Simple**:
 
-```javascript
+```js
 module.exports = {
   plugins: ['@vuepress/medium-zoom']
 }
@@ -26,7 +26,7 @@ module.exports = {
 
 **With options**:
 
-```javascript
+```js
 module.exports = {
   plugins: {
     '@vuepress/medium-zoom': {

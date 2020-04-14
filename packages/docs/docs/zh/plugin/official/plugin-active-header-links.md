@@ -16,7 +16,7 @@ yarn add -D @vuepress/plugin-active-header-links
 
 ## 使用
 
-```javascript
+```js
 module.exports = {
   plugins: ['@vuepress/active-header-links']
 }
@@ -24,7 +24,7 @@ module.exports = {
 
 ### 配置选项
 
-```javascript
+```js
 module.exports = {
   plugins: ['@vuepress/active-header-links', {
     sidebarLinkSelector: '.sidebar-link',
@@ -38,9 +38,9 @@ module.exports = {
 ### sidebarLinkSelector
 
 - 类型: `string`
-- 默认值: `.sidebar-link`
+- 默认值: `'.sidebar-link'`
 
 ### headerAnchorSelector
 
 - 类型: `string`
-- 默认值: `.header-anchor`
+- 默认值: `'.header-anchor'`

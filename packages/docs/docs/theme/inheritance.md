@@ -149,6 +149,7 @@ This way, you can "tamper" with some part of an atomic theme.
 <!-- textlint-disable en-capitalization -->
 
 ::: tip
+
 1. You’d better override the component based on the code of the corresponding component in the parent theme.
 2. When developing theme locally, you need to manually restart the dev server when a component is created or removed.
 :::
@@ -179,8 +180,3 @@ export default {
 }
 </script>
 ```
-
-
-
-
-

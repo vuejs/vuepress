@@ -103,10 +103,12 @@ VuePress 默认使用了 [cache-loader](https://github.com/webpack-contrib/cache
 
 ::: tip
 这个选项也可以通过命令行来使用：
+
 ```bash
 vuepress dev docs --cache .cache # 设置 cache 路径
 vuepress dev docs --no-cache     # 在每次构建前删除 cache
 ```
+
 :::
 
 ### extraWatchFiles
@@ -129,10 +131,10 @@ module.exports = {
 
 ### patterns
 
-- Type: `Array`
-- Default: `['**/*.md', '**/*.vue']`
+- 类型: `Array`
+- 默认值: `['**/*.md', '**/*.vue']`
 
-Specify which pattern of files you want to be resolved.
+指定你想处理文件的 glob pattern
 
 ## Styling
 
@@ -234,7 +236,7 @@ VuePress 提供了一种添加额外样式的简便方法。你可以创建一�
 - 类型: `Function`
 - 默认值: [source](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/shared-utils/src/slugify.ts)
 
-一个将标题文本转换为 slug 的函数。修改它会影响 [标题](../miscellaneous/glossary.md#headers)、[目录](../guide/markdown.md#目录)、以及[侧边栏](../theme/default-theme-config.md#侧边栏)链接的 id 和 链接。
+一个将标题文本转换为 slug 的函数。修改它会影响 [标题](../miscellaneous/glossary.md#headers)、[目录](../guide/markdown.md#目录)、以及 [侧边栏](../theme/default-theme-config.md#侧边栏) 链接的 id 和 链接。
 
 ### markdown.anchor
 
@@ -274,7 +276,7 @@ module.exports = {
 }
 ```
 
-or
+或者
 
 ``` js
 module.exports = {
@@ -317,7 +319,7 @@ module.exports = {
 - 默认值: `['h2', 'h3']`
 
 Markdown 文件的 headers (标题 & 小标题) 会在准备阶段被提取出来，并存储在 `this.$page.headers` 中。默认情况下，VuePress 会提取 `h2` 和 `h3` 标题。你可以通过这个选项来修改提取出的标题级别。
- 
+
 ``` js
 module.exports = {
   markdown: {

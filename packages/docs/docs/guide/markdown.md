@@ -178,9 +178,11 @@ Danger zone, do not proceed
 :::
 
 ::: details Click me to view the code
+
 ```js
 console.log('Hello, VuePress!')
 ```
+
 :::
 
 **Also see:**
@@ -344,7 +346,6 @@ It also supports [line highlighting](#line-highlighting-in-code-blocks):
 ::: tip
 Since the import of the code snippets will be executed before webpack compilation, you can’t use the path alias in webpack. The default value of `@` is `process.cwd()`.
 :::
-
 
 ## Advanced Configuration
 

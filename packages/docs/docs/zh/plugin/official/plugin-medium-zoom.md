@@ -18,7 +18,7 @@ yarn add -D @vuepress/plugin-medium-zoom
 
 **简单使用**:
 
-```javascript
+```js
 module.exports = {
   plugins: ['@vuepress/medium-zoom']
 }
@@ -26,7 +26,7 @@ module.exports = {
 
 **自定义选项**:
 
-```javascript
+```js
 module.exports = {
   plugins: {
     '@vuepress/medium-zoom': {
@@ -46,9 +46,9 @@ module.exports = {
 ### selector
 
 - 类型: `string`
-- 默认值: `.theme-default-content :not(a) > img`
+- 默认值: `'.theme-default-content :not(a) > img'`
 
-值得注意的是， `.theme-default-content` 是默认主题添加给 [`<Content />`](../../guide/using-vue.md#content) 组件的 class name。
+值得注意的是， `.theme-default-content` 是默认主题添加给 [`<Content />`](../../guide/using-vue.md#content) 组件的类名。
 
 ### options
 

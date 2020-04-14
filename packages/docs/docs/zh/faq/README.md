@@ -20,8 +20,6 @@ stage3=>operation: index.styl
 stage1->stage2->stage3
 @flowend
 
-<br>
-
 ## `clientDynamicModules` 和 `enhanceAppFiles` 的区别是什么?
 
 让我们先来回顾一下，`clientDynamicModules` 和 `enhanceAppFiles` 都可以在编译期间通过动态 JavaScript 代码生成模块。
@@ -64,4 +62,3 @@ module.exports = (options, ctx) => ({
 **比如：**
 
 - [@vuepress/plugin-blog](https://github.com/vuepressjs/vuepress-plugin-blog/blob/master/src/node/index.ts#L208)：使用编译期元数据生成一些博客相关的动态模块并通过 `enhanceAppFiles` 将他们在客户端初始化
-

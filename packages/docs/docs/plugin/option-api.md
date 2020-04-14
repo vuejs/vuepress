@@ -65,7 +65,7 @@ Since VuePress is a Vue-SSR based application, there needs to be two webpack con
 
 ## define
 
-- Type: `Object|Function`
+- Type: `Object | Function`
 - Default: undefined
 
 Since using [DefinePlugin](https://webpack.js.org/plugins/define-plugin/) via [chainWebpack](#chainwebpack) would be a little complicated:
@@ -109,7 +109,7 @@ module.exports = (options, context) => ({
 
 ## alias
 
-- Type: `Object|Function`
+- Type: `Object | Function`
 - Default: undefined
 
 We can set aliases via [chainWebpack](#chainwebpack):
@@ -280,7 +280,7 @@ import { SOURCE_DIR } from '@dynamic/constants'
 
 ## extendPageData
 
-- Type: `Function|AsyncFunction`
+- Type: `Function | AsyncFunction`
 - Default: `undefined`
 
 A function used to extend or edit the [$page](../guide/global-computed.md#page) object. This function will be invoking once for each page at compile time.
@@ -360,7 +360,7 @@ export default {
 
 ## additionalPages
 
-- Type: `Array|AsyncFunction`
+- Type: `Array | AsyncFunction`
 - Default: `undefined`
 
 Add a page pointing to a Markdown file:
@@ -414,7 +414,7 @@ module.exports = {
 
 ## globalUIComponents
 
-- Type: `Array|String`
+- Type: `Array | String`
 - Default: `undefined`
 
 You might want to inject some global UI fixed somewhere on the page, for example `back-to-top`, `popup`. In VuePress, **a global UI is a Vue component**, you can directly define the component’s name(s) in this option, for example:

@@ -1,6 +1,6 @@
 # 介绍
 
-VuePress 由两部分组成：第一部分是一个[极简静态网站生成器](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/core)，它包含由 Vue 驱动的[主题系统](../theme/README.md)和[插件 API](../plugin/README.md)，另一个部分是为书写技术文档而优化的[默认主题](../theme/default-theme-config.md)，它的诞生初衷是为了支持 Vue 及其子项目的文档需求。
+VuePress 由两部分组成：第一部分是一个 [极简静态网站生成器](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/core)，它包含由 Vue 驱动的 [主题系统](../theme/README.md) 和 [插件 API](../plugin/README.md)，另一个部分是为书写技术文档而优化的 [默认主题](../theme/default-theme-config.md)，它的诞生初衷是为了支持 Vue 及其子项目的文档需求。
 
 每一个由 VuePress 生成的页面都带有预渲染好的 HTML，也因此具有非常好的加载性能和搜索引擎优化（SEO）。同时，一旦页面被加载，Vue 将接管这些静态内容，并将其转换成一个完整的单页应用（SPA），其他的页面则会只在用户浏览到的时候才按需加载。
 
@@ -14,46 +14,46 @@ VuePress 由两部分组成：第一部分是一个[极简静态网站生成器]
 
 **内置的 Markdown 拓展**
 
-* [目录](../guide/markdown.md#目录)
-* [自定义容器](../guide/markdown.md#自定义容器)
-* [代码块中的行高亮](../guide/markdown.md#代码块中的行高亮)
-* [行号](../guide/markdown.md#行号)
-* [导入代码段](../guide/markdown.md#导入代码段)
+- [目录](../guide/markdown.md#目录)
+- [自定义容器](../guide/markdown.md#自定义容器)
+- [代码块中的行高亮](../guide/markdown.md#代码块中的行高亮)
+- [行号](../guide/markdown.md#行号)
+- [导入代码段](../guide/markdown.md#导入代码段)
 
 **在 Markdown 中 使用 Vue**
 
-* [模板语法](../guide/using-vue.md#模板语法)
-* [使用组件](../guide/using-vue.md#使用组件)
+- [模板语法](../guide/using-vue.md#模板语法)
+- [使用组件](../guide/using-vue.md#使用组件)
 
 **Vue驱动的自定义主题系统**
 
-* [网站和页面的元数据](../theme/writing-a-theme.md#网站和页面的元数据)
-* [内容摘抄](../theme/writing-a-theme.md#内容摘抄)
+- [网站和页面的元数据](../theme/writing-a-theme.md#网站和页面的元数据)
+- [内容摘抄](../theme/writing-a-theme.md#内容摘抄)
 
 **默认主题**
 
-* Responsive layout
-* [首页](../theme/default-theme-config.md#首页)
-* [内置的搜索](../theme/default-theme-config.md#内置搜索)
-* [Algolia 搜索](../theme/default-theme-config.md#algolia-搜索)
-* 可定制的 [navbar](../theme/default-theme-config.md#navbar) and [sidebar](../theme/default-theme-config.md#sidebar)
-* [自动生成的 GitHub 链接和页面编辑链接](../theme/default-theme-config.md#Git-仓库和编辑链接)
-* [PWA: 刷新内容的 Popup](../theme/default-theme-config.md#popup-ui-to-refresh-contents)
-* [最后更新时间](../theme/default-theme-config.md#最后更新时间)
-* [多语言支持](../guide/i18n.md)
+- Responsive layout
+- [首页](../theme/default-theme-config.md#首页)
+- [内置的搜索](../theme/default-theme-config.md#内置搜索)
+- [Algolia 搜索](../theme/default-theme-config.md#algolia-搜索)
+- 可定制的 [navbar](../theme/default-theme-config.md#navbar) and [sidebar](../theme/default-theme-config.md#sidebar)
+- [自动生成的 GitHub 链接和页面编辑链接](../theme/default-theme-config.md#Git-仓库和编辑链接)
+- [PWA: 刷新内容的 Popup](../theme/default-theme-config.md#popup-ui-to-refresh-contents)
+- [最后更新时间](../theme/default-theme-config.md#最后更新时间)
+- [多语言支持](../guide/i18n.md)
 
 **博客主题**
 
-* [文档](https://vuepress-theme-blog.ulivz.com/)
-* [在线案例](https://ulivz.com/)
+- [文档](https://vuepress-theme-blog.ulivz.com/)
+- [在线案例](https://ulivz.com/)
 
 **Plugin**
 
-* [强大的 Plugin API](../plugin/README.md)
-* [博客插件](https://vuepress-plugin-blog.ulivz.com/)
-* [PWA 插件](../plugin/official/plugin-pwa.md)
-* [Google Analytics 插件](../plugin/official/plugin-google-analytics.md)
-* ...
+- [强大的 Plugin API](../plugin/README.md)
+- [博客插件](https://vuepress-plugin-blog.ulivz.com/)
+- [PWA 插件](../plugin/official/plugin-pwa.md)
+- [Google Analytics 插件](../plugin/official/plugin-google-analytics.md)
+- ...
 
 ## 为什么不是...?
 

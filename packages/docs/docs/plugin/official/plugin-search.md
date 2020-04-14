@@ -61,7 +61,7 @@ export default {
 ### searchMaxSuggestions
 
 - Type: `number`
-- Default: 5
+- Default: `5`
 
 Set the maximum number of results for search.
 
@@ -91,7 +91,6 @@ You can set up searchable paths with `test` as:
 
 - RegExp: `'/1\.0/'`
 - Array of RegExp: `['/1\.0/', '/2\.0/']`
-
 
 Otherwise,  the default search will return duplicates, once you can have similar content between folders `/master/`, `/1.0/` and `/2.0/`.
 

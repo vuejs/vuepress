@@ -31,6 +31,7 @@ module.exports = {
 + ]
 }
 ```
+
 :::
 
 ### markdown.config <Badge text="重命名"/>
@@ -39,6 +40,7 @@ module.exports = {
 
 ::: upgrade
 更新 `vuepress/config.js`:
+
 ```diff
 // vuepress/config.js
 module.exports = {
@@ -48,6 +50,7 @@ module.exports = {
 +  extendMarkdown(md) { /* ... */ }
 }
 ```
+
 :::
 
 ### serviceWorker <Badge text="替换"/>

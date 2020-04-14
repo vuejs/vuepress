@@ -7,7 +7,7 @@ metaTitle: Option API | Plugin
 ## name
 
 - 类型: `string`
-- 默认值: undefined
+- 默认值: `undefined`
 
 插件的名字。
 
@@ -30,7 +30,7 @@ module.exports = {
 ## plugins
 
 - 类型: `array`
-- 默认值: undefined
+- 默认值: `undefined`
 
 一个插件可以像 preset 一样包含多个插件。
 
@@ -47,7 +47,7 @@ module.exports = {
 ## chainWebpack
 
 - 类型: `Function`
-- 默认值: undefined
+- 默认值: `undefined`
 
 使用 [webpack-chain](https://github.com/mozilla-neutrino/webpack-chain) 来修改内部的 webpack 配置：
 
@@ -69,8 +69,8 @@ module.exports = {
 
 ## define
 
-- 类型: `Object|Function`
-- 默认值: undefined
+- 类型: `Object | Function`
+- 默认值: `undefined`
 
 由于通过 [chainWebpack](#chainwebpack) 使用 [DefinePlugin](https://webpack.js.org/plugins/define-plugin/) 会有点麻烦：
 
@@ -113,8 +113,8 @@ module.exports = (options, context) => ({
 
 ## alias
 
-- 类型: `Object|Function`
-- 默认值: undefined
+- 类型: `Object | Function`
+- 默认值: `undefined`
 
 我们可以通过 [chainWebpack](#chainwebpack) 来配置别名：
 
@@ -139,7 +139,7 @@ module.exports = (options, context) => ({
 ## beforeDevServer
 
 - 类型: `Function`
-- 默认值: undefined
+- 默认值: `undefined`
 
 等同于 [webpack-dev-server](https://github.com/webpack/webpack-dev-server) 中的 [before](https://webpack.js.org/configuration/dev-server/#devserver-before) 选项，你可以使用它来自定义你的 devServer，如：
 
@@ -157,7 +157,7 @@ module.exports = {
 ## afterDevServer
 
 - 类型: `Function`
-- 默认值: undefined
+- 默认值: `undefined`
 
 等同于 [webpack-dev-server](https://github.com/webpack/webpack-dev-server) 中的 [after](https://webpack.js.org/configuration/dev-server/#devserver-after)，你可以用其在所有中间件的最后去执行一些自定义的中间件：
 
@@ -231,7 +231,7 @@ module.exports = {
 - 类型: `String | Array | AsyncFunction`
 - 默认值: `undefined`
 
-此选项接受指向增强文件的绝对文件路径或返回该路径的函数，你可以通过此选项做一些[应用级别的配置](../guide/basic-config.md#应用级别的配置):
+此选项接受指向增强文件的绝对文件路径或返回该路径的函数，你可以通过此选项做一些 [应用级别的配置](../guide/basic-config.md#应用级别的配置):
 
 ``` js
 import { resolve } from 'path'
@@ -354,7 +354,7 @@ export default {
 
 ## additionalPages
 
-- 类型: `Array|AsyncFunction`
+- 类型: `Array | AsyncFunction`
 - 默认值: `undefined`
 
 增加一个指向某个 markdown 文件的页面：
@@ -408,7 +408,7 @@ module.exports = {
 
 ## globalUIComponents
 
-- 类型: `Array|String`
+- 类型: `Array | String`
 - 默认值: `undefined`
 
 你可能想注入某些全局的 UI，并固定在页面中的某处，如  `back-to-top`, `popup`。在 VuePress 中，**一个全局 UI 就是一个 Vue 组件**。你可以直接配置该全局组件的名称，如：
@@ -459,4 +459,3 @@ module.exports = {
 ::: tip
 值得注意的是，一个自定义的 command 需要 VuePress 像 `vuepress dev` 或 `vuepress build` 去定位到你的站点配置，所以在开发一个 command 时，请确保引导用户去传入 `targetDir` 作为 CLI 参数的一部分。
 :::
-

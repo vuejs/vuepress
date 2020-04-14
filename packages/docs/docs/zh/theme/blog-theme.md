@@ -13,6 +13,7 @@
 yarn add @vuepress/theme-blog -D
 # OR npm install @vuepress/theme-blog -D
 ```
+
 ## 使用
 
 ```js

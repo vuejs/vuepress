@@ -24,7 +24,7 @@ yarn add -D @vuepress/plugin-blog
 
 ## Usage
 
-```javascript
+```js
 module.exports = {
   plugins: ['@vuepress/blog']
 }

@@ -20,7 +20,6 @@ const { createApp, dev, build, eject } = require('vuepress')
 
 使用当前应用程序上下文启动一个 devProcess.
 
-
 #### App.prototype.build: () => Promise\<App> | never
 
 使用当前应用程序上下文启动一个 buildProcess.
@@ -52,7 +51,6 @@ async function build (options) {
 ### eject(targetDir): Promise\<void>
 
 将默认主题复制到 `{targetDir}/.vuepress/theme`中进行自定义。
-
 
 ## Options
 

@@ -39,7 +39,6 @@ lang = "en-US"
 ---
 ```
 
-
 ## Predefined Variables
 
 ### title
@@ -80,7 +79,7 @@ Refer to: [Permalinks](./permalinks.md).
 ### metaTitle
 
 - Type: `string`
-- Default: <code>\`${page.title} | ${siteConfig.title}\`</code>
+- Default: `` `${page.title} | ${siteConfig.title}` ``
 
 Override the default meta title.
 
@@ -112,21 +111,21 @@ See: [Default Theme Config > Disable the Navbar](../theme/default-theme-config.m
 
 ### sidebar
 
-- Type: `boolean|'auto'`
+- Type: `boolean | 'auto'`
 - Default: `undefined`
 
 See: [Default Theme Config > Sidebar](../theme/default-theme-config.md#sidebar).
 
 ### prev
 
-- Type: `boolean|string`
+- Type: `boolean | string`
 - Default: `undefined`
 
 See: [Default Theme Config > Prev / Next Links](../theme/default-theme-config.md#prev-next-links).
 
 ### next
 
-- Type: `boolean|string`
+- Type: `boolean | string`
 - Default: `undefined`
 
 See: [Default Theme Config > Prev / Next Links](../theme/default-theme-config.md#prev-next-links).

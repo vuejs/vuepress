@@ -24,7 +24,6 @@ Launch a dev process with current app context.
 
 Launch a build process with current app context.
 
-
 ### dev(\[options]): Promise\<App>
 
 Start a development server, actually it’s implemented by `createApp`:
@@ -52,7 +51,6 @@ async function build (options) {
 ### eject(targetDir): Promise\<void>
 
 Copy the default theme into `{targetDir}/.vuepress/theme` for customization.
-
 
 ## Options
 

@@ -18,48 +18,47 @@ Each Markdown file is compiled into HTML with [markdown-it](https://github.com/m
 
 **Built-in Markdown extensions**
 
-* [Table of Contents](../guide/markdown.md#table-of-contents)
-* [Custom Containers](../guide/markdown.md#custom-containers)
-* [Line Highlighting](../guide/markdown.md#line-highlighting-in-code-blocks)
-* [Line Numbers](../guide/markdown.md#line-numbers)
-* [Import Code Snippets](../guide/markdown.md#import-code-snippets)
+- [Table of Contents](../guide/markdown.md#table-of-contents)
+- [Custom Containers](../guide/markdown.md#custom-containers)
+- [Line Highlighting](../guide/markdown.md#line-highlighting-in-code-blocks)
+- [Line Numbers](../guide/markdown.md#line-numbers)
+- [Import Code Snippets](../guide/markdown.md#import-code-snippets)
 
 **Using Vue in Markdown**
 
-* [Templating](../guide/using-vue.md#templating)
-* [Using Components](../guide/using-vue.md#using-components)
+- [Templating](../guide/using-vue.md#templating)
+- [Using Components](../guide/using-vue.md#using-components)
 
 **Vue-powered custom theme system**
 
-* [Metadata](../theme/writing-a-theme.md#site-and-page-metadata)
-* [Content Excerpt](../theme/writing-a-theme.md#content-excerpt)
+- [Metadata](../theme/writing-a-theme.md#site-and-page-metadata)
+- [Content Excerpt](../theme/writing-a-theme.md#content-excerpt)
 
 **Default theme**
 
-* Responsive layout
-* [Optional Homepage](../theme/default-theme-config.md#homepage)
-* [Simple out-of-the-box header-based search](../theme/default-theme-config.md#built-in-search)
-* [Algolia Search](../theme/default-theme-config.md#algolia-search)
-* Customizable [navbar](../theme/default-theme-config.md#navbar) and [sidebar](../theme/default-theme-config.md#sidebar)
-* [Auto-generated GitHub link and page edit links](../theme/default-theme-config.md#git-repo-and-edit-links)
-* [PWA: Popup UI to refresh contents](../theme/default-theme-config.md#popup-ui-to-refresh-contents)
-* [Last Updated](../theme/default-theme-config.md#last-updated)
-* [Multi-Language Support](../guide/i18n.md)
+- Responsive layout
+- [Optional Homepage](../theme/default-theme-config.md#homepage)
+- [Simple out-of-the-box header-based search](../theme/default-theme-config.md#built-in-search)
+- [Algolia Search](../theme/default-theme-config.md#algolia-search)
+- Customizable [navbar](../theme/default-theme-config.md#navbar) and [sidebar](../theme/default-theme-config.md#sidebar)
+- [Auto-generated GitHub link and page edit links](../theme/default-theme-config.md#git-repo-and-edit-links)
+- [PWA: Popup UI to refresh contents](../theme/default-theme-config.md#popup-ui-to-refresh-contents)
+- [Last Updated](../theme/default-theme-config.md#last-updated)
+- [Multi-Language Support](../guide/i18n.md)
 
 **Blog theme**
 
-* [Documentation](https://vuepress-theme-blog.ulivz.com/)
-* [Live Example](https://ulivz.com/)
-
+- [Documentation](https://vuepress-theme-blog.ulivz.com/)
+- [Live Example](https://ulivz.com/)
 
 **Plugin**
 
-* [Powerful Plugin API](../plugin/README.md)
-* [Blog Plugin](https://vuepress-plugin-blog.ulivz.com/)
-* [Search Plugin](../plugin/official/plugin-search.md)
-* [PWA Plugin](../plugin/official/plugin-pwa.md)
-* [Google Analytics Plugin](../plugin/official/plugin-google-analytics.md)
-* ...
+- [Powerful Plugin API](../plugin/README.md)
+- [Blog Plugin](https://vuepress-plugin-blog.ulivz.com/)
+- [Search Plugin](../plugin/official/plugin-search.md)
+- [PWA Plugin](../plugin/official/plugin-pwa.md)
+- [Google Analytics Plugin](../plugin/official/plugin-google-analytics.md)
+- ...
 
 ## Why Not ...?
 

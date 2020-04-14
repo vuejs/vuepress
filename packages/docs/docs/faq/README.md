@@ -20,8 +20,6 @@ stage3=>operation: index.styl
 stage1->stage2->stage3
 @flowend
 
-<br>
-
 ## What’s the differences between the `clientDynamicModules` and `enhanceAppFiles`?
 
 Let’s take a look back first, both `clientDynamicModules` and `enhanceAppFiles` can generate modules with dynamic JavaScript code during compile time.
@@ -64,4 +62,3 @@ module.exports = (options, ctx) => ({
 **Example:**
 
 - [@vuepress/plugin-blog](https://github.com/vuepressjs/vuepress-plugin-blog/blob/master/src/node/index.ts#L208): Using compile-time metadata to generate some dynamic blog-related modules and initialize them on the client-side by using `enhanceAppFiles`.
-

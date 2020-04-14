@@ -63,6 +63,7 @@ theme
 
 ::: warning Note
 When you publish your theme as an npm package, if you don’t have any theme configuration, that means you don’t have `theme/index.js`, you’ll need to set the `"main"` field  to `layouts/Layout.vue` in `package.json`, only in this way VuePress can properly resolve the theme.
+
 ```json
 {
   ...

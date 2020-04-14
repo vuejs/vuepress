@@ -196,7 +196,6 @@ yarn add -D pug pug-plain-loader
 对于那些没有内置的预处理器，除了安装对应的依赖，你还需要 [拓展内部的 Webpack 配置](../config/README.md#configurewebpack)。
 :::
 
-
 ## 脚本和样式提升
 
 有时，你可以只想在当前页面应用一些 JavaScript 或者 CSS，在这种情况下，你可以直接在 Markdown 文件中使用原生的 `<script>` 或者 `<style>` 标签，它们将会从编译后的 HTML 文件中提取出来，并作为生成的 Vue 单文件组件的 `<script>` 和 `<style>` 标签。
@@ -240,7 +239,6 @@ export default {
 
 指定一个指定页面的特定 slot 用于渲染，当你使用 [自定义布局](../theme/default-theme-config.md#特定页面的自定义布局) 或者自定义主题时，这将非常有用。
 
-
 ``` vue
 <Content/>
 ```
@@ -250,7 +248,6 @@ export default {
 - [全局计算属性 > $page](./global-computed.md#page)
 - [Markdown 插槽](./markdown-slot.md)
 - [开发主题 > 获取渲染内容](../theme/writing-a-theme.md#获取渲染内容)
-
 
 ### Badge <Badge text="beta" type="warning"/> <Badge text="默认主题"/>
 

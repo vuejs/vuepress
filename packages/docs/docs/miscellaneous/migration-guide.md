@@ -31,6 +31,7 @@ module.exports = {
 + ]
 }
 ```
+
 :::
 
 ### markdown.config <Badge text="renamed"/>
@@ -39,6 +40,7 @@ Using `extendMarkdown`：。
 
 ::: upgrade
 Update `vuepress/config.js`:
+
 ```diff
 // vuepress/config.js
 module.exports = {
@@ -48,6 +50,7 @@ module.exports = {
 +  extendMarkdown(md) { /* ... */ }
 }
 ```
+
 :::
 
 ### serviceWorker <Badge text="replaced"/>

@@ -118,7 +118,6 @@ pages:
   - master
 ```
 
-
 ## Netlify
 
 1. On [Netlify](https://netlify.com), setup up a new project from GitHub with the following settings:
@@ -135,6 +134,7 @@ pages:
 2. Create `firebase.json` and `.firebaserc` at the root of your project with the following content:
 
 `firebase.json`:
+
 ```json
 {
  "hosting": {
@@ -145,6 +145,7 @@ pages:
 ```
 
 `.firebaserc`:
+
 ```js
 {
  "projects": {
@@ -180,6 +181,7 @@ You can also deploy to a [custom domain](http://surge.sh/help/adding-a-custom-do
 4. Create a file called `static.json` in the root of your project with the content below:
 
    `static.json`:
+
    ```json
    {
      "root": "./docs/.vuepress/dist"

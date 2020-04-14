@@ -54,7 +54,6 @@ export default {
 
 - [Vue.js > Dynamic Components](https://vuejs.org/v2/guide/components.html#Dynamic-Components)
 
-
 ## Templating
 
 ### Interpolation
@@ -252,7 +251,6 @@ Specify a specific slot for a specific page (.md) for rendering. This will be us
 - [Global Computed > $page](./global-computed.md#page)
 - [Markdown Slot](./markdown-slot.md)
 - [Writing a theme > Content Outlet](../theme/writing-a-theme.md#content-outlet)
-
 
 ### Badge <Badge text="beta" type="warning"/> <Badge text="default theme"/>
 

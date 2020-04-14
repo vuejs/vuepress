@@ -16,7 +16,7 @@ yarn add -D @vuepress/plugin-back-to-top
 
 ## Usage
 
-```javascript
+```js
 module.exports = {
   plugins: ['@vuepress/back-to-top']
 }

@@ -20,12 +20,12 @@ VuePress follows the principle of **"Convention is better than configuration"**,
 │   │   │   └── ssr.html
 │   │   ├── `config.js` _(**Optional**)_
 │   │   └── `enhanceApp.js` _(**Optional**)_
-│   │ 
+│   │
 │   ├── README.md
 │   ├── guide
 │   │   └── README.md
 │   └── config.md
-│ 
+│
 └── package.json
 :::
 
@@ -78,4 +78,3 @@ For the above directory structure, the default page routing paths are as follows
 - [Config](../config/README.md)
 - [Theme](../theme/)
 - [Default Theme Config](../theme/default-theme-config.md)
-

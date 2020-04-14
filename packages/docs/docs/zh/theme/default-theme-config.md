@@ -37,7 +37,7 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 
 ### 导航栏 Logo
 
-你可以通过 `themeConfig.logo` 增加导航栏 Logo ，Logo 可以被放置在[公共文件目录](../guide/assets.md#public-files)：
+你可以通过 `themeConfig.logo` 增加导航栏 Logo ，Logo 可以被放置在 [公共文件目录](../guide/assets.md#public-files)：
 
 ``` js
 // .vuepress/config.js
@@ -66,6 +66,7 @@ module.exports = {
 
 
 ```
+
 外部链接 `<a>` 标签的特性将默认包含`target="_blank" rel="noopener noreferrer"`，你可以提供 `target` 与 `rel`，它们将被作为特性被增加到 `<a>` 标签上：
 
 ``` js
@@ -80,7 +81,7 @@ module.exports = {
 }
 ```
 
-当你提供了一个 `items` 数组而不是一个单一的 `link` 时，它将显示为一个 `下拉列表` ：
+当你提供了一个 `items` 数组而不是一个单一的 `link` 时，它将显示为一个 “下拉列表” ：
 
 ```js
 module.exports = {
@@ -99,7 +100,7 @@ module.exports = {
 }
 ```
 
-此外，你还可以通过嵌套的 `items` 来在 `下拉列表` 中设置分组：
+此外，你还可以通过嵌套的 `items` 来在 “下拉列表” 中设置分组：
 
 ```js
 module.exports = {
@@ -196,7 +197,6 @@ module.exports = {
 ::: tip
 值得一提的是，当你禁用此选项时，此功能的相应脚本将不会被加载，这是我们性能优化的一个小点。
 :::
-
 
 ### 侧边栏分组
 
@@ -349,7 +349,7 @@ module.exports = {
 
 ```yaml
 ---
-tags: 
+tags:
   - 配置
   - 主题
   - 索引

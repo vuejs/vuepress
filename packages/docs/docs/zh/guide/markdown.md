@@ -178,9 +178,11 @@ console.log('你好，VuePress！')
 :::
 
 ::: details 点击查看代码
+
 ```js
 console.log('你好，VuePress！')
 ```
+
 :::
 
 **参考:**
@@ -240,7 +242,6 @@ export default {
 ```
 
 在 Prism 的网站上查看 [合法的语言列表](https://prismjs.com/#languages-list)。
-
 
 ## 代码块中的行高亮
 

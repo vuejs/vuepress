@@ -16,7 +16,7 @@ yarn add -D @vuepress/plugin-nprogress
 
 ## Usage
 
-```javascript
+```js
 module.exports = {
   plugins: ['@vuepress/nprogress']
 }

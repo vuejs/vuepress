@@ -77,4 +77,3 @@ sidebar: auto
 - Access: `Context.themeAPI.parentTheme.entry`
 
 如果当前使用的主题是一个派生主题，那么 `parentThemePath` 就是指父主题的主题的配置文件 `parentThemePath/index.js`。
-

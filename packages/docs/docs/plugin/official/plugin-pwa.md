@@ -16,7 +16,7 @@ yarn add -D @vuepress/plugin-pwa
 
 ## Usage
 
-```javascript
+```js
 module.exports = {
   plugins: ['@vuepress/pwa']
 }
@@ -33,7 +33,7 @@ For more details, see [MDN docs about the Web App Manifest](https://developer.mo
 
 Here is an example of a fully PWA-compliant configuration with VuePress:
 
-```javascript
+```js
 module.exports = {
   head: [
     ['link', { rel: 'icon', href: '/logo.png' }],
@@ -85,7 +85,6 @@ Since you can only register service workers under HTTPs URLs, make sure you can 
 - Default: `{}`
 
 [generateSW config](https://developers.google.com/web/tools/workbox/modules/workbox-build#full_generatesw_config) of workbox-build.
-
 
 ### updatePopup
 

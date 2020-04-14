@@ -103,6 +103,7 @@ Then the rendered HTML of this page will be:
 <!-- textlint-disable en-capitalization -->
 
 Note that:
+
 1. Unlike the slot mechanism provided by [Vue](https://vuejs.org/v2/guide/components-slots.html) itself, each content distribution is wrapped in a `div` whose class is `content` with the name of the slot.
 2. Please ensure the uniqueness of the slot defined.
 
