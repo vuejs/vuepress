@@ -23,7 +23,7 @@
   "dependencies": {
     "@vuepress/shared-utils": "^1.4.0",
     "register-service-worker": "^1.7.0",
-    "workbox-build": "^5.1.1"
+    "workbox-build": "^5.1.2"
   },
   "publishConfig": {
     "access": "public"
