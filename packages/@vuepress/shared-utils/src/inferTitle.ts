@@ -9,11 +9,10 @@ import deeplyParseHeaders from './deeplyParseHeaders'
  */
 
 export = function (frontmatter: Record<string, any>, strippedContent: string): string | void {
-  if (frontmatter.home) {
-    return 'Home'
-  }
   if (frontmatter.title) {
     return deeplyParseHeaders(frontmatter.title)
+  } else if (frontmatter.home) {
+    return 'Home'
   }
   const match = strippedContent.trim().match(/^#+\s+(.*)/)
   if (match) {
