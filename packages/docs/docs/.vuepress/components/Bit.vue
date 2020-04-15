@@ -29,4 +29,8 @@
     margin-left 15px
   img, span
     vertical-align middle
+
+.theme-dark
+  .bit-sponsor
+    background-color #0c0907
 </style>

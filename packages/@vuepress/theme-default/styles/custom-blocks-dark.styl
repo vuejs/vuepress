@@ -1,0 +1,22 @@
+.theme-dark
+  .custom-block
+    &.tip, &.warning, &.danger, &.details
+      background-color lighten($nightBgColor, 15%)
+
+      a
+        color $accentColor
+
+    &.warning
+      color darken(#ffe564, 50%)
+
+      .custom-block-title
+        color darken(#ffe564, 40%)
+
+    &.danger
+      color darken(red, 30%)
+
+      .custom-block-title
+        color darken(red, 20%)
+
+    &.details
+      color var(--text-color)

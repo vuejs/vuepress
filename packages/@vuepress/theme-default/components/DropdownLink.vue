@@ -123,8 +123,10 @@ export default {
     background transparent
     border none
     font-weight 500
-    color $textColor
+    color var(--dark-grey)
     pointer-events none
+    &::after
+      border-left 5px solid $accentColor
     &:hover
       border-color transparent
     .arrow
@@ -137,7 +139,7 @@ export default {
       line-height 1.7rem
       h4
         margin 0.45rem 0 0
-        border-top 1px solid #eee
+        border-top 1px solid var(--grey14)
         padding 0.45rem 1.5rem 0 1.25rem
       .dropdown-subitem-wrapper
         padding 0
@@ -178,10 +180,11 @@ export default {
     .dropdown-title
       font-weight 600
       font-size inherit
+      color var(--text-color)
       &:hover
         color $accentColor
     .nav-dropdown
-      transition height .1s ease-out
+      transition height 0.1s ease-out
       overflow hidden
       .dropdown-item
         h4
@@ -198,34 +201,38 @@ export default {
 @media (min-width: $MQMobile)
   .dropdown-wrapper
     height 1.8rem
-    &:hover .nav-dropdown,
-    &.open .nav-dropdown
+    &:hover .nav-dropdown, &.open .nav-dropdown
       // override the inline style.
       display block !important
     &.open:blur
       display none
-    .dropdown-title .arrow
-      // make the arrow always down at desktop
-      border-left 4px solid transparent
-      border-right 4px solid transparent
-      border-top 6px solid $arrowBgColor
-      border-bottom 0
+    .dropdown-title
+      &:hover
+        $accentColor
+      .arrow
+        // make the arrow always down at desktop
+        border-left 4px solid transparent
+        border-right 4px solid transparent
+        border-top 6px solid var(--arrow-bg-color)
+        border-bottom 0
     .nav-dropdown
       display none
       // Avoid height shaked by clicking
       height auto !important
-      box-sizing border-box;
+      box-sizing border-box
       max-height calc(100vh - 2.7rem)
       overflow-y auto
       position absolute
       top 100%
       right 0
-      background-color #fff
+      background-color var(--background-color)
       padding 0.6rem 0
-      border 1px solid #ddd
-      border-bottom-color #ccc
+      border 1px solid var(--grey14)
       text-align left
       border-radius 0.25rem
       white-space nowrap
       margin 0
+      box-shadow 2px 2px 10px var(--box-shadow-color)
+      .dropdown-item a
+        color var(--dark-grey)
 </style>

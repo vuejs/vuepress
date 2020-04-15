@@ -23,6 +23,8 @@ module.exports = (options, ctx) => {
       }
     },
 
+    globalUIComponents: 'DarkmodeSwitch',
+
     plugins: [
       ['@vuepress/active-header-links', options.activeHeaderLinks],
       '@vuepress/search',

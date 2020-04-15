@@ -101,14 +101,14 @@ export default {
     & > .sidebar-group-items
       padding-left 1rem
       & > li > .sidebar-link
-        font-size: 0.95em;
+        font-size 0.95em
         border-left none
   &.depth-2
     & > .sidebar-heading
       border-left none
 
 .sidebar-heading
-  color $textColor
+  color var(--text-color)
   transition color .15s ease
   cursor pointer
   font-size 1.1em
