@@ -107,25 +107,39 @@ meta:
 - 类型: `boolean`
 - 默认值: `undefined`
 
-参考: [默认值 Theme Config > Disable the Navbar](../theme/default-theme-config.md#禁用导航栏).
+参考: [默认主题配置 > 禁用导航栏](../theme/default-theme-config.md#禁用导航栏)。
 
 ### sidebar
 
 - 类型: `boolean|'auto'`
 - 默认值: `undefined`
 
-参考: [默认值 Theme Config > Sidebar](../theme/default-theme-config.md#侧边栏).
+参考: [默认主题配置 > 侧边栏](../theme/default-theme-config.md#侧边栏)。
 
 ### prev
 
 - 类型: `boolean|string`
 - 默认值: `undefined`
 
-参考: [默认值 Theme Config > Prev / Next Links](../theme/default-theme-config.md#上-下一篇链接).
+参考: [默认主题配置 > 上 / 下一篇链接](../theme/default-theme-config.md#上-下一篇链接)。
 
 ### next
 
 - 类型: `boolean|string`
 - 默认值: `undefined`
 
-参考: [默认值 Theme Config > Prev / Next Links](../theme/default-theme-config.md#上-下一篇链接).
+参考: [默认主题配置 > 上 / 下一篇链接](../theme/default-theme-config.md#上-下一篇链接)。
+
+### search
+
+- 类型: `boolean`
+- 默认值: `undefined`
+
+参考: [默认主题配置 > 内置搜索](../theme/default-theme-config.md#内置搜索)。
+
+### tags
+
+- 类型: `array`
+- 默认值: `undefined`
+
+参考: [默认主题配置 > 内置搜索](../theme/default-theme-config.md#内置搜索)。

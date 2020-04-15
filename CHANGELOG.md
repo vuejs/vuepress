@@ -1,3 +1,16 @@
+## [1.4.1](https://github.com/vuejs/vuepress/compare/v1.4.0...v1.4.1) (2020-04-15)
+
+
+### Bug Fixes
+
+* **$core:** missing 404 page (close [#2248](https://github.com/vuejs/vuepress/issues/2248)) ([#2250](https://github.com/vuejs/vuepress/issues/2250)) ([28a4eab](https://github.com/vuejs/vuepress/commit/28a4eab))
+* **$plugin-search:** match non-ASCII chars (close [#2242](https://github.com/vuejs/vuepress/issues/2242)) ([#2283](https://github.com/vuejs/vuepress/issues/2283)) ([9f3f49c](https://github.com/vuejs/vuepress/commit/9f3f49c))
+* **$shared-utils:** fail to resolve markdown-it plugins (close [#2286](https://github.com/vuejs/vuepress/issues/2286))([#2289](https://github.com/vuejs/vuepress/issues/2289)) ([16df156](https://github.com/vuejs/vuepress/commit/16df156))
+* **$theme-default:** close dropdown on mouseout (fix [#2227](https://github.com/vuejs/vuepress/issues/2227)) ([#2303](https://github.com/vuejs/vuepress/issues/2303)) ([430b917](https://github.com/vuejs/vuepress/commit/430b917))
+* duplicate meta tags ([#2164](https://github.com/vuejs/vuepress/issues/2164)) ([01cd096](https://github.com/vuejs/vuepress/commit/01cd096))
+
+
+
 # [1.4.0](https://github.com/vuejs/vuepress/compare/v1.3.1...v1.4.0) (2020-03-18)
 
 

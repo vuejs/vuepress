@@ -438,6 +438,7 @@ module.exports = class App {
       title: this.siteConfig.title || '',
       description: this.siteConfig.description || '',
       base: this.base,
+      headTags: this.siteConfig.head || [],
       pages: this.pages.map(page => page.toJson()),
       themeConfig: this.siteConfig.themeConfig || {},
       locales
@@ -499,4 +500,3 @@ module.exports = class App {
     return this
   }
 }
-

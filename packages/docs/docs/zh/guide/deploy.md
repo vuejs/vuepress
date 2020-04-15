@@ -119,7 +119,7 @@ pages:
 
 1. 在 Netlify 中, 创建一个新的 GitHub 项目，使用以下设置：
 
-- **Build Command:** `yarn build:docs` 或者 `npm run build:docs`
+- **Build Command:** `yarn docs:build` 或者 `npm run docs:build`
 - **Publish directory:** `docs/.vuepress/dist`
 
 2. 点击 deploy 按钮！
@@ -212,4 +212,9 @@ heroku open
 
 ## ZEIT Now
 
-请查看 [用 ZEIT Now 部署一个 VuePress 的示例站点](https://github.com/zeit/now/tree/master/examples/vuepress).
+请查看 [用 ZEIT Now 部署一个 VuePress 的示例站点](https://zeit.co/guides/deploying-vuepress-to-now)。
+
+## 21 云盒子
+
+请查看 [21 云盒子 - 部署一个 VuePress 静态网页](https://www.21yunbox.com/docs/#/deploy-vuepress)。
+

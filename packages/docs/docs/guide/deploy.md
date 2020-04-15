@@ -215,4 +215,4 @@ heroku open
 
 ## ZEIT Now
 
-Please check out [Deploy an example VuePress site with ZEIT Now](https://github.com/zeit/now/tree/master/examples/vuepress).
+Please check out [Deploy an example VuePress site with ZEIT Now](https://zeit.co/guides/deploying-vuepress-to-now).

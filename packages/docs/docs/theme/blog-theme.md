@@ -20,7 +20,7 @@ yarn add @vuepress/theme-blog -D
 module.exports = {
   theme: '@vuepress/blog',
   themeConfig: {
-    // Please head documentation to see the available options.
+    // Please read documentation to see the available options.
   }
 }
 ```

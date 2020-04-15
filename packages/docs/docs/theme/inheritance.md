@@ -35,7 +35,7 @@ module.exports = {
 
 ## Inheritance Strategy
 
-All the capabilities of the parent theme will be `"passed"` to the child theme. For file-level conventions, child theme can override it by creating a file with the same name in the same location. For some theme configuration options, such as [globalLayout](./option-api.md/globallayout), child theme can override it by the same name configuration.
+All the capabilities of the parent theme will be `"passed"` to the child theme. For file-level conventions, child theme can override it by creating a file with the same name in the same location. For some theme configuration options, such as [globalLayout](./option-api.md#globallayout), child theme can override it by the same name configuration.
 
 The [file-level conventions](./writing-a-theme.md#directory-structure) are as follows:
 
@@ -129,7 +129,7 @@ Then, in any Vue components on the theme, **you should access the theme root dir
 
 ```vue
 <script>
-import Home from '@theme/components/Navbar.vue'
+import Navbar from '@theme/components/Navbar.vue'
 // ...
 </script>
 ```

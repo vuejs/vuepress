@@ -211,7 +211,7 @@ module.exports = {
     sidebar: [
       {
         title: 'Group 1',   // required
-        path: '/foo/',      // optional, which should be a absolute path.
+        path: '/foo/',      // optional, link of the title, which should be an absolute path and must exist
         collapsable: false, // optional, defaults to true
         sidebarDepth: 1,    // optional, defaults to 1
         children: [
@@ -349,16 +349,7 @@ module.exports = {
 }
 ```
 
-You can also disable the built-in search box for individual pages with `YAML front matter`:
-```yaml
----
-search: false
----
-```
-
-::: tip
-Built-in Search only builds index from the title, `h2` and `h3` headers and any tags added with `YAML front matter` as shown below, if you need full text search, you can use [Algolia Search](#algolia-search).
-:::
+You can improve the search result by [setting `tags` in frontmatter](../guide/frontmatter.md#tags):
 
 ```yaml
 ---
@@ -368,6 +359,19 @@ tags:
   - indexing
 ---
 ```
+
+You can also disable the built-in search box for individual pages by [setting `search` in frontmatter](../guide/frontmatter.md#search):
+
+```yaml
+---
+search: false
+---
+```
+
+::: tip
+Built-in Search only builds index from the title, `h2` and `h3` headers and `tags`.
+If you need full text search, you can use [Algolia Search](#algolia-search).
+:::
 
 ### Algolia Search
 
