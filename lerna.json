@@ -1,5 +1,15 @@
 {
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "version": "1.4.0"
+  "version": "1.4.1",
+  "command": {
+    "version": {
+      "allowBranch": "master",
+      "exact": true,
+      "ignoreChanges": [
+        "**/*.md"
+      ],
+      "message": "build: release version %v"
+    }
+  }
 }
