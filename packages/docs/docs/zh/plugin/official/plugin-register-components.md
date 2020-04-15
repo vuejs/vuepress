@@ -43,7 +43,7 @@ module.exports = {
   ]
 }
 ```
-`somepath`是从`docs`目录开始,比如：`docs/.vuepress/components/custom-path/`
+`somepath`是从根目录开始,比如：`docs/.vuepress/components/custom-path/`
 
 ### components
 
