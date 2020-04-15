@@ -127,7 +127,7 @@ const release = async () => {
   )
 
   await execa('git', ['add', '-A'], { stdio: 'inherit' })
-  await execa('git', ['commit', '-m', `chore: ${version} changelog`], { stdio: 'inherit' })
+  await execa('git', ['commit', '-m', `chore: version ${version} changelog`], { stdio: 'inherit' })
 }
 
 release().catch(err => {

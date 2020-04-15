@@ -9,7 +9,7 @@
       "ignoreChanges": [
         "**/*.md"
       ],
-      "message": "build: release version %s"
+      "message": "build: release version %v"
     }
   }
 }
