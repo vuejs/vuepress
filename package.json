@@ -20,7 +20,7 @@
     "packages:list": "lerna ls -l",
     "prepublishOnly": "yarn --pure-lockfile && yarn lint && yarn test && yarn build",
     "register-vuepress": "lerna exec --scope vuepress -- yarn link",
-    "release": "node scripts/release.js",
+    "release": "yarn lint && yarn build && yarn test && node scripts/release.js",
     "remote-version": "node scripts/remote-version.js",
     "show-help": "yarn workspace docs show-help",
     "test": "node scripts/test.js",
