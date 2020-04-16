@@ -1,10 +1,8 @@
 <template>
-  <div
-    class="darkmode-switch"
-  >
+  <div class="darkmode-switch">
     <div
       class="item day"
-      :class="{active: darkmode === 'off'}"
+      :class="{ active: darkmode === 'off' }"
       @click="setDarkmode('off')"
     >
       <svg
@@ -88,6 +86,7 @@ export default {
         else if (isLightMode) this.toggleDarkmode(false)
         else {
           const timeHour = new Date().getHours()
+
           this.toggleDarkmode(timeHour < 6 || timeHour >= 18)
         }
       }
@@ -104,7 +103,6 @@ export default {
     }
   }
 }
-
 </script>
 
 <style lang="stylus">
@@ -112,41 +110,31 @@ export default {
   position absolute
   top $navbarHeight + 1rem
   right 1rem
+  height 24px
   display flex
-  flex-shrink 0
-  border-radius 4px
-  overflow hidden
-  align-self center
-  margin-right 0.5rem
-  height 22px
-
   &:hover
     cursor pointer
-
   .item
-    padding 3px
+    padding 4px
     line-height 1
     border 1px solid $accentColor
-
+    border-left none
+    &:first-child
+      border-left 1px solid $accentColor
     &.day
       border-top-left-radius 4px
       border-bottom-left-radius 4px
-
     &.night
       border-top-right-radius 4px
       border-bottom-right-radius 4px
-
     .icon
-      width 14px
-      height 14px
+      width 16px
+      height 16px
       fill $accentColor
-
     &.active
       background-color $accentColor
-
       &:hover
         cursor default
-
       .icon
         fill var(--white)
 </style>
