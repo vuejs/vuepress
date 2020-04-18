@@ -171,7 +171,12 @@ module.exports = function createBaseConfig (context, isServer) {
             // ref: http://babeljs.io/docs/en/config-files
             configFile: false,
             presets: [
-              require.resolve('@vue/babel-preset-app')
+              [require.resolve('@vue/babel-preset-app'), {
+                entryFiles: [
+                  path.resolve(__dirname, '../../client/clientEntry.js'),
+                  path.resolve(__dirname, '../../client/serverEntry.js')
+                ]
+              }]
             ]
           })
   }
