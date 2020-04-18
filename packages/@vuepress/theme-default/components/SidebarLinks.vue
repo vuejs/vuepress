@@ -66,10 +66,9 @@ export default {
                       .filter(anchor => decodeURIComponent(this.$route.hash) == decodeURIComponent(anchor.hash))
       if(anchors == null || anchors.length<1 || anchors[0].offsetTop == undefined) return
 
-      const bodyHeight = document.body.clientHeight 
-      let navHeight = document.getElementsByClassName('navbar')[0].offsetHeight
-      let contentHeight = document.getElementsByClassName('theme-default-content content__default')[0].clientHeight
-      window.scrollTo(0, anchors[0].offsetTop - (bodyHeight - contentHeight) + navHeight + 40)
+      setTimeout(function () {
+        window.scrollTo(0, anchors[0].offsetTop - 70)
+      }, 100)
     },
     
     refreshIndex () {
