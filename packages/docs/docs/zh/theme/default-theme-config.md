@@ -503,7 +503,7 @@ pageClass: custom-page-class
 然后你就可以写专门针对该页面的 CSS 了：
 
 ``` css
-/* .vuepress/override.styl */
+/* .vuepress/styles/override.styl */
 
 .theme-container.custom-page-class {
   /* 特定页面的 CSS */
