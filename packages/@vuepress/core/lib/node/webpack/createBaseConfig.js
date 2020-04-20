@@ -173,8 +173,7 @@ module.exports = function createBaseConfig (context, isServer) {
             presets: [
               [require.resolve('@vue/babel-preset-app'), {
                 entryFiles: [
-                  path.resolve(__dirname, '../../client/clientEntry.js'),
-                  path.resolve(__dirname, '../../client/serverEntry.js')
+                  path.resolve(__dirname, '../../client', isServer ? 'serverEntry.js' : 'clientEntry.js')
                 ]
               }]
             ]
