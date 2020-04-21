@@ -213,6 +213,6 @@ git push heroku master
 heroku open
 ```
 
-## ZEIT Now
+## Vercel Now
 
-Please check out [Deploy an example VuePress site with ZEIT Now](https://zeit.co/guides/deploying-vuepress-to-now).
+Please check out [Deploy an example VuePress site with Vercel Now](https://vercel.com/guides/deploying-vuepress-to-now).
