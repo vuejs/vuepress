@@ -17,8 +17,14 @@ export default {
   },
   // Other life cycles will only be called at client
   mounted () {
-    // init currentMetaTags from DOM
-    this.currentMetaTags = [...document.querySelectorAll('meta')]
+    // init currentMetaTags from pageMeta
+    this.currentMetaTags = this.getMergedMetaTags().map(m => {
+      let selector = 'meta'
+      for (const [key, value] of Object.entries(m)) {
+        selector += `[${key}="${value}"]`
+      }
+      return [...document.querySelectorAll(selector)]
+    }).flat()
 
     // update title / meta tags
     this.updateMeta()
