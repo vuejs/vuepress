@@ -69,14 +69,14 @@ module.exports = {
 }
 ```
 
-Outbound links automatically get `target="_blank" rel="noopener noreferrer"`. You can offer `target` and `rel` to customize the attributes:
+Outbound links automatically get `target="_blank" rel="noopener noreferrer"`. You can offer `target` and `rel` to customize the attributes. Passing a "falsy" value to the `rel` attribute will disable that attribute for a link:
 
 ``` js
 // .vuepress/config.js
 module.exports = {
   themeConfig: {
     nav: [
-      { text: 'External', link: 'https://google.com', target:'_self', rel:'' },
+      { text: 'External', link: 'https://google.com', target:'_self', rel:false },
       { text: 'Guide', link: '/guide/', target:'_blank' }
     ]
   }
@@ -353,7 +353,7 @@ You can improve the search result by [setting `tags` in frontmatter](../guide/fr
 
 ```yaml
 ---
-tags: 
+tags:
   - configuration
   - theme
   - indexing
