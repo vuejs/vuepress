@@ -29,6 +29,7 @@
 
 process.env.VUE_CLI_RELEASE = true
 
+const fs = require('fs')
 const execa = require('execa')
 const semver = require('semver')
 const inquirer = require('inquirer')
@@ -114,8 +115,20 @@ const release = async () => {
   await execa(require.resolve('lerna/cli'), releaseArguments, { stdio: 'inherit' })
 
   await execa('yarn', ['changelog'])
+
+  // cleanup changelog
+  fs.writeFileSync(
+    'CHANGELOG.md',
+    fs.readFileSync('CHANGELOG.md')
+      .toString()
+      .split('\n')
+      .slice(4)
+      .join('\n')
+  )
+
   await execa('git', ['add', '-A'], { stdio: 'inherit' })
-  await execa('git', ['commit', '-m', `chore: ${version} changelog`], { stdio: 'inherit' })
+  await execa('git', ['commit', '-m', `chore: version ${version} changelog`], { stdio: 'inherit' })
+  await execa('git', ['push', 'origin', 'master'], { stdio: 'inherit' })
 }
 
 release().catch(err => {
