@@ -6,7 +6,7 @@ Because VuePress applications are server-rendered in Node.js when generating sta
 
 If you are using or demoing components that are not SSR friendly (for example containing custom directives), you can wrap them inside the built-in `<ClientOnly>` component:
 
-``` md
+```md
 <ClientOnly>
   <NonSSRFriendlyComponent/>
 </ClientOnly>
@@ -14,11 +14,11 @@ If you are using or demoing components that are not SSR friendly (for example co
 
 Note this does not fix components or libraries that access Browser APIs **on import** - to use code that assumes a browser environment on import, you need to dynamically import them in proper lifecycle hooks:
 
-``` vue
+```vue
 <script>
 export default {
-  mounted () {
-    import('./lib-that-access-window-on-import').then(module => {
+  mounted() {
+    import('./lib-that-access-window-on-import').then((module) => {
       // use code
     })
   }
@@ -41,8 +41,8 @@ export default {
     }
   },
 
-  mounted () {
-    import('./lib-that-access-window-on-import').then(module => {
+  mounted() {
+    import('./lib-that-access-window-on-import').then((module) => {
       this.dynamicComponent = module.default
     })
   }
@@ -62,7 +62,7 @@ Each Markdown file is first compiled into HTML and then passed on as a Vue compo
 
 **Input**
 
-``` md
+```md
 {{ 1 + 1 }}
 ```
 
@@ -76,7 +76,7 @@ Directives also work:
 
 **Input**
 
-``` md
+```md
 <span v-for="i in 3">{{ i }} </span>
 ```
 
@@ -90,13 +90,13 @@ The compiled component does not have any private data but does have access to th
 
 **Input**
 
-``` md
+```md
 {{ $page }}
 ```
 
 **Output**
 
-``` json
+```json
 {
   "path": "/using-vue.html",
   "title": "Using Vue in Markdown",
@@ -110,7 +110,7 @@ By default, fenced code blocks are automatically wrapped with `v-pre`. To displa
 
 **Input**
 
-``` md
+```md
 ::: v-pre
 `{{ This will be displayed as-is }}`
 :::
@@ -138,7 +138,7 @@ Any `*.vue` files found in `.vuepress/components` are automatically registered a
 
 Inside any Markdown file you can then directly use the components (names are inferred from filenames):
 
-``` md
+```md
 <demo-1/>
 <OtherComponent/>
 <Foo-Bar/>
@@ -158,9 +158,9 @@ Make sure a custom component’s name either contains a hyphen or is in PascalCa
 
 You can use Vue components in the headers, but note the difference between the following two ways:
 
-| Markdown | Output HTML | Parsed Header |
-|--------|-------------|----------------|
-| <pre v-pre><code> # text &lt;Tag/&gt; </code></pre> | `<h1>text <Tag/></h1>` | `text` |
+| Markdown                                                | Output HTML                               | Parsed Header |
+| ------------------------------------------------------- | ----------------------------------------- | ------------- |
+| <pre v-pre><code> # text &lt;Tag/&gt; </code></pre>     | `<h1>text <Tag/></h1>`                    | `text`        |
 | <pre v-pre><code> # text \`&lt;Tag/&gt;\` </code></pre> | `<h1>text <code>&lt;Tag/&gt;</code></h1>` | `text <Tag/>` |
 
 The HTML wrapped by `<code>` will be displayed as is, only the HTML that is not wrapped will be parsed by Vue.
@@ -174,13 +174,13 @@ The output HTML is accomplished by [markdown-it](https://github.com/markdown-it/
 
 VuePress has built-in webpack config for the following pre-processors: `sass`, `scss`, `less`, `stylus` and `pug`. All you need to do is installing the corresponding dependencies. For example, to enable `sass`, install the following in your project:
 
-``` bash
+```bash
 yarn add -D sass-loader node-sass
 ```
 
 Now you can use the following in Markdown and theme components:
 
-``` vue
+```vue
 <style lang="sass">
 .title
   font-size: 20px
@@ -189,7 +189,7 @@ Now you can use the following in Markdown and theme components:
 
 Using `<template lang="pug">` requires installing `pug` and `pug-plain-loader`:
 
-``` bash
+```bash
 yarn add -D pug pug-plain-loader
 ```
 
@@ -242,13 +242,13 @@ See [Browser API Access Restrictions](#browser-api-access-restrictions).
 
 Specify a specific slot for a specific page (.md) for rendering. This will be useful when you use [Custom Layout](../theme/default-theme-config.md#custom-layout-for-specific-pages) or [Writing a theme](../theme/writing-a-theme.md)
 
-``` vue
-<Content/>
+```vue
+<Content />
 ```
 
 **Also see:**
 
-- [Global Computed > $page](./global-computed.md#page)
+- [Global Computed > \$page](./global-computed.md#page)
 - [Markdown Slot](./markdown-slot.md)
 - [Writing a theme > Content Outlet](../theme/writing-a-theme.md#content-outlet)
 
@@ -264,7 +264,7 @@ Specify a specific slot for a specific page (.md) for rendering. This will be us
 
 You can use this component in header to add some status for some API:
 
-``` md
+```md
 ### Badge <Badge text="beta" type="warning"/> <Badge text="default theme"/>
 ```
 

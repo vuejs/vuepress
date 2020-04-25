@@ -31,7 +31,7 @@ module.exports = {
 
 All components in this directory will be registered as global components, naming of components will follow the components found in [.vuepress/components](https://vuepress.vuejs.org/guide/using-vue.html#using-components).
 
-``` js
+```js
 module.exports = {
   plugins: [
     [
@@ -51,7 +51,7 @@ module.exports = {
 
 Register global components by explicit name and path.
 
-``` js
+```js
 module.exports = {
   plugins: [
     [

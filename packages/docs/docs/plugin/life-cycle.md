@@ -41,9 +41,9 @@ module.exports = {
 
   Called when a (production) build finishes, with an array of generated page HTML paths.
 
-``` js
+```js
 module.exports = {
-  async generated (pagePaths) {
+  async generated(pagePaths) {
     // ...
   }
 }

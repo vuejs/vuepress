@@ -42,9 +42,9 @@ module.exports = {
 
 在生产环境的构建结束后被调用，生成的页面的路径数组将作为该函数的第一个参数。
 
-``` js
+```js
 module.exports = {
-  async generated (pagePaths) {
+  async generated(pagePaths) {
     // ...
   }
 }

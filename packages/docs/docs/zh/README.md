@@ -15,7 +15,7 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 
 ### 像数 1, 2, 3 一样容易
 
-``` bash
+```bash
 # 安装
 yarn global add vuepress # 或者：npm install -g vuepress
 

@@ -8,9 +8,9 @@ metaTitle: Blog plugin | VuePress
 ## Features
 
 - [**Classification**](https://vuepress-plugin-blog.ulivz.com/guide/getting-started.html#document-classifier):
-Powerful classification system lets you quickly classify your posts.
+  Powerful classification system lets you quickly classify your posts.
 - [**Pagination**](https://vuepress-plugin-blog.ulivz.com/guide/getting-started.html#pagination):
-Pagination runs through the entire plugin, and it has never been so simple.
+  Pagination runs through the entire plugin, and it has never been so simple.
 - [**Client APIs**](https://vuepress-plugin-blog.ulivz.com/client-api/): Simple client APIs make it easier for you to write a blog theme.
 
 ## Install

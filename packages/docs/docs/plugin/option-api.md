@@ -49,7 +49,7 @@ Edit the internal webpack config with [webpack-chain](https://github.com/mozilla
 
 ```js
 module.exports = {
-  chainWebpack (config, isServer) {
+  chainWebpack(config, isServer) {
     // config is an instance of ChainableConfig
   }
 }
@@ -61,6 +61,7 @@ Since VuePress is a Vue-SSR based application, there needs to be two webpack con
 **Also see:**
 
 - [Vue SSR > Build Configuration](https://ssr.vuejs.org/guide/build-config.html)
+
 :::
 
 ## define
@@ -72,7 +73,7 @@ Since using [DefinePlugin](https://webpack.js.org/plugins/define-plugin/) via [c
 
 ```js
 module.exports = {
-  chainWebpack (config) {
+  chainWebpack(config) {
     config.plugin('injections').tap(([options]) => [
       Object.assign(options, {
         SW_BASE_URL: JSON.stringify('/')
@@ -89,7 +90,7 @@ VuePress opened up a more concise `define` option, note that the values has been
 ```js
 module.exports = {
   define: {
-    SW_BASE_URL: '/',
+    SW_BASE_URL: '/'
   }
 }
 ```
@@ -98,10 +99,10 @@ module.exports = {
 
 ```js
 module.exports = (options, context) => ({
-  define () {
+  define() {
     return {
       SW_BASE_URL: context.base || '/',
-      SW_ENABLED: !!options.enabled,
+      SW_ENABLED: !!options.enabled
     }
   }
 })
@@ -116,7 +117,7 @@ We can set aliases via [chainWebpack](#chainwebpack):
 
 ```js
 module.exports = (options, context) => ({
-  chainWebpack (config) {
+  chainWebpack(config) {
     config.resolve.alias.set('@pwd', process.cwd())
   }
 })
@@ -175,7 +176,7 @@ A function to edit default config or apply extra plugins to the [markdown-it](ht
 
 ```js
 module.exports = {
-  extendMarkdown: md => {
+  extendMarkdown: (md) => {
     md.set({ breaks: true })
     md.use(require('markdown-it-xxx'))
   }
@@ -229,7 +230,7 @@ module.exports = {
 
 This option accepts absolute file path(s) pointing to the enhancement file(s), or a function that returns the path(s), which allows you to do some [App Level Enhancements](../guide/basic-config.md#app-level-enhancements).
 
-``` js
+```js
 import { resolve } from 'path'
 
 module.exports = {
@@ -244,11 +245,11 @@ module.exports = (option, context) => {
   return {
     enhanceAppFiles() {
       return {
-         name: 'dynamic-code',
-         content: `export default ({ Vue }) => { Vue.mixin('$source', '${
-           context.sourceDir
-         }') }`
-       }
+        name: 'dynamic-code',
+        content: `export default ({ Vue }) => { Vue.mixin('$source', '${
+          context.sourceDir
+        }') }`
+      }
     }
   }
 }
@@ -274,7 +275,7 @@ module.exports = (options, context) => ({
 
 Then you can use this module at client-side code by:
 
-``` js
+```js
 import { SOURCE_DIR } from '@dynamic/constants'
 ```
 
@@ -283,7 +284,7 @@ import { SOURCE_DIR } from '@dynamic/constants'
 - Type: `Function | AsyncFunction`
 - Default: `undefined`
 
-A function used to extend or edit the [$page](../guide/global-computed.md#page) object. This function will be invoking once for each page at compile time.
+A function used to extend or edit the [\$page](../guide/global-computed.md#page) object. This function will be invoking once for each page at compile time.
 
 ```js
 module.exports = {
@@ -312,7 +313,7 @@ Note that `extendPageData` can also be defined as an asynchronous function.
 
 ```js
 module.exports = {
-  async extendPageData ($page) {
+  async extendPageData($page) {
     $page.xxx = await getAsyncData()
   }
 }
@@ -324,9 +325,9 @@ These fields starting with an `_` means you can only access them during build ti
 
 For example:
 
-``` js
+```js
 module.exports = {
-  extendPageData ($page) {
+  extendPageData($page) {
     $page.size = ($page._content.length / 1024).toFixed(2) + 'kb'
   }
 }
@@ -341,7 +342,7 @@ Then you can use this value via `this.$page.size` in any Vue component.
 
 A path to the mixin file which allows you to control the lifecycle of root component.
 
-``` js
+```js
 // plugin's entry
 const path = require('path')
 
@@ -350,11 +351,11 @@ module.exports = {
 }
 ```
 
-``` js
+```js
 // mixin.js
 export default {
-  created () {},
-  mounted () {}
+  created() {},
+  mounted() {}
 }
 ```
 
@@ -371,8 +372,8 @@ const path = require('path')
 module.exports = {
   additionalPages: [
     {
-     path: '/readme/',
-     filePath: path.resolve(__dirname, '../../README.md')
+      path: '/readme/',
+      filePath: path.resolve(__dirname, '../../README.md')
     }
   ]
 }
@@ -382,11 +383,13 @@ Add a page with explicit content:
 
 ```js
 module.exports = {
-  async additionalPages () {
+  async additionalPages() {
     // Note that VuePress doesn't have request library built-in
     // you need to install it yourself.
     const rp = require('request-promise')
-    const content = await rp('https://raw.githubusercontent.com/vuejs/vuepress/master/CHANGELOG.md')
+    const content = await rp(
+      'https://raw.githubusercontent.com/vuejs/vuepress/master/CHANGELOG.md'
+    )
     return [
       {
         path: '/changelog/',
@@ -403,10 +406,10 @@ Add a pure route:
 module.exports = {
   additionalPages: [
     {
-       path: '/alpha/',
-       frontmatter: {
-          layout: 'MyLayout'
-       }
+      path: '/alpha/',
+      frontmatter: {
+        layout: 'MyLayout'
+      }
     }
   ]
 }
@@ -419,7 +422,7 @@ module.exports = {
 
 You might want to inject some global UI fixed somewhere on the page, for example `back-to-top`, `popup`. In VuePress, **a global UI is a Vue component**, you can directly define the component’s name(s) in this option, for example:
 
-``` js
+```js
 module.exports = {
   globalUIComponents: [
     'Component-1',
@@ -432,10 +435,11 @@ Then, VuePress will automatically inject these components behind the layout comp
 
 ```html
 <div id="app">
-  <div class="theme-container"> ... </div> <!-- Layout Component -->
+  <div class="theme-container">...</div>
+  <!-- Layout Component -->
   <div class="global-ui">
-    <Component-1/>
-    <Component-2/>
+    <Component-1 />
+    <Component-2 />
   </div>
 </div>
 ```
@@ -449,7 +453,7 @@ Register a extra command to enhance the CLI of VuePress. The function will be ca
 
 ```js
 module.exports = {
-  extendCli (cli) {
+  extendCli(cli) {
     cli
       .command('info [targetDir]', '')
       .option('--debug', 'display info in debug mode')

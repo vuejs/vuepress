@@ -54,7 +54,7 @@ module.exports = {
         updatePopup: true
       }
     ]
-  ],
+  ]
 }
 ```
 
@@ -95,8 +95,8 @@ The definition of type `popupConfig` is as follows:
 
 ```typescript
 interface normalPopupConfig {
-  message: string; // defaults to 'New content is available.'
-  buttonText: string; // defaults to 'Refresh'
+  message: string // defaults to 'New content is available.'
+  buttonText: string // defaults to 'Refresh'
 }
 
 interface localedPopupConfig {
@@ -125,7 +125,7 @@ A custom component to replace the default popup component.
 
 ### Service Worker
 
-``` diff
+```diff
 module.exports = {
 - serviceWorker: true,
 + plugins: ['@vuepress/pwa']
@@ -134,7 +134,7 @@ module.exports = {
 
 ### SW-Update Popup
 
-``` diff
+```diff
 module.exports = {
   themeConfig: {
 -   serviceWorker: {
@@ -158,7 +158,7 @@ module.exports = {
 
 For i18n user:
 
-``` diff
+```diff
 module.exports = {
   themeConfig: {
     '/': {
@@ -219,10 +219,8 @@ First, you need to create a global component (e.g. `MySWUpdatePopup`) at `.vuepr
 ```vue
 <template>
   <SWUpdatePopup v-slot="{ enabled, reload, message, buttonText }">
-    <div
-      v-if="enabled"
-      class="my-sw-update-popup">
-      {{ message }}<br>
+    <div v-if="enabled" class="my-sw-update-popup">
+      {{ message }}<br />
       <button @click="reload">{{ buttonText }}</button>
     </div>
   </SWUpdatePopup>
@@ -256,7 +254,7 @@ export default {
 
 Then, update your plugin config:
 
-``` diff
+```diff
 module.exports = {
    plugins: {
     '@vuepress/pwa': {

@@ -139,7 +139,7 @@ import Navbar from '@theme/components/Navbar.vue'
 ::: vue
 theme
 └── components
-    └── `Navbar.vue`
+   └── `Navbar.vue`
 :::
 
 `@theme/components/Navbar.vue` 会自动地映射到子主题中的 Navbar 组件，当你移除这个组件时，`@theme/components/Navbar.vue` 又会自动恢复为父主题中的 Navbar 组件。
@@ -150,6 +150,7 @@ theme
 
 1. 组件的覆盖，最好直接基于父主题中对应组件的代码来修改；
 2. 目前，在本地开发子主题，每次创建或移除组件时，你需要手动重启 Dev Server。
+
 :::
 
 ## 访问父主题
@@ -160,7 +161,7 @@ theme
 <!-- themePath/components/Foo.vue -->
 <template>
   <ParentLayout>
-    <Foo #foo/>
+    <Foo #foo />
   </ParentLayout>
 </template>
 

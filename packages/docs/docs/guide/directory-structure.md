@@ -67,8 +67,8 @@ Here we take `docs` directory as the `targetDir` (See [Command-line Interface](.
 
 For the above directory structure, the default page routing paths are as follows:
 
-|    Relative Path   |  Page Routing  |
-|--------------------|----------------|
+| Relative Path      | Page Routing   |
+| ------------------ | -------------- |
 | `/README.md`       | `/`            |
 | `/guide/README.md` | `/guide/`      |
 | `/config.md`       | `/config.html` |

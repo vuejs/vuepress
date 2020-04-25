@@ -9,7 +9,7 @@ lang: en-US
 ---
 ```
 
-Between these triple-dashed lines, you can set predefined variables (see [below](#predefined-variables) for a reference), or even create custom ones of your own. These variables will then be available to you to access using <code>[$frontmatter](./global-computed.md#frontmatter)</code> at the rest of the page, plus all custom and theming components.
+Between these triple-dashed lines, you can set predefined variables (see [below](#predefined-variables) for a reference), or even create custom ones of your own. These variables will then be available to you to access using <code>[\$frontmatter](./global-computed.md#frontmatter)</code> at the rest of the page, plus all custom and theming components.
 
 ::: tip
 frontmatter variables are **optional** in VuePress.
@@ -90,7 +90,7 @@ Override the default meta title.
 
 Specify extra meta tags to be injected:
 
-``` yaml
+```yaml
 ---
 meta:
   - name: description

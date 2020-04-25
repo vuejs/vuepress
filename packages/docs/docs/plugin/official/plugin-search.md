@@ -39,7 +39,7 @@ module.exports = {
 <template>
   <div class="foo-layout">
     <header>
-      <SearchBox/>
+      <SearchBox />
     </header>
     <main>
       ...
@@ -92,7 +92,7 @@ You can set up searchable paths with `test` as:
 - RegExp: `'/1\.0/'`
 - Array of RegExp: `['/1\.0/', '/2\.0/']`
 
-Otherwise,  the default search will return duplicates, once you can have similar content between folders `/master/`, `/1.0/` and `/2.0/`.
+Otherwise, the default search will return duplicates, once you can have similar content between folders `/master/`, `/1.0/` and `/2.0/`.
 
 ### searchHotkeys
 
@@ -103,7 +103,7 @@ Configure the hotkeys which when pressed will focus the search box. Set to an em
 
 ## Tips
 
-### Tweak the default colors.
+### Tweak the default colors
 
 Since the Search component leverages the built-in palette, you can tweak the default colors via `styles/palette.styl`:
 

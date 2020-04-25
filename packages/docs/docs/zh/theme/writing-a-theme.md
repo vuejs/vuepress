@@ -15,7 +15,7 @@
 
 当前的 `.md` 文件渲染的内容，可以作为一个独特的全局组件 `<Content/>` 来使用，你可能想要它显示在页面中的某个地方。一个最简单的主题，可以是一个唯一的 `Layout.vue` 组件，并包含以下内容：
 
-``` html
+```html
 <template>
   <div class="theme-container">
     <Content/>
@@ -59,7 +59,7 @@ theme
 
 - `theme/global-components`: 该目录下的组件都会被自动注册为全局组件。想了解更多，请参考 [@vuepress/plugin-register-components](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-register-components)。
 - `theme/components`: Vue 组件。
-- `theme/layouts`: 布局组件，其中  `Layout.vue` 是必需的。
+- `theme/layouts`: 布局组件，其中 `Layout.vue` 是必需的。
 - `theme/styles`: 全局的样式和调色板。
 - `theme/templates`: 修改默认的模板文件。
 - `theme/index.js`: 主题文件的入口文件。
@@ -85,9 +85,9 @@ theme
 ::: vue
 theme
 └── `layouts`
-    ├── Layout.vue
-    ├── AnotherLayout.vue
-    └── 404.vue
+   ├── Layout.vue
+   ├── AnotherLayout.vue
+   └── 404.vue
 :::
 
 然后，所有的页面将会默认使用 `Layout.vue` 作为布局组件，对于那些匹配不到的路由将会使用 `404.vue`。
@@ -98,7 +98,7 @@ theme
 ---
 layout: AnotherLayout
 ---
-````
+```
 
 ::: tip
 每个 layout 组件都可能会渲染出截然不同的页面，如果你想设置一些全局的 UI（如全局的 `<header>`），可以考虑使用 [globalLayout](./option-api.md#globallayout)。
@@ -126,7 +126,7 @@ module.exports = {
 
 这是你现在看到的这个网站的 `$site` 的值：
 
-``` json
+```json
 {
   "title": "VuePress",
   "description": "Vue 驱动的静态网站生成器",
@@ -147,7 +147,7 @@ module.exports = {
 
 下面的这个对象是你正在看的这个页面的 `$page` 的值：
 
-``` json
+```json
 {
   "lastUpdated": 1524847549000,
   "path": "/custom-themes.html",
@@ -173,7 +173,7 @@ module.exports = {
 
 自定义主题也可以通过主题根目录下的 `enhanceApp.js` 文件来对 VuePress 应用进行拓展配置。这个文件应当 `export default` 一个钩子函数，并接受一个包含了一些应用级别属性的对象作为参数。你可以使用这个钩子来安装一些附加的 Vue 插件、注册全局组件，或者增加额外的路由钩子等：
 
-``` js
+```js
 export default ({
   Vue, // VuePress 正在使用的 Vue 构造函数
   options, // 附加到根实例的一些选项

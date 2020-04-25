@@ -39,7 +39,7 @@ module.exports = {
 <template>
   <div class="foo-layout">
     <header>
-      <SearchBox/>
+      <SearchBox />
     </header>
     <main>
       ...

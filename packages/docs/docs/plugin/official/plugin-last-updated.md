@@ -9,7 +9,7 @@ metaTitle: Last-Updated Plugin | VuePress
 
 If you use the default theme, you don't need to install this plugin, because the plugin is already included in the `core` of VuePress, and you should use the [themeConfig.lastUpdated](../../theme/default-theme-config.md#last-updated) option directly.
 
-If you use it at your custom theme, you'll need to handle the UI by yourself, and you can use __[$page.lastUpdated](../../guide/global-computed.md#page)__ to access the date string.
+If you use it at your custom theme, you'll need to handle the UI by yourself, and you can use **[\$page.lastUpdated](../../guide/global-computed.md#page)** to access the date string.
 
 ## Usage
 
@@ -30,8 +30,8 @@ By default, this plugin produces a 13-bit timestamp for each page, you can also 
 
 e.g.
 
-``` javascript
-const moment = require('moment');
+```js
+const moment = require('moment')
 
 module.exports = {
   plugins: [
@@ -64,13 +64,12 @@ Note that in VuePress, we follow this spec: [W3C > Language tags in HTML and XML
 You can also pass in an options object to customize the timestamp output. For more properties check [`Date.prototype.toLocaleString()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString) options argument
 
 ```js
-
 module.exports = {
   plugins: [
     [
       '@vuepress/last-updated',
       {
-        dateOptions:{
+        dateOptions: {
           hours12: false
         }
       }

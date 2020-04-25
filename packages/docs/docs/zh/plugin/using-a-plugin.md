@@ -2,11 +2,9 @@
 
 你可以通过在 `.vuepress/config.js` 中做一些配置来使用插件：
 
-``` js
+```js
 module.exports = {
-  plugins: [
-    require('./my-plugin.js')
-  ]
+  plugins: [require('./my-plugin.js')]
 }
 ```
 
@@ -14,9 +12,9 @@ module.exports = {
 
 一个插件可以在以 `vuepress-plugin-xxx` 的形式发布到 npm，你可以这样使用它：
 
-``` js
+```js
 module.exports = {
-  plugins: [ 'vuepress-plugin-xx' ]
+  plugins: ['vuepress-plugin-xx']
 }
 ```
 
@@ -24,33 +22,33 @@ module.exports = {
 
 如果你的插件名以 `vuepress-plugin-` 开头，你可以使用缩写来省略这个前缀：
 
-``` js
+```js
 module.exports = {
-  plugins: [ 'xxx' ]
+  plugins: ['xxx']
 }
 ```
 
 和下面等价：
 
-``` js
+```js
 module.exports = {
-  plugins: [ 'vuepress-plugin-xxx' ]
+  plugins: ['vuepress-plugin-xxx']
 }
 ```
 
 这也适用于 [Scoped Packages](https://docs.npmjs.com/misc/scope):
 
-``` js
+```js
 module.exports = {
-  plugins: [ '@org/vuepress-plugin-xxx', '@vuepress/plugin-xxx' ]
+  plugins: ['@org/vuepress-plugin-xxx', '@vuepress/plugin-xxx']
 }
 ```
 
 等价于:
 
-``` js
+```js
 module.exports = {
-  plugins: [ '@org/xxx', '@vuepress/xxx' ]
+  plugins: ['@org/xxx', '@vuepress/xxx']
 }
 ```
 
@@ -64,7 +62,7 @@ module.exports = {
 
 插件可以通过在配置内的数组中封装名称和选项对象来指定选项：
 
-``` js
+```js
 module.exports = {
   plugins: [
     [
@@ -81,7 +79,7 @@ module.exports = {
 
 VuePress 也提供了一种更简单的方式来使用来自依赖的插件：
 
-``` js
+```js
 module.exports = {
   plugins: {
     'xxx': { /* options */ }
@@ -94,17 +92,17 @@ module.exports = {
 
 - Babel 风格
 
-``` js
+```js
 module.exports = {
   plugins: [
-    [ 'xxx', false ] // disabled.
+    ['xxx', false] // disabled.
   ]
 }
 ```
 
 - 对象风格
 
-``` js
+```js
 module.exports = {
   plugins: {
     'xxx': false // disabled.

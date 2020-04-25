@@ -16,7 +16,7 @@ Markdown 插槽便解决了这一类问题。
 
 你可以通过下述的语法来定义一个具名 Markdown 插槽：
 
-``` md
+```md
 ::: slot name
 
 :::
@@ -24,8 +24,8 @@ Markdown 插槽便解决了这一类问题。
 
 在布局组件中利用 `Content` 组件来使用该插槽：
 
-``` vue
-<Content slot-key="name"/>
+```vue
+<Content slot-key="name" />
 ```
 
 ::: tip 提示
@@ -36,25 +36,25 @@ Markdown 插槽便解决了这一类问题。
 
 默认情况下，一个 Markdown 文件中的普通内容将会成为 Markdown 插槽的默认内容，你可以直接使用 `Content` 组件来访问它：
 
-``` vue
-<Content/>
+```vue
+<Content />
 ```
 
 ## 例子
 
 假设你的布局组件如下：
 
-``` vue
+```vue
 <template>
   <div class="container">
     <header>
-      <Content slot-key="header"/>
+      <Content slot-key="header" />
     </header>
     <main>
-      <Content/>
+      <Content />
     </main>
     <footer>
-      <Content slot-key="footer"/>
+      <Content slot-key="footer" />
     </footer>
   </div>
 </template>

@@ -2,7 +2,7 @@
 
 VuePress implements a content distribution API for Markdown. With this feature, you can split your document into fragments, allowing flexible composition in the layout component.
 
-## Why do I need Markdown Slot?
+## Why do I need Markdown Slot
 
 First, let’s review the relationship between layout components and Markdown files:
 
@@ -16,7 +16,7 @@ Markdown Slot is to solve this kind of problem.
 
 You can define a named Markdown slot through the following Markdown syntax:
 
-``` md
+```md
 ::: slot name
 
 :::
@@ -24,8 +24,8 @@ You can define a named Markdown slot through the following Markdown syntax:
 
 Use the `Content` component to use the slot in the layout component:
 
-``` vue
-<Content slot-key="name"/>
+```vue
+<Content slot-key="name" />
 ```
 
 ::: tip
@@ -36,25 +36,25 @@ Here we are using `slot-key` instead of `slot`, because in Vue, `slot` is a rese
 
 By default, the slot-free part of a Markdown file becomes the default content of a Markdown slot, which you can access directly using the `Content` component:
 
-``` vue
-<Content/>
+```vue
+<Content />
 ```
 
 ## Example
 
 Suppose your layout component is as follows:
 
-``` vue
+```vue
 <template>
   <div class="container">
     <header>
-      <Content slot-key="header"/>
+      <Content slot-key="header" />
     </header>
     <main>
-      <Content/>
+      <Content />
     </main>
     <footer>
-      <Content slot-key="footer"/>
+      <Content slot-key="footer" />
     </footer>
   </div>
 </template>

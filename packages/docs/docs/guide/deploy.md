@@ -6,7 +6,7 @@ The following guides are based on some shared assumptions:
 - You are using the default build output location (`.vuepress/dist`);
 - VuePress is installed as a local dependency in your project, and you have setup the following npm scripts:
 
-``` json
+```json
 {
   "scripts": {
     "docs:build": "vuepress build docs"
@@ -24,7 +24,7 @@ The following guides are based on some shared assumptions:
 
 2. Inside your project, create `deploy.sh` with the following content (with highlighted lines uncommented appropriately) and run it to deploy:
 
-``` bash{13,20,23}
+```bash{13,20,23}
 #!/usr/bin/env sh
 
 # abort on errors
@@ -70,7 +70,7 @@ You can also run the above script in your CI setup to enable automatic deploymen
 
 4. Use GitHub Pages deploy provider template and follow the [travis documentation](https://docs.travis-ci.com/user/deployment/pages/).
 
-``` yaml
+```yaml
 language: node_js
 node_js:
   - lts/*
@@ -100,22 +100,22 @@ deploy:
 
 3. Create a file called `.gitlab-ci.yml` in the root of your project with the content below. This will build and deploy your site whenever you make changes to your content.
 
-``` yaml
+```yaml
 image: node:9.11.1
 
 pages:
   cache:
     paths:
-    - node_modules/
+      - node_modules/
 
   script:
-  - yarn install # npm install
-  - yarn docs:build # npm run docs:build
+    - yarn install # npm install
+    - yarn docs:build # npm run docs:build
   artifacts:
     paths:
-    - public
+      - public
   only:
-  - master
+    - master
 ```
 
 ## Netlify
@@ -137,10 +137,10 @@ pages:
 
 ```json
 {
- "hosting": {
-   "public": "./docs/.vuepress/dist",
-   "ignore": []
- }
+  "hosting": {
+    "public": "./docs/.vuepress/dist",
+    "ignore": []
+  }
 }
 ```
 
@@ -174,7 +174,7 @@ You can also deploy to a [custom domain](http://surge.sh/help/adding-a-custom-do
 
 3. Run `heroku login` and fill in your Heroku credentials:
 
-   ``` bash
+   ```bash
    heroku login
    ```
 
@@ -192,7 +192,7 @@ This is the configuration of your site. See more at [heroku-buildpack-static](ht
 
 5. Set up your Heroku git remote:
 
-``` bash
+```bash
 # version change
 git init
 git add .
@@ -207,7 +207,7 @@ heroku buildpacks:set https://github.com/heroku/heroku-buildpack-static.git
 
 6. Deploying Your Site
 
-``` bash
+```bash
 # publish site
 git push heroku master
 

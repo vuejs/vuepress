@@ -37,10 +37,7 @@ module.exports = {
 ```js
 // 一个插件
 module.exports = {
-  plugins: [
-    'tag',
-    'category'
-  ]
+  plugins: ['tag', 'category']
 }
 ```
 
@@ -53,7 +50,7 @@ module.exports = {
 
 ```js
 module.exports = {
-  chainWebpack (config, isServer) {
+  chainWebpack(config, isServer) {
     // config 是一个 ChainableConfig 的实例
   }
 }
@@ -65,6 +62,7 @@ module.exports = {
 **参考:**
 
 - [Vue SSR > 构建配置](https://ssr.vuejs.org/zh/guide/build-config.html)
+
 :::
 
 ## define
@@ -76,7 +74,7 @@ module.exports = {
 
 ```js
 module.exports = {
-  chainWebpack (config) {
+  chainWebpack(config) {
     config.plugin('injections').tap(([options]) => [
       Object.assign(options, {
         SW_BASE_URL: JSON.stringify('/')
@@ -93,7 +91,7 @@ VuePress 特别开辟了一个更简洁的 `define` 选项。值得注意的是�
 ```js
 module.exports = {
   define: {
-    SW_BASE_URL: '/',
+    SW_BASE_URL: '/'
   }
 }
 ```
@@ -102,10 +100,10 @@ module.exports = {
 
 ```js
 module.exports = (options, context) => ({
-  define () {
+  define() {
     return {
       SW_BASE_URL: context.base || '/',
-      SW_ENABLED: !!options.enabled,
+      SW_ENABLED: !!options.enabled
     }
   }
 })
@@ -120,7 +118,7 @@ module.exports = (options, context) => ({
 
 ```js
 module.exports = (options, context) => ({
-  chainWebpack (config) {
+  chainWebpack(config) {
     config.resolve.alias.set('@pwd', process.cwd())
   }
 })
@@ -179,7 +177,7 @@ module.exports = {
 
 ```js
 module.exports = {
-  extendMarkdown: md => {
+  extendMarkdown: (md) => {
     md.set({ breaks: true })
     md.use(require('markdown-it-xxx'))
   }
@@ -195,7 +193,7 @@ module.exports = {
 
 ```js
 module.exports = {
-  chainMarkdown (config) {
+  chainMarkdown(config) {
     // 与 new MarkdownIt 的 'options' 互动
     // 参考: https://markdown-it.github.io/markdown-it/#MarkdownIt.new
     config
@@ -233,7 +231,7 @@ module.exports = {
 
 此选项接受指向增强文件的绝对文件路径或返回该路径的函数，你可以通过此选项做一些 [应用级别的配置](../guide/basic-config.md#应用级别的配置):
 
-``` js
+```js
 import { resolve } from 'path'
 
 module.exports = {
@@ -248,11 +246,11 @@ module.exports = (option, context) => {
   return {
     enhanceAppFiles() {
       return {
-         name: 'dynamic-code',
-         content: `export default ({ Vue }) => { Vue.mixin('$source', '${
-           context.sourceDir
-         }') }`
-       }
+        name: 'dynamic-code',
+        content: `export default ({ Vue }) => { Vue.mixin('$source', '${
+          context.sourceDir
+        }') }`
+      }
     }
   }
 }
@@ -278,7 +276,7 @@ module.exports = (options, context) => ({
 
 然后你可以在客户端这样使用你的模块：
 
-``` js
+```js
 import { SOURCE_DIR } from '@dynamic/constants'
 ```
 
@@ -287,11 +285,11 @@ import { SOURCE_DIR } from '@dynamic/constants'
 - 类型: `Function`
 - 默认值: `undefined`
 
-一个函数，用于拓展或者修改 [$page](../guide/global-computed.md#page) 对象。这个函数将会在编译器为每个页面执行一次。
+一个函数，用于拓展或者修改 [\$page](../guide/global-computed.md#page) 对象。这个函数将会在编译器为每个页面执行一次。
 
 ```js
 module.exports = {
-  extendPageData ($page) {
+  extendPageData($page) {
     const {
       _filePath,           // 源文件的绝对路径
       _computed,           // 在构建期访问全局的计算属性，如：_computed.$localePath.
@@ -318,9 +316,9 @@ module.exports = {
 
 例子：
 
-``` js
+```js
 module.exports = {
-  extendPageData ($page) {
+  extendPageData($page) {
     $page.size = ($page._content.length / 1024).toFixed(2) + 'kb'
   }
 }
@@ -335,7 +333,7 @@ module.exports = {
 
 指向 `mixin` 文件的路径，它让你可以控制根组件的生命周期：
 
-``` js
+```js
 // 插件的入口
 const path = require('path')
 
@@ -344,11 +342,11 @@ module.exports = {
 }
 ```
 
-``` js
+```js
 // mixin.js
 export default {
-  created () {},
-  mounted () {}
+  created() {},
+  mounted() {}
 }
 ```
 
@@ -365,8 +363,8 @@ const path = require('path')
 module.exports = {
   additionalPages: [
     {
-     path: '/readme/',
-     filePath: path.resolve(__dirname, '../../README.md')
+      path: '/readme/',
+      filePath: path.resolve(__dirname, '../../README.md')
     }
   ]
 }
@@ -376,11 +374,13 @@ module.exports = {
 
 ```js
 module.exports = {
-  async additionalPages () {
+  async additionalPages() {
     // 注意 VuePress 没有任何内置的请求库，
     // 你需要自己安装它。
     const rp = require('request-promise')
-    const content = await rp('https://raw.githubusercontent.com/vuejs/vuepress/master/CHANGELOG.md')
+    const content = await rp(
+      'https://raw.githubusercontent.com/vuejs/vuepress/master/CHANGELOG.md'
+    )
     return [
       {
         path: '/changelog/',
@@ -397,10 +397,10 @@ module.exports = {
 module.exports = {
   additionalPages: [
     {
-       path: '/alpha/',
-       frontmatter: {
-          layout: 'MyLayout'
-       }
+      path: '/alpha/',
+      frontmatter: {
+        layout: 'MyLayout'
+      }
     }
   ]
 }
@@ -411,14 +411,11 @@ module.exports = {
 - 类型: `Array | String`
 - 默认值: `undefined`
 
-你可能想注入某些全局的 UI，并固定在页面中的某处，如  `back-to-top`, `popup`。在 VuePress 中，**一个全局 UI 就是一个 Vue 组件**。你可以直接配置该全局组件的名称，如：
+你可能想注入某些全局的 UI，并固定在页面中的某处，如 `back-to-top`, `popup`。在 VuePress 中，**一个全局 UI 就是一个 Vue 组件**。你可以直接配置该全局组件的名称，如：
 
-``` js
+```js
 module.exports = {
-  globalUIComponents: [
-    'Component-1',
-    'Component-2'
-  ]
+  globalUIComponents: ['Component-1', 'Component-2']
 }
 ```
 
@@ -426,11 +423,12 @@ VuePress 将会自动将这些组件注入到布局组件的隔壁：
 
 ```html
 <div id="app">
-  <div class="theme-container"> ... </div> <!-- Layout Component -->
+  <div class="theme-container">...</div>
+  <!-- Layout Component -->
   <div class="global-ui">
-    <Component-1/>
-    <Component-2/>
-</div>
+    <Component-1 />
+    <Component-2 />
+  </div>
 </div>
 ```
 
@@ -443,7 +441,7 @@ VuePress 将会自动将这些组件注入到布局组件的隔壁：
 
 ```js
 module.exports = {
-  extendCli (cli) {
+  extendCli(cli) {
     cli
       .command('info [targetDir]', '')
       .option('--debug', 'display info in debug mode')

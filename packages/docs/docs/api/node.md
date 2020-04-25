@@ -29,7 +29,7 @@ Launch a build process with current app context.
 Start a development server, actually it’s implemented by `createApp`:
 
 ```js
-async function dev (options) {
+async function dev(options) {
   const app = createApp(options)
   await app.process()
   return app.dev()
@@ -41,7 +41,7 @@ async function dev (options) {
 Build your source files as a static site, actually it’s implemented by `createApp`:
 
 ```js
-async function build (options) {
+async function build(options) {
   const app = createApp(options)
   await app.process()
   return app.build()

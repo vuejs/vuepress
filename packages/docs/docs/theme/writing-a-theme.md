@@ -5,8 +5,8 @@ To write a theme, create a `.vuepress/theme` directory in your docs root, and th
 ::: vue
 .
 └─ .vuepress
-   └─ `theme`
-       └─ Layout.vue
+ └─ `theme`
+   └─ Layout.vue
 :::
 
 From there it’s the same as developing a normal Vue application. It’s entirely up to you how to organize your theme.
@@ -15,10 +15,10 @@ From there it’s the same as developing a normal Vue application. It’s entire
 
 The compiled content of the current `.md` file being rendered will be available as a special `<Content/>` global component. You will need to render it somewhere in your layout to display the content of the page. The simplest theme can be a single `Layout.vue` component with the following content:
 
-``` html
+```html
 <template>
   <div class="theme-container">
-    <Content/>
+    <Content />
   </div>
 </template>
 ```
@@ -62,7 +62,7 @@ theme
 - `theme/enhanceApp.js`: Theme level enhancements.
 
 ::: warning Note
-When you publish your theme as an npm package, if you don’t have any theme configuration, that means you don’t have `theme/index.js`, you’ll need to set the `"main"` field  to `layouts/Layout.vue` in `package.json`, only in this way VuePress can properly resolve the theme.
+When you publish your theme as an npm package, if you don’t have any theme configuration, that means you don’t have `theme/index.js`, you’ll need to set the `"main"` field to `layouts/Layout.vue` in `package.json`, only in this way VuePress can properly resolve the theme.
 
 ```json
 {
@@ -81,9 +81,9 @@ Suppose your theme layouts folder is as follows:
 ::: vue
 theme
 └── `layouts`
-    ├── Layout.vue
-    ├── AnotherLayout.vue
-    └── 404.vue
+   ├── Layout.vue
+   ├── AnotherLayout.vue
+   └── 404.vue
 :::
 
 Then, all the pages will use `Layout.vue` as layout component by default, while the routes not matching will use `404.vue`.
@@ -94,7 +94,7 @@ To switch the layout of some pages to `AnotherLayout.vue`, all you have to do is
 ---
 layout: AnotherLayout
 ---
-````
+```
 
 ::: tip
 Each layout component may render distinct pages. To apply some global UI (for example global header), consider using [globalLayout](./option-api.md#globallayout)。
@@ -121,7 +121,7 @@ The `Layout` component will be invoked once for every `.md` file in `docs`, and 
 
 This is the value of `$site` of this website:
 
-``` json
+```json
 {
   "title": "VuePress",
   "description": "Vue-powered Static Site Generator",
@@ -142,7 +142,7 @@ This is the value of `$site` of this website:
 
 This is the `$page` object for this page you are looking at:
 
-``` json
+```json
 {
   "lastUpdated": 1524847549000,
   "path": "/guide/custom-themes.html",
@@ -157,7 +157,7 @@ If the user provided `themeConfig` in `.vuepress/config.js`, it will also be ava
 Don’t forget that `this.$route` and `this.$router` are also available as part of Vue Router’s API.
 
 ::: tip
-  `lastUpdated` is the UNIX timestamp of this file’s last git commit, for more details, check out [Last Updated](../theme/default-theme-config.md#last-updated).
+`lastUpdated` is the UNIX timestamp of this file’s last git commit, for more details, check out [Last Updated](../theme/default-theme-config.md#last-updated).
 :::
 
 ## Content Excerpt
@@ -168,7 +168,7 @@ If a Markdown file contains a `<!-- more -->` comment, any content above the com
 
 Themes can enhance the Vue app that VuePress uses by exposing an `enhanceApp.js` file at the root of the theme. The file should `export default` a hook function which will receive an object containing some app-level values. You can use this hook to install more Vue plugins, register global components, or add router hooks:
 
-``` js
+```js
 export default ({
   Vue, // the version of Vue being used in the VuePress app
   options, // the options for the root Vue instance

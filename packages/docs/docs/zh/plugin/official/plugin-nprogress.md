@@ -24,7 +24,7 @@ module.exports = {
 
 ## 自定义颜色
 
-在你的 __site__ 或 __theme__ 的 `palette.styl` 文件中设置 `$nprogressColor` 来改变进度条的颜色（默认使用 `$accentColor`）。
+在你的 **site** 或 **theme** 的 `palette.styl` 文件中设置 `$nprogressColor` 来改变进度条的颜色（默认使用 `$accentColor`）。
 
 ```stylus
 // .vuepress/styles/palette.styl
@@ -34,6 +34,6 @@ module.exports = {
 $nprogressColor = red
 ```
 
-__参考：__
+**参考：**
 
 - [配置 > Styling](../../config/README.md#styling)

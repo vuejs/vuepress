@@ -4,7 +4,7 @@
 
 所有的 Markdown 文件都会被 webpack 编译成 Vue 组件，因此你可以，并且**应该更倾向于**使用相对路径（Relative URLs）来引用所有的静态资源：
 
-``` md
+```md
 ![An image](./image.png)
 ```
 
@@ -12,14 +12,14 @@
 
 除此之外，你也使用 `~` 前缀来明确地指出这是一个 webpack 的模块请求，这将允许你通过 webpack 别名来引用文件或者 npm 的依赖：
 
-``` md
+```md
 ![Image from alias](~@alias/image.png)
 ![Image from dependency](~some-dependency/image.png)
 ```
 
 Webpack 的别名可以通过 `.vuepress/config.js` 中 [configureWebpack](../config/README.md#configurewebpack) 来配置，如：
 
-``` js
+```js
 module.exports = {
   configureWebpack: {
     resolve: {
@@ -41,7 +41,7 @@ module.exports = {
 
 有了基础路径（Base URL），如果你希望引用一张放在 `.vuepress/public` 中的图片，你需要使用这样路径：`/bar/image.png`，然而，一旦某一天你决定去修改 `base`，这样的路径引用将会显得异常脆弱。为了解决这个问题，VuePress 提供了内置的一个 helper `$withBase`（它被注入到了 Vue 的原型上），可以帮助你生成正确的路径：
 
-``` vue
+```vue
 <img :src="$withBase('/foo.png')" alt="foo">
 ```
 

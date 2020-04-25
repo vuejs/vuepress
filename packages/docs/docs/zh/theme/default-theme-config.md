@@ -8,7 +8,7 @@
 
 默认的主题提供了一个首页（Homepage）的布局 (用于 [这个网站的主页](../README.md))。想要使用它，需要在你的根级 `README.md` 的 [YAML front matter](../guide/markdown.md#front-matter) 指定 `home: true`。以下是一个如何使用的例子：
 
-``` yaml
+```yaml
 ---
 home: true
 heroImage: /hero.png
@@ -17,12 +17,12 @@ tagline: Hero 副标题
 actionText: 快速上手 →
 actionLink: /zh/guide/
 features:
-- title: 简洁至上
-  details: 以 Markdown 为中心的项目结构，以最少的配置帮助你专注于写作。
-- title: Vue驱动
-  details: 享受 Vue + webpack 的开发体验，在 Markdown 中使用 Vue 组件，同时可以使用 Vue 来开发自定义主题。
-- title: 高性能
-  details: VuePress 为每个页面预渲染生成静态的 HTML，同时在页面被加载的时候，将作为 SPA 运行。
+  - title: 简洁至上
+    details: 以 Markdown 为中心的项目结构，以最少的配置帮助你专注于写作。
+  - title: Vue驱动
+    details: 享受 Vue + webpack 的开发体验，在 Markdown 中使用 Vue 组件，同时可以使用 Vue 来开发自定义主题。
+  - title: 高性能
+    details: VuePress 为每个页面预渲染生成静态的 HTML，同时在页面被加载的时候，将作为 SPA 运行。
 footer: MIT Licensed | Copyright © 2018-present Evan You
 ---
 ```
@@ -39,11 +39,11 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 
 你可以通过 `themeConfig.logo` 增加导航栏 Logo ，Logo 可以被放置在 [公共文件目录](../guide/assets.md#public-files)：
 
-``` js
+```js
 // .vuepress/config.js
 module.exports = {
   themeConfig: {
-    logo: '/assets/img/logo.png',
+    logo: '/assets/img/logo.png'
   }
 }
 ```
@@ -52,24 +52,22 @@ module.exports = {
 
 你可以通过 `themeConfig.nav` 增加一些导航栏链接:
 
-``` js
+```js
 // .vuepress/config.js
 module.exports = {
   themeConfig: {
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Guide', link: '/guide/' },
-      { text: 'External', link: 'https://google.com' },
+      { text: 'External', link: 'https://google.com' }
     ]
   }
 }
-
-
 ```
 
 外部链接 `<a>` 标签的特性将默认包含`target="_blank" rel="noopener noreferrer"`，你可以提供 `target` 与 `rel`，它们将被作为特性被增加到 `<a>` 标签上：
 
-``` js
+```js
 // .vuepress/config.js
 module.exports = {
   themeConfig: {
@@ -122,7 +120,7 @@ module.exports = {
 
 你可以使用 `themeConfig.navbar` 来禁用所有页面的导航栏：
 
-``` js
+```js
 // .vuepress/config.js
 module.exports = {
   themeConfig: {
@@ -133,7 +131,7 @@ module.exports = {
 
 你也可以通过 `YAML front matter` 来禁用某个指定页面的导航栏：
 
-``` yaml
+```yaml
 ---
 navbar: false
 ---
@@ -143,15 +141,11 @@ navbar: false
 
 想要使 侧边栏（Sidebar）生效，需要配置 `themeConfig.sidebar`，基本的配置，需要一个包含了多个链接的数组：
 
-``` js
+```js
 // .vuepress/config.js
 module.exports = {
   themeConfig: {
-    sidebar: [
-      '/',
-      '/page-a',
-      ['/page-b', 'Explicit link text']
-    ]
+    sidebar: ['/', '/page-a', ['/page-b', 'Explicit link text']]
   }
 }
 ```
@@ -164,7 +158,7 @@ module.exports = {
 
 也可以使用 `YAML front matter` 来为某个页面重写此值：
 
-``` md
+```md
 ---
 sidebarDepth: 2
 ---
@@ -174,7 +168,7 @@ sidebarDepth: 2
 
 默认情况下，侧边栏只会显示由当前活动页面的标题（headers）组成的链接，你可以将 `themeConfig.displayAllHeaders` 设置为 `true` 来显示所有页面的标题链接：
 
-``` js
+```js
 module.exports = {
   themeConfig: {
     displayAllHeaders: true // 默认值：false
@@ -186,10 +180,10 @@ module.exports = {
 
 默认情况下，当用户通过滚动查看页面的不同部分时，嵌套的标题链接和 URL 中的 Hash 值会实时更新，这个行为可以通过以下的配置来禁用：
 
-``` js
+```js
 module.exports = {
   themeConfig: {
-    activeHeaderLinks: false, // 默认值：true
+    activeHeaderLinks: false // 默认值：true
   }
 }
 ```
@@ -202,7 +196,7 @@ module.exports = {
 
 你可以通过使用**对象**来将侧边栏划分成多个组：
 
-``` js
+```js
 // .vuepress/config.js
 module.exports = {
   themeConfig: {
@@ -230,7 +224,7 @@ module.exports = {
 一个侧边栏的子组配置同时支持 [sidebarDepth](#nested-header-links) 字段用于重写默认显示的侧边栏深度(`1`)。
 
 ::: tip
-  嵌套的侧边栏分组也是支持的。
+嵌套的侧边栏分组也是支持的。
 :::
 
 ### 多个侧边栏
@@ -254,7 +248,7 @@ module.exports = {
 
 接着，遵循以下的侧边栏配置：
 
-``` js
+```js
 // .vuepress/config.js
 module.exports = {
   themeConfig: {
@@ -290,7 +284,7 @@ module.exports = {
 
 如果你希望自动生成一个仅仅包含了当前页面标题（headers）链接的侧边栏，你可以通过 `YAML front matter` 来实现：
 
-``` yaml
+```yaml
 ---
 sidebar: auto
 ---
@@ -298,7 +292,7 @@ sidebar: auto
 
 你也可以通过配置来在所有页面中启用它：
 
-``` js
+```js
 // .vuepress/config.js
 module.exports = {
   themeConfig: {
@@ -309,13 +303,13 @@ module.exports = {
 
 在 [多语言](../guide/i18n.md) 模式下, 你也可以将其应用到某一特定的语言下：
 
-``` js
+```js
 // .vuepress/config.js
 module.exports = {
   themeConfig: {
-     '/zh/': {
-       sidebar: 'auto'
-     }
+    '/zh/': {
+      sidebar: 'auto'
+    }
   }
 }
 ```
@@ -324,7 +318,7 @@ module.exports = {
 
 你可以通过 `YAML front matter` 来禁用指定页面的侧边栏：
 
-``` yaml
+```yaml
 ---
 sidebar: false
 ---
@@ -336,7 +330,7 @@ sidebar: false
 
 你可以通过设置 `themeConfig.search: false` 来禁用默认的搜索框，或是通过 `themeConfig.searchMaxSuggestions` 来调整默认搜索框显示的搜索结果数量：
 
-``` js
+```js
 module.exports = {
   themeConfig: {
     search: false,
@@ -394,10 +388,10 @@ module.exports = {
 
 你可以通过 `themeConfig.lastUpdated` 选项来获取每个文件最后一次 `git` 提交的 UNIX 时间戳(ms)，同时它将以合适的日期格式显示在每一页的底部：
 
-``` js
+```js
 module.exports = {
   themeConfig: {
-    lastUpdated: 'Last Updated', // string | boolean
+    lastUpdated: 'Last Updated' // string | boolean
   }
 }
 ```
@@ -405,7 +399,7 @@ module.exports = {
 请注意，`themeConfig.lastUpdated` 默认是关闭的，如果给定一个字符串，它将会作为前缀显示（默认值是：`Last Updated`）。
 
 ::: warning 使用须知
-  由于 `lastUpdated` 是基于 `git` 的, 所以你只能在一个基于 `git` 的项目中启用它。此外，由于使用的时间戳来自 git commit，因此它将仅在给定页的第一次提交之后显示，并且仅在该页面后续提交更改时更新。
+由于 `lastUpdated` 是基于 `git` 的, 所以你只能在一个基于 `git` 的项目中启用它。此外，由于使用的时间戳来自 git commit，因此它将仅在给定页的第一次提交之后显示，并且仅在该页面后续提交更改时更新。
 :::
 
 **拓展阅读:**
@@ -418,7 +412,7 @@ module.exports = {
 
 你可以通过 `themeConfig.nextLinks` 和 `themeConfig.prevLinks` 来全局禁用它们：
 
-``` js
+```js
 // .vuepress/config.js
 module.exports = {
   themeConfig: {
@@ -432,7 +426,7 @@ module.exports = {
 
 你也可以使用 `YAML front matter` 来明确地重写或者禁用它们：
 
-``` yaml
+```yaml
 ---
 prev: ./some-other-page
 next: false
@@ -443,7 +437,7 @@ next: false
 
 当你提供了 `themeConfig.repo` 选项，将会自动在每个页面的导航栏生成生成一个 GitHub 链接，以及在页面的底部生成一个 `"Edit this page"` 链接。
 
-``` js
+```js
 // .vuepress/config.js
 module.exports = {
   themeConfig: {
@@ -471,7 +465,7 @@ module.exports = {
 
 你可以通过 `YAML front matter` 来禁用指定页面的编辑链接：
 
-``` yaml
+```yaml
 ---
 editLink: false
 ---
@@ -481,7 +475,7 @@ editLink: false
 
 你可以通过 `themeConfig.smoothScroll` 选项来启用页面滚动效果。
 
-``` js
+```js
 // .vuepress/config.js
 module.exports = {
   themeConfig: {
@@ -494,7 +488,7 @@ module.exports = {
 
 有时候你可能需要为特定页面添加一个 CSS 类名，以方便针对该页面添加一些专门的 CSS。这种情况下你可以在该页面的 YAML front matter 中声明一个 `pageClass`：
 
-``` yaml
+```yaml
 ---
 pageClass: custom-page-class
 ---
@@ -502,7 +496,7 @@ pageClass: custom-page-class
 
 然后你就可以写专门针对该页面的 CSS 了：
 
-``` css
+```css
 /* .vuepress/override.styl */
 
 .theme-container.custom-page-class {
@@ -514,7 +508,7 @@ pageClass: custom-page-class
 
 默认情况下，每个 `*.md` 文件将会被渲染在一个 `<div class="page">` 容器中，同时还有侧边栏、自动生成的编辑链接，以及上 / 下一篇文章的链接。如果你想要使用一个完全自定义的组件来代替当前的页面（而只保留导航栏），你可以再次使用 `YAML front matter` 来指定这个组件。
 
-``` yaml
+```yaml
 ---
 layout: SpecialLayout
 ---

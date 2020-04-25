@@ -139,7 +139,7 @@ On this premise, when you create a `Navbar` component in the same place in the c
 ::: vue
 theme
 └── components
-    └── `Navbar.vue`
+   └── `Navbar.vue`
 :::
 
 `@theme/components/Navbar.vue` will automatically map to the Navbar component in the child theme, and when you remove the component, `@theme/components/Navbar.vue` will automatically restore to the Navbar component in the parent theme.
@@ -152,6 +152,7 @@ This way, you can "tamper" with some part of an atomic theme.
 
 1. You’d better override the component based on the code of the corresponding component in the parent theme.
 2. When developing theme locally, you need to manually restart the dev server when a component is created or removed.
+
 :::
 
 <!-- textlint-enable -->
@@ -164,7 +165,7 @@ You can use `@parent-theme` to access the root path of the parent theme. The fol
 <!-- themePath/components/Foo.vue -->
 <template>
   <ParentLayout>
-    <Foo #foo/>
+    <Foo #foo />
   </ParentLayout>
 </template>
 

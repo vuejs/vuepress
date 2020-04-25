@@ -6,7 +6,7 @@
 - 使用的是默认的构建输出位置；
 - VuePress 以本地依赖的形式被安装到你的项目中，并且配置了如下的 npm scripts:
 
-``` json
+```json
 {
   "scripts": {
     "docs:build": "vuepress build docs"
@@ -24,7 +24,7 @@
 
 2. 在你的项目中，创建一个如下的 `deploy.sh` 文件（请自行判断去掉高亮行的注释）:
 
-``` bash{13,20,23}
+```bash{13,20,23}
 #!/usr/bin/env sh
 
 # 确保脚本抛出遇到的错误
@@ -68,7 +68,7 @@ cd -
 3. 在本地执行 `yarn` 或 `npm install` 并且提交生成的 lock 文件（即 `yarn.lock` 或 `package-lock.json`）；
 4. 使用 GitHub Pages 部署提供程序模板并遵循 [Travis 文档](https://docs.travis-ci.com/user/deployment/pages/)。
 
-``` yaml
+```yaml
 language: node_js
 node_js:
   - lts/*
@@ -97,22 +97,22 @@ deploy:
 2. 在 `.vuepress/config.js` 中将 `dest` 设置为 `public`。
 3. 在你项目的根目录下创建一个名为 `.gitlab-ci.yml` 的文件，无论何时你提交了更改，它都会帮助你自动构建和部署：
 
-``` yaml
+```yaml
 image: node:9.11.1
 
 pages:
- cache:
-   paths:
-   - node_modules/
+  cache:
+    paths:
+      - node_modules/
 
- script:
- - yarn install # npm install
- - yarn docs:build # npm run docs:build
- artifacts:
-   paths:
-   - public
- only:
- - master
+  script:
+    - yarn install # npm install
+    - yarn docs:build # npm run docs:build
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
 ```
 
 ## Netlify
@@ -134,16 +134,16 @@ pages:
 
 ```json
 {
- "hosting": {
-   "public": "./docs/.vuepress/dist",
-   "ignore": []
- }
+  "hosting": {
+    "public": "./docs/.vuepress/dist",
+    "ignore": []
+  }
 }
 ```
 
 `.firebaserc`:
 
-``` js
+```js
 {
  "projects": {
    "default": "<YOUR_FIREBASE_ID>"
@@ -171,7 +171,7 @@ pages:
 
 3. 运行 `heroku login` 并填写你的 Heroku 证书：
 
-   ``` bash
+   ```bash
    heroku login
    ```
 
@@ -181,7 +181,7 @@ pages:
 
 ```json
 {
-"root": "./docs/.vuepress/dist"
+  "root": "./docs/.vuepress/dist"
 }
 ```
 
@@ -189,7 +189,7 @@ pages:
 
 5. 配置 Heroku 的 git 远程仓库：
 
-``` bash
+```bash
 # 版本变化
 git init
 git add .
@@ -204,7 +204,7 @@ heroku buildpacks:set https://github.com/heroku/heroku-buildpack-static.git
 
 6. 部署你的网站：
 
-``` bash
+```bash
 # 发布网站
 git push heroku master
 

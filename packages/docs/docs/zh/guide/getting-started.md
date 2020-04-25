@@ -8,7 +8,7 @@
 
 如果你只是想尝试一下 VuePress，你可以全局安装它：
 
-``` bash
+```bash
 # 安装
 yarn global add vuepress # 或者：npm install -g vuepress
 
@@ -29,7 +29,7 @@ vuepress build .
 
 如果你想在一个现有项目中使用 VuePress，同时想要在该项目中管理文档，则应该将 VuePress 安装为本地依赖。作为本地依赖安装让你可以使用持续集成工具，或者一些其他服务（比如 Netlify）来帮助你在每次提交代码时自动部署。
 
-``` bash
+```bash
 # 将 VuePress 作为一个本地依赖安装
 yarn add -D vuepress # 或者：npm install -D vuepress
 
@@ -49,7 +49,7 @@ npx vuepress dev docs
 
 接着，在 `package.json` 里加一些脚本:
 
-``` json
+```json
 {
   "scripts": {
     "docs:dev": "vuepress dev docs",
@@ -60,13 +60,13 @@ npx vuepress dev docs
 
 然后就可以开始写作了:
 
-``` bash
+```bash
 yarn docs:dev # 或者：npm run docs:dev
 ```
 
 要生成静态的 HTML 文件，运行：
 
-``` bash
+```bash
 yarn docs:build # 或者：npm run docs:build
 ```
 

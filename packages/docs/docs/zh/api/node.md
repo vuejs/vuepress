@@ -29,7 +29,7 @@ const { createApp, dev, build, eject } = require('vuepress')
 启动一个 Dev Server，实际上它是由 `createapp` 实现的：
 
 ```js
-async function dev (options) {
+async function dev(options) {
   const app = createApp(options)
   await app.process()
   return app.dev()
@@ -41,7 +41,7 @@ async function dev (options) {
 将源文件构建为静态站点, 实际上它是由 `createapp` 实现的：
 
 ```js
-async function build (options) {
+async function build(options) {
   const app = createApp(options)
   await app.process()
   return app.build()

@@ -8,7 +8,7 @@ VuePress requires Node.js >= 8.
 
 If you only want to play around with VuePress, you can install it globally:
 
-``` bash
+```bash
 # install globally
 yarn global add vuepress # OR npm install -g vuepress
 
@@ -29,7 +29,7 @@ vuepress build
 
 If you have an existing project and would like to keep documentation inside the project, you should install VuePress as a local dependency. This setup also allows you to use CI or services like [Netlify](https://netlify.com) for automatic deployment on push.
 
-``` bash
+```bash
 # install as a local dependency
 yarn add -D vuepress # OR npm install -D vuepress
 
@@ -45,7 +45,7 @@ We currently recommend using [Yarn](https://yarnpkg.com/en/) instead of npm when
 
 Then, add some scripts to `package.json`:
 
-``` json
+```json
 {
   "scripts": {
     "docs:dev": "vuepress dev docs",
@@ -56,13 +56,13 @@ Then, add some scripts to `package.json`:
 
 You can now start writing with:
 
-``` bash
+```bash
 yarn docs:dev # OR npm run docs:dev
 ```
 
 To generate static assets, run:
 
-``` bash
+```bash
 yarn docs:build # OR npm run docs:build
 ```
 

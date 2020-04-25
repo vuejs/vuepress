@@ -2,11 +2,11 @@
 
 在 VuePress 中，内置了一些核心的 [计算属性](https://cn.vuejs.org/v2/guide/computed.html#%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7)，以供 [默认主题](../theme/default-theme-config.md) 或自定义主题使用。
 
-## $site
+## \$site
 
 这是你现在看到的这个网站的 `$site` 的值：
 
-``` json
+```json
 {
   "title": "VuePress",
   "description": "Vue 驱动的静态网站生成器",
@@ -23,11 +23,11 @@
 }
 ```
 
-## $page
+## \$page
 
 这是你现在看到的这个页面的 `$page` 的值：
 
-``` json
+```json
 {
   "title": "Global Computed",
   "frontmatter": {
@@ -52,11 +52,11 @@
 }
 ```
 
-## $frontmatter
+## \$frontmatter
 
-[$page](#page).frontmatter 的引用。
+[\$page](#page).frontmatter 的引用。
 
-## $lang
+## \$lang
 
 当前页面的语言，默认值为 `en-US`。
 
@@ -64,7 +64,7 @@
 
 - [多语言支持](i18n.md)
 
-## $localePath
+## \$localePath
 
 当前页面的 locale 路径前缀，默认值为 `/`，当前页面为 `/zh/`。
 
@@ -72,14 +72,14 @@
 
 - [多语言支持](i18n.md)
 
-## $title
+## \$title
 
 用于当前页面的 `<title>` 标签的值。
 
-## $description
+## \$description
 
 用于当前页面的 `<meta name="description" content="...">` 的 `content` 值。
 
-## $themeConfig
+## \$themeConfig
 
 即 `siteConfig.themeConfig`。

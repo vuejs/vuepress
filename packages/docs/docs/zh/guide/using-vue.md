@@ -6,7 +6,7 @@
 
 如果你正在使用，或者需要展示一个对于 SSR 不怎么友好的组件（比如包含了自定义指令），你可以将它们包裹在内置的 `<ClientOnly>` 组件中：
 
-``` md
+```md
 <ClientOnly>
   <NonSSRFriendlyComponent/>
 </ClientOnly>
@@ -14,11 +14,11 @@
 
 请注意，这并不能解决一些组件或库在**导入**时就试图访问浏览器 API 的问题 —— 如果需要使用这样的组件或库，你需要在合适的生命周期钩子中**动态导入**它们：
 
-``` vue
+```vue
 <script>
 export default {
-  mounted () {
-    import('./lib-that-access-window-on-import').then(module => {
+  mounted() {
+    import('./lib-that-access-window-on-import').then((module) => {
       // use code
     })
   }
@@ -39,8 +39,8 @@ export default {
       dynamicComponent: null
     }
   },
-  mounted () {
-    import('./lib-that-access-window-on-import').then(module => {
+  mounted() {
+    import('./lib-that-access-window-on-import').then((module) => {
       this.dynamicComponent = module.default
     })
   }
@@ -60,7 +60,7 @@ export default {
 
 **Input**
 
-``` md
+```md
 {{ 1 + 1 }}
 ```
 
@@ -74,7 +74,7 @@ export default {
 
 **Input**
 
-``` md
+```md
 <span v-for="i in 3">{{ i }} </span>
 ```
 
@@ -88,13 +88,13 @@ export default {
 
 **Input**
 
-``` md
+```md
 {{ $page }}
 ```
 
 **Output**
 
-``` json
+```json
 {
   "path": "/using-vue.html",
   "title": "Using Vue in Markdown",
@@ -108,7 +108,7 @@ export default {
 
 **Input**
 
-``` md
+```md
 ::: v-pre
 `{{ This will be displayed as-is }}`
 :::
@@ -136,7 +136,7 @@ export default {
 
 你可以直接使用这些组件在任意的 Markdown 文件中（组件名是通过文件名取到的）：
 
-``` md
+```md
 <demo-1/>
 <OtherComponent/>
 <Foo-Bar/>
@@ -156,9 +156,9 @@ export default {
 
 你可以在标题中使用 Vue 组件，但是请留意以下两种方式的不同：
 
-| Markdown | 输出的 HTML | 解析后的标题 |
-|--------|-------------|----------------|
-| <pre v-pre><code> # text &lt;Tag/&gt; </code></pre> | `<h1>text <Tag/></h1>` | `text` |
+| Markdown                                                | 输出的 HTML                               | 解析后的标题  |
+| ------------------------------------------------------- | ----------------------------------------- | ------------- |
+| <pre v-pre><code> # text &lt;Tag/&gt; </code></pre>     | `<h1>text <Tag/></h1>`                    | `text`        |
 | <pre v-pre><code> # text \`&lt;Tag/&gt;\` </code></pre> | `<h1>text <code>&lt;Tag/&gt;</code></h1>` | `text <Tag/>` |
 
 被 `<code>` 包装的 HTML 将按原样显示，只有未被包装的 HTML 才会被 Vue 解析。
@@ -171,22 +171,22 @@ export default {
 
 VuePress 对以下预处理器已经内置相关的 webpack 配置：`sass`、`scss`、`less`、`stylus` 和 `pug`。要使用它们你只需要在项目中安装对应的依赖即可。例如，要使用 `sass`，需要安装：
 
-``` bash
+```bash
 yarn add -D sass-loader node-sass
 ```
 
 然后你就可以在 Markdown 或是组件中使用如下代码：
 
-``` vue
+```vue
 <style lang="sass">
-  .title
-    font-size: 20px
+.title
+  font-size: 20px
 </style>
 ```
 
 要在组件中使用 `<template lang="pug">`，则需要安装 `pug` 和 `pug-plain-loader`:
 
-``` bash
+```bash
 yarn add -D pug pug-plain-loader
 ```
 
@@ -239,13 +239,13 @@ export default {
 
 指定一个指定页面的特定 slot 用于渲染，当你使用 [自定义布局](../theme/default-theme-config.md#特定页面的自定义布局) 或者自定义主题时，这将非常有用。
 
-``` vue
-<Content/>
+```vue
+<Content />
 ```
 
 **参考:**
 
-- [全局计算属性 > $page](./global-computed.md#page)
+- [全局计算属性 > \$page](./global-computed.md#page)
 - [Markdown 插槽](./markdown-slot.md)
 - [开发主题 > 获取渲染内容](../theme/writing-a-theme.md#获取渲染内容)
 
@@ -261,7 +261,7 @@ export default {
 
 你可以在标题中，使用这个组件来为某些 API 添加一些状态：
 
-``` md
+```md
 ### Badge <Badge text="beta" type="warning"/> <Badge text="默认主题"/>
 ```
 

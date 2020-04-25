@@ -6,19 +6,19 @@ metaTitle: Configuration | Theme
 
 和插件几乎一样，主题的配置文件 `themeEntry` 应该导出一个普通的 JavaScript 对象（`#1`），它也可以是一个返回对象的函数（`#2`），这个函数接受用户在 `siteConfig.themeConfig` 为第一个参数、包含编译期上下文的 [context](../plugin/context-api.md) 对象作为第二个参数。
 
-``` js
+```js
 // #1
 module.exports = {
-   // ...
+  // ...
 }
 ```
 
-``` js
+```js
 // #2
 module.exports = (themeConfig, ctx) => {
-   return {
-      // ...
-   }
+  return {
+    // ...
+  }
 }
 ```
 
@@ -26,6 +26,7 @@ module.exports = (themeConfig, ctx) => {
 
 1. 你应该能看到 `themeEntry` 和 `themeConfig` 的区别，前者是一个主题本身的配置，这些配置由 VuePress 本身提供；而后者则是用户对主题的配置，这些配置选项则由当前使用的主题来实现，如 [默认主题配置](./default-theme-config.md)。
 2. 除了本节列出的选项，`themeEntry` 也支持插件支持的所有 [配置选项](../plugin/option-api.md) 和 [生命周期](../plugin/life-cycle.md)。
+
 :::
 
 ## plugins
@@ -91,7 +92,7 @@ module.exports = {
 }
 ```
 
-全局布局组件是负责管理全局布局方案的一个组件，VuePress [默认的 globalLayout](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/core/lib/client/components/GlobalLayout.vue)会帮你根据 [$frontmatter.layout](../guide/frontmatter.md#layout) 来渲染不同的布局，所以大部分情况下你不要配置此选项。
+全局布局组件是负责管理全局布局方案的一个组件，VuePress [默认的 globalLayout](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/core/lib/client/components/GlobalLayout.vue)会帮你根据 [\$frontmatter.layout](../guide/frontmatter.md#layout) 来渲染不同的布局，所以大部分情况下你不要配置此选项。
 
 举例来说，当你想为当前主题设置全局的 header 和 footer 时，你可以这样做：
 
@@ -100,7 +101,7 @@ module.exports = {
 <template>
   <div id="global-layout">
     <header><h1>Header</h1></header>
-    <component :is="layout"/>
+    <component :is="layout" />
     <footer><h1>Footer</h1></footer>
   </div>
 </template>
@@ -108,7 +109,7 @@ module.exports = {
 <script>
 export default {
   computed: {
-    layout () {
+    layout() {
       if (this.$page.path) {
         if (this.$frontmatter.layout) {
           // 你也可以像默认的 globalLayout 一样首先检测 layout 是否存在

@@ -31,7 +31,7 @@ module.exports = {
 
 在这个目录下的所有组件将会被注册为全局组件，组件的命名将遵循在 [.vuepress/components](https://vuepress.vuejs.org/guide/using-vue.html#using-components) 中找到的组件的命名。
 
-``` js
+```js
 module.exports = {
   plugins: [
     [
@@ -51,7 +51,7 @@ module.exports = {
 
 通过明确的名称和路径来注册组件。
 
-``` js
+```js
 module.exports = {
   plugins: [
     [

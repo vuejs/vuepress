@@ -6,19 +6,19 @@ metaTitle: Configuration | Theme
 
 As with plugins, the theme configuration file `themeEntry` should export a `plain JavaScript object`(`#1`). If the plugin needs to take options, it can be a function that exports a plain object(`#2`). The function will be called with the `siteConfig.themeConfig` as the first argument, along with [ctx](../plugin/context-api.md) which provides some compile-time metadata.
 
-``` js
+```js
 // #1
 module.exports = {
-   // ...
+  // ...
 }
 ```
 
-``` js
+```js
 // #2
 module.exports = (themeConfig, ctx) => {
-   return {
-      // ...
-   }
+  return {
+    // ...
+  }
 }
 ```
 
@@ -27,6 +27,7 @@ module.exports = (themeConfig, ctx) => {
 1. You should see the difference between `themeEntry` and `themeConfig`, the former is a configuration for the theme itself, provided by VuePress. The latter is the user’s configuration for the theme, implemented by the used theme, for example [Default Theme Config](./default-theme-config.md).
 
 2. Along with the options listed in this section, `themeEntry` also supports all [Option API](../plugin/option-api.md) and [Lifecycle](../plugin/life-cycle.md) supported by plugins.
+
 :::
 
 ## plugins
@@ -92,7 +93,7 @@ module.exports = {
 }
 ```
 
-Global layout component is a component responsible for the global layout strategy. The [default global layout](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/core/lib/client/components/GlobalLayout.vue) will help you render different layouts according to [$frontmatter.layout](../guide/frontmatter.md#layout), so in most cases you do not need to configure this option.
+Global layout component is a component responsible for the global layout strategy. The [default global layout](https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/core/lib/client/components/GlobalLayout.vue) will help you render different layouts according to [\$frontmatter.layout](../guide/frontmatter.md#layout), so in most cases you do not need to configure this option.
 
 For example, when you want to set a global header and footer for your theme, you can do this:
 
@@ -101,7 +102,7 @@ For example, when you want to set a global header and footer for your theme, you
 <template>
   <div id="global-layout">
     <header><h1>Header</h1></header>
-    <component :is="layout"/>
+    <component :is="layout" />
     <footer><h1>Footer</h1></footer>
   </div>
 </template>
@@ -109,7 +110,7 @@ For example, when you want to set a global header and footer for your theme, you
 <script>
 export default {
   computed: {
-    layout () {
+    layout() {
       if (this.$page.path) {
         if (this.$frontmatter.layout) {
           // You can also check whether layout exists first as the default global layout does.

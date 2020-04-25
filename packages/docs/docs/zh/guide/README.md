@@ -8,7 +8,7 @@ VuePress 由两部分组成：第一部分是一个 [极简静态网站生成器
 
 事实上，一个 VuePress 网站是一个由 [Vue](http://vuejs.org/)、[Vue Router](https://github.com/vuejs/vue-router) 和 [webpack](http://webpack.js.org/) 驱动的单页应用。如果你以前使用过 Vue 的话，当你在开发一个自定义主题的时候，你会感受到非常熟悉的开发体验，你甚至可以使用 Vue DevTools 去调试你的自定义主题。
 
-在构建时，我们会为应用创建一个服务端渲染（SSR）的版本，然后通过虚拟访问每一条路径来渲染对应的HTML。这种做法的灵感来源于 [Nuxt](https://nuxtjs.org/) 的 `nuxt generate` 命令，以及其他的一些项目，比如 [Gatsby](https://www.gatsbyjs.org/)。
+在构建时，我们会为应用创建一个服务端渲染（SSR）的版本，然后通过虚拟访问每一条路径来渲染对应的 HTML。这种做法的灵感来源于 [Nuxt](https://nuxtjs.org/) 的 `nuxt generate` 命令，以及其他的一些项目，比如 [Gatsby](https://www.gatsbyjs.org/)。
 
 ## Features
 
@@ -25,7 +25,7 @@ VuePress 由两部分组成：第一部分是一个 [极简静态网站生成器
 - [模板语法](../guide/using-vue.md#模板语法)
 - [使用组件](../guide/using-vue.md#使用组件)
 
-**Vue驱动的自定义主题系统**
+**Vue 驱动的自定义主题系统**
 
 - [网站和页面的元数据](../theme/writing-a-theme.md#网站和页面的元数据)
 - [内容摘抄](../theme/writing-a-theme.md#内容摘抄)

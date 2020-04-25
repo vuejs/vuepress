@@ -47,8 +47,8 @@
 ```js
 // .vuepress/config.js
 module.exports = {
-  permalink: "/:year/:month/:day/:slug"
-};
+  permalink: '/:year/:month/:day/:slug'
+}
 ```
 
 另外，你也可以只为单独一个页面去设置永久链接。这种方式比全局配置拥有更高的优先级。
@@ -66,15 +66,15 @@ Hello!
 
 ### 模板变量
 
-| 变量 | 介绍 |
-| --- | --- |
-| :year | 文章发布的年份 (4数字) |
-| :month | 文章发布的月份 (2数字) |
-| :i_month | 文章发布的月份 (前面不带0) |
-| :day | 文章发布的日份 (2数字) |
-| :i_day | 文章发布的日份 (前面不带0) |
-| :slug | Slugify 后的文件路径 (不带扩展名) |
-| :regular | VuePress默认的生成永久链接的方式，具体实现看 [这里][2] |
+| 变量     | 介绍                                                    |
+| -------- | ------------------------------------------------------- |
+| :year    | 文章发布的年份 (4 数字)                                 |
+| :month   | 文章发布的月份 (2 数字)                                 |
+| :i_month | 文章发布的月份 (前面不带 0)                             |
+| :day     | 文章发布的日份 (2 数字)                                 |
+| :i_day   | 文章发布的日份 (前面不带 0)                             |
+| :slug    | Slugify 后的文件路径 (不带扩展名)                       |
+| :regular | VuePress 默认的生成永久链接的方式，具体实现看 [这里][2] |
 
-[1]:https://en.wikipedia.org/wiki/Link_rot
-[2]:https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/shared-utils/src/fileToPath.ts
+[1]: https://en.wikipedia.org/wiki/Link_rot
+[2]: https://github.com/vuejs/vuepress/blob/master/packages/%40vuepress/shared-utils/src/fileToPath.ts

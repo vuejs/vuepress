@@ -42,7 +42,7 @@ sidebar: auto
 
 额外的需要被注入到当前页面的 HTML `<head>` 中的标签，每个标签都可以以 `[tagName, { attrName: attrValue }, innerHTML?]` 的格式指定，举个例子，增加一个自定义的 favicon：
 
-``` js
+```js
 module.exports = {
   head: [
     ['link', { rel: 'icon', href: '/logo.png' }]
@@ -97,7 +97,7 @@ module.exports = {
 - 类型: `boolean|string`
 - 默认值: `true`
 
-VuePress 默认使用了 [cache-loader](https://github.com/webpack-contrib/cache-loader)  来大大地加快 webpack 的编译速度。
+VuePress 默认使用了 [cache-loader](https://github.com/webpack-contrib/cache-loader) 来大大地加快 webpack 的编译速度。
 
 此选项可以用于指定 cache 的路径，同时也可以通过设置为 `false` 来在每次构建之前删除 cache。
 
@@ -120,7 +120,7 @@ vuepress dev docs --no-cache     # 在每次构建前删除 cache
 
 你可以监听任何想监听的文件，文件变动将会触发 `vuepress` 重新构建，并实时更新。
 
-``` js
+```js
 module.exports = {
   extraWatchFiles: [
     '.vuepress/foo.js', // 使用相对路径
@@ -144,7 +144,7 @@ module.exports = {
 
 你可以调整的一些变量如下:
 
-``` stylus
+```stylus
 // 颜色
 $accentColor = #3eaf7c
 $textColor = #2c3e50
@@ -263,7 +263,7 @@ VuePress 提供了一种添加额外样式的简便方法。你可以创建一�
 
 你可以使用 `markdown.plugins` 来安装 markdown-it 插件。它的使用方法与[安装一个 VuePress 插件](../plugin/using-a-plugin.html#using-a-plugin)类似。你可以使用 Babel 语法或对象语法。`markdown-it-` 前缀同样是可以忽略的。
 
-``` js
+```js
 module.exports = {
   markdown: {
     plugins: [
@@ -278,7 +278,7 @@ module.exports = {
 
 或者
 
-``` js
+```js
 module.exports = {
   markdown: {
     plugins: {
@@ -298,10 +298,10 @@ module.exports = {
 
 一个用于修改当前的 [markdown-it](https://github.com/markdown-it/markdown-it) 实例的默认配置，或者应用额外的插件的函数，举例如下：
 
-``` js
+```js
 module.exports = {
   markdown: {
-    extendMarkdown: md => {
+    extendMarkdown: (md) => {
       md.set({ breaks: true })
       md.use(require('markdown-it-xxx'))
     }
@@ -320,10 +320,10 @@ module.exports = {
 
 Markdown 文件的 headers (标题 & 小标题) 会在准备阶段被提取出来，并存储在 `this.$page.headers` 中。默认情况下，VuePress 会提取 `h2` 和 `h3` 标题。你可以通过这个选项来修改提取出的标题级别。
 
-``` js
+```js
 module.exports = {
   markdown: {
-    extractHeaders: [ 'h2', 'h3', 'h4' ]
+    extractHeaders: ['h2', 'h3', 'h4']
   }
 }
 ```
@@ -372,7 +372,7 @@ module.exports = {
 
 用于修改内部的 Webpack 配置。如果给定一个对象，那么它将会被 [webpack-merge](https://github.com/survivejs/webpack-merge) 合并到最终的配置中，如果给定一个函数，它将会接受 `config` 作为第一个参数，以及 `isServer` 作为第二个参数，你可以直接更改 `config`，也可以返回一个待合并的对象。
 
-``` js
+```js
 module.exports = {
   configureWebpack: (config, isServer) => {
     if (!isServer) {
@@ -389,7 +389,7 @@ module.exports = {
 
 通过 [webpack-chain](https://github.com/mozilla-neutrino/webpack-chain) 来修改内部的 Webpack 配置。
 
-``` js
+```js
 module.exports = {
   chainWebpack: (config, isServer) => {
     // config 是 ChainableConfig 的一个实例

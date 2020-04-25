@@ -56,7 +56,7 @@ You can customize the attributes added to external links by setting [config.mark
 
 [YAML frontmatter](https://jekyllrb.com/docs/frontmatter/) is supported out of the box:
 
-``` yaml
+```yaml
 ---
 title: Blogging Like a Hacker
 lang: en-US
@@ -81,13 +81,13 @@ For more details, check out the [Frontmatter](./frontmatter.md) page.
 
 **Output**
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+| Tables        |      Are      |   Cool |
+| ------------- | :-----------: | -----: |
+| col 3 is      | right-aligned | \$1600 |
+| col 2 is      |   centered    |   \$12 |
+| zebra stripes |   are neat    |    \$1 |
 
-## Emoji :tada:
+## Emoji :tada
 
 **Input**
 
@@ -167,9 +167,11 @@ Danger zone, do not proceed
 :::
 
 ::: details Click me to view the code
+
 ```js
 console.log('Hello, VuePress!')
 ```
+
 :::
 ````
 
@@ -206,9 +208,9 @@ export default {
 
 **Output**
 
-``` js
+```js
 export default {
-  name: 'MyComponent',
+  name: 'MyComponent'
   // ...
 }
 ```
@@ -230,12 +232,9 @@ export default {
 
 **Output**
 
-``` html
+```html
 <ul>
-  <li
-    v-for="todo in todos"
-    :key="todo.id"
-  >
+  <li v-for="todo in todos" :key="todo.id">
     {{ todo.text }}
   </li>
 </ul>
@@ -261,9 +260,9 @@ export default {
 
 **Output**
 
-``` js{4}
+```js{4}
 export default {
-  data () {
+  data() {
     return {
       msg: 'Highlighted!'
     }
@@ -275,7 +274,7 @@ export default {
 
 You can enable line numbers for each code blocks via config:
 
-``` js
+```js
 module.exports = {
   markdown: {
     lineNumbers: true
@@ -319,19 +318,19 @@ module.exports = {
 
 You can import code snippets from existing files via following syntax:
 
-``` md
+```md
 <<< @/filepath
 ```
 
 It also supports [line highlighting](#line-highlighting-in-code-blocks):
 
-``` md
+```md
 <<< @/filepath{highlightLines}
 ```
 
 **Input**
 
-``` md
+```md
 <<< @/../@vuepress/markdown/__tests__/fragments/snippet.js{2}
 ```
 
@@ -351,14 +350,14 @@ Since the import of the code snippets will be executed before webpack compilatio
 
 VuePress uses [markdown-it](https://github.com/markdown-it/markdown-it) as the Markdown renderer. A lot of the extensions above are implemented via custom plugins. You can further customize the `markdown-it` instance using the `markdown` option in `.vuepress/config.js`:
 
-``` js
+```js
 module.exports = {
   markdown: {
     // options for markdown-it-anchor
     anchor: { permalink: false },
     // options for markdown-it-toc
     toc: { includeLevel: [1, 2] },
-    extendMarkdown: md => {
+    extendMarkdown: (md) => {
       // use more markdown-it plugins!
       md.use(require('markdown-it-xxx'))
     }

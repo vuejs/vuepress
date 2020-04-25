@@ -6,7 +6,7 @@
 
 一个主题可以在以 `vuepress-theme-xxx` 的形式发布到 npm，你可以这样使用它：
 
-``` js
+```js
 module.exports = {
   theme: 'vuepress-theme-xx'
 }
@@ -16,7 +16,7 @@ module.exports = {
 
 如果你的主题名以 `vuepress-theme-` 开头，你可以使用缩写来省略这个前缀：
 
-``` js
+```js
 module.exports = {
   theme: 'xxx'
 }
@@ -24,7 +24,7 @@ module.exports = {
 
 和下面等价：
 
-``` js
+```js
 module.exports = {
   theme: 'vuepress-theme-xxx'
 }
@@ -32,17 +32,17 @@ module.exports = {
 
 这也适用于 [Scoped Packages](https://docs.npmjs.com/misc/scope):
 
-``` js
+```js
 module.exports = {
-  theme: '@org/vuepress-theme-xxx', // 或者一个官方主题: '@vuepress/theme-xxx'
+  theme: '@org/vuepress-theme-xxx' // 或者一个官方主题: '@vuepress/theme-xxx'
 }
 ```
 
 缩写:
 
-``` js
+```js
 module.exports = {
-  theme: '@org/xxx', // 或者一个官方主题: '@vuepress/xxx'
+  theme: '@org/xxx' // 或者一个官方主题: '@vuepress/xxx'
 }
 ```
 

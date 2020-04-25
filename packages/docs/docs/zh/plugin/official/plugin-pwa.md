@@ -31,7 +31,7 @@ module.exports = {
 更多细节，请参见 [MDN docs about the Web App Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest).
 :::
 
-这是一个在VuePress中完全地兼容 PWA 的例子：
+这是一个在 VuePress 中完全地兼容 PWA 的例子：
 
 ```js
 module.exports = {
@@ -49,7 +49,7 @@ module.exports = {
   plugins: ['@vuepress/pwa', {
       serviceWorker: true,
       updatePopup: true
-  }],
+  }]
 }
 ```
 
@@ -90,8 +90,8 @@ workbox-build 的 [generateSW config](https://developers.google.com/web/tools/wo
 
 ```typescript
 interface normalPopupConfig {
-  message: string; // defaults to 'New content is available.'
-  buttonText: string; // defaults to 'Refresh'
+  message: string // defaults to 'New content is available.'
+  buttonText: string // defaults to 'Refresh'
 }
 
 interface localedPopupConfig {
@@ -120,7 +120,7 @@ type popupConfig = normalPopupConfig | localedPopupConfig
 
 ### Service Worker
 
-``` diff
+```diff
 module.exports = {
 - serviceWorker: true,
 + plugins: ['@vuepress/pwa']
@@ -129,7 +129,7 @@ module.exports = {
 
 ### SW-Update Popup
 
-``` diff
+```diff
 module.exports = {
   themeConfig: {
 -   serviceWorker: {
@@ -153,7 +153,7 @@ module.exports = {
 
 如果你在 [i18n](../../guide/i18n.md) 模式下:
 
-``` diff
+```diff
 module.exports = {
   themeConfig: {
     '/': {
@@ -214,10 +214,8 @@ module.exports = {
 ```vue
 <template>
   <SWUpdatePopup v-slot="{ enabled, reload, message, buttonText }">
-    <div
-      v-if="enabled"
-      class="my-sw-update-popup">
-      {{ message }}<br>
+    <div v-if="enabled" class="my-sw-update-popup">
+      {{ message }}<br />
       <button @click="reload">{{ buttonText }}</button>
     </div>
   </SWUpdatePopup>
@@ -251,7 +249,7 @@ export default {
 
 接着，更新你的插件配置：
 
-``` diff
+```diff
 module.exports = {
    plugins: {
     '@vuepress/pwa': {

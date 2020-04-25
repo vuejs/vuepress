@@ -69,9 +69,7 @@ VuePress 1.0 进行了大范围的重写，其中最重要的就是引入 [Plugi
 ```js
 // vuepress-plugin-xxx
 module.exports = {
-  plugins: [
-    'a', 'b', 'c'
-  ]
+  plugins: ['a', 'b', 'c']
 }
 ```
 

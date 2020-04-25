@@ -2,11 +2,11 @@
 
 In VuePress, some core [computed](https://vuejs.org/v2/guide/computed.html#Computed-Properties) properties are built-in for use by [default theme](../theme/default-theme-config.md) or custom themes.
 
-## $site
+## \$site
 
 This is the `$site` value of the site you see now:
 
-``` json
+```json
 {
   "title": "VuePress",
   "description": "Vue-powered static site generator",
@@ -23,11 +23,11 @@ This is the `$site` value of the site you see now:
 }
 ```
 
-## $page
+## \$page
 
 This is the `$page` value of the page you see now:
 
-``` json
+```json
 {
   "title": "Global Computed",
   "frontmatter": {},
@@ -50,11 +50,11 @@ This is the `$page` value of the page you see now:
 }
 ```
 
-## $frontmatter
+## \$frontmatter
 
-Reference of [$page](#page).frontmatter.
+Reference of [\$page](#page).frontmatter.
 
-## $lang
+## \$lang
 
 The language of the current page, the default value is `en-US`.
 
@@ -62,7 +62,7 @@ The language of the current page, the default value is `en-US`.
 
 - [Internationalization](../guide/i18n.md)
 
-## $localePath
+## \$localePath
 
 The locale path prefix for the current page, the default value is `/`.
 
@@ -70,14 +70,14 @@ The locale path prefix for the current page, the default value is `/`.
 
 - [Internationalization](../guide/i18n.md)
 
-## $title
+## \$title
 
 Value of the `<title>` label used for the current page.
 
-## $description
+## \$description
 
 The `content` value of the `<meta name= "description" content= "...">` for the current page.
 
-## $themeConfig
+## \$themeConfig
 
 That is `siteConfig.themeConfig`。

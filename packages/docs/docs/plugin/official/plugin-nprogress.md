@@ -24,7 +24,7 @@ module.exports = {
 
 ## Custom color
 
-Set `$nprogressColor` in your __site__ or __theme__ `palette.styl` file to change the color of the progress bar (default is `$accentColor`).
+Set `$nprogressColor` in your **site** or **theme** `palette.styl` file to change the color of the progress bar (default is `$accentColor`).
 
 ```stylus
 // .vuepress/styles/palette.styl
@@ -34,6 +34,6 @@ Set `$nprogressColor` in your __site__ or __theme__ `palette.styl` file to chang
 $nprogressColor = red
 ```
 
-__Also see:__
+**Also see:**
 
 - [Config Reference > Styling](../../config/README.md#styling)

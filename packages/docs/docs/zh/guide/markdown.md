@@ -27,7 +27,7 @@
 
 假设你现在在 `foo/one.md` 中：
 
-``` md
+```md
 [Home](/) <!-- 跳转到根部的 README.md -->
 [foo](/foo/) <!-- 跳转到 foo 文件夹的 index.html -->
 [foo heading](./#heading) <!-- 跳转到 foo/index.html 的特定标题位置 -->
@@ -45,7 +45,7 @@ VuePress 支持重定向到干净链接。如果一个链接 `/foo` 找不到，
 
 ### 外部链接
 
-外部的链接将会被自动地设置为  `target="_blank" rel="noopener noreferrer"`:
+外部的链接将会被自动地设置为 `target="_blank" rel="noopener noreferrer"`:
 
 - [vuejs.org](https://vuejs.org)
 - [VuePress on GitHub](https://github.com/vuejs/vuepress)
@@ -56,7 +56,7 @@ VuePress 支持重定向到干净链接。如果一个链接 `/foo` 找不到，
 
 VuePress 提供了对 [YAML front matter](https://jekyllrb.com/docs/frontmatter/) 开箱即用的支持:
 
-``` yaml
+```yaml
 ---
 title: Blogging Like a Hacker
 lang: en-US
@@ -81,11 +81,11 @@ lang: en-US
 
 **输出**
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+| Tables        |      Are      |   Cool |
+| ------------- | :-----------: | -----: |
+| col 3 is      | right-aligned | \$1600 |
+| col 2 is      |   centered    |   \$12 |
+| zebra stripes |   are neat    |    \$1 |
 
 ## Emoji
 
@@ -117,7 +117,7 @@ lang: en-US
 
 <!--lint enable no-shortcut-reference-link no-undefined-references-->
 
-目录（Table of Contents）的渲染可以通过  [`markdown.toc`](../config/README.md#markdown-toc) 选项来配置。
+目录（Table of Contents）的渲染可以通过 [`markdown.toc`](../config/README.md#markdown-toc) 选项来配置。
 
 ## 自定义容器 <Badge text="默认主题"/>
 
@@ -167,9 +167,11 @@ lang: en-US
 :::
 
 ::: details 点击查看代码
+
 ```js
 console.log('你好，VuePress！')
 ```
+
 :::
 ````
 
@@ -206,9 +208,9 @@ export default {
 
 **输出**
 
-``` js
+```js
 export default {
-  name: 'MyComponent',
+  name: 'MyComponent'
   // ...
 }
 ```
@@ -230,12 +232,9 @@ export default {
 
 **输出**
 
-``` html
+```html
 <ul>
-  <li
-    v-for="todo in todos"
-    :key="todo.id"
-  >
+  <li v-for="todo in todos" :key="todo.id">
     {{ todo.text }}
   </li>
 </ul>
@@ -261,9 +260,9 @@ export default {
 
 **输出**
 
-``` js{4}
+```js{4}
 export default {
-  data () {
+  data() {
     return {
       msg: 'Highlighted!'
     }
@@ -275,7 +274,7 @@ export default {
 
 你可以通过配置来为每个代码块显示行号：
 
-``` js
+```js
 module.exports = {
   markdown: {
     lineNumbers: true
@@ -319,13 +318,13 @@ module.exports = {
 
 你可以通过下述的语法导入已经存在的文件中的代码段：
 
-``` md
+```md
 <<< @/filepath
 ```
 
 它也支持 [行高亮](#代码块中的行高亮)：
 
-``` md
+```md
 <<< @/filepath{highlightLines}
 ```
 
@@ -351,15 +350,15 @@ module.exports = {
 
 VuePress 使用 [markdown-it](https://github.com/markdown-it/markdown-it) 来渲染 Markdown，上述大多数的拓展也都是通过自定义的插件实现的。想要进一步的话，你可以通过 `.vuepress/config.js` 的 `markdown` 选项，来对当前的 `markdown-it` 实例做一些自定义的配置：
 
-``` js
+```js
 module.exports = {
   markdown: {
     // markdown-it-anchor 的选项
     anchor: { permalink: false },
     // markdown-it-toc 的选项
     toc: { includeLevel: [1, 2] },
-    extendMarkdown: md => {
-      // 使用更多的 markdown-it 插件!
+    extendMarkdown: (md) => {
+      // 使用更多的 markdown-it 插件!
       md.use(require('markdown-it-xxx'))
     }
   }

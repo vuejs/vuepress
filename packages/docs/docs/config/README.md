@@ -44,7 +44,7 @@ Description for the site. This will render as a `<meta>` tag in the page HTML.
 
 Extra tags to inject into the page HTML `<head>`. You can specify each tag in the form of `[tagName, { attrName: attrValue }, innerHTML?]`. For example, to add a custom favicon:
 
-``` js
+```js
 module.exports = {
   head: [
     ['link', { rel: 'icon', href: '/logo.png' }]
@@ -122,7 +122,7 @@ Specify extra files to watch.
 
 You can watch any file if you want. File changes will trigger `vuepress` rebuilding and real-time updates.
 
-``` js
+```js
 module.exports = {
   extraWatchFiles: [
     '.vuepress/foo.js', // Relative path usage
@@ -146,7 +146,7 @@ To apply simple overrides to the styling of the [default preset](https://github.
 
 There are some predefined variables you can tweak:
 
-``` stylus
+```stylus
 // colors
 $accentColor = #3eaf7c
 $textColor = #2c3e50
@@ -265,7 +265,7 @@ Options for [markdown-it-table-of-contents](https://github.com/Oktavilla/markdow
 
 You can install any markdown-it plugins through `markdown.plugins` option. It’s similar with [using VuePress plugins](../plugin/using-a-plugin.html#using-a-plugin). You can either use Babel style or object style. The `markdown-it-` prefix is optional and can omit in the list.
 
-``` js
+```js
 module.exports = {
   markdown: {
     plugins: [
@@ -280,7 +280,7 @@ module.exports = {
 
 Or
 
-``` js
+```js
 module.exports = {
   markdown: {
     plugins: {
@@ -300,10 +300,10 @@ module.exports = {
 
 A function to edit default config or apply extra plugins to the [markdown-it](https://github.com/markdown-it/markdown-it) instance used to render source files. For example:
 
-``` js
+```js
 module.exports = {
   markdown: {
-    extendMarkdown: md => {
+    extendMarkdown: (md) => {
       md.set({ breaks: true })
       md.use(require('markdown-it-xxx'))
     }
@@ -322,10 +322,10 @@ This option is also included in [Plugin API](../plugin/option-api.md#extendmarkd
 
 While preparing the page, headers are extracted from the Markdown file and stored in `this.$page.headers`. By default, VuePress will extract `h2` and `h3` elements for you. You can override the headers it pulls out in your `markdown` options.
 
-``` js
+```js
 module.exports = {
   markdown: {
-    extractHeaders: [ 'h2', 'h3', 'h4' ]
+    extractHeaders: ['h2', 'h3', 'h4']
   }
 }
 ```
@@ -378,7 +378,7 @@ Options for [less-loader](https://github.com/webpack-contrib/less-loader).
 
 Edit the internal webpack config. If the value is an Object, it will be merged into the final config using [webpack-merge](https://github.com/survivejs/webpack-merge); If the value is a function, it will receive the config as the 1st argument and an `isServer` flag as the 2nd argument. You can either mutate the config directly, or return an object to merge:
 
-``` js
+```js
 module.exports = {
   configureWebpack: (config, isServer) => {
     if (!isServer) {
@@ -395,7 +395,7 @@ module.exports = {
 
 Edit the internal webpack config with [webpack-chain](https://github.com/mozilla-neutrino/webpack-chain).
 
-``` js
+```js
 module.exports = {
   chainWebpack: (config, isServer) => {
     // config is an instance of ChainableConfig
