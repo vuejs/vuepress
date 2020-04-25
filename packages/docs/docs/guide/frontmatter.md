@@ -15,6 +15,18 @@ Between these triple-dashed lines, you can set predefined variables (see [below]
 frontmatter variables are **optional** in VuePress.
 :::
 
+If you want to add frontmatter variables to a Vue component, you can put them into a custom block like this:
+
+```vue
+<frontmatter>
+title: Blogging Like a Hacker
+lang: en-US
+</frontmatter>
+
+<template>
+...
+```
+
 ## Alternative frontmatter Formats
 
 VuePress also supports JSON or [TOML](https://github.com/toml-lang/toml) frontmatter.
