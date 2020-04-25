@@ -1,2 +1,2 @@
 // generated from user config
-import('@temp/style.styl')
+import '@temp/style.styl'
