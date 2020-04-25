@@ -2,12 +2,13 @@
   <div
     class="dropdown-wrapper"
     :class="{ open }"
+    @focusout="close(true)"
   >
     <button
       class="dropdown-title"
       type="button"
       :aria-label="dropdownAriaLabel"
-      @click="setOpen(!open)"
+      @click="toggle"
     >
       <span class="title">{{ item.text }}</span>
       <span
@@ -44,7 +45,7 @@
                 @focusout="
                   isLastItemOfArray(childSubItem, subItem.items) &&
                     isLastItemOfArray(subItem, item.items) &&
-                    setOpen(false)
+                    close()
                 "
               />
             </li>
@@ -53,7 +54,7 @@
           <NavLink
             v-else
             :item="subItem"
-            @focusout="isLastItemOfArray(subItem, item.items) && setOpen(false)"
+            @focusout="isLastItemOfArray(subItem, item.items) && close()"
           />
         </li>
       </ul>
@@ -75,6 +76,10 @@ export default {
   },
 
   props: {
+    inSidebar: {
+      type: Boolean,
+      default: false
+    },
     item: {
       required: true
     }
@@ -82,6 +87,7 @@ export default {
 
   data () {
     return {
+      isMobile: false,
       open: false
     }
   },
@@ -98,9 +104,19 @@ export default {
     }
   },
 
+  mounted () {
+    this.isMobile = 'ontouchstart' in document.documentElement
+  },
+
   methods: {
-    setOpen (value) {
-      this.open = value
+    toggle (event) {
+      const isButton = event.detail === 0
+
+      if (this.inSidebar || this.isMobile || isButton) this.open = !this.open
+    },
+
+    close (judge) {
+      if (!judge || (judge && this.isMobile)) this.open = false
     },
 
     isLastItemOfArray (item, array) {
@@ -124,7 +140,6 @@ export default {
     border none
     font-weight 500
     color $textColor
-    pointer-events none
     &:hover
       border-color transparent
     .arrow

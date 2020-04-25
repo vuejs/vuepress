@@ -1,6 +1,6 @@
 <template>
   <aside class="sidebar">
-    <NavLinks />
+    <NavLinks :in-sidebar="true" />
 
     <slot name="top" />
 

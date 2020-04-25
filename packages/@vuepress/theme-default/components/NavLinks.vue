@@ -11,6 +11,7 @@
     >
       <DropdownLink
         v-if="item.type === 'links'"
+        :in-sidebar="inSidebar"
         :item="item"
       />
       <NavLink
@@ -44,6 +45,13 @@ export default {
   components: {
     NavLink,
     DropdownLink
+  },
+
+  props: {
+    inSidebar: {
+      type: Boolean,
+      default: false
+    }
   },
 
   computed: {
