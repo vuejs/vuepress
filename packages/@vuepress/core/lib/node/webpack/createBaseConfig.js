@@ -152,6 +152,12 @@ module.exports = function createBaseConfig (context, isServer) {
           if (/(@vuepress[\/\\][^\/\\]*|vuepress-[^\/\\]*)[\/\\](?!node_modules).*\.js$/.test(filePath)) {
             return false
           }
+
+          // transpile @babel/runtime until fix for babel/babel#7597 is released
+          if (filePath.includes(path.join('@babel', 'runtime'))) {
+            return false
+          }
+
           // Don't transpile node_modules
           return /node_modules/.test(filePath)
         }).end()
