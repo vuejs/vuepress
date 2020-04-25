@@ -35,7 +35,7 @@ module.exports = {
 module.exports = {
   plugins: [
     [
-      'register-components',
+      '@vuepress/register-components',
       {
         componentsDir: somepath
       }
@@ -55,7 +55,7 @@ module.exports = {
 module.exports = {
   plugins: [
     [
-      'register-components',
+      '@vuepress/register-components',
       {
         components: [
           {
