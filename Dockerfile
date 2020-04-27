@@ -11,4 +11,4 @@ RUN yarn install
 EXPOSE 8080
 
 # How we will run application
-ENTRYPOINT yarn dev
+ENTRYPOINT yarn dev:docs
