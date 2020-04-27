@@ -137,14 +137,16 @@ module.exports = function createBaseConfig (context, isServer) {
       .rule('js')
         .test(/\.jsx?$/)
         .exclude.add(filePath => {
-          // Always transpile lib directory
+          // transpile lib directory
           if (filePath.startsWith(libDir)) {
             return false
           }
-          // always transpile js in vue files and md files
+
+          // transpile js in vue files and md files
           if (/\.(vue|md)\.js$/.test(filePath)) {
             return false
           }
+
           // transpile all core packages and vuepress related packages.
           // i.e.
           // @vuepress/*
@@ -152,7 +154,13 @@ module.exports = function createBaseConfig (context, isServer) {
           if (/(@vuepress[\/\\][^\/\\]*|vuepress-[^\/\\]*)[\/\\](?!node_modules).*\.js$/.test(filePath)) {
             return false
           }
-          // Don't transpile node_modules
+
+          // transpile @babel/runtime until fix for babel/babel#7597 is released
+          if (filePath.includes(path.join('@babel', 'runtime'))) {
+            return false
+          }
+
+          // don't transpile node_modules
           return /node_modules/.test(filePath)
         }).end()
         .use('cache-loader')
@@ -171,7 +179,11 @@ module.exports = function createBaseConfig (context, isServer) {
             // ref: http://babeljs.io/docs/en/config-files
             configFile: false,
             presets: [
-              require.resolve('@vue/babel-preset-app')
+              [require.resolve('@vue/babel-preset-app'), {
+                entryFiles: [
+                  path.resolve(__dirname, '../../client', isServer ? 'serverEntry.js' : 'clientEntry.js')
+                ]
+              }]
             ]
           })
   }
