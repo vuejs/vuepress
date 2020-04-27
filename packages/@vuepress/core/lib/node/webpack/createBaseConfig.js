@@ -137,14 +137,16 @@ module.exports = function createBaseConfig (context, isServer) {
       .rule('js')
         .test(/\.jsx?$/)
         .exclude.add(filePath => {
-          // Always transpile lib directory
+          // transpile lib directory
           if (filePath.startsWith(libDir)) {
             return false
           }
-          // always transpile js in vue files and md files
+
+          // transpile js in vue files and md files
           if (/\.(vue|md)\.js$/.test(filePath)) {
             return false
           }
+
           // transpile all core packages and vuepress related packages.
           // i.e.
           // @vuepress/*
@@ -158,7 +160,7 @@ module.exports = function createBaseConfig (context, isServer) {
             return false
           }
 
-          // Don't transpile node_modules
+          // don't transpile node_modules
           return /node_modules/.test(filePath)
         }).end()
         .use('cache-loader')
