@@ -210,11 +210,10 @@ git push heroku master
 heroku open
 ```
 
-## ZEIT Now
+## Vercel
 
-请查看 [用 ZEIT Now 部署一个 VuePress 的示例站点](https://zeit.co/guides/deploying-vuepress-to-now)。
+请查看 [用 Vercel 创建和部署一个 VuePress 应用](https://vercel.com/guides/deploying-vuepress-to-vercel)。
 
 ## 21 云盒子
 
 请查看 [21 云盒子 - 部署一个 VuePress 静态网页](https://www.21yunbox.com/docs/#/deploy-vuepress)。
-
