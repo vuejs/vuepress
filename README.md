@@ -21,6 +21,10 @@ yarn add vuepress -D
 
 Check out our docs at https://vuepress.vuejs.org/.
 
+## Demo 
+
+[![Runme](https://svc.runme.io/static/button.svg)](https://runme.io/run?app_id=469b2474-0d37-4d88-902c-812011ab7dfe)
+
 ## Showcase
 
 - [Awesome VuePress](https://github.com/vuepressjs/awesome-vuepress)
