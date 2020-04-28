@@ -1,3 +1,3 @@
-# @vuepress/shard-utils
+# @vuepress/shared-utils
 
-> shard-utils for VuePress
+> Shared utilities for VuePress
