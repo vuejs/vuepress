@@ -121,6 +121,9 @@ Rendering of TOC can be configured using the [`markdown.toc`](../config/README.m
 
 ## Custom Containers <Badge text="default theme"/>
 
+Containers can be defined by their types, titles, and contents. The default titles would be applied while customized titles were missing or empty.
+
+### Apply Default Titles
 **Input**
 
 ```md
@@ -159,7 +162,8 @@ This is a dangerous warning
 This is a details block, which does not work in IE / Edge
 :::
 
-You can also customize the title of the block:
+### Apply Customized Titles
+**Input**
 
 ````md
 ::: danger STOP
@@ -172,6 +176,8 @@ console.log('Hello, VuePress!')
 ```
 :::
 ````
+
+**Output**
 
 ::: danger STOP
 Danger zone, do not proceed
