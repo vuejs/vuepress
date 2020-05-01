@@ -35,10 +35,18 @@ export default {
 
     getMergedMetaTags () {
       const pageMeta = this.$page.frontmatter.meta || []
+      // Fetch the existing meta tags from page so we won't lost them
+      const webPageMeta = this.currentMetaTags.map(e => {
+        const obj = {}
+        for (const key of e.getAttributeNames()) {
+          obj[key] = e.getAttribute(key)
+        }
+        return obj
+      })
       // pageMetaTags have higher priority than siteMetaTags
       // description needs special attention as it has too many entries
       return unionBy([{ name: 'description', content: this.$description }],
-        pageMeta, this.siteMeta, metaIdentifier)
+        pageMeta, this.siteMeta, webPageMeta, metaIdentifier)
     }
   },
 
