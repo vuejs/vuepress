@@ -17,8 +17,8 @@ import parseEmojis from './parseEmojis'
 const removeMarkdownTokens = (str: string): string => String(str)
   .replace(/\[(.*)\]\(.*\)/, '$1')              // []()
   .replace(/(`|\*{1,3}|_)(.*?[^\\])\1/g, '$2')  // `{t}` | *{t}* | **{t}** | ***{t}*** | _{t}_
-  .replace(/ \$\S*?\$ /g, ' ') // ` ${t}$ `
-  .replace(/(\\)(\*|_|`|!|\$)/g, '$2')            // remove escape char '\'
+  .replace(/(^| )\$\S*?\$( |$)/g, '')           // ` ${t}$ `
+  .replace(/(\\)(\*|_|`|!|\$)/g, '$2')          // remove escape char '\'
 
 const trim = (str: string): string => str.trim()
 
