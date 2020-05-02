@@ -10,7 +10,7 @@ const CAC = require('cac')
 /**
  * Bootstrap a CAC cli
  * @param {function} beforeParse
- * @param {function} adterParse
+ * @param {function} afterParse
  * @returns {Promise<void>}
  */
 

@@ -6,7 +6,7 @@ const usedPorts = []
  * Run jest
  *
  * @param {array} jestArgs an array of Jest CLI options
- * @param {array} debug whether start with '--inspect-brk' or not
+ * @param {boolean} debug whether start with '--inspect-brk' or not
  */
 
 module.exports = function createJestRunner (jestArgs, debug) {
