@@ -69,7 +69,7 @@ module.exports = {
 }
 ```
 
-Outbound links automatically get `target="_blank" rel="noopener noreferrer"`. You can offer `target` and `rel` to customize the attributes. Passing a "falsy" value to the `rel` attribute will disable that attribute for a link:
+Outbound links automatically get `target="_blank" rel="noopener noreferrer"`. You can offer `target` and `rel` to customize the attributes. Passing a "falsy" value (that is _not_ `undefined`) to the `rel` attribute will disable that attribute for a link:
 
 ``` js
 // .vuepress/config.js
