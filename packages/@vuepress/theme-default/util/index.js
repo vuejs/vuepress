@@ -10,7 +10,7 @@ export function normalize (path) {
 }
 
 export function getHash (path) {
-  const match = path.match(hashRE)
+  const match = decodeURIComponent(path).match(hashRE)
   if (match) {
     return match[0]
   }
