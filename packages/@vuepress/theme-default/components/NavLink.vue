@@ -71,7 +71,7 @@ export default {
       if (this.isNonHttpURI) {
         return null
       }
-      if (!this.item.rel && this.item.rel !== undefined) {
+      if (!this.item.rel && this.item.rel === false) {
         return null
       }
       if (this.item.rel) {
