@@ -273,6 +273,8 @@ module.exports = {
         'four'   /* /bar/four.html */
       ],
 
+      '/baz/': 'auto', /* automatically generate single-page sidebars */
+
       // fallback
       '/': [
         '',        /* / */
