@@ -95,7 +95,7 @@ function metaIdentifier (tag) {
  * Render meta tags
  *
  * @param {Array} meta
- * @returns {Array<string>}
+ * @returns {string}
  */
 
 function renderPageMeta (meta) {
