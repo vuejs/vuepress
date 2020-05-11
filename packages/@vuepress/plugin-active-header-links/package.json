@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-active-header-links",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "active-header-links plugin for vuepress",
   "keywords": [
     "documentation",
