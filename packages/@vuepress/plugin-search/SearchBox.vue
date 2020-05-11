@@ -119,7 +119,7 @@ export default {
   },
 
   mounted () {
-    this.placeholder = this.$site.themeConfig.searchPlaceholder || ''
+    this.placeholder = this.$themeLocaleConfig.searchPlaceholder || this.$site.themeConfig.searchPlaceholder || ''
     document.addEventListener('keydown', this.onHotkey)
   },
 
