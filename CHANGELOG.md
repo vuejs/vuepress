@@ -14,7 +14,7 @@
 
 ### Reverts
 
-* "fix($theme-default): close dropdown on mouseout (fix [#2227](https://github.com/vuejs/vuepress/issues/2227))" ([f54b389](https://github.com/vuejs/vuepress/commit/f54b389))
+* **fix($theme-default)**: close dropdown on mouseout (fix [#2227](https://github.com/vuejs/vuepress/issues/2227))" ([f54b389](https://github.com/vuejs/vuepress/commit/f54b389))
 
 
 
