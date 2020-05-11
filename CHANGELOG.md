@@ -1,3 +1,23 @@
+# [1.5.0](https://github.com/vuejs/vuepress/compare/v1.4.1...v1.5.0) (2020-05-11)
+
+
+### Bug Fixes
+
+* **$core:** include polyfills correctly (close [#1168](https://github.com/vuejs/vuepress/issues/1168)) ([#2317](https://github.com/vuejs/vuepress/issues/2317)) ([69c193a](https://github.com/vuejs/vuepress/commit/69c193a))
+* **$core:** no dynamic import style ([#1490](https://github.com/vuejs/vuepress/issues/1490)) ([c80c36b](https://github.com/vuejs/vuepress/commit/c80c36b))
+
+
+### Features
+
+* **$markdown:** snippet partial import ([#2225](https://github.com/vuejs/vuepress/issues/2225)) ([2f1327b](https://github.com/vuejs/vuepress/commit/2f1327b))
+
+
+### Reverts
+
+* "fix($theme-default): close dropdown on mouseout (fix [#2227](https://github.com/vuejs/vuepress/issues/2227))" ([f54b389](https://github.com/vuejs/vuepress/commit/f54b389))
+
+
+
 ## [1.4.1](https://github.com/vuejs/vuepress/compare/v1.4.0...v1.4.1) (2020-04-15)
 
 
