@@ -123,7 +123,7 @@ Rendering of TOC can be configured using the [`markdown.toc`](../config/README.m
 
 Containers can be defined by their types, titles, and contents. The default titles would be applied while customized titles were missing or empty.
 
-### Apply Default Titles
+### Default Title
 **Input**
 
 ```md
