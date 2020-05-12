@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./lib"
+  },
+  "include": ["./src"],
+  "references": [
+    { "path": "../@vuepress/bundler-webpack" },
+    { "path": "../@vuepress/cli" },
+    { "path": "../@vuepress/client" },
+    { "path": "../@vuepress/core" },
+    { "path": "../@vuepress/theme-default" },
+    { "path": "../@vuepress/utils" }
+  ]
+}

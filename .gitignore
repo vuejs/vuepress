@@ -1,0 +1,20 @@
+# Temp files
+.temp/
+
+# Dist files
+lib/
+
+# Test coverage files
+coverage/
+
+# Node modules
+node_modules/
+
+# MacOS Desktop Services Store
+.DS_Store
+
+# Log files
+*.log
+
+# Typescript build info
+*.tsbuildinfo

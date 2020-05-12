@@ -1,0 +1,34 @@
+{
+  "name": "@vuepress/client",
+  "version": "2.0.0-alpha.0",
+  "description": "Client package of VuePress",
+  "keywords": [
+    "vuepress",
+    "client"
+  ],
+  "homepage": "https://github.com/vuepress",
+  "bugs": {
+    "url": "https://github.com/vuepress/vuepress-next/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/vuepress-next.git"
+  },
+  "license": "MIT",
+  "author": "Evan You",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "templates"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "clean": "rimraf lib tsconfig.tsbuildinfo",
+    "lint": "eslint --ext .ts src"
+  },
+  "dependencies": {
+    "vue": "3.0.0-beta.10",
+    "vue-router": "4.0.0-alpha.10"
+  }
+}

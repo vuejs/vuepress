@@ -1,0 +1,13 @@
+{
+  "name": "playground",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "ts-node build.ts",
+    "dev": "ts-node dev.ts"
+  },
+  "devDependencies": {
+    "@vue/component-compiler-utils": "^3.1.2",
+    "ts-node": "^8.10.1"
+  }
+}

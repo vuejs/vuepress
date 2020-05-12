@@ -1,0 +1,40 @@
+{
+  "name": "@vuepress/core",
+  "version": "2.0.0-alpha.0",
+  "description": "Core package of VuePress",
+  "keywords": [
+    "vuepress",
+    "core"
+  ],
+  "homepage": "https://github.com/vuepress",
+  "bugs": {
+    "url": "https://github.com/vuepress/vuepress-next/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/vuepress-next.git"
+  },
+  "license": "MIT",
+  "author": "Evan You",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "clean": "rimraf lib tsconfig.tsbuildinfo",
+    "lint": "eslint --ext .ts src"
+  },
+  "dependencies": {
+    "@types/webpack-dev-server": "^3.10.1",
+    "@vue/server-renderer": "3.0.0-beta.10",
+    "@vuepress/client": "2.0.0-alpha.0",
+    "@vuepress/markdown": "^1.3.1",
+    "@vuepress/shared-utils": "^1.4.1",
+    "@vuepress/utils": "2.0.0-alpha.0",
+    "vue": "3.0.0-beta.10",
+    "vue-router": "4.0.0-alpha.10",
+    "webpack-chain": "^6.4.0"
+  }
+}

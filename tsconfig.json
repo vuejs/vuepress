@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.base.json",
+  "references": [
+    { "path": "./packages/@vuepress/bundler-webpack" },
+    { "path": "./packages/@vuepress/cli" },
+    { "path": "./packages/@vuepress/client" },
+    { "path": "./packages/@vuepress/core" },
+    { "path": "./packages/@vuepress/theme-default" },
+    { "path": "./packages/@vuepress/theme-vue" },
+    { "path": "./packages/@vuepress/utils" },
+    { "path": "./packages/vuepress" }
+  ],
+  "files": []
+}

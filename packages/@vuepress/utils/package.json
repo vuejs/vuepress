@@ -1,0 +1,40 @@
+{
+  "name": "@vuepress/utils",
+  "version": "2.0.0-alpha.0",
+  "description": "Utils package of VuePress",
+  "keywords": [
+    "vuepress",
+    "utils"
+  ],
+  "homepage": "https://github.com/vuepress",
+  "bugs": {
+    "url": "https://github.com/vuepress/vuepress-next/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/vuepress-next.git"
+  },
+  "license": "MIT",
+  "author": "Evan You",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "clean": "rimraf lib tsconfig.tsbuildinfo",
+    "lint": "eslint --ext .ts src"
+  },
+  "dependencies": {
+    "@types/fs-extra": "^8.1.0",
+    "@types/hash-sum": "^1.0.0",
+    "@vue/compiler-sfc": "^3.0.0-beta.10",
+    "@vue/shared": "^3.0.0-beta.10",
+    "fs-extra": "^9.0.0",
+    "globby": "^11.0.0",
+    "gray-matter": "^4.0.2",
+    "hash-sum": "^2.0.0",
+    "toml": "^3.0.0"
+  }
+}

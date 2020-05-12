@@ -1,0 +1,42 @@
+{
+  "name": "@vuepress/bundler-webpack",
+  "version": "2.0.0-alpha.0",
+  "description": "Bundler webpack package of VuePress",
+  "keywords": [
+    "vuepress",
+    "bundler",
+    "webpack"
+  ],
+  "homepage": "https://github.com/vuepress",
+  "bugs": {
+    "url": "https://github.com/vuepress/vuepress-next/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/vuepress-next.git"
+  },
+  "license": "MIT",
+  "author": "Evan You",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "clean": "rimraf lib tsconfig.tsbuildinfo",
+    "lint": "eslint --ext .ts src"
+  },
+  "dependencies": {
+    "@types/webpack-dev-server": "^3.10.1",
+    "@vuepress/core": "2.0.0-alpha.0",
+    "@vuepress/markdown-loader": "^1.5.0",
+    "file-loader": "^6.0.0",
+    "html-webpack-plugin": "4.3.0",
+    "portfinder": "^1.0.26",
+    "url-loader": "^4.1.0",
+    "vue-loader": "16.0.0-beta.2",
+    "webpack": "^4.43.0",
+    "webpack-dev-server": "^3.10.3"
+  }
+}

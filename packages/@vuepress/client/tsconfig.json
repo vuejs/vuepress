@@ -1,0 +1,14 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "target": "ES2015",
+    "module": "ES2015",
+    "rootDir": "./src",
+    "outDir": "./lib",
+    "baseUrl": ".",
+    "paths": {
+      "@internal/*": ["src/internal/index.ts"]
+    }
+  },
+  "include": ["./src"]
+}

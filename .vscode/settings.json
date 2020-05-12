@@ -1,0 +1,35 @@
+{
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "files.encoding": "utf8",
+  "files.eol": "\n",
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "[markdown]": {
+    "files.trimTrailingWhitespace": false
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue"
+  ],
+  "vetur.validation.template": false,
+  "cSpell.words": [
+    "devtool",
+    "frontmatter",
+    "globby",
+    "mathjax",
+    "mergeable",
+    "netlify",
+    "nprogress",
+    "prefetch",
+    "preload",
+    "redirector",
+    "redirectors",
+    "serializers",
+    "vuepress",
+    "zoomable"
+  ]
+}

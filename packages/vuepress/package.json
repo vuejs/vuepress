@@ -1,0 +1,39 @@
+{
+  "name": "vuepress",
+  "version": "2.0.0-alpha.0",
+  "description": "Vue-powered Static Site Generator",
+  "keywords": [
+    "documentation",
+    "generator",
+    "vue",
+    "vuepress"
+  ],
+  "homepage": "https://github.com/vuepress",
+  "bugs": {
+    "url": "https://github.com/vuepress/vuepress-next/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/vuepress-next.git"
+  },
+  "license": "MIT",
+  "author": "Evan You",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "bin": {
+    "vuepress": "lib/index.js"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "clean": "rimraf lib tsconfig.tsbuildinfo",
+    "lint": "eslint --ext .ts src"
+  },
+  "dependencies": {
+    "@vuepress/bundler-webpack": "2.0.0-alpha.0",
+    "@vuepress/cli": "2.0.0-alpha.0",
+    "@vuepress/theme-default": "2.0.0-alpha.0"
+  }
+}

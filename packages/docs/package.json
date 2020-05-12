@@ -1,0 +1,9 @@
+{
+  "name": "docs",
+  "version": "2.0.0-alpha.0",
+  "private": true,
+  "scripts": {
+    "build": "vuepress build src --temp .temp",
+    "dev": "vuepress dev src --temp .temp --no-cache"
+  }
+}

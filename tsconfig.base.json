@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "lib": ["DOM", "ES2020"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "newLine": "lf",
+    "noEmitOnError": true,
+    "noImplicitAny": false,
+    "resolveJsonModule": true,
+    "skipLibCheck": true, // TODO: temporally enable for webpack 5
+    "sourceMap": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "target": "es2015"
+  }
+}
