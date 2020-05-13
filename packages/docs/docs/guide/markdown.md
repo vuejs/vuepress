@@ -121,7 +121,7 @@ Rendering of TOC can be configured using the [`markdown.toc`](../config/README.m
 
 ## Custom Containers <Badge text="default theme"/>
 
-Containers can be defined by their types, titles, and contents. The default titles would be applied while customized titles were missing or empty.
+Custom containers can be defined by their types, titles, and contents.
 
 ### Default Title
 **Input**
