@@ -8,7 +8,7 @@
     "vue",
     "vuepress"
   ],
-  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/plugin-medium-zoom#readme",
+  "homepage": "https://github.com/vuejs/vuepress/blob/master/packages/@vuepress/plugin-medium-zoom#readme",
   "bugs": {
     "url": "https://github.com/vuejs/vuepress/issues"
   },
