@@ -155,6 +155,42 @@ Inside any Markdown file you can then directly use the components (names are inf
 Make sure a custom component’s name either contains a hyphen or is in PascalCase. Otherwise it will be treated as an inline element and wrapped inside a `<p>` tag, which will lead to hydration mismatch because `<p>` does not allow block elements to be placed inside it.
 :::
 
+### Using Markdown Inside Component Slots
+
+You can write markdown inside html elements by leaving an empty line before and after the markdown content. This feature allows you to use markdown inside components with [slots](https://vuejs.org/v2/guide/components-slots.html).
+
+``` md
+<ComponentWithSlot>
+
+## This Markdown
+
+- will be converted
+- to correct html
+- then rendered in a `<slot>` inside ComponentWithSlot
+
+</ComponentWithSlot>
+```
+
+You can use markdown in multiple [named slots](https://vuejs.org/v2/guide/components-slots.html#Named-Slots), with empty lines before and after each part of your markdown content, for eample:
+
+``` md
+<ComponentWithSlots>
+  <template v-slot:header>
+
+  ### This Content
+  Will go in a slot named "header"
+
+  </template>
+
+> This markdown content will go in the *default* slot
+
+</ComponentWithSlots>
+```
+
+::: warning
+You must specify named slots using `v-slot:`, not the `#` shorthand.
+:::
+
 ### Using Components In Headers
 
 You can use Vue components in the headers, but note the difference between the following two ways:
