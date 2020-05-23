@@ -157,21 +157,21 @@ Make sure a custom component’s name either contains a hyphen or is in PascalCa
 
 ### Using Markdown Inside Component Slots
 
-You can write markdown inside html elements by leaving an empty line before and after the markdown content. This feature allows you to use markdown inside components with [slots](https://vuejs.org/v2/guide/components-slots.html).
+You can write Markdown inside HTML elements by leaving an empty line before and after the Markdown content. This feature allows you to use Markdown inside components with [slots](https://vuejs.org/v2/guide/components-slots.html).
 
 ``` md
 <ComponentWithSlot>
 
 ## This Markdown
 
-- will be converted
-- to correct html
+- will be compiled
+- to correct HTML
 - then rendered in a `<slot>` inside ComponentWithSlot
 
 </ComponentWithSlot>
 ```
 
-You can use markdown in multiple [named slots](https://vuejs.org/v2/guide/components-slots.html#Named-Slots), with empty lines before and after each part of your markdown content, for eample:
+You can use Markdown in multiple [named slots](https://vuejs.org/v2/guide/components-slots.html#Named-Slots), with empty lines before and after each part of your Markdown content, for eample:
 
 ``` md
 <ComponentWithSlots>
@@ -182,7 +182,7 @@ You can use markdown in multiple [named slots](https://vuejs.org/v2/guide/compon
 
   </template>
 
-> This markdown content will go in the *default* slot
+> This Markdown content will go in the *default* slot
 
 </ComponentWithSlots>
 ```
