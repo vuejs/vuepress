@@ -75,6 +75,7 @@ module.exports = class DevProcess extends EventEmitter {
       ignoreInitial: true
     })
     this.pagesWatcher.on('add', target => this.handleUpdate('add', target))
+    this.pagesWatcher.on('change', target => this.handleUpdate('change', target))
     this.pagesWatcher.on('unlink', target => this.handleUpdate('unlink', target))
   }
 
