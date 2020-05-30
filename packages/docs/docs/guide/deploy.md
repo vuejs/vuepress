@@ -56,6 +56,27 @@ cd -
 You can also run the above script in your CI setup to enable automatic deployment on each push.
 :::
 
+::: warning
+If you will deploy your site to `https://<USERNAME or GROUP>.github.io/<REPO>/`, (that is your repository is at `https://github.com/<USERNAME>/<REPO>`), you should set `scope` and `start_url` to `"/<REPO>/"` in your `manifest.json`, to get PWA working properly.
+
+And your icons should use relative paths
+
+```json
+//manifest.json
+
+  ...
+  "scope": "/<REPO>/",
+  "start_url": "/<REPO>/",
+  "icons": [
+    {
+      "src": "icons/android-chrome-192x192.png",
+      ...
+    }
+  ]
+  ...
+```
+:::
+
 ### GitHub Pages and Travis CI
 
 1. Set correct `base` in `docs/.vuepress/config.js`.
