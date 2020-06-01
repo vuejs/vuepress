@@ -1,4 +1,6 @@
 const { fs, path, chalk, logger } = require('@vuepress/shared-utils')
+const os = require('os')
+const process = require('process')
 
 /**
  * Create a dynamic temp utility context that allow to lanuch
@@ -12,7 +14,10 @@ const { fs, path, chalk, logger } = require('@vuepress/shared-utils')
 
 module.exports = function createTemp (tempPath) {
   if (!tempPath) {
-    tempPath = path.resolve(__dirname, '../../.temp')
+    tempPath = fs.mkdtempSync(path.join(os.tmpdir(), 'vuepress-'))
+    process.on('exit', _code => {
+      fs.removeSync(tempPath)
+    })
   } else {
     tempPath = path.resolve(tempPath)
   }
