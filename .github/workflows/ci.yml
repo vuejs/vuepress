@@ -1,0 +1,50 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  ci:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [12, 14]
+
+    steps:
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: checkout
+        uses: actions/checkout@master
+
+      - name: cache node_modules
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: ${{ matrix.os }}-node-v${{ matrix.node }}-deps-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
+
+      - name: install deps
+        run: yarn --check-files --frozen-lockfile --non-interactive
+
+      - name: tsc
+        run: yarn tsc
+
+      - name: test
+        run: yarn test
+
+      - name: lint
+        run: yarn lint
+
+      - name: md
+        run: yarn workspace docs lint-md
+
+      - name: build
+        run: yarn build
