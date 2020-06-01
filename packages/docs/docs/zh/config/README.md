@@ -67,9 +67,9 @@ module.exports = {
 ### temp
 
 - Type: `string`
-- Default: `/path/to/@vuepress/core/.temp`
+- Default: `/tmp/vuepress-SUFFIX`
 
-指定客户端文件的临时目录。
+指定客户端文件的临时目录。`SUFFIX` 是 `fs.mkdtemp` 产生的随机后缀。
 
 ### dest
 
@@ -317,7 +317,7 @@ module.exports = {
 - 默认值: `['h2', 'h3']`
 
 Markdown 文件的 headers (标题 & 小标题) 会在准备阶段被提取出来，并存储在 `this.$page.headers` 中。默认情况下，VuePress 会提取 `h2` 和 `h3` 标题。你可以通过这个选项来修改提取出的标题级别。
- 
+
 ``` js
 module.exports = {
   markdown: {
