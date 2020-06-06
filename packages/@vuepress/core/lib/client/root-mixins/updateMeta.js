@@ -62,7 +62,9 @@ export default {
 function updateMetaTags (newMetaTags, currentMetaTags) {
   if (currentMetaTags) {
     [...currentMetaTags].forEach(c => {
-      document.head.removeChild(c)
+       const parentIsHead = c.parentNode &&
+             c.parentNode.tagName.toLocaleUpperCase() === 'HEAD'
+      parentIsHead && document.head.removeChild(c)
     })
   }
   if (newMetaTags) {
