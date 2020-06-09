@@ -71,7 +71,7 @@ module.exports = {
       '@vuepress/last-updated',
       {
         dateOptions:{
-          hours12: false
+          hour12: false
         }
       }
     ]
