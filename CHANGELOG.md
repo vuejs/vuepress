@@ -1,3 +1,13 @@
+## [1.5.1](https://github.com/vuejs/vuepress/compare/v1.5.0...v1.5.1) (2020-06-09)
+
+
+### Bug Fixes
+
+* correct homepage URLs in package.json ([#2394](https://github.com/vuejs/vuepress/issues/2394)) ([0854987](https://github.com/vuejs/vuepress/commit/0854987))
+* **$shared-utils:** use title variable for homepage (fix [#2247](https://github.com/vuejs/vuepress/issues/2247)) ([#2307](https://github.com/vuejs/vuepress/issues/2307)) ([869eb8d](https://github.com/vuejs/vuepress/commit/869eb8d))
+
+
+
 # [1.5.0](https://github.com/vuejs/vuepress/compare/v1.4.1...v1.5.0) (2020-05-11)
 
 
