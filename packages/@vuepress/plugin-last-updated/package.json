@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-last-updated",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "last-updated plugin for vuepress",
   "keywords": [
     "documentation",
