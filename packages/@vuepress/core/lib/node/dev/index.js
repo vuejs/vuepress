@@ -207,8 +207,12 @@ module.exports = class DevProcess extends EventEmitter {
       publicPath: this.context.base,
       watchOptions: {
         ignored: [
-          /node_modules/,
-          `!${this.context.tempPath}/**`
+          (x) => {
+            if (x.includes(this.context.tempPath)) {
+              return false
+            }
+            return /node_modules/.test(x)
+          }
         ]
       },
       historyApiFallback: {
@@ -235,6 +239,15 @@ module.exports = class DevProcess extends EventEmitter {
     WebpackDevServer.addDevServerEntrypoints(this.webpackConfig, serverConfig)
 
     const compiler = webpack(this.webpackConfig)
+
+    // serverConfig.watchOptions.persisted = true;
+    // serverConfig.watchContentBase = true
+    // serverConfig.liveReload = true
+    // serverConfig.contentBase= [
+    //   this.context.sourceDir+ '\\*',
+    //   contentBase
+    // ]
+    console.log('server config dev server', this.webpackConfig)
     this.server = new WebpackDevServer(compiler, serverConfig)
     return this
   }
