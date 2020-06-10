@@ -46,7 +46,7 @@ function wrapCommand (fn) {
  */
 
 function isKnownCommand (argv) {
-  return ['dev', 'build', 'eject', 'info'].includes(argv[0])
+  return ['create', 'dev', 'build', 'eject', 'info'].includes(argv[0])
 }
 
 module.exports = {

@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-
+const fs = require('fs-extra')
 const { chalk } = require('@vuepress/shared-utils')
 const envinfo = require('envinfo')
 
@@ -16,6 +16,96 @@ const { wrapCommand } = require('./util')
  */
 
 module.exports = function (cli, options) {
+  cli
+    .command(`create [directoryName]`, 'create VuePress scaffold')
+    .action((directoryName) => {
+      const scaffoldPath = `./${directoryName}`
+
+      // Create directory
+      // TODO: Check for existing directory
+      // TODO: If directory exists, give option to override?
+      fs.mkdirSync(directoryName, { recursive: true })
+      console.log(chalk.green(`Successfully created directory for ${directoryName}`))
+      // Create home page with basic default theme features
+      fs.writeFileSync(`${scaffoldPath}/README.md`, `---
+home: true
+heroImage: /vuepress-logo.png
+actionText: Call to Action →
+actionLink: /basic/
+features:
+- title: Feature No. 1
+  details: Here you can talk about feature number 1.
+- title: Feature No. 2
+  details: Here you can talk about feature number 2.
+- title: Feature No. 3
+  details: Here you can talk about feature number 3.
+footer: This is your homepage footer
+---
+      `)
+      console.log(chalk.yellow(`Successfully created README file`))
+      fs.mkdirSync(`${scaffoldPath}/.vuepress`, { recursive: true })
+      console.log(chalk.blue(`Successfully created VuePress directory`))
+      fs.writeFileSync(`${scaffoldPath}/.vuepress/config.js`,
+        `module.exports = {
+  title: 'VuePress Starter Kit',
+  description: 'This is your page description.',
+  themeConfig: {
+    // logo: '/vuepress-logo.png',
+    // lastUpdated: 'Last updated',
+    // repo: 'https://github.com/bencodezen/vuepress-starter-kit',
+    // docsDir: 'docs',
+    // editLinks: true,
+    // editLinkText: 'Recommend a change',
+    nav: [
+      {
+        text: 'Home',
+        link: '/'
+      },
+      {
+        text: 'Basic Page',
+        link: '/basic/'
+      },
+      {
+        text: 'Section',
+        items: [
+          {
+            text: 'Section Introduction',
+            link: '/section/#section-introduction'
+          },
+          {
+            text: 'Some More Content!',
+            link: '/section/#some-more-content'
+          }
+        ]
+      },
+      {
+        text: 'Contact',
+        items: [
+          {
+            text: 'Twitter',
+            link: 'https://www.twitter.com/'
+          },
+          {
+            text: 'Email',
+            link: 'mailto:hello@email.com'
+          }
+        ]
+      },
+      {
+        text: 'Component Example',
+        link: '/component-example'
+      }
+    ],
+    plugins: ['@vuepress/active-header-links']
+  }
+}`)
+      console.log(chalk.magenta(`Successfully created README file`))
+
+      // TODO: Copy folder and files in templates/default into new directory
+      // fs.copy('../templates/default', `./${directoryName}`)
+      // console.log(chalk.blue('Did it work?'))
+    })
+
   cli
     .command(`dev [targetDir]`, 'start development server')
     .option('-p, --port <port>', 'use specified port (default: 8080)')
