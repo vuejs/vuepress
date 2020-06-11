@@ -137,7 +137,7 @@ module.exports = function snippet (md, options = {}) {
      *
      * captures: ['/path/to/file.extension', 'extension', '#region', '{meta}']
      */
-    const rawPathRegexp = /^(.+(?:\.([a-z]+)))(?:(#[\w-]+))?(?: ?({\d+(?:[,-]\d+)?}))?$/
+    const rawPathRegexp = /^(.+(?:\.([a-z]+)))(?:(#[\w-]+))?(?: ?({\d+(?:[,-]\d+)*}))?$/
 
     const rawPath = state.src.slice(start, end).trim().replace(/^@/, root).trim()
     const [filename = '', extension = '', region = '', meta = ''] = (rawPathRegexp.exec(rawPath) || []).slice(1)
