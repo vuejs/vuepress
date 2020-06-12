@@ -35,8 +35,8 @@ const moment = require('moment');
 
 module.exports = {
   plugins: [
-    [
-      '@vuepress/last-updated',
+    {
+      '@vuepress/last-updated': 
       {
         transformer: (timestamp, lang) => {
           // 不要忘了安装 moment
@@ -45,7 +45,7 @@ module.exports = {
           return moment(timestamp).fromNow()
         }
       }
-    ]
+    }
   ]
 }
 ```
