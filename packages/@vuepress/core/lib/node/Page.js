@@ -105,6 +105,10 @@ module.exports = class Page {
       if (this._filePath.endsWith('.md')) {
         const { excerpt, data, content } = parseFrontmatter(this._content)
         this._strippedContent = content
+
+        // tags to array
+        if (data && data.tags && !Array.isArray(data.tags)) data.tags = [ data.tags ]
+
         Object.assign(this.frontmatter, data)
 
         // infer title
