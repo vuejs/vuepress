@@ -140,7 +140,7 @@ See: [Default Theme Config > Built-in Search](../theme/default-theme-config.html
 
 ### tags
 
-- Type: `array`
+- Type: `array|string`
 - Default: `undefined`
 
 See: [Default Theme Config > Built-in Search](../theme/default-theme-config.html#built-in-search).
