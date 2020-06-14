@@ -1,3 +1,18 @@
+## [1.5.2](https://github.com/vuejs/vuepress/compare/v1.5.1...v1.5.2) (2020-06-14)
+
+
+### Bug Fixes
+
+* **$core:** check if meta is from head before removing it ([#2403](https://github.com/vuejs/vuepress/issues/2403)) ([3c94f71](https://github.com/vuejs/vuepress/commit/3c94f71))
+* **$theme-default:** handle algolia search result with Chinese hash (close: [#2431](https://github.com/vuejs/vuepress/issues/2431)) ([#2432](https://github.com/vuejs/vuepress/issues/2432)) ([6183840](https://github.com/vuejs/vuepress/commit/6183840))
+
+
+### Features
+
+* **$theme-default:** allow 'auto' in defined sidebars (close: [#1252](https://github.com/vuejs/vuepress/issues/1252)) ([#2380](https://github.com/vuejs/vuepress/issues/2380)) ([597f83b](https://github.com/vuejs/vuepress/commit/597f83b))
+
+
+
 ## [1.5.1](https://github.com/vuejs/vuepress/compare/v1.5.0...v1.5.1) (2020-06-09)
 
 
