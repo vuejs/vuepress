@@ -61,9 +61,9 @@ export default {
  */
 function updateMetaTags (newMetaTags, currentMetaTags) {
   if (currentMetaTags) {
-    [...currentMetaTags].forEach(c => {
-      document.head.removeChild(c)
-    })
+    [...currentMetaTags]
+          .filter(c => c.parentNode === document.head)
+          .forEach(c => document.head.removeChild(c))
   }
   if (newMetaTags) {
     return newMetaTags.map(m => {
