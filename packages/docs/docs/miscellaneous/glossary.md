@@ -74,5 +74,5 @@ If the current theme is a derived theme, `parentThemePath` refers to the absolut
 
 - Access: `Context.themeAPI.parentTheme.entry`
 
-If the current theme is a derived theme, `parentThemePath` refers to the theme configuration of the parent theme.
+If the current theme is a derived theme, `parentThemeEntry` refers to the theme configuration of the parent theme.
 
