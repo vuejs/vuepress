@@ -45,65 +45,15 @@ footer: This is your homepage footer
       console.log(chalk.yellow(`Successfully created README file`))
       fs.mkdirSync(`${scaffoldPath}/.vuepress`, { recursive: true })
       console.log(chalk.blue(`Successfully created VuePress directory`))
-      fs.writeFileSync(`${scaffoldPath}/.vuepress/config.js`,
-        `module.exports = {
-  title: 'VuePress Starter Kit',
-  description: 'This is your page description.',
-  themeConfig: {
-    // logo: '/vuepress-logo.png',
-    // lastUpdated: 'Last updated',
-    // repo: 'https://github.com/bencodezen/vuepress-starter-kit',
-    // docsDir: 'docs',
-    // editLinks: true,
-    // editLinkText: 'Recommend a change',
-    nav: [
-      {
-        text: 'Home',
-        link: '/'
-      },
-      {
-        text: 'Basic Page',
-        link: '/basic/'
-      },
-      {
-        text: 'Section',
-        items: [
-          {
-            text: 'Section Introduction',
-            link: '/section/#section-introduction'
-          },
-          {
-            text: 'Some More Content!',
-            link: '/section/#some-more-content'
-          }
-        ]
-      },
-      {
-        text: 'Contact',
-        items: [
-          {
-            text: 'Twitter',
-            link: 'https://www.twitter.com/'
-          },
-          {
-            text: 'Email',
-            link: 'mailto:hello@email.com'
-          }
-        ]
-      },
-      {
-        text: 'Component Example',
-        link: '/component-example'
-      }
-    ],
-    plugins: ['@vuepress/active-header-links']
-  }
-}`)
-      console.log(chalk.magenta(`Successfully created README file`))
 
-      // TODO: Copy folder and files in templates/default into new directory
-      // fs.copy('../templates/default', `./${directoryName}`)
-      // console.log(chalk.blue('Did it work?'))
+      try {
+        const configPath = require.resolve('vuepress/template/config-template.js')
+        const configContent = fs.readFileSync(configPath)
+        fs.writeFileSync(`${scaffoldPath}/.vuepress/config.js`, configContent)
+        console.log(chalk.magenta(`Successfully created README file`))
+      } catch (err) {
+        console.error(err)
+      }
     })
 
   cli
