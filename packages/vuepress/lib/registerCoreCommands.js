@@ -10,6 +10,7 @@ const envinfo = require('envinfo')
 const { dev, build, eject } = require('@vuepress/core')
 const { path, logger, env } = require('@vuepress/shared-utils')
 const { wrapCommand } = require('./util')
+const createTemplate = require('../template/create-template')
 
 /**
  * Expose registerCoreCommands function.
@@ -25,35 +26,22 @@ module.exports = function (cli, options) {
       // TODO: Check for existing directory
       // TODO: If directory exists, give option to override?
       fs.mkdirSync(directoryName, { recursive: true })
-      console.log(chalk.green(`Successfully created directory for ${directoryName}`))
-      // Create home page with basic default theme features
-      fs.writeFileSync(`${scaffoldPath}/README.md`, `---
-home: true
-heroImage: /vuepress-logo.png
-actionText: Call to Action →
-actionLink: /basic/
-features:
-- title: Feature No. 1
-  details: Here you can talk about feature number 1.
-- title: Feature No. 2
-  details: Here you can talk about feature number 2.
-- title: Feature No. 3
-  details: Here you can talk about feature number 3.
-footer: This is your homepage footer
----
-      `)
-      console.log(chalk.yellow(`Successfully created README file`))
-      fs.mkdirSync(`${scaffoldPath}/.vuepress`, { recursive: true })
-      console.log(chalk.blue(`Successfully created VuePress directory`))
+      console.log(chalk.yellow(`Successfully created directory for ${directoryName}`))
+      fs.mkdirSync(`${scaffoldPath}/.vuepress/public`, { recursive: true })
+      console.log(chalk.yellow(`Successfully created VuePress directory`))
+      fs.mkdirSync(`${scaffoldPath}/section`, { recursive: true })
+      console.log(chalk.yellow(`Successfully created section directory`))
 
-      try {
-        const configPath = require.resolve('vuepress/template/config-template.js')
-        const configContent = fs.readFileSync(configPath)
-        fs.writeFileSync(`${scaffoldPath}/.vuepress/config.js`, configContent)
-        console.log(chalk.magenta(`Successfully created README file`))
-      } catch (err) {
-        console.error(err)
-      }
+      createTemplate.forEach(templateItem => {
+        try {
+          const path = require.resolve(templateItem.path)
+          const content = fs.readFileSync(path)
+          fs.writeFileSync(`${scaffoldPath}/${templateItem.destination}`, content)
+          console.log(chalk.green(templateItem.message))
+        } catch (error) {
+          console.error(error)
+        }
+      })
     })
 
   cli

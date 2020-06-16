@@ -1,13 +1,9 @@
 module.exports = {
-  title: 'VuePress Starter Kit',
-  description: 'This is your page description.',
+  title: 'VuePress Site Title',
+  description: 'This is your landing page description.',
   themeConfig: {
-    // logo: '/vuepress-logo.png',
-    // lastUpdated: 'Last updated',
-    // repo: 'https://github.com/bencodezen/vuepress-starter-kit',
-    // docsDir: 'docs',
-    // editLinks: true,
-    // editLinkText: 'Recommend a change',
+    logo: '/vuepress-logo.png',
+    lastUpdated: 'Last updated',
     nav: [
       {
         text: 'Home',
@@ -15,7 +11,7 @@ module.exports = {
       },
       {
         text: 'Basic Page',
-        link: '/basic/'
+        link: '/basic'
       },
       {
         text: 'Section',
@@ -29,23 +25,6 @@ module.exports = {
             link: '/section/#some-more-content'
           }
         ]
-      },
-      {
-        text: 'Contact',
-        items: [
-          {
-            text: 'Twitter',
-            link: 'https://www.twitter.com/'
-          },
-          {
-            text: 'Email',
-            link: 'mailto:hello@email.com'
-          }
-        ]
-      },
-      {
-        text: 'Component Example',
-        link: '/component-example'
       }
     ],
     plugins: ['@vuepress/active-header-links']
