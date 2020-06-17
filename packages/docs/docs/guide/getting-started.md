@@ -19,11 +19,11 @@ You will be prompted to choose which boilerplate you prefer. For most users, the
 
 You will then have the opportunity to configure your VuePress site's metadata such as:
 
- - Project Name
- - Description
- - Maintainer Email
- - Maintainer Name
- - Repository URL
+- Project Name
+- Description
+- Maintainer Email
+- Maintainer Name
+- Repository URL
 
 Once it's complete, you should see your new VuePress site scaffolded in your directory! :tada:
 
