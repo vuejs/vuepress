@@ -28,18 +28,20 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 ### As Easy as 1, 2, 3
 
 ``` bash
-# install
-yarn global add vuepress
-# OR npm install -g vuepress
+# Scaffold VuePress site
+yarn create vuepress [directoryName]
+# OR npx create-vuepress [directoryName]
 
-# create a markdown file
-echo '# Hello VuePress' > README.md
+# Navigate to your new VuePress directory
+cd [directoryName]
 
-# start writing
-vuepress dev
+# Start local dev server
+yarn dev
+# OR npm run dev
 
-# build to static files
-vuepress build
+# Build static files
+yarn build
+# OR npm run build
 ```
 
 ::: warning COMPATIBILITY NOTE

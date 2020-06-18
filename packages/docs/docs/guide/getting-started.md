@@ -4,6 +4,31 @@
 VuePress requires [Node.js](https://nodejs.org/en/) >= 8.6.
 :::
 
+## Quick Start
+
+The fastest way to get your VuePress project setup is to use our create-vuepress tool which will help scaffold the basic VuePress site structure for you.
+
+To use it, open up your terminal in the desired directory and run the following command:
+
+```bash
+yarn create vuepress [directoryName]
+# OR npx create-vuepress [directoryName]
+```
+
+You will be prompted to choose which boilerplate you prefer. For most users, the `docs` boilerplate is what you will want.
+
+You will then have the opportunity to configure your VuePress site’s metadata such as:
+
+- Project Name
+- Description
+- Maintainer Email
+- Maintainer Name
+- Repository URL
+
+Once it is complete, you should see your new VuePress site scaffolded in your directory! :tada:
+
+## Manual Setup
+
 This section will help you build a basic VuePress documentation site from ground up. If you already have an existing project and would like to keep documentation inside the project, start from Step 3.
 
 1. Create and change into a new directory
@@ -19,8 +44,6 @@ This section will help you build a basic VuePress documentation site from ground
    ```
 
 3. Install VuePress locally
-
-   Globally installed VuePress is no longer recommended.
 
    ``` bash
    yarn add -D vuepress # npm install -D vuepress
