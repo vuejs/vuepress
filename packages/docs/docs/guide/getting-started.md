@@ -17,7 +17,7 @@ yarn create vuepress [directoryName]
 
 You will be prompted to choose which boilerplate you prefer. For most users, the `docs` boilerplate is what you will want.
 
-You will then have the opportunity to configure your VuePress site's metadata such as:
+You will then have the opportunity to configure your VuePress site’s metadata such as:
 
 - Project Name
 - Description
@@ -25,7 +25,7 @@ You will then have the opportunity to configure your VuePress site's metadata su
 - Maintainer Name
 - Repository URL
 
-Once it's complete, you should see your new VuePress site scaffolded in your directory! :tada:
+Once it is complete, you should see your new VuePress site scaffolded in your directory! :tada:
 
 ## Manual Setup
 
