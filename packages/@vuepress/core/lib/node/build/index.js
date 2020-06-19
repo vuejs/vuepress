@@ -91,13 +91,25 @@ module.exports = class Build extends EventEmitter {
 
     // render pages
     logger.wait('Rendering static HTML...')
+    console.log()
+
+    // Keep track of progress
+    const total = this.context.pages.length
+    this.counter = 0
+    this.active = 0
+    const RENDER_LIMIT = 50
+
+    // start with empty progress bar
+    console.log()
+    renderProgress(this.counter, total, RENDER_LIMIT - 1, `Rendering ${total} pages`)
 
     // Use p-limit to throttle number of files done at the same time
     const limit = pLimit(RENDER_LIMIT)
     const pagePaths = await Promise.all(
-      this.context.pages.map(page => limit(() => this.renderPage(page)))
+      this.context.pages.map(page => limit(() => this.renderPage(page, total)))
     )
 
+    // Wipe progress bar
     readline.clearLine(process.stdout, 0)
     readline.cursorTo(process.stdout, 0)
 
@@ -132,11 +144,12 @@ module.exports = class Build extends EventEmitter {
    * Render page
    *
    * @param {Page} page
+   * @param {Number} total total number of static pages we're rendering
    * @returns {Promise<string>}
    * @api private
    */
 
-  async renderPage (page) {
+  async renderPage (page, total) {
     const pagePath = decodeURIComponent(page.path)
 
     const context = {
@@ -148,6 +161,7 @@ module.exports = class Build extends EventEmitter {
       version
     }
 
+    this.active++
     const filename = pagePath.replace(/\/$/, '/index.html').replace(/^\//, '')
     const filePath = path.resolve(this.outDir, filename)
     try {
@@ -157,9 +171,43 @@ module.exports = class Build extends EventEmitter {
     } catch (e) {
       console.error(logger.error(chalk.red(`Error rendering ${pagePath}:`), false))
       throw e
+    } finally {
+      this.counter++
+      this.active--
     }
+    renderProgress(this.counter, total, this.active, pagePath)
     return filePath
   }
+}
+
+const BAR_LENGTH = 50
+const BAR_BG = chalk.white('█')
+const BAR_FG = chalk.blueBright('█')
+/**
+ * Renders a progres sbar of static html pages, like this:
+ *
+ * ██████████████████████████████████████████████████ (44%) 721/1618 files, 50 active
+ * ...cations/Managing_Non-Titanium_Client_Applications_in_Dashboard.html
+ *
+ * @param {Number} count current count of files done
+ * @param {Number} total total number of files to process
+ * @param {Number} active number of files being actively processed
+ * @param {string} filename last file finished
+ */
+function renderProgress (count, total, active, filename) {
+  const progress = count / total // as a [0.0, 1.0] float
+  const blocks = Math.floor(progress * BAR_LENGTH)
+
+  readline.moveCursor(process.stdout, 0, -1) // move up to
+  readline.cursorTo(process.stdout, 0) // start at beginning of line
+  readline.clearScreenDown(process.stdout) // clear everything below
+
+  const bar = BAR_FG.repeat(blocks) + BAR_BG.repeat(BAR_LENGTH - blocks)
+  const percent = Math.floor(progress * 100) // as a 0-100 integer
+  const totals = chalk.gray(`${count}/${total} files, ${active + 1} active`)
+  console.log(`${bar} (${percent}%) ${totals}`) // print the bar, progress
+  const shortFilename = filename.length > 70 ? `...${filename.slice(-67)}` : filename
+  process.stdout.write(`${chalk.gray(shortFilename)}`) // print the filename
 }
 
 /**
