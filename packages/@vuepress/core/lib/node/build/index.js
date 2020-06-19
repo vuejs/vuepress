@@ -11,6 +11,7 @@ const createServerConfig = require('../webpack/createServerConfig')
 const { createBundleRenderer } = require('vue-server-renderer')
 const { normalizeHeadTag, applyUserWebpackConfig } = require('../util/index')
 const { version } = require('../../../package')
+const pLimit = require('p-limit')
 
 /**
  * Expose Build Process Class.
@@ -91,8 +92,10 @@ module.exports = class Build extends EventEmitter {
     // render pages
     logger.wait('Rendering static HTML...')
 
+    // Use p-limit to throttle number of files done at the same time
+    const limit = pLimit(RENDER_LIMIT)
     const pagePaths = await Promise.all(
-      this.context.pages.map(page => this.renderPage(page))
+      this.context.pages.map(page => limit(() => this.renderPage(page)))
     )
 
     readline.clearLine(process.stdout, 0)
@@ -145,16 +148,17 @@ module.exports = class Build extends EventEmitter {
       version
     }
 
+    const filename = pagePath.replace(/\/$/, '/index.html').replace(/^\//, '')
+    const filePath = path.resolve(this.outDir, filename)
     try {
-      const readable = await this.renderer.renderToStream(context)
-      const filename = pagePath.replace(/\/$/, '/index.html').replace(/^\//, '')
-      const filePath = path.resolve(this.outDir, filename)
+      const readable = this.renderer.renderToStream(context)
       await fs.ensureDir(path.dirname(filePath))
-      return pipe(filePath, readable)
+      await pipe(filePath, readable)
     } catch (e) {
       console.error(logger.error(chalk.red(`Error rendering ${pagePath}:`), false))
       throw e
     }
+    return filePath
   }
 }
 
