@@ -145,19 +145,33 @@ module.exports = class Build extends EventEmitter {
       version
     }
 
-    let html
     try {
-      html = await this.renderer.renderToString(context)
+      const readable = await this.renderer.renderToStream(context)
+      const filename = pagePath.replace(/\/$/, '/index.html').replace(/^\//, '')
+      const filePath = path.resolve(this.outDir, filename)
+      await fs.ensureDir(path.dirname(filePath))
+      return pipe(filePath, readable)
     } catch (e) {
       console.error(logger.error(chalk.red(`Error rendering ${pagePath}:`), false))
       throw e
     }
-    const filename = pagePath.replace(/\/$/, '/index.html').replace(/^\//, '')
-    const filePath = path.resolve(this.outDir, filename)
-    await fs.ensureDir(path.dirname(filePath))
-    await fs.writeFile(filePath, html)
-    return filePath
   }
+}
+
+/**
+ * Pipes rendered static HTML to a file
+ *
+ * @param {string} filePath
+ * @param {Stream.Readable} readable
+ * @returns {Promise<void>}
+ */
+function pipe (filePath, readable) {
+  return new Promise((resolve, reject) => {
+    const outStream = fs.createWriteStream(filePath)
+    readable.pipe(outStream)
+    outStream.on('finish', resolve(filePath))
+    readable.on('error', reject)
+  })
 }
 
 /**
