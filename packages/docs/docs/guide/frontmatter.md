@@ -24,12 +24,6 @@ lang: en-US
 My blog post is written in {{ $frontmatter.language }}.
 ```
 
-
-
-::: tip
-frontmatter variables are **optional** in VuePress.
-:::
-
 ## Alternative frontmatter Formats
 
 VuePress also supports JSON or [TOML](https://github.com/toml-lang/toml) frontmatter.
