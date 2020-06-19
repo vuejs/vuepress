@@ -4,7 +4,7 @@ Any Markdown file that contains a YAML frontmatter block will be processed by [g
 
 ```markdown
 ---
-title: Blogging Like a Hacker
+title: Blogging with VuePress
 lang: en-US
 ---
 ```
@@ -12,17 +12,17 @@ lang: en-US
 Between these triple-dashed lines, you can set predefined variables (see [below](#predefined-variables) for a reference), or even create custom ones of your own. These variables will then be available to you through the  <code>[$frontmatter](./global-computed.md#frontmatter)</code> variable.
 
 Here's an example of how you could use it in your markdown file:
-\````
+
+```markdown
 ---
-title: My Blog Title
-lang: English
+title: Blogging with VuePress
+lang: en-US
 ---
 
 # {{ $frontmatter.title }}
 
 My blog post is written in {{ $frontmatter.language }}.
-
-\````
+```
 
 
 
