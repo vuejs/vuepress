@@ -11,7 +11,7 @@ lang: en-US
 
 Between these triple-dashed lines, you can set predefined variables (see [below](#predefined-variables) for a reference), or even create custom ones of your own. These variables will then be available to you through the  <code>[$frontmatter](./global-computed.md#frontmatter)</code> variable.
 
-Here's an example of how you could use it in your markdown file:
+Here’s an example of how you could use it in your Markdown file:
 
 ```markdown
 ---
