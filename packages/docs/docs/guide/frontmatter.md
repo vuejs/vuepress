@@ -9,7 +9,22 @@ lang: en-US
 ---
 ```
 
-Between these triple-dashed lines, you can set predefined variables (see [below](#predefined-variables) for a reference), or even create custom ones of your own. These variables will then be available to you to access using <code>[$frontmatter](./global-computed.md#frontmatter)</code> at the rest of the page, plus all custom and theming components.
+Between these triple-dashed lines, you can set predefined variables (see [below](#predefined-variables) for a reference), or even create custom ones of your own. These variables will then be available to you through the  <code>[$frontmatter](./global-computed.md#frontmatter)</code> variable.
+
+Here's an example of how you could use it in your markdown file:
+\````
+---
+title: My Blog Title
+lang: English
+---
+
+# {{ $frontmatter.title }}
+
+My blog post is written in {{ $frontmatter.language }}.
+
+\````
+
+
 
 ::: tip
 frontmatter variables are **optional** in VuePress.
