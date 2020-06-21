@@ -24,7 +24,7 @@ Check out our docs at https://vuepress.vuejs.org/.
 ## Showcase
 
 - [Awesome VuePress](https://github.com/vuepressjs/awesome-vuepress)
-- [vuepress.tools](https://vuepress.tools/) (By [Ahmad Mostafa](https://ahmadmostafa.com))
+- [vuepress.tools](https://z3by.github.io/vuepress-tools/) (By [Ahmad Mostafa](https://ahmadmostafa.com))
 
 ## Contribution
 
