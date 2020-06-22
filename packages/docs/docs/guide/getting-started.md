@@ -82,6 +82,6 @@ This section will help you build a basic VuePress documentation site from ground
 
 By now, you should have a basic but functional VuePress documentation site. Next, learn about VuePress’ recommended [directory structure](directory-structure.html) and the basics of [configuration](basic-config.html) in VuePress.
 
-Once you’re familiar with those concepts mentioned above, learn about how to enrich your content with [static assests](assets.html), [Markdown extensions](markdown.html) and [vue components](using-vue.html).
+Once you’re familiar with those concepts mentioned above, learn about how to enrich your content with [static assets](assets.html), [Markdown extensions](markdown.html) and [vue components](using-vue.html).
 
 And when your documentation site start to take shape, check out the [multi-language support](i18n.html) and guides for [deploying](deploy.html) your site to popular services.
