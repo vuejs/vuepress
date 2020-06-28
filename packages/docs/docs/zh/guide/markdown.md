@@ -346,6 +346,31 @@ module.exports = {
 由于代码段的导入将在 webpack 编译之前执行，因此你无法使用 webpack 中的路径别名，此处的 `@` 默认值是 `process.cwd()`。
 :::
 
+
+为了只导入对应部分的代码，你也可运用 [VS Code region](https://code.visualstudio.com/docs/editor/codebasics#_folding)。你可以在文件路径后方的 `#` 紧接着提供一个自定义的区域名称（预设为 `snippet` ）
+
+**输入**
+
+``` md
+<<< @/../@vuepress/markdown/__tests__/fragments/snippet-with-region.js#snippet{1}
+```
+
+**代码文件**
+
+<!--lint disable strong-marker-->
+
+<<< @/../@vuepress/markdown/__tests__/fragments/snippet-with-region.js
+
+<!--lint enable strong-marker-->
+
+**输出**
+
+<!--lint disable strong-marker-->
+
+<<< @/../@vuepress/markdown/__tests__/fragments/snippet-with-region.js#snippet{1}
+
+<!--lint enable strong-marker-->
+
 ## 进阶配置
 
 VuePress 使用 [markdown-it](https://github.com/markdown-it/markdown-it) 来渲染 Markdown，上述大多数的拓展也都是通过自定义的插件实现的。想要进一步的话，你可以通过 `.vuepress/config.js` 的 `markdown` 选项，来对当前的 `markdown-it` 实例做一些自定义的配置：
