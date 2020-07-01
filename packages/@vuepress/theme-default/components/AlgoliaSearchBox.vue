@@ -82,32 +82,35 @@ export default {
   .algolia-autocomplete
     line-height normal
     .ds-dropdown-menu
-      background-color #fff
-      border 1px solid #999
+      background-color var(--background-color)
+      border 1px solid var(--light-grey)
       border-radius 4px
       font-size 16px
       margin 6px 0 0
       padding 4px
       text-align left
       &:before
-        border-color #999
+        border-color var(--light-grey)
       [class*=ds-dataset-]
+        background var(--background-color)
         border none
         padding 0
       .ds-suggestions
         margin-top 0
       .ds-suggestion
-        border-bottom 1px solid $borderColor
+        border-bottom 1px solid var(--border-color)
     .algolia-docsearch-suggestion--highlight
-      color #2c815b
+      color $accentColor
     .algolia-docsearch-suggestion
-      border-color $borderColor
       padding 0
+      color var(--text-color)
+      background var(--background-color)
+      border-color var(--border-color)
       .algolia-docsearch-suggestion--category-header
         padding 5px 10px
         margin-top 0
         background $accentColor
-        color #fff
+        color var(--white)
         font-weight 600
         .algolia-docsearch-suggestion--highlight
           background rgba(255, 255, 255, 0.6)
@@ -116,21 +119,22 @@ export default {
       .algolia-docsearch-suggestion--title
         font-weight 600
         margin-bottom 0
-        color $textColor
+        color var(--text-color)
       .algolia-docsearch-suggestion--subcategory-column
         vertical-align top
         padding 5px 7px 5px 5px
-        border-color $borderColor
-        background #f1f3f5
+        color var(--text-color)
+        background var(--background-color)
+        border-color var(--border-color)
         &:after
           display none
       .algolia-docsearch-suggestion--subcategory-column-text
         color #555
     .algolia-docsearch-footer
-      border-color $borderColor
+      border-color var(--border-color)
     .ds-cursor .algolia-docsearch-suggestion--content
-      background-color #e7edf3 !important
-      color $textColor
+      background-color var(--grey3)
+      color var(--text-color)
 
 @media (min-width: $MQMobile)
   .algolia-search-wrapper
@@ -167,5 +171,4 @@ export default {
       width 5px
       margin -3px 3px 0
       vertical-align middle
-
 </style>

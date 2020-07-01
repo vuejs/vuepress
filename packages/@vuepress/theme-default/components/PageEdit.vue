@@ -119,17 +119,17 @@ export default {
   .edit-link
     display inline-block
     a
-      color lighten($textColor, 25%)
+      color lighten($accentColor, 10%)
       margin-right 0.25rem
   .last-updated
     float right
     font-size 0.9em
     .prefix
       font-weight 500
-      color lighten($textColor, 25%)
+      color var(--text-color-l25)
     .time
       font-weight 400
-      color #aaa
+      color var(--dark-grey)
 
 @media (max-width: $MQMobile)
   .page-edit
@@ -139,5 +139,4 @@ export default {
       font-size 0.8em
       float none
       text-align left
-
 </style>

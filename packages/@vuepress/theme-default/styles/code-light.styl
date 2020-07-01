@@ -1,0 +1,110 @@
+.theme-light
+  {$contentClass}
+    code
+      background-color var(--grey14)
+
+  /**
+   * prism.js Coy theme for JavaScript, CoffeeScript, CSS and HTML
+   * Based on https://github.com/tshedor/workshop-wp-theme (Example: http://workshop.kansan.com/category/sessions/basics or  http://workshop.timshedor.com/category/sessions/basics);
+   * @author Tim  Shedor
+   */
+  code[class*='language-'], pre[class*='language-']
+    color black
+    background none
+    font-family Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace
+    font-size 1em
+    text-align left
+    white-space pre
+    word-spacing normal
+    word-break normal
+    word-wrap normal
+    -moz-tab-size 4
+    -o-tab-size 4
+    tab-size 4
+    -webkit-hyphens none
+    -moz-hyphens none
+    -ms-hyphens none
+    hyphens none
+
+  pre[class*='language-']::-moz-selection, pre[class*='language-'] ::-moz-selection, code[class*='language-']::-moz-selection, code[class*='language-'] ::-moz-selection
+    background #b3d4fc
+
+  pre[class*='language-']::selection, pre[class*='language-'] ::selection, code[class*='language-']::selection, code[class*='language-'] ::selection
+    background #b3d4fc
+
+  /* Code blocks */
+  pre[class*='language-']
+    margin 0.5em 0
+    overflow auto
+
+  :not(pre) > code[class*='language-'], pre[class*='language-']
+    background #f5f2f0
+
+  /* Inline code */
+  :not(pre) > code[class*='language-']
+    padding 0.1em
+    border-radius 0.3em
+    white-space normal
+
+  .token.comment, .token.prolog, .token.doctype, .token.cdata
+    color slategray
+
+  .token.punctuation
+    color #5F6364
+
+  .token.property, .token.tag, .token.boolean, .token.number, .token.function-name, .token.constant, .token.symbol, .token.deleted
+    color #c92c2c
+
+  .token.selector, .token.attr-name, .token.string, .token.char, .token.function, .token.builtin, .token.inserted
+    color #2f9c0a
+
+  .token.operator, .token.entity, .token.url, .token.variable
+    color #a67f59
+    background rgba(255, 255, 255, 0.5)
+
+  .token.atrule, .token.attr-value, .token.keyword, .token.class-name
+    color #1990b8
+
+  .token.regex, .token.important
+    color #e90
+
+  .language-css .token.string, .style .token.string
+    color #a67f59
+    background rgba(255, 255, 255, 0.5)
+
+  .token.important
+    font-weight normal
+
+  .token.bold
+    font-weight bold
+
+  .token.italic
+    font-style italic
+
+  .token.entity
+    cursor help
+
+  .token.namespace
+    opacity 0.7
+
+  // hightlight
+  div[class*='language-']
+    .highlight-lines
+      .highlighted
+        background-color darken(saturate($codeBgColor, 10%), 5%)
+
+    pre, pre[class*='language-']
+      background transparent
+
+    &::before
+      color rgba(0, 0, 0, 0.4)
+
+    &.line-numbers-mode
+      .highlight-lines .highlighted:before
+        background-color darken(saturate($codeBgColor, 10%), 5%)
+
+      .line-numbers-wrapper
+        color rgba(0, 0, 0, 0.3)
+
+      &::after
+        border-right 1px solid darken(saturate($codeBgColor, 20%), 10%)

@@ -92,7 +92,7 @@ export default {
   .hero
     text-align center
     img
-      max-width: 100%
+      max-width 100%
       max-height 280px
       display block
       margin 3rem auto 1.5rem
@@ -104,15 +104,15 @@ export default {
       max-width 35rem
       font-size 1.6rem
       line-height 1.3
-      color lighten($textColor, 40%)
+      color var(--text-color-l40)
     .action-button
       display inline-block
       font-size 1.2rem
-      color #fff
+      color var(--white)
       background-color $accentColor
       padding 0.8rem 1.6rem
       border-radius 4px
-      transition background-color .1s ease
+      transition background-color 0.1s ease
       box-sizing border-box
       border-bottom 1px solid darken($accentColor, 10%)
       &:hover
@@ -135,14 +135,14 @@ export default {
       font-weight 500
       border-bottom none
       padding-bottom 0
-      color lighten($textColor, 10%)
+      color var(--text-color-l10)
     p
-      color lighten($textColor, 25%)
+      color var(--text-color-l25)
   .footer
     padding 2.5rem
-    border-top 1px solid $borderColor
+    border-top 1px solid var(--border-color)
     text-align center
-    color lighten($textColor, 25%)
+    color var(--text-color-l25)
 
 @media (max-width: $MQMobile)
   .home

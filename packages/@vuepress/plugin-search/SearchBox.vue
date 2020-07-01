@@ -206,10 +206,10 @@ export default {
     cursor text
     width 10rem
     height: 2rem
-    color lighten($textColor, 25%)
+    color var(--text-color, $textColor)
     display inline-block
-    border 1px solid darken($borderColor, 10%)
-    border-radius 2rem
+    border 1px solid transparent
+    border-radius 0.25em
     font-size 0.9rem
     line-height 2rem
     padding 0 0.5rem 0 2rem
@@ -219,6 +219,7 @@ export default {
     background-size 1rem
     &:focus
       cursor auto
+      background-color var(--background-color, #fff)
       border-color $accentColor
   .suggestions
     background #fff
@@ -254,6 +255,7 @@ export default {
     input
       cursor pointer
       width 0
+      left 0
       border-color transparent
       position relative
       &:focus
@@ -285,4 +287,31 @@ export default {
       width calc(100vw - 4rem)
     input:focus
       width 8rem
+
+@media (min-width: $MQNarrow)
+  .search-box input
+    background-color #efeef4
+
+// darkmode
+.theme-dark
+  .search-box
+    input
+      color var(--text-color, $textColor)
+      background-color var(--background-color, #000) !important
+      @media (min-width: $MQNarrow)
+        border-color var(--border-color, $borderColor)
+        background-color lighten($nightBgColor, 10%) !important
+      &:focus
+        background-color lighten($nightBgColor, 10%) !important
+    .suggestion
+      a
+        color darken($nightTextColor, 35%)
+      &.focused
+        background-color #0c0b0a
+        a
+          color $accentColor
+          border-color $accentColor
+    .suggestions
+      border-color var(--border-color, $borderColor)
+      background-color var(--white)
 </style>
