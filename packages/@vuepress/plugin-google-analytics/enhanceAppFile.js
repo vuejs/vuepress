@@ -1,4 +1,5 @@
 /* global GA_ID, ga */
+import { app } from './app'
 
 export default ({ router }) => {
 // Google analytics integration
@@ -20,7 +21,7 @@ export default ({ router }) => {
     ga('set', 'anonymizeIp', true)
 
     router.afterEach(function (to) {
-      ga('set', 'page', to.fullPath)
+      ga('set', 'page', app.$withBase(to.fullPath))
       ga('send', 'pageview')
     })
   }
