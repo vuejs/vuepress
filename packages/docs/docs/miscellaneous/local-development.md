@@ -71,7 +71,7 @@ mkdir vuepress-sandbox
 cd vuepress-sandbox
 
 # Initalize a new npm project
-npm init
+yarn init # or npm init
 
 # You will be prompted to fill out a form
 # Since this is a sandbox environment,
