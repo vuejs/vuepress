@@ -19,12 +19,12 @@ When it comes to contributing to an open-source project, the biggest obstacle pe
 
 In this guide, we will be using the following names to refer to the two projects you need to be successful:
 
-- **VuePress Project**: This refers to your fork of the [official VuePress repo](https://github.com/vuejs/vuepress/)
+- **VuePress Project**: This refers to your fork of the [official VuePress repository](https://github.com/vuejs/vuepress/)
 - **VuePress Sandbox**: This refers to a local instance of VuePress that will serve as the simulation for creating test scenarios to verify that changes in the VuePress Project work as expected
 
 ### VuePress Project Setup
 
-1. Fork the [official VuePress repo](https://github.com/vuejs/vuepress/)
+1. Fork the [official VuePress repository](https://github.com/vuejs/vuepress/)
 1. Clone your fork onto your machine (e.g., `git clone ...`)
 1. Open your cloned project in a new terminal window
 1. Run the following commands:
@@ -57,7 +57,7 @@ yarn register-vuepress
 # like `success Registered "vuepress"`
 ```
 
-And with that, we're ready to setup our VuePress Sandbox!
+And with that, we’re ready to setup our VuePress Sandbox!
 
 ### VuePress Sandbox Setup
 
@@ -139,7 +139,7 @@ And with that, you should have a fully functioning local VuePress development en
 
 ### Disable Local Development
 
-While it's great that you can work with a local instance of VuePress, there will be times that you want to disable it so that you can refer to the published version instead. To do this, you will need to do the following:
+While it’s great that you can work with a local instance of VuePress, there will be times that you want to disable it so that you can refer to the published version instead. To do this, you will need to do the following:
 
 1. Navigate to your VuePress Project in the terminal
 1. Unregister your VuePress Project
@@ -156,14 +156,14 @@ yarn unregister-vuepress
 yarn unlink vuepress
 ```
 
-And that's it! You can go back to regular development now!
+And that’s it! You can go back to regular development now!
 
 ## Notes
 
 - `yarn` will use hoisting. What does it mean for you ?
   - It will regroup all dependencies in the workspace root and link all packages.
 - You have to take care to declare all dependencies inside subFolders package.json. When publish the lib if dependencies from a package is not declare it will just not work.
-- There is a special package you should have a look is @vuepress/shared-utils that are in typescript.
+- There is a special package you should have a look is @vuepress/shared-utils that are in TypeScript.
   - From here if you are making change inside this package you will have to run `yarn tsc` all the time or run in separate shell `yarn run tsc -w`. This will re run tsc at any change from shared-utils
 - You will have interesting commands available:
   - `yarn packages:list` will list you every packages present and their versions [More...](https://github.com/lerna/lerna/tree/master/commands/list#readme)
