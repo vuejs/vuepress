@@ -42,7 +42,8 @@
     "markdown-it-emoji": "^1.4.0",
     "semver": "^6.0.0",
     "toml": "^3.0.0",
-    "upath": "^1.1.0"
+    "upath": "^1.1.0",
+    "vue-template-compiler": "^2.6.10"
   },
   "devDependencies": {
     "@types/diacritics": "^1.3.1"
