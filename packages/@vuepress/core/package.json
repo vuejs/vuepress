@@ -30,6 +30,7 @@
     "@vuepress/plugin-last-updated": "1.5.2",
     "@vuepress/plugin-register-components": "1.5.2",
     "@vuepress/shared-utils": "1.5.2",
+    "@vuepress/theme-default": "^1.5.2",
     "autoprefixer": "^9.5.1",
     "babel-loader": "^8.0.4",
     "cache-loader": "^3.0.0",
