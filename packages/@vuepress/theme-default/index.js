@@ -24,36 +24,36 @@ module.exports = (options, ctx) => {
     },
 
     plugins: [
-      ['@vuepress/active-header-links', options.activeHeaderLinks],
-      '@vuepress/search',
-      '@vuepress/plugin-nprogress',
-      ['container', {
+      [require.resolve('@vuepress/plugin-active-header-links'), options.activeHeaderLinks],
+      require.resolve('@vuepress/plugin-search'),
+      require.resolve('@vuepress/plugin-nprogress'),
+      [require.resolve('vuepress-plugin-container'), {
         type: 'tip',
         defaultTitle: {
           '/': 'TIP',
           '/zh/': '提示'
         }
       }],
-      ['container', {
+      [require.resolve('vuepress-plugin-container'), {
         type: 'warning',
         defaultTitle: {
           '/': 'WARNING',
           '/zh/': '注意'
         }
       }],
-      ['container', {
+      [require.resolve('vuepress-plugin-container'), {
         type: 'danger',
         defaultTitle: {
           '/': 'WARNING',
           '/zh/': '警告'
         }
       }],
-      ['container', {
+      [require.resolve('vuepress-plugin-container'), {
         type: 'details',
         before: info => `<details class="custom-block details">${info ? `<summary>${info}</summary>` : ''}\n`,
         after: () => '</details>\n'
       }],
-      ['smooth-scroll', enableSmoothScroll]
+      [require.resolve('vuepress-plugin-smooth-scroll'), enableSmoothScroll]
     ]
   }
 }
