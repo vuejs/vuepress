@@ -86,7 +86,7 @@ module.exports = function createBaseConfig (context, isServer) {
   function applyVuePipeline (rule) {
     rule
       .use('cache-loader')
-        .loader('cache-loader')
+        .loader(require.resolve('cache-loader'))
         .options({
           cacheDirectory,
           cacheIdentifier: finalCacheIdentifier
@@ -94,7 +94,7 @@ module.exports = function createBaseConfig (context, isServer) {
 
     rule
       .use('vue-loader')
-        .loader('vue-loader')
+        .loader(require.resolve('vue-loader'))
         .options({
           compilerOptions: {
             preserveWhitespace: true
@@ -164,14 +164,14 @@ module.exports = function createBaseConfig (context, isServer) {
           return /node_modules/.test(filePath)
         }).end()
         .use('cache-loader')
-          .loader('cache-loader')
+          .loader(require.resolve('cache-loader'))
           .options({
             cacheDirectory,
             cacheIdentifier: finalCacheIdentifier
           })
           .end()
         .use('babel-loader')
-          .loader('babel-loader')
+          .loader(require.resolve('babel-loader'))
           .options({
             // do not pick local project babel config (.babelrc)
             babelrc: false,
@@ -192,7 +192,7 @@ module.exports = function createBaseConfig (context, isServer) {
     .rule('images')
       .test(/\.(png|jpe?g|gif)(\?.*)?$/)
       .use('url-loader')
-        .loader('url-loader')
+        .loader(require.resolve('url-loader'))
         .options({
           limit: inlineLimit,
           name: `assets/img/[name].[hash:8].[ext]`
@@ -204,7 +204,7 @@ module.exports = function createBaseConfig (context, isServer) {
     .rule('svg')
       .test(/\.(svg)(\?.*)?$/)
       .use('file-loader')
-        .loader('file-loader')
+        .loader(require.resolve('file-loader'))
         .options({
           name: `assets/img/[name].[hash:8].[ext]`
         })
@@ -213,7 +213,7 @@ module.exports = function createBaseConfig (context, isServer) {
     .rule('media')
       .test(/\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/)
       .use('url-loader')
-        .loader('url-loader')
+        .loader(require.resolve('url-loader'))
         .options({
           limit: inlineLimit,
           name: `assets/media/[name].[hash:8].[ext]`
@@ -223,7 +223,7 @@ module.exports = function createBaseConfig (context, isServer) {
     .rule('fonts')
       .test(/\.(woff2?|eot|ttf|otf)(\?.*)?$/i)
       .use('url-loader')
-        .loader('url-loader')
+        .loader(require.resolve('url-loader'))
         .options({
           limit: inlineLimit,
           name: `assets/fonts/[name].[hash:8].[ext]`
@@ -242,12 +242,12 @@ module.exports = function createBaseConfig (context, isServer) {
         if (isProd) {
           rule.use('extract-css-loader').loader(CSSExtractPlugin.loader)
         } else {
-          rule.use('vue-style-loader').loader('vue-style-loader')
+          rule.use('vue-style-loader').loader(require.resolve('vue-style-loader'))
         }
       }
 
       rule.use('css-loader')
-        .loader('css-loader')
+        .loader(require.resolve('css-loader'))
         .options({
           modules,
           localIdentName: `[local]_[hash:base64:8]`,
@@ -256,13 +256,13 @@ module.exports = function createBaseConfig (context, isServer) {
           exportOnlyLocals: isServer
         })
 
-      rule.use('postcss-loader').loader('postcss-loader').options(Object.assign({
+      rule.use('postcss-loader').loader(require.resolve('postcss-loader')).options(Object.assign({
         plugins: [require('autoprefixer')],
         sourceMap: !isProd
       }, siteConfig.postcss))
 
       if (loader) {
-        rule.use(loader).loader(loader).options(options)
+        rule.use(loader).loader(require.resolve(loader)).options(options)
       }
     }
   }
