@@ -275,6 +275,46 @@ export default {
 }
 ```
 
+In addition to a single line, you can also specify multiple single lines, line ranges, or both.
+
+- Line ranges: e.g. `{5-8}`, `{3-10}`, `{10-17}`
+- Multiple single lines: e.g. `{4,7,9}`
+- Line ranges and single lines: e.g. `{4,7-13,16,23-27,40}`
+
+**Input**
+
+````
+``` js{1,4,6-7}
+export default { // Highlighted
+  data () {
+    return {
+      msg: `Highlighted!
+      This line isn't highlighted,
+      but this and the next 2 are.`,
+      motd: 'VuePress is awesome',
+      lorem: 'ipsum',
+    }
+  }
+}
+```
+````
+
+**Output**
+
+``` js{1,4,6-8}
+export default { // Highlighted
+  data () {
+    return {
+      msg: `Highlighted!
+      This line isn't highlighted,
+      but this and the next 2 are.`,
+      motd: 'VuePress is awesome',
+      lorem: 'ipsum',
+    }
+  }
+}
+```
+
 ## Line Numbers
 
 You can enable line numbers for each code blocks via config:
