@@ -275,7 +275,7 @@ export default {
 }
 ```
 
-In addition to a single line, you can also specify multiple lines, line ranges, or both.
+In addition to a single line, you can also specify multiple single lines, line ranges, or both.
 
 - Line ranges: e.g. `{5-8}`, `{3-10}`, `{10-17}`
 - Multiple single lines: e.g. `{4,7,9}`
