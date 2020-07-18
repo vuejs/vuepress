@@ -1,10 +1,10 @@
 # Global Computed
 
-In VuePress, some core [computed](https://vuejs.org/v2/guide/computed.html#Computed-Properties) properties are built-in for use by [default theme](../theme/default-theme-config.md) or custom themes.
+In VuePress, some core [computed properties](https://vuejs.org/v2/guide/computed.html#Computed-Properties) can be used by the [default theme](../theme/default-theme-config.md) or custom themes.
 
 ## $site
 
-This is the `$site` value of the site you see now:
+This is the `$site` value of the site you're currently reading:
 
 ``` json
 {
@@ -25,7 +25,7 @@ This is the `$site` value of the site you see now:
 
 ## $page
 
-This is the `$page` value of the page you see now:
+This is the `$page` value of the page you're currently reading:
 
 ``` json
 {
@@ -56,19 +56,15 @@ Reference of [$page](#page).frontmatter.
 
 ## $lang
 
-The language of the current page, the default value is `en-US`.
+The language of the current page. Default: `en-US`.
 
-**Also see:**
-
-- [Internationalization](../guide/i18n.md)
+For more information, see [Internationalization](../guide/i18n.md).
 
 ## $localePath
 
-The locale path prefix for the current page, the default value is `/`.
+The locale path prefix for the current page. Default: `/`.
 
-**Also see:**
-
-- [Internationalization](../guide/i18n.md)
+For more information, see [Internationalization](../guide/i18n.md).
 
 ## $title
 
@@ -80,4 +76,4 @@ The `content` value of the `<meta name= "description" content= "...">` for the c
 
 ## $themeConfig
 
-That is `siteConfig.themeConfig`。
+Refers to `siteConfig.themeConfig`.
