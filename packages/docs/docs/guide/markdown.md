@@ -10,7 +10,7 @@ Headers automatically get anchor links applied. Rendering of anchors can be conf
 
 Internal links are converted to `<router-link>` for SPA navigation. Also, every `README.md` or `index.md` contained in each sub-directory will automatically be converted to `index.html`, with corresponding URL `/`.
 
-Given the following directory structure:
+For example, given the following directory structure:
 
 ```
 .
@@ -37,7 +37,7 @@ And providing you are in `foo/one.md`:
 
 ### Redirection for URLs
 
-VuePress supports redirecting to clean links. If a link `/foo` is not found, VuePress will look for a existing `/foo/` or `/foo.html`. Conversely, when one of `/foo/` or `/foo.html` is not found, VuePress will also try the other. With this feature, we can customize your website’s URLs with the official plugin [vuepress-plugin-clean-urls](https://vuepress.github.io/plugins/clean-urls/).
+VuePress supports redirecting to clean links. If a link `/foo` is not found, VuePress will look for a existing `/foo/` or `/foo.html`. Conversely, when one of `/foo/` or `/foo.html` is not found, VuePress will try the other. With this feature, we can customize your website’s URLs with the official plugin [vuepress-plugin-clean-urls](https://vuepress.github.io/plugins/clean-urls/).
 
 ::: tip
 Regardless of whether the permalink and clean-urls plugins are used, your relative path should be defined by the current file structure. In the above example, even though you set the path of `/foo/one.md` to `/foo/one/`, you should still access `/foo/two.md` via `./two.md`.
@@ -45,7 +45,7 @@ Regardless of whether the permalink and clean-urls plugins are used, your relati
 
 ### External Links
 
-Outbound links automatically gets `target="_blank" rel="noopener noreferrer"`:
+Outbound links automatically get `target="_blank" rel="noopener noreferrer"`:
 
 - [vuejs.org](https://vuejs.org)
 - [VuePress on GitHub](https://github.com/vuejs/vuepress)
@@ -65,7 +65,7 @@ lang: en-US
 
 This data will be available to the rest of the page, along with all custom and theming components.
 
-For more details, check out the [Frontmatter](./frontmatter.md) page.
+For more details, see [Frontmatter](./frontmatter.md).
 
 ## GitHub-Style Tables
 
@@ -99,7 +99,7 @@ For more details, check out the [Frontmatter](./frontmatter.md) page.
 
 :tada: :100:
 
-A list of all emojis available can be found [here](https://github.com/markdown-it/markdown-it-emoji/blob/master/lib/data/full.json).
+A [list of all emojis] (https://github.com/markdown-it/markdown-it-emoji/blob/master/lib/data/full.json) is available.
 
 ## Table of Contents
 
@@ -117,7 +117,7 @@ A list of all emojis available can be found [here](https://github.com/markdown-i
 
 <!--lint enable no-shortcut-reference-link no-undefined-references-->
 
-Rendering of TOC can be configured using the [`markdown.toc`](../config/README.md#markdown-toc) option.
+Rendering of the TOC can be configured using the [`markdown.toc`](../config/README.md#markdown-toc) option.
 
 ## Custom Containers <Badge text="default theme"/>
 
@@ -245,7 +245,7 @@ export default {
 </ul>
 ```
 
-Check out [the list of valid languages](https://prismjs.com/#languages-list) on the Prism site.
+A [list of valid languages](https://prismjs.com/#languages-list) is available on Prism's site.
 
 ## Line Highlighting in Code Blocks
 
@@ -275,7 +275,7 @@ export default {
 }
 ```
 
-In addition to a single line, you can also specify multiple single lines, line ranges, or both.
+In addition to a single line, you can also specify multiple single lines, ranges, or both:
 
 - Line ranges: e.g. `{5-8}`, `{3-10}`, `{10-17}`
 - Multiple single lines: e.g. `{4,7,9}`
@@ -391,7 +391,7 @@ It also supports [line highlighting](#line-highlighting-in-code-blocks):
 Since the import of the code snippets will be executed before webpack compilation, you can’t use the path alias in webpack. The default value of `@` is `process.cwd()`.
 :::
 
-You can also use a [VS Code region](https://code.visualstudio.com/docs/editor/codebasics#_folding) in order to only include the corresponding part of the code file. You can provide a custom region name after a `#` following the filepath (`snippet` by default).
+You can also use a [VS Code region](https://code.visualstudio.com/docs/editor/codebasics#_folding) in order to only include the corresponding part of the code file. You can provide a custom region name after a `#` following the filepath (`snippet` by default):
 
 **Input**
 

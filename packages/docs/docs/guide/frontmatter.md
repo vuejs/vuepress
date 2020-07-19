@@ -1,6 +1,6 @@
 # Frontmatter
 
-Any Markdown file that contains a YAML frontmatter block will be processed by [gray-matter](https://github.com/jonschlinkert/gray-matter). The frontmatter must be the first thing in the Markdown file and must take the form of valid YAML set between triple-dashed lines. Here is a basic example:
+Any Markdown file that contains a YAML frontmatter block will be processed by [gray-matter](https://github.com/jonschlinkert/gray-matter). The frontmatter must be at the top of the Markdown file, and must take the form of valid YAML set between triple-dashed lines. Example:
 
 ```markdown
 ---
@@ -9,7 +9,7 @@ lang: en-US
 ---
 ```
 
-Between these triple-dashed lines, you can set predefined variables (see [below](#predefined-variables) for a reference), or even create custom ones of your own. These variables will then be available to you through the  <code>[$frontmatter](./global-computed.md#frontmatter)</code> variable.
+Between the triple-dashed lines, you can set [predefined variables](#predefined-variables), or even create custom ones of your own. These variables can be used via the <code>[$frontmatter](./global-computed.md#frontmatter)</code> variable.
 
 Here’s an example of how you could use it in your Markdown file:
 
@@ -26,7 +26,7 @@ My blog post is written in {{ $frontmatter.language }}.
 
 ## Alternative frontmatter Formats
 
-VuePress also supports JSON or [TOML](https://github.com/toml-lang/toml) frontmatter.
+VuePress also supports JSON and [TOML](https://github.com/toml-lang/toml) frontmatter syntax.
 
 JSON frontmatter needs to start and end in curly braces:
 
@@ -56,21 +56,21 @@ lang = "en-US"
 - Type: `string`
 - Default: `h1_title || siteConfig.title`
 
-Title of current page.
+Title of the current page.
 
 ### lang
 
 - Type: `string`
 - Default: `en-US`
 
-Language of current page.
+Language of the current page.
 
 ### description
 
 - Type: `string`
 - Default: `siteConfig.description`
 
-Description of current page.
+Description of the current page.
 
 ### layout
 
@@ -84,7 +84,7 @@ Set the layout component of the current page.
 - Type: `string`
 - Default: `siteConfig.permalink`
 
-Refer to: [Permalinks](./permalinks.md).
+See [Permalinks](./permalinks.md) for details.
 
 ### metaTitle
 
@@ -117,39 +117,39 @@ meta:
 - Type: `boolean`
 - Default: `undefined`
 
-See: [Default Theme Config > Disable the Navbar](../theme/default-theme-config.md#disable-the-navbar).
+See [Default Theme Config > Disable the Navbar](../theme/default-theme-config.md#disable-the-navbar) for details.
 
 ### sidebar
 
 - Type: `boolean|'auto'`
 - Default: `undefined`
 
-See: [Default Theme Config > Sidebar](../theme/default-theme-config.md#sidebar).
+See [Default Theme Config > Sidebar](../theme/default-theme-config.md#sidebar) for details.
 
 ### prev
 
 - Type: `boolean|string`
 - Default: `undefined`
 
-See: [Default Theme Config > Prev / Next Links](../theme/default-theme-config.md#prev-next-links).
+See [Default Theme Config > Prev / Next Links](../theme/default-theme-config.md#prev-next-links) for details.
 
 ### next
 
 - Type: `boolean|string`
 - Default: `undefined`
 
-See: [Default Theme Config > Prev / Next Links](../theme/default-theme-config.md#prev-next-links).
+See [Default Theme Config > Prev / Next Links](../theme/default-theme-config.md#prev-next-links) for details.
 
 ### search
 
 - Type: `boolean`
 - Default: `undefined`
 
-See: [Default Theme Config > Built-in Search](../theme/default-theme-config.html#built-in-search).
+See [Default Theme Config > Built-in Search](../theme/default-theme-config.html#built-in-search) for details.
 
 ### tags
 
 - Type: `array`
 - Default: `undefined`
 
-See: [Default Theme Config > Built-in Search](../theme/default-theme-config.html#built-in-search).
+See [Default Theme Config > Built-in Search](../theme/default-theme-config.html#built-in-search). for details.

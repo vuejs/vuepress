@@ -1,6 +1,6 @@
 # Directory Structure
 
-VuePress follows the principle of **"Convention is better than configuration"**, the recommended document structure is as follows:
+VuePress follows the principle of **"Convention is better than configuration"**. The recommended structure is as follows:
 
 <!-- textlint-disable terminology -->
 
@@ -35,7 +35,7 @@ VuePress follows the principle of **"Convention is better than configuration"**,
 Please note the capitalization of the directory name.
 :::
 
-- `docs/.vuepress`: It’s used to store global configuration, components, static resources, etc.
+- `docs/.vuepress`: Used to store global configuration, components, static resources, etc.
 - `docs/.vuepress/components`: The Vue components in this directory will be automatically registered as global components.
 - `docs/.vuepress/theme`: Used to store local theme.
 - `docs/.vuepress/styles`: Stores style related files.
@@ -54,7 +54,7 @@ When customizing `templates/ssr.html`, or `templates/dev.html`, it’s best to e
 
 ## Default Page Routing
 
-Here we take `docs` directory as the `targetDir` (See [Command-line Interface](../api/cli.md#usage)), and all the "Relative Path" below are relative to `docs` directory. Add `scripts` in `package.json` which is located in the project root directory:
+Here we use the `docs` directory as the `targetDir` (see [Command-line Interface](../api/cli.md#usage)). All the "Relative Paths" below are relative to the `docs` directory. Add `scripts` in `package.json` which is located in your project's root directory:
 
 ```json
 {
