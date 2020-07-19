@@ -123,7 +123,7 @@ pages:
 
 1. On [Netlify](https://netlify.com), setup up a new project from GitHub with the following settings:
 
-- **Build Command:** `yarn docs:build` or `npm run docs:build`
+- **Build Command:** `vuepress build docs` or `yarn docs:build` or `npm run docs:build`
 - **Publish directory:** `docs/.vuepress/dist`
 
 2. Hit the deploy button.
