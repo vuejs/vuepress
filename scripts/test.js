@@ -8,7 +8,7 @@ const args = minimist(rawArgs)
 let regex
 const debug = !!args['inspect-brk']
 
-if (args.p) {
+if (args.p || args.package) {
   const packages = (args.p || args.package).split(',').join('|')
   regex = `.*@vuepress/(${packages}|plugin-(${packages}))/.*\\.spec\\.(js|ts)$`
   const i = rawArgs.indexOf('-p')
