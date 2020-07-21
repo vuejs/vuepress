@@ -70,6 +70,6 @@ module.exports = [
   },
   {
     text: '0.x',
-    link: 'https://v0.vuepress.vuejs.org/'
+    link: 'https://vuepress-legacy.netlify.app/'
   }
 ]
