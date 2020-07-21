@@ -1,0 +1,17 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: '00:00'
+    timezone: Asia/Calcutta
+  open-pull-requests-limit: 99
+  reviewers:
+  - bencodezen
+  labels:
+  - dependencies
+  commit-message:
+    prefix: fix
+    prefix-development: chore
+    include: scope
