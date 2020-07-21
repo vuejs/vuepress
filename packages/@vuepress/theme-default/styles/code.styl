@@ -57,7 +57,7 @@ div[class*="language-"]
   &.line-numbers-mode
     .highlight-lines .highlighted
         position relative
-        &:before
+        &::before
           content ' '
           position absolute
           z-index 3
@@ -133,5 +133,20 @@ div[class~="language-bash"]:before
 
 div[class~="language-php"]:before
   content "php"
+
+@media print
+  {$contentClass} pre code, {$contentClass} pre[class*="language-"] code
+    color #000
+    page-break-inside avoid
+
+  code, pre, div[class*="language-"], div[class*="language-"] .highlight-lines .highlighted
+    background-color #fff
+    page-break-inside avoid
+
+  div[class*="language-"].line-numbers-mode .highlight-lines
+    .highlighted::before
+    &::after
+      background-color #fff
+      page-break-inside avoid
 
 @import '~prismjs/themes/prism-tomorrow.css'

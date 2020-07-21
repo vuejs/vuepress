@@ -137,4 +137,8 @@ $navbar-horizontal-padding = 1.5rem
       overflow hidden
       white-space nowrap
       text-overflow ellipsis
+
+@media print
+  .navbar
+    display none
 </style>
