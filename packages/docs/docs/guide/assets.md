@@ -2,7 +2,7 @@
 
 ## Relative URLs
 
-All Markdown files are compiled into Vue components and processed by [webpack](http://webpack.js.org/). You can, **and should **, reference any assets using relative URLs:
+All Markdown files are compiled into Vue components and processed by [webpack](http://webpack.js.org/). You can, **and should**, reference any assets using relative URLs:
 
 ``` md
 ![An image](./image.png)

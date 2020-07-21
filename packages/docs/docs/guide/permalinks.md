@@ -50,7 +50,7 @@ module.exports = {
 
 You can also set set a permalink for a single page only. This overrides the aforementioned global setting:
 
-📝 __hello.md__:
+📝 **hello.md**:
 
 ```markdown
 ---

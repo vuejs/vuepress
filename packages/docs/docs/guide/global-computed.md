@@ -4,7 +4,7 @@ In VuePress, some core [computed properties](https://vuejs.org/v2/guide/computed
 
 ## $site
 
-This is the `$site` value of the site you're currently reading:
+This is the `$site` value of the site you’re currently reading:
 
 ``` json
 {
@@ -25,7 +25,7 @@ This is the `$site` value of the site you're currently reading:
 
 ## $page
 
-This is the `$page` value of the page you're currently reading:
+This is the `$page` value of the page you’re currently reading:
 
 ``` json
 {
