@@ -54,7 +54,7 @@ When customizing `templates/ssr.html`, or `templates/dev.html`, it’s best to e
 
 ## Default Page Routing
 
-Here we use the `docs` directory as the `targetDir` (see [Command-line Interface](../api/cli.md#usage)). All the "Relative Paths" below are relative to the `docs` directory. Add `scripts` in `package.json` which is located in your project's root directory:
+Here we use the `docs` directory as the `targetDir` (see [Command-line Interface](../api/cli.md#usage)). All the "Relative Paths" below are relative to the `docs` directory. Add `scripts` in `package.json` which is located in your project’s root directory:
 
 ```json
 {
