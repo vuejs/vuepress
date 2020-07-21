@@ -8,7 +8,7 @@ update_configs:
     # Apply default reviewer and label to created
     # pull requests
     default_reviewers:
-      - "vinayakkulkarni"
+      - "bencodezen"
     default_labels:
       - "dependencies"
     commit_message:
