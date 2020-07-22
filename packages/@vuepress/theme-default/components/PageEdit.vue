@@ -97,7 +97,7 @@ export default {
         : `https://github.com/${docsRepo}`
       return (
         base.replace(endingSlashRE, '')
-        + `/edit`
+        + (/gitlab.com/.test(repo) ? '/-/edit/' : '/edit')
         + `/${docsBranch}/`
         + (docsDir ? docsDir.replace(endingSlashRE, '') + '/' : '')
         + path
