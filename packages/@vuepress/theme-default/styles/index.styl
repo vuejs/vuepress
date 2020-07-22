@@ -198,6 +198,8 @@ th, td
     .page
       padding-left 0
 
+@require 'mobile.styl'
+
 @media print
   body
     color #000
@@ -206,7 +208,7 @@ th, td
     page-break-after avoid
     page-break-before avoid
 
-  img, table
+  img
     page-break-inside avoid
 
   h2+p
@@ -215,4 +217,5 @@ th, td
   a[href^="http://"]::after, a[href^="https://"]::after
     content " [" attr(href) "] "
 
-@require 'mobile.styl'
+  .page
+    padding-left 0
