@@ -60,7 +60,7 @@
     "webpack-chain": "^6.0.0",
     "webpack-dev-server": "^3.5.1",
     "webpack-merge": "^4.1.2",
-    "webpackbar": "3.2.0"
+    "webpackbar": "4.0.0"
   },
   "engines": {
     "node": ">=8.6"
