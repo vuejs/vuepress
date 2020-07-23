@@ -5444,9 +5444,9 @@ envify@^4.0.0:
     through "~2.3.4"
 
 envinfo@^7.2.0:
-  version "7.4.0"
-  resolved "https://registry.yarnpkg.com/envinfo/-/envinfo-7.4.0.tgz#bef4ece9e717423aaf0c3584651430b735ad6630"
-  integrity sha512-FdDfnWnCVjxTTpWE3d6Jgh5JDIA3Cw7LCgpM/pI7kK1ORkjaqI2r6NqQ+ln2j0dfpgxY00AWieSvtkiZQKIItA==
+  version "7.7.2"
+  resolved "https://registry.yarnpkg.com/envinfo/-/envinfo-7.7.2.tgz#098f97a0e902f8141f9150553c92dbb282c4cabe"
+  integrity sha512-k3Eh5bKuQnZjm49/L7H4cHzs2FlL5QjbTB3JrPxoTI8aJG7hVMe4uKyJxSYH4ahseby2waUwk5OaKX/nAsaYgg==
 
 err-code@^1.0.0:
   version "1.1.2"
