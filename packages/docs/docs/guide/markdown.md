@@ -245,7 +245,7 @@ export default {
 </ul>
 ```
 
-A [list of valid languages](https://prismjs.com/#languages-list) is available on Prism's site.
+A [list of valid languages](https://prismjs.com/#languages-list) is available on Prism’s site.
 
 ## Line Highlighting in Code Blocks
 
