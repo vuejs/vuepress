@@ -92,12 +92,24 @@ export default {
         )
       }
 
+      const gitlab = /gitlab.com/
+      if (gitlab.test(docsRepo)) {
+        const base = docsRepo
+        return (
+          base.replace(endingSlashRE, '')
+          + `/-/edit`
+          + `/${docsBranch}/`
+          + (docsDir ? docsDir.replace(endingSlashRE, '') + '/' : '')
+          + path
+        )
+      }
+
       const base = outboundRE.test(docsRepo)
         ? docsRepo
         : `https://github.com/${docsRepo}`
       return (
         base.replace(endingSlashRE, '')
-        + (/gitlab.com/.test(repo) ? '/-/edit/' : '/edit')
+        + '/edit'
         + `/${docsBranch}/`
         + (docsDir ? docsDir.replace(endingSlashRE, '') + '/' : '')
         + path
