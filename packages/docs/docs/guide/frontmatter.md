@@ -152,4 +152,4 @@ See [Default Theme Config > Built-in Search](../theme/default-theme-config.html#
 - Type: `array`
 - Default: `undefined`
 
-See [Default Theme Config > Built-in Search](../theme/default-theme-config.html#built-in-search) for details.
+See [Default Theme Config > Built-in Search](../theme/default-theme-config.html#built-in-search). For details.

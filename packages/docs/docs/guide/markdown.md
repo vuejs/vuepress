@@ -159,7 +159,7 @@ This is a dangerous warning
 :::
 
 ::: details
-This is a details block, which does not work in IE / Edge
+This is a details block, which does not work in That is / Edge
 :::
 
 ### Custom Title
@@ -277,9 +277,9 @@ export default {
 
 In addition to a single line, you can also specify multiple single lines, ranges, or both:
 
-- Line ranges: e.g. `{5-8}`, `{3-10}`, `{10-17}`
-- Multiple single lines: e.g. `{4,7,9}`
-- Line ranges and single lines: e.g. `{4,7-13,16,23-27,40}`
+- Line ranges: for example `{5-8}`, `{3-10}`, `{10-17}`
+- Multiple single lines: for example `{4,7,9}`
+- Line ranges and single lines: for example `{4,7-13,16,23-27,40}`
 
 **Input**
 
@@ -391,7 +391,7 @@ It also supports [line highlighting](#line-highlighting-in-code-blocks):
 Since the import of the code snippets will be executed before webpack compilation, you can’t use the path alias in webpack. The default value of `@` is `process.cwd()`.
 :::
 
-You can also use a [VS Code region](https://code.visualstudio.com/docs/editor/codebasics#_folding) in order to only include the corresponding part of the code file. You can provide a custom region name after a `#` following the filepath (`snippet` by default):
+You can also use a [VS Code region](https://code.visualstudio.com/docs/editor/codebasics#_folding) to only include the corresponding part of the code file. You can provide a custom region name after a `#` following the filepath (`snippet` by default):
 
 **Input**
 
