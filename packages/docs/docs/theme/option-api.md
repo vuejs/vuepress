@@ -7,6 +7,7 @@ metaTitle: Configuration | Theme
 As with plugins, the theme configuration file `themeEntry` should export a `plain JavaScript object`(`#1`). If the plugin needs to take options, it can be a function that exports a plain object(`#2`). The function will be called with the `siteConfig.themeConfig` as the first argument, along with [ctx](../plugin/context-api.md) which provides some compile-time metadata.
 
 ``` js
+// .vuepress/theme/index.js
 // #1
 module.exports = {
    // ...
@@ -14,6 +15,7 @@ module.exports = {
 ```
 
 ``` js
+// .vuepress/theme/index.js
 // #2
 module.exports = (themeConfig, ctx) => {
    return {
@@ -68,6 +70,7 @@ HTML template path used in `build` mode, default template see [here](https://git
 - Default: undefined
 
 ```js
+// .vuepress/theme/index.js
 module.exports = {
   extend: '@vuepress/theme-default'
 }
@@ -86,7 +89,7 @@ VuePress provides the ability to inherit one theme from another. VuePress will f
 - Default: undefined
 
 ```js
-// themePath/index.js
+// .vuepress/theme/index.js
 module.exports = {
   globalLayout: '/path/to/your/global/vue/sfc'
 }
@@ -97,7 +100,7 @@ Global layout component is a component responsible for the global layout strateg
 For example, when you want to set a global header and footer for your theme, you can do this:
 
 ```vue
-<!-- themePath/layouts/GlobalLayout.vue -->
+<!-- .vuepress/theme/layouts/GlobalLayout.vue -->
 <template>
   <div id="global-layout">
     <header><h1>Header</h1></header>
