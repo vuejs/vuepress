@@ -1,0 +1,14 @@
+{
+  "name": "e2e",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "index.js",
+  "dependencies": {
+    "wait-on": "^4.0.1"
+  },
+  "devDependencies": {
+    "jest": "~25.1.0",
+    "playwright": "~0.12.1",
+    "qawolf": "~0.12.4"
+  }
+}
