@@ -129,7 +129,7 @@ export default {
       color lighten($textColor, 25%)
     .time
       font-weight 400
-      color #aaa
+      color #767676
 
 @media (max-width: $MQMobile)
   .page-edit
