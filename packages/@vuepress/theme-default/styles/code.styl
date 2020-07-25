@@ -134,6 +134,8 @@ div[class~="language-bash"]:before
 div[class~="language-php"]:before
   content "php"
 
+@import '~prismjs/themes/prism-tomorrow.css'
+
 @media print
   {$contentClass} pre code, {$contentClass} pre[class*="language-"] code
     color #000
@@ -149,5 +151,3 @@ div[class~="language-php"]:before
     &::after
       background-color #fff
       page-break-inside avoid
-
-@import '~prismjs/themes/prism-tomorrow.css'
