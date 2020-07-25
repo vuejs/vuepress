@@ -4,20 +4,17 @@ on:
   pull_request:
 
 jobs:
-  ci:
+  pr:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
           node-version: '12'
-
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
-
-     - uses: actions/cache@v1
+      - uses: actions/cache@v1
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ runner.os }}-node-modules-${{ hashFiles('yarn.lock') }}
@@ -25,21 +22,21 @@ jobs:
             ${{ runner.os }}-node-modules-
             ${{ runner.os }}-
 
-      - name: install deps
+      - name: Install dependencies
         if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: yarn --check-files --frozen-lockfile --non-interactive
+        run: yarn
 
-      - name: tsc
+      - name: Run tsc
         run: yarn tsc
 
-      - name: test
+      - name: Run unit tests
         run: yarn test
 
-      - name: lint
+      - name: Check linter
         run: yarn lint
 
-      - name: md
+      - name: Check markdown linter
         run: yarn workspace docs lint-md
 
-      - name: build
-        run: yarn build
+      - name: Build vuepress
+        run: yarn build 
