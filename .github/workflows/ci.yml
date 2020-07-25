@@ -1,37 +1,32 @@
-name: ci
+name: Pull request workflow
 
 on:
-  push:
-    branches:
-      - master
   pull_request:
-    branches:
-      - master
 
 jobs:
   ci:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [12, 14]
+    runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node }}
+          node-version: '12'
 
-      - name: checkout
-        uses: actions/checkout@master
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
 
-      - name: cache node_modules
-        uses: actions/cache@v1
+     - uses: actions/cache@v1
         with:
-          path: node_modules
-          key: ${{ matrix.os }}-node-v${{ matrix.node }}-deps-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+            ${{ runner.os }}-
 
       - name: install deps
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn --check-files --frozen-lockfile --non-interactive
 
       - name: tsc
