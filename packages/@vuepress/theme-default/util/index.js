@@ -231,13 +231,10 @@ function resolveItem (item, pages, base, groupDepth = 1) {
         title: item.title
       })
     }
-    return {
+    return Object.assign(item, {
       type: 'group',
-      path: item.path,
-      title: item.title,
-      sidebarDepth: item.sidebarDepth,
       children: children.map(child => resolveItem(child, pages, base, groupDepth + 1)),
       collapsable: item.collapsable !== false
-    }
+    })
   }
 }
