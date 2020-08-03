@@ -220,7 +220,8 @@ module.exports = {
       },
       {
         title: 'Group 2',
-        children: [ /* ... */ ]
+        children: [ /* ... */ ],
+        initialOpenGroupIndex: -1 // optional, defaults to 0, defines the index of initially opened subgroup
       }
     ]
   }
@@ -233,6 +234,8 @@ A sidebar group config also supports [sidebarDepth](#nested-header-links) field 
 
 ::: tip
    Nested sidebar group is also supported.
+   By default the first subgroup is opened initially.
+   You can change this using the `initialOpenGroupIndex`: Specify an index to open another subgroup or use `-1` for no open group.
 :::
 
 ### Multiple Sidebars

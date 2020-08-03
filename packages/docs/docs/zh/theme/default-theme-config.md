@@ -218,7 +218,8 @@ module.exports = {
       },
       {
         title: 'Group 2',
-        children: [ /* ... */ ]
+        children: [ /* ... */ ],
+        initialOpenGroupIndex: -1 // 可选的, 默认值是 0
       }
     ]
   }
