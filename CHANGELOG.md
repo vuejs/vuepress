@@ -15,7 +15,6 @@
 ### Features
 
 * **$theme-default:** add initial open group index option ([#2408](https://github.com/vuejs/vuepress/issues/2408)) ([465ae40](https://github.com/vuejs/vuepress/commit/465ae40))
-* use GitHub actions instead of CircleCI ([#2417](https://github.com/vuejs/vuepress/issues/2417)) ([eb80283](https://github.com/vuejs/vuepress/commit/eb80283))
 
 
 
