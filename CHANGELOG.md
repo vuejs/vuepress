@@ -1,3 +1,28 @@
+## [1.5.3](https://github.com/vuejs/vuepress/compare/v1.5.2...v1.5.3) (2020-08-05)
+
+
+### Bug Fixes
+
+* **$theme-default:** fix editLink for repos hosted on gitlab.com ([#2523](https://github.com/vuejs/vuepress/issues/2523)) ([1c3967c](https://github.com/vuejs/vuepress/commit/1c3967c))
+* add toml dependencyt to shared-utils ([b858a6e](https://github.com/vuejs/vuepress/commit/b858a6e))
+* regular files should not be executable ([#2535](https://github.com/vuejs/vuepress/issues/2535)) ([ffb8527](https://github.com/vuejs/vuepress/commit/ffb8527))
+* **$theme-default:** improve last-updated text color contrast ([#2282](https://github.com/vuejs/vuepress/issues/2282)) ([7ca9fbc](https://github.com/vuejs/vuepress/commit/7ca9fbc))
+* allows no rel attribute on external links in the nav ([#2338](https://github.com/vuejs/vuepress/issues/2338)) ([b343cd3](https://github.com/vuejs/vuepress/commit/b343cd3))
+* **$core:**  style loss under build  for package that specifies `sideEffects: false` (fix [#2350](https://github.com/vuejs/vuepress/issues/2350)) ([#2471](https://github.com/vuejs/vuepress/issues/2471)) ([7e29900](https://github.com/vuejs/vuepress/commit/7e29900))
+* **$markdown:** line highlighting not working correctly when importing code snippets ([#2441](https://github.com/vuejs/vuepress/issues/2441)) ([d0f2e42](https://github.com/vuejs/vuepress/commit/d0f2e42))
+* **deps:** [security] bump acorn from 5.7.3 to 5.7.4 ([#2500](https://github.com/vuejs/vuepress/issues/2500)) ([8e48e5c](https://github.com/vuejs/vuepress/commit/8e48e5c))
+* **deps:** [security] bump handlebars from 4.2.1 to 4.7.6 ([#2502](https://github.com/vuejs/vuepress/issues/2502)) ([a01ebc9](https://github.com/vuejs/vuepress/commit/a01ebc9))
+* **deps:** [security] bump https-proxy-agent from 2.2.1 to 2.2.4 ([#2503](https://github.com/vuejs/vuepress/issues/2503)) ([cbb9ba9](https://github.com/vuejs/vuepress/commit/cbb9ba9))
+* **deps:** bump envinfo from 7.4.0 to 7.7.2 ([#2526](https://github.com/vuejs/vuepress/issues/2526)) ([c827c19](https://github.com/vuejs/vuepress/commit/c827c19))
+
+
+### Features
+
+* **$theme-default:** add initial open group index option ([#2408](https://github.com/vuejs/vuepress/issues/2408)) ([465ae40](https://github.com/vuejs/vuepress/commit/465ae40))
+* use GitHub actions instead of CircleCI ([#2417](https://github.com/vuejs/vuepress/issues/2417)) ([eb80283](https://github.com/vuejs/vuepress/commit/eb80283))
+
+
+
 ## [1.5.2](https://github.com/vuejs/vuepress/compare/v1.5.1...v1.5.2) (2020-06-14)
 
 
