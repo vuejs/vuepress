@@ -9,7 +9,7 @@ export default {
         // Only reload if the ad has been loaded
         // otherwise it's possible that the script is appended but
         // the ads are not loaded yet. This would result in duplicated ads.
-        && this.$el.querySelector('#carbonads')
+        && this.$el.querySelector('#carbon-ads')
       ) {
         this.$el.innerHTML = ''
         this.load()
@@ -31,7 +31,10 @@ export default {
   },
 
   render (h) {
-    return h('div', { class: 'carbon-ads' })
+    return h('div', {
+      id: 'carbon-ads',
+      class: 'carbon-ads'
+    })
   }
 }
 </script>
