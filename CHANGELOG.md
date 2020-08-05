@@ -10,10 +10,6 @@
 * allows no rel attribute on external links in the nav ([#2338](https://github.com/vuejs/vuepress/issues/2338)) ([b343cd3](https://github.com/vuejs/vuepress/commit/b343cd3))
 * **$core:**  style loss under build  for package that specifies `sideEffects: false` (fix [#2350](https://github.com/vuejs/vuepress/issues/2350)) ([#2471](https://github.com/vuejs/vuepress/issues/2471)) ([7e29900](https://github.com/vuejs/vuepress/commit/7e29900))
 * **$markdown:** line highlighting not working correctly when importing code snippets ([#2441](https://github.com/vuejs/vuepress/issues/2441)) ([d0f2e42](https://github.com/vuejs/vuepress/commit/d0f2e42))
-* **deps:** [security] bump acorn from 5.7.3 to 5.7.4 ([#2500](https://github.com/vuejs/vuepress/issues/2500)) ([8e48e5c](https://github.com/vuejs/vuepress/commit/8e48e5c))
-* **deps:** [security] bump handlebars from 4.2.1 to 4.7.6 ([#2502](https://github.com/vuejs/vuepress/issues/2502)) ([a01ebc9](https://github.com/vuejs/vuepress/commit/a01ebc9))
-* **deps:** [security] bump https-proxy-agent from 2.2.1 to 2.2.4 ([#2503](https://github.com/vuejs/vuepress/issues/2503)) ([cbb9ba9](https://github.com/vuejs/vuepress/commit/cbb9ba9))
-* **deps:** bump envinfo from 7.4.0 to 7.7.2 ([#2526](https://github.com/vuejs/vuepress/issues/2526)) ([c827c19](https://github.com/vuejs/vuepress/commit/c827c19))
 
 
 ### Features
