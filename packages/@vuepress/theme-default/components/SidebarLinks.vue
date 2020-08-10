@@ -96,7 +96,7 @@ function descendantIsActive (route, item) {
       } else {
         return child.type === 'page' && isActive(route, child.path)
       }
-    })
+    }) || item.path && isActive(route, item.path)
   }
   return false
 }
