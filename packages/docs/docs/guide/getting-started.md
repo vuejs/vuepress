@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/en/) >= 8.6.
+- [Node.js 10+](https://nodejs.org/en/)
 - [Yarn Classic](https://classic.yarnpkg.com/en/) (Optional)\*
 
 \* _If your project is using webpack 3.x, you may notice some installation issues with npm. In this case, we recommend using Yarn._
