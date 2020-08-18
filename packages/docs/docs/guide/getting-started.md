@@ -9,7 +9,7 @@
 
 ## Quick Start
 
-The fastest way to get your VuePress project setup is to use our [create-vuepress tool](https://github.com/vuepressjs/create-vuepress/pulls) which will help scaffold the basic VuePress site structure for you.
+The fastest way to get your VuePress project setup is to use our [create-vuepress tool](https://github.com/vuepressjs/create-vuepress/) which will help scaffold the basic VuePress site structure for you.
 
 To use it, open up your terminal in the desired directory and run the following command:
 
