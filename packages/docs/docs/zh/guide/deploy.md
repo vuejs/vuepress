@@ -16,7 +16,7 @@
 
 ## 云开发 CloudBase
 
-[云开发 CloudBase](https://cloudbase.net/) 是一个云原生一体化的 Serverless 云平台，支持静态网站、容器等多种托管能力，并提供简便的部署工具 [CloudBase Framework](https://cloudbase.net/framework.html) 来一键部署应用。
+[云开发 CloudBase](https://cloudbase.net/?site=vuepress) 是一个云原生一体化的 Serverless 云平台，支持静态网站、容器等多种托管能力，并提供简便的部署工具 [CloudBase Framework](https://cloudbase.net/framework.html?site=vuepress) 来一键部署应用。
 
 1. 全局安装 CloudBase  CLI
 
@@ -24,10 +24,9 @@
 npm install -g @cloudbase/cli
 ```
 
-2. 在项目根目录运行以下命令一键部署 VuePress 应用：
+2. 在项目根目录运行以下命令一键部署 VuePress 应用，在部署之前可以先 [开通环境](https://console.cloud.tencent.com/tcb/env/index?channel=ad&site=vuejs)：
 
 ```
-cloudbase login
 cloudbase init --without-template
 cloudbase framework:deploy
 ```
@@ -38,7 +37,7 @@ cloudbase framework:deploy
 
    也可以使用 `cloudbase init --template vuepress` 快速创建和部署一个新的 VuePress 应用
 
-   更多详细信息请查看 CloudBase Framework 的[部署项目示例](https://github.com/TencentCloudBase/cloudbase-framework#%E9%A1%B9%E7%9B%AE%E7%A4%BA%E4%BE%8B)
+   更多详细信息请查看 CloudBase Framework 的[部署项目示例](https://github.com/TencentCloudBase/cloudbase-framework?site=vuepress#%E9%A1%B9%E7%9B%AE%E7%A4%BA%E4%BE%8B)
 
 ## GitHub Pages
 
