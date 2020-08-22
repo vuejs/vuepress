@@ -9,16 +9,14 @@
 
 ## Quick Start
 
-The fastest way to get your VuePress project setup is to use our [create-vuepress tool](https://github.com/vuepressjs/create-vuepress/) which will help scaffold the basic VuePress site structure for you.
+The fastest way to get your VuePress project setup is to use our [create-vuepress-site generator](https://github.com/vuepressjs/create-vuepress-site/) which will help scaffold the basic VuePress site structure for you.
 
 To use it, open up your terminal in the desired directory and run the following command:
 
 ```bash
-yarn create vuepress [directoryName]
-# OR npx create-vuepress [directoryName]
+yarn create vuepress-site [optionalDirectoryName]
+# OR npx create-vuepress-site [optionalDirectoryName]
 ```
-
-You will be prompted to choose which boilerplate you prefer. For most users, the `docs` boilerplate is what you will want.
 
 You will then have the opportunity to configure your VuePress site’s metadata such as:
 
@@ -29,16 +27,6 @@ You will then have the opportunity to configure your VuePress site’s metadata 
 - Repository URL
 
 Once it is complete, you should see your new VuePress site scaffolded in your directory! :tada:
-
-At this time, you'll need to take one more step and update the VuePress version inside the generated project.
-
-```bash
-# Navigate into your newly created project
-cd [directoryName]
-
-# Update VuePress dependency
-yarn add -D vuepress # npm install --save-dev vuepress
-```
 
 ## Manual Installation
 
