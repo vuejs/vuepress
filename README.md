@@ -13,9 +13,20 @@
 
 ## Install
 
+### Package
+
 ```bash
 yarn add vuepress -D
 ```
+
+### Generator
+
+```bash
+# Creates a scaffolded docs site
+yarn create vuepress-site
+```
+
+For more information, see [create-vuepress-site](https://github.com/vuepressjs/create-vuepress-site).
 
 ## Documentation
 
@@ -68,6 +79,7 @@ If you have a VuePress-related project/component/tool, add it with a pull reques
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ### Core Team Emeriti
