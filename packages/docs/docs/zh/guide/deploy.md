@@ -24,7 +24,7 @@
 npm install -g @cloudbase/cli
 ```
 
-2. 在项目根目录运行以下命令一键部署 VuePress 应用，在部署之前可以先 [开通环境](https://console.cloud.tencent.com/tcb/env/index?channel=ad&site=vuejs)：
+2. 在项目根目录运行以下命令一键部署 VuePress 应用，在部署之前可以先 [开通环境](https://console.cloud.tencent.com/tcb/env/index?tdl_anchor=ad&tdl_site=vuejs)：
 
 ```
 cloudbase init --without-template
