@@ -183,6 +183,36 @@ VuePress provides a convenient way to add extra styles. You can create a `.vuepr
 }
 ```
 
+::: warning
+Because of the behavior behind the scenes, in both `palette.styl` and `index.styl`, the normal `.css` style sheets are not allowed to be imported by [@import / @require](https://stylus-lang.com/docs/import.html) from **relative paths**.
+:::
+
+::: details What if you have to import / require normal `css` style sheets?
+
+Use **Absolute path**.
+
+1. Importing / requiring a file from an npm package:
+
+``` stylus
+@require '~my-css-package/style.css'
+```
+
+2. Importing / requiring a local file:
+
+As there’s an [alias](../plugin/option-api.html#alias) option out there, using webpack alias must be the simplest approach. For example:
+
+```js
+// config.js
+ alias: {
+    'styles': path.resolve(__dirname, './styles')
+  }
+```
+
+``` stylus
+@require '~styles/style.css'
+```
+:::
+
 **Also see:**
 
 - [Why can’t `palette.styl` and `index.styl` merge into one API?](../faq/README.md#why-can-t-palette-styl-and-index-styl-merge-into-one-api)
@@ -321,7 +351,7 @@ This option is also included in [Plugin API](../plugin/option-api.md#extendmarkd
 - Default: `['h2', 'h3']`
 
 While preparing the page, headers are extracted from the Markdown file and stored in `this.$page.headers`. By default, VuePress will extract `h2` and `h3` elements for you. You can override the headers it pulls out in your `markdown` options.
- 
+
 ``` js
 module.exports = {
   markdown: {
