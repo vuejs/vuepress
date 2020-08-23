@@ -118,6 +118,12 @@ export default {
       return last(array) === item
     },
 
+    /**
+     * Open the dropdown when user tab and click from keyboard.
+     *
+     * Use event.detail to detect tab and click from keyboard. Ref: https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/detail
+     * The Tab + Click is UIEvent > KeyboardEvent, so the detail is 0.
+     */
     handleDropdown () {
       const isTriggerByTab = event.detail === 0
       if (isTriggerByTab) this.setOpen(!this.open)
