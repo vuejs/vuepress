@@ -1,3 +1,16 @@
+## [1.5.4](https://github.com/vuejs/vuepress/compare/v1.5.3...v1.5.4) (2020-08-23)
+
+
+### Bug Fixes
+
+* **$core:** decode regularPath when generate router config (fix [#1946](https://github.com/vuejs/vuepress/issues/1946)) ([#1947](https://github.com/vuejs/vuepress/issues/1947)) ([dd26c7c](https://github.com/vuejs/vuepress/commit/dd26c7c))
+* **$shared-utils:** fix date parse logic for permalinks ([#2181](https://github.com/vuejs/vuepress/issues/2181)) ([d4d0380](https://github.com/vuejs/vuepress/commit/d4d0380))
+* **$shared-utils:** replace diacritics with regex ([#1855](https://github.com/vuejs/vuepress/issues/1855)) ([a03e93d](https://github.com/vuejs/vuepress/commit/a03e93d))
+* **$theme-default:** overlap navbar dropdown menus (fix [#2227](https://github.com/vuejs/vuepress/issues/2227)) ([#2365](https://github.com/vuejs/vuepress/issues/2365)) ([ceb0fa9](https://github.com/vuejs/vuepress/commit/ceb0fa9))
+* **$theme-default:** remove invalidate aria-labelledby on homepage title([#2277](https://github.com/vuejs/vuepress/issues/2277)) ([94a7de4](https://github.com/vuejs/vuepress/commit/94a7de4))
+
+
+
 ## [1.5.3](https://github.com/vuejs/vuepress/compare/v1.5.2...v1.5.3) (2020-08-05)
 
 
