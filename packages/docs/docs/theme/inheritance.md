@@ -161,7 +161,7 @@ This way, you can "tamper" with some part of an atomic theme.
 You can use `@parent-theme` to access the root path of the parent theme. The following example shows creating a layout component with the same name in a child theme and using slots in the parent theme. [@vuepress/theme-vue](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/theme-vue) is created in this way.
 
 ```vue
-<!-- // .vuepress/theme/components/Foo.vue -->
+<!-- .vuepress/theme/components/Foo.vue -->
 <template>
   <ParentLayout>
     <Foo #foo/>
