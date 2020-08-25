@@ -109,10 +109,11 @@ layout: AnotherLayout
 你可以通过主题的配置文件 `themePath/index.js` 来给主题应用一些插件：
 
 ```js
+// .vuepress/theme/index.js
 module.exports = {
   plugins: [
     '@vuepress/pwa',
-    { 
+    {
       serviceWorker: true,
       updatePopup: true
     }

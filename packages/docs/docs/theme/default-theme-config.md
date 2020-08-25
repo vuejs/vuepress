@@ -86,6 +86,7 @@ module.exports = {
 These links can also be dropdown menus if you provide an array of `items` instead of a `link`:
 
 ```js
+// .vuepress/config.js
 module.exports = {
   themeConfig: {
     nav: [
@@ -105,6 +106,7 @@ module.exports = {
 You can also have sub groups inside a dropdown by having nested items:
 
 ```js
+// .vuepress/config.js
 module.exports = {
   themeConfig: {
     nav: [
@@ -177,6 +179,7 @@ sidebarDepth: 2
 The sidebar only displays links for headers in the current active page. You can display all header links for every page with `themeConfig.displayAllHeaders: true`:
 
 ``` js
+// .vuepress/config.js
 module.exports = {
   themeConfig: {
     displayAllHeaders: true // Default: false
@@ -189,6 +192,7 @@ module.exports = {
 By default, the nested header links and the hash in the URL are updated as the user scrolls to view the different sections of the page. This behavior can be disabled with the following theme config:
 
 ``` js
+// .vuepress/config.js
 module.exports = {
   themeConfig: {
     activeHeaderLinks: false, // Default: true
@@ -346,6 +350,7 @@ sidebar: false
 You can disable the built-in search box with `themeConfig.search: false`, and customize how many suggestions will be shown with `themeConfig.searchMaxSuggestions`:
 
 ``` js
+// .vuepress/config.js
 module.exports = {
   themeConfig: {
     search: false,
@@ -383,6 +388,7 @@ If you need full text search, you can use [Algolia Search](#algolia-search).
 The `themeConfig.algolia` option allows you to use [Algolia DocSearch](https://community.algolia.com/docsearch/) to replace the simple built-in search. To enable it, you need to provide at least `apiKey` and `indexName`:
 
 ``` js
+// .vuepress/config.js
 module.exports = {
   themeConfig: {
     algolia: {
@@ -404,6 +410,7 @@ For more options, check out [Algolia DocSearch’s documentation](https://github
 You can define a placeholder for the search box by adding the `searchPlaceholder` attribute:
 
 ``` js
+// .vuepress/config.js
 module.exports = {
   themeConfig: {
     searchPlaceholder: 'Search...'
@@ -416,6 +423,7 @@ module.exports = {
 The `themeConfig.lastUpdated` option allows you to get the UNIX timestamp(ms) of each file’s last `git` commit, and it will also display at the bottom of each page in an appropriate format:
 
 ``` js
+// .vuepress/config.js
 module.exports = {
   themeConfig: {
     lastUpdated: 'Last Updated', // string | boolean
