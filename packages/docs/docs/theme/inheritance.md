@@ -28,6 +28,7 @@ For now theme inheritance doesn’t support high-order inheritance, that means, 
 Suppose you want to create a theme inherited from the default theme, you only need to configure the [extend](./option-api.md#extend) option in your theme configuration:
 
 ```js
+// .vuepress/theme/index.js
 module.exports = {
   extend: '@vuepress/theme-default'
 }
@@ -79,7 +80,7 @@ module.exports = {
 The child theme can edit the options of plugin in the following ways:
 
 ```js
-// themePath/index.js
+// .vuepress/theme/index.js
 module.exports = {
   plugins: [
     ['@vuepress/search', {
@@ -92,7 +93,7 @@ module.exports = {
 Child theme can even disable it:
 
 ```js
-// themePath/index.js
+// .vuepress/theme/index.js
 module.exports = {
   plugins: [
     ['@vuepress/search', false]
@@ -160,7 +161,7 @@ This way, you can "tamper" with some part of an atomic theme.
 You can use `@parent-theme` to access the root path of the parent theme. The following example shows creating a layout component with the same name in a child theme and using slots in the parent theme. [@vuepress/theme-vue](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/theme-vue) is created in this way.
 
 ```vue
-<!-- themePath/components/Foo.vue -->
+<!-- .vuepress/theme/components/Foo.vue -->
 <template>
   <ParentLayout>
     <Foo #foo/>

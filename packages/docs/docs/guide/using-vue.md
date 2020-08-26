@@ -4,7 +4,7 @@
 
 Because VuePress applications are server-rendered in Node.js when generating static builds, any Vue usage must conform to the [universal code requirements](https://ssr.vuejs.org/en/universal.html). In short, make sure to only access Browser / DOM APIs in `beforeMount` or `mounted` hooks.
 
-If you are using or demoing components that are not SSR friendly (for example containing custom directives), you can wrap them inside the built-in `<ClientOnly>` component:
+If you are using or demoing components that are not SSR-friendly (for example, contain custom directives), you can wrap them inside the built-in `<ClientOnly>` component:
 
 ``` md
 <ClientOnly>
@@ -12,7 +12,7 @@ If you are using or demoing components that are not SSR friendly (for example co
 </ClientOnly>
 ```
 
-Note this does not fix components or libraries that access Browser APIs **on import** - to use code that assumes a browser environment on import, you need to dynamically import them in proper lifecycle hooks:
+Note this does not fix components or libraries that access Browser APIs **on import**. To use code that assumes a browser environment on import, you need to dynamically import them in proper lifecycle hooks:
 
 ``` vue
 <script>
@@ -157,23 +157,23 @@ Make sure a custom component’s name either contains a hyphen or is in PascalCa
 
 ### Using Components In Headers
 
-You can use Vue components in the headers, but note the difference between the following two ways:
+You can use Vue components in the headers, but note the difference between the following syntaxes:
 
 | Markdown | Output HTML | Parsed Header |
 |--------|-------------|----------------|
 | <pre v-pre><code> # text &lt;Tag/&gt; </code></pre> | `<h1>text <Tag/></h1>` | `text` |
 | <pre v-pre><code> # text \`&lt;Tag/&gt;\` </code></pre> | `<h1>text <code>&lt;Tag/&gt;</code></h1>` | `text <Tag/>` |
 
-The HTML wrapped by `<code>` will be displayed as is, only the HTML that is not wrapped will be parsed by Vue.
+The HTML wrapped by `<code>` will be displayed as-is; only the HTML that is **not** wrapped will be parsed by Vue.
 
 ::: tip
 
-The output HTML is accomplished by [markdown-it](https://github.com/markdown-it/markdown-it), while the parsed headers are done by VuePress, and used for the [sidebar](../theme/default-theme-config.md#sidebar) and the document title.
+The output HTML is accomplished by [markdown-it](https://github.com/markdown-it/markdown-it), while the parsed headers are handled by VuePress (and used for both the [sidebar](../theme/default-theme-config.md#sidebar) and document title).
 :::
 
 ## Using Pre-processors
 
-VuePress has built-in webpack config for the following pre-processors: `sass`, `scss`, `less`, `stylus` and `pug`. All you need to do is installing the corresponding dependencies. For example, to enable `sass`, install the following in your project:
+VuePress has built-in webpack support for the following pre-processors: `sass`, `scss`, `less`, `stylus` and `pug`. All you need to do is installing the corresponding dependencies. For example, to enable `sass`:
 
 ``` bash
 yarn add -D sass-loader node-sass
@@ -195,14 +195,14 @@ yarn add -D pug pug-plain-loader
 ```
 
 ::: tip
-If you are a Stylus user, you don’t need to install `stylus` and `stylus-loader` in your project because VuePress uses Stylus internally.
+If you are a Stylus user, you don’t need to install `stylus` and `stylus-loader` in your project; VuePress uses Stylus internally.
 
 For pre-processors that do not have built-in webpack config support, you will need to [extend the internal webpack config](../config/README.md#configurewebpack) and install the necessary dependencies.
 :::
 
 ## Script & Style Hoisting
 
-Sometimes you may need to apply some JavaScript or CSS only to the current page. In those cases, you can directly write root-level `<script>` or `<style>` blocks in the Markdown file, and they will be hoisted out of the compiled HTML and used as the `<script>` and `<style>` blocks for the resulting Vue single-file component.
+Sometimes you may need to apply some JavaScript or CSS only to the current page. In those cases, you can directly write root-level `<script>` or `<style>` blocks in the Markdown file. These will be hoisted out of the compiled HTML and used as the `<script>` and `<style>` blocks for the resulting Vue single-file component:
 
 <p class="demo" :class="$style.example"></p>
 
@@ -226,7 +226,7 @@ export default {
 
 ### OutboundLink <Badge text="stable"/>
 
-It(<OutboundLink/>) is used to specify that this is an external link. In VuePress, this component has been followed by every external link.
+The indicator <OutboundLink/> is used to denote external links. In VuePress, this component has been followed by every external link.
 
 ### ClientOnly <Badge text="stable"/>
 
@@ -241,7 +241,7 @@ See [Browser API Access Restrictions](#browser-api-access-restrictions).
 
 - **Usage**：
 
-Specify a specific slot for a specific page (.md) for rendering. This will be useful when you use [Custom Layout](../theme/default-theme-config.md#custom-layout-for-specific-pages) or [Writing a theme](../theme/writing-a-theme.md)
+Specify a specific slot for a specific page (.md) for rendering. This is useful when using a [Custom Layout](../theme/default-theme-config.md#custom-layout-for-specific-pages) or [Writing a theme](../theme/writing-a-theme.md):
 
 ``` vue
 <Content/>
@@ -264,7 +264,7 @@ Specify a specific slot for a specific page (.md) for rendering. This will be us
 
 - **Usage**:
 
-You can use this component in header to add some status for some API:
+You can use this component in a header to add some status for an API:
 
 ``` md
 ### Badge <Badge text="beta" type="warning"/> <Badge text="default theme"/>

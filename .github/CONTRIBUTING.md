@@ -4,16 +4,13 @@ This project uses a monorepo setup that requires using [Yarn](https://yarnpkg.co
 
 ``` sh
 # Install all dependencies.
-yarn install
+yarn
 
 # Serves VuePress' own docs with itself.
 yarn dev
 
 # Build VuePress' own docs with itself.
 yarn build
-
-# Execute all the test suites.
-yarn test
 
 # Clean dependencies.
 yarn clean
@@ -24,7 +21,15 @@ yarn boot
 
 ## Testing Setup
 
-> TODO
+VuePress leverages [jest](https://jestjs.io/) for its tests, testing process depends on some setup located at [scripts/test.js](../scripts/test.js).
+
+```bash
+# Execute all the test suites.
+yarn test
+
+# Execute tests under specfic package. 
+yarn test -p=core ## OR --package=core
+```
 
 ## Core Packages
 

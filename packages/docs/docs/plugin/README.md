@@ -15,7 +15,7 @@ Here is also a little slightly complicated plugin example [@vuepress/plugin-blog
 
 ## Out of the Box
 
-To keep things at a minimum, not all of the official plugins are shipped with VuePress. Here is the list of plugins that are pre-installed in the VuePress and the default theme, **plugins that are not in the list below need to be installed manually**(e.g. [@vuepress/plugin-back-to-top](./official/plugin-back-to-top.md)).
+To keep things at a minimum, not all of the official plugins are shipped with VuePress. Here is the list of plugins that are pre-installed in the VuePress and the default theme, **plugins that are not in the list below need to be installed manually**(for example [@vuepress/plugin-back-to-top](./official/plugin-back-to-top.md)).
 
 ### Plugins that come with VuePress
 

@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`markdown page should extract any content above <!-- more --> as excerpt 1`] = `
+<h1 id="excerpt"><a class="header-anchor" href="#excerpt" aria-hidden="true">#</a> Excerpt</h1>
+<p>Blablabla...</p>
+`;
+
+exports[`markdown page should extract headers by config 1`] = `
+Array [
+  Object {
+    "level": 1,
+    "slug": "alpha",
+    "title": "Alpha",
+  },
+  Object {
+    "level": 2,
+    "slug": "h2",
+    "title": "h2",
+  },
+]
+`;
+
+exports[`markdown page should extract level 2 and 3 headers by default 1`] = `
+Array [
+  Object {
+    "level": 2,
+    "slug": "h2",
+    "title": "h2",
+  },
+  Object {
+    "level": 3,
+    "slug": "h3",
+    "title": "h3",
+  },
+]
+`;

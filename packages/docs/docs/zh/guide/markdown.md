@@ -270,6 +270,46 @@ export default {
 }
 ```
 
+除了单行以外，你也可指定多行，行数区间，或是两者都指定。
+
+- 行数区间: 例如 `{5-8}`, `{3-10}`, `{10-17}`
+- 多个单行: 例如 `{4,7,9}`
+- 行数区间与多个单行: 例如 `{4,7-13,16,23-27,40}`
+
+**Input**
+
+````
+``` js{1,4,6-7}
+export default { // Highlighted
+  data () {
+    return {
+      msg: `Highlighted!
+      This line isn't highlighted,
+      but this and the next 2 are.`,
+      motd: 'VuePress is awesome',
+      lorem: 'ipsum',
+    }
+  }
+}
+```
+````
+
+**Output**
+
+``` js{1,4,6-8}
+export default { // Highlighted
+  data () {
+    return {
+      msg: `Highlighted!
+      This line isn't highlighted,
+      but this and the next 2 are.`,
+      motd: 'VuePress is awesome',
+      lorem: 'ipsum',
+    }
+  }
+}
+```
+
 ## 行号
 
 你可以通过配置来为每个代码块显示行号：

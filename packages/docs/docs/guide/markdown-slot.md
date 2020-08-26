@@ -8,9 +8,9 @@ First, let’s review the relationship between layout components and Markdown fi
 
 <diagram-markdown-slot-relationship/>
 
-Markdown files are providers of metadata (Page content, Configuration, etc.), while layout components consume them. We can use `frontmatter` to define some metadata for common data types, but `frontmatter` is hard to do something about Markdown / HTML, a complex metadata that involves differences before and after compilation.
+Markdown files are providers of metadata (page content, configuration, etc.), while layout components consume them. We can use `frontmatter` to define some metadata for common data types, but `frontmatter` is hard to do something about Markdown / HTML, a complex metadata that involves differences before and after compilation.
 
-Markdown Slot is to solve this kind of problem.
+Markdown Slots solve this problem.
 
 ## Named Slots
 
@@ -34,7 +34,7 @@ Here we are using `slot-key` instead of `slot`, because in Vue, `slot` is a rese
 
 ## Default Slot Content
 
-By default, the slot-free part of a Markdown file becomes the default content of a Markdown slot, which you can access directly using the `Content` component:
+By default, the slot-free part of a Markdown file becomes the default content of a Markdown slot. You can access this directly using the `Content` component:
 
 ``` vue
 <Content/>
@@ -60,7 +60,7 @@ Suppose your layout component is as follows:
 </template>
 ```
 
-If the Markdown content of a page is like this:
+If the Markdown content of a page is this:
 
 ```md
 ::: slot header
@@ -104,6 +104,6 @@ Then the rendered HTML of this page will be:
 
 Note that:
 1. Unlike the slot mechanism provided by [Vue](https://vuejs.org/v2/guide/components-slots.html) itself, each content distribution is wrapped in a `div` whose class is `content` with the name of the slot.
-2. Please ensure the uniqueness of the slot defined.
+2. You need to ensure the uniqueness of the slot defined.
 
 <!-- textlint-enable -->

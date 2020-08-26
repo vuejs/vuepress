@@ -83,6 +83,7 @@ module.exports = {
 当你提供了一个 `items` 数组而不是一个单一的 `link` 时，它将显示为一个 `下拉列表` ：
 
 ```js
+// .vuepress/config.js
 module.exports = {
   themeConfig: {
     nav: [
@@ -102,6 +103,7 @@ module.exports = {
 此外，你还可以通过嵌套的 `items` 来在 `下拉列表` 中设置分组：
 
 ```js
+// .vuepress/config.js
 module.exports = {
   themeConfig: {
     nav: [
@@ -174,6 +176,7 @@ sidebarDepth: 2
 默认情况下，侧边栏只会显示由当前活动页面的标题（headers）组成的链接，你可以将 `themeConfig.displayAllHeaders` 设置为 `true` 来显示所有页面的标题链接：
 
 ``` js
+// .vuepress/config.js
 module.exports = {
   themeConfig: {
     displayAllHeaders: true // 默认值：false
@@ -186,6 +189,7 @@ module.exports = {
 默认情况下，当用户通过滚动查看页面的不同部分时，嵌套的标题链接和 URL 中的 Hash 值会实时更新，这个行为可以通过以下的配置来禁用：
 
 ``` js
+// .vuepress/config.js
 module.exports = {
   themeConfig: {
     activeHeaderLinks: false, // 默认值：true
@@ -218,7 +222,8 @@ module.exports = {
       },
       {
         title: 'Group 2',
-        children: [ /* ... */ ]
+        children: [ /* ... */ ],
+        initialOpenGroupIndex: -1 // 可选的, 默认值是 0
       }
     ]
   }
@@ -337,6 +342,7 @@ sidebar: false
 你可以通过设置 `themeConfig.search: false` 来禁用默认的搜索框，或是通过 `themeConfig.searchMaxSuggestions` 来调整默认搜索框显示的搜索结果数量：
 
 ``` js
+// .vuepress/config.js
 module.exports = {
   themeConfig: {
     search: false,
@@ -349,7 +355,7 @@ module.exports = {
 
 ```yaml
 ---
-tags: 
+tags:
   - 配置
   - 主题
   - 索引
@@ -374,6 +380,7 @@ search: false
 你可以通过 `themeConfig.algolia` 选项来用 [Algolia 搜索](https://community.algolia.com/docsearch/) 替换内置的搜索框。要启用 Algolia 搜索，你需要至少提供 `apiKey` 和 `indexName`：
 
 ```js
+// .vuepress/config.js
 module.exports = {
   themeConfig: {
     algolia: {
@@ -395,6 +402,7 @@ module.exports = {
 你可以通过 `themeConfig.lastUpdated` 选项来获取每个文件最后一次 `git` 提交的 UNIX 时间戳(ms)，同时它将以合适的日期格式显示在每一页的底部：
 
 ``` js
+// .vuepress/config.js
 module.exports = {
   themeConfig: {
     lastUpdated: 'Last Updated', // string | boolean

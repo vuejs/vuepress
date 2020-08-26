@@ -27,7 +27,7 @@
 假设你想创建一个继承自 VuePress 默认主题的派生主题，你只需要在你的主题配置中配置 [extend](./option-api.md#extend) 选项：
 
 ```js
-// themePath/index.js
+// .vuepress/theme/index.js
 module.exports = {
   extend: '@vuepress/theme-default'
 }
@@ -79,7 +79,7 @@ module.exports = {
 那么子主题可以通过如下方式来修改该插件的默认值：
 
 ```js
-// themePath/index.js
+// .vuepress/theme/index.js
 module.exports = {
   plugins: [
     ['@vuepress/search', {
@@ -92,7 +92,7 @@ module.exports = {
 也可以选择禁用它：
 
 ```js
-// themePath/index.js
+// .vuepress/theme/index.js
 module.exports = {
   plugins: [
     ['@vuepress/search', false]
@@ -156,7 +156,7 @@ theme
 你可以使用 `@parent-theme` 来访问父主题的根路径，下述示例展示了在子主题中创建一个同名的布局组件，并简单使用父主题中的 slot，[@vuepress/theme-vue](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/theme-vue) 便是通过这种方式创造的。
 
 ```vue
-<!-- themePath/components/Foo.vue -->
+<!-- .vuepress/theme/components/Foo.vue -->
 <template>
   <ParentLayout>
     <Foo #foo/>
