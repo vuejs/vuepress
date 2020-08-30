@@ -5,6 +5,15 @@ import debounce from 'lodash.debounce'
 export default {
   mounted () {
     window.addEventListener('scroll', this.onScroll)
+    if (location.hash && location.hash !== '#') {
+      this.$nextTick(() => {
+        setTimeout(function () {
+          const anchorLocation = decodeURIComponent(location.hash)
+          const anchorElement = document.querySelector(anchorLocation)
+          if (anchorElement && anchorElement.offsetTop) { window.scrollTo(0, anchorElement.offsetTop) }
+        }, 100)
+      })
+    }
   },
 
   methods: {
