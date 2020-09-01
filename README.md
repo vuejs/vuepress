@@ -71,7 +71,7 @@ If you have a VuePress-related project/component/tool, add it with a pull reques
   <tr>
     <td align="center"><a href="https://billychin.netlify.com/"><img src="https://avatars0.githubusercontent.com/u/38957202?v=4" width="100px;" alt="Billyyyyy3320"/><br /><sub><b>Billyyyyy3320</b></sub></a><br /><a href="https://github.com/vuejs/vuepress/commits?author=newsbielt703" title="Code">💻</a></td>
     <td align="center"><a href="http://www.bencodezen.io"><img src="https://avatars0.githubusercontent.com/u/4836334?v=4" width="100px;" alt="Ben Hong"/><br /><sub><b>Ben Hong</b></sub></a><br /><a href="https://github.com/vuejs/vuepress/commits?author=bencodezen" title="Code">💻</a> <a href="https://github.com/vuejs/vuepress/commits?author=bencodezen" title="Documentation">📖</a> <a href="#question-bencodezen" title="Answering Questions">💬</a></td>
-    <td align="center"><img src="https://avatars0.githubusercontent.com/u/18205362?s=400&v=4" width="100px;" alt="meteorlxy"/><br /><sub><b>meteorlxy</b></sub><br /><a href="https://github.com/vuejs/vuepress/commits?author=meteorlxy" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/meteorlxy"><img src="https://avatars0.githubusercontent.com/u/18205362?s=400&v=4" width="100px;" alt="meteorlxy"/><br /><sub><b>meteorlxy</b></sub></a><br /><a href="https://github.com/vuejs/vuepress/commits?author=meteorlxy" title="Code">💻</a></td>
     <td align="center"><a href="https://twitter.com/CodesOfRa"><img src="https://avatars0.githubusercontent.com/u/945186?v=4" width="100px;" alt="Ramona"/><br /><sub><b>Ramona</b></sub></a><br /><a href="https://github.com/vuejs/vuepress/commits?author=CodesOfRa" title="Code">💻</a> <a href="https://github.com/vuejs/vuepress/commits?author=CodesOfRa" title="Documentation">📖</a></td>
     <td align="center"><a href="https://www.franck-abgrall.me/"><img src="https://avatars3.githubusercontent.com/u/9840435?v=4" width="100px;" alt="Franck Abgrall"/><br /><sub><b>Franck Abgrall</b></sub></a><br /><a href="https://github.com/vuejs/vuepress/commits?author=kefranabg" title="Code">💻</a> <a href="#question-kefranabg" title="Answering Questions">💬</a></td>
   </tr>
@@ -79,7 +79,6 @@ If you have a VuePress-related project/component/tool, add it with a pull reques
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
-
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ### Core Team Emeriti
