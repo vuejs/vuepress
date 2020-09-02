@@ -65,19 +65,19 @@ This section will help you build a basic VuePress documentation site from ground
 
 3. Install VuePress locally
 
-    <code-group>
-    <code-block title="YARN" :active="true">
-    ```bash
-    yarn add -D vuepress
-    ```
-    </code-block>
+   <code-group>
+   <code-block title="YARN" :active="true">
+   ```bash
+   yarn add -D vuepress
+   ```
+   </code-block>
 
-    <code-block title="NPM">
-    ```bash
-    npm install -D vuepress
-    ```
-    </code-block>
-    </code-group>
+   <code-block title="NPM">
+   ```bash
+   npm install -D vuepress
+   ```
+   </code-block>
+   </code-group>
 
 4. Create your first document
 
