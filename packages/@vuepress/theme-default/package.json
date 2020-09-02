@@ -26,7 +26,7 @@
     "@vuepress/plugin-search": "1.5.4",
     "docsearch.js": "^2.5.2",
     "lodash": "^4.17.15",
-    "stylus": "^0.54.5",
+    "stylus": "^0.54.8",
     "stylus-loader": "^3.0.2",
     "vuepress-plugin-container": "^2.0.2",
     "vuepress-plugin-smooth-scroll": "^0.0.3"
