@@ -68,14 +68,19 @@ export default {
     padding-bottom: 22px;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
-    font-size: 1.5rem;
+    padding-left: 10px;
+    padding-top: 10px;
   }
   .theme-code-group__nav-tab {
     border: 0;
     padding: 5px;
     cursor: pointer;
     background-color: transparent;
-    color: white;
+    font-size: 0.85em;
+    line-height: 1.4;
+    color: #FFFFFF; /* Fallback for older browsers */
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
   }
   .theme-code-group__nav-tab-active {
     border-bottom: #42b983 1px solid;
