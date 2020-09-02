@@ -79,6 +79,7 @@ If you have a VuePress-related project/component/tool, add it with a pull reques
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ### Core Team Emeriti
@@ -102,29 +103,6 @@ Here we honor some no-longer-active core team members who have made valuable con
 
 This project exists thanks to all the people who contribute. [[Contribute](.github/CONTRIBUTING.md)].
 <a href="https://github.com/vuejs/vuepress/graphs/contributors"><img src="https://opencollective.com/vuepress/contributors.svg?width=890&button=false" /></a>
-
-### Financial Contributors
-
-Become a financial contributor and help us sustain our community. [[Contribute](https://opencollective.com/vuepress/contribute)]
-
-#### Individuals
-
-<a href="https://opencollective.com/vuepress"><img src="https://opencollective.com/vuepress/individuals.svg?width=890"></a>
-
-#### Organizations
-
-Support this project with your organization. Your logo will show up here with a link to your website. [[Contribute](https://opencollective.com/vuepress/contribute)]
-
-<a href="https://opencollective.com/vuepress/organization/0/website"><img src="https://opencollective.com/vuepress/organization/0/avatar.svg"></a>
-<a href="https://opencollective.com/vuepress/organization/1/website"><img src="https://opencollective.com/vuepress/organization/1/avatar.svg"></a>
-<a href="https://opencollective.com/vuepress/organization/2/website"><img src="https://opencollective.com/vuepress/organization/2/avatar.svg"></a>
-<a href="https://opencollective.com/vuepress/organization/3/website"><img src="https://opencollective.com/vuepress/organization/3/avatar.svg"></a>
-<a href="https://opencollective.com/vuepress/organization/4/website"><img src="https://opencollective.com/vuepress/organization/4/avatar.svg"></a>
-<a href="https://opencollective.com/vuepress/organization/5/website"><img src="https://opencollective.com/vuepress/organization/5/avatar.svg"></a>
-<a href="https://opencollective.com/vuepress/organization/6/website"><img src="https://opencollective.com/vuepress/organization/6/avatar.svg"></a>
-<a href="https://opencollective.com/vuepress/organization/7/website"><img src="https://opencollective.com/vuepress/organization/7/avatar.svg"></a>
-<a href="https://opencollective.com/vuepress/organization/8/website"><img src="https://opencollective.com/vuepress/organization/8/avatar.svg"></a>
-<a href="https://opencollective.com/vuepress/organization/9/website"><img src="https://opencollective.com/vuepress/organization/9/avatar.svg"></a>
 
 ## License
 
