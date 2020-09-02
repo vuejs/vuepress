@@ -14,7 +14,7 @@ The fastest way to get your VuePress project setup is to use our [create-vuepres
 To use it, open up your terminal in the desired directory and run the following command:
 
 <code-group>
-<code-block title="YARN" :active="true">
+<code-block title="YARN" active>
 ```bash
 yarn create vuepress-site [optionalDirectoryName]
 ```
@@ -50,7 +50,7 @@ This section will help you build a basic VuePress documentation site from ground
 2. Initialize with your preferred package manager
 
    <code-group>
-   <code-block title="YARN" :active="true">
+   <code-block title="YARN" active>
     ```bash
     yarn init
     ```
@@ -66,7 +66,7 @@ This section will help you build a basic VuePress documentation site from ground
 3. Install VuePress locally
 
    <code-group>
-   <code-block title="YARN" :active="true">
+   <code-block title="YARN" active>
    ```bash
    yarn add -D vuepress
    ```
@@ -101,7 +101,7 @@ This section will help you build a basic VuePress documentation site from ground
 6. Serve the documentation site in the local server
 
    <code-group>
-   <code-block title="YARN" :active="true">
+   <code-block title="YARN" active>
    ```bash
    yarn docs:dev
    ```
