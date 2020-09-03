@@ -60,11 +60,11 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="stylus" scoped>
   .theme-code-group {}
   .theme-code-group__nav {
     margin-bottom: -35px;
-    background-color: #282c34;
+    background-color: $codeBgColor;
     padding-bottom: 22px;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
@@ -78,7 +78,6 @@ export default {
     background-color: transparent;
     font-size: 0.85em;
     line-height: 1.4;
-    color: #FFFFFF; /* Fallback for older browsers */
     color: rgba(255, 255, 255, 0.9);
     font-weight: 600;
   }
