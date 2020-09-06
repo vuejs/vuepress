@@ -229,7 +229,7 @@ module.exports = function createBaseConfig (context, isServer) {
           name: `assets/fonts/[name].[hash:8].[ext]`
         })
 
-  function createCSSRule (lang, test, loader, options) {
+  function createCSSRule (lang, test, loader, options = { sourceMap: true }) {
     const baseRule = config.module.rule(lang).test(test).sideEffects(true)
     const modulesRule = baseRule.oneOf('modules').resourceQuery(/module/)
     const normalRule = baseRule.oneOf('normal')
@@ -252,13 +252,13 @@ module.exports = function createBaseConfig (context, isServer) {
           modules,
           localIdentName: `[local]_[hash:base64:8]`,
           importLoaders: 1,
-          sourceMap: !isProd,
+          sourceMap: !isProd && options.sourceMap,
           exportOnlyLocals: isServer
         })
 
       rule.use('postcss-loader').loader('postcss-loader').options(Object.assign({
         plugins: [require('autoprefixer')],
-        sourceMap: !isProd
+        sourceMap: !isProd && options.sourceMap
       }, siteConfig.postcss))
 
       if (loader) {
