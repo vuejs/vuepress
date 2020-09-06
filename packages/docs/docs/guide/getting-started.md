@@ -28,6 +28,21 @@ You will then have the opportunity to configure your VuePress site’s metadata 
 
 Once it is complete, you should see your new VuePress site scaffolded in your directory! :tada:
 
+Install the dependencies
+
+```bash
+   npm install
+```
+
+Serve the site in the local server
+
+```bash
+   npm run dev
+```
+
+VuePress will start a hot-reloading development server at [http://localhost:8080](http://localhost:8080).
+
+
 ## Manual Installation
 
 This section will help you build a basic VuePress documentation site from ground up. If you already have an existing project and would like to keep documentation inside the project, start from Step 3.
