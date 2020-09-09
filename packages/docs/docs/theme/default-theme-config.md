@@ -559,7 +559,7 @@ This will render `.vuepress/components/SpecialLayout.vue` for the given page.
 
 ## Ejecting
 
-You can copy the default theme source code into `.vuepress/theme` to fully customize the theme using the `vuepress eject [targetDir]` command. If you didn't install Vuepress globally, run `./node_modules/.bin/vuepress eject`.
+You can copy the default theme source code into `.vuepress/theme` to fully customize the theme using the `vuepress eject [targetDir]` command. If you didn’t install VuePress globally, run `./node_modules/.bin/vuepress eject`.
 
 ::: warning
 Once you eject, you are on your own and **won’t** be receiving future updates or bugfixes to the default theme even if you upgrade VuePress.
