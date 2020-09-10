@@ -3,6 +3,8 @@
     class="icon outbound"
     xmlns="http://www.w3.org/2000/svg"
     aria-labelledby="outbound-link-title"
+    role="img"
+    focusable="false"
     x="0px"
     y="0px"
     viewBox="0 0 100 100"
