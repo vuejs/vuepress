@@ -2,8 +2,8 @@ import parseHeaders from '../src/parseHeaders'
 
 describe('parseHeaders', () => {
   test('should unescape html', () => {
-    const input = '&lt;div&gt;'
-    expect(parseHeaders(input)).toBe('<div>')
+    const input = `&lt;div :id=&quot;&#39;app&#39;&quot;&gt;`
+    expect(parseHeaders(input)).toBe(`<div :id="'app'">`)
   })
 
   test('should remove markdown tokens correctly', () => {
