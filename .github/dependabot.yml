@@ -1,16 +1,16 @@
 version: 2
 updates:
+# Dependabot will automatically update npm packages
 - package-ecosystem: npm
-  directory: "/"
+  directory: '/'
   schedule:
     interval: daily
     time: '00:00'
-    timezone: Asia/Calcutta
-  open-pull-requests-limit: 99
+  open-pull-requests-limit: 10
   reviewers:
-  - bencodezen
-  labels:
-  - dependencies
+    - bencodezen
+  assignees:
+    - bencodezen
   commit-message:
     prefix: fix
     prefix-development: chore
