@@ -1,4 +1,4 @@
-import unionBy from 'lodash/unionBy'
+import transform from 'lodash/transform'
 
 export default {
   // created will be called on both client and ssr
@@ -34,11 +34,18 @@ export default {
     },
 
     getMergedMetaTags () {
-      const pageMeta = this.$page.frontmatter.meta || []
-      // pageMetaTags have higher priority than siteMetaTags
-      // description needs special attention as it has too many entries
-      return unionBy([{ name: 'description', content: this.$description }],
-        pageMeta, this.siteMeta, metaIdentifier)
+      const exists = {}
+      return transform([
+        this.$page.frontmatter.meta || [], // page meta
+        [{ name: 'description', content: this.$description }], // meta description
+        this.siteMeta // site meta
+      ], (merged, meta) => {
+        const filtered = meta.filter(tag => !exists[metaIdentifier(tag)])
+        merged.push(...filtered)
+        filtered.forEach(tag => {
+          exists[metaIdentifier(tag)] = 1
+        })
+      }, [])
     }
   },
 
