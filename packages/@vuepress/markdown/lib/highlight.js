@@ -18,16 +18,34 @@ function getLangCodeFromExtension (extension) {
     html: 'markup',
     md: 'markdown',
     rb: 'ruby',
+    js: 'javascript',
     ts: 'typescript',
     py: 'python',
     sh: 'bash',
     yml: 'yaml',
     styl: 'stylus',
     kt: 'kotlin',
-    rs: 'rust'
+    rs: 'rust',
+    cs: 'csharp',
+    fs: 'fsharp'
   }
 
   return extensionMap[extension] || extension
+}
+
+function getDocLangCodeFromLang(lang) {
+  const docMap = {
+    'javascript': 'jsdoc',
+    'typescript': 'jsdoc',
+    'markup': 'jsdoc',
+    'java': 'javadoc',
+    'php': 'phpdoc',
+    'csharp': 'xml-doc',
+    'fsharp': 'xml-doc',
+    'vbnet': 'xml-doc'
+  }
+
+  return docMap[lang]
 }
 
 module.exports = (str, lang) => {
@@ -46,6 +64,10 @@ module.exports = (str, lang) => {
       logger.warn(chalk.yellow(`[vuepress] Syntax highlight for language "${lang}" is not supported.`))
     }
   }
+  
+  const docLang = getDocLangCodeFromLang(lang)
+  if (docLang && !prism.languages[docLang]) loadLanguages([docLang])
+  
   if (prism.languages[lang]) {
     const code = prism.highlight(str, prism.languages[lang], lang)
     return wrap(code, rawLang)
