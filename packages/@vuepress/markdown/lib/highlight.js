@@ -32,7 +32,7 @@ function getLangCodeFromExtension (extension) {
   return extensionMap[extension] || extension
 }
 
-function getDocLangCodeFromLang(lang) {
+function getDocLangCodeFromLang (lang) {
   const docMap = {
     'js': 'jsdoc',
     'javascript': 'jsdoc',
@@ -64,7 +64,7 @@ module.exports = (str, lang) => {
       logger.warn(chalk.yellow(`[vuepress] Syntax highlight for language "${lang}" is not supported.`))
     }
   }
-  
+
   const docLang = getDocLangCodeFromLang(lang)
   if (docLang && !prism.languages[docLang]) {
     try {
@@ -73,7 +73,7 @@ module.exports = (str, lang) => {
       logger.warn(chalk.yellow(`[vuepress] Syntax highlight for language "${docLang}" is not supported.`))
     }
   }
-  
+
   if (prism.languages[lang]) {
     const code = prism.highlight(str, prism.languages[lang], lang)
     return wrap(code, rawLang)
