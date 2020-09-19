@@ -18,7 +18,6 @@ function getLangCodeFromExtension (extension) {
     html: 'markup',
     md: 'markdown',
     rb: 'ruby',
-    js: 'javascript',
     ts: 'typescript',
     py: 'python',
     sh: 'bash',
@@ -35,6 +34,7 @@ function getLangCodeFromExtension (extension) {
 
 function getDocLangCodeFromLang(lang) {
   const docMap = {
+    'js': 'jsdoc',
     'javascript': 'jsdoc',
     'typescript': 'jsdoc',
     'markup': 'jsdoc',
