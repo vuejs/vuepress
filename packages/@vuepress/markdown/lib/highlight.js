@@ -66,7 +66,13 @@ module.exports = (str, lang) => {
   }
   
   const docLang = getDocLangCodeFromLang(lang)
-  if (docLang && !prism.languages[docLang]) loadLanguages([docLang])
+  if (docLang && !prism.languages[docLang]) {
+    try {
+      loadLanguages([docLang])
+    } catch (e) {
+      logger.warn(chalk.yellow(`[vuepress] Syntax highlight for language "${docLang}" is not supported.`))
+    }
+  }
   
   if (prism.languages[lang]) {
     const code = prism.highlight(str, prism.languages[lang], lang)
