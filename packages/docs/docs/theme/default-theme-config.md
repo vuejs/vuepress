@@ -559,11 +559,11 @@ This will render `.vuepress/components/SpecialLayout.vue` for the given page.
 
 ## Code Groups and Code Blocks
 The default theme comes with custom components `<code-group />` and `<code-block>` that can help you to better group
-separate code paths that have the same end result.
+separate code paths that have the same result.
 
 **Example**
 
-Yarn and NPM installation instructions
+Yarn and npm installation instructions
 
 **Input**
 ````md
@@ -599,14 +599,14 @@ npx create-vuepress-site [optionalDirectoryName]
 </code-group>
 
 ::: tip
-Each `<code-block />` must have a line break after it in order to render properly
+Each `<code-block />` must have a line break after it to render properly
 :::
 
 ### Default Code Block
 
 By default, `<code-group />` will use the first `<code-block />` as the active initial code block.
 
-If you would like to manually set the active `<code-block />`, you can do so by simply adding `active` to the element:
+To manually set the active `<code-block />`, just add the `active` prop to the `<code-block />`:
 
 **Input**
 ````md
