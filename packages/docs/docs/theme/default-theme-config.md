@@ -585,7 +585,7 @@ npx create-vuepress-site [optionalDirectoryName]
 **Output**
 
 <code-group>
-<code-block title="YARN" active>
+<code-block title="YARN">
 ```bash
 yarn create vuepress-site [optionalDirectoryName]
 ```
@@ -628,7 +628,7 @@ npx create-vuepress-site [optionalDirectoryName]
 **Output**
 
 <code-group>
-<code-block title="YARN" active>
+<code-block title="YARN">
 ```bash
 yarn create vuepress-site [optionalDirectoryName]
 ```
