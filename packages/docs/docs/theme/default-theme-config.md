@@ -557,6 +557,90 @@ layout: SpecialLayout
 
 This will render `.vuepress/components/SpecialLayout.vue` for the given page.
 
+## Code Groups and Code Blocks
+The default theme comes with custom components `<code-group />` and `<code-block>` that can help you to better group
+separate code paths that have the same end result.
+
+**Example**
+
+Yarn and NPM installation instructions
+
+**Input**
+````md
+<code-group>
+<code-block title="YARN">
+```bash
+yarn create vuepress-site [optionalDirectoryName]
+```
+</code-block>
+
+<code-block title="NPM">
+```bash
+npx create-vuepress-site [optionalDirectoryName]
+```
+</code-block>
+</code-group>
+````
+
+**Output**
+
+<code-group>
+<code-block title="YARN" active>
+```bash
+yarn create vuepress-site [optionalDirectoryName]
+```
+</code-block>
+
+<code-block title="NPM">
+```bash
+npx create-vuepress-site [optionalDirectoryName]
+```
+</code-block>
+</code-group>
+
+::: tip
+Each `<code-block />` must have a line break after it in order to render properly
+:::
+
+### Default Code Block
+
+By default, `<code-group />` will use the first `<code-block />` as the active initial code block.
+
+If you would like to manually set the active `<code-block />`, you can do so by simply adding `active` to the element:
+
+**Input**
+````md
+<code-group>
+<code-block title="YARN">
+```bash
+yarn create vuepress-site [optionalDirectoryName]
+```
+</code-block>
+
+<code-block title="NPM" active>
+```bash
+npx create-vuepress-site [optionalDirectoryName]
+```
+</code-block>
+</code-group>
+````
+
+**Output**
+
+<code-group>
+<code-block title="YARN" active>
+```bash
+yarn create vuepress-site [optionalDirectoryName]
+```
+</code-block>
+
+<code-block title="NPM" active>
+```bash
+npx create-vuepress-site [optionalDirectoryName]
+```
+</code-block>
+</code-group>
+
 ## Ejecting
 
 You can copy the default theme source code into `.vuepress/theme` to fully customize the theme using the `vuepress eject [targetDir]` command. If you didn’t install VuePress globally, run `./node_modules/.bin/vuepress eject`.
