@@ -557,7 +557,7 @@ layout: SpecialLayout
 
 This will render `.vuepress/components/SpecialLayout.vue` for the given page.
 
-## Code Groups and Code Blocks
+## Code Groups and Code Blocks <Badge text="1.6.0+" />
 The default theme comes with custom components `<code-group />` and `<code-block>` that can help you to better group
 separate code paths that have the same result.
 
