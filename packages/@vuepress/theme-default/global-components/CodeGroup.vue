@@ -69,7 +69,7 @@ export default {
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
     padding-left: 10px;
-    padding-top: 10px;
+    padding-top: 3px;
   }
   .theme-code-group__nav-tab {
     border: 0;
@@ -80,6 +80,9 @@ export default {
     line-height: 1.4;
     color: rgba(255, 255, 255, 0.9);
     font-weight: 600;
+  }
+  .theme-code-group__nav-tab:focus {
+    outline:none
   }
   .theme-code-group__nav-tab-active {
     border-bottom: #42b983 1px solid;
