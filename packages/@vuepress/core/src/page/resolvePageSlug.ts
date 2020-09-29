@@ -1,4 +1,4 @@
-import * as path from 'path'
+import { path } from '@vuepress/utils'
 
 const DATE_RE = /(\d{4}-\d{1,2}(-\d{1,2})?)-(.*)/
 

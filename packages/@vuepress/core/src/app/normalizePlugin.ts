@@ -1,29 +1,27 @@
-import { isFunction, isString } from '@vuepress/utils'
-import { App } from './createApp'
+import { isFunction, isString } from '@vuepress/shared'
+import type { App, Plugin, PluginObject, PluginOptions } from '../types'
 import { resolvePluginByName } from './resolvePluginByName'
-import { Plugin, PluginOptions } from './types'
 
-export const normalizePlugin = <T extends object = {}>(
+export const normalizePlugin = <
+  T extends PluginOptions = PluginOptions,
+  U extends PluginObject = PluginObject
+>(
   app: App,
-  plugin: Plugin<T> | string,
+  plugin: Plugin<T, U> | string,
   config?: Partial<T>
-): PluginOptions => {
-  const resolvedPlugin = isString(plugin) ? resolvePluginByName(plugin) : plugin
+): U => {
+  const resolvedPlugin = isString(plugin)
+    ? resolvePluginByName<T, U>(plugin)
+    : plugin
 
   // TODO
   if (resolvedPlugin === null) {
     throw new Error()
   }
 
-  const invokedPlugin = isFunction(resolvedPlugin)
+  const pluginObject = isFunction(resolvedPlugin)
     ? resolvedPlugin(config ?? {}, app)
     : resolvedPlugin
 
-  const normalizedPlugin: PluginOptions = {
-    ...invokedPlugin,
-
-    // TODO: normalize plugin name
-  }
-
-  return normalizedPlugin
+  return pluginObject as U
 }

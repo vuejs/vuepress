@@ -1,15 +1,13 @@
-import { App } from './createApp'
-import { AppOptions } from './createAppOptions'
+import type { AppOptions, Bundler, BundlerEntry } from '../types'
 
-export interface AppBundler {
-  dev: (app: App) => Promise<void>
-  build: (app: App) => Promise<void>
-}
-
-export const createAppBundler = (options: AppOptions): AppBundler => {
+export const createAppBundler = (options: AppOptions): Bundler => {
   switch (options.bundler) {
     case 'webpack':
-    default:
-      return require('@vuepress/bundler-webpack') as AppBundler
+    default: {
+      const {
+        createBundler,
+      } = require('@vuepress/bundler-webpack') as BundlerEntry
+      return createBundler(options.bundlerConfig)
+    }
   }
 }

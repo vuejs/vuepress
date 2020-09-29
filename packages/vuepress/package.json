@@ -27,8 +27,8 @@
     "lib"
   ],
   "scripts": {
-    "build": "tsc -b",
-    "clean": "rimraf lib tsconfig.tsbuildinfo",
+    "build": "tsc -b tsconfig.build.json",
+    "clean": "rimraf lib *.tsbuildinfo",
     "lint": "eslint --ext .ts src"
   },
   "dependencies": {

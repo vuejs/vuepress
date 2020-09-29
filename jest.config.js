@@ -23,7 +23,7 @@ module.exports = {
     [`^@internal/(.*)$`]: `<rootDir>/packages/@vuepress/client/.temp/internal/$1`,
   },
   testMatch: ['<rootDir>/packages/**/__tests__/**/*.spec.ts'],
-  testPathIgnorePatterns: ['/node_modules/'],
+  testPathIgnorePatterns: ['/node_modules/', '/__fixtures__/'],
   snapshotSerializers: [require.resolve('jest-serializer-vue')],
 
   // coverage config

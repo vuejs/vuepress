@@ -1,6 +1,9 @@
 # Temp files
 .temp/
 
+# Cache files
+.cache/
+
 # Dist files
 lib/
 

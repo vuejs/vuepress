@@ -1,21 +1,23 @@
-import { moduleResolver } from '@vuepress/shared-utils'
-import { Plugin } from './types'
-
-// TODO: migrate module resolver
-const cwd = process.cwd()
-const resolver = moduleResolver.getPluginResolver(cwd)
+import { normalizePackageName } from '@vuepress/shared'
+import { requireResolve } from '@vuepress/utils'
+import type { Plugin, PluginObject, PluginOptions } from '../types'
 
 /**
  * Resolve a plugin according to the name string
  */
-export const resolvePluginByName = (pluginName: string): Plugin | null => {
-  // TODO: for current plugin resolver, the `entry` is the module
-  const result = resolver.resolve(pluginName, cwd)
+export const resolvePluginByName = <
+  T extends PluginOptions = PluginOptions,
+  U extends PluginObject = PluginObject
+>(
+  pluginName: string
+): Plugin<T, U> | null => {
+  const result =
+    requireResolve(pluginName) ??
+    requireResolve(normalizePackageName(pluginName, 'vuepress', 'plugin'))
 
-  if (!result.entry) {
+  if (result === null) {
     return null
   }
 
-  // TODO: plugin name
-  return (result.entry as unknown) as Plugin
+  return require(result)
 }

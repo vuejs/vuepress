@@ -1,129 +1,33 @@
-import { App } from '../app'
+import type { App, Page, PageOptions } from '../types'
 import { inferPagePath } from './inferPagePath'
-import { resolveFilePath } from './resolveFilePath'
-import { resolveFileContent } from './resolveFileContent'
+import { resolvePageComponent } from './resolvePageComponent'
 import { resolvePageContent } from './resolvePageContent'
 import { resolvePageDate } from './resolvePageDate'
 import { resolvePageExcerpt } from './resolvePageExcerpt'
-import { resolvePageHeaders, PageHeader } from './resolvePageHeaders'
+import { resolvePageFile } from './resolvePageFile'
 import { resolvePageKey } from './resolvePageKey'
 import { resolvePagePath } from './resolvePagePath'
 import { resolvePagePermalink } from './resolvePagePermalink'
 import { resolvePageSlug } from './resolvePageSlug'
 import { resolvePageTitle } from './resolvePageTitle'
 
-export interface PageConfig {
-  permalink?: string
-  permalinkPattern?: string
-  filePath?: string
-  frontmatter?: PageFrontmatter
-  content?: string
-}
-
-export type PageFrontmatter = Record<string, unknown>
-
-export interface Page {
-  /**
-   * Identifier of the page
-   *
-   * Will also be used as the component name
-   *
-   * @example 'v-foobar'
-   */
-  key: string
-
-  /**
-   * Route path of the page
-   *
-   * Firstly inferred from the file path
-   *
-   * Might be overridden by permalink
-   *
-   * @example '/guide/index.html'
-   * @example '/2020/02/02/hello-world.html'
-   */
-  path: string
-
-  /**
-   * Path of the page that inferred from file path
-   *
-   * If the page does not come from a file, it would be `null`
-   *
-   * @example '/guide/index.html'
-   */
-  pathInferred: string | null
-
-  /**
-   * Absolute path of the source file
-   *
-   * If the page does not come from a file, it would be `null`
-   */
-  filePath: string | null
-
-  /**
-   * Relative path of the source file
-   *
-   * If the page does not come from a file, it would be `null`
-   */
-  filePathRelative: string | null
-
-  /**
-   * Title of the page
-   */
-  title: string
-
-  /**
-   * Content of the page
-   */
-  content: string
-
-  /**
-   * Front matter of the page
-   */
-  frontmatter: PageFrontmatter
-
-  /**
-   * Excerpt of the page
-   */
-  excerpt: string
-
-  /**
-   * Headers of the page
-   */
-  headers: PageHeader[]
-
-  /**
-   * Slug of the page
-   */
-  slug: string
-
-  /**
-   * Date of the page
-   */
-  date: string
-}
-
 export const createPage = async (
   app: App,
-  config: PageConfig
+  options: PageOptions
 ): Promise<Page> => {
-  // resolve absolute path and relative path
-  const { filePath, filePathRelative } = resolveFilePath(app, config)
-
-  // resolve the raw content
-  const rawContent = await resolveFileContent(config, filePath)
+  // 1. resolve page file path and content
+  const { filePath, filePathRelative, fileContent } = await resolvePageFile(
+    app,
+    options
+  )
 
   // resolve content & frontmatter & raw excerpt from raw content
-  const { content, frontmatter, excerpt: rawExcerpt } = resolvePageContent(
-    rawContent,
-    filePath
+  const { frontmatter, content, excerpt: rawExcerpt } = resolvePageContent(
+    fileContent
   )
 
   // resolve title from content
   const title = resolvePageTitle(frontmatter, content)
-
-  // resolve headers from content
-  const headers = resolvePageHeaders(app, content)
 
   // resolve excerpt from raw excerpt
   const excerpt = resolvePageExcerpt(
@@ -140,15 +44,16 @@ export const createPage = async (
   const date = resolvePageDate(frontmatter, filePathRelative)
 
   // infer page path according to file path
-  const pathInferred = inferPagePath(filePathRelative)
+  const { pathInferred, pathLocale } = inferPagePath(app, filePathRelative)
 
   // resolve page permalink
   const permalink = resolvePagePermalink(
-    config,
+    options,
     frontmatter,
     slug,
     date,
-    pathInferred
+    pathInferred,
+    pathLocale
   )
 
   // resolve page path
@@ -157,17 +62,30 @@ export const createPage = async (
   // resolve path key
   const key = resolvePageKey(path)
 
+  const {
+    headers,
+    links,
+    componentFilePath,
+    componentFilePathRelative,
+    componentFileContent,
+  } = await resolvePageComponent(app, content, filePathRelative, path)
+
   return {
     key,
     path,
     pathInferred,
+    pathLocale,
     filePath,
     filePathRelative,
+    componentFilePath,
+    componentFilePathRelative,
+    componentFileContent,
     title,
     content,
     frontmatter,
     excerpt,
     headers,
+    links,
     slug,
     date,
   }

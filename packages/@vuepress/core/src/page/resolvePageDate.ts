@@ -1,37 +1,53 @@
-import * as path from 'path'
-import { PageFrontmatter } from './createPage'
+import { formatDateString } from '@vuepress/shared'
+import { path } from '@vuepress/utils'
+import { PageFrontmatter } from '../types'
 
-const DATE_RE = /(\d{4}-\d{1,2}(-\d{1,2})?)-(.*)/
+const FILENAME_DATE_RE = /(\d{4}-\d{1,2}(-\d{1,2})?)-(.*)/
+const defaultDate = '1970-01-01'
 
+/**
+ * Resolve page date according to frontmatter or file path
+ *
+ * It will be resolved as 'yyyy-MM-dd' format
+ */
 export const resolvePageDate = (
   frontmatter: PageFrontmatter,
   filePathRelative: string | null
 ): string => {
-  if (!filePathRelative) {
-    return ''
+  // `frontmatter.date` could be parsed as UTC Date directly
+  if (frontmatter.date instanceof Date) {
+    return [
+      frontmatter.date.getUTCFullYear(),
+      frontmatter.date.getUTCMonth() + 1,
+      frontmatter.date.getUTCDate(),
+    ].join('-')
   }
 
   if (typeof frontmatter.date === 'string') {
-    return frontmatter.date
+    return formatDateString(frontmatter.date, defaultDate)
+  }
+
+  if (filePathRelative === null) {
+    return defaultDate
   }
 
   const filename = path.parse(filePathRelative).name
 
   if (filename) {
-    const matches = filename.match(DATE_RE)
+    const matches = filename.match(FILENAME_DATE_RE)
     if (matches) {
-      return matches[1]
+      return formatDateString(matches[1], defaultDate)
     }
   }
 
   const dirname = path.basename(path.dirname(filePathRelative))
 
   if (dirname) {
-    const matches = dirname.match(DATE_RE)
+    const matches = dirname.match(FILENAME_DATE_RE)
     if (matches) {
-      return matches[1]
+      return formatDateString(matches[1], defaultDate)
     }
   }
 
-  return ''
+  return defaultDate
 }

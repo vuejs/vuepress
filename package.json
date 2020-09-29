@@ -7,13 +7,14 @@
   ],
   "scripts": {
     "build": "tsc --build",
-    "build:docs": "yarn workspace docs build",
     "clean": "lerna run clean --stream --ignore docs",
     "dev": "tsc --build --watch",
-    "dev:docs": "yarn workspace docs dev",
-    "lint": "lerna run lint --stream",
-    "play": "yarn workspace playground dev",
+    "docs:build": "yarn workspace docs build",
+    "docs:dev": "yarn workspace docs dev",
+    "lint": "eslint --ext .js,.ts,.vue .",
     "play:build": "yarn workspace playground build",
+    "play:dev": "yarn workspace playground dev",
+    "play:serve": "yarn workspace playground serve",
     "release": "yarn lint && yarn clean && yarn build && yarn test && lerna publish",
     "test": "jest --runInBand"
   },
@@ -24,34 +25,30 @@
     }
   },
   "lint-staged": {
-    "*.{js,ts,vue}": [
-      "eslint --fix"
-    ],
-    "*.{json,md,yml}": [
-      "prettier --write"
-    ],
-    "package.json": [
-      "sort-package-json"
-    ]
+    "*.{js,ts,vue}": "eslint --fix",
+    "*.{json,md,yml}": "prettier --write",
+    "package.json": "sort-package-json"
   },
   "prettier": "prettier-config-vuepress",
   "devDependencies": {
-    "@commitlint/cli": "^8.3.5",
-    "@commitlint/config-conventional": "^8.3.4",
-    "@types/jest": "^25.2.1",
-    "eslint": "^6.4.0",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@types/debug": "^4.1.5",
+    "@types/jest": "^26.0.14",
+    "core-js": "^3.6.5",
+    "eslint": "^7.10.0",
     "eslint-config-vuepress": "^2.2.0",
-    "eslint-config-vuepress-typescript": "^1.1.4",
-    "husky": "^4.2.5",
-    "jest": "^25.1.0",
+    "eslint-config-vuepress-typescript": "^1.3.0",
+    "husky": "^4.3.0",
+    "jest": "^26.4.2",
     "jest-serializer-vue": "^2.0.2",
-    "lerna": "^3.20.2",
-    "lint-staged": "^10.2.2",
-    "prettier": "^2.0.5",
-    "prettier-config-vuepress": "^1.0.0",
+    "lerna": "^3.22.1",
+    "lint-staged": "^10.4.0",
+    "prettier": "^2.1.2",
+    "prettier-config-vuepress": "^1.1.0",
     "rimraf": "^3.0.2",
-    "sort-package-json": "^1.42.2",
-    "ts-jest": "^25.5.1",
-    "typescript": "^3.8.3"
+    "sort-package-json": "^1.46.0",
+    "ts-jest": "^26.4.1",
+    "typescript": "^4.0.3"
   }
 }

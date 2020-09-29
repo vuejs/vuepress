@@ -1,34 +1,47 @@
-import { getPermalink } from '@vuepress/shared-utils'
-import { PageConfig, PageFrontmatter } from './createPage'
+import { ensureLeadingSlash } from '@vuepress/shared'
+import { path } from '@vuepress/utils'
+import type { PageOptions, PageFrontmatter } from '../types'
 
 export const resolvePagePermalink = (
-  config: PageConfig,
+  options: PageOptions,
   frontmatter: PageFrontmatter,
   slug: string,
   date: string,
-  pathInferred: string | null
+  pathInferred: string | null,
+  pathLocale: string
 ): string | null => {
+  // use permalink in frontmatter directly
   if (typeof frontmatter.permalink === 'string') {
     return frontmatter.permalink
   }
 
-  if (config.permalink) {
-    return config.permalink
+  // use permalink in options directly
+  if (options.permalink) {
+    return options.permalink
   }
 
+  // get permalink pattern from frontmatter or options
   const pattern =
     typeof frontmatter.permalinkPattern === 'string'
       ? frontmatter.permalinkPattern
-      : config.permalinkPattern || ''
+      : options.permalinkPattern
 
-  return (
-    getPermalink({
-      pattern,
-      slug,
-      date,
-      // TODO: handle localePath
-      localePath: '/',
-      regularPath: pathInferred || '',
-    }) || null
+  if (!pattern) {
+    return null
+  }
+
+  // resolve permalink according to the pattern
+  const [year, month, day] = date.split('-')
+
+  const link = path.join(
+    pathLocale,
+    pattern
+      .replace(/:year/, year)
+      .replace(/:month/, month)
+      .replace(/:day/, day)
+      .replace(/:slug/, encodeURI(slug))
+      .replace(/:raw/, pathInferred?.replace(/^\//, '') ?? '')
   )
+
+  return ensureLeadingSlash(link)
 }

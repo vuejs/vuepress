@@ -1,30 +1,20 @@
-import {
-  layoutComponentsPlugin,
-  pageComponentsPlugin,
-  routesPlugin,
-  siteDataPlugin,
-} from '../plugins'
 import { createThemeApi } from '../theme-api'
-import { App } from './createApp'
-import { createAppMarkdown } from './createAppMarkdown'
+import type { App } from '../types'
 import { createAppWriteTemp } from './createAppWriteTemp'
 
+/**
+ * Initialize a vuepress app
+ *
+ * Plugins should be used before initialization.
+ */
 export const appInit = async (app: App): Promise<void> => {
   // create write temp util
   app.writeTemp = await createAppWriteTemp(app)
 
   // create theme api, resolve themes and layouts
-  app.themeApi = createThemeApi(app)
+  app.themeApi = await createThemeApi(app)
 
-  // use internal plugins
-  const internalPlugins = [
-    layoutComponentsPlugin,
-    pageComponentsPlugin,
-    routesPlugin,
-    siteDataPlugin,
-    // TODO: use theme-api plugin
-  ]
-  internalPlugins.forEach((item) => app.use(item))
+  // TODO: use theme-api plugin
 
   // use user plugins
   app.options.plugins.forEach((item) => app.useByConfig(item))
@@ -35,12 +25,14 @@ export const appInit = async (app: App): Promise<void> => {
   }
   app.use(app.themeApi.theme.plugin)
 
-  // register all options of plugins that have been used
-  app.pluginApi.registerOptions()
+  // register all hooks of plugins that have been used
+  // plugins should be used before `registerHooks()`
+  // hooks in plugins will take effect after `registerHooks()`
+  app.pluginApi.registerHooks()
 
-  // create markdown
-  app.markdown = createAppMarkdown(app)
+  // plugin hook: extendMarkdown
+  await app.pluginApi.hooks.extendMarkdown.process(app.markdown)
 
-  // apply plugin option: onInitialized
-  await app.pluginApi.applyOption('onInitialized', app)
+  // plugin hook: onInitialized
+  await app.pluginApi.hooks.onInitialized.process(app)
 }

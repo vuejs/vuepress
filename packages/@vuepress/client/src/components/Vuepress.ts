@@ -1,4 +1,5 @@
-import { h, ComponentOptions } from 'vue'
+import { h } from 'vue'
+import type { ComponentOptions } from 'vue'
 import { layoutComponents } from '@internal/layoutComponents'
 import { usePageData } from '../injections'
 import { Content } from './Content'
@@ -8,7 +9,8 @@ import { Content } from './Content'
  */
 export const Vuepress: ComponentOptions = {
   setup() {
-    let layout: string
+    // get layout of current page
+    let layoutName = 'NotFound'
 
     const { page } = usePageData()
 
@@ -19,20 +21,18 @@ export const Vuepress: ComponentOptions = {
       const frontmatterLayout = page.value.frontmatter.layout
 
       if (typeof frontmatterLayout === 'string') {
-        layout = frontmatterLayout
+        layoutName = frontmatterLayout
       } else {
         // fallback to Layout component
-        layout = 'Layout'
+        layoutName = 'Layout'
       }
-    } else {
-      layout = 'NotFound'
     }
 
-    const component = layoutComponents[layout]
+    const layoutComponent = layoutComponents[layoutName]
 
-    if (component) {
+    if (layoutComponent) {
       // use layout component
-      return () => h(component)
+      return () => h(layoutComponent)
     } else {
       // fallback to Content
       return () => h(Content)

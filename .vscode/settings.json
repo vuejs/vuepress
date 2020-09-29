@@ -29,6 +29,7 @@
     "redirector",
     "redirectors",
     "serializers",
+    "slugify",
     "vuepress",
     "zoomable"
   ]

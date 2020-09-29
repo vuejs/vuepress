@@ -1,3 +1,2 @@
-export * from './base/createBaseConfig'
-export * from './createClientConfig'
-export * from './createServerConfig'
+export * from './createBaseConfig'
+export * from './createClientBaseConfig'

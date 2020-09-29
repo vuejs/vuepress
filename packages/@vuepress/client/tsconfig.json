@@ -1,14 +1,16 @@
 {
   "extends": "../../../tsconfig.base.json",
   "compilerOptions": {
-    "target": "ES2015",
-    "module": "ES2015",
-    "rootDir": "./src",
-    "outDir": "./lib",
     "baseUrl": ".",
     "paths": {
-      "@internal/*": ["src/internal/index.ts"]
+      "@internal/clientAppEnhances": ["src/internal/clientAppEnhances.d.ts"],
+      "@internal/clientAppSetups": ["src/internal/clientAppSetups.d.ts"],
+      "@internal/layoutComponents": ["src/internal/layoutComponents.d.ts"],
+      "@internal/pageComponents": ["src/internal/pageComponents.d.ts"],
+      "@internal/pagesData": ["src/internal/pagesData.d.ts"],
+      "@internal/routes": ["src/internal/routes.d.ts"],
+      "@internal/siteData": ["src/internal/siteData.d.ts"]
     }
   },
-  "include": ["./src"]
+  "include": ["./src", "./__tests__"]
 }

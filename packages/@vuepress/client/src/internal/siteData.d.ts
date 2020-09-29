@@ -1,7 +1,6 @@
-import { ClientData, ClientDataPage } from '@vuepress/core'
+import type { ClientSiteData } from '@vuepress/shared'
 
 declare module '@internal/siteData' {
-  export type SiteData = ClientData
-  export type PageData = ClientDataPage
+  export type SiteData = ClientSiteData
   export const siteData: SiteData
 }

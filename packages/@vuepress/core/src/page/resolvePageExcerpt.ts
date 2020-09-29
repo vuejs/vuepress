@@ -1,5 +1,4 @@
-import { App } from '../app'
-import { PageFrontmatter } from './createPage'
+import type { App, PageFrontmatter } from '../types'
 
 export const resolvePageExcerpt = (
   rawExcerpt: string,
@@ -7,7 +6,7 @@ export const resolvePageExcerpt = (
   frontmatter: PageFrontmatter,
   filePathRelative: string | null
 ): string => {
-  const { html } = app.markdown.render(rawExcerpt, {
+  const html = app.markdown.render(rawExcerpt, {
     frontmatter: frontmatter,
     relativePath: filePathRelative,
   })

@@ -1,14 +1,13 @@
-import { isArray, isString } from '@vuepress/utils'
-import { PluginConfig } from './types'
+import { isArray, isString } from '@vuepress/shared'
+import type {
+  PluginOptions,
+  PluginConfig,
+  PluginConfigNormalized,
+} from '../types'
 
-export type NormalizedPluginConfig<T extends object> = [
-  string,
-  Partial<T> | boolean
-]
-
-export const normalizePluginConfig = <T extends object>(
+export const normalizePluginConfig = <T extends PluginOptions>(
   pluginConfig: PluginConfig<T>
-): NormalizedPluginConfig<T> | false => {
+): PluginConfigNormalized<T> | false => {
   // 'container' -> ['container', {}]
   if (isString(pluginConfig)) {
     return [pluginConfig, {}]

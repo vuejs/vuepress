@@ -1,19 +1,19 @@
-import { computed, ComputedRef } from 'vue'
+import { computed } from 'vue'
+import type { ComputedRef } from 'vue'
 import { useRoute } from 'vue-router'
-import { PageData } from '@internal/siteData'
-import { useSiteData } from './siteData'
+import { pagesData } from '@internal/pagesData'
+import type { PageData } from '@internal/pagesData'
 
 export const usePageData = (): {
   page: ComputedRef<PageData>
   title: ComputedRef<PageData['title']>
   frontmatter: ComputedRef<PageData['frontmatter']>
 } => {
-  const siteData = useSiteData()
   const route = useRoute()
 
   const page = computed(
     () =>
-      siteData.pages.find((item) => item.path === route.path) || {
+      pagesData[route.path] ?? {
         key: '',
         path: '',
         title: '',

@@ -1,0 +1,32 @@
+{
+  "name": "@vuepress/shared",
+  "version": "2.0.0-alpha.0",
+  "description": "Utils that shared between VuePress node and client",
+  "keywords": [
+    "vuepress",
+    "shared",
+    "utils"
+  ],
+  "homepage": "https://github.com/vuepress",
+  "bugs": {
+    "url": "https://github.com/vuepress/vuepress-next/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/vuepress-next.git"
+  },
+  "license": "MIT",
+  "author": "Evan You",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc -b tsconfig.build.json",
+    "clean": "rimraf lib *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@vue/shared": "^3.0.0"
+  }
+}

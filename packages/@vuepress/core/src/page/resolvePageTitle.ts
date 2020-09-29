@@ -1,15 +1,19 @@
-import { inferTitle } from '@vuepress/shared-utils'
-import { PageFrontmatter } from './createPage'
-
-export interface PageHeader {
-  level: number
-  title: string
-  slug: string
-}
+import { parseHeaderDeeply } from '@vuepress/markdown'
+import type { PageFrontmatter } from '../types'
 
 export const resolvePageTitle = (
   frontmatter: PageFrontmatter,
   content: string
 ): string => {
-  return inferTitle(frontmatter, content) || ''
+  if (typeof frontmatter.title === 'string') {
+    return parseHeaderDeeply(frontmatter.title)
+  }
+
+  const match = content.trim().match(/^#+\s+(.*)/)
+
+  if (match) {
+    return parseHeaderDeeply(match[1])
+  }
+
+  return ''
 }

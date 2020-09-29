@@ -1,4 +1,5 @@
-import { h, VNode } from 'vue'
+import { h } from 'vue'
+import type { VNode } from 'vue'
 import { pageComponents } from '@internal/pageComponents'
 import { usePageData } from '../injections'
 

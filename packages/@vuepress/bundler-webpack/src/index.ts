@@ -1,10 +1,5 @@
-import { AppBundler } from '@vuepress/core'
-import { build } from './build'
-import { dev } from './dev'
+import type * as WebpackDevServer from 'webpack-dev-server'
 
-const webpackBundler: AppBundler = {
-  dev,
-  build,
-}
+export { WebpackDevServer }
 
-export = webpackBundler
+export * from './createBundler'

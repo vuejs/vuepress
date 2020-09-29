@@ -1,8 +1,6 @@
-import * as fs from 'fs'
-import * as path from 'path'
 import * as WebpackDevServer from 'webpack-dev-server'
 import { App } from '@vuepress/core'
-import { normalizeSeparator } from '@vuepress/utils'
+import { fs, path } from '@vuepress/utils'
 
 export const createDevServerConfig = (
   app: App
@@ -33,7 +31,7 @@ export const createDevServerConfig = (
         // Do not watch node_modules
         'node_modules',
         // Always watch temp dir
-        `!${normalizeSeparator(app.dir.temp())}/**`,
+        `!${app.dir.temp()}/**`,
       ],
     },
     historyApiFallback: {
@@ -42,17 +40,17 @@ export const createDevServerConfig = (
         { from: /./, to: path.posix.join(app.options.base, 'index.html') },
       ],
     },
-    before: async (expressApp, server): Promise<void> => {
-      if (fs.existsSync(contentBase)) {
+    before: (expressApp, server) => {
+      if (fs.pathExistsSync(contentBase)) {
         expressApp.use(app.options.base, require('express').static(contentBase))
       }
 
-      // apply plugin option: beforeDevServer
-      await app.pluginApi.applyOption('beforeDevServer', expressApp, server)
+      // plugin hook: beforeDevServer
+      app.pluginApi.hooks.beforeDevServer.processSync(expressApp, server)
     },
-    after: async (expressApp, server): Promise<void> => {
-      // apply plugin option: afterDevServer
-      await app.pluginApi.applyOption('afterDevServer', expressApp, server)
+    after: (expressApp, server) => {
+      // plugin hook: afterDevServer
+      app.pluginApi.hooks.afterDevServer.processSync(expressApp, server)
     },
   }
 

@@ -1,22 +1,17 @@
-import { App } from './createApp'
+import type { App, PluginOptions, PluginConfig } from '../types'
 import { normalizePluginConfig } from './normalizePluginConfig'
-import { PluginConfig } from './types'
 
-export const appUseByConfig = <T extends object>(
+export const appUseByConfig = <T extends PluginOptions>(
   app: App,
   pluginConfig: PluginConfig<T>
 ): void => {
-  const normalizedPluginConfig = normalizePluginConfig(pluginConfig)
+  const normalizedPluginConfig = normalizePluginConfig<T>(pluginConfig)
 
-  if (normalizedPluginConfig === false) {
-    return
-  }
+  if (normalizedPluginConfig === false) return
 
   const [plugin, config] = normalizedPluginConfig
 
-  if (config === false) {
-    return
-  }
+  if (config === false) return
 
   return app.use(plugin, config === true ? {} : config)
 }

@@ -1,43 +1,27 @@
-import { basename } from 'path'
-import { moduleResolver } from '@vuepress/shared-utils'
-import { App, ThemeOptions, normalizePlugin } from '../app'
-
-// TODO: migrate module resolver
-const cwd = process.cwd()
-const resolver = moduleResolver.getThemeResolver(cwd)
-
-export interface ThemeInfo {
-  /**
-   * Path of theme
-   */
-  path: string
-
-  /**
-   * Plugin options of theme
-   */
-  plugin: ThemeOptions
-}
+import { normalizePackageName } from '@vuepress/shared'
+import { path, requireResolve } from '@vuepress/utils'
+import { normalizePlugin } from '../app'
+import type { App, ThemeInfo, ThemeObject, ThemeConfig } from '../types'
 
 export const resolveThemeInfo = (app: App, themeName: string): ThemeInfo => {
-  // TODO: for current theme resolver, the `entry` is the path string
-  const result = resolver.resolve(themeName, cwd)
+  const result =
+    requireResolve(themeName) ??
+    requireResolve(normalizePackageName(themeName, 'vuepress', 'theme'))
 
-  if (!result.entry) {
+  if (result === null) {
     throw new Error()
   }
 
-  const plugin = normalizePlugin(
+  const plugin = normalizePlugin<ThemeConfig, ThemeObject>(
     app,
-    require(result.entry),
+    result,
     app.options.themeConfig
   )
 
   // TODO: normalize theme path
   // TODO: normalize theme plugin name
   return {
-    path: result.entry.match(/.(js|ts)$/)
-      ? basename(result.entry)
-      : result.entry,
+    path: result.match(/.(js|ts)$/) ? path.dirname(result) : result,
     plugin,
   }
 }

@@ -22,19 +22,19 @@
     "lib"
   ],
   "scripts": {
-    "build": "tsc -b",
-    "clean": "rimraf lib tsconfig.tsbuildinfo",
-    "lint": "eslint --ext .ts src"
+    "build": "tsc -b tsconfig.build.json",
+    "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
     "@types/webpack-dev-server": "^3.10.1",
-    "@vue/server-renderer": "3.0.0-beta.10",
+    "@vue/server-renderer": "^3.0.0",
     "@vuepress/client": "2.0.0-alpha.0",
-    "@vuepress/markdown": "^1.3.1",
-    "@vuepress/shared-utils": "^1.4.1",
+    "@vuepress/markdown": "2.0.0-alpha.0",
+    "@vuepress/shared": "2.0.0-alpha.0",
     "@vuepress/utils": "2.0.0-alpha.0",
-    "vue": "3.0.0-beta.10",
-    "vue-router": "4.0.0-alpha.10",
-    "webpack-chain": "^6.4.0"
+    "date-fns": "^2.16.1",
+    "gray-matter": "^4.0.2",
+    "toml": "^3.0.0",
+    "webpack-chain": "^6.5.1"
   }
 }

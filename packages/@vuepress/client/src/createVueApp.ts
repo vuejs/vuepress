@@ -1,63 +1,72 @@
-import { CreateAppFunction, App, h, ComponentOptions } from 'vue'
-import {
-  createRouter,
-  useRoute,
-  Router,
-  RouterView,
-  RouterHistory,
-} from 'vue-router'
+import { h } from 'vue'
+import type { CreateAppFunction, App, ComponentOptions } from 'vue'
+import { createRouter, RouterView } from 'vue-router'
+import type { Router, RouterHistory } from 'vue-router'
+import { removeEndingSlash } from '@vuepress/shared'
+import { clientAppEnhances } from '@internal/clientAppEnhances'
+import { clientAppSetups } from '@internal/clientAppSetups'
 import { pageComponents } from '@internal/pageComponents'
 import { routes } from '@internal/routes'
-import { siteData } from '@internal/siteData'
-import { Content } from './components'
-import { siteDataKey } from './injections'
+import { siteData } from './injections'
+import { Content, Debug } from './components'
 
 export type AppCreator = CreateAppFunction<Element>
 export type HistoryCreator = (base?: string) => RouterHistory
+export type CreateVueAppResult = {
+  app: App
+  router: Router
+}
 
-export async function createVueApp({
+export const createVueApp = async ({
   appCreator,
   historyCreator,
 }: {
   appCreator: AppCreator
   historyCreator: HistoryCreator
-}): Promise<{
-  app: App
-  router: Router
-}> {
+}): Promise<CreateVueAppResult> => {
+  // options to create vue app
   const appOptions: ComponentOptions = {
     setup() {
-      const route = useRoute()
-      return { route }
-    },
+      // invoke all clientAppSetups
+      for (const clientAppSetup of clientAppSetups) {
+        clientAppSetup()
+      }
 
-    render() {
-      return h('div', { id: 'app' }, [
-        h(RouterView),
-        // TODO: global ui, portal?
-        h('div', { class: 'global-ui' }),
-      ])
+      return () =>
+        h('div', { id: 'app' }, [
+          h(RouterView),
+          // TODO: global ui, portal?
+          h('div', { class: 'global-ui' }),
+        ])
     },
   }
 
+  // create vue app
   const app = appCreator(appOptions)
 
-  const history = historyCreator(siteData.base)
-
+  // create vue-router
   const router = createRouter({
-    history,
+    // TODO: it might be an issue of vue-router that have to remove the ending slash
+    history: historyCreator(removeEndingSlash(siteData.value.base)),
     routes,
   })
 
+  // use vue-router
   app.use(router)
-  app.component('Content', Content)
 
+  // register built-in components
+  app.component('Content', Content)
+  app.component('Debug', __DEV__ ? Debug : () => null)
+
+  // register all pages components
   Object.entries(pageComponents).forEach(([name, component]) => {
     app.component(name, component)
   })
 
-  // provide siteData
-  app.provide(siteDataKey, siteData)
+  // invoke all clientAppEnhances
+  for (const clientAppEnhance of clientAppEnhances) {
+    await clientAppEnhance({ app, router, siteData })
+  }
 
   return {
     app,

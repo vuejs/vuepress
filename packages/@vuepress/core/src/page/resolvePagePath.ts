@@ -1,3 +1,6 @@
+/**
+ * Resolve the final path of a page
+ */
 export const resolvePagePath = (
   permalink: string | null,
   pathInferred: string | null

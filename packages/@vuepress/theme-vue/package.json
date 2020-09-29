@@ -23,9 +23,8 @@
     "lib"
   ],
   "scripts": {
-    "build": "tsc -b",
-    "clean": "rimraf lib tsconfig.tsbuildinfo",
-    "lint": "eslint --ext .ts src"
+    "build": "tsc -b tsconfig.build.json",
+    "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
     "@vuepress/theme-default": "2.0.0-alpha.0"

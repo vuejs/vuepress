@@ -1,23 +1,18 @@
-import { logger, chalk } from '@vuepress/shared-utils'
-import { App } from './createApp'
+import { chalk } from '@vuepress/utils'
+import type { App, Plugin, PluginOptions } from '../types'
 import { normalizePlugin } from './normalizePlugin'
-import { Plugin } from './types'
 
-export const appUse = <T extends object>(
+export const appUse = <T extends PluginOptions>(
   app: App,
   rawPlugin: Plugin<T> | string,
-  config?: T
+  config?: Partial<T>
 ): void => {
   // normalize plugin
   const plugin = normalizePlugin(app, rawPlugin, config)
 
-  // TODO: migrate logger
   // print log
-  if (plugin.name.startsWith('@vuepress/internal')) {
-    logger.debug(`Use plugin ${chalk.magenta(plugin.name)}`)
-  } else {
-    logger.info(`Use plugin ${chalk.magenta(plugin.name)}`)
-  }
+  // TODO: logger
+  console.log(`Use plugin ${chalk.magenta(plugin.name)}`)
 
   if (plugin.multiple !== true) {
     // remove duplicated plugin
@@ -30,7 +25,7 @@ export const appUse = <T extends object>(
   }
 
   // use plugin
-  app.pluginApi.use(plugin)
+  app.pluginApi.plugins.push(plugin)
 
   // TODO: nested plugins with `multiple` may cause potential problems
 

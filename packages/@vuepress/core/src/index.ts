@@ -1,5 +1,5 @@
 export * from './app'
 export * from './page'
 export * from './plugin-api'
-export * from './plugins'
 export * from './theme-api'
+export * from './types'

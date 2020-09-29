@@ -1,45 +1,80 @@
-import { resolve } from 'path'
-import { AppConfig } from './types'
-
-/**
- * Options (normalized config) of vuepress app
- */
-export type AppOptions = Required<AppConfig>
+import { path } from '@vuepress/utils'
+import type { AppOptions, VuepressConfig } from '../types'
 
 /**
  * Create options (normalized config) for vuepress app
  */
-export const createAppOptions = (config: AppConfig): AppOptions => {
-  return {
-    // Meta
-    title: '',
-    description: '',
-    head: [],
-    locales: {},
+export const createAppOptions = ({
+  // site config
+  base = '',
+  title = '',
+  description = '',
+  head = [],
+  locales = {},
 
-    // Dev & Build
-    bundler: 'webpack',
-    base: '',
-    host: '0.0.0.0',
-    port: 8080,
-    debug: false,
-    open: false,
+  // markdown config
+  markdown = {},
 
-    // Dirs
-    dirDest: resolve(config.dirSource, '.vuepress/dist'),
-    dirTemp: resolve(config.dirSource, '.vuepress/.temp'),
+  // plugins config
+  plugins = [],
 
-    // Template
-    templateDev: require.resolve('@vuepress/client/templates/index.dev.html'),
-    templateSSR: require.resolve('@vuepress/client/templates/index.ssr.html'),
+  // theme config
+  theme = '@vuepress/default',
+  themeConfig = {},
 
-    // Plugins
-    plugins: [],
+  // directory config
+  dirSource,
+  dirDest = path.resolve(dirSource, '.vuepress/dist'),
+  dirTemp = path.resolve(dirSource, '.vuepress/.temp'),
+  dirCache = path.resolve(
+    require.resolve('cache-loader/package.json'),
+    '../../.cache'
+  ),
 
-    // Theme
-    theme: '@vuepress/default',
-    themeConfig: {},
+  // development config
+  host = '0.0.0.0',
+  port = 8080,
+  debug = false,
+  open = false,
+  evergreen = false,
+  templateDev = path.normalize(
+    require.resolve('@vuepress/client/templates/index.dev.html')
+  ),
+  templateSSR = path.normalize(
+    require.resolve('@vuepress/client/templates/index.ssr.html')
+  ),
 
-    ...config,
-  }
-}
+  // bundler config
+  bundler = 'webpack',
+  bundlerConfig = {},
+
+  // ssr config
+  shouldPreload = null,
+  shouldPrefetch = null,
+}: VuepressConfig): AppOptions => ({
+  // site config
+  base,
+  title,
+  description,
+  head,
+  locales,
+  markdown,
+  plugins,
+  theme,
+  themeConfig,
+  dirSource,
+  dirDest,
+  dirTemp,
+  dirCache,
+  debug,
+  host,
+  port,
+  open,
+  evergreen,
+  templateDev,
+  templateSSR,
+  bundler,
+  bundlerConfig,
+  shouldPreload,
+  shouldPrefetch,
+})

@@ -23,20 +23,34 @@
     "lib"
   ],
   "scripts": {
-    "build": "tsc -b",
-    "clean": "rimraf lib tsconfig.tsbuildinfo",
-    "lint": "eslint --ext .ts src"
+    "build": "tsc -b tsconfig.build.json",
+    "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
+    "@babel/core": "^7.11.6",
     "@types/webpack-dev-server": "^3.10.1",
+    "@types/webpack-env": "^1.15.3",
+    "@vue/babel-preset-app": "^4.5.6",
+    "@vue/compiler-sfc": "^3.0.0",
+    "@vue/server-renderer": "^3.0.0",
+    "@vuepress/client": "2.0.0-alpha.0",
     "@vuepress/core": "2.0.0-alpha.0",
-    "@vuepress/markdown-loader": "^1.5.0",
+    "@vuepress/utils": "2.0.0-alpha.0",
+    "babel-loader": "^8.1.0",
+    "cache-loader": "^4.1.0",
+    "core-js": "^3.6.5",
+    "css-loader": "^4.3.0",
     "file-loader": "^6.0.0",
-    "html-webpack-plugin": "4.3.0",
+    "html-webpack-plugin": "^4.5.0",
+    "mini-css-extract-plugin": "^0.11.2",
+    "optimize-css-assets-webpack-plugin": "^5.0.4",
     "portfinder": "^1.0.26",
+    "style-loader": "^1.2.1",
+    "ts-loader": "^8.0.4",
     "url-loader": "^4.1.0",
-    "vue-loader": "16.0.0-beta.2",
-    "webpack": "^4.43.0",
+    "vue-loader": "^16.0.0-beta.8",
+    "webpack": "^4.44.2",
+    "webpack-chain": "^6.5.1",
     "webpack-dev-server": "^3.10.3"
   }
 }

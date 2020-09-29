@@ -1,6 +1,6 @@
 node_modules/
-!.vuepress/
-!.eslintrc.js
-!.commitlintrc.js
+.temp/
 lib/
 dist/
+!.vuepress/
+!.*.js

@@ -1,14 +1,16 @@
 {
   "extends": "./tsconfig.base.json",
   "references": [
-    { "path": "./packages/@vuepress/bundler-webpack" },
-    { "path": "./packages/@vuepress/cli" },
-    { "path": "./packages/@vuepress/client" },
-    { "path": "./packages/@vuepress/core" },
-    { "path": "./packages/@vuepress/theme-default" },
-    { "path": "./packages/@vuepress/theme-vue" },
-    { "path": "./packages/@vuepress/utils" },
-    { "path": "./packages/vuepress" }
+    { "path": "./packages/@vuepress/bundler-webpack/tsconfig.build.json" },
+    { "path": "./packages/@vuepress/cli/tsconfig.build.json" },
+    { "path": "./packages/@vuepress/client/tsconfig.build.json" },
+    { "path": "./packages/@vuepress/core/tsconfig.build.json" },
+    { "path": "./packages/@vuepress/markdown/tsconfig.build.json" },
+    { "path": "./packages/@vuepress/shared/tsconfig.build.json" },
+    { "path": "./packages/@vuepress/theme-default/tsconfig.build.json" },
+    { "path": "./packages/@vuepress/theme-vue/tsconfig.build.json" },
+    { "path": "./packages/@vuepress/utils/tsconfig.build.json" },
+    { "path": "./packages/vuepress/tsconfig.build.json" }
   ],
   "files": []
 }
