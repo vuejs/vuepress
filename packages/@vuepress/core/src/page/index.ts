@@ -1,4 +1,5 @@
 export * from './createPage'
+export * from './file'
 export * from './inferPagePath'
 export * from './resolvePageComponent'
 export * from './resolvePageContent'
