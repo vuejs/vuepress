@@ -92,8 +92,8 @@ This section will help you build a basic VuePress documentation site from ground
    ```json
    {
      "scripts": {
-       "docs:dev": "vuepress dev docs",
-       "docs:build": "vuepress build docs"
+       "dev": "vuepress dev src",
+       "build": "vuepress build src"
      }
    }
    ```
@@ -103,13 +103,13 @@ This section will help you build a basic VuePress documentation site from ground
    <code-group>
    <code-block title="YARN" active>
    ```bash
-   yarn docs:dev
+   yarn dev
    ```
    </code-block>
 
    <code-block title="NPM">
    ```bash
-   npm run docs:dev
+   npm run dev
    ```
    </code-block>
    </code-group>
