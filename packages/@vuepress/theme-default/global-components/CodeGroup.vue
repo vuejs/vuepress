@@ -1,15 +1,23 @@
 <template>
   <div class="theme-code-group">
     <div class="theme-code-group__nav">
-      <button
-        v-for="(tab, i) in codeTabs"
-        :key="tab.title"
-        class="theme-code-group__nav-tab"
-        :class="{'theme-code-group__nav-tab-active': i === activeCodeTabIndex}"
-        @click="changeCodeTab(i)"
-      >
-        {{ tab.title }}
-      </button>
+      <ul class="theme-code-group__ul">
+        <li
+          v-for="(tab, i) in codeTabs"
+          :key="tab.title"
+          class="theme-code-group__li"
+        >
+          <button
+            class="theme-code-group__nav-tab"
+            :class="{
+              'theme-code-group__nav-tab-active': i === activeCodeTabIndex,
+            }"
+            @click="changeCodeTab(i)"
+          >
+            {{ tab.title }}
+          </button>
+        </li>
+      </ul>
     </div>
     <slot />
     <pre
@@ -71,6 +79,13 @@ export default {
     padding-left: 10px;
     padding-top: 10px;
   }
+  .theme-code-group__ul {
+    margin: auto 0;
+    padding-left: 0;
+    display: inline-flex;
+    list-style: none;
+  }
+  .theme-code-group__li {}
   .theme-code-group__nav-tab {
     border: 0;
     padding: 5px;
