@@ -13,10 +13,19 @@ The fastest way to get your VuePress project setup is to use our [create-vuepres
 
 To use it, open up your terminal in the desired directory and run the following command:
 
+<code-group>
+<code-block title="YARN" active>
 ```bash
 yarn create vuepress-site [optionalDirectoryName]
-# OR npx create-vuepress-site [optionalDirectoryName]
 ```
+</code-block>
+
+<code-block title="NPM">
+```bash
+npx create-vuepress-site [optionalDirectoryName]
+```
+</code-block>
+</code-group>
 
 You will then have the opportunity to configure your VuePress site’s metadata such as:
 
@@ -40,15 +49,35 @@ This section will help you build a basic VuePress documentation site from ground
 
 2. Initialize with your preferred package manager
 
+   <code-group>
+   <code-block title="YARN" active>
+    ```bash
+    yarn init
+    ```
+   </code-block>
+
+   <code-block title="NPM">
    ```bash
-   yarn init # npm init
+   npm init
    ```
+   </code-block>
+   </code-group>
 
 3. Install VuePress locally
 
+   <code-group>
+   <code-block title="YARN" active>
    ```bash
-   yarn add -D vuepress # npm install -D vuepress
+   yarn add -D vuepress
    ```
+   </code-block>
+
+   <code-block title="NPM">
+   ```bash
+   npm install -D vuepress
+   ```
+   </code-block>
+   </code-group>
 
 4. Create your first document
 
@@ -71,9 +100,19 @@ This section will help you build a basic VuePress documentation site from ground
 
 6. Serve the documentation site in the local server
 
+   <code-group>
+   <code-block title="YARN" active>
    ```bash
-   yarn docs:dev # npm run docs:dev
+   yarn docs:dev
    ```
+   </code-block>
+
+   <code-block title="NPM">
+   ```bash
+   npm run docs:dev
+   ```
+   </code-block>
+   </code-group>
 
    VuePress will start a hot-reloading development server at [http://localhost:8080](http://localhost:8080).
 

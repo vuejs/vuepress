@@ -77,7 +77,7 @@ export async function createApp (isServer) {
           return false
         }
         return {
-          selector: to.hash
+          selector: decodeURIComponent(to.hash)
         }
       } else {
         return { x: 0, y: 0 }

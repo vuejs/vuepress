@@ -1,3 +1,13 @@
+# [1.6.0](https://github.com/vuejs/vuepress/compare/v1.5.4...v1.6.0) (2020-09-25)
+
+
+### Features
+
+* **$theme-default:** add code group and code block components ([#2594](https://github.com/vuejs/vuepress/issues/2594)) ([394c4f6](https://github.com/vuejs/vuepress/commit/394c4f6))
+* **$theme-default:** inform screen readers link opens in new tab/window (fix [#2601](https://github.com/vuejs/vuepress/issues/2601)) ([#2603](https://github.com/vuejs/vuepress/issues/2603)) ([8d10119](https://github.com/vuejs/vuepress/commit/8d10119))
+
+
+
 ## [1.5.4](https://github.com/vuejs/vuepress/compare/v1.5.3...v1.5.4) (2020-08-23)
 
 

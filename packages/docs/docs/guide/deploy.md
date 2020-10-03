@@ -101,8 +101,7 @@ deploy:
 3. Create a file called `.gitlab-ci.yml` in the root of your project with the content below. This will build and deploy your site whenever you make changes to your content:
 
 ``` yaml
-image: node:9.11.1
-
+image: node:10.22.0
 pages:
   cache:
     paths:
