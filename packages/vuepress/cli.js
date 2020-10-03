@@ -8,7 +8,7 @@ const registerCoreCommands = require('./lib/registerCoreCommands')
 const handleUnknownCommand = require('./lib/handleUnknownCommand')
 
 const OPTIONS = {
-  theme: '@vuepress/default'
+  theme: require.resolve('@vuepress/theme-default')
 }
 
 CLI({

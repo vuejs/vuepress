@@ -157,18 +157,18 @@ module.exports = class App {
       .use(require('./internal-plugins/transformModule'))
       .use(require('./internal-plugins/dataBlock'))
       .use(require('./internal-plugins/frontmatterBlock'))
-      .use('container', {
+      .use(require.resolve('vuepress-plugin-container'), {
         type: 'slot',
         before: info => `<template #${info}>`,
         after: '</template>'
       })
-      .use('container', {
+      .use(require.resolve('vuepress-plugin-container'), {
         type: 'v-pre',
         before: '<div v-pre>',
         after: '</div>'
       })
-      .use('@vuepress/last-updated', !!shouldUseLastUpdated)
-      .use('@vuepress/register-components', {
+      .use(require.resolve('@vuepress/plugin-last-updated'), !!shouldUseLastUpdated)
+      .use(require.resolve('@vuepress/plugin-register-components'), {
         componentsDir: [
           path.resolve(this.sourceDir, '.vuepress/components'),
           path.resolve(this.themeAPI.theme.path, 'global-components'),
