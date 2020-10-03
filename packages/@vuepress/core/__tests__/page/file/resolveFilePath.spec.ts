@@ -1,5 +1,5 @@
-import { path } from '@vuepress/utils'
 import { createApp, resolveFilePath } from '@vuepress/core'
+import { path } from '@vuepress/utils'
 
 const dirSource = path.resolve(__dirname, 'fake-source')
 const app = createApp({
