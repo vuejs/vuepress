@@ -23,10 +23,13 @@ export const inferPagePath = (
   const pathInferred = `/${filePathRelative.replace(/\.md$/, '.html')}`
 
   // infer page locale path
-  const pathLocale =
-    Object.keys(app.options.locales).find((locale) =>
-      pathInferred.startsWith(locale)
-    ) ?? '/'
+  let pathLocale = '/'
+
+  Object.keys(app.options.locales).forEach((locale) => {
+    if (pathInferred.startsWith(locale)) {
+      pathLocale = locale
+    }
+  })
 
   return {
     pathInferred,
