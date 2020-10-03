@@ -77,7 +77,7 @@ export default {
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
     padding-left: 10px;
-    padding-top: 10px;
+    padding-top: 3px;
   }
   .theme-code-group__ul {
     margin: auto 0;
