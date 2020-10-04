@@ -16,11 +16,14 @@ export const resolvePageDate = (
 ): string => {
   // `frontmatter.date` could be parsed as UTC Date directly
   if (frontmatter.date instanceof Date) {
-    return [
-      frontmatter.date.getUTCFullYear(),
-      frontmatter.date.getUTCMonth() + 1,
-      frontmatter.date.getUTCDate(),
-    ].join('-')
+    return formatDateString(
+      [
+        frontmatter.date.getUTCFullYear(),
+        frontmatter.date.getUTCMonth() + 1,
+        frontmatter.date.getUTCDate(),
+      ].join('-'),
+      defaultDate
+    )
   }
 
   if (typeof frontmatter.date === 'string') {
