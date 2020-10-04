@@ -106,7 +106,7 @@ export const linksPlugin: MarkdownIt.PluginWithOptions<LinksPluginOptions> = (
         normalizedPath = indexMatch[1]
       } else {
         // convert non-index page link
-        normalizedPath = absolutePath.replace(/\.md(#.*)?$/, '.html$1')
+        normalizedPath = absolutePath.replace(/\.md$/, '.html')
       }
 
       // extract internal links for file / page existence check
