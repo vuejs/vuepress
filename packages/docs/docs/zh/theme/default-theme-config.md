@@ -416,6 +416,10 @@ module.exports = {
   由于 `lastUpdated` 是基于 `git` 的, 所以你只能在一个基于 `git` 的项目中启用它。此外，由于使用的时间戳来自 git commit，因此它将仅在给定页的第一次提交之后显示，并且仅在该页面后续提交更改时更新。
 :::
 
+::: warning 使用须知
+  如果你使用了自动构建及部署的 CI 系统，请确保它拉取了 Git 仓库的所有历史记录。比如，在 GitHub Actions `actions/checkout@v2` 中使用 `fetch-depth: 0` 参数（默认为 `1`，会导致生成的更新时间有误）。
+:::
+
 **拓展阅读:**
 
 - [@vuepress/plugin-last-updated](../plugin/official/plugin-last-updated.md)
