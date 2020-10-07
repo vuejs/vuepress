@@ -1,5 +1,6 @@
 import { h } from 'vue'
 import type { ComponentOptions } from 'vue'
+import { isString } from '@vuepress/shared'
 import { layoutComponents } from '@internal/layoutComponents'
 import { usePageData } from '../injections'
 import { Content } from './Content'
@@ -20,7 +21,7 @@ export const Vuepress: ComponentOptions = {
       // use layout from frontmatter
       const frontmatterLayout = page.value.frontmatter.layout
 
-      if (typeof frontmatterLayout === 'string') {
+      if (isString(frontmatterLayout)) {
         layoutName = frontmatterLayout
       } else {
         // fallback to Layout component
