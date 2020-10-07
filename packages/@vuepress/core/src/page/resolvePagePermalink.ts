@@ -1,4 +1,4 @@
-import { ensureLeadingSlash } from '@vuepress/shared'
+import { ensureLeadingSlash, isString } from '@vuepress/shared'
 import { path } from '@vuepress/utils'
 import type { PageOptions, PageFrontmatter } from '../types'
 
@@ -11,7 +11,7 @@ export const resolvePagePermalink = (
   pathLocale: string
 ): string | null => {
   // use permalink in frontmatter directly
-  if (typeof frontmatter.permalink === 'string') {
+  if (isString(frontmatter.permalink)) {
     return frontmatter.permalink
   }
 
@@ -21,10 +21,9 @@ export const resolvePagePermalink = (
   }
 
   // get permalink pattern from frontmatter or options
-  const pattern =
-    typeof frontmatter.permalinkPattern === 'string'
-      ? frontmatter.permalinkPattern
-      : options.permalinkPattern
+  const pattern = isString(frontmatter.permalinkPattern)
+    ? frontmatter.permalinkPattern
+    : options.permalinkPattern
 
   if (!pattern) {
     return null

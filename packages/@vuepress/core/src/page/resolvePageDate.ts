@@ -1,4 +1,4 @@
-import { formatDateString } from '@vuepress/shared'
+import { formatDateString, isString } from '@vuepress/shared'
 import { path } from '@vuepress/utils'
 import { PageFrontmatter } from '../types'
 
@@ -26,7 +26,7 @@ export const resolvePageDate = (
     )
   }
 
-  if (typeof frontmatter.date === 'string') {
+  if (isString(frontmatter.date)) {
     return formatDateString(frontmatter.date, defaultDate)
   }
 

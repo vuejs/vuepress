@@ -1,11 +1,12 @@
 import { parseHeaderDeeply } from '@vuepress/markdown'
+import { isString } from '@vuepress/shared'
 import type { PageFrontmatter } from '../types'
 
 export const resolvePageTitle = (
   frontmatter: PageFrontmatter,
   content: string
 ): string => {
-  if (typeof frontmatter.title === 'string') {
+  if (isString(frontmatter.title)) {
     return parseHeaderDeeply(frontmatter.title)
   }
 
