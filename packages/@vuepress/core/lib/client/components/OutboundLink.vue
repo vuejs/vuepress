@@ -2,7 +2,6 @@
   <svg
     class="icon outbound"
     xmlns="http://www.w3.org/2000/svg"
-    aria-labelledby="outbound-link-title"
     role="img"
     focusable="false"
     x="0px"
@@ -11,7 +10,7 @@
     width="15"
     height="15"
   >
-    <title id="outbound-link-title">{{ openInNewWindowTitle }}</title>
+    <title>{{ openInNewWindowTitle }}</title>
     <path
       fill="currentColor"
       d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"
