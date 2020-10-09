@@ -1,13 +1,9 @@
 <template>
-  <span
-    :title="openInNewWindowTitle"
-    class="sr-only"
-  >
+  <span>
     <svg
       class="icon outbound"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
-      role="img"
       focusable="false"
       x="0px"
       y="0px"
@@ -24,6 +20,7 @@
         points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"
       />
     </svg>
+    <span class="sr-only">{{ openInNewWindowTitle }}</span>
   </span>
 </template>
 
