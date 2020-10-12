@@ -13,6 +13,7 @@ export default {
       this.$ssrContext.title = this.$title
       this.$ssrContext.lang = this.$lang
       this.$ssrContext.pageMeta = renderPageMeta(mergedMetaItems)
+      this.$ssrContext.canonical = renderCanonical(this.$canonical)
     }
   },
   // Other life cycles will only be called at client
@@ -22,6 +23,7 @@ export default {
 
     // update title / meta tags
     this.updateMeta()
+    this.updateCanonical()
   },
 
   methods: {
@@ -39,6 +41,20 @@ export default {
       // description needs special attention as it has too many entries
       return unionBy([{ name: 'description', content: this.$description }],
         pageMeta, this.siteMeta, metaIdentifier)
+    },
+
+    updateCanonical () {
+      const canonicalEl = document.querySelector("link[rel='canonical']")
+
+      if (canonicalEl) {
+        canonicalEl.remove()
+      }
+
+      if (!this.$canonical) {
+        return
+      }
+
+      document.head.insertAdjacentHTML('beforeend', renderCanonical(this.$canonical))
     }
   },
 
@@ -51,6 +67,13 @@ export default {
   beforeDestroy () {
     updateMetaTags(null, this.currentMetaTags)
   }
+}
+
+function renderCanonical (link = '') {
+  if (!link) {
+    return ''
+  }
+  return `<link href="${link}" rel="canonical" />`
 }
 
 /**
