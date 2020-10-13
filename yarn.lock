@@ -12530,14 +12530,14 @@ strip-indent@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/strip-indent/-/strip-indent-2.0.0.tgz#5ef8db295d01e6ed6cbf7aab96998d7822527b68"
 
-strip-json-comments@^2.0.1, strip-json-comments@~2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
-
 strip-json-comments@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-3.0.1.tgz#85713975a91fb87bf1b305cca77395e40d2a64a7"
   integrity sha512-VTyMAUfdm047mwKl+u79WIdrZxtFtn+nBxHeb844XBQ9uMNTuTHdx2hc5RiAJYqwTj3wc/xe5HLSdJSkJ+WfZw==
+
+strip-json-comments@~2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
 strong-log-transformer@^2.0.0:
   version "2.1.0"
@@ -12838,13 +12838,14 @@ textlint-rule-stop-words@^1.0.17:
     split-lines "^2.0.0"
     textlint-rule-helper "^2.0.0"
 
-textlint-rule-terminology@^1.1.30:
-  version "1.1.30"
-  resolved "https://registry.yarnpkg.com/textlint-rule-terminology/-/textlint-rule-terminology-1.1.30.tgz#b9c5e8c665132dea2b141e3fe995316159c2d296"
+textlint-rule-terminology@^2.1.4:
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/textlint-rule-terminology/-/textlint-rule-terminology-2.1.4.tgz#d6004ae65dbe757b2f4c7bd2bf0fe77d202f0c14"
+  integrity sha512-kLw4qL8RwY2lCNqgKveHc5sjCDlS5Tdw2TXWOrHvSvQxqaVOwsv3+51oMIQLGfJzQrhFSMlSlw5MvfaOerBvPQ==
   dependencies:
-    lodash "^4.17.4"
-    strip-json-comments "^2.0.1"
-    textlint-rule-helper "^2.0.0"
+    lodash "^4.17.15"
+    strip-json-comments "^3.0.1"
+    textlint-rule-helper "^2.1.1"
 
 textlint-rule-write-good@^1.6.2:
   version "1.6.2"
