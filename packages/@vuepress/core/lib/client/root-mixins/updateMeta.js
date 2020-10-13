@@ -61,6 +61,7 @@ export default {
   watch: {
     $page () {
       this.updateMeta()
+      this.updateCanonical()
     }
   },
 
