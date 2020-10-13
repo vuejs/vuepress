@@ -1,3 +1,20 @@
+# [1.7.0](https://github.com/vuejs/vuepress/compare/v1.6.0...v1.7.0) (2020-10-13)
+
+
+### Bug Fixes
+
+* **$core:** [#2627](https://github.com/vuejs/vuepress/issues/2627) Dup ID violates HTML5-4 ([#2650](https://github.com/vuejs/vuepress/issues/2650)) ([931e7d9](https://github.com/vuejs/vuepress/commit/931e7d9))
+* adds accessibility to code-group component ([#2630](https://github.com/vuejs/vuepress/issues/2630)) ([35865ec](https://github.com/vuejs/vuepress/commit/35865ec))
+* scroll hash encoded when non-english chars are used fix [#2633](https://github.com/vuejs/vuepress/issues/2633) ([#2639](https://github.com/vuejs/vuepress/issues/2639)) ([5fcbd88](https://github.com/vuejs/vuepress/commit/5fcbd88))
+* textlint bug causing PR's to fail checks fix [#2636](https://github.com/vuejs/vuepress/issues/2636) ([#2637](https://github.com/vuejs/vuepress/issues/2637)) ([64e92ca](https://github.com/vuejs/vuepress/commit/64e92ca))
+
+
+### Features
+
+* **$core:** add canonical link to frontmatter ([#2658](https://github.com/vuejs/vuepress/issues/2658)) ([ff6c51a](https://github.com/vuejs/vuepress/commit/ff6c51a))
+
+
+
 # [1.6.0](https://github.com/vuejs/vuepress/compare/v1.5.4...v1.6.0) (2020-09-25)
 
 
