@@ -1,13 +1,34 @@
+import { isPlainObject, isString } from '@vuepress/shared'
 import { fs, path } from '@vuepress/utils'
-import type { ThemeInfo, ThemeLayout } from '../types'
+import type { ThemeObject, ThemeLayout } from '../types'
 
-export const resolveThemeLayouts = (themeInfo: ThemeInfo): ThemeLayout[] => {
-  const dirLayout = path.resolve(themeInfo.path, 'layouts')
+export const resolveThemeLayouts = ({
+  themePath,
+  themePlugin,
+}: {
+  themePath: string
+  themePlugin: ThemeObject
+}): ThemeLayout[] => {
+  // use the layouts component map directly
+  if (isPlainObject(themePlugin.layouts)) {
+    return Object.entries(themePlugin.layouts).map(([name, file]) => ({
+      name,
+      path: file,
+    }))
+  }
 
+  // resolve the layouts directory
+  const dirLayout =
+    isString(themePlugin.layouts) && path.isAbsolute(themePlugin.layouts)
+      ? themePlugin.layouts
+      : path.resolve(themePath, 'layouts')
+
+  // load all files in layouts directory
   const files = fs.readdirSync(dirLayout)
 
+  // take matched files as theme layouts
   const layouts = files
-    .filter((file) => file.endsWith('.vue'))
+    .filter((file) => /\.(vue|ts|js)$/.test(file))
     .map((file) => ({
       name: path.trimExt(file),
       path: path.resolve(dirLayout, file),

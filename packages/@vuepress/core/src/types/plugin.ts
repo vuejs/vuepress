@@ -11,7 +11,7 @@ import type { HooksExposed } from './plugin-api'
 export type Plugin<
   T extends PluginOptions = PluginOptions,
   U extends PluginObject = PluginObject
-> = PluginObject | PluginFunction<T, U>
+> = U | PluginFunction<T, U>
 
 /**
  * Vuepress plugin function

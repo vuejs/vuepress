@@ -26,9 +26,11 @@ export interface ThemeObject extends PluginObject {
   // theme plugin should never be multiple
   multiple?: false
 
-  // TODO: remove theme extending support?
   // extended parent theme
   extends?: string
+
+  // specify the layouts directory or components map
+  layouts?: string | Record<string, string>
 }
 
 /**

@@ -25,14 +25,14 @@ export interface ThemeApi {
  */
 export interface ThemeInfo {
   /**
-   * Path of theme
-   */
-  path: string
-
-  /**
    * Theme plugin object
    */
   plugin: ThemeObject
+
+  /**
+   * Theme layouts
+   */
+  layouts: ThemeLayout[]
 }
 
 /**

@@ -1,7 +1,6 @@
 import { fs } from '@vuepress/utils'
 import type { App, ThemeApi } from '../types'
 import { resolveThemeInfo } from './resolveThemeInfo'
-import { resolveThemeLayouts } from './resolveThemeLayouts'
 
 /**
  * Create vuepress theme-api
@@ -13,20 +12,32 @@ export const createThemeApi = async (app: App): Promise<ThemeApi> => {
   const localThemePath = app.dir.source('.vuepress/theme')
   const hasLocalTheme = await fs.pathExists(localThemePath)
 
+  // resolve theme info
   const theme = resolveThemeInfo(
     app,
     hasLocalTheme ? localThemePath : app.options.theme
   )
 
+  // resolve parent theme info
   const parentTheme = theme.plugin.extends
     ? resolveThemeInfo(app, theme.plugin.extends)
     : null
 
-  const layouts = [
-    ...(parentTheme ? resolveThemeLayouts(parentTheme) : []),
-    // TODO: parent theme and current theme may have layouts of same name
-    ...resolveThemeLayouts(theme),
-  ]
+  // resolve theme layouts
+  const layouts = theme.layouts
+
+  // layouts in child theme will override
+  // those with the same name in parent theme
+  if (parentTheme !== null) {
+    layouts.unshift(
+      ...parentTheme.layouts.filter(
+        ({ name: parentLayoutName }) =>
+          !theme.layouts.some(
+            ({ name: childLayoutName }) => childLayoutName === parentLayoutName
+          )
+      )
+    )
+  }
 
   return {
     theme,
