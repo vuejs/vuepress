@@ -115,7 +115,7 @@ meta:
 - Type: `string`
 - Default: `undefined`
 
-Set the canonical url for the current page.
+Set the canonical URL for the current page.
 
 ## Predefined Variables Powered By Default Theme
 
