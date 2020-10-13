@@ -65,7 +65,7 @@ module.exports = siteData => {
       return this.$localeConfig.title || this.$site.title || ''
     }
 
-    get $canonical () {
+    get $canonicalUrl () {
       const { canonical } = this.$page.frontmatter
 
       if (typeof canonical === 'string') {

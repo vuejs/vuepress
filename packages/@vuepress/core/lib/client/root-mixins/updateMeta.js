@@ -13,7 +13,7 @@ export default {
       this.$ssrContext.title = this.$title
       this.$ssrContext.lang = this.$lang
       this.$ssrContext.pageMeta = renderPageMeta(mergedMetaItems)
-      this.$ssrContext.canonical = renderCanonical(this.$canonical)
+      this.$ssrContext.canonicalLink = renderCanonicalLink(this.$canonicalUrl)
     }
   },
   // Other life cycles will only be called at client
@@ -44,17 +44,13 @@ export default {
     },
 
     updateCanonical () {
-      const canonicalEl = document.querySelector("link[rel='canonical']")
+      removeCanonicalLink()
 
-      if (canonicalEl) {
-        canonicalEl.remove()
-      }
-
-      if (!this.$canonical) {
+      if (!this.$canonicalUrl) {
         return
       }
 
-      document.head.insertAdjacentHTML('beforeend', renderCanonical(this.$canonical))
+      document.head.insertAdjacentHTML('beforeend', renderCanonicalLink(this.$canonicalUrl))
     }
   },
 
@@ -67,10 +63,19 @@ export default {
 
   beforeDestroy () {
     updateMetaTags(null, this.currentMetaTags)
+    removeCanonicalLink()
   }
 }
 
-function renderCanonical (link = '') {
+function removeCanonicalLink () {
+  const canonicalEl = document.querySelector("link[rel='canonical']")
+
+  if (canonicalEl) {
+    canonicalEl.remove()
+  }
+}
+
+function renderCanonicalLink (link = '') {
   if (!link) {
     return ''
   }
