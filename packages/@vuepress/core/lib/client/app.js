@@ -1,5 +1,6 @@
 /* global VUEPRESS_TEMP_PATH */
 import Vue from 'vue'
+import VueMeta from 'vue-meta'
 import Router from 'vue-router'
 import dataMixin from './dataMixin'
 import { routes } from '@internal/routes'
@@ -33,6 +34,7 @@ if (module.hot) {
 Vue.config.productionTip = false
 
 Vue.use(Router)
+Vue.use(VueMeta, { refreshOnceOnNavigation: true })
 Vue.use(VuePress)
 // mixin for exposing $site and $page
 Vue.mixin(dataMixin(ClientComputedMixin, siteData))

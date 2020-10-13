@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html lang="{{ lang }}">
+<html {{{ meta.inject().htmlAttrs.text(true) }}}>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>{{ title }}</title>
     <meta name="generator" content="VuePress {{ version }}">
-    {{{ userHeadTags }}}
-    {{{ pageMeta }}}
-    {{{ canonicalLink }}}
+    {{{ meta.inject().meta.text() }}}
+    {{{ meta.inject().title.text() }}}
     {{{ renderResourceHints() }}}
     {{{ renderStyles() }}}
   </head>
