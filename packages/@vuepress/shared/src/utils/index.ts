@@ -1,4 +1,10 @@
-export { isArray, isFunction, isString, isPromise } from '@vue/shared'
+export {
+  isArray,
+  isFunction,
+  isPlainObject,
+  isPromise,
+  isString,
+} from '@vue/shared'
 
 export * from './ensureLeadingSlash'
 export * from './ensureEndingSlash'
