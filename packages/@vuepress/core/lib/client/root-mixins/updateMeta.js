@@ -23,7 +23,7 @@ export default {
 
     // update title / meta tags
     this.updateMeta()
-    this.updateCanonical()
+    this.updateCanonicalLink()
   },
 
   methods: {
@@ -43,7 +43,7 @@ export default {
         pageMeta, this.siteMeta, metaIdentifier)
     },
 
-    updateCanonical () {
+    updateCanonicalLink () {
       removeCanonicalLink()
 
       if (!this.$canonicalUrl) {
@@ -57,7 +57,7 @@ export default {
   watch: {
     $page () {
       this.updateMeta()
-      this.updateCanonical()
+      this.updateCanonicalLink()
     }
   },
 
