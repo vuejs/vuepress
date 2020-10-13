@@ -110,6 +110,13 @@ meta:
 ---
 ```
 
+### canonicalUrl <Badge text="1.7.0+" />
+
+- Type: `string`
+- Default: `undefined`
+
+Set the canonical URL for the current page.
+
 ## Predefined Variables Powered By Default Theme
 
 ### navbar
