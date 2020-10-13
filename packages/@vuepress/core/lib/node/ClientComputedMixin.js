@@ -1,5 +1,4 @@
 'use strict'
-import merge from 'lodash/merge'
 
 /**
  * Get page data via path (permalink).
@@ -97,7 +96,7 @@ module.exports = siteData => {
       const { vueMeta } = this.$frontmatter
 
       if (vueMeta) {
-        head = merge({}, head, vueMeta)
+        head = { ...head, ...vueMeta }
       }
 
       return head
