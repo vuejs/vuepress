@@ -66,10 +66,10 @@ module.exports = siteData => {
     }
 
     get $canonicalUrl () {
-      const { canonical } = this.$page.frontmatter
+      const { canonicalUrl } = this.$page.frontmatter
 
-      if (typeof canonical === 'string') {
-        return canonical
+      if (typeof canonicalUrl === 'string') {
+        return canonicalUrl
       }
 
       return false
