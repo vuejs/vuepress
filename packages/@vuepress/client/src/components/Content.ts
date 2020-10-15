@@ -20,11 +20,11 @@ export const Content = (props: { pageKey: string }): VNode => {
 
   const component = pageComponents[key]
 
+  // use page component
   if (component) {
-    // use page component
     return h(component)
-  } else {
-    // fallback
-    return h('div', 'Page does not exist. This is a fallback content.')
   }
+
+  // fallback
+  return h('div', 'Page does not exist. This is a fallback content.')
 }

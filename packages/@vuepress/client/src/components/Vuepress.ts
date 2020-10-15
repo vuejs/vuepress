@@ -31,12 +31,12 @@ export const Vuepress: ComponentOptions = {
 
     const layoutComponent = layoutComponents[layoutName]
 
+    // use layout component
     if (layoutComponent) {
-      // use layout component
       return () => h(layoutComponent)
-    } else {
-      // fallback to Content
-      return () => h(Content)
     }
+
+    // fallback to Content
+    return () => h(Content)
   },
 }
