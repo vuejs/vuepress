@@ -110,7 +110,7 @@ meta:
 ---
 ```
 
-### canonicalUrl <Badge text="1.7.0+" />
+### canonicalUrl <Badge text="1.7.1+" />
 
 - Type: `string`
 - Default: `undefined`
