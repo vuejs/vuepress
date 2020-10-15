@@ -1,3 +1,13 @@
+## [1.7.1](https://github.com/vuejs/vuepress/compare/v1.7.0...v1.7.1) (2020-10-15)
+
+
+### Bug Fixes
+
+* **$core:** add missing styles for OutboundLink ([#2662](https://github.com/vuejs/vuepress/issues/2662)) ([e2b6641](https://github.com/vuejs/vuepress/commit/e2b6641))
+* **$core:** reference correct canonical Url frontmatter property (fix [#2665](https://github.com/vuejs/vuepress/issues/2665)) ([fbf5e5d](https://github.com/vuejs/vuepress/commit/fbf5e5d))
+
+
+
 # [1.7.0](https://github.com/vuejs/vuepress/compare/v1.6.0...v1.7.0) (2020-10-13)
 
 
