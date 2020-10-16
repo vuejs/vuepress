@@ -1,10 +1,53 @@
 <template>
-  <main class="home">
-    <h1>Home</h1>
+  <main
+    class="home"
+    :aria-labelledby="frontmatter.heroText !== null ? 'main-title' : null"
+  >
+    <header class="hero">
+      <img
+        v-if="frontmatter.heroImage"
+        :src="frontmatter.heroImage"
+        :alt="frontmatter.heroAlt || 'hero'"
+      />
 
-    <Content />
+      <h1 v-if="frontmatter.heroText !== null" id="main-title">
+        {{ frontmatter.heroText || frontmatter.title || 'Hello' }}
+      </h1>
 
-    <Debug />
+      <p v-if="frontmatter.tagline !== null" class="description">
+        {{
+          frontmatter.tagline ||
+          frontmatter.description ||
+          'Welcome to your VuePress site'
+        }}
+      </p>
+
+      <p v-if="frontmatter.actionText && frontmatter.actionLink" class="action">
+        <RouterLink class="action-button" :to="frontmatter.actionLink">
+          {{ frontmatter.actionText }}
+        </RouterLink>
+      </p>
+    </header>
+
+    <div
+      v-if="frontmatter.features && frontmatter.features.length"
+      class="features"
+    >
+      <div
+        v-for="(feature, index) in frontmatter.features"
+        :key="index"
+        class="feature"
+      >
+        <h2>{{ feature.title }}</h2>
+        <p>{{ feature.details }}</p>
+      </div>
+    </div>
+
+    <Content class="theme-default-content custom" />
+
+    <div v-if="frontmatter.footer" class="footer">
+      {{ frontmatter.footer }}
+    </div>
   </main>
 </template>
 

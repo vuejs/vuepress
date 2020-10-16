@@ -1,30 +1,27 @@
 <template>
   <div class="theme-container">
-    <h1>Layout</h1>
+    <Home v-if="frontmatter.home" />
 
-    <Content />
-
-    <Debug />
+    <Content v-else />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
+import { defineComponent } from 'vue'
 import { usePageData } from '@vuepress/client'
+import Home from '../components/Home.vue'
 
 export default defineComponent({
-  name: 'Home',
+  name: 'Layout',
+
+  components: {
+    Home,
+  },
 
   setup() {
     const { frontmatter } = usePageData()
-    const data = frontmatter
-    const actionLink = computed(() => ({
-      link: data.value.actionLink,
-      text: data.value.actionText,
-    }))
     return {
-      data,
-      actionLink,
+      frontmatter,
     }
   },
 })
