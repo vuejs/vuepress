@@ -1,7 +1,7 @@
 /**
- * Vuepress base page
+ * Vuepress page data
  */
-export interface BasePage {
+export interface PageData {
   /**
    * Identifier of the page
    *

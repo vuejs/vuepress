@@ -1,21 +1,24 @@
 /**
- * Site config
+ * Vuepress site data
  */
-export interface SiteConfig {
+export interface SiteData<T extends SiteThemeConfig = SiteThemeConfig> {
   // site base
-  base?: string
+  base: string
 
   // site title
-  title?: string
+  title: string
 
   // site description
-  description?: string
+  description: string
 
   // tags in site <head>
-  head?: SiteHeadConfig[]
+  head: SiteHeadConfig[]
 
   // locale config
-  locales?: SiteLocaleConfig
+  locales: SiteLocaleConfig
+
+  // theme config
+  themeConfig: Partial<T>
 }
 
 /**
@@ -79,3 +82,13 @@ export type SiteHeadTagConfig =
  * @remark suffix `Config` means this is for user config
  */
 export type SiteHeadAttrsConfig = Record<string, string | boolean>
+
+/**
+ * Site theme config
+ *
+ * @remark suffix `Config` means this is for user config
+ */
+export interface SiteThemeConfig {
+  locales?: SiteLocaleConfig
+  [key: string]: any
+}
