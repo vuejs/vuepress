@@ -13,7 +13,7 @@ export const createDevServerConfig = (
     inline: true,
     compress: true,
     clientLogLevel: app.env.isDebug ? 'debug' : 'error',
-    noInfo: !app.env.isDebug,
+    // noInfo: !app.env.isDebug,
     hot: true,
     // quiet: true,
     stats: 'minimal',
