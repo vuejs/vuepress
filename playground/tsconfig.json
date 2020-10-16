@@ -5,5 +5,5 @@
     "declaration": false,
     "declarationMap": false
   },
-  "include": ["./src", "./docs/.vuepress/**/*.ts"]
+  "include": ["./docs/.vuepress/**/*.ts"]
 }

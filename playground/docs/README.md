@@ -1,5 +1,5 @@
 ---
-home: true
+layout: Home
 title: 'frontmatter title'
 head:
   - - meta

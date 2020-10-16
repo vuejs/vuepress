@@ -3,16 +3,14 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "ts-node src/build.ts",
-    "dev": "ts-node src/dev.ts",
+    "build": "vuepress build docs --temp .temp",
+    "dev": "vuepress dev docs --temp .temp",
     "serve": "serve dist"
   },
-  "dependencies": {
-    "@vuepress/bundler-webpack": "2.0.0-alpha.0",
-    "@vuepress/core": "2.0.0-alpha.0"
-  },
   "devDependencies": {
-    "serve": "^11.3.2",
-    "ts-node": "^8.10.1"
+    "@vuepress/bundler-webpack": "2.0.0-alpha.0",
+    "@vuepress/cli": "2.0.0-alpha.0",
+    "@vuepress/core": "2.0.0-alpha.0",
+    "serve": "^11.3.2"
   }
 }
