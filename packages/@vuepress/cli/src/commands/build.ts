@@ -60,12 +60,6 @@ export const build = async (
     ...appConfig,
   })
 
-  // initialize
-  await app.init()
-
-  // prepare
-  await app.prepare()
-
   // build
   await bundler.build(app)
 }

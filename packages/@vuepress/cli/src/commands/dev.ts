@@ -70,12 +70,6 @@ export const dev = async (
     ...appConfig,
   })
 
-  // initialize
-  await app.init()
-
-  // prepare
-  await app.prepare()
-
   // TODO: watch & reload
   await bundler.dev(app)
 }
