@@ -23,13 +23,12 @@ yarn build
 # testing
 yarn test
 
-# run playground script to preview
 # start a dev-server
-yarn play:dev
+yarn docs:dev
 # build static files
-yarn play:build
+yarn docs:build
 # serve static files locally
-yarn play:serve
+yarn docs:serve
 ```
 
 ### TODO List
@@ -64,13 +63,13 @@ Features in the following list are not fully determined, and might be changed or
 
   - [x] Dev server (dev)
   - [x] Pre-render (build)
-  - [ ] Style pre-processors config
+  - [x] Style pre-processors config
 
 - [ ] @vuepress/theme-default
 
 - [ ] @vuepress/cli
 
-  - [ ] Resolve user config file
+  - [x] Resolve user config file
   - [ ] Watch & Reload (dev)
 
 - [ ] official plugins
