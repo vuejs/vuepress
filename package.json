@@ -11,10 +11,8 @@
     "dev": "tsc --build --watch",
     "docs:build": "yarn workspace docs build",
     "docs:dev": "yarn workspace docs dev",
+    "docs:serve": "yarn workspace docs serve",
     "lint": "eslint --ext .js,.ts,.vue .",
-    "play:build": "yarn workspace playground build",
-    "play:dev": "yarn workspace playground dev",
-    "play:serve": "yarn workspace playground serve",
     "release": "yarn lint && yarn clean && yarn build && yarn test && lerna publish",
     "test": "jest --runInBand"
   },
