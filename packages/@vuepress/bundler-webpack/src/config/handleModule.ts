@@ -1,5 +1,6 @@
 import type * as Config from 'webpack-chain'
 import type { App } from '@vuepress/core'
+import type { BundlerWebpackOptions } from '../types'
 import { handleModuleAssets } from './handleModuleAssets'
 import { handleModuleJs } from './handleModuleJs'
 import { handleModulePug } from './handleModulePug'
@@ -12,11 +13,13 @@ import { handleModuleVue } from './handleModuleVue'
  */
 export const handleModule = ({
   app,
+  options,
   config,
   isServer,
   isBuild,
 }: {
   app: App
+  options: BundlerWebpackOptions
   config: Config
   isBuild: boolean
   isServer: boolean
@@ -42,5 +45,5 @@ export const handleModule = ({
   handleModuleTs({ app, config })
 
   // styles files
-  handleModuleStyles({ app, config, isServer, isBuild })
+  handleModuleStyles({ app, options, config, isServer, isBuild })
 }

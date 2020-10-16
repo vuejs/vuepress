@@ -1,6 +1,6 @@
 import type * as WebpackDevServer from 'webpack-dev-server'
 import type { App, BundlerFunc } from '@vuepress/core'
-import type { BundlerWebpackOptions } from '../createBundler'
+import type { BundlerWebpackOptions } from '../types'
 import { createDevConfig } from './createDevConfig'
 import { createDevServer } from './createDevServer'
 import { createDevServerConfig } from './createDevServerConfig'
@@ -15,7 +15,7 @@ export const createDev = (
   await app.init()
 
   // create webpack config
-  const config = createDevConfig(app)
+  const config = createDevConfig(app, options)
   const webpackConfig = config.toConfig()
 
   // create webpack-dev-server config

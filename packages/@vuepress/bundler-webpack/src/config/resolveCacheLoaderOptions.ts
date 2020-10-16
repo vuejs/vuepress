@@ -17,7 +17,7 @@ export const resolveCacheLoaderOptions = ({
   app: App
   identifier?: Record<string, string | boolean>
 }): CacheLoaderOptions => {
-  const cacheDirectory = app.options.dirCache
+  const cacheDirectory = app.options.cache
   const cacheIdentifier = JSON.stringify({
     ...identifier,
     'isDebug': app.env.isDebug,

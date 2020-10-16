@@ -1,13 +1,18 @@
 import * as Config from 'webpack-chain'
 import { App } from '@vuepress/core'
 import { createBaseConfig } from '../config'
+import type { BundlerWebpackOptions } from '../types'
 
-export const createServerConfig = (app: App): Config => {
+export const createServerConfig = (
+  app: App,
+  options: BundlerWebpackOptions
+): Config => {
   const isServer = true
   const isBuild = true
 
   const config = createBaseConfig({
     app,
+    options,
     isServer,
     isBuild,
   })

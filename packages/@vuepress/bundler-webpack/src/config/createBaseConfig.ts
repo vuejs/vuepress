@@ -1,5 +1,6 @@
 import * as Config from 'webpack-chain'
 import type { App } from '@vuepress/core'
+import type { BundlerWebpackOptions } from '../types'
 import { handleDevtool } from './handleDevtool'
 import { handleMode } from './handleMode'
 import { handleModule } from './handleModule'
@@ -9,10 +10,12 @@ import { handlePlugins } from './handlePlugins'
 
 export const createBaseConfig = ({
   app,
+  options,
   isServer,
   isBuild,
 }: {
   app: App
+  options: BundlerWebpackOptions
   isServer: boolean
   isBuild: boolean
 }): Config => {
@@ -42,7 +45,7 @@ export const createBaseConfig = ({
   /**
    * module
    */
-  handleModule({ app, config, isServer, isBuild })
+  handleModule({ app, options, config, isServer, isBuild })
 
   /**
    * plugins

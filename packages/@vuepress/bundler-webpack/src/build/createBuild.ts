@@ -2,7 +2,7 @@ import * as webpack from 'webpack'
 import type { CreateServerAppEntry } from '@vuepress/client'
 import type { App, Bundler } from '@vuepress/core'
 import { fs } from '@vuepress/utils'
-import type { BundlerWebpackOptions } from '../createBundler'
+import type { BundlerWebpackOptions } from '../types'
 import {
   createClientConfig,
   clientManifestFilename,
@@ -19,8 +19,8 @@ export const createBuild = (
   await app.init()
 
   // create webpack config
-  const clientConfig = createClientConfig(app).toConfig()
-  const serverConfig = createServerConfig(app).toConfig()
+  const clientConfig = createClientConfig(app, options).toConfig()
+  const serverConfig = createServerConfig(app, options).toConfig()
 
   // prepare app
   await app.prepare()

@@ -3,6 +3,7 @@ import * as MiniCSSExtractPlugin from 'mini-css-extract-plugin'
 // import * as OptimizeCSSAssetsWebpackPlugin from 'optimize-css-assets-webpack-plugin'
 import { App } from '@vuepress/core'
 import { createClientBaseConfig } from '../config'
+import type { BundlerWebpackOptions } from '../types'
 import { createClientPlugin } from './ssr'
 
 /**
@@ -10,12 +11,16 @@ import { createClientPlugin } from './ssr'
  */
 export const clientManifestFilename = '.server/client-manifest.json'
 
-export const createClientConfig = (app: App): Config => {
+export const createClientConfig = (
+  app: App,
+  options: BundlerWebpackOptions
+): Config => {
   const isServer = false
   const isBuild = true
 
   const config = createClientBaseConfig({
     app,
+    options,
     isBuild,
   })
 
@@ -73,6 +78,9 @@ export const createClientConfig = (app: App): Config => {
     //     },
     //   ])
   }
+
+  // TODO: copy plugin
+  // config.plugin('copy').use()
 
   // plugin hook: chainWebpack
   app.pluginApi.hooks.chainWebpack.process(config, isServer, isBuild)
