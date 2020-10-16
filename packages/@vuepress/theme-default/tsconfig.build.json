@@ -4,5 +4,9 @@
     "rootDir": "./src",
     "outDir": "./lib"
   },
-  "include": ["./src"]
+  "include": ["./src"],
+  "references": [
+    { "path": "../client/tsconfig.build.json" },
+    { "path": "../utils/tsconfig.build.json" }
+  ]
 }
