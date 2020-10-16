@@ -360,6 +360,39 @@ module.exports = {
 }
 ```
 
+The above works for all six levels of section headings. To support other tags, for example a custom Vue component that wraps the actual section heading, you can also specify a custom parsing function for each tag.
+
+```js
+const { deeplyParseHeaders } = require('@vuepress/shared-utils')
+
+module.exports = {
+  markdown: {
+    extractHeaders: [
+      // Use default parsing for `h2` and `h3`
+      'h2',
+      'h3',
+      // Use custom parsing for `app-heading` component
+      ['app-heading', (token, content, md) => {
+        const slug = token.attrs.find(([name]) => name === 'id')[1]
+        const level = parseInt(token.attrs.find(([name]) => name === 'level')[1], 10)
+        console.log('app-heading', level)
+        if (level > 2) {
+          // Ignore all headings above h2
+          return null
+        }
+        return {
+          level,
+          title: deeplyParseHeaders(content),
+          slug: slug || md.slugify(content)
+        }
+      }]
+    ]
+  }
+}
+```
+
+This example will parse tags in the format of `<app-heading level="2">...</app-heading>` and extract the heading level from the `level` prop of the custom `app-heading` Vue component.
+
 ## Build Pipeline
 
 :::tip Configuring CSS Pre-processors
