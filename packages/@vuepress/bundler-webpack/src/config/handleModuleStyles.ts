@@ -1,7 +1,7 @@
 import type * as Config from 'webpack-chain'
 import type { App } from '@vuepress/core'
 import * as MiniCSSExtractPlugin from 'mini-css-extract-plugin'
-import type { BundlerWebpackOptions } from '../types'
+import type { BundlerWebpackOptions, LoaderOptions } from '../types'
 
 type StyleRule = Config.Rule<Config.Rule<Config.Module>>
 
@@ -49,7 +49,7 @@ export const handleModuleStyles = ({
     rule: StyleRule
     cssModules: boolean
     loaderName?: string
-    loaderOptions?: Record<string, unknown>
+    loaderOptions?: LoaderOptions
   }): void => {
     if (!isServer) {
       if (isBuild) {
@@ -99,7 +99,7 @@ export const handleModuleStyles = ({
     lang: string
     test: RegExp
     loaderName?: string
-    loaderOptions?: Record<string, unknown>
+    loaderOptions?: LoaderOptions
   }): void => {
     const { modulesRule, normalRule } = createStyleRules({
       lang,
@@ -142,10 +142,7 @@ export const handleModuleStyles = ({
     lang: 'sass',
     test: /\.sass$/,
     loaderName: 'sass-loader',
-    loaderOptions: {
-      indentedSyntax: true,
-      ...options.sass,
-    },
+    loaderOptions: options.sass,
   })
 
   handleStyle({
