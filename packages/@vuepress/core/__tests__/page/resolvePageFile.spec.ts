@@ -2,9 +2,9 @@ import { createApp, resolvePageFile } from '@vuepress/core'
 import type { PageOptions } from '@vuepress/core'
 import { fs, path } from '@vuepress/utils'
 
-const dirSource = path.resolve(__dirname, '../__fixtures__')
+const source = path.resolve(__dirname, '../__fixtures__')
 const app = createApp({
-  dirSource,
+  source,
 })
 
 const testCases: [
@@ -25,20 +25,20 @@ const testCases: [
       filePath: 'foo.md',
     },
     {
-      filePath: path.join(dirSource, 'foo.md'),
+      filePath: path.join(source, 'foo.md'),
       filePathRelative: 'foo.md',
-      fileContent: fs.readFileSync(path.join(dirSource, 'foo.md')).toString(),
+      fileContent: fs.readFileSync(path.join(source, 'foo.md')).toString(),
     },
   ],
   [
     {
       // absolute file path
-      filePath: path.join(dirSource, 'foo.md'),
+      filePath: path.join(source, 'foo.md'),
     },
     {
-      filePath: path.join(dirSource, 'foo.md'),
+      filePath: path.join(source, 'foo.md'),
       filePathRelative: 'foo.md',
-      fileContent: fs.readFileSync(path.join(dirSource, 'foo.md')).toString(),
+      fileContent: fs.readFileSync(path.join(source, 'foo.md')).toString(),
     },
   ],
 ]

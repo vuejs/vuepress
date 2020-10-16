@@ -1,9 +1,9 @@
 import { createApp, resolveFilePath } from '@vuepress/core'
 import { path } from '@vuepress/utils'
 
-const dirSource = path.resolve(__dirname, 'fake-source')
+const source = path.resolve(__dirname, 'fake-source')
 const app = createApp({
-  dirSource,
+  source,
 })
 
 describe('core > page > resolveFilePath', () => {
@@ -15,7 +15,7 @@ describe('core > page > resolveFilePath', () => {
     })
   })
 
-  const absoluteFilePath = path.resolve(dirSource, 'file.md')
+  const absoluteFilePath = path.resolve(source, 'file.md')
   const relativeFilePath = 'file.md'
 
   it('should resolve path correctly if filePath is absolute', () => {

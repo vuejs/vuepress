@@ -1,9 +1,9 @@
 import { createApp, resolvePageComponent } from '@vuepress/core'
 import { path } from '@vuepress/utils'
 
-const dirSource = path.resolve(__dirname, 'fake-source')
+const source = path.resolve(__dirname, 'fake-source')
 const app = createApp({
-  dirSource,
+  source,
 })
 
 describe('core > page > resolvePageComponent', () => {

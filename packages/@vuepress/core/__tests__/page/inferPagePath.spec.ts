@@ -1,9 +1,9 @@
 import { createApp, inferPagePath } from '@vuepress/core'
 import { path } from '@vuepress/utils'
 
-const dirSource = path.resolve(__dirname, 'fake-source')
+const source = path.resolve(__dirname, 'fake-source')
 const app = createApp({
-  dirSource,
+  source,
   locales: {
     '/': {},
     '/en/': {},
@@ -11,7 +11,7 @@ const app = createApp({
   },
 })
 const appWithoutLocales = createApp({
-  dirSource,
+  source,
 })
 
 const testCases: [string, ReturnType<typeof inferPagePath>][] = [
