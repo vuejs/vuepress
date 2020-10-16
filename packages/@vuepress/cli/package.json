@@ -19,9 +19,10 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "bin": {
-    "vuepress-cli": "lib/index.js"
+    "vuepress": "bin/vuepress.js"
   },
   "files": [
+    "bin",
     "lib"
   ],
   "scripts": {
@@ -29,6 +30,8 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@vuepress/core": "2.0.0-alpha.0"
+    "@vuepress/core": "2.0.0-alpha.0",
+    "@vuepress/utils": "2.0.0-alpha.0",
+    "cac": "^6.6.1"
   }
 }
