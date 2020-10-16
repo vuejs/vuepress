@@ -1,8 +1,8 @@
 import { path } from '@vuepress/utils'
-import type { AppOptions, VuepressConfig } from '../types'
+import type { AppConfig, AppOptions } from '../types'
 
 /**
- * Create options (normalized config) for vuepress app
+ * Create app options with default values
  */
 export const createAppOptions = ({
   // site config
@@ -23,13 +23,10 @@ export const createAppOptions = ({
   themeConfig = {},
 
   // directory config
-  dirSource,
-  dirDest = path.resolve(dirSource, '.vuepress/dist'),
-  dirTemp = path.resolve(dirSource, '.vuepress/.temp'),
-  dirCache = path.resolve(
-    require.resolve('cache-loader/package.json'),
-    '../../.cache'
-  ),
+  source,
+  dest = path.resolve(source, '.vuepress/dist'),
+  temp = path.resolve(source, '.vuepress/.temp'),
+  cache = path.resolve(source, '.vuepress/.cache'),
 
   // development config
   host = '0.0.0.0',
@@ -44,15 +41,10 @@ export const createAppOptions = ({
     require.resolve('@vuepress/client/templates/index.ssr.html')
   ),
 
-  // bundler config
-  bundler = 'webpack',
-  bundlerConfig = {},
-
   // ssr config
   shouldPreload = null,
   shouldPrefetch = null,
-}: VuepressConfig): AppOptions => ({
-  // site config
+}: AppConfig): AppOptions => ({
   base,
   title,
   description,
@@ -62,10 +54,10 @@ export const createAppOptions = ({
   plugins,
   theme,
   themeConfig,
-  dirSource,
-  dirDest,
-  dirTemp,
-  dirCache,
+  source,
+  dest,
+  temp,
+  cache,
   debug,
   host,
   port,
@@ -73,8 +65,6 @@ export const createAppOptions = ({
   evergreen,
   templateDev,
   templateSSR,
-  bundler,
-  bundlerConfig,
   shouldPreload,
   shouldPrefetch,
 })

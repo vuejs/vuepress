@@ -1,11 +1,10 @@
 import { createMarkdown } from '@vuepress/markdown'
 import { createPluginApi } from '../plugin-api'
-import type { App, VuepressConfig } from '../types'
+import type { App, AppConfig } from '../types'
 import { appInit } from './appInit'
 import { appPrepare } from './appPrepare'
 import { appUse } from './appUse'
 import { appUseByConfig } from './appUseByConfig'
-import { createAppBundler } from './createAppBundler'
 import { createAppDir } from './createAppDir'
 import { createAppEnv } from './createAppEnv'
 import { createAppOptions } from './createAppOptions'
@@ -14,12 +13,11 @@ import { createAppVersion } from './createAppVersion'
 /**
  * Create vuepress app
  */
-export const createApp = (config: VuepressConfig): App => {
+export const createApp = (config: AppConfig): App => {
   const version = createAppVersion()
   const options = createAppOptions(config)
   const dir = createAppDir(options)
   const env = createAppEnv(options)
-  const bundler = createAppBundler(options)
   const markdown = createMarkdown(options.markdown)
   const pluginApi = createPluginApi()
 
@@ -35,8 +33,6 @@ export const createApp = (config: VuepressConfig): App => {
     useByConfig: (...args) => appUseByConfig(app, ...args),
     init: () => appInit(app),
     prepare: () => appPrepare(app),
-    dev: () => bundler.dev(app),
-    build: () => bundler.build(app),
   } as App
 
   return app

@@ -12,9 +12,10 @@ export const createAppDirFunction = (baseDir: string): AppDirFunction => {
  * Create directory utils for vuepress app
  */
 export const createAppDir = (options: AppOptions): AppDir => {
-  const temp = createAppDirFunction(options.dirTemp)
-  const source = createAppDirFunction(options.dirSource)
-  const dest = createAppDirFunction(options.dirDest)
+  const cache = createAppDirFunction(options.cache)
+  const temp = createAppDirFunction(options.temp)
+  const source = createAppDirFunction(options.source)
+  const dest = createAppDirFunction(options.dest)
 
   // @vuepress/client
   const client = createAppDirFunction(
@@ -22,6 +23,7 @@ export const createAppDir = (options: AppOptions): AppDir => {
   )
 
   return {
+    cache,
     temp,
     source,
     dest,

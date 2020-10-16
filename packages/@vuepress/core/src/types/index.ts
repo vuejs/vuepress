@@ -1,10 +1,8 @@
 import type {
-  ClientSiteData,
-  ClientPageData,
-  BasePage,
+  PageData,
   PageFrontmatter,
   PageHeader,
-  SiteConfig,
+  SiteData,
   SiteLocaleConfig,
   SiteHeadConfig,
   SiteHeadTagConfig,
@@ -12,12 +10,10 @@ import type {
 } from '@vuepress/shared'
 
 export type {
-  ClientSiteData,
-  ClientPageData,
-  BasePage,
+  PageData,
   PageFrontmatter,
   PageHeader,
-  SiteConfig,
+  SiteData,
   SiteLocaleConfig,
   SiteHeadConfig,
   SiteHeadTagConfig,

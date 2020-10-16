@@ -10,6 +10,7 @@ export const resolveThemeInfo = (app: App, themeName: string): ThemeInfo => {
     requireResolve(themeName) ??
     requireResolve(normalizePackageName(themeName, 'vuepress', 'theme'))
 
+  // TODO: logger
   if (themeEntry === null) {
     throw new Error(`theme ${themeName} is not found`)
   }

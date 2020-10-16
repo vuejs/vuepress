@@ -1,10 +1,10 @@
 import type { MarkdownLink } from '@vuepress/markdown'
-import type { BasePage, PageFrontmatter } from '@vuepress/shared'
+import type { PageData, PageFrontmatter } from '@vuepress/shared'
 
 /**
  * Vuepress Page
  */
-export interface Page extends BasePage {
+export interface Page extends PageData {
   /**
    * Path of the page that inferred from file path
    *

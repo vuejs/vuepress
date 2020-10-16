@@ -1,11 +1,13 @@
-import type { App, ClientSiteData } from '../../types'
+import type { App, SiteData } from '../../types'
 
-const generateClientSiteData = (app: App): ClientSiteData => {
+const generateClientSiteData = (app: App): SiteData => {
   return {
     base: app.options.base,
     title: app.options.title,
     description: app.options.description,
+    head: app.options.head,
     locales: app.options.locales,
+    themeConfig: app.options.themeConfig,
   }
 }
 

@@ -9,6 +9,7 @@ import { resolveThemeInfo } from './resolveThemeInfo'
  */
 export const createThemeApi = async (app: App): Promise<ThemeApi> => {
   // use local theme or not
+  // TODO: support .ts local theme entry
   const localThemePath = app.dir.source('.vuepress/theme')
   const hasLocalTheme = await fs.pathExists(localThemePath)
 

@@ -14,9 +14,9 @@ export const normalizePlugin = <
     ? resolvePluginByName<T, U>(plugin)
     : plugin
 
-  // TODO
+  // TODO: logger
   if (resolvedPlugin === null) {
-    throw new Error()
+    throw new Error(`plugin ${plugin} is not found`)
   }
 
   const pluginObject = isFunction(resolvedPlugin)

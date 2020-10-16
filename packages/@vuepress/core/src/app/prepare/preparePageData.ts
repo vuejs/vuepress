@@ -1,4 +1,4 @@
-import type { App, ClientPageData, Page } from '../../types'
+import type { App, PageData, Page } from '../../types'
 
 export const generateClientPageData = ({
   key,
@@ -7,7 +7,7 @@ export const generateClientPageData = ({
   frontmatter,
   excerpt,
   headers,
-}: Page): ClientPageData => {
+}: Page): PageData => {
   return {
     key,
     path,
