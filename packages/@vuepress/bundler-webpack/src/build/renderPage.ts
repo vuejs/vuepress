@@ -3,7 +3,11 @@ import type { Router as VueRouter } from 'vue-router'
 import { renderToString } from '@vue/server-renderer'
 import type { SSRContext } from '@vue/server-renderer'
 import type { Page, App } from '@vuepress/core'
-import { isArray, removeLeadingSlash } from '@vuepress/shared'
+import {
+  isArray,
+  removeLeadingSlash,
+  resolveSiteLocaleData,
+} from '@vuepress/shared'
 import { fs, renderHead } from '@vuepress/utils'
 import { renderPagePrefetchLinks } from './renderPagePrefetchLinks'
 import { renderPagePreloadLinks } from './renderPagePreloadLinks'
@@ -61,24 +65,32 @@ export const renderPage = async ({
   // resolve page head config
   const pageHead = isArray(page.frontmatter.head) ? page.frontmatter.head : []
 
+  // resolve site locale data
+  const siteLocaleData = resolveSiteLocaleData(app.options, page.path)
+
   // TODO: change the template? currently we simply use vue 2 ssr template
   // generate html string
   const html = ssrTemplate
     // page lang
-    // TODO
-    .replace('{{ lang }}', 'en')
+    .replace('{{ lang }}', siteLocaleData.lang)
     // page title
-    // TODO: locale title
     .replace(
       '{{ title }}',
-      `${page.title ? `${page.title} | ` : ``}${app.options.title}`
+      `${page.title ? `${page.title} | ` : ``}${siteLocaleData.title}`
     )
     // vuepress version
     .replace('{{ version }}', `v${app.version}`)
-    // site config head
-    // TODO: locale head
-    // TODO: locale description
-    .replace('{{{ userHeadTags }}}', app.options.head.map(renderHead).join(''))
+    // site locale data head
+    .replace(
+      '{{{ userHeadTags }}}',
+      `${renderHead([
+        'meta',
+        {
+          name: 'description',
+          content: siteLocaleData.description,
+        },
+      ])}${siteLocaleData.head.map(renderHead).join('')}`
+    )
     // page frontmatter head
     .replace('{{{ pageMeta }}}', pageHead.map(renderHead).join(''))
     // page preload & prefetch links
