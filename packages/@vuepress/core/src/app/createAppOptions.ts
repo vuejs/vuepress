@@ -7,6 +7,7 @@ import type { AppConfig, AppOptions } from '../types'
 export const createAppOptions = ({
   // site config
   base = '',
+  lang = '',
   title = '',
   description = '',
   head = [],
@@ -46,6 +47,7 @@ export const createAppOptions = ({
   shouldPrefetch = null,
 }: AppConfig): AppOptions => ({
   base,
+  lang,
   title,
   description,
   head,

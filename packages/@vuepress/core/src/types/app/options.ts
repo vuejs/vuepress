@@ -9,6 +9,7 @@ import type { ThemeConfig } from '../theme'
 export interface AppOptions<T extends ThemeConfig = ThemeConfig> {
   // site options
   base: string
+  lang: string
   title: string
   description: string
   head: SiteHeadConfig[]

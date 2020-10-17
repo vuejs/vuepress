@@ -3,6 +3,7 @@ import type { App, SiteData } from '../../types'
 const generateClientSiteData = (app: App): SiteData => {
   return {
     base: app.options.base,
+    lang: app.options.lang,
     title: app.options.title,
     description: app.options.description,
     head: app.options.head,

@@ -5,6 +5,7 @@ describe('core > app > createAppOptions', () => {
   it('should create app options with default values', () => {
     expect(createAppOptions({ source: '/foo' })).toEqual({
       base: '',
+      lang: '',
       title: '',
       description: '',
       head: [],
