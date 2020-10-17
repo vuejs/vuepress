@@ -1,6 +1,5 @@
 import { HotModuleReplacementPlugin } from 'webpack'
 import * as Config from 'webpack-chain'
-import * as HtmlWebpackPlugin from 'html-webpack-plugin'
 import { App } from '@vuepress/core'
 import { createClientBaseConfig } from '../config'
 import type { BundlerWebpackOptions } from '../types'
@@ -18,7 +17,7 @@ export const createDevConfig = (
     isBuild,
   })
 
-  config.plugin('html').use(HtmlWebpackPlugin, [
+  config.plugin('html').use(require('html-webpack-plugin'), [
     {
       template: app.options.templateDev,
     },

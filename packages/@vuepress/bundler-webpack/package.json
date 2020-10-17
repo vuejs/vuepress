@@ -39,6 +39,7 @@
     "autoprefixer": "^9.8.6",
     "babel-loader": "^8.1.0",
     "cache-loader": "^4.1.0",
+    "copy-webpack-plugin": "^6.2.1",
     "core-js": "^3.6.5",
     "css-loader": "^4.3.0",
     "file-loader": "^6.0.0",

@@ -1,5 +1,4 @@
 import * as Config from 'webpack-chain'
-import * as MiniCSSExtractPlugin from 'mini-css-extract-plugin'
 // import * as OptimizeCSSAssetsWebpackPlugin from 'optimize-css-assets-webpack-plugin'
 import { App } from '@vuepress/core'
 import { createClientBaseConfig } from '../config'
@@ -42,7 +41,7 @@ export const createClientConfig = (
   // optimizations for production
   if (app.env.isProd) {
     // extract-css
-    config.plugin('extract-css').use(MiniCSSExtractPlugin, [
+    config.plugin('extract-css').use(require('mini-css-extract-plugin'), [
       {
         filename: 'assets/css/styles.[chunkhash:8].css',
       },
@@ -79,8 +78,12 @@ export const createClientConfig = (
     //   ])
   }
 
-  // TODO: copy plugin
-  // config.plugin('copy').use()
+  // copy files from public dir to dest dir
+  config.plugin('copy').use(require('copy-webpack-plugin'), [
+    {
+      patterns: [{ from: app.dir.public(), to: app.dir.dest() }],
+    },
+  ])
 
   // plugin hook: chainWebpack
   app.pluginApi.hooks.chainWebpack.process(config, isServer, isBuild)

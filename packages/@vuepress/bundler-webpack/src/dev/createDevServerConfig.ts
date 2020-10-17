@@ -5,8 +5,7 @@ import { fs, path } from '@vuepress/utils'
 export const createDevServerConfig = (
   app: App
 ): WebpackDevServer.Configuration => {
-  // TODO: extract to public plugin
-  const contentBase = app.dir.source('.vuepress/public')
+  const contentBase = app.dir.public()
 
   const serverConfig: WebpackDevServer.Configuration = {
     disableHostCheck: true,
