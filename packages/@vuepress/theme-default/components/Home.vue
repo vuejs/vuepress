@@ -5,36 +5,39 @@
   >
     <header class="hero">
       <img
-        v-if="frontmatter.heroImage"
-        :src="frontmatter.heroImage"
-        :alt="frontmatter.heroAlt || 'hero'"
+        v-if="$frontmatter.heroImage"
+        :src="$frontmatter.heroImage"
+        :alt="$frontmatter.heroAlt || 'hero'"
       />
 
-      <h1 v-if="frontmatter.heroText !== null" id="main-title">
-        {{ frontmatter.heroText || frontmatter.title || 'Hello' }}
+      <h1 v-if="$frontmatter.heroText !== null" id="main-title">
+        {{ $frontmatter.heroText || $frontmatter.title || 'Hello' }}
       </h1>
 
-      <p v-if="frontmatter.tagline !== null" class="description">
+      <p v-if="$frontmatter.tagline !== null" class="description">
         {{
-          frontmatter.tagline ||
-          frontmatter.description ||
+          $frontmatter.tagline ||
+          $frontmatter.description ||
           'Welcome to your VuePress site'
         }}
       </p>
 
-      <p v-if="frontmatter.actionText && frontmatter.actionLink" class="action">
-        <RouterLink class="action-button" :to="frontmatter.actionLink">
-          {{ frontmatter.actionText }}
+      <p
+        v-if="$frontmatter.actionText && $frontmatter.actionLink"
+        class="action"
+      >
+        <RouterLink class="action-button" :to="$frontmatter.actionLink">
+          {{ $frontmatter.actionText }}
         </RouterLink>
       </p>
     </header>
 
     <div
-      v-if="frontmatter.features && frontmatter.features.length"
+      v-if="$frontmatter.features && $frontmatter.features.length"
       class="features"
     >
       <div
-        v-for="(feature, index) in frontmatter.features"
+        v-for="(feature, index) in $frontmatter.features"
         :key="index"
         class="feature"
       >
@@ -45,25 +48,17 @@
 
     <Content class="theme-default-content custom" />
 
-    <div v-if="frontmatter.footer" class="footer">
-      {{ frontmatter.footer }}
+    <div v-if="$frontmatter.footer" class="footer">
+      {{ $frontmatter.footer }}
     </div>
   </main>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { usePageData } from '@vuepress/client'
 
 export default defineComponent({
   name: 'Home',
-
-  setup() {
-    const page = usePageData()
-    return {
-      frontmatter: page.value.frontmatter,
-    }
-  },
 })
 </script>
 

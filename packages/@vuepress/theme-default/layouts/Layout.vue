@@ -1,6 +1,6 @@
 <template>
   <div class="theme-container">
-    <Home v-if="frontmatter.home" />
+    <Home v-if="$frontmatter.home" />
 
     <Content v-else />
   </div>
@@ -8,7 +8,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { usePageData } from '@vuepress/client'
 import Home from '../components/Home.vue'
 
 export default defineComponent({
@@ -16,13 +15,6 @@ export default defineComponent({
 
   components: {
     Home,
-  },
-
-  setup() {
-    const page = usePageData()
-    return {
-      frontmatter: page.value.frontmatter,
-    }
   },
 })
 </script>
