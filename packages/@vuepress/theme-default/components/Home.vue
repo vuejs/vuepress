@@ -59,9 +59,9 @@ export default defineComponent({
   name: 'Home',
 
   setup() {
-    const { frontmatter } = usePageData()
+    const page = usePageData()
     return {
-      frontmatter,
+      frontmatter: page.value.frontmatter,
     }
   },
 })
