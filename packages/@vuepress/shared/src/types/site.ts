@@ -5,6 +5,9 @@ export interface SiteData<T extends SiteThemeConfig = SiteThemeConfig> {
   // site base
   base: string
 
+  // site language
+  lang: string
+
   // site title
   title: string
 
@@ -27,18 +30,22 @@ export interface SiteData<T extends SiteThemeConfig = SiteThemeConfig> {
  * @example
  * {
  *   '/en/': {
+ *     lang: 'en-US',
  *     msg: 'hello',
  *   },
  *   '/zh/: {
+ *     lang: 'zh-CN',
  *     msg: '你好',
  *   }
  * }
  *
  * @remark suffix `Config` means this is for user config
  */
-export interface SiteLocaleConfig {
-  [key: string]: any
-}
+export type SiteLocaleConfig = LocaleConfig<{
+  lang?: string
+  title?: string
+  description?: string
+}>
 
 /**
  * Site head config
@@ -89,6 +96,14 @@ export type SiteHeadAttrsConfig = Record<string, string | boolean>
  * @remark suffix `Config` means this is for user config
  */
 export interface SiteThemeConfig {
-  locales?: SiteLocaleConfig
+  locales?: LocaleConfig
   [key: string]: any
 }
+
+export type LocaleConfig<
+  T extends Record<string, any> = Record<string, any>
+> = Record<string, LocaleConfigItem<T>>
+
+export type LocaleConfigItem<
+  T extends Record<string, any> = Record<string, any>
+> = Record<string, any> & T
