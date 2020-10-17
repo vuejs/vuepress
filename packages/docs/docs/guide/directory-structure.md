@@ -40,7 +40,7 @@ Please note the capitalization of the directory name.
 - `docs/.vuepress/theme`: Used to store local theme.
 - `docs/.vuepress/styles`: Stores style related files.
 - `docs/.vuepress/styles/index.styl`: Automatically applied global style files, generated at the ending of the CSS file, have a higher priority than the default style.
-- `docs/.vuepress/styles/palette.styl`: The palette is used to override the default color constants and to set the color constants of Stylus.
+- `docs/.vuepress/styles/palette.styl`: The palette is used to override the default color constants and to set the color constants of Styles.
 - `docs/.vuepress/public`: Static resource directory.
 - `docs/.vuepress/templates`: Store HTML template files.
 - `docs/.vuepress/templates/dev.html`: HTML template file for development environment.
