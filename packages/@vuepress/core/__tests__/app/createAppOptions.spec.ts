@@ -18,6 +18,7 @@ describe('core > app > createAppOptions', () => {
       dest: '/foo/.vuepress/dist',
       temp: '/foo/.vuepress/.temp',
       cache: '/foo/.vuepress/.cache',
+      public: '/foo/.vuepress/public',
       host: '0.0.0.0',
       port: 8080,
       debug: false,

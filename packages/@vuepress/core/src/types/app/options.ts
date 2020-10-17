@@ -24,6 +24,7 @@ export interface AppOptions<T extends ThemeConfig = ThemeConfig> {
   dest: string
   temp: string
   cache: string
+  public: string
 
   // development options
   debug: boolean

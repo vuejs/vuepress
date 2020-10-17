@@ -28,6 +28,7 @@ export const createAppOptions = ({
   dest = path.resolve(source, '.vuepress/dist'),
   temp = path.resolve(source, '.vuepress/.temp'),
   cache = path.resolve(source, '.vuepress/.cache'),
+  public: publicDir = path.resolve(source, '.vuepress/public'),
 
   // development config
   host = '0.0.0.0',
@@ -60,6 +61,7 @@ export const createAppOptions = ({
   dest,
   temp,
   cache,
+  public: publicDir,
   debug,
   host,
   port,

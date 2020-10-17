@@ -11,6 +11,7 @@ export interface AppDir {
   temp: AppDirFunction
   source: AppDirFunction
   dest: AppDirFunction
+  public: AppDirFunction
   client: AppDirFunction
 }
 

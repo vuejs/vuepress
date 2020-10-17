@@ -16,6 +16,7 @@ export const createAppDir = (options: AppOptions): AppDir => {
   const temp = createAppDirFunction(options.temp)
   const source = createAppDirFunction(options.source)
   const dest = createAppDirFunction(options.dest)
+  const publicDir = createAppDirFunction(options.public)
 
   // @vuepress/client
   const client = createAppDirFunction(
@@ -28,5 +29,6 @@ export const createAppDir = (options: AppOptions): AppDir => {
     source,
     dest,
     client,
+    public: publicDir,
   }
 }
