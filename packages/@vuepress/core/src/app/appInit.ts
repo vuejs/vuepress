@@ -1,5 +1,6 @@
 import { createThemeApi } from '../theme-api'
 import type { App } from '../types'
+import { createAppPages } from './createAppPages'
 import { createAppWriteTemp } from './createAppWriteTemp'
 
 /**
@@ -32,6 +33,11 @@ export const appInit = async (app: App): Promise<void> => {
 
   // plugin hook: extendMarkdown
   await app.pluginApi.hooks.extendMarkdown.process(app.markdown)
+
+  // create pages
+  app.pages = await createAppPages(app)
+
+  // TODO: additionalPages
 
   // plugin hook: onInitialized
   await app.pluginApi.hooks.onInitialized.process(app)
