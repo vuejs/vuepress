@@ -6,8 +6,8 @@ import type { AppConfig, AppOptions } from '../types'
  */
 export const createAppOptions = ({
   // site config
-  base = '',
-  lang = '',
+  base = '/',
+  lang = 'en-US',
   title = '',
   description = '',
   head = [],
