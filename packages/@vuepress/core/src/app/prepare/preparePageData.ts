@@ -40,10 +40,10 @@ ${app.pages
   .map(({ key }, index) => `import page${index} from './${key}'`)
   .join('\n')}
 
-export const pagesData = {\
+export const pagesData = {
 ${app.pages
   .map(
-    ({ path }, index) => `
+    ({ path }, index) => `\
   ${JSON.stringify(path)}: page${index},`
   )
   .join('\n')}
