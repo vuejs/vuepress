@@ -7,7 +7,7 @@ export const Debug: ComponentOptions = {
   setup() {
     const { path, name, hash, fullPath } = toRefs(useRoute())
     const site = useSiteData()
-    const { page } = usePageData()
+    const page = usePageData()
 
     return () =>
       h(

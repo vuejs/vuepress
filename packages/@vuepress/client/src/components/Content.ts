@@ -14,7 +14,7 @@ export const Content = (props: { pageKey: string }): VNode => {
     key = props.pageKey
   } else {
     // get current page key from page data
-    const { page } = usePageData()
+    const page = usePageData()
     key = page.value.key
   }
 

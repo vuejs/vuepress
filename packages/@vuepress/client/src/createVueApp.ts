@@ -1,13 +1,18 @@
-import { h } from 'vue'
+import { computed, h } from 'vue'
 import type { CreateAppFunction, App, ComponentOptions } from 'vue'
 import { createRouter, RouterView } from 'vue-router'
 import type { Router, RouterHistory } from 'vue-router'
-import { removeEndingSlash } from '@vuepress/shared'
+import { removeEndingSlash, resolveSiteLocaleData } from '@vuepress/shared'
 import { clientAppEnhances } from '@internal/clientAppEnhances'
 import { clientAppSetups } from '@internal/clientAppSetups'
 import { pageComponents } from '@internal/pageComponents'
 import { routes } from '@internal/routes'
-import { siteData } from './injections'
+import {
+  pagesData,
+  pageDataSymbol,
+  siteData,
+  siteLocaleDataSymbol,
+} from './injections'
 import { Content, Debug } from './components'
 
 export type AppCreator = CreateAppFunction<Element>
@@ -51,8 +56,30 @@ export const createVueApp = async ({
     routes,
   })
 
+  // resolve site locale data
+  const siteLocaleData = computed(() =>
+    resolveSiteLocaleData(siteData.value, router.currentRoute.value.path)
+  )
+
+  // resolve page data
+  const pageData = computed(
+    () =>
+      pagesData.value[router.currentRoute.value.path] ?? {
+        key: '',
+        path: '',
+        title: '',
+        frontmatter: {},
+        excerpt: '',
+        headers: [],
+      }
+  )
+
   // use vue-router
   app.use(router)
+
+  // provide data
+  app.provide(siteLocaleDataSymbol, siteLocaleData)
+  app.provide(pageDataSymbol, pageData)
 
   // register built-in components
   app.component('Content', Content)

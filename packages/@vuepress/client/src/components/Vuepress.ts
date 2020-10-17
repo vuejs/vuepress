@@ -13,7 +13,7 @@ export const Vuepress: ComponentOptions = {
     // get layout of current page
     let layoutName = 'NotFound'
 
-    const { page } = usePageData()
+    const page = usePageData()
 
     if (page.value.path) {
       // if current page exists
