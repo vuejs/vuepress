@@ -28,7 +28,5 @@ export interface App {
   // initialized
   writeTemp: AppWriteTemp
   themeApi: ThemeApi
-
-  // prepared
   pages: Page[]
 }
