@@ -81,6 +81,39 @@ export const createVueApp = async ({
   app.provide(siteLocaleDataSymbol, siteLocaleData)
   app.provide(pageDataSymbol, pageData)
 
+  Object.defineProperties(app.config.globalProperties, {
+    $site: {
+      get() {
+        return siteData.value
+      },
+    },
+    $siteLocale: {
+      get() {
+        return siteLocaleData.value
+      },
+    },
+    $theme: {
+      get() {
+        return siteData.value.themeConfig
+      },
+    },
+    $themeLocale: {
+      get() {
+        return siteLocaleData.value.themeConfig
+      },
+    },
+    $page: {
+      get() {
+        return pageData.value
+      },
+    },
+    $frontmatter: {
+      get() {
+        return pageData.value.frontmatter
+      },
+    },
+  })
+
   // register built-in components
   app.component('Content', Content)
   app.component('Debug', __DEV__ ? Debug : () => null)
