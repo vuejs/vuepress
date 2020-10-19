@@ -5,7 +5,7 @@ import type { Router, RouterHistory } from 'vue-router'
 import { removeEndingSlash, resolveSiteLocaleData } from '@vuepress/shared'
 import { clientAppEnhances } from '@internal/clientAppEnhances'
 import { clientAppSetups } from '@internal/clientAppSetups'
-import { pageComponents } from '@internal/pageComponents'
+import { pagesComponent } from '@internal/pagesComponent'
 import { routes } from '@internal/routes'
 import {
   pagesData,
@@ -119,7 +119,7 @@ export const createVueApp = async ({
   app.component('Debug', __DEV__ ? Debug : () => null)
 
   // register all pages components
-  Object.entries(pageComponents).forEach(([name, component]) => {
+  Object.entries(pagesComponent).forEach(([name, component]) => {
     app.component(name, component)
   })
 

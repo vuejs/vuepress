@@ -1,6 +1,6 @@
 import { h } from 'vue'
 import type { VNode } from 'vue'
-import { pageComponents } from '@internal/pageComponents'
+import { pagesComponent } from '@internal/pagesComponent'
 import { usePageData } from '../injections'
 
 /**
@@ -18,7 +18,7 @@ export const Content = (props: { pageKey: string }): VNode => {
     key = page.value.key
   }
 
-  const component = pageComponents[key]
+  const component = pagesComponent[key]
 
   // use page component
   if (component) {
