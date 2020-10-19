@@ -7,21 +7,22 @@ import type { App } from './app'
  * - dev: run dev server for development
  * - build: bundle assets for deployment
  */
-export interface Bundler<T = void, U = void> {
-  dev: BundlerFunc<T>
-  build: BundlerFunc<U>
+export interface Bundler {
+  dev: BundlerDev
+  build: BundlerBuild
 }
 
-export type BundlerFunc<T = void> = (app: App) => Promise<T>
+// start dev server and return a function to close the server
+export type BundlerDev = (app: App) => Promise<() => Promise<void>>
+// bundle assets
+export type BundlerBuild = (app: App) => Promise<void>
 
 /**
  * A function that returns a bundler instance
  */
 export type CreateBundlerFunction<
-  BundlerOptions extends BundlerConfig = Partial<BundlerConfig>,
-  T = void,
-  U = void
-> = (options: BundlerOptions) => Bundler<T, U>
+  BundlerOptions extends BundlerConfig = Partial<BundlerConfig>
+> = (options: BundlerOptions) => Bundler
 
 /**
  * Bundler entry type

@@ -1,16 +1,13 @@
-import type * as WebpackDevServer from 'webpack-dev-server'
-import type { App, BundlerFunc } from '@vuepress/core'
+import type { App, BundlerDev } from '@vuepress/core'
 import type { BundlerWebpackOptions } from '../types'
 import { createDevConfig } from './createDevConfig'
 import { createDevServer } from './createDevServer'
 import { createDevServerConfig } from './createDevServerConfig'
 import { resolvePort } from './resolvePort'
 
-export const createDev = (
-  options: BundlerWebpackOptions
-): BundlerFunc<WebpackDevServer> => async (
+export const createDev = (options: BundlerWebpackOptions): BundlerDev => async (
   app: App
-): Promise<WebpackDevServer> => {
+) => {
   // initialize app
   await app.init()
 
@@ -28,11 +25,6 @@ export const createDev = (
   // prepare app
   await app.prepare()
 
-  // TODO: watch
-  // - config change: restart from app.init()
-  // - page change: restart from app.prepare()
-  // notice the different behaviors of "webpack watch" and "our watch"
-
   // create webpack-dev-server
   const server = createDevServer(webpackConfig, serverConfig)
 
@@ -41,7 +33,12 @@ export const createDev = (
       if (err) {
         reject(err)
       } else {
-        resolve(server)
+        // promisify the close function
+        const close = (): Promise<void> =>
+          new Promise((resolve) => server.close(resolve))
+
+        // resolve the close function
+        resolve(close)
       }
     })
   })
