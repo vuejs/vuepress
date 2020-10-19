@@ -1,10 +1,10 @@
 import { path } from '@vuepress/utils'
-import type { App, PageOptions } from '../../types'
+import type { App, PageOptions } from '../types'
 
 /**
  * Resolve absolute and relative path of page file
  */
-export const resolveFilePath = (
+export const resolvePageFilePath = (
   app: App,
   { filePath }: PageOptions
 ): {

@@ -4,8 +4,8 @@ import { path } from '@vuepress/utils'
 describe('core > app > createAppOptions', () => {
   it('should create app options with default values', () => {
     expect(createAppOptions({ source: '/foo' })).toEqual({
-      base: '',
-      lang: '',
+      base: '/',
+      lang: 'en-US',
       title: '',
       description: '',
       head: [],

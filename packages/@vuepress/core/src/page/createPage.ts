@@ -4,7 +4,8 @@ import { resolvePageComponent } from './resolvePageComponent'
 import { resolvePageContent } from './resolvePageContent'
 import { resolvePageDate } from './resolvePageDate'
 import { resolvePageExcerpt } from './resolvePageExcerpt'
-import { resolvePageFile } from './resolvePageFile'
+import { resolvePageFileContent } from './resolvePageFileContent'
+import { resolvePageFilePath } from './resolvePageFilePath'
 import { resolvePageKey } from './resolvePageKey'
 import { resolvePagePath } from './resolvePagePath'
 import { resolvePagePermalink } from './resolvePagePermalink'
@@ -15,11 +16,11 @@ export const createPage = async (
   app: App,
   options: PageOptions
 ): Promise<Page> => {
-  // 1. resolve page file path and content
-  const { filePath, filePathRelative, fileContent } = await resolvePageFile(
-    app,
-    options
-  )
+  // resolve page file absolute path and relative path
+  const { filePath, filePathRelative } = resolvePageFilePath(app, options)
+
+  // read the raw file content according to the absolute file path
+  const fileContent = await resolvePageFileContent(filePath, options)
 
   // resolve content & frontmatter & raw excerpt from raw content
   const { frontmatter, content, excerpt: rawExcerpt } = resolvePageContent(
