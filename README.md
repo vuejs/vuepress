@@ -40,9 +40,8 @@ Features in the following list are not fully determined, and might be changed or
   - [x] Plugin API
     - [x] clientAppEnhanceFiles
     - [x] clientAppSetupFiles
-    - [ ] extendPageData
-    - [ ] extendCli
-    - [ ] additionalPages
+    - [ ] extendsPageData
+    - [ ] extendsCli
     - [ ] globalUIComponents
     - [ ] configureWebpack
   - [ ] Theme API
@@ -59,7 +58,7 @@ Features in the following list are not fully determined, and might be changed or
   - [x] linksPlugin
   - [ ] snippetsPlugin
 
-- [ ] @vuepress/bundler-webpack
+- [x] @vuepress/bundler-webpack
 
   - [x] Dev server (dev)
   - [x] Pre-render (build)
@@ -67,7 +66,7 @@ Features in the following list are not fully determined, and might be changed or
 
 - [ ] @vuepress/theme-default
 
-- [ ] @vuepress/cli
+- [x] @vuepress/cli
 
   - [x] Resolve user config file
   - [x] Watch & Reload (dev)
@@ -95,9 +94,11 @@ Temporarily record some breaking changes here.
 - `ready` -> `onPrepared`
 - `updated` -> removed
 - `generated` -> `onGenerated`
-- `clientDynamicModules` -> removed, use `app.writeTemp()` in `onPrepared` hook directly
+- `additionalPages` -> removed, use `app.pages.push(createPage())` in `onInitialized` hook
+- `clientDynamicModules` -> removed, use `app.writeTemp()` in `onPrepared` hook
 - `enhanceAppFiles` -> `clientAppEnhanceFiles`
 - `clientRootMixin` -> `clientAppSetupFiles`
+- `extendMarkdown` -> `extendsMarkdown`
 
 #### Theme API
 
