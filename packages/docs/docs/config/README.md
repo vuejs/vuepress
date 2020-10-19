@@ -277,6 +277,13 @@ Function for transforming [header](../miscellaneous/glossary.md#headers) texts i
 
 Options for [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor). (Note: prefer `markdown.slugify` to customize header ids.)
 
+### markdown.pageSuffix
+
+- Type: `string`
+- Default: `.html`
+
+Option to customize internal links to be compatible when using the [vuepress-plugin-clean-urls](https://vuepress.github.io/en/plugins/clean-urls/).
+
 ### markdown.externalLinks
 
 - Type: `Object`
