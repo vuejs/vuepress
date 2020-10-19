@@ -70,7 +70,7 @@ Features in the following list are not fully determined, and might be changed or
 - [ ] @vuepress/cli
 
   - [x] Resolve user config file
-  - [ ] Watch & Reload (dev)
+  - [x] Watch & Reload (dev)
 
 - [ ] official plugins
 
