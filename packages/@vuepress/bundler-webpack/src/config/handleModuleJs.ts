@@ -10,15 +10,17 @@ import { resolveBabelLoaderOptions } from './resolveBabelLoaderOptions'
 export const handleModuleJs = ({
   app,
   config,
+  isBuild,
   isServer,
 }: {
   app: App
   config: Config
+  isBuild: boolean
   isServer: boolean
 }): void => {
   // only enable babel in production client bundle
   // when `evergreen` option is set to `false`
-  if (app.options.evergreen === false && app.env.isProd && !isServer) {
+  if (app.options.evergreen === false && isBuild && !isServer) {
     const cacheLoaderOptions = resolveCacheLoaderOptions({
       app,
       identifier: {

@@ -39,7 +39,7 @@ export const handleModule = ({
   handleModuleAssets({ app, config })
 
   // js files
-  handleModuleJs({ app, config, isServer })
+  handleModuleJs({ app, config, isBuild, isServer })
 
   // ts files
   handleModuleTs({ app, config })

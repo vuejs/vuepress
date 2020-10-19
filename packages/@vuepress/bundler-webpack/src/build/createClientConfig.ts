@@ -38,8 +38,8 @@ export const createClientConfig = (
     .plugin('vuepress-client')
     .use(createClientPlugin(clientManifestFilename))
 
-  // optimizations for production
-  if (app.env.isProd) {
+  // optimizations for build production
+  if (isBuild) {
     // extract-css
     config.plugin('extract-css').use(require('mini-css-extract-plugin'), [
       {
