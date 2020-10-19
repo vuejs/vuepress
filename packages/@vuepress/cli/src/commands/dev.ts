@@ -1,8 +1,14 @@
+import * as chokidar from 'chokidar'
 import { createApp } from '@vuepress/core'
 import type { AppConfig } from '@vuepress/core'
 import { path } from '@vuepress/utils'
 import { resolveUserConfig } from '../config'
-import { resolveBundler } from '../utils'
+import {
+  resolveBundler,
+  handlePageAdd,
+  handlePageChange,
+  handlePageUnlink,
+} from '../utils'
 
 export interface CommandOptionsDev {
   port?: number
@@ -61,6 +67,7 @@ export const dev = async (
 
   // resolve user config
   const userConfig = await resolveUserConfig(appConfig.source)
+
   // resolve bundler from user config
   const bundler = resolveBundler(userConfig)
 
@@ -70,6 +77,37 @@ export const dev = async (
     ...appConfig,
   })
 
-  // TODO: watch & reload
-  await bundler.dev(app)
+  // start dev server
+  const close = await bundler.dev(app)
+
+  // watch page files
+  const pagesWatcher = chokidar.watch(
+    ['**/*.md', '!.vuepress', '!node_modules'],
+    {
+      cwd: app.dir.source(),
+    }
+  )
+  pagesWatcher.on('add', (filePathRelative) =>
+    handlePageAdd(app, app.dir.source(filePathRelative))
+  )
+  pagesWatcher.on('change', (filePathRelative) =>
+    handlePageChange(app, app.dir.source(filePathRelative))
+  )
+  pagesWatcher.on('unlink', (filePathRelative) =>
+    handlePageUnlink(app, app.dir.source(filePathRelative))
+  )
+
+  // watch config file
+  const configWatcher = chokidar.watch(
+    ['.vuepress/config.js', '.vuepress/config.ts'],
+    {
+      cwd: app.dir.source(),
+    }
+  )
+  configWatcher.on('change', async () => {
+    // close current dev server
+    await close()
+    // re-run dev command
+    await dev(sourceDir, commandOptions)
+  })
 }

@@ -51,6 +51,7 @@ export const build = async (
 
   // resolve user config
   const userConfig = await resolveUserConfig(appConfig.source)
+
   // resolve bundler from user config
   const bundler = resolveBundler(userConfig)
 
