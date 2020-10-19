@@ -31,13 +31,11 @@ export const appInit = async (app: App): Promise<void> => {
   // hooks in plugins will take effect after `registerHooks()`
   app.pluginApi.registerHooks()
 
-  // plugin hook: extendMarkdown
-  await app.pluginApi.hooks.extendMarkdown.process(app.markdown)
+  // plugin hook: extendsMarkdown
+  await app.pluginApi.hooks.extendsMarkdown.process(app.markdown)
 
   // create pages
   app.pages = await createAppPages(app)
-
-  // TODO: additionalPages
 
   // plugin hook: onInitialized
   await app.pluginApi.hooks.onInitialized.process(app)

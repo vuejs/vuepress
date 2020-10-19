@@ -38,7 +38,7 @@ export type ReturnObjectHook = Hook<
 >
 
 // markdown hook
-export type ExtendMarkdownHook = Hook<(md: Markdown) => void>
+export type ExtendsMarkdownHook = Hook<(md: Markdown) => void>
 
 // TODO: decouple with webpack
 // webpack hooks
@@ -60,7 +60,7 @@ export interface Hooks {
   onPrepared: LifeCycleHook
   onUpdated: LifeCycleHook
   onGenerated: LifeCycleHook
-  extendMarkdown: ExtendMarkdownHook
+  extendsMarkdown: ExtendsMarkdownHook
   clientAppSetupFiles: ClientFilesHook
   clientAppEnhanceFiles: ClientFilesHook
   alias: ReturnObjectHook
@@ -69,9 +69,8 @@ export interface Hooks {
   beforeDevServer: BeforeDevServerHook
   afterDevServer: AfterDevServerHook
 
-  // TODO: extendPageData
-  // TODO: extendCli
-  // TODO: additionalPages
+  // TODO: extendPageData -> extendsPageData
+  // TODO: extendCli -> extendsCli
   // TODO: globalUIComponents
   // TODO: configureWebpack
 }
