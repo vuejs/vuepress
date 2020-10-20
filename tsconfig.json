@@ -6,6 +6,7 @@
     { "path": "./packages/@vuepress/client/tsconfig.build.json" },
     { "path": "./packages/@vuepress/core/tsconfig.build.json" },
     { "path": "./packages/@vuepress/markdown/tsconfig.build.json" },
+    { "path": "./packages/@vuepress/plugin-nprogress/tsconfig.build.json" },
     { "path": "./packages/@vuepress/shared/tsconfig.build.json" },
     { "path": "./packages/@vuepress/theme-default/tsconfig.build.json" },
     { "path": "./packages/@vuepress/theme-vue/tsconfig.build.json" },

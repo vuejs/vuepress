@@ -1,0 +1,43 @@
+{
+  "name": "@vuepress/plugin-nprogress",
+  "version": "2.0.0-alpha.0",
+  "description": "VuePress plugin - nprogress",
+  "keywords": [
+    "vuepress",
+    "plugin",
+    "nprogress"
+  ],
+  "homepage": "https://github.com/vuepress",
+  "bugs": {
+    "url": "https://github.com/vuepress/vuepress-next/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/vuepress-next.git"
+  },
+  "license": "MIT",
+  "author": "meteorlxy",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "styles"
+  ],
+  "scripts": {
+    "build": "tsc -b tsconfig.build.json",
+    "clean": "rimraf lib *.tsbuildinfo"
+  },
+  "dependencies": {
+    "nprogress": "^0.2.0",
+    "vue": "^3.0.0",
+    "vue-router": "4.0.0-beta.11"
+  },
+  "devDependencies": {
+    "@types/nprogress": "^0.2.0",
+    "@vuepress/client": "2.0.0-alpha.0",
+    "@vuepress/core": "2.0.0-alpha.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
