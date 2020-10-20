@@ -17,8 +17,7 @@ export const handleResolve = ({
     .set('@internal', app.dir.temp('internal'))
     .end()
     // extensions
-    // TODO: whether to resolve ts, styl by default or not
-    .extensions.merge(['.js', '.jsx', '.ts', '.tsx', '.vue', '.json', '.styl'])
+    .extensions.merge(['.js', '.jsx', '.ts', '.tsx', '.vue', '.json'])
     .end()
 
   // plugin hook: alias
