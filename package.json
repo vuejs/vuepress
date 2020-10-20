@@ -31,7 +31,6 @@
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
-    "@types/debug": "^4.1.5",
     "@types/jest": "^26.0.14",
     "copyfiles": "^2.4.0",
     "eslint": "^7.10.0",
