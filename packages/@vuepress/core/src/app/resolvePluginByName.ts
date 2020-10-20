@@ -1,5 +1,5 @@
 import { normalizePackageName } from '@vuepress/shared'
-import { requireResolve } from '@vuepress/utils'
+import { path, requireResolve } from '@vuepress/utils'
 import type { Plugin, PluginObject, PluginOptions } from '../types'
 
 /**
@@ -11,13 +11,13 @@ export const resolvePluginByName = <
 >(
   pluginName: string
 ): Plugin<T, U> | null => {
-  const result =
-    requireResolve(pluginName) ??
-    requireResolve(normalizePackageName(pluginName, 'vuepress', 'plugin'))
+  const pluginEntry = path.isAbsolute(pluginName)
+    ? pluginName
+    : requireResolve(normalizePackageName(pluginName, 'vuepress', 'plugin'))
 
-  if (result === null) {
+  if (pluginEntry === null) {
     return null
   }
 
-  return require(result)
+  return require(pluginEntry)
 }

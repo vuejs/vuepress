@@ -6,9 +6,9 @@ import { resolveThemeLayouts } from './resolveThemeLayouts'
 
 export const resolveThemeInfo = (app: App, themeName: string): ThemeInfo => {
   // resolve theme entry according to theme name
-  const themeEntry =
-    requireResolve(themeName) ??
-    requireResolve(normalizePackageName(themeName, 'vuepress', 'theme'))
+  const themeEntry = requireResolve(
+    normalizePackageName(themeName, 'vuepress', 'theme')
+  )
 
   if (themeEntry === null) {
     const message = `theme ${themeName} is not found`
