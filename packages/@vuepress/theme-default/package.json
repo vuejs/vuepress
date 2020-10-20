@@ -20,7 +20,10 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
-    "lib"
+    "components",
+    "layouts",
+    "lib",
+    "styles"
   ],
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
