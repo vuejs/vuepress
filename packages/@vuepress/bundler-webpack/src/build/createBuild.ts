@@ -91,8 +91,8 @@ export const createBuild = (
 
   // keep the server bundle files in debug mode
   if (!app.env.isDebug) {
-    // empty server dest directory after pages rendered
-    await fs.emptyDir(app.dir.dest('.server'))
+    // remove server dest directory after pages rendered
+    await fs.remove(app.dir.dest('.server'))
   }
 
   // plugin hook: onGenerated
