@@ -9,8 +9,9 @@ import { resolvePort } from './resolvePort'
 export const createDev = (options: BundlerWebpackOptions): BundlerDev => async (
   app: App
 ) => {
-  // initialize app
+  // initialize and prepare
   await app.init()
+  await app.prepare()
 
   // create webpack config
   const config = createDevConfig(app, options)
@@ -22,9 +23,6 @@ export const createDev = (options: BundlerWebpackOptions): BundlerDev => async (
   // resolve host and port
   const host = app.options.host
   const port = await resolvePort(app.options.port)
-
-  // prepare app
-  await app.prepare()
 
   // create webpack-dev-server
   const server = createDevServer(webpackConfig, serverConfig)

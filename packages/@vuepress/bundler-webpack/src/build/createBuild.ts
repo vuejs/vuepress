@@ -15,18 +15,16 @@ import type { ClientManifest } from './ssr'
 export const createBuild = (
   options: BundlerWebpackOptions
 ): Bundler['build'] => async (app: App) => {
-  // initialize app
+  // initialize and prepare
   await app.init()
-
-  // create webpack config
-  const clientConfig = createClientConfig(app, options).toConfig()
-  const serverConfig = createServerConfig(app, options).toConfig()
-
-  // prepare app
   await app.prepare()
 
   // empty dest directory
   await fs.emptyDir(app.dir.dest())
+
+  // create webpack config
+  const clientConfig = createClientConfig(app, options).toConfig()
+  const serverConfig = createServerConfig(app, options).toConfig()
 
   // webpack compile
   await new Promise((resolve, reject) => {
