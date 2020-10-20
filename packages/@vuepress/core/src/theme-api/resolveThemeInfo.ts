@@ -1,5 +1,5 @@
 import { normalizePackageName } from '@vuepress/shared'
-import { path, requireResolve } from '@vuepress/utils'
+import { logger, path, requireResolve } from '@vuepress/utils'
 import { normalizePlugin } from '../app'
 import type { App, ThemeInfo, ThemeObject, ThemeConfig } from '../types'
 import { resolveThemeLayouts } from './resolveThemeLayouts'
@@ -10,9 +10,10 @@ export const resolveThemeInfo = (app: App, themeName: string): ThemeInfo => {
     requireResolve(themeName) ??
     requireResolve(normalizePackageName(themeName, 'vuepress', 'theme'))
 
-  // TODO: logger
   if (themeEntry === null) {
-    throw new Error(`theme ${themeName} is not found`)
+    const message = `theme ${themeName} is not found`
+    logger.error(message)
+    throw new Error(message)
   }
 
   // normalize theme plugin from theme entry
@@ -33,8 +34,6 @@ export const resolveThemeInfo = (app: App, themeName: string): ThemeInfo => {
     themePlugin,
   })
 
-  // TODO: normalize theme path
-  // TODO: normalize theme plugin name
   return {
     plugin: themePlugin,
     layouts,

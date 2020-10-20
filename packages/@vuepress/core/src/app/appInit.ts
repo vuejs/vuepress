@@ -1,7 +1,10 @@
+import { debug } from '@vuepress/utils'
 import { createThemeApi } from '../theme-api'
 import type { App } from '../types'
 import { createAppPages } from './createAppPages'
 import { createAppWriteTemp } from './createAppWriteTemp'
+
+const log = debug('vuepress:core/app')
 
 /**
  * Initialize a vuepress app
@@ -9,6 +12,8 @@ import { createAppWriteTemp } from './createAppWriteTemp'
  * Plugins should be used before initialization.
  */
 export const appInit = async (app: App): Promise<void> => {
+  log('init start')
+
   // create write temp util
   app.writeTemp = await createAppWriteTemp(app)
 
@@ -39,4 +44,6 @@ export const appInit = async (app: App): Promise<void> => {
 
   // plugin hook: onInitialized
   await app.pluginApi.hooks.onInitialized.process(app)
+
+  log('init finish')
 }

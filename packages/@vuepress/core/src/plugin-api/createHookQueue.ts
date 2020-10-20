@@ -1,4 +1,5 @@
 import { isPromise } from '@vuepress/shared'
+import { chalk, debug, logger } from '@vuepress/utils'
 import type {
   HookQueue,
   HookItem,
@@ -6,6 +7,8 @@ import type {
   HooksNormalized,
   HooksResult,
 } from '../types'
+
+const log = debug('vuepress:core/plugin-api')
 
 /**
  * Create hook queue for plugin system
@@ -35,6 +38,8 @@ export const createHookQueue = <T extends HooksName>(
         item: HookItem<T>,
         ...args: Parameters<HooksNormalized[T]>
       ): Promise<void> => {
+        log(`process "${name}" from "${item.pluginName}"`)
+
         try {
           // process and get the result of the the hook item
           // @ts-ignore
@@ -45,8 +50,11 @@ export const createHookQueue = <T extends HooksName>(
             results.push(result)
           }
         } catch (error) {
-          // TODO: logger
-          console.log(`${item.pluginName}`)
+          logger.error(
+            `error in hook ${chalk.magenta(name)} from ${chalk.magenta(
+              item.pluginName
+            )}`
+          )
           throw error
         }
       }
@@ -71,6 +79,8 @@ export const createHookQueue = <T extends HooksName>(
 
       // process all hook items
       for (const item of items) {
+        log(`processSync "${name}" from "${item.pluginName}"`)
+
         try {
           // @ts-ignore
           // process and get the result of the the hook item
@@ -81,8 +91,11 @@ export const createHookQueue = <T extends HooksName>(
             results.push(result)
           }
         } catch (error) {
-          // TODO: logger
-          console.log(`${item.pluginName}`)
+          logger.error(
+            `error in hook ${chalk.magenta(name)} from ${chalk.magenta(
+              item.pluginName
+            )}`
+          )
           throw error
         }
       }

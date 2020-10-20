@@ -1,4 +1,5 @@
 import { isFunction, isString } from '@vuepress/shared'
+import { logger } from '@vuepress/utils'
 import type { App, Plugin, PluginObject, PluginOptions } from '../types'
 import { resolvePluginByName } from './resolvePluginByName'
 
@@ -14,9 +15,10 @@ export const normalizePlugin = <
     ? resolvePluginByName<T, U>(plugin)
     : plugin
 
-  // TODO: logger
   if (resolvedPlugin === null) {
-    throw new Error(`plugin ${plugin} is not found`)
+    const message = `plugin ${plugin} is not found`
+    logger.error(message)
+    throw new Error(message)
   }
 
   const pluginObject = isFunction(resolvedPlugin)

@@ -1,4 +1,4 @@
-import { chalk } from '@vuepress/utils'
+import { chalk, logger } from '@vuepress/utils'
 import type { App, Plugin, PluginOptions } from '../types'
 import { normalizePlugin } from './normalizePlugin'
 
@@ -11,8 +11,7 @@ export const appUse = <T extends PluginOptions>(
   const plugin = normalizePlugin(app, rawPlugin, config)
 
   // print log
-  // TODO: logger
-  console.log(`Use plugin ${chalk.magenta(plugin.name)}`)
+  logger.info(`use plugin ${chalk.magenta(plugin.name)}`)
 
   if (plugin.multiple !== true) {
     // remove duplicated plugin
