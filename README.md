@@ -73,6 +73,13 @@ Features in the following list are not fully determined, and might be changed or
 
 - [ ] official plugins
 
+  - [ ] @vuepress/plugin-back-to-top
+  - [ ] @vuepress/plugin-google-analytics
+  - [ ] @vuepress/plugin-medium-zoom
+  - [x] @vuepress/plugin-nprogress
+  - [ ] @vuepress/plugin-pwa
+  - [ ] @vuepress/plugin-search
+
 - [ ] docs
   - [ ] Migration Guide
 
