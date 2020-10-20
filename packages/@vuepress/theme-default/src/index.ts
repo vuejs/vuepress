@@ -7,6 +7,8 @@ const theme: Theme = {
   layouts: path.resolve(__dirname, '../layouts'),
 
   clientAppEnhanceFiles: path.resolve(__dirname, './clientAppEnhance.js'),
+
+  plugins: ['@vuepress/nprogress'],
 }
 
 export = theme
