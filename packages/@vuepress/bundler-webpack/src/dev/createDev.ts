@@ -1,4 +1,5 @@
 import type { App, BundlerDev } from '@vuepress/core'
+import { chalk, logger } from '@vuepress/utils'
 import type { BundlerWebpackOptions } from '../types'
 import { createDevConfig } from './createDevConfig'
 import { createDevServer } from './createDevServer'
@@ -33,6 +34,13 @@ export const createDev = (options: BundlerWebpackOptions): BundlerDev => async (
       if (err) {
         reject(err)
       } else {
+        // TODO: print log after webpack compilation
+        logger.success(
+          `VuePress dev server is listening at ${chalk.cyan(
+            `http://${host}:${port}${app.options.base}`
+          )}`
+        )
+
         // promisify the close function
         const close = (): Promise<void> =>
           new Promise((resolve) => server.close(resolve))

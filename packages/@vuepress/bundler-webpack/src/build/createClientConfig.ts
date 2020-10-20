@@ -37,6 +37,13 @@ export const createClientConfig = (
     .plugin('vuepress-client')
     .use(createClientPlugin(clientManifestFilename))
 
+  // copy files from public dir to dest dir
+  config.plugin('copy').use(require('copy-webpack-plugin'), [
+    {
+      patterns: [{ from: app.dir.public(), to: app.dir.dest() }],
+    },
+  ])
+
   // optimizations for production mode
   if (app.env.isProd) {
     // extract-css
@@ -62,12 +69,10 @@ export const createClientConfig = (
     })
   }
 
-  // copy files from public dir to dest dir
-  config.plugin('copy').use(require('copy-webpack-plugin'), [
-    {
-      patterns: [{ from: app.dir.public(), to: app.dir.dest() }],
-    },
-  ])
+  // disable performance hints
+  if (!app.env.isDebug) {
+    config.performance.hints(false)
+  }
 
   // plugin hook: chainWebpack
   app.pluginApi.hooks.chainWebpack.process(config, isServer, isBuild)
