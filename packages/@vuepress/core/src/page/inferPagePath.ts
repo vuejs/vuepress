@@ -1,3 +1,4 @@
+import { resolveLocalePath } from '@vuepress/shared'
 import type { App } from '../types'
 
 /**
@@ -22,14 +23,8 @@ export const inferPagePath = (
   // foo/bar.md -> /foo/bar.html
   const pathInferred = `/${filePathRelative.replace(/\.md$/, '.html')}`
 
-  // infer page locale path
-  let pathLocale = '/'
-
-  Object.keys(app.options.locales).forEach((locale) => {
-    if (pathInferred.startsWith(locale)) {
-      pathLocale = locale
-    }
-  })
+  // resolve page locale path
+  const pathLocale = resolveLocalePath(app.options.locales, pathInferred)
 
   return {
     pathInferred,
