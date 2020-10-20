@@ -28,5 +28,8 @@
   },
   "dependencies": {
     "@vuepress/theme-default": "2.0.0-alpha.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

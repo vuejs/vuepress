@@ -36,5 +36,8 @@
     "globby": "^11.0.1",
     "hash-sum": "^2.0.0",
     "upath": "^1.2.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

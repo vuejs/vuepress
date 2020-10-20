@@ -36,5 +36,8 @@
     "gray-matter": "^4.0.2",
     "toml": "^3.0.0",
     "webpack-chain": "^6.5.1"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
