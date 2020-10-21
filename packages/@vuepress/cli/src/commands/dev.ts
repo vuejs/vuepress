@@ -1,7 +1,7 @@
 import * as chokidar from 'chokidar'
 import { createApp } from '@vuepress/core'
 import type { AppConfig } from '@vuepress/core'
-import { path } from '@vuepress/utils'
+import { chalk, logger, path } from '@vuepress/utils'
 import { resolveUserConfig } from '../config'
 import {
   resolveBundler,
@@ -87,15 +87,24 @@ export const dev = async (
       cwd: app.dir.source(),
     }
   )
-  pagesWatcher.on('add', (filePathRelative) =>
+
+  // handle page add event
+  pagesWatcher.on('add', (filePathRelative) => {
+    logger.info(`page ${chalk.magenta(filePathRelative)} is created`)
     handlePageAdd(app, app.dir.source(filePathRelative))
-  )
-  pagesWatcher.on('change', (filePathRelative) =>
+  })
+
+  // handle page change event
+  pagesWatcher.on('change', (filePathRelative) => {
+    logger.info(`page ${chalk.magenta(filePathRelative)} is modified`)
     handlePageChange(app, app.dir.source(filePathRelative))
-  )
-  pagesWatcher.on('unlink', (filePathRelative) =>
+  })
+
+  // handle page unlink event
+  pagesWatcher.on('unlink', (filePathRelative) => {
+    logger.info(`page ${chalk.magenta(filePathRelative)} is removed`)
     handlePageUnlink(app, app.dir.source(filePathRelative))
-  )
+  })
 
   // watch config file
   const configWatcher = chokidar.watch(
@@ -104,7 +113,8 @@ export const dev = async (
       cwd: app.dir.source(),
     }
   )
-  configWatcher.on('change', async () => {
+  configWatcher.on('change', async (configFile) => {
+    logger.info(`config ${chalk.magenta(configFile)} is modified`)
     // close current dev server
     await close()
     // re-run dev command
