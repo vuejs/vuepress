@@ -19,7 +19,7 @@ ${filePaths
   .join('\n')}
 
 export const clientAppSetups = [
-  ${filePaths.map((_, index) => `  clientAppSetup${index},`).join('\n')}
+  ${filePaths.map((_, index) => `clientAppSetup${index},`).join('\n')}
 ]
 `
 

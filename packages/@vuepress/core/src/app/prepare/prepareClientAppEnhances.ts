@@ -21,7 +21,7 @@ ${filePaths
   .join('\n')}
 
 export const clientAppEnhances = [
-  ${filePaths.map((_, index) => `  clientAppEnhance${index},`).join('\n')}
+  ${filePaths.map((_, index) => `clientAppEnhance${index},`).join('\n')}
 ]
 `
 
