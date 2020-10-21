@@ -11,14 +11,15 @@ const clientAppSetup: ClientAppSetup = () => {
     const router = useRouter()
 
     // record which pages have been loaded
-    const loadedPages = Object.create(null)
+    // add path of current page as initial value
+    const loadedPages = new Set(router.currentRoute.value.path)
 
     // set nprogress config
     nprogress.configure({ showSpinner: false })
 
     // show progress bar before navigation
     router.beforeEach((to, from, next) => {
-      if (!loadedPages[to.path]) {
+      if (!loadedPages.has(to.path)) {
         nprogress.start()
       }
       next()
@@ -26,10 +27,10 @@ const clientAppSetup: ClientAppSetup = () => {
 
     // hide progress bar after navigation
     router.afterEach((to) => {
-      loadedPages[to.path] = true
+      loadedPages.add(to.path)
       nprogress.done()
     })
   })
 }
 
-export = clientAppSetup
+export default clientAppSetup
