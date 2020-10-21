@@ -2,7 +2,9 @@
   <div class="theme-container">
     <Home v-if="$frontmatter.home" />
 
-    <Content v-else />
+    <div v-else class="theme-default-content">
+      <Content />
+    </div>
   </div>
 </template>
 

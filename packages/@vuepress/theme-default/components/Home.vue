@@ -46,7 +46,9 @@
       </div>
     </div>
 
-    <Content class="theme-default-content custom" />
+    <div class="theme-default-content custom">
+      <Content />
+    </div>
 
     <div v-if="$frontmatter.footer" class="footer">
       {{ $frontmatter.footer }}
