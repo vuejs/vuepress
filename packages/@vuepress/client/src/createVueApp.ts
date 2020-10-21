@@ -115,8 +115,10 @@ export const createVueApp = async ({
   })
 
   // register built-in components
+  /* eslint-disable vue/match-component-file-name */
   app.component('Content', Content)
   app.component('Debug', __DEV__ ? Debug : () => null)
+  /* eslint-enable vue/match-component-file-name */
 
   // register all pages components
   Object.entries(pagesComponent).forEach(([name, component]) => {

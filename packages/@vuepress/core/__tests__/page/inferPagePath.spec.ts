@@ -2,6 +2,7 @@ import { createApp, inferPagePath } from '@vuepress/core'
 import { path } from '@vuepress/utils'
 
 const source = path.resolve(__dirname, 'fake-source')
+/* eslint-disable vue/one-component-per-file */
 const app = createApp({
   source,
   locales: {
@@ -13,6 +14,7 @@ const app = createApp({
 const appWithoutLocales = createApp({
   source,
 })
+/* eslint-enable vue/one-component-per-file */
 
 const testCases: [string, ReturnType<typeof inferPagePath>][] = [
   [
