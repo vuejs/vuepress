@@ -38,7 +38,11 @@ export const createHookQueue = <T extends HooksName>(
         item: HookItem<T>,
         ...args: Parameters<HooksNormalized[T]>
       ): Promise<void> => {
-        log(`process "${name}" from "${item.pluginName}"`)
+        log(
+          `process ${chalk.magenta(name)} from ${chalk.magenta(
+            item.pluginName
+          )}`
+        )
 
         try {
           // process and get the result of the the hook item
@@ -79,7 +83,11 @@ export const createHookQueue = <T extends HooksName>(
 
       // process all hook items
       for (const item of items) {
-        log(`processSync "${name}" from "${item.pluginName}"`)
+        log(
+          `processSync ${chalk.magenta(name)} from ${chalk.magenta(
+            item.pluginName
+          )}`
+        )
 
         try {
           // @ts-ignore
