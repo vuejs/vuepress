@@ -27,7 +27,7 @@
   ],
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
-    "clean": "rimraf lib/*.* *.tsbuildinfo"
+    "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
     "@vuepress/client": "2.0.0-alpha.0",

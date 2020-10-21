@@ -1,0 +1,9 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "ES2015",
+    "rootDir": "./src",
+    "outDir": "./lib"
+  },
+  "files": ["./src/clientAppEnhance.ts"]
+}
