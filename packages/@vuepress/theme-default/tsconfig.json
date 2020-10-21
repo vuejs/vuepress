@@ -4,5 +4,5 @@
     "composite": false,
     "declarationMap": false
   },
-  "include": ["./components", "./layouts", "./src", "./__tests__"]
+  "include": ["./components", "./layouts", "./src", "./types", "./__tests__"]
 }

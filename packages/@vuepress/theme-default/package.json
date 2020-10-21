@@ -18,12 +18,13 @@
   "license": "MIT",
   "author": "Evan You",
   "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "types": "types/index.d.ts",
   "files": [
     "components",
     "layouts",
     "lib",
-    "styles"
+    "styles",
+    "types"
   ],
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
@@ -31,6 +32,9 @@
   },
   "dependencies": {
     "@vuepress/client": "2.0.0-alpha.0",
+    "@vuepress/core": "2.0.0-alpha.0",
+    "@vuepress/plugin-container": "2.0.0-alpha.0",
+    "@vuepress/plugin-nprogress": "2.0.0-alpha.0",
     "@vuepress/utils": "2.0.0-alpha.0",
     "stylus": "^0.54.8",
     "stylus-loader": "^4.1.1",
