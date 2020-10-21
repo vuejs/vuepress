@@ -45,7 +45,6 @@ Features in the following list are not fully determined, and might be changed or
     - [ ] globalUIComponents
     - [ ] configureWebpack
   - [ ] Theme API
-    - [ ] Palette System
     - [ ] Theme Inheritance
 
 - [ ] @vuepress/markdown
@@ -74,6 +73,7 @@ Features in the following list are not fully determined, and might be changed or
 - [ ] official plugins
 
   - [ ] @vuepress/plugin-back-to-top
+  - [x] @vuepress/plugin-container
   - [ ] @vuepress/plugin-google-analytics
   - [ ] @vuepress/plugin-medium-zoom
   - [x] @vuepress/plugin-nprogress
@@ -89,12 +89,15 @@ Temporarily record some breaking changes here.
 
 #### Core
 
-- permalink patterns
+- Permalink patterns
   - `:i_month` -> removed
   - `:i_day` -> removed
   - `:minutes` -> removed (undocumented in 1.0)
   - `:seconds` -> removed (undocumented in 1.0)
   - `:regular` -> `:raw`
+- Palette system
+  - The palette system of Vuepress 1.0 (i.e. `palette.styl` and `index.styl`) will only works in default theme
+  - Custom theme authors can use their own way for users to configure styles (not be limited with stylus)
 
 #### Plugin API
 
