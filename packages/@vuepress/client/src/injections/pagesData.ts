@@ -11,10 +11,9 @@ export const usePagesData = (): PagesData => {
   return pagesData
 }
 
-// TODO: HMR
 if (module.hot) {
   module.hot.accept('@internal/pagesData', () => {
-    console.log('Accepting the updated pagesData module!')
     pagesData.value = readonly(pagesDataRaw) as PagesDataRaw
+    console.log('pagesData is updated')
   })
 }
