@@ -5,5 +5,6 @@
     { "path": "../core/tsconfig.build.json" },
     { "path": "./tsconfig.esm.json" },
     { "path": "./tsconfig.cjs.json" }
-  ]
+  ],
+  "files": []
 }
