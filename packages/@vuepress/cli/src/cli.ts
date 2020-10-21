@@ -21,8 +21,9 @@ export const cli = (): void => {
     .option('-p, --port <port>', 'use specified port (default: 8080)')
     .option('-h, --host <host>', 'use specified host (default: 0.0.0.0)')
     .option('-t, --temp <temp>', 'set the directory of the temporary files')
-    .option('--debug', 'start development server in debug mode')
     .option('--open', 'open browser when ready')
+    .option('--debug', 'enable debug mode')
+    .option('--no-watch', 'disable watching page and config files')
     .action(dev)
 
   // register `build` command
@@ -33,7 +34,7 @@ export const cli = (): void => {
       'set the directory build output (default: .vuepress/dist)'
     )
     .option('-t, --temp <temp>', 'set the directory of the temporary files')
-    .option('--debug', 'build in debug mode')
+    .option('--debug', 'enable debug mode')
     .action(build)
 
   program.parse(process.argv)
