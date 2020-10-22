@@ -11,6 +11,7 @@
     "@vuepress/bundler-webpack": "^2.0.0-alpha.0",
     "@vuepress/cli": "^2.0.0-alpha.0",
     "@vuepress/core": "^2.0.0-alpha.0",
+    "@vuepress/theme-default": "^2.0.0-alpha.0",
     "serve": "^11.3.2"
   }
 }

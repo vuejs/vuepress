@@ -1,6 +1,7 @@
 import type { UserConfig } from '@vuepress/core'
+import type { DefaultThemeOptions } from '@vuepress/theme-default'
 
-const config: UserConfig = {
+const config: UserConfig<DefaultThemeOptions> = {
   locales: {
     '/': {
       lang: 'en-US',
@@ -11,6 +12,13 @@ const config: UserConfig = {
       lang: 'zh-CN',
       title: 'VuePress',
       description: 'Vue 驱动的静态网站生成器',
+    },
+  },
+
+  themeConfig: {
+    locales: {
+      '/': {},
+      '/zh/': {},
     },
   },
 }
