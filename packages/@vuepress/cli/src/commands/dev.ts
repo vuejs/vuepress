@@ -84,52 +84,57 @@ export const dev = async (
   // start dev server
   const close = await bundler.dev(app)
 
-  if (commandOptions.watch !== false) {
-    // watch page files
-    const pagesWatcher = chokidar.watch(
-      ['**/*.md', '!.vuepress', '!node_modules'],
-      {
-        cwd: app.dir.source(),
-        ignoreInitial: true,
-      }
-    )
-
-    // handle page add event
-    pagesWatcher.on('add', (filePathRelative) => {
-      logger.info(`page ${chalk.magenta(filePathRelative)} is created`)
-      handlePageAdd(app, app.dir.source(filePathRelative))
-    })
-
-    // handle page change event
-    pagesWatcher.on('change', (filePathRelative) => {
-      logger.info(`page ${chalk.magenta(filePathRelative)} is modified`)
-      handlePageChange(app, app.dir.source(filePathRelative))
-    })
-
-    // handle page unlink event
-    pagesWatcher.on('unlink', (filePathRelative) => {
-      logger.info(`page ${chalk.magenta(filePathRelative)} is removed`)
-      handlePageUnlink(app, app.dir.source(filePathRelative))
-    })
-
-    // watch config file
-    const configWatcher = chokidar.watch(
-      ['.vuepress/config.js', '.vuepress/config.ts'],
-      {
-        cwd: app.dir.source(),
-        ignoreInitial: true,
-      }
-    )
-    configWatcher.on('change', async (configFile) => {
-      logger.info(`config ${chalk.magenta(configFile)} is modified`)
-      // close current dev server
-      await close()
-      // re-run dev command
-      await dev(sourceDir, {
-        ...commandOptions,
-        // disable watch mode to avoid adding extra watchers
-        watch: false,
-      })
-    })
+  // do not watch files if `watch` is set to `false`
+  if (commandOptions.watch === false) {
+    return
   }
+
+  // watch page files
+  const pagesWatcher = chokidar.watch(
+    ['**/*.md', '!.vuepress', '!node_modules'],
+    {
+      cwd: app.dir.source(),
+      ignoreInitial: true,
+    }
+  )
+
+  // handle page add event
+  pagesWatcher.on('add', (filePathRelative) => {
+    logger.info(`page ${chalk.magenta(filePathRelative)} is created`)
+    handlePageAdd(app, app.dir.source(filePathRelative))
+  })
+
+  // handle page change event
+  pagesWatcher.on('change', (filePathRelative) => {
+    logger.info(`page ${chalk.magenta(filePathRelative)} is modified`)
+    handlePageChange(app, app.dir.source(filePathRelative))
+  })
+
+  // handle page unlink event
+  pagesWatcher.on('unlink', (filePathRelative) => {
+    logger.info(`page ${chalk.magenta(filePathRelative)} is removed`)
+    handlePageUnlink(app, app.dir.source(filePathRelative))
+  })
+
+  // watch config file
+  const configWatcher = chokidar.watch(
+    ['.vuepress/config.js', '.vuepress/config.ts'],
+    {
+      cwd: app.dir.source(),
+      ignoreInitial: true,
+    }
+  )
+  configWatcher.on('change', async (configFile) => {
+    logger.info(`config ${chalk.magenta(configFile)} is modified`)
+    await Promise.all([
+      // close file watchers
+      pagesWatcher.close(),
+      configWatcher.close(),
+      // close current dev server
+      close(),
+    ])
+    // re-run dev command
+    await dev(sourceDir, commandOptions)
+    logger.tip(`dev server is restarted, please refresh your browser`)
+  })
 }
