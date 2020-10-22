@@ -1,4 +1,6 @@
 import type {
+  LocaleConfig,
+  LocaleConfigItem,
   PageData,
   PageFrontmatter,
   PageHeader,
@@ -10,6 +12,8 @@ import type {
 } from '@vuepress/shared'
 
 export type {
+  LocaleConfig,
+  LocaleConfigItem,
   PageData,
   PageFrontmatter,
   PageHeader,
