@@ -2,13 +2,13 @@ import type { Theme } from '@vuepress/core'
 import type { ContainerPluginOptions } from '@vuepress/plugin-container'
 import { path } from '@vuepress/utils'
 import type { DefaultThemeOptions } from '../types'
-import { resolveContainerPluginOptions } from './utils'
+import { resolveContainerPluginOptions } from './node'
 
 const defaultTheme: Theme<DefaultThemeOptions> = ({ locales = {} }) => {
   return {
     name: '@vuepress/theme-default',
 
-    layouts: path.resolve(__dirname, '../layouts'),
+    layouts: path.resolve(__dirname, './layouts'),
 
     clientAppEnhanceFiles: path.resolve(__dirname, './clientAppEnhance.js'),
 
