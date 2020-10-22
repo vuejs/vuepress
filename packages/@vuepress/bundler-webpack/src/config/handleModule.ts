@@ -21,8 +21,8 @@ export const handleModule = ({
   app: App
   options: BundlerWebpackOptions
   config: Config
-  isBuild: boolean
   isServer: boolean
+  isBuild: boolean
 }): void => {
   // noParse
   config.module.noParse(
@@ -39,7 +39,7 @@ export const handleModule = ({
   handleModuleAssets({ app, config })
 
   // js files
-  handleModuleJs({ app, config, isBuild, isServer })
+  handleModuleJs({ app, config, isServer, isBuild })
 
   // ts files
   handleModuleTs({ app, config })
