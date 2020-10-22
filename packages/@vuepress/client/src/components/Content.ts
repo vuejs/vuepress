@@ -1,16 +1,18 @@
 import { h } from 'vue'
-import type { VNode } from 'vue'
+import type { FunctionalComponent } from 'vue'
 import { pagesComponent } from '@internal/pagesComponent'
 import { usePageData } from '../injections'
 
 /**
  * Markdown rendered content
  */
-export const Content = (props: { pageKey: string }): VNode => {
+export const Content: FunctionalComponent<{
+  pageKey?: string
+}> = (props) => {
   let key: string
 
   // use the page key from props directly
-  if (props?.pageKey) {
+  if (props.pageKey) {
     key = props.pageKey
   } else {
     // get current page key from page data
@@ -27,4 +29,13 @@ export const Content = (props: { pageKey: string }): VNode => {
 
   // fallback
   return h('div', 'Page does not exist. This is a fallback content.')
+}
+
+Content.displayName = 'Content'
+
+Content.props = {
+  pageKey: {
+    type: String,
+    required: false,
+  },
 }
