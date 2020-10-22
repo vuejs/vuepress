@@ -50,7 +50,7 @@ export const createBaseConfig = ({
   /**
    * plugins
    */
-  handlePlugins({ app, config })
+  handlePlugins({ app, config, isServer })
 
   return config
 }

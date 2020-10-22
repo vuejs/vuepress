@@ -8,9 +8,11 @@ import type { App } from '@vuepress/core'
 export const handlePlugins = ({
   app,
   config,
+  isServer,
 }: {
   app: App
   config: Config
+  isServer: boolean
 }): void => {
   // define plugin
   config.plugin('define').use(DefinePlugin, [
@@ -18,6 +20,7 @@ export const handlePlugins = ({
       'process.env.NODE_ENV': JSON.stringify(app.env.nodeEnv),
       '__VERSION__': JSON.stringify(app.version),
       '__DEV__': JSON.stringify(app.env.isDev),
+      '__SSR__': JSON.stringify(isServer),
     },
   ])
 
