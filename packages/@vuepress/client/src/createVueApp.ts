@@ -116,6 +116,10 @@ export const createVueApp = async ({
 
   // register built-in components
   /* eslint-disable vue/match-component-file-name */
+  app.component(
+    'ClientOnly',
+    __SSR__ ? () => null : (_, ctx) => ctx.slots.default?.()
+  )
   app.component('Content', Content)
   app.component('Debug', __DEV__ ? Debug : () => null)
   /* eslint-enable vue/match-component-file-name */
