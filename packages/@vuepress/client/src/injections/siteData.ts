@@ -14,6 +14,6 @@ export const useSiteData = (): SiteData => {
 if (module.hot) {
   module.hot.accept('@internal/siteData', () => {
     siteData.value = readonly(siteDataRaw) as SiteDataRaw
-    console.log('siteData is updated')
+    console.log('[vuepress] siteData is updated')
   })
 }
