@@ -25,6 +25,7 @@ export const resolveUserConfigTs = async (
     await fs.outputFile(tempFile, jsContent)
 
     // load js from temp file
+    delete require.cache[tempFile]
     const result = require(tempFile)
 
     // remove temp file after loaded
