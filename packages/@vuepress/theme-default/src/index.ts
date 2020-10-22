@@ -2,8 +2,9 @@ import type { Theme } from '@vuepress/core'
 import type { ContainerPluginOptions } from '@vuepress/plugin-container'
 import { path } from '@vuepress/utils'
 import type { DefaultThemeOptions } from '../types'
+import { resolveContainerPluginOptions } from './utils'
 
-const defaultTheme: Theme<DefaultThemeOptions> = () => {
+const defaultTheme: Theme<DefaultThemeOptions> = ({ locales = {} }) => {
   return {
     name: '@vuepress/theme-default',
 
@@ -15,45 +16,36 @@ const defaultTheme: Theme<DefaultThemeOptions> = () => {
       ['@vuepress/nprogress'],
       [
         '@vuepress/container',
-        {
-          type: 'tip',
-          locales: {
-            '/': {
-              defaultInfo: 'TIP',
-            },
-            '/zh/': {
-              defaultInfo: '提示',
-            },
+        resolveContainerPluginOptions(locales, 'tip', {
+          '/': {
+            defaultInfo: 'TIP',
           },
-        } as ContainerPluginOptions,
+          '/zh/': {
+            defaultInfo: '提示',
+          },
+        }),
       ],
       [
         '@vuepress/container',
-        {
-          type: 'warning',
-          locales: {
-            '/': {
-              defaultInfo: 'WARNING',
-            },
-            '/zh/': {
-              defaultInfo: '注意',
-            },
+        resolveContainerPluginOptions(locales, 'warning', {
+          '/': {
+            defaultInfo: 'WARNING',
           },
-        } as ContainerPluginOptions,
+          '/zh/': {
+            defaultInfo: '注意',
+          },
+        }),
       ],
       [
         '@vuepress/container',
-        {
-          type: 'danger',
-          locales: {
-            '/': {
-              defaultInfo: 'WARNING',
-            },
-            '/zh/': {
-              defaultInfo: '警告',
-            },
+        resolveContainerPluginOptions(locales, 'danger', {
+          '/': {
+            defaultInfo: 'WARNING',
           },
-        } as ContainerPluginOptions,
+          '/zh/': {
+            defaultInfo: '警告',
+          },
+        }),
       ],
       [
         '@vuepress/container',
