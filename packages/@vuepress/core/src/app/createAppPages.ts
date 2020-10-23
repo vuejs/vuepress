@@ -22,5 +22,17 @@ export const createAppPages = async (app: App): Promise<Page[]> => {
     )
   )
 
+  // if there is no 404 page, add one
+  if (!pages.some((page) => page.path === '/404.html')) {
+    pages.push(
+      await createPage(app, {
+        path: '/404.html',
+        frontmatter: {
+          layout: '404',
+        },
+      })
+    )
+  }
+
   return pages
 }
