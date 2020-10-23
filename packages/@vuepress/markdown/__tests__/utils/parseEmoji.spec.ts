@@ -1,17 +1,19 @@
 import { parseEmoji } from '@vuepress/markdown'
 
-describe('markdown > utils > parseEmoji', () => {
-  test('should parse emoji', () => {
-    const asserts: Record<string, string> = {
-      ':100:': '💯',
-      ':1234::yum:': '🔢😋',
-      ':smile::blush::hugs:': '😄😊🤗',
-      ':foobar:': ':foobar:',
-      ':foo::::bar::': ':foo::::bar::',
-    }
+const testCases: [string, string][] = [
+  [':100:', '💯'],
+  [':1234::yum:', '🔢😋'],
+  [':smile::blush::hugs:', '😄😊🤗'],
+  [':foobar:', ':foobar:'],
+  [':foo::::bar::', ':foo::::bar::'],
+]
 
-    Object.keys(asserts).forEach((input) => {
-      expect(parseEmoji(input)).toBe(asserts[input])
+describe('markdown > utils > parseEmoji', () => {
+  describe('should parse emoji correctly', () => {
+    testCases.forEach(([source, expected]) => {
+      it(`${source} => ${expected}`, () => {
+        expect(parseEmoji(source)).toBe(expected)
+      })
     })
   })
 })

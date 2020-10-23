@@ -1,7 +1,7 @@
 import { compose } from '@vuepress/markdown'
 
 describe('markdown > utils > compose', () => {
-  test('should compose zero function', () => {
+  it('should compose zero function', () => {
     const composedFunc = compose()
 
     const result = composedFunc('foo')
@@ -9,7 +9,7 @@ describe('markdown > utils > compose', () => {
     expect(result).toBe('foo')
   })
 
-  test('should compose single function', () => {
+  it('should compose single function', () => {
     const funcA = jest.fn(() => 'bar')
     const composedFunc = compose(funcA)
 
@@ -19,7 +19,7 @@ describe('markdown > utils > compose', () => {
     expect(result).toBe('bar')
   })
 
-  test('should compose multiple functions', () => {
+  it('should compose multiple functions', () => {
     const funcA = jest.fn(() => 'bar')
     const funcB = jest.fn(() => 'foobar')
     const composedFunc = compose(funcA, funcB)

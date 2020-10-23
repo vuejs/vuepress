@@ -1,7 +1,9 @@
 import { compose } from './compose'
 import { parseHeader } from './parseHeader'
-import { removeNonCodeWrappedHTML } from './removeNonCodeWrappedHTML'
+import { filterHtmlBlocks } from './filterHtmlBlocks'
 
-// Also clean the html blocks that aren't wrapped by code wrapper ``.
-// Because we want to support using VUE components in headers.
-export const parseHeaderDeeply = compose(removeNonCodeWrappedHTML, parseHeader)
+/**
+ * Parse header and filter the HTML blocks, for where we do not need
+ * vue components in headers
+ */
+export const parseHeaderDeeply = compose(filterHtmlBlocks, parseHeader)
