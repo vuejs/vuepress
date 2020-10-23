@@ -2,8 +2,10 @@ import type * as MarkdownIt from 'markdown-it'
 import { parseHeaderDeeply, slugify } from '../utils'
 import type { MarkdownEnv } from '../markdown'
 
+type HtmlHeadingTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+
 export interface ExtractHeadersPluginOptions {
-  includeHeaders?: string[]
+  includeHeaders?: HtmlHeadingTag[]
 }
 
 /**
@@ -28,7 +30,7 @@ export const extractHeadersPlugin: MarkdownIt.PluginWithOptions<ExtractHeadersPl
   ) => {
     const token = tokens[i]
 
-    if (includeHeaders.includes(token.tag)) {
+    if (includeHeaders.includes(token.tag as HtmlHeadingTag)) {
       const title = tokens[i + 1].content
       const idAttr = token.attrs?.find(([name]) => name === 'id')
       const slug = idAttr?.[1]
