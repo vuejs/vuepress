@@ -10,7 +10,7 @@ import { Content } from './Content'
  */
 export const Vuepress: FunctionalComponent = () => {
   // get layout of current page
-  let layoutName = 'NotFound'
+  let layoutName = '404'
 
   const page = usePageData()
 
