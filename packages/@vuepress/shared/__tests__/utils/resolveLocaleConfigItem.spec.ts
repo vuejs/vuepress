@@ -1,7 +1,7 @@
 import { resolveLocaleConfigItem } from '@vuepress/shared'
 import type { LocaleConfig, LocaleConfigItem } from '@vuepress/shared'
 
-const locales: LocaleConfig = {
+const locales: LocaleConfig<{ lang: string }> = {
   '/': {
     lang: 'en-US',
   },
