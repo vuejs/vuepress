@@ -1,7 +1,7 @@
 import type * as MarkdownIt from 'markdown-it'
 import type * as Token from 'markdown-it/lib/token'
+import { isLinkExternal } from '@vuepress/shared'
 import type { MarkdownEnv } from '../../markdown'
-import { isExternalLink } from './isExternalLink'
 import { resolvePaths } from './resolvePaths'
 
 export interface LinksPluginOptions {
@@ -54,7 +54,7 @@ export const linksPlugin: MarkdownIt.PluginWithOptions<LinksPluginOptions> = (
     const { base = '/', filePathRelative = null } = env
 
     // check if a link is an external link
-    if (isExternalLink(hrefLink, base)) {
+    if (isLinkExternal(hrefLink, base)) {
       // set `externalAttrs` to current token
       Object.entries(externalAttrs).forEach(([key, val]) =>
         token.attrSet(key, val)
