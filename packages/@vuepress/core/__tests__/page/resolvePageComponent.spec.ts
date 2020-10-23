@@ -8,12 +8,13 @@ const app = createApp({
 
 describe('core > page > resolvePageComponent', () => {
   it('should resolve page component', async () => {
-    const resolved = await resolvePageComponent(
+    const resolved = await resolvePageComponent({
       app,
-      'foobar',
-      'foo.md',
-      '/foo.html'
-    )
+      content: 'foobar',
+      filePathRelative: 'foo.md',
+      path: '/foo.html',
+      key: 'key',
+    })
 
     expect(resolved).toEqual({
       headers: [],
@@ -25,18 +26,37 @@ describe('core > page > resolvePageComponent', () => {
   })
 
   it('should add .vue extension directly if the relative file path is null', async () => {
-    const resolved = await resolvePageComponent(
+    const resolved = await resolvePageComponent({
       app,
-      'foobar',
-      null,
-      '/foo.html'
-    )
+      content: 'foobar',
+      filePathRelative: null,
+      path: '/foo.html',
+      key: 'key',
+    })
 
     expect(resolved).toEqual({
       headers: [],
       links: [],
       componentFilePath: app.dir.temp('pages/foo.html.vue'),
       componentFilePathRelative: 'pages/foo.html.vue',
+      componentFileContent: '<template><p>foobar</p>\n</template>',
+    })
+  })
+
+  it('should use key if the relative file path is null and the path is empty', async () => {
+    const resolved = await resolvePageComponent({
+      app,
+      content: 'foobar',
+      filePathRelative: null,
+      path: '',
+      key: 'key',
+    })
+
+    expect(resolved).toEqual({
+      headers: [],
+      links: [],
+      componentFilePath: app.dir.temp('pages/key.vue'),
+      componentFilePathRelative: 'pages/key.vue',
       componentFileContent: '<template><p>foobar</p>\n</template>',
     })
   })

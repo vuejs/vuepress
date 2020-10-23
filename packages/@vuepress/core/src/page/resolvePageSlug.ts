@@ -2,7 +2,14 @@ import { path } from '@vuepress/utils'
 
 const DATE_RE = /(\d{4}-\d{1,2}(-\d{1,2})?)-(.*)/
 
-export const resolvePageSlug = (filePathRelative: string | null): string => {
+/**
+ * Resolve page slug from filename
+ */
+export const resolvePageSlug = ({
+  filePathRelative,
+}: {
+  filePathRelative: string | null
+}): string => {
   if (!filePathRelative) {
     return ''
   }

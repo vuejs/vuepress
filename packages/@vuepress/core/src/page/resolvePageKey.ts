@@ -1,4 +1,7 @@
 import { hash } from '@vuepress/utils'
 
-export const resolvePageKey = (identifier: string): string =>
-  `v-${hash(identifier)}`
+/**
+ * Resolve page key to identify the page
+ */
+export const resolvePageKey = ({ path }: { path: string }): string =>
+  `v-${hash(path)}`

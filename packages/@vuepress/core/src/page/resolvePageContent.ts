@@ -2,18 +2,23 @@ import * as matter from 'gray-matter'
 import * as toml from 'toml'
 import type { PageFrontmatter } from '../types'
 
-export const resolvePageContent = (
-  fileContent: string
-): {
-  frontmatter: PageFrontmatter
+/**
+ * Resolve page content and raw frontmatter & excerpt
+ */
+export const resolvePageContent = ({
+  contentRaw,
+}: {
+  contentRaw: string
+}): {
   content: string
-  excerpt: string
+  frontmatterRaw: PageFrontmatter
+  excerptRaw: string
 } => {
-  if (!fileContent) {
+  if (!contentRaw) {
     return {
       content: '',
-      frontmatter: {},
-      excerpt: '',
+      frontmatterRaw: {},
+      excerptRaw: '',
     }
   }
 
@@ -22,7 +27,7 @@ export const resolvePageContent = (
     content,
     /* istanbul ignore next */
     excerpt = '',
-  } = matter(fileContent, {
+  } = matter(contentRaw, {
     excerpt_separator: '<!-- more -->',
     engines: {
       toml: toml.parse.bind(toml),
@@ -30,8 +35,8 @@ export const resolvePageContent = (
   })
 
   return {
-    frontmatter: data,
     content,
-    excerpt,
+    frontmatterRaw: data,
+    excerptRaw: excerpt,
   }
 }

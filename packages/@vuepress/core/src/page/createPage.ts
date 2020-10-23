@@ -6,6 +6,7 @@ import { resolvePageDate } from './resolvePageDate'
 import { resolvePageExcerpt } from './resolvePageExcerpt'
 import { resolvePageFileContent } from './resolvePageFileContent'
 import { resolvePageFilePath } from './resolvePageFilePath'
+import { resolvePageFrontmatter } from './resolvePageFrontmatter'
 import { resolvePageKey } from './resolvePageKey'
 import { resolvePagePath } from './resolvePagePath'
 import { resolvePagePermalink } from './resolvePagePermalink'
@@ -17,46 +18,52 @@ export const createPage = async (
   options: PageOptions
 ): Promise<Page> => {
   // resolve page file absolute path and relative path
-  const { filePath, filePathRelative } = resolvePageFilePath(app, options)
+  const { filePath, filePathRelative } = resolvePageFilePath({
+    app,
+    options,
+  })
 
   // read the raw file content according to the absolute file path
-  const fileContent = await resolvePageFileContent(filePath, options)
+  const contentRaw = await resolvePageFileContent({ filePath, options })
 
   // resolve content & frontmatter & raw excerpt from raw content
-  const { frontmatter, content, excerpt: rawExcerpt } = resolvePageContent(
-    fileContent
-  )
+  const { content, frontmatterRaw, excerptRaw } = resolvePageContent({
+    contentRaw,
+  })
 
-  // resolve title from content
-  const title = resolvePageTitle(frontmatter, content)
+  // resolve frontmatter from raw frontmatter and page options
+  const frontmatter = resolvePageFrontmatter({ frontmatterRaw, options })
+
+  // resolve title from raw content and frontmatter
+  const title = resolvePageTitle({ frontmatter, contentRaw })
 
   // resolve excerpt from raw excerpt
-  const excerpt = resolvePageExcerpt(rawExcerpt, app, filePathRelative)
+  const excerpt = resolvePageExcerpt({ excerptRaw, app, filePathRelative })
 
   // resolve slug from file path
-  const slug = resolvePageSlug(filePathRelative)
+  const slug = resolvePageSlug({ filePathRelative })
 
   // resolve date from file path
-  const date = resolvePageDate(frontmatter, filePathRelative)
+  const date = resolvePageDate({ frontmatter, filePathRelative })
 
   // infer page path according to file path
-  const { pathInferred, pathLocale } = inferPagePath(app, filePathRelative)
+  const { pathInferred, pathLocale } = inferPagePath({ app, filePathRelative })
 
   // resolve page permalink
-  const permalink = resolvePagePermalink(
+  const permalink = resolvePagePermalink({
     options,
     frontmatter,
     slug,
     date,
     pathInferred,
-    pathLocale
-  )
+    pathLocale,
+  })
 
   // resolve page path
-  const path = resolvePagePath(permalink, pathInferred)
+  const path = resolvePagePath({ permalink, pathInferred, options })
 
   // resolve path key
-  const key = resolvePageKey(path)
+  const key = resolvePageKey({ path })
 
   const {
     headers,
@@ -64,7 +71,7 @@ export const createPage = async (
     componentFilePath,
     componentFilePathRelative,
     componentFileContent,
-  } = await resolvePageComponent(app, content, filePathRelative, path)
+  } = await resolvePageComponent({ app, content, filePathRelative, path, key })
 
   return {
     key,

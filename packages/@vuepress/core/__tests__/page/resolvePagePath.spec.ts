@@ -4,9 +4,52 @@ const testCases: [
   Parameters<typeof resolvePagePath>,
   ReturnType<typeof resolvePagePath>
 ][] = [
-  [['/permalink', '/inferred'], '/permalink'],
-  [[null, '/inferred'], '/inferred'],
-  [[null, null], ''],
+  [
+    [
+      {
+        permalink: '/permalink',
+        pathInferred: '/inferred',
+        options: {
+          path: '/options',
+        },
+      },
+    ],
+    '/permalink',
+  ],
+  [
+    [
+      {
+        permalink: null,
+        pathInferred: '/inferred',
+        options: {
+          path: '/options',
+        },
+      },
+    ],
+    '/inferred',
+  ],
+  [
+    [
+      {
+        permalink: null,
+        pathInferred: null,
+        options: {
+          path: '/options',
+        },
+      },
+    ],
+    '/options',
+  ],
+  [
+    [
+      {
+        permalink: null,
+        pathInferred: null,
+        options: {},
+      },
+    ],
+    '',
+  ],
 ]
 
 describe('core > page > resolvePagePath', () => {

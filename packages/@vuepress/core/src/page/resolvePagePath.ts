@@ -1,10 +1,17 @@
+import type { PageOptions } from '../types'
+
 /**
  * Resolve the final path of a page
  */
-export const resolvePagePath = (
-  permalink: string | null,
+export const resolvePagePath = ({
+  permalink,
+  pathInferred,
+  options,
+}: {
+  permalink: string | null
   pathInferred: string | null
-): string => {
+  options: PageOptions
+}): string => {
   // use permalink first
   if (permalink) {
     return permalink
@@ -16,5 +23,6 @@ export const resolvePagePath = (
     return pathInferred.replace(/\/(README|index).html$/i, '/')
   }
 
-  return ''
+  // use options path
+  return options.path ?? ''
 }

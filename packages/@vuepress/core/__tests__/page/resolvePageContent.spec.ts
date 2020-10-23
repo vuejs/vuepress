@@ -5,16 +5,16 @@ const testCases: [string, ReturnType<typeof resolvePageContent>][] = [
     '',
     {
       content: '',
-      frontmatter: {},
-      excerpt: '',
+      frontmatterRaw: {},
+      excerptRaw: '',
     },
   ],
   [
     'foobar',
     {
       content: 'foobar',
-      frontmatter: {},
-      excerpt: '',
+      frontmatterRaw: {},
+      excerptRaw: '',
     },
   ],
   [
@@ -33,12 +33,12 @@ foobar
 `,
     {
       content: '\nexcerpt\n\n<!-- more -->\n\nfoobar\n',
-      frontmatter: {
+      frontmatterRaw: {
         foo: 'foo',
         bar: 1,
         baz: true,
       },
-      excerpt: '\nexcerpt\n\n',
+      excerptRaw: '\nexcerpt\n\n',
     },
   ],
 ]
@@ -47,7 +47,7 @@ describe('core > page > resolvePageContent', () => {
   describe('should resolve page content correctly', () => {
     testCases.forEach(([source, expected]) => {
       it(`raw: ${JSON.stringify(source)}`, () => {
-        expect(resolvePageContent(source)).toEqual(expected)
+        expect(resolvePageContent({ contentRaw: source })).toEqual(expected)
       })
     })
   })

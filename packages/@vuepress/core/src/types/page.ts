@@ -79,9 +79,10 @@ export interface Page extends PageData {
  * Options to create vuepress page
  */
 export interface PageOptions {
-  permalink?: string
-  permalinkPattern?: string
+  path?: string
   filePath?: string
   frontmatter?: PageFrontmatter
   content?: string
+  permalink?: string
+  permalinkPattern?: string
 }

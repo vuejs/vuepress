@@ -8,7 +8,10 @@ const app = createApp({
 
 describe('core > page > resolvePageFilePath', () => {
   it('should return null if the filePath is empty', () => {
-    const resolved = resolvePageFilePath(app, {})
+    const resolved = resolvePageFilePath({
+      app,
+      options: {},
+    })
     expect(resolved).toEqual({
       filePath: null,
       filePathRelative: null,
@@ -19,8 +22,11 @@ describe('core > page > resolvePageFilePath', () => {
   const relativeFilePath = 'file.md'
 
   it('should resolve path correctly if filePath is absolute', () => {
-    const resolved = resolvePageFilePath(app, {
-      filePath: absoluteFilePath,
+    const resolved = resolvePageFilePath({
+      app,
+      options: {
+        filePath: absoluteFilePath,
+      },
     })
     expect(resolved).toEqual({
       filePath: absoluteFilePath,
@@ -29,8 +35,11 @@ describe('core > page > resolvePageFilePath', () => {
   })
 
   it('should resolve path correctly if filePath is relative', () => {
-    const resolved = resolvePageFilePath(app, {
-      filePath: relativeFilePath,
+    const resolved = resolvePageFilePath({
+      app,
+      options: {
+        filePath: relativeFilePath,
+      },
     })
     expect(resolved).toEqual({
       filePath: absoluteFilePath,

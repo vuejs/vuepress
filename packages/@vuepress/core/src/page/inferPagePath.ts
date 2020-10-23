@@ -4,10 +4,13 @@ import type { App } from '../types'
 /**
  * Infer page path according to file path
  */
-export const inferPagePath = (
-  app: App,
+export const inferPagePath = ({
+  app,
+  filePathRelative,
+}: {
+  app: App
   filePathRelative: string | null
-): {
+}): {
   pathInferred: string | null
   pathLocale: string
 } => {

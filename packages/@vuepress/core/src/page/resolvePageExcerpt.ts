@@ -1,15 +1,22 @@
 import type { MarkdownEnv } from '@vuepress/markdown'
 import type { App } from '../types'
 
-export const resolvePageExcerpt = (
-  rawExcerpt: string,
-  app: App,
+/**
+ * Resolve page excerpt from raw excerpt
+ */
+export const resolvePageExcerpt = ({
+  excerptRaw,
+  app,
+  filePathRelative,
+}: {
+  excerptRaw: string
+  app: App
   filePathRelative: string | null
-): string => {
+}): string => {
   const markdownEnv: MarkdownEnv = {
     base: app.options.base,
     filePathRelative,
   }
-  const html = app.markdown.render(rawExcerpt, markdownEnv)
+  const html = app.markdown.render(excerptRaw, markdownEnv)
   return html
 }

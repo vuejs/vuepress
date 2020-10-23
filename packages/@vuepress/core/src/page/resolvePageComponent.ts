@@ -6,12 +6,22 @@ import type {
 import { path } from '@vuepress/utils'
 import type { App } from '../types'
 
-export const resolvePageComponent = async (
-  app: App,
-  content: string,
-  filePathRelative: string | null,
-  routePath: string
-): Promise<{
+/**
+ * Resolve page component and related info
+ */
+export const resolvePageComponent = async ({
+  app,
+  content,
+  filePathRelative,
+  path: routePath,
+  key,
+}: {
+  app: App
+  content: string
+  filePathRelative: string | null
+  path: string
+  key: string
+}): Promise<{
   headers: MarkdownHeader[]
   links: MarkdownLink[]
   componentFilePath: string
@@ -39,7 +49,7 @@ export const resolvePageComponent = async (
   // resolve component file path
   const componentFilePathRelative = path.join(
     'pages',
-    filePathRelative?.replace(/\.md$/, '.vue') ?? `${routePath}.vue`
+    filePathRelative?.replace(/\.md$/, '.vue') ?? `${routePath || key}.vue`
   )
   const componentFilePath = app.dir.temp(componentFilePathRelative)
 

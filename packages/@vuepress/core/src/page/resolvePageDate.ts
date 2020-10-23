@@ -10,10 +10,13 @@ const defaultDate = '1970-01-01'
  *
  * It will be resolved as 'yyyy-MM-dd' format
  */
-export const resolvePageDate = (
-  frontmatter: PageFrontmatter,
+export const resolvePageDate = ({
+  frontmatter,
+  filePathRelative,
+}: {
+  frontmatter: PageFrontmatter
   filePathRelative: string | null
-): string => {
+}): string => {
   // `frontmatter.date` could be parsed as UTC Date directly
   if (frontmatter.date instanceof Date) {
     return formatDateString(
