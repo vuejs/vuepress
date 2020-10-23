@@ -2,9 +2,11 @@ import type { Theme } from '@vuepress/core'
 import type { ContainerPluginOptions } from '@vuepress/plugin-container'
 import { path } from '@vuepress/utils'
 import type { DefaultThemeOptions } from '../types'
-import { resolveContainerPluginOptions } from './node'
+import { assignDefaultOptions, resolveContainerPluginOptions } from './node'
 
-const defaultTheme: Theme<DefaultThemeOptions> = ({ locales = {} }) => {
+const defaultTheme: Theme<DefaultThemeOptions> = (options) => {
+  assignDefaultOptions(options)
+
   return {
     name: '@vuepress/theme-default',
 
@@ -16,36 +18,15 @@ const defaultTheme: Theme<DefaultThemeOptions> = ({ locales = {} }) => {
       ['@vuepress/nprogress'],
       [
         '@vuepress/container',
-        resolveContainerPluginOptions(locales, 'tip', {
-          '/': {
-            defaultInfo: 'TIP',
-          },
-          '/zh/': {
-            defaultInfo: '提示',
-          },
-        }),
+        resolveContainerPluginOptions(options.locales, 'tip'),
       ],
       [
         '@vuepress/container',
-        resolveContainerPluginOptions(locales, 'warning', {
-          '/': {
-            defaultInfo: 'WARNING',
-          },
-          '/zh/': {
-            defaultInfo: '注意',
-          },
-        }),
+        resolveContainerPluginOptions(options.locales, 'warning'),
       ],
       [
         '@vuepress/container',
-        resolveContainerPluginOptions(locales, 'danger', {
-          '/': {
-            defaultInfo: 'WARNING',
-          },
-          '/zh/': {
-            defaultInfo: '警告',
-          },
-        }),
+        resolveContainerPluginOptions(options.locales, 'danger'),
       ],
       [
         '@vuepress/container',

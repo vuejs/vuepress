@@ -7,9 +7,8 @@ import type { DefaultThemeOptions } from '../../types'
  * For custom blocks default title
  */
 export const resolveContainerPluginOptions = (
-  themeLocales: Required<DefaultThemeOptions>['locales'],
-  type: 'tip' | 'warning' | 'danger',
-  defaultLocales: Required<ContainerPluginOptions>['locales']
+  themeLocales: DefaultThemeOptions['locales'] = {},
+  type: 'tip' | 'warning' | 'danger'
 ): ContainerPluginOptions => {
   const locales = Object.entries(themeLocales).reduce(
     (result, [key, value]) => {
@@ -21,7 +20,7 @@ export const resolveContainerPluginOptions = (
       }
       return result
     },
-    defaultLocales
+    {}
   )
 
   return {

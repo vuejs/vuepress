@@ -13,6 +13,10 @@ export interface DefaultThemeLocales {
   tip?: string
   warning?: string
   danger?: string
+
+  // messages for 404 page
+  notFound?: string[]
+  backToHome?: string
 }
 
 declare const defaultTheme: Theme<DefaultThemeOptions>
