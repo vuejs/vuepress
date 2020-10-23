@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`snippet import snippet 1`] = `
-<pre><code class="language-js">export default function () {
-  // ..
-}
+<pre><code># Sample snippet file with no filename extension.
+FROM ubuntu:latest
+CMD echo hello!
 </code></pre>
 `;
 
