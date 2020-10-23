@@ -30,7 +30,8 @@ module.exports = {
   collectCoverageFrom: [
     '<rootDir>/packages/**/src/**/*.ts',
     // TODO: map temp files in client unit tests
-    '!<rootDir>/packages/@vuepress/client/**/*.ts',
+    '!<rootDir>/packages/@vuepress/client/**/*',
+    '!<rootDir>/packages/docs/**/*',
     '!**/*.d.ts',
   ],
   coverageDirectory: 'coverage',
