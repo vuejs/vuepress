@@ -11,24 +11,17 @@ Accepting issues and PRs from community. Contribution welcome!
 ## Develop & Preview
 
 ```sh
-# install dependencies
-# with yarn classic workspaces
+# install dependencies with yarn classic workspaces
 yarn
 
-# run dev and build script
-# compiling typescript source code
-yarn dev
+# run build script to compile typescript source code
 yarn build
 
-# testing
-yarn test
+# run copy script to make sure some resources are copied
+yarn copy
 
-# start a dev-server
+# start a dev-server to develop vuepress docs
 yarn docs:dev
-# build static files
-yarn docs:build
-# serve static files locally
-yarn docs:serve
 ```
 
 ### TODO List
