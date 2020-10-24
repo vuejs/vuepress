@@ -28,7 +28,12 @@ export const Content: FunctionalComponent<{
   }
 
   // fallback
-  return h('div', 'Page does not exist. This is a fallback content.')
+  return h(
+    'div',
+    __DEV__
+      ? 'Page does not exist. This is a fallback content.'
+      : '404 Not Found'
+  )
 }
 
 Content.displayName = 'Content'
