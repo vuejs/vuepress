@@ -3,8 +3,9 @@
   "version": "2.0.0-alpha.0",
   "private": true,
   "scripts": {
-    "build": "vuepress build src --dest dist",
-    "dev": "vuepress dev src",
+    "build": "vuepress build src --dest dist --temp .temp --cache .cache",
+    "clean": "rimraf dist .temp .cache",
+    "dev": "vuepress dev src --temp .temp --cache .cache",
     "serve": "serve dist"
   },
   "devDependencies": {
