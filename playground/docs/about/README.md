@@ -19,7 +19,7 @@ import { usePageData } from '@vuepress/client'
 
 export default {
   setup() {
-    const { page } = usePageData()
+    const page = usePageData()
 
     return {
       page

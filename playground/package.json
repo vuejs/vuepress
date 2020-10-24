@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "vuepress build docs --temp .temp",
-    "dev": "vuepress dev docs --temp .temp",
+    "build": "vuepress build docs",
+    "dev": "vuepress dev docs",
     "serve": "serve dist"
   },
   "devDependencies": {
