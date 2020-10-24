@@ -99,7 +99,7 @@ Temporarily record some breaking changes here.
   - The palette system of Vuepress 1.0 (i.e. `palette.styl` and `index.styl`) will only works in default theme
   - Custom theme authors can use their own way for users to configure styles (not be limited with stylus)
 
-#### Plugin API
+##### Plugin API
 
 - `ready` -> `onPrepared`
 - `updated` -> removed
@@ -110,6 +110,11 @@ Temporarily record some breaking changes here.
 - `clientRootMixin` -> `clientAppSetupFiles`
 - `extendMarkdown` -> `extendsMarkdown`
 
-#### Theme API
+##### Theme API
 
 - `extend` -> `extends`
+
+#### CLI
+
+- `-c, --cache [cache]` -> `-c, --cache <cache>` , i.e. the value of `cache` option is not optional
+- `--no-cache` -> `--clean-cache`
