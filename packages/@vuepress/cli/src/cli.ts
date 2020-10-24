@@ -21,6 +21,8 @@ export const cli = (): void => {
     .option('-p, --port <port>', 'use specified port (default: 8080)')
     .option('-h, --host <host>', 'use specified host (default: 0.0.0.0)')
     .option('-t, --temp <temp>', 'set the directory of the temporary files')
+    .option('-c, --cache <cache>', 'set the directory of the cache files')
+    .option('--clean-cache', 'clean the cache before dev')
     .option('--open', 'open browser when ready')
     .option('--debug', 'enable debug mode')
     .option('--no-watch', 'disable watching page and config files')
@@ -34,6 +36,8 @@ export const cli = (): void => {
       'set the directory build output (default: .vuepress/dist)'
     )
     .option('-t, --temp <temp>', 'set the directory of the temporary files')
+    .option('-c, --cache <cache>', 'set the directory of the cache files')
+    .option('--clean-cache', 'clean the cache before build')
     .option('--debug', 'enable debug mode')
     .action(build)
 

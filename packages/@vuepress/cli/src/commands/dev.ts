@@ -1,7 +1,7 @@
 import * as chokidar from 'chokidar'
 import { createApp } from '@vuepress/core'
 import type { AppConfig } from '@vuepress/core'
-import { chalk, logger, path } from '@vuepress/utils'
+import { chalk, debug, fs, logger, path } from '@vuepress/utils'
 import { resolveUserConfig } from '../config'
 import {
   resolveBundler,
@@ -10,21 +10,25 @@ import {
   handlePageUnlink,
 } from '../utils'
 
+const log = debug('vuepress:cli/dev')
+
 export interface CommandOptionsDev {
   // app config
   port?: number
   host?: string
   temp?: string
+  cache?: string
   debug?: boolean
   open?: boolean
 
   // cli only
+  cleanCache?: boolean
   watch?: boolean
 }
 
 export const resolveDevAppConfig = (
   sourceDir: string,
-  { port, host, temp, debug, open }: CommandOptionsDev
+  { port, host, temp, cache, debug, open }: CommandOptionsDev
 ): AppConfig => {
   // resolve the source directory
   const cwd = process.cwd()
@@ -47,6 +51,10 @@ export const resolveDevAppConfig = (
     appConfig.temp = path.resolve(cwd, temp)
   }
 
+  if (cache !== undefined) {
+    appConfig.cache = path.resolve(cwd, cache)
+  }
+
   if (debug !== undefined) {
     appConfig.debug = debug
   }
@@ -62,6 +70,8 @@ export const dev = async (
   sourceDir = '.',
   commandOptions: CommandOptionsDev = {}
 ): Promise<void> => {
+  log(`commandOptions:`, commandOptions)
+
   if (process.env.NODE_ENV === undefined) {
     process.env.NODE_ENV = 'development'
   }
@@ -80,6 +90,12 @@ export const dev = async (
     ...userConfig,
     ...appConfig,
   })
+
+  // clean cache
+  if (commandOptions.cleanCache === true) {
+    logger.info('cleaning cache')
+    await fs.remove(app.dir.cache())
+  }
 
   // start dev server
   const close = await bundler.dev(app)
