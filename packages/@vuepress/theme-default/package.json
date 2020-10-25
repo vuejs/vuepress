@@ -26,7 +26,7 @@
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
     "clean": "rimraf lib *.tsbuildinfo",
-    "copy": "cpx \"src/{layouts,components,styles}/*\" lib",
+    "copy": "cpx \"src/{layouts,components,styles}/**/*.{vue,styl}\" lib",
     "dev": "yarn copy --watch & yarn build --watch"
   },
   "dependencies": {
