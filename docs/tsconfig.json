@@ -2,8 +2,7 @@
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
     "composite": false,
-    "declaration": false,
     "declarationMap": false
   },
-  "include": ["./docs/.vuepress/**/*.ts"]
+  "include": [".vuepress/**/*"]
 }

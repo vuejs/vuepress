@@ -1,23 +1,22 @@
 {
   "private": true,
   "workspaces": [
-    "playground",
-    "packages/docs",
+    "packages/vuepress",
     "packages/@vuepress/*"
   ],
   "scripts": {
     "build": "tsc --build",
-    "clean": "lerna run clean --stream --ignore docs",
-    "copy": "lerna run copy --stream --ignore docs",
+    "clean": "lerna run clean --stream",
+    "copy": "lerna run copy --stream",
     "dev": "tsc --build --watch",
-    "docs:build": "yarn workspace docs build",
-    "docs:clean": "yarn workspace docs clean",
-    "docs:dev": "yarn workspace docs dev",
-    "docs:serve": "yarn workspace docs serve",
+    "docs:build": "vuepress build docs",
+    "docs:clean": "rimraf docs/.vuepress/.temp docs/.vuepress/.cache docs/.vuepress/dist",
+    "docs:dev": "vuepress dev docs",
+    "docs:serve": "serve docs/.vuepress/dist",
+    "postinstall": "yarn build && yarn copy",
     "lint": "eslint --ext .js,.ts,.vue .",
     "release": "yarn lint && yarn clean && yarn build && yarn copy && yarn test && lerna publish",
     "test": "jest --runInBand",
-    "theme:build": "yarn workspace @vuepress/theme-default build",
     "theme:dev": "yarn workspace @vuepress/theme-default dev"
   },
   "husky": {
@@ -48,6 +47,7 @@
     "prettier": "^2.1.2",
     "prettier-config-vuepress": "^1.1.1",
     "rimraf": "^3.0.2",
+    "serve": "^11.3.2",
     "sort-package-json": "^1.46.0",
     "ts-jest": "^26.4.1",
     "typescript": "^4.0.3"

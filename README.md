@@ -14,12 +14,6 @@ Accepting issues and PRs from community. Contribution welcome!
 # install dependencies with yarn classic workspaces
 yarn
 
-# run build script to compile typescript source code
-yarn build
-
-# run copy script to make sure some resources are copied
-yarn copy
-
 # start a dev-server to develop vuepress docs
 yarn docs:dev
 ```

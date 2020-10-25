@@ -19,8 +19,6 @@ module.exports = {
   },
   moduleNameMapper: {
     [`^@vuepress/(${packages.join('|')})$`]: `<rootDir>/${packagesDir}/$1/src`,
-    // TODO: map temp files in client unit tests
-    [`^@internal/(.*)$`]: `<rootDir>/packages/@vuepress/client/.temp/internal/$1`,
   },
   testMatch: ['<rootDir>/packages/**/__tests__/**/*.spec.ts'],
   testPathIgnorePatterns: ['/node_modules/', '/__fixtures__/'],
@@ -31,7 +29,6 @@ module.exports = {
     '<rootDir>/packages/**/src/**/*.ts',
     // TODO: map temp files in client unit tests
     '!<rootDir>/packages/@vuepress/client/**/*',
-    '!<rootDir>/packages/docs/**/*',
     '!**/*.d.ts',
   ],
   coverageDirectory: 'coverage',
