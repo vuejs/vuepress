@@ -1,5 +1,5 @@
 import { debug } from '@vuepress/utils'
-import { createThemeApi } from '../theme-api'
+import { createThemeApi } from '../themeApi'
 import type { App } from '../types'
 import { createAppPages } from './createAppPages'
 import { createAppWriteTemp } from './createAppWriteTemp'

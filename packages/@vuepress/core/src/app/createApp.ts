@@ -1,5 +1,5 @@
 import { createMarkdown } from '@vuepress/markdown'
-import { createPluginApi } from '../plugin-api'
+import { createPluginApi } from '../pluginApi'
 import type { App, AppConfig } from '../types'
 import { appInit } from './appInit'
 import { appPrepare } from './appPrepare'
