@@ -22,7 +22,8 @@ export default defineComponent({
     const themeConfig = siteLocale.value.themeConfig
 
     const messages = themeConfig.notFound ?? ['Not Found']
-    const getMsg = () => messages[Math.floor(Math.random() * messages.length)]
+    const getMsg = (): string =>
+      messages[Math.floor(Math.random() * messages.length)]
     const homeLink = siteLocale.value.base
     const homeText = themeConfig.backToHome
 
