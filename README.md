@@ -18,6 +18,8 @@ yarn
 yarn docs:dev
 ```
 
+For more details, please check our [contributing guidelines](https://github.com/vuepress/vuepress-next/blob/master/docs/contributing.md).
+
 ### TODO List
 
 Features in the following list are not fully determined, and might be changed or removed during development.
