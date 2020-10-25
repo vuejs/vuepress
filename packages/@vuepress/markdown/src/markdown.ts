@@ -1,7 +1,7 @@
 import * as MarkdownIt from 'markdown-it'
 import * as anchorPlugin from 'markdown-it-anchor'
 import * as emojiPlugin from 'markdown-it-emoji'
-import * as tocPlugin from 'markdown-it-table-of-contents'
+import * as tocPlugin from 'markdown-it-toc-done-right'
 import type { PageHeader } from '@vuepress/shared'
 import {
   customComponentPlugin,
@@ -117,16 +117,18 @@ export const createMarkdown = ({
       permalinkSymbol: '#',
       ...anchor,
     } as AnchorPluginOptions)
-    // parse emoji
-    .use(emojiPlugin)
     // allow toc syntax
     .use(tocPlugin, {
       slugify,
-      includeLevel: [2, 3],
+      listType: 'ul',
       // allow html blocks in toc headers
       format: parseHeader,
       ...toc,
     } as TocPluginOptions)
+    // parse emoji
+    // NOTICE: do not put emojiPlugin between anchorPlugin and tocPlugin
+    // because they need to use the same raw string for `slugify`
+    .use(emojiPlugin)
 
   return md
 }

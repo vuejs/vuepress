@@ -32,7 +32,7 @@
     "markdown-it": "^12.0.1",
     "markdown-it-anchor": "^6.0.0",
     "markdown-it-emoji": "^2.0.0",
-    "markdown-it-table-of-contents": "^0.4.4"
+    "markdown-it-toc-done-right": "^4.1.0"
   },
   "publishConfig": {
     "access": "public"
