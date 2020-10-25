@@ -111,3 +111,7 @@ Temporarily record some breaking changes here.
 
 - `-c, --cache [cache]` -> `-c, --cache <cache>` , i.e. the value of `cache` option is not optional
 - `--no-cache` -> `--clean-cache`
+
+#### Default Theme
+
+- `<CodeGroup>`, `<CodeBlock>` -> `<CodeGroup>`, `<CodeGroupItem>`
