@@ -3,7 +3,7 @@ module.exports = {
   extends: 'vuepress',
   overrides: [
     {
-      files: ['*.ts'],
+      files: ['*.ts', '*.vue'],
       extends: 'vuepress-typescript',
       parserOptions: {
         project: ['packages/**/tsconfig.json', 'playground/tsconfig.json'],
