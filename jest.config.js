@@ -14,7 +14,7 @@ module.exports = {
   preset: 'ts-jest',
   globals: {
     'ts-jest': {
-      tsConfig: '<rootDir>/tsconfig.json',
+      tsconfig: '<rootDir>/tsconfig.json',
     },
   },
   moduleNameMapper: {
