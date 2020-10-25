@@ -17,6 +17,9 @@ export interface DefaultThemeLocales {
   // messages for 404 page
   notFound?: string[]
   backToHome?: string
+
+  // sr-only message in <OutboundLink>
+  openInNewWindow?: string
 }
 
 declare const defaultTheme: Theme<DefaultThemeOptions>

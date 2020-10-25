@@ -11,6 +11,7 @@ const defaultLocales: Required<DefaultThemeLocales> = {
     `Looks like we've got some broken links.`,
   ],
   backToHome: 'Take me home',
+  openInNewWindow: 'open in new window',
 }
 
 export const assignDefaultOptions = (options: DefaultThemeOptions): void => {
