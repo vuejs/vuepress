@@ -29,6 +29,7 @@ const config: UserConfig<DefaultThemeOptions> = {
           '看起来我们进入了错误的链接',
         ],
         backToHome: '返回首页',
+        openInNewWindow: '在新窗口打开',
       },
     },
   },
