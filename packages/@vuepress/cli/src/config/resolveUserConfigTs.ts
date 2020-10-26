@@ -1,6 +1,8 @@
 import type { UserConfig } from '@vuepress/core'
 import { fs, path } from '@vuepress/utils'
 
+export const userConfigTsPath = '.vuepress/config.ts'
+
 /**
  * Resolve .vuepress/config.ts from source directory
  */
@@ -9,7 +11,7 @@ export const resolveUserConfigTs = async (
 ): Promise<UserConfig | null> => {
   // TODO: better solution to resolve ts file
   // load .vuepress/config.ts
-  const configTs = path.resolve(source, '.vuepress', 'config.ts')
+  const configTs = path.resolve(source, userConfigTsPath)
   if (await fs.pathExists(configTs)) {
     // lazy load typescript
     const ts = require('typescript')

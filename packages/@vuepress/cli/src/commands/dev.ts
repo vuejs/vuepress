@@ -2,7 +2,7 @@ import * as chokidar from 'chokidar'
 import { createApp } from '@vuepress/core'
 import type { AppConfig } from '@vuepress/core'
 import { chalk, debug, fs, logger, path } from '@vuepress/utils'
-import { resolveUserConfig } from '../config'
+import { resolveUserConfig, userConfigPaths } from '../config'
 import {
   resolveBundler,
   handlePageAdd,
@@ -130,13 +130,10 @@ export const dev = async (
   })
 
   // watch config file
-  const configWatcher = chokidar.watch(
-    ['.vuepress/config.js', '.vuepress/config.ts'],
-    {
-      cwd: app.dir.source(),
-      ignoreInitial: true,
-    }
-  )
+  const configWatcher = chokidar.watch(userConfigPaths, {
+    cwd: app.dir.source(),
+    ignoreInitial: true,
+  })
   configWatcher.on('change', async (configFile) => {
     logger.info(`config ${chalk.magenta(configFile)} is modified`)
     await Promise.all([

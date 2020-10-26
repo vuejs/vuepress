@@ -1,6 +1,8 @@
 import type { UserConfig } from '@vuepress/core'
-import { resolveUserConfigJs } from './resolveUserConfigJs'
-import { resolveUserConfigTs } from './resolveUserConfigTs'
+import { resolveUserConfigJs, userConfigJsPath } from './resolveUserConfigJs'
+import { resolveUserConfigTs, userConfigTsPath } from './resolveUserConfigTs'
+
+export const userConfigPaths = [userConfigJsPath, userConfigTsPath]
 
 /**
  * Resolve user config from source directory
