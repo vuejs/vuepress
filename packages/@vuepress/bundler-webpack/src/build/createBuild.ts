@@ -1,7 +1,7 @@
 import * as webpack from 'webpack'
 import type { CreateServerAppEntry } from '@vuepress/client'
 import type { App, Bundler } from '@vuepress/core'
-import { fs } from '@vuepress/utils'
+import { chalk, fs, logger, ora } from '@vuepress/utils'
 import type { BundlerWebpackOptions } from '../types'
 import {
   createClientConfig,
@@ -26,6 +26,10 @@ export const createBuild = (
   const clientConfig = createClientConfig(app, options).toConfig()
   const serverConfig = createServerConfig(app, options).toConfig()
 
+  // spinner for webpack compilation
+  const spinnerWebpack = ora()
+  spinnerWebpack.start('Compiling with webpack...')
+
   // webpack compile
   await new Promise((resolve, reject) => {
     webpack([clientConfig, serverConfig], (err, stats) => {
@@ -47,6 +51,13 @@ export const createBuild = (
       }
     })
   })
+
+  // stop spinner
+  spinnerWebpack.succeed('Webpack compiled')
+
+  // spinner for pages rendering
+  const spinnerRender = ora()
+  spinnerRender.start('Rendering pages...')
 
   // load ssr template file
   const ssrTemplate = (await fs.readFile(app.options.templateSSR)).toString()
@@ -74,6 +85,7 @@ export const createBuild = (
 
   // pre-render pages to html files
   for (const page of app.pages) {
+    spinnerRender.start(`Rendering pages... ${chalk.magenta(page.path)}`)
     await renderPage({
       app,
       page,
@@ -93,6 +105,12 @@ export const createBuild = (
     await fs.remove(app.dir.dest('.server'))
   }
 
+  // stop spinner
+  spinnerRender.succeed('Pages rendered')
+
   // plugin hook: onGenerated
   await app.pluginApi.hooks.onGenerated.process(app)
+
+  // print success log
+  logger.success('VuePress build successfully!')
 }
