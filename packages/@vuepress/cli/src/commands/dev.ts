@@ -106,13 +106,10 @@ export const dev = async (
   }
 
   // watch page files
-  const pagesWatcher = chokidar.watch(
-    ['**/*.md', '!.vuepress', '!node_modules'],
-    {
-      cwd: app.dir.source(),
-      ignoreInitial: true,
-    }
-  )
+  const pagesWatcher = chokidar.watch(app.options.pagePatterns, {
+    cwd: app.dir.source(),
+    ignoreInitial: true,
+  })
 
   // handle page add event
   pagesWatcher.on('add', (filePathRelative) => {
