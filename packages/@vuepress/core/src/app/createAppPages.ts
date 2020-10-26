@@ -6,8 +6,7 @@ import type { App, Page } from '../types'
  * Create pages for vuepress app
  */
 export const createAppPages = async (app: App): Promise<Page[]> => {
-  const patterns = ['**/*.md', '!.vuepress', '!node_modules']
-  const pagePaths = await globby(patterns, {
+  const pagePaths = await globby(app.options.pagePatterns, {
     cwd: app.dir.source(),
   })
 

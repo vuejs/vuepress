@@ -42,6 +42,9 @@ export interface AppOptions<T extends ThemeConfig = ThemeConfig> {
 
   // plugins options
   plugins: PluginConfig[]
+
+  // pages options
+  pagePatterns: string[]
 }
 
 export type AppConfig = Partial<AppOptions> & Pick<AppOptions, 'source'>

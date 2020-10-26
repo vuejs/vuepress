@@ -13,12 +13,6 @@ export const createAppOptions = ({
   head = [],
   locales = {},
 
-  // markdown config
-  markdown = {},
-
-  // plugins config
-  plugins = [],
-
   // theme config
   theme = '@vuepress/default',
   themeConfig = {},
@@ -42,10 +36,17 @@ export const createAppOptions = ({
   templateSSR = path.normalize(
     require.resolve('@vuepress/client/templates/index.ssr.html')
   ),
-
-  // ssr config
   shouldPreload = null,
   shouldPrefetch = null,
+
+  // markdown config
+  markdown = {},
+
+  // plugins config
+  plugins = [],
+
+  // pages config
+  pagePatterns = ['**/*.md', '!.vuepress', '!node_modules'],
 }: AppConfig): AppOptions => ({
   base,
   lang,
@@ -53,8 +54,6 @@ export const createAppOptions = ({
   description,
   head,
   locales,
-  markdown,
-  plugins,
   theme,
   themeConfig,
   source,
@@ -71,4 +70,7 @@ export const createAppOptions = ({
   templateSSR,
   shouldPreload,
   shouldPrefetch,
+  markdown,
+  plugins,
+  pagePatterns,
 })
