@@ -9,6 +9,8 @@ export {
 export * from './ensureLeadingSlash'
 export * from './ensureEndingSlash'
 export * from './formatDateString'
+export * from './htmlEscape'
+export * from './htmlUnescape'
 export * from './isLinkExternal'
 export * from './isLinkMailto'
 export * from './isLinkTel'
