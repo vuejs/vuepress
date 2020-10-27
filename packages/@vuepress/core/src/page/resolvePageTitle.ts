@@ -1,25 +1,27 @@
-import { parseHeaderDeeply } from '@vuepress/markdown'
+import { parseEmoji } from '@vuepress/markdown'
 import { isString } from '@vuepress/shared'
-import type { PageFrontmatter } from '../types'
+import type { PageFrontmatter, PageHeader } from '../types'
 
 /**
  * Resolve page title from frontmatter / file content
  */
 export const resolvePageTitle = ({
   frontmatter,
-  contentRaw,
+  headers,
 }: {
   frontmatter: PageFrontmatter
-  contentRaw: string
+  headers: PageHeader[]
 }): string => {
+  // use title in frontmatter
   if (isString(frontmatter.title)) {
-    return parseHeaderDeeply(frontmatter.title)
+    return parseEmoji(frontmatter.title)
   }
 
-  const match = contentRaw.trim().match(/^#+\s+(.*)/)
+  // if the first header is <h1>, use it as the title
+  const firstHeader = headers[0]
 
-  if (match) {
-    return parseHeaderDeeply(match[1])
+  if (firstHeader && firstHeader.level === 1) {
+    return firstHeader.title
   }
 
   return ''

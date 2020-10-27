@@ -34,9 +34,6 @@ export const createPage = async (
   // resolve frontmatter from raw frontmatter and page options
   const frontmatter = resolvePageFrontmatter({ frontmatterRaw, options })
 
-  // resolve title from raw content and frontmatter
-  const title = resolvePageTitle({ frontmatter, contentRaw })
-
   // resolve excerpt from raw excerpt
   const excerpt = resolvePageExcerpt({ excerptRaw, app, filePathRelative })
 
@@ -65,6 +62,7 @@ export const createPage = async (
   // resolve path key
   const key = resolvePageKey({ path })
 
+  // resolve page component and extract headers & links
   const {
     headers,
     links,
@@ -72,6 +70,9 @@ export const createPage = async (
     componentFilePathRelative,
     componentFileContent,
   } = await resolvePageComponent({ app, content, filePathRelative, path, key })
+
+  // resolve title from frontmatter and headers
+  const title = resolvePageTitle({ frontmatter, headers })
 
   return {
     key,
