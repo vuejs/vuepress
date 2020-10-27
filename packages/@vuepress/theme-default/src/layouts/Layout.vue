@@ -6,6 +6,8 @@
       <Content />
     </div>
   </div>
+
+  <Debug />
 </template>
 
 <script lang="ts">
