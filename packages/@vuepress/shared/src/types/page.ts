@@ -56,4 +56,5 @@ export interface PageHeader {
   level: number
   title: string
   slug: string
+  children: PageHeader[]
 }
