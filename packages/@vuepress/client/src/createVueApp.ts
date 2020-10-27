@@ -54,6 +54,17 @@ export const createVueApp = async ({
     // TODO: it might be an issue of vue-router that have to remove the ending slash
     history: historyCreator(removeEndingSlash(siteData.value.base)),
     routes,
+    scrollBehavior: (to, from, savedPosition) => {
+      if (savedPosition) {
+        return savedPosition
+      }
+
+      if (to.hash) {
+        return { el: to.hash }
+      }
+
+      return { top: 0 }
+    },
   })
 
   // resolve site locale data
