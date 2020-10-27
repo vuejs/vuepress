@@ -78,7 +78,6 @@ Temporarily record some breaking changes here.
 
 #### Core
 
-- Built-in component `<OutboundLink>` is moved from `@vuepress/core` to `@vuepress/theme-default`
 - Permalink patterns
   - `:i_month` -> removed
   - `:i_day` -> removed
