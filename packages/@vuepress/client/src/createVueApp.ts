@@ -13,7 +13,7 @@ import {
   siteData,
   siteLocaleDataSymbol,
 } from './injections'
-import { Content, Debug } from './components'
+import { Content, Debug, OutboundLink } from './components'
 
 export type AppCreator = CreateAppFunction<Element>
 export type HistoryCreator = (base?: string) => RouterHistory
@@ -133,6 +133,7 @@ export const createVueApp = async ({
   )
   app.component('Content', Content)
   app.component('Debug', __DEV__ ? Debug : () => null)
+  app.component('OutboundLink', OutboundLink)
   /* eslint-enable vue/match-component-file-name */
 
   // register all pages components
