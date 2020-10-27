@@ -36,6 +36,7 @@
     "@commitlint/config-conventional": "^11.0.0",
     "@types/jest": "^26.0.14",
     "copyfiles": "^2.4.0",
+    "cpx": "^1.5.0",
     "eslint": "^7.10.0",
     "eslint-config-vuepress": "^3.0.1",
     "eslint-config-vuepress-typescript": "^2.0.3",
