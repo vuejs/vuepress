@@ -27,7 +27,7 @@
   },
   "lint-staged": {
     "*.{js,ts,vue}": "eslint --fix",
-    "*.{json,md,yml}": "prettier --write",
+    "*.{json,yml,css}": "prettier --write",
     "package.json": "sort-package-json"
   },
   "prettier": "prettier-config-vuepress",
