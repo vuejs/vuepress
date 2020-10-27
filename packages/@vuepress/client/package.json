@@ -25,7 +25,7 @@
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
     "clean": "rimraf lib *.tsbuildinfo",
-    "prepublishOnly": "copyfiles -u 1 \"src/**/*.d.ts\" lib"
+    "copy": "cpx \"src/**/*.{d.ts,css}\" lib"
   },
   "dependencies": {
     "@vuepress/shared": "2.0.0-alpha.0",
