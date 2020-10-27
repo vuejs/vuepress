@@ -1,7 +1,7 @@
-import type * as MarkdownIt from 'markdown-it'
+import type { PluginWithOptions } from 'markdown-it'
 import type * as Token from 'markdown-it/lib/token'
 import { isLinkExternal } from '@vuepress/shared'
-import type { MarkdownEnv } from '../../markdown'
+import type { MarkdownEnv } from '../../types'
 import { resolvePaths } from './resolvePaths'
 
 export interface LinksPluginOptions {
@@ -15,8 +15,8 @@ export interface LinksPluginOptions {
  * - internal links: convert them into `<RouterLink>`
  * - external links: add extra attrs and add `<OutboundLink/>` before their ending tag
  */
-export const linksPlugin: MarkdownIt.PluginWithOptions<LinksPluginOptions> = (
-  md: MarkdownIt,
+export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
+  md,
   options: LinksPluginOptions = {}
 ): void => {
   // attrs that going to be added to external links

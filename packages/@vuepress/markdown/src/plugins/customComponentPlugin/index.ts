@@ -1,3 +1,3 @@
 export * from './customComponentPlugin'
-export * from './htmlBlock'
+export * from './htmlBlockRule'
 export * from './inlineTags'

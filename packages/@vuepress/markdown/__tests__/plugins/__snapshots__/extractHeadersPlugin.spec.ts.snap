@@ -1,0 +1,223 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`@vuepress/markdown > plugins > extractHeadersPlugin should extract headers (h1, h2, h3, h4) complexTree 1`] = `
+Array [
+  Object {
+    "children": Array [
+      Object {
+        "children": Array [
+          Object {
+            "children": Array [
+              Object {
+                "children": Array [],
+                "level": 4,
+                "slug": "s1-1-1-1",
+                "title": "s1-1-1-1",
+              },
+            ],
+            "level": 3,
+            "slug": "s1-1-1",
+            "title": "s1-1-1",
+          },
+          Object {
+            "children": Array [],
+            "level": 3,
+            "slug": "s1-1-2",
+            "title": "s1-1-2",
+          },
+          Object {
+            "children": Array [
+              Object {
+                "children": Array [],
+                "level": 4,
+                "slug": "s1-1-3-1",
+                "title": "s1-1-3-1",
+              },
+            ],
+            "level": 3,
+            "slug": "s1-1-3",
+            "title": "s1-1-3",
+          },
+        ],
+        "level": 2,
+        "slug": "s1-1",
+        "title": "s1-1",
+      },
+      Object {
+        "children": Array [],
+        "level": 2,
+        "slug": "s1-2",
+        "title": "s1-2",
+      },
+      Object {
+        "children": Array [
+          Object {
+            "children": Array [
+              Object {
+                "children": Array [],
+                "level": 4,
+                "slug": "s1-3-2-1",
+                "title": "s1-3-2-1",
+              },
+            ],
+            "level": 3,
+            "slug": "s1-3-2",
+            "title": "s1-3-2",
+          },
+        ],
+        "level": 2,
+        "slug": "s1-3",
+        "title": "s1-3",
+      },
+    ],
+    "level": 1,
+    "slug": "s1",
+    "title": "s1",
+  },
+]
+`;
+
+exports[`@vuepress/markdown > plugins > extractHeadersPlugin should extract headers (h1, h2, h3, h4) reversedTree 1`] = `
+Array [
+  Object {
+    "children": Array [],
+    "level": 4,
+    "slug": "h4",
+    "title": "h4",
+  },
+  Object {
+    "children": Array [],
+    "level": 3,
+    "slug": "h3",
+    "title": "h3",
+  },
+  Object {
+    "children": Array [],
+    "level": 2,
+    "slug": "h2",
+    "title": "h2",
+  },
+  Object {
+    "children": Array [],
+    "level": 1,
+    "slug": "h1",
+    "title": "h1",
+  },
+]
+`;
+
+exports[`@vuepress/markdown > plugins > extractHeadersPlugin should extract headers (h1, h2, h3, h4) simpleTree 1`] = `
+Array [
+  Object {
+    "children": Array [
+      Object {
+        "children": Array [
+          Object {
+            "children": Array [
+              Object {
+                "children": Array [],
+                "level": 4,
+                "slug": "h4",
+                "title": "h4",
+              },
+            ],
+            "level": 3,
+            "slug": "h3",
+            "title": "h3",
+          },
+        ],
+        "level": 2,
+        "slug": "h2",
+        "title": "h2",
+      },
+    ],
+    "level": 1,
+    "slug": "h1",
+    "title": "h1",
+  },
+]
+`;
+
+exports[`@vuepress/markdown > plugins > extractHeadersPlugin should extract headers with default option (h2, h3) complexTree 1`] = `
+Array [
+  Object {
+    "children": Array [
+      Object {
+        "children": Array [],
+        "level": 3,
+        "slug": "s1-1-1",
+        "title": "s1-1-1",
+      },
+      Object {
+        "children": Array [],
+        "level": 3,
+        "slug": "s1-1-2",
+        "title": "s1-1-2",
+      },
+      Object {
+        "children": Array [],
+        "level": 3,
+        "slug": "s1-1-3",
+        "title": "s1-1-3",
+      },
+    ],
+    "level": 2,
+    "slug": "s1-1",
+    "title": "s1-1",
+  },
+  Object {
+    "children": Array [],
+    "level": 2,
+    "slug": "s1-2",
+    "title": "s1-2",
+  },
+  Object {
+    "children": Array [
+      Object {
+        "children": Array [],
+        "level": 3,
+        "slug": "s1-3-2",
+        "title": "s1-3-2",
+      },
+    ],
+    "level": 2,
+    "slug": "s1-3",
+    "title": "s1-3",
+  },
+]
+`;
+
+exports[`@vuepress/markdown > plugins > extractHeadersPlugin should extract headers with default option (h2, h3) reversedTree 1`] = `
+Array [
+  Object {
+    "children": Array [],
+    "level": 3,
+    "slug": "h3",
+    "title": "h3",
+  },
+  Object {
+    "children": Array [],
+    "level": 2,
+    "slug": "h2",
+    "title": "h2",
+  },
+]
+`;
+
+exports[`@vuepress/markdown > plugins > extractHeadersPlugin should extract headers with default option (h2, h3) simpleTree 1`] = `
+Array [
+  Object {
+    "children": Array [
+      Object {
+        "children": Array [],
+        "level": 3,
+        "slug": "h3",
+        "title": "h3",
+      },
+    ],
+    "level": 2,
+    "slug": "h2",
+    "title": "h2",
+  },
+]
+`;

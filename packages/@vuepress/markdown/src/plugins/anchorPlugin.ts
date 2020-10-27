@@ -1,3 +1,6 @@
+import type { PluginWithOptions } from 'markdown-it'
+import * as rawAnchorPlugin from 'markdown-it-anchor'
+
 import State = require('markdown-it/lib/rules_core/state_core')
 import Token = require('markdown-it/lib/token')
 
@@ -71,3 +74,5 @@ export interface AnchorPluginOptions {
    */
   callback?: (token: Token, opts: { slug: string; title: string }) => void
 }
+
+export const anchorPlugin: PluginWithOptions<AnchorPluginOptions> = rawAnchorPlugin

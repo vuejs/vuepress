@@ -1,11 +1,28 @@
-import type * as MarkdownIt from 'markdown-it'
-import { parseHeaderDeeply, slugify } from '../utils'
-import type { MarkdownEnv } from '../markdown'
-
-type HtmlHeadingTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+import type { PluginWithOptions } from 'markdown-it'
+import { resolveHeadersFromTokens, slugify as slugifyDefault } from '../utils'
+import type { MarkdownEnv, MarkdownHeader } from '../types'
 
 export interface ExtractHeadersPluginOptions {
-  includeHeaders?: HtmlHeadingTag[]
+  /**
+   * Heading level that going to be extracted to the `env`
+   *
+   * Should be a subset of markdown-it-anchor's `level` option
+   * to ensure the link is existed
+   */
+  level?: number[]
+
+  /**
+   * A custom slugify function
+   *
+   * Should use the same slugify function with markdown-it-anchor
+   * to ensure the link is matched
+   */
+  slugify?: (str: string) => string
+
+  /**
+   * A function for formatting headers
+   */
+  format?: (str: string) => string
 }
 
 /**
@@ -13,35 +30,33 @@ export interface ExtractHeadersPluginOptions {
  *
  * Would be used for generating sidebar nav and toc
  */
-export const extractHeadersPlugin: MarkdownIt.PluginWithOptions<ExtractHeadersPluginOptions> = (
-  md: MarkdownIt,
-  { includeHeaders = ['h2', 'h3'] }: ExtractHeadersPluginOptions = {}
+export const extractHeadersPlugin: PluginWithOptions<ExtractHeadersPluginOptions> = (
+  md,
+  {
+    level = [2, 3],
+    slugify = slugifyDefault,
+    format,
+  }: ExtractHeadersPluginOptions = {}
 ): void => {
-  if (includeHeaders.length === 0) {
-    return
-  }
+  let headers: MarkdownHeader[]
 
-  md.renderer.rules.heading_open = (
-    tokens,
-    i,
-    options,
-    env: MarkdownEnv,
-    self
-  ) => {
-    const token = tokens[i]
+  // push the rule to the end of the chain
+  // resolve headers from the parsed tokens
+  md.core.ruler.push('resolveExtractHeaders', (state) => {
+    headers = resolveHeadersFromTokens(state.tokens, {
+      level,
+      allowHtml: false,
+      slugify,
+      format,
+    })
+    return true
+  })
 
-    if (includeHeaders.includes(token.tag as HtmlHeadingTag)) {
-      const title = tokens[i + 1].content
-      const idAttr = token.attrs?.find(([name]) => name === 'id')
-      const slug = idAttr?.[1]
-      const headers = env.headers || (env.headers = [])
-
-      headers.push({
-        level: parseInt(token.tag.slice(1), 10),
-        title: parseHeaderDeeply(title),
-        slug: slug || slugify(title),
-      })
-    }
-    return self.renderToken(tokens, i, options)
+  // extract headers to env
+  const render = md.render.bind(md)
+  md.render = (src, env: MarkdownEnv = {}) => {
+    const result = render(src, env)
+    env.headers = headers ?? []
+    return result
   }
 }

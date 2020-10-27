@@ -1,5 +1,5 @@
-import type * as MarkdownIt from 'markdown-it'
-import type { MarkdownEnv } from '../markdown'
+import type { PluginWithOptions } from 'markdown-it'
+import type { MarkdownEnv } from '../types'
 
 export interface HoistTagsPluginOptions {
   // custom blocks to be hoisted
@@ -13,8 +13,8 @@ export interface HoistTagsPluginOptions {
  *
  * Hoist them to vue SFC root level in following process
  */
-export const hoistTagsPlugin: MarkdownIt.PluginWithOptions<HoistTagsPluginOptions> = (
-  md: MarkdownIt,
+export const hoistTagsPlugin: PluginWithOptions<HoistTagsPluginOptions> = (
+  md,
   { customBlocks = [] }: HoistTagsPluginOptions = {}
 ): void => {
   // hoist <script>, <style> and other user defined tags

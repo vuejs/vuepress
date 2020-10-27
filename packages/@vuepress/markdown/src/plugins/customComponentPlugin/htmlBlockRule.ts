@@ -27,7 +27,7 @@ const HTML_SEQUENCES: [RegExp, RegExp, boolean][] = [
   [new RegExp(HTML_OPEN_CLOSE_TAG_RE.source + '\\s*$'), /^$/, false],
 ]
 
-export const htmlBlock: RuleBlock = (
+export const htmlBlockRule: RuleBlock = (
   state,
   startLine,
   endLine,

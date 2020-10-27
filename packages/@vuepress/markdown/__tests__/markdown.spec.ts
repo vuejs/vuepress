@@ -2,44 +2,29 @@ import { createMarkdown } from '@vuepress/markdown'
 
 describe('@vuepress/markdown > markdown', () => {
   describe('options', () => {
-    describe('anchor', () => {
-      // TODO
-    })
+    it.todo('anchor')
 
-    describe('toc', () => {
-      // TODO
-    })
+    it.todo('emoji')
 
-    describe('extractHeaders', () => {
-      // TODO
-    })
+    it.todo('extractHeaders')
 
-    describe('hoistTags', () => {
-      // TODO
-    })
+    it.todo('hoistTags')
 
-    describe('links', () => {
-      // TODO
-    })
+    it.todo('links')
+
+    it.todo('toc')
   })
 
   describe('e2e', () => {
-    describe('anchor', () => {
-      // TODO
+    const md = createMarkdown()
+
+    it.todo('anchor')
+
+    it('should parse emoji', () => {
+      const rendered = md.render(':smile:')
+      expect(rendered).toBe('<p>😄</p>\n')
     })
 
-    describe('emoji', () => {
-      it('should parse emoji', () => {
-        const md = createMarkdown()
-
-        const rendered = md.render(':smile:')
-
-        expect(rendered).toBe('<p>😄</p>\n')
-      })
-    })
-
-    describe('toc', () => {
-      // TODO
-    })
+    it.todo('toc')
   })
 })

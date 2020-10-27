@@ -31,8 +31,7 @@
     "@vuepress/utils": "2.0.0-alpha.0",
     "markdown-it": "^12.0.1",
     "markdown-it-anchor": "^6.0.0",
-    "markdown-it-emoji": "^2.0.0",
-    "markdown-it-toc-done-right": "^4.1.0"
+    "markdown-it-emoji": "^2.0.0"
   },
   "publishConfig": {
     "access": "public"

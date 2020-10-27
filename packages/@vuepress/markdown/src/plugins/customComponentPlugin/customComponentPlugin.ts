@@ -1,15 +1,13 @@
-import type * as MarkdownIt from 'markdown-it'
-import { htmlBlock } from './htmlBlock'
+import type { PluginSimple } from 'markdown-it'
+import { htmlBlockRule } from './htmlBlockRule'
 
 /**
  * Replacing the default htmlBlock rule to allow using custom components
  * in markdown
  */
-export const customComponentPlugin: MarkdownIt.PluginSimple = (
-  md: MarkdownIt
-): void => {
+export const customComponentPlugin: PluginSimple = (md): void => {
   // override default html block ruler
-  md.block.ruler.at('html_block', htmlBlock, {
+  md.block.ruler.at('html_block', htmlBlockRule, {
     alt: ['paragraph', 'reference', 'blockquote'],
   })
 }

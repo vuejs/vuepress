@@ -1,4 +1,7 @@
+export * from './anchorPlugin'
 export * from './customComponentPlugin'
+export * from './emojiPlugin'
 export * from './extractHeadersPlugin'
 export * from './hoistTagsPlugin'
 export * from './linksPlugin'
+export * from './tocPlugin'
