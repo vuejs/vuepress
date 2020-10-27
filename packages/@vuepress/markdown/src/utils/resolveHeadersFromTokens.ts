@@ -68,8 +68,8 @@ export const resolveHeadersFromTokens = (
     const nextTokenChildren = nextToken.children ?? []
 
     // filter tokens for generating heading title
-    // 'text' and 'emoji' should be used directly
-    // 'code_inline' should be escaped to avoid being treated as html
+    // 'text' and 'code_inline' should be escaped to avoid being treated as html
+    // 'emoji' and 'html_inline' should be used directly
     const titleTokenTypes = ['text', 'emoji', 'code_inline']
 
     // include 'html_inline' or not
@@ -84,12 +84,12 @@ export const resolveHeadersFromTokens = (
     // get title from tokens
     const title = titleTokens
       .reduce((result, item) => {
-        // escape content of 'code_inline'
-        if (item.type === 'code_inline') {
+        // escape content of 'code_inline' and 'text'
+        if (item.type === 'code_inline' || item.type === 'text') {
           return `${result}${htmlEscape(item.content)}`
         }
 
-        // keep the content of 'text' and 'html_inline'
+        // keep the content of 'emoji' and 'html_inline'
         return `${result}${item.content}`
       }, '')
       .trim()
