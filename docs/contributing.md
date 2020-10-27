@@ -35,6 +35,18 @@ Clone the repo, and install dependencies:
 yarn
 ```
 
+Start watching source files:
+
+```bash
+yarn dev
+```
+
+Open another terminal, and start developing the documentation site:
+
+```bash
+yarn docs:dev
+```
+
 Main tools that used in this project:
 
 - [TypeScript](https://www.typescriptlang.org/) as the development language
@@ -59,7 +71,7 @@ You may need to run this script after your clone this repository, too.
 
 ### `yarn dev`
 
-The `dev` script runs `tsc` in watch mode, i.e. `tsc --watch`.
+The `dev` script runs `copy` and `build` scripts in watch mode.
 
 ### `yarn clean`
 
@@ -80,12 +92,6 @@ You need to run `yarn build && yarn copy` to build packages first, then run thes
 Serve the documentation site locally.
 
 You need to run `yarn docs:build` first to generate the documentation dist files, and then run `yarn docs:serve` to serve them.
-
-### `yarn theme:dev`
-
-As mentioned above, we need to copy some files for `@vuepress/theme-default`, but the `yarn dev` script can not watch those files to copy.
-
-Besides `tsc --watch`, the `theme:dev` script uses [cpx](https://github.com/mysticatea/cpx) to watch those files, too.
 
 ### `yarn lint`
 
