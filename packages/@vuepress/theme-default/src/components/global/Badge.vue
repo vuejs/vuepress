@@ -30,7 +30,7 @@ export default defineComponent({
     vertical: {
       type: String,
       required: false,
-      default: 'top',
+      default: undefined,
     },
   },
 })
@@ -48,6 +48,9 @@ export default defineComponent({
   padding 0 6px
   color white
   background-color #42b983
+  vertical-align top
+  .table-of-contents &
+    vertical-align middle
   &.tip, &.green
     background-color $badgeTipColor
   &.error
