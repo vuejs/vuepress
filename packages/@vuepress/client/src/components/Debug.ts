@@ -1,34 +1,43 @@
-import { h, toDisplayString, toRefs } from 'vue'
-import type { FunctionalComponent } from 'vue'
+import { h, defineComponent, ref, toDisplayString, toRefs } from 'vue'
 import { useRoute } from 'vue-router'
 import { usePageData, useSiteData, useSiteLocaleData } from '../injections'
+import './Debug.css'
 
-export const Debug: FunctionalComponent = () => {
-  const { path, name, hash, fullPath } = toRefs(useRoute())
-  const site = useSiteData()
-  const siteLocale = useSiteLocaleData()
-  const page = usePageData()
+export const Debug = defineComponent({
+  name: 'Debug',
+  setup() {
+    const open = ref(false)
 
-  return h(
-    'div',
-    {
-      class: 'vuepress-debug',
-    },
-    [
+    const { path, name, hash, fullPath } = toRefs(useRoute())
+    const site = useSiteData()
+    const siteLocale = useSiteLocaleData()
+    const page = usePageData()
+
+    return () =>
       h(
-        'pre',
-        `route ${toDisplayString({
-          path: path.value,
-          name: name.value,
-          hash: hash.value,
-          fullPath: fullPath.value,
-        })}`
-      ),
-      h('pre', `site ${toDisplayString(site.value)}`),
-      h('pre', `siteLocale ${toDisplayString(siteLocale.value)}`),
-      h('pre', `page ${toDisplayString(page.value)}`),
-    ]
-  )
-}
-
-Debug.displayName = 'Debug'
+        'div',
+        {
+          class: {
+            debug: true,
+            open: open.value,
+          },
+          onClick: () => (open.value = !open.value),
+        },
+        [
+          h('pre', 'debug'),
+          h(
+            'pre',
+            `route ${toDisplayString({
+              path: path.value,
+              name: name.value,
+              hash: hash.value,
+              fullPath: fullPath.value,
+            })}`
+          ),
+          h('pre', `page ${toDisplayString(page.value)}`),
+          h('pre', `site ${toDisplayString(site.value)}`),
+          h('pre', `siteLocale ${toDisplayString(siteLocale.value)}`),
+        ]
+      )
+  },
+})
