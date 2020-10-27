@@ -11,6 +11,8 @@ const clientAppEnhance: ClientAppEnhance = ({ app }) => {
   app.component('Badge', Badge)
   app.component('CodeGroup', CodeGroup)
   app.component('CodeGroupItem', CodeGroupItem)
+  // unregister the built-in <OutboundLink> to avoid warning
+  delete app._context.components.OutboundLink
   app.component('OutboundLink', OutboundLink)
   /* eslint-enable vue/match-component-file-name */
 }
