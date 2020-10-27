@@ -8,7 +8,8 @@
     "build": "tsc --build",
     "clean": "lerna run clean --stream",
     "copy": "lerna run copy --stream",
-    "dev": "tsc --build --watch",
+    "copy-watch": "lerna run copy --stream -- --watch",
+    "dev": "yarn copy-watch & yarn build --watch",
     "docs:build": "vuepress build docs",
     "docs:clean": "rimraf docs/.vuepress/.temp docs/.vuepress/.cache docs/.vuepress/dist",
     "docs:dev": "vuepress dev docs",
@@ -16,8 +17,7 @@
     "postinstall": "yarn build && yarn copy",
     "lint": "eslint --ext .js,.ts,.vue .",
     "release": "yarn lint && yarn clean && yarn build && yarn copy && yarn test && lerna publish",
-    "test": "jest --runInBand",
-    "theme:dev": "yarn workspace @vuepress/theme-default dev"
+    "test": "jest --runInBand"
   },
   "husky": {
     "hooks": {

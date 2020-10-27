@@ -26,8 +26,7 @@
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
     "clean": "rimraf lib *.tsbuildinfo",
-    "copy": "cpx \"src/{layouts,components,styles}/**/*.{vue,styl}\" lib",
-    "dev": "yarn copy --watch & yarn build --watch"
+    "copy": "cpx \"src/{layouts,components,styles}/**/*.{vue,styl}\" lib"
   },
   "dependencies": {
     "@vuepress/client": "2.0.0-alpha.0",
