@@ -18,7 +18,7 @@ export const createServerConfig = (
   })
 
   // server entry
-  config.entry('app').add(app.dir.client('lib/createServerApp.js'))
+  config.entry('app').add(app.dir.client('lib/server.js'))
 
   // server output
   // remove after pages rendered

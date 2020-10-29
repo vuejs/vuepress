@@ -3,11 +3,8 @@ import type { Router as VueRouter } from 'vue-router'
 import { renderToString } from '@vue/server-renderer'
 import type { SSRContext } from '@vue/server-renderer'
 import type { Page, App } from '@vuepress/core'
-import {
-  isArray,
-  removeLeadingSlash,
-  resolveSiteLocaleData,
-} from '@vuepress/shared'
+import { removeLeadingSlash } from '@vuepress/shared'
+import type { VuepressSSRContext } from '@vuepress/shared'
 import { fs, renderHead } from '@vuepress/utils'
 import { renderPagePrefetchLinks } from './renderPagePrefetchLinks'
 import { renderPagePreloadLinks } from './renderPagePreloadLinks'
@@ -16,7 +13,12 @@ import { renderPageStyles } from './renderPageStyles'
 import { resolvePageClientFilesMeta } from './resolvePageClientFilesMeta'
 import type { FileMeta, ModuleFilesMetaMap } from './types'
 
-export interface VuepressSSRContext extends SSRContext {
+interface PageRenderContext extends SSRContext, VuepressSSRContext {
+  /**
+   * Injected by vuepress-loader
+   *
+   * Store the module request of components that used by current page
+   */
   _registeredComponents: Set<string>
 }
 
@@ -48,9 +50,11 @@ export const renderPage = async ({
   await vueRouter.push(page.path)
   await vueRouter.isReady()
 
-  // create vue ssr context
-  const ssrContext: VuepressSSRContext = {
+  // create vue ssr context with default values
+  const ssrContext: PageRenderContext = {
     _registeredComponents: new Set(),
+    lang: 'en',
+    head: [],
   }
 
   // render current page to string
@@ -62,40 +66,18 @@ export const renderPage = async ({
     moduleFilesMetaMap,
   })
 
-  // resolve page head config
-  const pageHead = isArray(page.frontmatter.head) ? page.frontmatter.head : []
-
-  // resolve site locale data
-  const siteLocaleData = resolveSiteLocaleData(app.options, page.path)
-
-  // TODO: change the template? currently we simply use vue 2 ssr template
   // generate html string
   const html = ssrTemplate
     // page lang
-    .replace('{{ lang }}', siteLocaleData.lang)
-    // page title
+    .replace('{{ lang }}', ssrContext.lang)
+    // page head
     .replace(
-      '{{ title }}',
-      `${page.title ? `${page.title} | ` : ``}${siteLocaleData.title}`
+      '<!--vuepress-ssr-head-->',
+      ssrContext.head.map(renderHead).join('')
     )
-    // vuepress version
-    .replace('{{ version }}', `v${app.version}`)
-    // site locale data head
-    .replace(
-      '{{{ userHeadTags }}}',
-      `${renderHead([
-        'meta',
-        {
-          name: 'description',
-          content: siteLocaleData.description,
-        },
-      ])}${siteLocaleData.head.map(renderHead).join('')}`
-    )
-    // page frontmatter head
-    .replace('{{{ pageMeta }}}', pageHead.map(renderHead).join(''))
     // page preload & prefetch links
     .replace(
-      '{{{ renderResourceHints() }}}',
+      '<!--vuepress-ssr-resources-->',
       `${renderPagePreloadLinks({
         app,
         initialFilesMeta,
@@ -108,13 +90,13 @@ export const renderPage = async ({
     )
     // page styles
     .replace(
-      '{{{ renderStyles() }}}',
+      '<!--vuepress-ssr-styles-->',
       renderPageStyles({ app, initialFilesMeta, pageClientFilesMeta })
     )
-    .replace('<!--vue-ssr-outlet-->', pageRendered)
+    .replace('<!--vuepress-ssr-app-->', pageRendered)
     // page scripts
     .replace(
-      '{{{ renderScripts() }}}',
+      '<!--vuepress-ssr-scripts-->',
       renderPageScripts({ app, initialFilesMeta, pageClientFilesMeta })
     )
 

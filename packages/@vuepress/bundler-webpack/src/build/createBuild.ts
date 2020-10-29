@@ -1,5 +1,5 @@
 import * as webpack from 'webpack'
-import type { CreateServerAppEntry } from '@vuepress/client'
+import type { ServerEntry } from '@vuepress/client'
 import type { App, Bundler } from '@vuepress/core'
 import { chalk, fs, logger, ora } from '@vuepress/utils'
 import type { BundlerWebpackOptions } from '../types'
@@ -78,7 +78,7 @@ export const createBuild = (
   // load the compiled server bundle
   const { createServerApp } = require(app.dir.dest(
     '.server/app'
-  )) as CreateServerAppEntry
+  )) as ServerEntry
 
   // create vue ssr app
   const { app: vueApp, router: vueRouter } = await createServerApp()
