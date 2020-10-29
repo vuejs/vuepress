@@ -1,14 +1,12 @@
-import type { LocaleConfig, Theme, ThemeConfig } from '@vuepress/core'
+import type { LocaleData, Theme, ThemeConfig } from '@vuepress/core'
 
-export interface DefaultThemeOptions extends ThemeConfig {
+export interface DefaultThemeOptions
+  extends ThemeConfig<DefaultThemeLocaleData> {
   logo?: string
   navbar?: boolean
-  // TODO
-
-  locales?: LocaleConfig<DefaultThemeLocales>
 }
 
-export interface DefaultThemeLocales {
+export interface DefaultThemeLocaleData extends LocaleData {
   // custom blocks default title
   tip?: string
   warning?: string

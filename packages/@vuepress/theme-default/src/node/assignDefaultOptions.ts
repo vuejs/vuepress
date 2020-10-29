@@ -1,6 +1,6 @@
-import type { DefaultThemeOptions, DefaultThemeLocales } from '../../types'
+import type { DefaultThemeOptions, DefaultThemeLocaleData } from '../../types'
 
-const defaultLocales: Required<DefaultThemeLocales> = {
+const defaultLocaleData: Required<DefaultThemeLocaleData> = {
   tip: 'TIP',
   warning: 'WARNING',
   danger: 'WARNING',
@@ -23,5 +23,5 @@ export const assignDefaultOptions = (options: DefaultThemeOptions): void => {
     options.locales['/'] = {}
   }
 
-  Object.assign(options.locales['/'], defaultLocales, options.locales['/'])
+  Object.assign(options.locales['/'], defaultLocaleData, options.locales['/'])
 }
