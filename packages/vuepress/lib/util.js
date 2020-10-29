@@ -10,7 +10,7 @@ const CAC = require('cac')
 /**
  * Bootstrap a CAC cli
  * @param {function} beforeParse
- * @param {function} adterParse
+ * @param {function} afterParse
  * @returns {Promise<void>}
  */
 
@@ -46,7 +46,7 @@ function wrapCommand (fn) {
  */
 
 function isKnownCommand (argv) {
-  return ['dev', 'build', 'eject'].includes(argv[0])
+  return ['dev', 'build', 'eject', 'info'].includes(argv[0])
 }
 
 module.exports = {

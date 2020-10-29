@@ -1,7 +1,7 @@
 <template>
   <main
     class="home"
-    aria-labelledby="main-title"
+    :aria-labelledby="data.heroText !== null ? 'main-title' : null"
   >
     <header class="hero">
       <img
@@ -86,7 +86,7 @@ export default {
 <style lang="stylus">
 .home
   padding $navbarHeight 2rem 0
-  max-width 960px
+  max-width $homePageWidth
   margin 0px auto
   display block
   .hero

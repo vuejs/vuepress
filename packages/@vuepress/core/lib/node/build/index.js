@@ -10,6 +10,7 @@ const createClientConfig = require('../webpack/createClientConfig')
 const createServerConfig = require('../webpack/createServerConfig')
 const { createBundleRenderer } = require('vue-server-renderer')
 const { normalizeHeadTag, applyUserWebpackConfig } = require('../util/index')
+const { version } = require('../../../package')
 
 /**
  * Expose Build Process Class.
@@ -76,22 +77,23 @@ module.exports = class Build extends EventEmitter {
     })
 
     // pre-render head tags from user config
+    // filter out meta tags for they will be injected in updateMeta.js
     this.userHeadTags = (this.context.siteConfig.head || [])
+      .filter(([headTagType]) => headTagType !== 'meta')
       .map(renderHeadTag)
-      .join('\n  ')
+      .join('\n    ')
 
     // if the user does not have a custom 404.md, generate the theme's default
     if (!this.context.pages.some(p => p.path === '/404.html')) {
-      this.context.addPage({ path: '/404.html' })
+      await this.context.addPage({ path: '/404.html' })
     }
 
     // render pages
     logger.wait('Rendering static HTML...')
 
-    const pagePaths = []
-    for (const page of this.context.pages) {
-      pagePaths.push(await this.renderPage(page))
-    }
+    const pagePaths = await Promise.all(
+      this.context.pages.map(page => this.renderPage(page))
+    )
 
     readline.clearLine(process.stdout, 0)
     readline.cursorTo(process.stdout, 0)
@@ -133,21 +135,14 @@ module.exports = class Build extends EventEmitter {
 
   async renderPage (page) {
     const pagePath = decodeURIComponent(page.path)
-    readline.clearLine(process.stdout, 0)
-    readline.cursorTo(process.stdout, 0)
-    process.stdout.write(`Rendering page: ${pagePath}`)
-
-    // #565 Avoid duplicate description meta at SSR.
-    const meta = (page.frontmatter && page.frontmatter.meta || []).filter(item => item.name !== 'description')
-    const pageMeta = renderPageMeta(meta)
 
     const context = {
       url: page.path,
       userHeadTags: this.userHeadTags,
-      pageMeta,
       title: 'VuePress',
       lang: 'en',
-      description: ''
+      description: '',
+      version
     }
 
     let html
@@ -221,24 +216,6 @@ function renderAttrs (attrs = {}) {
   } else {
     return ''
   }
-}
-
-/**
- * Render meta tags
- *
- * @param {Array} meta
- * @returns {Array<string>}
- */
-
-function renderPageMeta (meta) {
-  if (!meta) return ''
-  return meta.map(m => {
-    let res = `<meta`
-    Object.keys(m).forEach(key => {
-      res += ` ${key}="${escape(m[key])}"`
-    })
-    return res + `>`
-  }).join('')
 }
 
 /**

@@ -1,51 +1,52 @@
 {
   "name": "vuepress",
-  "version": "1.2.0",
+  "version": "1.7.1",
   "description": "Minimalistic doc generator with Vue component based layout system",
-  "main": "index.js",
+  "keywords": [
+    "documentation",
+    "generator",
+    "vue"
+  ],
+  "homepage": "https://github.com/vuejs/vuepress#readme",
+  "bugs": {
+    "url": "https://github.com/vuejs/vuepress/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vuejs/vuepress.git",
     "directory": "packages/vuepress"
   },
-  "scripts": {
-    "postinstall": "opencollective-postinstall || true"
-  },
-  "keywords": [
-    "documentation",
-    "vue",
-    "generator"
-  ],
+  "license": "MIT",
+  "author": "Evan You",
+  "main": "index.js",
   "bin": {
     "vuepress": "cli.js"
   },
-  "author": "Evan You",
-  "maintainers": [
-    {
-      "name": "ULIVZ",
-      "email": "chl814@foxmail.com"
-    }
-  ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/vuejs/vuepress/issues"
+  "scripts": {
+    "postinstall": "opencollective-postinstall || exit 0"
   },
-  "homepage": "https://github.com/vuejs/vuepress#readme",
+  "browserslist": [
+    ">1%"
+  ],
   "dependencies": {
-    "@vuepress/core": "^1.2.0",
-    "@vuepress/theme-default": "^1.2.0",
-    "cac": "^6.3.9",
+    "@vuepress/core": "1.7.1",
+    "@vuepress/theme-default": "1.7.1",
+    "cac": "^6.5.6",
     "envinfo": "^7.2.0",
-    "opencollective-postinstall": "^2.0.2"
+    "opencollective-postinstall": "^2.0.2",
+    "update-notifier": "^4.0.0"
+  },
+  "engines": {
+    "node": ">=8.6"
   },
   "collective": {
     "type": "opencollective",
     "url": "https://opencollective.com/vuepress"
   },
-  "engines": {
-    "node": ">=8.6"
-  },
-  "browserslist": [
-    ">1%"
+  "maintainers": [
+    {
+      "name": "ULIVZ",
+      "email": "chl814@foxmail.com"
+    }
   ]
 }

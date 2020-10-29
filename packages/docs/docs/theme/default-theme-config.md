@@ -69,14 +69,14 @@ module.exports = {
 }
 ```
 
-Outbound links automatically get `target="_blank" rel="noopener noreferrer"`. You can offer `target` and `rel` to customize the attributes:
+Outbound links automatically get `target="_blank" rel="noopener noreferrer"`. You can offer `target` and `rel` to customize the attributes. Setting `rel: false` as will disable the `rel` attribute for a link:
 
 ``` js
 // .vuepress/config.js
 module.exports = {
   themeConfig: {
     nav: [
-      { text: 'External', link: 'https://google.com', target:'_self', rel:'' },
+      { text: 'External', link: 'https://google.com', target:'_self', rel:false },
       { text: 'Guide', link: '/guide/', target:'_blank' }
     ]
   }
@@ -86,6 +86,7 @@ module.exports = {
 These links can also be dropdown menus if you provide an array of `items` instead of a `link`:
 
 ```js
+// .vuepress/config.js
 module.exports = {
   themeConfig: {
     nav: [
@@ -105,6 +106,7 @@ module.exports = {
 You can also have sub groups inside a dropdown by having nested items:
 
 ```js
+// .vuepress/config.js
 module.exports = {
   themeConfig: {
     nav: [
@@ -177,6 +179,7 @@ sidebarDepth: 2
 The sidebar only displays links for headers in the current active page. You can display all header links for every page with `themeConfig.displayAllHeaders: true`:
 
 ``` js
+// .vuepress/config.js
 module.exports = {
   themeConfig: {
     displayAllHeaders: true // Default: false
@@ -189,6 +192,7 @@ module.exports = {
 By default, the nested header links and the hash in the URL are updated as the user scrolls to view the different sections of the page. This behavior can be disabled with the following theme config:
 
 ``` js
+// .vuepress/config.js
 module.exports = {
   themeConfig: {
     activeHeaderLinks: false, // Default: true
@@ -211,7 +215,7 @@ module.exports = {
     sidebar: [
       {
         title: 'Group 1',   // required
-        path: '/foo/',      // optional, which should be a absolute path.
+        path: '/foo/',      // optional, link of the title, which should be an absolute path and must exist
         collapsable: false, // optional, defaults to true
         sidebarDepth: 1,    // optional, defaults to 1
         children: [
@@ -220,7 +224,8 @@ module.exports = {
       },
       {
         title: 'Group 2',
-        children: [ /* ... */ ]
+        children: [ /* ... */ ],
+        initialOpenGroupIndex: -1 // optional, defaults to 0, defines the index of initially opened subgroup
       }
     ]
   }
@@ -232,7 +237,9 @@ Sidebar groups are collapsable by default. You can force a group to be always op
 A sidebar group config also supports [sidebarDepth](#nested-header-links) field to override the default sidebar depth (`1`).
 
 ::: tip
-   Nested sidebar group <Badge text="beta"/> is also supported, but the nesting depth should be less than 3, otherwise the console will receive a warning.
+   Nested sidebar group is also supported.
+   By default the first subgroup is opened initially.
+   You can change this using the `initialOpenGroupIndex`: Specify an index to open another subgroup or use `-1` for no open group.
 :::
 
 ### Multiple Sidebars
@@ -272,6 +279,8 @@ module.exports = {
         'three', /* /bar/three.html */
         'four'   /* /bar/four.html */
       ],
+
+      '/baz/': 'auto', /* automatically generate single-page sidebars */
 
       // fallback
       '/': [
@@ -341,6 +350,7 @@ sidebar: false
 You can disable the built-in search box with `themeConfig.search: false`, and customize how many suggestions will be shown with `themeConfig.searchMaxSuggestions`:
 
 ``` js
+// .vuepress/config.js
 module.exports = {
   themeConfig: {
     search: false,
@@ -349,7 +359,19 @@ module.exports = {
 }
 ```
 
-You can also disable the built-in search box for individual pages with `YAML front matter`:
+You can improve the search result by [setting `tags` in frontmatter](../guide/frontmatter.md#tags):
+
+```yaml
+---
+tags:
+  - configuration
+  - theme
+  - indexing
+---
+```
+
+You can also disable the built-in search box for individual pages by [setting `search` in frontmatter](../guide/frontmatter.md#search):
+
 ```yaml
 ---
 search: false
@@ -357,14 +379,16 @@ search: false
 ```
 
 ::: tip
-Built-in Search only builds index from the title, `h2` and `h3` headers, if you need full text search, you can use [Algolia DocSearch](#algolia-docsearch).
+Built-in Search only builds index from the title, `h2` and `h3` headers and `tags`.
+If you need full text search, you can use [Algolia Search](#algolia-search).
 :::
 
-### Algolia DocSearch
+### Algolia Search
 
 The `themeConfig.algolia` option allows you to use [Algolia DocSearch](https://community.algolia.com/docsearch/) to replace the simple built-in search. To enable it, you need to provide at least `apiKey` and `indexName`:
 
 ``` js
+// .vuepress/config.js
 module.exports = {
   themeConfig: {
     algolia: {
@@ -386,6 +410,7 @@ For more options, check out [Algolia DocSearch’s documentation](https://github
 You can define a placeholder for the search box by adding the `searchPlaceholder` attribute:
 
 ``` js
+// .vuepress/config.js
 module.exports = {
   themeConfig: {
     searchPlaceholder: 'Search...'
@@ -398,6 +423,7 @@ module.exports = {
 The `themeConfig.lastUpdated` option allows you to get the UNIX timestamp(ms) of each file’s last `git` commit, and it will also display at the bottom of each page in an appropriate format:
 
 ``` js
+// .vuepress/config.js
 module.exports = {
   themeConfig: {
     lastUpdated: 'Last Updated', // string | boolean
@@ -418,7 +444,23 @@ Note that it’s `off` by default. If given a `string`, it will be displayed as 
 
 ## Prev / Next Links
 
-Prev and next links are automatically inferred based on the sidebar order of the active page. You can also explicitly overwrite or disable them globally with [theme config](/theme/default-theme-config.html#git-repository-and-edit-links) or on specific pages using `YAML front matter`:
+Prev and next links are automatically inferred based on the sidebar order of the active page.
+
+You can disable them globally with `themeConfig.nextLinks` and `themeConfig.prevLinks`:
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+    // default value is true. Set it to false to hide next page links on all pages
+    nextLinks: false,
+    // default value is true. Set it to false to hide prev page links on all pages
+    prevLinks: false
+  }
+}
+```
+
+You can also explicitly overwrite or disable them for individual pages with `YAML front matter`:
 
 ``` yaml
 ---
@@ -451,10 +493,6 @@ module.exports = {
     docsBranch: 'master',
     // defaults to false, set to true to enable
     editLinks: true,
-    // default value is true. Allows to hide next page links on all pages
-    nextLinks: false,
-    // default value is true. Allows to hide prev page links on all pages
-    prevLinks: false,
     // custom text for edit link. Defaults to "Edit this page"
     editLinkText: 'Help us improve this page!'
   }
@@ -519,9 +557,93 @@ layout: SpecialLayout
 
 This will render `.vuepress/components/SpecialLayout.vue` for the given page.
 
+## Code Groups and Code Blocks <Badge text="1.6.0+" />
+The default theme comes with custom components `<code-group />` and `<code-block>` that can help you to better group
+separate code paths that have the same result.
+
+**Example**
+
+Yarn and npm installation instructions
+
+**Input**
+````md
+<code-group>
+<code-block title="YARN">
+```bash
+yarn create vuepress-site [optionalDirectoryName]
+```
+</code-block>
+
+<code-block title="NPM">
+```bash
+npx create-vuepress-site [optionalDirectoryName]
+```
+</code-block>
+</code-group>
+````
+
+**Output**
+
+<code-group>
+<code-block title="YARN">
+```bash
+yarn create vuepress-site [optionalDirectoryName]
+```
+</code-block>
+
+<code-block title="NPM">
+```bash
+npx create-vuepress-site [optionalDirectoryName]
+```
+</code-block>
+</code-group>
+
+::: tip
+Each `<code-block />` must have a line break after it to render properly
+:::
+
+### Default Code Block
+
+By default, `<code-group />` will use the first `<code-block />` as the active initial code block.
+
+To manually set the active `<code-block />`, just add the `active` prop to the `<code-block />`:
+
+**Input**
+````md
+<code-group>
+<code-block title="YARN">
+```bash
+yarn create vuepress-site [optionalDirectoryName]
+```
+</code-block>
+
+<code-block title="NPM" active>
+```bash
+npx create-vuepress-site [optionalDirectoryName]
+```
+</code-block>
+</code-group>
+````
+
+**Output**
+
+<code-group>
+<code-block title="YARN">
+```bash
+yarn create vuepress-site [optionalDirectoryName]
+```
+</code-block>
+
+<code-block title="NPM" active>
+```bash
+npx create-vuepress-site [optionalDirectoryName]
+```
+</code-block>
+</code-group>
+
 ## Ejecting
 
-You can copy the default theme source code into `.vuepress/theme` to fully customize the theme using the `vuepress eject [targetDir]` command.
+You can copy the default theme source code into `.vuepress/theme` to fully customize the theme using the `vuepress eject [targetDir]` command. If you didn’t install VuePress globally, run `./node_modules/.bin/vuepress eject`.
 
 ::: warning
 Once you eject, you are on your own and **won’t** be receiving future updates or bugfixes to the default theme even if you upgrade VuePress.

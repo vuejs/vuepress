@@ -83,6 +83,7 @@ module.exports = {
 当你提供了一个 `items` 数组而不是一个单一的 `link` 时，它将显示为一个 `下拉列表` ：
 
 ```js
+// .vuepress/config.js
 module.exports = {
   themeConfig: {
     nav: [
@@ -102,6 +103,7 @@ module.exports = {
 此外，你还可以通过嵌套的 `items` 来在 `下拉列表` 中设置分组：
 
 ```js
+// .vuepress/config.js
 module.exports = {
   themeConfig: {
     nav: [
@@ -174,6 +176,7 @@ sidebarDepth: 2
 默认情况下，侧边栏只会显示由当前活动页面的标题（headers）组成的链接，你可以将 `themeConfig.displayAllHeaders` 设置为 `true` 来显示所有页面的标题链接：
 
 ``` js
+// .vuepress/config.js
 module.exports = {
   themeConfig: {
     displayAllHeaders: true // 默认值：false
@@ -186,6 +189,7 @@ module.exports = {
 默认情况下，当用户通过滚动查看页面的不同部分时，嵌套的标题链接和 URL 中的 Hash 值会实时更新，这个行为可以通过以下的配置来禁用：
 
 ``` js
+// .vuepress/config.js
 module.exports = {
   themeConfig: {
     activeHeaderLinks: false, // 默认值：true
@@ -209,7 +213,7 @@ module.exports = {
     sidebar: [
       {
         title: 'Group 1',   // 必要的
-        path: '/foo/',      // 可选的, 应该是一个绝对路径
+        path: '/foo/',      // 可选的, 标题的跳转链接，应为绝对路径且必须存在
         collapsable: false, // 可选的, 默认值是 true,
         sidebarDepth: 1,    // 可选的, 默认值是 1
         children: [
@@ -218,7 +222,8 @@ module.exports = {
       },
       {
         title: 'Group 2',
-        children: [ /* ... */ ]
+        children: [ /* ... */ ],
+        initialOpenGroupIndex: -1 // 可选的, 默认值是 0
       }
     ]
   }
@@ -230,7 +235,7 @@ module.exports = {
 一个侧边栏的子组配置同时支持 [sidebarDepth](#nested-header-links) 字段用于重写默认显示的侧边栏深度(`1`)。
 
 ::: tip
-  嵌套的侧边栏分组 <Badge text="beta"/> 也是支持的，但嵌套深度应小于 3，否则在控制台会收到警告。
+  嵌套的侧边栏分组也是支持的。
 :::
 
 ### 多个侧边栏
@@ -337,6 +342,7 @@ sidebar: false
 你可以通过设置 `themeConfig.search: false` 来禁用默认的搜索框，或是通过 `themeConfig.searchMaxSuggestions` 来调整默认搜索框显示的搜索结果数量：
 
 ``` js
+// .vuepress/config.js
 module.exports = {
   themeConfig: {
     search: false,
@@ -345,7 +351,18 @@ module.exports = {
 }
 ```
 
-你可以通过 `YAML front matter` 来对单独的页面禁用内置的搜索框：
+你可以通过[在页面的 frontmatter 中设置 `tags`](../guide/frontmatter.md#tags) 来优化搜索结果：
+
+```yaml
+---
+tags:
+  - 配置
+  - 主题
+  - 索引
+---
+```
+
+你可以通过[在页面的 frontmatter 中设置 `search`](../guide/frontmatter.md#search) 来对单独的页面禁用内置的搜索框：
 
 ```yaml
 ---
@@ -354,7 +371,8 @@ search: false
 ```
 
 ::: tip
-内置搜索只会为页面的标题、`h2` 和 `h3` 构建搜索索引，如果你需要全文搜索，你可以使用 [Algolia 搜索](#Algolia-搜索)。
+内置搜索只会为页面的标题、`h2` 、 `h3` 以及 `tags` 构建搜索索引。
+如果你需要全文搜索，你可以使用 [Algolia 搜索](#algolia-搜索)。
 :::
 
 ### Algolia 搜索
@@ -362,6 +380,7 @@ search: false
 你可以通过 `themeConfig.algolia` 选项来用 [Algolia 搜索](https://community.algolia.com/docsearch/) 替换内置的搜索框。要启用 Algolia 搜索，你需要至少提供 `apiKey` 和 `indexName`：
 
 ```js
+// .vuepress/config.js
 module.exports = {
   themeConfig: {
     algolia: {
@@ -383,6 +402,7 @@ module.exports = {
 你可以通过 `themeConfig.lastUpdated` 选项来获取每个文件最后一次 `git` 提交的 UNIX 时间戳(ms)，同时它将以合适的日期格式显示在每一页的底部：
 
 ``` js
+// .vuepress/config.js
 module.exports = {
   themeConfig: {
     lastUpdated: 'Last Updated', // string | boolean
@@ -402,7 +422,23 @@ module.exports = {
 
 ## 上 / 下一篇链接
 
-上一篇和下一篇文章的链接将会自动地根据当前页面的侧边栏的顺序来获取。你也可以使用 `YAML front matter` 来明确地重写或者禁用它：
+上一篇和下一篇文章的链接将会自动地根据当前页面的侧边栏的顺序来获取。
+
+你可以通过 `themeConfig.nextLinks` 和 `themeConfig.prevLinks` 来全局禁用它们：
+
+``` js
+// .vuepress/config.js
+module.exports = {
+  themeConfig: {
+    // 默认值是 true 。设置为 false 来禁用所有页面的 下一篇 链接
+    nextLinks: false,
+    // 默认值是 true 。设置为 false 来禁用所有页面的 上一篇 链接
+    prevLinks: false
+  }
+}
+```
+
+你也可以使用 `YAML front matter` 来明确地重写或者禁用它们：
 
 ``` yaml
 ---

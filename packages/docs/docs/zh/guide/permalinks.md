@@ -22,7 +22,17 @@
 /source/_post/intro-vuepress.html
 ```
 
-看起来我们已经发现了 blog 的阴暗面。让我们继续看下去。
+然而对于 blog 来说，我们希望文章的链接更加灵活，而不是局限于目录结构。VuePress 把这个功能称为永久链接 (permalinks) ，并从 `1.0.0` 版本开始支持。
+
+如果使用永久链接，那么实际的页面链接会像这样：
+
+```
+/source/
+/source/tags/
+/source/2018/4/1/intro-vuepress.html
+```
+
+看起来我们已经看过了 blog 的阴暗面。那么让我们继续看下去。
 
 ## 永久链接
 

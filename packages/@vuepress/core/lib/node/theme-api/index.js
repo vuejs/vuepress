@@ -131,7 +131,7 @@ function resolveSFCs (dirs) {
 /**
  * normalize component name
  *
- * @param {strin} filename
+ * @param {string} filename
  * @returns {string}
  */
 

@@ -3,26 +3,35 @@
 This project uses a monorepo setup that requires using [Yarn](https://yarnpkg.com) because it relies on [Yarn workspaces](https://yarnpkg.com/blog/2017/08/02/introducing-workspaces/).
 
 ``` sh
-# Install dependencies & compile TypeScript utilities.
-yarn bootstrap
+# Install all dependencies.
+yarn
+
+# Serves VuePress' own docs with itself.
+yarn dev
+
+# Build VuePress' own docs with itself.
+yarn build
 
 # Clean dependencies.
 yarn clean
 
-# Useful when creating new submodules.
+# Useful when creating new a package.
 yarn boot
-
-# Serve the docs.
-yarn dev
-
-# Build the docs.
-yarn build
-
-# Execute all the test suites.
-yarn test
 ```
 
-## Core packages
+## Testing Setup
+
+VuePress leverages [jest](https://jestjs.io/) for its tests, testing process depends on some setup located at [scripts/test.js](../scripts/test.js).
+
+```bash
+# Execute all the test suites.
+yarn test
+
+# Execute tests under specfic package. 
+yarn test -p=core ## OR --package=core
+```
+
+## Core Packages
 
 - **docs**: Docs of VuePress (do not publish to npm).
 - **vuepress**: VuePress CLI.
@@ -42,21 +51,23 @@ yarn test
   - `theme-default`: default theme.
   - `theme-vue`: a theme tweak from default theme, used for the official Vue project.
 
-## Core packages not in main project
+## Core Packages not in Main Project
 
-> Previously, for quick iteration, these projects were kept in ULIVZ's workspace. In the future, we may want to build an independent GitHub group.
+These projects are now available under [VuePress](https://github.com/vuepressjs) group, contribution welcome!
 
-- [awesome-vuepress](https://github.com/ulivz/awesome-vuepress)
-- [@vuepress/plugin-blog](https://github.com/ulivz/vuepress-plugin-blog)
-- [@vuepress/theme-blog](https://github.com/ulivz/vuepress-theme-blog)
+- [awesome-vuepress](https://github.com/vuepressjs/awesome-vuepress)
+- [@vuepress/plugin-blog](https://github.com/vuepressjs/vuepress-plugin-blog)
+- [@vuepress/theme-blog](https://github.com/vuepressjs/vuepress-theme-blog)
 
 ## Workflow
 
 ### Issue
 
-> TODO
+Use one of the [issues templates](https://github.com/vuejs/vuepress/issues/new/choose) when you open a issue. And please ask questions on the [StackOverflow](https://stackoverflow.com/questions/ask?tags=vuepress).
 
-### Pull requests
+We'll close your issue if you delete the template or it contains questions.
+
+### Pull Requests
 
 - Create a feature branch from the default branch (`master`) and merge back against that branch.
 - It's OK to have multiple small commits as you work on the PR - GitHub automatically squashes them before merging.
@@ -71,12 +82,26 @@ yarn test
 
 ### Substantial Changes
 
-> RFC flow, TODO
+Check out [RFC flow](https://github.com/vuejs/vuepress/tree/master/rfcs) for more detail.
 
 ## Code Specification
 
 > TODO
 
-## Commit specification
+## Commit Specification
 
-Commit messages should follow the [commit message convention](./COMMIT_CONVENTION.md) so that changelogs can be automatically generated.
+Commit messages should follow the [commit message convention](https://www.conventionalcommits.org) so that changelogs can be automatically generated.
+
+Check out the availalbe types at [@commitlint/config-conventional](https://github.com/conventional-changelog/commitlint/tree/master/@commitlint/config-conventional#type-enum). And the scopes should be one of the followings:
+
+``` sh
+cli
+
+# Core Packages/packages:
+core
+markdown
+...
+theme-vue
+```
+
+Correct examples would be: `fix($core): some message` or `feat: some message`

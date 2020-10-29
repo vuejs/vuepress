@@ -2,7 +2,7 @@
 home: true
 heroImage: /hero.png
 actionText: Get Started →
-actionLink: /guide/
+actionLink: /guide/getting-started.html
 footer: MIT Licensed | Copyright © 2018-present Evan You
 ---
 
@@ -24,24 +24,3 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
     <p>VuePress generates pre-rendered static HTML for each page, and runs as an SPA once a page is loaded.</p>
   </div>
 </div>
-
-### As Easy as 1, 2, 3
-
-``` bash
-# install
-yarn global add vuepress
-# OR npm install -g vuepress
-
-# create a markdown file
-echo '# Hello VuePress' > README.md
-
-# start writing
-vuepress dev
-
-# build to static files
-vuepress build
-```
-
-::: warning COMPATIBILITY NOTE
-VuePress requires Node.js >= 8.6.
-:::
