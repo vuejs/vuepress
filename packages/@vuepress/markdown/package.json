@@ -31,7 +31,11 @@
     "@vuepress/utils": "2.0.0-alpha.0",
     "markdown-it": "^12.0.1",
     "markdown-it-anchor": "^6.0.0",
-    "markdown-it-emoji": "^2.0.0"
+    "markdown-it-emoji": "^2.0.0",
+    "prismjs": "^1.22.0"
+  },
+  "devDependencies": {
+    "@types/prismjs": "^1.16.1"
   },
   "publishConfig": {
     "access": "public"

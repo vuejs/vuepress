@@ -2,6 +2,7 @@ import * as MarkdownIt from 'markdown-it'
 import { tocPlugin } from './plugins/tocPlugin/tocPlugin'
 import {
   anchorPlugin,
+  codePlugin,
   customComponentPlugin,
   emojiPlugin,
   extractHeadersPlugin,
@@ -16,6 +17,7 @@ import { slugify } from './utils'
  */
 export const createMarkdown = ({
   anchor,
+  code,
   emoji,
   extractHeaders,
   hoistTags,
@@ -69,6 +71,8 @@ export const createMarkdown = ({
     .use(hoistTagsPlugin, hoistTags)
     // process external and internal links
     .use(linksPlugin, links)
+    // process code fence
+    .use(codePlugin, code)
 
   return md
 }

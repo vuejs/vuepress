@@ -1,4 +1,5 @@
 export * from './anchorPlugin'
+export * from './codePlugin'
 export * from './customComponentPlugin'
 export * from './emojiPlugin'
 export * from './extractHeadersPlugin'

@@ -2,6 +2,7 @@ import * as MarkdownIt from 'markdown-it'
 import type { PageHeader } from '@vuepress/shared'
 import type {
   AnchorPluginOptions,
+  CodePluginOptions,
   EmojiPluginOptions,
   ExtractHeadersPluginOptions,
   HoistTagsPluginOptions,
@@ -13,6 +14,7 @@ export type Markdown = MarkdownIt
 
 export interface MarkdownOptions extends MarkdownIt.Options {
   anchor?: AnchorPluginOptions
+  code?: CodePluginOptions
   emoji?: EmojiPluginOptions
   extractHeaders?: ExtractHeadersPluginOptions
   hoistTags?: HoistTagsPluginOptions
