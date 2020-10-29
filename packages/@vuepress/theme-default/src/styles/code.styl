@@ -1,3 +1,4 @@
+@import '~prismjs/themes/prism-tomorrow.css'
 @require './config'
 
 {$contentClass}
@@ -101,41 +102,7 @@ div[class*="language-"]
       border-right 1px solid rgba(0, 0, 0, 66%)
       background-color $codeBgColor
 
-
 for lang in $codeLang
-  div{'[class~="language-' + lang + '"]'}
+  div[class*="language-"].ext-{lang}
     &:before
       content ('' + lang)
-
-div[class~="language-javascript"]
-  &:before
-    content "js"
-
-div[class~="language-typescript"]
-  &:before
-    content "ts"
-
-div[class~="language-markup"]
-  &:before
-    content "html"
-
-div[class~="language-markdown"]
-  &:before
-    content "md"
-
-div[class~="language-json"]:before
-  content "json"
-
-div[class~="language-ruby"]:before
-  content "rb"
-
-div[class~="language-python"]:before
-  content "py"
-
-div[class~="language-bash"]:before
-  content "sh"
-
-div[class~="language-php"]:before
-  content "php"
-
-@import '~prismjs/themes/prism-tomorrow.css'
