@@ -6,6 +6,7 @@ export {
   isString,
 } from '@vue/shared'
 
+export * from './dedupeHead'
 export * from './ensureLeadingSlash'
 export * from './ensureEndingSlash'
 export * from './formatDateString'
@@ -17,5 +18,6 @@ export * from './isLinkTel'
 export * from './normalizePackageName'
 export * from './removeEndingSlash'
 export * from './removeLeadingSlash'
+export * from './resolveHeadIdentifier'
 export * from './resolveLocaleData'
 export * from './resolveLocalePath'
