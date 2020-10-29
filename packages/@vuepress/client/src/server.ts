@@ -1,12 +1,15 @@
 import { createSSRApp } from 'vue'
 import { createMemoryHistory } from 'vue-router'
-import { createVueApp } from './createVueApp'
-import type { CreateVueAppResult } from './createVueApp'
+import { createVueApp } from './app'
+import type { CreateVueAppResult } from './app'
 
-export interface CreateServerAppEntry {
+export interface ServerEntry {
   createServerApp: () => Promise<CreateVueAppResult>
 }
 
+/**
+ * Server entry point, used for SSR
+ */
 export const createServerApp = async (): Promise<CreateVueAppResult> =>
   createVueApp({
     appCreator: createSSRApp,

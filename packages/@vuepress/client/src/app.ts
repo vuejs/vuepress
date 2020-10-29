@@ -2,16 +2,27 @@ import { computed, h } from 'vue'
 import type { CreateAppFunction, App, ComponentOptions } from 'vue'
 import { createRouter, RouterView } from 'vue-router'
 import type { Router, RouterHistory } from 'vue-router'
-import { removeEndingSlash, resolveSiteLocaleData } from '@vuepress/shared'
+import { removeEndingSlash } from '@vuepress/shared'
 import { clientAppEnhances } from '@internal/clientAppEnhances'
 import { clientAppSetups } from '@internal/clientAppSetups'
 import { pagesComponent } from '@internal/pagesComponent'
 import { routes } from '@internal/routes'
 import {
   pagesData,
-  pageDataSymbol,
   siteData,
+  pageFrontmatterSymbol,
+  resolvePageFrontmatter,
+  pageHeadSymbol,
+  resolvePageHead,
+  pageHeadTitleSymbol,
+  resolvePageHeadTitle,
+  pageLangSymbol,
+  resolvePageLang,
+  pageDataSymbol,
+  resolvePageData,
   siteLocaleDataSymbol,
+  resolveSiteLocaleData,
+  useUpdateHead,
 } from './injections'
 import { Content, Debug, OutboundLink } from './components'
 
@@ -22,6 +33,12 @@ export type CreateVueAppResult = {
   router: Router
 }
 
+/**
+ * Create a vue app
+ *
+ * Accepting different app creator and history creator, so it
+ * can be reused for both client side and server side
+ */
 export const createVueApp = async ({
   appCreator,
   historyCreator,
@@ -32,6 +49,9 @@ export const createVueApp = async ({
   // options to create vue app
   const appOptions: ComponentOptions = {
     setup() {
+      // auto update head
+      useUpdateHead()
+
       // invoke all clientAppSetups
       for (const clientAppSetup of clientAppSetups) {
         clientAppSetup()
@@ -67,30 +87,38 @@ export const createVueApp = async ({
     },
   })
 
-  // resolve site locale data
-  const siteLocaleData = computed(() =>
-    resolveSiteLocaleData(siteData.value, router.currentRoute.value.path)
-  )
-
-  // resolve page data
-  const pageData = computed(
-    () =>
-      pagesData.value[router.currentRoute.value.path] ?? {
-        key: '',
-        path: '',
-        title: '',
-        frontmatter: {},
-        excerpt: '',
-        headers: [],
-      }
-  )
-
   // use vue-router
   app.use(router)
 
-  // provide data
+  // create global computed
+  const siteLocaleData = computed(() =>
+    resolveSiteLocaleData(siteData.value, router.currentRoute.value.path)
+  )
+  const pageData = computed(() =>
+    resolvePageData(pagesData.value, router.currentRoute.value.path)
+  )
+  const pageFrontmatter = computed(() => resolvePageFrontmatter(pageData.value))
+  const pageHeadTitle = computed(() =>
+    resolvePageHeadTitle(pageData.value, siteLocaleData.value)
+  )
+  const pageHead = computed(() =>
+    resolvePageHead(
+      pageHeadTitle.value,
+      pageFrontmatter.value,
+      siteLocaleData.value
+    )
+  )
+  const pageLang = computed(() =>
+    resolvePageLang(pageFrontmatter.value, siteLocaleData.value)
+  )
+
+  // provide global computed
   app.provide(siteLocaleDataSymbol, siteLocaleData)
   app.provide(pageDataSymbol, pageData)
+  app.provide(pageFrontmatterSymbol, pageFrontmatter)
+  app.provide(pageHeadTitleSymbol, pageHeadTitle)
+  app.provide(pageHeadSymbol, pageHead)
+  app.provide(pageLangSymbol, pageLang)
 
   Object.defineProperties(app.config.globalProperties, {
     $site: {
@@ -120,7 +148,17 @@ export const createVueApp = async ({
     },
     $frontmatter: {
       get() {
-        return pageData.value.frontmatter
+        return pageFrontmatter.value
+      },
+    },
+    $lang: {
+      get() {
+        return pageLang.value
+      },
+    },
+    $headTitle: {
+      get() {
+        return pageHeadTitle.value
       },
     },
   })

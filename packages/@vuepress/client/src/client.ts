@@ -1,7 +1,10 @@
 import { createApp } from 'vue'
 import { createWebHistory } from 'vue-router'
-import { createVueApp } from './createVueApp'
+import { createVueApp } from './app'
 
+/**
+ * Client entry point
+ */
 createVueApp({
   appCreator: createApp,
   historyCreator: createWebHistory,
