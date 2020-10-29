@@ -10,7 +10,7 @@
     "noEmitOnError": true,
     "noImplicitAny": false,
     "resolveJsonModule": true,
-    "skipLibCheck": true, // TODO: temporally enable for webpack 5
+    "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
     "strictNullChecks": true,
