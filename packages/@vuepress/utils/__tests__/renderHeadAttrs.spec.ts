@@ -1,7 +1,7 @@
 import { renderHeadAttrs } from '@vuepress/utils'
-import type { SiteHeadAttrsConfig } from '@vuepress/shared'
+import type { HeadAttrsConfig } from '@vuepress/shared'
 
-const testCases: [SiteHeadAttrsConfig, string][] = [
+const testCases: [HeadAttrsConfig, string][] = [
   [
     {
       foo: 'foo',
