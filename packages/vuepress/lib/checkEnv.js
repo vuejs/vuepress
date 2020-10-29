@@ -7,7 +7,7 @@
 const { chalk, semver } = require('@vuepress/shared-utils')
 
 /**
- * Expose handleUnknownCommand function.
+ * Check if Node version meets VuePress requirement.
  */
 
 module.exports = function checkEnv (pkg) {

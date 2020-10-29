@@ -54,8 +54,12 @@ module.exports = [
         ]
       },
       {
-        text: 'Miscellaneous',
+        text: 'Resources',
         items: [
+          {
+            text: '0.x Docs',
+            link: 'https://v0.vuepress.vuejs.org/'
+          },
           {
             text: 'Migrate from 0.x',
             link: '/miscellaneous/migration-guide.html'
@@ -67,9 +71,5 @@ module.exports = [
         ]
       }
     ]
-  },
-  {
-    text: '0.x',
-    link: 'https://v0.vuepress.vuejs.org/'
   }
 ]

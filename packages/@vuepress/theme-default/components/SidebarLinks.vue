@@ -37,12 +37,13 @@ export default {
   props: [
     'items',
     'depth',  // depth of current sidebar links
-    'sidebarDepth' // depth of headers to be extracted
+    'sidebarDepth', // depth of headers to be extracted
+    'initialOpenGroupIndex'
   ],
 
   data () {
     return {
-      openGroupIndex: 0
+      openGroupIndex: this.initialOpenGroupIndex || 0
     }
   },
 

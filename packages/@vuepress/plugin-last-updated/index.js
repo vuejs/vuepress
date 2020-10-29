@@ -3,20 +3,20 @@ const spawn = require('cross-spawn')
 
 module.exports = (options = {}, context) => ({
   extendPageData ($page) {
-    const { transformer } = options
+    const { transformer, dateOptions } = options
     const timestamp = getGitLastUpdatedTimeStamp($page._filePath)
     const $lang = $page._computed.$lang
     if (timestamp) {
       const lastUpdated = typeof transformer === 'function'
         ? transformer(timestamp, $lang)
-        : defaultTransformer(timestamp, $lang)
+        : defaultTransformer(timestamp, $lang, dateOptions)
       $page.lastUpdated = lastUpdated
     }
   }
 })
 
-function defaultTransformer (timestamp, lang) {
-  return new Date(timestamp).toLocaleString(lang)
+function defaultTransformer (timestamp, lang, dateOptions) {
+  return new Date(timestamp).toLocaleString(lang, dateOptions)
 }
 
 function getGitLastUpdatedTimeStamp (filePath) {

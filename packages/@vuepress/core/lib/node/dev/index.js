@@ -175,7 +175,7 @@ module.exports = class DevProcess extends EventEmitter {
         port: this.port,
         displayHost: this.displayHost,
         publicPath: this.context.base,
-        clearScreen: this.context.options.clearScreen
+        clearScreen: !(this.context.options.debug || !this.context.options.clearScreen)
       }])
 
     config = config.toConfig()
@@ -207,8 +207,12 @@ module.exports = class DevProcess extends EventEmitter {
       publicPath: this.context.base,
       watchOptions: {
         ignored: [
-          /node_modules/,
-          `!${this.context.tempPath}/**`
+          (x) => {
+            if (x.includes(this.context.tempPath)) {
+              return false
+            }
+            return /node_modules/.test(x)
+          }
         ]
       },
       historyApiFallback: {

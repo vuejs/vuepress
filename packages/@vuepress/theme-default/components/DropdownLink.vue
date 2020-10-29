@@ -7,6 +7,17 @@
       class="dropdown-title"
       type="button"
       :aria-label="dropdownAriaLabel"
+      @click="handleDropdown"
+    >
+      <span class="title">{{ item.text }}</span>
+      <span
+        class="arrow down"
+      />
+    </button>
+    <button
+      class="mobile-dropdown-title"
+      type="button"
+      :aria-label="dropdownAriaLabel"
       @click="setOpen(!open)"
     >
       <span class="title">{{ item.text }}</span>
@@ -105,6 +116,17 @@ export default {
 
     isLastItemOfArray (item, array) {
       return last(array) === item
+    },
+
+    /**
+     * Open the dropdown when user tab and click from keyboard.
+     *
+     * Use event.detail to detect tab and click from keyboard. Ref: https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/detail
+     * The Tab + Click is UIEvent > KeyboardEvent, so the detail is 0.
+     */
+    handleDropdown () {
+      const isTriggerByTab = event.detail === 0
+      if (isTriggerByTab) this.setOpen(!this.open)
     }
   }
 }
@@ -130,6 +152,13 @@ export default {
       vertical-align middle
       margin-top -1px
       margin-left 0.4rem
+  .mobile-dropdown-title
+    @extends .dropdown-title
+    display none
+    font-weight 600
+    font-size inherit
+      &:hover
+        color $accentColor
   .nav-dropdown
     .dropdown-item
       color inherit
@@ -137,7 +166,7 @@ export default {
       h4
         margin 0.45rem 0 0
         border-top 1px solid #eee
-        padding 0.45rem 1.5rem 0 1.25rem
+        padding 1rem 1.5rem 0.45rem 1.25rem
       .dropdown-subitem-wrapper
         padding 0
         list-style none
@@ -175,10 +204,9 @@ export default {
     &.open .dropdown-title
       margin-bottom 0.5rem
     .dropdown-title
-      font-weight 600
-      font-size inherit
-      &:hover
-        color $accentColor
+      display: none
+    .mobile-dropdown-title
+      display: block
     .nav-dropdown
       transition height .1s ease-out
       overflow hidden
@@ -203,12 +231,6 @@ export default {
       display block !important
     &.open:blur
       display none
-    .dropdown-title .arrow
-      // make the arrow always down at desktop
-      border-left 4px solid transparent
-      border-right 4px solid transparent
-      border-top 6px solid $arrowBgColor
-      border-bottom 0
     .nav-dropdown
       display none
       // Avoid height shaked by clicking

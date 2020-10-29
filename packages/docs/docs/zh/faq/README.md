@@ -54,7 +54,7 @@ module.exports = (options, ctx) => ({
 **比如：**
 
 - [@vuepress/plugin-register-components](https://github.com/vuejs/vuepress/tree/master/packages/@vuepress/plugin-register-components/index.js#L24)：在客户端自动注册组件
-- [@vuepress/plugin-pagination](https://github.com/vuejs/vuepress/blob/master/packages/@vuepress/plugin-pagination/index.js#L14)：自动注入 Vue 插件来拓展客户端 API
+- [@vuepress/plugin-google-analytics](https://github.com/vuejs/vuepress/blob/master/packages/@vuepress/plugin-google-analytics/enhanceAppFile.js)：自动配置 Google Analytics
 
 ## 什么时候需要使用 `clientDynamicModules`?
 
@@ -63,5 +63,5 @@ module.exports = (options, ctx) => ({
 
 **比如：**
 
-- [@vuepress/plugin-blog](https://github.com/ulivz/vuepress-plugin-blog/blob/master/src/index.ts#L167)：使用编译期元数据生成一些博客相关的动态模块并通过 `enhanceAppFiles` 将他们在客户端初始化
+- [@vuepress/plugin-blog](https://github.com/vuepressjs/vuepress-plugin-blog/blob/master/src/node/index.ts#L208)：使用编译期元数据生成一些博客相关的动态模块并通过 `enhanceAppFiles` 将他们在客户端初始化
 

@@ -171,6 +171,7 @@ function getThemeSidebar (groupA, introductionA) {
         'writing-a-theme',
         'option-api',
         'default-theme-config',
+        'blog-theme',
         'inheritance'
       ]
     }

@@ -270,6 +270,46 @@ export default {
 }
 ```
 
+除了单行以外，你也可指定多行，行数区间，或是两者都指定。
+
+- 行数区间: 例如 `{5-8}`, `{3-10}`, `{10-17}`
+- 多个单行: 例如 `{4,7,9}`
+- 行数区间与多个单行: 例如 `{4,7-13,16,23-27,40}`
+
+**Input**
+
+````
+``` js{1,4,6-7}
+export default { // Highlighted
+  data () {
+    return {
+      msg: `Highlighted!
+      This line isn't highlighted,
+      but this and the next 2 are.`,
+      motd: 'VuePress is awesome',
+      lorem: 'ipsum',
+    }
+  }
+}
+```
+````
+
+**Output**
+
+``` js{1,4,6-8}
+export default { // Highlighted
+  data () {
+    return {
+      msg: `Highlighted!
+      This line isn't highlighted,
+      but this and the next 2 are.`,
+      motd: 'VuePress is awesome',
+      lorem: 'ipsum',
+    }
+  }
+}
+```
+
 ## 行号
 
 你可以通过配置来为每个代码块显示行号：
@@ -314,7 +354,7 @@ module.exports = {
   }
 </style>
 
-## 导入代码段 <Badge text="beta" type="warn"/>
+## 导入代码段 <Badge text="beta" type="warning"/>
 
 你可以通过下述的语法导入已经存在的文件中的代码段：
 
@@ -345,6 +385,31 @@ module.exports = {
 ::: tip 注意
 由于代码段的导入将在 webpack 编译之前执行，因此你无法使用 webpack 中的路径别名，此处的 `@` 默认值是 `process.cwd()`。
 :::
+
+
+为了只导入对应部分的代码，你也可运用 [VS Code region](https://code.visualstudio.com/docs/editor/codebasics#_folding)。你可以在文件路径后方的 `#` 紧接着提供一个自定义的区域名称（预设为 `snippet` ）
+
+**输入**
+
+``` md
+<<< @/../@vuepress/markdown/__tests__/fragments/snippet-with-region.js#snippet{1}
+```
+
+**代码文件**
+
+<!--lint disable strong-marker-->
+
+<<< @/../@vuepress/markdown/__tests__/fragments/snippet-with-region.js
+
+<!--lint enable strong-marker-->
+
+**输出**
+
+<!--lint disable strong-marker-->
+
+<<< @/../@vuepress/markdown/__tests__/fragments/snippet-with-region.js#snippet{1}
+
+<!--lint enable strong-marker-->
 
 ## 进阶配置
 

@@ -14,6 +14,31 @@
 }
 ```
 
+## 云开发 CloudBase
+
+[云开发 CloudBase](https://cloudbase.net/?site=vuepress) 是一个云原生一体化的 Serverless 云平台，支持静态网站、容器等多种托管能力，并提供简便的部署工具 [CloudBase Framework](https://cloudbase.net/framework.html?site=vuepress) 来一键部署应用。
+
+1. 全局安装 CloudBase  CLI
+
+```
+npm install -g @cloudbase/cli
+```
+
+2. 在项目根目录运行以下命令一键部署 VuePress 应用，在部署之前可以先 [开通环境](https://console.cloud.tencent.com/tcb/env/index?tdl_anchor=ad&tdl_site=vuejs)：
+
+```
+cloudbase init --without-template
+cloudbase framework:deploy
+```
+
+   CloudBase CLI 首先会跳转到控制台进行登录授权，然后将会交互式进行确认
+
+   确认信息后会立即进行部署，部署完成后，可以获得一个自动 SSL，CDN 加速的网站应用，你也可以搭配使用 Github Action 来持续部署 Github 上的 VuePress 应用。
+
+   也可以使用 `cloudbase init --template vuepress` 快速创建和部署一个新的 VuePress 应用
+
+   更多详细信息请查看 CloudBase Framework 的[部署项目示例](https://github.com/TencentCloudBase/cloudbase-framework?site=vuepress#%E9%A1%B9%E7%9B%AE%E7%A4%BA%E4%BE%8B)
+
 ## GitHub Pages
 
 1. 在 `docs/.vuepress/config.js` 中设置正确的 `base`。
@@ -119,7 +144,7 @@ pages:
 
 1. 在 Netlify 中, 创建一个新的 GitHub 项目，使用以下设置：
 
-- **Build Command:** `yarn build:docs` 或者 `npm run build:docs`
+- **Build Command:** `yarn docs:build` 或者 `npm run docs:build`
 - **Publish directory:** `docs/.vuepress/dist`
 
 2. 点击 deploy 按钮！
@@ -210,6 +235,10 @@ git push heroku master
 heroku open
 ```
 
-## Now
+## Vercel
 
-请查看 [用 Now 部署一个 VuePress 的示例站点](https://zeit.co/examples/vuepress/).
+请查看 [用 Vercel 创建和部署一个 VuePress 应用](https://vercel.com/guides/deploying-vuepress-to-vercel)。
+
+## 21 云盒子
+
+请查看 [21 云盒子 - 部署一个 VuePress 静态网页](https://www.21yunbox.com/docs/#/deploy-vuepress)。
