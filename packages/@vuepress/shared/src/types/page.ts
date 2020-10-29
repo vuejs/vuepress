@@ -1,3 +1,5 @@
+import type { HeadConfig } from './head'
+
 /**
  * Vuepress page data
  */
@@ -46,8 +48,23 @@ export interface PageData {
 
 /**
  * Vuepress page frontmatter
+ *
+ * Notice that frontmatter is parse from yaml or other languages,
+ * so we cannot guarantee the type safety
  */
-export type PageFrontmatter = Record<string, unknown>
+export interface PageFrontmatter {
+  layout?: string | unknown
+  permalink?: string | unknown
+  permalinkPattern?: string
+  date?: string | Date | unknown
+
+  lang?: string | unknown
+  title?: string | unknown
+  description?: string | unknown
+  head?: HeadConfig[] | unknown
+
+  [key: string]: unknown
+}
 
 /**
  * Vuepress page header

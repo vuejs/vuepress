@@ -1,10 +1,31 @@
+import type { HeadConfig } from './head'
+import type { LocaleConfig, LocaleData } from './locale'
+
 /**
  * Vuepress site data
  */
-export interface SiteData<T extends SiteThemeConfig = SiteThemeConfig> {
+export interface SiteData<T extends SiteThemeConfig = SiteThemeConfig>
+  extends SiteLocaleData {
   // site base
   base: string
 
+  // locale config
+  locales: SiteLocaleConfig
+
+  // theme config
+  themeConfig: Partial<T>
+}
+
+/**
+ * Locales data of vuepress site
+ *
+ * If they are set in the root of site data, they will be used
+ * as the default value
+ *
+ * If they are set in the `locales` of site data, they will be
+ * used for specific locale
+ */
+export interface SiteLocaleData extends LocaleData {
   // site language
   lang: string
 
@@ -15,13 +36,7 @@ export interface SiteData<T extends SiteThemeConfig = SiteThemeConfig> {
   description: string
 
   // tags in site <head>
-  head: SiteHeadConfig[]
-
-  // locale config
-  locales: SiteLocaleConfig
-
-  // theme config
-  themeConfig: Partial<T>
+  head: HeadConfig[]
 }
 
 /**
@@ -41,69 +56,16 @@ export interface SiteData<T extends SiteThemeConfig = SiteThemeConfig> {
  *
  * @remark suffix `Config` means this is for user config
  */
-export type SiteLocaleConfig = LocaleConfig<{
-  lang?: string
-  title?: string
-  description?: string
-}>
-
-/**
- * Site head config
- *
- * @example ['link', { rel: 'icon', href: '/logo.png' }]
- * @example ['style', { type: 'text/css' }, 'p { color: red; }']
- *
- * @remark suffix `Config` means this is for user config
- */
-export type SiteHeadConfig =
-  | [
-      Extract<SiteHeadTagConfig, 'base' | 'link' | 'meta' | 'script'>,
-      SiteHeadAttrsConfig
-    ]
-  | [
-      Exclude<SiteHeadTagConfig, 'base' | 'link' | 'meta'>,
-      SiteHeadAttrsConfig,
-      string
-    ]
-
-/**
- * Site head tag config
- *
- * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head
- *
- * @remark suffix `Config` means this is for user config
- */
-export type SiteHeadTagConfig =
-  | 'title'
-  | 'base'
-  | 'link'
-  | 'style'
-  | 'meta'
-  | 'script'
-  | 'noscript'
-  | 'template'
-
-/**
- * Site head attrs config
- *
- * @remark suffix `Config` means this is for user config
- */
-export type SiteHeadAttrsConfig = Record<string, string | boolean>
+export type SiteLocaleConfig = LocaleConfig<SiteLocaleData>
 
 /**
  * Site theme config
  *
  * @remark suffix `Config` means this is for user config
  */
-export interface SiteThemeConfig {
-  locales?: LocaleConfig
+export type SiteThemeConfig<
+  ThemeLocaleData extends LocaleData = LocaleData
+> = ThemeLocaleData & {
+  locales?: LocaleConfig<ThemeLocaleData>
   [key: string]: any
 }
-
-export type LocaleConfig<
-  T extends Record<string, any> = Record<string, any>
-> = Record<string, LocaleConfigItem<T>>
-
-export type LocaleConfigItem<
-  T extends Record<string, any> = Record<string, any>
-> = Record<string, any> & T

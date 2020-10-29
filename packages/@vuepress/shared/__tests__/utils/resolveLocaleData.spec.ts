@@ -1,5 +1,5 @@
-import { resolveLocaleConfigItem } from '@vuepress/shared'
-import type { LocaleConfig, LocaleConfigItem } from '@vuepress/shared'
+import { resolveLocaleData } from '@vuepress/shared'
+import type { LocaleConfig, LocaleData } from '@vuepress/shared'
 
 const locales: LocaleConfig<{ lang: string }> = {
   '/': {
@@ -16,7 +16,7 @@ const locales: LocaleConfig<{ lang: string }> = {
   },
 }
 
-const testCases: [string, LocaleConfigItem][] = [
+const testCases: [string, LocaleData][] = [
   ['/', locales['/']],
   ['/foo/', locales['/foo/']],
   ['/foo/foo/', locales['/foo/']],
@@ -30,7 +30,7 @@ describe('shared > resolveLocaleConfigItem', () => {
   describe('should resolve locale config item correctly', () => {
     testCases.forEach(([routePath, expected]) => {
       it(routePath, () => {
-        expect(resolveLocaleConfigItem(locales, routePath)).toEqual(expected)
+        expect(resolveLocaleData(locales, routePath)).toEqual(expected)
       })
     })
   })
