@@ -78,15 +78,53 @@ Temporarily record some breaking changes here.
 
 #### Core
 
-- Permalink patterns
-  - `:i_month` -> removed
-  - `:i_day` -> removed
-  - `:minutes` -> removed (undocumented in 1.0)
-  - `:seconds` -> removed (undocumented in 1.0)
-  - `:regular` -> `:raw`
-- Palette system
-  - The palette system of Vuepress 1.0 (i.e. `palette.styl` and `index.styl`) will only works in default theme
-  - Custom theme authors can use their own way for users to configure styles (not be limited with stylus)
+##### Permalink patterns
+
+- `:i_month` -> removed
+- `:i_day` -> removed
+- `:minutes` -> removed (undocumented in 1.0)
+- `:seconds` -> removed (undocumented in 1.0)
+- `:regular` -> `:raw`
+
+##### Palette system
+
+The palette system of Vuepress 1.0 (i.e. `palette.styl` and `index.styl`) will only works in default theme
+
+Custom theme authors can use their own way for users to configure styles (not be limited with stylus)
+
+##### Default frontmatter
+
+- `meta` -> `head`, which uses the same type with `siteConfig.head`
+
+  For example:
+  
+  ```yaml
+  head:
+    - - meta
+      - name: foo
+        content: bar
+    - - link
+      - rel: canonical
+        href: foobar
+    - - script
+      - {}
+      - console.log('hello from frontmatter');
+  ```
+
+  Has the same structure with:
+
+  ```js
+  // .vuepress/config.js
+  module.exports = {
+    // ...
+    head: [
+      ['meta', { name: 'foo', content: 'bar' }],
+      ['link', { rel: 'canonical', href: 'foobar' }],
+      ['script', {}, `console.log('hello from frontmatter');`],
+    ],
+    // ...
+  }
+  ```
 
 ##### Plugin API
 
