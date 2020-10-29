@@ -1,4 +1,4 @@
-import type { SiteThemeConfig } from '@vuepress/shared'
+import type { LocaleData, SiteThemeConfig } from '@vuepress/shared'
 import type { Plugin, PluginFunction, PluginObject } from './plugin'
 
 /**
@@ -42,4 +42,6 @@ export interface ThemeObject extends PluginObject {
  *
  * @remark suffix `Config` means this is for user config
  */
-export type ThemeConfig = SiteThemeConfig
+export type ThemeConfig<
+  ThemeLocaleData extends LocaleData = LocaleData
+> = SiteThemeConfig<ThemeLocaleData>

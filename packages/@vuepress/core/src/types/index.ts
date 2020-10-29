@@ -1,27 +1,33 @@
 import type {
+  HeadConfig,
+  HeadTag,
+  HeadTagEmpty,
+  HeadTagNonEmpty,
+  HeadAttrsConfig,
   LocaleConfig,
-  LocaleConfigItem,
+  LocaleData,
   PageData,
   PageFrontmatter,
   PageHeader,
   SiteData,
   SiteLocaleConfig,
-  SiteHeadConfig,
-  SiteHeadTagConfig,
-  SiteHeadAttrsConfig,
+  SiteThemeConfig,
 } from '@vuepress/shared'
 
 export type {
+  HeadConfig,
+  HeadTag,
+  HeadTagEmpty,
+  HeadTagNonEmpty,
+  HeadAttrsConfig,
   LocaleConfig,
-  LocaleConfigItem,
+  LocaleData,
   PageData,
   PageFrontmatter,
   PageHeader,
   SiteData,
   SiteLocaleConfig,
-  SiteHeadConfig,
-  SiteHeadTagConfig,
-  SiteHeadAttrsConfig,
+  SiteThemeConfig,
 }
 
 export * from './app'

@@ -1,5 +1,5 @@
 import type { MarkdownOptions } from '@vuepress/markdown'
-import type { SiteHeadConfig, SiteLocaleConfig } from '@vuepress/shared'
+import type { HeadConfig, SiteLocaleConfig } from '@vuepress/shared'
 import type { PluginConfig } from '../plugin'
 import type { ThemeConfig } from '../theme'
 
@@ -12,7 +12,7 @@ export interface AppOptions<T extends ThemeConfig = ThemeConfig> {
   lang: string
   title: string
   description: string
-  head: SiteHeadConfig[]
+  head: HeadConfig[]
   locales: SiteLocaleConfig
 
   // theme options
