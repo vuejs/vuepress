@@ -38,11 +38,10 @@ Features in the following list are not fully determined, and might be changed or
 
 - [ ] @vuepress/markdown
 
+  - [x] codePlugin
   - [x] customComponentPlugin
-  - [ ] highlightPlugin
   - [ ] highlightLinesPlugin
   - [x] hoistTagsPlugin
-  - [ ] lineNumbersPlugin
   - [x] linksPlugin
   - [ ] snippetsPlugin
 
