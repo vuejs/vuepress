@@ -16,9 +16,15 @@ module.exports = {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.json',
     },
+    '__VERSION__': '',
+    '__DEV__': false,
+    '__SSR__': false,
   },
   moduleNameMapper: {
     [`^@vuepress/(${packages.join('|')})$`]: `<rootDir>/${packagesDir}/$1/src`,
+    '^@internal/(.*)$': `<rootDir>/packages/@vuepress/client/__tests__/__fixtures__/$1`,
+    '.+\\.(css|styl|less|sass|scss)$':
+      '<rootDir>/packages/@vuepress/client/__tests__/__fixtures__/styleMock',
   },
   testMatch: ['<rootDir>/packages/**/__tests__/**/*.spec.ts'],
   testPathIgnorePatterns: ['/node_modules/', '/__fixtures__/'],
@@ -27,8 +33,7 @@ module.exports = {
   // coverage config
   collectCoverageFrom: [
     '<rootDir>/packages/**/src/**/*.ts',
-    // TODO: map temp files in client unit tests
-    '!<rootDir>/packages/@vuepress/client/**/*',
+    '!<rootDir>/packages/@vuepress/theme-default/**/*',
     '!**/*.d.ts',
   ],
   coverageDirectory: 'coverage',
