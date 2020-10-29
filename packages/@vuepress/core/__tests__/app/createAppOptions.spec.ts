@@ -32,6 +32,7 @@ describe('core > app > createAppOptions', () => {
       ),
       shouldPreload: null,
       shouldPrefetch: null,
+      pagePatterns: ['**/*.md', '!.vuepress', '!node_modules'],
     })
   })
 })

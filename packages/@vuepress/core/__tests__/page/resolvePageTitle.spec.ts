@@ -6,7 +6,7 @@ describe('core > page > resolvePageTitle', () => {
       frontmatter: {
         title: 'title in frontmatter',
       },
-      contentRaw: '',
+      headers: [],
     })
 
     expect(resolved).toBe('title in frontmatter')
@@ -15,14 +15,21 @@ describe('core > page > resolvePageTitle', () => {
   it('should return h1 title in content', () => {
     const resolved = resolvePageTitle({
       frontmatter: {},
-      contentRaw: '# title in content',
+      headers: [
+        {
+          level: 1,
+          title: 'title in header',
+          slug: '',
+          children: [],
+        },
+      ],
     })
 
-    expect(resolved).toBe('title in content')
+    expect(resolved).toBe('title in header')
   })
 
   it('should return empty string', () => {
-    const resolved = resolvePageTitle({ frontmatter: {}, contentRaw: '' })
+    const resolved = resolvePageTitle({ frontmatter: {}, headers: [] })
 
     expect(resolved).toBe('')
   })
