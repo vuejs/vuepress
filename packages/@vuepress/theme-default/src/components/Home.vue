@@ -26,9 +26,9 @@
         v-if="$frontmatter.actionText && $frontmatter.actionLink"
         class="action"
       >
-        <RouterLink class="action-button" :to="$frontmatter.actionLink">
+        <NavLink class="action-button" :link="$frontmatter.actionLink">
           {{ $frontmatter.actionText }}
-        </RouterLink>
+        </NavLink>
       </p>
     </header>
 
@@ -58,9 +58,13 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import NavLink from './NavLink.vue'
 
 export default defineComponent({
   name: 'Home',
+  components: {
+    NavLink,
+  },
 })
 </script>
 
