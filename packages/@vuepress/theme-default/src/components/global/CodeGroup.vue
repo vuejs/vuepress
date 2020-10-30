@@ -9,11 +9,6 @@ export default defineComponent({
     // index of current active item
     const activeIndex = ref(-1)
 
-    // method to change current active item
-    const changeActiveIndex = (i: number): void => {
-      activeIndex.value = i
-    }
-
     return () => {
       // NOTICE: here we put the `slots.default()` inside the render function to make
       // the slots reactive, otherwise the slot content won't be changed once the
@@ -48,7 +43,7 @@ export default defineComponent({
 
         // if there is no `active` props on code-group-item, set the first item active
         if (activeIndex.value === -1) {
-          changeActiveIndex(0)
+          activeIndex.value = 0
         }
       } else {
         // re-render triggered by modifying `activeIndex` ref
@@ -78,7 +73,7 @@ export default defineComponent({
                         ? ' code-group__nav-tab-active'
                         : ''
                     }`,
-                    onClick: () => changeActiveIndex(i),
+                    onClick: () => (activeIndex.value = i),
                   },
                   vnode.props.title
                 )
