@@ -3,6 +3,7 @@ import type * as Config from 'webpack-chain'
 import type * as WebpackDevServer from 'webpack-dev-server'
 import type { Markdown } from '@vuepress/markdown'
 import type { App } from '../app'
+import type { Page } from '../page'
 
 // util type
 type PromiseOrNot<T> = Promise<T> | T
@@ -40,6 +41,11 @@ export type ReturnObjectHook = Hook<
 // markdown hook
 export type ExtendsMarkdownHook = Hook<(md: Markdown) => void>
 
+// page hook
+export type ExtendsPageDataHook = Hook<
+  (page: Page) => PromiseOrNot<Record<string, unknown>>
+>
+
 // TODO: decouple with webpack
 // webpack hooks
 export type ChainWebpackHook = Hook<
@@ -61,6 +67,7 @@ export interface Hooks {
   onUpdated: LifeCycleHook
   onGenerated: LifeCycleHook
   extendsMarkdown: ExtendsMarkdownHook
+  extendsPageData: ExtendsPageDataHook
   clientAppSetupFiles: ClientFilesHook
   clientAppEnhanceFiles: ClientFilesHook
   alias: ReturnObjectHook
@@ -69,7 +76,6 @@ export interface Hooks {
   beforeDevServer: BeforeDevServerHook
   afterDevServer: AfterDevServerHook
 
-  // TODO: extendPageData -> extendsPageData
   // TODO: extendCli -> extendsCli
   // TODO: globalUIComponents
   // TODO: configureWebpack

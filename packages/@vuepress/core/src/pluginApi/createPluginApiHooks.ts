@@ -8,6 +8,9 @@ export const createPluginApiHooks = (): PluginApi['hooks'] => ({
   onUpdated: createHookQueue('onUpdated'),
   onGenerated: createHookQueue('onGenerated'),
 
+  // page hooks
+  extendsPageData: createHookQueue('extendsPageData'),
+
   // markdown hooks
   extendsMarkdown: createHookQueue('extendsMarkdown'),
 
