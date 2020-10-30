@@ -29,7 +29,7 @@ Features in the following list are not fully determined, and might be changed or
   - [x] Plugin API
     - [x] clientAppEnhanceFiles
     - [x] clientAppSetupFiles
-    - [ ] extendsPageData
+    - [x] extendsPageData
     - [ ] extendsCli
     - [ ] globalUIComponents
     - [ ] configureWebpack
@@ -135,6 +135,7 @@ Custom theme authors can use their own way for users to configure styles (not be
 - `enhanceAppFiles` -> `clientAppEnhanceFiles`
 - `clientRootMixin` -> `clientAppSetupFiles`
 - `extendMarkdown` -> `extendsMarkdown`
+- `extendPageData` -> `extendsPageData`
 
 ##### Theme API
 
