@@ -3,5 +3,5 @@
 // Input: "<a> b",   Output: "b"
 // Input: "`<a>` b", Output: "`<a>` b"
 export = function removeNonCodeWrappedHTML (str: string): string {
-  return String(str).replace(/(^|[^><`])<.*>([^><`]|$)/g, '$1$2')
+  return String(str).replace(/(^|[^><`\\])<.*>([^><`]|$)/g, '$1$2')
 }
