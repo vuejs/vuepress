@@ -11,13 +11,19 @@
       />
 
       <h1 v-if="$frontmatter.heroText !== null" id="main-title">
-        {{ $frontmatter.heroText || $frontmatter.title || 'Hello' }}
+        {{
+          $frontmatter.heroText ||
+          $frontmatter.title ||
+          $siteLocale.title ||
+          'Hello'
+        }}
       </h1>
 
       <p v-if="$frontmatter.tagline !== null" class="description">
         {{
           $frontmatter.tagline ||
           $frontmatter.description ||
+          $siteLocale.description ||
           'Welcome to your VuePress site'
         }}
       </p>
