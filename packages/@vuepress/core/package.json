@@ -18,6 +18,12 @@
   },
   "license": "MIT",
   "author": "Evan You",
+  "maintainers": [
+    {
+      "name": "ULIVZ",
+      "email": "chl814@foxmail.com"
+    }
+  ],
   "main": "lib/index.js",
   "browserslist": [
     ">1%"
@@ -30,25 +36,26 @@
     "@vuepress/plugin-last-updated": "1.7.1",
     "@vuepress/plugin-register-components": "1.7.1",
     "@vuepress/shared-utils": "1.7.1",
-    "autoprefixer": "^9.5.1",
+    "autoprefixer": "^10.0.1",
     "babel-loader": "^8.0.4",
-    "cache-loader": "^3.0.0",
-    "chokidar": "^2.0.3",
+    "cache-loader": "^4.1.0",
+    "chokidar": "^3.4.3",
     "connect-history-api-fallback": "^1.5.0",
-    "copy-webpack-plugin": "^5.0.2",
+    "copy-webpack-plugin": "^6.2.1",
     "core-js": "^3.6.4",
-    "cross-spawn": "^6.0.5",
-    "css-loader": "^2.1.1",
-    "file-loader": "^3.0.1",
+    "cross-spawn": "^7.0.3",
+    "css-loader": "^5.0.0",
+    "file-loader": "^6.2.0",
     "js-yaml": "^3.13.1",
-    "lru-cache": "^5.1.1",
-    "mini-css-extract-plugin": "0.6.0",
+    "lru-cache": "^6.0.0",
+    "mini-css-extract-plugin": "1.2.1",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "portfinder": "^1.0.13",
-    "postcss-loader": "^3.0.0",
-    "postcss-safe-parser": "^4.0.1",
+    "postcss": "^8.1.4",
+    "postcss-loader": "^4.0.4",
+    "postcss-safe-parser": "^5.0.2",
     "toml": "^3.0.0",
-    "url-loader": "^1.0.1",
+    "url-loader": "^4.1.1",
     "vue": "^2.6.10",
     "vue-loader": "^15.7.1",
     "vue-router": "^3.4.5",
@@ -60,18 +67,12 @@
     "webpack-chain": "^6.0.0",
     "webpack-dev-server": "^3.5.1",
     "webpack-merge": "^4.1.2",
-    "webpackbar": "3.2.0"
+    "webpackbar": "4.0.0"
   },
   "engines": {
-    "node": ">=8.6"
+    "node": ">=10.13.0"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "maintainers": [
-    {
-      "name": "ULIVZ",
-      "email": "chl814@foxmail.com"
-    }
-  ]
+  }
 }

@@ -45,28 +45,27 @@
     ]
   },
   "devDependencies": {
-    "@commitlint/cli": "^8.2.0",
-    "@commitlint/config-conventional": "^8.2.0",
-    "@types/escape-html": "^0.0.20",
-    "@types/fs-extra": "^5.0.4",
-    "@types/globby": "^9.1.0",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@types/escape-html": "^1.0.0",
+    "@types/fs-extra": "^9.0.2",
     "@types/hash-sum": "^1.0.0",
     "@types/lru-cache": "^5.1.0",
     "@types/node": "^12.7.5",
     "@types/semver": "^6.0.0",
-    "@typescript-eslint/eslint-plugin": "^2.9.0",
-    "@typescript-eslint/parser": "^2.9.0",
+    "@typescript-eslint/eslint-plugin": "^4.6.0",
+    "@typescript-eslint/parser": "^4.6.0",
     "all-contributors-cli": "^6.9.1",
     "conventional-changelog-cli": "^2.0.23",
-    "eslint": "^6.7.1",
+    "eslint": "^7.12.1",
     "eslint-plugin-jest": "^23.0.5",
     "eslint-plugin-vue-libs": "^4.0.0",
-    "husky": "^3.0.5",
+    "husky": "^4.3.0",
     "inquirer": "^7.0.0",
-    "lerna": "3.16.4",
+    "lerna": "3.22.1",
     "lint-staged": "^9.3.0",
     "minimist": "^1.2.0",
     "sort-package-json": "^1.24.0",
-    "typescript": "^3.6.3"
+    "typescript": "^3.8.0"
   }
 }
