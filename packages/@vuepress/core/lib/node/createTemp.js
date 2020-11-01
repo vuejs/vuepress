@@ -3,6 +3,11 @@ const { fs, path, chalk, logger } = require('@vuepress/shared-utils')
 // Only empty the `.temp` directory at most once per run to avoid
 // compilation errors caused by removed files.
 // See: https://github.com/vuejs/vuepress/issues/2254#issuecomment-689457157
+//
+// Known issue: This can cause the `.temp` directory to grow while the server
+// is running, but the impact is limited because the `.temp` directory will
+// be cleared when restarting the server.
+// See discussion in https://github.com/vuejs/vuepress/pull/2612
 let alreadyEmptied = false
 
 /**
