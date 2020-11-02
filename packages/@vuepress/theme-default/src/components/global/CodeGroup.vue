@@ -95,7 +95,7 @@ export default defineComponent({
 .code-group__nav {
   // 2 * margin + border-radius of <pre> tag
   margin-bottom: calc(-1.7rem - 6px);
-  padding-bottom: calc(1.7rem + 6px);
+  padding-bottom: calc(1.7rem - 6px);
   padding-left: 10px;
   padding-top: 10px;
   border-top-left-radius: 6px;
