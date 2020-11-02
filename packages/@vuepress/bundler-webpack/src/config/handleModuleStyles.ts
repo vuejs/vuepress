@@ -164,6 +164,8 @@ export const handleModuleStyles = ({
     loaderName: 'stylus-loader',
     loaderOptions: {
       stylusOptions: {
+        // allow literal css import
+        includeCSS: true,
         // no need to compress with stylus
         // we will handle it by postcss-loader
         compress: false,
