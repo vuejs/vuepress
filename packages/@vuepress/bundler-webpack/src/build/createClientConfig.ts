@@ -53,11 +53,11 @@ export const createClientConfig = (
       },
     ])
 
-    // ensure all css are extracted together.
-    // since most of the CSS will be from the theme and very little
-    // CSS will be from async chunks
     config.optimization.splitChunks({
       cacheGroups: {
+        // ensure all css are extracted together.
+        // since most of the CSS will be from the theme and very little
+        // CSS will be from async chunks
         styles: {
           name: 'styles',
           // necessary to ensure async chunks are also extracted
@@ -65,8 +65,18 @@ export const createClientConfig = (
           chunks: 'all',
           enforce: true,
         },
+        // extract external library to a standalone chunk
+        vendor: {
+          name: 'vendor',
+          test: /node_modules/,
+          chunks: 'all',
+          priority: -10,
+        },
       },
     })
+
+    // enable runtimeChunk
+    config.optimization.runtimeChunk(true)
   }
 
   // disable performance hints
