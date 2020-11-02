@@ -93,13 +93,14 @@ export default defineComponent({
 
 .code-group {}
 .code-group__nav {
-  margin-bottom: -35px;
-  background-color: $codeBgColor;
-  padding-bottom: 22px;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
+  // 2 * margin + border-radius of <pre> tag
+  margin-bottom: calc(-1.7rem - 6px);
+  padding-bottom: calc(1.7rem + 6px);
   padding-left: 10px;
   padding-top: 10px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  background-color: $codeBgColor;
 }
 .code-group__ul {
   margin: auto 0;
@@ -123,5 +124,13 @@ export default defineComponent({
 }
 .code-group__nav-tab-active {
   border-bottom: $accentColor 1px solid;
+}
+
+@media (max-width: $MQMobileNarrow) {
+  .code-group__nav {
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    border-radius: 0;
+  }
 }
 </style>
