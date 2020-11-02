@@ -77,7 +77,6 @@ export const handleModuleStyles = ({
             }
           : false,
         importLoaders: 1,
-        sourceMap: !app.env.isProd,
       })
 
     // use postcss-loader
@@ -85,8 +84,9 @@ export const handleModuleStyles = ({
       .use('postcss-loader')
       .loader('postcss-loader')
       .options({
-        plugins: [require('autoprefixer'), require('postcss-csso')],
-        sourceMap: !app.env.isProd,
+        postcssOptions: {
+          plugins: [require('autoprefixer'), require('postcss-csso')],
+        },
         ...options.postcss,
       })
 

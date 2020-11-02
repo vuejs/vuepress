@@ -5,24 +5,9 @@ import type { loader } from 'webpack'
  */
 export interface BundlerWebpackOptions {
   /**
-   * postcss-loader v3 options
-   *
-   * @see https://github.com/webpack-contrib/postcss-loader/tree/v3.0.0#options
+   * postcss-loader options
    */
-  postcss?: {
-    exec?: boolean
-    parser?: string | Record<string, any> | ((...args: any[]) => any)
-    syntax?: string | Record<string, any>
-    stringifier?: string | Record<string, any>
-    config?: {
-      path?: string
-      context?: Record<string, any>
-      ctx?: Record<string, any>
-    }
-    ident?: string
-    plugins?: any[] | ((...args: any[]) => any)
-    sourceMap?: 'inline' | boolean
-  }
+  postcss?: PostcssLoaderOptions
 
   /**
    * stylus-loader options
@@ -62,6 +47,16 @@ export interface LoaderOptions {
 export type StylePreprocessorOptions<
   T extends Record<string, any> = Record<string, any>
 > = T | ((loaderContext: loader.LoaderContext) => TextDecodeOptions)
+
+/**
+ * Options for postcss-loader
+ *
+ * @see https://github.com/webpack-contrib/postcss-loader#options
+ */
+export interface PostcssLoaderOptions extends Pick<LoaderOptions, 'sourceMap'> {
+  execute?: boolean
+  postcssOptions?: StylePreprocessorOptions
+}
 
 /**
  * Options for stylus-loader
