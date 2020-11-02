@@ -11,7 +11,11 @@ export const handleDevtool = ({
   app: App
   config: Config
 }): void => {
-  config.devtool(
-    app.env.isDebug ? 'source-map' : 'cheap-module-eval-source-map'
-  )
+  if (app.env.isDebug) {
+    // always enable source-map in debug mode
+    config.devtool('source-map')
+  } else if (app.env.isDev) {
+    // only enable eval-source-map in dev mode
+    config.devtool('cheap-module-eval-source-map')
+  }
 }
