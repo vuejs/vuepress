@@ -1,7 +1,13 @@
 import type * as Config from 'webpack-chain'
 import type { App } from '@vuepress/core'
 import * as MiniCSSExtractPlugin from 'mini-css-extract-plugin'
-import type { BundlerWebpackOptions, LoaderOptions } from '../types'
+import type {
+  BundlerWebpackOptions,
+  LoaderOptions,
+  SassLoaderOptions,
+  LessLoaderOptions,
+  StylusLoaderOptions,
+} from '../types'
 
 type StyleRule = Config.Rule<Config.Rule<Config.Module>>
 
@@ -79,7 +85,7 @@ export const handleModuleStyles = ({
       .use('postcss-loader')
       .loader('postcss-loader')
       .options({
-        plugins: [require('autoprefixer')],
+        plugins: [require('autoprefixer'), require('postcss-csso')],
         sourceMap: !app.env.isProd,
         ...options.postcss,
       })
@@ -90,7 +96,7 @@ export const handleModuleStyles = ({
     }
   }
 
-  const handleStyle = ({
+  const handleStyle = <T extends LoaderOptions = LoaderOptions>({
     lang,
     test,
     loaderName,
@@ -99,7 +105,7 @@ export const handleModuleStyles = ({
     lang: string
     test: RegExp
     loaderName?: string
-    loaderOptions?: LoaderOptions
+    loaderOptions?: T
   }): void => {
     const { modulesRule, normalRule } = createStyleRules({
       lang,
@@ -131,31 +137,38 @@ export const handleModuleStyles = ({
     test: /\.p(ost)?css$/,
   })
 
-  handleStyle({
+  handleStyle<SassLoaderOptions>({
     lang: 'scss',
     test: /\.scss$/,
     loaderName: 'sass-loader',
     loaderOptions: options.scss,
   })
 
-  handleStyle({
+  handleStyle<SassLoaderOptions>({
     lang: 'sass',
     test: /\.sass$/,
     loaderName: 'sass-loader',
     loaderOptions: options.sass,
   })
 
-  handleStyle({
+  handleStyle<LessLoaderOptions>({
     lang: 'less',
     test: /\.less$/,
     loaderName: 'less-loader',
     loaderOptions: options.less,
   })
 
-  handleStyle({
+  handleStyle<StylusLoaderOptions>({
     lang: 'stylus',
     test: /\.styl(us)?$/,
     loaderName: 'stylus-loader',
-    loaderOptions: options.stylus,
+    loaderOptions: {
+      stylusOptions: {
+        // no need to compress with stylus
+        // we will handle it by postcss-loader
+        compress: false,
+      },
+      ...options.stylus,
+    },
   })
 }
