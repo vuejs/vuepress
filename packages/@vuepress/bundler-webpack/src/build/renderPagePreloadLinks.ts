@@ -27,12 +27,12 @@ export const renderPagePreloadLinks = ({
   return preloadFilesMeta
     .map(({ file, extension, type }) => {
       // by default, we only preload scripts or css
-      if (!shouldPreload && type !== 'script' && type !== 'style') {
+      if (shouldPreload === true && type !== 'script' && type !== 'style') {
         return ''
       }
 
       // user wants to explicitly control what to preload
-      if (shouldPreload && !shouldPreload(file, type)) {
+      if (shouldPreload !== true && !shouldPreload(file, type)) {
         return ''
       }
 

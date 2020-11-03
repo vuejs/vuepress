@@ -28,7 +28,8 @@ export const renderPagePrefetchLinks = ({
 
   return prefetchFilesMeta
     .map(({ file, type }) => {
-      if (shouldPrefetch && !shouldPrefetch(file, type)) {
+      // user wants to explicitly control what to prefetch
+      if (shouldPrefetch !== true && !shouldPrefetch(file, type)) {
         return ''
       }
       return `<link rel="prefetch" href="${app.options.base}${file}">`
