@@ -34,8 +34,8 @@ export interface AppOptions<T extends ThemeConfig = ThemeConfig> {
   evergreen: boolean
   templateDev: string
   templateSSR: string
-  shouldPreload: ((file: string, type: string) => boolean) | null | false
-  shouldPrefetch: ((file: string, type: string) => boolean) | null | false
+  shouldPreload: ((file: string, type: string) => boolean) | boolean
+  shouldPrefetch: ((file: string, type: string) => boolean) | boolean
 
   // markdown options
   markdown: MarkdownOptions

@@ -36,8 +36,8 @@ export const createAppOptions = ({
   templateSSR = path.normalize(
     require.resolve('@vuepress/client/templates/index.ssr.html')
   ),
-  shouldPreload = null,
-  shouldPrefetch = null,
+  shouldPreload = true,
+  shouldPrefetch = false,
 
   // markdown config
   markdown = {},
