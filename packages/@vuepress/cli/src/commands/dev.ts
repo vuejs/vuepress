@@ -143,8 +143,8 @@ export const dev = async (
       // close current dev server
       close(),
     ])
+    logger.tip(`dev server is restarted, please refresh your browser`)
     // re-run dev command
     await dev(sourceDir, commandOptions)
-    logger.tip(`dev server is restarted, please refresh your browser`)
   })
 }
