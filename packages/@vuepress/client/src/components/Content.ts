@@ -7,17 +7,17 @@ import { usePageData } from '../injections'
  * Markdown rendered content
  */
 export const Content: FunctionalComponent<{
-  pageKey?: string
+  pagePath?: string
 }> = (props) => {
   let key: string
 
   // use the page key from props directly
-  if (props.pageKey) {
-    key = props.pageKey
+  if (props.pagePath) {
+    key = props.pagePath
   } else {
     // get current page key from page data
     const page = usePageData()
-    key = page.value.key
+    key = page.value.path
   }
 
   const component = pagesComponent[key]
@@ -39,7 +39,7 @@ export const Content: FunctionalComponent<{
 Content.displayName = 'Content'
 
 Content.props = {
-  pageKey: {
+  pagePath: {
     type: String,
     required: false,
   },

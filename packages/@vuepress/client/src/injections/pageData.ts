@@ -1,32 +1,43 @@
-import { inject } from 'vue'
-import type { ComputedRef, InjectionKey } from 'vue'
+import { ref, readonly } from 'vue'
+import type { Ref } from 'vue'
 import type { PageData } from '@vuepress/shared'
-import type { PagesData } from './pagesData'
+import { pagesData } from './pagesData'
 
 export type { PageData }
-export type PageDataRef = ComputedRef<PageData>
+export type PageDataRef = Ref<PageData>
 
-export const pageDataSymbol: InjectionKey<PageDataRef> = Symbol(
-  __DEV__ ? 'pageData' : ''
-)
+const pageDataEmpty = readonly({
+  key: '',
+  path: '',
+  title: '',
+  frontmatter: {},
+  excerpt: '',
+  headers: [],
+} as PageData) as PageData
+
+export const pageData: PageDataRef = ref(pageDataEmpty)
 
 export const usePageData = (): PageDataRef => {
-  const pageData = inject(pageDataSymbol)
-  if (!pageData) {
-    throw new Error('usePageData() is called without provider.')
-  }
   return pageData
 }
 
-export const resolvePageData = (
-  pagesData: PagesData,
-  routePath: string
-): PageData =>
-  pagesData[routePath] ?? {
-    key: '',
-    path: '',
-    title: '',
-    frontmatter: {},
-    excerpt: '',
-    headers: [],
+export const resolvePageData = async (routePath: string): Promise<PageData> => {
+  const pageDataResolver = pagesData.value[routePath]
+
+  if (!pageDataResolver) {
+    return pageDataEmpty
   }
+
+  const pageData = await pageDataResolver()
+
+  return pageData ?? pageDataEmpty
+}
+
+if (module.hot) {
+  // reuse vue HMR runtime
+  __VUE_HMR_RUNTIME__.updatePageData = (newPageData: PageData) => {
+    if (newPageData.key === pageData.value.key) {
+      pageData.value = newPageData
+    }
+  }
+}

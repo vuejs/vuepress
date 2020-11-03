@@ -53,6 +53,26 @@ export interface Page extends PageData {
   componentFileContent: string
 
   /**
+   * Component file chunk name
+   */
+  componentFileChunkName: string
+
+  /**
+   * Page data file path
+   */
+  dataFilePath: string
+
+  /**
+   * Page data relative file path
+   */
+  dataFilePathRelative: string
+
+  /**
+   * Page data file chunk name
+   */
+  dataFileChunkName: string
+
+  /**
    * Content of the page
    */
   content: string

@@ -16,8 +16,20 @@ export const preparePageData = async (app: App, page: Page): Promise<void> => {
   // extends default page data
   extendsPageData.forEach((item) => Object.assign(pageData, item))
 
-  await app.writeTemp(
-    `internal/pageData/${page.key}.js`,
-    `export default ${JSON.stringify(pageData, null, 2)}\n`
-  )
+  // page data file content
+  let content = `export const data = ${JSON.stringify(pageData, null, 2)}\n`
+
+  // HMR support
+  const hmrCode = `
+if (module.hot) {
+  module.hot.accept()
+  __VUE_HMR_RUNTIME__.updatePageData(data)
+}
+`
+
+  if (app.env.isDev) {
+    content += hmrCode
+  }
+
+  await app.writeTemp(page.dataFilePathRelative, content)
 }

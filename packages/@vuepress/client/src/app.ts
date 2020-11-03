@@ -8,8 +8,9 @@ import { clientAppSetups } from '@internal/clientAppSetups'
 import { pagesComponent } from '@internal/pagesComponent'
 import { routes } from '@internal/routes'
 import {
-  pagesData,
   siteData,
+  pageData,
+  resolvePageData,
   pageFrontmatterSymbol,
   resolvePageFrontmatter,
   pageHeadSymbol,
@@ -18,8 +19,6 @@ import {
   resolvePageHeadTitle,
   pageLangSymbol,
   resolvePageLang,
-  pageDataSymbol,
-  resolvePageData,
   siteLocaleDataSymbol,
   resolveSiteLocaleData,
   useUpdateHead,
@@ -90,12 +89,14 @@ export const createVueApp = async ({
   // use vue-router
   app.use(router)
 
+  router.beforeEach(async (to, from, next) => {
+    pageData.value = await resolvePageData(to.path)
+    next()
+  })
+
   // create global computed
   const siteLocaleData = computed(() =>
     resolveSiteLocaleData(siteData.value, router.currentRoute.value.path)
-  )
-  const pageData = computed(() =>
-    resolvePageData(pagesData.value, router.currentRoute.value.path)
   )
   const pageFrontmatter = computed(() => resolvePageFrontmatter(pageData.value))
   const pageHeadTitle = computed(() =>
@@ -114,7 +115,6 @@ export const createVueApp = async ({
 
   // provide global computed
   app.provide(siteLocaleDataSymbol, siteLocaleData)
-  app.provide(pageDataSymbol, pageData)
   app.provide(pageFrontmatterSymbol, pageFrontmatter)
   app.provide(pageHeadTitleSymbol, pageHeadTitle)
   app.provide(pageHeadSymbol, pageHead)

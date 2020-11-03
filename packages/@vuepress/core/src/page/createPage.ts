@@ -1,7 +1,8 @@
 import type { App, Page, PageOptions } from '../types'
 import { inferPagePath } from './inferPagePath'
-import { resolvePageComponent } from './resolvePageComponent'
+import { resolvePageComponentInfo } from './resolvePageComponentInfo'
 import { resolvePageContent } from './resolvePageContent'
+import { resolvePageDataInfo } from './resolvePageDataInfo'
 import { resolvePageDate } from './resolvePageDate'
 import { resolvePageExcerpt } from './resolvePageExcerpt'
 import { resolvePageFileContent } from './resolvePageFileContent'
@@ -69,7 +70,20 @@ export const createPage = async (
     componentFilePath,
     componentFilePathRelative,
     componentFileContent,
-  } = await resolvePageComponent({ app, content, filePathRelative, path, key })
+    componentFileChunkName,
+  } = await resolvePageComponentInfo({
+    app,
+    content,
+    filePathRelative,
+    path,
+    key,
+  })
+
+  const {
+    dataFilePath,
+    dataFilePathRelative,
+    dataFileChunkName,
+  } = resolvePageDataInfo({ app, key })
 
   // resolve title from frontmatter and headers
   const title = resolvePageTitle({ frontmatter, headers })
@@ -84,6 +98,10 @@ export const createPage = async (
     componentFilePath,
     componentFilePathRelative,
     componentFileContent,
+    componentFileChunkName,
+    dataFilePath,
+    dataFilePathRelative,
+    dataFileChunkName,
     title,
     content,
     frontmatter,

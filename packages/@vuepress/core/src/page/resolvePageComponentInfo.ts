@@ -9,7 +9,7 @@ import type { App } from '../types'
 /**
  * Resolve page component and related info
  */
-export const resolvePageComponent = async ({
+export const resolvePageComponentInfo = async ({
   app,
   content,
   filePathRelative,
@@ -27,6 +27,7 @@ export const resolvePageComponent = async ({
   componentFilePath: string
   componentFilePathRelative: string
   componentFileContent: string
+  componentFileChunkName: string
 }> => {
   const markdownEnv: MarkdownEnv = {
     base: app.options.base,
@@ -52,6 +53,7 @@ export const resolvePageComponent = async ({
     filePathRelative?.replace(/\.md$/, '.vue') ?? `${routePath || key}.vue`
   )
   const componentFilePath = app.dir.temp(componentFilePathRelative)
+  const componentFileChunkName = key
 
   return {
     headers,
@@ -59,5 +61,6 @@ export const resolvePageComponent = async ({
     componentFilePath,
     componentFilePathRelative,
     componentFileContent,
+    componentFileChunkName,
   }
 }
