@@ -16,6 +16,11 @@ export const renderPagePreloadLinks = ({
   // shouldPreload option
   const shouldPreload = app.options.shouldPreload
 
+  // do not render preload links
+  if (shouldPreload === false) {
+    return ''
+  }
+
   // initial files and files used by current page should be preload
   const preloadFilesMeta = [...initialFilesMeta, ...pageClientFilesMeta]
 
