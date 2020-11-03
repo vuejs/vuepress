@@ -30,8 +30,8 @@ describe('core > app > createAppOptions', () => {
       templateSSR: path.normalize(
         require.resolve('@vuepress/client/templates/index.ssr.html')
       ),
-      shouldPreload: null,
-      shouldPrefetch: null,
+      shouldPreload: true,
+      shouldPrefetch: false,
       pagePatterns: ['**/*.md', '!.vuepress', '!node_modules'],
     })
   })
