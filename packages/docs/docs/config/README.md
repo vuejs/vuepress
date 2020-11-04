@@ -396,7 +396,7 @@ Options for [postcss-loader](https://github.com/postcss/postcss-loader). Note sp
 - Type: `Object`
 - Default: `{ preferPathResolver: 'webpack' }`
 
-Options for [stylus-loader](https://github.com/shama/stylus-loader).
+Options for [stylus-loader](https://github.com/webpack-contrib/stylus-loader).
 
 ### scss
 
