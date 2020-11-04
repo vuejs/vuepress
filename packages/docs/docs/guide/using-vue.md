@@ -87,7 +87,7 @@ Directives also work:
 
 ### Access to Site & Page Data
 
-The compiled component does not have any private data but does have access to the [site metadata](../theme/writing-a-theme.md#site-and-page-metadata). For example:
+The compiled component does not have any private data but does have access to the [site metadata](../theme/writing-a-theme.md#site-and-page-metadata) and [computed properties](./global-computed.md). For example:
 
 **Input**
 
