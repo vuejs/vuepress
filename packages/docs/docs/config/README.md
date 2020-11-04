@@ -396,7 +396,17 @@ Options for [postcss-loader](https://github.com/postcss/postcss-loader). Note sp
 - Type: `Object`
 - Default: `{ preferPathResolver: 'webpack' }`
 
-Options for [stylus-loader](https://github.com/webpack-contrib/stylus-loader).
+Options for [stylus-loader](https://github.com/webpack-contrib/stylus-loader). For example, to forward variables to stylus:
+
+``` js
+module.exports = {
+  stylus: {
+    define: {
+      '$ASSET_PATH': process.env.ASSET_PATH
+    }
+  }
+}
+```
 
 ### scss
 
