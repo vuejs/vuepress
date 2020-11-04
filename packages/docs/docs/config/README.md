@@ -373,7 +373,11 @@ VuePress comes with built-in webpack config for the CSS pre-processors listed be
 
 Options for [postcss-loader](https://github.com/postcss/postcss-loader). Note specifying this value will overwrite autoprefixer and you will need to include it yourself.
 
+<!-- textlint-disable terminology -->
+
 ### stylus
+
+<!-- textlint-enable -->
 
 - Type: `Object`
 - Default: `{ preferPathResolver: 'webpack' }`
