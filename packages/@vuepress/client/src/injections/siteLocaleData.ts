@@ -15,12 +15,14 @@ export const siteLocaleDataSymbol: InjectionKey<SiteLocaleDataRef> = Symbol(
   __DEV__ ? 'siteLocaleData' : ''
 )
 
-export const useSiteLocaleData = (): SiteLocaleDataRef => {
+export const useSiteLocaleData = <
+  T extends SiteThemeConfig = SiteThemeConfig
+>(): SiteLocaleDataRef<T> => {
   const siteLocaleData = inject(siteLocaleDataSymbol)
   if (!siteLocaleData) {
     throw new Error('useSiteLocaleData() is called without provider.')
   }
-  return siteLocaleData
+  return siteLocaleData as SiteLocaleDataRef<T>
 }
 
 /**
