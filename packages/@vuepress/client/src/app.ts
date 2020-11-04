@@ -19,6 +19,10 @@ import {
   resolvePageHeadTitle,
   pageLangSymbol,
   resolvePageLang,
+  themeDataSymbol,
+  resolveThemeData,
+  themeLocaleDataSymbol,
+  resolveThemeLocaleData,
   siteLocaleDataSymbol,
   resolveSiteLocaleData,
   useUpdateHead,
@@ -98,6 +102,10 @@ export const createVueApp = async ({
   const siteLocaleData = computed(() =>
     resolveSiteLocaleData(siteData.value, router.currentRoute.value.path)
   )
+  const themeData = computed(() => resolveThemeData(siteData.value))
+  const themeLocaleData = computed(() =>
+    resolveThemeLocaleData(siteLocaleData.value)
+  )
   const pageFrontmatter = computed(() => resolvePageFrontmatter(pageData.value))
   const pageHeadTitle = computed(() =>
     resolvePageHeadTitle(pageData.value, siteLocaleData.value)
@@ -115,6 +123,8 @@ export const createVueApp = async ({
 
   // provide global computed
   app.provide(siteLocaleDataSymbol, siteLocaleData)
+  app.provide(themeDataSymbol, themeData)
+  app.provide(themeLocaleDataSymbol, themeLocaleData)
   app.provide(pageFrontmatterSymbol, pageFrontmatter)
   app.provide(pageHeadTitleSymbol, pageHeadTitle)
   app.provide(pageHeadSymbol, pageHead)
@@ -133,12 +143,12 @@ export const createVueApp = async ({
     },
     $theme: {
       get() {
-        return siteData.value.themeConfig
+        return themeData.value
       },
     },
     $themeLocale: {
       get() {
-        return siteLocaleData.value.themeConfig
+        return themeLocaleData.value
       },
     },
     $page: {
