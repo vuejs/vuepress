@@ -11,8 +11,10 @@ const clientAppSetup: ClientAppSetup = () => {
     const router = useRouter()
 
     // record which pages have been loaded
+    const loadedPages = new Set()
+
     // add path of current page as initial value
-    const loadedPages = new Set(router.currentRoute.value.path)
+    loadedPages.add(router.currentRoute.value.path)
 
     // set nprogress config
     nprogress.configure({ showSpinner: false })
