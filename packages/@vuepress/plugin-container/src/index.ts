@@ -1,7 +1,7 @@
 import * as container from 'markdown-it-container'
 import type { Plugin, PluginObject } from '@vuepress/core'
 import { chalk, logger } from '@vuepress/utils'
-import { ensureLeadingSlash, resolveLocaleData } from '@vuepress/shared'
+import { ensureLeadingSlash, resolveLocalePath } from '@vuepress/shared'
 import type { ContainerPluginOptions, RenderPlaceFunction } from '../types'
 
 const containerPlugin: Plugin<ContainerPluginOptions> = ({
@@ -65,10 +65,11 @@ const containerPlugin: Plugin<ContainerPluginOptions> = ({
           const { filePathRelative } = env
           const relativePath = ensureLeadingSlash(filePathRelative ?? '')
 
-          const locale = resolveLocaleData(locales, relativePath)
+          const localePath = resolveLocalePath(locales, relativePath)
+          const localeData = locales[localePath] ?? {}
 
-          if (locale.defaultInfo) {
-            info = locale.defaultInfo
+          if (localeData.defaultInfo) {
+            info = localeData.defaultInfo
           } else {
             info = type.toUpperCase()
           }
