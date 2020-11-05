@@ -28,6 +28,7 @@ import {
   useUpdateHead,
 } from './injections'
 import { Content, Debug, OutboundLink } from './components'
+import { withBase } from './utils'
 
 export type AppCreator = CreateAppFunction<Element>
 export type HistoryCreator = (base?: string) => RouterHistory
@@ -130,6 +131,7 @@ export const createVueApp = async ({
   app.provide(pageHeadSymbol, pageHead)
   app.provide(pageLangSymbol, pageLang)
 
+  // provide global data & helpers
   Object.defineProperties(app.config.globalProperties, {
     $site: {
       get() {
@@ -169,6 +171,11 @@ export const createVueApp = async ({
     $headTitle: {
       get() {
         return pageHeadTitle.value
+      },
+    },
+    $withBase: {
+      get() {
+        return withBase
       },
     },
   })
