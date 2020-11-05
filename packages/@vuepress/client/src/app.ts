@@ -19,6 +19,8 @@ import {
   resolvePageHeadTitle,
   pageLangSymbol,
   resolvePageLang,
+  routeLocaleSymbol,
+  resolveRouteLocale,
   themeDataSymbol,
   resolveThemeData,
   themeLocaleDataSymbol,
@@ -100,8 +102,11 @@ export const createVueApp = async ({
   })
 
   // create global computed
+  const routeLocale = computed(() =>
+    resolveRouteLocale(siteData.value.locales, router.currentRoute.value.path)
+  )
   const siteLocaleData = computed(() =>
-    resolveSiteLocaleData(siteData.value, router.currentRoute.value.path)
+    resolveSiteLocaleData(siteData.value, routeLocale.value)
   )
   const themeData = computed(() => resolveThemeData(siteData.value))
   const themeLocaleData = computed(() =>
@@ -123,6 +128,7 @@ export const createVueApp = async ({
   )
 
   // provide global computed
+  app.provide(routeLocaleSymbol, routeLocale)
   app.provide(siteLocaleDataSymbol, siteLocaleData)
   app.provide(themeDataSymbol, themeData)
   app.provide(themeLocaleDataSymbol, themeLocaleData)
@@ -133,6 +139,11 @@ export const createVueApp = async ({
 
   // provide global data & helpers
   Object.defineProperties(app.config.globalProperties, {
+    $routeLocale: {
+      get() {
+        return routeLocale.value
+      },
+    },
     $site: {
       get() {
         return siteData.value

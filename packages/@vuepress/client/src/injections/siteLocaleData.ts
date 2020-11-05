@@ -1,7 +1,7 @@
 import { inject } from 'vue'
 import type { ComputedRef, InjectionKey } from 'vue'
-import { resolveLocaleData } from '@vuepress/shared'
 import type { SiteData, SiteThemeConfig } from '@vuepress/shared'
+import type { RouteLocale } from './routeLocale'
 
 export type SiteLocaleData<
   T extends SiteThemeConfig = SiteThemeConfig
@@ -31,7 +31,7 @@ export const useSiteLocaleData = <
  */
 export const resolveSiteLocaleData = <T extends SiteThemeConfig>(
   { base, lang, title, description, head, locales, themeConfig }: SiteData<T>,
-  routePath: string
+  routeLocale: RouteLocale
 ): SiteLocaleData<T> => ({
   base,
   lang,
@@ -39,9 +39,9 @@ export const resolveSiteLocaleData = <T extends SiteThemeConfig>(
   description,
   head,
   locales,
-  ...resolveLocaleData(locales, routePath),
+  ...(locales[routeLocale] ?? {}),
   themeConfig: {
     ...themeConfig,
-    ...resolveLocaleData(themeConfig.locales ?? {}, routePath),
+    ...(themeConfig.locales?.[routeLocale] ?? {}),
   },
 })
