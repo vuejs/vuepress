@@ -12626,19 +12626,19 @@ vue-eslint-parser@^7.1.1:
     esquery "^1.0.1"
     lodash "^4.17.15"
 
-vue-loader@^16.0.0-beta.10:
-  version "16.0.0-beta.10"
-  resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-16.0.0-beta.10.tgz#86569e63bc02e8f0852913004460d3dd58c088e6"
-  integrity sha512-PflGsj4RHW3tuYFmSPhcozAkds8ELXf8d19twWorQTjcuWxl/Xqb9W1NgfsY7AAkCkkRRYy2FwIX4tSnskfKig==
+vue-loader@^16.0.0-rc.0:
+  version "16.0.0-rc.0"
+  resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-16.0.0-rc.0.tgz#2eac4bd7c85341ac12cbf4cc82a908cfcc83d1a8"
+  integrity sha512-S4F7jhBQFuJbLtyjfrMYl4gBFhMACHtkZ+rJuH6/hvgxeAEAPBY5aVKn1+LuVE9+U1RGGQ9Nq/7DSR72spf0PQ==
   dependencies:
     chalk "^4.1.0"
     hash-sum "^2.0.0"
     loader-utils "^2.0.0"
 
-vue-router@4.0.0-rc.1:
-  version "4.0.0-rc.1"
-  resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-4.0.0-rc.1.tgz#42f41315849163a1243886c9aa6d7c14f24fd003"
-  integrity sha512-N3SSOIiRFo1/D6EkHGuahUSuyDvFhKizN5zVXkALX7wv0hYYndV49KwzRF5lKsAIt+OlDl7y+sNmwNewb7a4iw==
+vue-router@4.0.0-rc.2:
+  version "4.0.0-rc.2"
+  resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-4.0.0-rc.2.tgz#8545cab76a05ca4f6dffbe6c6a671a4dbf585ab2"
+  integrity sha512-51mBp39rzBFpk1nyU9SkhPcwR67gBzWIH8p3pyeDmtNYgWzGF3q8MneD/xbMwsfTQkw2H1qBk6uwRaVy3M8Nxw==
 
 vue@^3.0.0:
   version "3.0.2"
