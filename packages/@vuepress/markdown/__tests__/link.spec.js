@@ -2,12 +2,19 @@ import { Md } from './util'
 import link from '../lib/link.js'
 import { dataReturnable } from '../index.js'
 
-const mdL = Md().use(link, {
+const EXTERNAL_ATTRS = {
   target: '_blank',
   rel: 'noopener noreferrer'
-})
+}
 
-dataReturnable(mdL)
+const setup = ({ externalAttrs = EXTERNAL_ATTRS, suffix } = {}) => {
+  const mdL = Md().use(link, EXTERNAL_ATTRS, suffix)
+  dataReturnable(mdL)
+
+  return mdL
+}
+
+const mdL = setup()
 
 const internalLinkAsserts = {
   // START absolute path usage
@@ -67,6 +74,21 @@ describe('link', () => {
     for (const link of externalLinks) {
       const { html } = mdL.render(link)
       expect(html).toMatchSnapshot()
+    }
+  })
+
+  test('with custom page suffix should render links correctly', () => {
+    const suffix = '/'
+    const mdLSuffix = setup({ suffix })
+
+    for (const before in internalLinkAsserts) {
+      const input = `[${before}](${before})`
+      const output = mdLSuffix.render(input)
+      const after = getCompiledLink(output)
+      const value = internalLinkAsserts[before]
+      const isHtmlLink = value === before
+      const expected = isHtmlLink ? value : value.replace('.html', suffix)
+      expect(after).toBe(expected)
     }
   })
 })

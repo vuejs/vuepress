@@ -273,6 +273,13 @@ VuePress 提供了一种添加额外样式的简便方法。你可以创建一�
 
 [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor) 的选项。
 
+### markdown.pageSuffix
+
+- 类型: `string`
+- 默认值: `.html`
+
+Option to customize internal links to be compatible when using the [vuepress-plugin-clean-urls](https://vuepress.github.io/en/plugins/clean-urls/).
+
 ### markdown.externalLinks
 
 - 类型: `Object`

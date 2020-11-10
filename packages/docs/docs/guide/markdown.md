@@ -43,6 +43,12 @@ VuePress supports redirecting to clean links. If a link `/foo` is not found, Vue
 Regardless of whether the permalink and clean-urls plugins are used, your relative path should be defined by the current file structure. In the above example, even though you set the path of `/foo/one.md` to `/foo/one/`, you should still access `/foo/two.md` via `./two.md`.
 :::
 
+### Page Suffix
+
+Pages and internal links get generated with the `.html` suffix by default.
+
+You can customize this by setting [config.markdown.pageSuffix](../config/README.md#markdown-pagesuffix).
+
 ### External Links
 
 Outbound links automatically get `target="_blank" rel="noopener noreferrer"`:
