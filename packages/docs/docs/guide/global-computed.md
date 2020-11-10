@@ -1,6 +1,6 @@
 # Global Computed
 
-In VuePress, some core [computed properties](https://vuejs.org/v2/guide/computed.html#Computed-Properties) can be used by the [default theme](../theme/default-theme-config.md) or custom themes.
+In VuePress, some core [computed properties](https://vuejs.org/v2/guide/computed.html#Computed-Properties) can be used by the [default theme](../theme/default-theme-config.md) or custom themes. Or in Markdown pages [using vue](./using-vue.md#access-to-site-page-data).
 
 ## $site
 
