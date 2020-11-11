@@ -28,7 +28,7 @@ describe('client > injections > siteLocaleData', () => {
         description: 'root description',
       })
       expect(resolveSiteLocaleData(siteData, '/')).toEqual(siteData)
-      expect(resolveSiteLocaleData(siteData, '/foo/bar')).toEqual(siteData)
+      expect(resolveSiteLocaleData(siteData, '/en/')).toEqual(siteData)
     })
 
     it('case 2', () => {
@@ -45,7 +45,7 @@ describe('client > injections > siteLocaleData', () => {
         },
       })
       expect(resolveSiteLocaleData(siteData, '/')).toEqual(siteData)
-      expect(resolveSiteLocaleData(siteData, '/en/foo/bar')).toEqual({
+      expect(resolveSiteLocaleData(siteData, '/en/')).toEqual({
         ...siteData,
         lang: 'en-US',
         title: 'en title',
@@ -77,7 +77,7 @@ describe('client > injections > siteLocaleData', () => {
         title: 'en title',
         description: 'en description',
       })
-      expect(resolveSiteLocaleData(siteData, '/zh/foo/bar')).toEqual({
+      expect(resolveSiteLocaleData(siteData, '/zh/')).toEqual({
         ...siteData,
         lang: 'zh-CN',
         title: 'zh title',
@@ -114,13 +114,13 @@ describe('client > injections > siteLocaleData', () => {
         title: 'en title',
         description: 'en description',
       })
-      expect(resolveSiteLocaleData(siteData, '/zh/foo/bar')).toEqual({
+      expect(resolveSiteLocaleData(siteData, '/zh/')).toEqual({
         ...siteData,
         lang: 'zh-CN',
         title: 'zh title',
         description: 'zh description',
       })
-      expect(resolveSiteLocaleData(siteData, '/zh/TW/foo/bar')).toEqual({
+      expect(resolveSiteLocaleData(siteData, '/zh/TW/')).toEqual({
         ...siteData,
         lang: 'zh-TW',
         title: 'zh-TW title',
@@ -137,7 +137,7 @@ describe('client > injections > siteLocaleData', () => {
         },
       })
       expect(resolveSiteLocaleData(siteData, '/')).toEqual(siteData)
-      expect(resolveSiteLocaleData(siteData, '/foo/bar')).toEqual(siteData)
+      expect(resolveSiteLocaleData(siteData, '/')).toEqual(siteData)
     })
 
     it('case 2', () => {
@@ -152,7 +152,7 @@ describe('client > injections > siteLocaleData', () => {
         },
       })
       expect(resolveSiteLocaleData(siteData, '/')).toEqual(siteData)
-      expect(resolveSiteLocaleData(siteData, '/en/foo/bar')).toEqual({
+      expect(resolveSiteLocaleData(siteData, '/en/')).toEqual({
         ...siteData,
         themeConfig: {
           ...siteData.themeConfig,
@@ -181,7 +181,7 @@ describe('client > injections > siteLocaleData', () => {
           msg: 'en msg',
         },
       })
-      expect(resolveSiteLocaleData(siteData, '/zh/foo/bar')).toEqual({
+      expect(resolveSiteLocaleData(siteData, '/zh/')).toEqual({
         ...siteData,
         themeConfig: {
           ...siteData.themeConfig,
@@ -213,14 +213,14 @@ describe('client > injections > siteLocaleData', () => {
           msg: 'en msg',
         },
       })
-      expect(resolveSiteLocaleData(siteData, '/zh/foo/bar')).toEqual({
+      expect(resolveSiteLocaleData(siteData, '/zh/')).toEqual({
         ...siteData,
         themeConfig: {
           ...siteData.themeConfig,
           msg: 'zh msg',
         },
       })
-      expect(resolveSiteLocaleData(siteData, '/zh/TW/foo/bar')).toEqual({
+      expect(resolveSiteLocaleData(siteData, '/zh/TW/')).toEqual({
         ...siteData,
         themeConfig: {
           ...siteData.themeConfig,

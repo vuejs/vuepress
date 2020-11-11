@@ -14,7 +14,8 @@ module.exports = {
   preset: 'ts-jest',
   globals: {
     'ts-jest': {
-      tsconfig: '<rootDir>/tsconfig.json',
+      // use client `tsconfig.json` for the `@internal/*` aliases
+      tsconfig: '<rootDir>/packages/@vuepress/client/tsconfig.json',
     },
     '__VERSION__': '',
     '__DEV__': false,
