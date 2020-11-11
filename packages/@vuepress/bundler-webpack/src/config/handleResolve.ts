@@ -11,14 +11,21 @@ export const handleResolve = ({
   app: App
   config: Config
 }): void => {
+  // aliases
   config.resolve.alias
-    // alias
+    .set('@source', app.dir.source())
     .set('@temp', app.dir.temp())
     .set('@internal', app.dir.temp('internal'))
-    .end()
-    // extensions
-    .extensions.merge(['.js', '.jsx', '.ts', '.tsx', '.vue', '.json'])
-    .end()
+
+  // extensions
+  config.resolve.extensions.merge([
+    '.js',
+    '.jsx',
+    '.ts',
+    '.tsx',
+    '.vue',
+    '.json',
+  ])
 
   // plugin hook: alias
   const aliasResult = app.pluginApi.hooks.alias.processSync()
