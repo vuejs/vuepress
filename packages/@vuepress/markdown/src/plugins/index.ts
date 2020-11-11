@@ -1,4 +1,5 @@
 export * from './anchorPlugin'
+export * from './assetsPlugin'
 export * from './codePlugin'
 export * from './customComponentPlugin'
 export * from './emojiPlugin'

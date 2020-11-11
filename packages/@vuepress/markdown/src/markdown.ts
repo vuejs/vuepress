@@ -2,6 +2,7 @@ import * as MarkdownIt from 'markdown-it'
 import { tocPlugin } from './plugins/tocPlugin/tocPlugin'
 import {
   anchorPlugin,
+  assetsPlugin,
   codePlugin,
   customComponentPlugin,
   emojiPlugin,
@@ -17,6 +18,7 @@ import { slugify } from './utils'
  */
 export const createMarkdown = ({
   anchor,
+  assets,
   code,
   emoji,
   extractHeaders,
@@ -67,6 +69,8 @@ export const createMarkdown = ({
   md
     // treat unknown html tags as custom components
     .use(customComponentPlugin)
+    // replace relative link of assets with absolute link
+    .use(assetsPlugin, assets)
     // hoist vue SFC blocks and extract them into env
     .use(hoistTagsPlugin, hoistTags)
     // process external and internal links
