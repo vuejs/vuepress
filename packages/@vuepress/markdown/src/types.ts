@@ -14,14 +14,15 @@ import type {
 export type Markdown = MarkdownIt
 
 export interface MarkdownOptions extends MarkdownIt.Options {
-  anchor?: AnchorPluginOptions
-  assets?: AssetsPluginOptions
-  code?: CodePluginOptions
-  emoji?: EmojiPluginOptions
-  extractHeaders?: ExtractHeadersPluginOptions
-  hoistTags?: HoistTagsPluginOptions
-  links?: LinksPluginOptions
-  toc?: TocPluginOptions
+  anchor?: false | AnchorPluginOptions
+  assets?: false | AssetsPluginOptions
+  code?: false | CodePluginOptions
+  customComponent?: false
+  emoji?: false | EmojiPluginOptions
+  extractHeaders?: false | ExtractHeadersPluginOptions
+  hoistTags?: false | HoistTagsPluginOptions
+  links?: false | LinksPluginOptions
+  toc?: false | TocPluginOptions
 }
 
 /**

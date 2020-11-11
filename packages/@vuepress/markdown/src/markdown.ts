@@ -20,6 +20,7 @@ export const createMarkdown = ({
   anchor,
   assets,
   code,
+  customComponent,
   emoji,
   extractHeaders,
   hoistTags,
@@ -34,15 +35,18 @@ export const createMarkdown = ({
     html: true,
   })
 
-  // following plugins push rules to the end of chain, so the order
-  // of them is important
-  md
-    // parse emoji (before anchor and toc plugin)
-    .use(emojiPlugin, {
-      ...emoji,
-    })
-    // add anchor to headers
-    .use(anchorPlugin, {
+  // =====================================================
+  // following plugins push rules to the end of chain, so
+  // the order to use them is important
+
+  // parse emoji (before anchor and toc plugin)
+  if (emoji !== false) {
+    md.use(emojiPlugin, emoji)
+  }
+
+  // add anchor to headers
+  if (anchor !== false) {
+    md.use(anchorPlugin, {
       level: [1, 2, 3, 4, 5, 6],
       slugify,
       permalink: true,
@@ -50,33 +54,55 @@ export const createMarkdown = ({
       permalinkSymbol: '#',
       ...anchor,
     })
-    // allow toc syntax (after anchor plugin)
-    .use(tocPlugin, {
+  }
+
+  // allow toc syntax (after anchor plugin)
+  if (toc !== false) {
+    md.use(tocPlugin, {
       level: [2, 3],
       slugify,
       linkTag: 'RouterLink',
       ...toc,
     })
-    // extract headers into env (after anchor plugin)
-    .use(extractHeadersPlugin, {
+  }
+
+  // extract headers into env (after anchor plugin)
+  if (extractHeaders !== false) {
+    md.use(extractHeadersPlugin, {
       level: [2, 3],
       slugify,
       ...extractHeaders,
     })
+  }
 
+  // =====================================================
   // following plugins modify or replace the rule in place
   // and have no conflicts, so the order is not important
-  md
-    // treat unknown html tags as custom components
-    .use(customComponentPlugin)
-    // replace relative link of assets with absolute link
-    .use(assetsPlugin, assets)
-    // hoist vue SFC blocks and extract them into env
-    .use(hoistTagsPlugin, hoistTags)
-    // process external and internal links
-    .use(linksPlugin, links)
-    // process code fence
-    .use(codePlugin, code)
+
+  // treat unknown html tags as custom components
+  if (customComponent !== false) {
+    md.use(customComponentPlugin)
+  }
+
+  // replace relative link of assets with absolute link
+  if (assets !== false) {
+    md.use(assetsPlugin, assets)
+  }
+
+  // hoist vue SFC blocks and extract them into env
+  if (hoistTags !== false) {
+    md.use(hoistTagsPlugin, hoistTags)
+  }
+
+  // process external and internal links
+  if (links !== false) {
+    md.use(linksPlugin, links)
+  }
+
+  // process code fence
+  if (code !== false) {
+    md.use(codePlugin, code)
+  }
 
   return md
 }
