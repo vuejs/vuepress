@@ -86,7 +86,7 @@ export const createPage = async (
   } = resolvePageDataInfo({ app, key })
 
   // resolve title from frontmatter and headers
-  const title = resolvePageTitle({ frontmatter, headers })
+  const title = resolvePageTitle({ content, frontmatter, headers })
 
   return {
     key,
