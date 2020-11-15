@@ -52,6 +52,9 @@ Features in the following list are not fully determined, and might be changed or
   - [x] Style pre-processors config
 
 - [ ] @vuepress/theme-default
+  - [x] Navbar
+  - [x] Sidebar
+  - [ ] Page
 
 - [x] @vuepress/cli
 
@@ -60,8 +63,10 @@ Features in the following list are not fully determined, and might be changed or
 
 - [ ] official plugins
 
+  - [ ] @vuepress/plugin-active-header-links
   - [ ] @vuepress/plugin-back-to-top
   - [x] @vuepress/plugin-container
+  - [ ] @vuepress/plugin-git-logs
   - [ ] @vuepress/plugin-google-analytics
   - [ ] @vuepress/plugin-medium-zoom
   - [x] @vuepress/plugin-nprogress
