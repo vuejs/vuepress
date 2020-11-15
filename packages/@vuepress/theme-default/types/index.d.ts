@@ -1,24 +1,8 @@
-import type { LocaleData, Theme, ThemeConfig } from '@vuepress/core'
+import type { Theme } from '@vuepress/core'
+import type { DefaultThemeOptions } from 'theme'
 
-export interface DefaultThemeOptions
-  extends ThemeConfig<DefaultThemeLocaleData> {
-  logo?: string
-  navbar?: boolean
-}
-
-export interface DefaultThemeLocaleData extends LocaleData {
-  // custom blocks default title
-  tip?: string
-  warning?: string
-  danger?: string
-
-  // messages for 404 page
-  notFound?: string[]
-  backToHome?: string
-
-  // sr-only message in <OutboundLink>
-  openInNewWindow?: string
-}
+export * from './links'
+export * from './theme'
 
 declare const defaultTheme: Theme<DefaultThemeOptions>
 

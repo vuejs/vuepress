@@ -12,20 +12,21 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { useSiteLocaleData } from '@vuepress/client'
+import { useRouteLocale, useThemeLocaleData } from '@vuepress/client'
+import type { DefaultThemeOptions } from '../../types'
 
 export default defineComponent({
   name: '404',
 
   setup() {
-    const siteLocale = useSiteLocaleData()
-    const themeConfig = siteLocale.value.themeConfig
+    const routeLocale = useRouteLocale()
+    const themeLocale = useThemeLocaleData<DefaultThemeOptions>()
 
-    const messages = themeConfig.notFound ?? ['Not Found']
+    const messages = themeLocale.value.notFound ?? ['Not Found']
     const getMsg = (): string =>
       messages[Math.floor(Math.random() * messages.length)]
-    const homeLink = siteLocale.value.base
-    const homeText = themeConfig.backToHome
+    const homeLink = themeLocale.value.home ?? routeLocale.value
+    const homeText = themeLocale.value.backToHome ?? 'Back to home'
 
     return {
       getMsg,

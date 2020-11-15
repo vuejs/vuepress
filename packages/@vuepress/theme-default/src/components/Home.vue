@@ -6,7 +6,7 @@
     <header class="hero">
       <img
         v-if="$frontmatter.heroImage"
-        :src="$frontmatter.heroImage"
+        :src="$withBase($frontmatter.heroImage)"
         :alt="$frontmatter.heroAlt || 'hero'"
       />
 
@@ -32,9 +32,13 @@
         v-if="$frontmatter.actionText && $frontmatter.actionLink"
         class="action"
       >
-        <NavLink class="action-button" :link="$frontmatter.actionLink">
-          {{ $frontmatter.actionText }}
-        </NavLink>
+        <NavLink
+          class="action-button"
+          :item="{
+            text: $frontmatter.actionText,
+            link: $frontmatter.actionLink,
+          }"
+        />
       </p>
     </header>
 

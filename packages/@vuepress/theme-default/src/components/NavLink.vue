@@ -1,60 +1,67 @@
 <template>
-  <RouterLink v-if="isRouterLink" class="nav-link" :to="link" :exact="isExact">
-    <slot />
+  <RouterLink
+    v-if="isRouterLink"
+    class="nav-link"
+    :to="item.link"
+    :exact="isExact"
+    :aria-label="linkAriaLabel"
+    v-bind="$attrs"
+  >
+    <slot name="before" />
+    {{ item.text }}
+    <slot name="after" />
   </RouterLink>
   <a
     v-else
     class="nav-link external"
-    :href="link"
+    :href="item.link"
     :rel="linkRel"
     :target="linkTarget"
+    :aria-label="linkAriaLabel"
+    v-bind="$attrs"
   >
-    <slot />
+    <slot name="before" />
+    {{ item.text }}
     <OutboundLink v-if="isBlankTarget" />
+    <slot name="after" />
   </a>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent, toRefs } from 'vue'
+import type { PropType } from 'vue'
 import { useSiteData } from '@vuepress/client'
 import { isLinkExternal, isLinkMailto, isLinkTel } from '@vuepress/shared'
+import type { NavLink } from '../../types'
 
 export default defineComponent({
   name: 'NavLink',
 
+  inheritAttrs: false,
+
   props: {
-    link: {
-      type: String,
+    item: {
+      type: Object as PropType<NavLink>,
       required: true,
-    },
-    target: {
-      type: String,
-      required: false,
-      default: '',
-    },
-    rel: {
-      type: String,
-      required: false,
-      default: '',
     },
   },
 
   setup(props) {
     const site = useSiteData()
-    const { link, target, rel } = toRefs(props)
+    const { item } = toRefs(props)
 
     // if the link is a non-http link or not
     const isNonHttp = computed(
-      () => isLinkMailto(link.value) || isLinkTel(link.value)
+      () => isLinkMailto(item.value.link) || isLinkTel(item.value.link)
     )
     // if the link is an external http link
     const isExternal = computed(() =>
-      isLinkExternal(link.value, site.value.base)
+      isLinkExternal(item.value.link, site.value.base)
     )
     // resolve the `target` attr
     const linkTarget = computed(() => {
       if (isNonHttp.value) return null
-      if (target.value) return target.value
+      if (item.value.target) return item.value.target
       if (isExternal.value) return '_blank'
       return null
     })
@@ -68,17 +75,21 @@ export default defineComponent({
     const isExact = computed(() => {
       const localeKeys = Object.keys(site.value.locales)
       if (localeKeys.length) {
-        return localeKeys.some((key) => key === link.value)
+        return localeKeys.some((key) => key === item.value.link)
       }
-      return link.value === '/'
+      return item.value.link === '/'
     })
     // resolve the `rel` attr
     const linkRel = computed(() => {
       if (isNonHttp.value) return null
-      if (rel.value) return rel.value
+      if (item.value.rel) return item.value.rel
       if (isBlankTarget.value) return 'noopener noreferrer'
       return null
     })
+    // resolve the `aria-label` attr
+    const linkAriaLabel = computed(
+      () => item.value.ariaLabel || item.value.text
+    )
 
     return {
       isBlankTarget,
@@ -86,6 +97,7 @@ export default defineComponent({
       isRouterLink,
       linkRel,
       linkTarget,
+      linkAriaLabel,
     }
   },
 })

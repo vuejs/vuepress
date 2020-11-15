@@ -1,10 +1,10 @@
 <template>
   <RawOutboundLink>
-    <span class="sr-only">{{ $siteLocale.themeConfig.openInNewWindow }}</span>
+    <span class="sr-only">{{ $themeLocale.openInNewWindow }}</span>
   </RawOutboundLink>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent } from 'vue'
 import { OutboundLink } from '@vuepress/client'
 
