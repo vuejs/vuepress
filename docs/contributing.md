@@ -1,3 +1,7 @@
+---
+sidebar: auto
+---
+
 # VuePress Contributing Guide
 
 ## Overview
@@ -79,7 +83,9 @@ The `clean` script runs `clean` script in all packages, cleaning all the dist fi
 
 It's used before you want to re-build source files from a clean / initial state.
 
-### `yarn docs:build`, `yarn docs:dev`, `yarn docs:clean`
+### `yarn docs:*`
+
+#### `yarn docs:build`, `yarn docs:dev`, `yarn docs:clean`
 
 The `docs:` prefix indicates that these scripts are for documentation, i.e. the `docs` directory.
 
@@ -87,7 +93,7 @@ Vuepress is using itself to build its own documentation site.
 
 You need to run `yarn build && yarn copy` to build packages first, then run these `docs:` scripts to develop and build our documentation.
 
-### `yarn docs:serve`
+#### `yarn docs:serve`
 
 Serve the documentation site locally.
 

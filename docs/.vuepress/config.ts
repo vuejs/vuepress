@@ -2,6 +2,10 @@ import type { UserConfig } from '@vuepress/core'
 import type { DefaultThemeOptions } from '@vuepress/theme-default'
 
 const config: UserConfig<DefaultThemeOptions> = {
+  base: '/',
+
+  evergreen: process.env.NODE_ENV !== 'production',
+
   locales: {
     '/': {
       lang: 'en-US',
@@ -16,12 +20,98 @@ const config: UserConfig<DefaultThemeOptions> = {
   },
 
   themeConfig: {
+    logo: '/hero.png',
+
+    repo: 'vuepress/vuepress-next',
+
     locales: {
-      '/': {},
+      '/': {
+        // navbar
+        navbar: [
+          {
+            text: 'Guide',
+            link: '/guide/',
+          },
+          {
+            text: 'Learn More',
+            children: [
+              {
+                text: 'Contributing Guide',
+                link: '/contributing.html',
+              },
+            ],
+          },
+        ],
+
+        // sidebar
+        sidebar: {
+          '/guide/': [
+            {
+              text: 'Guide',
+              isGroup: true,
+              collapsible: false,
+              children: [
+                {
+                  text: 'Introduction',
+                  link: '/guide/',
+                },
+                {
+                  text: 'Getting Started',
+                  link: '/guide/getting-started.html',
+                },
+              ],
+            },
+          ],
+        },
+      },
       '/zh/': {
+        // navbar
+        navbar: [
+          {
+            text: '指南',
+            link: '/zh/guide/',
+          },
+          {
+            text: '了解更多',
+            children: [
+              {
+                text: '开发指南',
+                link: '/zh/contributing.html',
+              },
+            ],
+          },
+        ],
+        selectLanguageName: '简体中文',
+        selectLanguageText: '选择语言',
+        selectLanguageAriaLabel: '选择语言',
+
+        // sidebar
+        sidebar: {
+          '/zh/guide/': [
+            {
+              text: '指南',
+              isGroup: true,
+              collapsible: false,
+              children: [
+                {
+                  text: '介绍',
+                  link: '/zh/guide/',
+                },
+                {
+                  text: '开始使用',
+                  link: '/zh/guide/getting-started.html',
+                },
+              ],
+            },
+          ],
+        },
+
+        // custom blocks
         info: '提示',
         warning: '注意',
         danger: '警告',
+
+        // 404 page
         notFound: [
           '这里什么都没有',
           '我们怎么到这来了？',
@@ -29,6 +119,8 @@ const config: UserConfig<DefaultThemeOptions> = {
           '看起来我们进入了错误的链接',
         ],
         backToHome: '返回首页',
+
+        // other
         openInNewWindow: '在新窗口打开',
       },
     },
