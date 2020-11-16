@@ -63,11 +63,11 @@ Main tools that used in this project:
 
 The `build` script uses `tsc` to compile typescript source files to javascript dist files.
 
-You may need to run this script first after your clone this repository, because the dist files is ignored by `.gitignore`.
+You may need to run this script first after your clone this repository, because the dist files are ignored by `.gitignore`.
 
 ### `yarn copy`
 
-The `copy` script runs `copy` script in all packages, copying some resources from source directory to dist directory.
+The `copy` script of root project runs `copy` script in all packages, copying some resources from source directory to dist directory.
 
 It's mainly used for `@vuepress/theme-default`, because some source files (e.g. `.vue`, `.styl` files) can not be processed by `build` script, but should keep the same relative path in the dist directory.
 
