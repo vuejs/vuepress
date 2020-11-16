@@ -16,8 +16,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import type { PropType } from 'vue'
-import type { ResolvedSidebarItem } from '../composables'
+import { useSidebarItems } from '../composables'
 import NavbarLinks from './NavbarLinks.vue'
 import SidebarChild from './SidebarChild.vue'
 
@@ -29,11 +28,11 @@ export default defineComponent({
     SidebarChild,
   },
 
-  props: {
-    sidebarItems: {
-      type: Array as PropType<ResolvedSidebarItem[]>,
-      required: true,
-    },
+  setup() {
+    const sidebarItems = useSidebarItems()
+    return {
+      sidebarItems,
+    }
   },
 })
 </script>

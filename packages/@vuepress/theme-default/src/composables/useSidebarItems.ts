@@ -1,5 +1,5 @@
-import { computed } from 'vue'
-import type { ComputedRef } from 'vue'
+import { computed, inject } from 'vue'
+import type { ComputedRef, InjectionKey } from 'vue'
 import { useRoute } from 'vue-router'
 import {
   usePageData,
@@ -7,15 +7,23 @@ import {
   useThemeLocaleData,
 } from '@vuepress/client'
 import type { PageHeader } from '@vuepress/client'
-import { isPlainObject, resolveLocalePath } from '@vuepress/shared'
+import { isArray, isPlainObject, resolveLocalePath } from '@vuepress/shared'
 import type {
   DefaultThemeOptions,
   NavItem,
+  SidebarConfigArray,
   SidebarConfigObject,
 } from '../../types'
 
 export type ResolvedSidebarConfig = DefaultThemeOptions['sidebar']
 
+/**
+ * A common type for sidebar items, only for internal usage
+ *
+ * - Link or not
+ * - Group or not
+ * - ...
+ */
 export interface ResolvedSidebarItem extends NavItem {
   link?: string
   isGroup?: boolean
@@ -23,7 +31,29 @@ export interface ResolvedSidebarItem extends NavItem {
   children?: ResolvedSidebarItem[]
 }
 
-export const useSidebarItems = (): ComputedRef<ResolvedSidebarItem[]> => {
+export type SidebarItemsRef = ComputedRef<ResolvedSidebarItem[]>
+
+export const sidebarItemsSymbol: InjectionKey<SidebarItemsRef> = Symbol(
+  'sidebarItems'
+)
+
+/**
+ * Inject sidebar items global computed
+ */
+export const useSidebarItems = (): SidebarItemsRef => {
+  const sidebarItems = inject(sidebarItemsSymbol)
+  if (!sidebarItems) {
+    throw new Error('useSidebarItems() is called without provider.')
+  }
+  return sidebarItems
+}
+
+/**
+ * Resolve sidebar items global computed
+ *
+ * It should only be resolved and provided once
+ */
+export const resolveSidebarItems = (): SidebarItemsRef => {
   const frontmatter = usePageFrontmatter()
   const themeLocale = useThemeLocaleData<DefaultThemeOptions>()
 
@@ -38,11 +68,15 @@ export const useSidebarItems = (): ComputedRef<ResolvedSidebarItem[]> => {
     }
 
     if (sidebarConfig.value === 'auto') {
-      return useAutoSidebarItems()
+      return resolveAutoSidebarItems()
+    }
+
+    if (isArray(sidebarConfig.value)) {
+      return resolveArraySidebarItems(sidebarConfig.value)
     }
 
     if (isPlainObject(sidebarConfig.value)) {
-      return useMultiSidebarItems(sidebarConfig.value as SidebarConfigObject)
+      return resolveMultiSidebarItems(sidebarConfig.value)
     }
 
     return []
@@ -51,6 +85,9 @@ export const useSidebarItems = (): ComputedRef<ResolvedSidebarItem[]> => {
   return sidebarItems
 }
 
+/**
+ * Util to transform page header to sidebar item
+ */
 export const headerToSidebarItem = (
   header: PageHeader
 ): ResolvedSidebarItem => ({
@@ -59,7 +96,10 @@ export const headerToSidebarItem = (
   children: header.children.map(headerToSidebarItem),
 })
 
-export const useAutoSidebarItems = (): ResolvedSidebarItem[] => {
+/**
+ * Resolve sidebar items if the config is `auto`
+ */
+export const resolveAutoSidebarItems = (): ResolvedSidebarItem[] => {
   const page = usePageData()
 
   return [
@@ -72,15 +112,16 @@ export const useAutoSidebarItems = (): ResolvedSidebarItem[] => {
   ]
 }
 
-export const useMultiSidebarItems = (
-  sidebarConfig: SidebarConfigObject
+/**
+ * Resolve sidebar items if the config is an array
+ */
+export const resolveArraySidebarItems = (
+  sidebarConfig: SidebarConfigArray
 ): ResolvedSidebarItem[] => {
   const route = useRoute()
   const page = usePageData()
-  const sidebarPath = resolveLocalePath(sidebarConfig, route.path)
-  const matchedSidebarConfig = sidebarConfig[sidebarPath] ?? []
 
-  return matchedSidebarConfig.map((item: ResolvedSidebarItem) => {
+  return sidebarConfig.map((item: ResolvedSidebarItem) => {
     if (!item.isGroup) {
       return item
     }
@@ -98,4 +139,17 @@ export const useMultiSidebarItems = (
       }),
     }
   })
+}
+
+/**
+ * Resolve sidebar items if the config is a key -> value (path-prefix -> array) object
+ */
+export const resolveMultiSidebarItems = (
+  sidebarConfig: SidebarConfigObject
+): ResolvedSidebarItem[] => {
+  const route = useRoute()
+  const sidebarPath = resolveLocalePath(sidebarConfig, route.path)
+  const matchedSidebarConfig = sidebarConfig[sidebarPath] ?? []
+
+  return resolveArraySidebarItems(matchedSidebarConfig)
 }

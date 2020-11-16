@@ -14,6 +14,8 @@ const defaultTheme: Theme<DefaultThemeOptions> = (options) => {
 
     clientAppEnhanceFiles: path.resolve(__dirname, './clientAppEnhance.js'),
 
+    clientAppSetupFiles: path.resolve(__dirname, './clientAppSetup.js'),
+
     plugins: [
       ['@vuepress/nprogress'],
       [

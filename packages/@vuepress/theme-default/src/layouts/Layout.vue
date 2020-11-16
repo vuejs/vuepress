@@ -16,7 +16,7 @@
 
     <div class="sidebar-mask" @click="toggleSidebar(false)" />
 
-    <Sidebar :sidebar-items="sidebarItems">
+    <Sidebar>
       <template #top>
         <slot name="sidebar-top" />
       </template>
@@ -115,7 +115,6 @@ export default defineComponent({
       toggleSidebar,
       onTouchStart,
       onTouchEnd,
-      sidebarItems,
     }
   },
 })
