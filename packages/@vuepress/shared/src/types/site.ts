@@ -46,11 +46,11 @@ export interface SiteLocaleData extends LocaleData {
  * {
  *   '/en/': {
  *     lang: 'en-US',
- *     msg: 'hello',
+ *     title: 'Hello',
  *   },
  *   '/zh/: {
  *     lang: 'zh-CN',
- *     msg: '你好',
+ *     title: '你好',
  *   }
  * }
  *
