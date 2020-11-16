@@ -25,6 +25,12 @@ const config: UserConfig<DefaultThemeOptions> = {
     repo: 'vuepress/vuepress-next',
 
     locales: {
+      /**
+       * English locale config
+       *
+       * As the default locale of @vuepress/theme-default is English,
+       * we don't need to set all of the locale fields
+       */
       '/': {
         // navbar
         navbar: [
@@ -47,9 +53,8 @@ const config: UserConfig<DefaultThemeOptions> = {
         sidebar: {
           '/guide/': [
             {
-              text: 'Guide',
               isGroup: true,
-              collapsible: false,
+              text: 'Guide',
               children: [
                 {
                   text: 'Introduction',
@@ -64,6 +69,10 @@ const config: UserConfig<DefaultThemeOptions> = {
           ],
         },
       },
+
+      /**
+       * Chinese locale config
+       */
       '/zh/': {
         // navbar
         navbar: [
@@ -89,9 +98,8 @@ const config: UserConfig<DefaultThemeOptions> = {
         sidebar: {
           '/zh/guide/': [
             {
-              text: '指南',
               isGroup: true,
-              collapsible: false,
+              text: '指南',
               children: [
                 {
                   text: '介绍',
