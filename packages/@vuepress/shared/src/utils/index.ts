@@ -1,10 +1,4 @@
-export {
-  isArray,
-  isFunction,
-  isPlainObject,
-  isPromise,
-  isString,
-} from '@vue/shared'
+export { isArray, isFunction, isPromise, isString } from '@vue/shared'
 
 export * from './dedupeHead'
 export * from './ensureLeadingSlash'
@@ -15,6 +9,7 @@ export * from './htmlUnescape'
 export * from './isLinkExternal'
 export * from './isLinkMailto'
 export * from './isLinkTel'
+export * from './isPlainObject'
 export * from './normalizePackageName'
 export * from './removeEndingSlash'
 export * from './removeLeadingSlash'
