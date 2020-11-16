@@ -1,7 +1,7 @@
 <script lang="ts">
 import { h } from 'vue'
 import type { FunctionalComponent } from 'vue'
-import { RouterLink, useRoute } from 'vue-router'
+import { useRoute } from 'vue-router'
 import type { RouteLocationNormalizedLoaded } from 'vue-router'
 import type { ResolvedSidebarItem } from '../composables'
 import NavLink from './NavLink.vue'
@@ -64,16 +64,18 @@ const SidebarChild: FunctionalComponent<{
           },
         },
         [
-          h(
-            item.link ? RouterLink : 'p',
-            {
-              class: {
-                'sidebar-heading': true,
-              },
-              to: item.link,
-            },
-            item.text
-          ),
+          item.link
+            ? h(NavLink, {
+                class: 'sidebar-heading clickable',
+                item,
+              })
+            : h(
+                'p',
+                {
+                  class: 'sidebar-heading',
+                },
+                item.text
+              ),
           children,
         ]
       ),
@@ -173,7 +175,6 @@ export default SidebarChild
   transition height .1s ease-out
   font-size 0.95em
   overflow hidden
-
 
 .sidebar .sidebar-sub-headers
   padding-left 1rem
