@@ -34,7 +34,6 @@ export interface SidebarItem extends NavLink {
 }
 export interface SidebarGroup extends NavGroup<SidebarItem> {
   isGroup: true
-  collapsible?: boolean
 }
 export type SidebarConfigArray = (SidebarGroup | SidebarItem)[]
 export type SidebarConfigObject = Record<string, (SidebarGroup | SidebarItem)[]>

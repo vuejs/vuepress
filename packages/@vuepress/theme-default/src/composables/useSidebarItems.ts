@@ -27,7 +27,6 @@ export type ResolvedSidebarConfig = DefaultThemeOptions['sidebar']
 export interface ResolvedSidebarItem extends NavItem {
   link?: string
   isGroup?: boolean
-  collapsable?: boolean
   children?: ResolvedSidebarItem[]
 }
 
@@ -105,7 +104,6 @@ export const resolveAutoSidebarItems = (): ResolvedSidebarItem[] => {
   return [
     {
       isGroup: true,
-      collapsable: false,
       text: page.value.title,
       children: page.value.headers.map(headerToSidebarItem),
     },

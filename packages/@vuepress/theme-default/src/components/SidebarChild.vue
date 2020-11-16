@@ -1,6 +1,6 @@
 <script lang="ts">
 import { h } from 'vue'
-import type { FunctionalComponent } from 'vue'
+import type { FunctionalComponent, VNode } from 'vue'
 import { useRoute } from 'vue-router'
 import type { RouteLocationNormalizedLoaded } from 'vue-router'
 import type { ResolvedSidebarItem } from '../composables'
@@ -29,30 +29,53 @@ const isActive = (
   return currentPath === targetPath
 }
 
+const renderItem = (
+  item: ResolvedSidebarItem,
+  props: VNode['props']
+): VNode => {
+  // if the item has link, render it as `<NavLink>`
+  if (item.link) {
+    return h(NavLink, {
+      ...props,
+      item,
+    })
+  }
+
+  // if the item only has text, render it as `<p>`
+  return h('p', props, item.text)
+}
+
+const renderChildren = (
+  item: ResolvedSidebarItem,
+  depth: number
+): VNode | null => {
+  if (!item.children?.length) {
+    return null
+  }
+
+  return h(
+    'ul',
+    {
+      class: {
+        'sidebar-sub-headers': depth > 0,
+      },
+    },
+    item.children.map((child) =>
+      h(
+        'li',
+        h(SidebarChild, {
+          item: child,
+          depth: depth + 1,
+        })
+      )
+    )
+  )
+}
+
 const SidebarChild: FunctionalComponent<{
   item: ResolvedSidebarItem
   depth: number
 }> = ({ item, depth }) => {
-  const children = item.children?.length
-    ? h(
-        'ul',
-        {
-          class: {
-            'sidebar-sub-headers': depth > 0,
-          },
-        },
-        item.children.map((child) =>
-          h(
-            'li',
-            h(SidebarChild, {
-              item: child,
-              depth: depth + 1,
-            })
-          )
-        )
-      )
-    : []
-
   if (item.isGroup) {
     return [
       h(
@@ -60,23 +83,13 @@ const SidebarChild: FunctionalComponent<{
         {
           class: {
             'sidebar-group': true,
-            'collapsable': item.collapsable,
           },
         },
         [
-          item.link
-            ? h(NavLink, {
-                class: 'sidebar-heading clickable',
-                item,
-              })
-            : h(
-                'p',
-                {
-                  class: 'sidebar-heading',
-                },
-                item.text
-              ),
-          children,
+          renderItem(item, {
+            class: 'sidebar-heading',
+          }),
+          renderChildren(item, depth),
         ]
       ),
     ]
@@ -88,14 +101,13 @@ const SidebarChild: FunctionalComponent<{
     item.children?.some((child) => isActive(route, child.link))
 
   return [
-    h(item.link ? NavLink : 'p', {
+    renderItem(item, {
       class: {
         'sidebar-link': true,
         active,
       },
-      item,
     }),
-    children,
+    renderChildren(item, depth),
   ]
 }
 
@@ -119,39 +131,20 @@ export default SidebarChild
 <style lang="stylus">
 @require '../styles/config.styl'
 
-.sidebar-group
-  .sidebar-group
-    padding-left 0.5em
-  &:not(.collapsable)
-    .sidebar-heading:not(.clickable)
-      cursor auto
-      color inherit
-  // refine styles of nested sidebar groups
-  &.is-sub-group
-    padding-left 0
-    & > .sidebar-heading
-      font-size 0.95em
-      line-height 1.4
-      font-weight normal
-      padding-left 2rem
-      &:not(.clickable)
-        opacity 0.5
-    & > .sidebar-group-items
-      padding-left 1rem
-      & > li > .sidebar-link
-        font-size: 0.95em;
-        border-left none
-  &.depth-2
-    & > .sidebar-heading
-      border-left none
+.sidebar-group .sidebar-group
+  & > .sidebar-heading
+    opacity 0.5
+    font-size 0.95em
+    line-height 1.4
+    font-weight normal
+    padding-left 2rem
 
 .sidebar-heading
   color $textColor
   transition color .15s ease
-  cursor pointer
+  cursor default
   font-size 1.1em
   font-weight bold
-  // text-transform uppercase
   padding 0.35rem 1.5rem 0.35rem 1.25rem
   width 100%
   box-sizing border-box
@@ -163,39 +156,22 @@ export default SidebarChild
     position relative
     top -0.12em
     left 0.5em
-  &.clickable
-    &.active
-      font-weight 600
-      color $accentColor
-      border-left-color $accentColor
-    &:hover
-      color $accentColor
-
-.sidebar-group-items
-  transition height .1s ease-out
-  font-size 0.95em
-  overflow hidden
 
 .sidebar .sidebar-sub-headers
   padding-left 1rem
   font-size 0.95em
 
-a.sidebar-link
+.sidebar-link
   font-size 1em
   font-weight 400
   display inline-block
   color $textColor
   border-left 0.25rem solid transparent
+  margin 0
   padding 0.35rem 1rem 0.35rem 1.25rem
   line-height 1.4
   width: 100%
   box-sizing: border-box
-  &:hover
-    color $accentColor
-  &.active
-    font-weight 600
-    color $accentColor
-    border-left-color $accentColor
   .sidebar-group &
     padding-left 2rem
   .sidebar-sub-headers &
@@ -204,4 +180,14 @@ a.sidebar-link
     border-left none
     &.active
       font-weight 500
+
+a.sidebar-heading,
+a.sidebar-link
+  cursor pointer
+  &.active
+    font-weight 600
+    color $accentColor
+    border-left-color $accentColor
+  &:hover
+    color $accentColor
 </style>
