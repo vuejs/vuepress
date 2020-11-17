@@ -7,28 +7,19 @@ import {
   useThemeLocaleData,
 } from '@vuepress/client'
 import type { PageHeader } from '@vuepress/client'
-import { isArray, isPlainObject, resolveLocalePath } from '@vuepress/shared'
+import {
+  isArray,
+  isPlainObject,
+  isString,
+  resolveLocalePath,
+} from '@vuepress/shared'
 import type {
   DefaultThemeOptions,
-  NavItem,
   SidebarConfigArray,
   SidebarConfigObject,
+  ResolvedSidebarItem,
 } from '../../types'
-
-export type ResolvedSidebarConfig = DefaultThemeOptions['sidebar']
-
-/**
- * A common type for sidebar items, only for internal usage
- *
- * - Link or not
- * - Group or not
- * - ...
- */
-export interface ResolvedSidebarItem extends NavItem {
-  link?: string
-  isGroup?: boolean
-  children?: ResolvedSidebarItem[]
-}
+import { useNavLink } from './useNavLink'
 
 export type SidebarItemsRef = ComputedRef<ResolvedSidebarItem[]>
 
@@ -56,12 +47,15 @@ export const resolveSidebarItems = (): SidebarItemsRef => {
   const frontmatter = usePageFrontmatter()
   const themeLocale = useThemeLocaleData<DefaultThemeOptions>()
 
+  // get sidebar config from frontmatter > themeConfig
   const sidebarConfig = computed(
     () =>
-      (frontmatter.value.sidebar as ResolvedSidebarConfig) ||
+      (frontmatter.value.sidebar as DefaultThemeOptions['sidebar']) ||
       themeLocale.value.sidebar
   )
-  const sidebarItems = computed<ResolvedSidebarItem[]>(() => {
+
+  // resolve sidebar items according to the config
+  return computed<ResolvedSidebarItem[]>(() => {
     if (frontmatter.value.home === true || sidebarConfig.value === false) {
       return []
     }
@@ -80,8 +74,6 @@ export const resolveSidebarItems = (): SidebarItemsRef => {
 
     return []
   })
-
-  return sidebarItems
 }
 
 /**
@@ -119,24 +111,44 @@ export const resolveArraySidebarItems = (
   const route = useRoute()
   const page = usePageData()
 
-  return sidebarConfig.map((item: ResolvedSidebarItem) => {
-    if (!item.isGroup) {
-      return item
-    }
+  return sidebarConfig.map(
+    (item): ResolvedSidebarItem => {
+      if (isString(item)) {
+        return useNavLink(item)
+      }
+      if (!item.isGroup) {
+        return item
+      }
 
-    return {
-      ...item,
-      children: item.children?.map((subItem: ResolvedSidebarItem) => {
-        if (subItem.link !== route.path || subItem.children !== undefined) {
-          return subItem
-        }
-        return {
-          ...subItem,
-          children: page.value.headers.map(headerToSidebarItem),
-        }
-      }),
+      return {
+        ...item,
+        children: item.children.map(
+          (subItem): ResolvedSidebarItem => {
+            let childItem: ResolvedSidebarItem
+            if (isString(subItem)) {
+              childItem = useNavLink(subItem)
+            } else {
+              childItem = subItem
+            }
+
+            // if the sidebar item is current page and children is not set
+            // use headers of current page as children
+            if (
+              childItem.link === route.path &&
+              childItem.children === undefined
+            ) {
+              return {
+                ...childItem,
+                children: page.value.headers.map(headerToSidebarItem),
+              }
+            }
+
+            return childItem
+          }
+        ),
+      }
     }
-  })
+  )
 }
 
 /**

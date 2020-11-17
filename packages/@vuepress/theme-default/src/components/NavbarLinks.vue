@@ -21,24 +21,27 @@ import {
   useThemeLocaleData,
   useSiteLocaleData,
 } from '@vuepress/client'
+import { isString } from '@vuepress/shared'
 import type {
   DefaultThemeOptions,
-  NavbarConfig,
+  NavbarItem,
   NavbarGroup,
+  ResolvedNavbarItem,
 } from '../../types'
+import { useNavLink } from '../composables'
 import DropdownLink from './DropdownLink.vue'
 import NavLink from './NavLink.vue'
 
 /**
  * Get navbar config of select language dropdown
  */
-const useNavbarSelectLanguage = (): ComputedRef<NavbarConfig> => {
+const useNavbarSelectLanguage = (): ComputedRef<ResolvedNavbarItem[]> => {
   const router = useRouter()
   const routeLocale = useRouteLocale()
   const siteLocale = useSiteLocaleData()
   const themeLocale = useThemeLocaleData<DefaultThemeOptions>()
 
-  return computed<NavbarConfig>(() => {
+  return computed<ResolvedNavbarItem[]>(() => {
     const localePaths = Object.keys(siteLocale.value.locales)
     // do not display language selection dropdown if there is only one language
     if (localePaths.length < 2) {
@@ -47,7 +50,7 @@ const useNavbarSelectLanguage = (): ComputedRef<NavbarConfig> => {
     const currentPath = router.currentRoute.value.path
     const currentFullPath = router.currentRoute.value.fullPath
 
-    const languageDropdown: NavbarGroup = {
+    const languageDropdown: ResolvedNavbarItem = {
       text: themeLocale.value.selectLanguageText ?? 'unkown language',
       ariaLabel: themeLocale.value.selectLanguageAriaLabel ?? 'unkown language',
       children: localePaths.map((targetLocalePath) => {
@@ -96,7 +99,7 @@ const useNavbarSelectLanguage = (): ComputedRef<NavbarConfig> => {
 /**
  * Get navbar config of repository link
  */
-const useNavbarRepo = (): ComputedRef<NavbarConfig> => {
+const useNavbarRepo = (): ComputedRef<ResolvedNavbarItem[]> => {
   const themeLocale = useThemeLocaleData<DefaultThemeOptions>()
 
   const repoLink = computed(() => {
@@ -139,6 +142,26 @@ const useNavbarRepo = (): ComputedRef<NavbarConfig> => {
   })
 }
 
+const resolveNavbarItem = (
+  item: NavbarItem | NavbarGroup | string
+): ResolvedNavbarItem => {
+  if (isString(item)) {
+    return useNavLink(item)
+  }
+  if ((item as NavbarGroup).children) {
+    return {
+      ...item,
+      children: (item as NavbarGroup).children.map(resolveNavbarItem),
+    }
+  }
+  return item as ResolvedNavbarItem
+}
+
+const useNavbarConfig = (): ComputedRef<ResolvedNavbarItem[]> => {
+  const themeLocale = useThemeLocaleData<DefaultThemeOptions>()
+  return computed(() => (themeLocale.value.navbar || []).map(resolveNavbarItem))
+}
+
 export default defineComponent({
   name: 'NavbarLinks',
 
@@ -148,11 +171,8 @@ export default defineComponent({
   },
 
   setup() {
-    const themeLocale = useThemeLocaleData<DefaultThemeOptions>()
-
-    const navbarConfig = computed(() => themeLocale.value.navbar || [])
+    const navbarConfig = useNavbarConfig()
     const navbarSelectLanguage = useNavbarSelectLanguage()
-
     const navbarRepo = useNavbarRepo()
 
     const navbarLinks = computed(() => [

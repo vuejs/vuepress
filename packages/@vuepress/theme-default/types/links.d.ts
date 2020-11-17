@@ -22,19 +22,33 @@ export interface NavLink extends NavItem {
   target?: string
 }
 
-// Navbar types
+/**
+ * Navbar types
+ */
+// user config
 export type NavbarItem = NavLink
-export type NavbarGroup = NavGroup<NavbarItem>
-export type NavbarConfig = (NavbarItem | NavbarGroup)[]
+export type NavbarGroup = NavGroup<NavbarItem | string>
+export type NavbarConfig = (NavbarItem | NavbarGroup | string)[]
+// resolved
+export type ResolvedNavbarItem = NavLink | NavGroup
 
-// Sidebar types
+/**
+ * Sidebar types
+ */
+// user config
 export interface SidebarItem extends NavLink {
   isGroup?: false
   children?: SidebarItem[]
 }
-export interface SidebarGroup extends NavGroup<SidebarItem> {
+export interface SidebarGroup extends NavGroup<SidebarItem | string> {
   isGroup: true
 }
-export type SidebarConfigArray = (SidebarGroup | SidebarItem)[]
-export type SidebarConfigObject = Record<string, (SidebarGroup | SidebarItem)[]>
+export type SidebarConfigArray = (SidebarGroup | SidebarItem | string)[]
+export type SidebarConfigObject = Record<string, SidebarConfigArray>
 export type SidebarConfig = SidebarConfigArray | SidebarConfigObject
+// resolved
+export interface ResolvedSidebarItem extends SidebarItem {
+  link?: string
+  isGroup?: boolean
+  children?: ResolvedSidebarItem[]
+}
