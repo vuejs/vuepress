@@ -6,7 +6,14 @@ import type { App, Page } from '../../types'
  */
 export const preparePageRoutes = async (
   app: App,
-  { key, path, pathInferred, filePathRelative, routesFilePathRelative }: Page
+  {
+    key,
+    path,
+    pathInferred,
+    filePathRelative,
+    title,
+    routesFilePathRelative,
+  }: Page
 ): Promise<void> => {
   const routes: string[] = []
 
@@ -16,6 +23,7 @@ export const preparePageRoutes = async (
     name: ${JSON.stringify(key)},
     path: ${JSON.stringify(path)},
     component: Vuepress,
+    meta: { title: ${JSON.stringify(title)} },
   },`)
 
   // redirect from decoded path
