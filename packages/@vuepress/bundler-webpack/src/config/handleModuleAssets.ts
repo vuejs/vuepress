@@ -21,9 +21,8 @@ export const handleModuleAssets = ({
     .loader('url-loader')
     .options({
       limit: inlineLimit,
-      name: app.env.isProd
-        ? `assets/img/[name].[hash:8].[ext]`
-        : `assets/img/[name].[ext]`,
+      // always add hash to avoid name conflicts
+      name: 'assets/img/[name].[hash:8].[ext]',
     })
 
   // svg
@@ -35,9 +34,8 @@ export const handleModuleAssets = ({
     .use('file-loader')
     .loader('file-loader')
     .options({
-      name: app.env.isProd
-        ? `assets/img/[name].[hash:8].[ext]`
-        : `assets/img/[name].[ext]`,
+      // always add hash to avoid name conflicts
+      name: 'assets/img/[name].[hash:8].[ext]',
     })
 
   // media
@@ -48,9 +46,8 @@ export const handleModuleAssets = ({
     .loader('url-loader')
     .options({
       limit: inlineLimit,
-      name: app.env.isProd
-        ? `assets/media/[name].[hash:8].[ext]`
-        : `assets/media/[name].[ext]`,
+      // always add hash to avoid name conflicts
+      name: 'assets/media/[name].[hash:8].[ext]',
     })
 
   // fonts
@@ -61,8 +58,7 @@ export const handleModuleAssets = ({
     .loader('url-loader')
     .options({
       limit: inlineLimit,
-      name: app.env.isProd
-        ? `assets/fonts/[name].[hash:8].[ext]`
-        : `assets/fonts/[name].[ext]`,
+      // always add hash to avoid name conflicts
+      name: 'assets/fonts/[name].[hash:8].[ext]',
     })
 }
