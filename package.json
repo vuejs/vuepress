@@ -14,9 +14,9 @@
     "docs:clean": "rimraf docs/.vuepress/.temp docs/.vuepress/.cache docs/.vuepress/dist",
     "docs:dev": "vuepress dev docs",
     "docs:serve": "serve docs/.vuepress/dist",
-    "postinstall": "yarn build && yarn copy",
+    "postinstall": "yarn copy && yarn build",
     "lint": "eslint --ext .js,.ts,.vue .",
-    "release": "yarn lint && yarn clean && yarn build && yarn copy && yarn test && lerna publish",
+    "release": "yarn lint && yarn clean && yarn copy && yarn build && yarn test && lerna publish",
     "test": "jest --runInBand"
   },
   "husky": {
