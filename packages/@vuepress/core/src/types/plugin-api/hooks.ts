@@ -68,8 +68,9 @@ export interface Hooks {
   onGenerated: LifeCycleHook
   extendsMarkdown: ExtendsMarkdownHook
   extendsPageData: ExtendsPageDataHook
-  clientAppSetupFiles: ClientFilesHook
   clientAppEnhanceFiles: ClientFilesHook
+  clientAppRootComponentFiles: ClientFilesHook
+  clientAppSetupFiles: ClientFilesHook
   alias: ReturnObjectHook
   define: ReturnObjectHook
   chainWebpack: ChainWebpackHook
@@ -77,7 +78,6 @@ export interface Hooks {
   afterDevServer: AfterDevServerHook
 
   // TODO: extendCli -> extendsCli
-  // TODO: globalUIComponents
   // TODO: configureWebpack
 }
 

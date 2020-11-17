@@ -2,6 +2,7 @@ import { debug } from '@vuepress/utils'
 import type { App } from '../types'
 import {
   prepareClientAppEnhances,
+  prepareClientAppRootComponents,
   prepareClientAppSetups,
   prepareLayoutComponents,
   preparePageComponent,
@@ -50,11 +51,14 @@ export const appPrepare = async (app: App): Promise<void> => {
   // generate site data file
   await prepareSiteData(app)
 
-  // generate client app setups file
-  await prepareClientAppSetups(app)
-
   // generate client app enhances file
   await prepareClientAppEnhances(app)
+
+  // generate client app root components file
+  await prepareClientAppRootComponents(app)
+
+  // generate client app setups file
+  await prepareClientAppSetups(app)
 
   // TODO: globalUIComponents
 

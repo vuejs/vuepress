@@ -16,6 +16,10 @@ export const createPluginApiHooks = (): PluginApi['hooks'] => ({
 
   // client files hooks
   clientAppEnhanceFiles: createHookQueue('clientAppEnhanceFiles', true),
+  clientAppRootComponentFiles: createHookQueue(
+    'clientAppRootComponentFiles',
+    true
+  ),
   clientAppSetupFiles: createHookQueue('clientAppSetupFiles', true),
 
   // bundler hooks

@@ -12,8 +12,9 @@ export const createPluginApiRegisterHooks = (
 
       alias,
       define,
-      clientAppSetupFiles,
       clientAppEnhanceFiles,
+      clientAppRootComponentFiles,
+      clientAppSetupFiles,
 
       ...commonHooks
     }) => {
@@ -34,17 +35,24 @@ export const createPluginApiRegisterHooks = (
         })
       }
 
-      if (clientAppSetupFiles) {
-        hooks.clientAppSetupFiles.add({
-          pluginName,
-          hook: normalizeClientFilesHook(clientAppSetupFiles),
-        })
-      }
-
       if (clientAppEnhanceFiles) {
         hooks.clientAppEnhanceFiles.add({
           pluginName,
           hook: normalizeClientFilesHook(clientAppEnhanceFiles),
+        })
+      }
+
+      if (clientAppRootComponentFiles) {
+        hooks.clientAppRootComponentFiles.add({
+          pluginName,
+          hook: normalizeClientFilesHook(clientAppRootComponentFiles),
+        })
+      }
+
+      if (clientAppSetupFiles) {
+        hooks.clientAppSetupFiles.add({
+          pluginName,
+          hook: normalizeClientFilesHook(clientAppSetupFiles),
         })
       }
 

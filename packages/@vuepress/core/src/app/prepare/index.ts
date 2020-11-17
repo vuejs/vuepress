@@ -1,4 +1,5 @@
 export * from './prepareClientAppEnhances'
+export * from './prepareClientAppRootComponents'
 export * from './prepareClientAppSetups'
 export * from './prepareLayoutComponents'
 export * from './preparePageComponent'
