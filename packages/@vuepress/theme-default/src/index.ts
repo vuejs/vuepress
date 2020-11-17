@@ -22,6 +22,7 @@ const defaultTheme: Theme<DefaultThemeOptions> = (options) => {
     extendsPageData: ({ filePathRelative }) => ({ filePathRelative }),
 
     plugins: [
+      ['@vuepress/back-to-top'],
       ['@vuepress/nprogress'],
       [
         '@vuepress/container',
