@@ -44,7 +44,10 @@ test('removeNonCodeWrappedHTML', () => {
     '# H1 `<Comp></Comp>` H2': '# H1 `<Comp></Comp>` H2',
     '# H1 `<Comp a="b"></Comp>` H2': '# H1 `<Comp a="b"></Comp>` H2',
     '# H1 `<Comp/>` H2': '# H1 `<Comp/>` H2',
-    '# H1 `<Comp a="b"/>` H2': '# H1 `<Comp a="b"/>` H2'
+    '# H1 `<Comp a="b"/>` H2': '# H1 `<Comp a="b"/>` H2',
+
+    // #2688
+    '# \\<ins>': '# \\<ins>'
   }
 
   Object.keys(asserts).forEach(input => {
