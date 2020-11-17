@@ -4,7 +4,7 @@ import type { HeadConfig } from './head'
  * Vuepress page data
  */
 export type PageData<
-  ExtendedPageData extends Record<string, unknown> = Record<never, never>
+  ExtendedPageData extends Record<any, any> = Record<never, never>
 > = ExtendedPageData & {
   /**
    * Identifier of the page

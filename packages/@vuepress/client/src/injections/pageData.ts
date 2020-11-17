@@ -4,7 +4,9 @@ import type { PageData } from '@vuepress/shared'
 import { pagesData } from './pagesData'
 
 export type { PageData }
-export type PageDataRef = Ref<PageData>
+export type PageDataRef<
+  T extends Record<any, any> = Record<never, never>
+> = Ref<PageData<T>>
 
 const pageDataEmpty = readonly({
   key: '',
@@ -17,8 +19,10 @@ const pageDataEmpty = readonly({
 
 export const pageData: PageDataRef = ref(pageDataEmpty)
 
-export const usePageData = (): PageDataRef => {
-  return pageData
+export const usePageData = <
+  T extends Record<any, any> = Record<never, never>
+>(): PageDataRef<T> => {
+  return pageData as PageDataRef<T>
 }
 
 export const resolvePageData = async (routePath: string): Promise<PageData> => {
