@@ -70,6 +70,52 @@ export interface DefaultThemeLocaleData extends LocaleData {
   sidebar?: 'auto' | false | SidebarConfig
 
   /**
+   * Edit link config
+   *
+   * Whether to show "Edit this page" or not
+   */
+  editLink?: boolean
+
+  /**
+   * Edit link config
+   *
+   * The text to replace the default "Edit this page"
+   */
+  editLinkText?: string
+
+  /**
+   * Edit link config
+   *
+   * Pattern of edit link
+   *
+   * @example ':repo/edit/:branch/:path'
+   */
+  editLinkPattern?: string
+
+  /**
+   * Edit link config
+   *
+   * Use `repo` config by default
+   *
+   * Set this config if your docs is placed in a different repo
+   */
+  docsRepo?: string
+
+  /**
+   * Edit link config
+   *
+   * Set this config if the branch of your docs is not 'master'
+   */
+  docsBranch?: string
+
+  /**
+   * Edit link config
+   *
+   * Set this config if your docs is placed in sub dir of your `docsRepo`
+   */
+  docsDir?: string
+
+  /**
    * Custom block config
    *
    * Default title of TIP custom block

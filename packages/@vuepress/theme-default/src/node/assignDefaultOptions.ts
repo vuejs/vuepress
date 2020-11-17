@@ -1,22 +1,25 @@
 import type { DefaultThemeOptions, DefaultThemeLocaleData } from '../../types'
 
-const defaultRootConfig: DefaultThemeLocaleData = {
-  logo: null,
-  navbar: [],
-  sidebar: 'auto',
-  repo: null,
-  repoLabel: '',
-}
-
 const defaultLocaleData: DefaultThemeLocaleData = {
   home: '/',
 
-  // language selection
+  // navbar
+  navbar: [],
+  logo: null,
+  repo: null,
+  repoLabel: '',
   selectLanguageName: 'English',
   selectLanguageText: 'Languages',
   selectLanguageAriaLabel: 'Select language',
 
-  // custom block default title
+  // sidebar
+  sidebar: 'auto',
+
+  // edit link
+  editLink: true,
+  editLinkText: 'Edit this page',
+
+  // custom block
   tip: 'TIP',
   warning: 'WARNING',
   danger: 'WARNING',
@@ -44,12 +47,7 @@ export const assignDefaultOptions = (options: DefaultThemeOptions): void => {
   }
 
   Object.assign(options, {
-    ...defaultRootConfig,
-    ...options,
-  })
-
-  Object.assign(options.locales['/'], {
     ...defaultLocaleData,
-    ...options.locales['/'],
+    ...options,
   })
 }

@@ -16,6 +16,11 @@ const defaultTheme: Theme<DefaultThemeOptions> = (options) => {
 
     clientAppSetupFiles: path.resolve(__dirname, './clientAppSetup.js'),
 
+    /**
+     * Require the relative file path to generate edit link
+     */
+    extendsPageData: ({ filePathRelative }) => ({ filePathRelative }),
+
     plugins: [
       ['@vuepress/nprogress'],
       [

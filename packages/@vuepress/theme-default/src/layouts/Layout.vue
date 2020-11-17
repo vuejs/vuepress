@@ -27,12 +27,14 @@
 
     <Home v-if="$frontmatter.home" />
 
-    <!-- TODO: <Page /> -->
-    <main v-else class="page">
-      <div class="theme-default-content">
-        <Content />
-      </div>
-    </main>
+    <Page v-else>
+      <template #top>
+        <slot name="page-top" />
+      </template>
+      <template #bottom>
+        <slot name="page-bottom" />
+      </template>
+    </Page>
   </div>
 
   <Debug />
@@ -44,6 +46,7 @@ import { useRouter } from 'vue-router'
 import { usePageFrontmatter, useThemeLocaleData } from '@vuepress/client'
 import type { DefaultThemeOptions } from '../../types'
 import Home from '../components/Home.vue'
+import Page from '../components/Page.vue'
 import Navbar from '../components/Navbar.vue'
 import Sidebar from '../components/Sidebar.vue'
 import { useSidebarItems } from '../composables'
@@ -53,6 +56,7 @@ export default defineComponent({
 
   components: {
     Home,
+    Page,
     Navbar,
     Sidebar,
   },

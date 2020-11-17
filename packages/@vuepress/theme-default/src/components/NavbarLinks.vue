@@ -29,6 +29,7 @@ import type {
   ResolvedNavbarItem,
 } from '../../types'
 import { useNavLink } from '../composables'
+import { resolveRepoType } from '../utils'
 import DropdownLink from './DropdownLink.vue'
 import NavLink from './NavLink.vue'
 
@@ -102,30 +103,23 @@ const useNavbarSelectLanguage = (): ComputedRef<ResolvedNavbarItem[]> => {
 const useNavbarRepo = (): ComputedRef<ResolvedNavbarItem[]> => {
   const themeLocale = useThemeLocaleData<DefaultThemeOptions>()
 
+  const repo = computed(() => themeLocale.value.repo)
+  const repoType = computed(() =>
+    repo.value ? resolveRepoType(repo.value) : null
+  )
+
   const repoLink = computed(() => {
-    const { repo } = themeLocale.value
-    if (!repo) {
-      return null
+    if (repoType.value === 'GitHub') {
+      return `https://github.com/${repo.value}`
     }
-    return /^https?:/.test(repo) ? repo : `https://github.com/${repo}`
+    return repo.value
   })
 
   const repoLabel = computed(() => {
     if (!repoLink.value) return null
     if (themeLocale.value.repoLabel) return themeLocale.value.repoLabel
-
-    const repoHost = repoLink.value.match(/^https?:\/\/[^/]+/)?.[0]
-    if (!repoHost) return null
-
-    const platforms = ['GitHub', 'GitLab', 'Bitbucket']
-    for (let i = 0; i < platforms.length; i++) {
-      const platform = platforms[i]
-      if (new RegExp(platform, 'i').test(repoHost)) {
-        return platform
-      }
-    }
-
-    return 'Source'
+    if (repoType.value === null) return 'Source'
+    return repoType.value
   })
 
   return computed(() => {
