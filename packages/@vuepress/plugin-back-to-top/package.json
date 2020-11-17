@@ -1,0 +1,39 @@
+{
+  "name": "@vuepress/plugin-back-to-top",
+  "version": "2.0.0-alpha.0",
+  "description": "VuePress plugin - back to top",
+  "keywords": [
+    "vuepress",
+    "plugin",
+    "top"
+  ],
+  "homepage": "https://github.com/vuepress",
+  "bugs": {
+    "url": "https://github.com/vuepress/vuepress-next/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/vuepress-next.git"
+  },
+  "license": "MIT",
+  "author": "meteorlxy",
+  "main": "lib/index.js",
+  "types": "types/index.d.ts",
+  "files": [
+    "components",
+    "lib",
+    "types"
+  ],
+  "scripts": {
+    "build": "tsc -b tsconfig.build.json",
+    "clean": "rimraf lib *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@vuepress/core": "2.0.0-alpha.0",
+    "lodash.debounce": "^4.0.8",
+    "vue": "^3.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
