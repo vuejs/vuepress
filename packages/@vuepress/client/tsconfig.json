@@ -4,6 +4,9 @@
     "baseUrl": ".",
     "paths": {
       "@internal/clientAppEnhances": ["src/internal/clientAppEnhances.d.ts"],
+      "@internal/clientAppRootComponents": [
+        "src/internal/clientAppRootComponents.d.ts"
+      ],
       "@internal/clientAppSetups": ["src/internal/clientAppSetups.d.ts"],
       "@internal/layoutComponents": ["src/internal/layoutComponents.d.ts"],
       "@internal/pagesComponent": ["src/internal/pagesComponent.d.ts"],

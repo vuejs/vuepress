@@ -4,6 +4,7 @@ import { createRouter, RouterView } from 'vue-router'
 import type { Router, RouterHistory } from 'vue-router'
 import { removeEndingSlash } from '@vuepress/shared'
 import { clientAppEnhances } from '@internal/clientAppEnhances'
+import { clientAppRootComponents } from '@internal/clientAppRootComponents'
 import { clientAppSetups } from '@internal/clientAppSetups'
 import { pagesComponent } from '@internal/pagesComponent'
 import { pagesRoutes } from '@internal/pagesRoutes'
@@ -63,12 +64,10 @@ export const createVueApp = async ({
         clientAppSetup()
       }
 
-      return () =>
-        h('div', { id: 'app' }, [
-          h(RouterView),
-          // TODO: global ui, portal?
-          h('div', { class: 'global-ui' }),
-        ])
+      return () => [
+        h(RouterView),
+        ...clientAppRootComponents.map((comp) => h(comp)),
+      ]
     },
   }
 
