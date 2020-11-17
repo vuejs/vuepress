@@ -25,6 +25,8 @@ const config: UserConfig<DefaultThemeOptions> = {
 
     repo: 'vuepress/vuepress-next',
 
+    docsDir: 'docs',
+
     // theme-level locales config
     locales: {
       /**
@@ -63,6 +65,9 @@ const config: UserConfig<DefaultThemeOptions> = {
             },
           ],
         },
+
+        // edit link
+        editLinkText: 'Edit this page on GitHub',
       },
 
       /**
@@ -101,6 +106,9 @@ const config: UserConfig<DefaultThemeOptions> = {
             },
           ],
         },
+
+        // edit link
+        editLinkText: '在 GitHub 上编辑此页',
 
         // custom blocks
         info: '提示',
