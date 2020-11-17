@@ -27,10 +27,10 @@ Features in the following list are not fully determined, and might be changed or
 - [ ] @vuepress/core
   - [x] Plugin API
     - [x] clientAppEnhanceFiles
+    - [x] clientAppRootComponentFiles
     - [x] clientAppSetupFiles
     - [x] extendsPageData
     - [ ] extendsCli
-    - [ ] globalUIComponents
     - [ ] configureWebpack
   - [ ] Theme API
     - [ ] Theme Inheritance
@@ -60,7 +60,7 @@ Features in the following list are not fully determined, and might be changed or
 
 - [ ] Official plugins
   - [ ] @vuepress/plugin-active-header-links
-  - [ ] @vuepress/plugin-back-to-top
+  - [x] @vuepress/plugin-back-to-top
   - [x] @vuepress/plugin-container
   - [ ] @vuepress/plugin-git-logs
   - [ ] @vuepress/plugin-google-analytics
@@ -139,6 +139,7 @@ Custom theme authors can use their own way for users to configure styles (not be
 - `additionalPages` -> removed, use `app.pages.push(createPage())` in `onInitialized` hook
 - `clientDynamicModules` -> removed, use `app.writeTemp()` in `onPrepared` hook
 - `enhanceAppFiles` -> `clientAppEnhanceFiles`
+- `globalUIComponents` -> `clientAppRootComponentFiles`
 - `clientRootMixin` -> `clientAppSetupFiles`
 - `extendMarkdown` -> `extendsMarkdown`
 - `extendPageData` -> `extendsPageData`
