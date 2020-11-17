@@ -25,7 +25,6 @@ For more details, please check our [contributing guidelines](https://github.com/
 Features in the following list are not fully determined, and might be changed or removed during development.
 
 - [ ] @vuepress/core
-
   - [x] Plugin API
     - [x] clientAppEnhanceFiles
     - [x] clientAppSetupFiles
@@ -37,7 +36,6 @@ Features in the following list are not fully determined, and might be changed or
     - [ ] Theme Inheritance
 
 - [ ] @vuepress/markdown
-
   - [x] codePlugin
   - [x] customComponentPlugin
   - [ ] highlightLinesPlugin
@@ -46,7 +44,6 @@ Features in the following list are not fully determined, and might be changed or
   - [ ] snippetsPlugin
 
 - [x] @vuepress/bundler-webpack
-
   - [x] Dev server (dev)
   - [x] Pre-render (build)
   - [x] Style pre-processors config
@@ -54,15 +51,14 @@ Features in the following list are not fully determined, and might be changed or
 - [ ] @vuepress/theme-default
   - [x] Navbar
   - [x] Sidebar
-  - [ ] Page
+  - [x] Page
+  - [ ] Plugins integration
 
 - [x] @vuepress/cli
-
   - [x] Resolve user config file
   - [x] Watch & Reload (dev)
 
-- [ ] official plugins
-
+- [ ] Official plugins
   - [ ] @vuepress/plugin-active-header-links
   - [ ] @vuepress/plugin-back-to-top
   - [x] @vuepress/plugin-container
@@ -73,8 +69,13 @@ Features in the following list are not fully determined, and might be changed or
   - [ ] @vuepress/plugin-pwa
   - [ ] @vuepress/plugin-search
 
-- [ ] docs
+- [ ] Documentation
+  - [ ] Guide
+  - [ ] References
+  - [ ] API
   - [ ] Migration Guide
+
+- [ ] CI setup
 
 ### Breaking Changes
 
