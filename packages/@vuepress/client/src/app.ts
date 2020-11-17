@@ -6,7 +6,7 @@ import { removeEndingSlash } from '@vuepress/shared'
 import { clientAppEnhances } from '@internal/clientAppEnhances'
 import { clientAppSetups } from '@internal/clientAppSetups'
 import { pagesComponent } from '@internal/pagesComponent'
-import { routes } from '@internal/routes'
+import { pagesRoutes } from '@internal/pagesRoutes'
 import {
   siteData,
   pageData,
@@ -79,7 +79,7 @@ export const createVueApp = async ({
   const router = createRouter({
     // TODO: it might be an issue of vue-router that have to remove the ending slash
     history: historyCreator(removeEndingSlash(siteData.value.base)),
-    routes,
+    routes: pagesRoutes,
     scrollBehavior: (to, from, savedPosition) => {
       if (savedPosition) {
         return savedPosition

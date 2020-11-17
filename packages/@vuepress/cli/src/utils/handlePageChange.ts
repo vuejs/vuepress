@@ -2,6 +2,7 @@ import {
   createPage,
   preparePageComponent,
   preparePageData,
+  preparePageRoutes,
 } from '@vuepress/core'
 import type { App } from '@vuepress/core'
 
@@ -29,4 +30,5 @@ export const handlePageChange = async (
   // re-prepare page files
   await preparePageComponent(app, changedPage)
   await preparePageData(app, changedPage)
+  await preparePageRoutes(app, changedPage)
 }

@@ -6,9 +6,10 @@ import {
   prepareLayoutComponents,
   preparePageComponent,
   preparePageData,
+  preparePageRoutes,
   preparePagesComponent,
   preparePagesData,
-  prepareRoutes,
+  preparePagesRoutes,
   prepareSiteData,
 } from './prepare'
 
@@ -41,7 +42,10 @@ export const appPrepare = async (app: App): Promise<void> => {
   await prepareLayoutComponents(app)
 
   // generate routes file
-  await prepareRoutes(app)
+  for (const page of app.pages) {
+    await preparePageRoutes(app, page)
+  }
+  await preparePagesRoutes(app)
 
   // generate site data file
   await prepareSiteData(app)

@@ -8,7 +8,7 @@
       "@internal/layoutComponents": ["src/internal/layoutComponents.d.ts"],
       "@internal/pagesComponent": ["src/internal/pagesComponent.d.ts"],
       "@internal/pagesData": ["src/internal/pagesData.d.ts"],
-      "@internal/routes": ["src/internal/routes.d.ts"],
+      "@internal/pagesRoutes": ["src/internal/pagesRoutes.d.ts"],
       "@internal/siteData": ["src/internal/siteData.d.ts"]
     }
   },
