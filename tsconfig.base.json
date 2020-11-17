@@ -10,7 +10,7 @@
     "noEmitOnError": true,
     "noImplicitAny": false,
     "resolveJsonModule": true,
-    "skipLibCheck": true,
+    "skipLibCheck": true, // TODO: enable because of vue-loader
     "sourceMap": true,
     "strict": true,
     "strictNullChecks": true,

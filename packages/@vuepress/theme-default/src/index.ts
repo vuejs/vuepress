@@ -1,8 +1,8 @@
 import type { Theme } from '@vuepress/core'
-import type { ContainerPluginOptions } from '@vuepress/plugin-container'
+import type { ContainerPluginOptions } from '@vuepress/plugin-container/lib/types'
 import { path } from '@vuepress/utils'
-import type { DefaultThemeOptions } from '../types'
 import { assignDefaultOptions, resolveContainerPluginOptions } from './node'
+import type { DefaultThemeOptions } from './types'
 
 const defaultTheme: Theme<DefaultThemeOptions> = (options) => {
   assignDefaultOptions(options)

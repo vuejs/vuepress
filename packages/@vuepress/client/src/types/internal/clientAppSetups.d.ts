@@ -1,4 +1,4 @@
-import type { ClientAppSetup } from '../types'
+import type { ClientAppSetup } from '../clientAppSetup'
 
 declare module '@internal/clientAppSetups' {
   export const clientAppSetups: ClientAppSetup[]

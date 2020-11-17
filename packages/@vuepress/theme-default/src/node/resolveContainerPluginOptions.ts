@@ -1,5 +1,5 @@
-import type { ContainerPluginOptions } from '@vuepress/plugin-container'
-import type { DefaultThemeOptions } from '../../types'
+import type { ContainerPluginOptions } from '@vuepress/plugin-container/lib/types'
+import type { DefaultThemeOptions } from '../types'
 
 /**
  * Resolve locale config for @vuepress/plugin-container

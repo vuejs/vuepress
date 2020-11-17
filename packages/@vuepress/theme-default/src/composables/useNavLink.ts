@@ -1,5 +1,5 @@
 import { useResolveRouteWithRedirect } from './useResolveRouteWithRedirect'
-import type { NavLink } from '../../types'
+import type { NavLink } from '../types'
 
 /**
  * Resolve NavLink props from string

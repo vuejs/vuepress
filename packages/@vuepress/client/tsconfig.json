@@ -3,16 +3,20 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@internal/clientAppEnhances": ["src/internal/clientAppEnhances.d.ts"],
-      "@internal/clientAppRootComponents": [
-        "src/internal/clientAppRootComponents.d.ts"
+      "@internal/clientAppEnhances": [
+        "src/types/internal/clientAppEnhances.d.ts"
       ],
-      "@internal/clientAppSetups": ["src/internal/clientAppSetups.d.ts"],
-      "@internal/layoutComponents": ["src/internal/layoutComponents.d.ts"],
-      "@internal/pagesComponent": ["src/internal/pagesComponent.d.ts"],
-      "@internal/pagesData": ["src/internal/pagesData.d.ts"],
-      "@internal/pagesRoutes": ["src/internal/pagesRoutes.d.ts"],
-      "@internal/siteData": ["src/internal/siteData.d.ts"]
+      "@internal/clientAppRootComponents": [
+        "src/types/internal/clientAppRootComponents.d.ts"
+      ],
+      "@internal/clientAppSetups": ["src/types/internal/clientAppSetups.d.ts"],
+      "@internal/layoutComponents": [
+        "src/types/internal/layoutComponents.d.ts"
+      ],
+      "@internal/pagesComponent": ["src/types/internal/pagesComponent.d.ts"],
+      "@internal/pagesData": ["src/types/internal/pagesData.d.ts"],
+      "@internal/pagesRoutes": ["src/types/internal/pagesRoutes.d.ts"],
+      "@internal/siteData": ["src/types/internal/siteData.d.ts"]
     }
   },
   "include": ["./src", "./__tests__"]

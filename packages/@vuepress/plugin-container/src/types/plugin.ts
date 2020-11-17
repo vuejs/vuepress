@@ -1,6 +1,5 @@
 import type * as Renderer from 'markdown-it/lib/renderer'
 import type * as Token from 'markdown-it/lib/token'
-import type { Plugin } from '@vuepress/core'
 import type { LocaleConfig } from '@vuepress/shared'
 import type { MarkdownEnv } from '@vuepress/markdown'
 
@@ -34,7 +33,3 @@ export type MarkdownItContainerRenderFunction = (
   env: MarkdownEnv,
   self: Renderer
 ) => string
-
-declare const containerPlugin: Plugin<ContainerPluginOptions>
-
-export = containerPlugin

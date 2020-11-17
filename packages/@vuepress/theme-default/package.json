@@ -18,10 +18,9 @@
   "license": "MIT",
   "author": "Evan You",
   "main": "lib/index.js",
-  "types": "types/index.d.ts",
+  "types": "lib/index.d.ts",
   "files": [
-    "lib",
-    "types"
+    "lib"
   ],
   "scripts": {
     "build": "tsc -b tsconfig.build.json",

@@ -9,7 +9,7 @@ export interface NavItem {
 /**
  * Base nav group, has nav items children
  */
-export interface NavGroup<T extends NavItem = NavItem> extends NavItem {
+export interface NavGroup<T> extends NavItem {
   children: T[]
 }
 
@@ -30,15 +30,14 @@ export type NavbarItem = NavLink
 export type NavbarGroup = NavGroup<NavbarItem | string>
 export type NavbarConfig = (NavbarItem | NavbarGroup | string)[]
 // resolved
-export type ResolvedNavbarItem = NavLink | NavGroup
+export type ResolvedNavbarItem = NavbarItem | NavGroup<NavbarItem>
 
 /**
  * Sidebar types
  */
 // user config
-export interface SidebarItem extends NavLink {
+export interface SidebarItem extends NavLink, NavGroup<SidebarItem | string> {
   isGroup?: false
-  children?: SidebarItem[]
 }
 export interface SidebarGroup extends NavGroup<SidebarItem | string> {
   isGroup: true
@@ -47,8 +46,7 @@ export type SidebarConfigArray = (SidebarGroup | SidebarItem | string)[]
 export type SidebarConfigObject = Record<string, SidebarConfigArray>
 export type SidebarConfig = SidebarConfigArray | SidebarConfigObject
 // resolved
-export interface ResolvedSidebarItem extends SidebarItem {
-  link?: string
+export interface ResolvedSidebarItem extends Partial<NavLink> {
   isGroup?: boolean
   children?: ResolvedSidebarItem[]
 }

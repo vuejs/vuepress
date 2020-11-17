@@ -18,7 +18,7 @@ import type {
   SidebarConfigArray,
   SidebarConfigObject,
   ResolvedSidebarItem,
-} from '../../types'
+} from '../types'
 import { useNavLink } from './useNavLink'
 
 export type SidebarItemsRef = ComputedRef<ResolvedSidebarItem[]>
@@ -117,7 +117,7 @@ export const resolveArraySidebarItems = (
         return useNavLink(item)
       }
       if (!item.isGroup) {
-        return item
+        return item as ResolvedSidebarItem
       }
 
       return {
@@ -128,7 +128,7 @@ export const resolveArraySidebarItems = (
             if (isString(subItem)) {
               childItem = useNavLink(subItem)
             } else {
-              childItem = subItem
+              childItem = subItem as ResolvedSidebarItem
             }
 
             // if the sidebar item is current page and children is not set

@@ -18,15 +18,14 @@
   "license": "MIT",
   "author": "meteorlxy",
   "main": "lib/index.js",
-  "types": "types/index.d.ts",
+  "types": "lib/index.d.ts",
   "files": [
-    "components",
-    "lib",
-    "types"
+    "lib"
   ],
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
-    "clean": "rimraf lib *.tsbuildinfo"
+    "clean": "rimraf lib *.tsbuildinfo",
+    "copy": "cpx \"src/**/*.vue\" lib"
   },
   "dependencies": {
     "@vuepress/core": "2.0.0-alpha.0",

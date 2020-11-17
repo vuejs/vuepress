@@ -1,5 +1,5 @@
 import type { LocaleData, ThemeConfig } from '@vuepress/core'
-import type { NavbarConfig, SidebarConfig } from './links'
+import type { NavbarConfig, SidebarConfig } from './nav'
 
 export type DefaultThemeOptions = ThemeConfig<DefaultThemeLocaleData>
 

@@ -1,6 +1,6 @@
 import { resolve } from 'path'
 import type { Plugin } from '@vuepress/core'
-import type { NprogressPluginOptions } from '../types'
+import type { NprogressPluginOptions } from './types'
 
 const nprogressPlugin: Plugin<NprogressPluginOptions> = {
   name: '@vuepress/plugin-nprogress',

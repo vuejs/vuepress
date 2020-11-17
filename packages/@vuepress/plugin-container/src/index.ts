@@ -2,7 +2,7 @@ import * as container from 'markdown-it-container'
 import type { Plugin, PluginObject } from '@vuepress/core'
 import { chalk, logger } from '@vuepress/utils'
 import { ensureLeadingSlash, resolveLocalePath } from '@vuepress/shared'
-import type { ContainerPluginOptions, RenderPlaceFunction } from '../types'
+import type { ContainerPluginOptions, RenderPlaceFunction } from './types'
 
 const containerPlugin: Plugin<ContainerPluginOptions> = ({
   // plugin options

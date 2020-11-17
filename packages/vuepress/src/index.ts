@@ -11,7 +11,8 @@ export type {
   StylusLoaderOptions,
   WebpackDevServer,
 } from '@vuepress/bundler-webpack'
+
 export type {
   DefaultThemeOptions,
   DefaultThemeLocaleData,
-} from '@vuepress/theme-default'
+} from '@vuepress/theme-default/lib/types'

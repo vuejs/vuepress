@@ -18,11 +18,10 @@
   "license": "MIT",
   "author": "meteorlxy",
   "main": "lib/index.js",
-  "types": "types/index.d.ts",
+  "types": "lib/index.d.ts",
   "files": [
     "lib",
-    "styles",
-    "types"
+    "styles"
   ],
   "scripts": {
     "build": "tsc -b tsconfig.build.json",

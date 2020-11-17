@@ -1,4 +1,4 @@
-import type { DefaultThemeOptions, DefaultThemeLocaleData } from '../../types'
+import type { DefaultThemeOptions, DefaultThemeLocaleData } from '../types'
 
 const defaultLocaleData: DefaultThemeLocaleData = {
   home: '/',
