@@ -1,5 +1,6 @@
 ---
 home: true
+title: 首页
 heroImage: /hero.png
 actionText: 快速上手 →
 actionLink: /zh/guide/getting-started.html

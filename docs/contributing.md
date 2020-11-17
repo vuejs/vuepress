@@ -2,7 +2,7 @@
 sidebar: auto
 ---
 
-# VuePress Contributing Guide
+# Contributing Guide
 
 ## Overview
 

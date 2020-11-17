@@ -6,6 +6,7 @@ const config: UserConfig<DefaultThemeOptions> = {
 
   evergreen: process.env.NODE_ENV !== 'production',
 
+  // site-level locales config
   locales: {
     '/': {
       lang: 'en-US',
@@ -24,6 +25,7 @@ const config: UserConfig<DefaultThemeOptions> = {
 
     repo: 'vuepress/vuepress-next',
 
+    // theme-level locales config
     locales: {
       /**
        * English locale config
@@ -41,9 +43,11 @@ const config: UserConfig<DefaultThemeOptions> = {
           {
             text: 'Learn More',
             children: [
+              '/contributing.md',
               {
-                text: 'Contributing Guide',
-                link: '/contributing.html',
+                text: 'Changelog',
+                link:
+                  'https://github.com/vuepress/vuepress-next/blob/master/CHANGELOG.md',
               },
             ],
           },
@@ -55,16 +59,7 @@ const config: UserConfig<DefaultThemeOptions> = {
             {
               isGroup: true,
               text: 'Guide',
-              children: [
-                {
-                  text: 'Introduction',
-                  link: '/guide/',
-                },
-                {
-                  text: 'Getting Started',
-                  link: '/guide/getting-started.html',
-                },
-              ],
+              children: ['/guide/README.md', '/guide/getting-started.md'],
             },
           ],
         },
@@ -83,9 +78,11 @@ const config: UserConfig<DefaultThemeOptions> = {
           {
             text: '了解更多',
             children: [
+              '/zh/contributing.md',
               {
-                text: '开发指南',
-                link: '/zh/contributing.html',
+                text: '更新日志',
+                link:
+                  'https://github.com/vuepress/vuepress-next/blob/master/CHANGELOG.md',
               },
             ],
           },
@@ -100,16 +97,7 @@ const config: UserConfig<DefaultThemeOptions> = {
             {
               isGroup: true,
               text: '指南',
-              children: [
-                {
-                  text: '介绍',
-                  link: '/zh/guide/',
-                },
-                {
-                  text: '开始使用',
-                  link: '/zh/guide/getting-started.html',
-                },
-              ],
+              children: ['/zh/guide/README.md', '/zh/guide/getting-started.md'],
             },
           ],
         },
