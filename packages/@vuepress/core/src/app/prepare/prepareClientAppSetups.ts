@@ -12,7 +12,7 @@ export const prepareClientAppSetups = async (app: App): Promise<void> => {
   // flat the hook result to get the file paths array
   const filePaths = clientAppSetupFiles.flat()
 
-  // generate client app enhance files entry
+  // generate client app setup files entry
   const content = `\
 ${filePaths
   .map((filePath, index) => `import clientAppSetup${index} from '${filePath}'`)
