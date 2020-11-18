@@ -31,7 +31,6 @@
     "@vuepress/markdown": "2.0.0-alpha.0",
     "@vuepress/shared": "2.0.0-alpha.0",
     "@vuepress/utils": "2.0.0-alpha.0",
-    "date-fns": "^2.16.1",
     "gray-matter": "^4.0.2",
     "toml": "^3.0.0"
   },
