@@ -1,10 +1,13 @@
 import type { Theme } from '@vuepress/core'
-import type { ContainerPluginOptions } from '@vuepress/plugin-container/lib/types'
+import type { ContainerPluginOptions } from '@vuepress/plugin-container'
 import { path } from '@vuepress/utils'
 import { assignDefaultOptions, resolveContainerPluginOptions } from './node'
 import type { DefaultThemeOptions } from './types'
 
-const defaultTheme: Theme<DefaultThemeOptions> = (options) => {
+export * from './node'
+export * from './types'
+
+export const defaultTheme: Theme<DefaultThemeOptions> = (options) => {
   assignDefaultOptions(options)
 
   return {
@@ -51,4 +54,4 @@ const defaultTheme: Theme<DefaultThemeOptions> = (options) => {
   }
 }
 
-export = defaultTheme
+export default defaultTheme

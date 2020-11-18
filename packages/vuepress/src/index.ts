@@ -17,4 +17,4 @@ export type {
 export type {
   DefaultThemeOptions,
   DefaultThemeLocaleData,
-} from '@vuepress/theme-default/lib/types'
+} from '@vuepress/theme-default'

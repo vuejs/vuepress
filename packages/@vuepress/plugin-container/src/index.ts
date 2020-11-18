@@ -1,10 +1,44 @@
+import type * as Renderer from 'markdown-it/lib/renderer'
+import type * as Token from 'markdown-it/lib/token'
 import * as container from 'markdown-it-container'
+import type { LocaleConfig } from '@vuepress/shared'
+import type { MarkdownEnv } from '@vuepress/markdown'
 import type { Plugin, PluginObject } from '@vuepress/core'
 import { chalk, logger } from '@vuepress/utils'
 import { ensureLeadingSlash, resolveLocalePath } from '@vuepress/shared'
-import type { ContainerPluginOptions, RenderPlaceFunction } from './types'
 
-const containerPlugin: Plugin<ContainerPluginOptions> = ({
+/**
+ * Options for markdown-it-container
+ */
+export interface MarkdownItContainerOptions {
+  marker?: string
+  validate?: (params: string) => boolean
+  render?: MarkdownItContainerRenderFunction
+}
+
+export type MarkdownItContainerRenderFunction = (
+  tokens: Token[],
+  index: number,
+  options: any,
+  env: MarkdownEnv,
+  self: Renderer
+) => string
+
+export type RenderPlaceFunction = (info: string) => string
+
+/**
+ * Options for @vuepress/plugin-container
+ */
+export interface ContainerPluginOptions extends MarkdownItContainerOptions {
+  type: string
+  locales?: LocaleConfig<{
+    defaultInfo: string
+  }>
+  before?: RenderPlaceFunction
+  after?: RenderPlaceFunction
+}
+
+export const containerPlugin: Plugin<ContainerPluginOptions> = ({
   // plugin options
   type,
   after,
@@ -100,4 +134,4 @@ const containerPlugin: Plugin<ContainerPluginOptions> = ({
   return pluginObj
 }
 
-export = containerPlugin
+export default containerPlugin

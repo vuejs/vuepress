@@ -1,5 +1,5 @@
 import type { UserConfig } from '@vuepress/core'
-import type { DefaultThemeOptions } from '@vuepress/theme-default/lib/types'
+import type { DefaultThemeOptions } from '@vuepress/theme-default'
 
 const config: UserConfig<DefaultThemeOptions> = {
   base: '/',
