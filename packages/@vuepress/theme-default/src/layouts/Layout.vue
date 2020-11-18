@@ -44,12 +44,12 @@
 import { computed, defineComponent, onMounted, onUnmounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { usePageFrontmatter, useThemeLocaleData } from '@vuepress/client'
-import type { DefaultThemeOptions } from '../../types'
 import Home from '../components/Home.vue'
 import Page from '../components/Page.vue'
 import Navbar from '../components/Navbar.vue'
 import Sidebar from '../components/Sidebar.vue'
 import { useSidebarItems } from '../composables'
+import type { DefaultThemeOptions } from '../types'
 
 export default defineComponent({
   name: 'Layout',

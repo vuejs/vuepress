@@ -66,7 +66,7 @@
 import { computed, defineComponent, ref, toRefs, watch } from 'vue'
 import type { PropType } from 'vue'
 import { useRoute } from 'vue-router'
-import type { NavGroup } from '../../types'
+import type { NavGroup, NavItem } from '../types'
 import DropdownTransition from './DropdownTransition.vue'
 import NavLink from './NavLink.vue'
 
@@ -80,7 +80,7 @@ export default defineComponent({
 
   props: {
     item: {
-      type: Object as PropType<NavGroup>,
+      type: Object as PropType<NavGroup<NavItem>>,
       required: true,
     },
   },

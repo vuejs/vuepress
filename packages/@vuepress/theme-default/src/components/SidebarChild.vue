@@ -3,7 +3,7 @@ import { h } from 'vue'
 import type { FunctionalComponent, VNode } from 'vue'
 import { useRoute } from 'vue-router'
 import type { RouteLocationNormalizedLoaded } from 'vue-router'
-import type { ResolvedSidebarItem } from '../composables'
+import type { ResolvedSidebarItem } from '../types'
 import NavLink from './NavLink.vue'
 
 const normalizePath = (path: string): string =>

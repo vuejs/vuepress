@@ -22,13 +22,13 @@ import {
   useSiteLocaleData,
 } from '@vuepress/client'
 import { isString } from '@vuepress/shared'
+import { useNavLink } from '../composables'
 import type {
   DefaultThemeOptions,
   NavbarItem,
   NavbarGroup,
   ResolvedNavbarItem,
-} from '../../types'
-import { useNavLink } from '../composables'
+} from '../types'
 import { resolveRepoType } from '../utils'
 import DropdownLink from './DropdownLink.vue'
 import NavLink from './NavLink.vue'

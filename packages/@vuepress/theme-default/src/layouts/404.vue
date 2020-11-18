@@ -13,7 +13,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useRouteLocale, useThemeLocaleData } from '@vuepress/client'
-import type { DefaultThemeOptions } from '../../types'
+import type { DefaultThemeOptions } from '../types'
 
 export default defineComponent({
   name: '404',

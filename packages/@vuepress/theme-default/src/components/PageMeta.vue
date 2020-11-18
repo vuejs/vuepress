@@ -21,9 +21,9 @@ import {
 } from '@vuepress/client'
 import type {
   DefaultThemeOptions,
-  ExtendedPageData,
+  DefaultThemePageData,
   NavLink as NavLinkType,
-} from '../../types'
+} from '../types'
 import { resolveEditLink } from '../utils'
 import NavLink from './NavLink.vue'
 
@@ -48,7 +48,7 @@ const useEditNavLink = (): ComputedRef<null | NavLinkType> => {
 
     if (!docsRepo) return null
 
-    const page = usePageData<ExtendedPageData>()
+    const page = usePageData<DefaultThemePageData>()
 
     const editLink = resolveEditLink({
       docsRepo,
