@@ -46,37 +46,45 @@ export const createDev = (options: WebpackBundlerOptions): BundlerDev => async (
     let hasStarted = false
     let hasFinished = false
 
+    // start spinner before the first compilation
     compiler.hooks.beforeCompile.tap('vuepress-dev', () => {
-      // start spinner before the first compilation
-      if (!hasStarted) {
-        hasStarted = true
-        spinner.start('Compiling with webpack...')
-      }
+      if (hasStarted) return
+      hasStarted = true
+
+      spinner.start('Compiling with webpack...')
     })
 
+    // stop spinner and reject error if the first compilation is failed
+    compiler.hooks.failed.tap('vuepress-dev', (err) => {
+      if (hasFinished) return
+      hasFinished = true
+
+      spinner.fail('Compilation failed')
+      reject(err)
+    })
+
+    // stop spinner and resolve dev-server after first compilation
     compiler.hooks.done.tap('vuepress-dev', ({ endTime, startTime }) => {
-      // stop spinner and print log after the first compilation
-      if (!hasFinished) {
-        hasFinished = true
-        spinner.succeed(`Compilation finished in ${endTime! - startTime!}ms`)
+      if (hasFinished) return
+      hasFinished = true
 
-        server.listen(port, host, (err) => {
-          if (err) {
-            return reject(err)
-          }
+      spinner.succeed(`Compilation finished in ${endTime! - startTime!}ms`)
 
-          logger.success(
-            `VuePress dev server is listening at ${chalk.cyan(url)}`
-          )
+      server.listen(port, host, (err) => {
+        if (err) {
+          logger.error(`VuePress dev server failed to start`)
+          return reject(err)
+        }
 
-          // promisify the close function
-          const close = (): Promise<void> =>
-            new Promise((resolve) => server.close(resolve))
+        logger.success(`VuePress dev server is listening at ${chalk.cyan(url)}`)
 
-          // resolve the close function
-          resolve(close)
-        })
-      }
+        // promisify the close function
+        const close = (): Promise<void> =>
+          new Promise((resolve) => server.close(resolve))
+
+        // resolve the close function
+        resolve(close)
+      })
     })
   })
 }
