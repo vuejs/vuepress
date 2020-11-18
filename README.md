@@ -30,8 +30,6 @@ Features in the following list are not fully determined, and might be changed or
     - [x] clientAppRootComponentFiles
     - [x] clientAppSetupFiles
     - [x] extendsPageData
-    - [ ] extendsCli
-    - [ ] configureWebpack
   - [ ] Theme API
     - [ ] Theme Inheritance
 
@@ -82,6 +80,17 @@ Features in the following list are not fully determined, and might be changed or
 Temporarily record some breaking changes here.
 
 #### Core
+
+#### User config
+
+- All webpack related configs are moved to `bundlerConfig` (with `@vuepress/bundler-webpack`)
+  - `postcss` -> `bundlerConfig.postcss`
+  - `stylus` -> `bundlerConfig.stylus`
+  - `scss` -> `bundlerConfig.scss`
+  - `sass` -> `bundlerConfig.sass`
+  - `less` -> `bundlerConfig.less`
+  - `chainWebpack` -> `bundlerConfig.chainWebpack`
+  - `configureWebpack` -> `bundlerConfig.configureWebpack`
 
 ##### Permalink patterns
 
@@ -143,6 +152,11 @@ Custom theme authors can use their own way for users to configure styles (not be
 - `clientRootMixin` -> `clientAppSetupFiles`
 - `extendMarkdown` -> `extendsMarkdown`
 - `extendPageData` -> `extendsPageData`
+- `extendsCli` -> removed
+- `configureWebpack` -> removed
+- `chainWebpack` -> removed
+- `beforeDevServer` -> removed
+- `afterDevServer` -> removed
 
 ##### Theme API
 
