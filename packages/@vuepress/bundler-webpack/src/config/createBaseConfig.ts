@@ -5,8 +5,8 @@ import { handleDevtool } from './handleDevtool'
 import { handleMode } from './handleMode'
 import { handleModule } from './handleModule'
 import { handleNode } from './handleNode'
+import { handlePluginDefine } from './handlePluginDefine'
 import { handleResolve } from './handleResolve'
-import { handlePlugins } from './handlePlugins'
 
 export const createBaseConfig = ({
   app,
@@ -50,7 +50,7 @@ export const createBaseConfig = ({
   /**
    * plugins
    */
-  handlePlugins({ app, config, isServer })
+  handlePluginDefine({ app, config, isServer })
 
   return config
 }

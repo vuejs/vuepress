@@ -3,9 +3,9 @@ import type * as Config from 'webpack-chain'
 import type { App } from '@vuepress/core'
 
 /**
- * Set webpack plugins
+ * Set webpack DefinePlugin
  */
-export const handlePlugins = ({
+export const handlePluginDefine = ({
   app,
   config,
   isServer,
