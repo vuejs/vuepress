@@ -1,6 +1,3 @@
-import type { Application } from 'express'
-import type * as Config from 'webpack-chain'
-import type * as WebpackDevServer from 'webpack-dev-server'
 import type { Markdown } from '@vuepress/markdown'
 import type { App } from '../app'
 import type { Page } from '../page'
@@ -46,18 +43,6 @@ export type ExtendsPageDataHook = Hook<
   (page: Page) => PromiseOrNot<Record<string, unknown>>
 >
 
-// TODO: decouple with webpack
-// webpack hooks
-export type ChainWebpackHook = Hook<
-  (config: Config, isServer: boolean, isBuild: boolean) => void
->
-export type BeforeDevServerHook = Hook<
-  (expressApp: Application, server: WebpackDevServer) => void
->
-export type AfterDevServerHook = Hook<
-  (expressApp: Application, server: WebpackDevServer) => void
->
-
 /**
  * List of hooks
  */
@@ -73,12 +58,6 @@ export interface Hooks {
   clientAppSetupFiles: ClientFilesHook
   alias: ReturnObjectHook
   define: ReturnObjectHook
-  chainWebpack: ChainWebpackHook
-  beforeDevServer: BeforeDevServerHook
-  afterDevServer: AfterDevServerHook
-
-  // TODO: extendCli -> extendsCli
-  // TODO: configureWebpack
 }
 
 /**

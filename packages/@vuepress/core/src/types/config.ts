@@ -16,7 +16,4 @@ export type UserConfig<
   // bundler config
   bundler?: 'webpack'
   bundlerConfig?: Partial<U>
-
-  // TODO
-  // legacy config of v1
 }

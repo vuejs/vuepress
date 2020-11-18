@@ -25,9 +25,4 @@ export const createPluginApiHooks = (): PluginApi['hooks'] => ({
   // bundler hooks
   alias: createHookQueue('alias'),
   define: createHookQueue('define'),
-
-  // webpack hooks
-  chainWebpack: createHookQueue('chainWebpack'),
-  beforeDevServer: createHookQueue('beforeDevServer'),
-  afterDevServer: createHookQueue('afterDevServer'),
 })
