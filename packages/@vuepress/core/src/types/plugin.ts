@@ -7,6 +7,8 @@ import type { HooksExposed } from './plugin-api'
  * A plugin should be rather:
  * - an object (`PluginObject`)
  * - a function that returns an object (`PluginFunction`)
+ *
+ * A plugin package should have a `Plugin` as the default export
  */
 export type Plugin<
   T extends PluginOptions = PluginOptions,

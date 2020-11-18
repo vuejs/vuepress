@@ -19,6 +19,8 @@ export type BundlerBuild = (app: App) => Promise<void>
 
 /**
  * A function that returns a bundler instance
+ *
+ * A bundler package should have a `CreateBundlerFunction` as the default export
  */
 export type CreateBundlerFunction<
   BundlerOptions extends BundlerConfig = Partial<BundlerConfig>

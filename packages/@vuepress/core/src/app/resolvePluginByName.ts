@@ -19,5 +19,8 @@ export const resolvePluginByName = <
     return null
   }
 
-  return require(pluginEntry)
+  const requiredPlugin = require(pluginEntry)
+
+  // allow default export
+  return requiredPlugin.default ?? requiredPlugin
 }

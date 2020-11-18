@@ -7,6 +7,8 @@ import type { Plugin, PluginFunction, PluginObject } from './plugin'
  * Theme is a special type of plugin, it should be rather:
  * - an object (`ThemeObject`)
  * - a function that returns an object (`ThemeFunction`)
+ *
+ * A theme package should have a `Theme` as the default export
  */
 export type Theme<
   T extends Record<string, unknown> = Record<never, never>
