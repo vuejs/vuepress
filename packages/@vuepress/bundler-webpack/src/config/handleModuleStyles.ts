@@ -2,7 +2,7 @@ import type * as Config from 'webpack-chain'
 import type { App } from '@vuepress/core'
 import * as MiniCSSExtractPlugin from 'mini-css-extract-plugin'
 import type {
-  BundlerWebpackOptions,
+  WebpackBundlerOptions,
   LoaderOptions,
   SassLoaderOptions,
   LessLoaderOptions,
@@ -22,7 +22,7 @@ export const handleModuleStyles = ({
   isBuild,
 }: {
   app: App
-  options: BundlerWebpackOptions
+  options: WebpackBundlerOptions
   config: Config
   isServer: boolean
   isBuild: boolean

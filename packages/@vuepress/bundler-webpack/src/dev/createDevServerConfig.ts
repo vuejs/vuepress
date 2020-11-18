@@ -1,9 +1,11 @@
 import * as WebpackDevServer from 'webpack-dev-server'
 import { App } from '@vuepress/core'
 import { fs, path } from '@vuepress/utils'
+import type { WebpackBundlerOptions } from '../types'
 
 export const createDevServerConfig = (
-  app: App
+  app: App,
+  options: WebpackBundlerOptions
 ): WebpackDevServer.Configuration => {
   const contentBase = app.dir.public()
 
@@ -45,11 +47,11 @@ export const createDevServerConfig = (
       }
 
       // plugin hook: beforeDevServer
-      app.pluginApi.hooks.beforeDevServer.processSync(expressApp, server)
+      options.beforeDevServer?.(expressApp, server)
     },
     after: (expressApp, server) => {
       // plugin hook: afterDevServer
-      app.pluginApi.hooks.afterDevServer.processSync(expressApp, server)
+      options.afterDevServer?.(expressApp, server)
     },
   }
 

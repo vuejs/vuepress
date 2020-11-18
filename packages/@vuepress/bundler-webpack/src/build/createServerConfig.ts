@@ -1,11 +1,11 @@
 import * as Config from 'webpack-chain'
 import { App } from '@vuepress/core'
 import { createBaseConfig } from '../config'
-import type { BundlerWebpackOptions } from '../types'
+import type { WebpackBundlerOptions } from '../types'
 
 export const createServerConfig = (
   app: App,
-  options: BundlerWebpackOptions
+  options: WebpackBundlerOptions
 ): Config => {
   const isServer = true
   const isBuild = true
@@ -51,8 +51,8 @@ export const createServerConfig = (
     .loader(require.resolve('./ssr/vuepressLoader'))
     .end()
 
-  // plugin hook: chainWebpack
-  app.pluginApi.hooks.chainWebpack.process(config, isServer, isBuild)
+  // allow users to set webpack config via webpack-chain
+  options.chainWebpack?.(config, isServer, isBuild)
 
   return config
 }

@@ -1,6 +1,6 @@
 import * as Config from 'webpack-chain'
 import type { App } from '@vuepress/core'
-import type { BundlerWebpackOptions } from '../types'
+import type { WebpackBundlerOptions } from '../types'
 import { handleDevtool } from './handleDevtool'
 import { handleMode } from './handleMode'
 import { handleModule } from './handleModule'
@@ -15,7 +15,7 @@ export const createBaseConfig = ({
   isBuild,
 }: {
   app: App
-  options: BundlerWebpackOptions
+  options: WebpackBundlerOptions
   isServer: boolean
   isBuild: boolean
 }): Config => {

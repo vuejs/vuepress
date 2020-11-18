@@ -1,9 +1,9 @@
 import type { CreateBundlerFunction } from '@vuepress/core'
 import { createBuild } from './build'
 import { createDev } from './dev'
-import type { BundlerWebpackOptions } from './types'
+import type { WebpackBundlerOptions } from './types'
 
-export const createBundler: CreateBundlerFunction<BundlerWebpackOptions> = (
+export const createBundler: CreateBundlerFunction<WebpackBundlerOptions> = (
   options
 ) => ({
   dev: createDev(options),

@@ -1,6 +1,6 @@
 import * as Config from 'webpack-chain'
 import { App } from '@vuepress/core'
-import type { BundlerWebpackOptions } from '../types'
+import type { WebpackBundlerOptions } from '../types'
 import { createBaseConfig } from './createBaseConfig'
 
 export const createClientBaseConfig = ({
@@ -9,7 +9,7 @@ export const createClientBaseConfig = ({
   isBuild,
 }: {
   app: App
-  options: BundlerWebpackOptions
+  options: WebpackBundlerOptions
   isBuild: boolean
 }): Config => {
   const config = createBaseConfig({

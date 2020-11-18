@@ -1,9 +1,42 @@
-import type { loader } from 'webpack'
+import type { Application } from 'express'
+import type { loader, Configuration as WebpackConfiguration } from 'webpack'
+import type * as WebpackChainConfig from 'webpack-chain'
+import type * as WebpackDevServer from 'webpack-dev-server'
+
+export type { WebpackConfiguration, WebpackChainConfig, WebpackDevServer }
 
 /**
  * Options for bundler-webpack
  */
-export interface BundlerWebpackOptions {
+export interface WebpackBundlerOptions {
+  /**
+   * use webpack-merge to set webpack config
+   */
+  configureWebpack?: (
+    config: WebpackConfiguration,
+    isServer: boolean,
+    isBuild: boolean
+  ) => WebpackConfiguration
+
+  /**
+   * use webpack-chain to set webpack config
+   */
+  chainWebpack?: (
+    config: WebpackChainConfig,
+    isServer: boolean,
+    isBuild: boolean
+  ) => void
+
+  /**
+   * hook that to be called in `devServer.before`
+   */
+  beforeDevServer?: (expressApp: Application, server: WebpackDevServer) => void
+
+  /**
+   * hook that to be called in `devServer.after`
+   */
+  afterDevServer?: (expressApp: Application, server: WebpackDevServer) => void
+
   /**
    * postcss-loader options
    */

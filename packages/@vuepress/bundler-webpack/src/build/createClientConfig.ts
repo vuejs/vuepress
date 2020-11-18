@@ -1,7 +1,7 @@
 import * as Config from 'webpack-chain'
 import { App } from '@vuepress/core'
 import { createClientBaseConfig } from '../config'
-import type { BundlerWebpackOptions } from '../types'
+import type { WebpackBundlerOptions } from '../types'
 import { createClientPlugin } from './ssr'
 
 /**
@@ -11,15 +11,12 @@ export const clientManifestFilename = '.server/client-manifest.json'
 
 export const createClientConfig = (
   app: App,
-  options: BundlerWebpackOptions
+  options: WebpackBundlerOptions
 ): Config => {
-  const isServer = false
-  const isBuild = true
-
   const config = createClientBaseConfig({
     app,
     options,
-    isBuild,
+    isBuild: true,
   })
 
   // use internal vuepress-loader to handle SSR dependencies
@@ -83,9 +80,6 @@ export const createClientConfig = (
   if (!app.env.isDebug) {
     config.performance.hints(false)
   }
-
-  // plugin hook: chainWebpack
-  app.pluginApi.hooks.chainWebpack.process(config, isServer, isBuild)
 
   return config
 }
