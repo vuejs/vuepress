@@ -1,5 +1,18 @@
 import { cac } from 'cac'
+import { chalk } from '@vuepress/utils'
 import { build, dev } from './commands'
+
+/**
+ * Wrap raw command to catch errors and exit process
+ */
+const wrapCommand = (cmd: (...args: any[]) => Promise<void>): typeof cmd => {
+  const wrappedCommand: typeof cmd = (...args) =>
+    cmd(...args).catch((err) => {
+      console.error(chalk.red(err.stack))
+      process.exit(1)
+    })
+  return wrappedCommand
+}
 
 /**
  * Vuepress cli
@@ -26,7 +39,7 @@ export const cli = (): void => {
     .option('--open', 'open browser when ready')
     .option('--debug', 'enable debug mode')
     .option('--no-watch', 'disable watching page and config files')
-    .action(dev)
+    .action(wrapCommand(dev))
 
   // register `build` command
   program
@@ -39,7 +52,7 @@ export const cli = (): void => {
     .option('-c, --cache <cache>', 'set the directory of the cache files')
     .option('--clean-cache', 'clean the cache before build')
     .option('--debug', 'enable debug mode')
-    .action(build)
+    .action(wrapCommand(build))
 
   program.parse(process.argv)
 }
