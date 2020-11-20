@@ -25,6 +25,7 @@ const config: UserConfig<DefaultThemeOptions> = {
 
     repo: 'vuepress/vuepress-next',
 
+    docsBranch: 'main',
     docsDir: 'docs',
 
     // theme-level locales config
@@ -49,7 +50,7 @@ const config: UserConfig<DefaultThemeOptions> = {
               {
                 text: 'Changelog',
                 link:
-                  'https://github.com/vuepress/vuepress-next/blob/master/CHANGELOG.md',
+                  'https://github.com/vuepress/vuepress-next/blob/main/CHANGELOG.md',
               },
             ],
           },
@@ -87,7 +88,7 @@ const config: UserConfig<DefaultThemeOptions> = {
               {
                 text: '更新日志',
                 link:
-                  'https://github.com/vuepress/vuepress-next/blob/master/CHANGELOG.md',
+                  'https://github.com/vuepress/vuepress-next/blob/main/CHANGELOG.md',
               },
             ],
           },

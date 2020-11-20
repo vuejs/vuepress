@@ -1,7 +1,7 @@
 # vuepress-next
 
 [![github check](https://github.com/vuepress/vuepress-next/workflows/check/badge.svg)](https://github.com/vuepress/vuepress-next/actions?query=workflow%3Acheck)
-[![license](https://badgen.net/github/license/vuepress/vuepress-next)](https://github.com/vuepress/vuepress-next/blob/master/LICENSE)
+[![license](https://badgen.net/github/license/vuepress/vuepress-next)](https://github.com/vuepress/vuepress-next/blob/main/LICENSE)
 
 > With the power of Vue 3.0 and TypeScript
 
@@ -21,7 +21,7 @@ yarn
 yarn docs:dev
 ```
 
-For more details, please check our [contributing guidelines](https://github.com/vuepress/vuepress-next/blob/master/docs/contributing.md).
+For more details, please check our [contributing guidelines](https://github.com/vuepress/vuepress-next/blob/main/docs/contributing.md).
 
 ### TODO List
 
