@@ -66,7 +66,7 @@ const config: UserConfig<DefaultThemeOptions> = {
           ],
         },
 
-        // edit link
+        // page meta
         editLinkText: 'Edit this page on GitHub',
       },
 
@@ -107,8 +107,10 @@ const config: UserConfig<DefaultThemeOptions> = {
           ],
         },
 
-        // edit link
+        // page meta
         editLinkText: '在 GitHub 上编辑此页',
+        lastUpdatedText: '上次更新',
+        contributorsText: '贡献者',
 
         // custom blocks
         info: '提示',
