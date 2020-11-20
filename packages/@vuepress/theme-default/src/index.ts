@@ -1,5 +1,7 @@
 import type { Theme } from '@vuepress/core'
 import type { ContainerPluginOptions } from '@vuepress/plugin-container'
+import GitPlugin from '@vuepress/plugin-git'
+import type { GitPluginOptions } from '@vuepress/plugin-git'
 import { path } from '@vuepress/utils'
 import { assignDefaultOptions, resolveContainerPluginOptions } from './node'
 import type { DefaultThemeOptions } from './types'
@@ -25,8 +27,10 @@ export const defaultTheme: Theme<DefaultThemeOptions> = (options) => {
     extendsPageData: ({ filePathRelative }) => ({ filePathRelative }),
 
     plugins: [
-      ['@vuepress/back-to-top'],
-      ['@vuepress/nprogress'],
+      // ===================
+      // built-in plugins
+      // ===================
+
       [
         '@vuepress/container',
         resolveContainerPluginOptions(options.locales, 'tip'),
@@ -50,6 +54,22 @@ export const defaultTheme: Theme<DefaultThemeOptions> = (options) => {
           after: () => '</details>\n',
         } as ContainerPluginOptions,
       ],
+
+      // ===================
+      // plugins that can be switched off
+      // ===================
+
+      ['@vuepress/back-to-top', options.themePlugins?.backToTop !== false],
+      [
+        GitPlugin,
+        options.themePlugins?.git === false
+          ? false
+          : ({
+              updatedTime: options.lastUpdated !== false,
+              contributors: options.contributors !== false,
+            } as GitPluginOptions),
+      ],
+      ['@vuepress/nprogress', options.themePlugins?.nprogress !== false],
     ],
   }
 }

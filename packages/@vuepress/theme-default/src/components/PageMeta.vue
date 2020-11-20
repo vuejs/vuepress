@@ -1,12 +1,24 @@
 <template>
   <footer class="page-meta">
-    <div v-if="editNavLink" class="edit-link">
-      <NavLink :item="editNavLink" />
+    <div v-if="editNavLink" class="meta-item edit-link">
+      <NavLink class="meta-item-label" :item="editNavLink" />
     </div>
 
-    <div v-if="lastUpdated" class="last-updated">
-      <span class="prefix">{{ lastUpdatedText }}:</span>
-      <span class="time">{{ lastUpdated }}</span>
+    <div v-if="lastUpdated" class="meta-item last-updated">
+      <span class="meta-item-label">{{ $themeLocale.lastUpdatedText }}: </span>
+      <span class="meta-item-info">{{ lastUpdated }}</span>
+    </div>
+
+    <div v-if="contributors" class="meta-item contributors">
+      <span class="meta-item-label">{{ $themeLocale.contributorsText }}: </span>
+      <span class="meta-item-info">
+        <template v-for="(contributor, index) in contributors" :key="index">
+          <span class="contributor" :title="`email: ${contributor.email}`">
+            {{ contributor.name }}
+          </span>
+          <template v-if="index !== contributors.length - 1">, </template>
+        </template>
+      </span>
     </div>
   </footer>
 </template>
@@ -17,6 +29,7 @@ import type { ComputedRef } from 'vue'
 import {
   usePageData,
   usePageFrontmatter,
+  useSiteLocaleData,
   useThemeLocaleData,
 } from '@vuepress/client'
 import type {
@@ -67,6 +80,45 @@ const useEditNavLink = (): ComputedRef<null | NavLinkType> => {
   })
 }
 
+const useLastUpdated = (): ComputedRef<null | string> => {
+  const themeLocale = useThemeLocaleData<DefaultThemeOptions>()
+  const frontmatter = usePageFrontmatter()
+
+  return computed(() => {
+    const showLastUpdated =
+      frontmatter.value.lastUpdated ?? themeLocale.value.lastUpdated ?? true
+
+    if (!showLastUpdated) return null
+
+    const page = usePageData<DefaultThemePageData>()
+
+    if (!page.value.git.updatedTime) return null
+
+    const siteLocale = useSiteLocaleData()
+    const updatedDate = new Date(page.value.git.updatedTime)
+
+    return updatedDate.toLocaleString(siteLocale.value.lang)
+  })
+}
+
+const useContributors = (): ComputedRef<
+  null | Required<DefaultThemePageData['git']>['contributors']
+> => {
+  const themeLocale = useThemeLocaleData<DefaultThemeOptions>()
+  const frontmatter = usePageFrontmatter()
+
+  return computed(() => {
+    const showContributors =
+      frontmatter.value.contributors ?? themeLocale.value.contributors ?? true
+
+    if (!showContributors) return null
+
+    const page = usePageData<DefaultThemePageData>()
+
+    return page.value.git.contributors ?? null
+  })
+}
+
 export default defineComponent({
   name: 'PageMeta',
 
@@ -76,11 +128,13 @@ export default defineComponent({
 
   setup() {
     const editNavLink = useEditNavLink()
+    const lastUpdated = useLastUpdated()
+    const contributors = useContributors()
+
     return {
       editNavLink,
-      // TODO
-      lastUpdated: null,
-      lastUpdatedText: null,
+      lastUpdated,
+      contributors,
     }
   },
 })
@@ -96,27 +150,27 @@ export default defineComponent({
   padding-bottom 1rem
   overflow auto
 
-  .edit-link
-    display inline-block
-    a
-      color lighten($textColor, 25%)
-      margin-right 0.25rem
-  .last-updated
-    float right
-    font-size 0.9em
-    .prefix
+  .meta-item
+    cursor default
+    margin-top 0.8rem
+    .meta-item-label
       font-weight 500
       color lighten($textColor, 25%)
-    .time
+    .meta-item-info
       font-weight 400
       color #767676
 
+  .edit-link
+    display inline-block
+    margin-right 0.25rem
+  .last-updated
+    float right
+
 @media (max-width: $MQMobile)
   .page-meta
-    .edit-link
-      margin-bottom 0.5rem
     .last-updated
       font-size 0.8em
       float none
-      text-align left
+    .contributors
+      font-size 0.8em
 </style>

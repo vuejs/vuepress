@@ -15,9 +15,13 @@ const defaultLocaleData: DefaultThemeLocaleData = {
   // sidebar
   sidebar: 'auto',
 
-  // edit link
+  // page meta
   editLink: true,
   editLinkText: 'Edit this page',
+  lastUpdated: true,
+  lastUpdatedText: 'Last Updated',
+  contributors: true,
+  contributorsText: 'Contributors',
 
   // custom block
   tip: 'TIP',

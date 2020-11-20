@@ -1,7 +1,29 @@
 import type { LocaleData, ThemeConfig } from '@vuepress/core'
 import type { NavbarConfig, SidebarConfig } from './nav'
 
-export type DefaultThemeOptions = ThemeConfig<DefaultThemeLocaleData>
+export interface DefaultThemeOptions
+  extends ThemeConfig<DefaultThemeLocaleData> {
+  /**
+   * To avoid confusion with the root `plugins` option,
+   * we use `themePlugins`
+   */
+  themePlugins?: {
+    /**
+     * Enable @vuepress/plugin-back-to-top or not
+     */
+    backToTop?: boolean
+
+    /**
+     * Enable @vuepress/plugin-nprogress or not
+     */
+    nprogress?: boolean
+
+    /**
+     * Enable @vuepress/plugin-git or not
+     */
+    git?: boolean
+  }
+}
 
 export interface DefaultThemeLocaleData extends LocaleData {
   /**
@@ -70,21 +92,21 @@ export interface DefaultThemeLocaleData extends LocaleData {
   sidebar?: 'auto' | false | SidebarConfig
 
   /**
-   * Edit link config
+   * Page meta - edit lint config
    *
    * Whether to show "Edit this page" or not
    */
   editLink?: boolean
 
   /**
-   * Edit link config
+   * Page meta - edit lint config
    *
    * The text to replace the default "Edit this page"
    */
   editLinkText?: string
 
   /**
-   * Edit link config
+   * Page meta - edit lint config
    *
    * Pattern of edit link
    *
@@ -93,7 +115,7 @@ export interface DefaultThemeLocaleData extends LocaleData {
   editLinkPattern?: string
 
   /**
-   * Edit link config
+   * Page meta - edit lint config
    *
    * Use `repo` config by default
    *
@@ -102,18 +124,46 @@ export interface DefaultThemeLocaleData extends LocaleData {
   docsRepo?: string
 
   /**
-   * Edit link config
+   * Page meta - edit lint config
    *
    * Set this config if the branch of your docs is not 'master'
    */
   docsBranch?: string
 
   /**
-   * Edit link config
+   * Page meta - edit lint config
    *
    * Set this config if your docs is placed in sub dir of your `docsRepo`
    */
   docsDir?: string
+
+  /**
+   * Page meta - last updated config
+   *
+   * Whether to show "Last Updated" or not
+   */
+  lastUpdated?: boolean
+
+  /**
+   * Page meta - last updated config
+   *
+   * The text to replace the default "Last Updated"
+   */
+  lastUpdatedText?: string
+
+  /**
+   * Page meta - contributors config
+   *
+   * Whether to show "Contributors" or not
+   */
+  contributors?: boolean
+
+  /**
+   * Page meta - contributors config
+   *
+   * The text to replace the default "Contributors"
+   */
+  contributorsText?: string
 
   /**
    * Custom block config
