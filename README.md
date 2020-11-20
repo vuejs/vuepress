@@ -60,7 +60,7 @@ Features in the following list are not fully determined, and might be changed or
   - [ ] @vuepress/plugin-active-header-links
   - [x] @vuepress/plugin-back-to-top
   - [x] @vuepress/plugin-container
-  - [ ] @vuepress/plugin-git-logs
+  - [x] @vuepress/plugin-git
   - [ ] @vuepress/plugin-google-analytics
   - [ ] @vuepress/plugin-medium-zoom
   - [x] @vuepress/plugin-nprogress
@@ -91,6 +91,7 @@ Temporarily record some breaking changes here.
   - `less` -> `bundlerConfig.less`
   - `chainWebpack` -> `bundlerConfig.chainWebpack`
   - `configureWebpack` -> `bundlerConfig.configureWebpack`
+- `patterns` -> `pagePatterns`
 
 ##### Permalink patterns
 
