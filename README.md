@@ -1,5 +1,8 @@
 # vuepress-next
 
+[![github check](https://github.com/vuepress/vuepress-next/workflows/check/badge.svg)](https://github.com/vuepress/vuepress-next/actions?query=workflow%3Acheck)
+[![license](https://badgen.net/github/license/vuepress/vuepress-next)](https://github.com/vuepress/vuepress-next/blob/master/LICENSE)
+
 > With the power of Vue 3.0 and TypeScript
 
 ## Status: Pre-Alpha
@@ -64,6 +67,7 @@ Features in the following list are not fully determined, and might be changed or
   - [ ] @vuepress/plugin-google-analytics
   - [ ] @vuepress/plugin-medium-zoom
   - [x] @vuepress/plugin-nprogress
+  - [ ] @vuepress/plugin-palette-stylus
   - [ ] @vuepress/plugin-pwa
   - [ ] @vuepress/plugin-search
 
@@ -73,7 +77,7 @@ Features in the following list are not fully determined, and might be changed or
   - [ ] API
   - [ ] Migration Guide
 
-- [ ] CI setup
+- [x] CI setup
 
 ### Breaking Changes
 
