@@ -1,0 +1,36 @@
+{
+  "name": "@vuepress/plugin-git",
+  "version": "2.0.0-alpha.0",
+  "description": "VuePress plugin - git",
+  "keywords": [
+    "vuepress",
+    "plugin",
+    "git"
+  ],
+  "homepage": "https://github.com/vuepress",
+  "bugs": {
+    "url": "https://github.com/vuepress/vuepress-next/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/vuepress-next.git"
+  },
+  "license": "MIT",
+  "author": "meteorlxy",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc -b tsconfig.build.json",
+    "clean": "rimraf lib *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@vuepress/core": "2.0.0-alpha.0",
+    "execa": "^4.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
