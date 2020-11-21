@@ -42,6 +42,7 @@ import NavLink from './NavLink.vue'
 
 const useEditNavLink = (): ComputedRef<null | NavLinkType> => {
   const themeLocale = useThemeLocaleData<DefaultThemeOptions>()
+  const page = usePageData<DefaultThemePageData>()
   const frontmatter = usePageFrontmatter()
 
   return computed(() => {
@@ -61,8 +62,6 @@ const useEditNavLink = (): ComputedRef<null | NavLinkType> => {
 
     if (!docsRepo) return null
 
-    const page = usePageData<DefaultThemePageData>()
-
     const editLink = resolveEditLink({
       docsRepo,
       docsBranch,
@@ -81,7 +80,9 @@ const useEditNavLink = (): ComputedRef<null | NavLinkType> => {
 }
 
 const useLastUpdated = (): ComputedRef<null | string> => {
+  const siteLocale = useSiteLocaleData()
   const themeLocale = useThemeLocaleData<DefaultThemeOptions>()
+  const page = usePageData<DefaultThemePageData>()
   const frontmatter = usePageFrontmatter()
 
   return computed(() => {
@@ -90,11 +91,8 @@ const useLastUpdated = (): ComputedRef<null | string> => {
 
     if (!showLastUpdated) return null
 
-    const page = usePageData<DefaultThemePageData>()
-
     if (!page.value.git.updatedTime) return null
 
-    const siteLocale = useSiteLocaleData()
     const updatedDate = new Date(page.value.git.updatedTime)
 
     return updatedDate.toLocaleString(siteLocale.value.lang)
@@ -105,6 +103,7 @@ const useContributors = (): ComputedRef<
   null | Required<DefaultThemePageData['git']>['contributors']
 > => {
   const themeLocale = useThemeLocaleData<DefaultThemeOptions>()
+  const page = usePageData<DefaultThemePageData>()
   const frontmatter = usePageFrontmatter()
 
   return computed(() => {
@@ -112,8 +111,6 @@ const useContributors = (): ComputedRef<
       frontmatter.value.contributors ?? themeLocale.value.contributors ?? true
 
     if (!showContributors) return null
-
-    const page = usePageData<DefaultThemePageData>()
 
     return page.value.git.contributors ?? null
   })
