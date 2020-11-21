@@ -30,6 +30,7 @@
   "dependencies": {
     "@vuepress/client": "2.0.0-alpha.0",
     "@vuepress/core": "2.0.0-alpha.0",
+    "@vuepress/plugin-active-header-links": "2.0.0-alpha.0",
     "@vuepress/plugin-back-to-top": "2.0.0-alpha.0",
     "@vuepress/plugin-container": "2.0.0-alpha.0",
     "@vuepress/plugin-git": "2.0.0-alpha.0",

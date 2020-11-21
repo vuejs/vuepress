@@ -9,6 +9,11 @@ export interface DefaultThemeOptions
    */
   themePlugins?: {
     /**
+     * Enable @vuepress/plugin-active-header-links or not
+     */
+    activeHeaderLinks?: boolean
+
+    /**
      * Enable @vuepress/plugin-back-to-top or not
      */
     backToTop?: boolean

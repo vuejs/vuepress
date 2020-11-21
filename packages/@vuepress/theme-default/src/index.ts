@@ -59,6 +59,10 @@ export const defaultTheme: Theme<DefaultThemeOptions> = (options) => {
       // plugins that can be switched off
       // ===================
 
+      [
+        '@vuepress/active-header-links',
+        options.themePlugins?.activeHeaderLinks !== false,
+      ],
       ['@vuepress/back-to-top', options.themePlugins?.backToTop !== false],
       [
         GitPlugin,
