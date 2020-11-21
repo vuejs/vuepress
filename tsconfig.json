@@ -6,6 +6,9 @@
     { "path": "./packages/@vuepress/client/tsconfig.build.json" },
     { "path": "./packages/@vuepress/core/tsconfig.build.json" },
     { "path": "./packages/@vuepress/markdown/tsconfig.build.json" },
+    {
+      "path": "./packages/@vuepress/plugin-active-header-links/tsconfig.build.json"
+    },
     { "path": "./packages/@vuepress/plugin-back-to-top/tsconfig.build.json" },
     { "path": "./packages/@vuepress/plugin-container/tsconfig.build.json" },
     { "path": "./packages/@vuepress/plugin-git/tsconfig.build.json" },
