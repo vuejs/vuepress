@@ -9,7 +9,10 @@
       <span class="meta-item-info">{{ lastUpdated }}</span>
     </div>
 
-    <div v-if="contributors" class="meta-item contributors">
+    <div
+      v-if="contributors && contributors.length"
+      class="meta-item contributors"
+    >
       <span class="meta-item-label">{{ $themeLocale.contributorsText }}: </span>
       <span class="meta-item-info">
         <template v-for="(contributor, index) in contributors" :key="index">
