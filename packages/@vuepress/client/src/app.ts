@@ -80,12 +80,6 @@ export const createVueApp = async ({
     history: historyCreator(removeEndingSlash(siteData.value.base)),
     routes: pagesRoutes,
     scrollBehavior: (to, from, savedPosition) => {
-      // check a custom `noScroll` param
-      // it's mainly for supporting @vuepress/plugin-active-header-links
-      if (to.params.noScroll) {
-        return false
-      }
-
       if (savedPosition) {
         return savedPosition
       }
