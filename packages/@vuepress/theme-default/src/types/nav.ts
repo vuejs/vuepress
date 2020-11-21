@@ -30,7 +30,7 @@ export type NavbarItem = NavLink
 export type NavbarGroup = NavGroup<NavbarItem | string>
 export type NavbarConfig = (NavbarItem | NavbarGroup | string)[]
 // resolved
-export type ResolvedNavbarItem = NavbarItem | NavGroup<NavbarItem>
+export type ResolvedNavbarItem = NavbarItem | NavGroup<ResolvedNavbarItem>
 
 /**
  * Sidebar types
