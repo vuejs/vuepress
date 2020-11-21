@@ -20,17 +20,11 @@
     "devtool",
     "frontmatter",
     "globby",
-    "mathjax",
-    "mergeable",
-    "netlify",
     "nprogress",
     "prefetch",
     "preload",
-    "redirector",
-    "redirectors",
-    "serializers",
     "slugify",
-    "vuepress",
-    "zoomable"
+    "unmount",
+    "vuepress"
   ]
 }
