@@ -60,11 +60,11 @@ Features in the following list are not fully determined, and might be changed or
   - [x] Watch & Reload (dev)
 
 - [ ] Official plugins
-  - [ ] @vuepress/plugin-active-header-links
+  - [x] @vuepress/plugin-active-header-links
   - [x] @vuepress/plugin-back-to-top
   - [x] @vuepress/plugin-container
   - [x] @vuepress/plugin-git
-  - [ ] @vuepress/plugin-google-analytics
+  - [x] @vuepress/plugin-google-analytics
   - [ ] @vuepress/plugin-medium-zoom
   - [x] @vuepress/plugin-nprogress
   - [ ] @vuepress/plugin-palette-stylus
