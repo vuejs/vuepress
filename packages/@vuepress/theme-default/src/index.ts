@@ -1,10 +1,12 @@
 import type { Theme } from '@vuepress/core'
-import type { ActiveHeaderLinksPluginOptions } from '@vuepress/plugin-active-header-links'
-import type { ContainerPluginOptions } from '@vuepress/plugin-container'
-import GitPlugin from '@vuepress/plugin-git'
-import type { GitPluginOptions } from '@vuepress/plugin-git'
 import { path } from '@vuepress/utils'
-import { assignDefaultOptions, resolveContainerPluginOptions } from './node'
+import {
+  assignDefaultOptions,
+  resolveActiveHeaderLinksPluginOptions,
+  resolveContainerPluginOptions,
+  resolveContainerPluginOptionsForDetails,
+  resolveGitPluginOptions,
+} from './node'
 import type { DefaultThemeOptions } from './types'
 
 export * from './node'
@@ -28,57 +30,19 @@ export const defaultTheme: Theme<DefaultThemeOptions> = (options) => {
     extendsPageData: ({ filePathRelative }) => ({ filePathRelative }),
 
     plugins: [
-      // ===================
-      // built-in plugins
-      // ===================
-
-      [
-        '@vuepress/container',
-        resolveContainerPluginOptions(options.locales, 'tip'),
-      ],
-      [
-        '@vuepress/container',
-        resolveContainerPluginOptions(options.locales, 'warning'),
-      ],
-      [
-        '@vuepress/container',
-        resolveContainerPluginOptions(options.locales, 'danger'),
-      ],
-      [
-        '@vuepress/container',
-        {
-          type: 'details',
-          before: (info) =>
-            `<details class="custom-block details">${
-              info ? `<summary>${info}</summary>` : ''
-            }\n`,
-          after: () => '</details>\n',
-        } as ContainerPluginOptions,
-      ],
-
-      // ===================
-      // plugins that can be switched off
-      // ===================
-
       [
         '@vuepress/active-header-links',
-        options.themePlugins?.activeHeaderLinks === false
-          ? false
-          : ({
-              headerLinkSelector: '.sidebar-link',
-              headerAnchorSelector: '.header-anchor',
-            } as ActiveHeaderLinksPluginOptions),
+        resolveActiveHeaderLinksPluginOptions(options),
       ],
       ['@vuepress/back-to-top', options.themePlugins?.backToTop !== false],
+      ['@vuepress/container', resolveContainerPluginOptions(options, 'tip')],
       [
-        GitPlugin,
-        options.themePlugins?.git === false
-          ? false
-          : ({
-              updatedTime: options.lastUpdated !== false,
-              contributors: options.contributors !== false,
-            } as GitPluginOptions),
+        '@vuepress/container',
+        resolveContainerPluginOptions(options, 'warning'),
       ],
+      ['@vuepress/container', resolveContainerPluginOptions(options, 'danger')],
+      ['@vuepress/container', resolveContainerPluginOptionsForDetails(options)],
+      ['@vuepress/git', resolveGitPluginOptions(options)],
       ['@vuepress/nprogress', options.themePlugins?.nprogress !== false],
     ],
   }

@@ -94,9 +94,9 @@ const useLastUpdated = (): ComputedRef<null | string> => {
 
     if (!showLastUpdated) return null
 
-    if (!page.value.git.updatedTime) return null
+    if (!page.value.git?.updatedTime) return null
 
-    const updatedDate = new Date(page.value.git.updatedTime)
+    const updatedDate = new Date(page.value.git?.updatedTime)
 
     return updatedDate.toLocaleString(siteLocale.value.lang)
   })
@@ -115,7 +115,7 @@ const useContributors = (): ComputedRef<
 
     if (!showContributors) return null
 
-    return page.value.git.contributors ?? null
+    return page.value.git?.contributors ?? null
   })
 }
 

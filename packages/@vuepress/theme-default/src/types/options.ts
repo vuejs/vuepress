@@ -19,6 +19,16 @@ export interface DefaultThemeOptions
     backToTop?: boolean
 
     /**
+     * Enable @vuepress/plugin-container or not
+     */
+    container?: {
+      tip?: boolean
+      warning?: boolean
+      danger?: boolean
+      details?: boolean
+    }
+
+    /**
      * Enable @vuepress/plugin-nprogress or not
      */
     nprogress?: boolean
