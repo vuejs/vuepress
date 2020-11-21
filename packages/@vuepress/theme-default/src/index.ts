@@ -1,4 +1,5 @@
 import type { Theme } from '@vuepress/core'
+import type { ActiveHeaderLinksPluginOptions } from '@vuepress/plugin-active-header-links'
 import type { ContainerPluginOptions } from '@vuepress/plugin-container'
 import GitPlugin from '@vuepress/plugin-git'
 import type { GitPluginOptions } from '@vuepress/plugin-git'
@@ -61,7 +62,12 @@ export const defaultTheme: Theme<DefaultThemeOptions> = (options) => {
 
       [
         '@vuepress/active-header-links',
-        options.themePlugins?.activeHeaderLinks !== false,
+        options.themePlugins?.activeHeaderLinks === false
+          ? false
+          : ({
+              headerLinkSelector: '.sidebar-link',
+              headerAnchorSelector: '.header-anchor',
+            } as ActiveHeaderLinksPluginOptions),
       ],
       ['@vuepress/back-to-top', options.themePlugins?.backToTop !== false],
       [
