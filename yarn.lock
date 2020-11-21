@@ -5494,10 +5494,10 @@ eslint-config-standard@^14.1.1:
   resolved "https://registry.yarnpkg.com/eslint-config-standard/-/eslint-config-standard-14.1.1.tgz#830a8e44e7aef7de67464979ad06b406026c56ea"
   integrity sha512-Z9B+VR+JIXRxz21udPTL9HpFMyoMUEeX1G251EQ6e05WD9aPVtVBn09XUmZ259wCMlCDmYDSZG62Hhm+ZTJcUg==
 
-eslint-config-vuepress-typescript@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/eslint-config-vuepress-typescript/-/eslint-config-vuepress-typescript-2.0.3.tgz#974d015d3ef7b8a8e64c3cfe4dcfdb048707fb2d"
-  integrity sha512-yIFPzMt3KgO+stJ9LqcuvesMsgDOu2txvBSYxGTLdGmxvYwZCiZN+qY+7SWxVbbirWanghjtkmRzlL0B2u2BqA==
+eslint-config-vuepress-typescript@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-vuepress-typescript/-/eslint-config-vuepress-typescript-2.1.0.tgz#3d933844a09856df60b3f291cb7236ca12652756"
+  integrity sha512-z/NHtSRfLuf6o/AdBgll4z+peMxTO+jYe2d78dJgfExhFYtSQ8ZBOle9vRkts2C8cpmlvH0Ecp1d8OxtGbyVBg==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^4.5.0"
     "@typescript-eslint/parser" "^4.5.0"
