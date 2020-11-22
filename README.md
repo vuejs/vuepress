@@ -67,7 +67,7 @@ Features in the following list are not fully determined, and might be changed or
   - [x] @vuepress/plugin-google-analytics
   - [x] @vuepress/plugin-medium-zoom
   - [x] @vuepress/plugin-nprogress
-  - [ ] @vuepress/plugin-palette-stylus
+  - [x] @vuepress/plugin-palette-stylus
   - [ ] @vuepress/plugin-pwa
   - [ ] @vuepress/plugin-search
 
@@ -105,11 +105,13 @@ Temporarily record some breaking changes here.
 - `:seconds` -> removed (undocumented in 1.0)
 - `:regular` -> `:raw`
 
-##### Palette system
+##### Stylus Palette system
 
-The palette system of Vuepress 1.0 (i.e. `palette.styl` and `index.styl`) will only works in default theme
+The stylus palette system of Vuepress 1.0 (i.e. `styles/palette.styl` and `styles/index.styl`) will only work in default theme.
 
-Custom theme authors can use their own way for users to configure styles (not be limited with stylus)
+To make the stylus palette system reusable, it's extracted to `@vuepress/plugin-palette-stylus`.
+
+Theme authors can use their own way for users to configure styles (not be limited with stylus).
 
 ##### Default frontmatter
 
