@@ -7,6 +7,7 @@ import { mediumZoomSymbol } from './composables'
 
 import '../styles/medium-zoom.css'
 
+declare const __SSR__: boolean
 declare const MZ_SELECTOR: string
 declare const MZ_OPTIONS: ZoomOptions
 declare const MZ_DELAY: number
@@ -16,7 +17,7 @@ const options = MZ_OPTIONS
 const delay = MZ_DELAY
 
 const clientAppEnhance: ClientAppEnhance = ({ app, router }) => {
-  if (!selector) return
+  if (__SSR__ || !selector) return
 
   // create zoom instance and provide it
   const zoom = mediumZoom(options)
