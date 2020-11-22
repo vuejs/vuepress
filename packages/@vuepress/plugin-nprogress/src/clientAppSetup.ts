@@ -20,11 +20,10 @@ const clientAppSetup: ClientAppSetup = () => {
     nprogress.configure({ showSpinner: false })
 
     // show progress bar before navigation
-    router.beforeEach((to, from, next) => {
+    router.beforeEach((to) => {
       if (!loadedPages.has(to.path)) {
         nprogress.start()
       }
-      next()
     })
 
     // hide progress bar after navigation
