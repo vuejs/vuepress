@@ -27,7 +27,7 @@ For more details, please check our [contributing guidelines](https://github.com/
 
 Features in the following list are not fully determined, and might be changed or removed during development.
 
-- [ ] @vuepress/core
+- [x] @vuepress/core
   - [x] Plugin API
     - [x] clientAppEnhanceFiles
     - [x] clientAppRootComponentFiles
@@ -67,7 +67,7 @@ Features in the following list are not fully determined, and might be changed or
   - [x] @vuepress/plugin-nprogress
   - [x] @vuepress/plugin-palette-stylus
   - [ ] @vuepress/plugin-pwa
-  - [ ] @vuepress/plugin-search
+  - [ ] @vuepress/plugin-search-algolia
 
 - [ ] Documentation
   - [ ] Guide
