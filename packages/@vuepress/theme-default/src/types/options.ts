@@ -29,14 +29,19 @@ export interface DefaultThemeOptions
     }
 
     /**
-     * Enable @vuepress/plugin-nprogress or not
-     */
-    nprogress?: boolean
-
-    /**
      * Enable @vuepress/plugin-git or not
      */
     git?: boolean
+
+    /**
+     * Enable @vuepress/plugin-medium-zoom or not
+     */
+    mediumZoom?: boolean
+
+    /**
+     * Enable @vuepress/plugin-nprogress or not
+     */
+    nprogress?: boolean
   }
 }
 

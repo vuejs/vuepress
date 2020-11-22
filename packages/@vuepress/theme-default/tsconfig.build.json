@@ -7,6 +7,7 @@
     { "path": "../plugin-back-to-top/tsconfig.build.json" },
     { "path": "../plugin-container/tsconfig.build.json" },
     { "path": "../plugin-git/tsconfig.build.json" },
+    { "path": "../plugin-medium-zoom/tsconfig.build.json" },
     { "path": "../plugin-nprogress/tsconfig.build.json" },
     { "path": "../shared/tsconfig.build.json" },
     { "path": "../utils/tsconfig.build.json" },
