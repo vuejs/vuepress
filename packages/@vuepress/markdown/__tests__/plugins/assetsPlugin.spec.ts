@@ -6,6 +6,7 @@ const source = [
   '![foo](./foo.png)',
   '![foo-bar](./foo/bar.png)',
   '![absolute](/absolute.png)',
+  '![url](http://foobar.com/icon.png)',
   '![empty]()',
 ].join('\n\n')
 
@@ -23,6 +24,7 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
         '<img src="@source/foo.png" alt="foo">',
         '<img src="@source/foo/bar.png" alt="foo-bar">',
         '<img src="/absolute.png" alt="absolute">',
+        '<img src="http://foobar.com/icon.png" alt="url">',
         '<img src="" alt="empty">',
       ]
         .map((item) => `<p>${item}</p>`)
@@ -45,6 +47,7 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
         '<img src="@foo/foo.png" alt="foo">',
         '<img src="@foo/foo/bar.png" alt="foo-bar">',
         '<img src="/absolute.png" alt="absolute">',
+        '<img src="http://foobar.com/icon.png" alt="url">',
         '<img src="" alt="empty">',
       ]
         .map((item) => `<p>${item}</p>`)
@@ -63,6 +66,7 @@ describe('@vuepress/markdown > plugins > assetsPlugin', () => {
         '<img src="./foo.png" alt="foo">',
         '<img src="./foo/bar.png" alt="foo-bar">',
         '<img src="/absolute.png" alt="absolute">',
+        '<img src="http://foobar.com/icon.png" alt="url">',
         '<img src="" alt="empty">',
       ]
         .map((item) => `<p>${item}</p>`)
