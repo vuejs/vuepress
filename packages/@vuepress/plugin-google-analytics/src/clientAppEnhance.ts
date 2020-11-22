@@ -5,11 +5,13 @@ declare const __DEV__: boolean
 declare const __SSR__: boolean
 declare const GA_ID: string
 
+const id = GA_ID
+
 const clientAppEnhance: ClientAppEnhance = ({ router }) => {
-  if (__DEV__ || __SSR__ || !GA_ID) return
+  if (__DEV__ || __SSR__ || !id) return
 
   useGoogleAnalytics({
-    id: GA_ID,
+    id,
     router,
   })
 }
