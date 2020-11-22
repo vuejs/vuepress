@@ -33,8 +33,6 @@ Features in the following list are not fully determined, and might be changed or
     - [x] clientAppRootComponentFiles
     - [x] clientAppSetupFiles
     - [x] extendsPageData
-  - [ ] Theme API
-    - [ ] Theme Inheritance
 
 - [ ] @vuepress/markdown
   - [x] codePlugin
@@ -168,6 +166,10 @@ Theme authors can use their own way for users to configure styles (not be limite
 ##### Theme API
 
 - `extend` -> `extends`
+
+You can still inherit a parent theme with `extends: 'parent-theme'`, which will extends the plugins, layouts, etc.
+
+However, the `@theme` and `@parent-theme` aliases are not available now.
 
 #### CLI
 
