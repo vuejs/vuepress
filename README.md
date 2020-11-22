@@ -65,7 +65,7 @@ Features in the following list are not fully determined, and might be changed or
   - [x] @vuepress/plugin-container
   - [x] @vuepress/plugin-git
   - [x] @vuepress/plugin-google-analytics
-  - [ ] @vuepress/plugin-medium-zoom
+  - [x] @vuepress/plugin-medium-zoom
   - [x] @vuepress/plugin-nprogress
   - [ ] @vuepress/plugin-palette-stylus
   - [ ] @vuepress/plugin-pwa

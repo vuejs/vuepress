@@ -1,0 +1,11 @@
+:root {
+  --medium-zoom-z-index: 100;
+}
+
+.medium-zoom-overlay {
+  z-index: var(--medium-zoom-z-index);
+}
+
+.medium-zoom-overlay ~ img {
+  z-index: calc(var(--medium-zoom-z-index) + 1);
+}

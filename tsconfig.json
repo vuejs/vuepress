@@ -15,6 +15,7 @@
     {
       "path": "./packages/@vuepress/plugin-google-analytics/tsconfig.build.json"
     },
+    { "path": "./packages/@vuepress/plugin-medium-zoom/tsconfig.build.json" },
     { "path": "./packages/@vuepress/plugin-nprogress/tsconfig.build.json" },
     { "path": "./packages/@vuepress/shared/tsconfig.build.json" },
     { "path": "./packages/@vuepress/theme-default/tsconfig.build.json" },
