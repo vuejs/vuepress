@@ -7,6 +7,7 @@ import {
   resolveContainerPluginOptionsForDetails,
   resolveGitPluginOptions,
   resolveMediumZoomPluginOptions,
+  resolvePaletteStylusPluginOptions,
 } from './node'
 import type { DefaultThemeOptions } from './types'
 
@@ -46,6 +47,7 @@ export const defaultTheme: Theme<DefaultThemeOptions> = (options) => {
       ['@vuepress/git', resolveGitPluginOptions(options)],
       ['@vuepress/medium-zoom', resolveMediumZoomPluginOptions(options)],
       ['@vuepress/nprogress', options.themePlugins?.nprogress !== false],
+      ['@vuepress/palette-stylus', resolvePaletteStylusPluginOptions(options)],
     ],
   }
 }
