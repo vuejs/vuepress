@@ -1,6 +1,6 @@
 import { computed, h } from 'vue'
 import type { CreateAppFunction, App, ComponentOptions } from 'vue'
-import { createRouter, RouterView } from 'vue-router'
+import { createRouter, RouterView, START_LOCATION } from 'vue-router'
 import type { Router, RouterHistory } from 'vue-router'
 import { removeEndingSlash } from '@vuepress/shared'
 import { clientAppEnhances } from '@internal/clientAppEnhances'
@@ -95,9 +95,10 @@ export const createVueApp = async ({
   // use vue-router
   app.use(router)
 
-  router.beforeEach(async (to, from, next) => {
-    pageData.value = await resolvePageData(to.path)
-    next()
+  router.beforeResolve(async (to, from) => {
+    if (to.path !== from.path || from === START_LOCATION) {
+      pageData.value = await resolvePageData(to.path)
+    }
   })
 
   // create global computed
