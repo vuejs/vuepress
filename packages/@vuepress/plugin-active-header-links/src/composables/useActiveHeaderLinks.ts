@@ -57,11 +57,21 @@ export const useActiveHeaderLinks = ({
       const anchor = existedHeaderAnchors[i]
       const nextAnchor = existedHeaderAnchors[i + 1]
 
+      // if this is the first anchor and now it's on the top of the page
+      const isTheFirstAnchorActive = i === 0 && scrollTop === 0
+
+      // if has scrolled past this anchor
+      const hasPassedCurrentAnchor =
+        scrollTop >= (anchor.parentElement?.offsetTop ?? 0)
+
+      // if has not scrolled past next anchor
+      const hasNotPassedNextAnchor =
+        !nextAnchor || scrollTop < (nextAnchor.parentElement?.offsetTop ?? 0)
+
+      // if this anchor is the active anchor
       const isActive =
-        (i === 0 && scrollTop === 0) ||
-        (scrollTop >= (anchor.parentElement?.offsetTop ?? 0) + 10 &&
-          (!nextAnchor ||
-            scrollTop < (nextAnchor.parentElement?.offsetTop ?? 0) - 10))
+        isTheFirstAnchorActive ||
+        (hasPassedCurrentAnchor && hasNotPassedNextAnchor)
 
       // continue to find the active anchor
       if (!isActive) continue
@@ -69,17 +79,20 @@ export const useActiveHeaderLinks = ({
       const routeHash = decodeURIComponent(router.currentRoute.value.hash)
       const anchorHash = decodeURIComponent(anchor.hash)
 
+      // if the active anchor hash is current route hash, do nothing
       if (routeHash === anchorHash) return
 
       // check if anchor is at the bottom of the page to keep hash consistent
       if (isAtPageBottom) {
         for (let j = i + 1; j < existedHeaderAnchors.length; j++) {
+          // if current route hash is below the active hash, do nothing
           if (routeHash === decodeURIComponent(existedHeaderAnchors[j].hash)) {
             return
           }
         }
       }
 
+      // replace current route hash with the active anchor hash
       replaceWithoutScrollBehavior(router, {
         hash: anchorHash,
         force: true,
