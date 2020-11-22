@@ -33,6 +33,8 @@ export const createDevServerConfig = (
         'node_modules',
         // Always watch temp dir
         `!${app.dir.temp()}/**`,
+        // Always watch vuepress dir
+        `!${app.dir.source('.vuepress')}/**`,
       ],
     },
     historyApiFallback: {
