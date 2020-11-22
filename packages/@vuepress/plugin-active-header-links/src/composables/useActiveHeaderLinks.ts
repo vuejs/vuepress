@@ -9,12 +9,14 @@ export interface UseActiveHeaderLinksOptions {
   headerLinkSelector: string
   headerAnchorSelector: string
   delay: number
+  offset?: number
 }
 
 export const useActiveHeaderLinks = ({
   headerLinkSelector,
   headerAnchorSelector,
   delay,
+  offset = 5,
 }: UseActiveHeaderLinksOptions): void => {
   const router = useRouter()
   const page = usePageData()
@@ -50,8 +52,8 @@ export const useActiveHeaderLinks = ({
     )
 
     // check if we have reached page bottom
-    // notice the `scrollBottom` might not be exactly equal to `scrollHeight`
-    const isAtPageBottom = Math.abs(scrollHeight - scrollBottom) < 5
+    // notice the `scrollBottom` might not be exactly equal to `scrollHeight`, so we add offset here
+    const isAtPageBottom = Math.abs(scrollHeight - scrollBottom) < offset
 
     for (let i = 0; i < existedHeaderAnchors.length; i++) {
       const anchor = existedHeaderAnchors[i]
@@ -60,13 +62,17 @@ export const useActiveHeaderLinks = ({
       // if this is the first anchor and now it's on the top of the page
       const isTheFirstAnchorActive = i === 0 && scrollTop === 0
 
+      // notice the `scrollTop` might not be exactly equal to `offsetTop` after clicking the anchor
+      // so we add offset
+
       // if has scrolled past this anchor
       const hasPassedCurrentAnchor =
-        scrollTop >= (anchor.parentElement?.offsetTop ?? 0)
+        scrollTop >= (anchor.parentElement?.offsetTop ?? 0) - offset
 
       // if has not scrolled past next anchor
       const hasNotPassedNextAnchor =
-        !nextAnchor || scrollTop < (nextAnchor.parentElement?.offsetTop ?? 0)
+        !nextAnchor ||
+        scrollTop < (nextAnchor.parentElement?.offsetTop ?? 0) - offset
 
       // if this anchor is the active anchor
       const isActive =
