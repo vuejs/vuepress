@@ -2,7 +2,7 @@ import { resolve } from 'path'
 import type { Plugin } from '@vuepress/core'
 
 export interface GoogleAnalyticsPluginOptions {
-  id?: string
+  id: string
 }
 
 export const googleAnalyticsPlugin: Plugin<GoogleAnalyticsPluginOptions> = ({
