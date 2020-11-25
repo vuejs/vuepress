@@ -1,12 +1,11 @@
+import { isLinkHttp } from './isLinkHttp'
+
 /**
  * Determine a link is external or not
  */
 export const isLinkExternal = (link: string, base = '/'): boolean => {
-  // link with protocol
-  // - http://github.com
-  // - https://github.com
-  // - //github.com
-  if (/^(https?:)?\/\//.test(link)) {
+  // http link
+  if (isLinkHttp(link)) {
     return true
   }
 
