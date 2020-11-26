@@ -61,13 +61,13 @@ Features in the following list are not fully determined, and might be changed or
   - [x] @vuepress/plugin-active-header-links
   - [x] @vuepress/plugin-back-to-top
   - [x] @vuepress/plugin-container
+  - [x] @vuepress/plugin-docsearch
   - [x] @vuepress/plugin-git
   - [x] @vuepress/plugin-google-analytics
   - [x] @vuepress/plugin-medium-zoom
   - [x] @vuepress/plugin-nprogress
   - [x] @vuepress/plugin-palette-stylus
   - [ ] @vuepress/plugin-pwa
-  - [ ] @vuepress/plugin-search-algolia
 
 - [ ] Documentation
   - [ ] Guide
