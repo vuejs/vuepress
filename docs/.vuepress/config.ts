@@ -28,6 +28,13 @@ const config: UserConfig<DefaultThemeOptions> = {
     docsBranch: 'main',
     docsDir: 'docs',
 
+    // TODO: create algolia index for vuepress-next
+    // docsearch: {
+    //   apiKey: '',
+    //   appId: '',
+    //   indexName: '',
+    // },
+
     // theme-level locales config
     locales: {
       /**
@@ -96,6 +103,7 @@ const config: UserConfig<DefaultThemeOptions> = {
         selectLanguageName: '简体中文',
         selectLanguageText: '选择语言',
         selectLanguageAriaLabel: '选择语言',
+        docsearchPlaceholder: '搜索文档',
 
         // sidebar
         sidebar: {
