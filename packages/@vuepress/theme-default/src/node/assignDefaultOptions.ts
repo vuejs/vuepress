@@ -1,8 +1,6 @@
 import type { DefaultThemeOptions, DefaultThemeLocaleData } from '../types'
 
 const defaultLocaleData: DefaultThemeLocaleData = {
-  home: '/',
-
   // navbar
   navbar: [],
   logo: null,
