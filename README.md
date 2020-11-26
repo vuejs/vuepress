@@ -47,11 +47,11 @@ Features in the following list are not fully determined, and might be changed or
   - [x] Pre-render (build)
   - [x] Style pre-processors config
 
-- [ ] @vuepress/theme-default
+- [x] @vuepress/theme-default
   - [x] Navbar
   - [x] Sidebar
   - [x] Page
-  - [ ] Plugins integration
+  - [x] Plugins integration
 
 - [x] @vuepress/cli
   - [x] Resolve user config file
