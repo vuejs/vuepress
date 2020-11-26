@@ -6,14 +6,23 @@ import OutboundLink from './components/global/OutboundLink.vue'
 
 import './styles/index.styl'
 
+declare const __THEME_DEFAULT_DOCSEARCH__: boolean
+
 const clientAppEnhance: ClientAppEnhance = ({ app }) => {
   /* eslint-disable vue/match-component-file-name */
   app.component('Badge', Badge)
   app.component('CodeGroup', CodeGroup)
   app.component('CodeGroupItem', CodeGroupItem)
-  // unregister the built-in <OutboundLink> to avoid warning
+
+  // unregister the built-in `<OutboundLink>` to avoid warning
   delete app._context.components.OutboundLink
+  // override the built-in `<OutboundLink>`
   app.component('OutboundLink', OutboundLink)
+
+  // register a mock `<Docsearch>` if docsearch plugin is not enabled
+  if (!__THEME_DEFAULT_DOCSEARCH__) {
+    app.component('Docsearch', () => null)
+  }
   /* eslint-enable vue/match-component-file-name */
 }
 

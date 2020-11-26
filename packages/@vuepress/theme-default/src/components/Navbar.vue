@@ -24,6 +24,7 @@
       <slot name="before" />
       <NavbarLinks class="can-hide" />
       <slot name="after" />
+      <Docsearch />
     </div>
   </header>
 </template>
@@ -105,8 +106,6 @@ $navbar-horizontal-padding = 1.5rem
 .navbar
   padding $navbar-vertical-padding $navbar-horizontal-padding
   line-height $navbarHeight - 1.4rem
-  a, span, img
-    display inline-block
   .logo
     height $navbarHeight - 1.4rem
     min-width $navbarHeight - 1.4rem
