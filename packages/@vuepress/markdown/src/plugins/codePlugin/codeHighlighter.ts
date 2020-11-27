@@ -11,6 +11,7 @@ const log = debug('vuepress:markdown/code')
  * @see https://prismjs.com/#basic-usage-node
  */
 loadLanguages(['markup', 'css', 'clike', 'javascript'])
+// eslint-disable-next-line no-import-assign
 loadLanguages.silent = true
 
 export type CodeHighlighter = (code: string) => string
