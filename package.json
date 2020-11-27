@@ -15,7 +15,7 @@
     "docs:dev": "vuepress dev docs",
     "docs:serve": "anywhere -h localhost -d docs/.vuepress/dist",
     "postinstall": "yarn copy && yarn build",
-    "lint": "eslint --ext .js,.ts,.vue .",
+    "lint": "cross-env NODE_OPTIONS=\"--max-old-space-size=4096\" eslint --ext .js,.ts,.vue .",
     "release": "yarn lint && yarn clean && yarn copy && yarn build && yarn test && lerna publish",
     "test": "jest --runInBand"
   },
@@ -37,6 +37,7 @@
     "@types/jest": "^26.0.15",
     "anywhere": "^1.5.0",
     "cpx": "^1.5.0",
+    "cross-env": "^7.0.2",
     "eslint": "^7.14.0",
     "eslint-config-vuepress": "^3.0.2",
     "eslint-config-vuepress-typescript": "^2.1.1",
