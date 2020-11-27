@@ -6,6 +6,8 @@ const config: UserConfig<DefaultThemeOptions> = {
 
   evergreen: process.env.NODE_ENV !== 'production',
 
+  head: [['link', { rel: 'icon', href: `/logo.png` }]],
+
   // site-level locales config
   locales: {
     '/': {
