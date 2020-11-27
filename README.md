@@ -23,7 +23,7 @@ yarn docs:dev
 
 For more details, please check our [contributing guidelines](https://github.com/vuepress/vuepress-next/blob/main/docs/contributing.md).
 
-### TODO List
+## TODO List
 
 Features in the following list are not fully determined, and might be changed or removed during development.
 
@@ -77,14 +77,16 @@ Features in the following list are not fully determined, and might be changed or
 
 - [x] CI setup
 
-### Breaking Changes
+## Breaking Changes
 
 Temporarily record some breaking changes here.
 
-#### Core
+### Core
 
 #### User config
 
+- `patterns` -> `pagePatterns`
+- `extraWatchFiles` -> removed
 - All webpack related configs are moved to `bundlerConfig` (with `@vuepress/bundler-webpack`)
   - `postcss` -> `bundlerConfig.postcss`
   - `stylus` -> `bundlerConfig.stylus`
@@ -93,9 +95,8 @@ Temporarily record some breaking changes here.
   - `less` -> `bundlerConfig.less`
   - `chainWebpack` -> `bundlerConfig.chainWebpack`
   - `configureWebpack` -> `bundlerConfig.configureWebpack`
-- `patterns` -> `pagePatterns`
 
-##### Permalink patterns
+#### Permalink patterns
 
 - `:i_month` -> removed
 - `:i_day` -> removed
@@ -103,7 +104,7 @@ Temporarily record some breaking changes here.
 - `:seconds` -> removed (undocumented in 1.0)
 - `:regular` -> `:raw`
 
-##### Stylus Palette system
+#### Stylus Palette system
 
 The stylus palette system of Vuepress 1.0 (i.e. `styles/palette.styl` and `styles/index.styl`) will only work in default theme.
 
@@ -111,7 +112,7 @@ To make the stylus palette system reusable, it's extracted to `@vuepress/plugin-
 
 Theme authors can use their own way for users to configure styles (not be limited with stylus).
 
-##### Default frontmatter
+#### Default frontmatter
 
 - `meta` -> `head`, which uses the same type with `siteConfig.head`
 
@@ -145,7 +146,7 @@ Theme authors can use their own way for users to configure styles (not be limite
   }
   ```
 
-##### Plugin API
+#### Plugin API
 
 - `ready` -> `onPrepared`
 - `updated` -> removed
@@ -163,7 +164,7 @@ Theme authors can use their own way for users to configure styles (not be limite
 - `beforeDevServer` -> removed
 - `afterDevServer` -> removed
 
-##### Theme API
+#### Theme API
 
 - `extend` -> `extends`
 
@@ -171,11 +172,11 @@ You can still inherit a parent theme with `extends: 'parent-theme'`, which will 
 
 However, the `@theme` and `@parent-theme` aliases are not available now.
 
-#### CLI
+### CLI
 
 - `-c, --cache [cache]` -> `-c, --cache <cache>` , i.e. the value of `cache` option is not optional
 - `--no-cache` -> `--clean-cache`
 
-#### Default Theme
+### Default Theme
 
 - `<CodeGroup>`, `<CodeBlock>` -> `<CodeGroup>`, `<CodeGroupItem>`
