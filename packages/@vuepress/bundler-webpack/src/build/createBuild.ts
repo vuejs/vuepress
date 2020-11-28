@@ -41,7 +41,7 @@ export const createBuild = (
       isBuild: true,
     })
 
-    await new Promise((resolve, reject) => {
+    await new Promise<void>((resolve, reject) => {
       webpack([clientConfig, serverConfig], (err, stats) => {
         if (err) {
           reject(err)
