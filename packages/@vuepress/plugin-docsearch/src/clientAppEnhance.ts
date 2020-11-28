@@ -6,10 +6,9 @@ import { Docsearch } from './components/Docsearch'
 import type { DocsearchProps } from './components/Docsearch'
 
 declare const DOCSEARCH_PROPS: DocsearchProps
-declare const DOCSEARCH_LOCALES: LocaleConfig<Pick<
-  DocsearchProps,
-  'placeholder'
->>
+declare const DOCSEARCH_LOCALES: LocaleConfig<
+  Pick<DocsearchProps, 'placeholder'>
+>
 
 const props = DOCSEARCH_PROPS
 const locales = DOCSEARCH_LOCALES

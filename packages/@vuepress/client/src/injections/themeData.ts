@@ -16,9 +16,9 @@ export const themeLocaleDataSymbol: InjectionKey<ThemeDataRef> = Symbol(
   __DEV__ ? 'themeLocaleData' : ''
 )
 
-export const useThemeData = <T extends LocaleData = LocaleData>(): ThemeDataRef<
-  T
-> => {
+export const useThemeData = <
+  T extends LocaleData = LocaleData
+>(): ThemeDataRef<T> => {
   const themeData = inject(themeDataSymbol)
   if (!themeData) {
     throw new Error('useThemeData() is called without provider.')
