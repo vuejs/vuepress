@@ -52,7 +52,7 @@
     "style-loader": "^2.0.0",
     "ts-loader": "^8.0.7",
     "url-loader": "^4.1.1",
-    "vue-loader": "^16.0.0-rc.2",
+    "vue-loader": "^16.0.0",
     "webpack": "^4.44.2",
     "webpack-chain": "^6.5.1",
     "webpack-dev-server": "^3.11.0",
