@@ -26,7 +26,6 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@vue/server-renderer": "^3.0.0",
     "@vuepress/client": "2.0.0-alpha.0",
     "@vuepress/markdown": "2.0.0-alpha.0",
     "@vuepress/shared": "2.0.0-alpha.0",
