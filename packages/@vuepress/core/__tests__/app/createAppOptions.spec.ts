@@ -23,7 +23,7 @@ describe('core > app > createAppOptions', () => {
       port: 8080,
       debug: false,
       open: false,
-      evergreen: false,
+      evergreen: true,
       templateDev: path.normalize(
         require.resolve('@vuepress/client/templates/index.dev.html')
       ),
