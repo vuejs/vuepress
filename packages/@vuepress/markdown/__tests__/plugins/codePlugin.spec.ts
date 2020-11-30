@@ -15,6 +15,14 @@ function bar () {
   return 1024
 }
 ${codeFence}
+
+${codeFence}ts{1,2}
+const foo = 'foo'
+
+function bar () {
+  return 1024
+}
+${codeFence}
 `
 
 describe('@vuepress/markdown > plugins > codePlugin', () => {
@@ -32,9 +40,17 @@ describe('@vuepress/markdown > plugins > codePlugin', () => {
     expect(md.render(source)).toMatchSnapshot()
   })
 
-  it('should enable `lineNumbers`', () => {
+  it('should disable `highlightLines`', () => {
     const md = MarkdownIt().use(codePlugin, {
-      lineNumbers: true,
+      highlightLines: false,
+    })
+
+    expect(md.render(source)).toMatchSnapshot()
+  })
+
+  it('should disable `lineNumbers`', () => {
+    const md = MarkdownIt().use(codePlugin, {
+      lineNumbers: false,
     })
 
     expect(md.render(source)).toMatchSnapshot()
@@ -54,6 +70,21 @@ describe('@vuepress/markdown > plugins > codePlugin', () => {
     })
 
     expect(md.render(source)).toMatchSnapshot()
+  })
+
+  it('should always disable `highlightLines` if `preWrapper` is disabled', () => {
+    const mdWithHighlightLines = MarkdownIt().use(codePlugin, {
+      highlightLines: true,
+      preWrapper: false,
+    })
+    const mdWithoutHighlightLine = MarkdownIt().use(codePlugin, {
+      highlightLines: false,
+      preWrapper: false,
+    })
+
+    expect(mdWithHighlightLines.render(source)).toBe(
+      mdWithoutHighlightLine.render(source)
+    )
   })
 
   it('should always disable `lineNumber` if `preWrapper` is disabled', () => {
