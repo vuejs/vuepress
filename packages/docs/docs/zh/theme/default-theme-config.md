@@ -508,15 +508,19 @@ pageClass: custom-page-class
 ---
 ```
 
-然后你就可以写专门针对该页面的 CSS 了：
+只能在 `.vuepress/styles/index.styl` 中编写针对该页面的 CSS ：
 
 ``` css
-/* .vuepress/override.styl */
+/* .vuepress/styles/index.styl */
 
 .theme-container.custom-page-class {
   /* 特定页面的 CSS */
 }
 ```
+
+::: tip 注意
+自定义样式应该写在 [index.styl](/config/#index-styl) 内, 该文件可以让你方便地添加或覆盖样式.
+:::
 
 ## 特定页面的自定义布局
 
