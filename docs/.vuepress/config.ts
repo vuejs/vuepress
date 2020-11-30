@@ -53,6 +53,23 @@ const config: UserConfig<DefaultThemeOptions> = {
             link: '/guide/',
           },
           {
+            text: 'Reference',
+            children: [
+              {
+                text: 'Config',
+                link: '/reference/config.html',
+              },
+              {
+                text: 'Frontmatter',
+                link: '/reference/frontmatter.html',
+              },
+              {
+                text: 'Default Theme',
+                link: '/reference/default-theme.html',
+              },
+            ],
+          },
+          {
             text: 'Learn More',
             children: [
               '/contributing.md',
@@ -71,7 +88,22 @@ const config: UserConfig<DefaultThemeOptions> = {
             {
               isGroup: true,
               text: 'Guide',
-              children: ['/guide/README.md', '/guide/getting-started.md'],
+              children: [
+                '/guide/README.md',
+                '/guide/getting-started.md',
+                '/guide/configuration.md',
+              ],
+            },
+          ],
+          '/reference/': [
+            {
+              isGroup: true,
+              text: 'Reference',
+              children: [
+                '/reference/config.md',
+                '/reference/frontmatter.md',
+                '/reference/default-theme.md',
+              ],
             },
           ],
         },
@@ -89,6 +121,23 @@ const config: UserConfig<DefaultThemeOptions> = {
           {
             text: '指南',
             link: '/zh/guide/',
+          },
+          {
+            text: '参考',
+            children: [
+              {
+                text: '配置',
+                link: '/zh/reference/config.html',
+              },
+              {
+                text: 'Frontmatter',
+                link: '/zh/reference/frontmatter.html',
+              },
+              {
+                text: '默认主题',
+                link: '/zh/reference/default-theme.html',
+              },
+            ],
           },
           {
             text: '了解更多',
@@ -113,7 +162,22 @@ const config: UserConfig<DefaultThemeOptions> = {
             {
               isGroup: true,
               text: '指南',
-              children: ['/zh/guide/README.md', '/zh/guide/getting-started.md'],
+              children: [
+                '/zh/guide/README.md',
+                '/zh/guide/getting-started.md',
+                '/zh/guide/configuration.md',
+              ],
+            },
+          ],
+          '/zh/reference/': [
+            {
+              isGroup: true,
+              text: '参考',
+              children: [
+                '/zh/reference/config.md',
+                '/zh/reference/frontmatter.md',
+                '/zh/reference/default-theme.md',
+              ],
             },
           ],
         },
