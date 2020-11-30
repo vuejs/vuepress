@@ -1,6 +1,5 @@
 import type { MarkdownOptions } from '@vuepress/markdown'
 import type { HeadConfig, SiteLocaleConfig } from '@vuepress/shared'
-import type { PluginConfig } from '../plugin'
 import type { ThemeConfig } from '../theme'
 
 /**
@@ -39,9 +38,6 @@ export interface AppOptions<T extends ThemeConfig = ThemeConfig> {
 
   // markdown options
   markdown: MarkdownOptions
-
-  // plugins options
-  plugins: PluginConfig[]
 
   // pages options
   pagePatterns: string[]

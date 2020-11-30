@@ -20,11 +20,6 @@ export const appInit = async (app: App): Promise<void> => {
   // create theme api, resolve themes and layouts
   app.themeApi = await createThemeApi(app)
 
-  // TODO: use theme-api plugin
-
-  // use user plugins
-  app.options.plugins.forEach((item) => app.useByConfig(item))
-
   // use theme plugin
   if (app.themeApi.parentTheme) {
     app.use(app.themeApi.parentTheme.plugin)

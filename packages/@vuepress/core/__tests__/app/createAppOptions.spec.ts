@@ -10,8 +10,6 @@ describe('core > app > createAppOptions', () => {
       description: '',
       head: [],
       locales: {},
-      markdown: {},
-      plugins: [],
       theme: '@vuepress/default',
       themeConfig: {},
       source: '/foo',
@@ -19,9 +17,9 @@ describe('core > app > createAppOptions', () => {
       temp: '/foo/.vuepress/.temp',
       cache: '/foo/.vuepress/.cache',
       public: '/foo/.vuepress/public',
+      debug: false,
       host: '0.0.0.0',
       port: 8080,
-      debug: false,
       open: false,
       evergreen: true,
       templateDev: path.normalize(
@@ -32,6 +30,7 @@ describe('core > app > createAppOptions', () => {
       ),
       shouldPreload: true,
       shouldPrefetch: false,
+      markdown: {},
       pagePatterns: ['**/*.md', '!.vuepress', '!node_modules'],
     })
   })

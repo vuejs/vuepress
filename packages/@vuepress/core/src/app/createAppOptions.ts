@@ -42,9 +42,6 @@ export const createAppOptions = ({
   // markdown config
   markdown = {},
 
-  // plugins config
-  plugins = [],
-
   // pages config
   pagePatterns = ['**/*.md', '!.vuepress', '!node_modules'],
 }: AppConfig): AppOptions => ({
@@ -71,6 +68,5 @@ export const createAppOptions = ({
   shouldPreload,
   shouldPrefetch,
   markdown,
-  plugins,
   pagePatterns,
 })
