@@ -35,6 +35,17 @@ div[class*="language-"]
   position relative
   background-color $codeBgColor
   border-radius 6px
+  &::before
+    position absolute
+    z-index 3
+    top 0.8em
+    right 1em
+    font-size 0.75rem
+    color rgba(255, 255, 255, 0.4)
+  pre, pre[class*="language-"]
+    background transparent
+    position relative
+    z-index 1
   .highlight-lines
     user-select none
     padding-top 1.3rem
@@ -43,29 +54,18 @@ div[class*="language-"]
     left 0
     width 100%
     line-height 1.4
-    .highlighted
+    .highlight-line
       background-color rgba(0, 0, 0, 66%)
-  pre, pre[class*="language-"]
-    background transparent
-    position relative
-    z-index 1
-  &::before
-    position absolute
-    z-index 3
-    top 0.8em
-    right 1em
-    font-size 0.75rem
-    color rgba(255, 255, 255, 0.4)
   &:not(.line-numbers-mode)
-    .line-numbers-wrapper
+    .line-numbers
       display none
   &.line-numbers-mode
-    .highlight-lines .highlighted
+    .highlight-lines .highlight-line
         position relative
-        &:before
+        &::before
           content ' '
           position absolute
-          z-index 3
+          z-index 2
           left 0
           top 0
           display block
@@ -75,25 +75,24 @@ div[class*="language-"]
     pre
       padding-left $lineNumbersWrapperWidth + 1 rem
       vertical-align middle
-    .line-numbers-wrapper
+    .line-numbers
       position absolute
       top 0
       width $lineNumbersWrapperWidth
       text-align center
       color rgba(255, 255, 255, 0.3)
-      padding 1.25rem 0
+      padding-top 1.25rem
       line-height 1.4
       br
         user-select none
       .line-number
         position relative
-        z-index 4
+        z-index 3
         user-select none
         font-size 0.85em
     &::after
       content ''
       position absolute
-      z-index 2
       top 0
       left 0
       width $lineNumbersWrapperWidth
