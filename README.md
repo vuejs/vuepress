@@ -4,69 +4,28 @@
 [![github docs](https://github.com/vuepress/vuepress-next/workflows/docs/badge.svg)](https://github.com/vuepress/vuepress-next/actions?query=workflow%3Adocs)
 [![license](https://badgen.net/github/license/vuepress/vuepress-next)](https://github.com/vuepress/vuepress-next/blob/main/LICENSE)
 
-> With the power of Vue 3.0 and TypeScript
+## Status: Alpha
 
-## Status: Pre-Alpha
+The codebase has been completely refactored with TypeScript. Some major changes:
 
-Core features have been completed, but are still unstable.
+- Fully migrated to Vue 3
+- Extract `@vuepress/cli` from `vuepress` package
+- Extract `@vuepress/client` from `@vuepress/core` package
+- Extract `@vuepress/bundler-webpack` from `@vuepress/core` package - other bundlers are also possible to be supported
+- Extract `@vuepress/plugin-palette-stylus` from `@vuepress/core` package - stylus is no longer the default CSS pre-processor, and the way of styles customization should be determined by theme
 
-Accepting issues and PRs from community. Contribution welcome!
+The documentation has not finished yet. For now you can check out the breaking changes list below as migration reference.
 
-## Develop & Preview
+## Contribution
 
-```sh
-# install dependencies with yarn classic workspaces
-yarn
-
-# start a dev-server to develop vuepress docs
-yarn docs:dev
-```
-
-For more details, please check our [contributing guidelines](https://github.com/vuepress/vuepress-next/blob/main/docs/contributing.md).
+See [Contributing Guide](https://github.com/vuepress/vuepress-next/blob/main/docs/contributing.md).
 
 ## TODO List
 
-Features in the following list are not fully determined, and might be changed or removed during development.
-
-- [x] @vuepress/core
-  - [x] Plugin API
-    - [x] clientAppEnhanceFiles
-    - [x] clientAppRootComponentFiles
-    - [x] clientAppSetupFiles
-    - [x] extendsPageData
-
 - [ ] @vuepress/markdown
-  - [x] codePlugin
-  - [x] customComponentPlugin
-  - [x] hoistTagsPlugin
-  - [x] linksPlugin
   - [ ] snippetsPlugin
 
-- [x] @vuepress/bundler-webpack
-  - [x] Dev server (dev)
-  - [x] Pre-render (build)
-  - [x] Style pre-processors config
-
-- [x] @vuepress/theme-default
-  - [x] Navbar
-  - [x] Sidebar
-  - [x] Page
-  - [x] Plugins integration
-
-- [x] @vuepress/cli
-  - [x] Resolve user config file
-  - [x] Watch & Reload (dev)
-
 - [ ] Official plugins
-  - [x] @vuepress/plugin-active-header-links
-  - [x] @vuepress/plugin-back-to-top
-  - [x] @vuepress/plugin-container
-  - [x] @vuepress/plugin-docsearch
-  - [x] @vuepress/plugin-git
-  - [x] @vuepress/plugin-google-analytics
-  - [x] @vuepress/plugin-medium-zoom
-  - [x] @vuepress/plugin-nprogress
-  - [x] @vuepress/plugin-palette-stylus
   - [ ] @vuepress/plugin-pwa
 
 - [ ] Documentation
@@ -74,8 +33,6 @@ Features in the following list are not fully determined, and might be changed or
   - [ ] References
   - [ ] API
   - [ ] Migration Guide
-
-- [x] CI setup
 
 ## Breaking Changes
 
@@ -85,8 +42,19 @@ Temporarily record some breaking changes here.
 
 #### User config
 
+- `shouldPrefetch` -> the default value is changed to `false`
 - `patterns` -> `pagePatterns`
 - `extraWatchFiles` -> removed
+- `evergreen` -> the default value is changed to `true`
+- `markdown`
+  - `markdown.lineNumbers` -> `markdown.code.lineNumbers`, and the default value is changed to `true`
+  - `markdown.slugify` -> removed
+  - `markdown.pageSuffix` -> removed
+  - `markdown.externalLinks` -> `markdown.links.externalAttrs`
+  - `markdown.toc` -> changed
+  - `markdown.plugins` -> removed
+  - `markdown.extendMarkdown` -> removed
+  - `markdown.extractHeaders` -> changed
 - All webpack related configs are moved to `bundlerConfig` (with `@vuepress/bundler-webpack`)
   - `postcss` -> `bundlerConfig.postcss`
   - `stylus` -> `bundlerConfig.stylus`
@@ -112,7 +80,7 @@ To make the stylus palette system reusable, it's extracted to `@vuepress/plugin-
 
 Theme authors can use their own way for users to configure styles (not be limited with stylus).
 
-#### Default frontmatter
+#### Frontmatter
 
 - `meta` -> `head`, which uses the same type with `siteConfig.head`
 
@@ -180,3 +148,4 @@ However, the `@theme` and `@parent-theme` aliases are not available now.
 ### Default Theme
 
 - `<CodeGroup>`, `<CodeBlock>` -> `<CodeGroup>`, `<CodeGroupItem>`
+- Default theme config has changed a lot. Please checkout the types definition and our `docs/.vuepress/config.ts` as reference
