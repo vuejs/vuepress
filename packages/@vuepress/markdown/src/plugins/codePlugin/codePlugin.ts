@@ -1,5 +1,10 @@
 import type { PluginWithOptions } from 'markdown-it'
 import type { CreateCodeHighlighterFn } from './codeHighlighter'
+import {
+  isInHighlightLinesRanges,
+  resolveHighlightLinesRanges,
+} from './highlightLines'
+import type { HighlightLinesRange } from './highlightLines'
 import { resolveLanguage } from './resolveLanguage'
 
 export interface CodePluginOptions {
@@ -13,13 +18,20 @@ export interface CodePluginOptions {
   highlight?: boolean
 
   /**
+   * Enable highlight lines or not
+   */
+  highlightLines?: boolean
+
+  /**
    * Enable line numbers or not
    */
   lineNumbers?: boolean
 
   /**
-   * Wrap the `<pre>` tag with an extra `<div>` or not
+   * Wrap the `<pre>` tag with an extra `<div>` or not. Do not disable it unless you
+   * understand what's it for
    *
+   * - Required for `highlightLines`
    * - Required for `lineNumbers`
    * - Required for language display of default theme
    */
@@ -38,6 +50,7 @@ export const codePlugin: PluginWithOptions<CodePluginOptions> = (
   md,
   {
     highlight = true,
+    highlightLines = true,
     lineNumbers = false,
     preWrapper = true,
     vPre = true,
@@ -45,7 +58,6 @@ export const codePlugin: PluginWithOptions<CodePluginOptions> = (
 ): void => {
   // lazy-load highlight
   let createCodeHighlighter: CreateCodeHighlighterFn | undefined
-
   if (highlight) {
     createCodeHighlighter = require('./codeHighlighter').createCodeHighlighter
   }
@@ -54,9 +66,17 @@ export const codePlugin: PluginWithOptions<CodePluginOptions> = (
   md.renderer.rules.fence = (tokens, idx, options, env, slf) => {
     const token = tokens[idx]
 
-    // get the user-defined language alias from the token info
+    // get token info
     const info = token.info ? md.utils.unescapeAll(token.info).trim() : ''
-    const langAlias = info.split(/\s+/g)[0] || 'text'
+
+    // resolve highlight line ranges
+    let highlightLinesRanges: HighlightLinesRange[] | null = null
+    if (highlightLines) {
+      highlightLinesRanges = resolveHighlightLinesRanges(info)
+    }
+
+    // get user-defined language alias from the token info
+    const langAlias = info.match(/^([a-zA-Z]+)/)?.[1] || 'text'
 
     // try to resolve language according to the alias
     const language = resolveLanguage(langAlias)
@@ -88,17 +108,33 @@ export const codePlugin: PluginWithOptions<CodePluginOptions> = (
       return result
     }
 
+    // code fences always have an ending `\n`, so we should trim the last line
+    const lines = code.split('\n').slice(0, -1)
+
+    // generate highlight lines
+    if (highlightLinesRanges) {
+      const ranges = highlightLinesRanges
+
+      const highlightLinesCode = lines
+        .map((_, index) => {
+          if (isInHighlightLinesRanges(index + 1, ranges)) {
+            return '<div class="highlight-line">&nbsp;</div>'
+          }
+          return '<br>'
+        })
+        .join('')
+
+      result = `${result}<div class="highlight-lines">${highlightLinesCode}</div>`
+    }
+
     // generate line numbers
     if (lineNumbers) {
-      // code fences always have an ending `\n`, so we should trim the last line
-      const lines = code.split('\n').slice(0, -1)
-
       // generate line numbers code
-      const lineNumbers = lines
+      const lineNumbersCode = lines
         .map((_, index) => `<span class="line-number">${index + 1}</span><br>`)
         .join('')
 
-      result = `${result}<div class="line-numbers-wrapper">${lineNumbers}</div>`
+      result = `${result}<div class="line-numbers">${lineNumbersCode}</div>`
     }
 
     result = `<div class="${languageClass} ext-${language.ext}${
