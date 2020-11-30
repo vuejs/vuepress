@@ -32,7 +32,6 @@ export type {
 
 export * from './app'
 export * from './bundler'
-export * from './config'
 export * from './page'
 export * from './plugin'
 export * from './plugin-api'
