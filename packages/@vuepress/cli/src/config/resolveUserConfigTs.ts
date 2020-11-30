@@ -1,5 +1,5 @@
-import type { UserConfig } from '@vuepress/core'
 import { fs, path } from '@vuepress/utils'
+import type { UserConfig } from './types'
 
 export const userConfigTsPath = '.vuepress/config.ts'
 

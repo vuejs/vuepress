@@ -1,3 +1,6 @@
+export * from './resolveBundler'
 export * from './resolveUserConfig'
 export * from './resolveUserConfigJs'
 export * from './resolveUserConfigTs'
+export * from './transformUserConfigToPlugin'
+export * from './types'

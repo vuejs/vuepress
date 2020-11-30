@@ -2,13 +2,13 @@ import * as chokidar from 'chokidar'
 import { createApp } from '@vuepress/core'
 import type { AppConfig } from '@vuepress/core'
 import { chalk, debug, fs, logger, path } from '@vuepress/utils'
-import { resolveUserConfig, userConfigPaths } from '../config'
 import {
   resolveBundler,
-  handlePageAdd,
-  handlePageChange,
-  handlePageUnlink,
-} from '../utils'
+  resolveUserConfig,
+  transformUserConfigToPlugin,
+  userConfigPaths,
+} from '../config'
+import { handlePageAdd, handlePageChange, handlePageUnlink } from '../utils'
 
 const log = debug('vuepress:cli/dev')
 
@@ -90,6 +90,9 @@ export const dev = async (
     ...userConfig,
     ...appConfig,
   })
+
+  // use user-config plugin
+  app.use(transformUserConfigToPlugin(userConfig))
 
   // clean cache
   if (commandOptions.cleanCache === true) {

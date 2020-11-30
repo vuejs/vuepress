@@ -1,4 +1,5 @@
-import type { UserConfig, Bundler, BundlerEntry } from '@vuepress/core'
+import type { Bundler, BundlerEntry } from '@vuepress/core'
+import type { UserConfig } from './types'
 
 export const resolveBundler = ({
   bundler = 'webpack',

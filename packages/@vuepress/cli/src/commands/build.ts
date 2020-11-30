@@ -1,8 +1,11 @@
 import { createApp } from '@vuepress/core'
 import type { AppConfig } from '@vuepress/core'
 import { debug, fs, logger, path } from '@vuepress/utils'
-import { resolveUserConfig } from '../config'
-import { resolveBundler } from '../utils'
+import {
+  resolveBundler,
+  resolveUserConfig,
+  transformUserConfigToPlugin,
+} from '../config'
 
 const log = debug('vuepress:cli/build')
 
@@ -73,6 +76,9 @@ export const build = async (
     ...userConfig,
     ...appConfig,
   })
+
+  // use user-config plugin
+  app.use(transformUserConfigToPlugin(userConfig))
 
   // clean cache
   if (commandOptions.cleanCache === true) {

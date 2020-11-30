@@ -1,6 +1,6 @@
-import type { UserConfig } from '@vuepress/core'
 import { resolveUserConfigJs, userConfigJsPath } from './resolveUserConfigJs'
 import { resolveUserConfigTs, userConfigTsPath } from './resolveUserConfigTs'
+import type { UserConfig } from './types'
 
 export const userConfigPaths = [userConfigJsPath, userConfigTsPath]
 
