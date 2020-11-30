@@ -51,7 +51,7 @@ export const codePlugin: PluginWithOptions<CodePluginOptions> = (
   {
     highlight = true,
     highlightLines = true,
-    lineNumbers = false,
+    lineNumbers = true,
     preWrapper = true,
     vPre = true,
   }: CodePluginOptions = {}
