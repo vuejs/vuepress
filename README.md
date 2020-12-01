@@ -142,7 +142,7 @@ However, the `@theme` and `@parent-theme` aliases are not available now.
 
 ### CLI
 
-- `-c, --cache [cache]` -> `-c, --cache <cache>` , i.e. the value of `cache` option is not optional
+- `-c, --cache [cache]` -> `--cache <cache>` - the shorthand `-c` is not for `cache` option, and the value of `cache` option is not optional
 - `--no-cache` -> `--clean-cache`
 
 ### Default Theme

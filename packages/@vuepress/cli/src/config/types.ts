@@ -20,3 +20,5 @@ export type UserConfig<
     bundler?: 'webpack'
     bundlerConfig?: Partial<U>
   }
+
+export type UserConfigLoader = (userConfigPath: string) => Promise<UserConfig>
