@@ -1,3 +1,4 @@
+import { ESBuildMinifyPlugin } from 'esbuild-loader'
 import * as Config from 'webpack-chain'
 import { App } from '@vuepress/core'
 import { createClientBaseConfig } from '../config'
@@ -74,6 +75,12 @@ export const createClientConfig = (
 
     // enable runtimeChunk
     config.optimization.runtimeChunk(true)
+
+    // minimize with esbuild
+    config.optimization
+      .minimize(true)
+      .minimizer('esbuild')
+      .use(ESBuildMinifyPlugin)
   }
 
   // disable performance hints
