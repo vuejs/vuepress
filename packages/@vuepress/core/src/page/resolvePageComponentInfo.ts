@@ -41,9 +41,13 @@ export const resolvePageComponentInfo = async ({
 
   // resolve component file content
   // take the rendered markdown content as <template>
-  // hoist <script>, <style> and other custom blocks
+  // hoist `<script>`, `<style>` and other custom blocks
   const componentFileContent = [
-    `<template>${rendered}</template>`,
+    // if the `<template>` block is empty, vue will print a runtime warning
+    // during development, so here we add a whitespace to temporarily avoid
+    // the warning
+    // @see https://github.com/vuejs/vue-next/issues/2463
+    `<template>${rendered || ' '}</template>`,
     ...hoistedTags,
   ].join('\n\n')
 
