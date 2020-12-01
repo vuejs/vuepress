@@ -17,7 +17,7 @@ describe('core > page > createPage', () => {
     expect(page.filePathRelative).toBeNull()
     expect(page.componentFilePath).toBe(app.dir.temp(`pages/${page.key}.vue`))
     expect(page.componentFilePathRelative).toBe(`pages/${page.key}.vue`)
-    expect(page.componentFileContent).toBe(`<template></template>`)
+    expect(page.componentFileContent).toBe(`<template> </template>`)
     expect(page.title).toBe('')
     expect(page.content).toBe('')
     expect(page.frontmatter).toEqual({})
