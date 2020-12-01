@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-palette-stylus",
-  "version": "2.0.0-alpha.0",
+  "version": "2.0.0-alpha.1",
   "description": "VuePress plugin - palette stylus",
   "keywords": [
     "vuepress",
@@ -28,8 +28,8 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@vuepress/core": "2.0.0-alpha.0",
-    "@vuepress/utils": "2.0.0-alpha.0"
+    "@vuepress/core": "2.0.0-alpha.1",
+    "@vuepress/utils": "2.0.0-alpha.1"
   },
   "publishConfig": {
     "access": "public"
