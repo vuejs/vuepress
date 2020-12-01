@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/theme-vue",
-  "version": "2.0.0-alpha.2",
+  "version": "2.0.0-alpha.3",
   "description": "Vue theme of VuePress",
   "keywords": [
     "vuepress",
@@ -27,7 +27,7 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@vuepress/theme-default": "2.0.0-alpha.2"
+    "@vuepress/theme-default": "2.0.0-alpha.3"
   },
   "publishConfig": {
     "access": "public"
