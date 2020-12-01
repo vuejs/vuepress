@@ -1,6 +1,6 @@
 import { ESBuildMinifyPlugin } from 'esbuild-loader'
 import * as Config from 'webpack-chain'
-import { App } from '@vuepress/core'
+import type { App } from '@vuepress/core'
 import { createClientBaseConfig } from '../config'
 import type { WebpackBundlerOptions } from '../types'
 import { createClientPlugin } from './ssr'
