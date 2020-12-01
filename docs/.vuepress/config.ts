@@ -1,4 +1,4 @@
-import type { UserConfig } from '@vuepress/core'
+import type { UserConfig } from '@vuepress/cli'
 import type { DefaultThemeOptions } from '@vuepress/theme-default'
 
 const config: UserConfig<DefaultThemeOptions> = {
