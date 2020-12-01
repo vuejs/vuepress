@@ -1,5 +1,6 @@
 import type { UserConfig } from '@vuepress/cli'
 import type { DefaultThemeOptions } from '@vuepress/theme-default'
+import { navbar, sidebar } from './configs'
 
 const config: UserConfig<DefaultThemeOptions> = {
   base: '/',
@@ -47,66 +48,10 @@ const config: UserConfig<DefaultThemeOptions> = {
        */
       '/': {
         // navbar
-        navbar: [
-          {
-            text: 'Guide',
-            link: '/guide/',
-          },
-          {
-            text: 'Reference',
-            children: [
-              {
-                text: 'Config',
-                link: '/reference/config.html',
-              },
-              {
-                text: 'Frontmatter',
-                link: '/reference/frontmatter.html',
-              },
-              {
-                text: 'Default Theme',
-                link: '/reference/default-theme.html',
-              },
-            ],
-          },
-          {
-            text: 'Learn More',
-            children: [
-              '/contributing.md',
-              {
-                text: 'Changelog',
-                link:
-                  'https://github.com/vuepress/vuepress-next/blob/main/CHANGELOG.md',
-              },
-            ],
-          },
-        ],
+        navbar: navbar.en,
 
         // sidebar
-        sidebar: {
-          '/guide/': [
-            {
-              isGroup: true,
-              text: 'Guide',
-              children: [
-                '/guide/README.md',
-                '/guide/getting-started.md',
-                '/guide/configuration.md',
-              ],
-            },
-          ],
-          '/reference/': [
-            {
-              isGroup: true,
-              text: 'Reference',
-              children: [
-                '/reference/config.md',
-                '/reference/frontmatter.md',
-                '/reference/default-theme.md',
-              ],
-            },
-          ],
-        },
+        sidebar: sidebar.en,
 
         // page meta
         editLinkText: 'Edit this page on GitHub',
@@ -117,70 +62,14 @@ const config: UserConfig<DefaultThemeOptions> = {
        */
       '/zh/': {
         // navbar
-        navbar: [
-          {
-            text: '指南',
-            link: '/zh/guide/',
-          },
-          {
-            text: '参考',
-            children: [
-              {
-                text: '配置',
-                link: '/zh/reference/config.html',
-              },
-              {
-                text: 'Frontmatter',
-                link: '/zh/reference/frontmatter.html',
-              },
-              {
-                text: '默认主题',
-                link: '/zh/reference/default-theme.html',
-              },
-            ],
-          },
-          {
-            text: '了解更多',
-            children: [
-              '/zh/contributing.md',
-              {
-                text: '更新日志',
-                link:
-                  'https://github.com/vuepress/vuepress-next/blob/main/CHANGELOG.md',
-              },
-            ],
-          },
-        ],
+        navbar: navbar.zh,
         selectLanguageName: '简体中文',
         selectLanguageText: '选择语言',
         selectLanguageAriaLabel: '选择语言',
         docsearchPlaceholder: '搜索文档',
 
         // sidebar
-        sidebar: {
-          '/zh/guide/': [
-            {
-              isGroup: true,
-              text: '指南',
-              children: [
-                '/zh/guide/README.md',
-                '/zh/guide/getting-started.md',
-                '/zh/guide/configuration.md',
-              ],
-            },
-          ],
-          '/zh/reference/': [
-            {
-              isGroup: true,
-              text: '参考',
-              children: [
-                '/zh/reference/config.md',
-                '/zh/reference/frontmatter.md',
-                '/zh/reference/default-theme.md',
-              ],
-            },
-          ],
-        },
+        sidebar: sidebar.zh,
 
         // page meta
         editLinkText: '在 GitHub 上编辑此页',
