@@ -4,7 +4,10 @@ import { normalizePlugin } from '../app'
 import type { App, ThemeInfo, ThemeObject, ThemeConfig } from '../types'
 import { resolveThemeLayouts } from './resolveThemeLayouts'
 
-export const resolveThemeInfo = (app: App, themeName: string): ThemeInfo => {
+export const resolveThemeInfo = async (
+  app: App,
+  themeName: string
+): Promise<ThemeInfo> => {
   // resolve theme entry according to theme name
   const themeEntry = requireResolve(
     path.isAbsolute(themeName)
@@ -31,7 +34,7 @@ export const resolveThemeInfo = (app: App, themeName: string): ThemeInfo => {
     : themeEntry
 
   // resolve theme layouts
-  const layouts = resolveThemeLayouts({
+  const layouts = await resolveThemeLayouts({
     themePath,
     themePlugin,
   })

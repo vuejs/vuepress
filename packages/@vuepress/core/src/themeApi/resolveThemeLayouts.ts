@@ -1,14 +1,14 @@
 import { isPlainObject, isString } from '@vuepress/shared'
-import { fs, path } from '@vuepress/utils'
+import { chalk, fs, path, logger } from '@vuepress/utils'
 import type { ThemeObject, ThemeLayout } from '../types'
 
-export const resolveThemeLayouts = ({
+export const resolveThemeLayouts = async ({
   themePath,
   themePlugin,
 }: {
   themePath: string
   themePlugin: ThemeObject
-}): ThemeLayout[] => {
+}): Promise<ThemeLayout[]> => {
   // use the layouts component map directly
   if (isPlainObject(themePlugin.layouts)) {
     return Object.entries(themePlugin.layouts).map(([name, file]) => ({
@@ -23,8 +23,13 @@ export const resolveThemeLayouts = ({
       ? themePlugin.layouts
       : path.resolve(themePath, 'layouts')
 
+  if (!(await fs.pathExists(dirLayout))) {
+    logger.warn(`layout path ${chalk.magenta(dirLayout)} does not exist`)
+    return []
+  }
+
   // load all files in layouts directory
-  const files = fs.readdirSync(dirLayout)
+  const files = await fs.readdir(dirLayout)
 
   // take matched files as theme layouts
   const layouts = files
