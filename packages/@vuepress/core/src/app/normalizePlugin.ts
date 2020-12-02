@@ -1,7 +1,7 @@
 import { isFunction, isString } from '@vuepress/shared'
 import { logger } from '@vuepress/utils'
 import type { App, Plugin, PluginObject, PluginOptions } from '../types'
-import { resolvePluginByName } from './resolvePluginByName'
+import { resolvePlugin } from './resolvePlugin'
 
 export const normalizePlugin = <
   T extends PluginOptions = PluginOptions,
@@ -11,9 +11,7 @@ export const normalizePlugin = <
   plugin: Plugin<T, U> | string,
   config?: Partial<T>
 ): U => {
-  const resolvedPlugin = isString(plugin)
-    ? resolvePluginByName<T, U>(plugin)
-    : plugin
+  const resolvedPlugin = isString(plugin) ? resolvePlugin<T, U>(plugin) : plugin
 
   if (resolvedPlugin === null) {
     const message = `plugin ${plugin} is not found`

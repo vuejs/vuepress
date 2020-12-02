@@ -1,11 +1,11 @@
 import { normalizePackageName } from '@vuepress/shared'
-import { path, requireResolve } from '@vuepress/utils'
+import { hasExportDefault, path, requireResolve } from '@vuepress/utils'
 import type { Plugin, PluginObject, PluginOptions } from '../types'
 
 /**
- * Resolve a plugin according to the name string
+ * Resolve a plugin according to name or path
  */
-export const resolvePluginByName = <
+export const resolvePlugin = <
   T extends PluginOptions = PluginOptions,
   U extends PluginObject = PluginObject
 >(
@@ -19,8 +19,8 @@ export const resolvePluginByName = <
     return null
   }
 
-  const requiredPlugin = require(pluginEntry)
+  const required = require(pluginEntry)
 
   // allow default export
-  return requiredPlugin.default ?? requiredPlugin
+  return hasExportDefault(required) ? required.default : required
 }

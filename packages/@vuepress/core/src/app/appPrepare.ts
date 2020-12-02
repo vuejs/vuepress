@@ -60,8 +60,6 @@ export const appPrepare = async (app: App): Promise<void> => {
   // generate client app setups file
   await prepareClientAppSetups(app)
 
-  // TODO: globalUIComponents
-
   // plugin hook: onPrepared
   await app.pluginApi.hooks.onPrepared.process(app)
 
