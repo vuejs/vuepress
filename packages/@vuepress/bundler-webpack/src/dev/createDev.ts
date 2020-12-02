@@ -1,7 +1,7 @@
 import * as webpack from 'webpack'
 import * as WebpackDevServer from 'webpack-dev-server'
 import type { App, BundlerDev } from '@vuepress/core'
-import { chalk, logger, ora, withSpinner } from '@vuepress/utils'
+import { chalk, logger, ora } from '@vuepress/utils'
 import type { WebpackBundlerOptions } from '../types'
 import { resolveWebpackConfig } from '../utils'
 import { createDevConfig } from './createDevConfig'
@@ -12,10 +12,9 @@ export const createDev = (options: WebpackBundlerOptions): BundlerDev => async (
   app: App
 ) => {
   // initialize and prepare
-  await withSpinner('Preparing data')(async () => {
-    await app.init()
-    await app.prepare()
-  })
+  logger.info('Initializing VuePress and preparing data...')
+  await app.init()
+  await app.prepare()
 
   // resolve host and port
   const host = app.options.host

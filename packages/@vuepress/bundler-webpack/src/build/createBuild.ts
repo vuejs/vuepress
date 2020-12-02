@@ -17,13 +17,12 @@ export const createBuild = (
   options: WebpackBundlerOptions
 ): Bundler['build'] => async (app: App) => {
   // initialize and prepare
-  await withSpinner('Preparing data')(async () => {
-    await app.init()
-    await app.prepare()
+  logger.info('Initializing VuePress and preparing data...')
+  await app.init()
+  await app.prepare()
 
-    // empty dest directory
-    await fs.emptyDir(app.dir.dest())
-  })
+  // empty dest directory
+  await fs.emptyDir(app.dir.dest())
 
   // webpack compile
   await withSpinner('Compiling with webpack')(async () => {
