@@ -7,6 +7,7 @@ import * as path from 'upath'
 import hash = require('hash-sum')
 export { debug, chalk, fs, globby, hash, ora, path }
 
+export * from './hasExportDefault'
 export * from './logger'
 export * from './renderHead'
 export * from './renderHeadAttrs'
