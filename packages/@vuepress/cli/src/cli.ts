@@ -35,30 +35,30 @@ export const cli = (): void => {
 
   // register `dev` command
   program
-    .command('dev [sourceDir]', 'start development server')
-    .option('-c, --config <config>', 'set path to config file')
-    .option('-p, --port <port>', 'use specified port (default: 8080)')
-    .option('-h, --host <host>', 'use specified host (default: 0.0.0.0)')
-    .option('-t, --temp <temp>', 'set the directory of the temporary files')
-    .option('--cache <cache>', 'set the directory of the cache files')
-    .option('--clean-cache', 'clean the cache before dev')
-    .option('--open', 'open browser when ready')
-    .option('--debug', 'enable debug mode')
-    .option('--no-watch', 'disable watching page and config files')
+    .command('dev [sourceDir]', 'Start development server')
+    .option('-c, --config <config>', 'Set path to config file')
+    .option('-p, --port <port>', 'Use specified port (default: 8080)')
+    .option('-h, --host <host>', 'Use specified host (default: 0.0.0.0)')
+    .option('-t, --temp <temp>', 'Set the directory of the temporary files')
+    .option('--cache <cache>', 'Set the directory of the cache files')
+    .option('--clean-cache', 'Clean the cache before dev')
+    .option('--open', 'Open browser when ready')
+    .option('--debug', 'Enable debug mode')
+    .option('--no-watch', 'Disable watching page and config files')
     .action(wrapCommand(dev))
 
   // register `build` command
   program
-    .command('build [sourceDir]', 'build to static site')
-    .option('-c, --config <config>', 'set path to config file')
+    .command('build [sourceDir]', 'Build to static site')
+    .option('-c, --config <config>', 'Set path to config file')
     .option(
       '-d, --dest <dest>',
-      'set the directory build output (default: .vuepress/dist)'
+      'Set the directory build output (default: .vuepress/dist)'
     )
-    .option('-t, --temp <temp>', 'set the directory of the temporary files')
-    .option('--cache <cache>', 'set the directory of the cache files')
-    .option('--clean-cache', 'clean the cache before build')
-    .option('--debug', 'enable debug mode')
+    .option('-t, --temp <temp>', 'Set the directory of the temporary files')
+    .option('--cache <cache>', 'Set the directory of the cache files')
+    .option('--clean-cache', 'Clean the cache before build')
+    .option('--debug', 'Enable debug mode')
     .action(wrapCommand(build))
 
   program.parse(process.argv)
