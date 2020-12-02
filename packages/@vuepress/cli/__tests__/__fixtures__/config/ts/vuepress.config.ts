@@ -1,7 +1,7 @@
 import type { UserConfig } from '@vuepress/cli'
 
 const config: UserConfig = {
-  description: 'hello from .vuepress/config.ts',
+  description: 'hello from vuepress.config.ts',
 }
 
-export = config
+export default config
