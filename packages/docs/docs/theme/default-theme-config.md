@@ -532,7 +532,7 @@ pageClass: custom-page-class
 ---
 ```
 
-Then you can write CSS targeting that page only in `./vuepress/styles/index.styl`.
+Then you can write CSS targeting that page only in `.vuepress/styles/index.styl`.
 
 ``` css
 
