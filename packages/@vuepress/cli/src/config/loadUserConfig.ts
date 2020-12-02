@@ -1,10 +1,8 @@
 import type { UserConfig, UserConfigLoader } from './types'
-import { loadUserConfigJs } from './loadUserConfigJs'
-import { loadUserConfigTs } from './loadUserConfigTs'
+import { loadUserConfigEs } from './loadUserConfigEs'
 
 const loaderMap: [RegExp, UserConfigLoader][] = [
-  [/\.js$/, loadUserConfigJs],
-  [/\.ts$/, loadUserConfigTs],
+  [/\.(j|t)s$/, loadUserConfigEs],
 ]
 
 /**

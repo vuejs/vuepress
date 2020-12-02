@@ -1,9 +1,9 @@
 import type { UserConfigLoader } from './types'
 
 /**
- * Load js config file
+ * Load es config file
  */
-export const loadUserConfigJs: UserConfigLoader = async (userConfigPath) => {
+export const loadUserConfigEs: UserConfigLoader = async (userConfigPath) => {
   delete require.cache[userConfigPath]
   return require(userConfigPath)
 }

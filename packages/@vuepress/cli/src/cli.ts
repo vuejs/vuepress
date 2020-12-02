@@ -1,6 +1,7 @@
 import { cac } from 'cac'
 import { chalk } from '@vuepress/utils'
 import { build, dev } from './commands'
+import { allowTs } from './utils'
 
 /**
  * Wrap raw command to catch errors and exit process
@@ -18,6 +19,10 @@ const wrapCommand = (cmd: (...args: any[]) => Promise<void>): typeof cmd => {
  * Vuepress cli
  */
 export const cli = (): void => {
+  // allow ts files globally
+  allowTs()
+
+  // create cac instance
   const program = cac('vuepress')
 
   // display core version and cli version
