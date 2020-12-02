@@ -1,3 +1,4 @@
+import { hasExportDefault } from '@vuepress/utils'
 import type { UserConfigLoader } from './types'
 
 /**
@@ -5,5 +6,6 @@ import type { UserConfigLoader } from './types'
  */
 export const loadUserConfigEs: UserConfigLoader = async (userConfigPath) => {
   delete require.cache[userConfigPath]
-  return require(userConfigPath)
+  const required = require(userConfigPath)
+  return hasExportDefault(required) ? required.default : required
 }
