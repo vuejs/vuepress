@@ -51,12 +51,12 @@ export default defineComponent({
   vertical-align top
   .table-of-contents &
     vertical-align middle
-  &.tip, &.green
+  &.tip
     background-color $badgeTipColor
-  &.error
-    background-color $badgeErrorColor
-  &.warning, &.warn, &.yellow
+  &.warning
     background-color $badgeWarningColor
+  &.danger
+    background-color $badgeDangerColor
   & + &
     margin-left 5px
 </style>

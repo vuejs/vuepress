@@ -11,21 +11,21 @@
     margin 1rem 0
   &.tip
     background-color #f3f5f7
-    border-color #42b983
+    border-color $tipColor
   &.warning
-    background-color rgba(255,229,100,.3)
-    border-color darken(#ffe564, 35%)
-    color darken(#ffe564, 70%)
+    background-color lighten($warningColor, 90%)
+    border-color $warningColor
+    color darken($warningColor, 50%)
     .custom-block-title
-      color darken(#ffe564, 50%)
+      color darken($warningColor, 25%)
     a
       color $textColor
   &.danger
-    background-color #ffe6e6
-    border-color darken(red, 20%)
-    color darken(red, 70%)
+    background-color lighten($dangerColor, 90%)
+    border-color $dangerColor
+    color darken($dangerColor, 50%)
     .custom-block-title
-      color darken(red, 40%)
+      color darken($dangerColor, 25%)
     a
       color $textColor
   &.details

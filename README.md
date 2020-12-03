@@ -147,5 +147,8 @@ However, the `@theme` and `@parent-theme` aliases are not available now.
 
 ### Default Theme
 
-- `<CodeGroup>`, `<CodeBlock>` -> `<CodeGroup>`, `<CodeGroupItem>`
+- `<CodeGroup />`, `<CodeBlock />` -> `<CodeGroup />`, `<CodeGroupItem />`
+- `<Badge />`
+  - `$badgeErrorColor` -> `$badgeDangerColor`
+  - `type` prop only accepts `tip`, `warning` and `danger`
 - Default theme config has changed a lot. Please checkout the types definition and our `docs/.vuepress/config.ts` as reference
