@@ -1,31 +1,36 @@
-import * as Prism from 'prismjs'
-import * as loadLanguages from 'prismjs/components/index'
-import { debug } from '@vuepress/utils'
-
-const log = debug('vuepress:markdown/code')
-
-/**
- * The docs of Prismjs says those default languages will be loaded
- * automatically, but it seems that we have to load them manually.
- *
- * @see https://prismjs.com/#basic-usage-node
- */
-loadLanguages(['markup', 'css', 'clike', 'javascript'])
-// eslint-disable-next-line no-import-assign
-loadLanguages.silent = true
+import type { HighlightLanguage } from './languages'
+import { getPrism, loadLangs } from './prismUtils'
 
 export type CodeHighlighter = (code: string) => string
-export type CreateCodeHighlighterFn = (lang: string) => CodeHighlighter | null
 
-export const createCodeHighlighter: CreateCodeHighlighterFn = (lang) => {
+export const createCodeHighlighter = (
+  language: HighlightLanguage
+): CodeHighlighter | null => {
+  const Prism = getPrism()
+
+  const lang = language.name
+  const docLang = language.docLang
+
+  // get the languages that need to be loaded
+  const langsToLoad: string[] = []
+
+  // current language
   if (!Prism.languages[lang]) {
-    try {
-      loadLanguages([lang])
-    } catch (e) {
-      log(`language '${lang}' is not supported by prismjs`)
-    }
+    langsToLoad.push(lang)
   }
 
+  // doc language of current language
+  if (docLang && !Prism.languages[docLang]) {
+    langsToLoad.push(docLang)
+  }
+
+  // try to load languages if necessary
+  if (langsToLoad.length) {
+    loadLangs(langsToLoad)
+  }
+
+  // return null if current language could not be loaded
+  // the doc language is not required so we don't check it here
   if (!Prism.languages[lang]) {
     return null
   }

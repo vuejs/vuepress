@@ -25,6 +25,7 @@
     "nprogress",
     "prefetch",
     "preload",
+    "prismjs",
     "slugify",
     "unmount",
     "vuepress"

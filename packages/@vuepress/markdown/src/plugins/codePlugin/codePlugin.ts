@@ -1,5 +1,5 @@
 import type { PluginWithOptions } from 'markdown-it'
-import type { CreateCodeHighlighterFn } from './codeHighlighter'
+import { createCodeHighlighter } from './codeHighlighter'
 import {
   isInHighlightLinesRanges,
   resolveHighlightLinesRanges,
@@ -56,12 +56,6 @@ export const codePlugin: PluginWithOptions<CodePluginOptions> = (
     vPre = true,
   }: CodePluginOptions = {}
 ): void => {
-  // lazy-load highlight
-  let createCodeHighlighter: CreateCodeHighlighterFn | undefined
-  if (highlight) {
-    createCodeHighlighter = require('./codeHighlighter').createCodeHighlighter
-  }
-
   // override default fence renderer
   md.renderer.rules.fence = (tokens, idx, options, env, slf) => {
     const token = tokens[idx]
@@ -85,8 +79,8 @@ export const codePlugin: PluginWithOptions<CodePluginOptions> = (
     let code = token.content
 
     // try to highlight code
-    if (createCodeHighlighter) {
-      const codeHighlighter = createCodeHighlighter(language.name)
+    if (highlight) {
+      const codeHighlighter = createCodeHighlighter(language)
       if (codeHighlighter !== null) {
         code = codeHighlighter(code)
       }
