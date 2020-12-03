@@ -1,13 +1,16 @@
+import * as Prism from 'prismjs'
+import * as loadLanguages from 'prismjs/components/index'
 import type { HighlightLanguage } from './languages'
-import { getPrism, loadLangs } from './prismUtils'
+
+// prevent warning messages
+// eslint-disable-next-line no-import-assign
+loadLanguages.silent = true
 
 export type CodeHighlighter = (code: string) => string
 
 export const createCodeHighlighter = (
   language: HighlightLanguage
 ): CodeHighlighter | null => {
-  const Prism = getPrism()
-
   const lang = language.name
   const docLang = language.docLang
 
@@ -26,7 +29,7 @@ export const createCodeHighlighter = (
 
   // try to load languages if necessary
   if (langsToLoad.length) {
-    loadLangs(langsToLoad)
+    loadLanguages(langsToLoad)
   }
 
   // return null if current language could not be loaded

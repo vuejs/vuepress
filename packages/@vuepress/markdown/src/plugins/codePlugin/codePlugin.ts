@@ -1,5 +1,5 @@
 import type { PluginWithOptions } from 'markdown-it'
-import { createCodeHighlighter } from './codeHighlighter'
+import type { CodeHighlighter } from './codeHighlighter'
 import {
   isInHighlightLinesRanges,
   resolveHighlightLinesRanges,
@@ -80,7 +80,10 @@ export const codePlugin: PluginWithOptions<CodePluginOptions> = (
 
     // try to highlight code
     if (highlight) {
-      const codeHighlighter = createCodeHighlighter(language)
+      // lazy-load codeHighlighter
+      const codeHighlighter: CodeHighlighter = require('./codeHighlighter').createCodeHighlighter(
+        language
+      )
       if (codeHighlighter !== null) {
         code = codeHighlighter(code)
       }
