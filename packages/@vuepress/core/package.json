@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/core",
-  "version": "2.0.0-alpha.4",
+  "version": "2.0.0-alpha.5",
   "description": "Core package of VuePress",
   "keywords": [
     "vuepress",
@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@vuepress/client": "2.0.0-alpha.1",
-    "@vuepress/markdown": "2.0.0-alpha.4",
+    "@vuepress/markdown": "2.0.0-alpha.5",
     "@vuepress/shared": "2.0.0-alpha.1",
     "@vuepress/utils": "2.0.0-alpha.4",
     "gray-matter": "^4.0.2",

@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-active-header-links",
-  "version": "2.0.0-alpha.4",
+  "version": "2.0.0-alpha.5",
   "description": "VuePress plugin - active header links",
   "keywords": [
     "vuepress",
@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@vuepress/client": "2.0.0-alpha.1",
-    "@vuepress/core": "2.0.0-alpha.4",
+    "@vuepress/core": "2.0.0-alpha.5",
     "lodash.debounce": "^4.0.8",
     "vue": "^3.0.0",
     "vue-router": "4.0.0-rc.5"
