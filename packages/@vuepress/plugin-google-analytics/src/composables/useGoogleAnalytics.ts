@@ -28,7 +28,7 @@ export const useGoogleAnalytics = ({
     // send pv after the route is changed
     // notice vue-router will trigger an initial navigation from `START_LOCATION`
     if (to.path !== from.path || from === START_LOCATION) {
-      ga('set', 'page', to.path)
+      ga('set', 'page', `${router.options.history.base}${to.path}`)
       ga('send', 'pageview')
     }
   })
