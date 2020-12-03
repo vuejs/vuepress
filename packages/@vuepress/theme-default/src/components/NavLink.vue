@@ -31,7 +31,7 @@
 import { computed, defineComponent, toRefs } from 'vue'
 import type { PropType } from 'vue'
 import { useSiteData } from '@vuepress/client'
-import { isLinkExternal, isLinkMailto, isLinkTel } from '@vuepress/shared'
+import { isLinkHttp, isLinkMailto, isLinkTel } from '@vuepress/shared'
 import type { NavLink } from '../types'
 
 export default defineComponent({
@@ -50,26 +50,27 @@ export default defineComponent({
     const site = useSiteData()
     const { item } = toRefs(props)
 
-    // if the link is a non-http link or not
-    const isNonHttp = computed(
+    // if the link has http protocol
+    const hasHttpProtocol = computed(() => isLinkHttp(item.value.link))
+    // if the link has non-http protocol
+    const hasNonHttpProtocal = computed(
       () => isLinkMailto(item.value.link) || isLinkTel(item.value.link)
-    )
-    // if the link is an external http link
-    const isExternal = computed(() =>
-      isLinkExternal(item.value.link, site.value.base)
     )
     // resolve the `target` attr
     const linkTarget = computed(() => {
-      if (isNonHttp.value) return null
+      if (hasNonHttpProtocal.value) return null
       if (item.value.target) return item.value.target
-      if (isExternal.value) return '_blank'
+      if (hasHttpProtocol.value) return '_blank'
       return null
     })
     // if the `target` attr is '_blank'
     const isBlankTarget = computed(() => linkTarget.value === '_blank')
     // is `<RouterLink>` or not
     const isRouterLink = computed(
-      () => !isExternal.value && !isBlankTarget.value
+      () =>
+        !hasHttpProtocol.value &&
+        !hasNonHttpProtocal.value &&
+        !isBlankTarget.value
     )
     // is the `exact` prop of `<RouterLink>` should be true
     const isExact = computed(() => {
@@ -81,7 +82,7 @@ export default defineComponent({
     })
     // resolve the `rel` attr
     const linkRel = computed(() => {
-      if (isNonHttp.value) return null
+      if (hasNonHttpProtocal.value) return null
       if (item.value.rel) return item.value.rel
       if (isBlankTarget.value) return 'noopener noreferrer'
       return null
