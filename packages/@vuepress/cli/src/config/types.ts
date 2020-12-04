@@ -17,7 +17,7 @@ export type UserConfig<
   // user config can be used as a plugin
   Omit<PluginObject, 'name' | 'multiple'> & {
     // bundler config
-    bundler?: 'webpack'
+    bundler?: string
     bundlerConfig?: Partial<U>
   }
 
