@@ -11,22 +11,7 @@
   <a href="https://discordapp.com/invite/HBherRA"><img src="https://img.shields.io/badge/Discord-join%20chat-738bd7.svg" alt="VuePress channel on Discord"></a>
 </p>
 
-## Install
-
-### Package
-
-```bash
-yarn add vuepress -D
-```
-
-### Generator
-
-```bash
-# Creates a scaffolded docs site
-yarn create vuepress-site
-```
-
-For more information, see [create-vuepress-site](https://github.com/vuepressjs/create-vuepress-site).
+> VuePress 2 is coming! Please check out [vuepress-next](https://github.com/vuepress/vuepress-next).
 
 ## Documentation
 
