@@ -42,8 +42,8 @@
     "prismjs": "^1.22.0",
     "stylus": "^0.54.8",
     "stylus-loader": "^4.3.0",
-    "vue": "^3.0.0",
-    "vue-router": "4.0.0-rc.5"
+    "vue": "^3.0.4",
+    "vue-router": "4.0.1"
   },
   "publishConfig": {
     "access": "public"

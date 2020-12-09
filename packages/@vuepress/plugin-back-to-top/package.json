@@ -30,7 +30,7 @@
   "dependencies": {
     "@vuepress/core": "2.0.0-alpha.5",
     "lodash.debounce": "^4.0.8",
-    "vue": "^3.0.0"
+    "vue": "^3.0.4"
   },
   "publishConfig": {
     "access": "public"

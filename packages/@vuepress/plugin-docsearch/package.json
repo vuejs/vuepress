@@ -37,8 +37,8 @@
     "@vuepress/shared": "2.0.0-alpha.1",
     "@vuepress/utils": "2.0.0-alpha.4",
     "preact": "^10.0.0",
-    "vue": "^3.0.0",
-    "vue-router": "4.0.0-rc.5"
+    "vue": "^3.0.4",
+    "vue-router": "4.0.1"
   },
   "publishConfig": {
     "access": "public"

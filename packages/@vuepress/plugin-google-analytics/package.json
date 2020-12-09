@@ -30,7 +30,7 @@
   "dependencies": {
     "@vuepress/client": "2.0.0-alpha.1",
     "@vuepress/core": "2.0.0-alpha.5",
-    "vue-router": "4.0.0-rc.5"
+    "vue-router": "4.0.1"
   },
   "publishConfig": {
     "access": "public"

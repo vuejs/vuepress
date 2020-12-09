@@ -33,8 +33,8 @@
     "@vuepress/client": "2.0.0-alpha.1",
     "@vuepress/core": "2.0.0-alpha.5",
     "medium-zoom": "^1.0.6",
-    "vue": "^3.0.0",
-    "vue-router": "4.0.0-rc.5"
+    "vue": "^3.0.4",
+    "vue-router": "4.0.1"
   },
   "publishConfig": {
     "access": "public"
