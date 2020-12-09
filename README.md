@@ -11,7 +11,8 @@ The codebase has been completely refactored with TypeScript. Some major changes:
 - Fully migrated to Vue 3
 - Extract `@vuepress/cli` from `vuepress` package
 - Extract `@vuepress/client` from `@vuepress/core` package
-- Extract `@vuepress/bundler-webpack` from `@vuepress/core` package - other bundlers are also possible to be supported
+- Extract `@vuepress/bundler-webpack` from `@vuepress/core` package and migrate to webpack 5
+  - As webpack is decoupled with core, other bundlers are also possible to be supported
 - Extract `@vuepress/plugin-palette-stylus` from `@vuepress/core` package - stylus is no longer the default CSS pre-processor, and the way of styles customization should be determined by theme
 
 The documentation has not finished yet. For now you can check out the breaking changes list below as migration reference.
