@@ -1,6 +1,7 @@
 {
   "extends": "../../../tsconfig.base.json",
   "compilerOptions": {
+    "module": "ES2020",
     "baseUrl": ".",
     "paths": {
       "@internal/clientAppEnhances": [
