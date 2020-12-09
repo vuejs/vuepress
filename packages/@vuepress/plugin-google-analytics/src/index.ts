@@ -1,5 +1,5 @@
-import { resolve } from 'path'
 import type { Plugin } from '@vuepress/core'
+import { path } from '@vuepress/utils'
 
 export interface GoogleAnalyticsPluginOptions {
   id: string
@@ -10,7 +10,7 @@ export const googleAnalyticsPlugin: Plugin<GoogleAnalyticsPluginOptions> = ({
 }) => ({
   name: '@vuepress/plugin-google-analytics',
 
-  clientAppEnhanceFiles: resolve(__dirname, './clientAppEnhance.js'),
+  clientAppEnhanceFiles: path.resolve(__dirname, './clientAppEnhance.js'),
 
   define: {
     GA_ID: id || false,
