@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-container",
-  "version": "2.0.0-alpha.5",
+  "version": "2.0.0-alpha.6",
   "description": "VuePress plugin - markdown container",
   "keywords": [
     "vuepress",
@@ -29,10 +29,10 @@
   },
   "dependencies": {
     "@types/markdown-it": "^10.0.2",
-    "@vuepress/core": "2.0.0-alpha.5",
-    "@vuepress/markdown": "2.0.0-alpha.5",
-    "@vuepress/shared": "2.0.0-alpha.1",
-    "@vuepress/utils": "2.0.0-alpha.4",
+    "@vuepress/core": "2.0.0-alpha.6",
+    "@vuepress/markdown": "2.0.0-alpha.6",
+    "@vuepress/shared": "2.0.0-alpha.6",
+    "@vuepress/utils": "2.0.0-alpha.6",
     "markdown-it": "^12.0.1",
     "markdown-it-container": "^3.0.0"
   },
