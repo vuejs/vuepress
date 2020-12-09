@@ -1,4 +1,6 @@
-import type { Plugin, Stats } from 'webpack'
+import type { WebpackPluginInstance } from 'webpack'
+import { fs } from '@vuepress/utils'
+import type { StatsToJsonOutput, FnModules } from '../../types.webpack'
 import { isCSS, isJS } from './utils'
 
 export interface ClientManifest {
@@ -14,15 +16,15 @@ export interface ClientManifest {
  * Collecting webpack bundled files info for SSR
  */
 export const createClientPlugin = (
-  filename = 'vuepress-ssr-client-manifest.json'
-): Plugin => {
-  const clientPlugin: Plugin = {
+  outputFile: string
+): WebpackPluginInstance => {
+  const clientPlugin: WebpackPluginInstance = {
     apply(compiler) {
-      compiler.hooks.emit.tapAsync(
+      compiler.hooks.emit.tapPromise(
         'vuepress-client-plugin',
-        (compilation, cb) => {
+        async (compilation) => {
           // get webpack stats object
-          const stats = compilation.getStats().toJson()
+          const stats: StatsToJsonOutput = compilation.getStats().toJson()
 
           const {
             assets = [],
@@ -36,7 +38,7 @@ export const createClientPlugin = (
 
           // get initial entry files
           const initialFiles = Object.keys(entrypoints)
-            .map((name) => entrypoints[name].assets)
+            .map((name) => entrypoints[name].assets.map((item) => item.name))
             .reduce((assets, all) => all.concat(assets), [])
             .filter((file) => isJS(file) || isCSS(file))
 
@@ -49,10 +51,7 @@ export const createClientPlugin = (
 
           // get asset modules
           const assetModules = modules.filter(
-            (
-              m
-            ): m is Stats.FnModules &
-              Required<Pick<Stats.FnModules, 'assets'>> =>
+            (m): m is FnModules & Required<Pick<FnModules, 'assets'>> =>
               !!(m.assets && m.assets.length)
           )
 
@@ -103,12 +102,7 @@ export const createClientPlugin = (
 
           const clientManifestJson = JSON.stringify(clientManifest, null, 2)
 
-          compilation.assets[filename] = {
-            source: () => clientManifestJson,
-            size: () => clientManifestJson.length,
-          }
-
-          cb()
+          await fs.outputFile(outputFile, clientManifestJson)
         }
       )
     },

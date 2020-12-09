@@ -1,4 +1,4 @@
-import type * as webpack from 'webpack'
+import type { LoaderContext } from '../../types.webpack'
 
 /**
  * A webpack loader to handle SSR dependencies
@@ -10,10 +10,7 @@ import type * as webpack from 'webpack'
  * to ensure that the module `request` in client and
  * server bundle are the same
  */
-export = function vuepressLoader(
-  this: webpack.loader.LoaderContext,
-  source: string
-): string {
+export = function vuepressLoader(this: LoaderContext, source: string): string {
   // get `request` from loader context
   const { request } = this
 

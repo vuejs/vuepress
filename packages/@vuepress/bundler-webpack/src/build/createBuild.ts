@@ -28,12 +28,14 @@ export const createBuild = (
   await withSpinner('Compiling with webpack')(async () => {
     // create webpack config
     const clientConfig = resolveWebpackConfig({
+      app,
       config: createClientConfig(app, options),
       options,
       isServer: false,
       isBuild: true,
     })
     const serverConfig = resolveWebpackConfig({
+      app,
       config: createServerConfig(app, options),
       options,
       isServer: true,
@@ -44,13 +46,13 @@ export const createBuild = (
       webpack([clientConfig, serverConfig], (err, stats) => {
         if (err) {
           reject(err)
-        } else if (stats.hasErrors()) {
+        } else if (stats?.hasErrors()) {
           stats.toJson().errors.forEach((err) => {
             console.error(err)
           })
           reject(new Error('Failed to compile with errors'))
         } else {
-          if (stats.hasWarnings()) {
+          if (stats?.hasWarnings()) {
             stats.toJson().warnings.forEach((warning) => {
               console.warn(warning)
             })

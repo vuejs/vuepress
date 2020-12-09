@@ -34,7 +34,7 @@ export const createClientConfig = (
   // vuepress client plugin, handle client assets info for ssr
   config
     .plugin('vuepress-client')
-    .use(createClientPlugin(clientManifestFilename))
+    .use(createClientPlugin(app.dir.dest(clientManifestFilename)))
 
   // copy files from public dir to dest dir
   if (fs.pathExistsSync(app.dir.public())) {
@@ -60,18 +60,20 @@ export const createClientConfig = (
         // since most of the CSS will be from the theme and very little
         // CSS will be from async chunks
         styles: {
-          name: 'styles',
+          idHint: 'styles',
           // necessary to ensure async chunks are also extracted
           test: (m) => /css\/mini-extract/.test(m.type),
           chunks: 'all',
           enforce: true,
+          reuseExistingChunk: true,
         },
         // extract external library to a standalone chunk
         vendor: {
-          name: 'vendor',
+          idHint: 'vendor',
           test: /node_modules/,
           chunks: 'all',
           priority: -10,
+          reuseExistingChunk: true,
         },
       },
     })

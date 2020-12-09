@@ -16,6 +16,7 @@ export const handleDevtool = ({
     config.devtool('source-map')
   } else if (app.env.isDev) {
     // only enable eval-source-map in dev mode
-    config.devtool('cheap-module-eval-source-map')
+    // TODO: remove type assertion when webpack-chain updates its types for webpack 5
+    config.devtool('eval-cheap-module-source-map' as Config.DevTool)
   }
 }

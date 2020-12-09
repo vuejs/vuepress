@@ -8,15 +8,6 @@ export const handleNode = ({ config }: { config: Config }): void => {
   config.node.merge({
     __filename: false,
     __dirname: false,
-    Buffer: false,
     global: false,
-    process: false,
-    setImmediate: false,
-
-    dgram: 'empty',
-    fs: 'empty',
-    net: 'empty',
-    tls: 'empty',
-    child_process: 'empty',
   })
 }

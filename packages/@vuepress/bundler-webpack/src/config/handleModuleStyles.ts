@@ -72,7 +72,7 @@ export const handleModuleStyles = ({
       .options({
         modules: cssModules
           ? {
-              localIdentName: `[local]_[hash:base64:8]`,
+              localIdentName: `[local]_[contenthash:base64:8]`,
               exportOnlyLocals: isServer,
             }
           : false,

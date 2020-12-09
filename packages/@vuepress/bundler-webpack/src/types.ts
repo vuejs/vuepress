@@ -1,7 +1,8 @@
 import type { Application } from 'express'
-import type { loader, Configuration as WebpackConfiguration } from 'webpack'
+import type { Configuration as WebpackConfiguration } from 'webpack'
 import type * as WebpackChainConfig from 'webpack-chain'
 import type * as WebpackDevServer from 'webpack-dev-server'
+import type { LoaderContext } from './types.webpack'
 
 export type { WebpackConfiguration, WebpackChainConfig, WebpackDevServer }
 
@@ -71,7 +72,7 @@ export interface LoaderOptions {
   webpackImporter?: boolean
   additionalData?:
     | string
-    | ((content: string, loaderContext: loader.LoaderContext) => string)
+    | ((content: string, loaderContext: LoaderContext) => string)
 }
 
 /**
@@ -79,7 +80,7 @@ export interface LoaderOptions {
  */
 export type StylePreprocessorOptions<
   T extends Record<string, any> = Record<string, any>
-> = T | ((loaderContext: loader.LoaderContext) => TextDecodeOptions)
+> = T | ((loaderContext: LoaderContext) => TextDecodeOptions)
 
 /**
  * Options for postcss-loader

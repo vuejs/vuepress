@@ -22,7 +22,7 @@ export const handleModuleAssets = ({
     .options({
       limit: inlineLimit,
       // always add hash to avoid name conflicts
-      name: 'assets/img/[name].[hash:8].[ext]',
+      name: 'assets/img/[name].[contenthash:8].[ext]',
     })
 
   // svg
@@ -35,7 +35,7 @@ export const handleModuleAssets = ({
     .loader('file-loader')
     .options({
       // always add hash to avoid name conflicts
-      name: 'assets/img/[name].[hash:8].[ext]',
+      name: 'assets/img/[name].[contenthash:8].[ext]',
     })
 
   // media
@@ -47,7 +47,7 @@ export const handleModuleAssets = ({
     .options({
       limit: inlineLimit,
       // always add hash to avoid name conflicts
-      name: 'assets/media/[name].[hash:8].[ext]',
+      name: 'assets/media/[name].[contenthash:8].[ext]',
     })
 
   // fonts
@@ -59,6 +59,6 @@ export const handleModuleAssets = ({
     .options({
       limit: inlineLimit,
       // always add hash to avoid name conflicts
-      name: 'assets/fonts/[name].[hash:8].[ext]',
+      name: 'assets/fonts/[name].[contenthash:8].[ext]',
     })
 }
