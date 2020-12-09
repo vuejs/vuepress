@@ -4,7 +4,7 @@
     "declaration": true,
     "declarationMap": true,
     "lib": ["DOM", "ES2020"],
-    "module": "commonjs",
+    "module": "ES2020",
     "moduleResolution": "node",
     "newLine": "lf",
     "noEmitOnError": true,
@@ -14,6 +14,6 @@
     "sourceMap": true,
     "strict": true,
     "strictNullChecks": true,
-    "target": "es2018"
+    "target": "ES2018"
   }
 }
