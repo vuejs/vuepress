@@ -30,7 +30,7 @@ import {
   resolveSiteLocaleData,
   useUpdateHead,
 } from './injections'
-import { Content, Debug, OutboundLink } from './components'
+import { Content, OutboundLink } from './components'
 import { withBase } from './utils'
 
 export type AppCreator = CreateAppFunction<Element>
@@ -198,7 +198,6 @@ export const createVueApp = async ({
     __SSR__ ? () => null : (_, ctx) => ctx.slots.default?.()
   )
   app.component('Content', Content)
-  app.component('Debug', __DEV__ ? Debug : () => null)
   app.component('OutboundLink', OutboundLink)
   /* eslint-enable vue/match-component-file-name */
 
