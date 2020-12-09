@@ -36,7 +36,7 @@
     "globby": "^11.0.1",
     "hash-sum": "^2.0.0",
     "ora": "^5.1.0",
-    "upath": "^1.2.0"
+    "upath": "^2.0.1"
   },
   "publishConfig": {
     "access": "public"
