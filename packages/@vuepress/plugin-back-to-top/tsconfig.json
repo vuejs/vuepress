@@ -1,8 +1,4 @@
 {
   "extends": "../../../tsconfig.base.json",
-  "compilerOptions": {
-    "composite": false,
-    "declarationMap": false
-  },
   "include": ["./src", "./__tests__"]
 }
