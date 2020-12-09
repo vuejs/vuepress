@@ -6,5 +6,9 @@
     "outDir": "./lib"
   },
   "include": ["./src"],
-  "references": [{ "path": "../core/tsconfig.build.json" }]
+  "references": [
+    { "path": "../client/tsconfig.build.json" },
+    { "path": "../core/tsconfig.build.json" },
+    { "path": "../utils/tsconfig.build.json" }
+  ]
 }
