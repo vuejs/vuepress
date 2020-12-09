@@ -1,6 +1,6 @@
-import { resolve } from 'path'
 import type { ZoomOptions } from 'medium-zoom'
 import type { Plugin } from '@vuepress/core'
+import { path } from '@vuepress/utils'
 
 export interface MediumZoomPluginOptions {
   selector: string
@@ -15,7 +15,7 @@ export const mediumZoomPlugin: Plugin<MediumZoomPluginOptions> = ({
 }) => ({
   name: '@vuepress/plugin-medium-zoom',
 
-  clientAppEnhanceFiles: resolve(__dirname, './clientAppEnhance.js'),
+  clientAppEnhanceFiles: path.resolve(__dirname, './clientAppEnhance.js'),
 
   define: {
     MZ_SELECTOR: selector,
