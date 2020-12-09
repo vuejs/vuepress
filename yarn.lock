@@ -2101,15 +2101,10 @@
     "@vue/compiler-ssr" "3.0.4"
     "@vue/shared" "3.0.4"
 
-"@vue/shared@3.0.4":
+"@vue/shared@3.0.4", "@vue/shared@^3.0.4":
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.0.4.tgz#6dc50f593bdfdeaa6183d1dbc15e2d45e7c6b8b3"
   integrity sha512-Swfbz31AaMX48CpFl+YmIrqOH9MgJMTrltG9e26A4ZxYx9LjGuMV+41WnxFzS3Bc9nbrc6sDPM37G6nIT8NJSg==
-
-"@vue/shared@^3.0.3":
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.0.3.tgz#ef12ebff93a446df281e8a0fd765b5aea8e7745b"
-  integrity sha512-yGgkF7u4W0Dmwri9XdeY50kOowN4UIX7aBQ///jbxx37itpzVjK7QzvD3ltQtPfWaJDGBfssGL0wpAgwX9OJpQ==
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
