@@ -14,8 +14,7 @@ module.exports = {
   preset: 'ts-jest',
   globals: {
     'ts-jest': {
-      // use client `tsconfig.json` for the `@internal/*` aliases
-      tsconfig: '<rootDir>/packages/@vuepress/client/tsconfig.json',
+      tsconfig: '<rootDir>/tsconfig.json',
     },
     '__VERSION__': '',
     '__DEV__': false,
@@ -28,12 +27,17 @@ module.exports = {
       '<rootDir>/packages/@vuepress/client/__tests__/__fixtures__/styleMock',
   },
   testMatch: ['<rootDir>/packages/**/__tests__/**/*.spec.ts'],
-  testPathIgnorePatterns: ['/node_modules/', '/__fixtures__/'],
+  testPathIgnorePatterns: [
+    '/node_modules/',
+    '/__fixtures__/',
+    '@vuepress/client',
+  ],
   snapshotSerializers: [require.resolve('jest-serializer-vue')],
 
   // coverage config
   collectCoverageFrom: [
     '<rootDir>/packages/**/src/**/*.ts',
+    '!<rootDir>/packages/@vuepress/client/**/*',
     '!<rootDir>/packages/@vuepress/theme-default/**/*',
     '!**/*.d.ts',
   ],
