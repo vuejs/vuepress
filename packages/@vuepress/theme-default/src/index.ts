@@ -5,6 +5,7 @@ import {
   resolveActiveHeaderLinksPluginOptions,
   resolveContainerPluginOptions,
   resolveContainerPluginOptionsForDetails,
+  resolveDebugPluginOptions,
   resolveDocsearchPluginOptions,
   resolveGitPluginOptions,
   resolveMediumZoomPluginOptions,
@@ -15,7 +16,7 @@ import type { DefaultThemeOptions } from './types'
 export * from './node'
 export * from './types'
 
-export const defaultTheme: Theme<DefaultThemeOptions> = (options) => {
+export const defaultTheme: Theme<DefaultThemeOptions> = (options, app) => {
   assignDefaultOptions(options)
 
   const docsearchOptions = resolveDocsearchPluginOptions(options)
@@ -50,6 +51,7 @@ export const defaultTheme: Theme<DefaultThemeOptions> = (options) => {
       ],
       ['@vuepress/container', resolveContainerPluginOptions(options, 'danger')],
       ['@vuepress/container', resolveContainerPluginOptionsForDetails(options)],
+      ['@vuepress/debug', resolveDebugPluginOptions(options, app)],
       ['@vuepress/docsearch', docsearchOptions],
       ['@vuepress/git', resolveGitPluginOptions(options)],
       ['@vuepress/medium-zoom', resolveMediumZoomPluginOptions(options)],

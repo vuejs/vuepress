@@ -36,8 +36,6 @@
       </template>
     </Page>
   </div>
-
-  <Debug />
 </template>
 
 <script lang="ts">

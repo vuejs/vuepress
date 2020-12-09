@@ -25,6 +25,11 @@ export interface DefaultThemeOptions
     backToTop?: boolean
 
     /**
+     * Enable @vuepress/plugin-debug or not
+     */
+    debug?: boolean
+
+    /**
      * Enable @vuepress/plugin-docsearch or not
      */
     docsearch?: boolean
