@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-debug",
-  "version": "2.0.0-alpha.6",
+  "version": "2.0.0-alpha.7",
   "description": "VuePress plugin - debug",
   "keywords": [
     "vuepress",
@@ -28,9 +28,9 @@
     "copy": "cpx \"src/**/*.css\" lib"
   },
   "dependencies": {
-    "@vuepress/client": "2.0.0-alpha.6",
-    "@vuepress/core": "2.0.0-alpha.6",
-    "@vuepress/utils": "2.0.0-alpha.6",
+    "@vuepress/client": "2.0.0-alpha.7",
+    "@vuepress/core": "2.0.0-alpha.7",
+    "@vuepress/utils": "2.0.0-alpha.7",
     "vue": "^3.0.4",
     "vue-router": "4.0.1"
   },
