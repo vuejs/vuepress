@@ -30,6 +30,7 @@
   "dependencies": {
     "@vuepress/client": "2.0.0-alpha.6",
     "@vuepress/core": "2.0.0-alpha.6",
+    "@vuepress/utils": "2.0.0-alpha.6",
     "lodash.debounce": "^4.0.8",
     "vue": "^3.0.4",
     "vue-router": "4.0.1"

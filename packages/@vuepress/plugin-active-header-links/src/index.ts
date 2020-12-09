@@ -1,5 +1,5 @@
-import { resolve } from 'path'
 import type { Plugin } from '@vuepress/core'
+import { path } from '@vuepress/utils'
 
 export interface ActiveHeaderLinksPluginOptions {
   headerLinkSelector?: string
@@ -16,7 +16,7 @@ export const activeHeaderLinksPlugin: Plugin<ActiveHeaderLinksPluginOptions> = (
 }) => ({
   name: '@vuepress/plugin-active-header-links',
 
-  clientAppSetupFiles: resolve(__dirname, './clientAppSetup.js'),
+  clientAppSetupFiles: path.resolve(__dirname, './clientAppSetup.js'),
 
   define: {
     AHL_HEADER_LINK_SELECTOR: headerLinkSelector,
