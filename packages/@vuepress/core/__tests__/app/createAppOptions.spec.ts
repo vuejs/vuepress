@@ -3,7 +3,9 @@ import { path } from '@vuepress/utils'
 
 describe('core > app > createAppOptions', () => {
   it('should create app options with default values', () => {
-    expect(createAppOptions({ source: '/foo' })).toEqual({
+    const source = '/foo'
+
+    expect(createAppOptions({ source })).toEqual({
       base: '/',
       lang: 'en-US',
       title: '',
@@ -12,11 +14,11 @@ describe('core > app > createAppOptions', () => {
       locales: {},
       theme: '@vuepress/default',
       themeConfig: {},
-      source: '/foo',
-      dest: '/foo/.vuepress/dist',
-      temp: '/foo/.vuepress/.temp',
-      cache: '/foo/.vuepress/.cache',
-      public: '/foo/.vuepress/public',
+      source,
+      dest: path.resolve(source, '.vuepress/dist'),
+      temp: path.resolve(source, '.vuepress/.temp'),
+      cache: path.resolve(source, '.vuepress/.cache'),
+      public: path.resolve(source, '.vuepress/public'),
       debug: false,
       host: '0.0.0.0',
       port: 8080,
