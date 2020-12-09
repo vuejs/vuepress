@@ -1,0 +1,39 @@
+{
+  "name": "@vuepress/plugin-debug",
+  "version": "2.0.0-alpha.5",
+  "description": "VuePress plugin - debug",
+  "keywords": [
+    "vuepress",
+    "plugin",
+    "debug"
+  ],
+  "homepage": "https://github.com/vuepress",
+  "bugs": {
+    "url": "https://github.com/vuepress/vuepress-next/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/vuepress-next.git"
+  },
+  "license": "MIT",
+  "author": "meteorlxy",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc -b tsconfig.build.json",
+    "clean": "rimraf lib *.tsbuildinfo",
+    "copy": "cpx \"src/**/*.css\" lib"
+  },
+  "dependencies": {
+    "@vuepress/client": "2.0.0-alpha.1",
+    "@vuepress/core": "2.0.0-alpha.5",
+    "vue": "^3.0.4",
+    "vue-router": "4.0.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

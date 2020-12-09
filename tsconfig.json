@@ -11,6 +11,7 @@
     },
     { "path": "./packages/@vuepress/plugin-back-to-top/tsconfig.build.json" },
     { "path": "./packages/@vuepress/plugin-container/tsconfig.build.json" },
+    { "path": "./packages/@vuepress/plugin-debug/tsconfig.build.json" },
     { "path": "./packages/@vuepress/plugin-docsearch/tsconfig.build.json" },
     { "path": "./packages/@vuepress/plugin-git/tsconfig.build.json" },
     {

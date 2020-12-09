@@ -1,0 +1,31 @@
+.debug {
+  box-sizing: border-box;
+  position: fixed;
+  z-index: 999;
+  cursor: pointer;
+  bottom: 0;
+  right: 0;
+  width: 80px;
+  height: 30px;
+  padding: 5px;
+  overflow: hidden;
+  color: #eeeeee;
+  transition: all 0.15s ease;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.debug.open {
+  width: 500px;
+  height: 100%;
+  margin-top: 0;
+  padding: 0 0;
+  overflow: scroll;
+}
+
+.debug pre {
+  font-family: Hack, monospace;
+  font-size: 13px;
+  margin: 0;
+  padding: 5px 10px;
+  border-bottom: 1px solid #eee;
+}
