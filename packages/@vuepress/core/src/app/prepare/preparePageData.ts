@@ -21,8 +21,8 @@ export const preparePageData = async (app: App, page: Page): Promise<void> => {
 
   // HMR support
   const hmrCode = `
-if (module.hot) {
-  module.hot.accept()
+if (import.meta.webpackHot) {
+  import.meta.webpackHot.accept()
   __VUE_HMR_RUNTIME__.updatePageData(data)
 }
 `

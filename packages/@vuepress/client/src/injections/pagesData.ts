@@ -12,8 +12,8 @@ export const usePagesData = (): PagesDataRef => {
   return pagesData
 }
 
-if (module.hot) {
-  module.hot.accept('@internal/pagesData', () => {
+if (import.meta.webpackHot) {
+  import.meta.webpackHot!.accept('@internal/pagesData', () => {
     pagesData.value = readonly(pagesDataRaw) as PagesData
     console.log('[vuepress] pagesData is updated')
   })
