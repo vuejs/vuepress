@@ -1,3 +1,4 @@
+import { sep } from 'path'
 import type { WebpackOptionsNormalized } from 'webpack'
 import * as WebpackDevServer from 'webpack-dev-server'
 import { App } from '@vuepress/core'
@@ -37,7 +38,8 @@ export const createDevServerConfig = (
     overlay: false,
     port: app.options.port,
     static: {
-      directory: app.dir.public(),
+      // `static.directory` will fail on Windows if we do not replace / with \
+      directory: app.dir.public().replace('/', sep),
       publicPath: app.options.base,
       watch: {
         ignoreInitial: true,
