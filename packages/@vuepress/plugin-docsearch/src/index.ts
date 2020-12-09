@@ -1,8 +1,7 @@
-import { resolve } from 'path'
 import type { DocSearchProps } from '@docsearch/react'
 import type { Plugin, PluginObject } from '@vuepress/core'
 import type { LocaleConfig } from '@vuepress/shared'
-import { logger } from '@vuepress/utils'
+import { logger, path } from '@vuepress/utils'
 
 export interface DocsearchPluginOptions
   extends Pick<
@@ -35,7 +34,7 @@ export const docsearchPlugin: Plugin<DocsearchPluginOptions> = ({
   return {
     ...plugin,
 
-    clientAppEnhanceFiles: resolve(__dirname, './clientAppEnhance.js'),
+    clientAppEnhanceFiles: path.resolve(__dirname, './clientAppEnhance.js'),
 
     define: {
       DOCSEARCH_PROPS: props,
