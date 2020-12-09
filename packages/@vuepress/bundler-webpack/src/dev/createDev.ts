@@ -19,7 +19,6 @@ export const createDev = (options: WebpackBundlerOptions): BundlerDev => async (
   // resolve host and port
   const host = app.options.host
   const port = await resolvePort(app.options.port)
-  const url = `http://${host}:${port}${app.options.base}`
 
   // create webpack config
   const config = createDevConfig(app, options)
@@ -75,7 +74,14 @@ export const createDev = (options: WebpackBundlerOptions): BundlerDev => async (
           return reject(err)
         }
 
-        logger.success(`VuePress dev server is listening at ${chalk.cyan(url)}`)
+        // print url in console
+        // replace `0.0.0.0` with `localhost` as `0.0.0.0` is not available on windows
+        const url = `http://${host === '0.0.0.0' ? 'localhost' : host}:${port}${
+          app.options.base
+        }`
+        logger.success(
+          `VuePress webpack dev server is listening at ${chalk.cyan(url)}`
+        )
 
         // promisify the close function
         const close = (): Promise<void> =>
