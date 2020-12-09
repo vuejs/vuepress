@@ -24,7 +24,6 @@ export const createDev = (options: WebpackBundlerOptions): BundlerDev => async (
   // create webpack config
   const config = createDevConfig(app, options)
   const webpackConfig = resolveWebpackConfig({
-    app,
     config,
     options,
     isServer: false,
