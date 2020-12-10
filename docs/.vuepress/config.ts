@@ -49,6 +49,7 @@ const config: UserConfig<DefaultThemeOptions> = {
       '/': {
         // navbar
         navbar: navbar.en,
+        selectLanguageName: 'English',
 
         // sidebar
         sidebar: sidebar.en,
