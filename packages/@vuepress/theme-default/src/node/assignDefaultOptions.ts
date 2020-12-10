@@ -6,7 +6,6 @@ const defaultLocaleData: DefaultThemeLocaleData = {
   logo: null,
   repo: null,
   repoLabel: '',
-  selectLanguageName: 'English',
   selectLanguageText: 'Languages',
   selectLanguageAriaLabel: 'Select language',
 
@@ -39,15 +38,10 @@ const defaultLocaleData: DefaultThemeLocaleData = {
   openInNewWindow: 'open in new window',
 }
 
+/**
+ * Assign default options to `themeConfig`
+ */
 export const assignDefaultOptions = (options: DefaultThemeOptions): void => {
-  if (!options.locales) {
-    options.locales = {}
-  }
-
-  if (!options.locales['/']) {
-    options.locales['/'] = {}
-  }
-
   Object.assign(options, {
     ...defaultLocaleData,
     ...options,
