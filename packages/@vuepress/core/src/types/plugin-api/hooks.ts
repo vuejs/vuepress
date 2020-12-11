@@ -49,7 +49,6 @@ export type ExtendsPageDataHook = Hook<
 export interface Hooks {
   onInitialized: LifeCycleHook
   onPrepared: LifeCycleHook
-  onUpdated: LifeCycleHook
   onGenerated: LifeCycleHook
   extendsMarkdown: ExtendsMarkdownHook
   extendsPageData: ExtendsPageDataHook
