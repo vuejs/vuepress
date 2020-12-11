@@ -26,9 +26,6 @@ See [Contributing Guide](https://github.com/vuepress/vuepress-next/blob/main/doc
 - [ ] @vuepress/markdown
   - [ ] snippetsPlugin
 
-- [ ] Official plugins
-  - [ ] @vuepress/plugin-pwa
-
 - [ ] Documentation
   - [ ] Guide
   - [ ] References
