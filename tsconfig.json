@@ -23,6 +23,7 @@
       "path": "./packages/@vuepress/plugin-palette-stylus/tsconfig.build.json"
     },
     { "path": "./packages/@vuepress/plugin-pwa/tsconfig.build.json" },
+    { "path": "./packages/@vuepress/plugin-pwa-popup/tsconfig.build.json" },
     { "path": "./packages/@vuepress/shared/tsconfig.build.json" },
     { "path": "./packages/@vuepress/theme-default/tsconfig.build.json" },
     { "path": "./packages/@vuepress/theme-vue/tsconfig.build.json" },
