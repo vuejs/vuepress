@@ -96,6 +96,21 @@ const config: UserConfig<DefaultThemeOptions> = {
       },
     },
   },
+
+  plugins: [
+    ['@vuepress/plugin-pwa'],
+    [
+      '@vuepress/plugin-pwa-popup',
+      {
+        locales: {
+          '/zh/': {
+            message: '发现新内容可用',
+            buttonText: '刷新',
+          },
+        },
+      },
+    ],
+  ],
 }
 
 export = config
