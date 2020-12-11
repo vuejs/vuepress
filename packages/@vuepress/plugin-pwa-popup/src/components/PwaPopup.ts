@@ -39,7 +39,7 @@ export const PwaPopup = defineComponent({
 
     const show = ref(false)
     const registration = ref<ServiceWorkerRegistration | null>(null)
-    const onClick = () => {
+    const onClick = (): void => {
       show.value = false
       if (registration.value) {
         useSkipWaiting(registration.value)

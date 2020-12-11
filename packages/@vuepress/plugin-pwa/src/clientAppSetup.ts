@@ -14,7 +14,8 @@ const swFilename = __PWA_SW_FILENAME__
 const clientAppSetup: ClientAppSetup = () => {
   if (__DEV__ || __SSR__ || !swFilename) return
 
-  const log = (...args: any[]) => console.log('[@vuepress/plugin-pwa]', ...args)
+  const log = (...args: any[]): void =>
+    console.log('[@vuepress/plugin-pwa]', ...args)
 
   // create event emitter and provide it
   const event: PwaEvent = mitt()
