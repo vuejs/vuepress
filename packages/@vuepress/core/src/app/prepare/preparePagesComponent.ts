@@ -16,7 +16,7 @@ ${app.pages
       componentFileChunkName
         ? `/* webpackChunkName: "${componentFileChunkName}" */`
         : ''
-    }${JSON.stringify(app.dir.temp(componentFilePath))})),`
+    }${JSON.stringify(componentFilePath)})),`
   )
   .join('')}
 }
