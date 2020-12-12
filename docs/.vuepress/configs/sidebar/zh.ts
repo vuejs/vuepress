@@ -17,6 +17,7 @@ export const zh: SidebarConfig = {
       isGroup: true,
       text: '参考',
       children: [
+        '/zh/reference/cli.md',
         '/zh/reference/config.md',
         '/zh/reference/frontmatter.md',
         '/zh/reference/default-theme.md',

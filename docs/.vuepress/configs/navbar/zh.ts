@@ -9,6 +9,10 @@ export const zh: NavbarConfig = [
     text: '参考',
     children: [
       {
+        text: '命令行接口',
+        link: '/zh/reference/cli.html',
+      },
+      {
         text: '配置',
         link: '/zh/reference/config.html',
       },

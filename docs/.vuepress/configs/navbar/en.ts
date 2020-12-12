@@ -9,6 +9,10 @@ export const en: NavbarConfig = [
     text: 'Reference',
     children: [
       {
+        text: 'CLI',
+        link: '/reference/cli.html',
+      },
+      {
         text: 'Config',
         link: '/reference/config.html',
       },
