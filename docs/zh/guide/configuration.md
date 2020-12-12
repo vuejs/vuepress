@@ -13,7 +13,10 @@
 └─ package.json
 ```
 
-VuePress 站点必要的配置文件是 `.vuepress/config.js`，它应该导出一个 JavaScript 对象：
+VuePress 站点必要的配置文件是 `.vuepress/config.js`，它应该导出一个 JavaScript 对象。如果你使用 TypeScript ，你可以将其替换为 `.vuepress/config.ts` ，以便让 VuePress 配置得到更好的类型提示。
+
+<CodeGroup>
+  <CodeGroupItem title="JS" active>
 
 ```js
 module.exports = {
@@ -27,11 +30,9 @@ module.exports = {
 }
 ```
 
-:::tip
-我们接下来会把这个配置对象称为 **VuePress 配置**.
-:::
+  </CodeGroupItem>
 
-如果你使用 TypeScript ，你可以将其替换为 `.vuepress/config.ts` ，以便让 VuePress 配置得到更好的类型提示。
+  <CodeGroupItem title="TS">
 
 ```ts
 import type { UserConfig, DefaultThemeOptions } from 'vuepress'
@@ -48,6 +49,13 @@ const config: UserConfig<DefaultThemeOptions> = {
 
 export = config
 ```
+
+  </CodeGroupItem>
+</CodeGroup>
+
+:::tip
+我们接下来会把这个配置对象称为 **VuePress 配置**.
+:::
 
 ## 配置作用域
 

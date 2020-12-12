@@ -13,7 +13,10 @@ Without any configuration, the VuePress site is pretty minimal. To customize you
 └─ package.json
 ```
 
-The essential file for configuring a VuePress site is `.vuepress/config.js`, which should export a JavaScript object:
+The essential file for configuring a VuePress site is `.vuepress/config.js`, which should export a JavaScript object. If you are using TypeScript, you can use `.vuepress/config.ts` instead to get better types hint for VuePress Config.
+
+<CodeGroup>
+  <CodeGroupItem title="JS" active>
 
 ```js
 module.exports = {
@@ -27,11 +30,9 @@ module.exports = {
 }
 ```
 
-:::tip
-We will refer the config object as **VuePress Config**.
-:::
+  </CodeGroupItem>
 
-If you are using TypeScript, you can use `.vuepress/config.ts` instead to get better types hint for VuePress Config:
+  <CodeGroupItem title="TS">
 
 ```ts
 import type { UserConfig, DefaultThemeOptions } from 'vuepress'
@@ -48,6 +49,13 @@ const config: UserConfig<DefaultThemeOptions> = {
 
 export = config
 ```
+
+  </CodeGroupItem>
+</CodeGroup>
+
+:::tip
+We will refer the config object as **VuePress Config**.
+:::
 
 ## Config Scopes
 
