@@ -9,6 +9,8 @@ export const zh: SidebarConfig = {
         '/zh/guide/README.md',
         '/zh/guide/getting-started.md',
         '/zh/guide/configuration.md',
+        '/zh/guide/page.md',
+        '/zh/guide/deployment.md',
       ],
     },
   ],
