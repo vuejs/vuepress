@@ -33,8 +33,10 @@ export const handlePageAdd = async (
   // prepare page files
   await preparePageComponent(app, addedPage)
   await preparePageData(app, addedPage)
+  await preparePageRoutes(app, addedPage)
+
+  // prepare pages entry
   await preparePagesComponent(app)
   await preparePagesData(app)
-  await preparePageRoutes(app, addedPage)
   await preparePagesRoutes(app)
 }
