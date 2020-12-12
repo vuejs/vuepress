@@ -14,3 +14,13 @@ jobs:
 
       - name: Push to release branch
         run: git push origin HEAD:release
+
+      - name: Create release
+        id: release_tag
+        uses: yyx990803/release-tag@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          body: |
+            Please refer to [CHANGELOG.md](https://github.com/vuepress/vuepress-next/blob/main/CHANGELOG.md) for details.
