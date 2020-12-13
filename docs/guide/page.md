@@ -2,7 +2,7 @@
 
 VuePress is markdown-centered. Each markdown file inside your project is a standalone page.
 
-## Page Routing
+## Routing
 
 By default, the route path of a page is determined by the relative path of your markdown file.
 
@@ -47,3 +47,9 @@ Check out the [Frontmatter Reference](../reference/frontmatter.md) for a full li
 
 Check out the [Default Theme Reference](../reference/default-theme.md#frontmatter) for the frontmatter of default theme.
 :::
+
+## Content
+
+The main content of your page is written in Markdown. VuePress will firstly transform your Markdown to HTML code, then treat the HTML code as `<template>` of Vue SFC.
+
+With the power of [markdown-it](https://github.com/markdown-it/markdown-it) and Vue template syntax, the basic Markdown can be extended a lot. Next, check out the [Markdown](./markdown.md) guide for all the extensions of Markdown in VuePress.
