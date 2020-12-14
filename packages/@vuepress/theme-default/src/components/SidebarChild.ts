@@ -1,4 +1,3 @@
-<script lang="ts">
 import { h } from 'vue'
 import type { FunctionalComponent, VNode } from 'vue'
 import { useRoute } from 'vue-router'
@@ -72,7 +71,7 @@ const renderChildren = (
   )
 }
 
-const SidebarChild: FunctionalComponent<{
+export const SidebarChild: FunctionalComponent<{
   item: ResolvedSidebarItem
   depth: number
 }> = ({ item, depth }) => {
@@ -124,70 +123,3 @@ SidebarChild.props = {
     default: 0,
   },
 }
-
-export default SidebarChild
-</script>
-
-<style lang="stylus">
-@require '../styles/config.styl'
-
-.sidebar-group .sidebar-group
-  & > .sidebar-heading
-    opacity 0.5
-    font-size 0.95em
-    line-height 1.4
-    font-weight normal
-    padding-left 2rem
-
-.sidebar-heading
-  color $textColor
-  transition color .15s ease
-  cursor default
-  font-size 1.1em
-  font-weight bold
-  padding 0.35rem 1.5rem 0.35rem 1.25rem
-  width 100%
-  box-sizing border-box
-  margin 0
-  border-left 0.25rem solid transparent
-  &.open, &:hover
-    color inherit
-  .arrow
-    position relative
-    top -0.12em
-    left 0.5em
-
-.sidebar .sidebar-sub-headers
-  padding-left 1rem
-  font-size 0.95em
-
-.sidebar-link
-  font-size 1em
-  font-weight 400
-  display inline-block
-  color $textColor
-  border-left 0.25rem solid transparent
-  margin 0
-  padding 0.35rem 1rem 0.35rem 1.25rem
-  line-height 1.4
-  width: 100%
-  box-sizing: border-box
-  .sidebar-group &
-    padding-left 2rem
-  .sidebar-sub-headers &
-    padding-top 0.25rem
-    padding-bottom 0.25rem
-    border-left none
-    &.active
-      font-weight 500
-
-a.sidebar-heading,
-a.sidebar-link
-  cursor pointer
-  &.active
-    font-weight 600
-    color $accentColor
-    border-left-color $accentColor
-  &:hover
-    color $accentColor
-</style>

@@ -1,0 +1,142 @@
+@require './_variables';
+
+.sidebar {
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+  }
+
+  a {
+    display: inline-block;
+  }
+
+  .navbar-links {
+    display: none;
+    border-bottom: 1px solid $borderColor;
+    padding: 0.5rem 0 0.75rem 0;
+
+    a {
+      font-weight: 600;
+    }
+
+    .navbar-links-item {
+      display: block;
+      line-height: 1.25rem;
+      font-size: 1.1em;
+      padding: 0.5rem 0 0.5rem 1.5rem;
+    }
+  }
+
+  & > .sidebar-links {
+    padding: 1.5rem 0;
+
+    & > li > a.sidebar-link {
+      font-size: 1.1em;
+      line-height: 1.7;
+      font-weight: bold;
+    }
+
+    & > li:not(:first-child) {
+      margin-top: 0.75rem;
+    }
+  }
+}
+
+@media (max-width: $MQMobile) {
+  .sidebar {
+    .navbar-links {
+      display: block;
+
+      .dropdown-wrapper .nav-dropdown .dropdown-item a.router-link-active::after {
+        top: calc(1rem - 2px);
+      }
+    }
+
+    & > .sidebar-links {
+      padding: 1rem 0;
+    }
+  }
+}
+
+/**
+ * sidebar child
+ */
+.sidebar-group .sidebar-group {
+  & > .sidebar-heading {
+    opacity: 0.5;
+    font-size: 0.95em;
+    line-height: 1.4;
+    font-weight: normal;
+    padding-left: 2rem;
+  }
+}
+
+.sidebar-heading {
+  color: $textColor;
+  transition: color 0.15s ease;
+  cursor: default;
+  font-size: 1.1em;
+  font-weight: bold;
+  padding: 0.35rem 1.5rem 0.35rem 1.25rem;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  border-left: 0.25rem solid transparent;
+
+  &.open, &:hover {
+    color: inherit;
+  }
+
+  .arrow {
+    position: relative;
+    top: -0.12em;
+    left: 0.5em;
+  }
+}
+
+.sidebar .sidebar-sub-headers {
+  padding-left: 1rem;
+  font-size: 0.95em;
+}
+
+.sidebar-link {
+  font-size: 1em;
+  font-weight: 400;
+  display: inline-block;
+  color: $textColor;
+  border-left: 0.25rem solid transparent;
+  margin: 0;
+  padding: 0.35rem 1rem 0.35rem 1.25rem;
+  line-height: 1.4;
+  width: 100%;
+  box-sizing: border-box;
+
+  .sidebar-group & {
+    padding-left: 2rem;
+  }
+
+  .sidebar-sub-headers & {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    border-left: none;
+
+    &.active {
+      font-weight: 500;
+    }
+  }
+}
+
+a.sidebar-heading, a.sidebar-link {
+  cursor: pointer;
+
+  &.active {
+    font-weight: 600;
+    color: $accentColor;
+    border-left-color: $accentColor;
+  }
+
+  &:hover {
+    color: $accentColor;
+  }
+}

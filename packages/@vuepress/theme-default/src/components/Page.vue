@@ -28,10 +28,3 @@ export default defineComponent({
   },
 })
 </script>
-
-<style>
-.page {
-  padding-bottom: 2rem;
-  display: block;
-}
-</style>

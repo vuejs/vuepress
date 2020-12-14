@@ -32,10 +32,3 @@ export default defineComponent({
   },
 })
 </script>
-
-<style>
-.dropdown-enter-from,
-.dropdown-leave-to {
-  height: 0 !important;
-}
-</style>

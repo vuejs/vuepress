@@ -1,0 +1,135 @@
+@require './_variables';
+
+$navbar-vertical-padding = 0.7rem;
+$navbar-horizontal-padding = 1.5rem;
+
+.navbar {
+  padding: $navbar-vertical-padding $navbar-horizontal-padding;
+  line-height: $navbarHeight - 1.4rem;
+
+  .logo {
+    height: $navbarHeight - 1.4rem;
+    min-width: $navbarHeight - 1.4rem;
+    margin-right: 0.8rem;
+    vertical-align: top;
+  }
+
+  .site-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: $textColor;
+    position: relative;
+  }
+
+  .navbar-links-wrapper {
+    padding-left: 1.5rem;
+    box-sizing: border-box;
+    background-color: white;
+    white-space: nowrap;
+    font-size: 0.9rem;
+    position: absolute;
+    right: $navbar-horizontal-padding;
+    top: $navbar-vertical-padding;
+    display: flex;
+
+    .search-box {
+      flex: 0 0 auto;
+      vertical-align: top;
+    }
+  }
+}
+
+@media (max-width: $MQMobile) {
+  .navbar {
+    padding-left: 4rem;
+
+    .can-hide {
+      display: none;
+    }
+
+    .navbar-links-wrapper {
+      padding-left: 1.5rem;
+    }
+
+    .site-name {
+      width: calc(100vw - 9.4rem);
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+/**
+ * navbar-links
+ */
+.navbar-links {
+  display: inline-block;
+
+  a {
+    line-height: 1.4rem;
+    color: inherit;
+
+    &:hover, &.router-link-active {
+      color: $accentColor;
+    }
+  }
+
+  .navbar-links-item {
+    position: relative;
+    display: inline-block;
+    margin-left: 1.5rem;
+    line-height: 2rem;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+@media (max-width: $MQMobile) {
+  .navbar-links {
+    .navbar-links-item {
+      margin-left: 0;
+    }
+  }
+}
+
+@media (min-width: $MQMobile) {
+  .navbar-links a {
+    &:hover, &.router-link-active {
+      color: $textColor;
+    }
+  }
+
+  .navbar-links-item > a:not(.external) {
+    &:hover, &.router-link-active {
+      margin-bottom: -2px;
+      border-bottom: 2px solid lighten($accentColor, 8%);
+    }
+  }
+}
+
+/**
+ * toggle sidebar button
+ */
+.toggle-sidebar-button {
+  position: absolute;
+  top: 0.6rem;
+  left: 1rem;
+  display: none;
+  padding: 0.6rem;
+  cursor: pointer;
+}
+
+.toggle-sidebar-button .icon {
+  display: block;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+@media screen and (max-width: $MQMobile) {
+  .toggle-sidebar-button {
+    display: block;
+  }
+}

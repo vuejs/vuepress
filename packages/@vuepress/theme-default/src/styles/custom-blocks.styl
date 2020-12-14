@@ -1,46 +1,73 @@
-@require './config'
+@require './_variables';
 
-.custom-block
-  .custom-block-title
-    font-weight 600
-    margin-bottom -0.4rem
-  &.tip, &.warning, &.danger
-    padding .1rem 1.5rem
-    border-left-width .5rem
-    border-left-style solid
-    margin 1rem 0
-  &.tip
-    background-color #f3f5f7
-    border-color $tipColor
-  &.warning
-    background-color lighten($warningColor, 90%)
-    border-color $warningColor
-    color darken($warningColor, 50%)
-    .custom-block-title
-      color darken($warningColor, 25%)
-    a
-      color $textColor
-  &.danger
-    background-color lighten($dangerColor, 90%)
-    border-color $dangerColor
-    color darken($dangerColor, 50%)
-    .custom-block-title
-      color darken($dangerColor, 25%)
-    a
-      color $textColor
-  &.details
-    display block
-    position relative
-    border-radius 2px
-    margin 1.6em 0
-    padding 1.6em
-    background-color #eee
-    h4
-      margin-top 0
-    figure, p
-      &:last-child
-        margin-bottom 0
-        padding-bottom 0
-    summary
-      outline none
-      cursor pointer
+.custom-block {
+  .custom-block-title {
+    font-weight: 600;
+    margin-bottom: -0.4rem;
+  }
+
+  &.tip, &.warning, &.danger {
+    padding: 0.1rem 1.5rem;
+    border-left-width: 0.5rem;
+    border-left-style: solid;
+    margin: 1rem 0;
+  }
+
+  &.tip {
+    background-color: #f3f5f7;
+    border-color: $tipColor;
+  }
+
+  &.warning {
+    background-color: lighten($warningColor, 90%);
+    border-color: $warningColor;
+    color: darken($warningColor, 50%);
+
+    .custom-block-title {
+      color: darken($warningColor, 25%);
+    }
+
+    a {
+      color: $textColor;
+    }
+  }
+
+  &.danger {
+    background-color: lighten($dangerColor, 90%);
+    border-color: $dangerColor;
+    color: darken($dangerColor, 50%);
+
+    .custom-block-title {
+      color: darken($dangerColor, 25%);
+    }
+
+    a {
+      color: $textColor;
+    }
+  }
+
+  &.details {
+    display: block;
+    position: relative;
+    border-radius: 2px;
+    margin: 1.6em 0;
+    padding: 1.6em;
+    background-color: #eee;
+
+    h4 {
+      margin-top: 0;
+    }
+
+    figure, p {
+      &:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+    }
+
+    summary {
+      outline: none;
+      cursor: pointer;
+    }
+  }
+}

@@ -23,15 +23,3 @@ export default defineComponent({
   },
 })
 </script>
-
-<style scoped>
-.code-group-item {
-  display: none;
-}
-.code-group-item__active {
-  display: block;
-}
-.code-group-item > pre {
-  background-color: orange;
-}
-</style>
