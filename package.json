@@ -34,23 +34,23 @@
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
-    "@types/jest": "^26.0.15",
+    "@types/jest": "^26.0.19",
     "anywhere": "^1.5.0",
     "cpx": "^1.5.0",
-    "cross-env": "^7.0.2",
-    "eslint": "^7.14.0",
-    "eslint-config-vuepress": "^3.0.2",
-    "eslint-config-vuepress-typescript": "^2.1.1",
-    "husky": "^4.3.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^7.15.0",
+    "eslint-config-vuepress": "^3.1.0",
+    "eslint-config-vuepress-typescript": "^2.1.2",
+    "husky": "^4.3.6",
     "jest": "^26.6.3",
     "jest-serializer-vue": "^2.0.2",
     "lerna": "^3.22.1",
-    "lint-staged": "^10.5.2",
+    "lint-staged": "^10.5.3",
     "prettier": "^2.2.1",
     "prettier-config-vuepress": "^1.1.1",
     "rimraf": "^3.0.2",
     "sort-package-json": "^1.48.0",
     "ts-jest": "^26.4.4",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.3"
   }
 }
