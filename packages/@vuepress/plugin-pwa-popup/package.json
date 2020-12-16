@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-pwa-popup",
-  "version": "2.0.0-alpha.8",
+  "version": "2.0.0-alpha.9",
   "description": "VuePress plugin - PWA popup",
   "keywords": [
     "vuepress",
@@ -32,7 +32,7 @@
   "dependencies": {
     "@vuepress/client": "2.0.0-alpha.7",
     "@vuepress/core": "2.0.0-alpha.8",
-    "@vuepress/plugin-pwa": "2.0.0-alpha.8",
+    "@vuepress/plugin-pwa": "2.0.0-alpha.9",
     "@vuepress/shared": "2.0.0-alpha.7",
     "@vuepress/utils": "2.0.0-alpha.7"
   },

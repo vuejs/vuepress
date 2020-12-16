@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/bundler-webpack",
-  "version": "2.0.0-alpha.8",
+  "version": "2.0.0-alpha.9",
   "description": "Bundler webpack package of VuePress",
   "keywords": [
     "vuepress",
