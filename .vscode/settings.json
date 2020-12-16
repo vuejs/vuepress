@@ -16,7 +16,6 @@
     "typescriptreact",
     "vue"
   ],
-  "vetur.validation.template": false,
   "cSpell.words": [
     "devtool",
     "docsearch",
