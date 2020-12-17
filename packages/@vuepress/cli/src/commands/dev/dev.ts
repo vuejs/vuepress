@@ -53,7 +53,7 @@ export const dev = async (
 
   // clean cache
   if (commandOptions.cleanCache === true) {
-    logger.info('cleaning cache')
+    logger.info('Cleaning cache...')
     await fs.remove(app.dir.cache())
   }
 
