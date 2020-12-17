@@ -1,6 +1,6 @@
 import { cac } from 'cac'
 import { chalk } from '@vuepress/utils'
-import { build, dev } from './commands'
+import { build, dev, info } from './commands'
 import { allowTs } from './utils'
 
 /**
@@ -60,6 +60,11 @@ export const cli = (): void => {
     .option('--clean-cache', 'Clean the cache before build')
     .option('--debug', 'Enable debug mode')
     .action(wrapCommand(build))
+
+  // register `info` command
+  program
+    .command('info', 'Display environment information')
+    .action(wrapCommand(info))
 
   program.parse(process.argv)
 }
