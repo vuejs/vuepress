@@ -11,14 +11,16 @@ Usage:
 Commands:
   dev [sourceDir]    Start development server
   build [sourceDir]  Build to static site
+  info               Display environment information
 
 For more info, run any command with the `--help` flag:
   $ vuepress dev --help
   $ vuepress build --help
+  $ vuepress info --help
 
 Options:
   -v, --version  Display version number 
-  -h, --help     Display this message
+  -h, --help     Display this message 
 ```
 
 ## dev
@@ -61,3 +63,9 @@ Options:
   -v, --version          Display version number 
   -h, --help             Display this message
 ```
+
+## info
+
+Outputs information about your system and dependencies.
+
+This command would be helpful when you want to check your environment or report an issue.
