@@ -26,11 +26,11 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@types/markdown-it": "^10.0.2",
+    "@types/markdown-it": "^12.0.0",
     "@vuepress/shared": "2.0.0-alpha.7",
     "@vuepress/utils": "2.0.0-alpha.7",
-    "markdown-it": "^12.0.1",
-    "markdown-it-anchor": "^6.0.0",
+    "markdown-it": "^12.0.3",
+    "markdown-it-anchor": "^6.0.1",
     "markdown-it-emoji": "^2.0.0",
     "prismjs": "^1.22.0"
   },
