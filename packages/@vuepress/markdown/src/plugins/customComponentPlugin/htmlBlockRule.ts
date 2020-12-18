@@ -1,7 +1,8 @@
 import * as blockNames from 'markdown-it/lib/common/html_blocks'
-import { HTML_OPEN_CLOSE_TAG_RE } from 'markdown-it/lib/common/html_re'
 import type { RuleBlock } from 'markdown-it/lib/parser_block'
+import { HTML_OPEN_CLOSE_TAG_RE } from './htmlRe'
 import { inlineTags } from './inlineTags'
+import { vueReservedTags } from './vueReservedTags'
 
 // Forked and modified from 'markdown-it/lib/rules_block/html_block.js'
 
@@ -13,7 +14,13 @@ const HTML_SEQUENCES: [RegExp, RegExp, boolean][] = [
   [/^<\?/, /\?>/, true],
   [/^<![A-Z]/, />/, true],
   [/^<!\[CDATA\[/, /\]\]>/, true],
-  // Treat unknown tags as block tags (custom components), excluding known inline tags
+  // MODIFIED HERE: Treat vue reserved tags as block tags
+  [
+    new RegExp('^</?(' + vueReservedTags.join('|') + ')(?=(\\s|/?>|$))', 'i'),
+    /^$/,
+    true,
+  ],
+  // MODIFIED HERE: Treat unknown tags as block tags (custom components), excluding known inline tags
   [
     new RegExp('^</?(?!(' + inlineTags.join('|') + ')(?![\\w-]))\\w+-?'),
     /^$/,
@@ -33,7 +40,9 @@ export const htmlBlockRule: RuleBlock = (
   endLine,
   silent
 ): boolean => {
-  let i, nextLine, lineText
+  let i: number
+  let nextLine: number
+  let lineText: string
   let pos = state.bMarks[startLine] + state.tShift[startLine]
   let max = state.eMarks[startLine]
 

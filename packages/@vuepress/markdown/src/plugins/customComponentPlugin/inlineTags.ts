@@ -36,7 +36,8 @@ export const inlineTags = [
   'em',
   'embed',
   'i',
-  'iframe',
+  /* iframe is treated as HTML blocks in markdown spec */
+  // 'iframe',
   'img',
   'input',
   'ins',
