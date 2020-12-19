@@ -19,6 +19,10 @@ describe('parseHeaders', () => {
       '\\*vue\\*': '*vue*',
       '\\!vue\\!': '!vue!',
 
+      // #2688
+      '[vue](vuejs.org) / [vue](vuejs.org)': 'vue / vue',
+      '[\\<ins>](vuejs.org)': '<ins>',
+
       // #564 For multiple markdown tokens
       '`a` and `b`': 'a and b',
       '***bold and italic***': 'bold and italic',
