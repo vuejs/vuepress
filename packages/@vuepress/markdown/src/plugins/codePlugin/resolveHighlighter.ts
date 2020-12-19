@@ -6,11 +6,14 @@ import type { HighlightLanguage } from './languages'
 // eslint-disable-next-line no-import-assign
 loadLanguages.silent = true
 
-export type CodeHighlighter = (code: string) => string
+export type Highlighter = (code: string) => string
 
-export const createCodeHighlighter = (
+/**
+ * Resolve syntax highlighter for corresponding language
+ */
+export const resolveHighlighter = (
   language: HighlightLanguage
-): CodeHighlighter | null => {
+): Highlighter | null => {
   const lang = language.name
   const docLang = language.docLang
 

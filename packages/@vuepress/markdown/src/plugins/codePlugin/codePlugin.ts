@@ -1,10 +1,7 @@
 import type { PluginWithOptions } from 'markdown-it'
-import type { CodeHighlighter } from './codeHighlighter'
-import {
-  isInHighlightLinesRanges,
-  resolveHighlightLinesRanges,
-} from './highlightLines'
-import type { HighlightLinesRange } from './highlightLines'
+import type { Highlighter } from './resolveHighlighter'
+import { isHighlightLine, resolveHighlightLines } from './resolveHighlightLines'
+import type { HighlightLinesRange } from './resolveHighlightLines'
 import { resolveLanguage } from './resolveLanguage'
 
 export interface CodePluginOptions {
@@ -66,7 +63,7 @@ export const codePlugin: PluginWithOptions<CodePluginOptions> = (
     // resolve highlight line ranges from token info
     let highlightLinesRanges: HighlightLinesRange[] | null = null
     if (highlightLines) {
-      highlightLinesRanges = resolveHighlightLinesRanges(info)
+      highlightLinesRanges = resolveHighlightLines(info)
     }
 
     // resolve language from token info
@@ -77,12 +74,12 @@ export const codePlugin: PluginWithOptions<CodePluginOptions> = (
 
     // try to highlight code
     if (highlight) {
-      // lazy-load codeHighlighter
-      const codeHighlighter: CodeHighlighter = require('./codeHighlighter').createCodeHighlighter(
+      // lazy-load syntax highlighter
+      const highlighter: Highlighter = require('./resolveHighlighter').resolveHighlighter(
         language
       )
-      if (codeHighlighter !== null) {
-        code = codeHighlighter(code)
+      if (highlighter !== null) {
+        code = highlighter(code)
       }
     }
 
@@ -111,7 +108,7 @@ export const codePlugin: PluginWithOptions<CodePluginOptions> = (
 
       const highlightLinesCode = lines
         .map((_, index) => {
-          if (isInHighlightLinesRanges(index + 1, ranges)) {
+          if (isHighlightLine(index + 1, ranges)) {
             return '<div class="highlight-line">&nbsp;</div>'
           }
           return '<br>'

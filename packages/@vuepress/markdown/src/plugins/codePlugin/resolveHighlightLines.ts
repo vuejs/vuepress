@@ -3,7 +3,7 @@ export type HighlightLinesRange = [number, number]
 /**
  * Resolve highlight-lines ranges from token info
  */
-export const resolveHighlightLinesRanges = (
+export const resolveHighlightLines = (
   info: string
 ): HighlightLinesRange[] | null => {
   // try to match highlight-lines mark
@@ -27,7 +27,7 @@ export const resolveHighlightLinesRanges = (
 /**
  * Check if a line number is in ranges
  */
-export const isInHighlightLinesRanges = (
+export const isHighlightLine = (
   lineNumber: number,
   ranges: HighlightLinesRange[]
 ): boolean =>
