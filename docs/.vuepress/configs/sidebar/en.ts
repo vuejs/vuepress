@@ -20,13 +20,31 @@ export const en: SidebarConfig = {
   '/reference/': [
     {
       isGroup: true,
-      text: 'Reference',
+      text: 'VuePress Reference',
       children: [
         '/reference/cli.md',
         '/reference/config.md',
         '/reference/frontmatter.md',
-        '/reference/default-theme.md',
+        '/reference/components.md',
       ],
+    },
+  ],
+  '/reference/default-theme/': [
+    {
+      isGroup: true,
+      text: 'Default Theme Reference',
+      children: [
+        '/reference/default-theme/config.md',
+        '/reference/default-theme/frontmatter.md',
+        '/reference/default-theme/components.md',
+      ],
+    },
+  ],
+  '/advanced/': [
+    {
+      isGroup: true,
+      text: 'Advanced',
+      children: ['/advanced/markdown.md'],
     },
   ],
 }

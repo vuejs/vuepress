@@ -1,3 +1,0 @@
-# Default Theme Reference
-
-> TODO

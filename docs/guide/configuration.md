@@ -80,5 +80,5 @@ Theme config will be processed by VuePress theme, so it depends on the theme you
 If you don't specify the `theme` option of VuePress Config, the default theme will be used.
 
 :::tip
-Check out the [Default Theme Reference](../reference/default-theme.md) for theme config of default theme.
+Check out the [Default Theme > Config Reference](../reference/default-theme/config.md) for theme config of default theme.
 :::

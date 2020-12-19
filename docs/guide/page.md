@@ -45,7 +45,7 @@ Also, VuePress has built-in support for some frontmatter fields, and your theme 
 :::tip
 Check out the [Frontmatter Reference](../reference/frontmatter.md) for a full list of VuePress built-in frontmatter.
 
-Check out the [Default Theme Reference](../reference/default-theme.md#frontmatter) for the frontmatter of default theme.
+Check out the [Default Theme > Frontmatter Reference](../reference/default-theme/frontmatter.md) for the frontmatter of default theme.
 :::
 
 ## Content

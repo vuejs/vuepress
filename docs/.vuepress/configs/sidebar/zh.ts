@@ -20,13 +20,31 @@ export const zh: SidebarConfig = {
   '/zh/reference/': [
     {
       isGroup: true,
-      text: '参考',
+      text: 'VuePress 参考',
       children: [
         '/zh/reference/cli.md',
         '/zh/reference/config.md',
         '/zh/reference/frontmatter.md',
-        '/zh/reference/default-theme.md',
+        '/zh/reference/components.md',
       ],
+    },
+  ],
+  '/zh/reference/default-theme/': [
+    {
+      isGroup: true,
+      text: '默认主题参考',
+      children: [
+        '/zh/reference/default-theme/config.md',
+        '/zh/reference/default-theme/frontmatter.md',
+        '/zh/reference/default-theme/components.md',
+      ],
+    },
+  ],
+  '/zh/advanced/': [
+    {
+      isGroup: true,
+      text: '深入',
+      children: ['/zh/advanced/markdown.md'],
     },
   ],
 }
