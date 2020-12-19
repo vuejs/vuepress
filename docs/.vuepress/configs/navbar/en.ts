@@ -76,7 +76,7 @@ export const en: NavbarConfig = [
             link: 'https://v1.vuepress.vuejs.org',
           },
           {
-            text: 'v0 dos',
+            text: 'v0 docs',
             link: 'https://v0.vuepress.vuejs.org',
           },
         ],
