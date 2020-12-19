@@ -3,6 +3,8 @@ import type { Highlighter } from './resolveHighlighter'
 import { isHighlightLine, resolveHighlightLines } from './resolveHighlightLines'
 import type { HighlightLinesRange } from './resolveHighlightLines'
 import { resolveLanguage } from './resolveLanguage'
+import { resolveLineNumbers } from './resolveLineNumbers'
+import { resolveVPre } from './resolveVPre'
 
 export interface CodePluginOptions {
   /**
@@ -66,6 +68,12 @@ export const codePlugin: PluginWithOptions<CodePluginOptions> = (
       highlightLinesRanges = resolveHighlightLines(info)
     }
 
+    // resolve line-numbers mark from token info
+    const useLineNumbers = resolveLineNumbers(info) ?? lineNumbers
+
+    // resolve v-pre mark from token info
+    const useVPre = resolveVPre(info) ?? vPre
+
     // resolve language from token info
     const language = resolveLanguage(info)
 
@@ -91,7 +99,7 @@ export const codePlugin: PluginWithOptions<CodePluginOptions> = (
     const languageClass = `${options.langPrefix}${language.name}`
 
     let result = `<pre${
-      vPre ? ' v-pre' : ''
+      useVPre ? ' v-pre' : ''
     } class="${languageClass}"><code>${code}</code></pre>`
 
     // if `preWrapper` is disabled, return directly
@@ -119,7 +127,7 @@ export const codePlugin: PluginWithOptions<CodePluginOptions> = (
     }
 
     // generate line numbers
-    if (lineNumbers) {
+    if (useLineNumbers) {
       // generate line numbers code
       const lineNumbersCode = lines
         .map((_, index) => `<span class="line-number">${index + 1}</span><br>`)
@@ -129,7 +137,7 @@ export const codePlugin: PluginWithOptions<CodePluginOptions> = (
     }
 
     result = `<div class="${languageClass} ext-${language.ext}${
-      lineNumbers ? ' line-numbers-mode' : ''
+      useLineNumbers ? ' line-numbers-mode' : ''
     }">${result}</div>`
 
     return result
