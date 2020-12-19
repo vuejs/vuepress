@@ -1,7 +1,7 @@
 export type HighlightLinesRange = [number, number]
 
 /**
- * Resolve highlight-lines ranges from the token info
+ * Resolve highlight-lines ranges from token info
  */
 export const resolveHighlightLinesRanges = (
   info: string

@@ -63,17 +63,14 @@ export const codePlugin: PluginWithOptions<CodePluginOptions> = (
     // get token info
     const info = token.info ? md.utils.unescapeAll(token.info).trim() : ''
 
-    // resolve highlight line ranges
+    // resolve highlight line ranges from token info
     let highlightLinesRanges: HighlightLinesRange[] | null = null
     if (highlightLines) {
       highlightLinesRanges = resolveHighlightLinesRanges(info)
     }
 
-    // get user-defined language alias from the token info
-    const langAlias = info.match(/^([a-zA-Z]+)/)?.[1] || 'text'
-
-    // try to resolve language according to the alias
-    const language = resolveLanguage(langAlias)
+    // resolve language from token info
+    const language = resolveLanguage(info)
 
     // the result of code and lang
     let code = token.content

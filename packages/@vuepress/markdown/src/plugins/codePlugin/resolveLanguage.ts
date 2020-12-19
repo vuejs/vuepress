@@ -28,14 +28,20 @@ const getLanguagesMap = (): LanguagesMap => {
 }
 
 /**
- * Resolve language for highlight
+ * Resolve language for highlight from token info
  */
-export const resolveLanguage = (alias: string): HighlightLanguage =>
+export const resolveLanguage = (info: string): HighlightLanguage => {
+  // get user-defined language alias
+  const alias = info.match(/^([a-zA-Z]+)/)?.[1] || 'text'
+
   // if the alias does not have a match in the map
   // fallback to the alias itself
-  getLanguagesMap()[alias] ?? {
-    name: alias,
-    ext: alias,
-    aliases: [],
-    deps: [],
-  }
+  return (
+    getLanguagesMap()[alias] ?? {
+      name: alias,
+      ext: alias,
+      aliases: [],
+      deps: [],
+    }
+  )
+}
