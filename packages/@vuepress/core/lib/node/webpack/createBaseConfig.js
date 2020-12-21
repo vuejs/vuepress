@@ -249,17 +249,23 @@ module.exports = function createBaseConfig (context, isServer) {
       rule.use('css-loader')
         .loader('css-loader')
         .options({
-          modules,
-          localIdentName: `[local]_[hash:base64:8]`,
+          modules: {
+            auto: modules,
+            exportOnlyLocals: isServer,
+            localIdentName: `[local]_[hash:base64:8]`
+          },
           importLoaders: 1,
-          sourceMap: !isProd,
-          exportOnlyLocals: isServer
+          sourceMap: !isProd
         })
 
-      rule.use('postcss-loader').loader('postcss-loader').options(Object.assign({
-        plugins: [require('autoprefixer')],
-        sourceMap: !isProd
-      }, siteConfig.postcss))
+      rule.use('postcss-loader')
+        .loader('postcss-loader')
+        .options({
+          postcssOptions: Object.assign({
+            plugins: [require('autoprefixer')],
+            sourceMap: !isProd
+          }, siteConfig.postcss)
+        })
 
       if (loader) {
         rule.use(loader).loader(loader).options(options)
