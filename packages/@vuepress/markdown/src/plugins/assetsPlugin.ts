@@ -1,5 +1,4 @@
 import type { PluginWithOptions } from 'markdown-it'
-import { isLinkAbsolute } from '@vuepress/shared'
 import { path } from '@vuepress/utils'
 import type { MarkdownEnv } from '../types'
 
@@ -26,7 +25,7 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
     const link = token.attrGet('src')
 
     // if the link is relative path, and the `env.filePathRelative` exists
-    if (link && !isLinkAbsolute(link) && env.filePathRelative) {
+    if (link && link.startsWith('./') && env.filePathRelative) {
       // add `@source` alias to the link
       const resolvedLink = path.join(
         relativePathPrefix,
