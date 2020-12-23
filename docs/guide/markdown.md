@@ -31,7 +31,7 @@ Config reference: [markdown.anchor](../reference/config.md#markdown-anchor)
 
 When using Markdown [link syntax](https://spec.commonmark.org/0.29/#link-reference-definitions), VuePress will implement some conversions for you.
 
-Take our documentation source files for example:
+Take our documentation source files as an example:
 
 ```sh
 └─ docs
