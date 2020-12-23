@@ -117,5 +117,5 @@ export const createBuild = (
   await app.pluginApi.hooks.onGenerated.process(app)
 
   // print success log
-  logger.success('VuePress build successfully!')
+  logger.success('VuePress webpack build successfully!')
 }
