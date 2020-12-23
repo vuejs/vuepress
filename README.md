@@ -63,6 +63,11 @@ Temporarily record some breaking changes here.
   - `chainWebpack` -> `bundlerConfig.chainWebpack`
   - `configureWebpack` -> `bundlerConfig.configureWebpack`
 
+#### Conventional files and directories
+
+- `.vuepress/enhanceApp.js` -> `.vuepress/clientAppEnhance.{js,ts}`
+- `.vuepress/components` -> will not auto register components, and you need to register your components manually in `.vuepress/clientAppEnhance.{js,ts}`
+
 #### Permalink patterns
 
 - `:i_month` -> removed
