@@ -30,6 +30,7 @@ export const createAppOptions = ({
   debug = false,
   open = false,
   evergreen = true,
+  pagePatterns = ['**/*.md', '!.vuepress', '!node_modules'],
   templateDev = path.normalize(
     require.resolve('@vuepress/client/templates/index.dev.html')
   ),
@@ -41,9 +42,6 @@ export const createAppOptions = ({
 
   // markdown config
   markdown = {},
-
-  // pages config
-  pagePatterns = ['**/*.md', '!.vuepress', '!node_modules'],
 }: AppConfig): AppOptions => ({
   base,
   lang,
@@ -63,10 +61,10 @@ export const createAppOptions = ({
   port,
   open,
   evergreen,
+  pagePatterns,
   templateDev,
   templateSSR,
   shouldPreload,
   shouldPrefetch,
   markdown,
-  pagePatterns,
 })

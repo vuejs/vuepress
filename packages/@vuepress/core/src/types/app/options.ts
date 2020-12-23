@@ -31,6 +31,7 @@ export interface AppOptions<T extends ThemeConfig = ThemeConfig> {
   port: number
   open: boolean
   evergreen: boolean
+  pagePatterns: string[]
   templateDev: string
   templateSSR: string
   shouldPreload: ((file: string, type: string) => boolean) | boolean
@@ -38,9 +39,6 @@ export interface AppOptions<T extends ThemeConfig = ThemeConfig> {
 
   // markdown options
   markdown: MarkdownOptions
-
-  // pages options
-  pagePatterns: string[]
 }
 
 export type AppConfig = Partial<AppOptions> & Pick<AppOptions, 'source'>

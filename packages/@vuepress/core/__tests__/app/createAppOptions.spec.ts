@@ -24,6 +24,7 @@ describe('core > app > createAppOptions', () => {
       port: 8080,
       open: false,
       evergreen: true,
+      pagePatterns: ['**/*.md', '!.vuepress', '!node_modules'],
       templateDev: path.normalize(
         require.resolve('@vuepress/client/templates/index.dev.html')
       ),
@@ -33,7 +34,6 @@ describe('core > app > createAppOptions', () => {
       shouldPreload: true,
       shouldPrefetch: false,
       markdown: {},
-      pagePatterns: ['**/*.md', '!.vuepress', '!node_modules'],
     })
   })
 })
