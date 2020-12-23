@@ -49,7 +49,6 @@ const config: UserConfig<DefaultThemeOptions> = {
       '/': {
         // navbar
         navbar: navbar.en,
-        selectLanguageName: 'English',
 
         // sidebar
         sidebar: sidebar.en,
@@ -78,7 +77,7 @@ const config: UserConfig<DefaultThemeOptions> = {
         contributorsText: '贡献者',
 
         // custom blocks
-        info: '提示',
+        tip: '提示',
         warning: '注意',
         danger: '警告',
 
