@@ -1,12 +1,26 @@
-import type { PluginObject } from '@vuepress/core'
+import type { App, PluginObject } from '@vuepress/core'
 import type { UserConfig } from './types'
 
 /**
  * Transform user config to a vuepress plugin
  */
 export const transformUserConfigToPlugin = (
+  app: App,
   userConfig: UserConfig
-): PluginObject => ({
-  name: 'user-config',
-  ...userConfig,
-})
+): PluginObject => {
+  const userConfigPlugin: PluginObject = {
+    name: 'user-config',
+    ...userConfig,
+  }
+
+  // if `clientAppEnhanceFiles` is not set explicitly,
+  // try to load conventional files
+  if (userConfigPlugin.clientAppEnhanceFiles === undefined) {
+    userConfigPlugin.clientAppEnhanceFiles = [
+      app.dir.source('.vuepress/clientAppEnhance.js'),
+      app.dir.source('.vuepress/clientAppEnhance.ts'),
+    ]
+  }
+
+  return userConfigPlugin
+}

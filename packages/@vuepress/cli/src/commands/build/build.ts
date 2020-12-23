@@ -44,7 +44,7 @@ export const build = async (
   })
 
   // use user-config plugin
-  app.use(transformUserConfigToPlugin(userConfig))
+  app.use(transformUserConfigToPlugin(app, userConfig))
 
   // clean cache
   if (commandOptions.cleanCache === true) {
