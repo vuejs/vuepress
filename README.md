@@ -28,7 +28,7 @@ See [Contributing Guide](https://github.com/vuepress/vuepress-next/blob/main/doc
   - [ ] snippetsPlugin
 
 - [ ] Documentation
-  - [ ] Guide
+  - [x] Guide
   - [ ] References
   - [ ] API
   - [ ] Migration Guide
