@@ -6,7 +6,6 @@ import {
   resolveContainerPluginOptions,
   resolveContainerPluginOptionsForDetails,
   resolveDebugPluginOptions,
-  resolveDocsearchPluginOptions,
   resolveGitPluginOptions,
   resolveMediumZoomPluginOptions,
   resolvePaletteStylusPluginOptions,
@@ -19,8 +18,6 @@ export * from './types'
 export const defaultTheme: Theme<DefaultThemeOptions> = (options, app) => {
   assignDefaultOptions(options)
 
-  const docsearchOptions = resolveDocsearchPluginOptions(options)
-
   return {
     name: '@vuepress/theme-default',
 
@@ -29,11 +26,6 @@ export const defaultTheme: Theme<DefaultThemeOptions> = (options, app) => {
     clientAppEnhanceFiles: path.resolve(__dirname, './clientAppEnhance.js'),
 
     clientAppSetupFiles: path.resolve(__dirname, './clientAppSetup.js'),
-
-    define: {
-      // to determine if we have to register a mock `<Docsearch>` component
-      __THEME_DEFAULT_DOCSEARCH__: docsearchOptions !== false,
-    },
 
     // use the relative file path to generate edit link
     extendsPageData: ({ filePathRelative }) => ({ filePathRelative }),
@@ -52,7 +44,6 @@ export const defaultTheme: Theme<DefaultThemeOptions> = (options, app) => {
       ['@vuepress/container', resolveContainerPluginOptions(options, 'danger')],
       ['@vuepress/container', resolveContainerPluginOptionsForDetails(options)],
       ['@vuepress/debug', resolveDebugPluginOptions(options, app)],
-      ['@vuepress/docsearch', docsearchOptions],
       ['@vuepress/git', resolveGitPluginOptions(options)],
       ['@vuepress/medium-zoom', resolveMediumZoomPluginOptions(options)],
       ['@vuepress/nprogress', options.themePlugins?.nprogress !== false],

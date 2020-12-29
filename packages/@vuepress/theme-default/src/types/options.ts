@@ -1,14 +1,8 @@
 import type { LocaleData, ThemeConfig } from '@vuepress/core'
-import type { DocsearchPluginOptions } from '@vuepress/plugin-docsearch'
 import type { NavbarConfig, SidebarConfig } from './nav'
 
 export interface DefaultThemeOptions
   extends ThemeConfig<DefaultThemeLocaleData> {
-  /**
-   * Options for docsearch / algolia
-   */
-  docsearch?: DocsearchPluginOptions
-
   /**
    * To avoid confusion with the root `plugins` option,
    * we use `themePlugins`
@@ -28,11 +22,6 @@ export interface DefaultThemeOptions
      * Enable @vuepress/plugin-debug or not
      */
     debug?: boolean
-
-    /**
-     * Enable @vuepress/plugin-docsearch or not
-     */
-    docsearch?: boolean
 
     /**
      * Enable @vuepress/plugin-container or not
@@ -119,11 +108,6 @@ export interface DefaultThemeLocaleData extends LocaleData {
    * Displayed inside the language selection dropdown
    */
   selectLanguageName?: string
-
-  /**
-   * Navbar docsearch placeholder
-   */
-  docsearchPlaceholder?: string
 
   /**
    * Sidebar config
