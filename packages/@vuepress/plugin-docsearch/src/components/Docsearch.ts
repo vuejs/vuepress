@@ -6,8 +6,6 @@ import type { DocSearchProps } from '@docsearch/react'
 import { useSiteData } from '@vuepress/client'
 import { resolveRoutePathFromUrl } from '@vuepress/shared'
 
-import '@docsearch/css'
-
 export type DocsearchProps = DocSearchProps
 
 type DocsearchFuncProps = DocSearchProps & {
@@ -17,8 +15,12 @@ type DocsearchFuncProps = DocSearchProps & {
 type DocsearchFunc = (props: DocsearchFuncProps) => void
 
 const loadDocsearch = async (): Promise<DocsearchFunc> => {
-  // @ts-ignore: docsearch types issue
-  const docsearch = await import('@docsearch/js')
+  const [docsearch] = await Promise.all([
+    // @ts-ignore: docsearch types issue
+    import('@docsearch/js'),
+    // @ts-ignore
+    import('@docsearch/css'),
+  ])
   return docsearch.default
 }
 
@@ -56,7 +58,6 @@ export const Docsearch = defineComponent({
           container: '#docsearch',
 
           // navigation behavior triggered by `onKeyDown` internally
-          // @ts-ignore: docsearch types issue
           navigator: {
             // when pressing Enter without metaKey
             navigate: ({ itemUrl }) => {
