@@ -17,7 +17,7 @@ module.exports = class DevLogPlugin {
 
   apply (compiler) {
     let isFirst = true
-    const { displayHost, port, publicPath, clearScreen: shouldClearScreen } = this.options
+    const { displayHost, port, publicPath, clearScreen: shouldClearScreen, isHttps } = this.options
 
     compiler.hooks.done.tap('vuepress-log', stats => {
       if (shouldClearScreen) {
@@ -25,7 +25,7 @@ module.exports = class DevLogPlugin {
       }
 
       const time = new Date().toTimeString().match(/^[\d:]+/)[0]
-      const displayUrl = `http://${displayHost}:${port}${publicPath}`
+      const displayUrl = `http${isHttps ? 's' : ''}://${displayHost}:${port}${publicPath}`
 
       logger.success(
         `${chalk.gray(`[${time}]`)} Build ${chalk.italic(stats.hash.slice(0, 6))} `
