@@ -24,6 +24,9 @@ export const createAppOptions = ({
   cache = path.resolve(source, '.vuepress/.cache'),
   public: publicDir = path.resolve(source, '.vuepress/public'),
 
+  // markdown config
+  markdown = {},
+
   // development config
   host = '0.0.0.0',
   port = 8080,
@@ -39,9 +42,6 @@ export const createAppOptions = ({
   ),
   shouldPreload = true,
   shouldPrefetch = false,
-
-  // markdown config
-  markdown = {},
 }: AppConfig): AppOptions => ({
   base,
   lang,
@@ -56,6 +56,7 @@ export const createAppOptions = ({
   temp,
   cache,
   public: publicDir,
+  markdown,
   debug,
   host,
   port,
@@ -66,5 +67,4 @@ export const createAppOptions = ({
   templateSSR,
   shouldPreload,
   shouldPrefetch,
-  markdown,
 })

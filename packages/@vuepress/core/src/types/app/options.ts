@@ -1,17 +1,14 @@
 import type { MarkdownOptions } from '@vuepress/markdown'
-import type { HeadConfig, SiteLocaleConfig } from '@vuepress/shared'
+import type { SiteLocaleConfig, SiteLocaleData } from '@vuepress/shared'
 import type { ThemeConfig } from '../theme'
 
 /**
  * Vuepress app options
  */
-export interface AppOptions<T extends ThemeConfig = ThemeConfig> {
+export interface AppOptions<T extends ThemeConfig = ThemeConfig>
+  extends SiteLocaleData {
   // site options
   base: string
-  lang: string
-  title: string
-  description: string
-  head: HeadConfig[]
   locales: SiteLocaleConfig
 
   // theme options
@@ -25,6 +22,9 @@ export interface AppOptions<T extends ThemeConfig = ThemeConfig> {
   cache: string
   public: string
 
+  // markdown options
+  markdown: MarkdownOptions
+
   // development options
   debug: boolean
   host: string
@@ -36,9 +36,6 @@ export interface AppOptions<T extends ThemeConfig = ThemeConfig> {
   templateSSR: string
   shouldPreload: ((file: string, type: string) => boolean) | boolean
   shouldPrefetch: ((file: string, type: string) => boolean) | boolean
-
-  // markdown options
-  markdown: MarkdownOptions
 }
 
 export type AppConfig = Partial<AppOptions> & Pick<AppOptions, 'source'>
