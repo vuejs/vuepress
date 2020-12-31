@@ -2,7 +2,7 @@
 
 Each Markdown file is first compiled into HTML, and then converted to a Vue SFC. In other words, you can take Markdown as Vue SFC:
 
-- Blocks `<script>` and `<style>` are treated as Vue SFC blocks as they are.
+- Blocks `<script>` and `<style>` are treated as Vue SFC blocks as they are. In other words, they are hoisted from the `<template>` block to the top-level of SFC.
 - Everything outside `<script>` and `<style>` will be compiled into HTML, and be treated as Vue SFC `<template>` block.
 
 Here comes an example:
