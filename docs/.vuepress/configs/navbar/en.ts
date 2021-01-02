@@ -27,6 +27,10 @@ export const en: NavbarConfig = [
             text: 'Built-in Components',
             link: '/reference/components.html',
           },
+          {
+            text: 'Plugin API',
+            link: '/reference/plugin-api.html',
+          },
         ],
       },
       {

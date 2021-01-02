@@ -27,6 +27,10 @@ export const zh: NavbarConfig = [
             text: '内置组件',
             link: '/zh/reference/components.html',
           },
+          {
+            text: '插件 API',
+            link: '/zh/reference/plugin-api.html',
+          },
         ],
       },
       {
