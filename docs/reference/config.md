@@ -5,197 +5,244 @@
 ### base
 
 - Type: `string`
+
 - Default: `/`
 
-The base URL the site will be deployed at.
+- Details:
 
-You will need to set this if you plan to deploy your site under a sub path. It should always start and end with a slash. For example, if you plan to deploy your site to GitHub pages at `https://foo.github.io/bar/`, then you should set `base` to `"/bar/"`.
+  The base URL the site will be deployed at.
 
-The `base` is automatically prepended to all the URLs that start with `/` in other options, so you only need to specify it once.
+  You will need to set this if you plan to deploy your site under a sub path. It should always start and end with a slash. For example, if you plan to deploy your site to GitHub pages at `https://foo.github.io/bar/`, then you should set `base` to `"/bar/"`.
 
-**Also see:**
+  The `base` is automatically prepended to all the URLs that start with `/` in other options, so you only need to specify it once.
 
-- [Guide > Assets > Base Helper](../guide/assets.md#base-helper)
-- [Guide > Deployment](../guide/deployment.md)
+- Also see:
+  - [Guide > Assets > Base Helper](../guide/assets.md#base-helper)
+  - [Guide > Deployment](../guide/deployment.md)
 
 ### lang
 
 - Type: `string`
+
 - Default: `en-US`
 
-Language for the site.
+- Details:
 
-This will be the `lang` attribute of the `<html>` tag in the rendered HTML.
+  Language for the site.
 
-This can be specified in different locales.
+  This will be the `lang` attribute of the `<html>` tag in the rendered HTML.
 
-**Also see:**
+  This can be specified in different locales.
 
-- [Config > locales](#locales)
+- Also see:
+  - [Config > locales](#locales)
+  - [Frontmatter > lang](./frontmatter.md#lang)
 
 ### title
 
 - Type: `string`
+
 - Default: `''`
 
-Title for the site.
+- Details:
 
-This will be the suffix for all page titles, and displayed in the navbar in the default theme.
+  Title for the site.
 
-This can be specified in different locales.
+  This will be the suffix for all page titles, and displayed in the navbar in the default theme.
 
-**Also see:**
+  This can be specified in different locales.
 
-- [Config > locales](#locales)
+- Also see:
+  - [Config > locales](#locales)
 
 ### description
 
 - Type: `string`
+
 - Default: `''`
 
-Description for the site.
+- Details:
 
-This will be the `content` attribute of `<meta name="description" />` tag in the rendered HTML, which will be overrode by the `description` field of page frontmatter.
+  Description for the site.
 
-This can be specified in different locales.
+  This will be the `content` attribute of `<meta name="description" />` tag in the rendered HTML, which will be overrode by the `description` field of page frontmatter.
 
-**Also see:**
+  This can be specified in different locales.
 
-- [Config > locales](#locales)
-- [Frontmatter > description](./frontmatter.md#description)
+- Also see:
+  - [Config > locales](#locales)
+  - [Frontmatter > description](./frontmatter.md#description)
 
 ### head
 
 - Type: `HeadConfig[]`
+
 - Default: `[]`
 
-Extra tags to inject into the `<head>` tag in the rendered HTML . You can specify each tag in the form of `[tagName, { attrName: attrValue }, innerHTML?]`. For example, to add a custom favicon:
+- Details:
 
-```js
-module.exports = {
-  head: [
-    ['link', { rel: 'icon', href: '/logo.png' }]
-  ]
-}
-```
+  Extra tags to inject into the `<head>` tag in the rendered HTML.
+  
+  You can specify each tag in the form of `[tagName, { attrName: attrValue }, innerHTML?]`.
 
-This can be specified in different locales.
+  This can be specified in different locales. 
 
-**Also see:**
+- Example:
 
-- [Config > locales](#locales)
-- [Frontmatter > head](./frontmatter.md#head)
+  To add a custom favicon:
+
+  ```js
+  module.exports = {
+    head: [
+      ['link', { rel: 'icon', href: '/logo.png' }]
+    ]
+  }
+  ```
+
+  Rendered as：
+
+  ```html
+  <head>
+    <link rel="icon" href="/logo.png" />
+  </head>
+  ```
+
+- Also see:
+  - [Config > locales](#locales)
+  - [Frontmatter > head](./frontmatter.md#head)
 
 ### locales
 
 - Type: `{ [path: string]: Partial<SiteLocaleData> }`
+
 - Default: `{}`
 
-Specify locales for i18n support.
+- Details:
 
-Acceptable fields:
+  Specify locales for i18n support.
 
-- [lang](#lang)
-- [title](#title)
-- [description](#description)
-- [head](#head)
+  Acceptable fields:
 
-**Also see:**
+  - [lang](#lang)
+  - [title](#title)
+  - [description](#description)
+  - [head](#head)
 
-- [Guide > I18n](../guide/i18n.md)
+- Also see:
+  - [Guide > I18n](../guide/i18n.md)
 
 ## Theme Config
 
 ### theme
 
 - Type: `string`
+
 - Default: `'@vuepress/theme-default'`
 
-Name of theme your want to use.
+- Details:
 
-Theme name shorthand is acceptable. For example:
+  Name of theme your want to use.
 
-- `'foo'` -> `'vuepress-theme-foo'`
-- `'@foo/bar'` -> `'@foo/vuepress-theme-bar'`
-- `'@vuepress/default'` -> `'@vuepress/theme-default'`
+  Theme name shorthand is acceptable.
+
+- Also see:
+  - [Guide > Using Theme](../guide/theme.md)
 
 ### themeConfig
 
 - Type: `ThemeConfig`
+
 - Default: `{}`
 
-Provide config options to the used theme. The options will vary depending on the theme you are using.
+- Details:
 
-**Also see:**
+  Provide config options to the used theme. The options will vary depending on the theme you are using.
 
-- [Default Theme > Config](./default-theme/config.md)
+- Also see:
+  - [Default Theme > Config](./default-theme/config.md)
 
 ## Directory Config
 
 ### dest
 
 - Type: `string`
+
 - Default: `` `${sourceDir}/.vuepress/dist` ``
 
-Specify the output directory for `vuepress build` command.
+- Details:
+
+  Specify the output directory for `vuepress build` command.
 
 ### temp
 
 - Type: `string`
+
 - Default: `` `${sourceDir}/.vuepress/.temp` ``
 
-Specify the directory for temporary files.
+- Details:
+
+  Specify the directory for temporary files.
 
 ### cache
 
 - Type: `string`
+
 - Default: `` `${sourceDir}/.vuepress/.cache` ``
 
-Specify the directory for cache .
+- Details:
+
+  Specify the directory for cache .
 
 ### public
 
 - Type: `string`
+
 - Default: `` `${sourceDir}/.vuepress/public` ``
 
-Specify the directory for public files.
+- Details:
 
-**Also see:**
+  Specify the directory for public files.
 
-- [Guide > Assets > Public Files](../guide/assets.md#public-files)
+- Also see:
+  - [Guide > Assets > Public Files](../guide/assets.md#public-files)
 
 ## Markdown Config
 
 ### markdown
 
 - Type: `MarkdownOptions`
+
 - Default: `{}`
 
-Configure VuePress built-in Markdown syntax extensions.
+- Details:
 
-**Also see:**
+  Configure VuePress built-in Markdown syntax extensions.
 
-- [Guide > Markdown > Syntax Extensions](../guide/markdown.md#syntax-extensions)
+- Also see:
+  - [Guide > Markdown > Syntax Extensions](../guide/markdown.md#syntax-extensions)
 
 #### markdown.anchor
 
 - Type: `AnchorPluginOptions | false`
 
-Options for [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor).
+- Details:
 
-Set to `false` to disable this plugin.
+  Options for [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor).
 
-**Also see:**
+  Set to `false` to disable this plugin.
 
-- [Guide > Markdown > Syntax Extensions > Header Anchors](../guide/markdown.md#header-anchors)
+- Also see:
+  - [Guide > Markdown > Syntax Extensions > Header Anchors](../guide/markdown.md#header-anchors)
 
 #### markdown.assets
 
 - Type: `AssetsPluginOptions | false`
 
-Options for VuePress built-in markdown-it assets plugin.
+- Details:
 
-Set to `false` to disable this plugin.
+  Options for VuePress built-in markdown-it assets plugin.
+
+  Set to `false` to disable this plugin.
 
 :::danger
 You should not configure it unless you understand what it is for.
@@ -205,78 +252,92 @@ You should not configure it unless you understand what it is for.
 
 - Type: `CodePluginOptions | false`
 
-Options for VuePress built-in markdown-it code plugin.
+- Details:
 
-Set to `false` to disable this plugin.
+  Options for VuePress built-in markdown-it code plugin.
 
-**Also see:**
+  Set to `false` to disable this plugin.
 
-- [Guide > Markdown > Syntax Extensions > Code Blocks](../guide/markdown.md#code-blocks)
+- Also see:
+  - [Guide > Markdown > Syntax Extensions > Code Blocks](../guide/markdown.md#code-blocks)
 
 ##### markdown.code.highlight
 
 - Type: `boolean`
+
 - Default: `true`
 
-Enable code syntax highlighting or not.
+- Details:
 
-You can disable it if you want to implement client side highlighting by yourself. For example, [Prismjs](https://prismjs.com/) or [highlight.js](https://highlightjs.org/).
+  Enable code syntax highlighting or not.
 
-**Also see:**
+  You can disable it if you want to implement client side highlighting by yourself. For example, [Prismjs](https://prismjs.com/) or [highlight.js](https://highlightjs.org/).
 
-- [Guide > Markdown > Syntax Extensions > Code Blocks > Syntax Highlighting](../guide/markdown.md#syntax-highlighting)
+- Also see:
+  - [Guide > Markdown > Syntax Extensions > Code Blocks > Syntax Highlighting](../guide/markdown.md#syntax-highlighting)
 
 ##### markdown.code.highlightLines
 
 - Type: `boolean`
+
 - Default: `true`
 
-Enable code line highlighting or not.
+- Details:
 
-**Also see:**
+  Enable code line highlighting or not.
 
-- [Guide > Markdown > Syntax Extensions > Code Blocks > Line Highlighting](../guide/markdown.md#line-highlighting)
+- Also see:
+  - [Guide > Markdown > Syntax Extensions > Code Blocks > Line Highlighting](../guide/markdown.md#line-highlighting)
 
 ##### markdown.code.lineNumbers
 
 - Type: `boolean`
+
 - Default: `true`
 
-Enable code line numbers or not.
+- Details:
 
-**Also see:**
+  Enable code line numbers or not.
 
-- [Guide > Markdown > Syntax Extensions > Code Blocks > Line Numbers](../guide/markdown.md#line-numbers)
+- Also see:
+  - [Guide > Markdown > Syntax Extensions > Code Blocks > Line Numbers](../guide/markdown.md#line-numbers)
 
 ##### markdown.code.preWrapper
 
 - Type: `boolean`
+
 - Default: `true`
 
-Enable the extra wrapper of the `<pre>` tag or not.
+- Details:
 
-The wrapper is required by the `highlightLines` and `lineNumbers`. That means, if you disable `preWrapper`, the line highlighting and line numbers will also be disabled.
+  Enable the extra wrapper of the `<pre>` tag or not.
 
-You can disable it if you want to implement them in client side. For example, [Prismjs Line Highlight](https://prismjs.com/plugins/line-highlight/) or [Prismjs Line Numbers](https://prismjs.com/plugins/line-numbers/).
+  The wrapper is required by the `highlightLines` and `lineNumbers`. That means, if you disable `preWrapper`, the line highlighting and line numbers will also be disabled.
+
+  You can disable it if you want to implement them in client side. For example, [Prismjs Line Highlight](https://prismjs.com/plugins/line-highlight/) or [Prismjs Line Numbers](https://prismjs.com/plugins/line-numbers/).
 
 ##### markdown.code.vPre
 
 - Type: `boolean`
+
 - Default: `true`
 
-Enable the `v-pre` directive on `<pre>` tag or not.
+- Details:
 
-**Also see:**
+  Enable the `v-pre` directive on `<pre>` tag or not.
 
-- [Guide > Markdown > Syntax Extensions > Code Blocks > Wrap with v-pre](../guide/markdown.md#wrap-with-v-pre)
+- Also see:
+  - [Guide > Markdown > Syntax Extensions > Code Blocks > Wrap with v-pre](../guide/markdown.md#wrap-with-v-pre)
 
 #### markdown.customComponent
 
 - Type: `undefined | false`
 
-Options for VuePress built-in markdown-it custom-component plugin.
+- Details:
 
-Set to `false` to disable this plugin.
+  Options for VuePress built-in markdown-it custom-component plugin.
+
+  Set to `false` to disable this plugin.
 
 :::danger
 You should not configure it unless you understand what it is for.
@@ -286,141 +347,177 @@ You should not configure it unless you understand what it is for.
 
 - Type: `EmojiPluginOptions | false`
 
-Options for [markdown-it-emoji](https://github.com/markdown-it/markdown-it-emoji).
+- Details:
 
-Set to `false` to disable this plugin.
+  Options for [markdown-it-emoji](https://github.com/markdown-it/markdown-it-emoji).
 
-**Also see:**
+  Set to `false` to disable this plugin.
 
-- [Guide > Markdown > Syntax Extensions > Emoji](../guide/markdown.md#emoji)
+- Also see:
+  - [Guide > Markdown > Syntax Extensions > Emoji](../guide/markdown.md#emoji)
 
 #### markdown.extractHeaders
 
 - Type: `ExtractHeadersPluginOptions | false`
 
-Options for VuePress built-in markdown-it extract-headers plugin.
+- Details:
 
-It will extract page headers to page data, which will be used for generating sidebar, table of contents, etc. For example, the sidebar of current page is auto generated from the headers that extracted by this plugin.
+  Options for VuePress built-in markdown-it extract-headers plugin.
 
-Set to `false` to disable this plugin.
+  It will extract page headers to page data, which will be used for generating sidebar, table of contents, etc. For example, the sidebar of current page is auto generated from the headers that extracted by this plugin.
+
+  Set to `false` to disable this plugin.
 
 #### markdown.hoistTags
 
 - Type: `HoistTagsPluginOptions | false`
 
-Options for VuePress built-in markdown-it hoist-tags plugin.
+- Details:
 
-It will hoist specific HTML tags in your Markdown to the top-level of SFC. By default, only `<script>` and `<style>` tags will be hoisted. You can set this option to support SFC custom blocks in Markdown.
+  Options for VuePress built-in markdown-it hoist-tags plugin.
 
-Set to `false` to disable this plugin.
+  It will hoist specific HTML tags in your Markdown to the top-level of SFC. By default, only `<script>` and `<style>` tags will be hoisted. You can set this option to support SFC custom blocks in Markdown.
 
-**Also see:**
+  Set to `false` to disable this plugin.
 
-- [Advanced > Markdown and Vue SFC](../advanced/markdown.md)
+- Also see:
+  - [Advanced > Markdown and Vue SFC](../advanced/markdown.md)
 
 #### markdown.links
 
 - Type: `LinksPluginOptions | false`
 
-Options for VuePress built-in markdown-it links plugin.
+- Details:
 
-It will convert internal links to `<RouterLink>`, and add extra attributes to external links.
+  Options for VuePress built-in markdown-it links plugin.
 
-Set to `false` to disable this plugin.
+  It will convert internal links to `<RouterLink>`, and add extra attributes to external links.
 
-**Also see:**
+  Set to `false` to disable this plugin.
 
-- [Guide > Markdown > Syntax Extensions > Links](../guide/markdown.md#links)
+- Also see:
+  - [Guide > Markdown > Syntax Extensions > Links](../guide/markdown.md#links)
 
 #### markdown.toc
 
 - Type: `TocPluginOptions | false`
 
-Options for VuePress built-in markdown-it table-of-contents plugin.
+- Details:
 
-Set to `false` to disable this plugin.
+  Options for VuePress built-in markdown-it table-of-contents plugin.
 
-**Also see:**
+  Set to `false` to disable this plugin.
 
-- [Guide > Markdown > Syntax Extensions > Table of Contents](../guide/markdown.md#table-of-contents)
+- Also see:
+  - [Guide > Markdown > Syntax Extensions > Table of Contents](../guide/markdown.md#table-of-contents)
 
 ## Development Config
 
 ### debug
 
 - Type: `boolean`
+
 - Default: `false`
 
-Enable debug mode or not.
+- Details:
 
-This would be helpful for developers. Also, we are using [debug](https://github.com/visionmedia/debug) package for debug logging, which can be enabled via `DEBUG=vuepress*` environment variable.
+  Enable debug mode or not.
+
+  This would be helpful for developers. Also, we are using [debug](https://github.com/visionmedia/debug) package for debug logging, which can be enabled via `DEBUG=vuepress*` environment variable.
 
 ### host
 
 - Type: `string`
+
 - Default: `'0.0.0.0'`
 
-Specify the host to use for the dev server.
+- Details:
+
+  Specify the host to use for the dev server.
 
 ### port
 
 - Type: `number`
+
 - Default: `8080`
 
-Specify the port to use for the dev server.
+- Details:
+
+  Specify the port to use for the dev server.
 
 ### open
 
 - Type: `boolean`
+
 - Default: `false`
 
-Whether to open the browser after dev-server had been started.
+- Details:
+
+  Whether to open the browser after dev-server had been started.
 
 ### evergreen
 
 - Type: `boolean`
+
 - Default: `true`
 
-Set to `true` if you are only targeting evergreen browsers. This will disable some transpilation and polyfills, and result in faster builds and smaller files.
+- Details:
+
+  Set to `true` if you are only targeting evergreen browsers. This will disable some transpilation and polyfills, and result in faster builds and smaller files.
 
 ### pagePatterns
 
 - Type: `string[]`
+
 - Default: `['**/*.md', '!.vuepress', '!node_modules']`
 
-Specify the patterns of files you want to be resolved as pages. The patterns are relative to the source directory.
+- Details:
+
+  Specify the patterns of files you want to be resolved as pages. The patterns are relative to the source directory.
 
 ### templateDev
 
 - Type: `string`
+
 - Default: `'@vuepress/client/templates/index.dev.html'`
 
-Specify the HTML template to be used for dev.
+- Details:
+
+  Specify the HTML template to be used for dev.
 
 ### templateSSR
 
 - Type: `string`
+
 - Default: `'@vuepress/client/templates/index.ssr.html'`
 
-Specify the HTML template to be used for build (SSR).
+- Details:
+
+  Specify the HTML template to be used for build (SSR).
 
 ### shouldPreload
 
 - Type: `((file: string, type: string) => boolean)) | boolean`
+
 - Default: `true`
 
-A function to control what files should have `<link rel="preload">` resource hints generated. Set to `true` or `false` to enable or disable totally.
+- Details:
 
-By default, only those files that are required by current page will be preloaded. So you can keep it `true` in most cases.
+  A function to control what files should have `<link rel="preload">` resource hints generated. Set to `true` or `false` to enable or disable totally.
+
+  By default, only those files that are required by current page will be preloaded. So you can keep it `true` in most cases.
 
 ### shouldPrefetch
 
 - Type: `((file: string, type: string) => boolean)) | boolean`
+
 - Default: `false`
 
-A function to control what files should have `<link rel="prefetch">` resource hints generated. Set to `true` or `false` to enable or disable for all files.
+- Details:
 
-If you set it to `true`, all files that required by other pages will be prefetched. This is good for small sites, which will speed up the navigation, but it might not be a good idea if you have lots of pages in your site.
+  A function to control what files should have `<link rel="prefetch">` resource hints generated. Set to `true` or `false` to enable or disable for all files.
+
+  If you set it to `true`, all files that required by other pages will be prefetched. This is good for small sites, which will speed up the navigation, but it might not be a good idea if you have lots of pages in your site.
 
 ## Plugin Hooks
 
