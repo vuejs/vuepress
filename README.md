@@ -129,11 +129,11 @@ Theme authors can use their own way for users to configure styles (not be limite
 - `globalUIComponents` -> `clientAppRootComponentFiles`
 - `clientRootMixin` -> `clientAppSetupFiles`
 - `extendMarkdown` -> `extendsMarkdown`
+- `chainMarkdown` -> removed
 - `extendPageData` -> `extendsPageData`
 - `extendsCli` -> removed
 - `configureWebpack` -> removed
 - `chainWebpack` -> removed
-- `chainMarkdown` -> removed (undocumented in 1.0)
 - `beforeDevServer` -> removed
 - `afterDevServer` -> removed
 
