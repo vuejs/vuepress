@@ -20,7 +20,11 @@
   "author": "Evan You",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "bin": {
+    "vuepress": "bin/vuepress.js"
+  },
   "files": [
+    "bin",
     "lib"
   ],
   "scripts": {
