@@ -45,6 +45,10 @@ Options:
   -h, --help             Display this message
 ```
 
+:::tip
+通过命令行设置的配置项，会覆盖你配置文件中的同名配置项。
+:::
+
 ## build
 
 将你的 VuePress 站点构建成静态文件，以便你进行后续[部署](../guide/deployment.md)。
@@ -63,6 +67,10 @@ Options:
   -v, --version          Display version number 
   -h, --help             Display this message
 ```
+
+:::tip
+通过命令行设置的配置项，会覆盖你配置文件中的同名配置项。
+:::
 
 ## info
 

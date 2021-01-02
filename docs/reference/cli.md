@@ -45,6 +45,10 @@ Options:
   -h, --help             Display this message
 ```
 
+:::tip
+Options set by CLI will override those options with the same name in your config file.
+:::
+
 ## build
 
 Build your VuePress site to static files, which are ready for [deployment](../guide/deployment.md).
@@ -63,6 +67,10 @@ Options:
   -v, --version          Display version number 
   -h, --help             Display this message
 ```
+
+:::tip
+Options set by CLI will override those options with the same name in your config file.
+:::
 
 ## info
 
