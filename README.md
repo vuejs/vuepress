@@ -18,6 +18,10 @@ The codebase has been completely refactored with TypeScript. Some major changes:
 
 The documentation has not finished yet. For now you can check out the breaking changes list below as migration reference.
 
+## Documentation
+
+https://vuepress.github.io
+
 ## Contribution
 
 See [Contributing Guide](https://github.com/vuepress/vuepress-next/blob/main/docs/contributing.md).
