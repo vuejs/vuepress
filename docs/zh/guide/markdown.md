@@ -83,6 +83,8 @@ VuePress 会使用 [markdown-it](https://github.com/markdown-it/markdown-it) 来
 链接扩展是由我们的内置插件支持的。
 
 配置参考： [markdown.links](../reference/config.md#markdown-links)
+
+参考: [內置组件 > OutboundLink](../reference/components.md#outboundlink)
 :::
 
 ### Emoji :tada:

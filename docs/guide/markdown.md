@@ -82,6 +82,8 @@ Take our documentation source files as an example:
 This links extension is supported by our built-in plugin.
 
 Config reference: [markdown.links](../reference/config.md#markdown-links)
+
+Also see: [Built-in Components > OutboundLink](../reference/components.md#outboundlink)
 :::
 
 ### Emoji :tada:
