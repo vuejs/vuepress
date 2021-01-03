@@ -2,7 +2,8 @@ import { formatDateString, isString } from '@vuepress/shared'
 import { path } from '@vuepress/utils'
 import { PageFrontmatter } from '../types'
 
-const FILENAME_DATE_RE = /(\d{4}-\d{1,2}(-\d{1,2})?)-(.*)/
+const FILENAME_DATE_RE = /^(\d{4})-(\d{1,2})(?:-(\d{1,2}))?-(.*)$/
+const DIRNAME_DATE_RE = /(\d{4})\/(\d{1,2})(?:\/(\d{1,2}))?(\/|$)/
 const defaultDate = '1970-01-01'
 
 /**
@@ -42,16 +43,22 @@ export const resolvePageDate = ({
   if (filename) {
     const matches = filename.match(FILENAME_DATE_RE)
     if (matches) {
-      return formatDateString(matches[1], defaultDate)
+      return formatDateString(
+        `${matches[1]}-${matches[2]}-${matches[3] ?? '01'}`,
+        defaultDate
+      )
     }
   }
 
-  const dirname = path.basename(path.dirname(filePathRelative))
+  const dirname = path.dirname(filePathRelative)
 
   if (dirname) {
-    const matches = dirname.match(FILENAME_DATE_RE)
+    const matches = dirname.match(DIRNAME_DATE_RE)
     if (matches) {
-      return formatDateString(matches[1], defaultDate)
+      return formatDateString(
+        `${matches[1]}-${matches[2]}-${matches[3] ?? '01'}`,
+        defaultDate
+      )
     }
   }
 

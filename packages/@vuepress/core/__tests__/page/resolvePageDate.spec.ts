@@ -74,6 +74,16 @@ const testCases: [
     ],
     '2020-10-04',
   ],
+  // filename with date prefix which only has year and month
+  [
+    [
+      {
+        frontmatter: {},
+        filePathRelative: '2020-10-foo.md',
+      },
+    ],
+    '2020-10-01',
+  ],
   // filename without date prefix, dirname without date prefix
   [
     [
@@ -94,25 +104,35 @@ const testCases: [
     ],
     '2020-10-04',
   ],
-  // filename with date prefix, dirname with date prefix
+  // filename and dirname with date prefix
   [
     [
       {
         frontmatter: {},
-        filePathRelative: '2020-10-04-foo/2020-10-04-bar.md',
+        filePathRelative: '2020/10/05/2020-10-04-bar.md',
       },
     ],
     '2020-10-04',
   ],
-  // filename without date prefix, dirname with date prefix
+  // dirname with date prefix
   [
     [
       {
         frontmatter: {},
-        filePathRelative: '2020-10-04-foo/bar.md',
+        filePathRelative: '2020/10/05/bar.md',
       },
     ],
-    '2020-10-04',
+    '2020-10-05',
+  ],
+  // dirname with date prefix which only has year and month
+  [
+    [
+      {
+        frontmatter: {},
+        filePathRelative: '2020/10/bar.md',
+      },
+    ],
+    '2020-10-01',
   ],
   // for coverage purpose
   [
