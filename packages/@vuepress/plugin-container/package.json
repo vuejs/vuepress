@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-container",
-  "version": "2.0.0-alpha.13",
+  "version": "2.0.0-alpha.14",
   "description": "VuePress plugin - markdown container",
   "keywords": [
     "vuepress",
@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@types/markdown-it": "^12.0.0",
-    "@vuepress/core": "2.0.0-alpha.13",
+    "@vuepress/core": "2.0.0-alpha.14",
     "@vuepress/markdown": "2.0.0-alpha.13",
     "@vuepress/shared": "2.0.0-alpha.13",
     "@vuepress/utils": "2.0.0-alpha.13",

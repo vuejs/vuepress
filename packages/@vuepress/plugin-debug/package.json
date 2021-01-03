@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-debug",
-  "version": "2.0.0-alpha.13",
+  "version": "2.0.0-alpha.14",
   "description": "VuePress plugin - debug",
   "keywords": [
     "vuepress",
@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@vuepress/client": "2.0.0-alpha.13",
-    "@vuepress/core": "2.0.0-alpha.13",
+    "@vuepress/core": "2.0.0-alpha.14",
     "@vuepress/utils": "2.0.0-alpha.13",
     "vue": "^3.0.4",
     "vue-router": "4.0.1"

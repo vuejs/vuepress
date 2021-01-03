@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-git",
-  "version": "2.0.0-alpha.13",
+  "version": "2.0.0-alpha.14",
   "description": "VuePress plugin - git",
   "keywords": [
     "vuepress",
@@ -27,7 +27,7 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@vuepress/core": "2.0.0-alpha.13",
+    "@vuepress/core": "2.0.0-alpha.14",
     "execa": "^4.1.0"
   },
   "publishConfig": {
