@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "@vuepress/core": "2.0.0-alpha.13",
+    "@vuepress/shared": "2.0.0-alpha.13",
     "@vuepress/utils": "2.0.0-alpha.13",
     "cac": "^6.7.1",
     "chokidar": "^3.4.3",
