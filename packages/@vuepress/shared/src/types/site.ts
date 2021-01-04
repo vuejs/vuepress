@@ -25,7 +25,7 @@ export interface SiteData<T extends SiteThemeConfig = SiteThemeConfig>
  * If they are set in the `locales` of site data, they will be
  * used for specific locale
  */
-export interface SiteLocaleData extends LocaleData {
+export interface SiteLocaleData {
   // site language
   lang: string
 
