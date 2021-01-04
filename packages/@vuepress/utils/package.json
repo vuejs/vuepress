@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/utils",
-  "version": "2.0.0-alpha.13",
+  "version": "2.0.0-alpha.15",
   "description": "Utils package of VuePress",
   "keywords": [
     "vuepress",
@@ -29,7 +29,7 @@
     "@types/debug": "^4.1.5",
     "@types/fs-extra": "^9.0.1",
     "@types/hash-sum": "^1.0.0",
-    "@vuepress/shared": "2.0.0-alpha.13",
+    "@vuepress/shared": "2.0.0-alpha.15",
     "chalk": "^4.1.0",
     "debug": "^4.2.0",
     "fs-extra": "^9.0.1",

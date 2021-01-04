@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-pwa-popup",
-  "version": "2.0.0-alpha.14",
+  "version": "2.0.0-alpha.15",
   "description": "VuePress plugin - PWA popup",
   "keywords": [
     "vuepress",
@@ -30,11 +30,11 @@
     "copy": "cpx \"src/**/*.css\" lib"
   },
   "dependencies": {
-    "@vuepress/client": "2.0.0-alpha.13",
-    "@vuepress/core": "2.0.0-alpha.14",
-    "@vuepress/plugin-pwa": "2.0.0-alpha.14",
-    "@vuepress/shared": "2.0.0-alpha.13",
-    "@vuepress/utils": "2.0.0-alpha.13"
+    "@vuepress/client": "2.0.0-alpha.15",
+    "@vuepress/core": "2.0.0-alpha.15",
+    "@vuepress/plugin-pwa": "2.0.0-alpha.15",
+    "@vuepress/shared": "2.0.0-alpha.15",
+    "@vuepress/utils": "2.0.0-alpha.15"
   },
   "publishConfig": {
     "access": "public"
