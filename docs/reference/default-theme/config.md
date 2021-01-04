@@ -1,3 +1,3 @@
-# Config Reference
+# Config
 
 > TODO

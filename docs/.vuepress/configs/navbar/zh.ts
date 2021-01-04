@@ -11,43 +11,27 @@ export const zh: NavbarConfig = [
       {
         text: 'VuePress',
         children: [
-          {
-            text: '命令行接口',
-            link: '/zh/reference/cli.html',
-          },
-          {
-            text: '配置',
-            link: '/zh/reference/config.html',
-          },
-          {
-            text: 'Frontmatter',
-            link: '/zh/reference/frontmatter.html',
-          },
-          {
-            text: '内置组件',
-            link: '/zh/reference/components.html',
-          },
-          {
-            text: '插件 API',
-            link: '/zh/reference/plugin-api.html',
-          },
+          '/zh/reference/cli.md',
+          '/zh/reference/config.md',
+          '/zh/reference/frontmatter.md',
+          '/zh/reference/components.md',
+          '/zh/reference/plugin-api.md',
+          '/zh/reference/theme-api.md',
+        ],
+      },
+      {
+        text: '打包工具',
+        children: [
+          '/zh/reference/bundler/webpack.md',
+          '/zh/reference/bundler/vite.md',
         ],
       },
       {
         text: '默认主题',
         children: [
-          {
-            text: '配置',
-            link: '/zh/reference/default-theme/config.html',
-          },
-          {
-            text: 'Frontmatter',
-            link: '/zh/reference/default-theme/frontmatter.html',
-          },
-          {
-            text: '内置组件',
-            link: '/zh/reference/default-theme/components.html',
-          },
+          '/zh/reference/default-theme/config.md',
+          '/zh/reference/default-theme/frontmatter.md',
+          '/zh/reference/default-theme/components.md',
         ],
       },
     ],

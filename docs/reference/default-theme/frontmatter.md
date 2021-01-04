@@ -1,3 +1,3 @@
-# Frontmatter Reference
+# Frontmatter
 
 > TODO

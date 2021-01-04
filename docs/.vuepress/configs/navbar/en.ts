@@ -15,39 +15,26 @@ export const en: NavbarConfig = [
             text: 'CLI',
             link: '/reference/cli.html',
           },
-          {
-            text: 'Config',
-            link: '/reference/config.html',
-          },
-          {
-            text: 'Frontmatter',
-            link: '/reference/frontmatter.html',
-          },
-          {
-            text: 'Built-in Components',
-            link: '/reference/components.html',
-          },
-          {
-            text: 'Plugin API',
-            link: '/reference/plugin-api.html',
-          },
+          '/reference/config.md',
+          '/reference/frontmatter.md',
+          '/reference/components.md',
+          '/reference/plugin-api.md',
+          '/reference/theme-api.md',
+        ],
+      },
+      {
+        text: 'Bundler',
+        children: [
+          '/reference/bundler/webpack.md',
+          '/reference/bundler/vite.md',
         ],
       },
       {
         text: 'Default Theme',
         children: [
-          {
-            text: 'Config',
-            link: '/reference/default-theme/config.html',
-          },
-          {
-            text: 'Frontmatter',
-            link: '/reference/default-theme/frontmatter.html',
-          },
-          {
-            text: 'Built-in Components',
-            link: '/reference/default-theme/components.html',
-          },
+          '/reference/default-theme/config.md',
+          '/reference/default-theme/frontmatter.md',
+          '/reference/default-theme/components.md',
         ],
       },
     ],

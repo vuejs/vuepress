@@ -1,4 +1,4 @@
-# Plugin API Reference
+# Plugin API
 
 Plugins should be used before initialization. The basic options will be handled once the plugin is used:
 

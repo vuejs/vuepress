@@ -41,7 +41,15 @@ export const en: SidebarConfig = {
         '/reference/frontmatter.md',
         '/reference/components.md',
         '/reference/plugin-api.md',
+        '/reference/theme-api.md',
       ],
+    },
+  ],
+  '/reference/bundler/': [
+    {
+      isGroup: true,
+      text: 'Bundler Reference',
+      children: ['/reference/bundler/webpack.md', '/reference/bundler/vite.md'],
     },
   ],
   '/reference/default-theme/': [

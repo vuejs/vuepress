@@ -41,6 +41,17 @@ export const zh: SidebarConfig = {
         '/zh/reference/frontmatter.md',
         '/zh/reference/components.md',
         '/zh/reference/plugin-api.md',
+        '/zh/reference/theme-api.md',
+      ],
+    },
+  ],
+  '/zh/reference/bundler/': [
+    {
+      isGroup: true,
+      text: '打包工具参考',
+      children: [
+        '/zh/reference/bundler/webpack.md',
+        '/zh/reference/bundler/vite.md',
       ],
     },
   ],

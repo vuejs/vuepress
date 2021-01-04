@@ -1,4 +1,4 @@
-# Config Reference
+# Config
 
 ## Site Config
 
