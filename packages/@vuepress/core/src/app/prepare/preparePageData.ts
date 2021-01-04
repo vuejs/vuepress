@@ -10,7 +10,8 @@ export const preparePageData = async (app: App, page: Page): Promise<void> => {
 
   // plugin hook: extendsPageData
   const extendsPageData = await app.pluginApi.hooks.extendsPageData.process(
-    page
+    page,
+    app
   )
 
   // extends default page data

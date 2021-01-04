@@ -29,7 +29,7 @@ export const handlePluginDefine = ({
   ])
 
   // plugin hook: define
-  const defineResult = app.pluginApi.hooks.define.processSync()
+  const defineResult = app.pluginApi.hooks.define.processSync(app)
 
   // tap the arguments of DefinePlugin
   config.plugin('define').tap(([options]) => {

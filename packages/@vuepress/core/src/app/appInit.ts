@@ -32,7 +32,7 @@ export const appInit = async (app: App): Promise<void> => {
   app.pluginApi.registerHooks()
 
   // plugin hook: extendsMarkdown
-  await app.pluginApi.hooks.extendsMarkdown.process(app.markdown)
+  await app.pluginApi.hooks.extendsMarkdown.process(app.markdown, app)
 
   // create pages
   app.pages = await createAppPages(app)

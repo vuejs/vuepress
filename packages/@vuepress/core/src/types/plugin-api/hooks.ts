@@ -31,16 +31,16 @@ export type ClientFilesHook = Hook<
 
 // hook that returns an object
 export type ReturnObjectHook = Hook<
-  Record<string, any> | (() => Record<string, any>),
-  () => Record<string, any>
+  Record<string, any> | ((app: App) => Record<string, any>),
+  (app: App) => Record<string, any>
 >
 
 // markdown hook
-export type ExtendsMarkdownHook = Hook<(md: Markdown) => void>
+export type ExtendsMarkdownHook = Hook<(md: Markdown, app: App) => void>
 
 // page hook
 export type ExtendsPageDataHook = Hook<
-  (page: Page) => PromiseOrNot<Record<string, any>>
+  (page: Page, app: App) => PromiseOrNot<Record<string, any>>
 >
 
 /**

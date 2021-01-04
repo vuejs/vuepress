@@ -28,7 +28,7 @@ export const handleResolve = ({
   ])
 
   // plugin hook: alias
-  const aliasResult = app.pluginApi.hooks.alias.processSync()
+  const aliasResult = app.pluginApi.hooks.alias.processSync(app)
 
   // set aliases
   aliasResult.forEach((aliasObject) =>

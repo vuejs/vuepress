@@ -6,4 +6,5 @@ import type { ReturnObjectHook } from '../types'
  */
 export const normalizeReturnObjectHook = (
   hook: ReturnObjectHook['exposed']
-): ReturnObjectHook['normalized'] => () => (isFunction(hook) ? hook() : hook)
+): ReturnObjectHook['normalized'] => (app) =>
+  isFunction(hook) ? hook(app) : hook
