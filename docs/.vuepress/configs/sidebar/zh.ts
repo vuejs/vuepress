@@ -13,9 +13,21 @@ export const zh: SidebarConfig = {
         '/zh/guide/markdown.md',
         '/zh/guide/assets.md',
         '/zh/guide/i18n.md',
+        '/zh/guide/deployment.md',
         '/zh/guide/theme.md',
         '/zh/guide/plugin.md',
-        '/zh/guide/deployment.md',
+        '/zh/guide/bundler.md',
+      ],
+    },
+  ],
+  '/zh/guide/advanced/': [
+    {
+      isGroup: true,
+      text: '深入',
+      children: [
+        '/zh/guide/advanced/markdown.md',
+        '/zh/guide/advanced/theme.md',
+        '/zh/guide/advanced/plugin.md',
       ],
     },
   ],
@@ -41,13 +53,6 @@ export const zh: SidebarConfig = {
         '/zh/reference/default-theme/frontmatter.md',
         '/zh/reference/default-theme/components.md',
       ],
-    },
-  ],
-  '/zh/advanced/': [
-    {
-      isGroup: true,
-      text: '深入',
-      children: ['/zh/advanced/markdown.md'],
     },
   ],
 }

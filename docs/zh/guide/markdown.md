@@ -8,7 +8,7 @@ VuePress 会使用 [markdown-it](https://github.com/markdown-it/markdown-it) 来
 
 本章节将会介绍 VuePress 内置支持的 Markdown 语法扩展。
 
-你也可以通过 [markdown](../reference/config.md#markdown) 选项和 [extendsMarkdown](../reference/config.md#extendsmarkdown) 选项来配置这些内置扩展、加载更多 markdown-it 插件、实现你自己的扩展等。
+你也可以通过 [markdown](../reference/config.md#markdown) 和 [extendsMarkdown](../reference/plugin-api.md#extendsmarkdown) 来配置这些内置扩展、加载更多 markdown-it 插件、实现你自己的扩展等。
 
 ### 内置
 

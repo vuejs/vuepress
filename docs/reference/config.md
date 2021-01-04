@@ -146,7 +146,7 @@
   Theme name shorthand is acceptable.
 
 - Also see:
-  - [Guide > Using Theme](../guide/theme.md)
+  - [Guide > Theme](../guide/theme.md)
 
 ### themeConfig
 
@@ -519,8 +519,8 @@ You should not configure it unless you understand what it is for.
 
   If you set it to `true`, all files that required by other pages will be prefetched. This is good for small sites, which will speed up the navigation, but it might not be a good idea if you have lots of pages in your site.
 
-## Plugin Hooks
+## Plugin API
 
-User config file also works as a VuePress plugin, so all hooks of Plugin API are available.
+User config file also works as a VuePress plugin, so all of the Plugin APIs are available except the `name` and `multiple` options.
 
-Please check out [Plugin API Reference](./plugin-api.md) for a full list of hooks.
+Please check out [Plugin API Reference](./plugin-api.md) for a full list of Plugin APIs.

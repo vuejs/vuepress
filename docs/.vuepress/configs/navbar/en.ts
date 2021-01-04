@@ -57,15 +57,16 @@ export const en: NavbarConfig = [
     children: [
       {
         text: 'Advanced',
-        children: ['/advanced/markdown.md'],
-      },
-      {
-        text: 'Developer',
-        children: ['/contributing.md'],
+        children: [
+          '/guide/advanced/markdown.md',
+          '/guide/advanced/theme.md',
+          '/guide/advanced/plugin.md',
+        ],
       },
       {
         text: 'Resources',
         children: [
+          '/contributing.md',
           {
             text: 'Changelog',
             link:

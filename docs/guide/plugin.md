@@ -1,3 +1,3 @@
-# Using Plugin
+# Plugin
 
 > TODO

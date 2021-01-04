@@ -1,3 +1,3 @@
-# Using Theme
+# Theme
 
 > TODO

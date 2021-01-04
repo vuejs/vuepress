@@ -57,15 +57,16 @@ export const zh: NavbarConfig = [
     children: [
       {
         text: '深入',
-        children: ['/zh/advanced/markdown.md'],
-      },
-      {
-        text: '开发者',
-        children: ['/zh/contributing.md'],
+        children: [
+          '/zh/guide/advanced/markdown.md',
+          '/zh/guide/advanced/theme.md',
+          '/zh/guide/advanced/plugin.md',
+        ],
       },
       {
         text: '其他资源',
         children: [
+          '/zh/contributing.md',
           {
             text: '更新日志',
             link:
