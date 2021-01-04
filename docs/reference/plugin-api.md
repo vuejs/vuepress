@@ -19,13 +19,10 @@ The following hooks will be processed when preparing files:
 - [clientAppSetupFiles](#clientappsetupfiles)
 - [onPrepared](#onprepared)
 
-The following hooks will be processed when creating bundler:
+The following hooks will be processed in dev / build:
 
 - [alias](#alias)
 - [define](#define)
-
-The following hooks will be processed when building static files:
-
 - [onGenerated](#ongenerated)
 
 ## Basic Options

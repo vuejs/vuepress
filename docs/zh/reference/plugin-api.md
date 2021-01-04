@@ -19,13 +19,10 @@
 - [clientAppSetupFiles](#clientappsetupfiles)
 - [onPrepared](#onprepared)
 
-下列 Hooks 会在创建 Bundler 时处理：
+下列 Hooks 会在 dev / build 时处理：
 
 - [alias](#alias)
 - [define](#define)
-
-下列 Hooks 会在构建静态文件时处理：
-
 - [onGenerated](#ongenerated)
 
 ## 基础配置项
