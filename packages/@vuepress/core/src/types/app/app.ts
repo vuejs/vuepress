@@ -1,4 +1,5 @@
 import type { Markdown } from '@vuepress/markdown'
+import type { BundlerDev, BundlerBuild } from '../bundler'
 import type { Page } from '../page'
 import type { Plugin, PluginOptions, PluginConfig } from '../plugin'
 import type { PluginApi } from '../plugin-api'
@@ -24,6 +25,8 @@ export interface App {
   useByConfig: <T extends PluginOptions>(pluginConfig: PluginConfig<T>) => void
   init: () => Promise<void>
   prepare: () => Promise<void>
+  dev: () => ReturnType<BundlerDev>
+  build: () => ReturnType<BundlerBuild>
 
   // initialized
   writeTemp: AppWriteTemp

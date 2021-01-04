@@ -11,11 +11,6 @@ import { resolvePort } from './resolvePort'
 export const createDev = (options: WebpackBundlerOptions): BundlerDev => async (
   app: App
 ) => {
-  // initialize and prepare
-  logger.info('Initializing VuePress and preparing data...')
-  await app.init()
-  await app.prepare()
-
   // resolve host and port
   const host = app.options.host
   const port = await resolvePort(app.options.port)

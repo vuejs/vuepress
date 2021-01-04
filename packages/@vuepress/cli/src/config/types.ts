@@ -13,12 +13,8 @@ import type {
 export type UserConfig<
   T extends ThemeConfig = ThemeConfig,
   U extends BundlerConfig = BundlerConfig
-> = Partial<AppOptions<T>> &
+> = Partial<AppOptions<T, U>> &
   // user config can be used as a plugin
-  Omit<PluginObject, 'name' | 'multiple'> & {
-    // bundler config
-    bundler?: string
-    bundlerConfig?: Partial<U>
-  }
+  Omit<PluginObject, 'name' | 'multiple'>
 
 export type UserConfigLoader = (userConfigPath: string) => Promise<UserConfig>

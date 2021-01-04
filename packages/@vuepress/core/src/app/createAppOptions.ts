@@ -17,6 +17,10 @@ export const createAppOptions = ({
   theme = '@vuepress/default',
   themeConfig = {},
 
+  // bundler config
+  bundler = '@vuepress/webpack',
+  bundlerConfig = {},
+
   // directory config
   source,
   dest = path.resolve(source, '.vuepress/dist'),
@@ -51,6 +55,8 @@ export const createAppOptions = ({
   locales,
   theme,
   themeConfig,
+  bundler,
+  bundlerConfig,
   source,
   dest,
   temp,

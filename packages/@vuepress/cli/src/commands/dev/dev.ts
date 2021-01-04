@@ -3,7 +3,6 @@ import { createApp } from '@vuepress/core'
 import { chalk, debug, fs, logger } from '@vuepress/utils'
 import {
   loadUserConfig,
-  resolveBundler,
   resolveUserConfigConventionalPath,
   resolveUserConfigPath,
   transformUserConfigToPlugin,
@@ -38,12 +37,9 @@ export const dev = async (
 
   const userConfig = await loadUserConfig(userConfigPath)
 
-  // resolve bundler from user config
-  const bundler = resolveBundler(userConfig)
-
   // create vuepress app
-  // use cli options to override config file
   const app = createApp({
+    // use cli options to override config file
     ...userConfig,
     ...appConfig,
   })
@@ -57,8 +53,13 @@ export const dev = async (
     await fs.remove(app.dir.cache())
   }
 
+  // initialize and prepare
+  logger.info('Initializing VuePress and preparing data...')
+  await app.init()
+  await app.prepare()
+
   // start dev server
-  const close = await bundler.dev(app)
+  const close = await app.dev()
 
   // do not watch files if `watch` is set to `false`
   if (commandOptions.watch === false) {

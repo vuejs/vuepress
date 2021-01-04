@@ -1,12 +1,15 @@
 import type { MarkdownOptions } from '@vuepress/markdown'
 import type { SiteLocaleConfig, SiteLocaleData } from '@vuepress/shared'
+import type { BundlerConfig } from '../bundler'
 import type { ThemeConfig } from '../theme'
 
 /**
  * Vuepress app options
  */
-export interface AppOptions<T extends ThemeConfig = ThemeConfig>
-  extends SiteLocaleData {
+export interface AppOptions<
+  T extends ThemeConfig = ThemeConfig,
+  U extends BundlerConfig = BundlerConfig
+> extends SiteLocaleData {
   // site options
   base: string
   locales: SiteLocaleConfig
@@ -14,6 +17,10 @@ export interface AppOptions<T extends ThemeConfig = ThemeConfig>
   // theme options
   theme: string
   themeConfig: Partial<T>
+
+  // bundler options
+  bundler: string
+  bundlerConfig: Partial<U>
 
   // directory options
   source: string

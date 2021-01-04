@@ -2,7 +2,6 @@ import { createApp } from '@vuepress/core'
 import { debug, fs, logger } from '@vuepress/utils'
 import {
   loadUserConfig,
-  resolveBundler,
   resolveUserConfigConventionalPath,
   resolveUserConfigPath,
   transformUserConfigToPlugin,
@@ -34,11 +33,9 @@ export const build = async (
 
   const userConfig = await loadUserConfig(userConfigPath)
 
-  // resolve bundler from user config
-  const bundler = resolveBundler(userConfig)
-
   // create vuepress app
   const app = createApp({
+    // use cli options to override config file
     ...userConfig,
     ...appConfig,
   })
@@ -52,6 +49,11 @@ export const build = async (
     await fs.remove(app.dir.cache())
   }
 
+  // initialize and prepare
+  logger.info('Initializing VuePress and preparing data...')
+  await app.init()
+  await app.prepare()
+
   // build
-  await bundler.build(app)
+  await app.build()
 }

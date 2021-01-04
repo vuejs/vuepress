@@ -9,6 +9,7 @@ import { createAppDir } from './createAppDir'
 import { createAppEnv } from './createAppEnv'
 import { createAppOptions } from './createAppOptions'
 import { createAppVersion } from './createAppVersion'
+import { resolveBundler } from './resolveBundler'
 
 /**
  * Create vuepress app
@@ -33,6 +34,8 @@ export const createApp = (config: AppConfig): App => {
     useByConfig: (...args) => appUseByConfig(app, ...args),
     init: () => appInit(app),
     prepare: () => appPrepare(app),
+    dev: () => resolveBundler(options).dev(app),
+    build: () => resolveBundler(options).build(app),
   } as App
 
   return app

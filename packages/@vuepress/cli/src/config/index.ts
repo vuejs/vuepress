@@ -1,6 +1,5 @@
 export * from './loadUserConfig'
 export * from './loadUserConfigEs'
-export * from './resolveBundler'
 export * from './resolveUserConfigConventionalPath'
 export * from './resolveUserConfigPath'
 export * from './transformUserConfigToPlugin'

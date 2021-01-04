@@ -8,7 +8,6 @@
   "include": ["./src"],
   "references": [
     { "path": "../core/tsconfig.build.json" },
-    { "path": "../shared/tsconfig.build.json" },
     { "path": "../utils/tsconfig.build.json" }
   ]
 }

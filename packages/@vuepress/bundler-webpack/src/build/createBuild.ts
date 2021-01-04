@@ -16,11 +16,6 @@ import type { ClientManifest } from './ssr'
 export const createBuild = (
   options: WebpackBundlerOptions
 ): Bundler['build'] => async (app: App) => {
-  // initialize and prepare
-  logger.info('Initializing VuePress and preparing data...')
-  await app.init()
-  await app.prepare()
-
   // empty dest directory
   await fs.emptyDir(app.dir.dest())
 
