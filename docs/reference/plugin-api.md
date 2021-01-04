@@ -215,10 +215,8 @@ The following hooks will be processed when building static files:
 - Example:
 
   ```js
-  const { path } = require('@vuepress/utils')
-
   module.exports = {
-    clientAppEnhanceFiles: path.resolve(__dirname, './clientAppEnhance.js'),
+    clientAppEnhanceFiles: '/path/to/clientAppEnhance.js',
   }
   ```
 
@@ -235,10 +233,8 @@ The following hooks will be processed when building static files:
 - Example:
 
   ```js
-  const { path } = require('@vuepress/utils')
-
   module.exports = {
-    clientAppRootComponentFiles: path.resolve(__dirname, './RootComponent.vue'),
+    clientAppRootComponentFiles: '/path/to/RootComponent.vue',
   }
   ```
 
@@ -255,10 +251,8 @@ The following hooks will be processed when building static files:
 - Example:
 
   ```js
-  const { path } = require('@vuepress/utils')
-
   module.exports = {
-    clientAppSetupFiles: path.resolve(__dirname, './clientAppSetup.js'),
+    clientAppSetupFiles: '/path/to/clientAppSetup.js',
   }
   ```
 
