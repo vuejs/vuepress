@@ -143,11 +143,13 @@ Theme authors can use their own way for users to configure styles (not be limite
 
 #### Theme API
 
+- `.vuepress/theme` -> won't be used as theme implicitly if the path exists, and set the path explicitly via `theme` option.
+
 - `extend` -> `extends`
 
-You can still inherit a parent theme with `extends: 'parent-theme'`, which will extends the plugins, layouts, etc.
+  You can still inherit a parent theme with `extends: 'parent-theme'`, which will extends the plugins, layouts, etc.
 
-However, the `@theme` and `@parent-theme` aliases are not available now.
+  However, the `@theme` and `@parent-theme` aliases are not available now.
 
 ### CLI
 
