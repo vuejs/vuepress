@@ -110,6 +110,8 @@ export default defineComponent({
       const isTriggerByTab = e.detail === 0
       if (isTriggerByTab) {
         open.value = !open.value
+      } else {
+        open.value = false
       }
     }
 
