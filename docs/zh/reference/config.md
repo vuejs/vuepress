@@ -136,7 +136,7 @@
 
 - 类型： `string`
 
-- 默认值： `'@vuepress/theme-default'`
+- 默认值： `'@vuepress/default'`
 
 - 详情：
 
@@ -159,6 +159,33 @@
 
 - 参考：
   - [默认主题 > 配置](./default-theme/config.md)
+
+## 打包工具配置
+
+### bundler
+
+- 类型： `string`
+
+- 默认值： `'@vuepress/webpack'`
+
+- 详情：
+
+  你想要使用的打包工具的名称。
+
+  可以使用打包工具名称的简称。
+
+- 参考：
+  - [指南 > 打包工具](../guide/bundler.md)
+
+### bundlerConfig
+
+- 类型： `BundlerConfig`
+
+- 默认值： `{}`
+
+- 详情：
+
+  为当前使用的打包工具提供的配置项。具体的配置项取决于你使用的打包工具。
 
 ## 目录配置
 

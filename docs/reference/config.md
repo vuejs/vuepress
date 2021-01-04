@@ -137,7 +137,7 @@
 
 - Type: `string`
 
-- Default: `'@vuepress/theme-default'`
+- Default: `'@vuepress/default'`
 
 - Details:
 
@@ -160,6 +160,33 @@
 
 - Also see:
   - [Default Theme > Config](./default-theme/config.md)
+
+## Bundler Config
+
+### bundler
+
+- Type: `string`
+
+- Default: `'@vuepress/webpack'`
+
+- Details:
+
+  Name of bundler your want to use.
+
+  Bundler name shorthand is acceptable.
+
+- Also see:
+  - [Guide > Bundler](../guide/bundler.md)
+
+### bundlerConfig
+
+- Type: `BundlerConfig`
+
+- Default: `{}`
+
+- Details:
+
+  Provide config options to the used bundler. The options will vary depending on the bundler you are using.
 
 ## Directory Config
 
