@@ -73,23 +73,28 @@ The following hooks will be processed when building static files:
 
   Plugins to use.
 
-  A plugin can use other plugins via specifying this option.
+  A plugin can use other plugins via this option.
 
-  Plugin name shorthand is acceptable.
+  This option accepts an array, each item of which is a two-element tuple:
+
+  - The first element is the plugin name or the plugin itself. It accepts plugin name, plugin name shorthand, absolute path to plugin, or the plugin object.
+  - The second element is the plugin options. It accepts boolean or object. Set it to `false` to disable the plugin. Set it to `true` to enable the plugin without any options. Use object to enable the plugin with options.
+
+  For simplicity, you can use the first element of the tuple that described above as the array item, which equals enabling the plugin without any options.
 
 - Example:
 
   ```js
   module.exports = {
     plugins: [
-      'foo',
+      // two-element tuple
+      ['vuepress-plugin-foo', false],
       ['bar', true],
-      [
-        'foobar',
-        {
-          // plugin options
-        },
-      ],
+      ['/path/to/local/plugin', { /* options */ }],
+      [require('vuepress-plugin-baz'), true],
+
+      // only use the first element
+      'foobar', // equals to ['foobar', true]
     ],
   }
   ```

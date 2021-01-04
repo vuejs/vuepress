@@ -85,7 +85,7 @@
   
   You can specify each tag in the form of `[tagName, { attrName: attrValue }, innerHTML?]`.
 
-  This can be specified in different locales. 
+  This can be specified in different locales.
 
 - Example:
 
@@ -141,9 +141,19 @@
 
 - Details:
 
-  Name of theme your want to use.
+  Name or absolute path of theme your want to use.
 
-  Theme name shorthand is acceptable.
+  This option accepts theme name, theme name shorthand, or absolute path to theme.
+
+- Example:
+
+  ```js
+  module.exports = {
+    theme: 'vuepress-theme-foo',
+    theme: 'bar',
+    theme: '/path/to/local/theme',
+  }
+  ```
 
 - Also see:
   - [Guide > Theme](../guide/theme.md)

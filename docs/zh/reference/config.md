@@ -140,9 +140,19 @@
 
 - 详情：
 
-  你想要使用的主题的名称。
+  你想要使用的主题的名称或绝对路径。
 
-  可以使用主题名称的简称。
+  这个选项可以接收主题名称、主题简称或主题的绝对路径。
+
+- 示例：
+
+  ```js
+  module.exports = {
+    theme: 'vuepress-theme-foo',
+    theme: 'bar',
+    theme: '/path/to/local/theme',
+  }
+  ```
 
 - 参考：
   - [指南 > 主题](../guide/theme.md)
