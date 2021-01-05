@@ -417,7 +417,7 @@
   设置为 `false` 可以禁用该插件。
 
 - 参考：
-  - [深入 > Markdown 与 Vue SFC](../advanced/markdown.md)
+  - [深入 > Markdown 与 Vue SFC](../guide/advanced/markdown.md)
 
 #### markdown.links
 
