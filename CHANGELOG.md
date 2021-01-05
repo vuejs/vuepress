@@ -1,3 +1,20 @@
+# [1.8.0](https://github.com/vuejs/vuepress/compare/v1.7.1...v1.8.0) (2021-01-05)
+
+
+### Bug Fixes
+
+* **$plugin-google-analytics:** report site base ([#2687](https://github.com/vuejs/vuepress/issues/2687)) (close [#2169](https://github.com/vuejs/vuepress/issues/2169)) ([6bbcc69](https://github.com/vuejs/vuepress/commit/6bbcc69))
+* **$shared-utils:** improve title inference and header extraction for markdown links syntax ([d264e50](https://github.com/vuejs/vuepress/commit/d264e50))
+* **$theme-default:** display header-anchor links when using keyboard navigation ([#2699](https://github.com/vuejs/vuepress/issues/2699)) ([81cce39](https://github.com/vuejs/vuepress/commit/81cce39))
+* Only empty the `.temp` directory at most once per run (fix [#2254](https://github.com/vuejs/vuepress/issues/2254)) ([#2612](https://github.com/vuejs/vuepress/issues/2612)) ([970b434](https://github.com/vuejs/vuepress/commit/970b434))
+
+
+### Features
+
+* **$markdown:** make page suffix configurable (close [#2452](https://github.com/vuejs/vuepress/issues/2452)) ([#2674](https://github.com/vuejs/vuepress/issues/2674)) ([db16389](https://github.com/vuejs/vuepress/commit/db16389))
+
+
+
 ## [1.7.1](https://github.com/vuejs/vuepress/compare/v1.7.0...v1.7.1) (2020-10-15)
 
 
