@@ -34,7 +34,7 @@
     "@vuepress/plugin-medium-zoom": "1.8.0",
     "@vuepress/plugin-pwa": "1.8.0",
     "@vuepress/theme-vue": "1.8.0",
-    "remark-cli": "^7.0.0",
+    "remark-cli": "^9.0.0",
     "remark-lint": "^6.0.5",
     "remark-preset-lint-consistent": "^2.0.3",
     "remark-preset-lint-recommended": "^3.0.3",
