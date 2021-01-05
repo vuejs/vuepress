@@ -44,7 +44,7 @@
     "textlint-rule-common-misspellings": "^1.0.1",
     "textlint-rule-diacritics": "^1.0.0",
     "textlint-rule-en-capitalization": "^2.0.2",
-    "textlint-rule-stop-words": "^1.0.17",
+    "textlint-rule-stop-words": "^2.0.8",
     "textlint-rule-terminology": "^2.1.4",
     "textlint-rule-write-good": "^1.6.2",
     "vue-toasted": "^1.1.25",
