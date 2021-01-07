@@ -34,6 +34,9 @@ export const info = async (): Promise<void> => {
         '@vuepress/theme-vue',
         '@vuepress/utils',
         'vuepress',
+        'vue',
+        'vue-router',
+        'vue-loader',
       ],
     },
     {
