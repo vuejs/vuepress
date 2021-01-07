@@ -33,7 +33,7 @@
     "@vuepress/utils": "2.0.0-alpha.15",
     "lodash.debounce": "^4.0.8",
     "vue": "^3.0.4",
-    "vue-router": "4.0.1"
+    "vue-router": "^4.0.2"
   },
   "devDependencies": {
     "@types/lodash.debounce": "^4.0.6"
