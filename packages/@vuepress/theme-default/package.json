@@ -29,7 +29,7 @@
     "stylus": "^0.54.8",
     "stylus-loader": "^3.0.2",
     "vuepress-plugin-container": "^2.0.2",
-    "vuepress-plugin-smooth-scroll": "^0.0.3"
+    "vuepress-plugin-smooth-scroll": "^0.0.10"
   },
   "publishConfig": {
     "access": "public"
