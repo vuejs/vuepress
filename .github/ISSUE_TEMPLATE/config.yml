@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Bug Report
+    url: https://github.com/vuepress/vuepress-next/issues/new?assignees=&labels=&template=bug_report.md&title=%5BBug+report%5D
+    about: Create a report to help us improve.
+  - name: Feature Request
+    url: https://github.com/vuepress/vuepress-next/issues/new?assignees=&labels=&template=feature_request.md&title=%5BFeature+request%5D
+    about: Suggest an idea for this project.
+  - name: Question & Discussion
+    url: https://github.com/vuepress/vuepress-next/discussions
+    about: Please ask and answer questions here.
