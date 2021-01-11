@@ -3,6 +3,7 @@
   "version": "2.0.0-alpha.15",
   "description": "VuePress plugin - back to top",
   "keywords": [
+    "vuepress-plugin",
     "vuepress",
     "plugin",
     "top"

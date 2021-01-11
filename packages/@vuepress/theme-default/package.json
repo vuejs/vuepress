@@ -3,6 +3,7 @@
   "version": "2.0.0-alpha.15",
   "description": "Default theme of VuePress",
   "keywords": [
+    "vuepress-theme",
     "vuepress",
     "theme",
     "default"
