@@ -25,13 +25,12 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
     const link = token.attrGet('src')
 
     // if the link is relative path, and the `env.filePathRelative` exists
-    if (link && link.startsWith('./') && env.filePathRelative) {
+    if (link && /^\.{1,2}\//.test(link) && env.filePathRelative) {
       // add `@source` alias to the link
-      const resolvedLink = path.join(
-        relativePathPrefix,
+      const resolvedLink = `${relativePathPrefix}/${path.join(
         path.dirname(env.filePathRelative),
         link
-      )
+      )}`
 
       // replace the original link with absolute path
       token.attrSet('src', resolvedLink)
