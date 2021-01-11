@@ -48,7 +48,7 @@ export const resolvePagePermalink = ({
       .replace(/:year/, year)
       .replace(/:month/, month)
       .replace(/:day/, day)
-      .replace(/:slug/, encodeURI(slug))
+      .replace(/:slug/, slug)
       .replace(/:raw/, pathInferred?.replace(/^\//, '') ?? '')
   )
 

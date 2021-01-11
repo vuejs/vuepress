@@ -17,7 +17,7 @@ export const preparePageRoutes = async (
 ): Promise<void> => {
   const routes: string[] = []
 
-  // page route
+  // add page route
   routes.push(`
   {
     name: ${JSON.stringify(key)},
@@ -26,46 +26,42 @@ export const preparePageRoutes = async (
     meta: { title: ${JSON.stringify(title)} },
   },`)
 
+  // paths that should redirect to this page
+  const redirects = new Set<string>()
+
   // redirect from decoded path
-  const decodedPath = decodeURIComponent(path)
-  if (decodedPath !== path) {
-    routes.push(`
-  {
-    path: ${JSON.stringify(decodedPath)},
-    redirect: ${JSON.stringify(path)},
-  },`)
-  }
+  redirects.add(decodeURI(path))
 
   // redirect from index path
   if (/\/$/.test(path)) {
     const indexPath = path + 'index.html'
-    routes.push(`
-  {
-    path: ${JSON.stringify(indexPath)},
-    redirect: ${JSON.stringify(path)},
-  },`)
+    redirects.add(indexPath)
   }
 
   // redirect from inferred path
-  if (pathInferred !== null && pathInferred !== path) {
-    routes.push(`
-  {
-    path: ${JSON.stringify(pathInferred)},
-    redirect: ${JSON.stringify(path)},
-  },`)
+  if (pathInferred !== null) {
+    redirects.add(pathInferred)
+    redirects.add(encodeURI(pathInferred))
   }
 
   // redirect from filename path
-  const filenamePath = filePathRelative
-    ? ensureLeadingSlash(filePathRelative)
-    : null
-  if (filenamePath !== null && filenamePath !== path) {
+  if (filePathRelative !== null) {
+    const filenamePath = ensureLeadingSlash(filePathRelative)
+    redirects.add(filenamePath)
+    redirects.add(encodeURI(filenamePath))
+  }
+
+  // avoid redirect from the page path itself
+  redirects.delete(path)
+
+  // add redirect routes
+  redirects.forEach((redirect) => {
     routes.push(`
   {
-    path: ${JSON.stringify(filenamePath)},
+    path: ${JSON.stringify(redirect)},
     redirect: ${JSON.stringify(path)},
   },`)
-  }
+  })
 
   const content = `\
 import { Vuepress } from '@vuepress/client/lib/components/Vuepress'

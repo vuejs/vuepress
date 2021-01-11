@@ -81,15 +81,13 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
       // to
       // <RouterLink to="toProp">
 
-      // markdown-it encodes the uri
-      const decodedPath = decodeURI(internalLinkMatch[1])
-      const decodedHash = internalLinkMatch[2]
-        ? decodeURI(internalLinkMatch[2])
-        : ''
+      // notice that the path and hash are encoded by markdown-it
+      const rawPath = internalLinkMatch[1]
+      const rawHash = internalLinkMatch[2] || ''
 
       // resolve relative and absolute path
       const { relativePath, absolutePath } = resolvePaths(
-        decodedPath,
+        rawPath,
         base,
         filePathRelative
       )
@@ -98,16 +96,16 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
       //
       // './foo/bar.md' => './foo/bar.html'
       // './foo/index.md' => './foo/'
-      const indexMatch = absolutePath.match(/(^.*\/|^)(index|readme).md$/i)
-      let normalizedPath: string
+      const normalizedPath = absolutePath
+        .replace(/(^|\/)(README|index).md$/i, '$1')
+        .replace(/\.md$/, '.html')
 
-      if (indexMatch) {
-        // trim index page link
-        normalizedPath = indexMatch[1]
-      } else {
-        // convert non-index page link
-        normalizedPath = absolutePath.replace(/\.md$/, '.html')
-      }
+      // convert starting tag of internal link to `<RouterLink>`
+      token.tag = 'RouterLink'
+
+      // replace the original `href` attr with `to` attr
+      hrefAttr[0] = 'to'
+      hrefAttr[1] = `${normalizedPath}${rawHash}`
 
       // extract internal links for file / page existence check
       const links = env.links || (env.links = [])
@@ -116,13 +114,6 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
         relative: relativePath,
         absolute: absolutePath,
       })
-
-      // convert starting tag of internal link to `<RouterLink>`
-      token.tag = 'RouterLink'
-
-      // replace the original `href` attr with `to` attr
-      hrefAttr[0] = 'to'
-      hrefAttr[1] = `${normalizedPath}${decodedHash}`
     }
   }
 
