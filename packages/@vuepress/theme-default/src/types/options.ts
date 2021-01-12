@@ -19,11 +19,6 @@ export interface DefaultThemeOptions
     backToTop?: boolean
 
     /**
-     * Enable @vuepress/plugin-debug or not
-     */
-    debug?: boolean
-
-    /**
      * Enable @vuepress/plugin-container or not
      */
     container?: {
@@ -32,6 +27,11 @@ export interface DefaultThemeOptions
       danger?: boolean
       details?: boolean
     }
+
+    /**
+     * Enable @vuepress/plugin-debug or not
+     */
+    debug?: boolean
 
     /**
      * Enable @vuepress/plugin-git or not
