@@ -43,11 +43,24 @@
       color: inherit;
       line-height: 1.7rem;
 
-      h4 {
+      .dropdown-subtitle {
         margin: 0.45rem 0 0;
         border-top: 1px solid #eee;
-        padding: 1rem 1.5rem 0.45rem 1.25rem;
+        padding: 1rem 0 0.45rem 0;
         font-size: 0.9rem;
+
+        & > span {
+          padding: 0 1.5rem 0 1.25rem;
+        }
+
+        & > a {
+          font-weight: inherit;
+          &.router-link-active {
+            &::after {
+              display: none;
+            }
+          }
+        }
       }
 
       .dropdown-subitem-wrapper {
@@ -89,7 +102,7 @@
         }
       }
 
-      &:first-child h4 {
+      &:first-child .dropdown-subtitle {
         margin-top: 0;
         padding-top: 0;
         border-top: 0;
@@ -117,13 +130,14 @@
       overflow: hidden;
 
       .dropdown-item {
-        h4 {
+        .dropdown-subtitle {
           border-top: 0;
           margin-top: 0;
           padding-top: 0;
+          padding-bottom: 0;
         }
 
-        h4, & > a {
+        .dropdown-subtitle, & > a {
           font-size: 15px;
           line-height: 2rem;
         }

@@ -29,7 +29,19 @@
         class="dropdown-item"
       >
         <template v-if="child.children">
-          <h4>{{ child.text }}</h4>
+          <h4 class="dropdown-subtitle">
+            <NavLink
+              v-if="child.link"
+              :item="child"
+              @focusout="
+                isLastItemOfArray(child, item.children) &&
+                  child.children.length === 0 &&
+                  (open = false)
+              "
+            />
+
+            <span v-else>{{ child.text }}</span>
+          </h4>
 
           <ul class="dropdown-subitem-wrapper">
             <li
