@@ -1,5 +1,16 @@
 # Config
 
+Reference of VuePress config, which can be set via config file. The conventional config files are (in order of precedence):
+
+- In current working directory `cwd`:
+  - `vuepress.config.ts`
+  - `vuepress.config.js`
+- In source directory `sourceDir`:
+  - `.vuepress/config.ts`
+  - `.vuepress/config.js`
+
+You can also specify the config file via `--config` option of [CLI](./cli.md).
+
 ## Site Config
 
 ### base
