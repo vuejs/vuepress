@@ -12,6 +12,7 @@ export interface DevCommandOptions {
 
   // cli only
   config?: string
+  cleanTemp?: boolean
   cleanCache?: boolean
   watch?: boolean
 }

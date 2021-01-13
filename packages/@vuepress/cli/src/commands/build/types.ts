@@ -7,5 +7,6 @@ export interface BuildCommandOptions {
 
   // cli only
   config?: string
+  cleanTemp?: boolean
   cleanCache?: boolean
 }

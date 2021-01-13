@@ -37,7 +37,8 @@ Options:
   -t, --temp <temp>      Set the directory of the temporary files 
   --host <host>          Use specified host (default: 0.0.0.0) 
   --cache <cache>        Set the directory of the cache files 
-  --clean-cache          Clean the cache before dev 
+  --clean-temp           Clean the temporary files before dev 
+  --clean-cache          Clean the cache files before dev 
   --open                 Open browser when ready 
   --debug                Enable debug mode 
   --no-watch             Disable watching page and config files (default: true)
@@ -62,7 +63,8 @@ Options:
   -d, --dest <dest>      Set the directory build output (default: .vuepress/dist) 
   -t, --temp <temp>      Set the directory of the temporary files 
   --cache <cache>        Set the directory of the cache files 
-  --clean-cache          Clean the cache before build 
+  --clean-temp           Clean the temporary files before build 
+  --clean-cache          Clean the cache files before build 
   --debug                Enable debug mode 
   -v, --version          Display version number 
   -h, --help             Display this message

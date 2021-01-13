@@ -43,7 +43,11 @@ export const build = async (
   // use user-config plugin
   app.use(transformUserConfigToPlugin(app, userConfig))
 
-  // clean cache
+  // clean temp and cache
+  if (commandOptions.cleanTemp === true) {
+    logger.info('Cleaning temp...')
+    await fs.remove(app.dir.temp())
+  }
   if (commandOptions.cleanCache === true) {
     logger.info('Cleaning cache...')
     await fs.remove(app.dir.cache())
