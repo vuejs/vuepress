@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.17](https://github.com/vuepress/vuepress-next/compare/v2.0.0-alpha.16...v2.0.0-alpha.17) (2021-01-13)
+
+
+### Features
+
+* **cli:** add --clean-temp option ([752d725](https://github.com/vuepress/vuepress-next/commit/752d72563d88d5441a5570af3bc1b4c571e268c2))
+
+
+
+
+
 # [2.0.0-alpha.16](https://github.com/vuepress/vuepress-next/compare/v2.0.0-alpha.15...v2.0.0-alpha.16) (2021-01-11)
 
 

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.17](https://github.com/vuepress/vuepress-next/compare/v2.0.0-alpha.16...v2.0.0-alpha.17) (2021-01-13)
+
+
+### Bug Fixes
+
+* **bundler-webpack:** add trailing slash to url ([cbe4c7f](https://github.com/vuepress/vuepress-next/commit/cbe4c7f3924c11b751dfefbb01f8fc0528516b3b))
+
+
+### Features
+
+* **cli:** add --clean-temp option ([752d725](https://github.com/vuepress/vuepress-next/commit/752d72563d88d5441a5570af3bc1b4c571e268c2))
+* **theme-default:** allow dropdown subtitle as a link ([5fb6558](https://github.com/vuepress/vuepress-next/commit/5fb6558c926ddbb569f2b1901903cf9be4ad426e))
+
+
+
+
+
 # [2.0.0-alpha.16](https://github.com/vuepress/vuepress-next/compare/v2.0.0-alpha.15...v2.0.0-alpha.16) (2021-01-11)
 
 
