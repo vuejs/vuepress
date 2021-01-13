@@ -66,4 +66,24 @@ export const zh: SidebarConfig = {
       ],
     },
   ],
+  '/zh/reference/plugin/': [
+    {
+      isGroup: true,
+      text: '官方插件参考',
+      children: [
+        '/zh/reference/plugin/active-header-links.md',
+        '/zh/reference/plugin/back-to-top.md',
+        '/zh/reference/plugin/container.md',
+        '/zh/reference/plugin/debug.md',
+        '/zh/reference/plugin/docsearch.md',
+        '/zh/reference/plugin/git.md',
+        '/zh/reference/plugin/google-analytics.md',
+        '/zh/reference/plugin/medium-zoom.md',
+        '/zh/reference/plugin/nprogress.md',
+        '/zh/reference/plugin/palette-stylus.md',
+        '/zh/reference/plugin/pwa.md',
+        '/zh/reference/plugin/pwa-popup.md',
+      ],
+    },
+  ],
 }

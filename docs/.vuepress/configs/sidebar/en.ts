@@ -48,7 +48,7 @@ export const en: SidebarConfig = {
   '/reference/bundler/': [
     {
       isGroup: true,
-      text: 'Bundler Reference',
+      text: 'Bundlers Reference',
       children: ['/reference/bundler/webpack.md', '/reference/bundler/vite.md'],
     },
   ],
@@ -60,6 +60,26 @@ export const en: SidebarConfig = {
         '/reference/default-theme/config.md',
         '/reference/default-theme/frontmatter.md',
         '/reference/default-theme/components.md',
+      ],
+    },
+  ],
+  '/reference/plugin/': [
+    {
+      isGroup: true,
+      text: 'Official Plugins Reference',
+      children: [
+        '/reference/plugin/active-header-links.md',
+        '/reference/plugin/back-to-top.md',
+        '/reference/plugin/container.md',
+        '/reference/plugin/debug.md',
+        '/reference/plugin/docsearch.md',
+        '/reference/plugin/git.md',
+        '/reference/plugin/google-analytics.md',
+        '/reference/plugin/medium-zoom.md',
+        '/reference/plugin/nprogress.md',
+        '/reference/plugin/palette-stylus.md',
+        '/reference/plugin/pwa.md',
+        '/reference/plugin/pwa-popup.md',
       ],
     },
   ],

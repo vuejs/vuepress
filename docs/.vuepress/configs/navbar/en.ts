@@ -23,7 +23,7 @@ export const en: NavbarConfig = [
         ],
       },
       {
-        text: 'Bundler',
+        text: 'Bundlers',
         children: [
           '/reference/bundler/webpack.md',
           '/reference/bundler/vite.md',
@@ -36,6 +36,11 @@ export const en: NavbarConfig = [
           '/reference/default-theme/frontmatter.md',
           '/reference/default-theme/components.md',
         ],
+      },
+      {
+        text: 'Official Plugins',
+        link: '/reference/plugin/',
+        children: [],
       },
     ],
   },

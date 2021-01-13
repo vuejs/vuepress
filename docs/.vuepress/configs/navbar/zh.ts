@@ -34,6 +34,11 @@ export const zh: NavbarConfig = [
           '/zh/reference/default-theme/components.md',
         ],
       },
+      {
+        text: '官方插件',
+        link: '/zh/reference/plugin/',
+        children: [],
+      },
     ],
   },
   {
