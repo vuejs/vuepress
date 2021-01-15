@@ -20,7 +20,7 @@
       font-size: 3rem;
     }
 
-    h1, .description, .action {
+    h1, .description, .actions {
       margin: 1.8rem auto;
     }
 
@@ -34,16 +34,34 @@
     .action-button {
       display: inline-block;
       font-size: 1.2rem;
-      color: #fff;
-      background-color: $accentColor;
       padding: 0.8rem 1.6rem;
+      border-width: 2px;
+      border-style: solid;
       border-radius: 4px;
       transition: background-color 0.1s ease;
       box-sizing: border-box;
-      border-bottom: 1px solid darken($accentColor, 10%);
 
-      &:hover {
-        background-color: lighten($accentColor, 10%);
+      &:not(:first-child) {
+        margin-left: 1.5rem;
+      }
+
+      &.primary {
+        color: #fff;
+        background-color: $tipColor;
+        border-color: $tipColor;
+        &:hover {
+          background-color: lighten($tipColor, 10%);
+        }
+      }
+
+      &.secondary {
+        color: $tipColor;
+        background-color: #fff;
+        border-color: $tipColor;
+        &:hover {
+          color: #fff;
+          background-color: lighten($tipColor, 10%);
+        }
       }
     }
   }
@@ -113,7 +131,7 @@
         font-size: 2rem;
       }
 
-      h1, .description, .action {
+      h1, .description, .actions {
         margin: 1.2rem auto;
       }
 

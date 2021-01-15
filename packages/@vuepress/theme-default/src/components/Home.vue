@@ -1,50 +1,29 @@
 <template>
-  <main
-    class="home"
-    :aria-labelledby="$frontmatter.heroText !== null ? 'main-title' : null"
-  >
+  <main class="home" :aria-labelledby="heroText ? 'main-title' : null">
     <header class="hero">
-      <img
-        v-if="$frontmatter.heroImage"
-        :src="$withBase($frontmatter.heroImage)"
-        :alt="$frontmatter.heroAlt || 'hero'"
-      />
+      <img v-if="heroImage" :src="heroImage" :alt="heroAlt" />
 
-      <h1 v-if="$frontmatter.heroText !== null" id="main-title">
-        {{ $frontmatter.heroText || $siteLocale.title || 'Hello' }}
+      <h1 v-if="heroText" id="main-title">
+        {{ heroText }}
       </h1>
 
-      <p v-if="$frontmatter.tagline !== null" class="description">
-        {{
-          $frontmatter.tagline ||
-          $siteLocale.description ||
-          'Welcome to your VuePress site'
-        }}
+      <p v-if="tagline" class="description">
+        {{ tagline }}
       </p>
 
-      <p
-        v-if="$frontmatter.actionText && $frontmatter.actionLink"
-        class="action"
-      >
+      <p v-if="actions.length" class="actions">
         <NavLink
+          v-for="action in actions"
+          :key="action.text"
           class="action-button"
-          :item="{
-            text: $frontmatter.actionText,
-            link: $frontmatter.actionLink,
-          }"
+          :class="[action.type]"
+          :item="action"
         />
       </p>
     </header>
 
-    <div
-      v-if="$frontmatter.features && $frontmatter.features.length"
-      class="features"
-    >
-      <div
-        v-for="(feature, index) in $frontmatter.features"
-        :key="index"
-        class="feature"
-      >
+    <div v-if="features.length" class="features">
+      <div v-for="feature in features" :key="feature.title" class="feature">
         <h2>{{ feature.title }}</h2>
         <p>{{ feature.details }}</p>
       </div>
@@ -54,20 +33,96 @@
       <Content />
     </div>
 
-    <div v-if="$frontmatter.footer" class="footer">
-      {{ $frontmatter.footer }}
+    <div v-if="footer" class="footer">
+      {{ footer }}
     </div>
   </main>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { computed, defineComponent } from 'vue'
+import {
+  usePageFrontmatter,
+  useSiteLocaleData,
+  withBase,
+} from '@vuepress/client'
+import { isArray } from '@vuepress/shared'
+import type { DefaultThemeHomePageFrontmatter } from '../types'
 import NavLink from './NavLink.vue'
 
 export default defineComponent({
   name: 'Home',
+
   components: {
     NavLink,
+  },
+
+  setup() {
+    const frontmatter = usePageFrontmatter<DefaultThemeHomePageFrontmatter>()
+    const siteLocale = useSiteLocaleData()
+
+    const heroImage = computed(() => {
+      if (!frontmatter.value.heroImage) {
+        return null
+      }
+
+      return withBase(frontmatter.value.heroImage)
+    })
+
+    const heroText = computed(() => {
+      if (frontmatter.value.heroText === null) {
+        return null
+      }
+      return frontmatter.value.heroText || siteLocale.value.title || 'Hello'
+    })
+
+    const heroAlt = computed(
+      () => frontmatter.value.heroAlt || heroText.value || 'hero'
+    )
+
+    const tagline = computed(() => {
+      if (frontmatter.value.tagline === null) {
+        return null
+      }
+      return (
+        frontmatter.value.tagline ||
+        siteLocale.value.description ||
+        'Welcome to your VuePress site'
+      )
+    })
+
+    const actions = computed(() => {
+      if (!isArray(frontmatter.value.actions)) {
+        return []
+      }
+
+      return frontmatter.value.actions.map(
+        ({ text, link, type = 'primary' }) => ({
+          text,
+          link,
+          type,
+        })
+      )
+    })
+
+    const features = computed(() => {
+      if (isArray(frontmatter.value.features)) {
+        return frontmatter.value.features
+      }
+      return []
+    })
+
+    const footer = computed(() => frontmatter.value.footer)
+
+    return {
+      heroImage,
+      heroAlt,
+      heroText,
+      tagline,
+      actions,
+      features,
+      footer,
+    }
   },
 })
 </script>
