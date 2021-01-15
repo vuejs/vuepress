@@ -54,18 +54,18 @@ export type PageData<
  * Notice that frontmatter is parse from yaml or other languages,
  * so we cannot guarantee the type safety
  */
-export interface PageFrontmatter {
-  layout?: string | unknown
-  permalink?: string | unknown
+export type PageFrontmatter<
+  T extends Record<any, any> = Record<string, unknown>
+> = Partial<T> & {
+  layout?: string
+  permalink?: string
   permalinkPattern?: string
-  date?: string | Date | unknown
+  date?: string | Date
 
-  lang?: string | unknown
-  title?: string | unknown
-  description?: string | unknown
-  head?: HeadConfig[] | unknown
-
-  [key: string]: unknown
+  lang?: string
+  title?: string
+  description?: string
+  head?: HeadConfig[]
 }
 
 /**
