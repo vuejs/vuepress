@@ -3,18 +3,22 @@ import type { ComputedRef, InjectionKey } from 'vue'
 import type { PageData, PageFrontmatter } from '@vuepress/shared'
 
 export type { PageFrontmatter }
-export type PageFrontmatterRef = ComputedRef<PageFrontmatter>
+export type PageFrontmatterRef<
+  T extends Record<any, any> = Record<string, unknown>
+> = ComputedRef<PageFrontmatter<T>>
 
 export const pageFrontmatterSymbol: InjectionKey<PageFrontmatterRef> = Symbol(
   __DEV__ ? 'pageFrontmatter' : ''
 )
 
-export const usePageFrontmatter = (): PageFrontmatterRef => {
+export const usePageFrontmatter = <
+  T extends Record<any, any> = Record<string, unknown>
+>(): PageFrontmatterRef<T> => {
   const pageFrontmatter = inject(pageFrontmatterSymbol)
   if (!pageFrontmatter) {
     throw new Error('usePageFrontmatter() is called without provider.')
   }
-  return pageFrontmatter
+  return pageFrontmatter as PageFrontmatterRef<T>
 }
 
 export const resolvePageFrontmatter = (pageData: PageData): PageFrontmatter =>
