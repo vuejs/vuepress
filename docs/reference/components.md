@@ -4,11 +4,11 @@
 
 - Usage:
 
-  ```md
-  <ClientOnly>
-    <NonSsrFriendlyComponent />
-  </ClientOnly>
-  ```
+```md
+<ClientOnly>
+  <NonSsrFriendlyComponent />
+</ClientOnly>
+```
 
 - Details:
 
@@ -28,10 +28,10 @@
 
 - Usage:
 
-  ```md
-  <Content page-path="/" />
-  <Content page-path="/foo.html" />
-  ```
+```md
+<Content page-path="/" />
+<Content page-path="/foo.html" />
+```
 
 - Details:
 
@@ -45,9 +45,9 @@
 
 - Usage:
 
-  ```md
-  <OutboundLink />
-  ```
+```md
+<OutboundLink />
+```
 
 - Details:
 

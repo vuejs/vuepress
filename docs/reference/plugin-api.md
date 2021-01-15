@@ -81,20 +81,20 @@ The following hooks will be processed in dev / build:
 
 - Example:
 
-  ```js
-  module.exports = {
-    plugins: [
-      // two-element tuple
-      ['vuepress-plugin-foo', false],
-      ['bar', true],
-      ['/path/to/local/plugin', { /* options */ }],
-      [require('vuepress-plugin-baz'), true],
+```js
+module.exports = {
+  plugins: [
+    // two-element tuple
+    ['vuepress-plugin-foo', false],
+    ['bar', true],
+    ['/path/to/local/plugin', { /* options */ }],
+    [require('vuepress-plugin-baz'), true],
 
-      // only use the first element
-      'foobar', // equals to ['foobar', true]
-    ],
-  }
-  ```
+    // only use the first element
+    'foobar', // equals to ['foobar', true]
+  ],
+}
+```
 
 - Also see:
   - [Guide > Plugin](../guide/plugin.md)
@@ -113,13 +113,13 @@ The following hooks will be processed in dev / build:
 
 - Example:
 
-  ```js
-  module.exports = {
-    alias: {
-      '@alias': '/path/to/alias',
-    },
-  }
-  ```
+```js
+module.exports = {
+  alias: {
+    '@alias': '/path/to/alias',
+  },
+}
+```
 
 ### define
 
@@ -135,15 +135,15 @@ The following hooks will be processed in dev / build:
 
 - Example:
 
-  ```js
-  module.exports = {
-    define: {
-      __GLOBAL_BOOLEAN__: true,
-      __GLOBAL_STRING__: 'foobar',
-      __GLOBAL_OBJECT__: { foo: 'bar' },
-    },
-  }
-  ```
+```js
+module.exports = {
+  define: {
+    __GLOBAL_BOOLEAN__: true,
+    __GLOBAL_STRING__: 'foobar',
+    __GLOBAL_OBJECT__: { foo: 'bar' },
+  },
+}
+```
 
 ### extendsMarkdown
 
@@ -159,14 +159,14 @@ The following hooks will be processed in dev / build:
 
 - Example:
 
-  ```js
-  module.exports = {
-    extendsMarkdown: (md) => {
-      md.use(plugin1)
-      md.linkify.set({ fuzzyEmail: false })
-    },
-  }
-  ```
+```js
+module.exports = {
+  extendsMarkdown: (md) => {
+    md.use(plugin1)
+    md.linkify.set({ fuzzyEmail: false })
+  },
+}
+```
 
 ### extendsPageData
 
@@ -180,27 +180,27 @@ The following hooks will be processed in dev / build:
 
 - Example:
 
-  ```js
-  module.exports = {
-    extendsPageData: (page) => {
-      const meta = 'foobar'
-      return { meta }
-    },
-  }
-  ```
+```js
+module.exports = {
+  extendsPageData: (page) => {
+    const meta = 'foobar'
+    return { meta }
+  },
+}
+```
 
   In client component:
 
-  ```js
-  import { usePageData } from '@vuepress/client'
+```js
+import { usePageData } from '@vuepress/client'
 
-  export default {
-    setup() {
-      const page = usePageData()
-      console.log(page.value.meta) // foobar
-    },
-  }
-  ```
+export default {
+  setup() {
+    const page = usePageData()
+    console.log(page.value.meta) // foobar
+  },
+}
+```
 
 ## Client Files Hooks
 
@@ -216,11 +216,11 @@ The following hooks will be processed in dev / build:
 
 - Example:
 
-  ```js
-  module.exports = {
-    clientAppEnhanceFiles: '/path/to/clientAppEnhance.js',
-  }
-  ```
+```js
+module.exports = {
+  clientAppEnhanceFiles: '/path/to/clientAppEnhance.js',
+}
+```
 
 ### clientAppRootComponentFiles
 
@@ -234,11 +234,11 @@ The following hooks will be processed in dev / build:
 
 - Example:
 
-  ```js
-  module.exports = {
-    clientAppRootComponentFiles: '/path/to/RootComponent.vue',
-  }
-  ```
+```js
+module.exports = {
+  clientAppRootComponentFiles: '/path/to/RootComponent.vue',
+}
+```
 
 ### clientAppSetupFiles
 
@@ -252,11 +252,11 @@ The following hooks will be processed in dev / build:
 
 - Example:
 
-  ```js
-  module.exports = {
-    clientAppSetupFiles: '/path/to/clientAppSetup.js',
-  }
-  ```
+```js
+module.exports = {
+  clientAppSetupFiles: '/path/to/clientAppSetup.js',
+}
+```
 
 ## Lifecycle Hooks
 

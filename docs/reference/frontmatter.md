@@ -46,24 +46,24 @@
 
 - Example:
 
-  ```yaml
-  head:
-    - - meta
-      - name: foo
-        content: bar
-    - - link
-      - rel: canonical
-        href: foobar
-  ```
+```yaml
+head:
+  - - meta
+    - name: foo
+      content: bar
+  - - link
+    - rel: canonical
+      href: foobar
+```
 
   Rendered as:
 
-  ```html
-  <head>
-    <meta name="foo" content="bar" />
-    <link rel="canonical" href="foobar" />
-  </head>
-  ```
+```html
+<head>
+  <meta name="foo" content="bar" />
+  <link rel="canonical" href="foobar" />
+</head>
+```
 
 - Also see:
   - [Config > head](./config.md#head)
@@ -127,12 +127,12 @@
 
     The page frontmatter is:
 
-    ```yaml
-    ---
-    date: 2021-01-03
-    permalinkPattern: :year/:month/:day/:slug.html
-    ---
-    ```
+```yaml
+---
+date: 2021-01-03
+permalinkPattern: :year/:month/:day/:slug.html
+---
+```
 
     Then the permalink of the page would be `2021/01/03/foo-bar.html`.
 
@@ -142,11 +142,11 @@
 
     The page frontmatter is:
 
-    ```yaml
-    ---
-    permalinkPattern: :year/:month/:day/:slug.html
-    ---
-    ```
+```yaml
+---
+permalinkPattern: :year/:month/:day/:slug.html
+---
+```
 
     Then the permalink of the page would be `2021/01/03/bar-baz.html`.
 

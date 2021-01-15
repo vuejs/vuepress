@@ -27,64 +27,64 @@ The following guides are based on some shared assumptions:
 
     Create `.github/workflows/docs.yml` to set up the workflow.
 
-    :::details Click to expand sample config
-    ```yaml
-    name: docs
+:::details Click to expand sample config
+```yaml
+name: docs
 
-    on:
-      # trigger deployment on every push to main branch
-      push:
-        branches: [main]
-      # trigger deployment manually
-      workflow_dispatch:
+on:
+  # trigger deployment on every push to main branch
+  push:
+    branches: [main]
+  # trigger deployment manually
+  workflow_dispatch:
 
-    jobs:
-      docs:
-        runs-on: ubuntu-latest
+jobs:
+  docs:
+    runs-on: ubuntu-latest
 
-        steps:
-          - uses: actions/checkout@v2
-            with:
-              # fetch all commits to get last updated time or other git log info
-              fetch-depth: 0
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          # fetch all commits to get last updated time or other git log info
+          fetch-depth: 0
 
-          - name: Setup Node.js
-            uses: actions/setup-node@v1
-            with:
-              # choose node.js version to use
-              node-version: '14'
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          # choose node.js version to use
+          node-version: '14'
 
-          # cache node_modules
-          - name: Cache dependencies
-            uses: actions/cache@v2
-            id: yarn-cache
-            with:
-              path: |
-                **/node_modules
-              key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-              restore-keys: |
-                ${{ runner.os }}-yarn-
+      # cache node_modules
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
 
-          # install dependencies if the cache did not hit
-          - name: Install dependencies
-            if: steps.yarn-cache.outputs.cache-hit != 'true'
-            run: yarn --frozen-lockfile
+      # install dependencies if the cache did not hit
+      - name: Install dependencies
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn --frozen-lockfile
 
-          # run build script
-          - name: Build VuePress site
-            run: yarn docs:build
+      # run build script
+      - name: Build VuePress site
+        run: yarn docs:build
 
-          # please check out the docs of the workflow for more details
-          # @see https://github.com/crazy-max/ghaction-github-pages
-          - name: Deploy to GitHub Pages
-            uses: crazy-max/ghaction-github-pages@v2
-            with:
-              # deploy to gh-pages branch
-              target_branch: gh-pages
-              # deploy the default output dir of VuePress
-              build_dir: docs/.vuepress/dist
-    ```
-    :::
+      # please check out the docs of the workflow for more details
+      # @see https://github.com/crazy-max/ghaction-github-pages
+      - name: Deploy to GitHub Pages
+        uses: crazy-max/ghaction-github-pages@v2
+        with:
+          # deploy to gh-pages branch
+          target_branch: gh-pages
+          # deploy the default output dir of VuePress
+          build_dir: docs/.vuepress/dist
+```
+:::
 
 :::tip
 Please refer to [GitHub Pages official guide](https://pages.github.com/) for more details.
@@ -94,37 +94,37 @@ Please refer to [GitHub Pages official guide](https://pages.github.com/) for mor
 
 1. Set the correct [base](../reference/config.md#base) config.
 
-   If you are deploying to `https://<USERNAME>.gitlab.io/`, you can omit `base` as it defaults to `"/"`.
+    If you are deploying to `https://<USERNAME>.gitlab.io/`, you can omit `base` as it defaults to `"/"`.
 
-   If you are deploying to `https://<USERNAME>.gitlab.io/<REPO>/`, for example your repository is at `https://gitlab.com/<USERNAME>/<REPO>`, then set `base` to `"/<REPO>/"`.
+    If you are deploying to `https://<USERNAME>.gitlab.io/<REPO>/`, for example your repository is at `https://gitlab.com/<USERNAME>/<REPO>`, then set `base` to `"/<REPO>/"`.
 
 2. Create `.gitlab-ci.yml` to set up [GitLab CI](https://about.gitlab.com/stages-devops-lifecycle/continuous-integration/) workflow.
 
-    :::details Click to expand sample config
-    ```yaml
-    # choose a docker image to use
-    image: node:14-buster
+:::details Click to expand sample config
+```yaml
+# choose a docker image to use
+image: node:14-buster
 
-    pages:
-      # trigger deployment on every push to main branch
-      only:
-      - main
+pages:
+  # trigger deployment on every push to main branch
+  only:
+  - main
 
-      # cache node_modules
-      cache:
-        paths:
-        - node_modules/
+  # cache node_modules
+  cache:
+    paths:
+    - node_modules/
 
-      # install dependencies and run build script
-      script:
-      - yarn --frozen-lockfile
-      - yarn docs:build --dest public
+  # install dependencies and run build script
+  script:
+  - yarn --frozen-lockfile
+  - yarn docs:build --dest public
 
-      artifacts:
-        paths:
-        - public
-    ```
-    :::
+  artifacts:
+    paths:
+    - public
+```
+:::
 
 :::tip
 Please refer to [GitLab Pages official guide](https://docs.gitlab.com/ce/user/project/pages/#getting-started) for more details.
@@ -136,24 +136,26 @@ Please refer to [GitLab Pages official guide](https://docs.gitlab.com/ce/user/pr
 
 2. Create `firebase.json` and `.firebaserc` at the root of your project with the following content:
 
-    `firebase.json`:
-    ```json
-    {
-      "hosting": {
-        "public": "./docs/.vuepress/dist",
-        "ignore": []
-      }
-    }
-    ```
+`firebase.json`:
 
-    `.firebaserc`:
-    ```json
-    {
-      "projects": {
-        "default": "<YOUR_FIREBASE_ID>"
-      }
-    }
-    ```
+```json
+{
+  "hosting": {
+    "public": "./docs/.vuepress/dist",
+    "ignore": []
+  }
+}
+```
+
+`.firebaserc`:
+
+```json
+{
+  "projects": {
+    "default": "<YOUR_FIREBASE_ID>"
+  }
+}
+```
 
 3. After running `yarn docs:build`, deploy using the command `firebase deploy`.
 
@@ -169,18 +171,19 @@ Please refer to [Firebase CLI official guide](https://firebase.google.com/docs/c
 
 3. Run `heroku login` and fill in your Heroku credentials:
 
-   ```bash
-   heroku login
-   ```
+```bash
+heroku login
+```
 
 4. Create a file called `static.json` in the root of your project with the below content:
 
-   `static.json`:
-   ```json
-   {
-     "root": "./docs/.vuepress/dist"
-   }
-   ```
+`static.json`:
+
+```json
+{
+  "root": "./docs/.vuepress/dist"
+}
+```
 
 This is the configuration of your site; read more at [heroku-buildpack-static](https://github.com/heroku/heroku-buildpack-static).
 

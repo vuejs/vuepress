@@ -102,21 +102,21 @@ You can also specify the config file via `--config` option of [CLI](./cli.md).
 
   To add a custom favicon:
 
-  ```js
-  module.exports = {
-    head: [
-      ['link', { rel: 'icon', href: '/logo.png' }]
-    ]
-  }
-  ```
+```js
+module.exports = {
+  head: [
+    ['link', { rel: 'icon', href: '/logo.png' }]
+  ]
+}
+```
 
   Rendered as：
 
-  ```html
-  <head>
-    <link rel="icon" href="/logo.png" />
-  </head>
-  ```
+```html
+<head>
+  <link rel="icon" href="/logo.png" />
+</head>
+```
 
 - Also see:
   - [Config > locales](#locales)
@@ -158,13 +158,13 @@ You can also specify the config file via `--config` option of [CLI](./cli.md).
 
 - Example:
 
-  ```js
-  module.exports = {
-    theme: 'vuepress-theme-foo',
-    theme: 'bar',
-    theme: '/path/to/local/theme',
-  }
-  ```
+```js
+module.exports = {
+  theme: 'vuepress-theme-foo',
+  theme: 'bar',
+  theme: '/path/to/local/theme',
+}
+```
 
 - Also see:
   - [Guide > Theme](../guide/theme.md)

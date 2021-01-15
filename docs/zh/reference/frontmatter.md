@@ -46,24 +46,24 @@
 
 - 示例：
 
-  ```yaml
-  head:
-    - - meta
-      - name: foo
-        content: bar
-    - - link
-      - rel: canonical
-        href: foobar
-  ```
+```yaml
+head:
+  - - meta
+    - name: foo
+      content: bar
+  - - link
+    - rel: canonical
+      href: foobar
+```
 
   渲染为：
 
-  ```html
-  <head>
-    <meta name="foo" content="bar" />
-    <link rel="canonical" href="foobar" />
-  </head>
-  ```
+```html
+<head>
+  <meta name="foo" content="bar" />
+  <link rel="canonical" href="foobar" />
+</head>
+```
 
 - 参考：
   - [配置 > head](./config.md#head)
@@ -127,12 +127,12 @@
 
     页面 Frontmatter 是：
 
-    ```yaml
-    ---
-    date: 2021-01-03
-    permalinkPattern: :year/:month/:day/:slug.html
-    ---
-    ```
+```yaml
+---
+date: 2021-01-03
+permalinkPattern: :year/:month/:day/:slug.html
+---
+```
 
     那么页面的永久链接将会是 `2021/01/03/foo-bar.html` 。
 
@@ -142,11 +142,11 @@
 
     页面 Frontmatter 是：
 
-    ```yaml
-    ---
-    permalinkPattern: :year/:month/:day/:slug.html
-    ---
-    ```
+```yaml
+---
+permalinkPattern: :year/:month/:day/:slug.html
+---
+```
 
     那么页面的永久链接将会是 `2021/01/03/bar-baz.html` 。
 

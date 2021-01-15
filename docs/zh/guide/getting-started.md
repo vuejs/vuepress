@@ -11,97 +11,97 @@
 
 - **步骤1**: 创建并进入一个新目录
 
-  ```bash
-  mkdir vuepress-starter
-  cd vuepress-starter
-  ```
+```bash
+mkdir vuepress-starter
+cd vuepress-starter
+```
 
 - **步骤2**: 初始化项目
 
-  <CodeGroup>
-    <CodeGroupItem title="YARN" active>
+<CodeGroup>
+  <CodeGroupItem title="YARN" active>
 
-  ```bash
-  git init
-  yarn init
-  ```
+```bash
+git init
+yarn init
+```
 
-    </CodeGroupItem>
+  </CodeGroupItem>
 
-    <CodeGroupItem title="NPM">
+  <CodeGroupItem title="NPM">
 
-  ```bash
-  git init
-  npm init
-  ```
+```bash
+git init
+npm init
+```
 
-    </CodeGroupItem>
-  </CodeGroup>
+  </CodeGroupItem>
+</CodeGroup>
 
 
 - **步骤3**: 将 VuePress 安装为本地依赖
 
-  <CodeGroup>
-    <CodeGroupItem title="YARN" active>
+<CodeGroup>
+  <CodeGroupItem title="YARN" active>
 
-  ```bash
-  yarn add -D vuepress@next
-  ```
+```bash
+yarn add -D vuepress@next
+```
 
-    </CodeGroupItem>
+  </CodeGroupItem>
 
-    <CodeGroupItem title="NPM">
+  <CodeGroupItem title="NPM">
 
-  ```bash
-  npm install -D vuepress@next
-  ```
+```bash
+npm install -D vuepress@next
+```
 
-    </CodeGroupItem>
-  </CodeGroup>
+  </CodeGroupItem>
+</CodeGroup>
 
 - **步骤4**: 在 `package.json` 中添加一些 [scripts](https://classic.yarnpkg.com/zh-Hans/docs/package-json#toc-scripts)
 
-  ```json
-  {
-    "scripts": {
-      "docs:dev": "vuepress dev docs",
-      "docs:build": "vuepress build docs"
-    }
+```json
+{
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   }
-  ```
+}
+```
 
 - **步骤5**: 将默认的临时目录和缓存目录添加到 `.gitignore` 文件中
 
-  ```bash
-  echo 'node_modules\n.temp\n.cache' >> .gitignore
-  ```
+```bash
+echo 'node_modules\n.temp\n.cache' >> .gitignore
+```
 
 - **步骤6**: 创建你的第一篇文档
 
-  ```bash
-  mkdir docs
-  echo '# Hello VuePress' > docs/README.md
-  ```
+```bash
+mkdir docs
+echo '# Hello VuePress' > docs/README.md
+```
 
 - **步骤7**: 在本地启动服务器来开发你的文档网站
 
-  <CodeGroup>
-    <CodeGroupItem title="YARN" active>
+<CodeGroup>
+  <CodeGroupItem title="YARN" active>
 
-  ```bash
-  yarn docs:dev
-  ```
+```bash
+yarn docs:dev
+```
 
-    </CodeGroupItem>
+  </CodeGroupItem>
 
-    <CodeGroupItem title="NPM">
+  <CodeGroupItem title="NPM">
 
-  ```bash
-  npm run docs:dev
-  ```
+```bash
+npm run docs:dev
+```
 
-    </CodeGroupItem>
-  </CodeGroup>
+  </CodeGroupItem>
+</CodeGroup>
 
   VuePress 会在 [http://localhost:8080](http://localhost:8080) 启动一个热重载的开发服务器。当你修改你的 Markdown 文件时，浏览器中的内容也会自动更新。
 

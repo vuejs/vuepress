@@ -27,64 +27,64 @@
 
     创建 `.github/workflows/docs.yml` 文件来配置工作流。
 
-    :::details 点击展开配置样例
-    ```yaml
-    name: docs
+:::details 点击展开配置样例
+```yaml
+name: docs
 
-    on:
-      # 每当 push 到 main 分支时触发部署
-      push:
-        branches: [main]
-      # 手动触发部署
-      workflow_dispatch:
+on:
+  # 每当 push 到 main 分支时触发部署
+  push:
+    branches: [main]
+  # 手动触发部署
+  workflow_dispatch:
 
-    jobs:
-      docs:
-        runs-on: ubuntu-latest
+jobs:
+  docs:
+    runs-on: ubuntu-latest
 
-        steps:
-          - uses: actions/checkout@v2
-            with:
-              # “最近更新时间” 等 git 日志相关信息，需要拉取全部提交记录
-              fetch-depth: 0
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          # “最近更新时间” 等 git 日志相关信息，需要拉取全部提交记录
+          fetch-depth: 0
 
-          - name: Setup Node.js
-            uses: actions/setup-node@v1
-            with:
-              # 选择要使用的 node 版本
-              node-version: '14'
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          # 选择要使用的 node 版本
+          node-version: '14'
 
-          # 缓存 node_modules
-          - name: Cache dependencies
-            uses: actions/cache@v2
-            id: yarn-cache
-            with:
-              path: |
-                **/node_modules
-              key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-              restore-keys: |
-                ${{ runner.os }}-yarn-
+      # 缓存 node_modules
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
 
-          # 如果缓存没有命中，安装依赖
-          - name: Install dependencies
-            if: steps.yarn-cache.outputs.cache-hit != 'true'
-            run: yarn --frozen-lockfile
+      # 如果缓存没有命中，安装依赖
+      - name: Install dependencies
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn --frozen-lockfile
 
-          # 运行构建脚本
-          - name: Build VuePress site
-            run: yarn docs:build
+      # 运行构建脚本
+      - name: Build VuePress site
+        run: yarn docs:build
 
-          # 查看 workflow 的文档来获取更多信息
-          # @see https://github.com/crazy-max/ghaction-github-pages
-          - name: Deploy to GitHub Pages
-            uses: crazy-max/ghaction-github-pages@v2
-            with:
-              # 部署到 gh-pages 分支
-              target_branch: gh-pages
-              # 部署目录为 VuePress 的默认输出目录
-              build_dir: docs/.vuepress/dist
-    ```
-    :::
+      # 查看 workflow 的文档来获取更多信息
+      # @see https://github.com/crazy-max/ghaction-github-pages
+      - name: Deploy to GitHub Pages
+        uses: crazy-max/ghaction-github-pages@v2
+        with:
+          # 部署到 gh-pages 分支
+          target_branch: gh-pages
+          # 部署目录为 VuePress 的默认输出目录
+          build_dir: docs/.vuepress/dist
+```
+:::
 
 
 :::tip
@@ -101,31 +101,31 @@
 
 2. 创建 `.gitlab-ci.yml` 文件来配置 [GitLab CI](https://about.gitlab.com/stages-devops-lifecycle/continuous-integration/) 工作流。
 
-    :::details 点击展开配置样例
-    ```yaml
-    # 选择你要使用的 docker 镜像
-    image: node:14-buster
+:::details 点击展开配置样例
+```yaml
+# 选择你要使用的 docker 镜像
+image: node:14-buster
 
-    pages:
-      # 每当 push 到 main 分支时触发部署
-      only:
-      - main
+pages:
+  # 每当 push 到 main 分支时触发部署
+  only:
+  - main
 
-      # 缓存 node_modules
-      cache:
-        paths:
-        - node_modules/
+  # 缓存 node_modules
+  cache:
+    paths:
+    - node_modules/
 
-      # 安装依赖并运行构建脚本
-      script:
-      - yarn --frozen-lockfile
-      - yarn docs:build --dest public
+  # 安装依赖并运行构建脚本
+  script:
+  - yarn --frozen-lockfile
+  - yarn docs:build --dest public
 
-      artifacts:
-        paths:
-        - public
-    ```
-    :::
+  artifacts:
+    paths:
+    - public
+```
+:::
 
 :::tip
 请参考 [GitLab Pages 官方指南](https://docs.gitlab.com/ce/user/project/pages/#getting-started) 来获取更多信息。
@@ -137,24 +137,26 @@
 
 2. 在你项目的根目录下创建 `firebase.json` 和 `.firebaserc`，并包含以下内容：
 
-    `firebase.json`:
-    ```json
-    {
-      "hosting": {
-        "public": "./docs/.vuepress/dist",
-        "ignore": []
-      }
-    }
-    ```
+`firebase.json`:
 
-    `.firebaserc`:
-    ```json
-    {
-      "projects": {
-        "default": "<YOUR_FIREBASE_ID>"
-      }
-    }
-    ```
+```json
+{
+  "hosting": {
+    "public": "./docs/.vuepress/dist",
+    "ignore": []
+  }
+}
+```
+
+`.firebaserc`:
+
+```json
+{
+  "projects": {
+    "default": "<YOUR_FIREBASE_ID>"
+  }
+}
+```
 
 3. 在执行了 `yarn docs:build` 或 `npm run docs:build` 后, 使用 `firebase deploy` 指令来部署。
 
@@ -170,18 +172,19 @@
 
 3. 运行 `heroku login` 并填写你的 Heroku 认证信息：
 
-    ```bash
-    heroku login
-    ```
+```bash
+heroku login
+```
 
 4. 在你的项目根目录中，创建一个名为 `static.json` 的文件，并包含下述内容：
 
-    `static.json`:
-    ```json
-    {
-      "root": "./docs/.vuepress/dist"
-    }
-    ```
+`static.json`:
+
+```json
+{
+  "root": "./docs/.vuepress/dist"
+}
+```
 
 这里是你项目的配置，请参考 [heroku-buildpack-static](https://github.com/heroku/heroku-buildpack-static) 来获取更多信息。
 
@@ -210,22 +213,22 @@
 
 1. 全局安装 CloudBase CLI ：
 
-    ```bash
-    npm install -g @cloudbase/cli
-    ```
+```bash
+npm install -g @cloudbase/cli
+```
 
 2. 在项目根目录运行以下命令一键部署 VuePress 应用，在部署之前可以先 [开通环境](https://console.cloud.tencent.com/tcb/env/index?tdl_anchor=ad&tdl_site=vuejs)：
 
-    ```bash
-    cloudbase init --without-template
-    cloudbase framework:deploy
-    ```
+```bash
+cloudbase init --without-template
+cloudbase framework:deploy
+```
 
-   CloudBase CLI 首先会跳转到控制台进行登录授权，然后将会交互式进行确认。
+  CloudBase CLI 首先会跳转到控制台进行登录授权，然后将会交互式进行确认。
 
-   确认信息后会立即进行部署，部署完成后，可以获得一个自动 SSL，CDN 加速的网站应用，你也可以搭配使用 GitHub Action 来持续部署 GitHub 上的 VuePress 应用。
+  确认信息后会立即进行部署，部署完成后，可以获得一个自动 SSL，CDN 加速的网站应用，你也可以搭配使用 GitHub Action 来持续部署 GitHub 上的 VuePress 应用。
 
-   也可以使用 `cloudbase init --template vuepress` 快速创建和部署一个新的 VuePress 应用。
+  也可以使用 `cloudbase init --template vuepress` 快速创建和部署一个新的 VuePress 应用。
 
 :::tip
 更多详细信息请查看 CloudBase Framework 的[部署项目示例](https://github.com/TencentCloudBase/cloudbase-framework?site=vuepress#%E9%A1%B9%E7%9B%AE%E7%A4%BA%E4%BE%8B)

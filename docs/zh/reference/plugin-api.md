@@ -81,20 +81,20 @@
 
 - 示例：
 
-  ```js
-  module.exports = {
-    plugins: [
-      // 包含两个元素的元组
-      ['vuepress-plugin-foo', false],
-      ['bar', true],
-      ['/path/to/local/plugin', { /* 选项 */ }],
-      [require('vuepress-plugin-baz'), true],
+```js
+module.exports = {
+  plugins: [
+    // 包含两个元素的元组
+    ['vuepress-plugin-foo', false],
+    ['bar', true],
+    ['/path/to/local/plugin', { /* 选项 */ }],
+    [require('vuepress-plugin-baz'), true],
 
-      // 只使用第一个元素
-      'foobar', // 等价于 ['foobar', true]
-    ],
-  }
-  ```
+    // 只使用第一个元素
+    'foobar', // 等价于 ['foobar', true]
+  ],
+}
+```
 
 - 参考：
   - [指南 > 插件](../guide/plugin.md)
@@ -113,13 +113,13 @@
 
 - 示例：
 
-  ```js
-  module.exports = {
-    alias: {
-      '@alias': '/path/to/alias',
-    },
-  }
-  ```
+```js
+module.exports = {
+  alias: {
+    '@alias': '/path/to/alias',
+  },
+}
+```
 
 ### define
 
@@ -135,15 +135,15 @@
 
 - 示例：
 
-  ```js
-  module.exports = {
-    define: {
-      __GLOBAL_BOOLEAN__: true,
-      __GLOBAL_STRING__: 'foobar',
-      __GLOBAL_OBJECT__: { foo: 'bar' },
-    },
-  }
-  ```
+```js
+module.exports = {
+  define: {
+    __GLOBAL_BOOLEAN__: true,
+    __GLOBAL_STRING__: 'foobar',
+    __GLOBAL_OBJECT__: { foo: 'bar' },
+  },
+}
+```
 
 ### extendsMarkdown
 
@@ -159,14 +159,14 @@
 
 - 示例：
 
-  ```js
-  module.exports = {
-    extendsMarkdown: (md) => {
-      md.use(plugin1)
-      md.linkify.set({ fuzzyEmail: false })
-    },
-  }
-  ```
+```js
+module.exports = {
+  extendsMarkdown: (md) => {
+    md.use(plugin1)
+    md.linkify.set({ fuzzyEmail: false })
+  },
+}
+```
 
 ### extendsPageData
 
@@ -180,27 +180,27 @@
 
 - 示例：
 
-  ```js
-  module.exports = {
-    extendsPageData: (page) => {
-      const meta = 'foobar'
-      return { meta }
-    },
-  }
-  ```
+```js
+module.exports = {
+  extendsPageData: (page) => {
+    const meta = 'foobar'
+    return { meta }
+  },
+}
+```
 
   在客户端组件中：
 
-  ```js
-  import { usePageData } from '@vuepress/client'
+```js
+import { usePageData } from '@vuepress/client'
 
-  export default {
-    setup() {
-      const page = usePageData()
-      console.log(page.value.meta) // foobar
-    },
-  }
-  ```
+export default {
+  setup() {
+    const page = usePageData()
+    console.log(page.value.meta) // foobar
+  },
+}
+```
 
 ## 客户端文件 Hooks
 
@@ -216,11 +216,11 @@
 
 - 示例：
 
-  ```js
-  module.exports = {
-    clientAppEnhanceFiles: '/path/to/clientAppEnhance.js',
-  }
-  ```
+```js
+module.exports = {
+  clientAppEnhanceFiles: '/path/to/clientAppEnhance.js',
+}
+```
 
 ### clientAppRootComponentFiles
 
@@ -234,11 +234,11 @@
 
 - 示例：
 
-  ```js
-  module.exports = {
-    clientAppRootComponentFiles: '/path/to/RootComponent.vue',
-  }
-  ```
+```js
+module.exports = {
+  clientAppRootComponentFiles: '/path/to/RootComponent.vue',
+}
+```
 
 ### clientAppSetupFiles
 
@@ -252,11 +252,11 @@
 
 - 示例：
 
-  ```js
-  module.exports = {
-    clientAppSetupFiles: '/path/to/clientAppSetup.js',
-  }
-  ```
+```js
+module.exports = {
+  clientAppSetupFiles: '/path/to/clientAppSetup.js',
+}
+```
 
 ## 生命周期 Hooks
 

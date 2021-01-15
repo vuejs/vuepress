@@ -101,21 +101,21 @@ VuePress 配置的参考文档，可以通过配置文件来设置这些配置�
 
   增加一个自定义的 favicon ：
 
-  ```js
-  module.exports = {
-    head: [
-      ['link', { rel: 'icon', href: '/logo.png' }]
-    ]
-  }
-  ```
+```js
+module.exports = {
+  head: [
+    ['link', { rel: 'icon', href: '/logo.png' }]
+  ]
+}
+```
 
   渲染为：
 
-  ```html
-  <head>
-    <link rel="icon" href="/logo.png" />
-  </head>
-  ```
+```html
+<head>
+  <link rel="icon" href="/logo.png" />
+</head>
+```
 
 - 参考：
   - [配置 > locales](#locales)
@@ -157,13 +157,13 @@ VuePress 配置的参考文档，可以通过配置文件来设置这些配置�
 
 - 示例：
 
-  ```js
-  module.exports = {
-    theme: 'vuepress-theme-foo',
-    theme: 'bar',
-    theme: '/path/to/local/theme',
-  }
-  ```
+```js
+module.exports = {
+  theme: 'vuepress-theme-foo',
+  theme: 'bar',
+  theme: '/path/to/local/theme',
+}
+```
 
 - 参考：
   - [指南 > 主题](../guide/theme.md)
