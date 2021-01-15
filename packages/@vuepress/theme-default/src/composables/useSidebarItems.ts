@@ -15,6 +15,7 @@ import {
 } from '@vuepress/shared'
 import type {
   DefaultThemeOptions,
+  DefaultThemePageFrontmatter,
   SidebarConfigArray,
   SidebarConfigObject,
   ResolvedSidebarItem,
@@ -44,14 +45,12 @@ export const useSidebarItems = (): SidebarItemsRef => {
  * It should only be resolved and provided once
  */
 export const resolveSidebarItems = (): SidebarItemsRef => {
-  const frontmatter = usePageFrontmatter()
+  const frontmatter = usePageFrontmatter<DefaultThemePageFrontmatter>()
   const themeLocale = useThemeLocaleData<DefaultThemeOptions>()
 
   // get sidebar config from frontmatter > themeConfig
   const sidebarConfig = computed(
-    () =>
-      (frontmatter.value.sidebar as DefaultThemeOptions['sidebar']) ||
-      themeLocale.value.sidebar
+    () => frontmatter.value.sidebar || themeLocale.value.sidebar
   )
 
   // resolve sidebar items according to the config
