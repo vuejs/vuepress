@@ -35,7 +35,7 @@ export const resolvePageHead = (
     ? frontmatter.description
     : siteLocale.description
 
-  const head = [
+  const head: HeadConfig[] = [
     ...(isArray(frontmatter.head) ? frontmatter.head : []),
     ...siteLocale.head,
     ['title', {}, headTitle],
