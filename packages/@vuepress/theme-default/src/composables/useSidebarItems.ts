@@ -50,7 +50,7 @@ export const resolveSidebarItems = (): SidebarItemsRef => {
 
   // get sidebar config from frontmatter > themeConfig
   const sidebarConfig = computed(
-    () => frontmatter.value.sidebar || themeLocale.value.sidebar
+    () => frontmatter.value.sidebar ?? themeLocale.value.sidebar ?? 'auto'
   )
 
   // resolve sidebar items according to the config
