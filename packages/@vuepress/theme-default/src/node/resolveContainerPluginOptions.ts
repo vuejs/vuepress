@@ -36,7 +36,7 @@ export const resolveContainerPluginOptions = (
 /**
  * Resolve options for @vuepress/plugin-container
  *
- * For details block
+ * For details container
  */
 export const resolveContainerPluginOptionsForDetails = (
   options: DefaultThemeOptions
@@ -48,7 +48,7 @@ export const resolveContainerPluginOptionsForDetails = (
   return {
     type: 'details',
     before: (info) =>
-      `<details class="custom-block details">${
+      `<details class="custom-container details">${
         info ? `<summary>${info}</summary>` : ''
       }\n`,
     after: () => '</details>\n',
@@ -58,7 +58,7 @@ export const resolveContainerPluginOptionsForDetails = (
 /**
  * Resolve options for @vuepress/plugin-container
  *
- * For code-group block
+ * For code-group container
  */
 export const resolveContainerPluginOptionsForCodeGroup = (
   options: DefaultThemeOptions
