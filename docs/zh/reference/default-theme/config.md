@@ -512,7 +512,7 @@ module.exports = {
 
   它主要是为了站点的可访问性 (a11y) 。
 
-## Plugins
+## 插件
 
 ### themePlugins
 
