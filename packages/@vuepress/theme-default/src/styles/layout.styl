@@ -32,6 +32,17 @@ $mobileSidebarWidth = $sidebarWidth * 0.82;
   box-sizing: border-box;
   border-right: 1px solid $borderColor;
   overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: $accentColor $borderColor;
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: $borderColor;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $accentColor;
+  }
 }
 
 .sidebar-mask {
