@@ -54,3 +54,41 @@ export const resolveContainerPluginOptionsForDetails = (
     after: () => '</details>\n',
   }
 }
+
+/**
+ * Resolve options for @vuepress/plugin-container
+ *
+ * For code-group block
+ */
+export const resolveContainerPluginOptionsForCodeGroup = (
+  options: DefaultThemeOptions
+): ContainerPluginOptions | boolean => {
+  if (options.themePlugins?.container?.codeGroup === false) {
+    return false
+  }
+
+  return {
+    type: 'code-group',
+    before: () => `<CodeGroup>\n`,
+    after: () => '</CodeGroup>\n',
+  }
+}
+
+/**
+ * Resolve options for @vuepress/plugin-container
+ *
+ * For code-group-item block
+ */
+export const resolveContainerPluginOptionsForCodeGroupItem = (
+  options: DefaultThemeOptions
+): ContainerPluginOptions | boolean => {
+  if (options.themePlugins?.container?.codeGroupItem === false) {
+    return false
+  }
+
+  return {
+    type: 'code-group-item',
+    before: (info) => `<CodeGroupItem title="${info}">\n`,
+    after: () => '</CodeGroupItem>\n',
+  }
+}

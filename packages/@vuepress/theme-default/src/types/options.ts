@@ -26,6 +26,8 @@ export interface DefaultThemeOptions
       warning?: boolean
       danger?: boolean
       details?: boolean
+      codeGroup?: boolean
+      codeGroupItem?: boolean
     }
 
     /**

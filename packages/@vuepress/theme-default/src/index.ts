@@ -5,6 +5,8 @@ import {
   resolveActiveHeaderLinksPluginOptions,
   resolveContainerPluginOptions,
   resolveContainerPluginOptionsForDetails,
+  resolveContainerPluginOptionsForCodeGroup,
+  resolveContainerPluginOptionsForCodeGroupItem,
   resolveDebugPluginOptions,
   resolveGitPluginOptions,
   resolveMediumZoomPluginOptions,
@@ -43,6 +45,14 @@ export const defaultTheme: Theme<DefaultThemeOptions> = (options, app) => {
       ],
       ['@vuepress/container', resolveContainerPluginOptions(options, 'danger')],
       ['@vuepress/container', resolveContainerPluginOptionsForDetails(options)],
+      [
+        '@vuepress/container',
+        resolveContainerPluginOptionsForCodeGroup(options),
+      ],
+      [
+        '@vuepress/container',
+        resolveContainerPluginOptionsForCodeGroupItem(options),
+      ],
       ['@vuepress/debug', resolveDebugPluginOptions(options, app)],
       ['@vuepress/git', resolveGitPluginOptions(options)],
       ['@vuepress/medium-zoom', resolveMediumZoomPluginOptions(options)],
