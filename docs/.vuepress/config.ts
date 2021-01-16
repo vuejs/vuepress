@@ -28,7 +28,6 @@ const config: UserConfig<DefaultThemeOptions> = {
 
     repo: 'vuepress/vuepress-next',
 
-    docsBranch: 'main',
     docsDir: 'docs',
 
     // theme-level locales config
