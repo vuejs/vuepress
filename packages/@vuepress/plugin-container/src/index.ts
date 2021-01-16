@@ -76,8 +76,8 @@ export const containerPlugin: Plugin<ContainerPluginOptions> = ({
     } else {
       // fallback
       renderBefore = (info: string): string =>
-        `<div class="custom-block ${type}">${
-          info ? `<p class="custom-block-title">${info}</p>` : ''
+        `<div class="custom-container ${type}">${
+          info ? `<p class="custom-container-title">${info}</p>` : ''
         }\n`
       renderAfter = (): string => '</div>\n'
     }
