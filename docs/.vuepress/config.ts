@@ -67,7 +67,7 @@ const config: UserConfig<DefaultThemeOptions> = {
         lastUpdatedText: '上次更新',
         contributorsText: '贡献者',
 
-        // custom blocks
+        // custom containers
         tip: '提示',
         warning: '注意',
         danger: '警告',

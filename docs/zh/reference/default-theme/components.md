@@ -95,7 +95,7 @@ npm install
   </CodeGroupItem>
 </CodeGroup>
 
-:::warning
+::: warning
 你必须在 `<CodeGroupItem>` 的开始标签和代码块之间添加一个空行，否则代码块无法被 Markdown 正确解析。
 
 所有内容首先都必须是合法的 Markdown ，然后才是一个 Vue SFC 。

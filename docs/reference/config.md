@@ -292,7 +292,7 @@ module.exports = {
 
   Set to `false` to disable this plugin.
 
-:::danger
+::: danger
 You should not configure it unless you understand what it is for.
 :::
 
@@ -387,7 +387,7 @@ You should not configure it unless you understand what it is for.
 
   Set to `false` to disable this plugin.
 
-:::danger
+::: danger
 You should not configure it unless you understand what it is for.
 :::
 

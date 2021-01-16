@@ -46,7 +46,7 @@ Options:
   -h, --help             Display this message
 ```
 
-:::tip
+::: tip
 Options set by CLI will override those options with the same name in your config file.
 :::
 
@@ -70,7 +70,7 @@ Options:
   -h, --help             Display this message
 ```
 
-:::tip
+::: tip
 Options set by CLI will override those options with the same name in your config file.
 :::
 

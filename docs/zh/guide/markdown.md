@@ -21,7 +21,7 @@ VuePress 会使用 [markdown-it](https://github.com/markdown-it/markdown-it) 来
 
 你可能已经注意到，当你把鼠标放在各个章节的标题上时，会显示出一个 `#` 锚点。点击这个 `#` 锚点，可以直接跳转到对应章节。
 
-:::tip
+::: tip
 标题锚点扩展由 [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor) 支持。
 
 配置参考： [markdown.anchor](../reference/config.md#markdown-anchor)
@@ -79,7 +79,7 @@ VuePress 会使用 [markdown-it](https://github.com/markdown-it/markdown-it) 来
 - 指向 `.md` 文件的内部链接会被转换为目标页面的 [路由路径](./page.md#路由)，并且支持绝对路径和相对路径。
 - 外部链接会被添加 `target="_blank" rel="noopener noreferrer"` 属性和一个 <OutboundLink /> 标记。
 
-:::tip
+::: tip
 链接扩展是由我们的内置插件支持的。
 
 配置参考： [markdown.links](../reference/config.md#markdown-links)
@@ -103,7 +103,7 @@ VuePress 2 已经发布 :tada: ！
 
 VuePress 2 已经发布 :tada: ！
 
-:::tip
+::: tip
 Emoji 扩展由 [markdown-it-emoji](https://github.com/markdown-it/markdown-it-emoji) 支持。
 
 配置参考： [markdown.emoji](../reference/config.md#markdown-emoji)
@@ -125,7 +125,7 @@ Emoji 扩展由 [markdown-it-emoji](https://github.com/markdown-it/markdown-it-e
 
 目录中的标题将会链接到对应的 [标题锚点](#标题锚点)，因此如果你禁用了标题锚点，可能会影响目录的功能。
 
-:::tip
+::: tip
 目录扩展是由我们的内置插件支持的，该扩展 Fork 并修改自  [markdown-it-toc-done-right](https://github.com/nagaozen/markdown-it-toc-done-right)。
 
 
@@ -168,7 +168,7 @@ export const config: UserConfig = {
 }
 ```
 
-:::tip
+::: tip
 代码高亮扩展是由我们的内置插件支持的。
 
 配置参考： [markdown.code.highlight](../reference/config.md#markdown-code-highlight)
@@ -214,7 +214,7 @@ export const config: UserConfig = {
 - 多个单行： `{4,7,9}`
 - 组合： `{4,7-13,16,23-27,40}`
 
-:::tip
+::: tip
 行高亮扩展是由我们的内置插件支持的，该扩展 Fork 并修改自  [markdown-it-highlight-lines](https://github.com/egoist/markdown-it-highlight-lines)。
 
 配置参考： [markdown.code.highlightLines](../reference/config.md#markdown-code-highlightlines)
@@ -256,7 +256,7 @@ const line2 = 'This is line 2'
 const line3 = 'This is line 3'
 ```
 
-:::tip
+::: tip
 行号扩展是由我们的内置插件支持的。
 
 配置参考： [markdown.code.lineNumbers](../reference/config.md#markdown-code-linenumbers)
@@ -271,7 +271,7 @@ const line3 = 'This is line 3'
 
 你可以在代码块添加 `:v-pre` / `:no-v-pre` 标记来覆盖配置项中的设置。
 
-:::warning
+::: warning
 模板语法的字符有可能会被语法高亮器解析，比如 "Mustache" 语法（即双花括号）。因此，就像下面的例子一样，在某些语言中 `:no-v-pre` 可能并不能生效。
 
 如果你无论如何都想在这种语言中使用 Vue 语法，你可以尝试禁用默认的语法高亮，然后在客户端实现你的自定义代码高亮。
@@ -313,7 +313,7 @@ const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
 const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
 ```
 
-:::tip
+::: tip
 v-pre 扩展是由我们的内置插件支持的。
 
 配置参考： [markdown.code.vPre](../reference/config.md#markdown-vpre)
@@ -362,7 +362,7 @@ v-pre 扩展是由我们的内置插件支持的。
 
 这是默认主题内置的 `<Badge />` 组件 <Badge text="演示" />
 
-:::tip
+::: tip
 前往 [内置组件](../reference/components.md) 查看所有内置组件。
 
 前往 [默认主题 > 内置组件](../reference/default-theme/components.md) 查看默认主题中的所有内置组件。

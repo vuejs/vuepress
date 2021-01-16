@@ -53,7 +53,7 @@ export = config
   </CodeGroupItem>
 </CodeGroup>
 
-:::tip
+::: tip
 We will refer the config object as **VuePress Config**.
 :::
 
@@ -69,7 +69,7 @@ Site config means that, no matter what theme you are using, these configurations
 
 As we know, every site should have its own `lang`, `title`, `description`, etc. Thus, VuePress has built-in support for those options.
 
-:::tip
+::: tip
 Check out the [Config Reference](../reference/config.md) for a full list of site config.
 :::
 
@@ -79,6 +79,6 @@ Theme config will be processed by VuePress theme, so it depends on the theme you
 
 If you don't specify the `theme` option of VuePress Config, the default theme will be used.
 
-:::tip
+::: tip
 Check out the [Default Theme > Config Reference](../reference/default-theme/config.md) for theme config of default theme.
 :::

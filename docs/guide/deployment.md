@@ -27,7 +27,7 @@ The following guides are based on some shared assumptions:
 
     Create `.github/workflows/docs.yml` to set up the workflow.
 
-:::details Click to expand sample config
+::: details Click to expand sample config
 ```yaml
 name: docs
 
@@ -86,7 +86,7 @@ jobs:
 ```
 :::
 
-:::tip
+::: tip
 Please refer to [GitHub Pages official guide](https://pages.github.com/) for more details.
 :::
 
@@ -100,7 +100,7 @@ Please refer to [GitHub Pages official guide](https://pages.github.com/) for mor
 
 2. Create `.gitlab-ci.yml` to set up [GitLab CI](https://about.gitlab.com/stages-devops-lifecycle/continuous-integration/) workflow.
 
-:::details Click to expand sample config
+::: details Click to expand sample config
 ```yaml
 # choose a docker image to use
 image: node:14-buster
@@ -126,7 +126,7 @@ pages:
 ```
 :::
 
-:::tip
+::: tip
 Please refer to [GitLab Pages official guide](https://docs.gitlab.com/ce/user/project/pages/#getting-started) for more details.
 :::
 
@@ -159,7 +159,7 @@ Please refer to [GitLab Pages official guide](https://docs.gitlab.com/ce/user/pr
 
 3. After running `yarn docs:build`, deploy using the command `firebase deploy`.
 
-:::tip
+::: tip
 Please refer to [Firebase CLI official guide](https://firebase.google.com/docs/cli) for more details.
 :::
 

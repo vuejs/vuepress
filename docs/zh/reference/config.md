@@ -291,7 +291,7 @@ module.exports = {
 
   设置为 `false` 可以禁用该插件。
 
-:::danger
+::: danger
 除非你了解它的用途，否则你不应该设置该配置项。
 :::
 
@@ -386,7 +386,7 @@ module.exports = {
 
   设置为 `false` 可以禁用该插件。
 
-:::danger
+::: danger
 除非你了解它的用途，否则你不应该设置该配置项。
 :::
 

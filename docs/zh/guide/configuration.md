@@ -53,7 +53,7 @@ export = config
   </CodeGroupItem>
 </CodeGroup>
 
-:::tip
+::: tip
 我们接下来会把这个配置对象称为 **VuePress 配置**.
 :::
 
@@ -69,7 +69,7 @@ export = config
 
 我们知道，每一个站点都应该有它的 `lang`, `title` 和 `description` 等属性，因此 VuePress 内置支持了这些属性的配置。
 
-:::tip
+::: tip
 前往 [配置参考](../reference/config.md) 查看所有站点配置。
 :::
 
@@ -79,6 +79,6 @@ export = config
 
 如果你没有设置 VuePress 配置的 `theme` 配置项，则代表使用的是默认主题。
 
-:::tip
+::: tip
 前往 [默认主题 > 配置参考](../reference/default-theme/config.md) 查看默认主题的配置。
 :::

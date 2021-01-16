@@ -27,7 +27,7 @@
 
     创建 `.github/workflows/docs.yml` 文件来配置工作流。
 
-:::details 点击展开配置样例
+::: details 点击展开配置样例
 ```yaml
 name: docs
 
@@ -87,7 +87,7 @@ jobs:
 :::
 
 
-:::tip
+::: tip
 请参考 [GitHub Pages 官方指南](https://pages.github.com/) 来获取更多信息。
 :::
 
@@ -101,7 +101,7 @@ jobs:
 
 2. 创建 `.gitlab-ci.yml` 文件来配置 [GitLab CI](https://about.gitlab.com/stages-devops-lifecycle/continuous-integration/) 工作流。
 
-:::details 点击展开配置样例
+::: details 点击展开配置样例
 ```yaml
 # 选择你要使用的 docker 镜像
 image: node:14-buster
@@ -127,7 +127,7 @@ pages:
 ```
 :::
 
-:::tip
+::: tip
 请参考 [GitLab Pages 官方指南](https://docs.gitlab.com/ce/user/project/pages/#getting-started) 来获取更多信息。
 :::
 
@@ -160,7 +160,7 @@ pages:
 
 3. 在执行了 `yarn docs:build` 或 `npm run docs:build` 后, 使用 `firebase deploy` 指令来部署。
 
-:::tip
+::: tip
 请参考 [Firebase CLI 官方指南](https://firebase.google.com/docs/cli) 来获取更多信息。
 :::
 
@@ -230,7 +230,7 @@ cloudbase framework:deploy
 
   也可以使用 `cloudbase init --template vuepress` 快速创建和部署一个新的 VuePress 应用。
 
-:::tip
+::: tip
 更多详细信息请查看 CloudBase Framework 的[部署项目示例](https://github.com/TencentCloudBase/cloudbase-framework?site=vuepress#%E9%A1%B9%E7%9B%AE%E7%A4%BA%E4%BE%8B)
 :::
 

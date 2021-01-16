@@ -21,7 +21,7 @@ Embedded by markdown-it:
 
 You might have noticed that, a `#` anchor is displayed when you hover the mouse on the headers of each section. By clicking the `#` anchor, you can jump to the section directly.
 
-:::tip
+::: tip
 This header anchors extension is supported by [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor).
 
 Config reference: [markdown.anchor](../reference/config.md#markdown-anchor)
@@ -78,7 +78,7 @@ Take our documentation source files as an example:
 - Internal links to `.md` files will be converted to the [page route path](./page.md#routing), and both absolute path and relative path are supported.
 - External links will get `target="_blank" rel="noopener noreferrer"` attrs and a <OutboundLink /> indicator.
 
-:::tip
+::: tip
 This links extension is supported by our built-in plugin.
 
 Config reference: [markdown.links](../reference/config.md#markdown-links)
@@ -102,7 +102,7 @@ VuePress 2 is out :tada: !
 
 VuePress 2 is out :tada: !
 
-:::tip
+::: tip
 This emoji extension is supported by [markdown-it-emoji](https://github.com/markdown-it/markdown-it-emoji).
 
 Config reference: [markdown.emoji](../reference/config.md#markdown-emoji)
@@ -124,7 +124,7 @@ If you want to put the table of contents (TOC) of your current page inside your 
 
 The headers in TOC will link to the corresponding [header anchors](#header-anchors), so TOC won't work well if you disable header anchors.
 
-:::tip
+::: tip
 This toc extension is supported by our built-in plugin, which is forked and modified from [markdown-it-toc-done-right](https://github.com/nagaozen/markdown-it-toc-done-right).
 
 Config reference: [markdown.toc](../reference/config.md#markdown-toc)
@@ -166,7 +166,7 @@ export const config: UserConfig = {
 }
 ```
 
-:::tip
+::: tip
 This syntax highlighting extension is supported by our built-in plugin.
 
 Config reference: [markdown.code.highlight](../reference/config.md#markdown-code-highlight)
@@ -212,7 +212,7 @@ Examples for line ranges mark:
 - Multiple single lines: `{4,7,9}`
 - Combined: `{4,7-13,16,23-27,40}`
 
-:::tip
+::: tip
 This line highlighting extension is supported by our built-in plugin, which is forked and modified from [markdown-it-highlight-lines](https://github.com/egoist/markdown-it-highlight-lines).
 
 Config reference: [markdown.code.highlightLines](../reference/config.md#markdown-code-highlightlines)
@@ -254,7 +254,7 @@ const line2 = 'This is line 2'
 const line3 = 'This is line 3'
 ```
 
-:::tip
+::: tip
 This line numbers extension is supported by our built-in plugin.
 
 Config reference: [markdown.code.lineNumbers](../reference/config.md#markdown-code-linenumbers)
@@ -268,7 +268,7 @@ To avoid your code blocks being compiled by Vue, VuePress will add [v-pre](https
 
 You can add `:v-pre` / `:no-v-pre` mark in your fenced code blocks to override the value set in config.
 
-:::warning
+::: warning
 The template syntax characters, for example, the "Mustache" syntax (double curly braces) might be parsed by the syntax highlighter. Thus, as the following example, `:no-v-pre` might not work well in some languages.
 
 If you want to make Vue syntax work in those languages anyway, try to disable the default syntax highlighting and implement your own syntax highlighting in client side.
@@ -310,7 +310,7 @@ const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
 const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
 ```
 
-:::tip
+::: tip
 This v-pre extension is supported by our built-in plugin.
 
 Config reference: [markdown.code.vPre](../reference/config.md#markdown-vpre)
@@ -359,7 +359,7 @@ This is default theme built-in `<Badge />` component <Badge text="demo" />
 
 This is default theme built-in `<Badge />` component <Badge text="demo" />
 
-:::tip
+::: tip
 Check out the [Built-in Components](../reference/components.md) for a full list of built-in components.
 
 Check out the [Default Theme > Built-in Components](../reference/default-theme/components.md) for a full list of default theme built-in components.

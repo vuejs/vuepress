@@ -45,7 +45,7 @@ We can reference our logo in current page like this:
 
 ![VuePress Logo](/hero.png)
 
-:::tip
+::: tip
 Config reference: [public](../reference/config.md#public)
 :::
 
@@ -69,7 +69,7 @@ To help with that, VuePress provides a built-in helper `$withBase` that generate
 
 The helper is verbose in Markdown. So it might be more helpful for theme and plugin authors.
 
-:::tip
+::: tip
 Config reference: [base](../reference/config.md#base)
 :::
 
@@ -99,6 +99,6 @@ module.exports = {
 ![Image from path alias](@alias/image.png)
 ```
 
-:::tip
+::: tip
 Config reference: [alias](../reference/config.md#alias)
 :::

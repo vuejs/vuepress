@@ -95,7 +95,7 @@ npm install
   </CodeGroupItem>
 </CodeGroup>
 
-:::warning
+::: warning
 You must add an empty line between the starting tag of `<CodeGroupItem>` and the code fence, otherwise the code fence will not be parsed correctly by Markdown.
 
 All content must be valid Markdown first, and then a Vue SFC.

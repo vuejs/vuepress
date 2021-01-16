@@ -42,7 +42,7 @@ description: 页面的描述
 
 同样的，VuePress 有一些内置支持的 Frontmatter 字段，而你使用的主题也可能有它自己的特殊 Frontmatter 。
 
-:::tip
+::: tip
 前往 [Frontmatter 参考](../reference/config.md) 查看 VuePress 支持的 Frontmatter 配置。
 
 前往 [默认主题 > Frontmatter 参考](../reference/default-theme/frontmatter.md) 查看默认主题的 Frontmatter 配置。

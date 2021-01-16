@@ -456,7 +456,7 @@ module.exports = {
 
 - Details:
 
-  Specify the default title of the tip [custom blocks](./markdown.md#custom-blocks).
+  Specify the default title of the tip [custom containers](./markdown.md#custom-containers).
 
 ### warning
 
@@ -466,7 +466,7 @@ module.exports = {
 
 - Details:
 
-  Specify the default title of the warning [custom blocks](./markdown.md#custom-blocks).
+  Specify the default title of the warning [custom containers](./markdown.md#custom-containers).
 
 ### danger
 
@@ -476,7 +476,7 @@ module.exports = {
 
 - Details:
 
-  Specify the default title of the danger [custom blocks](./markdown.md#custom-blocks).
+  Specify the default title of the danger [custom containers](./markdown.md#custom-containers).
 
 ### notFound
 
@@ -548,7 +548,7 @@ module.exports = {
 
 - Details:
 
-  Enable custom blocks that powered by [@vuepress/plugin-container](../plugin/container.md) or not.
+  Enable custom containers that powered by [@vuepress/plugin-container](../plugin/container.md) or not.
 
   `ContainerType` type is:
 
@@ -560,7 +560,7 @@ module.exports = {
   - `codeGroupItem`
 
 - Also see:
-  - [Default Theme > Markdown > Custom Blocks](./markdown.md#custom-blocks)
+  - [Default Theme > Markdown > Custom Containers](./markdown.md#custom-containers)
 
 #### themePlugins.debug
 

@@ -189,7 +189,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **theme-default:** migrate styles ([4bb6e10](https://github.com/vuepress/vuepress-next/commit/4bb6e10da8b71849edf45bd11c282777e840b618))
 * **theme-default:** navbar and sidebar ([7f22ac0](https://github.com/vuepress/vuepress-next/commit/7f22ac032c17be8dafe1226d31da4019c17237d5))
 * **theme-default:** optimize sidebar items config ([f70cdf0](https://github.com/vuepress/vuepress-next/commit/f70cdf06741bd283722fb51170e407492e9b1a6c))
-* **theme-default:** support locale config for custom blocks ([404e02d](https://github.com/vuepress/vuepress-next/commit/404e02dadda526b88dfca0f36df8fbf18d3d5e28))
+* **theme-default:** support locale config for custom containers ([404e02d](https://github.com/vuepress/vuepress-next/commit/404e02dadda526b88dfca0f36df8fbf18d3d5e28))
 * **theme-default:** use active-header-links plugin ([f7990a2](https://github.com/vuepress/vuepress-next/commit/f7990a2e752af6989cebb58818e3f6c86951255e))
 * **theme-default:** use container plugin and refactor types ([55e0940](https://github.com/vuepress/vuepress-next/commit/55e0940a6606fa64742faaf14722ebfaafb39321))
 * **theme-default:** use Debug component in Layout ([fe4334f](https://github.com/vuepress/vuepress-next/commit/fe4334f863d4d48e1a37ef96d684a168a9eff996))

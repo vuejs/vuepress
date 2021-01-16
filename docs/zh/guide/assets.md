@@ -45,7 +45,7 @@
 
 ![VuePress Logo](/hero.png)
 
-:::tip
+::: tip
 配置参考： [public](../reference/config.md#public)
 :::
 
@@ -69,7 +69,7 @@
 
 在 Markdown 中使用这个 Helper 会显得有些冗长，因此它可能对主题和插件作者更有帮助。
 
-:::tip
+::: tip
 配置参考： [base](../reference/config.md#base)
 :::
 
@@ -99,6 +99,6 @@ module.exports = {
 ![来自路径别名的图片](@alias/image.png)
 ```
 
-:::tip
+::: tip
 配置参考： [alias](../reference/config.md#alias)
 :::

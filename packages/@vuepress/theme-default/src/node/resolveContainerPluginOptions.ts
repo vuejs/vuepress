@@ -4,7 +4,7 @@ import type { DefaultThemeOptions } from '../types'
 /**
  * Resolve options for @vuepress/plugin-container
  *
- * For custom blocks default title
+ * For custom containers default title
  */
 export const resolveContainerPluginOptions = (
   options: DefaultThemeOptions,

@@ -46,7 +46,7 @@ Options:
   -h, --help             Display this message
 ```
 
-:::tip
+::: tip
 通过命令行设置的配置项，会覆盖你配置文件中的同名配置项。
 :::
 
@@ -70,7 +70,7 @@ Options:
   -h, --help             Display this message
 ```
 
-:::tip
+::: tip
 通过命令行设置的配置项，会覆盖你配置文件中的同名配置项。
 :::
 
