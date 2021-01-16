@@ -1,10 +1,13 @@
 import { removeLeadingSlash, removeEndingSlash } from '@vuepress/shared'
 import { resolveRepoType } from './resolveRepoType'
+import type { RepoType } from './resolveRepoType'
 
-export const editLinkPatternGithub = ':repo/edit/:branch/:path'
-export const editLinkPatternGitlab = ':repo/-/edit/:branch/:path'
-export const editLinkPatternBitbucket =
-  ':repo/src/:branch/:path?mode=edit&spa=0&at=:branch&fileviewer=file-view-default'
+export const editLinkPatterns: Record<Exclude<RepoType, null>, string> = {
+  GitHub: ':repo/edit/:branch/:path',
+  GitLab: ':repo/-/edit/:branch/:path',
+  Bitbucket:
+    ':repo/src/:branch/:path?mode=edit&spa=0&at=:branch&fileviewer=file-view-default',
+}
 
 export const resolveEditLink = ({
   docsRepo,
@@ -21,16 +24,12 @@ export const resolveEditLink = ({
 }): string | null => {
   const repoType = resolveRepoType(docsRepo)
 
-  let pattern: string | null = null
+  let pattern: string | undefined
 
   if (editLinkPattern) {
     pattern = editLinkPattern
-  } else if (repoType === 'GitHub') {
-    pattern = editLinkPatternGithub
-  } else if (repoType === 'GitLab') {
-    pattern = editLinkPatternGitlab
-  } else if (repoType === 'Bitbucket') {
-    pattern = editLinkPatternBitbucket
+  } else if (repoType !== null) {
+    pattern = editLinkPatterns[repoType]
   }
 
   if (!pattern) return null
