@@ -46,7 +46,8 @@
 
 - Example:
 
-```yaml
+```md
+---
 head:
   - - meta
     - name: foo
@@ -54,6 +55,7 @@ head:
   - - link
     - rel: canonical
       href: foobar
+---
 ```
 
   Rendered as:
@@ -127,7 +129,7 @@ head:
 
     The page frontmatter is:
 
-```yaml
+```md
 ---
 date: 2021-01-03
 permalinkPattern: :year/:month/:day/:slug.html
@@ -142,7 +144,7 @@ permalinkPattern: :year/:month/:day/:slug.html
 
     The page frontmatter is:
 
-```yaml
+```md
 ---
 permalinkPattern: :year/:month/:day/:slug.html
 ---

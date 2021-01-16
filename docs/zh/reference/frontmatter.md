@@ -46,7 +46,8 @@
 
 - 示例：
 
-```yaml
+```md
+---
 head:
   - - meta
     - name: foo
@@ -54,6 +55,7 @@ head:
   - - link
     - rel: canonical
       href: foobar
+---
 ```
 
   渲染为：
@@ -127,7 +129,7 @@ head:
 
     页面 Frontmatter 是：
 
-```yaml
+```md
 ---
 date: 2021-01-03
 permalinkPattern: :year/:month/:day/:slug.html
@@ -142,7 +144,7 @@ permalinkPattern: :year/:month/:day/:slug.html
 
     页面 Frontmatter 是：
 
-```yaml
+```md
 ---
 permalinkPattern: :year/:month/:day/:slug.html
 ---

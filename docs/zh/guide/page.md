@@ -30,7 +30,7 @@ VuePress 是以 Markdown 为中心的。你项目中的每一个 Markdown 文件
 
 Markdown 文件可以包含一个 [YAML](https://yaml.org/) Frontmatter 。Frontmatter 必须在 Markdown 文件的顶部，并且被包裹在一对三短划线中间。下面是一个基本的示例：
 
-```yaml
+```md
 ---
 lang: zh-CN
 title: 页面的标题
