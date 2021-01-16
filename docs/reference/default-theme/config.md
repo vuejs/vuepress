@@ -544,13 +544,20 @@ module.exports = {
 
 #### themePlugins.container
 
-- Type: `{ [name: 'tip' | 'warning' | 'danger' | 'details']: boolean}`
-
-- Default: `{ tip: true, warning: true, danger: true, details: true }`
+- Type: `Record<ContainerType, boolean>`
 
 - Details:
 
   Enable custom blocks that powered by [@vuepress/plugin-container](../plugin/container.md) or not.
+
+  `ContainerType` type is:
+
+  - `tip`
+  - `warning`
+  - `danger`
+  - `details`
+  - `codeGroup`
+  - `codeGroupItem`
 
 - Also see:
   - [Default Theme > Markdown > Custom Blocks](./markdown.md#custom-blocks)

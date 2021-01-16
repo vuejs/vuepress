@@ -544,13 +544,20 @@ module.exports = {
 
 #### themePlugins.container
 
-- 类型： `{ [name: 'tip' | 'warning' | 'danger' | 'details']: boolean}`
-
-- 默认值： `{ tip: true, warning: true, danger: true, details: true }`
+- 类型： `Record<ContainerType, boolean>`
 
 - 详情：
 
   是否启用由 [@vuepress/plugin-container](../plugin/container.md) 支持的自定义容器。
+
+  `ContainerType` 类型为：
+
+  - `tip`
+  - `warning`
+  - `danger`
+  - `details`
+  - `codeGroup`
+  - `codeGroupItem`
 
 - 参考：
   - [默认主题 > Markdown > 自定义容器](./markdown.md#自定义容器)
