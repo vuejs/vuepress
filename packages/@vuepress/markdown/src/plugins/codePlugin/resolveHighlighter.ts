@@ -6,6 +6,10 @@ import type { HighlightLanguage } from './languages'
 // eslint-disable-next-line no-import-assign
 loadLanguages.silent = true
 
+// load some commonly used languages to partially avoid the following issue
+// @see https://github.com/PrismJS/prism/issues/2716
+loadLanguages(['markdown', 'jsdoc', 'yaml'])
+
 export type Highlighter = (code: string) => string
 
 /**
