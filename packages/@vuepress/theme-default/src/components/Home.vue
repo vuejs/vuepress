@@ -34,6 +34,7 @@
     </div>
 
     <template v-if="footer">
+      <!-- eslint-disable-next-line vue/no-v-html -->
       <div v-if="footerHtml" class="footer" v-html="footer" />
       <div v-else class="footer" v-text="footer" />
     </template>

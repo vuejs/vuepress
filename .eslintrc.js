@@ -25,9 +25,4 @@ module.exports = {
       },
     },
   ],
-
-  rules: {
-    // TODO: disable for vue 3 Fragment feature
-    'vue/valid-template-root': 'off',
-  },
 }
