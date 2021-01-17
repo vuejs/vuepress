@@ -21,6 +21,7 @@ export interface DefaultThemeHomePageFrontmatter {
     details: string
   }[]
   footer?: string
+  footerHtml?: boolean
 }
 
 export interface DefaultThemePageFrontmatter {

@@ -33,9 +33,10 @@
       <Content />
     </div>
 
-    <div v-if="footer" class="footer">
-      {{ footer }}
-    </div>
+    <template v-if="footer">
+      <div v-if="footerHtml" class="footer" v-html="footer" />
+      <div v-else class="footer" v-text="footer" />
+    </template>
   </main>
 </template>
 
@@ -114,6 +115,8 @@ export default defineComponent({
 
     const footer = computed(() => frontmatter.value.footer)
 
+    const footerHtml = computed(() => frontmatter.value.footerHtml)
+
     return {
       heroImage,
       heroAlt,
@@ -122,6 +125,7 @@ export default defineComponent({
       actions,
       features,
       footer,
+      footerHtml,
     }
   },
 })
