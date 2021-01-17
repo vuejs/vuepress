@@ -35,7 +35,27 @@ The command will interactively ask for details to configure your VuePress siteâ€
 - Maintainer Name
 - Repository URL
 
-Once it is complete, you should see your new VuePress site scaffolded in your directory! :tada:
+Once this done, a scaffolded documentation site will be created in the `docs` directory (or custom directory name, if passed) under the current directory.
+
+To see it in action, navigate into newly scaffolded directory, install the dependencies and start the local server:
+
+<code-group>
+<code-block title="YARN" active>
+```bash
+cd docs
+yarn install
+yarn dev
+```
+</code-block>
+
+<code-block title="NPM">
+```bash
+cd docs
+npm install
+npm run dev
+```
+</code-block>
+</code-group>
 
 ## Manual Installation
 
