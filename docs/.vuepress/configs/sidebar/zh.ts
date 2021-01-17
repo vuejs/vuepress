@@ -63,6 +63,7 @@ export const zh: SidebarConfig = {
         '/zh/reference/default-theme/config.md',
         '/zh/reference/default-theme/frontmatter.md',
         '/zh/reference/default-theme/components.md',
+        '/zh/reference/default-theme/markdown.md',
       ],
     },
   ],

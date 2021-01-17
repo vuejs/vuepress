@@ -101,4 +101,6 @@ npm install
 所有内容首先都必须是合法的 Markdown ，然后才是一个 Vue SFC 。
 
 了解更多： [深入 > Markdown 与 Vue SFC](../../guide/advanced/markdown.md)
+
+或者你可以选择使用 [自定义容器](./markdown.md#自定义容器) 。
 :::

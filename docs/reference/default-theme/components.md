@@ -101,4 +101,6 @@ You must add an empty line between the starting tag of `<CodeGroupItem>` and the
 All content must be valid Markdown first, and then a Vue SFC.
 
 Learn more: [Advanced > Markdown and Vue SFC](../../guide/advanced/markdown.md)
+
+Alternatively, you can use the [custom containers](./markdown.md#custom-containers).
 :::
