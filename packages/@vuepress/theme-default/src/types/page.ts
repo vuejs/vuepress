@@ -9,8 +9,8 @@ export interface DefaultThemeHomePageFrontmatter {
   home: true
   heroImage?: string
   heroAlt?: string
-  heroText?: string
-  tagline?: string
+  heroText?: string | null
+  tagline?: string | null
   actions?: {
     text: string
     link: string
