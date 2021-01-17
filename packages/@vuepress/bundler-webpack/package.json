@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/bundler-webpack",
-  "version": "2.0.0-alpha.17",
+  "version": "2.0.0-alpha.18",
   "description": "Bundler webpack package of VuePress",
   "keywords": [
     "vuepress",
@@ -31,9 +31,9 @@
     "@types/webpack-env": "^1.16.0",
     "@vue/compiler-sfc": "^3.0.4",
     "@vue/server-renderer": "^3.0.4",
-    "@vuepress/client": "2.0.0-alpha.16",
-    "@vuepress/core": "2.0.0-alpha.17",
-    "@vuepress/utils": "2.0.0-alpha.15",
+    "@vuepress/client": "2.0.0-alpha.18",
+    "@vuepress/core": "2.0.0-alpha.18",
+    "@vuepress/utils": "2.0.0-alpha.18",
     "autoprefixer": "^10.1.0",
     "copy-webpack-plugin": "^7.0.0",
     "css-loader": "^5.0.1",

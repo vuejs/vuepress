@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.18](https://github.com/vuepress/vuepress-next/compare/v2.0.0-alpha.17...v2.0.0-alpha.18) (2021-01-17)
+
+
+### Bug Fixes
+
+* **client:** load existing head tags on mounted ([15722c5](https://github.com/vuepress/vuepress-next/commit/15722c5175e44a8d6363bfe5f138f2c2c8edeec3))
+* **markdown:** load some languages by default to partially avoid prism issue ([48c085a](https://github.com/vuepress/vuepress-next/commit/48c085af6a8751211fe7180a82bb67ff5a7b191f))
+* **theme-default:** fix homepage frontmatter type ([9cf2d28](https://github.com/vuepress/vuepress-next/commit/9cf2d288e115d335f6ff9f1a849a2ce82db799c9))
+* **theme-default:** fix sidebar config override ([2c2c280](https://github.com/vuepress/vuepress-next/commit/2c2c2801be716dfb102345090888fd1e22a0ac92))
+* **theme-default:** make sr-only tags unselectable ([0f6488e](https://github.com/vuepress/vuepress-next/commit/0f6488e3a00674c0670737c8831763db0a0ffa93))
+
+
+### Features
+
+* **client:** make usePageFrontmatter generic ([2c5e5c1](https://github.com/vuepress/vuepress-next/commit/2c5e5c1400469a3cb4da2856104514a9413bff8a))
+* **shared:** optimize frontmatter type and support generics ([8a7025f](https://github.com/vuepress/vuepress-next/commit/8a7025ff39b4656f98f9a35e93848373ce72ddbe))
+* **theme-default:** add code-group custom container ([d0a20aa](https://github.com/vuepress/vuepress-next/commit/d0a20aaacefc78708a4181c53704b28c60b520b4))
+* **theme-default:** add page transition ([845cc2c](https://github.com/vuepress/vuepress-next/commit/845cc2cb64223b856261bfc7b384dec6557456c4))
+* **theme-default:** allow html in homepage footer ([87e0821](https://github.com/vuepress/vuepress-next/commit/87e0821cee66c34141c1c3a62e8f5ecb6b21a957))
+* **theme-default:** optimize scrollbar style of sidebar ([27abb26](https://github.com/vuepress/vuepress-next/commit/27abb26509fa737ea27c3036bbe834d544e60298))
+* **theme-default:** support multiple action buttons in homepage (close [#23](https://github.com/vuepress/vuepress-next/issues/23)) ([bb44710](https://github.com/vuepress/vuepress-next/commit/bb44710624d2dbb65bd5f3da2eafabdec73ecadf))
+
+
+
+
+
 # [2.0.0-alpha.17](https://github.com/vuepress/vuepress-next/compare/v2.0.0-alpha.16...v2.0.0-alpha.17) (2021-01-13)
 
 
