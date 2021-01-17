@@ -24,7 +24,7 @@
 
 以我们文档的源文件为例，我们把 VuePress 的 Logo 放在了 Public 目录下：
 
-```sh
+```bash
 └─ docs
    ├─ .vuepress
    |  └─ public
@@ -77,7 +77,7 @@
 
 尽管这不是常见用法，但是你可以从依赖包中引用图片：
 
-```sh
+```bash
 npm install -D package-name
 ```
 

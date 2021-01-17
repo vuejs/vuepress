@@ -38,6 +38,6 @@ assignees: ''
 - Browser:
 - Output of `vuepress info`:
 
-```sh
+```bash
 # Paste output of `vuepress info` here
 ```

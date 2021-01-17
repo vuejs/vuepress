@@ -33,7 +33,7 @@ VuePress 会使用 [markdown-it](https://github.com/markdown-it/markdown-it) 来
 
 以我们文档的源文件为例：
 
-```sh
+```bash
 └─ docs
    └─ zh
       ├─ guide

@@ -4,7 +4,7 @@ VuePress CLI is provided by [@vuepress/cli](https://www.npmjs.com/package/@vuepr
 
 Run `vuepress --help` to get following help messages:
 
-```sh
+```bash
 Usage:
   $ vuepress <command> [options]
 
@@ -27,7 +27,7 @@ Options:
 
 Start a development server to develop your VuePress site locally.
 
-```sh
+```bash
 Usage:
   $ vuepress dev [sourceDir]
 
@@ -54,7 +54,7 @@ Options set by CLI will override those options with the same name in your config
 
 Build your VuePress site to static files, which are ready for [deployment](../guide/deployment.md).
 
-```sh
+```bash
 Usage:
   $ vuepress build [sourceDir]
 

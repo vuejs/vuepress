@@ -4,7 +4,7 @@ VuePress 命令行接口是由 [@vuepress/cli](https://www.npmjs.com/package/@vu
 
 执行 `vuepress --help` 来获取下列帮助信息：
 
-```sh
+```bash
 Usage:
   $ vuepress <command> [options]
 
@@ -27,7 +27,7 @@ Options:
 
 启动一个开发服务器，在本地开发你的 VuePress 站点。
 
-```sh
+```bash
 Usage:
   $ vuepress dev [sourceDir]
 
@@ -54,7 +54,7 @@ Options:
 
 将你的 VuePress 站点构建成静态文件，以便你进行后续[部署](../guide/deployment.md)。
 
-```sh
+```bash
 Usage:
   $ vuepress build [sourceDir]
 

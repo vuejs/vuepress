@@ -24,7 +24,7 @@ It would be useful in some cases:
 
 Take our documentation source files as an example, we are putting the logo of VuePress inside the public directory:
 
-```sh
+```bash
 └─ docs
    ├─ .vuepress
    |  └─ public
@@ -77,7 +77,7 @@ Config reference: [base](../reference/config.md#base)
 
 Although it is not a common usage, you can reference images from dependent packages:
 
-```sh
+```bash
 npm install -D package-name
 ```
 

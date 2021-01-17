@@ -33,7 +33,7 @@ When using Markdown [link syntax](https://spec.commonmark.org/0.29/#link-referen
 
 Take our documentation source files as an example:
 
-```sh
+```bash
 └─ docs
    ├─ guide
    │  ├─ getting-started.md
