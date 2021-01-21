@@ -5,6 +5,7 @@ export const createPluginApiHooks = (): PluginApi['hooks'] => ({
   // life cycle hooks
   onInitialized: createHookQueue('onInitialized'),
   onPrepared: createHookQueue('onPrepared'),
+  onWatched: createHookQueue('onWatched'),
   onGenerated: createHookQueue('onGenerated'),
 
   // page hooks

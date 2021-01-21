@@ -47,7 +47,7 @@ Temporarily record some breaking changes here.
 
 - `shouldPrefetch` -> the default value is changed to `false`
 - `patterns` -> `pagePatterns`
-- `extraWatchFiles` -> removed
+- `extraWatchFiles` -> removed, watch files manually in `onWatched` hook
 - `evergreen` -> the default value is changed to `true`
 - `markdown`
   - `markdown.lineNumbers` -> `markdown.code.lineNumbers`, and the default value is changed to `true`
@@ -125,7 +125,7 @@ Theme authors can use their own way for users to configure styles (not be limite
 #### Plugin API
 
 - `ready` -> `onPrepared`
-- `updated` -> removed
+- `updated` -> `onWatched`
 - `generated` -> `onGenerated`
 - `additionalPages` -> removed, use `app.pages.push(createPage())` in `onInitialized` hook
 - `clientDynamicModules` -> removed, use `app.writeTemp()` in `onPrepared` hook

@@ -21,7 +21,9 @@ export type Hook<
 }
 
 // life-cycle hook
-export type LifeCycleHook = Hook<(app: App) => PromiseOrNot<void>>
+export type LifeCycleHook<T extends unknown[] = []> = Hook<
+  (app: App, ...args: T) => PromiseOrNot<void>
+>
 
 // hook that generates client files
 export type ClientFilesHook = Hook<
@@ -49,6 +51,7 @@ export type ExtendsPageDataHook = Hook<
 export interface Hooks {
   onInitialized: LifeCycleHook
   onPrepared: LifeCycleHook
+  onWatched: LifeCycleHook<[restart: () => Promise<void>]>
   onGenerated: LifeCycleHook
   extendsMarkdown: ExtendsMarkdownHook
   extendsPageData: ExtendsPageDataHook
