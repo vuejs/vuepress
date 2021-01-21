@@ -2,7 +2,7 @@
   <Transition name="back-to-top">
     <svg
       v-if="show"
-      id="back-to-top"
+      class="back-to-top"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 49.484 28.284"
       @click="scrollToTop"
@@ -29,6 +29,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, onMounted, ref } from 'vue'
+// @ts-ignore
 import * as debounce from 'lodash.debounce'
 
 const getScrollTop = (): number =>
@@ -71,7 +72,7 @@ export default defineComponent({
   --back-to-top-color-hover: #71cda3;
 }
 
-#back-to-top {
+.back-to-top {
   cursor: pointer;
   position: fixed;
   bottom: 2rem;
@@ -81,7 +82,7 @@ export default defineComponent({
   z-index: 1;
 }
 
-#back-to-top:hover {
+.back-to-top:hover {
   color: var(--back-to-top-color-hover);
 }
 
