@@ -1,11 +1,11 @@
+import * as chokidar from 'chokidar'
 import type { UserConfig } from '@vuepress/cli'
 import type { DefaultThemeOptions } from '@vuepress/theme-default'
+import { chalk, logger } from '@vuepress/utils'
 import { navbar, sidebar } from './configs'
 
 const config: UserConfig<DefaultThemeOptions> = {
   base: '/',
-
-  evergreen: process.env.NODE_ENV !== 'production',
 
   head: [['link', { rel: 'icon', href: `/logo.png` }]],
 
@@ -115,6 +115,20 @@ const config: UserConfig<DefaultThemeOptions> = {
       },
     ],
   ],
+
+  evergreen: process.env.NODE_ENV !== 'production',
+
+  onWatched: (_, restart) => {
+    const watcher = chokidar.watch('configs/**/*.ts', {
+      cwd: __dirname,
+      ignoreInitial: true,
+    })
+    watcher.on('change', async (file) => {
+      logger.info(`file ${chalk.magenta(file)} is modified`)
+      await watcher.close()
+      await restart()
+    })
+  },
 }
 
 export = config

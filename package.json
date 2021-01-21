@@ -35,6 +35,7 @@
     "@commitlint/config-conventional": "^11.0.0",
     "@types/jest": "^26.0.19",
     "anywhere": "^1.5.0",
+    "chokidar": "^3.5.1",
     "cpx": "^1.5.0",
     "cross-env": "^7.0.3",
     "eslint": "^7.15.0",
