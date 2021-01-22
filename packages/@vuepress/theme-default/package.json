@@ -43,9 +43,9 @@
     "@vuepress/utils": "2.0.0-alpha.18",
     "prismjs": "^1.23.0",
     "stylus": "^0.54.8",
-    "stylus-loader": "^4.3.0",
-    "vue": "^3.0.4",
-    "vue-router": "^4.0.2"
+    "stylus-loader": "^4.3.3",
+    "vue": "^3.0.5",
+    "vue-router": "^4.0.3"
   },
   "publishConfig": {
     "access": "public"

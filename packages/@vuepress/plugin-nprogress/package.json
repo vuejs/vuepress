@@ -33,8 +33,8 @@
     "@vuepress/core": "2.0.0-alpha.18",
     "@vuepress/utils": "2.0.0-alpha.18",
     "nprogress": "^0.2.0",
-    "vue": "^3.0.4",
-    "vue-router": "^4.0.2"
+    "vue": "^3.0.5",
+    "vue-router": "^4.0.3"
   },
   "devDependencies": {
     "@types/nprogress": "^0.2.0"

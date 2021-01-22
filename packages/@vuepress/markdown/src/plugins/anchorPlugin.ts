@@ -75,4 +75,4 @@ export interface AnchorPluginOptions {
   callback?: (token: Token, opts: { slug: string; title: string }) => void
 }
 
-export const anchorPlugin: PluginWithOptions<AnchorPluginOptions> = rawAnchorPlugin
+export const anchorPlugin: PluginWithOptions<AnchorPluginOptions> = rawAnchorPlugin as PluginWithOptions<AnchorPluginOptions>

@@ -28,7 +28,7 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@vue/shared": "^3.0.4"
+    "@vue/shared": "^3.0.5"
   },
   "publishConfig": {
     "access": "public"
