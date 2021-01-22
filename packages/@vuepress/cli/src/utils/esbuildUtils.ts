@@ -13,6 +13,7 @@ export const createBuildToCodeOptions = (
   target: 'node12',
   bundle: true,
   write: false,
+  external: ['fsevents', 'vuepress', '@vuepress/*'],
 })
 
 /**
