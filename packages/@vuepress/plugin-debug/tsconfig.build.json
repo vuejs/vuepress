@@ -1,14 +1,11 @@
 {
   "extends": "../../../tsconfig.base.json",
-  "compilerOptions": {
-    "module": "CommonJS",
-    "rootDir": "./src",
-    "outDir": "./lib"
-  },
-  "include": ["./src"],
   "references": [
     { "path": "../client/tsconfig.build.json" },
     { "path": "../core/tsconfig.build.json" },
-    { "path": "../utils/tsconfig.build.json" }
-  ]
+    { "path": "../utils/tsconfig.build.json" },
+    { "path": "./tsconfig.esm.json" },
+    { "path": "./tsconfig.cjs.json" }
+  ],
+  "files": []
 }
