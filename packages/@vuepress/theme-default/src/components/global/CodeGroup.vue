@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent, h, ref } from 'vue'
-import type { VNode } from 'vue'
+import type { Component, VNode } from 'vue'
 
 export default defineComponent({
   name: 'CodeGroup',
@@ -16,11 +16,7 @@ export default defineComponent({
 
       // get children code-group-item
       const items = (slots.default?.() || [])
-        .filter(
-          (vnode) =>
-            // @ts-ignore
-            vnode.type.name === 'CodeGroupItem'
-        )
+        .filter((vnode) => (vnode.type as Component).name === 'CodeGroupItem')
         .map((vnode) => {
           if (vnode.props === null) {
             vnode.props = {}
