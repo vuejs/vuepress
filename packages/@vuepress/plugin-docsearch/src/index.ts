@@ -3,17 +3,19 @@ import type { Plugin, PluginObject } from '@vuepress/core'
 import type { LocaleConfig } from '@vuepress/shared'
 import { logger, path } from '@vuepress/utils'
 
-export interface DocsearchPluginOptions
-  extends Pick<
-    DocSearchProps,
-    | 'appId'
-    | 'apiKey'
-    | 'indexName'
-    | 'searchParameters'
-    | 'disableUserPersonalization'
-    | 'initialQuery'
-  > {
-  locales?: LocaleConfig<Pick<DocSearchProps, 'placeholder'>>
+export type DocsearchPluginLocaleData = Pick<
+  DocSearchProps,
+  | 'appId'
+  | 'apiKey'
+  | 'indexName'
+  | 'placeholder'
+  | 'searchParameters'
+  | 'disableUserPersonalization'
+  | 'initialQuery'
+>
+
+export interface DocsearchPluginOptions extends DocsearchPluginLocaleData {
+  locales?: LocaleConfig<DocsearchPluginLocaleData>
 }
 
 export const docsearchPlugin: Plugin<DocsearchPluginOptions> = ({
