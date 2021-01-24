@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.19](https://github.com/vuepress/vuepress-next/compare/v2.0.0-alpha.18...v2.0.0-alpha.19) (2021-01-24)
+
+
+### Bug Fixes
+
+* **cli:** add esbuild external ([8d285ea](https://github.com/vuepress/vuepress-next/commit/8d285ea88946683d96d46a379d4215963338dff4))
+
+
+### Features
+
+* **core:** add onWatched hook ([9725a10](https://github.com/vuepress/vuepress-next/commit/9725a101599363094a85916317109b67d365dff4))
+
+
+
+
+
 # [2.0.0-alpha.18](https://github.com/vuepress/vuepress-next/compare/v2.0.0-alpha.17...v2.0.0-alpha.18) (2021-01-17)
 
 **Note:** Version bump only for package @vuepress/cli
