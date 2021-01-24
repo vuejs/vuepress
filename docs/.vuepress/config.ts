@@ -91,10 +91,11 @@ const config: UserConfig<DefaultThemeOptions> = {
     [
       '@vuepress/plugin-docsearch',
       {
-        // TODO: create algolia index for vuepress-next
-        // apiKey: '',
-        // appId: '',
-        // indexName: '',
+        apiKey: '3a539aab83105f01761a137c61004d85',
+        indexName: 'vuepress',
+        searchParameters: {
+          facetFilters: ['tags:v2'],
+        },
         locales: {
           '/zh/': {
             placeholder: '搜索文档',
