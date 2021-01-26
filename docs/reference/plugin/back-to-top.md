@@ -6,7 +6,7 @@ This plugin will add a _back to top_ button to your site. The button will be dis
 
 ## Styles
 
-You can custom the style of the _back to top_ button via CSS variables:
+You can customize the style of the _back to top_ button via CSS variables:
 
 ```css
 :root {
