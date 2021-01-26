@@ -65,6 +65,9 @@ module.exports = {
 }
 ```
 
+- 参考：
+  - [指南 > 多语言支持](../../guide/i18n.md)
+
 ### before
 
 - 类型： `(info: string) => string`

@@ -65,6 +65,9 @@ module.exports = {
 }
 ```
 
+- Also see:
+  - [Guide > I18n](../../guide/i18n.md)
+
 ### before
 
 - Type: `(info: string) => string`
