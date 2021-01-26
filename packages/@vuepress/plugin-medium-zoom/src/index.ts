@@ -4,13 +4,13 @@ import { path } from '@vuepress/utils'
 
 export interface MediumZoomPluginOptions {
   selector: string
-  options?: ZoomOptions
+  zoomOptions?: ZoomOptions
   delay?: number
 }
 
 export const mediumZoomPlugin: Plugin<MediumZoomPluginOptions> = ({
   selector = ':not(a) > img',
-  options = {},
+  zoomOptions = {},
   delay = 500,
 }) => ({
   name: '@vuepress/plugin-medium-zoom',
@@ -19,7 +19,7 @@ export const mediumZoomPlugin: Plugin<MediumZoomPluginOptions> = ({
 
   define: {
     MZ_SELECTOR: selector,
-    MZ_OPTIONS: options,
+    MZ_ZOOM_OPTIONS: zoomOptions,
     MZ_DELAY: delay,
   },
 })

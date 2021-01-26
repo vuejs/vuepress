@@ -13,7 +13,7 @@ export const resolveMediumZoomPluginOptions = (
 
   return {
     selector: '.theme-default-content :not(a) > img',
-    options: {},
+    zoomOptions: {},
     delay: 300,
   }
 }
