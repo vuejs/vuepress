@@ -85,6 +85,11 @@ const config: UserConfig<DefaultThemeOptions> = {
         openInNewWindow: '在新窗口打开',
       },
     },
+
+    themePlugins: {
+      // only enable git plugin in production mode
+      git: process.env.NODE_ENV === 'production',
+    },
   },
 
   plugins: [
