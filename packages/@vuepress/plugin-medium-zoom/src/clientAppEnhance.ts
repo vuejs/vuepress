@@ -1,7 +1,5 @@
 import mediumZoom from 'medium-zoom'
 import type { ZoomOptions } from 'medium-zoom'
-import { nextTick } from 'vue'
-import { START_LOCATION } from 'vue-router'
 import type { ClientAppEnhance } from '@vuepress/client'
 import { mediumZoomSymbol } from './composables'
 
@@ -27,17 +25,8 @@ const clientAppEnhance: ClientAppEnhance = ({ app, router }) => {
   }
   app.provide(mediumZoomSymbol, zoom)
 
-  router.afterEach((to, from) => {
-    // the initial state does not work with `nextTick`
-    // so we have to delay it
-    if (from === START_LOCATION) {
-      setTimeout(() => zoom.refresh(), delay)
-      return
-    }
-
-    if (to.path !== from.path) {
-      nextTick(() => zoom.refresh())
-    }
+  router.afterEach(() => {
+    setTimeout(() => zoom.refresh(), delay)
   })
 }
 
