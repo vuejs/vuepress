@@ -7,7 +7,7 @@ actions:
     link: /zh/guide/getting-started.html
     type: primary
   - text: 项目简介
-    link: /guide/
+    link: /zh/guide/
     type: secondary
 features:
   - title: 简洁至上
