@@ -16,6 +16,7 @@ export const createDevServerConfig = (
     dev: {
       publicPath: app.options.base,
       writeToDisk: false,
+      stats: app.env.isDebug ? 'normal' : 'errors-warnings',
     },
     firewall: false,
     headers: {

@@ -20,7 +20,7 @@ export const handleOtherOptions = ({
 }): void => {
   // set infrastructureLogging options
   config.set('infrastructureLogging', {
-    level: app.env.isDebug ? 'verbose' : 'error',
+    level: app.env.isDebug ? 'info' : 'error',
   } as Configuration['infrastructureLogging'])
 
   // set cache options
