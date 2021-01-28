@@ -29,6 +29,7 @@
     "prismjs",
     "slugify",
     "unmount",
-    "vuepress"
+    "vuepress",
+    "zoomable"
   ]
 }
