@@ -1,4 +1,12 @@
-# nprogress
+---
+title: nprogress
+---
+
+<!-- `# nprogress` will be rendered as `<h1 id="nprogress">`, and the id will conflict with the nprogress bar (stupid) -->
+
+<!-- so we add a 'plugin' suffix in the h1 title, and use title frontmatter to set the page title -->
+
+# nprogress Plugin
 
 > @vuepress/plugin-nprogress
 
