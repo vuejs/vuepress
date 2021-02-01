@@ -15,5 +15,5 @@ export const formatDateString = (
 
   // fill leading zeros for month and day
   const [, yearStr, monthStr, dayStr] = dateMatch
-  return [yearStr, `0${monthStr}`.slice(-2), `0${dayStr}`.slice(-2)].join('-')
+  return [yearStr, monthStr.padStart(2, '0'), dayStr.padStart(2, '0')].join('-')
 }
