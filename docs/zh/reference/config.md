@@ -103,7 +103,7 @@ VuePress 配置的参考文档，可以通过配置文件来设置这些配置�
 
 ```js
 module.exports = {
-  head: [['link', { rel: 'icon', href: '/logo.png' }]],
+  head: [['link', { rel: 'icon', href: '/images/logo.png' }]],
 }
 ```
 
@@ -111,7 +111,7 @@ module.exports = {
 
 ```html
 <head>
-  <link rel="icon" href="/logo.png" />
+  <link rel="icon" href="/images/logo.png" />
 </head>
 ```
 

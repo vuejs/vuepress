@@ -118,7 +118,7 @@ module.exports = {
 module.exports = {
   themeConfig: {
     // Public 文件路径
-    logo: '/hero.png',
+    logo: '/images/hero.png',
     // URL
     logo: 'https://vuejs.org/images/logo.png',
   },

@@ -28,9 +28,10 @@
 └─ docs
    ├─ .vuepress
    |  └─ public
-   |     └─ hero.png  # <- Logo 文件
+   |     └─ images
+   |        └─ hero.png  # <- Logo 文件
    └─ guide
-      └─ assets.md    # <- 我们在这里
+      └─ assets.md       # <- 我们在这里
 ```
 
 我们可以这样在当前页面引用 Logo ：
@@ -38,12 +39,12 @@
 **Input**
 
 ```md
-![VuePress Logo](/hero.png)
+![VuePress Logo](/images/hero.png)
 ```
 
 **Output**
 
-![VuePress Logo](/hero.png)
+![VuePress Logo](/images/hero.png)
 
 ::: tip
 配置参考： [public](../reference/config.md#public)
@@ -56,7 +57,7 @@
 举例来说，如果你想要把网站部署到 `https://foo.github.io/bar/` ，那么应该把 `base` 设置为 `"/bar/"` ，此时你必须在 Markdown 文件中这样引用 Public 文件：
 
 ```md
-![VuePress Logo](/bar/hero.png)
+![VuePress Logo](/bar/images/hero.png)
 ```
 
 显然，一旦某一天你修改了 `base`，这样的路径引用将会显得异常脆弱。这也是我们推荐你使用相对路径来引用静态文件的原因。
@@ -64,7 +65,7 @@
 为了解决这个问题，VuePress 提供了内置的一个 Helper `$withBase` ，它可以帮助你生成正确的路径：
 
 ```md
-<img :src="$withBase('/hero.png')" alt="VuePress Logo">
+<img :src="$withBase('/images/hero.png')" alt="VuePress Logo">
 ```
 
 在 Markdown 中使用这个 Helper 会显得有些冗长，因此它可能对主题和插件作者更有帮助。

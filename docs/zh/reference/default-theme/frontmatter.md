@@ -35,7 +35,7 @@
   ```md
   ---
   # Public 文件路径
-  heroImage: /hero.png
+  heroImage: /images/hero.png
   # URL
   heroImage: https://vuejs.org/images/logo.png
   ---

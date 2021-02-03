@@ -35,7 +35,7 @@ Frontmatter in this section will only take effect in home pages.
   ```md
   ---
   # public file path
-  heroImage: /hero.png
+  heroImage: /images/hero.png
   # url
   heroImage: https://vuejs.org/images/logo.png
   ---

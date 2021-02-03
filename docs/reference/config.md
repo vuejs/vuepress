@@ -104,7 +104,7 @@ You can also specify the config file via `--config` option of [CLI](./cli.md).
 
 ```js
 module.exports = {
-  head: [['link', { rel: 'icon', href: '/logo.png' }]],
+  head: [['link', { rel: 'icon', href: '/images/logo.png' }]],
 }
 ```
 
@@ -112,7 +112,7 @@ Rendered as：
 
 ```html
 <head>
-  <link rel="icon" href="/logo.png" />
+  <link rel="icon" href="/images/logo.png" />
 </head>
 ```
 

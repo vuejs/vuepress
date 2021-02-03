@@ -1,7 +1,7 @@
 ---
 home: true
 title: Home
-heroImage: /hero.png
+heroImage: /images/hero.png
 actions:
   - text: Get Started
     link: /guide/getting-started.html
