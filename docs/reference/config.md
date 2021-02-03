@@ -93,7 +93,7 @@ You can also specify the config file via `--config` option of [CLI](./cli.md).
 - Details:
 
   Extra tags to inject into the `<head>` tag in the rendered HTML.
-  
+
   You can specify each tag in the form of `[tagName, { attrName: attrValue }, innerHTML?]`.
 
   This can be specified in different locales.
@@ -104,13 +104,11 @@ You can also specify the config file via `--config` option of [CLI](./cli.md).
 
 ```js
 module.exports = {
-  head: [
-    ['link', { rel: 'icon', href: '/logo.png' }]
-  ]
+  head: [['link', { rel: 'icon', href: '/logo.png' }]],
 }
 ```
 
-  Rendered as：
+Rendered as：
 
 ```html
 <head>

@@ -92,7 +92,7 @@ VuePress 配置的参考文档，可以通过配置文件来设置这些配置�
 - 详情：
 
   在最终渲染出的 HTML 的 `<head>` 标签内加入的额外标签。
-  
+
   你可以通过 `[tagName, { attrName: attrValue }, innerHTML?]` 的格式来添加标签。
 
   它可以设置在不同语言的 locales 中。
@@ -103,13 +103,11 @@ VuePress 配置的参考文档，可以通过配置文件来设置这些配置�
 
 ```js
 module.exports = {
-  head: [
-    ['link', { rel: 'icon', href: '/logo.png' }]
-  ]
+  head: [['link', { rel: 'icon', href: '/logo.png' }]],
 }
 ```
 
-  渲染为：
+渲染为：
 
 ```html
 <head>
@@ -550,7 +548,7 @@ module.exports = {
 
 - 详情：
 
-  一个函数，用来控制哪些文件是需要生成对应的 `<link rel="preload">` 标签的。设置为 `true` 或者 `false` 来完全启用或禁用它。 
+  一个函数，用来控制哪些文件是需要生成对应的 `<link rel="preload">` 标签的。设置为 `true` 或者 `false` 来完全启用或禁用它。
 
   默认情况下，只有当前页面所需的文件会被预加载。所以在绝大部分情况下，你只需要使用 `true` 就可以了。
 
@@ -562,7 +560,7 @@ module.exports = {
 
 - 详情：
 
-  一个函数，用来控制哪些文件是需要生成对应的 `<link rel="prefetch">` 标签的。设置为 `true` 或者 `false` 来完全启用或禁用它。 
+  一个函数，用来控制哪些文件是需要生成对应的 `<link rel="prefetch">` 标签的。设置为 `true` 或者 `false` 来完全启用或禁用它。
 
   如果你将它设置为 `true` ，所有其它页面所需的文件都会被预拉取。这对于小型站点来说是十分有帮助的，因为它会大大提升页面切换的速度。但是在你的网站有很多页面时不建议你这么做。
 
