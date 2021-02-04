@@ -133,6 +133,7 @@ const config: UserConfig<DefaultThemeOptions> = {
   },
 
   plugins: [
+    ['@vuepress/plugin-debug'],
     [
       '@vuepress/plugin-docsearch',
       {
