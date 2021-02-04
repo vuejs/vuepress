@@ -7,13 +7,10 @@ declare const GA_ID: string
 
 const id = GA_ID
 
-const clientAppEnhance: ClientAppEnhance = ({ router }) => {
+const clientAppEnhance: ClientAppEnhance = () => {
   if (__DEV__ || __SSR__ || !id) return
 
-  useGoogleAnalytics({
-    id,
-    router,
-  })
+  useGoogleAnalytics(id)
 }
 
 export default clientAppEnhance

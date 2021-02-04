@@ -23,6 +23,7 @@
     "esbuild",
     "frontmatter",
     "globby",
+    "gtag",
     "nprogress",
     "prefetch",
     "preload",
