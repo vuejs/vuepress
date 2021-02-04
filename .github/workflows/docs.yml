@@ -9,6 +9,9 @@ jobs:
   docs:
     runs-on: ubuntu-latest
 
+    env:
+      GA_ID: G-CTB8FQ7VMW
+
     steps:
       - uses: actions/checkout@v2
         with:
