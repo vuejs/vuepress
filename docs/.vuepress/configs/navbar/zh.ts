@@ -17,6 +17,8 @@ export const zh: NavbarConfig = [
           '/zh/reference/components.md',
           '/zh/reference/plugin-api.md',
           '/zh/reference/theme-api.md',
+          '/zh/reference/client-api.md',
+          '/zh/reference/node-api.md',
         ],
       },
       {

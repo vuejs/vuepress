@@ -20,6 +20,8 @@ export const en: NavbarConfig = [
           '/reference/components.md',
           '/reference/plugin-api.md',
           '/reference/theme-api.md',
+          '/reference/client-api.md',
+          '/reference/node-api.md',
         ],
       },
       {
