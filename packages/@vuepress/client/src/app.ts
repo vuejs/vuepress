@@ -123,9 +123,7 @@ export const createVueApp = async ({
       siteLocaleData.value
     )
   )
-  const pageLang = computed(() =>
-    resolvePageLang(pageFrontmatter.value, siteLocaleData.value)
-  )
+  const pageLang = computed(() => resolvePageLang(pageData.value))
 
   // provide global computed
   app.provide(routeLocaleSymbol, routeLocale)

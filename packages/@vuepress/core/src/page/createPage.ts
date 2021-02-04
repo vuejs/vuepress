@@ -9,6 +9,7 @@ import { resolvePageFileContent } from './resolvePageFileContent'
 import { resolvePageFilePath } from './resolvePageFilePath'
 import { resolvePageFrontmatter } from './resolvePageFrontmatter'
 import { resolvePageKey } from './resolvePageKey'
+import { resolvePageLang } from './resolvePageLang'
 import { resolvePagePath } from './resolvePagePath'
 import { resolvePagePermalink } from './resolvePagePermalink'
 import { resolvePageRoutesInfo } from './resolvePageRoutesInfo'
@@ -47,6 +48,9 @@ export const createPage = async (
 
   // infer page path according to file path
   const { pathInferred, pathLocale } = inferPagePath({ app, filePathRelative })
+
+  // resolve language from frontmatter and site options
+  const lang = resolvePageLang({ app, frontmatter, pathLocale })
 
   // resolve page permalink
   const permalink = resolvePagePermalink({
@@ -118,5 +122,6 @@ export const createPage = async (
     links,
     slug,
     date,
+    lang,
   }
 }

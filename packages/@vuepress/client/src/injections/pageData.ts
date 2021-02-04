@@ -12,6 +12,7 @@ const pageDataEmpty = readonly({
   key: '',
   path: '',
   title: '',
+  lang: '',
   frontmatter: {},
   excerpt: '',
   headers: [],

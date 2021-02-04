@@ -33,6 +33,11 @@ export type PageData<
   title: string
 
   /**
+   * Language of the page
+   */
+  lang: string
+
+  /**
    * Front matter of the page
    */
   frontmatter: PageFrontmatter

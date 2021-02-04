@@ -1,8 +1,6 @@
 import { inject } from 'vue'
 import type { ComputedRef, InjectionKey } from 'vue'
-import { isString } from '@vuepress/shared'
-import type { PageFrontmatter } from './pageFrontmatter'
-import type { SiteLocaleData } from './siteLocaleData'
+import type { PageData } from '@vuepress/shared'
 
 export type PageLang = string
 export type PageLangRef = ComputedRef<PageLang>
@@ -19,12 +17,11 @@ export const usePageLang = (): PageLangRef => {
   return pageLang
 }
 
-export const resolvePageLang = (
-  frontmatter: PageFrontmatter,
-  siteLocale: SiteLocaleData
-): PageLang => {
-  if (isString(frontmatter.lang) && frontmatter.lang) {
-    return frontmatter.lang
-  }
-  return siteLocale.lang || 'en'
-}
+/**
+ * Resolve language of current page
+ *
+ * It's mainly used for the `lang` attribute of `<html>` tag,
+ * which should not be empty
+ */
+export const resolvePageLang = (pageData: PageData): PageLang =>
+  pageData.lang || 'en'

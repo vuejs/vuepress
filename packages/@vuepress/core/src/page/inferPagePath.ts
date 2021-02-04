@@ -28,7 +28,7 @@ export const inferPagePath = ({
     .replace(/\/(README|index).html$/i, '/')
 
   // resolve page locale path
-  const pathLocale = resolveLocalePath(app.options.locales, pathInferred)
+  const pathLocale = resolveLocalePath(app.siteData.locales, pathInferred)
 
   return {
     pathInferred,
