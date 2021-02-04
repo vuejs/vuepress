@@ -562,16 +562,6 @@ module.exports = {
 - Also see:
   - [Default Theme > Markdown > Custom Containers](./markdown.md#custom-containers)
 
-#### themePlugins.debug
-
-- Type: `boolean`
-
-- Default: `true`
-
-- Details:
-
-  Enable [@vuepress/plugin-debug](../plugin/debug.md) or not.
-
 #### themePlugins.git
 
 - Type: `boolean`

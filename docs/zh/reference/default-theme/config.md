@@ -562,16 +562,6 @@ module.exports = {
 - 参考：
   - [默认主题 > Markdown > 自定义容器](./markdown.md#自定义容器)
 
-#### themePlugins.debug
-
-- 类型： `boolean`
-
-- 默认值： `true`
-
-- 详情：
-
-  是否启用 [@vuepress/plugin-debug](../plugin/debug.md) 。
-
 #### themePlugins.git
 
 - 类型： `boolean`

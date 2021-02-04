@@ -31,11 +31,6 @@ export interface DefaultThemeOptions
     }
 
     /**
-     * Enable @vuepress/plugin-debug or not
-     */
-    debug?: boolean
-
-    /**
      * Enable @vuepress/plugin-git or not
      */
     git?: boolean
