@@ -8,6 +8,7 @@ import { appUseByConfig } from './appUseByConfig'
 import { createAppDir } from './createAppDir'
 import { createAppEnv } from './createAppEnv'
 import { createAppOptions } from './createAppOptions'
+import { createAppSiteData } from './createAppSiteData'
 import { createAppVersion } from './createAppVersion'
 import { resolveBundler } from './resolveBundler'
 
@@ -19,6 +20,7 @@ export const createApp = (config: AppConfig): App => {
   const options = createAppOptions(config)
   const dir = createAppDir(options)
   const env = createAppEnv(options)
+  const siteData = createAppSiteData(options)
   const markdown = createMarkdown(options.markdown)
   const pluginApi = createPluginApi()
 
@@ -27,6 +29,7 @@ export const createApp = (config: AppConfig): App => {
     options,
     dir,
     env,
+    siteData,
     markdown,
     pluginApi,
 

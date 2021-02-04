@@ -1,4 +1,5 @@
 import type { Markdown } from '@vuepress/markdown'
+import type { SiteData } from '@vuepress/shared'
 import type { BundlerDev, BundlerBuild } from '../bundler'
 import type { Page } from '../page'
 import type { Plugin, PluginOptions, PluginConfig } from '../plugin'
@@ -16,6 +17,7 @@ export interface App {
   options: AppOptions
   dir: AppDir
   env: AppEnv
+  siteData: SiteData
   markdown: Markdown
   pluginApi: PluginApi
   use: <T extends PluginOptions>(
