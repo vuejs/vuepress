@@ -2,23 +2,24 @@
   <header ref="navbar" class="navbar">
     <ToggleSidebarButton @toggle="$emit('toggle-sidebar')" />
 
-    <RouterLink :to="$themeLocale.home || $routeLocale" class="home-link">
-      <img
-        v-if="$themeLocale.logo"
-        class="logo"
-        :src="$withBase($themeLocale.logo)"
-        :alt="$siteLocale.title"
-      />
+    <span ref="siteBrand">
+      <RouterLink :to="$themeLocale.home || $routeLocale">
+        <img
+          v-if="$themeLocale.logo"
+          class="logo"
+          :src="$withBase($themeLocale.logo)"
+          :alt="$siteLocale.title"
+        />
 
-      <span
-        v-if="$siteLocale.title"
-        ref="siteName"
-        class="site-name"
-        :class="{ 'can-hide': $themeLocale.logo }"
-      >
-        {{ $siteLocale.title }}
-      </span>
-    </RouterLink>
+        <span
+          v-if="$siteLocale.title"
+          class="site-name"
+          :class="{ 'can-hide': $themeLocale.logo }"
+        >
+          {{ $siteLocale.title }}
+        </span>
+      </RouterLink>
+    </span>
 
     <div class="navbar-links-wrapper" :style="linksWrapperStyle">
       <slot name="before" />
@@ -46,7 +47,7 @@ export default defineComponent({
 
   setup() {
     const navbar = ref<HTMLElement | null>(null)
-    const siteName = ref<HTMLElement | null>(null)
+    const siteBrand = ref<HTMLElement | null>(null)
     const linksWrapperMaxWidth = ref(0)
     const linksWrapperStyle = computed(() => {
       if (!linksWrapperMaxWidth.value) {
@@ -62,17 +63,17 @@ export default defineComponent({
       // TODO: migrate to css var
       // refer to config.styl
       const MOBILE_DESKTOP_BREAKPOINT = 719
-      const NAVBAR_VERTICAL_PADDING =
+      const navbarHorizontalPadding =
         getCssValue(navbar.value, 'paddingLeft') +
         getCssValue(navbar.value, 'paddingRight')
       const handleLinksWrapWidth = (): void => {
-        if (document.documentElement.clientWidth < MOBILE_DESKTOP_BREAKPOINT) {
+        if (window.innerWidth < MOBILE_DESKTOP_BREAKPOINT) {
           linksWrapperMaxWidth.value = 0
         } else {
           linksWrapperMaxWidth.value =
             navbar.value!.offsetWidth -
-            NAVBAR_VERTICAL_PADDING -
-            (siteName.value?.offsetWidth || 0)
+            navbarHorizontalPadding -
+            (siteBrand.value?.offsetWidth || 0)
         }
       }
       handleLinksWrapWidth()
@@ -81,7 +82,7 @@ export default defineComponent({
 
     return {
       navbar,
-      siteName,
+      siteBrand,
       linksWrapperStyle,
     }
   },
