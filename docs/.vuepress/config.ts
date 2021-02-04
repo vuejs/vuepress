@@ -149,6 +149,12 @@ const config: UserConfig<DefaultThemeOptions> = {
         },
       },
     ],
+    [
+      '@vuepress/plugin-google-analytics',
+      {
+        id: process.env.GA_ID,
+      },
+    ],
     ['@vuepress/plugin-pwa'],
     [
       '@vuepress/plugin-pwa-popup',
