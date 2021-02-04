@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.20](https://github.com/vuepress/vuepress-next/compare/v2.0.0-alpha.19...v2.0.0-alpha.20) (2021-02-04)
+
+
+### Bug Fixes
+
+* **plugin-medium-zoom:** always refresh medium-zoom with delay ([2495f5d](https://github.com/vuepress/vuepress-next/commit/2495f5d30fa75b50c203919abf2d8dab7dfda2d9))
+* **theme-default:** fix max width of navbar links wrapper ([846e60c](https://github.com/vuepress/vuepress-next/commit/846e60ca9f0137f54a96df7589df4ea4cd99f18a))
+* **theme-default:** remove extra rem in styles (close [#50](https://github.com/vuepress/vuepress-next/issues/50)) ([9b1b852](https://github.com/vuepress/vuepress-next/commit/9b1b852a9c11c28b43253f87b40362693ad2cb95))
+
+
+### Features
+
+* **core:** create siteData in vuepress app ([05b87dd](https://github.com/vuepress/vuepress-next/commit/05b87ddf32f32c94cc131e0074365aeba70f85f2))
+* **core:** make language available in page data ([03bb09f](https://github.com/vuepress/vuepress-next/commit/03bb09fd51aeaff56d26820a1401b87ea8bdeb38))
+
+
+
+
+
 # [2.0.0-alpha.19](https://github.com/vuepress/vuepress-next/compare/v2.0.0-alpha.18...v2.0.0-alpha.19) (2021-01-24)
 
 

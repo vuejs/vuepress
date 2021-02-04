@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/client",
-  "version": "2.0.0-alpha.19",
+  "version": "2.0.0-alpha.20",
   "description": "Client package of VuePress",
   "keywords": [
     "vuepress",
@@ -28,7 +28,7 @@
     "copy": "cpx \"src/**/*.{d.ts,css}\" lib"
   },
   "dependencies": {
-    "@vuepress/shared": "2.0.0-alpha.19",
+    "@vuepress/shared": "2.0.0-alpha.20",
     "vue": "^3.0.5",
     "vue-router": "^4.0.3"
   },
