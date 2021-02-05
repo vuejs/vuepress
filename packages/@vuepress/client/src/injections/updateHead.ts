@@ -1,4 +1,5 @@
 import { onMounted, ref, useSSRContext, watch } from 'vue'
+import { useRoute } from 'vue-router'
 import { isPlainObject, isString } from '@vuepress/shared'
 import type { HeadConfig, VuepressSSRContext } from '@vuepress/shared'
 import { usePageHead } from './pageHead'
@@ -70,6 +71,7 @@ export const createHeadTag = ([
  * This composable function should be used only once in the root app
  */
 export const useUpdateHead = (): void => {
+  const route = useRoute()
   const head = usePageHead()
   const lang = usePageLang()
 
@@ -118,6 +120,9 @@ export const useUpdateHead = (): void => {
   onMounted(() => {
     loadHead()
     updateHead()
-    watch([head, lang], () => updateHead())
+    watch(
+      () => route.path,
+      () => updateHead()
+    )
   })
 }
