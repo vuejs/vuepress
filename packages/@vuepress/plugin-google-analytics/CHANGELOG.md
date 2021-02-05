@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.21](https://github.com/vuepress/vuepress-next/compare/v2.0.0-alpha.20...v2.0.0-alpha.21) (2021-02-05)
+
+
+* feat(plugin-google-analytics)!: migrate to google analytics 4 (close #36) ([d2393f7](https://github.com/vuepress/vuepress-next/commit/d2393f7970c346bfcef2e72658f9a4a89a93b396)), closes [#36](https://github.com/vuepress/vuepress-next/issues/36)
+
+
+### BREAKING CHANGES
+
+* migrate to google analytics 4 and drop v3 support
+
+
+
+
+
 # [2.0.0-alpha.20](https://github.com/vuepress/vuepress-next/compare/v2.0.0-alpha.19...v2.0.0-alpha.20) (2021-02-04)
 
 **Note:** Version bump only for package @vuepress/plugin-google-analytics
