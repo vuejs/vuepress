@@ -1,9 +1,8 @@
+import { debounce } from 'ts-debounce'
 import { onMounted, onBeforeUnmount, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import type { Router } from 'vue-router'
 import { usePageData } from '@vuepress/client'
-// @ts-ignore
-import * as debounce from 'lodash.debounce'
 
 export interface UseActiveHeaderLinksOptions {
   headerLinkSelector: string

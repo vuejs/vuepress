@@ -28,9 +28,8 @@
 </template>
 
 <script lang="ts">
+import { debounce } from 'ts-debounce'
 import { computed, defineComponent, onMounted, ref } from 'vue'
-// @ts-ignore
-import * as debounce from 'lodash.debounce'
 
 const getScrollTop = (): number =>
   window.pageYOffset ||

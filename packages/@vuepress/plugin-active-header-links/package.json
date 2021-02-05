@@ -32,12 +32,9 @@
     "@vuepress/client": "2.0.0-alpha.20",
     "@vuepress/core": "2.0.0-alpha.20",
     "@vuepress/utils": "2.0.0-alpha.20",
-    "lodash.debounce": "^4.0.8",
+    "ts-debounce": "^2.3.0",
     "vue": "^3.0.5",
     "vue-router": "^4.0.3"
-  },
-  "devDependencies": {
-    "@types/lodash.debounce": "^4.0.6"
   },
   "publishConfig": {
     "access": "public"
