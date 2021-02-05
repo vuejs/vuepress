@@ -1,15 +1,15 @@
 import * as execa from 'execa'
 
 /**
- * Get unix timestamp in milliseconds of the last commit
+ * Get unix timestamp in milliseconds of the first commit
  */
-export const getUpdatedTime = async (
+export const getCreatedTime = async (
   filePath: string,
   cwd: string
 ): Promise<number> => {
   const { stdout } = await execa(
     'git',
-    ['--no-pager', 'log', '-1', '--format=%at', filePath],
+    ['--no-pager', 'log', '--diff-filter=A', '--format=%at', filePath],
     {
       cwd,
     }

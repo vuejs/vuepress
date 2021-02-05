@@ -2,7 +2,7 @@
 
 > @vuepress/plugin-git
 
-该插件会收集你的页面的 Git 信息，包括更新时间、贡献者等。
+该插件会收集你的页面的 Git 信息，包括创建和更新时间、贡献者等。
 
 默认主题的 [lastUpdated](../default-theme/config.md#lastupdated) 和 [contributors](../default-theme/config.md#contributors) 就是由该插件支持的。
 
@@ -19,6 +19,16 @@
 :::
 
 ## 配置项
+
+### createdTime
+
+- 类型： `boolean`
+
+- 默认值： `true`
+
+- 详情：
+
+  是否收集页面的创建时间。
 
 ### updatedTime
 
@@ -57,6 +67,14 @@ export default {
   }
 }
 ```
+
+### git.createdTime
+
+- 类型： `number`
+
+- 详情：
+
+  页面第一次提交的 Unix 毫秒时间戳。
 
 ### git.updatedTime
 

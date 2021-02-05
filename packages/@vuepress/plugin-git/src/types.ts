@@ -4,6 +4,11 @@ export interface GitPluginPageData {
 
 export interface GitData {
   /**
+   * Unix timestamp in milliseconds of the first commit
+   */
+  createdTime?: number
+
+  /**
    * Unix timestamp in milliseconds of the last commit
    */
   updatedTime?: number

@@ -2,7 +2,7 @@
 
 > @vuepress/plugin-git
 
-This plugin will collect git information of your pages, including the updated time, the contributors, etc.
+This plugin will collect git information of your pages, including the created and updated time, the contributors, etc.
 
 The [lastUpdated](../default-theme/config.md#lastupdated) and [contributors](../default-theme/config.md#contributors) of default theme is powered by this plugin.
 
@@ -19,6 +19,16 @@ This plugin will significantly slow down the speed of data preparation, especial
 :::
 
 ## Options
+
+### createdTime
+
+- Type: `boolean`
+
+- Default: `true`
+
+- Details:
+
+  Whether to collect page created time or not.
 
 ### updatedTime
 
@@ -57,6 +67,14 @@ export default {
   }
 }
 ```
+
+### git.createdTime
+
+- Type: `number`
+
+- Details:
+
+  Unix timestamp in milliseconds of the first commit of the page.
 
 ### git.updatedTime
 

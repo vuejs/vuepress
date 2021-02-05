@@ -1,5 +1,10 @@
 import type { Plugin } from '@vuepress/core'
-import { checkGitRepo, getContributors, getUpdatedTime } from './utils'
+import {
+  checkGitRepo,
+  getContributors,
+  getCreatedTime,
+  getUpdatedTime,
+} from './utils'
 import type { GitData } from './types'
 
 export * from './types'
@@ -9,6 +14,11 @@ export * from './utils'
  * Options of @vuepress/plugin-git
  */
 export interface GitPluginOptions {
+  /**
+   * Whether to get the created time of a page
+   */
+  createdTime?: boolean
+
   /**
    * Whether to get the updated time of a page
    */
@@ -21,7 +31,7 @@ export interface GitPluginOptions {
 }
 
 export const gitPlugin: Plugin<GitPluginOptions> = (
-  { updatedTime, contributors },
+  { createdTime, updatedTime, contributors },
   app
 ) => {
   const cwd = app.dir.source()
@@ -35,6 +45,10 @@ export const gitPlugin: Plugin<GitPluginOptions> = (
 
       if (!isGitRepoValid || page.filePathRelative === null) {
         return { git }
+      }
+
+      if (createdTime !== false) {
+        git.createdTime = await getCreatedTime(page.filePathRelative, cwd)
       }
 
       if (updatedTime !== false) {
