@@ -1,12 +1,21 @@
-import type { Plugin } from '@vuepress/core'
+import type { Plugin, PluginObject } from '@vuepress/core'
 import { path } from '@vuepress/utils'
 
 export type DebugPluginOptions = Record<never, never>
 
-export const debugPlugin: Plugin<DebugPluginOptions> = {
-  name: '@vuepress/plugin-debug',
+export const debugPlugin: Plugin<DebugPluginOptions> = (_, app) => {
+  const pluginObj: PluginObject = {
+    name: '@vuepress/plugin-debug',
+  }
 
-  clientAppRootComponentFiles: path.resolve(__dirname, './components/Debug.js'),
+  if (app.env.isDev || app.env.isDebug) {
+    pluginObj.clientAppRootComponentFiles = path.resolve(
+      __dirname,
+      './components/Debug.js'
+    )
+  }
+
+  return pluginObj
 }
 
 export default debugPlugin
