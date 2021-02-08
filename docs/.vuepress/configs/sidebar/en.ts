@@ -25,9 +25,10 @@ export const en: SidebarConfig = {
       isGroup: true,
       text: 'Advanced',
       children: [
-        '/guide/advanced/markdown.md',
-        '/guide/advanced/theme.md',
+        '/guide/advanced/architecture.md',
         '/guide/advanced/plugin.md',
+        '/guide/advanced/theme.md',
+        '/guide/advanced/markdown.md',
       ],
     },
   ],

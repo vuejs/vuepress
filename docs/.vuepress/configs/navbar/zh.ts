@@ -50,9 +50,10 @@ export const zh: NavbarConfig = [
       {
         text: '深入',
         children: [
-          '/zh/guide/advanced/markdown.md',
-          '/zh/guide/advanced/theme.md',
+          '/zh/guide/advanced/architecture.md',
           '/zh/guide/advanced/plugin.md',
+          '/zh/guide/advanced/theme.md',
+          '/zh/guide/advanced/markdown.md',
         ],
       },
       {
