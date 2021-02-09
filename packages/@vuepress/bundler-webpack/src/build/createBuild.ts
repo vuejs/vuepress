@@ -40,13 +40,13 @@ export const createBuild = (
         if (err) {
           reject(err)
         } else if (stats?.hasErrors()) {
-          stats.toJson().errors.forEach((err) => {
+          stats.toJson().errors?.forEach((err) => {
             console.error(err)
           })
           reject(new Error('Failed to compile with errors'))
         } else {
           if (stats?.hasWarnings()) {
-            stats.toJson().warnings.forEach((warning) => {
+            stats.toJson().warnings?.forEach((warning) => {
               console.warn(warning)
             })
           }

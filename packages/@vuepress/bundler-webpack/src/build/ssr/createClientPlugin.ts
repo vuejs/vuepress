@@ -24,7 +24,9 @@ export const createClientPlugin = (
         'vuepress-client-plugin',
         async (compilation) => {
           // get webpack stats object
-          const stats: StatsToJsonOutput = compilation.getStats().toJson()
+          const stats: StatsToJsonOutput = (compilation
+            .getStats()
+            .toJson() as unknown) as StatsToJsonOutput
 
           const {
             assets = [],
