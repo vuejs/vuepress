@@ -21,7 +21,7 @@ export default {
     }
   },
   mounted () {
-    if (this.$parent && this.$parent.loadTabs.loadTabs) {
+    if (this.$parent && this.$parent.loadTabs) {
       this.$parent.loadTabs()
     }
   }
