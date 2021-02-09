@@ -42,7 +42,7 @@
     "@vuepress/utils": "2.0.0-alpha.20",
     "prismjs": "^1.23.0",
     "stylus": "^0.54.8",
-    "stylus-loader": "^4.3.3",
+    "stylus-loader": "^5.0.0",
     "vue": "^3.0.5",
     "vue-router": "^4.0.3"
   },

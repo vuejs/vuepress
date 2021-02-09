@@ -34,8 +34,8 @@
     "@vuepress/utils": "2.0.0-alpha.20",
     "cac": "^6.7.1",
     "chokidar": "^3.5.1",
-    "envinfo": "^7.7.3",
-    "esbuild": "^0.8.36"
+    "envinfo": "^7.7.4",
+    "esbuild": "^0.8.43"
   },
   "publishConfig": {
     "access": "public"

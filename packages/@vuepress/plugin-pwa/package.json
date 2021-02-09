@@ -35,7 +35,7 @@
     "mitt": "^2.1.0",
     "register-service-worker": "^1.7.2",
     "vue": "^3.0.5",
-    "workbox-build": "^6.0.2"
+    "workbox-build": "^6.1.0"
   },
   "devDependencies": {
     "@types/workbox-build": "^5.0.0"
