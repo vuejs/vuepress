@@ -48,36 +48,50 @@ VuePress 会使用 [markdown-it](https://github.com/markdown-it/markdown-it) 来
 **原始 Markdown**
 
 ```md
-[首页](/zh/README.md)  
-[指南](/zh/guide/)  
+<!-- 相对路径 -->
+[首页](../README.md)  
+[配置參考](../reference/config.md)  
 [快速上手](./getting-started.md)  
-[markdown.links](../reference/config.md#links)  
-[GitHub](https://github.com)  
+<!-- 绝对路径 -->
+[指南](/zh/guide/README.md)  
+[配置參考 > markdown.links](/zh/reference/config.md#links)  
+<!-- URL -->
+[GitHub](https://github.com) 
 ```
 
 **转换为**
 
 ```vue
 <RouterLink to="/zh/">首页</RouterLink>
-<RouterLink to="/zh/guide/">指南</RouterLink>
+<RouterLink to="/zh/reference/config.html">配置參考</RouterLink>
 <RouterLink to="/zh/guide/getting-started.html">快速上手</RouterLink>
-<RouterLink to="/zh/reference/config.html#links">markdown.links</RouterLink>
+<RouterLink to="/zh/guide/">指南</RouterLink>
+<RouterLink to="/zh/reference/config.html#links">配置參考 &gt; markdown.links</RouterLink>
 <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub<OutboundLink/></a>
 ```
 
 **渲染为**
 
-[首页](/zh/README.md)  
-[指南](/zh/guide/)  
+[首页](../README.md)  
+[配置參考](../reference/config.md)  
 [快速上手](./getting-started.md)  
-[markdown.links](../reference/config.md#links)  
-[GitHub](https://github.com)  
+[指南](/zh/guide/README.md)  
+[配置參考 > markdown.links](/zh/reference/config.md#links)  
+[GitHub](https://github.com) 
 
 **解释**
 
 - 内部链接会被转换为 `<RouterLink>` 以便进行 SPA 导航。
 - 指向 `.md` 文件的内部链接会被转换为目标页面的 [路由路径](./page.md#路由)，并且支持绝对路径和相对路径。
 - 外部链接会被添加 `target="_blank" rel="noopener noreferrer"` 属性和一个 <OutboundLink /> 标记。
+
+**建议**
+
+对于内部链接，尽可能使用相对路径而不是绝对路径。
+
+- 相对路径是指向目标文件的有效链接，在你的编辑器或者代码仓库中浏览源文件时也可以正确跳转。
+- 相对路径在不同 locales 下都是一致的，这样在翻译你的内容时就不需要修改 locale 路径了。
+- 在使用绝对路径时，如果你站点的 [base](../reference/config.md#base) 不是 `"/"`，你需要手动添加 `base` 或者使用 [base helper](./assets.md#base-helper) 。
 
 ::: tip
 链接扩展是由我们的内置插件支持的。

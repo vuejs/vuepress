@@ -47,10 +47,14 @@ Take our documentation source files as an example:
 **Raw Markdown**
 
 ```md
-[Home](/README.md)  
-[Guide](/guide/)  
+<!-- relative path -->
+[Home](../README.md)  
+[Config Reference](../reference/config.md)  
 [Getting Started](./getting-started.md)  
-[markdown.links](../reference/config.md#links)  
+<!-- absolute path -->
+[Guide](/guide/README.md)  
+[Config Reference > markdown.links](/reference/config.md#links)  
+<!-- URL -->
 [GitHub](https://github.com)  
 ```
 
@@ -58,18 +62,20 @@ Take our documentation source files as an example:
 
 ```vue
 <RouterLink to="/">Home</RouterLink>
-<RouterLink to="/guide/">Guide</RouterLink>
+<RouterLink to="/reference/config.html">Config Reference</RouterLink>
 <RouterLink to="/guide/getting-started.html">Getting Started</RouterLink>
-<RouterLink to="/reference/config.html#links">markdown.links</RouterLink>
+<RouterLink to="/guide/">Guide</RouterLink>
+<RouterLink to="/reference/config.html#links">Config Reference &gt; markdown.links</RouterLink>
 <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub<OutboundLink/></a>
 ```
 
 **Rendered as**
 
-[Home](/README.md)  
-[Guide](/guide/)  
+[Home](../README.md)  
+[Config Reference](../reference/config.md)  
 [Getting Started](./getting-started.md)  
-[markdown.links](../reference/config.md#links)  
+[Guide](/guide/README.md)  
+[Config Reference > markdown.links](/reference/config.md#links)  
 [GitHub](https://github.com)  
 
 **Explanation**
@@ -77,6 +83,14 @@ Take our documentation source files as an example:
 - Internal links will be converted to `<RouterLink>` for SPA navigation.
 - Internal links to `.md` files will be converted to the [page route path](./page.md#routing), and both absolute path and relative path are supported.
 - External links will get `target="_blank" rel="noopener noreferrer"` attrs and a <OutboundLink /> indicator.
+
+**Suggestion**
+
+Try to use relative paths instead of absolute paths for internal links.
+
+- Relative paths are a valid links to the target files, and they can navigate correctly when browsing the source files in your editor or repository.
+- Relative paths are consistent in different locales, so you don't need to change the locale path when translating your content.
+- When using absolute paths, if the [base](../reference/config.md#base) of your site is not `"/"`, you will need to prepend the `base` manually or use [base helper](./assets.md#base-helper).
 
 ::: tip
 This links extension is supported by our built-in plugin.
