@@ -19,6 +19,11 @@ export default {
       type: Boolean,
       default: false
     }
+  },
+  mounted () {
+    if (this.$parent && this.$parent.loadTabs) {
+      this.$parent.loadTabs()
+    }
   }
 }
 </script>
