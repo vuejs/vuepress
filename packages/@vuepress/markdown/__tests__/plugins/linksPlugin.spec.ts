@@ -399,6 +399,7 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
           },
         ])
       })
+
       it('should not conflict with base', () => {
         const md = MarkdownIt({ html: true }).use(linksPlugin)
         const env: MarkdownEnv = {
