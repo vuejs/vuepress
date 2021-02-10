@@ -34,7 +34,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **plugin-git:** collect page created time (close [#45](https://github.com/vuepress/vuepress-next/issues/45)) ([4045a8c](https://github.com/vuepress/vuepress-next/commit/4045a8c1ab591dbbb0303aa43c6d13bf248d995c))
 
 
-* feat(plugin-google-analytics)!: migrate to google analytics 4 (close #36) ([d2393f7](https://github.com/vuepress/vuepress-next/commit/d2393f7970c346bfcef2e72658f9a4a89a93b396)), closes [#36](https://github.com/vuepress/vuepress-next/issues/36)
+* **plugin-google-analytics:** migrate to google analytics 4 (close [#36](https://github.com/vuepress/vuepress-next/issues/36)) ([d2393f7](https://github.com/vuepress/vuepress-next/commit/d2393f7970c346bfcef2e72658f9a4a89a93b396))
 
 
 ### BREAKING CHANGES
