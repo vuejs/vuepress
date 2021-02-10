@@ -1,6 +1,6 @@
 # Plugin
 
-With the help of [Plugin API](../references/plugin-api.md), VuePress plugin can provide different features for you.
+With the help of [Plugin API](../reference/plugin-api.md), VuePress plugin can provide different features for you.
 
 ## Community Plugin
 
