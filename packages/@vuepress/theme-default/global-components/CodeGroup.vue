@@ -40,15 +40,7 @@ export default {
   },
   watch: {
     activeCodeTabIndex (index) {
-      this.codeTabs.forEach(tab => {
-        if (tab.elm) {
-          tab.elm.classList.remove('theme-code-block__active')
-        }
-      })
-
-      if (this.codeTabs[index].elm) {
-        this.codeTabs[index].elm.classList.add('theme-code-block__active')
-      }
+      this.activateCodeTab(index)
     }
   },
   mounted () {
@@ -59,10 +51,6 @@ export default {
       this.activeCodeTabIndex = index
     },
     loadTabs () {
-      if (this.activeCodeTabIndex !== -1) {
-        return
-      }
-
       this.codeTabs = (this.$slots.default || []).filter(slot => Boolean(slot.componentOptions)).map((slot, index) => {
         if (slot.componentOptions.propsData.active === '') {
           this.activeCodeTabIndex = index
@@ -76,6 +64,19 @@ export default {
 
       if (this.activeCodeTabIndex === -1 && this.codeTabs.length > 0) {
         this.activeCodeTabIndex = 0
+      }
+
+      this.activateCodeTab(0)
+    },
+    activateCodeTab (index) {
+      this.codeTabs.forEach(tab => {
+        if (tab.elm) {
+          tab.elm.classList.remove('theme-code-block__active')
+        }
+      })
+
+      if (this.codeTabs[index].elm) {
+        this.codeTabs[index].elm.classList.add('theme-code-block__active')
       }
     }
   }
