@@ -399,6 +399,133 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
           },
         ])
       })
+      it('should not conflict with base', () => {
+        const md = MarkdownIt({ html: true }).use(linksPlugin)
+        const env: MarkdownEnv = {
+          base: '/path/',
+          filePathRelative: 'path/to/file.md',
+        }
+
+        const rendered = md.render(source, env)
+
+        expect(rendered).toEqual(
+          [
+            '<RouterLink to="/path/to/foo.html">foo1</RouterLink>',
+            '<RouterLink to="/path/to/foo.html#hash">foo2</RouterLink>',
+            '<RouterLink to="/path/to/foo.html">foo3</RouterLink>',
+            '<RouterLink to="/path/bar.html">bar1</RouterLink>',
+            '<RouterLink to="/path/bar.html#hash">bar2</RouterLink>',
+            '<RouterLink to="/path/bar.html">bar3</RouterLink>',
+            '<RouterLink to="/path/to/foo/bar.html">foobar1</RouterLink>',
+            '<RouterLink to="/path/to/foo/bar.html#hash">foobar2</RouterLink>',
+            '<RouterLink to="/path/foo/bar.html">foobar3</RouterLink>',
+            '<RouterLink to="/path/foo/bar.html#hash">foobar4</RouterLink>',
+            '<RouterLink to="/path/to/">index1</RouterLink>',
+            '<RouterLink to="/path/to/#hash">index2</RouterLink>',
+            '<RouterLink to="/path/to/">index3</RouterLink>',
+            '<RouterLink to="/path/">index4</RouterLink>',
+            '<RouterLink to="/path/foo/bar/">index5</RouterLink>',
+            '<RouterLink to="/path/to/">readme1</RouterLink>',
+            '<RouterLink to="/path/#hash">readme2</RouterLink>',
+            '<RouterLink to="/path/foo/bar/">readme3</RouterLink>',
+          ]
+            .map((a) => `<p>${a}</p>`)
+            .join('\n') + '\n'
+        )
+
+        expect(env.links).toEqual([
+          {
+            raw: 'foo.md',
+            relative: 'path/to/foo.md',
+            absolute: '/path/path/to/foo.md',
+          },
+          {
+            raw: 'foo.md#hash',
+            relative: 'path/to/foo.md',
+            absolute: '/path/path/to/foo.md',
+          },
+          {
+            raw: './foo.md',
+            relative: 'path/to/foo.md',
+            absolute: '/path/path/to/foo.md',
+          },
+          {
+            raw: '../bar.md',
+            relative: 'path/bar.md',
+            absolute: '/path/path/bar.md',
+          },
+          {
+            raw: '../bar.md#hash',
+            relative: 'path/bar.md',
+            absolute: '/path/path/bar.md',
+          },
+          {
+            raw: './../bar.md',
+            relative: 'path/bar.md',
+            absolute: '/path/path/bar.md',
+          },
+          {
+            raw: 'foo/bar.md',
+            relative: 'path/to/foo/bar.md',
+            absolute: '/path/path/to/foo/bar.md',
+          },
+          {
+            raw: 'foo/bar.md#hash',
+            relative: 'path/to/foo/bar.md',
+            absolute: '/path/path/to/foo/bar.md',
+          },
+          {
+            raw: '../foo/bar.md',
+            relative: 'path/foo/bar.md',
+            absolute: '/path/path/foo/bar.md',
+          },
+          {
+            raw: '../foo/bar.md#hash',
+            relative: 'path/foo/bar.md',
+            absolute: '/path/path/foo/bar.md',
+          },
+          {
+            raw: 'index.md',
+            relative: 'path/to/index.md',
+            absolute: '/path/path/to/index.md',
+          },
+          {
+            raw: 'index.md#hash',
+            relative: 'path/to/index.md',
+            absolute: '/path/path/to/index.md',
+          },
+          {
+            raw: './index.md',
+            relative: 'path/to/index.md',
+            absolute: '/path/path/to/index.md',
+          },
+          {
+            raw: '../index.md',
+            relative: 'path/index.md',
+            absolute: '/path/path/index.md',
+          },
+          {
+            raw: '../foo/bar/index.md',
+            relative: 'path/foo/bar/index.md',
+            absolute: '/path/path/foo/bar/index.md',
+          },
+          {
+            raw: 'readme.md',
+            relative: 'path/to/readme.md',
+            absolute: '/path/path/to/readme.md',
+          },
+          {
+            raw: '../readme.md#hash',
+            relative: 'path/readme.md',
+            absolute: '/path/path/readme.md',
+          },
+          {
+            raw: '../foo/bar/readme.md',
+            relative: 'path/foo/bar/readme.md',
+            absolute: '/path/path/foo/bar/readme.md',
+          },
+        ])
+      })
     })
 
     describe('absolute links', () => {
@@ -407,7 +534,7 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
         '[html](/base/path/to/index.html)',
       ].join('\n\n')
 
-      it('should resolve to relative paths correctly', () => {
+      it('should resolve to internal links correctly', () => {
         const md = MarkdownIt({ html: true }).use(linksPlugin)
         const env: MarkdownEnv = {
           base: '/base/',
@@ -417,8 +544,8 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
 
         expect(rendered).toEqual(
           [
-            '<RouterLink to="/base/path/to/">md</RouterLink>',
-            '<RouterLink to="/base/path/to/index.html">html</RouterLink>',
+            '<RouterLink to="/path/to/">md</RouterLink>',
+            '<RouterLink to="/path/to/index.html">html</RouterLink>',
           ]
             .map((a) => `<p>${a}</p>`)
             .join('\n') + '\n'

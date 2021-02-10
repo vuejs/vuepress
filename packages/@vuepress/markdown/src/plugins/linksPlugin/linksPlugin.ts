@@ -92,11 +92,15 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
         filePathRelative
       )
 
-      // normalize markdown file path
+      // normalize markdown file path to route path
       //
-      // './foo/bar.md' => './foo/bar.html'
-      // './foo/index.md' => './foo/'
+      // we are removing the `base` from absolute path because it should not be
+      // passed to `<RouterLink>`
+      //
+      // '/foo/index.md' => '/foo/'
+      // '/foo/bar.md' => '/foo/bar.html'
       const normalizedPath = absolutePath
+        .replace(new RegExp(`^${base}`), '/')
         .replace(/(^|\/)(README|index).md$/i, '$1')
         .replace(/\.md$/, '.html')
 
