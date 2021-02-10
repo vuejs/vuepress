@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.22](https://github.com/vuepress/vuepress-next/compare/v2.0.0-alpha.21...v2.0.0-alpha.22) (2021-02-10)
+
+
+### Bug Fixes
+
+* **client:** only watch route path to update head ([3174f5a](https://github.com/vuepress/vuepress-next/commit/3174f5a676d95943df256b2be31227eb844d0144))
+* **plugin-debug:** avoid enabling in production mode (close [#53](https://github.com/vuepress/vuepress-next/issues/53)) ([9612282](https://github.com/vuepress/vuepress-next/commit/961228234e3983f1f84f992a1317316d09f8cb98))
+
+
+
+
+
 # [2.0.0-alpha.21](https://github.com/vuepress/vuepress-next/compare/v2.0.0-alpha.20...v2.0.0-alpha.21) (2021-02-05)
 
 

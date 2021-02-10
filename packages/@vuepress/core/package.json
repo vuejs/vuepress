@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/core",
-  "version": "2.0.0-alpha.20",
+  "version": "2.0.0-alpha.22",
   "description": "Core package of VuePress",
   "keywords": [
     "vuepress",
@@ -26,8 +26,8 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@vuepress/client": "2.0.0-alpha.20",
-    "@vuepress/markdown": "2.0.0-alpha.20",
+    "@vuepress/client": "2.0.0-alpha.22",
+    "@vuepress/markdown": "2.0.0-alpha.22",
     "@vuepress/shared": "2.0.0-alpha.20",
     "@vuepress/utils": "2.0.0-alpha.20",
     "gray-matter": "^4.0.2",
