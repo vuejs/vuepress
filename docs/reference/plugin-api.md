@@ -37,7 +37,7 @@ The following hooks will be processed in dev / build:
 
   It will be used for identifying plugins to avoid using a same plugin multiple times, so make sure to use a unique plugin name.
 
-  It is recommended to use following format:
+  It should follow the naming convention:
 
   - Non-scoped: `vuepress-plugin-foo`
   - Scoped: `@org/vuepress-plugin-foo`
