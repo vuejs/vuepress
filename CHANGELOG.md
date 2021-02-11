@@ -1,3 +1,16 @@
+## [1.8.1](https://github.com/vuejs/vuepress/compare/v1.8.0...v1.8.1) (2021-02-11)
+
+
+### Bug Fixes
+
+* **$core:** component CodeGroup loads correctly on clientfix [#2711](https://github.com/vuejs/vuepress/issues/2711) ([#2794](https://github.com/vuejs/vuepress/issues/2794)) ([51277f8](https://github.com/vuejs/vuepress/commit/51277f8))
+* **$theme-default:** override algoliaOptions correctly ([ba89f39](https://github.com/vuejs/vuepress/commit/ba89f39))
+* **deps:** [security] bump ini from 1.3.5 to 1.3.8 ([aeb8dce](https://github.com/vuejs/vuepress/commit/aeb8dce))
+* **deps:** bump autoprefixer from 9.6.1 to 9.8.6 ([775b3de](https://github.com/vuejs/vuepress/commit/775b3de))
+* **deps:** bump vue from 2.6.10 to 2.6.12 ([830dd4c](https://github.com/vuejs/vuepress/commit/830dd4c))
+
+
+
 # [1.8.0](https://github.com/vuejs/vuepress/compare/v1.7.1...v1.8.0) (2021-01-05)
 
 
