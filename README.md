@@ -26,17 +26,6 @@ https://vuepress.github.io
 
 See [Contributing Guide](https://github.com/vuepress/vuepress-next/blob/main/docs/contributing.md).
 
-## TODO List
-
-- [ ] @vuepress/markdown
-  - [ ] snippetsPlugin
-
-- [ ] Documentation
-  - [x] Guide
-  - [ ] References
-  - [ ] API
-  - [ ] Migration Guide
-
 ## Breaking Changes
 
 Temporarily record some breaking changes here.
