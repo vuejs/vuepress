@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/markdown-loader",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "description": "markdown-loader for vuepress",
   "keywords": [
     "documentation",
@@ -21,7 +21,7 @@
   "author": "Evan You",
   "main": "index.js",
   "dependencies": {
-    "@vuepress/markdown": "1.8.0",
+    "@vuepress/markdown": "1.8.1",
     "loader-utils": "^1.1.0",
     "lru-cache": "^5.1.1"
   },
