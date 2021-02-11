@@ -92,6 +92,6 @@ The [package.json](https://docs.npmjs.com/cli/v6/configuring-npm/package-json) f
 ```
 
 - Set `name` to follow the naming convention: `vuepress-plugin-xxx` or `@org/vuepress-plugin-xxx`.
-- Set `keywords` to include `'vuepress-plugin'`, so that users can search your plugin on NPM.
+- Set `keywords` to include `vuepress-plugin`, so that users can search your plugin on NPM.
 - Set `main` to the plugin entry file.
 - Set `files` to only publish those files inside `lib` directory.

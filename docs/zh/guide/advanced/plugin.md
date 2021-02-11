@@ -92,6 +92,6 @@ export default fooPlugin
 ```
 
 - 将 `name` 按照约定命名： `vuepress-plugin-xxx` 或 `@org/vuepress-plugin-xxx` 。
-- 在 `keywords` 中包含 `'vuepress-plugin'` ，这样用户可以在 NPM 上搜索到你的插件。
+- 在 `keywords` 中包含 `vuepress-plugin` ，这样用户可以在 NPM 上搜索到你的插件。
 - 将 `main` 设为插件入口文件。
 - 设置 `files` ，仅发布 `lib` 目录下的文件。

@@ -37,7 +37,7 @@ VuePress 主题同样是一个插件，因此主题 API 可以接收 [插件 API
 
   它还可以接收一个普通对象，其键是布局名称，值是布局文件的绝对路径。
 
-  一个主题必须至少有两个布局： `Layout` 和 `NotFound` 。
+  一个主题必须至少有两个布局： `Layout` 和 `404` 。
 
 - 示例：
 
@@ -46,7 +46,7 @@ VuePress 主题同样是一个插件，因此主题 API 可以接收 [插件 API
 ```bash
 layouts
 ├─ Layout.vue
-├─ NotFound.vue
+├─ 404.vue
 └─ FooBar.vue
 ```
 
@@ -64,7 +64,7 @@ module.exports = {
 module.exports = {
   layouts: {
     Layout: path.resolve(__dirname, 'path/to/layouts/Layout.vue'),
-    NotFound: path.resolve(__dirname, 'path/to/layouts/NotFound.vue'),
+    404: path.resolve(__dirname, 'path/to/layouts/404.vue'),
     FooBar: path.resolve(__dirname, 'path/to/layouts/FooBar.vue'),
   },
 }
@@ -91,9 +91,9 @@ module.exports = {
   // 继承默认主题
   extends: '@vuepress/theme-default',
 
-  // 覆盖 `NotFound` 布局
+  // 覆盖 `404` 布局
   layouts: {
-    NotFound: path.resolve(__dirname, 'path/to/NotFound.vue'),
+    404: path.resolve(__dirname, 'path/to/404.vue'),
   },
 }
 ```

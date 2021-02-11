@@ -37,7 +37,7 @@ VuePress theme also works as a plugin, so Theme API can accept all the options o
 
   It also accepts a plain object, of which the key is the layout name and the value is the absolute path of the layout file.
 
-  A theme must have at least two layouts: `Layout` and `NotFound`.
+  A theme must have at least two layouts: `Layout` and `404`.
 
 - Example:
 
@@ -46,7 +46,7 @@ The layout directory:
 ```bash
 layouts
 ├─ Layout.vue
-├─ NotFound.vue
+├─ 404.vue
 └─ FooBar.vue
 ```
 
@@ -64,7 +64,7 @@ Using a plain object is equivalent:
 module.exports = {
   layouts: {
     Layout: path.resolve(__dirname, 'path/to/layouts/Layout.vue'),
-    NotFound: path.resolve(__dirname, 'path/to/layouts/NotFound.vue'),
+    404: path.resolve(__dirname, 'path/to/layouts/404.vue'),
     FooBar: path.resolve(__dirname, 'path/to/layouts/FooBar.vue'),
   },
 }
@@ -91,9 +91,9 @@ module.exports = {
   // inherit the default theme
   extends: '@vuepress/theme-default',
 
-  // override the `NotFound` layout
+  // override the `404` layout
   layouts: {
-    NotFound: path.resolve(__dirname, 'path/to/NotFound.vue'),
+    404: path.resolve(__dirname, 'path/to/404.vue'),
   },
 }
 ```

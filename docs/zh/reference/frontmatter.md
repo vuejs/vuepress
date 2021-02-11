@@ -163,3 +163,5 @@ permalinkPattern: :year/:month/:day/:slug.html
 - 详情：
 
   页面的布局。
+
+  布局是由主题提供的。如果你不指定该 Frontmatter ，则会使用默认布局。主题可能会提供其他布局，你应该参考主题文档来获取详细指引。

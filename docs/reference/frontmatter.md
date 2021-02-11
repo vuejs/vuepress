@@ -163,3 +163,5 @@ permalinkPattern: :year/:month/:day/:slug.html
 - Details:
 
   Layout for the page.
+
+  Layouts are provided by theme. If you don't specify this frontmatter, the default layout will be used. A theme may provide other layouts, and you should refer to the theme documentation for detailed guide.
