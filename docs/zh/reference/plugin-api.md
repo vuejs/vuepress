@@ -276,6 +276,18 @@ module.exports = {
 
   该 Hook 会在 VuePress App 完成文件准备后被立即调用。
 
+### onWatched
+
+- 类型： `(app: App, watchers: Closable[], restart: () => Promise<void>) => void | Promise<void>`
+
+- 详情：
+
+  该 Hook 会在 VuePress App 启动开发服务器并开始监听文件修改后被调用。
+
+  `watchers` 是一个文件监听器的数组。在修改配置文件导致重启 dev 命令时，这些监听器会被自动关闭。如果你在当前 Hook 中添加了新的监听器，你应该把它们也加入到这个数组中，确保在重启 dev 命令时它们能被正确关闭。
+
+  `restart` 方法用来重启 dev 命令。调用该方法时， `watchers` 数组中的监听器也会被自动关闭。
+
 ### onGenerated
 
 - 类型： `(app: App) => void | Promise<void>`

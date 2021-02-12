@@ -276,6 +276,18 @@ module.exports = {
 
   This hook will be invoked once VuePress app has finished preparation.
 
+### onWatched
+
+- Type: `(app: App, watchers: Closable[], restart: () => Promise<void>) => void | Promise<void>`
+
+- Details:
+
+  This hook will be invoked once VuePress app has started dev-server and watched files change.
+
+  The `watchers` is an array of file watchers. When changing config file, the dev command will be restarted and those watchers will be closed. If you are adding new watchers in this hook, you should push your watchers to the `watchers` array, so that they can be closed correctly when restarting.
+
+  The `restart` is a method to restart the dev command. When calling this method, the `watchers` array will be closed automatically.
+
 ### onGenerated
 
 - Type: `(app: App) => void | Promise<void>`
