@@ -171,16 +171,16 @@ const config: UserConfig<DefaultThemeOptions> = {
 
   evergreen: process.env.NODE_ENV !== 'production',
 
-  onWatched: (_, restart) => {
+  onWatched: (_, watchers, restart) => {
     const watcher = chokidar.watch('configs/**/*.ts', {
       cwd: __dirname,
       ignoreInitial: true,
     })
     watcher.on('change', async (file) => {
       logger.info(`file ${chalk.magenta(file)} is modified`)
-      await watcher.close()
       await restart()
     })
+    watchers.push(watcher)
   },
 }
 

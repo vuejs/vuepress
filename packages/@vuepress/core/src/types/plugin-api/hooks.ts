@@ -4,6 +4,7 @@ import type { Page } from '../page'
 
 // util type
 type PromiseOrNot<T> = Promise<T> | T
+type Closable = { close(): void }
 
 // base hook type
 export type Hook<
@@ -51,7 +52,7 @@ export type ExtendsPageDataHook = Hook<
 export interface Hooks {
   onInitialized: LifeCycleHook
   onPrepared: LifeCycleHook
-  onWatched: LifeCycleHook<[restart: () => Promise<void>]>
+  onWatched: LifeCycleHook<[watchers: Closable[], restart: () => Promise<void>]>
   onGenerated: LifeCycleHook
   extendsMarkdown: ExtendsMarkdownHook
   extendsPageData: ExtendsPageDataHook

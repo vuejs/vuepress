@@ -119,5 +119,5 @@ export const dev = async (
     watchers.push(configWatcher)
   }
 
-  await app.pluginApi.hooks.onWatched.process(app, restart)
+  await app.pluginApi.hooks.onWatched.process(app, watchers, restart)
 }
