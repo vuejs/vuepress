@@ -9,6 +9,7 @@
 下列 Hooks 会在初始化 App 时处理：
 
 - [extendsMarkdown](#extendsmarkdown)
+- [extendsPageOptions](#extendspageoptions)
 - [onInitialized](#oninitialized)
 
 下列 Hooks 会在准备文件时处理：
@@ -164,6 +165,35 @@ module.exports = {
   extendsMarkdown: (md) => {
     md.use(plugin1)
     md.linkify.set({ fuzzyEmail: false })
+  },
+}
+```
+
+### extendsPageOptions
+
+- 类型： `(filePath: string, app: App) => PageOptions | Promise<PageOptions>`
+
+- 详情：
+
+  页面配置项扩展。
+
+  该 Hook 接收一个函数，在参数中会收到页面文件的相对路径。返回的对象会被合并到页面配置项中，用以创建页面。
+
+- 示例：
+
+为 `_posts` 目录下的页面设置永久链接 Pattern ：
+
+```js
+module.exports = {
+  extendsPageOptions: (filePath) => {
+    if (filePath.startsWith('_posts/')) {
+      return {
+        frontmatter: {
+          permalinkPattern: '/:year/:month/:day/:slug.html',
+        },
+      }
+    }
+    return {}
   },
 }
 ```
