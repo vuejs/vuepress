@@ -119,7 +119,7 @@ head:
   - Frontmatter 中的 `date` 字段。
   - 符合 `yyyy-MM-dd-foobar.md` 或 `yyyy-MM-foobar.md` 日期格式的文件名。
   - 符合 `yyyy/MM/dd/foobar.md` 或 `yyyy/MM/foobar.md` 日期格式的目录名。
-  - 默认值 `1970-01-01` 。
+  - 默认值 `0000-00-00` 。
 
 - 示例：
 

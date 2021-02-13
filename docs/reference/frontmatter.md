@@ -119,7 +119,7 @@ head:
   - The `date` frontmatter.
   - The filename that matches the date pattern `yyyy-MM-dd-foobar.md` or `yyyy-MM-foobar.md`.
   - The dirname that matches the date pattern `yyyy/MM/dd/foobar.md` or `yyyy/MM/foobar.md`.
-  - Fallback to `1970-01-01`.
+  - Fallback to `0000-00-00`.
 
 - Example:
 

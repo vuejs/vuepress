@@ -25,6 +25,6 @@ describe('core > page > createPage', () => {
     expect(page.headers).toEqual([])
     expect(page.links).toEqual([])
     expect(page.slug).toBe('')
-    expect(page.date).toBe('1970-01-01')
+    expect(page.date).toBe('0000-00-00')
   })
 })

@@ -32,7 +32,7 @@ const testCases: [
         filePathRelative: null,
       },
     ],
-    '1970-01-01',
+    '0000-00-00',
   ],
   // `frontmatter.data` is `undefined`, and relative file path is `null`
   [
@@ -42,7 +42,7 @@ const testCases: [
         filePathRelative: null,
       },
     ],
-    '1970-01-01',
+    '0000-00-00',
   ],
   // filename is empty
   [
@@ -52,7 +52,7 @@ const testCases: [
         filePathRelative: '',
       },
     ],
-    '1970-01-01',
+    '0000-00-00',
   ],
   // filename without date prefix
   [
@@ -62,7 +62,7 @@ const testCases: [
         filePathRelative: 'foo.md',
       },
     ],
-    '1970-01-01',
+    '0000-00-00',
   ],
   // filename with date prefix
   [
@@ -92,7 +92,7 @@ const testCases: [
         filePathRelative: 'foo/bar.md',
       },
     ],
-    '1970-01-01',
+    '0000-00-00',
   ],
   // filename with date prefix, dirname without date prefix
   [
@@ -142,7 +142,7 @@ const testCases: [
         filePathRelative: '/',
       },
     ],
-    '1970-01-01',
+    '0000-00-00',
   ],
 ]
 

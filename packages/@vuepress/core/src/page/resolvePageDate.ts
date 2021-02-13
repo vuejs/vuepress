@@ -4,7 +4,7 @@ import { PageFrontmatter } from '../types'
 
 const FILENAME_DATE_RE = /^(\d{4})-(\d{1,2})(?:-(\d{1,2}))?-(.*)$/
 const DIRNAME_DATE_RE = /(\d{4})\/(\d{1,2})(?:\/(\d{1,2}))?(\/|$)/
-const defaultDate = '1970-01-01'
+const DEFAULT_DATE = '0000-00-00'
 
 /**
  * Resolve page date according to frontmatter or file path
@@ -26,16 +26,16 @@ export const resolvePageDate = ({
         frontmatter.date.getUTCMonth() + 1,
         frontmatter.date.getUTCDate(),
       ].join('-'),
-      defaultDate
+      DEFAULT_DATE
     )
   }
 
   if (isString(frontmatter.date)) {
-    return formatDateString(frontmatter.date, defaultDate)
+    return formatDateString(frontmatter.date, DEFAULT_DATE)
   }
 
   if (filePathRelative === null) {
-    return defaultDate
+    return DEFAULT_DATE
   }
 
   const filename = path.parse(filePathRelative).name
@@ -45,7 +45,7 @@ export const resolvePageDate = ({
     if (matches) {
       return formatDateString(
         `${matches[1]}-${matches[2]}-${matches[3] ?? '01'}`,
-        defaultDate
+        DEFAULT_DATE
       )
     }
   }
@@ -57,10 +57,10 @@ export const resolvePageDate = ({
     if (matches) {
       return formatDateString(
         `${matches[1]}-${matches[2]}-${matches[3] ?? '01'}`,
-        defaultDate
+        DEFAULT_DATE
       )
     }
   }
 
-  return defaultDate
+  return DEFAULT_DATE
 }
