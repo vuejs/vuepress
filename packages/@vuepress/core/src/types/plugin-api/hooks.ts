@@ -1,6 +1,6 @@
 import type { Markdown } from '@vuepress/markdown'
 import type { App } from '../app'
-import type { Page } from '../page'
+import type { Page, PageOptions } from '../page'
 
 // util type
 type PromiseOrNot<T> = Promise<T> | T
@@ -42,6 +42,9 @@ export type ReturnObjectHook = Hook<
 export type ExtendsMarkdownHook = Hook<(md: Markdown, app: App) => void>
 
 // page hook
+export type ExtendsPageOptionsHook = Hook<
+  (filePath: string, app: App) => PromiseOrNot<PageOptions>
+>
 export type ExtendsPageDataHook = Hook<
   (page: Page, app: App) => PromiseOrNot<Record<string, any>>
 >
@@ -55,6 +58,7 @@ export interface Hooks {
   onWatched: LifeCycleHook<[watchers: Closable[], restart: () => Promise<void>]>
   onGenerated: LifeCycleHook
   extendsMarkdown: ExtendsMarkdownHook
+  extendsPageOptions: ExtendsPageOptionsHook
   extendsPageData: ExtendsPageDataHook
   clientAppEnhanceFiles: ClientFilesHook
   clientAppRootComponentFiles: ClientFilesHook
