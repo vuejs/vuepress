@@ -113,6 +113,4 @@ export interface PageOptions {
   filePath?: string
   frontmatter?: PageFrontmatter
   content?: string
-  permalink?: string
-  permalinkPattern?: string
 }

@@ -54,7 +54,6 @@ export const createPage = async (
 
   // resolve page permalink
   const permalink = resolvePagePermalink({
-    options,
     frontmatter,
     slug,
     date,
