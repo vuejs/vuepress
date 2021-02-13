@@ -1,6 +1,6 @@
 {
   "name": "vuepress",
-  "version": "2.0.0-alpha.23",
+  "version": "2.0.0-alpha.24",
   "description": "Vue-powered Static Site Generator",
   "keywords": [
     "documentation",
@@ -32,9 +32,9 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@vuepress/bundler-webpack": "2.0.0-alpha.23",
-    "@vuepress/cli": "2.0.0-alpha.23",
-    "@vuepress/core": "2.0.0-alpha.23",
-    "@vuepress/theme-default": "2.0.0-alpha.23"
+    "@vuepress/bundler-webpack": "2.0.0-alpha.24",
+    "@vuepress/cli": "2.0.0-alpha.24",
+    "@vuepress/core": "2.0.0-alpha.24",
+    "@vuepress/theme-default": "2.0.0-alpha.24"
   }
 }
