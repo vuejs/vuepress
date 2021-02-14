@@ -121,13 +121,11 @@ head:
   - 符合 `yyyy/MM/dd/foobar.md` 或 `yyyy/MM/foobar.md` 日期格式的目录名。
   - 默认值 `0000-00-00` 。
 
-- 示例：
+- 示例 1 ：
 
-  - 情况 1：
+  页面文件名是 `foo-bar.md` 。
 
-    页面文件名是 `foo-bar.md` 。
-
-    页面 Frontmatter 是：
+  页面 Frontmatter 是：
 
 ```md
 ---
@@ -136,13 +134,13 @@ permalinkPattern: :year/:month/:day/:slug.html
 ---
 ```
 
-    那么页面的永久链接将会是 `2021/01/03/foo-bar.html` 。
+  那么页面的永久链接将会是 `2021/01/03/foo-bar.html` 。
 
-  - 情况 2：
+- 示例 2 ：
 
-    页面文件名是 `2021-01-03-bar-baz.md`。
+  页面文件名是 `2021-01-03-bar-baz.md`。
 
-    页面 Frontmatter 是：
+  页面 Frontmatter 是：
 
 ```md
 ---
@@ -150,7 +148,7 @@ permalinkPattern: :year/:month/:day/:slug.html
 ---
 ```
 
-    那么页面的永久链接将会是 `2021/01/03/bar-baz.html` 。
+  那么页面的永久链接将会是 `2021/01/03/bar-baz.html` 。
 
 - 参考：
   - [Frontmatter > date](#date)

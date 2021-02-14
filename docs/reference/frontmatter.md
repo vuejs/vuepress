@@ -121,13 +121,11 @@ head:
   - The dirname that matches the date pattern `yyyy/MM/dd/foobar.md` or `yyyy/MM/foobar.md`.
   - Fallback to `0000-00-00`.
 
-- Example:
+- Example 1:
 
-  - Case 1:
+  The page filename is `foo-bar.md`.
 
-    The page filename is `foo-bar.md`.
-
-    The page frontmatter is:
+  The page frontmatter is:
 
 ```md
 ---
@@ -136,13 +134,13 @@ permalinkPattern: :year/:month/:day/:slug.html
 ---
 ```
 
-    Then the permalink of the page would be `2021/01/03/foo-bar.html`.
+  Then the permalink of the page would be `2021/01/03/foo-bar.html`.
 
-  - Case 2:
+- Example 2:
 
-    The page filename is `2021-01-03-bar-baz.md`.
+  The page filename is `2021-01-03-bar-baz.md`.
 
-    The page frontmatter is:
+  The page frontmatter is:
 
 ```md
 ---
@@ -150,7 +148,7 @@ permalinkPattern: :year/:month/:day/:slug.html
 ---
 ```
 
-    Then the permalink of the page would be `2021/01/03/bar-baz.html`.
+  Then the permalink of the page would be `2021/01/03/bar-baz.html`.
 
 - Also see:
   - [Frontmatter > date](#date)
