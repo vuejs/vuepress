@@ -27,8 +27,8 @@
 - [@vuepress/plugin-active-header-links](./official/plugin-active-header-links.md)
 - [@vuepress/plugin-nprogress](./official/plugin-nprogress.md)
 - [@vuepress/plugin-search](./official/plugin-search.md)
-- [vuepress-plugin-container](https://vuepress.github.io/zh/plugins/container/)
-- [vuepress-plugin-smooth-scroll](https://vuepress.github.io/zh/plugins/smooth-scroll/)
+- [vuepress-plugin-container](https://vuepress-community.netlify.app/zh/plugins/container/#vuepress-plugin-container)
+- [vuepress-plugin-smooth-scroll](https://vuepress-community.netlify.app/zh/plugins/smooth-scroll/#vuepress-plugin-smooth-scroll)
 
 ## 架构
 
