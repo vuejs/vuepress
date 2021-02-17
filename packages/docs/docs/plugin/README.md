@@ -27,8 +27,8 @@ To keep things at a minimum, not all of the official plugins are shipped with Vu
 - [@vuepress/plugin-active-header-links](./official/plugin-active-header-links.md)
 - [@vuepress/plugin-nprogress](./official/plugin-nprogress.md)
 - [@vuepress/plugin-search](./official/plugin-search.md)
-- [vuepress-plugin-container](https://vuepress.github.io/plugins/container/)
-- [vuepress-plugin-smooth-scroll](https://vuepress.github.io/plugins/smooth-scroll/)
+- [vuepress-plugin-container](https://vuepress-community.netlify.app/en/plugins/container/#vuepress-plugin-container)
+- [vuepress-plugin-smooth-scroll](https://vuepress-community.netlify.app/en/plugins/smooth-scroll/#installation)
 
 ## Architecture
 
