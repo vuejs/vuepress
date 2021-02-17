@@ -25,7 +25,7 @@
     "@babel/preset-env": "^7.0.0",
     "@types/jest": "^24.0.9",
     "@vue/test-utils": "^1.0.0-beta.29",
-    "@vuepress/core": "1.7.1",
+    "@vuepress/core": "1.8.0",
     "@vuepress/shared-utils": "1.7.1",
     "babel-jest": "^24.7.1",
     "execa": "^1.0.0",
