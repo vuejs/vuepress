@@ -59,7 +59,7 @@
     "all-contributors-cli": "^6.9.1",
     "conventional-changelog-cli": "^2.0.23",
     "eslint": "^6.7.1",
-    "eslint-plugin-jest": "^23.0.5",
+    "eslint-plugin-jest": "^24.1.5",
     "eslint-plugin-vue-libs": "^4.0.0",
     "husky": "^3.0.5",
     "inquirer": "^7.0.0",
