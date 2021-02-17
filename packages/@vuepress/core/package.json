@@ -32,7 +32,7 @@
     "@vuepress/shared-utils": "1.7.1",
     "autoprefixer": "^9.5.1",
     "babel-loader": "^8.0.4",
-    "cache-loader": "^3.0.0",
+    "cache-loader": "^4.1.0",
     "chokidar": "^2.0.3",
     "connect-history-api-fallback": "^1.5.0",
     "copy-webpack-plugin": "^5.0.2",
