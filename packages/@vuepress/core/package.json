@@ -46,7 +46,7 @@
     "optimize-css-assets-webpack-plugin": "^5.0.4",
     "portfinder": "^1.0.28",
     "postcss-loader": "^3.0.0",
-    "postcss-safe-parser": "^4.0.1",
+    "postcss-safe-parser": "^4.0.2",
     "toml": "^3.0.0",
     "url-loader": "^1.0.1",
     "vue": "^2.6.12",
