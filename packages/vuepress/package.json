@@ -32,7 +32,7 @@
     "@vuepress/core": "1.7.1",
     "@vuepress/theme-default": "1.7.1",
     "cac": "^6.5.6",
-    "envinfo": "^7.2.0",
+    "envinfo": "^7.7.4",
     "opencollective-postinstall": "^2.0.3",
     "update-notifier": "^4.0.0"
   },
