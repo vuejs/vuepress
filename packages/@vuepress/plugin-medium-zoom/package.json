@@ -21,7 +21,7 @@
   "author": "ULIVZ <chl814@foxmail.com>",
   "main": "index.js",
   "dependencies": {
-    "medium-zoom": "^1.0.4"
+    "medium-zoom": "^1.0.6"
   },
   "publishConfig": {
     "access": "public"
