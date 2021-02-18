@@ -22,7 +22,9 @@ const HTML_SEQUENCES: [RegExp, RegExp, boolean][] = [
   ],
   // MODIFIED HERE: Treat unknown tags as block tags (custom components), excluding known inline tags
   [
-    new RegExp('^</?(?!(' + inlineTags.join('|') + ')(?![\\w-]))\\w+-?'),
+    new RegExp(
+      '^</?(?!(' + inlineTags.join('|') + ')(?![\\w-]))\\w[\\w-]*[\\s/>]'
+    ),
     /^$/,
     true,
   ],

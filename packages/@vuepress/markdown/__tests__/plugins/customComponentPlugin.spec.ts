@@ -773,4 +773,32 @@ describe('@vuepress/markdown > plugins > customComponentPlugin', () => {
       })
     })
   })
+
+  describe('compatibility with other markdown syntax', () => {
+    it('should work with autolink', () => {
+      const source = [
+        '<https://github.com>',
+        '<localhost:5001/foo>',
+        '<made-up-scheme://foo,bar>',
+        '<foo@bar.example.com>',
+        '<foo+special@Bar.baz-bar0.com>',
+        '<a+b+c:d>',
+      ].join('\n\n')
+
+      const expected =
+        [
+          '<a href="https://github.com">https://github.com</a>',
+          '<a href="localhost:5001/foo">localhost:5001/foo</a>',
+          '<a href="made-up-scheme://foo,bar">made-up-scheme://foo,bar</a>',
+          '<a href="mailto:foo@bar.example.com">foo@bar.example.com</a>',
+          '<a href="mailto:foo+special@Bar.baz-bar0.com">foo+special@Bar.baz-bar0.com</a>',
+          '<a href="a+b+c:d">a+b+c:d</a>',
+        ]
+          .map((a) => `<p>${a}</p>`)
+          .join('\n') + '\n'
+
+      const rendered = md.render(source)
+      expect(rendered).toBe(expected)
+    })
+  })
 })
