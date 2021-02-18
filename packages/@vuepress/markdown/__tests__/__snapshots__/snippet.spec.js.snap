@@ -5,6 +5,10 @@ exports[`snippet import snippet 1`] = `
   // ..
 }
 </code></pre>
+<pre><code># Sample snippet file with no filename extension.
+FROM ubuntu:latest
+CMD echo hello!
+</code></pre>
 `;
 
 exports[`snippet import snippet with highlight multiple lines 1`] = `
