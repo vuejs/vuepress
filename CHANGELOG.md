@@ -1,3 +1,13 @@
+## [1.8.2](https://github.com/vuejs/vuepress/compare/v1.8.1...v1.8.2) (2021-02-18)
+
+
+### Bug Fixes
+
+* **$default-theme:** sidebar groups are not opened when directly navigating to these pages (fix [#2564](https://github.com/vuejs/vuepress/issues/2564)) ([#2565](https://github.com/vuejs/vuepress/issues/2565)) ([3ab9fca](https://github.com/vuejs/vuepress/commit/3ab9fca))
+* **$markdown:** support path without file extension when importing code snippets ([#2677](https://github.com/vuejs/vuepress/issues/2677)) ([bb4ae4e](https://github.com/vuejs/vuepress/commit/bb4ae4e))
+
+
+
 ## [1.8.1](https://github.com/vuejs/vuepress/compare/v1.8.0...v1.8.1) (2021-02-11)
 
 
