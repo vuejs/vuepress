@@ -120,7 +120,7 @@ import { usePwaEvent } from '@vuepress/plugin-pwa/lib/composables'
 
 export default {
   setup() {
-    event = usePwaEvent()
+    const event = usePwaEvent()
     event.on('ready', (registration) => {
       console.log('Service worker 已经生效。')
     })
@@ -150,7 +150,7 @@ import {
 
 export default {
   setup() {
-    event = usePwaEvent()
+    const event = usePwaEvent()
     event.on('updated', (registration) => {
       console.log('在 Waiting 状态的 Service Worker 已经就绪。')
       // 激活 Waiting 状态的 Service Worker
