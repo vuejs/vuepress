@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@textlint-rule/textlint-rule-no-unmatched-pair": "^1.0.7",
-    "@vuepress/plugin-back-to-top": "1.7.1",
+    "@vuepress/plugin-back-to-top": "1.8.0",
     "@vuepress/plugin-google-analytics": "1.7.1",
     "@vuepress/plugin-medium-zoom": "1.7.1",
     "@vuepress/plugin-pwa": "1.7.1",
