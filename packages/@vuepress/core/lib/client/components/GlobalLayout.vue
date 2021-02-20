@@ -29,6 +29,9 @@ export default {
       }
       return 'NotFound'
     }
+  },
+  metaInfo () {
+    return this.$vuepressMeta
   }
 }
 </script>

@@ -51,6 +51,7 @@
     "url-loader": "^1.0.1",
     "vue": "^2.6.10",
     "vue-loader": "^15.7.1",
+    "vue-meta": "^2.4.0",
     "vue-router": "^3.4.5",
     "vue-server-renderer": "^2.6.10",
     "vue-template-compiler": "^2.6.10",

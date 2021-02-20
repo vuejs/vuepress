@@ -65,6 +65,43 @@ module.exports = siteData => {
       return this.$localeConfig.title || this.$site.title || ''
     }
 
+    get $vuepressMeta () {
+      const { links, metas } = this.$site.headTags.reduce((acc, [headerType, headerValue]) => {
+        acc[headerType + 's'].push(headerValue)
+        return acc
+      }, { metas: [], links: [] })
+
+      let head = {
+        title: this.$title,
+        meta: [
+          ...metas
+        ],
+        link: [
+          ...links
+        ],
+        htmlAttrs: {
+          lang: this.$lang
+        }
+      }
+
+      if (this.$canonicalUrl) {
+        head.links.push(
+          {
+            rel: 'canonical',
+            href: this.$canonicalUrl
+          }
+        )
+      }
+
+      const { vueMeta } = this.$frontmatter
+
+      if (vueMeta) {
+        head = { ...head, ...vueMeta }
+      }
+
+      return head
+    }
+
     get $canonicalUrl () {
       const { canonicalUrl } = this.$page.frontmatter
 
