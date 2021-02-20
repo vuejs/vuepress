@@ -84,6 +84,7 @@ export const en: SidebarConfig = {
         '/reference/plugin/palette-stylus.md',
         '/reference/plugin/pwa.md',
         '/reference/plugin/pwa-popup.md',
+        '/reference/plugin/theme-data.md',
       ],
     },
   ],
