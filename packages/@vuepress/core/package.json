@@ -27,7 +27,7 @@
     "@vue/babel-preset-app": "^4.1.2",
     "@vuepress/markdown": "1.7.1",
     "@vuepress/markdown-loader": "1.7.1",
-    "@vuepress/plugin-last-updated": "1.7.1",
+    "@vuepress/plugin-last-updated": "1.8.0",
     "@vuepress/plugin-register-components": "1.7.1",
     "@vuepress/shared-utils": "1.7.1",
     "autoprefixer": "^9.5.1",
