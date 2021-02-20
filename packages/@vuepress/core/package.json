@@ -29,7 +29,7 @@
     "@vuepress/markdown-loader": "1.7.1",
     "@vuepress/plugin-last-updated": "1.8.0",
     "@vuepress/plugin-register-components": "1.7.1",
-    "@vuepress/shared-utils": "1.7.1",
+    "@vuepress/shared-utils": "1.8.0",
     "autoprefixer": "^9.5.1",
     "babel-loader": "^8.0.4",
     "cache-loader": "^4.1.0",
