@@ -1,19 +1,15 @@
 import type { HeadConfig } from './head'
-import type { LocaleConfig, LocaleData } from './locale'
+import type { LocaleConfig } from './locale'
 
 /**
  * Vuepress site data
  */
-export interface SiteData<T extends SiteThemeConfig = SiteThemeConfig>
-  extends SiteLocaleData {
+export interface SiteData extends SiteLocaleData {
   // site base
   base: string
 
   // locale config
   locales: SiteLocaleConfig
-
-  // theme config
-  themeConfig: Partial<T>
 }
 
 /**
@@ -57,15 +53,3 @@ export interface SiteLocaleData {
  * @remark suffix `Config` means this is for user config
  */
 export type SiteLocaleConfig = LocaleConfig<SiteLocaleData>
-
-/**
- * Site theme config
- *
- * @remark suffix `Config` means this is for user config
- */
-export type SiteThemeConfig<
-  ThemeLocaleData extends LocaleData = LocaleData
-> = ThemeLocaleData & {
-  locales?: LocaleConfig<ThemeLocaleData>
-  [key: string]: any
-}

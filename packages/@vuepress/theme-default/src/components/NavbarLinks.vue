@@ -16,19 +16,10 @@
 import { computed, defineComponent } from 'vue'
 import type { ComputedRef } from 'vue'
 import { useRouter } from 'vue-router'
-import {
-  useRouteLocale,
-  useThemeLocaleData,
-  useSiteLocaleData,
-} from '@vuepress/client'
+import { useRouteLocale, useSiteLocaleData } from '@vuepress/client'
 import { isString } from '@vuepress/shared'
-import { useNavLink } from '../composables'
-import type {
-  DefaultThemeOptions,
-  NavbarItem,
-  NavbarGroup,
-  ResolvedNavbarItem,
-} from '../types'
+import { useNavLink, useThemeLocaleData } from '../composables'
+import type { NavbarItem, NavbarGroup, ResolvedNavbarItem } from '../types'
 import { resolveRepoType } from '../utils'
 import DropdownLink from './DropdownLink.vue'
 import NavLink from './NavLink.vue'
@@ -40,7 +31,7 @@ const useNavbarSelectLanguage = (): ComputedRef<ResolvedNavbarItem[]> => {
   const router = useRouter()
   const routeLocale = useRouteLocale()
   const siteLocale = useSiteLocaleData()
-  const themeLocale = useThemeLocaleData<DefaultThemeOptions>()
+  const themeLocale = useThemeLocaleData()
 
   return computed<ResolvedNavbarItem[]>(() => {
     const localePaths = Object.keys(siteLocale.value.locales)
@@ -101,7 +92,7 @@ const useNavbarSelectLanguage = (): ComputedRef<ResolvedNavbarItem[]> => {
  * Get navbar config of repository link
  */
 const useNavbarRepo = (): ComputedRef<ResolvedNavbarItem[]> => {
-  const themeLocale = useThemeLocaleData<DefaultThemeOptions>()
+  const themeLocale = useThemeLocaleData()
 
   const repo = computed(() => themeLocale.value.repo)
   const repoType = computed(() =>
@@ -152,7 +143,7 @@ const resolveNavbarItem = (
 }
 
 const useNavbarConfig = (): ComputedRef<ResolvedNavbarItem[]> => {
-  const themeLocale = useThemeLocaleData<DefaultThemeOptions>()
+  const themeLocale = useThemeLocaleData()
   return computed(() => (themeLocale.value.navbar || []).map(resolveNavbarItem))
 }
 

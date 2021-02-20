@@ -1,47 +1,32 @@
 import { inject } from 'vue'
 import type { ComputedRef, InjectionKey } from 'vue'
-import type { SiteData, SiteThemeConfig } from '@vuepress/shared'
+import type { SiteData } from '@vuepress/shared'
 import type { RouteLocale } from './routeLocale'
 
-export type SiteLocaleData<
-  T extends SiteThemeConfig = SiteThemeConfig
-> = SiteData<T>
+export type SiteLocaleData = SiteData
 
-export type SiteLocaleDataRef<
-  T extends SiteThemeConfig = SiteThemeConfig
-> = ComputedRef<SiteLocaleData<T>>
+export type SiteLocaleDataRef = ComputedRef<SiteLocaleData>
 
 export const siteLocaleDataSymbol: InjectionKey<SiteLocaleDataRef> = Symbol(
   __DEV__ ? 'siteLocaleData' : ''
 )
 
-export const useSiteLocaleData = <
-  T extends SiteThemeConfig = SiteThemeConfig
->(): SiteLocaleDataRef<T> => {
+export const useSiteLocaleData = (): SiteLocaleDataRef => {
   const siteLocaleData = inject(siteLocaleDataSymbol)
   if (!siteLocaleData) {
     throw new Error('useSiteLocaleData() is called without provider.')
   }
-  return siteLocaleData as SiteLocaleDataRef<T>
+  return siteLocaleData
 }
 
 /**
  * Merge the locales fields to the root fields
  * according to the route path
  */
-export const resolveSiteLocaleData = <T extends SiteThemeConfig>(
-  { base, lang, title, description, head, locales, themeConfig }: SiteData<T>,
+export const resolveSiteLocaleData = (
+  site: SiteData,
   routeLocale: RouteLocale
-): SiteLocaleData<T> => ({
-  base,
-  lang,
-  title,
-  description,
-  head,
-  locales,
-  ...(locales[routeLocale] ?? {}),
-  themeConfig: {
-    ...themeConfig,
-    ...(themeConfig.locales?.[routeLocale] ?? {}),
-  },
+): SiteLocaleData => ({
+  ...site,
+  ...site.locales[routeLocale],
 })

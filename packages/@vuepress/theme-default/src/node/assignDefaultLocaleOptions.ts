@@ -1,6 +1,9 @@
-import type { DefaultThemeOptions, DefaultThemeLocaleData } from '../types'
+import type {
+  DefaultThemeLocaleOptions,
+  DefaultThemeLocaleData,
+} from '../types'
 
-const defaultOptions: DefaultThemeOptions = {
+const defaultLocaleOptions: DefaultThemeLocaleOptions = {
   // navbar
   navbar: [],
   logo: null,
@@ -43,22 +46,24 @@ const defaultLocaleData: DefaultThemeLocaleData = {
 /**
  * Assign default options to `themeConfig`
  */
-export const assignDefaultOptions = (options: DefaultThemeOptions): void => {
-  if (!options.locales) {
-    options.locales = {}
+export const assignDefaultLocaleOptions = (
+  localeOptions: DefaultThemeLocaleOptions
+): void => {
+  if (!localeOptions.locales) {
+    localeOptions.locales = {}
   }
 
-  if (!options.locales['/']) {
-    options.locales['/'] = {}
+  if (!localeOptions.locales['/']) {
+    localeOptions.locales['/'] = {}
   }
 
-  Object.assign(options, {
-    ...defaultOptions,
-    ...options,
+  Object.assign(localeOptions, {
+    ...defaultLocaleOptions,
+    ...localeOptions,
   })
 
-  Object.assign(options.locales['/'], {
+  Object.assign(localeOptions.locales['/'], {
     ...defaultLocaleData,
-    ...options.locales['/'],
+    ...localeOptions.locales['/'],
   })
 }

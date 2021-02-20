@@ -1,7 +1,7 @@
 import type { Theme } from '@vuepress/core'
 import { path } from '@vuepress/utils'
 import {
-  assignDefaultOptions,
+  assignDefaultLocaleOptions,
   resolveActiveHeaderLinksPluginOptions,
   resolveContainerPluginOptions,
   resolveContainerPluginOptionsForDetails,
@@ -16,8 +16,11 @@ import type { DefaultThemeOptions } from './types'
 export * from './node'
 export * from './types'
 
-export const defaultTheme: Theme<DefaultThemeOptions> = (options, app) => {
-  assignDefaultOptions(options)
+export const defaultTheme: Theme<DefaultThemeOptions> = ({
+  themePlugins = {},
+  ...localeOptions
+}) => {
+  assignDefaultLocaleOptions(localeOptions)
 
   return {
     name: '@vuepress/theme-default',
@@ -34,28 +37,38 @@ export const defaultTheme: Theme<DefaultThemeOptions> = (options, app) => {
     plugins: [
       [
         '@vuepress/active-header-links',
-        resolveActiveHeaderLinksPluginOptions(options),
+        resolveActiveHeaderLinksPluginOptions(themePlugins),
       ],
-      ['@vuepress/back-to-top', options.themePlugins?.backToTop !== false],
-      ['@vuepress/container', resolveContainerPluginOptions(options, 'tip')],
+      ['@vuepress/back-to-top', themePlugins.backToTop !== false],
       [
         '@vuepress/container',
-        resolveContainerPluginOptions(options, 'warning'),
-      ],
-      ['@vuepress/container', resolveContainerPluginOptions(options, 'danger')],
-      ['@vuepress/container', resolveContainerPluginOptionsForDetails(options)],
-      [
-        '@vuepress/container',
-        resolveContainerPluginOptionsForCodeGroup(options),
+        resolveContainerPluginOptions(themePlugins, localeOptions, 'tip'),
       ],
       [
         '@vuepress/container',
-        resolveContainerPluginOptionsForCodeGroupItem(options),
+        resolveContainerPluginOptions(themePlugins, localeOptions, 'warning'),
       ],
-      ['@vuepress/git', resolveGitPluginOptions(options)],
-      ['@vuepress/medium-zoom', resolveMediumZoomPluginOptions(options)],
-      ['@vuepress/nprogress', options.themePlugins?.nprogress !== false],
-      ['@vuepress/palette-stylus', resolvePaletteStylusPluginOptions(options)],
+      [
+        '@vuepress/container',
+        resolveContainerPluginOptions(themePlugins, localeOptions, 'danger'),
+      ],
+      [
+        '@vuepress/container',
+        resolveContainerPluginOptionsForDetails(themePlugins),
+      ],
+      [
+        '@vuepress/container',
+        resolveContainerPluginOptionsForCodeGroup(themePlugins),
+      ],
+      [
+        '@vuepress/container',
+        resolveContainerPluginOptionsForCodeGroupItem(themePlugins),
+      ],
+      ['@vuepress/git', resolveGitPluginOptions(themePlugins, localeOptions)],
+      ['@vuepress/medium-zoom', resolveMediumZoomPluginOptions(themePlugins)],
+      ['@vuepress/nprogress', themePlugins.nprogress !== false],
+      ['@vuepress/palette-stylus', resolvePaletteStylusPluginOptions()],
+      ['@vuepress/theme-data', { themeData: localeOptions }],
     ],
   }
 }

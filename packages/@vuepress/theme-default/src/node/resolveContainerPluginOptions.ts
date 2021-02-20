@@ -1,5 +1,5 @@
 import type { ContainerPluginOptions } from '@vuepress/plugin-container'
-import type { DefaultThemeOptions } from '../types'
+import type { DefaultThemePluginsOptions, DefaultThemeData } from '../types'
 
 /**
  * Resolve options for @vuepress/plugin-container
@@ -7,14 +7,15 @@ import type { DefaultThemeOptions } from '../types'
  * For custom containers default title
  */
 export const resolveContainerPluginOptions = (
-  options: DefaultThemeOptions,
+  themePlugins: DefaultThemePluginsOptions,
+  localeOptions: DefaultThemeData,
   type: 'tip' | 'warning' | 'danger'
 ): ContainerPluginOptions | boolean => {
-  if (options.themePlugins?.container?.[type] === false) {
+  if (themePlugins?.container?.[type] === false) {
     return false
   }
 
-  const locales = Object.entries(options.locales || {}).reduce(
+  const locales = Object.entries(localeOptions.locales || {}).reduce(
     (result, [key, value]) => {
       const defaultInfo = value?.[type]
       if (defaultInfo) {
@@ -39,9 +40,9 @@ export const resolveContainerPluginOptions = (
  * For details container
  */
 export const resolveContainerPluginOptionsForDetails = (
-  options: DefaultThemeOptions
+  themePlugins: DefaultThemePluginsOptions
 ): ContainerPluginOptions | boolean => {
-  if (options.themePlugins?.container?.details === false) {
+  if (themePlugins?.container?.details === false) {
     return false
   }
 
@@ -61,9 +62,9 @@ export const resolveContainerPluginOptionsForDetails = (
  * For code-group container
  */
 export const resolveContainerPluginOptionsForCodeGroup = (
-  options: DefaultThemeOptions
+  themePlugins: DefaultThemePluginsOptions
 ): ContainerPluginOptions | boolean => {
-  if (options.themePlugins?.container?.codeGroup === false) {
+  if (themePlugins?.container?.codeGroup === false) {
     return false
   }
 
@@ -80,9 +81,9 @@ export const resolveContainerPluginOptionsForCodeGroup = (
  * For code-group-item block
  */
 export const resolveContainerPluginOptionsForCodeGroupItem = (
-  options: DefaultThemeOptions
+  themePlugins: DefaultThemePluginsOptions
 ): ContainerPluginOptions | boolean => {
-  if (options.themePlugins?.container?.codeGroupItem === false) {
+  if (themePlugins?.container?.codeGroupItem === false) {
     return false
   }
 

@@ -3,20 +3,20 @@
     <ToggleSidebarButton @toggle="$emit('toggle-sidebar')" />
 
     <span ref="siteBrand">
-      <RouterLink :to="$themeLocale.home || $routeLocale">
+      <RouterLink :to="siteBrandLink">
         <img
-          v-if="$themeLocale.logo"
+          v-if="siteBrandLogo"
           class="logo"
-          :src="$withBase($themeLocale.logo)"
-          :alt="$siteLocale.title"
+          :src="$withBase(siteBrandLogo)"
+          :alt="siteBrandTitle"
         />
 
         <span
-          v-if="$siteLocale.title"
+          v-if="siteBrandTitle"
           class="site-name"
-          :class="{ 'can-hide': $themeLocale.logo }"
+          :class="{ 'can-hide': siteBrandLogo }"
         >
-          {{ $siteLocale.title }}
+          {{ siteBrandTitle }}
         </span>
       </RouterLink>
     </span>
@@ -32,6 +32,8 @@
 
 <script lang="ts">
 import { computed, defineComponent, onMounted, ref } from 'vue'
+import { useRouteLocale, useSiteLocaleData } from '@vuepress/client'
+import { useThemeLocaleData } from '../composables'
 import NavbarLinks from './NavbarLinks.vue'
 import ToggleSidebarButton from './ToggleSidebarButton.vue'
 
@@ -46,8 +48,17 @@ export default defineComponent({
   emits: ['toggle-sidebar'],
 
   setup() {
+    const routeLocale = useRouteLocale()
+    const siteLocale = useSiteLocaleData()
+    const themeLocale = useThemeLocaleData()
+
     const navbar = ref<HTMLElement | null>(null)
     const siteBrand = ref<HTMLElement | null>(null)
+    const siteBrandLink = computed(
+      () => themeLocale.value.home || routeLocale.value
+    )
+    const siteBrandLogo = computed(() => themeLocale.value.logo)
+    const siteBrandTitle = computed(() => siteLocale.value.title)
     const linksWrapperMaxWidth = ref(0)
     const linksWrapperStyle = computed(() => {
       if (!linksWrapperMaxWidth.value) {
@@ -83,6 +94,9 @@ export default defineComponent({
     return {
       navbar,
       siteBrand,
+      siteBrandLink,
+      siteBrandLogo,
+      siteBrandTitle,
       linksWrapperStyle,
     }
   },

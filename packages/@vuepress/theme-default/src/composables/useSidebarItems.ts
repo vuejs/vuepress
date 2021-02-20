@@ -1,11 +1,7 @@
-import { computed, inject } from 'vue'
+import { inject } from 'vue'
 import type { ComputedRef, InjectionKey } from 'vue'
 import { useRoute } from 'vue-router'
-import {
-  usePageData,
-  usePageFrontmatter,
-  useThemeLocaleData,
-} from '@vuepress/client'
+import { usePageData } from '@vuepress/client'
 import type { PageHeader } from '@vuepress/client'
 import {
   isArray,
@@ -14,7 +10,7 @@ import {
   resolveLocalePath,
 } from '@vuepress/shared'
 import type {
-  DefaultThemeOptions,
+  DefaultThemeData,
   DefaultThemePageFrontmatter,
   SidebarConfigArray,
   SidebarConfigObject,
@@ -44,35 +40,31 @@ export const useSidebarItems = (): SidebarItemsRef => {
  *
  * It should only be resolved and provided once
  */
-export const resolveSidebarItems = (): SidebarItemsRef => {
-  const frontmatter = usePageFrontmatter<DefaultThemePageFrontmatter>()
-  const themeLocale = useThemeLocaleData<DefaultThemeOptions>()
-
+export const resolveSidebarItems = (
+  frontmatter: DefaultThemePageFrontmatter,
+  themeLocale: DefaultThemeData
+): ResolvedSidebarItem[] => {
   // get sidebar config from frontmatter > themeConfig
-  const sidebarConfig = computed(
-    () => frontmatter.value.sidebar ?? themeLocale.value.sidebar ?? 'auto'
-  )
+  const sidebarConfig = frontmatter.sidebar ?? themeLocale.sidebar ?? 'auto'
 
   // resolve sidebar items according to the config
-  return computed<ResolvedSidebarItem[]>(() => {
-    if (frontmatter.value.home === true || sidebarConfig.value === false) {
-      return []
-    }
-
-    if (sidebarConfig.value === 'auto') {
-      return resolveAutoSidebarItems()
-    }
-
-    if (isArray(sidebarConfig.value)) {
-      return resolveArraySidebarItems(sidebarConfig.value)
-    }
-
-    if (isPlainObject(sidebarConfig.value)) {
-      return resolveMultiSidebarItems(sidebarConfig.value)
-    }
-
+  if (frontmatter.home === true || sidebarConfig === false) {
     return []
-  })
+  }
+
+  if (sidebarConfig === 'auto') {
+    return resolveAutoSidebarItems()
+  }
+
+  if (isArray(sidebarConfig)) {
+    return resolveArraySidebarItems(sidebarConfig)
+  }
+
+  if (isPlainObject(sidebarConfig)) {
+    return resolveMultiSidebarItems(sidebarConfig)
+  }
+
+  return []
 }
 
 /**

@@ -12,15 +12,15 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { useRouteLocale, useThemeLocaleData } from '@vuepress/client'
-import type { DefaultThemeOptions } from '../types'
+import { useRouteLocale } from '@vuepress/client'
+import { useThemeLocaleData } from '../composables'
 
 export default defineComponent({
   name: '404',
 
   setup() {
     const routeLocale = useRouteLocale()
-    const themeLocale = useThemeLocaleData<DefaultThemeOptions>()
+    const themeLocale = useThemeLocaleData()
 
     const messages = themeLocale.value.notFound ?? ['Not Found']
     const getMsg = (): string =>

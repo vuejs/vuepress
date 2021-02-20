@@ -5,7 +5,7 @@
     </div>
 
     <div v-if="lastUpdated" class="meta-item last-updated">
-      <span class="meta-item-label">{{ $themeLocale.lastUpdatedText }}: </span>
+      <span class="meta-item-label">{{ themeLocale.lastUpdatedText }}: </span>
       <span class="meta-item-info">{{ lastUpdated }}</span>
     </div>
 
@@ -13,7 +13,7 @@
       v-if="contributors && contributors.length"
       class="meta-item contributors"
     >
-      <span class="meta-item-label">{{ $themeLocale.contributorsText }}: </span>
+      <span class="meta-item-label">{{ themeLocale.contributorsText }}: </span>
       <span class="meta-item-info">
         <template v-for="(contributor, index) in contributors" :key="index">
           <span class="contributor" :title="`email: ${contributor.email}`">
@@ -33,18 +33,14 @@ import {
   usePageData,
   usePageFrontmatter,
   useSiteLocaleData,
-  useThemeLocaleData,
 } from '@vuepress/client'
-import type {
-  DefaultThemeOptions,
-  DefaultThemePageData,
-  NavLink as NavLinkType,
-} from '../types'
+import { useThemeLocaleData } from '../composables'
+import type { DefaultThemePageData, NavLink as NavLinkType } from '../types'
 import { resolveEditLink } from '../utils'
 import NavLink from './NavLink.vue'
 
 const useEditNavLink = (): ComputedRef<null | NavLinkType> => {
-  const themeLocale = useThemeLocaleData<DefaultThemeOptions>()
+  const themeLocale = useThemeLocaleData()
   const page = usePageData<DefaultThemePageData>()
   const frontmatter = usePageFrontmatter()
 
@@ -84,7 +80,7 @@ const useEditNavLink = (): ComputedRef<null | NavLinkType> => {
 
 const useLastUpdated = (): ComputedRef<null | string> => {
   const siteLocale = useSiteLocaleData()
-  const themeLocale = useThemeLocaleData<DefaultThemeOptions>()
+  const themeLocale = useThemeLocaleData()
   const page = usePageData<DefaultThemePageData>()
   const frontmatter = usePageFrontmatter()
 
@@ -105,7 +101,7 @@ const useLastUpdated = (): ComputedRef<null | string> => {
 const useContributors = (): ComputedRef<
   null | Required<DefaultThemePageData['git']>['contributors']
 > => {
-  const themeLocale = useThemeLocaleData<DefaultThemeOptions>()
+  const themeLocale = useThemeLocaleData()
   const page = usePageData<DefaultThemePageData>()
   const frontmatter = usePageFrontmatter()
 
@@ -127,11 +123,13 @@ export default defineComponent({
   },
 
   setup() {
+    const themeLocale = useThemeLocaleData()
     const editNavLink = useEditNavLink()
     const lastUpdated = useLastUpdated()
     const contributors = useContributors()
 
     return {
+      themeLocale,
       editNavLink,
       lastUpdated,
       contributors,

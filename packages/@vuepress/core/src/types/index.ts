@@ -11,7 +11,6 @@ import type {
   PageHeader,
   SiteData,
   SiteLocaleConfig,
-  SiteThemeConfig,
 } from '@vuepress/shared'
 
 export type {
@@ -27,7 +26,6 @@ export type {
   PageHeader,
   SiteData,
   SiteLocaleConfig,
-  SiteThemeConfig,
 }
 
 export * from './app'

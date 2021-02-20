@@ -1,4 +1,4 @@
-export * from './assignDefaultOptions'
+export * from './assignDefaultLocaleOptions'
 export * from './resolveActiveHeaderLinksPluginOptions'
 export * from './resolveContainerPluginOptions'
 export * from './resolveGitPluginOptions'

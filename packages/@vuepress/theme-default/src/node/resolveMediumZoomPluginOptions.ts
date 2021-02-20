@@ -1,13 +1,13 @@
 import type { MediumZoomPluginOptions } from '@vuepress/plugin-medium-zoom'
-import type { DefaultThemeOptions } from '../types'
+import type { DefaultThemePluginsOptions } from '../types'
 
 /**
  * Resolve options for @vuepress/plugin-medium-zoom
  */
 export const resolveMediumZoomPluginOptions = (
-  options: DefaultThemeOptions
+  themePlugins: DefaultThemePluginsOptions
 ): MediumZoomPluginOptions | boolean => {
-  if (options.themePlugins?.mediumZoom === false) {
+  if (themePlugins?.mediumZoom === false) {
     return false
   }
 

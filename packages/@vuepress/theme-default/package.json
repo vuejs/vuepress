@@ -38,6 +38,7 @@
     "@vuepress/plugin-medium-zoom": "2.0.0-alpha.24",
     "@vuepress/plugin-nprogress": "2.0.0-alpha.24",
     "@vuepress/plugin-palette-stylus": "2.0.0-alpha.24",
+    "@vuepress/plugin-theme-data": "2.0.0-alpha.24",
     "@vuepress/shared": "2.0.0-alpha.24",
     "@vuepress/utils": "2.0.0-alpha.24",
     "prismjs": "^1.23.0",

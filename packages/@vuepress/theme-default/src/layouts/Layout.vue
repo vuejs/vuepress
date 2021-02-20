@@ -50,13 +50,12 @@ import {
   Transition,
 } from 'vue'
 import { useRouter } from 'vue-router'
-import { usePageFrontmatter, useThemeLocaleData } from '@vuepress/client'
+import { usePageFrontmatter } from '@vuepress/client'
 import Home from '../components/Home.vue'
 import Page from '../components/Page.vue'
 import Navbar from '../components/Navbar.vue'
 import Sidebar from '../components/Sidebar.vue'
-import { useSidebarItems } from '../composables'
-import type { DefaultThemeOptions } from '../types'
+import { useSidebarItems, useThemeLocaleData } from '../composables'
 
 export default defineComponent({
   name: 'Layout',
@@ -71,7 +70,7 @@ export default defineComponent({
 
   setup() {
     const frontmatter = usePageFrontmatter()
-    const themeLocale = useThemeLocaleData<DefaultThemeOptions>()
+    const themeLocale = useThemeLocaleData()
 
     // navbar
     const shouldShowNavbar = computed(

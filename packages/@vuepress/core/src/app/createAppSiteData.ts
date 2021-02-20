@@ -13,6 +13,5 @@ export const createAppSiteData = (options: AppOptions): SiteData => {
     description: options.description,
     head: options.head,
     locales: options.locales,
-    themeConfig: options.themeConfig,
   }
 }

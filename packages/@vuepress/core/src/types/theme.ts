@@ -1,4 +1,3 @@
-import type { LocaleData, SiteThemeConfig } from '@vuepress/shared'
 import type { Plugin, PluginFunction, PluginObject } from './plugin'
 
 /**
@@ -10,16 +9,15 @@ import type { Plugin, PluginFunction, PluginObject } from './plugin'
  *
  * A theme package should have a `Theme` as the default export
  */
-export type Theme<
-  T extends Record<string, unknown> = Record<never, never>
-> = Plugin<T, ThemeObject>
+export type Theme<T extends ThemeConfig = ThemeConfig> = Plugin<T, ThemeObject>
 
 /**
  * Vuepress theme function
  */
-export type ThemeFunction<
-  T extends Record<string, unknown> = Record<never, never>
-> = PluginFunction<T, ThemeObject>
+export type ThemeFunction<T extends ThemeConfig = ThemeConfig> = PluginFunction<
+  T,
+  ThemeObject
+>
 
 /**
  * Vuepress theme object
@@ -44,6 +42,4 @@ export interface ThemeObject extends PluginObject {
  *
  * @remark suffix `Config` means this is for user config
  */
-export type ThemeConfig<
-  ThemeLocaleData extends LocaleData = LocaleData
-> = SiteThemeConfig<ThemeLocaleData>
+export type ThemeConfig = Record<string, any>
