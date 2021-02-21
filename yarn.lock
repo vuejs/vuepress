@@ -13747,9 +13747,10 @@ textlint-rule-diacritics@^1.0.0:
     match-casing "^1.0.2"
     strip-json-comments "^3.0.1"
 
-textlint-rule-en-capitalization@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/textlint-rule-en-capitalization/-/textlint-rule-en-capitalization-2.0.2.tgz#42ca1c479108a82010216088181132278c23b5c7"
+textlint-rule-en-capitalization@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/textlint-rule-en-capitalization/-/textlint-rule-en-capitalization-2.0.3.tgz#6b05e5adcc58caed87abfe6fefea88e20c89d7e5"
+  integrity sha512-tIx2gzm3okWfK5+0NNV1ap21LHk9PTc2/IXNqFhd7RDVSqv7YFaZnhwL+UrBZXTEfOh6VgnTQd81Os2Akzas5g==
   dependencies:
     en-pos "^1.0.16"
     sentence-splitter "^3.0.11"
