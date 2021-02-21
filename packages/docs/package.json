@@ -47,7 +47,7 @@
     "textlint-rule-stop-words": "^1.0.17",
     "textlint-rule-terminology": "^2.1.5",
     "textlint-rule-write-good": "^1.6.2",
-    "vue-toasted": "^1.1.25",
+    "vue-toasted": "^1.1.28",
     "vuepress": "1.8.0",
     "vuepress-plugin-flowchart": "^1.4.2"
   }
