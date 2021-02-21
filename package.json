@@ -52,7 +52,7 @@
     "@types/globby": "^9.1.0",
     "@types/hash-sum": "^1.0.0",
     "@types/lru-cache": "^5.1.0",
-    "@types/node": "^12.7.5",
+    "@types/node": "^12.20.1",
     "@types/semver": "^6.0.0",
     "@typescript-eslint/eslint-plugin": "^2.9.0",
     "@typescript-eslint/parser": "^2.9.0",
