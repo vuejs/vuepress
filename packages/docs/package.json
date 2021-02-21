@@ -37,7 +37,7 @@
     "remark-cli": "^9.0.0",
     "remark-lint": "^6.0.6",
     "remark-preset-lint-consistent": "^2.0.3",
-    "remark-preset-lint-recommended": "^3.0.3",
+    "remark-preset-lint-recommended": "^3.0.4",
     "textlint": "^11.3.1",
     "textlint-filter-rule-comments": "^1.2.2",
     "textlint-rule-apostrophe": "^2.0.0",
