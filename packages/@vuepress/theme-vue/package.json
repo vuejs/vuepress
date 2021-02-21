@@ -21,7 +21,7 @@
   "author": "Evan You",
   "main": "index.js",
   "dependencies": {
-    "@vuepress/theme-default": "1.7.1"
+    "@vuepress/theme-default": "1.8.0"
   },
   "publishConfig": {
     "access": "public"
