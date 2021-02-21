@@ -25,7 +25,7 @@
   "dependencies": {
     "@babel/core": "^7.8.4",
     "@vue/babel-preset-app": "^4.1.2",
-    "@vuepress/markdown": "1.7.1",
+    "@vuepress/markdown": "1.8.0",
     "@vuepress/markdown-loader": "1.7.1",
     "@vuepress/plugin-last-updated": "1.8.0",
     "@vuepress/plugin-register-components": "1.7.1",
