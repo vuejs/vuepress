@@ -30,7 +30,7 @@
     "@vuepress/plugin-last-updated": "1.8.0",
     "@vuepress/plugin-register-components": "1.8.0",
     "@vuepress/shared-utils": "1.8.0",
-    "autoprefixer": "^9.5.1",
+    "autoprefixer": "^9.8.6",
     "babel-loader": "^8.2.2",
     "cache-loader": "^4.1.0",
     "chokidar": "^2.0.3",
