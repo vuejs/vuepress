@@ -22,7 +22,7 @@
   "main": "index.js",
   "dependencies": {
     "@vuepress/markdown": "1.7.1",
-    "loader-utils": "^1.1.0",
+    "loader-utils": "^2.0.0",
     "lru-cache": "^5.1.1"
   },
   "publishConfig": {
