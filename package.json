@@ -56,7 +56,7 @@
     "@types/semver": "^6.2.2",
     "@typescript-eslint/eslint-plugin": "^2.9.0",
     "@typescript-eslint/parser": "^2.9.0",
-    "all-contributors-cli": "^6.9.1",
+    "all-contributors-cli": "^6.20.0",
     "conventional-changelog-cli": "^2.0.23",
     "eslint": "^6.7.1",
     "eslint-plugin-jest": "^24.1.5",
