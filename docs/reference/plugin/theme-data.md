@@ -82,7 +82,7 @@ export default {
 
   Returns the theme data ref object in current locale.
 
-  The values of current locale has been merged into the root-level.
+  The properties of current locale has been merged into the root-level properties.
 
 - Example:
 
