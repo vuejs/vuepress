@@ -14,7 +14,7 @@ The codebase has been completely refactored with TypeScript. Some major changes:
 - Extract `@vuepress/client` from `@vuepress/core` package
 - Extract `@vuepress/bundler-webpack` from `@vuepress/core` package and migrate to webpack 5
   - As webpack is decoupled with core, other bundlers are also possible to be supported
-- Extract `@vuepress/plugin-palette-stylus` from `@vuepress/core` package - stylus is no longer the default CSS pre-processor, and the way of styles customization should be determined by theme
+- Extract `@vuepress/plugin-palette` from `@vuepress/core` package - stylus is no longer the default CSS pre-processor, and the way of styles customization should be determined by theme
 
 The documentation has not finished yet. For now you can check out the breaking changes list below as migration reference.
 
@@ -73,9 +73,9 @@ Temporarily record some breaking changes here.
 
 The stylus palette system of Vuepress 1.0 (i.e. `styles/palette.styl` and `styles/index.styl`) will only work in default theme.
 
-To make the stylus palette system reusable, it's extracted to `@vuepress/plugin-palette-stylus`.
+To make the palette system reusable, it's extracted to `@vuepress/plugin-palette`.
 
-Theme authors can use their own way for users to configure styles (not be limited with stylus).
+Theme authors can use their own way for users to configure styles (not be limited with stylus as VuePress 1.0).
 
 #### Frontmatter
 

@@ -1,12 +1,16 @@
 {
-  "name": "@vuepress/plugin-palette-stylus",
+  "name": "@vuepress/plugin-palette",
   "version": "2.0.0-alpha.25",
-  "description": "VuePress plugin - palette stylus",
+  "description": "VuePress plugin - palette",
   "keywords": [
     "vuepress-plugin",
     "vuepress",
     "plugin",
     "palette",
+    "style",
+    "css",
+    "sass",
+    "less",
     "stylus"
   ],
   "homepage": "https://github.com/vuepress",

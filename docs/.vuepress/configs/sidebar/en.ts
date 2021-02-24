@@ -81,7 +81,7 @@ export const en: SidebarConfig = {
         '/reference/plugin/google-analytics.md',
         '/reference/plugin/medium-zoom.md',
         '/reference/plugin/nprogress.md',
-        '/reference/plugin/palette-stylus.md',
+        '/reference/plugin/palette.md',
         '/reference/plugin/pwa.md',
         '/reference/plugin/pwa-popup.md',
         '/reference/plugin/theme-data.md',
