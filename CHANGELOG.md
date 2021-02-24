@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-alpha.26](https://github.com/vuepress/vuepress-next/compare/v2.0.0-alpha.25...v2.0.0-alpha.26) (2021-02-24)
+
+
+### Bug Fixes
+
+* **cli:** add theme-data plugin and rename palette plugin ([97ce42b](https://github.com/vuepress/vuepress-next/commit/97ce42bddbfcef5e66476c2355e031e54d9176ea))
+
+
+### Features
+
+* **bundler-webpack:** enable options API by default ([e29b6e1](https://github.com/vuepress/vuepress-next/commit/e29b6e1bb1ba89b7d440e54dafe3a84ecf4273db))
+* **plugin-palette:** add palette plugin ([556a23c](https://github.com/vuepress/vuepress-next/commit/556a23cc9076f972deb3d5c0905441b63b700682))
+
+
+### BREAKING CHANGES
+
+* **plugin-palette:** migrate `@vuepress/plugin-palette-stylus` to `@vuepress/plugin-palette`
+
+
+
+
+
 # [2.0.0-alpha.25](https://github.com/vuepress/vuepress-next/compare/v2.0.0-alpha.24...v2.0.0-alpha.25) (2021-02-20)
 
 
