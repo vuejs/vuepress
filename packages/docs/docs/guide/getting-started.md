@@ -37,6 +37,44 @@ You will then have the opportunity to configure your VuePress site’s metadata 
 
 Once it is complete, you should see your new VuePress site scaffolded in your directory! :tada:
 
+The scaffold creates a `<project-name>/docs` directory containing a `package.json`.
+
+To install the package dependencies, run the following:
+
+<code-group>
+<code-block title="YARN" active>
+```bash
+cd <project-name>/docs
+yarn install
+```
+</code-block>
+
+<code-block title="NPM">
+```bash
+cd <project-name>/docs
+npm install
+```
+</code-block>
+</code-group>
+
+With the dependencies installed you can now run the development server:
+
+<code-group>
+<code-block title="YARN" active>
+```bash
+npm run dev
+```
+</code-block>
+
+<code-block title="NPM">
+```bash
+yarn run dev
+```
+</code-block>
+</code-group>
+
+Browse to http://localhost:8081 to view the live development server.
+
 ## Manual Installation
 
 This section will help you build a basic VuePress documentation site from ground up. If you already have an existing project and would like to keep documentation inside the project, start from Step 3.
