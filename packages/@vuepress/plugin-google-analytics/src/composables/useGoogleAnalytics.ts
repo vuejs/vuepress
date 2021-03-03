@@ -1,11 +1,12 @@
+declare const dataLayer: any[]
+declare const gtag: (...args: any[]) => void
+
 declare global {
   interface Window {
-    dataLayer: any[]
-    gtag: (...args: any[]) => void
+    dataLayer?: typeof dataLayer
+    gtag?: typeof gtag
   }
 }
-
-declare const gtag: (...args: any[]) => void
 
 /**
  * Add gtag.js to your site
@@ -36,7 +37,7 @@ export const useGoogleAnalytics = (id: string): void => {
   // the gtag function must use `arguments` object to forward parameters
   window.gtag = function () {
     // eslint-disable-next-line prefer-rest-params
-    window.dataLayer.push(arguments)
+    dataLayer.push(arguments)
   }
 
   gtag('js', new Date())
