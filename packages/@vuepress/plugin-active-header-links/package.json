@@ -32,9 +32,9 @@
     "@vuepress/client": "2.0.0-alpha.25",
     "@vuepress/core": "2.0.0-alpha.25",
     "@vuepress/utils": "2.0.0-alpha.25",
-    "ts-debounce": "^2.3.0",
-    "vue": "^3.0.5",
-    "vue-router": "^4.0.3"
+    "ts-debounce": "^3.0.0",
+    "vue": "^3.0.7",
+    "vue-router": "^4.0.4"
   },
   "publishConfig": {
     "access": "public"

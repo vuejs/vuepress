@@ -35,7 +35,7 @@
     "@vuepress/core": "2.0.0-alpha.25",
     "@vuepress/utils": "2.0.0-alpha.25",
     "medium-zoom": "^1.0.6",
-    "vue": "^3.0.5"
+    "vue": "^3.0.7"
   },
   "publishConfig": {
     "access": "public"

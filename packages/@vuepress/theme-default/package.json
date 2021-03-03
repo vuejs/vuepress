@@ -44,8 +44,8 @@
     "prismjs": "^1.23.0",
     "sass": "^1.32.8",
     "sass-loader": "^11.0.1",
-    "vue": "^3.0.5",
-    "vue-router": "^4.0.3"
+    "vue": "^3.0.7",
+    "vue-router": "^4.0.4"
   },
   "publishConfig": {
     "access": "public"
