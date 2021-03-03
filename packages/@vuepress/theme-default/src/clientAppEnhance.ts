@@ -4,7 +4,7 @@ import CodeGroup from './components/global/CodeGroup.vue'
 import CodeGroupItem from './components/global/CodeGroupItem.vue'
 import OutboundLink from './components/global/OutboundLink.vue'
 
-import './styles/index.styl'
+import './styles/index.scss'
 
 declare const DOCSEARCH_PROPS: unknown
 

@@ -1,4 +1,6 @@
-@require './_variables';
+@use 'sass:color';
+
+@import '_variables';
 
 .custom-container {
   .custom-container-title {
@@ -19,12 +21,12 @@
   }
 
   &.warning {
-    background-color: lighten($warningColor, 90%);
+    background-color: color.scale($warningColor, $lightness: 90%);
     border-color: $warningColor;
-    color: darken($warningColor, 50%);
+    color: color.scale($warningColor, $lightness: -50%);
 
     .custom-container-title {
-      color: darken($warningColor, 25%);
+      color: color.scale($warningColor, $lightness: -25%);
     }
 
     a {
@@ -33,12 +35,12 @@
   }
 
   &.danger {
-    background-color: lighten($dangerColor, 90%);
+    background-color: color.scale($dangerColor, $lightness: 90%);
     border-color: $dangerColor;
-    color: darken($dangerColor, 50%);
+    color: color.scale($dangerColor, $lightness: -50%);
 
     .custom-container-title {
-      color: darken($dangerColor, 25%);
+      color: color.scale($dangerColor, $lightness: -25%);
     }
 
     a {

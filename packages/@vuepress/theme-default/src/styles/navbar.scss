@@ -1,7 +1,9 @@
-@require './_variables';
+@use 'sass:color';
 
-$navbar-vertical-padding = 0.7rem;
-$navbar-horizontal-padding = 1.5rem;
+@import '_variables';
+
+$navbar-vertical-padding: 0.7rem;
+$navbar-horizontal-padding: 1.5rem;
 
 .navbar {
   padding: $navbar-vertical-padding $navbar-horizontal-padding;
@@ -105,7 +107,7 @@ $navbar-horizontal-padding = 1.5rem;
   .navbar-links-item > a:not(.external) {
     &:hover, &.router-link-active {
       margin-bottom: -2px;
-      border-bottom: 2px solid lighten($accentColor, 8%);
+      border-bottom: 2px solid color.scale($accentColor, $lightness: 8%);
     }
   }
 }

@@ -71,11 +71,9 @@ Temporarily record some breaking changes here.
 
 #### Stylus Palette system
 
-The stylus palette system of Vuepress 1.0 (i.e. `styles/palette.styl` and `styles/index.styl`) will only work in default theme.
+The stylus palette system of VuePress v1 (i.e. `styles/palette.styl` and `styles/index.styl`) is extracted to `@vuepress/plugin-palette`.
 
-To make the palette system reusable, it's extracted to `@vuepress/plugin-palette`.
-
-Theme authors can use their own way for users to configure styles (not be limited with stylus as VuePress 1.0).
+Theme authors can use their own way for users to configure styles (not be limited with stylus).
 
 #### Frontmatter
 
@@ -152,4 +150,4 @@ Theme authors can use their own way for users to configure styles (not be limite
 - `<Badge />`
   - `$badgeErrorColor` -> `$badgeDangerColor`
   - `type` prop only accepts `tip`, `warning` and `danger`
-- Default theme config has changed a lot. Please checkout the types definition and our `docs/.vuepress/config.ts` as reference
+- Default theme config has changed a lot. Please refer to the documentation.

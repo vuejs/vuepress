@@ -1,0 +1,19 @@
+@use '_normalize';
+
+@use 'arrow';
+@use 'badge';
+@use 'code';
+@use 'code-group';
+@use 'custom-container';
+@use 'dropdown';
+@use 'home';
+@use 'layout';
+@use 'navbar';
+@use 'page';
+@use 'plugins';
+@use 'sidebar';
+@use 'sr-only';
+@use 'toc';
+@use 'transitions';
+
+@use '@vuepress/plugin-palette/style';

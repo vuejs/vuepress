@@ -1,5 +1,7 @@
-@require './_variables';
-@require './wrapper';
+@use 'sass:color';
+
+@import '_variables';
+@import '_wrapper';
 
 .page {
   padding-bottom: 2rem;
@@ -7,7 +9,7 @@
 }
 
 .page-meta {
-  @extend $wrapper;
+  @extend %wrapper;
   padding-top: 1rem;
   padding-bottom: 1rem;
   overflow: auto;
@@ -18,7 +20,7 @@
 
     .meta-item-label {
       font-weight: 500;
-      color: lighten($textColor, 25%);
+      color: color.scale($textColor, $lightness: 25%);
     }
 
     .meta-item-info {
@@ -51,7 +53,7 @@
 }
 
 .page-nav {
-  @extend $wrapper;
+  @extend %wrapper;
   padding-top: 1rem;
   padding-bottom: 0;
 

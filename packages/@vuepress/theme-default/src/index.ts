@@ -66,7 +66,7 @@ export const defaultTheme: Theme<DefaultThemeOptions> = ({
       ['@vuepress/git', resolveGitPluginOptions(themePlugins, localeOptions)],
       ['@vuepress/medium-zoom', resolveMediumZoomPluginOptions(themePlugins)],
       ['@vuepress/nprogress', themePlugins.nprogress !== false],
-      ['@vuepress/palette', { preset: 'stylus' }],
+      ['@vuepress/palette', { preset: 'sass' }],
       ['@vuepress/theme-data', { themeData: localeOptions }],
     ],
   }

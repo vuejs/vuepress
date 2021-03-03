@@ -1,6 +1,6 @@
-@require './_variables';
+@import '_variables';
 
-$wrapper {
+%wrapper {
   max-width: $contentWidth;
   margin: 0 auto;
   padding: 2rem 2.5rem;

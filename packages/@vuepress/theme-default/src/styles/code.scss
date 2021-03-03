@@ -1,9 +1,11 @@
-@import '~prismjs/themes/prism-tomorrow.css';
-@require './_variables';
+@use 'sass:color';
 
-{$contentClass} {
+@import '_variables';
+@import 'prismjs/themes/prism-tomorrow.css';
+
+#{$contentClass} {
   code {
-    color: lighten($textColor, 20%);
+    color: color.scale($textColor, $lightness: 20%);
     padding: 0.25rem 0.5rem;
     margin: 0;
     font-size: 0.85em;
@@ -22,7 +24,7 @@
   }
 }
 
-{$contentClass} {
+#{$contentClass} {
   pre, pre[class*='language-'] {
     line-height: 1.4;
     padding: 1.25rem 1.5rem;
@@ -142,17 +144,17 @@ div[class*='language-'] {
   }
 }
 
-for lang in $codeLang {
-  div[class*='language-'].ext-{lang} {
+@each $lang in $codeLang {
+  div[class*='language-'].ext-#{$lang} {
     &:before {
-      content: '' + lang;
+      content: '' + $lang;
     }
   }
 }
 
 // narrow mobile
 @media (max-width: $MQMobileNarrow) {
-  {$contentClass} {
+  #{$contentClass} {
     div[class*='language-'] {
       margin: 0.85rem -1.5rem;
       border-radius: 0;

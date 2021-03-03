@@ -1,7 +1,7 @@
-@require './_variables';
-@require './wrapper';
+@import '_variables';
+@import '_wrapper';
 
-$mobileSidebarWidth = $sidebarWidth * 0.82;
+$mobileSidebarWidth: $sidebarWidth * 0.82;
 
 .page {
   padding-left: $sidebarWidth;
@@ -63,7 +63,7 @@ $mobileSidebarWidth = $sidebarWidth * 0.82;
   }
 
   &.no-navbar {
-    {$contentClass}:not(.custom) > h1, h2, h3, h4, h5, h6 {
+    #{$contentClass}:not(.custom) > h1, h2, h3, h4, h5, h6 {
       margin-top: 1.5rem;
       padding-top: 0;
     }
@@ -87,7 +87,7 @@ $mobileSidebarWidth = $sidebarWidth * 0.82;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  {$contentClass}:not(.custom) > & {
+  #{$contentClass}:not(.custom) > & {
     margin-top: 0.5rem - $navbarHeight;
     padding-top: ($navbarHeight + 1rem);
     margin-bottom: 0;
@@ -103,8 +103,8 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-{$contentClass}:not(.custom) {
-  @extend $wrapper;
+#{$contentClass}:not(.custom) {
+  @extend %wrapper;
 
   > *:first-child {
     margin-top: $navbarHeight;
@@ -125,7 +125,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-{$contentClass}.custom {
+#{$contentClass}.custom {
   padding: 0;
   margin: 0;
 
