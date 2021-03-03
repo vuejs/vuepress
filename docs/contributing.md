@@ -69,7 +69,7 @@ You may need to run this script first after your clone this repository, because 
 
 The `copy` script of root project runs `copy` script in all packages, copying some resources from source directory to dist directory.
 
-Some source files (e.g. `.vue`, `.styl` files) can not be processed by `build` script, but should keep the same relative path in the dist directory.
+Some source files (e.g. `.vue`, `.css` files) can not be processed by `build` script, but should keep the same relative path in the dist directory.
 
 You may need to run this script after your clone this repository, too.
 
