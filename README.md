@@ -16,11 +16,11 @@ The codebase has been completely refactored with TypeScript. Some major changes:
   - As webpack is decoupled with core, other bundlers are also possible to be supported
 - Extract `@vuepress/plugin-palette` from `@vuepress/core` package - stylus is no longer the default CSS pre-processor, and the way of styles customization should be determined by theme
 
-The documentation has not finished yet. For now you can check out the breaking changes list below as migration reference.
+The migration guide has not finished yet. For now you can check out the breaking changes list below as reference.
 
 ## Documentation
 
-https://vuepress.github.io
+https://vuepress2.netlify.app
 
 ## Contribution
 
