@@ -24,6 +24,7 @@
 
 - [alias](#alias)
 - [define](#define)
+- [onWatched](#onwatched)
 - [onGenerated](#ongenerated)
 
 ## 基础配置项

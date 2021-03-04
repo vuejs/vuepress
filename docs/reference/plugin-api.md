@@ -24,6 +24,7 @@ The following hooks will be processed in dev / build:
 
 - [alias](#alias)
 - [define](#define)
+- [onWatched](#onwatched)
 - [onGenerated](#ongenerated)
 
 ## Basic Options
