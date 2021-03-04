@@ -41,7 +41,6 @@
     "@vuepress/plugin-theme-data": "2.0.0-alpha.25",
     "@vuepress/shared": "2.0.0-alpha.25",
     "@vuepress/utils": "2.0.0-alpha.25",
-    "prismjs": "^1.23.0",
     "sass": "^1.32.8",
     "sass-loader": "^11.0.1",
     "vue": "^3.0.7",
