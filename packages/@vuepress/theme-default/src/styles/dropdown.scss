@@ -137,7 +137,8 @@
           padding-bottom: 0;
         }
 
-        .dropdown-subtitle, & > a {
+        .dropdown-subtitle,
+        & > a {
           font-size: 15px;
           line-height: 2rem;
         }
@@ -155,7 +156,8 @@
   .dropdown-wrapper {
     height: 1.8rem;
 
-    &:hover .nav-dropdown, &.open .nav-dropdown {
+    &:hover .nav-dropdown,
+    &.open .nav-dropdown {
       // override the inline style.
       display: block !important;
     }

@@ -1,13 +1,15 @@
 @import '_variables';
 
-html, body {
+html,
+body {
   padding: 0;
   margin: 0;
   background-color: #fff;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
@@ -45,7 +47,8 @@ blockquote {
   }
 }
 
-ul, ol {
+ul,
+ol {
   padding-left: 1.2em;
 }
 
@@ -53,7 +56,12 @@ strong {
   font-weight: 600;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 600;
   line-height: 1.25;
 
@@ -101,11 +109,15 @@ a.header-anchor {
   }
 }
 
-code, kbd {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+code,
+kbd {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 
-p, ul, ol {
+p,
+ul,
+ol {
   line-height: 1.7;
 }
 
@@ -129,7 +141,8 @@ tr {
   }
 }
 
-th, td {
+th,
+td {
   border: 1px solid #dfe2e5;
   padding: 0.6em 1em;
 }

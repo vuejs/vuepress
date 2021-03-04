@@ -72,7 +72,8 @@ $navbar-horizontal-padding: 1.5rem;
     line-height: 1.4rem;
     color: inherit;
 
-    &:hover, &.router-link-active {
+    &:hover,
+    &.router-link-active {
       color: $accentColor;
     }
   }
@@ -99,13 +100,15 @@ $navbar-horizontal-padding: 1.5rem;
 
 @media (min-width: $MQMobile) {
   .navbar-links a {
-    &:hover, &.router-link-active {
+    &:hover,
+    &.router-link-active {
       color: $textColor;
     }
   }
 
   .navbar-links-item > a:not(.external) {
-    &:hover, &.router-link-active {
+    &:hover,
+    &.router-link-active {
       margin-bottom: -2px;
       border-bottom: 2px solid color.scale($accentColor, $lightness: 8%);
     }

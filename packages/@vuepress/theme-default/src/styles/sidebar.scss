@@ -48,7 +48,10 @@
     .navbar-links {
       display: block;
 
-      .dropdown-wrapper .nav-dropdown .dropdown-item a.router-link-active::after {
+      .dropdown-wrapper
+        .nav-dropdown
+        .dropdown-item
+        a.router-link-active::after {
         top: calc(1rem - 2px);
       }
     }
@@ -84,7 +87,8 @@
   margin: 0;
   border-left: 0.25rem solid transparent;
 
-  &.open, &:hover {
+  &.open,
+  &:hover {
     color: inherit;
   }
 
@@ -127,7 +131,8 @@
   }
 }
 
-a.sidebar-heading, a.sidebar-link {
+a.sidebar-heading,
+a.sidebar-link {
   cursor: pointer;
 
   &.active {

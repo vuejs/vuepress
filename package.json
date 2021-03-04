@@ -26,7 +26,7 @@
   },
   "lint-staged": {
     "*.{js,ts,vue}": "cross-env NODE_OPTIONS=\"--max-old-space-size=4096\" eslint --fix",
-    "*.{json,yml,css}": "prettier --write",
+    "*.{json,yml,css,scss}": "prettier --write",
     "package.json": "sort-package-json"
   },
   "prettier": "prettier-config-vuepress",

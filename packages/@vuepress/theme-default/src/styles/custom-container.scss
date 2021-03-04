@@ -8,7 +8,9 @@
     margin-bottom: -0.4rem;
   }
 
-  &.tip, &.warning, &.danger {
+  &.tip,
+  &.warning,
+  &.danger {
     padding: 0.1rem 1.5rem;
     border-left-width: 0.5rem;
     border-left-style: solid;
@@ -60,7 +62,8 @@
       margin-top: 0;
     }
 
-    figure, p {
+    figure,
+    p {
       &:last-child {
         margin-bottom: 0;
         padding-bottom: 0;
