@@ -197,7 +197,7 @@ console.log('Hello, VuePress!')
 
 **Also see:**
 
-- [vuepress-plugin-container](https://vuepress.github.io/plugins/container/)
+- [vuepress-plugin-container](https://vuepress-community.netlify.app/en/plugins/container/#vuepress-plugin-container)
 
 ## Syntax Highlighting in Code Blocks
 
