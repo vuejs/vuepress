@@ -14,6 +14,11 @@ export const useThemeData = <
 if (import.meta.webpackHot) {
   import.meta.webpackHot!.accept('@internal/themeData', () => {
     themeData.value = readonly(themeDataRaw) as ThemeData
-    console.log('[vuepress] themeData is updated')
+  })
+}
+
+if (import.meta.hot) {
+  import.meta.hot!.accept('@internal/themeData', () => {
+    themeData.value = readonly(themeDataRaw) as ThemeData
   })
 }

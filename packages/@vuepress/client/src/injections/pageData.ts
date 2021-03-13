@@ -38,7 +38,7 @@ export const resolvePageData = async (routePath: string): Promise<PageData> => {
   return pageData ?? pageDataEmpty
 }
 
-if (import.meta.webpackHot) {
+if (import.meta.webpackHot || import.meta.hot) {
   // reuse vue HMR runtime
   __VUE_HMR_RUNTIME__.updatePageData = (newPageData: PageData) => {
     if (newPageData.key === pageData.value.key) {

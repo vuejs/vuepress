@@ -5,7 +5,8 @@
     "baseUrl": ".",
     "paths": {
       "@internal/themeData": ["src/types/internal/themeData.d.ts"]
-    }
+    },
+    "types": ["webpack-env", "vite/client"]
   },
   "include": ["./src", "./__tests__"]
 }

@@ -13,6 +13,11 @@ export const useSiteData = (): SiteDataRef => siteData
 if (import.meta.webpackHot) {
   import.meta.webpackHot!.accept('@internal/siteData', () => {
     siteData.value = readonly(siteDataRaw) as SiteData
-    console.log('[vuepress] siteData is updated')
+  })
+}
+
+if (import.meta.hot) {
+  import.meta.hot!.accept('@internal/siteData', () => {
+    siteData.value = readonly(siteDataRaw) as SiteData
   })
 }
