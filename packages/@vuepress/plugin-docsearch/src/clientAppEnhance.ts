@@ -1,8 +1,12 @@
 import { createElement } from 'preact'
 import { computed, h } from 'vue'
 import { useRouter } from 'vue-router'
-import { usePageLang, useRouteLocale, useSiteData } from '@vuepress/client'
-import type { ClientAppEnhance } from '@vuepress/client'
+import {
+  defineClientAppEnhance,
+  usePageLang,
+  useRouteLocale,
+  useSiteData,
+} from '@vuepress/client'
 import { resolveRoutePathFromUrl } from '@vuepress/shared'
 import type { LocaleConfig } from '@vuepress/shared'
 import { Docsearch } from './components/Docsearch'
@@ -24,7 +28,7 @@ const isSpecialClick = (event: MouseEvent): boolean => {
   )
 }
 
-const clientAppEnhance: ClientAppEnhance = ({ app }) => {
+export default defineClientAppEnhance(({ app }) => {
   // wrap the `<Docsearch />` component with plugin options
   // eslint-disable-next-line vue/match-component-file-name
   app.component('Docsearch', {
@@ -90,6 +94,4 @@ const clientAppEnhance: ClientAppEnhance = ({ app }) => {
       return () => h(Docsearch, { options: options.value })
     },
   })
-}
-
-export default clientAppEnhance
+})

@@ -1,13 +1,12 @@
 import { computed } from 'vue'
-import { routeLocaleSymbol } from '@vuepress/client'
-import type { ClientAppEnhance } from '@vuepress/client'
+import { defineClientAppEnhance, routeLocaleSymbol } from '@vuepress/client'
 import {
   useThemeData,
   resolveThemeLocaleData,
   themeLocaleDataSymbol,
 } from './composables'
 
-const clientAppEnhance: ClientAppEnhance = ({ app }) => {
+export default defineClientAppEnhance(({ app }) => {
   // provide theme data & theme locale data
   const themeData = useThemeData()
   const routeLocale =
@@ -29,6 +28,4 @@ const clientAppEnhance: ClientAppEnhance = ({ app }) => {
       },
     },
   })
-}
-
-export default clientAppEnhance
+})

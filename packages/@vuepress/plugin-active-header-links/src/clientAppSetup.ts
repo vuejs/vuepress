@@ -1,4 +1,4 @@
-import type { ClientAppSetup } from '@vuepress/client'
+import { defineClientAppSetup } from '@vuepress/client'
 import { useActiveHeaderLinks } from './composables'
 
 declare const __SSR__: boolean
@@ -7,7 +7,7 @@ declare const AHL_HEADER_ANCHOR_SELECTOR: string
 declare const AHL_DELAY: number
 declare const AHL_OFFSET: number
 
-const clientAppSetup: ClientAppSetup = () => {
+export default defineClientAppSetup(() => {
   if (__SSR__) return
 
   useActiveHeaderLinks({
@@ -16,6 +16,4 @@ const clientAppSetup: ClientAppSetup = () => {
     delay: AHL_DELAY,
     offset: AHL_OFFSET,
   })
-}
-
-export default clientAppSetup
+})

@@ -1,4 +1,4 @@
-import type { ClientAppEnhance } from '@vuepress/client'
+import { defineClientAppEnhance } from '@vuepress/client'
 import Badge from './components/global/Badge.vue'
 import CodeGroup from './components/global/CodeGroup.vue'
 import CodeGroupItem from './components/global/CodeGroupItem.vue'
@@ -8,7 +8,7 @@ import './styles/index.scss'
 
 declare const DOCSEARCH_PROPS: unknown
 
-const clientAppEnhance: ClientAppEnhance = ({ app }) => {
+export default defineClientAppEnhance(({ app }) => {
   /* eslint-disable vue/match-component-file-name */
   app.component('Badge', Badge)
   app.component('CodeGroup', CodeGroup)
@@ -26,6 +26,4 @@ const clientAppEnhance: ClientAppEnhance = ({ app }) => {
     app.component('Docsearch', () => null)
   }
   /* eslint-enable vue/match-component-file-name */
-}
-
-export default clientAppEnhance
+})

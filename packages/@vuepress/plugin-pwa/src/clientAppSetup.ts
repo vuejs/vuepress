@@ -1,7 +1,6 @@
 import mitt from 'mitt'
 import { onMounted, provide } from 'vue'
-import { withBase } from '@vuepress/client'
-import type { ClientAppSetup } from '@vuepress/client'
+import { defineClientAppSetup, withBase } from '@vuepress/client'
 import { pwaEventSymbol } from './composables'
 import type { PwaEvent } from './composables'
 
@@ -11,7 +10,7 @@ declare const __PWA_SW_FILENAME__: string
 
 const swFilename = __PWA_SW_FILENAME__
 
-const clientAppSetup: ClientAppSetup = () => {
+export default defineClientAppSetup(() => {
   if (__DEV__ || __SSR__ || !swFilename) return
 
   const log = (...args: any[]): void =>
@@ -63,6 +62,4 @@ const clientAppSetup: ClientAppSetup = () => {
       },
     })
   })
-}
-
-export default clientAppSetup
+})

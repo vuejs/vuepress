@@ -1,11 +1,11 @@
 import * as nprogress from 'nprogress'
 import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import type { ClientAppSetup } from '@vuepress/client'
+import { defineClientAppSetup } from '@vuepress/client'
 
 import '../styles/nprogress.css'
 
-const clientAppSetup: ClientAppSetup = () => {
+export default defineClientAppSetup(() => {
   onMounted(() => {
     // get vue-router instance
     const router = useRouter()
@@ -32,6 +32,4 @@ const clientAppSetup: ClientAppSetup = () => {
       nprogress.done()
     })
   })
-}
-
-export default clientAppSetup
+})
