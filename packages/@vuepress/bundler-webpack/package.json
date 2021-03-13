@@ -3,6 +3,7 @@
   "version": "2.0.0-alpha.26",
   "description": "Bundler webpack package of VuePress",
   "keywords": [
+    "vuepress-bundler",
     "vuepress",
     "bundler",
     "webpack"
