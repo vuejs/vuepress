@@ -1,3 +1,4 @@
+export * from './defineUserConfig'
 export * from './loadUserConfig'
 export * from './loadUserConfigEs'
 export * from './resolveUserConfigConventionalPath'

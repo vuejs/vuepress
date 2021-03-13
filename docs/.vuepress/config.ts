@@ -1,10 +1,10 @@
 import * as chokidar from 'chokidar'
-import type { UserConfig } from '@vuepress/cli'
+import { defineUserConfig } from '@vuepress/cli'
 import type { DefaultThemeOptions } from '@vuepress/theme-default'
 import { chalk, logger } from '@vuepress/utils'
 import { navbar, sidebar } from './configs'
 
-const config: UserConfig<DefaultThemeOptions> = {
+export default defineUserConfig<DefaultThemeOptions>({
   base: '/',
 
   head: [
@@ -187,6 +187,4 @@ const config: UserConfig<DefaultThemeOptions> = {
     })
     watchers.push(watcher)
   },
-}
-
-export = config
+})
