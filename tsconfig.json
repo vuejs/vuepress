@@ -30,7 +30,8 @@
     { "path": "./packages/@vuepress/theme-default/tsconfig.build.json" },
     { "path": "./packages/@vuepress/theme-vue/tsconfig.build.json" },
     { "path": "./packages/@vuepress/utils/tsconfig.build.json" },
-    { "path": "./packages/vuepress/tsconfig.build.json" }
+    { "path": "./packages/vuepress/tsconfig.build.json" },
+    { "path": "./packages/vuepress-vite/tsconfig.build.json" }
   ],
   "files": []
 }

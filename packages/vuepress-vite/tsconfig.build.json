@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "CommonJS",
+    "rootDir": "./src",
+    "outDir": "./lib"
+  },
+  "include": ["./src"],
+  "references": [
+    { "path": "../@vuepress/bundler-vite/tsconfig.build.json" },
+    { "path": "../@vuepress/cli/tsconfig.build.json" },
+    { "path": "../@vuepress/core/tsconfig.build.json" },
+    { "path": "../@vuepress/theme-default/tsconfig.build.json" }
+  ]
+}
