@@ -1,24 +1,12 @@
 import { defineComponent, getCurrentInstance, h, onMounted, watch } from 'vue'
 import type { PropType } from 'vue'
+// @ts-ignore: docsearch type issue
+import docsearch from '@docsearch/js'
 import type { DocSearchProps } from '@docsearch/react'
 
+import '@docsearch/css'
+
 export type DocsearchProps = DocSearchProps
-
-type DocsearchFuncProps = DocSearchProps & {
-  container: string
-}
-
-type DocsearchFunc = (props: DocsearchFuncProps) => void
-
-const loadDocsearch = async (): Promise<DocsearchFunc> => {
-  const [docsearch] = await Promise.all([
-    // @ts-ignore: docsearch types issue
-    import('@docsearch/js'),
-    // @ts-ignore
-    import('@docsearch/css'),
-  ])
-  return docsearch.default
-}
 
 export const Docsearch = defineComponent({
   name: 'Docsearch',
@@ -34,12 +22,10 @@ export const Docsearch = defineComponent({
     const vm = getCurrentInstance()
 
     const initialize = (options: DocsearchProps): void => {
-      loadDocsearch().then((docsearch) => {
-        docsearch({
-          ...options,
-          // the container selector
-          container: '#docsearch',
-        })
+      docsearch({
+        ...options,
+        // the container selector
+        container: '#docsearch',
       })
     }
 
