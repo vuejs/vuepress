@@ -206,6 +206,11 @@ module.exports = {
 
   为当前使用的打包工具提供的配置项。具体的配置项取决于你使用的打包工具。
 
+- 参考：
+  - [指南 > 打包工具](../guide/bundler.md)
+  - [打包工具 > Webpack](./bundler/webpack.md)
+  - [打包工具 > Vite](./bundler/vite.md)
+
 ## 目录配置
 
 ### dest

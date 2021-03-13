@@ -207,6 +207,11 @@ module.exports = {
 
   Provide config options to the used bundler. The options will vary depending on the bundler you are using.
 
+- Also see:
+  - [Guide > Bundler](../guide/bundler.md)
+  - [Bundlers > Webpack](./bundler/webpack.md)
+  - [Bundlers > Vite](./bundler/vite.md)
+
 ## Directory Config
 
 ### dest
