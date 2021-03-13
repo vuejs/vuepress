@@ -35,9 +35,10 @@ module.exports = {
   <CodeGroupItem title="TS">
 
 ```ts
-import type { UserConfig, DefaultThemeOptions } from 'vuepress'
+import { defineUserConfig } from 'vuepress'
+import type { DefaultThemeOptions } from 'vuepress'
 
-const config: UserConfig<DefaultThemeOptions> = {
+export default defineUserConfig<DefaultThemeOptions>({
   lang: 'en-US',
   title: 'Hello VuePress',
   description: 'Just playing around',
@@ -45,9 +46,7 @@ const config: UserConfig<DefaultThemeOptions> = {
   themeConfig: {
     logo: 'https://vuejs.org/images/logo.png',
   },
-}
-
-export = config
+})
 ```
 
   </CodeGroupItem>
