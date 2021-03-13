@@ -66,6 +66,42 @@
 
 ## 工具函数
 
+### defineClientAppSetup
+
+- 详情：
+
+  帮助你创建 [clientAppSetupFiles](./plugin-api.md#clientappsetupfiles) 的工具函数。
+
+- 示例：
+
+创建 `clientAppSetup.ts` 文件：
+
+```ts
+import { defineClientAppSetup } from '@vuepress/client'
+
+export default defineClientAppSetup(() => {
+  // ...
+})
+```
+
+### defineClientAppEnhance
+
+- 详情：
+
+  帮助你创建 [clientAppEnhanceFiles](./plugin-api.md#clientappenhancefiles) 的工具函数。
+
+- 示例：
+
+创建 `clientAppEnhance.ts` 文件：
+
+```ts
+import { defineClientAppEnhance } from '@vuepress/client'
+
+export default defineClientAppEnhance(({ app, router, siteData }) => {
+  // ...
+})
+```
+
 ### withBase
 
 - 详情：
@@ -74,47 +110,3 @@
 
 - 参考：
   - [指南 > 静态资源 > Base Helper](../guide/assets.md#base-helper)
-
-## 类型
-
-除了下列提到的类型 Helper 以外，我们同样提供了和上述 Composition API 相关的类型定义，如 `SiteData`, `PageData` 等。
-
-### ClientAppSetup
-
-- 详情：
-
-  为 [clientAppSetupFiles](./plugin-api.md#clientappsetupfiles) 提供的类型 Helper 。
-
-- 示例：
-
-创建 `clientAppSetup.ts` 文件：
-
-```ts
-import type { ClientAppSetup } from '@vuepress/client'
-
-const clientAppSetup: ClientAppSetup = () => {
-  // ...
-}
-
-export default clientAppSetup
-```
-
-### ClientAppEnhance
-
-- 详情：
-
-  为 [clientAppEnhanceFiles](./plugin-api.md#clientappenhancefiles) 提供的类型 Helper 。
-
-- 示例：
-
-创建 `clientAppEnhance.ts` 文件：
-
-```ts
-import type { ClientAppEnhance } from '@vuepress/client'
-
-const clientAppEnhance: ClientAppEnhance = ({ app, router, siteData }) => {
-  // ...
-}
-
-export default clientAppEnhance
-```

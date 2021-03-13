@@ -66,6 +66,42 @@ Client API is provided by [@vuepress/client](https://www.npmjs.com/package/@vuep
 
 ## Utils
 
+### defineClientAppSetup
+
+- Details:
+
+  Helper for creating [clientAppSetupFiles](./plugin-api.md#clientappsetupfiles).
+
+- Example:
+
+Create `clientAppSetup.ts` file:
+
+```ts
+import { defineClientAppSetup } from '@vuepress/client'
+
+export default defineClientAppSetup(() => {
+  // ...
+})
+```
+
+### defineClientAppEnhance
+
+- Details:
+
+  Helper for creating [clientAppEnhanceFiles](./plugin-api.md#clientappenhancefiles).
+
+- Example:
+
+Create `clientAppEnhance.ts` file:
+
+```ts
+import { defineClientAppEnhance } from '@vuepress/client'
+
+export default defineClientAppEnhance(({ app, router, siteData }) => {
+  // ...
+})
+```
+
 ### withBase
 
 - Details:
@@ -74,47 +110,3 @@ Client API is provided by [@vuepress/client](https://www.npmjs.com/package/@vuep
 
 - Also see:
   - [Guide > Assets > Base Helper](../guide/assets.md#base-helper)
-
-## Types
-
-In addition to the type helpers mentioned below, we also provide type definitions related to the above composition API, such as `SiteData` and `PageData`.
-
-### ClientAppSetup
-
-- Details:
-
-  Type helper for [clientAppSetupFiles](./plugin-api.md#clientappsetupfiles).
-
-- Example:
-
-Create `clientAppSetup.ts` file:
-
-```ts
-import type { ClientAppSetup } from '@vuepress/client'
-
-const clientAppSetup: ClientAppSetup = () => {
-  // ...
-}
-
-export default clientAppSetup
-```
-
-### ClientAppEnhance
-
-- Details:
-
-  Type helper for [clientAppEnhanceFiles](./plugin-api.md#clientappenhancefiles).
-
-- Example:
-
-Create `clientAppEnhance.ts` file:
-
-```ts
-import type { ClientAppEnhance } from '@vuepress/client'
-
-const clientAppEnhance: ClientAppEnhance = ({ app, router, siteData }) => {
-  // ...
-}
-
-export default clientAppEnhance
-```
