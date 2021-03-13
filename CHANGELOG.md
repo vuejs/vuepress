@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.0](https://github.com/vuepress/vuepress-next/compare/v2.0.0-alpha.26...v2.0.0-beta.0) (2021-03-13)
+
+
+### Bug Fixes
+
+* **plugin-google-analytics:** fix types ([92aa486](https://github.com/vuepress/vuepress-next/commit/92aa48629d0355808a15942594e499d39bb3f1e7))
+
+
+### Features
+
+* **vuepress-vite:** add vuepress-vite package ([03a6583](https://github.com/vuepress/vuepress-next/commit/03a658364d8c5f0b2510e10cd2bf8ec8bcbf41cb))
+* implement vite hmr ([525c18d](https://github.com/vuepress/vuepress-next/commit/525c18d5a64fbdbdeb5ce1348ec1e1ead3dbd8f9))
+* **bundler-vite:** add vite support :zap: ([7d612c4](https://github.com/vuepress/vuepress-next/commit/7d612c45d83d42b246316f93cc3385a9968307af))
+* **cli:** add defineUserConfig util ([c20f7b7](https://github.com/vuepress/vuepress-next/commit/c20f7b7be5d04cb247d699c31bf6f68071180df6))
+* **client:** add defineClientAppEnhance and defineClientAppSetup utils ([1520517](https://github.com/vuepress/vuepress-next/commit/15205172c3b56fc8a879bba040f4ecc815d2c924))
+* **theme-default:** use sass as css pre-processor ([7eb1fd8](https://github.com/vuepress/vuepress-next/commit/7eb1fd8b8901d3f2c2335ad550b7d601a9354826))
+
+
+### BREAKING CHANGES
+
+* **theme-default:** the palette system of default theme is migrated to sass
+
+
+
+
+
 # [2.0.0-alpha.26](https://github.com/vuepress/vuepress-next/compare/v2.0.0-alpha.25...v2.0.0-alpha.26) (2021-02-24)
 
 

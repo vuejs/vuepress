@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/cli",
-  "version": "2.0.0-alpha.26",
+  "version": "2.0.0-beta.0",
   "description": "CLI package of VuePress",
   "keywords": [
     "vuepress",
@@ -30,8 +30,8 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@vuepress/core": "2.0.0-alpha.25",
-    "@vuepress/utils": "2.0.0-alpha.25",
+    "@vuepress/core": "2.0.0-beta.0",
+    "@vuepress/utils": "2.0.0-beta.0",
     "cac": "^6.7.2",
     "chokidar": "^3.5.1",
     "envinfo": "^7.7.4",

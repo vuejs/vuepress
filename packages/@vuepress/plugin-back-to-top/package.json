@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-back-to-top",
-  "version": "2.0.0-alpha.25",
+  "version": "2.0.0-beta.0",
   "description": "VuePress plugin - back to top",
   "keywords": [
     "vuepress-plugin",
@@ -29,8 +29,8 @@
     "copy": "cpx \"src/**/*.vue\" lib"
   },
   "dependencies": {
-    "@vuepress/core": "2.0.0-alpha.25",
-    "@vuepress/utils": "2.0.0-alpha.25",
+    "@vuepress/core": "2.0.0-beta.0",
+    "@vuepress/utils": "2.0.0-beta.0",
     "ts-debounce": "^3.0.0",
     "vue": "^3.0.7"
   },
