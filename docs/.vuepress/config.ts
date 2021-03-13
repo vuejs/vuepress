@@ -63,6 +63,11 @@ const config: UserConfig<DefaultThemeOptions> = {
     },
   },
 
+  bundler:
+    process.env.NODE_ENV === 'production'
+      ? '@vuepress/webpack'
+      : '@vuepress/vite',
+
   themeConfig: {
     logo: '/images/hero.png',
 
