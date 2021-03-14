@@ -3,6 +3,7 @@ import createVuePlugin from '@vitejs/plugin-vue'
 import type { App } from '@vuepress/core'
 import { fs } from '@vuepress/utils'
 import type { ViteBundlerOptions } from '../types'
+import { createWorkaroundPlugin } from './createWorkaroundPlugin'
 import { resolveAlias } from './resolveAlias'
 import { resolveDefine } from './resolveDefine'
 
@@ -18,6 +19,7 @@ export const createPlugin = ({
   isBuild: boolean
 }): Plugin[] => [
   createVuePlugin(options.vuePluginOptions),
+  createWorkaroundPlugin(),
   {
     name: 'vuepress',
 
