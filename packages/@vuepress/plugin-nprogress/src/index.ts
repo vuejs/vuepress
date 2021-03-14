@@ -7,6 +7,19 @@ export const nprogressPlugin: Plugin<NprogressPluginOptions> = {
   name: '@vuepress/plugin-nprogress',
 
   clientAppSetupFiles: path.resolve(__dirname, './clientAppSetup.js'),
+
+  onInitialized(app) {
+    if (app.options.bundler.endsWith('vite')) {
+      app.options.bundlerConfig.viteOptions = require('vite').mergeConfig(
+        app.options.bundlerConfig.viteOptions,
+        {
+          optimizeDeps: {
+            include: ['nprogress'],
+          },
+        }
+      )
+    }
+  },
 }
 
 export default nprogressPlugin
