@@ -9,7 +9,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 * **bundler-vite:** avoid optimizing client package ([5708934](https://github.com/vuepress/vuepress-next/commit/57089344f87bf381f8e6f2711eb6df9364c72432))
-* **bundler-vite:** workaround for vitejs/vite[#2503](https://github.com/vuepress/vuepress-next/issues/2503) ([055b280](https://github.com/vuepress/vuepress-next/commit/055b280a8488c42614702533cc9eb8fb2852c71b))
+* **bundler-vite:** workaround for [vitejs/vite#2503](https://github.com/vitejs/vite/issues/2503) ([055b280](https://github.com/vuepress/vuepress-next/commit/055b280a8488c42614702533cc9eb8fb2852c71b))
 * **plugin-nprogress:** always optimize nprogress with vite ([2aeb2bf](https://github.com/vuepress/vuepress-next/commit/2aeb2bf9b70b149bf2e56d2fd1b593e6628d72dd))
 
 
