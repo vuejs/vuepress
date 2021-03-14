@@ -220,7 +220,7 @@ See [Creating and Deploying a VuePress App with Vercel](https://vercel.com/guide
 
 1. Install [Quant CLI](https://docs.quantcdn.io/docs/cli/get-started)
 
-2. Create a QuantCDN account by [singing up](https://dashboard.quantcdn.io/register)
+2. Create a QuantCDN account by [signing up](https://dashboard.quantcdn.io/register)
 
 3. Initialize your project with `quant init` and fill in your credentials:
 
