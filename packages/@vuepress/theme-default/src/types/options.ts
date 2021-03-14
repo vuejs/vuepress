@@ -122,21 +122,21 @@ export interface DefaultThemeLocaleData extends LocaleData {
   sidebar?: 'auto' | false | SidebarConfig
 
   /**
-   * Page meta - edit lint config
+   * Page meta - edit link config
    *
    * Whether to show "Edit this page" or not
    */
   editLink?: boolean
 
   /**
-   * Page meta - edit lint config
+   * Page meta - edit link config
    *
    * The text to replace the default "Edit this page"
    */
   editLinkText?: string
 
   /**
-   * Page meta - edit lint config
+   * Page meta - edit link config
    *
    * Pattern of edit link
    *
@@ -145,7 +145,7 @@ export interface DefaultThemeLocaleData extends LocaleData {
   editLinkPattern?: string
 
   /**
-   * Page meta - edit lint config
+   * Page meta - edit link config
    *
    * Use `repo` config by default
    *
@@ -154,14 +154,14 @@ export interface DefaultThemeLocaleData extends LocaleData {
   docsRepo?: string
 
   /**
-   * Page meta - edit lint config
+   * Page meta - edit link config
    *
    * Set this config if the branch of your docs is not 'master'
    */
   docsBranch?: string
 
   /**
-   * Page meta - edit lint config
+   * Page meta - edit link config
    *
    * Set this config if your docs is placed in sub dir of your `docsRepo`
    */
