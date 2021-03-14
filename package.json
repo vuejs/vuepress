@@ -15,7 +15,7 @@
     "docs:clean": "rimraf docs/.vuepress/.temp docs/.vuepress/.cache docs/.vuepress/dist",
     "docs:dev": "vuepress dev docs --clean-cache",
     "docs:serve": "anywhere -h localhost -d docs/.vuepress/dist",
-    "lint": "cross-env NODE_OPTIONS=\"--max-old-space-size=4096\" eslint --ext .js,.ts,.vue .",
+    "lint": "eslint --ext .js,.ts,.vue .",
     "release": "yarn lint && yarn clean && yarn copy && yarn build && yarn test && lerna publish prerelease --dist-tag next",
     "test": "jest --runInBand"
   },
@@ -26,7 +26,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,ts,vue}": "cross-env NODE_OPTIONS=\"--max-old-space-size=4096\" eslint --fix",
+    "*.{js,ts,vue}": "eslint --fix",
     "*.{json,yml,css,scss}": "prettier --write",
     "package.json": "sort-package-json"
   },
