@@ -12,6 +12,8 @@ sidebar: auto
 
 - `@vuepress/client`: Client 模块。包含客户端页面入口，并提供了客户端开发时可以用到的类型和工具函数。
 
+- `@vuepress/bundler-vite`: 基于 Vite 的 Bundler 模块。使用 Vite 对 VuePress App 执行 `dev` 和 `build` 操作。
+
 - `@vuepress/bundler-webpack`: 基于 Webpack 的 Bundler 模块。使用 Webpack 对 VuePress App 执行 `dev` 和 `build` 操作。
 
 - `@vuepress/cli`: 命令行接口 (CLI) 模块。包含解析用户配置文件、调用 `@vuepress/core` 创建 VuePress App 、调用 `@vuepress/bundler-${name}` 来执行对应命令等功能。
