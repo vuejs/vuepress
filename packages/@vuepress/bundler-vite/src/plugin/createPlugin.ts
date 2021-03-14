@@ -32,6 +32,10 @@ export const createPlugin = ({
       resolve: {
         alias: resolveAlias({ app }),
       },
+      optimizeDeps: {
+        include: ['@vuepress/shared'],
+        exclude: ['@vuepress/client'],
+      },
     }),
 
     configureServer(server) {
