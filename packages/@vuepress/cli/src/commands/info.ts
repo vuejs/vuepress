@@ -12,6 +12,7 @@ export const info = async (): Promise<void> => {
       Utilities: ['Git'],
       Browsers: ['Chrome', 'Edge', 'Firefox', 'Safari'],
       npmPackages: [
+        '@vuepress/bundler-vite',
         '@vuepress/bundler-webpack',
         '@vuepress/cli',
         '@vuepress/client',
@@ -35,6 +36,7 @@ export const info = async (): Promise<void> => {
         '@vuepress/theme-vue',
         '@vuepress/utils',
         'vuepress',
+        'vuepress-vite',
         'vue',
         'vue-router',
         'vue-loader',
