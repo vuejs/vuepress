@@ -1,6 +1,7 @@
 import type { Plugin } from 'vite'
 import createVuePlugin from '@vitejs/plugin-vue'
 import type { App } from '@vuepress/core'
+import { removeLeadingSlash } from '@vuepress/shared'
 import { fs } from '@vuepress/utils'
 import type { ViteBundlerOptions } from '../types'
 import { createWorkaroundPlugin } from './createWorkaroundPlugin'
@@ -45,13 +46,15 @@ export const createPlugin = ({
           if (req.url!.endsWith('.html')) {
             res.statusCode = 200
             const template = fs.readFileSync(app.options.templateDev).toString()
-            const clientEntry = app.dir.client('lib/client.js')
+            const clientEntrySrc = `/@fs/${removeLeadingSlash(
+              app.dir.client('lib/client.js')
+            )}`
             res.end(
               template.replace(
                 /<\/body>/,
                 `${[
                   `<script type="module" src="/@vite/client"></script>`,
-                  `<script type="module" src="/@fs${clientEntry}"></script>`,
+                  `<script type="module" src="${clientEntrySrc}"></script>`,
                 ].join('')}</body>`
               )
             )
