@@ -39,7 +39,7 @@
     "autoprefixer": "^10.2.4",
     "copy-webpack-plugin": "^7.0.0",
     "css-loader": "^5.1.1",
-    "esbuild-loader": "^2.9.2",
+    "esbuild-loader": "^2.10.0",
     "express": "^4.17.1",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.2.0",

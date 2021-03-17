@@ -4844,22 +4844,22 @@ es-to-primitive@^1.2.1:
     is-date-object "^1.0.1"
     is-symbol "^1.0.2"
 
-esbuild-loader@^2.9.2:
-  version "2.9.2"
-  resolved "https://registry.yarnpkg.com/esbuild-loader/-/esbuild-loader-2.9.2.tgz#ae16721aeb05018396395a95f528c778ba7361d0"
-  integrity sha512-HpF+r/ES2aC40VDOIFsP8OIOM2y2vj8LyLwJ4G8DCMOi8Kov68TwCtxiMMTuSuxR/xKDu/ykgVyCEgps6BXpYw==
+esbuild-loader@^2.10.0:
+  version "2.10.0"
+  resolved "https://registry.yarnpkg.com/esbuild-loader/-/esbuild-loader-2.10.0.tgz#35b570187aee0036b2f4b37db66870f7407f3d40"
+  integrity sha512-BRWmc/7gU6/FmI+MP+E+9Zb/CE0BA1XMOQkdvJ7B/T2gad1Mlim8aMhvvRdS9on5S8JzkC+uNHGQmt/WmbbXbQ==
   dependencies:
-    esbuild "^0.8.42"
+    esbuild "^0.9.2"
     joycon "^2.2.5"
     json5 "^2.2.0"
     loader-utils "^2.0.0"
-    type-fest "^0.20.2"
+    type-fest "^0.21.3"
     webpack-sources "^2.2.0"
 
-esbuild@^0.8.42, esbuild@^0.8.52, esbuild@^0.8.54:
-  version "0.8.54"
-  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.8.54.tgz#2f32ff80e95c69a0f25b799d76a27c05e2857cdf"
-  integrity sha512-DJH38OiTgXJxFb/EhHrCrY8eGmtdkTtWymHpN9IYN9AF+4jykT0dQArr7wzFejpVbaB0TMIq2+vfNRWr3LXpvw==
+esbuild@^0.9.2, esbuild@^0.9.3:
+  version "0.9.3"
+  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.9.3.tgz#09293a0b824159c6aa2488d1c6c22f57d8448f74"
+  integrity sha512-G8k0olucZp3LJ7I/p8y388t+IEyb2Y78nHrLeIxuqZqh6TYqDYP/B/7drAvYKfh83CGwKal9txVP+FTypsPJug==
 
 escalade@^3.1.1:
   version "3.1.1"
@@ -10918,6 +10918,11 @@ type-fest@^0.20.2:
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.20.2.tgz#1bf207f4b28f91583666cb5fbd327887301cd5f4"
   integrity sha512-Ne+eE4r0/iWnpAxD852z3A+N0Bt5RN//NjJwRd2VFHEmrywxf5vsZlh4R6lixl6B+wz/8d+maTSAkN1FIkI3LQ==
 
+type-fest@^0.21.3:
+  version "0.21.3"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.21.3.tgz#d260a24b0198436e133fa26a524a6d65fa3b2e37"
+  integrity sha512-t0rzBq87m3fVcduHDUFhKmyyX+9eo6WQjZvf51Ea/M0Q7+T374Jp1aUiyUl0GKxp8M/OETVHSDvmkyPgvX+X2w==
+
 type-fest@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.4.1.tgz#8bdf77743385d8a4f13ba95f610f5ccd68c728f8"
@@ -11199,12 +11204,12 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-vite@2.0.5:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/vite/-/vite-2.0.5.tgz#ac46857a3fa8686d077921e61bd48a986931df1d"
-  integrity sha512-QTgEDbq1WsTtr6j+++ewjhBFEk6c8v0xz4fb/OWJQKNYU8ZZtphOshwOqAlnarSstPBtWCBR0tsugXx6ajfoUg==
+vite@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-2.1.1.tgz#13c7a7a5665b435f28fe8549caab181e0ad9af7b"
+  integrity sha512-nlTQrfYIkahcElD8O/oogbLbuKgAZRbvoFOth3GmRSglfPdY4RgfBjj0Fu7HeCU/2u3Jxc6jW4UuV22LGw1Yaw==
   dependencies:
-    esbuild "^0.8.52"
+    esbuild "^0.9.2"
     postcss "^8.2.1"
     resolve "^1.19.0"
     rollup "^2.38.5"
