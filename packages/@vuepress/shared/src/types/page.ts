@@ -56,7 +56,7 @@ export type PageData<
 /**
  * Vuepress page frontmatter
  *
- * Notice that frontmatter is parse from yaml or other languages,
+ * Notice that frontmatter is parsed from yaml or other languages,
  * so we cannot guarantee the type safety
  */
 export type PageFrontmatter<

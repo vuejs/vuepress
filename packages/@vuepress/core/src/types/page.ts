@@ -78,7 +78,7 @@ export interface Page extends PageData {
   routesFilePath: string
 
   /**
-   * Page data relative file path
+   * Page routes relative file path
    */
   routesFilePathRelative: string
 
