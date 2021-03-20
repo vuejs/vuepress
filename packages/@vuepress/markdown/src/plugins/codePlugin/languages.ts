@@ -50,18 +50,6 @@ export const languageFsharp: HighlightLanguage = {
   aliases: ['fs', 'fsharp'],
 }
 
-export const languageHtml: HighlightLanguage = {
-  name: 'markup',
-  ext: 'html',
-  aliases: ['html'],
-}
-
-export const languageJava: HighlightLanguage = {
-  name: 'java',
-  ext: 'java',
-  aliases: ['java'],
-}
-
 export const languageJavascript: HighlightLanguage = {
   name: 'javascript',
   ext: 'js',
@@ -78,12 +66,6 @@ export const languageMarkdown: HighlightLanguage = {
   name: 'markdown',
   ext: 'md',
   aliases: ['markdown', 'md'],
-}
-
-export const languagePhp: HighlightLanguage = {
-  name: 'php',
-  ext: 'php',
-  aliases: ['php'],
 }
 
 export const languagePython: HighlightLanguage = {
@@ -114,12 +96,6 @@ export const languageTypescript: HighlightLanguage = {
   name: 'typescript',
   ext: 'ts',
   aliases: ['ts', 'typescript'],
-}
-
-export const languageVue: HighlightLanguage = {
-  name: 'markup',
-  ext: 'vue',
-  aliases: ['vue'],
 }
 
 export const languageYaml: HighlightLanguage = {

@@ -1,6 +1,11 @@
 import * as Prism from 'prismjs'
 import { loadLanguages } from './loadLanguages'
 
+const languageNameMap = {
+  html: 'markup',
+  vue: 'markup',
+}
+
 // documentation language of corresponding language
 const docLangMap = {
   csharp: 'xml-doc',
@@ -16,7 +21,9 @@ export type Highlighter = (code: string) => string
 /**
  * Resolve syntax highlighter for corresponding language
  */
-export const resolveHighlighter = (lang: string): Highlighter | null => {
+export const resolveHighlighter = (language: string): Highlighter | null => {
+  const lang = languageNameMap[language] || language
+
   // get the languages that need to be loaded
   const langsToLoad: string[] = []
 
