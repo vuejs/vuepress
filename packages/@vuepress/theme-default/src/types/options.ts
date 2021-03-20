@@ -49,6 +49,11 @@ export interface DefaultThemePluginsOptions {
    * Enable @vuepress/plugin-nprogress or not
    */
   nprogress?: boolean
+
+  /**
+   * Enable @vuepress/plugin-prismjs or not
+   */
+  prismjs?: boolean
 }
 
 export type DefaultThemeLocaleOptions = DefaultThemeData

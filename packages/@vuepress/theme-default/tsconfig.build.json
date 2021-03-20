@@ -10,6 +10,7 @@
     { "path": "../plugin-medium-zoom/tsconfig.build.json" },
     { "path": "../plugin-nprogress/tsconfig.build.json" },
     { "path": "../plugin-palette/tsconfig.build.json" },
+    { "path": "../plugin-prismjs/tsconfig.build.json" },
     { "path": "../plugin-theme-data/tsconfig.build.json" },
     { "path": "../shared/tsconfig.build.json" },
     { "path": "../utils/tsconfig.build.json" },

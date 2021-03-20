@@ -67,6 +67,7 @@ export const defaultTheme: Theme<DefaultThemeOptions> = ({
       ['@vuepress/medium-zoom', resolveMediumZoomPluginOptions(themePlugins)],
       ['@vuepress/nprogress', themePlugins.nprogress !== false],
       ['@vuepress/palette', { preset: 'sass' }],
+      ['@vuepress/prismjs', themePlugins.prismjs !== false],
       ['@vuepress/theme-data', { themeData: localeOptions }],
     ],
   }
