@@ -9,6 +9,7 @@ export const createDev = (
   const server = await createServer(
     mergeConfig(
       {
+        configFile: false,
         server: {
           host: app.options.host,
           port: app.options.port,

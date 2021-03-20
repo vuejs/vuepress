@@ -1,4 +1,4 @@
-import { mergeConfig, UserConfig } from 'vite'
+import { mergeConfig, InlineConfig } from 'vite'
 import type { App } from '@vuepress/core'
 import { createPlugin } from '../plugin'
 import type { ViteBundlerOptions } from '../types'
@@ -11,9 +11,10 @@ export const resolveViteConfig = ({
   app: App
   options: ViteBundlerOptions
   isServer: boolean
-}): UserConfig =>
+}): InlineConfig =>
   mergeConfig(
     {
+      configFile: false,
       logLevel: app.env.isDebug ? 'info' : 'warn',
       build: {
         ssr: isServer,
