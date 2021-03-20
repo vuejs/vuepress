@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-medium-zoom",
-  "version": "2.0.0-beta.1",
+  "version": "2.0.0-beta.4",
   "description": "VuePress plugin - medium-zoom",
   "keywords": [
     "vuepress-plugin",
@@ -31,9 +31,9 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@vuepress/client": "2.0.0-beta.1",
-    "@vuepress/core": "2.0.0-beta.1",
-    "@vuepress/utils": "2.0.0-beta.1",
+    "@vuepress/client": "2.0.0-beta.4",
+    "@vuepress/core": "2.0.0-beta.4",
+    "@vuepress/utils": "2.0.0-beta.4",
     "medium-zoom": "^1.0.6",
     "vue": "^3.0.7"
   },

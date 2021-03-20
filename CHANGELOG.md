@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.4](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.3...v2.0.0-beta.4) (2021-03-20)
+
+
+### Bug Fixes
+
+* **bundler-vite:** disable auto resolving vite config file ([57967f7](https://github.com/vuepress/vuepress-next/commit/57967f7dec27c4148edf920decead327cc8746bf))
+
+
+### Code Refactoring
+
+* **markdown:** remove default syntax highlighter ([4a1abe3](https://github.com/vuepress/vuepress-next/commit/4a1abe39335eaaf3ef1dca3e35a324b12981c0d2))
+
+
+### Features
+
+* **plugin-prismjs:** add prismjs plugin ([638ad8a](https://github.com/vuepress/vuepress-next/commit/638ad8afdf9f3fe779e9eb1d02dca6c1caef0307))
+* **theme-default:** use prismjs plugin ([f131de4](https://github.com/vuepress/vuepress-next/commit/f131de4783685dbabfde4e4966182d570224a246))
+
+
+### BREAKING CHANGES
+
+* **markdown:** prismjs is no longer the default syntax highlighter
+
+
+
+
+
 # [2.0.0-beta.3](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.2...v2.0.0-beta.3) (2021-03-17)
 
 
