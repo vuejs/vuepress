@@ -61,12 +61,14 @@ Take our documentation source files as an example:
 **Converted to**
 
 ```vue
-<RouterLink to="/">Home</RouterLink>
-<RouterLink to="/reference/config.html">Config Reference</RouterLink>
-<RouterLink to="/guide/getting-started.html">Getting Started</RouterLink>
-<RouterLink to="/guide/">Guide</RouterLink>
-<RouterLink to="/reference/config.html#links">Config Reference &gt; markdown.links</RouterLink>
-<a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub<OutboundLink/></a>
+<template>
+  <RouterLink to="/">Home</RouterLink>
+  <RouterLink to="/reference/config.html">Config Reference</RouterLink>
+  <RouterLink to="/guide/getting-started.html">Getting Started</RouterLink>
+  <RouterLink to="/guide/">Guide</RouterLink>
+  <RouterLink to="/reference/config.html#links">Config Reference &gt; markdown.links</RouterLink>
+  <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub<OutboundLink/></a>
+</template>
 ```
 
 **Rendered as**

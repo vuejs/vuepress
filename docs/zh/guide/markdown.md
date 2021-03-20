@@ -62,12 +62,14 @@ VuePress 会使用 [markdown-it](https://github.com/markdown-it/markdown-it) 来
 **转换为**
 
 ```vue
-<RouterLink to="/zh/">首页</RouterLink>
-<RouterLink to="/zh/reference/config.html">配置參考</RouterLink>
-<RouterLink to="/zh/guide/getting-started.html">快速上手</RouterLink>
-<RouterLink to="/zh/guide/">指南</RouterLink>
-<RouterLink to="/zh/reference/config.html#links">配置參考 &gt; markdown.links</RouterLink>
-<a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub<OutboundLink/></a>
+<template>
+  <RouterLink to="/zh/">首页</RouterLink>
+  <RouterLink to="/zh/reference/config.html">配置參考</RouterLink>
+  <RouterLink to="/zh/guide/getting-started.html">快速上手</RouterLink>
+  <RouterLink to="/zh/guide/">指南</RouterLink>
+  <RouterLink to="/zh/reference/config.html#links">配置參考 &gt; markdown.links</RouterLink>
+  <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub<OutboundLink/></a>
+</template>
 ```
 
 **渲染为**
