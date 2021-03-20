@@ -1,5 +1,4 @@
 import * as MarkdownIt from 'markdown-it'
-import { tocPlugin } from './plugins/tocPlugin/tocPlugin'
 import {
   anchorPlugin,
   assetsPlugin,
@@ -9,6 +8,7 @@ import {
   extractHeadersPlugin,
   hoistTagsPlugin,
   linksPlugin,
+  tocPlugin,
 } from './plugins'
 import type { Markdown, MarkdownOptions } from './types'
 import { slugify } from './utils'

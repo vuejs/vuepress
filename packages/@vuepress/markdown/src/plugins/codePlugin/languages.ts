@@ -1,5 +1,5 @@
 /**
- * Language type for prism syntax highlight
+ * Language type for syntax highlight
  */
 export interface HighlightLanguage {
   /**
@@ -7,9 +7,6 @@ export interface HighlightLanguage {
    *
    * The name to be used for the class name,
    * e.g. `class="language-typescript"`
-   *
-   * It's also the internal name in prismjs, which
-   * will be used for `Prism.loadLanguages()`
    */
   name: string
 
@@ -27,24 +24,18 @@ export interface HighlightLanguage {
    * Do not conflict with other languages
    */
   aliases: string[]
-
-  /**
-   * The documentation languages of this language
-   */
-  docLang?: string
 }
 
 export const languageBash: HighlightLanguage = {
   name: 'bash',
   ext: 'sh',
-  aliases: ['bash', 'sh', 'shell'],
+  aliases: ['bash', 'sh', 'shell', 'zsh'],
 }
 
 export const languageCsharp: HighlightLanguage = {
   name: 'csharp',
   ext: 'cs',
   aliases: ['cs', 'csharp'],
-  docLang: 'xml-doc',
 }
 
 export const languageDocker: HighlightLanguage = {
@@ -57,7 +48,6 @@ export const languageFsharp: HighlightLanguage = {
   name: 'fsharp',
   ext: 'fs',
   aliases: ['fs', 'fsharp'],
-  docLang: 'xml-doc',
 }
 
 export const languageHtml: HighlightLanguage = {
@@ -70,14 +60,12 @@ export const languageJava: HighlightLanguage = {
   name: 'java',
   ext: 'java',
   aliases: ['java'],
-  docLang: 'javadoc',
 }
 
 export const languageJavascript: HighlightLanguage = {
   name: 'javascript',
   ext: 'js',
   aliases: ['javascript', 'js'],
-  docLang: 'jsdoc',
 }
 
 export const languageKotlin: HighlightLanguage = {
@@ -96,7 +84,6 @@ export const languagePhp: HighlightLanguage = {
   name: 'php',
   ext: 'php',
   aliases: ['php'],
-  docLang: 'phpdoc',
 }
 
 export const languagePython: HighlightLanguage = {
@@ -127,7 +114,6 @@ export const languageTypescript: HighlightLanguage = {
   name: 'typescript',
   ext: 'ts',
   aliases: ['ts', 'typescript'],
-  docLang: 'jsdoc',
 }
 
 export const languageVue: HighlightLanguage = {

@@ -269,7 +269,10 @@ module.exports = {
 
   Configure VuePress built-in Markdown syntax extensions.
 
+  It accepts all options of [markdown-it](https://github.com/markdown-it/markdown-it), and the following additional options.
+
 - Also see:
+  - [markdown-it > Init with presets and options](https://github.com/markdown-it/markdown-it#init-with-presets-and-options)
   - [Guide > Markdown > Syntax Extensions](../guide/markdown.md#syntax-extensions)
 
 #### markdown.anchor
@@ -312,21 +315,6 @@ You should not configure it unless you understand what it is for.
 - Also see:
   - [Guide > Markdown > Syntax Extensions > Code Blocks](../guide/markdown.md#code-blocks)
 
-##### markdown.code.highlight
-
-- Type: `boolean`
-
-- Default: `true`
-
-- Details:
-
-  Enable code syntax highlighting or not.
-
-  You can disable it if you want to implement client side highlighting by yourself. For example, [Prismjs](https://prismjs.com/) or [highlight.js](https://highlightjs.org/).
-
-- Also see:
-  - [Guide > Markdown > Syntax Extensions > Code Blocks > Syntax Highlighting](../guide/markdown.md#syntax-highlighting)
-
 ##### markdown.code.highlightLines
 
 - Type: `boolean`
@@ -365,7 +353,9 @@ You should not configure it unless you understand what it is for.
 
   The wrapper is required by the `highlightLines` and `lineNumbers`. That means, if you disable `preWrapper`, the line highlighting and line numbers will also be disabled.
 
-  You can disable it if you want to implement them in client side. For example, [Prismjs Line Highlight](https://prismjs.com/plugins/line-highlight/) or [Prismjs Line Numbers](https://prismjs.com/plugins/line-numbers/).
+::: tip
+You can disable it if you want to implement them in client side. For example, [Prismjs Line Highlight](https://prismjs.com/plugins/line-highlight/) or [Prismjs Line Numbers](https://prismjs.com/plugins/line-numbers/).
+:::
 
 ##### markdown.code.vPre
 

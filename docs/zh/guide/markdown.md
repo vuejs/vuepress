@@ -150,44 +150,6 @@ Emoji 扩展由 [markdown-it-emoji](https://github.com/markdown-it/markdown-it-e
 
 下列代码块扩展是在 Node 端进行 Markdown 解析的时候实现的。这意味着代码块并不会在客户端被处理。
 
-如果你想使用 [prism.js](https://prismjs.com/#basic-usage) 或 [highlight.js](https://highlightjs.org/) 在客户端进行语法高亮，你可以禁用我们的代码块扩展，然后手动在客户端引入你想要使用的库。
-
-#### 语法高亮
-
-VuePress 使用 [Prism](https://prismjs.com/) 来对代码块进行语法高亮。
-
-Prism 支持多种编程语言，你可以前往 [Prism supported languages](https://prismjs.com/#supported-languages) 来查看所有可用的编程语言。
-
-你只需要在代码块前添加对应语言的标识符，就可以启用代码高亮：
-
-**输入**
-
-````md
-```ts
-import type { UserConfig } from '@vuepress/cli'
-
-export const config: UserConfig = {
-  title: '你好， VuePress',
-}
-```
-````
-
-**输出**
-
-```ts
-import type { UserConfig } from '@vuepress/cli'
-
-export const config: UserConfig = {
-  title: '你好， VuePress',
-}
-```
-
-::: tip
-代码高亮扩展是由我们的内置插件支持的。
-
-配置参考： [markdown.code.highlight](../reference/config.md#markdown-code-highlight)
-:::
-
 #### 行高亮
 
 你可以在代码块添加行数范围标记，来为对应代码行进行高亮：

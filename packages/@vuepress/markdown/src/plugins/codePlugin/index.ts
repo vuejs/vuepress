@@ -1,6 +1,5 @@
 export * from './codePlugin'
 export * from './languages'
-export * from './resolveHighlighter'
 export * from './resolveHighlightLines'
 export * from './resolveLanguage'
 export * from './resolveLineNumbers'

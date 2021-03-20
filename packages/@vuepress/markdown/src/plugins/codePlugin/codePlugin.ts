@@ -1,5 +1,4 @@
 import type { PluginWithOptions } from 'markdown-it'
-import type { Highlighter } from './resolveHighlighter'
 import { isHighlightLine, resolveHighlightLines } from './resolveHighlightLines'
 import type { HighlightLinesRange } from './resolveHighlightLines'
 import { resolveLanguage } from './resolveLanguage'
@@ -7,15 +6,6 @@ import { resolveLineNumbers } from './resolveLineNumbers'
 import { resolveVPre } from './resolveVPre'
 
 export interface CodePluginOptions {
-  /**
-   * Enable syntax highlight or not
-   *
-   * If it's disabled, you can use client side syntax highlight yourself
-   *
-   * For example, if you want to use pure prismjs support in client
-   */
-  highlight?: boolean
-
   /**
    * Enable highlight lines or not
    */
@@ -48,7 +38,6 @@ export interface CodePluginOptions {
 export const codePlugin: PluginWithOptions<CodePluginOptions> = (
   md,
   {
-    highlight = true,
     highlightLines = true,
     lineNumbers = true,
     preWrapper = true,
@@ -81,20 +70,8 @@ export const codePlugin: PluginWithOptions<CodePluginOptions> = (
     let code = token.content
 
     // try to highlight code
-    if (highlight) {
-      // lazy-load syntax highlighter
-      const highlighter: Highlighter = require('./resolveHighlighter').resolveHighlighter(
-        language
-      )
-      if (highlighter !== null) {
-        code = highlighter(code)
-      }
-    }
-
-    // if the code is not highlighted, treat it as text and escape it
-    if (code === token.content) {
-      code = md.utils.escapeHtml(code)
-    }
+    code =
+      options.highlight?.(code, language.name, '') || md.utils.escapeHtml(code)
 
     const languageClass = `${options.langPrefix}${language.name}`
 

@@ -268,7 +268,10 @@ module.exports = {
 
   对 VuePress 内置的 Markdown 语法扩展进行配置。
 
+  它可以接收 [markdown-it](https://github.com/markdown-it/markdown-it) 的所有配置项，以及下列额外的配置项。
+
 - 参考：
+  - [markdown-it > Init with presets and options](https://github.com/markdown-it/markdown-it#init-with-presets-and-options)
   - [指南 > Markdown > 语法扩展](../guide/markdown.md#语法扩展)
 
 #### markdown.anchor
@@ -311,21 +314,6 @@ module.exports = {
 - 参考：
   - [指南 > Markdown > 语法扩展 > 代码块](../guide/markdown.md#代码块)
 
-##### markdown.code.highlight
-
-- 类型： `boolean`
-
-- 默认值： `true`
-
-- 详情：
-
-  是否启用代码块语法高亮。
-
-  如果你想在客户端进行语法高翔，你可以禁用该配置项。比如使用 [Prismjs](https://prismjs.com/) 或 [highlight.js](https://highlightjs.org/) 。
-
-- 参考：
-  - [指南 > Markdown > 语法扩展 > 代码块 > 语法高亮](../guide/markdown.md#语法高亮)
-
 ##### markdown.code.highlightLines
 
 - 类型： `boolean`
@@ -364,7 +352,9 @@ module.exports = {
 
   `highlightLines` 和 `lineNumbers` 依赖于这个额外的包裹层。这换句话说，如果你禁用了 `preWrapper` ，那么行高亮和行号也会被同时禁用。
 
-  如果你想要在客户端来实现这些功能时，可以禁用该配置项。比如使用 [Prismjs Line Highlight](https://prismjs.com/plugins/line-highlight/) 或者 [Prismjs Line Numbers](https://prismjs.com/plugins/line-numbers/)。
+::: tip
+如果你想要在客户端来实现这些功能时，可以禁用该配置项。比如使用 [Prismjs Line Highlight](https://prismjs.com/plugins/line-highlight/) 或者 [Prismjs Line Numbers](https://prismjs.com/plugins/line-numbers/)。
+:::
 
 ##### markdown.code.vPre
 
