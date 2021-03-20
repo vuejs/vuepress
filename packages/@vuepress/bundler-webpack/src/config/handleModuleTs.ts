@@ -1,4 +1,3 @@
-import { ESBuildPlugin } from 'esbuild-loader'
 import type * as Config from 'webpack-chain'
 import type { App } from '@vuepress/core'
 import { resolveEsbuildJsxOptions } from './resolveEsbuildJsxOptions'
@@ -25,7 +24,4 @@ export const handleModuleTs = ({
       ...resolveEsbuildJsxOptions(),
     })
     .end()
-
-  // use esbuild-loader plugin
-  config.plugin('esbuild-loader').use(ESBuildPlugin)
 }
