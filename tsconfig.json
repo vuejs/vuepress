@@ -23,6 +23,9 @@
     {
       "path": "./packages/@vuepress/plugin-palette/tsconfig.build.json"
     },
+    {
+      "path": "./packages/@vuepress/plugin-prismjs/tsconfig.build.json"
+    },
     { "path": "./packages/@vuepress/plugin-pwa/tsconfig.build.json" },
     { "path": "./packages/@vuepress/plugin-pwa-popup/tsconfig.build.json" },
     { "path": "./packages/@vuepress/plugin-theme-data/tsconfig.build.json" },
