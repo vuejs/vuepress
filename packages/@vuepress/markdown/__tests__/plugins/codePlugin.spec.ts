@@ -32,14 +32,6 @@ describe('@vuepress/markdown > plugins > codePlugin', () => {
     expect(md.render(source)).toMatchSnapshot()
   })
 
-  it('should disable `highlight`', () => {
-    const md = MarkdownIt().use(codePlugin, {
-      highlight: false,
-    })
-
-    expect(md.render(source)).toMatchSnapshot()
-  })
-
   it('should disable `highlightLines`', () => {
     const md = MarkdownIt().use(codePlugin, {
       highlightLines: false,

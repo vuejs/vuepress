@@ -1,50 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`@vuepress/markdown > plugins > codePlugin should disable \`highlight\` 1`] = `
-<div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>Raw text
-</code></pre>
-  <div class="line-numbers"><span class="line-number">1</span><br></div>
-</div>
-<div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code>const foo = 'foo'
-
-function bar () {
-  return 1024
-}
-</code></pre>
-  <div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
-</div>
-<div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code>const foo = 'foo'
-
-function bar () {
-  return 1024
-}
-</code></pre>
-  <div class="highlight-lines">
-    <div class="highlight-line">&nbsp;</div>
-    <div class="highlight-line">&nbsp;</div><br><br><br>
-  </div>
-  <div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
-</div>
-`;
-
 exports[`@vuepress/markdown > plugins > codePlugin should disable \`highlightLines\` 1`] = `
 <div class="language-text ext-text line-numbers-mode"><pre v-pre class="language-text"><code>Raw text
 </code></pre>
   <div class="line-numbers"><span class="line-number">1</span><br></div>
 </div>
-<div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span>
+<div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code>const foo = 'foo'
 
-<span class="token keyword">function</span> <span class="token function">bar</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token number">1024</span>
-<span class="token punctuation">}</span>
+function bar () {
+  return 1024
+}
 </code></pre>
   <div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
 </div>
-<div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span>
+<div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code>const foo = 'foo'
 
-<span class="token keyword">function</span> <span class="token function">bar</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token number">1024</span>
-<span class="token punctuation">}</span>
+function bar () {
+  return 1024
+}
 </code></pre>
   <div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
 </div>
@@ -54,18 +27,18 @@ exports[`@vuepress/markdown > plugins > codePlugin should disable \`lineNumbers\
 <div class="language-text ext-text"><pre v-pre class="language-text"><code>Raw text
 </code></pre>
 </div>
-<div class="language-typescript ext-ts"><pre v-pre class="language-typescript"><code><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span>
+<div class="language-typescript ext-ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
 
-<span class="token keyword">function</span> <span class="token function">bar</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token number">1024</span>
-<span class="token punctuation">}</span>
+function bar () {
+  return 1024
+}
 </code></pre>
 </div>
-<div class="language-typescript ext-ts"><pre v-pre class="language-typescript"><code><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span>
+<div class="language-typescript ext-ts"><pre v-pre class="language-typescript"><code>const foo = 'foo'
 
-<span class="token keyword">function</span> <span class="token function">bar</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token number">1024</span>
-<span class="token punctuation">}</span>
+function bar () {
+  return 1024
+}
 </code></pre>
   <div class="highlight-lines">
     <div class="highlight-line">&nbsp;</div>
@@ -76,16 +49,16 @@ exports[`@vuepress/markdown > plugins > codePlugin should disable \`lineNumbers\
 
 exports[`@vuepress/markdown > plugins > codePlugin should disable \`preWrapper\` 1`] = `
 <pre v-pre class="language-text"><code>Raw text
-</code></pre><pre v-pre class="language-typescript"><code><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span>
+</code></pre><pre v-pre class="language-typescript"><code>const foo = 'foo'
 
-<span class="token keyword">function</span> <span class="token function">bar</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token number">1024</span>
-<span class="token punctuation">}</span>
-</code></pre><pre v-pre class="language-typescript"><code><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span>
+function bar () {
+  return 1024
+}
+</code></pre><pre v-pre class="language-typescript"><code>const foo = 'foo'
 
-<span class="token keyword">function</span> <span class="token function">bar</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token number">1024</span>
-<span class="token punctuation">}</span>
+function bar () {
+  return 1024
+}
 </code></pre>
 `;
 
@@ -94,19 +67,19 @@ exports[`@vuepress/markdown > plugins > codePlugin should disable \`vPre\` 1`] =
 </code></pre>
   <div class="line-numbers"><span class="line-number">1</span><br></div>
 </div>
-<div class="language-typescript ext-ts line-numbers-mode"><pre class="language-typescript"><code><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span>
+<div class="language-typescript ext-ts line-numbers-mode"><pre class="language-typescript"><code>const foo = 'foo'
 
-<span class="token keyword">function</span> <span class="token function">bar</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token number">1024</span>
-<span class="token punctuation">}</span>
+function bar () {
+  return 1024
+}
 </code></pre>
   <div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
 </div>
-<div class="language-typescript ext-ts line-numbers-mode"><pre class="language-typescript"><code><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span>
+<div class="language-typescript ext-ts line-numbers-mode"><pre class="language-typescript"><code>const foo = 'foo'
 
-<span class="token keyword">function</span> <span class="token function">bar</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token number">1024</span>
-<span class="token punctuation">}</span>
+function bar () {
+  return 1024
+}
 </code></pre>
   <div class="highlight-lines">
     <div class="highlight-line">&nbsp;</div>
@@ -121,19 +94,19 @@ exports[`@vuepress/markdown > plugins > codePlugin should process code fences wi
 </code></pre>
   <div class="line-numbers"><span class="line-number">1</span><br></div>
 </div>
-<div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span>
+<div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code>const foo = 'foo'
 
-<span class="token keyword">function</span> <span class="token function">bar</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token number">1024</span>
-<span class="token punctuation">}</span>
+function bar () {
+  return 1024
+}
 </code></pre>
   <div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
 </div>
-<div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code><span class="token keyword">const</span> foo <span class="token operator">=</span> <span class="token string">'foo'</span>
+<div class="language-typescript ext-ts line-numbers-mode"><pre v-pre class="language-typescript"><code>const foo = 'foo'
 
-<span class="token keyword">function</span> <span class="token function">bar</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token number">1024</span>
-<span class="token punctuation">}</span>
+function bar () {
+  return 1024
+}
 </code></pre>
   <div class="highlight-lines">
     <div class="highlight-line">&nbsp;</div>
