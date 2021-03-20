@@ -85,6 +85,7 @@ export const zh: SidebarConfig = {
         '/zh/reference/plugin/medium-zoom.md',
         '/zh/reference/plugin/nprogress.md',
         '/zh/reference/plugin/palette.md',
+        '/zh/reference/plugin/prismjs.md',
         '/zh/reference/plugin/pwa.md',
         '/zh/reference/plugin/pwa-popup.md',
         '/zh/reference/plugin/theme-data.md',
