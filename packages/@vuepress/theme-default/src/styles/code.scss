@@ -174,7 +174,8 @@ div[class*='language-'] {
 
   pre,
   pre[class*='language-'] {
-    background: transparent;
+    // force override the background color to be compatible with shiki
+    background: transparent !important;
     position: relative;
     z-index: 1;
   }
