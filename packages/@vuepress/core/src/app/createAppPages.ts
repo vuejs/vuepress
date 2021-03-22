@@ -1,11 +1,15 @@
-import { globby } from '@vuepress/utils'
+import { debug, globby } from '@vuepress/utils'
 import { createPage } from '../page'
 import type { App, Page, PageOptions } from '../types'
+
+const log = debug('vuepress:core/app')
 
 /**
  * Create pages for vuepress app
  */
 export const createAppPages = async (app: App): Promise<Page[]> => {
+  log('createAppPages start')
+
   // resolve page file paths according to the page patterns
   const pagePaths = await globby(app.options.pagePatterns, {
     cwd: app.dir.source(),
@@ -38,6 +42,8 @@ export const createAppPages = async (app: App): Promise<Page[]> => {
       })
     )
   }
+
+  log('createAppPages finish')
 
   return pages
 }
