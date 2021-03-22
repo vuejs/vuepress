@@ -6,7 +6,7 @@ Users can custom style variables via [palette file](#palette-file), and add extr
 
 ## Palette File
 
-You can create a `.vuepress/palette.scss` file to override predefined variables of default theme:
+You can create a `.vuepress/styles/palette.scss` file to override predefined variables of default theme:
 
 ```scss
 // colors
@@ -42,7 +42,7 @@ $codeLang: 'c' 'cpp' 'cs' 'css' 'dart' 'docker' 'fs' 'go' 'html' 'java' 'js'
 
 ## Style File
 
-You can override default styles or add extra styles in `.vuepress/index.scss` file. For example:
+You can override default styles or add extra styles in `.vuepress/styles/index.scss` file. For example:
 
 ```scss
 :root {

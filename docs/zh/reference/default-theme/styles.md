@@ -6,7 +6,7 @@
 
 ## Palette 文件
 
-你可以创建一个 `.vuepress/palette.scss` 文件来覆盖默认主题的预定义变量：
+你可以创建一个 `.vuepress/styles/palette.scss` 文件来覆盖默认主题的预定义变量：
 
 ```scss
 // colors
@@ -42,7 +42,7 @@ $codeLang: 'c' 'cpp' 'cs' 'css' 'dart' 'docker' 'fs' 'go' 'html' 'java' 'js'
 
 ## Style 文件
 
-你可以在 `.vuepress/index.scss` 文件中覆盖默认样式或者添加额外样式。例如：
+你可以在 `.vuepress/styles/index.scss` 文件中覆盖默认样式或者添加额外样式。例如：
 
 ```scss
 :root {
