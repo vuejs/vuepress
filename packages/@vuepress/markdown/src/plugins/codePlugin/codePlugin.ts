@@ -75,9 +75,14 @@ export const codePlugin: PluginWithOptions<CodePluginOptions> = (
 
     const languageClass = `${options.langPrefix}${language.name}`
 
-    let result = `<pre${
-      useVPre ? ' v-pre' : ''
-    } class="${languageClass}"><code>${code}</code></pre>`
+    // wrap highlighted code with `<pre>` and `<code>`
+    let result = code.startsWith('<pre')
+      ? code
+      : `<pre class="${languageClass}"><code>${code}</code></pre>`
+
+    if (useVPre) {
+      result = `<pre v-pre${result.slice('<pre'.length)}`
+    }
 
     // if `preWrapper` is disabled, return directly
     if (!preWrapper) {
