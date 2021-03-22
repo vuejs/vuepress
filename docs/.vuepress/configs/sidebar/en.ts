@@ -86,6 +86,7 @@ export const en: SidebarConfig = {
         '/reference/plugin/prismjs.md',
         '/reference/plugin/pwa.md',
         '/reference/plugin/pwa-popup.md',
+        '/reference/plugin/shiki.md',
         '/reference/plugin/theme-data.md',
       ],
     },

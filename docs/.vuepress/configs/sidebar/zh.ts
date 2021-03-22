@@ -89,6 +89,7 @@ export const zh: SidebarConfig = {
         '/zh/reference/plugin/prismjs.md',
         '/zh/reference/plugin/pwa.md',
         '/zh/reference/plugin/pwa-popup.md',
+        '/zh/reference/plugin/shiki.md',
         '/zh/reference/plugin/theme-data.md',
       ],
     },
