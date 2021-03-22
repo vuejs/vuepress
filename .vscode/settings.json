@@ -28,6 +28,7 @@
     "prefetch",
     "preload",
     "prismjs",
+    "shiki",
     "slugify",
     "unmount",
     "vuepress",
