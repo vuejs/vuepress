@@ -36,10 +36,12 @@ export type ResolvedNavbarItem = NavbarItem | NavGroup<ResolvedNavbarItem>
  * Sidebar types
  */
 // user config
-export interface SidebarItem extends NavLink, NavGroup<SidebarItem | string> {
+export interface SidebarItem
+  extends NavLink,
+    NavGroup<NavLink | SidebarItem | string> {
   isGroup?: false
 }
-export interface SidebarGroup extends NavGroup<SidebarItem | string> {
+export interface SidebarGroup extends NavGroup<NavLink | SidebarItem | string> {
   isGroup: true
 }
 export type SidebarConfigArray = (SidebarGroup | SidebarItem | string)[]
