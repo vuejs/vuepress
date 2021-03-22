@@ -38,6 +38,7 @@ export const en: NavbarConfig = [
           '/reference/default-theme/frontmatter.md',
           '/reference/default-theme/components.md',
           '/reference/default-theme/markdown.md',
+          '/reference/default-theme/styles.md',
         ],
       },
       {
