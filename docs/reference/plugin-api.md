@@ -253,6 +253,9 @@ module.exports = {
 }
 ```
 
+- Also see:
+  - [Client API > defineClientAppEnhance](./client-api.md#defineclientappenhance)
+
 ### clientAppRootComponentFiles
 
 - Type: `string | string[] | ((app: App) => string | string[] | Promise<string | string[]>)`
@@ -288,6 +291,9 @@ module.exports = {
   clientAppSetupFiles: path.resolve(__dirname, './path/to/clientAppSetup.js'),
 }
 ```
+
+- Also see:
+  - [Client API > defineClientAppSetup](./client-api.md#defineclientappsetup)
 
 ## Lifecycle Hooks
 

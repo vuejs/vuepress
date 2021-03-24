@@ -66,24 +66,6 @@
 
 ## 工具函数
 
-### defineClientAppSetup
-
-- 详情：
-
-  帮助你创建 [clientAppSetupFiles](./plugin-api.md#clientappsetupfiles) 的工具函数。
-
-- 示例：
-
-创建 `clientAppSetup.ts` 文件：
-
-```ts
-import { defineClientAppSetup } from '@vuepress/client'
-
-export default defineClientAppSetup(() => {
-  // ...
-})
-```
-
 ### defineClientAppEnhance
 
 - 详情：
@@ -98,6 +80,24 @@ export default defineClientAppSetup(() => {
 import { defineClientAppEnhance } from '@vuepress/client'
 
 export default defineClientAppEnhance(({ app, router, siteData }) => {
+  // ...
+})
+```
+
+### defineClientAppSetup
+
+- 详情：
+
+  帮助你创建 [clientAppSetupFiles](./plugin-api.md#clientappsetupfiles) 的工具函数。
+
+- 示例：
+
+创建 `clientAppSetup.ts` 文件：
+
+```ts
+import { defineClientAppSetup } from '@vuepress/client'
+
+export default defineClientAppSetup(() => {
   // ...
 })
 ```

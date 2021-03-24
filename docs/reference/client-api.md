@@ -66,24 +66,6 @@ Client API is provided by [@vuepress/client](https://www.npmjs.com/package/@vuep
 
 ## Utils
 
-### defineClientAppSetup
-
-- Details:
-
-  Helper for creating [clientAppSetupFiles](./plugin-api.md#clientappsetupfiles).
-
-- Example:
-
-Create `clientAppSetup.ts` file:
-
-```ts
-import { defineClientAppSetup } from '@vuepress/client'
-
-export default defineClientAppSetup(() => {
-  // ...
-})
-```
-
 ### defineClientAppEnhance
 
 - Details:
@@ -98,6 +80,24 @@ Create `clientAppEnhance.ts` file:
 import { defineClientAppEnhance } from '@vuepress/client'
 
 export default defineClientAppEnhance(({ app, router, siteData }) => {
+  // ...
+})
+```
+
+### defineClientAppSetup
+
+- Details:
+
+  Helper for creating [clientAppSetupFiles](./plugin-api.md#clientappsetupfiles).
+
+- Example:
+
+Create `clientAppSetup.ts` file:
+
+```ts
+import { defineClientAppSetup } from '@vuepress/client'
+
+export default defineClientAppSetup(() => {
   // ...
 })
 ```

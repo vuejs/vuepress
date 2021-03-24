@@ -253,6 +253,9 @@ module.exports = {
 }
 ```
 
+- 参考：
+  - [客户端 API > defineClientAppEnhance](./client-api.md#defineclientappenhance)
+
 ### clientAppRootComponentFiles
 
 - 类型： `string | string[] | ((app: App) => string | string[] | Promise<string | string[]>)`
@@ -288,6 +291,9 @@ module.exports = {
   clientAppSetupFiles: path.resolve(__dirname, './path/to/clientAppSetup.js'),
 }
 ```
+
+- 参考：
+  - [客户端 API > defineClientAppSetup](./client-api.md#defineclientappsetup)
 
 ## 生命周期 Hooks
 
