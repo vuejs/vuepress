@@ -36,7 +36,7 @@ module.exports = {
 ```js
 module.exports = {
   plugins: [
-    '/path/to/your-plugin.js',
+    path.resolve(__dirname, './path/to/your-plugin.js'),
     require('./another-plugin'),
   ],
 }

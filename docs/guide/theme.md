@@ -45,7 +45,7 @@ Then, set the absolute path of the theme directory to use it:
 
 ```js
 module.exports = {
-  theme: '/path/to/docs/.vuepress/theme',
+  theme: path.resolve(__dirname, './path/to/docs/.vuepress/theme'),
 }
 ```
 

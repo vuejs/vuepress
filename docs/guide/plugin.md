@@ -36,7 +36,7 @@ But if you have too many things to do in your config file, it's better to extrac
 ```js
 module.exports = {
   plugins: [
-    '/path/to/your-plugin.js',
+    path.resolve(__dirname, './path/to/your-plugin.js'),
     require('./another-plugin'),
   ],
 }

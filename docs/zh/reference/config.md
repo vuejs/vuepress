@@ -159,7 +159,7 @@ module.exports = {
 module.exports = {
   theme: 'vuepress-theme-foo',
   theme: 'bar',
-  theme: '/path/to/local/theme',
+  theme: path.resolve(__dirname, './path/to/local/theme'),
 }
 ```
 

@@ -91,7 +91,7 @@ npm install -D package-name
 ```js
 module.exports = {
   alias: {
-    '@alias': '/path/to/some/dir',
+    '@alias': path.resolve(__dirname, './path/to/some/dir'),
   },
 }
 ```

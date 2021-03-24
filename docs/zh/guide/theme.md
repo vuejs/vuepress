@@ -45,7 +45,7 @@ module.exports = {
 
 ```js
 module.exports = {
-  theme: '/path/to/docs/.vuepress/theme',
+  theme: path.resolve(__dirname, './path/to/docs/.vuepress/theme'),
 }
 ```
 
