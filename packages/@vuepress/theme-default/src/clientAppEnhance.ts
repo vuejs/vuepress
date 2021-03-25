@@ -3,12 +3,13 @@ import Badge from './components/global/Badge.vue'
 import CodeGroup from './components/global/CodeGroup'
 import CodeGroupItem from './components/global/CodeGroupItem.vue'
 import OutboundLink from './components/global/OutboundLink.vue'
+import { useScrollPromise } from './composables'
 
 import './styles/index.scss'
 
 declare const DOCSEARCH_PROPS: unknown
 
-export default defineClientAppEnhance(({ app }) => {
+export default defineClientAppEnhance(({ app, router }) => {
   /* eslint-disable vue/match-component-file-name */
   app.component('Badge', Badge)
   app.component('CodeGroup', CodeGroup)
@@ -26,4 +27,11 @@ export default defineClientAppEnhance(({ app }) => {
     app.component('Docsearch', () => null)
   }
   /* eslint-enable vue/match-component-file-name */
+
+  // handle scrollBehavior with transition
+  const scrollBehavior = router.options.scrollBehavior!
+  router.options.scrollBehavior = async (...args) => {
+    await useScrollPromise().wait()
+    return scrollBehavior(...args)
+  }
 })

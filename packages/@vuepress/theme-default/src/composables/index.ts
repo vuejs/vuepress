@@ -1,4 +1,5 @@
 export * from './useNavLink'
 export * from './useResolveRouteWithRedirect'
 export * from './useSidebarItems'
+export * from './useScrollPromise'
 export * from './useThemeData'
