@@ -11,15 +11,3 @@ export const pagesData: PagesDataRef = ref(readonly(pagesDataRaw) as PagesData)
 export const usePagesData = (): PagesDataRef => {
   return pagesData
 }
-
-if (import.meta.webpackHot) {
-  import.meta.webpackHot!.accept('@internal/pagesData', () => {
-    pagesData.value = readonly(pagesDataRaw) as PagesData
-  })
-}
-
-if (import.meta.hot) {
-  import.meta.hot!.accept('@internal/pagesData', () => {
-    pagesData.value = readonly(pagesDataRaw) as PagesData
-  })
-}

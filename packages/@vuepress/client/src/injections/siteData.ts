@@ -10,14 +10,9 @@ export const siteData: SiteDataRef = ref(readonly(siteDataRaw) as SiteData)
 
 export const useSiteData = (): SiteDataRef => siteData
 
-if (import.meta.webpackHot) {
-  import.meta.webpackHot!.accept('@internal/siteData', () => {
-    siteData.value = readonly(siteDataRaw) as SiteData
-  })
-}
-
-if (import.meta.hot) {
-  import.meta.hot!.accept('@internal/siteData', () => {
-    siteData.value = readonly(siteDataRaw) as SiteData
-  })
+if (import.meta.webpackHot || import.meta.hot) {
+  // reuse vue HMR runtime
+  __VUE_HMR_RUNTIME__.updateSiteData = (data: SiteData) => {
+    siteData.value = readonly(data) as SiteData
+  }
 }
