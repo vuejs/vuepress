@@ -2,8 +2,8 @@
   <RouterLink
     v-if="isRouterLink"
     class="nav-link"
+    :class="{ 'router-link-active': isActiveInSubpath }"
     :to="item.link"
-    :exact="isExact"
     :aria-label="linkAriaLabel"
     v-bind="$attrs"
   >
@@ -30,6 +30,7 @@
 <script lang="ts">
 import { computed, defineComponent, toRefs } from 'vue'
 import type { PropType } from 'vue'
+import { useRoute } from 'vue-router'
 import { useSiteData } from '@vuepress/client'
 import { isLinkHttp, isLinkMailto, isLinkTel } from '@vuepress/shared'
 import type { NavLink } from '../types'
@@ -47,6 +48,7 @@ export default defineComponent({
   },
 
   setup(props) {
+    const route = useRoute()
     const site = useSiteData()
     const { item } = toRefs(props)
 
@@ -72,14 +74,6 @@ export default defineComponent({
         !hasNonHttpProtocal.value &&
         !isBlankTarget.value
     )
-    // is the `exact` prop of `<RouterLink>` should be true
-    const isExact = computed(() => {
-      const localeKeys = Object.keys(site.value.locales)
-      if (localeKeys.length) {
-        return localeKeys.some((key) => key === item.value.link)
-      }
-      return item.value.link === '/'
-    })
     // resolve the `rel` attr
     const linkRel = computed(() => {
       if (hasNonHttpProtocal.value) return undefined
@@ -92,9 +86,25 @@ export default defineComponent({
       () => item.value.ariaLabel || item.value.text
     )
 
+    // should be active when current route is a subpath of this link
+    const shouldBeActiveInSubpath = computed(() => {
+      const localeKeys = Object.keys(site.value.locales)
+      if (localeKeys.length) {
+        return !localeKeys.some((key) => key === item.value.link)
+      }
+      return item.value.link !== '/'
+    })
+    // if this link is active in subpath
+    const isActiveInSubpath = computed(() => {
+      if (!isRouterLink.value || !shouldBeActiveInSubpath.value) {
+        return false
+      }
+      return route.path.startsWith(item.value.link)
+    })
+
     return {
+      isActiveInSubpath,
       isBlankTarget,
-      isExact,
       isRouterLink,
       linkRel,
       linkTarget,
