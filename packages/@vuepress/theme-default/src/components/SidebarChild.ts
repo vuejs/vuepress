@@ -10,22 +10,37 @@ const normalizePath = (path: string): string =>
     .replace(/#.*$/, '')
     .replace(/(index)?\.(md|html)$/, '')
 
-const isActive = (
+const isActiveLink = (
   route: RouteLocationNormalizedLoaded,
-  target?: string
+  link?: string
 ): boolean => {
-  if (target === undefined) {
+  if (link === undefined) {
     return false
   }
 
-  if (route.hash === target) {
+  if (route.hash === link) {
     return true
   }
 
   const currentPath = normalizePath(route.path)
-  const targetPath = normalizePath(target)
+  const targetPath = normalizePath(link)
 
   return currentPath === targetPath
+}
+
+const isActiveItem = (
+  route: RouteLocationNormalizedLoaded,
+  item: ResolvedSidebarItem
+): boolean => {
+  if (isActiveLink(route, item.link)) {
+    return true
+  }
+
+  if (item.children) {
+    return item.children.some((child) => isActiveItem(route, child))
+  }
+
+  return false
 }
 
 const renderItem = (
@@ -75,29 +90,28 @@ export const SidebarChild: FunctionalComponent<{
   item: ResolvedSidebarItem
   depth: number
 }> = ({ item, depth }) => {
+  const route = useRoute()
+  const active = isActiveItem(route, item)
+
   if (item.isGroup) {
     return [
       h(
         'section',
         {
-          class: {
-            'sidebar-group': true,
-          },
+          class: 'sidebar-group',
         },
         [
           renderItem(item, {
-            class: 'sidebar-heading',
+            class: {
+              'sidebar-heading': true,
+              active,
+            },
           }),
           renderChildren(item, depth),
         ]
       ),
     ]
   }
-
-  const route = useRoute()
-  const active =
-    isActive(route, item.link) ||
-    item.children?.some((child) => isActive(route, child.link))
 
   return [
     renderItem(item, {
