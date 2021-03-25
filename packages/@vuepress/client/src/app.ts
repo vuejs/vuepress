@@ -93,7 +93,11 @@ export const createVueApp = async ({
 
   router.beforeResolve(async (to, from) => {
     if (to.path !== from.path || from === START_LOCATION) {
-      pageData.value = await resolvePageData(to.path)
+      // ensure page data and page component have been loaded
+      ;[pageData.value] = await Promise.all([
+        resolvePageData(to.path),
+        pagesComponent[to.path].__asyncLoader(),
+      ])
     }
   })
 
@@ -178,11 +182,6 @@ export const createVueApp = async ({
   app.component('Content', Content)
   app.component('OutboundLink', OutboundLink)
   /* eslint-enable vue/match-component-file-name */
-
-  // register all pages components
-  Object.entries(pagesComponent).forEach(([name, component]) => {
-    app.component(name, component)
-  })
 
   // invoke all clientAppEnhances
   for (const clientAppEnhance of clientAppEnhances) {
