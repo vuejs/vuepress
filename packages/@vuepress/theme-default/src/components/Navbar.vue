@@ -7,7 +7,7 @@
         <img
           v-if="siteBrandLogo"
           class="logo"
-          :src="$withBase(siteBrandLogo)"
+          :src="withBase(siteBrandLogo)"
           :alt="siteBrandTitle"
         />
 
@@ -32,7 +32,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, onMounted, ref } from 'vue'
-import { useRouteLocale, useSiteLocaleData } from '@vuepress/client'
+import { useRouteLocale, useSiteLocaleData, withBase } from '@vuepress/client'
 import { useThemeLocaleData } from '../composables'
 import NavbarLinks from './NavbarLinks.vue'
 import ToggleSidebarButton from './ToggleSidebarButton.vue'
@@ -65,7 +65,7 @@ export default defineComponent({
         return {}
       }
       return {
-        'max-width': linksWrapperMaxWidth.value + 'px',
+        maxWidth: linksWrapperMaxWidth.value + 'px',
       }
     })
 
@@ -98,6 +98,7 @@ export default defineComponent({
       siteBrandLogo,
       siteBrandTitle,
       linksWrapperStyle,
+      withBase,
     }
   },
 })

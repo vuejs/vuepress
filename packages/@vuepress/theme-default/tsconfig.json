@@ -1,4 +1,7 @@
 {
   "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "allowJs": true
+  },
   "include": ["./src/**/*.ts", "./src/**/*.vue", "./__tests__"]
 }

@@ -1,4 +1,3 @@
-<script lang="ts">
 import { defineComponent, h, ref } from 'vue'
 import type { Component, VNode } from 'vue'
 
@@ -82,4 +81,3 @@ export default defineComponent({
     }
   },
 })
-</script>

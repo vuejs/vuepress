@@ -25,10 +25,10 @@
       </template>
     </Sidebar>
 
-    <Home v-if="$frontmatter.home" />
+    <Home v-if="frontmatter.home" />
 
     <Transition v-else name="fade-slide-y" mode="out-in">
-      <Page :key="$page.path">
+      <Page :key="page.path">
         <template #top>
           <slot name="page-top" />
         </template>
@@ -50,7 +50,7 @@ import {
   Transition,
 } from 'vue'
 import { useRouter } from 'vue-router'
-import { usePageFrontmatter } from '@vuepress/client'
+import { usePageData, usePageFrontmatter } from '@vuepress/client'
 import Home from '../components/Home.vue'
 import Page from '../components/Page.vue'
 import Navbar from '../components/Navbar.vue'
@@ -69,6 +69,7 @@ export default defineComponent({
   },
 
   setup() {
+    const page = usePageData()
     const frontmatter = usePageFrontmatter()
     const themeLocale = useThemeLocaleData()
 
@@ -121,6 +122,8 @@ export default defineComponent({
     })
 
     return {
+      frontmatter,
+      page,
       containerClass,
       shouldShowNavbar,
       toggleSidebar,

@@ -58,10 +58,10 @@ export default defineComponent({
     )
     // resolve the `target` attr
     const linkTarget = computed(() => {
-      if (hasNonHttpProtocal.value) return null
+      if (hasNonHttpProtocal.value) return undefined
       if (item.value.target) return item.value.target
       if (hasHttpProtocol.value) return '_blank'
-      return null
+      return undefined
     })
     // if the `target` attr is '_blank'
     const isBlankTarget = computed(() => linkTarget.value === '_blank')
@@ -82,10 +82,10 @@ export default defineComponent({
     })
     // resolve the `rel` attr
     const linkRel = computed(() => {
-      if (hasNonHttpProtocal.value) return null
+      if (hasNonHttpProtocal.value) return undefined
       if (item.value.rel) return item.value.rel
       if (isBlankTarget.value) return 'noopener noreferrer'
-      return null
+      return undefined
     })
     // resolve the `aria-label` attr
     const linkAriaLabel = computed(
