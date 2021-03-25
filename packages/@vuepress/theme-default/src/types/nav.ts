@@ -41,7 +41,8 @@ export interface SidebarItem
     NavGroup<NavLink | SidebarItem | string> {
   isGroup?: false
 }
-export interface SidebarGroup extends NavGroup<NavLink | SidebarItem | string> {
+export interface SidebarGroup
+  extends NavGroup<SidebarGroup | NavLink | SidebarItem | string> {
   isGroup: true
 }
 export type SidebarConfigArray = (SidebarGroup | SidebarItem | string)[]

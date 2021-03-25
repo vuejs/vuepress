@@ -65,13 +65,18 @@
 /**
  * sidebar child
  */
-.sidebar-group .sidebar-group {
-  & > .sidebar-heading {
-    opacity: 0.5;
-    font-size: 0.95em;
-    line-height: 1.4;
-    font-weight: normal;
-    padding-left: 2rem;
+.sidebar-group {
+  .sidebar-links > &:not(:first-child) {
+    margin-top: 0.75rem;
+  }
+  .sidebar-group {
+    & > .sidebar-heading {
+      opacity: 0.5;
+      font-size: 0.95em;
+      line-height: 1.4;
+      font-weight: normal;
+      padding-left: 2rem;
+    }
   }
 }
 

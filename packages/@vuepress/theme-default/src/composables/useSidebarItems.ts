@@ -14,6 +14,8 @@ import type {
   DefaultThemePageFrontmatter,
   SidebarConfigArray,
   SidebarConfigObject,
+  SidebarGroup,
+  SidebarItem,
   ResolvedSidebarItem,
 } from '../types'
 import { useNavLink } from './useNavLink'
@@ -102,6 +104,35 @@ export const resolveArraySidebarItems = (
   const route = useRoute()
   const page = usePageData()
 
+  const handleChildItem = (
+    item: ResolvedSidebarItem | SidebarGroup | SidebarItem | string
+  ): ResolvedSidebarItem => {
+    let childItem: ResolvedSidebarItem
+    if (isString(item)) {
+      childItem = useNavLink(item)
+    } else {
+      childItem = item as ResolvedSidebarItem
+    }
+
+    if (childItem.isGroup && childItem.children) {
+      return {
+        ...childItem,
+        children: childItem.children.map(handleChildItem),
+      }
+    }
+
+    // if the sidebar item is current page and children is not set
+    // use headers of current page as children
+    if (childItem.link === route.path && childItem.children === undefined) {
+      return {
+        ...childItem,
+        children: page.value.headers.map(headerToSidebarItem),
+      }
+    }
+
+    return childItem
+  }
+
   return sidebarConfig.map(
     (item): ResolvedSidebarItem => {
       if (isString(item)) {
@@ -113,30 +144,7 @@ export const resolveArraySidebarItems = (
 
       return {
         ...item,
-        children: item.children.map(
-          (subItem): ResolvedSidebarItem => {
-            let childItem: ResolvedSidebarItem
-            if (isString(subItem)) {
-              childItem = useNavLink(subItem)
-            } else {
-              childItem = subItem as ResolvedSidebarItem
-            }
-
-            // if the sidebar item is current page and children is not set
-            // use headers of current page as children
-            if (
-              childItem.link === route.path &&
-              childItem.children === undefined
-            ) {
-              return {
-                ...childItem,
-                children: page.value.headers.map(headerToSidebarItem),
-              }
-            }
-
-            return childItem
-          }
-        ),
+        children: item.children.map(handleChildItem),
       }
     }
   )

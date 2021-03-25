@@ -88,8 +88,8 @@ const renderChildren = (
 
 export const SidebarChild: FunctionalComponent<{
   item: ResolvedSidebarItem
-  depth: number
-}> = ({ item, depth }) => {
+  depth?: number
+}> = ({ item, depth = 0 }) => {
   const route = useRoute()
   const active = isActiveItem(route, item)
 
