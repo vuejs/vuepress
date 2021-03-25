@@ -52,15 +52,6 @@ export const en: NavbarConfig = [
     text: 'Learn More',
     children: [
       {
-        text: 'Advanced',
-        children: [
-          '/guide/advanced/architecture.md',
-          '/guide/advanced/plugin.md',
-          '/guide/advanced/theme.md',
-          '/guide/advanced/markdown.md',
-        ],
-      },
-      {
         text: 'Resources',
         children: [
           '/contributing.md',
@@ -73,6 +64,11 @@ export const en: NavbarConfig = [
             text: 'Awesome VuePress',
             link: 'https://github.com/vuepress/awesome-vuepress',
           },
+        ],
+      },
+      {
+        text: 'Legacy Version',
+        children: [
           {
             text: 'v1 docs',
             link: 'https://v1.vuepress.vuejs.org',
