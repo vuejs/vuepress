@@ -62,8 +62,8 @@ import Page from '../components/Page.vue'
 import Navbar from '../components/Navbar.vue'
 import Sidebar from '../components/Sidebar.vue'
 import {
-  useSidebarItems,
   useScrollPromise,
+  useSidebarItems,
   useThemeLocaleData,
 } from '../composables'
 
