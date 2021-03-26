@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-active-header-links",
-  "version": "2.0.0-beta.4",
+  "version": "2.0.0-beta.5",
   "description": "VuePress plugin - active header links",
   "keywords": [
     "vuepress-plugin",
@@ -29,9 +29,9 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@vuepress/client": "2.0.0-beta.4",
-    "@vuepress/core": "2.0.0-beta.4",
-    "@vuepress/utils": "2.0.0-beta.4",
+    "@vuepress/client": "2.0.0-beta.5",
+    "@vuepress/core": "2.0.0-beta.5",
+    "@vuepress/utils": "2.0.0-beta.5",
     "ts-debounce": "^3.0.0",
     "vue": "^3.0.7",
     "vue-router": "^4.0.5"
