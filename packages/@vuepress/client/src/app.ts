@@ -2,7 +2,6 @@ import { computed, h } from 'vue'
 import type { CreateAppFunction, App, ComponentOptions } from 'vue'
 import { createRouter, RouterView, START_LOCATION } from 'vue-router'
 import type { Router, RouterHistory } from 'vue-router'
-import { removeEndingSlash } from '@vuepress/shared'
 import { clientAppEnhances } from '@internal/clientAppEnhances'
 import { clientAppRootComponents } from '@internal/clientAppRootComponents'
 import { clientAppSetups } from '@internal/clientAppSetups'
@@ -72,8 +71,7 @@ export const createVueApp = async ({
 
   // create vue-router
   const router = createRouter({
-    // TODO: it might be an issue of vue-router that have to remove the ending slash
-    history: historyCreator(removeEndingSlash(siteData.value.base)),
+    history: historyCreator(siteData.value.base),
     routes: pagesRoutes,
     scrollBehavior: (to, from, savedPosition) => {
       if (savedPosition) {
