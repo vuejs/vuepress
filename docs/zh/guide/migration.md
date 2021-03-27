@@ -271,7 +271,7 @@ v1 的主题和插件和 v2 并不兼容。
   - `theme/global-components/` 目录下的文件不会被自动注册为 Vue 组件。你需要在 `clientAppEnhance.{js,ts}` 中手动注册组件。
   - `theme/layouts/` 目录下的文件不会被自动注册为布局组件。你需要通过 `layouts` 配置项来显式指定。
   - `theme/templates/` 目录下的文件不会被自动作为 dev / ssr 的模板。
-  - 你之中需要提供主题入口文件，并且不要使用 `"main": "layouts/Layout.vue"` 作为主题入口。
+  - 你始终需要提供主题入口文件，并且不要使用 `"main": "layouts/Layout.vue"` 作为主题入口。
 - Stylus 不再是默认的 CSS 预处理器，并且 Stylus 调色板系统不再被默认支持。如果你仍然想要使用和 v1 类似的调色板系统，可以使用 [@vuepress/plugin-palette](../reference/plugin/palette.md) 。
 - 由 Prism.js 提供的 Markdown 代码块的语法高亮不再被默认支持。你可以选择使用 [@vuepress/plugin-prismjs](../reference/plugin/prismjs.md) 或 [@vuepress/plugin-shiki](../reference/plugin/shiki.md) ，或者用你自己的方式实现语法高亮。
 - 考虑到可扩展性， `$site.pages` 不再可用。

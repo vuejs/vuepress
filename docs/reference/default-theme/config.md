@@ -16,7 +16,7 @@ Reference of default theme config, which can be set via [themeConfig](../config.
 
   All the options inside the [Locale Config](#locale-config) section can be used in locales.
 
-  This options will only take effect in default theme, so don't confuse with `locales` in [Site Config](../config.md#locales). 
+  This option will only take effect in default theme, so don't confuse with `locales` in [Site Config](../config.md#locales). 
 
 - Also see:
   - [Guide > I18n](../../guide/i18n.md)
@@ -488,7 +488,7 @@ module.exports = {
 
   Specify the messages of the 404 page.
 
-  The message will be randomly picked from the array when user enter the 404 page.
+  The message will be randomly picked from the array when users enter the 404 page.
 
 ### backToHome
 
