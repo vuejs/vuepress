@@ -41,13 +41,8 @@ jobs:
       - name: Install dependencies
         run: yarn --frozen-lockfile
 
-      - name: Copy and build
-        run: |
-          yarn copy
-          yarn build
-
       - name: Build documentation site
-        run: yarn docs:build
+        run: yarn docs:release
 
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v2.2.0
