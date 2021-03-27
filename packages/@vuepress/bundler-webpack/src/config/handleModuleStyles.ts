@@ -1,6 +1,5 @@
 import type * as Config from 'webpack-chain'
 import type { App } from '@vuepress/core'
-import * as MiniCSSExtractPlugin from 'mini-css-extract-plugin'
 import type {
   WebpackBundlerOptions,
   LoaderOptions,
@@ -59,7 +58,9 @@ export const handleModuleStyles = ({
   }): void => {
     if (!isServer) {
       if (isBuild) {
-        rule.use('extract-css-loader').loader(MiniCSSExtractPlugin.loader)
+        rule
+          .use('extract-css-loader')
+          .loader(require('mini-css-extract-plugin').loader)
       } else {
         rule.use('style-loader').loader('style-loader')
       }

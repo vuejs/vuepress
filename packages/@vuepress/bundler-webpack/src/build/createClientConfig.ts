@@ -45,41 +45,41 @@ export const createClientConfig = (
   }
 
   // optimizations for production mode
-  if (app.env.isProd) {
-    // extract-css
-    config.plugin('extract-css').use(require('mini-css-extract-plugin'), [
-      {
-        filename: 'assets/css/styles.[chunkhash:8].css',
-      },
-    ])
+  // extract-css
+  config.plugin('extract-css').use(require('mini-css-extract-plugin'), [
+    {
+      filename: app.env.isProd
+        ? 'assets/css/styles.[chunkhash:8].css'
+        : 'assets/css/styles.css',
+    },
+  ])
 
-    config.optimization.splitChunks({
-      cacheGroups: {
-        // ensure all css are extracted together.
-        // since most of the CSS will be from the theme and very little
-        // CSS will be from async chunks
-        styles: {
-          idHint: 'styles',
-          // necessary to ensure async chunks are also extracted
-          test: (m) => /css\/mini-extract/.test(m.type),
-          chunks: 'all',
-          enforce: true,
-          reuseExistingChunk: true,
-        },
-        // extract external library to a standalone chunk
-        vendor: {
-          idHint: 'vendor',
-          test: /node_modules/,
-          chunks: 'all',
-          priority: -10,
-          reuseExistingChunk: true,
-        },
+  config.optimization.splitChunks({
+    cacheGroups: {
+      // ensure all css are extracted together.
+      // since most of the CSS will be from the theme and very little
+      // CSS will be from async chunks
+      styles: {
+        idHint: 'styles',
+        // necessary to ensure async chunks are also extracted
+        test: (m) => /css\/mini-extract/.test(m.type),
+        chunks: 'all',
+        enforce: true,
+        reuseExistingChunk: true,
       },
-    })
+      // extract external library to a standalone chunk
+      vendor: {
+        idHint: 'vendor',
+        test: /node_modules/,
+        chunks: 'all',
+        priority: -10,
+        reuseExistingChunk: true,
+      },
+    },
+  })
 
-    // enable runtimeChunk
-    config.optimization.runtimeChunk(true)
-  }
+  // enable runtimeChunk
+  config.optimization.runtimeChunk(true)
 
   // disable performance hints
   if (!app.env.isDebug) {
