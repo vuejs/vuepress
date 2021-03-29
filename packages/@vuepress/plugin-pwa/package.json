@@ -34,7 +34,7 @@
     "@vuepress/utils": "2.0.0-beta.5",
     "mitt": "^2.1.0",
     "register-service-worker": "^1.7.2",
-    "vue": "^3.0.7",
+    "vue": "^3.0.9",
     "workbox-build": "^6.1.2"
   },
   "devDependencies": {
