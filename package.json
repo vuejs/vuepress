@@ -18,13 +18,8 @@
     "docs:release": "yarn copy && yarn build && yarn docs:build",
     "lint": "eslint --ext .js,.ts,.vue .",
     "release": "yarn lint && yarn clean && yarn copy && yarn build && yarn test && lerna publish prerelease --dist-tag next",
-    "test": "jest --runInBand"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
+    "test": "jest --runInBand",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "*.{js,ts,vue}": "eslint --fix",
@@ -43,7 +38,7 @@
     "eslint": "^7.22.0",
     "eslint-config-vuepress": "^3.2.1",
     "eslint-config-vuepress-typescript": "^2.2.1",
-    "husky": "^4.3.8",
+    "husky": "^6.0.0",
     "jest": "^26.6.3",
     "jest-serializer-vue": "^2.0.2",
     "lerna": "^4.0.0",
