@@ -11,7 +11,7 @@ assignees: ''
 
 <!-- If some fields are irrelevant or you are not sure, remove it or mark it as "not related" / not sure" -->
 
-<!-- If you don't follow the template and not providing valid infomation, we'll close your issue without further reply -->
+<!-- If you don't follow the template and not providing valid information, we'll close your issue without further reply -->
 
 ## Bug report
 
