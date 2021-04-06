@@ -88,15 +88,12 @@ export const createVueApp = async ({
     },
   })
 
-  // use vue-router
-  app.use(router)
-
   router.beforeResolve(async (to, from) => {
     if (to.path !== from.path || from === START_LOCATION) {
       // ensure page data and page component have been loaded
       ;[pageData.value] = await Promise.all([
         resolvePageData(to.path),
-        pagesComponent[to.path].__asyncLoader(),
+        pagesComponent[to.path]?.__asyncLoader(),
       ])
     }
   })
@@ -187,6 +184,13 @@ export const createVueApp = async ({
   for (const clientAppEnhance of clientAppEnhances) {
     await clientAppEnhance({ app, router, siteData })
   }
+
+  // vue-router will start to initialize once it is installed
+  // via `app.use()`, but users might make some modifications
+  // to router in `clientAppEnhance`, so we install it after
+  // that. This can also avoid the `scrollBehavior` issue on
+  // initial navigation.
+  app.use(router)
 
   return {
     app,
