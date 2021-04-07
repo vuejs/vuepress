@@ -20,6 +20,10 @@ The [Custom Containers](../default-theme/markdown.md#custom-containers) of defau
 - The `info` is optional, and the default value can be specified via `defaultInfo` in [locales](#locales) option.
 - The `content` can be any valid markdown content.
 
+::: tip
+This plugin can be used multiple times to support different types of containers.
+:::
+
 ## Options
 
 ### type

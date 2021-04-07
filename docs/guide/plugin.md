@@ -25,6 +25,12 @@ You can use either plugin name or its shorthand:
 | `@org/vuepress-plugin-bar`| `@org/bar`          |
 | `@vuepress/plugin-foobar` | `@vuepress/foobar`  |
 
+::: tip
+Most plugins can only be used once. If the same plugin is used multiple times, only the last one will take effect.
+
+However, some plugins can be used multiple times (e.g. [@vuepress/plugin-container](../reference/plugin/container.md)), and you should check the documentation of the plugin itself for detailed guide.
+:::
+
 ## Local Plugin
 
 If you want to use your own plugin but don't want to publish it, you can create a local plugin.

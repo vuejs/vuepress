@@ -25,6 +25,12 @@ module.exports = {
 | `@org/vuepress-plugin-bar`| `@org/bar`          |
 | `@vuepress/plugin-foobar` | `@vuepress/foobar`  |
 
+::: tip
+大部分插件只能使用一次，如果同一个插件被多次使用，那么只有最后一次会生效。
+
+然而，部分插件是可以被多次使用的（例如 [@vuepress/plugin-container](../reference/plugin/container.md)），你应该查看插件本身的文档来获取详细指引。
+:::
+
 ## 本地插件
 
 如果你想要使用自己的插件，但是又不想发布它，你可以创建一个本地插件。
