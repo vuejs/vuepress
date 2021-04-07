@@ -12,6 +12,9 @@ export const createDevServerConfig = (
 ): WebpackDevServer.Configuration => {
   // TODO: add types for webpack-dev-server 4
   const serverConfig: WebpackOptionsNormalized['devServer'] = {
+    client: {
+      overlay: false,
+    },
     compress: true,
     dev: {
       publicPath: app.options.base,
@@ -41,7 +44,6 @@ export const createDevServerConfig = (
       options.beforeDevServer?.(expressApp, server)
     },
     open: app.options.open,
-    overlay: false,
     port: app.options.port,
     static: {
       // `static.directory` will fail on Windows if we do not replace / with \
