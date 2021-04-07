@@ -44,52 +44,55 @@ export default defineClientAppEnhance(({ app }) => {
       }))
 
       // resolve options for docsearch
-      const options = computed(() => ({
-        ...propsLocale.value,
+      const options = computed(
+        () =>
+          ({
+            ...propsLocale.value,
 
-        searchParameters: {
-          ...propsLocale.value.searchParameters,
-          facetFilters: [`lang:${lang.value}`].concat(
-            propsLocale.value.searchParameters?.facetFilters || []
-          ),
-        },
+            searchParameters: {
+              ...propsLocale.value.searchParameters,
+              facetFilters: [`lang:${lang.value}`].concat(
+                propsLocale.value.searchParameters?.facetFilters || []
+              ),
+            },
 
-        // navigation behavior triggered by `onKeyDown` internally
-        navigator: {
-          // when pressing Enter without metaKey
-          navigate: ({ itemUrl }) => {
-            router.push(itemUrl)
-          },
-        },
-
-        // transform full url to route path
-        transformItems: (items) =>
-          items.map((item) => {
-            // the `item.url` is full url with protocol and hostname
-            // so we have to transform it to vue-router path
-            return {
-              ...item,
-              url: resolveRoutePathFromUrl(item.url, site.value.base),
-            }
-          }),
-
-        // handle `onClick` by `router.push`
-        hitComponent: ({ hit, children }) =>
-          createElement(
-            'a',
-            {
-              href: hit.url,
-              onClick: (event: MouseEvent) => {
-                if (isSpecialClick(event)) {
-                  return
-                }
-                event.preventDefault()
-                router.push(hit.url)
+            // navigation behavior triggered by `onKeyDown` internally
+            navigator: {
+              // when pressing Enter without metaKey
+              navigate: ({ itemUrl }) => {
+                router.push(itemUrl)
               },
             },
-            children
-          ),
-      }))
+
+            // transform full url to route path
+            transformItems: (items) =>
+              items.map((item) => {
+                // the `item.url` is full url with protocol and hostname
+                // so we have to transform it to vue-router path
+                return {
+                  ...item,
+                  url: resolveRoutePathFromUrl(item.url, site.value.base),
+                }
+              }),
+
+            // handle `onClick` by `router.push`
+            hitComponent: ({ hit, children }) =>
+              createElement(
+                'a',
+                {
+                  href: hit.url,
+                  onClick: (event: MouseEvent) => {
+                    if (isSpecialClick(event)) {
+                      return
+                    }
+                    event.preventDefault()
+                    router.push(hit.url)
+                  },
+                },
+                children
+              ),
+          } as DocsearchProps)
+      )
 
       return () => h(Docsearch, { options: options.value })
     },
