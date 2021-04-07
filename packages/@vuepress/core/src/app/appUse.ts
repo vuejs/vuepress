@@ -1,4 +1,4 @@
-import { chalk, debug } from '@vuepress/utils'
+import { chalk, debug, warn } from '@vuepress/utils'
 import type { App, Plugin, PluginOptions } from '../types'
 import { normalizePlugin } from './normalizePlugin'
 
@@ -21,6 +21,13 @@ export const appUse = <T extends PluginOptions>(
     )
     if (duplicateIndex !== -1) {
       app.pluginApi.plugins.splice(duplicateIndex, 1)
+
+      // show warning when duplicate plugins are detected
+      warn(
+        `plugin ${chalk.magenta(
+          plugin.name
+        )} has been used multiple times, only the last one will take effect`
+      )
     }
   }
 
