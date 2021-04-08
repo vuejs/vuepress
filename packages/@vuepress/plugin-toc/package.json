@@ -1,0 +1,39 @@
+{
+  "name": "@vuepress/plugin-toc",
+  "version": "2.0.0-beta.6",
+  "description": "VuePress plugin - toc",
+  "keywords": [
+    "vuepress-plugin",
+    "vuepress",
+    "plugin",
+    "toc"
+  ],
+  "homepage": "https://github.com/vuepress",
+  "bugs": {
+    "url": "https://github.com/vuepress/vuepress-next/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/vuepress-next.git"
+  },
+  "license": "MIT",
+  "author": "meteorlxy",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc -b tsconfig.build.json",
+    "clean": "rimraf lib *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@vuepress/client": "2.0.0-beta.6",
+    "@vuepress/core": "2.0.0-beta.6",
+    "@vuepress/utils": "2.0.0-beta.5",
+    "vue": "^3.0.11"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

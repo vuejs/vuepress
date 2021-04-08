@@ -112,6 +112,7 @@ export const zh: SidebarConfig = {
             '/zh/reference/plugin/git.md',
             '/zh/reference/plugin/palette.md',
             '/zh/reference/plugin/theme-data.md',
+            '/zh/reference/plugin/toc.md',
           ],
         },
       ],

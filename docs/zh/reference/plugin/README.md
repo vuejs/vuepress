@@ -19,3 +19,4 @@
   - [git](./git.md)
   - [palette](./palette.md)
   - [theme-data](./theme-data.md)
+  - [toc](./toc.md)

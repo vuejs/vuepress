@@ -109,6 +109,7 @@ export const en: SidebarConfig = {
             '/reference/plugin/git.md',
             '/reference/plugin/palette.md',
             '/reference/plugin/theme-data.md',
+            '/reference/plugin/toc.md',
           ],
         },
       ],
