@@ -39,8 +39,8 @@ export const themeDataPlugin: Plugin<ThemeDataPluginOptions> = ({
   onPrepared: async (app) => {
     // theme data file content
     let content = `\
-  export const themeData = ${JSON.stringify(themeData, null, 2)}
-  `
+export const themeData = ${JSON.stringify(themeData, null, 2)}
+`
 
     // inject HMR code
     if (app.env.isDev) {
