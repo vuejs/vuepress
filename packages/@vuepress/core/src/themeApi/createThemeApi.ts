@@ -6,13 +6,13 @@ import { resolveThemeInfo } from './resolveThemeInfo'
  *
  * Resolve current theme, parent theme, theme layouts
  */
-export const createThemeApi = async (app: App): Promise<ThemeApi> => {
+export const createThemeApi = (app: App): ThemeApi => {
   // resolve theme info
-  const theme = await resolveThemeInfo(app, app.options.theme)
+  const theme = resolveThemeInfo(app, app.options.theme)
 
   // resolve parent theme info
   const parentTheme = theme.plugin.extends
-    ? await resolveThemeInfo(app, theme.plugin.extends)
+    ? resolveThemeInfo(app, theme.plugin.extends)
     : null
 
   // resolve theme layouts

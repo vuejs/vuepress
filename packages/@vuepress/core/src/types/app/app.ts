@@ -12,7 +12,6 @@ import type { AppDir, AppEnv, AppWriteTemp } from './utils'
  * Vuepress app
  */
 export interface App {
-  // created
   version: string
   options: AppOptions
   dir: AppDir
@@ -20,6 +19,9 @@ export interface App {
   siteData: SiteData
   markdown: Markdown
   pluginApi: PluginApi
+  themeApi: ThemeApi
+  pages: Page[]
+  writeTemp: AppWriteTemp
   use: <T extends PluginOptions>(
     plugin: Plugin<T> | string,
     config?: Partial<T>
@@ -29,9 +31,4 @@ export interface App {
   prepare: () => Promise<void>
   dev: () => ReturnType<BundlerDev>
   build: () => ReturnType<BundlerBuild>
-
-  // initialized
-  writeTemp: AppWriteTemp
-  themeApi: ThemeApi
-  pages: Page[]
 }
