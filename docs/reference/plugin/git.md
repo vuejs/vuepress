@@ -1,6 +1,6 @@
 # git
 
-> @vuepress/plugin-git
+> [@vuepress/plugin-git](https://www.npmjs.com/package/@vuepress/plugin-git)
 
 This plugin will collect git information of your pages, including the created and updated time, the contributors, etc.
 

@@ -1,6 +1,6 @@
 # pwa-popup
 
-> @vuepress/plugin-pwa-popup
+> [@vuepress/plugin-pwa-popup](https://www.npmjs.com/package/@vuepress/plugin-pwa-popup)
 
 提供一个弹窗组件，允许用户手动刷新 PWA Service Worker 。
 

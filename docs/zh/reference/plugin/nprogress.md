@@ -8,7 +8,7 @@ title: nprogress
 
 # nprogress 插件
 
-> @vuepress/plugin-nprogress
+> [@vuepress/plugin-nprogress](https://www.npmjs.com/package/@vuepress/plugin-nprogress)
 
 将 [nprogress](https://github.com/rstacruz/nprogress) 集成到 VuePress 中，在切换到另一个页面时会展示进度条。
 

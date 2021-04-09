@@ -1,6 +1,6 @@
 # prismjs
 
-> @vuepress/plugin-prismjs
+> [@vuepress/plugin-prismjs](https://www.npmjs.com/package/@vuepress/plugin-prismjs)
 
 该插件使用 [Prism.js](https://prismjs.com/) 来为 Markdown 代码块启用代码高亮。
 

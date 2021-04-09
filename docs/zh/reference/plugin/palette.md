@@ -1,5 +1,7 @@
 # palette
 
+> [@vuepress/plugin-palette](https://www.npmjs.com/package/@vuepress/plugin-palette)
+
 为你的主题提供调色板功能。
 
 该插件主要用于开发主题，并且已经集成到默认主题中。大部分情况下你不需要直接使用它。

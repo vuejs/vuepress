@@ -1,6 +1,6 @@
 # pwa-popup
 
-> @vuepress/plugin-pwa-popup
+> [@vuepress/plugin-pwa-popup](https://www.npmjs.com/package/@vuepress/plugin-pwa-popup)
 
 Provide a popup component for users to activate the new PWA service worker manually.
 

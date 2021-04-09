@@ -1,5 +1,7 @@
 # palette
 
+> [@vuepress/plugin-palette](https://www.npmjs.com/package/@vuepress/plugin-palette)
+
 Provide palette support for your theme.
 
 This plugin is mainly used to develop themes, and has been integrated into the default theme. You won't need to use it directly in most cases.

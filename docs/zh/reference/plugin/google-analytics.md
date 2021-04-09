@@ -1,6 +1,6 @@
 # google-analytics
 
-> @vuepress/plugin-google-analytics
+> [@vuepress/plugin-google-analytics](https://www.npmjs.com/package/@vuepress/plugin-google-analytics)
 
 将 [Google Analytics](https://analytics.google.com/) 集成到 VuePress 中。
 
