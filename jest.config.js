@@ -1,12 +1,4 @@
 const { resolve } = require('path')
-const { readdirSync } = require('fs')
-
-const packagesDir = 'packages/@vuepress'
-const packages = readdirSync(resolve(__dirname, packagesDir), {
-  withFileTypes: true,
-})
-  .filter((item) => item.isDirectory())
-  .map(({ name }) => name)
 
 module.exports = {
   rootDir: resolve(__dirname),
@@ -21,7 +13,6 @@ module.exports = {
     '__SSR__': false,
   },
   moduleNameMapper: {
-    [`^@vuepress/(${packages.join('|')})$`]: `<rootDir>/${packagesDir}/$1/src`,
     '^@internal/(.*)$': `<rootDir>/packages/@vuepress/client/__tests__/__fixtures__/$1`,
     '.+\\.(css|styl|less|sass|scss)$':
       '<rootDir>/packages/@vuepress/client/__tests__/__fixtures__/styleMock',
