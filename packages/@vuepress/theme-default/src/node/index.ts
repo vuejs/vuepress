@@ -1,5 +1,7 @@
-export * from './assignDefaultLocaleOptions'
-export * from './resolveActiveHeaderLinksPluginOptions'
-export * from './resolveContainerPluginOptions'
-export * from './resolveGitPluginOptions'
-export * from './resolveMediumZoomPluginOptions'
+import { defaultTheme } from './defaultTheme'
+
+export * from '../shared'
+export * from './defaultTheme'
+export * from './utils'
+
+export default defaultTheme

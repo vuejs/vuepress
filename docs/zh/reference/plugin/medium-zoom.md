@@ -68,7 +68,7 @@
 
 ```ts
 import { nextTick } from 'vue'
-import { useMediumZoom } from '@vuepress/plugin-medium-zoom/lib/composables'
+import { useMediumZoom } from '@vuepress/plugin-medium-zoom/lib/client'
 
 export default {
   setup() {

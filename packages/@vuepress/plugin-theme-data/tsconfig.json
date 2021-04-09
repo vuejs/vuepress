@@ -4,7 +4,7 @@
     "module": "ES2020",
     "baseUrl": ".",
     "paths": {
-      "@internal/themeData": ["src/types/internal/themeData.d.ts"]
+      "@internal/themeData": ["src/client/themeData.d.ts"]
     },
     "types": ["webpack-env", "vite/client"]
   },

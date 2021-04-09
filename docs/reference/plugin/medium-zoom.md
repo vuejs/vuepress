@@ -68,7 +68,7 @@ You can customize most of the zoom styles via [zoomOptions](#zoomoptions), while
 
 ```ts
 import { nextTick } from 'vue'
-import { useMediumZoom } from '@vuepress/plugin-medium-zoom/lib/composables'
+import { useMediumZoom } from '@vuepress/plugin-medium-zoom/lib/client'
 
 export default {
   setup() {

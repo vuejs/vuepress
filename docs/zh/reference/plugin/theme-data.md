@@ -61,7 +61,7 @@ module.exports = {
 - 示例：
 
 ```ts
-import { useThemeData } from '@vuepress/plugin-theme-data/lib/composables'
+import { useThemeData } from '@vuepress/plugin-theme-data/lib/client'
 import type { ThemeData } from '@vuepress/plugin-theme-data'
 
 type MyThemeData = ThemeData<{
@@ -87,8 +87,8 @@ export default {
 - 示例：
 
 ```ts
-import { useThemeLocaleData } from '@vuepress/plugin-theme-data/lib/composables'
-import type { ThemeData } from '@vuepress/plugin-theme-data'
+import { useThemeLocaleData } from '@vuepress/plugin-theme-data/lib/client'
+import type { ThemeData } from '@vuepress/plugin-theme-data/lib/client'
 
 type MyThemeData = ThemeData<{
   foo: string

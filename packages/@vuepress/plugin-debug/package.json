@@ -18,8 +18,8 @@
   },
   "license": "MIT",
   "author": "meteorlxy",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "lib/node/index.js",
+  "types": "lib/node/index.d.ts",
   "files": [
     "lib"
   ],

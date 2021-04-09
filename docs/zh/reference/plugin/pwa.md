@@ -116,7 +116,7 @@ module.exports = {
 - 示例：
 
 ```ts
-import { usePwaEvent } from '@vuepress/plugin-pwa/lib/composables'
+import { usePwaEvent } from '@vuepress/plugin-pwa/lib/client'
 
 export default {
   setup() {
@@ -146,7 +146,7 @@ export default {
 import {
   usePwaEvent,
   useSkipWaiting,
-} from '@vuepress/plugin-pwa/lib/composables'
+} from '@vuepress/plugin-pwa/lib/client'
 
 export default {
   setup() {

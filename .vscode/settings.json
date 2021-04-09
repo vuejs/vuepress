@@ -17,6 +17,7 @@
     "vue"
   ],
   "cSpell.words": [
+    "composables",
     "devtool",
     "docsearch",
     "envinfo",

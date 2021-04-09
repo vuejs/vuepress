@@ -5,5 +5,5 @@
     "rootDir": "./src",
     "outDir": "./lib"
   },
-  "include": ["./src/index.ts", "./src/node/", "./src/types/"]
+  "include": ["./src/node", "./src/shared"]
 }
