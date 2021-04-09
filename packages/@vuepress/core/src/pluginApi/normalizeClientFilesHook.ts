@@ -1,8 +1,6 @@
 import { isArray, isFunction } from '@vuepress/shared'
-import { chalk, debug, fs } from '@vuepress/utils'
+import { fs } from '@vuepress/utils'
 import type { ClientFilesHook } from '../types'
-
-const log = debug('vuepress:core/plugin-api')
 
 /**
  * Normalize hook for client files
@@ -24,7 +22,7 @@ export const normalizeClientFilesHook = (
     if (isExisted) {
       result.push(filePath)
     } else {
-      log(`client file does not exist ${chalk.magenta(filePath)}`)
+      throw new Error(`file does not exist: ${filePath}`)
     }
   }
 

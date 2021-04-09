@@ -1,4 +1,5 @@
 import type { App, PluginObject } from '@vuepress/core'
+import { fs } from '@vuepress/utils'
 import type { UserConfig } from './types'
 
 /**
@@ -17,9 +18,9 @@ export const transformUserConfigToPlugin = (
   // try to load conventional files
   if (userConfigPlugin.clientAppEnhanceFiles === undefined) {
     userConfigPlugin.clientAppEnhanceFiles = [
-      app.dir.source('.vuepress/clientAppEnhance.js'),
       app.dir.source('.vuepress/clientAppEnhance.ts'),
-    ]
+      app.dir.source('.vuepress/clientAppEnhance.js'),
+    ].find((item) => fs.pathExistsSync(item))
   }
 
   return userConfigPlugin
