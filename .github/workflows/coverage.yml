@@ -1,4 +1,4 @@
-name: check
+name: coverage
 
 on:
   push:
@@ -10,21 +10,19 @@ on:
   workflow_dispatch:
 
 jobs:
-  check:
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        node: ['12', '14']
+  coverage:
+    runs-on: ubuntu-latest
 
-    runs-on: ${{ matrix.os }}
+    env:
+      NODE_VERSION: '14'
 
     steps:
       - uses: actions/checkout@v2
 
-      - name: Use Node.js ${{ matrix.node }}
+      - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node }}
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -35,25 +33,18 @@ jobs:
         id: yarn-cache
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-node-${{ matrix.node }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-node-${{ env.NODE_VERSION }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ${{ runner.os }}-node-${{ matrix.node }}-yarn-
+            ${{ runner.os }}-node-${{ env.NODE_VERSION }}-yarn-
             ${{ runner.os }}-node-
 
       - name: Install dependencies
         run: yarn --frozen-lockfile
 
-      - name: Lint
-        run: yarn lint
+      - name: Test coverage
+        run: yarn test --coverage
 
-      - name: Copy
-        run: yarn copy
-
-      - name: Build
-        run: yarn build
-
-      - name: Test
-        run: yarn test
-
-      - name: Docs build
-        run: yarn docs:build
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
