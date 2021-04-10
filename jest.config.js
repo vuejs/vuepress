@@ -1,4 +1,17 @@
 const { resolve } = require('path')
+const { readdirSync } = require('fs')
+
+const packagesDir = 'packages/@vuepress'
+const packages = readdirSync(resolve(__dirname, packagesDir), {
+  withFileTypes: true,
+})
+  .filter(
+    (item) =>
+      item.isDirectory() &&
+      !item.name.startsWith('plugin') &&
+      !item.name.startsWith('theme')
+  )
+  .map(({ name }) => name)
 
 module.exports = {
   rootDir: resolve(__dirname),
@@ -13,6 +26,7 @@ module.exports = {
     '__SSR__': false,
   },
   moduleNameMapper: {
+    [`^@vuepress/(${packages.join('|')})$`]: `<rootDir>/${packagesDir}/$1/src`,
     '^@internal/(.*)$': `<rootDir>/packages/@vuepress/client/__tests__/__fixtures__/$1`,
     '.+\\.(css|styl|less|sass|scss)$':
       '<rootDir>/packages/@vuepress/client/__tests__/__fixtures__/styleMock',
@@ -29,7 +43,7 @@ module.exports = {
   collectCoverageFrom: [
     '<rootDir>/packages/**/src/**/*.ts',
     '!<rootDir>/packages/@vuepress/client/**/*',
-    '!<rootDir>/packages/@vuepress/theme-default/**/*',
+    '!<rootDir>/packages/@vuepress/*/src/client/**/*',
     '!**/*.d.ts',
   ],
   coverageDirectory: 'coverage',
