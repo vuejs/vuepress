@@ -19,6 +19,7 @@
     "lint": "eslint --ext .js,.ts,.vue .",
     "release": "yarn lint && yarn clean && yarn copy && yarn build && yarn test && lerna publish prerelease --dist-tag next",
     "test": "jest --runInBand",
+    "test:coverage": "yarn copy && yarn build && yarn test --coverage",
     "prepare": "husky install"
   },
   "lint-staged": {
