@@ -159,6 +159,133 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
         '[readme3](../foo/bar/readme.md)',
       ].join('\n\n')
 
+      it('should render to <a> tag correctly', () => {
+        const md = MarkdownIt({ html: true }).use(linksPlugin, {
+          internalTag: 'a',
+        })
+        const env: MarkdownEnv = {}
+
+        const rendered = md.render(source, env)
+
+        expect(rendered).toEqual(
+          [
+            '<a href="foo.html">foo1</a>',
+            '<a href="foo.html#hash">foo2</a>',
+            '<a href="foo.html">foo3</a>',
+            '<a href="../bar.html">bar1</a>',
+            '<a href="../bar.html#hash">bar2</a>',
+            '<a href="../bar.html">bar3</a>',
+            '<a href="foo/bar.html">foobar1</a>',
+            '<a href="foo/bar.html#hash">foobar2</a>',
+            '<a href="../foo/bar.html">foobar3</a>',
+            '<a href="../foo/bar.html#hash">foobar4</a>',
+            '<a href="">index1</a>',
+            '<a href="#hash">index2</a>',
+            '<a href="">index3</a>',
+            '<a href="../">index4</a>',
+            '<a href="../foo/bar/">index5</a>',
+            '<a href="">readme1</a>',
+            '<a href="../#hash">readme2</a>',
+            '<a href="../foo/bar/">readme3</a>',
+          ]
+            .map((a) => `<p>${a}</p>`)
+            .join('\n') + '\n'
+        )
+
+        expect(env.links).toEqual([
+          {
+            raw: 'foo.md',
+            relative: 'foo.md',
+            absolute: 'foo.md',
+          },
+          {
+            raw: 'foo.md#hash',
+            relative: 'foo.md',
+            absolute: 'foo.md',
+          },
+          {
+            raw: './foo.md',
+            relative: 'foo.md',
+            absolute: 'foo.md',
+          },
+          {
+            raw: '../bar.md',
+            relative: '../bar.md',
+            absolute: '../bar.md',
+          },
+          {
+            raw: '../bar.md#hash',
+            relative: '../bar.md',
+            absolute: '../bar.md',
+          },
+          {
+            raw: './../bar.md',
+            relative: '../bar.md',
+            absolute: '../bar.md',
+          },
+          {
+            raw: 'foo/bar.md',
+            relative: 'foo/bar.md',
+            absolute: 'foo/bar.md',
+          },
+          {
+            raw: 'foo/bar.md#hash',
+            relative: 'foo/bar.md',
+            absolute: 'foo/bar.md',
+          },
+          {
+            raw: '../foo/bar.md',
+            relative: '../foo/bar.md',
+            absolute: '../foo/bar.md',
+          },
+          {
+            raw: '../foo/bar.md#hash',
+            relative: '../foo/bar.md',
+            absolute: '../foo/bar.md',
+          },
+          {
+            raw: 'index.md',
+            relative: 'index.md',
+            absolute: 'index.md',
+          },
+          {
+            raw: 'index.md#hash',
+            relative: 'index.md',
+            absolute: 'index.md',
+          },
+          {
+            raw: './index.md',
+            relative: 'index.md',
+            absolute: 'index.md',
+          },
+          {
+            raw: '../index.md',
+            relative: '../index.md',
+            absolute: '../index.md',
+          },
+          {
+            raw: '../foo/bar/index.md',
+            relative: '../foo/bar/index.md',
+            absolute: '../foo/bar/index.md',
+          },
+          {
+            raw: 'readme.md',
+            relative: 'readme.md',
+            absolute: 'readme.md',
+          },
+          {
+            raw: '../readme.md#hash',
+            relative: '../readme.md',
+            absolute: '../readme.md',
+          },
+          {
+            raw: '../foo/bar/readme.md',
+            relative: '../foo/bar/readme.md',
+            absolute: '../foo/bar/readme.md',
+          },
+        ])
+      })
+
       it('should render relative links correctly', () => {
         const md = MarkdownIt({ html: true }).use(linksPlugin)
         const env: MarkdownEnv = {}

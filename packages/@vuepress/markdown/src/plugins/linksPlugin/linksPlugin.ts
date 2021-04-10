@@ -5,6 +5,9 @@ import type { MarkdownEnv } from '../../types'
 import { resolvePaths } from './resolvePaths'
 
 export interface LinksPluginOptions {
+  // tag of internal links
+  internalTag?: 'a' | 'RouterLink'
+
   // extra attrs on external links
   externalAttrs?: Record<string, string>
 }
@@ -19,6 +22,9 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
   md,
   options: LinksPluginOptions = {}
 ): void => {
+  // tag of internal links
+  const internalTag = options.internalTag || 'RouterLink'
+
   // attrs that going to be added to external links
   const externalAttrs = {
     target: '_blank',
@@ -104,11 +110,13 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
         .replace(/(^|\/)(README|index).md$/i, '$1')
         .replace(/\.md$/, '.html')
 
-      // convert starting tag of internal link to `<RouterLink>`
-      token.tag = 'RouterLink'
+      if (internalTag === 'RouterLink') {
+        // convert starting tag of internal link to `<RouterLink>`
+        token.tag = internalTag
+        // replace the original `href` attr with `to` attr
+        hrefAttr[0] = 'to'
+      }
 
-      // replace the original `href` attr with `to` attr
-      hrefAttr[0] = 'to'
       hrefAttr[1] = `${normalizedPath}${rawHash}`
 
       // extract internal links for file / page existence check
@@ -138,7 +146,7 @@ export const linksPlugin: PluginWithOptions<LinksPluginOptions> = (
     // convert ending tag of internal link to `</RouterLink>`
     if (hasOpenRouterLink) {
       hasOpenRouterLink = false
-      token.tag = 'RouterLink'
+      token.tag = internalTag
     }
 
     return self.renderToken(tokens, idx, options)
