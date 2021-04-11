@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.8](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.7...v2.0.0-beta.8) (2021-04-11)
+
+
+### Bug Fixes
+
+* **plugin-docsearch:** provide default value for locales (close [#107](https://github.com/vuepress/vuepress-next/issues/107)) ([491eb64](https://github.com/vuepress/vuepress-next/commit/491eb6416664775c366c0fb2a67388fe37098e2c))
+* **plugin-pwa-popup:** provide default value for locales ([f7cbc15](https://github.com/vuepress/vuepress-next/commit/f7cbc15669c731e6598657c8048abe9cdfa4ee40))
+
+
+### Code Refactoring
+
+* normalize themes and plugins structure ([7781172](https://github.com/vuepress/vuepress-next/commit/77811722401bf1ed1fec44c64158ab0cd1ab3179))
+* **core:** resolve theme when creating app ([fa683cb](https://github.com/vuepress/vuepress-next/commit/fa683cb76e8a3bcacc08d1dfd8bea6af79fee1d2))
+
+
+### Features
+
+* **markdown:** support internalTag option in links plugin ([1872ad9](https://github.com/vuepress/vuepress-next/commit/1872ad95d7c86247883c24f2ec86db07d7596923))
+* **utils:** add logger.createError method ([0c198d7](https://github.com/vuepress/vuepress-next/commit/0c198d7f9e122828b37a2db670048cfc2ce20e81))
+
+
+### BREAKING CHANGES
+
+* client API that provided by plugins should be imported from `plugin-foo/lib/client`
+* **core:** theme plugins could be overridden by user plugins now
+
+
+
+
+
 # [2.0.0-beta.7](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.6...v2.0.0-beta.7) (2021-04-09)
 
 
