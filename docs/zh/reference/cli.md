@@ -23,6 +23,12 @@ Options:
   -h, --help     Display this message 
 ```
 
+::: tip
+VuePress 使用了 [debug](https://www.npmjs.com/package/debug) 模块。
+
+设置环境变量 `DEBUG=vuepress*` 可以启用调试日志。
+:::
+
 ## dev
 
 启动一个开发服务器，在本地开发你的 VuePress 站点。

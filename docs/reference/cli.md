@@ -23,6 +23,12 @@ Options:
   -h, --help     Display this message 
 ```
 
+::: tip
+VuePress is using [debug](https://www.npmjs.com/package/debug) module.
+
+Set environment variable `DEBUG=vuepress*` to enable debug logs.
+:::
+
 ## dev
 
 Start a development server to develop your VuePress site locally.
