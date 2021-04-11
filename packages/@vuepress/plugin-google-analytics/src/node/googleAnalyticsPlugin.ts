@@ -1,5 +1,5 @@
-import type { Plugin } from '@vuepress/core'
-import { path } from '@vuepress/utils'
+import type { Plugin, PluginObject } from '@vuepress/core'
+import { logger, path } from '@vuepress/utils'
 
 export interface GoogleAnalyticsPluginOptions {
   id: string
@@ -7,15 +7,26 @@ export interface GoogleAnalyticsPluginOptions {
 
 export const googleAnalyticsPlugin: Plugin<GoogleAnalyticsPluginOptions> = ({
   id,
-}) => ({
-  name: '@vuepress/plugin-google-analytics',
+}) => {
+  const plugin: PluginObject = {
+    name: '@vuepress/plugin-google-analytics',
+  }
 
-  clientAppEnhanceFiles: path.resolve(
-    __dirname,
-    '../client/clientAppEnhance.js'
-  ),
+  if (!id) {
+    logger.warn(`[${plugin.name}] 'id' is required`)
+    return plugin
+  }
 
-  define: {
-    __GA_ID__: id || false,
-  },
-})
+  return {
+    ...plugin,
+
+    clientAppEnhanceFiles: path.resolve(
+      __dirname,
+      '../client/clientAppEnhance.js'
+    ),
+
+    define: {
+      __GA_ID__: id,
+    },
+  }
+}
