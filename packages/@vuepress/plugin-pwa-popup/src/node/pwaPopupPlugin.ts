@@ -12,7 +12,9 @@ export interface PwaPopupPluginOptions {
   }>
 }
 
-export const pwaPopupPlugin: Plugin<PwaPopupPluginOptions> = ({ locales }) => ({
+export const pwaPopupPlugin: Plugin<PwaPopupPluginOptions> = ({
+  locales = {},
+}) => ({
   name: '@vuepress/plugin-pwa-popup',
 
   clientAppRootComponentFiles: path.resolve(
