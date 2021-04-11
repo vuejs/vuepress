@@ -1,4 +1,4 @@
-import { isPlainObject, isString } from '@vuepress/shared'
+import { isPlainObject } from '@vuepress/shared'
 import { chalk, fs, path, logger } from '@vuepress/utils'
 import type { ThemeObject, ThemeLayout } from '../types'
 
@@ -9,6 +9,10 @@ export const resolveThemeLayouts = ({
   themePath: string
   themePlugin: ThemeObject
 }): ThemeLayout[] => {
+  if (!themePlugin.layouts) {
+    return []
+  }
+
   // use the layouts component map directly
   if (isPlainObject(themePlugin.layouts)) {
     return Object.entries(themePlugin.layouts).map(([name, file]) => ({
@@ -18,25 +22,21 @@ export const resolveThemeLayouts = ({
   }
 
   // resolve the layouts directory
-  const dirLayout =
-    isString(themePlugin.layouts) && path.isAbsolute(themePlugin.layouts)
-      ? themePlugin.layouts
-      : path.resolve(themePath, 'layouts')
-
-  if (!fs.pathExistsSync(dirLayout)) {
-    logger.warn(`layout path ${chalk.magenta(dirLayout)} does not exist`)
-    return []
+  if (!fs.pathExistsSync(themePlugin.layouts)) {
+    throw logger.createError(
+      `layouts directory does not exist: ${chalk.magenta(themePlugin.layouts)}`
+    )
   }
 
   // load all files in layouts directory
-  const files = fs.readdirSync(dirLayout)
+  const files = fs.readdirSync(themePlugin.layouts)
 
   // take matched files as theme layouts
   const layouts = files
     .filter((file) => /\.(vue|ts|js)$/.test(file))
     .map((file) => ({
       name: path.trimExt(file),
-      path: path.resolve(dirLayout, file),
+      path: path.resolve(themePlugin.layouts, file),
     }))
 
   return layouts
