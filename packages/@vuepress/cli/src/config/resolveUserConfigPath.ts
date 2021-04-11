@@ -1,4 +1,4 @@
-import { fs, path } from '@vuepress/utils'
+import { chalk, fs, logger, path } from '@vuepress/utils'
 
 /**
  * Resolve file path of user config
@@ -10,7 +10,9 @@ export const resolveUserConfigPath = (
   const configPath = path.resolve(cwd, config)
 
   if (!fs.pathExistsSync(configPath)) {
-    throw new Error(`The config file '${config}' does not exist`)
+    throw logger.createError(
+      `config file does not exist: ${chalk.magenta(config)}`
+    )
   }
 
   return configPath

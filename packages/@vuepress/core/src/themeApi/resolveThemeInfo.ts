@@ -1,5 +1,5 @@
 import { normalizePackageName } from '@vuepress/shared'
-import { logger, path, requireResolve } from '@vuepress/utils'
+import { chalk, logger, path, requireResolve } from '@vuepress/utils'
 import { normalizePlugin } from '../app'
 import type { App, ThemeInfo, ThemeObject, ThemeConfig } from '../types'
 import { resolveThemeLayouts } from './resolveThemeLayouts'
@@ -13,9 +13,7 @@ export const resolveThemeInfo = (app: App, themeName: string): ThemeInfo => {
   )
 
   if (themeEntry === null) {
-    const message = `theme ${themeName} is not found`
-    logger.error(message)
-    throw new Error(message)
+    throw logger.createError(`theme is not found: ${chalk.magenta(themeName)}`)
   }
 
   // normalize theme plugin from theme entry

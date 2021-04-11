@@ -20,10 +20,16 @@ export const error = (...args: any[]): void => {
   console.error(chalk.red('error'), ...args)
 }
 
+export const createError = (message?: string | undefined): Error => {
+  error(message)
+  return new Error(message)
+}
+
 export const logger = {
   info,
   tip,
   success,
   warn,
   error,
+  createError,
 }

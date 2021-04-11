@@ -22,9 +22,7 @@ export const normalizeClientFilesHook = (
     if (isExisted) {
       result.push(filePath)
     } else {
-      const message = `file does not exist: ${filePath}`
-      logger.error(message)
-      throw new Error(message)
+      throw logger.createError(`client file does not exist: ${filePath}`)
     }
   }
 
