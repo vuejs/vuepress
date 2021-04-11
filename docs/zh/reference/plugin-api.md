@@ -245,6 +245,8 @@ export default {
 
   该 Hook 接收文件绝对路径，或者一个返回路径的函数。
 
+  该 Hook 中的文件会在客户端 App 创建后被调用，用以对其进行一些增强。
+
 - 示例：
 
 ```js
@@ -266,6 +268,8 @@ module.exports = {
 
   该 Hook 接收文件绝对路径，或者一个返回路径的函数。
 
+  该 Hook 中的组件会被渲染到客户端 App 的根节点。
+
 - 示例：
 
 ```js
@@ -283,6 +287,8 @@ module.exports = {
   Client App Setup 文件路径。
 
   该 Hook 接收文件绝对路径，或者一个返回路径的函数。
+
+  该 Hook 中的文件会在客户端 App 的 [setup](https://v3.vuejs.org/guide/composition-api-setup.html) 函数中被调用。
 
 - 示例：
 

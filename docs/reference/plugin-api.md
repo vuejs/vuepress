@@ -245,6 +245,8 @@ export default {
 
   This hook accepts absolute file paths, or a function that returns the paths.
 
+  Files listed in this hook will be invoked after the client app is created to make some enhancement to it.
+
 - Example:
 
 ```js
@@ -266,6 +268,8 @@ module.exports = {
 
   This hook accepts absolute file paths, or a function that returns the paths.
 
+  Components listed in this hook will be rendered to the root node of the client app.
+
 - Example:
 
 ```js
@@ -283,6 +287,8 @@ module.exports = {
   Paths of client app setup files.
 
   This hook accepts absolute file paths, or a function that returns the paths.
+
+  Files listed in this hook will be invoked in the [setup](https://v3.vuejs.org/guide/composition-api-setup.html) function of the client app.
 
 - Example:
 
