@@ -7,7 +7,7 @@ import { useScrollPromise } from './composables'
 
 import './styles/index.scss'
 
-declare const DOCSEARCH_PROPS: unknown
+declare const __DOCSEARCH_PROPS__: unknown
 
 export default defineClientAppEnhance(({ app, router }) => {
   /* eslint-disable vue/match-component-file-name */
@@ -22,7 +22,7 @@ export default defineClientAppEnhance(({ app, router }) => {
 
   // docsearch feature might not be commonly used, so we don't put it
   // into dependencies of default theme, but it is supported
-  if (typeof DOCSEARCH_PROPS === 'undefined') {
+  if (typeof __DOCSEARCH_PROPS__ === 'undefined') {
     // register a mock `<Docsearch>` if docsearch plugin is not enabled
     app.component('Docsearch', () => null)
   }

@@ -21,9 +21,9 @@ export const mediumZoomPlugin: Plugin<MediumZoomPluginOptions> = ({
   ),
 
   define: {
-    MZ_SELECTOR: selector,
-    MZ_ZOOM_OPTIONS: zoomOptions,
-    MZ_DELAY: delay,
+    __MZ_SELECTOR__: selector,
+    __MZ_ZOOM_OPTIONS__: zoomOptions,
+    __MZ_DELAY__: delay,
   },
 })
 

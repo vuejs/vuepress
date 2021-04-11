@@ -16,6 +16,6 @@ export const googleAnalyticsPlugin: Plugin<GoogleAnalyticsPluginOptions> = ({
   ),
 
   define: {
-    GA_ID: id || false,
+    __GA_ID__: id || false,
   },
 })

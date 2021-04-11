@@ -19,7 +19,7 @@ export const tocPlugin: Plugin<TocPluginOptions> = ({
   ),
 
   define: {
-    TOC_COMPONENT_NAME: componentName,
-    TOC_DEFAULT_PROPS_OPTIONS: defaultPropsOptions,
+    __TOC_COMPONENT_NAME__: componentName,
+    __TOC_DEFAULT_PROPS_OPTIONS__: defaultPropsOptions,
   },
 })

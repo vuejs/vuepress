@@ -42,8 +42,8 @@ export const docsearchPlugin: Plugin<DocsearchPluginOptions> = ({
     ),
 
     define: {
-      DOCSEARCH_PROPS: props,
-      DOCSEARCH_LOCALES: locales,
+      __DOCSEARCH_PROPS__: props,
+      __DOCSEARCH_LOCALES__: locales,
     },
   }
 }

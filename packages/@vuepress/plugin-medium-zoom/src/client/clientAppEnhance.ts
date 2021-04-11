@@ -6,13 +6,13 @@ import { mediumZoomSymbol } from './composables'
 import './styles/medium-zoom.css'
 
 declare const __SSR__: boolean
-declare const MZ_SELECTOR: string
-declare const MZ_ZOOM_OPTIONS: ZoomOptions
-declare const MZ_DELAY: number
+declare const __MZ_SELECTOR__: string
+declare const __MZ_ZOOM_OPTIONS__: ZoomOptions
+declare const __MZ_DELAY__: number
 
-const selector = MZ_SELECTOR
-const zoomOptions = MZ_ZOOM_OPTIONS
-const delay = MZ_DELAY
+const selector = __MZ_SELECTOR__
+const zoomOptions = __MZ_ZOOM_OPTIONS__
+const delay = __MZ_DELAY__
 
 export default defineClientAppEnhance(({ app, router }) => {
   if (__SSR__ || !selector) return

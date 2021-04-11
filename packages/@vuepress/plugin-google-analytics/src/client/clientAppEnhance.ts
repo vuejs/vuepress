@@ -3,9 +3,9 @@ import { useGoogleAnalytics } from './composables'
 
 declare const __DEV__: boolean
 declare const __SSR__: boolean
-declare const GA_ID: string
+declare const __GA_ID__: string
 
-const id = GA_ID
+const id = __GA_ID__
 
 export default defineClientAppEnhance(() => {
   if (__DEV__ || __SSR__ || !id) return
