@@ -19,7 +19,7 @@ export interface DocsearchPluginOptions extends DocsearchPluginLocaleData {
 }
 
 export const docsearchPlugin: Plugin<DocsearchPluginOptions> = ({
-  locales,
+  locales = {},
   ...props
 }) => {
   const plugin: PluginObject = {
