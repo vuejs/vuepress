@@ -16,5 +16,5 @@ export const resolvePageLang = ({
   if (isString(frontmatter.lang) && frontmatter.lang) {
     return frontmatter.lang
   }
-  return app.siteData.locales[pathLocale]?.lang ?? app.siteData.lang ?? ''
+  return app.siteData.locales[pathLocale]?.lang ?? app.siteData.lang
 }

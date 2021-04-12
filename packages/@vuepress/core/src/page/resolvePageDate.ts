@@ -52,7 +52,7 @@ export const resolvePageDate = ({
 
   const dirname = path.dirname(filePathRelative)
 
-  if (dirname) {
+  if (dirname !== '.') {
     const matches = dirname.match(DIRNAME_DATE_RE)
     if (matches) {
       return formatDateString(
