@@ -17,16 +17,16 @@ const testCases: [string, string][] = [
 
 describe('core > page > resolvePageHtmlInfo', () => {
   describe('should resolve page html file path correctly', () => {
-    testCases.forEach(([pagePath, htmlFilePathRelative]) => {
+    testCases.forEach(([source, expected]) => {
       it(JSON.stringify(source), () => {
         expect(
           resolvePageHtmlInfo({
             app,
-            path: pagePath,
+            path: source,
           })
         ).toEqual({
-          htmlFilePath: app.dir.dest(htmlFilePathRelative),
-          htmlFilePathRelative,
+          htmlFilePath: app.dir.dest(expected),
+          htmlFilePathRelative: expected,
         })
       })
     })
