@@ -110,3 +110,17 @@ The `lint` script uses ESLint to check all source files.
 ### `yarn test`
 
 The `test` script uses Jest to run unit testings.
+
+## Documentation
+
+VuePress documentation is powered by VuePress itself, which is built from the source code of this repository.
+
+All the markdown source files are placed in `docs` directory. We are maintaining with two translations:
+
+- English (en-US) in `/` path
+- Chinese (zh-CN) in `/zh/` path
+
+We have two different deployments:
+
+- Release deployment powered by [Netlify](https://www.netlify.com). This deployment is built from the latest released version, so users will not see unreleased changes. The domain name is [https://vuepress2.netlify.app](https://vuepress2.netlify.app).
+- Developer deployment powered by [GitHub Pages](https://pages.github.com). This deployment is built from the latest commit, so developers could preview the latest changes. The domain name is [https://vuepress.github.io](https://vuepress.github.io).
