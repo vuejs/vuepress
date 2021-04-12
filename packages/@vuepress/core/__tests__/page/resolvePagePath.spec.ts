@@ -40,16 +40,6 @@ const testCases: [
     ],
     '/options',
   ],
-  [
-    [
-      {
-        permalink: null,
-        pathInferred: null,
-        options: {},
-      },
-    ],
-    '',
-  ],
 ]
 
 describe('core > page > resolvePagePath', () => {
@@ -59,5 +49,21 @@ describe('core > page > resolvePagePath', () => {
         expect(resolvePagePath(...input)).toEqual(expected)
       })
     })
+  })
+
+  it('should throw an error', async () => {
+    const consoleError = console.error
+    console.error = jest.fn()
+
+    expect(() =>
+      resolvePagePath({
+        permalink: null,
+        pathInferred: null,
+        options: {},
+      })
+    ).toThrow()
+    expect(console.error).toHaveBeenCalled()
+
+    console.error = consoleError
   })
 })

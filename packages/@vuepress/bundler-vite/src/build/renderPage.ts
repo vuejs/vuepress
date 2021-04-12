@@ -4,7 +4,6 @@ import type { Router as VueRouter } from 'vue-router'
 import { renderToString } from '@vue/server-renderer'
 import type { SSRContext } from '@vue/server-renderer'
 import type { App, Page } from '@vuepress/core'
-import { removeLeadingSlash } from '@vuepress/shared'
 import { fs, renderHead } from '@vuepress/utils'
 import { renderPagePrefetchLinks } from './renderPagePrefetchLinks'
 import { renderPagePreloadLinks } from './renderPagePreloadLinks'
@@ -30,7 +29,7 @@ export const renderPage = async ({
   output: RollupOutput['output']
   outputEntryChunk: OutputChunk
   outputCssAsset: OutputAsset
-}): Promise<string> => {
+}): Promise<void> => {
   // switch to current page route
   await vueRouter.push(page.path)
   await vueRouter.isReady()
@@ -81,13 +80,6 @@ export const renderPage = async ({
       renderPageScripts({ app, outputEntryChunk })
     )
 
-  // get html file name
-  const htmlFilename = app.dir.dest(
-    removeLeadingSlash(page.path.replace(/\/$/, '/index.html'))
-  )
-
   // write html file
-  await fs.outputFile(htmlFilename, html)
-
-  return htmlFilename
+  await fs.outputFile(page.htmlFilePath, html)
 }

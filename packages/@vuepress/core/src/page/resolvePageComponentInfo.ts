@@ -13,13 +13,13 @@ export const resolvePageComponentInfo = async ({
   app,
   content,
   filePathRelative,
-  path: routePath,
+  htmlFilePathRelative,
   key,
 }: {
   app: App
   content: string
   filePathRelative: string | null
-  path: string
+  htmlFilePathRelative: string | null
   key: string
 }): Promise<{
   headers: MarkdownHeader[]
@@ -35,6 +35,8 @@ export const resolvePageComponentInfo = async ({
   }
 
   const rendered = app.markdown.render(content, markdownEnv)
+
+  /* istanbul ignore next */
   const { headers = [], links = [], hoistedTags = [] } = markdownEnv
 
   // TODO: links check
@@ -43,18 +45,14 @@ export const resolvePageComponentInfo = async ({
   // take the rendered markdown content as <template>
   // hoist `<script>`, `<style>` and other custom blocks
   const componentFileContent = [
-    // if the `<template>` block is empty, vue will print a runtime warning
-    // during development, so here we add a whitespace to temporarily avoid
-    // the warning
-    // @see https://github.com/vuejs/vue-next/issues/2463
-    `<template>${rendered || ' '}</template>`,
+    `<template>${rendered}</template>`,
     ...hoistedTags,
   ].join('\n\n')
 
   // resolve component file path
   const componentFilePathRelative = path.join(
     'pages',
-    filePathRelative?.replace(/\.md$/, '.vue') ?? `${routePath || key}.vue`
+    `${htmlFilePathRelative}.vue`
   )
   const componentFilePath = app.dir.temp(componentFilePathRelative)
   const componentFileChunkName = key

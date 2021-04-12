@@ -1,4 +1,3 @@
-import { path } from '@vuepress/utils'
 import type { App } from '../types'
 
 /**
@@ -14,7 +13,7 @@ export const resolvePageRoutesInfo = ({
   routesFilePath: string
   routesFilePathRelative: string
 } => {
-  const routesFilePathRelative = path.join(`internal/pageRoutes/${key}.js`)
+  const routesFilePathRelative = `internal/pageRoutes/${key}.js`
   const routesFilePath = app.dir.temp(routesFilePathRelative)
 
   return {

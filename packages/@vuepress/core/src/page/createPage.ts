@@ -8,6 +8,7 @@ import { resolvePageExcerpt } from './resolvePageExcerpt'
 import { resolvePageFileContent } from './resolvePageFileContent'
 import { resolvePageFilePath } from './resolvePageFilePath'
 import { resolvePageFrontmatter } from './resolvePageFrontmatter'
+import { resolvePageHtmlInfo } from './resolvePageHtmlInfo'
 import { resolvePageKey } from './resolvePageKey'
 import { resolvePageLang } from './resolvePageLang'
 import { resolvePagePath } from './resolvePagePath'
@@ -67,6 +68,12 @@ export const createPage = async (
   // resolve path key
   const key = resolvePageKey({ path })
 
+  // resolve page rendered html file path
+  const { htmlFilePath, htmlFilePathRelative } = resolvePageHtmlInfo({
+    app,
+    path,
+  })
+
   // resolve page component and extract headers & links
   const {
     headers,
@@ -79,7 +86,7 @@ export const createPage = async (
     app,
     content,
     filePathRelative,
-    path,
+    htmlFilePathRelative,
     key,
   })
 
@@ -113,6 +120,8 @@ export const createPage = async (
     dataFileChunkName,
     routesFilePath,
     routesFilePathRelative,
+    htmlFilePath,
+    htmlFilePathRelative,
     title,
     content,
     frontmatter,

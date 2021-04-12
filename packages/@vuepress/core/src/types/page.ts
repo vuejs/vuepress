@@ -24,18 +24,28 @@ export interface Page extends PageData {
   pathLocale: string
 
   /**
-   * Absolute path of the source file
+   * Source file path
    *
    * If the page does not come from a file, it would be `null`
    */
   filePath: string | null
 
   /**
-   * Relative path of the source file
+   * Source file path relative to source directory
    *
    * If the page does not come from a file, it would be `null`
    */
   filePathRelative: string | null
+
+  /**
+   * Rendered html file path
+   */
+  htmlFilePath: string
+
+  /**
+   * Rendered html file path relative to dest directory
+   */
+  htmlFilePathRelative: string
 
   /**
    * Component file path
@@ -43,7 +53,7 @@ export interface Page extends PageData {
   componentFilePath: string
 
   /**
-   * Component relative file path
+   * Component file path relative to temp directory
    */
   componentFilePathRelative: string
 
@@ -54,6 +64,8 @@ export interface Page extends PageData {
 
   /**
    * Component file chunk name
+   *
+   * Only take effect in webpack
    */
   componentFileChunkName: string
 
@@ -63,12 +75,14 @@ export interface Page extends PageData {
   dataFilePath: string
 
   /**
-   * Page data relative file path
+   * Page data file path relative to temp directory
    */
   dataFilePathRelative: string
 
   /**
    * Page data file chunk name
+   *
+   * Only take effect in webpack
    */
   dataFileChunkName: string
 
@@ -78,7 +92,7 @@ export interface Page extends PageData {
   routesFilePath: string
 
   /**
-   * Page routes relative file path
+   * Page routes file path relative to temp directory
    */
   routesFilePathRelative: string
 

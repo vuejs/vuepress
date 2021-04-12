@@ -1,3 +1,4 @@
+import { logger } from '@vuepress/utils'
 import type { PageOptions } from '../types'
 
 /**
@@ -11,4 +12,14 @@ export const resolvePagePath = ({
   permalink: string | null
   pathInferred: string | null
   options: PageOptions
-}): string => encodeURI(permalink || pathInferred || options.path || '')
+}): string => {
+  const pagePath = permalink || pathInferred || options.path
+
+  if (!pagePath) {
+    throw logger.createError(
+      `page path is empty, page options: ${JSON.stringify(options)}`
+    )
+  }
+
+  return encodeURI(pagePath)
+}

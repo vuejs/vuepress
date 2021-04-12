@@ -1,4 +1,3 @@
-import { path } from '@vuepress/utils'
 import type { App } from '../types'
 
 /**
@@ -15,7 +14,7 @@ export const resolvePageDataInfo = ({
   dataFilePathRelative: string
   dataFileChunkName: string
 } => {
-  const dataFilePathRelative = path.join(`internal/pageData/${key}.js`)
+  const dataFilePathRelative = `internal/pageData/${key}.js`
   const dataFilePath = app.dir.temp(dataFilePathRelative)
   const dataFileChunkName = key
 

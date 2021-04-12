@@ -22,6 +22,7 @@ module.exports = {
       },
       rules: {
         '@typescript-eslint/explicit-function-return-type': 'off',
+        'vue/one-component-per-file': 'off',
       },
     },
   ],
