@@ -105,6 +105,7 @@ export const tocPlugin: PluginWithOptions<TocPluginOptions> = (
     headers = resolveHeadersFromTokens(state.tokens, {
       level,
       allowHtml: true,
+      escapeText: true,
       slugify,
       format,
     })

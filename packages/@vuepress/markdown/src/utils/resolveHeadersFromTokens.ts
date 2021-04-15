@@ -10,11 +10,13 @@ export const resolveHeadersFromTokens = (
   {
     level,
     allowHtml,
+    escapeText,
     slugify,
     format,
   }: {
     level: number[]
     allowHtml: boolean
+    escapeText: boolean
     slugify: (str: string) => string
     format?: (str: string) => string
   }
@@ -84,9 +86,11 @@ export const resolveHeadersFromTokens = (
     // get title from tokens
     const title = titleTokens
       .reduce((result, item) => {
-        // escape content of 'code_inline' and 'text'
-        if (item.type === 'code_inline' || item.type === 'text') {
-          return `${result}${htmlEscape(item.content)}`
+        if (escapeText) {
+          // escape the content of 'code_inline' and 'text'
+          if (item.type === 'code_inline' || item.type === 'text') {
+            return `${result}${htmlEscape(item.content)}`
+          }
         }
 
         // keep the content of 'emoji' and 'html_inline'

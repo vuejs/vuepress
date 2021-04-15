@@ -46,6 +46,7 @@ export const extractHeadersPlugin: PluginWithOptions<ExtractHeadersPluginOptions
     headers = resolveHeadersFromTokens(state.tokens, {
       level,
       allowHtml: false,
+      escapeText: false,
       slugify,
       format,
     })
