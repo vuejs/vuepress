@@ -5,11 +5,7 @@ export const appUseByConfig = <T extends PluginOptions>(
   app: App,
   pluginConfig: PluginConfig<T>
 ): void => {
-  const normalizedPluginConfig = normalizePluginConfig<T>(pluginConfig)
-
-  if (normalizedPluginConfig === false) return
-
-  const [plugin, config] = normalizedPluginConfig
+  const [plugin, config] = normalizePluginConfig<T>(pluginConfig)
 
   if (config === false) return
 

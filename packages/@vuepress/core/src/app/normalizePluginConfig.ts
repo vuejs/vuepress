@@ -1,4 +1,4 @@
-import { isArray, isString } from '@vuepress/shared'
+import { isArray } from '@vuepress/shared'
 import type {
   PluginOptions,
   PluginConfig,
@@ -7,17 +7,13 @@ import type {
 
 export const normalizePluginConfig = <T extends PluginOptions>(
   pluginConfig: PluginConfig<T>
-): PluginConfigNormalized<T> | false => {
-  // 'container' -> ['container', {}]
-  if (isString(pluginConfig)) {
-    return [pluginConfig, {}]
-  }
-
-  // ['container'] -> ['container', {}]
+): PluginConfigNormalized<T> => {
+  // ['container'] -> ['container', true]
   // ['container', options] -> ['container', options]
   if (isArray(pluginConfig)) {
-    return [pluginConfig[0], pluginConfig[1] ?? {}]
+    return [pluginConfig[0], pluginConfig[1] ?? true]
   }
 
-  return false
+  // 'container' -> ['container', true]
+  return [pluginConfig, true]
 }
