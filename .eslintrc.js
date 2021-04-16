@@ -16,6 +16,12 @@ module.exports = {
       },
     },
     {
+      files: ['clientAppEnhance.ts'],
+      rules: {
+        'vue/match-component-file-name': 'off',
+      },
+    },
+    {
       files: ['**/__tests__/**/*.ts'],
       env: {
         jest: true,

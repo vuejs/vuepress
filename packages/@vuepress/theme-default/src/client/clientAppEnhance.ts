@@ -10,7 +10,6 @@ import './styles/index.scss'
 declare const __DOCSEARCH_PROPS__: unknown
 
 export default defineClientAppEnhance(({ app, router }) => {
-  /* eslint-disable vue/match-component-file-name */
   app.component('Badge', Badge)
   app.component('CodeGroup', CodeGroup)
   app.component('CodeGroupItem', CodeGroupItem)
@@ -26,7 +25,6 @@ export default defineClientAppEnhance(({ app, router }) => {
     // register a mock `<Docsearch>` if docsearch plugin is not enabled
     app.component('Docsearch', () => null)
   }
-  /* eslint-enable vue/match-component-file-name */
 
   // handle scrollBehavior with transition
   const scrollBehavior = router.options.scrollBehavior!

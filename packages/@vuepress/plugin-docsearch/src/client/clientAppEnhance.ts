@@ -30,7 +30,6 @@ const isSpecialClick = (event: MouseEvent): boolean => {
 
 export default defineClientAppEnhance(({ app }) => {
   // wrap the `<Docsearch />` component with plugin options
-  // eslint-disable-next-line vue/match-component-file-name
   app.component('Docsearch', {
     setup() {
       const router = useRouter()
