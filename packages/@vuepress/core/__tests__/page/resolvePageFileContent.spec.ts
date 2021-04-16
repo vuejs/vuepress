@@ -3,7 +3,7 @@ import { resolvePageFileContent } from '@vuepress/core'
 
 describe('core > page > resolvePageFileContent', () => {
   it('should resolve file content correctly from file path', async () => {
-    const filePath = path.resolve(__dirname, '../__fixtures__/foo.md')
+    const filePath = path.resolve(__dirname, '../__fixtures__/pages/foo.md')
     const resolved = await resolvePageFileContent({ filePath, options: {} })
 
     const expected = (await fs.readFile(filePath)).toString()
