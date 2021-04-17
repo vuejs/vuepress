@@ -8,15 +8,15 @@ const app = createApp({
 })
 const clientFile = path.resolve(
   __dirname,
-  '../__fixtures__/client-files/clientAppSetup.ts'
+  '../__fixtures__/clientFiles/clientAppSetup.ts'
 )
 const clientFileNonExistent = path.resolve(
   __dirname,
-  '../__fixtures__/client-files/non-existent.ts'
+  '../__fixtures__/clientFiles/non-existent.ts'
 )
 const clientFiles = [
-  path.resolve(__dirname, '../__fixtures__/client-files/clientAppSetup.ts'),
-  path.resolve(__dirname, '../__fixtures__/client-files/clientAppEnhance.ts'),
+  path.resolve(__dirname, '../__fixtures__/clientFiles/clientAppSetup.ts'),
+  path.resolve(__dirname, '../__fixtures__/clientFiles/clientAppEnhance.ts'),
 ]
 const clientFilesNonExistent = [clientFile, clientFileNonExistent]
 
