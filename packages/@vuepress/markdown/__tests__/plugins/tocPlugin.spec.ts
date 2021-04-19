@@ -76,6 +76,24 @@ describe('@vuepress/markdown > plugins > tocPlugin', () => {
     })
   })
 
+  describe('should render class name correctly', () => {
+    const md = MarkdownIt().use(tocPlugin, {
+      // remove default container class
+      containerClass: '',
+      // add custom list / item / link class
+      listClass: 'toc-list',
+      itemClass: 'toc-item',
+      linkClass: 'toc-link',
+    })
+
+    Object.entries(fixtures).forEach(([name, source]) => {
+      it(name, () => {
+        const result = md.render(source)
+        expect(result).toMatchSnapshot()
+      })
+    })
+  })
+
   describe('should include html elements and should escape texts', () => {
     const md = MarkdownIt({
       html: true,
@@ -142,5 +160,22 @@ describe('@vuepress/markdown > plugins > tocPlugin', () => {
 `)
       })
     )
+  })
+
+  describe('edge cases', () => {
+    it('should not terminate the blockquote', () => {
+      const md = MarkdownIt().use(tocPlugin)
+
+      const source = `\
+> foo
+    [[toc]]
+`
+      expect(md.render(source)).toEqual(`\
+<blockquote>
+<p>foo
+[[toc]]</p>
+</blockquote>
+`)
+    })
   })
 })

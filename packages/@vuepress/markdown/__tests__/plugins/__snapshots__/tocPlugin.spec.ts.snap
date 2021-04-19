@@ -1,5 +1,71 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`@vuepress/markdown > plugins > tocPlugin should render class name correctly complexTree 1`] = `
+<nav>
+  <ul class="toc-list">
+    <li class="toc-item" class="toc-item"><a class="toc-link href=" #s1-1">s1-1</a>
+      <ul class="toc-list">
+        <li class="toc-item" class="toc-item"><a class="toc-link href=" #s1-1-1">s1-1-1</a></li>
+        <li class="toc-item" class="toc-item"><a class="toc-link href=" #s1-1-2">s1-1-2</a></li>
+        <li class="toc-item" class="toc-item"><a class="toc-link href=" #s1-1-3">s1-1-3</a></li>
+      </ul>
+    </li>
+    <li class="toc-item" class="toc-item"><a class="toc-link href=" #s1-2">s1-2</a></li>
+    <li class="toc-item" class="toc-item"><a class="toc-link href=" #s1-3">s1-3</a>
+      <ul class="toc-list">
+        <li class="toc-item" class="toc-item"><a class="toc-link href=" #s1-3-2">s1-3-2</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+<h1>s1</h1>
+<h2>s1-1</h2>
+<h3>s1-1-1</h3>
+<h4>s1-1-1-1</h4>
+<h3>s1-1-2</h3>
+<h3>s1-1-3</h3>
+<h4>s1-1-3-1</h4>
+<h2>s1-2</h2>
+<h2>s1-3</h2>
+<h3>s1-3-2</h3>
+<h4>s1-3-2-1</h4>
+<h5>s1-3-2-1-1</h5>
+<h5>s1-3-2-1-2</h5>
+`;
+
+exports[`@vuepress/markdown > plugins > tocPlugin should render class name correctly reversedTree 1`] = `
+<nav>
+  <ul class="toc-list">
+    <li class="toc-item" class="toc-item"><a class="toc-link href=" #h3">h3</a></li>
+    <li class="toc-item" class="toc-item"><a class="toc-link href=" #h2">h2</a></li>
+  </ul>
+</nav>
+<h6>h6</h6>
+<h5>h5</h5>
+<h4>h4</h4>
+<h3>h3</h3>
+<h2>h2</h2>
+<h1>h1</h1>
+`;
+
+exports[`@vuepress/markdown > plugins > tocPlugin should render class name correctly simpleTree 1`] = `
+<nav>
+  <ul class="toc-list">
+    <li class="toc-item" class="toc-item"><a class="toc-link href=" #h2">h2</a>
+      <ul class="toc-list">
+        <li class="toc-item" class="toc-item"><a class="toc-link href=" #h3">h3</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+<h1>h1</h1>
+<h2>h2</h2>
+<h3>h3</h3>
+<h4>h4</h4>
+<h5>h5</h5>
+<h6>h6</h6>
+`;
+
 exports[`@vuepress/markdown > plugins > tocPlugin should render toc (h1, h2, h3, h4) complexTree 1`] = `
 <nav class="table-of-contents">
   <ul>
