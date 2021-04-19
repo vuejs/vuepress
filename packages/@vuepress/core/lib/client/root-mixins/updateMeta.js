@@ -1,4 +1,5 @@
 import unionBy from 'lodash/unionBy'
+import escape from 'escape-html'
 
 export default {
   // created will be called on both client and ssr
@@ -132,7 +133,7 @@ function renderPageMeta (meta) {
   return meta.map(m => {
     let res = `<meta`
     Object.keys(m).forEach(key => {
-      res += ` ${key}="${m[key]}"`
+      res += ` ${key}="${escape(m[key])}"`
     })
     return res + `>`
   }).join('\n    ')
