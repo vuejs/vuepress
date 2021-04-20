@@ -5,13 +5,15 @@ const packagesDir = 'packages/@vuepress'
 const packages = readdirSync(resolve(__dirname, packagesDir), {
   withFileTypes: true,
 })
-  .filter(
-    (item) =>
-      item.isDirectory() &&
-      !item.name.startsWith('plugin') &&
-      !item.name.startsWith('theme')
-  )
+  .filter((item) => item.isDirectory())
   .map(({ name }) => name)
+
+const commonPackages = packages.filter(
+  (item) => !item.startsWith('plugin-') && !item.startsWith('theme-')
+)
+const pluginAndThemePackages = packages.filter(
+  (item) => item.startsWith('plugin-') || item.startsWith('theme-')
+)
 
 module.exports = {
   rootDir: resolve(__dirname),
@@ -26,7 +28,12 @@ module.exports = {
     '__SSR__': false,
   },
   moduleNameMapper: {
-    [`^@vuepress/(${packages.join('|')})$`]: `<rootDir>/${packagesDir}/$1/src`,
+    [`^@vuepress/(${commonPackages.join(
+      '|'
+    )})$`]: `<rootDir>/${packagesDir}/$1/src`,
+    [`^@vuepress/(${pluginAndThemePackages.join(
+      '|'
+    )})$`]: `<rootDir>/${packagesDir}/$1/src/node`,
     '^@internal/(.*)$': `<rootDir>/packages/@vuepress/client/__tests__/__fixtures__/$1`,
     '.+\\.(css|styl|less|sass|scss)$':
       '<rootDir>/packages/@vuepress/client/__tests__/__fixtures__/styleMock',
