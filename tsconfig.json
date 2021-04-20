@@ -28,6 +28,9 @@
     },
     { "path": "./packages/@vuepress/plugin-pwa/tsconfig.build.json" },
     { "path": "./packages/@vuepress/plugin-pwa-popup/tsconfig.build.json" },
+    {
+      "path": "./packages/@vuepress/plugin-register-components/tsconfig.build.json"
+    },
     { "path": "./packages/@vuepress/plugin-shiki/tsconfig.build.json" },
     { "path": "./packages/@vuepress/plugin-theme-data/tsconfig.build.json" },
     { "path": "./packages/@vuepress/plugin-toc/tsconfig.build.json" },

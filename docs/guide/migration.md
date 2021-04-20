@@ -164,7 +164,7 @@ The arguments of the function are changed, too.
 
 Files in this directory will not be registered as Vue components automatically.
 
-You need to register your components manually in `.vuepress/clientAppEnhance.{js,ts}`.
+You need to use `@vuepress/plugin-register-components`, or register your components manually in `.vuepress/clientAppEnhance.{js,ts}`.
 
 #### .vuepress/theme/
 
@@ -268,7 +268,7 @@ Some major breaking changes:
 
 - There is no **conventional theme directory structure** anymore.
   - The file `theme/enhanceApp.js` or `theme/clientAppEnhance.{js,ts}` will not be used as client app enhance file implicitly. You need to specify it explicitly in `clientAppEnhanceFiles` hook.
-  - Files in `theme/global-components/` directory will not be registered as Vue components automatically. You need to register components manually in `clientAppEnhance.{js,ts}`.
+  - Files in `theme/global-components/` directory will not be registered as Vue components automatically. You need to use `@vuepress/plugin-register-components`, or register components manually in `clientAppEnhance.{js,ts}`.
   - Files in `theme/layouts/` directory will not be registered as layout components automatically. You need to specify it explicitly in `layouts` option.
   - Files in `theme/templates/` directory will not be used as dev / ssr template automatically.
   - Always provide a theme entry file, and do not use `"main": "layouts/Layout.vue"` as the theme entry.

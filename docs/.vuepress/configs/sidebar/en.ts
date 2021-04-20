@@ -82,6 +82,7 @@ export const en: SidebarConfig = {
             '/reference/plugin/google-analytics.md',
             '/reference/plugin/medium-zoom.md',
             '/reference/plugin/nprogress.md',
+            '/reference/plugin/register-components.md',
           ],
         },
         {
