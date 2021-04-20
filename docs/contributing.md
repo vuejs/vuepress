@@ -115,7 +115,7 @@ The `test` script uses Jest to run unit testings.
 
 VuePress documentation is powered by VuePress itself, which is built from the source code of this repository.
 
-All the markdown source files are placed in `docs` directory. We are maintaining with two translations:
+All the markdown source files are placed in `docs` directory. We are maintaining two translations:
 
 - English (en-US) in `/` path
 - Chinese (zh-CN) in `/zh/` path
