@@ -1,7 +1,6 @@
 import { defineClientAppSetup } from '@vuepress/client'
 import { useActiveHeaderLinks } from './composables'
 
-declare const __SSR__: boolean
 declare const __AHL_HEADER_LINK_SELECTOR__: string
 declare const __AHL_HEADER_ANCHOR_SELECTOR__: string
 declare const __AHL_DELAY__: number

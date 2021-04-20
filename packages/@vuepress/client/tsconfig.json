@@ -19,7 +19,7 @@
       "@internal/pagesRoutes": ["src/types/internal/pagesRoutes.d.ts"],
       "@internal/siteData": ["src/types/internal/siteData.d.ts"]
     },
-    "types": ["webpack-env", "vite/client"]
+    "types": ["./types", "webpack-env", "vite/client"]
   },
   "include": ["./src", "./__tests__"]
 }

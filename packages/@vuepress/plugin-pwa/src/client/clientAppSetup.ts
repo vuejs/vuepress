@@ -4,8 +4,6 @@ import { defineClientAppSetup, withBase } from '@vuepress/client'
 import { pwaEventSymbol } from './composables'
 import type { PwaEvent } from './composables'
 
-declare const __DEV__: boolean
-declare const __SSR__: boolean
 declare const __PWA_SW_FILENAME__: string
 
 const swFilename = __PWA_SW_FILENAME__

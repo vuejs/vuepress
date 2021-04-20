@@ -3,8 +3,6 @@ import type { ComputedRef, InjectionKey } from 'vue'
 import type { RouteLocale } from '@vuepress/client'
 import type { ThemeData } from '../../shared'
 
-declare const __DEV__: boolean
-
 export type ThemeLocaleDataRef<T extends ThemeData = ThemeData> = ComputedRef<T>
 
 export const themeLocaleDataSymbol: InjectionKey<ThemeLocaleDataRef> = Symbol(

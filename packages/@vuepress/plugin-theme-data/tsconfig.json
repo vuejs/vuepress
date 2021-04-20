@@ -6,7 +6,7 @@
     "paths": {
       "@internal/themeData": ["src/client/themeData.d.ts"]
     },
-    "types": ["webpack-env", "vite/client"]
+    "types": ["@vuepress/client/types", "webpack-env", "vite/client"]
   },
   "include": ["./src", "./__tests__"]
 }

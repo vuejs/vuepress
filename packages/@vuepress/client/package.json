@@ -20,7 +20,8 @@
   "types": "lib/index.d.ts",
   "files": [
     "lib",
-    "templates"
+    "templates",
+    "types.d.ts"
   ],
   "scripts": {
     "build": "tsc -b tsconfig.build.json",

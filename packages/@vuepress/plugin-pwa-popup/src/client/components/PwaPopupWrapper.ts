@@ -3,8 +3,6 @@ import type { FunctionalComponent } from 'vue'
 import { PwaPopup } from './PwaPopup'
 import type { PwaPopupLocales } from './PwaPopup'
 
-declare const __DEV__: boolean
-declare const __SSR__: boolean
 declare const __PWA_POPUP_LOCALES__: PwaPopupLocales
 
 const locales = __PWA_POPUP_LOCALES__

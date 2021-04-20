@@ -5,7 +5,6 @@ import { mediumZoomSymbol } from './composables'
 
 import './styles/medium-zoom.css'
 
-declare const __SSR__: boolean
 declare const __MZ_SELECTOR__: string
 declare const __MZ_ZOOM_OPTIONS__: ZoomOptions
 declare const __MZ_DELAY__: number
