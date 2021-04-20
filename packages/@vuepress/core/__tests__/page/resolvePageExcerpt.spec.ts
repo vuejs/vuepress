@@ -9,8 +9,9 @@ const app = createApp({
 describe('core > page > resolvePageExcerpt', () => {
   it('should resolve page excerpt correctly', () => {
     const resolved = resolvePageExcerpt({
-      excerptRaw: 'foobar',
       app,
+      excerptRaw: 'foobar',
+      frontmatter: {},
       filePathRelative: null,
     })
 

@@ -11,6 +11,7 @@ describe('core > page > resolvePageComponentInfo', () => {
     const resolved = await resolvePageComponentInfo({
       app,
       content: 'foobar',
+      frontmatter: {},
       filePathRelative: 'foo.md',
       htmlFilePathRelative: 'foo.html',
       key: 'key',
@@ -30,6 +31,7 @@ describe('core > page > resolvePageComponentInfo', () => {
     const resolved = await resolvePageComponentInfo({
       app,
       content: 'foobar',
+      frontmatter: {},
       filePathRelative: null,
       htmlFilePathRelative: 'foo.html',
       key: 'key',
