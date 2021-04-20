@@ -86,7 +86,7 @@ export default defineComponent({
 }
 
 @media (max-width: 959px) {
-  #back-to-top {
+  .back-to-top {
     display: none;
   }
 }
