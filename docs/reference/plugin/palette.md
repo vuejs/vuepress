@@ -1,6 +1,6 @@
 # palette
 
-> [@vuepress/plugin-palette](https://www.npmjs.com/package/@vuepress/plugin-palette)
+<NpmBadge package="@vuepress/plugin-palette" />
 
 Provide palette support for your theme.
 

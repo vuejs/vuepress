@@ -1,6 +1,6 @@
 # palette
 
-> [@vuepress/plugin-palette](https://www.npmjs.com/package/@vuepress/plugin-palette)
+<NpmBadge package="@vuepress/plugin-palette" />
 
 为你的主题提供调色板功能。
 

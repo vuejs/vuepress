@@ -1,6 +1,6 @@
 # pwa
 
-> [@vuepress/plugin-pwa](https://www.npmjs.com/package/@vuepress/plugin-pwa)
+<NpmBadge package="@vuepress/plugin-pwa" />
 
 使你的 VuePress 站点成为一个 [渐进式 Web 应用 (PWA)](https://developer.mozilla.org/zh-CN/docs/Web/Progressive_web_apps).
 

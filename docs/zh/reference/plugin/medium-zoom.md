@@ -1,6 +1,6 @@
 # medium-zoom
 
-> [@vuepress/plugin-medium-zoom](https://www.npmjs.com/package/@vuepress/plugin-medium-zoom)
+<NpmBadge package="@vuepress/plugin-medium-zoom" />
 
 将 [medium-zoom](https://github.com/francoischalifour/medium-zoom#readme) 集成到 VuePress 中，为图片提供可缩放的功能。
 

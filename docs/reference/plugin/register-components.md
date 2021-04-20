@@ -1,6 +1,6 @@
 # register-components
 
-> [@vuepress/plugin-register-components](https://www.npmjs.com/package/@vuepress/plugin-register-components)
+<NpmBadge package="@vuepress/plugin-register-components" />
 
 Register Vue components from component files or directory automatically.
 

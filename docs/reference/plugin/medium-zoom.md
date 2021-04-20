@@ -1,6 +1,6 @@
 # medium-zoom
 
-> [@vuepress/plugin-medium-zoom](https://www.npmjs.com/package/@vuepress/plugin-medium-zoom)
+<NpmBadge package="@vuepress/plugin-medium-zoom" />
 
 Integrate [medium-zoom](https://github.com/francoischalifour/medium-zoom#readme) into VuePress, which can provide the ability to zoom images.
 

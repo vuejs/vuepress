@@ -1,6 +1,6 @@
 # register-components
 
-> [@vuepress/plugin-register-components](https://www.npmjs.com/package/@vuepress/plugin-register-components)
+<NpmBadge package="@vuepress/plugin-register-components" />
 
 根据组件文件或目录自动注册 Vue 组件。
 

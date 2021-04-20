@@ -1,6 +1,6 @@
 # git
 
-> [@vuepress/plugin-git](https://www.npmjs.com/package/@vuepress/plugin-git)
+<NpmBadge package="@vuepress/plugin-git" />
 
 该插件会收集你的页面的 Git 信息，包括创建和更新时间、贡献者等。
 

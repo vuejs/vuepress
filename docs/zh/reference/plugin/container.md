@@ -1,6 +1,6 @@
 # container
 
-> [@vuepress/plugin-container](https://www.npmjs.com/package/@vuepress/plugin-container)
+<NpmBadge package="@vuepress/plugin-container" />
 
 为你的 VuePress 站点注册自定义容器。
 

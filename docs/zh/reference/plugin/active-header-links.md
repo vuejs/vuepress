@@ -1,6 +1,6 @@
 # active-header-links
 
-> [@vuepress/plugin-active-header-links](https://www.npmjs.com/package/@vuepress/plugin-active-header-links)
+<NpmBadge package="@vuepress/plugin-active-header-links" />
 
 该插件会监听页面滚动事件。当页面滚动至某个 _标题锚点_ 后，如果存在对应的 _标题链接_ ，那么该插件会将路由 Hash 更改为该 _标题锚点_ 。
 

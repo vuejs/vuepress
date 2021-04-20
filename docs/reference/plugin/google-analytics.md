@@ -1,6 +1,6 @@
 # google-analytics
 
-> [@vuepress/plugin-google-analytics](https://www.npmjs.com/package/@vuepress/plugin-google-analytics)
+<NpmBadge package="@vuepress/plugin-google-analytics" />
 
 Integrate [Google Analytics](https://analytics.google.com/) into VuePress.
 

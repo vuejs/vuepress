@@ -1,6 +1,6 @@
 # docsearch
 
-> [@vuepress/plugin-docsearch](https://www.npmjs.com/package/@vuepress/plugin-docsearch)
+<NpmBadge package="@vuepress/plugin-docsearch" />
 
 将 [Algolia DocSearch](https://docsearch.algolia.com/) 集成到 VuePress 中，为你的文档网站提供搜索功能。
 

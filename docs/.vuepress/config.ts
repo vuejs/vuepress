@@ -1,7 +1,7 @@
 import * as chokidar from 'chokidar'
 import { defineUserConfig } from '@vuepress/cli'
 import type { DefaultThemeOptions } from '@vuepress/theme-default'
-import { chalk, logger } from '@vuepress/utils'
+import { chalk, logger, path } from '@vuepress/utils'
 import { navbar, sidebar } from './configs'
 
 export default defineUserConfig<DefaultThemeOptions>({
@@ -170,6 +170,12 @@ export default defineUserConfig<DefaultThemeOptions>({
             buttonText: '刷新',
           },
         },
+      },
+    ],
+    [
+      '@vuepress/plugin-register-components',
+      {
+        componentsDir: path.resolve(__dirname, './components'),
       },
     ],
   ],

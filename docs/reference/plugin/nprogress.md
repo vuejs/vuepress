@@ -8,7 +8,7 @@ title: nprogress
 
 # nprogress Plugin
 
-> [@vuepress/plugin-nprogress](https://www.npmjs.com/package/@vuepress/plugin-nprogress)
+<NpmBadge package="@vuepress/plugin-nprogress" />
 
 Integrate [nprogress](https://github.com/rstacruz/nprogress) into VuePress, which can provide a progress bar when navigating to another page.
 

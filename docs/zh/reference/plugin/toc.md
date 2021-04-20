@@ -1,6 +1,6 @@
 # toc
 
-> [@vuepress/plugin-toc](https://www.npmjs.com/package/@vuepress/plugin-toc)
+<NpmBadge package="@vuepress/plugin-toc" />
 
 该插件会提供一个目录 (table-of-contents, TOC) 组件。
 

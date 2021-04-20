@@ -1,6 +1,6 @@
 # theme-data
 
-> [@vuepress/plugin-theme-data](https://www.npmjs.com/package/@vuepress/plugin-theme-data)
+<NpmBadge package="@vuepress/plugin-theme-data" />
 
 为你的主题提供客户端数据，包含 VuePress 的 [多语言支持](../../guide/i18n.md) 。
 

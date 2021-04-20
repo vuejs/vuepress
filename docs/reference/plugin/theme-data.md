@@ -1,6 +1,6 @@
 # theme-data
 
-> [@vuepress/plugin-theme-data](https://www.npmjs.com/package/@vuepress/plugin-theme-data)
+<NpmBadge package="@vuepress/plugin-theme-data" />
 
 Provide client data for your theme, with VuePress [i18n](../../guide/i18n.md) support.
 
