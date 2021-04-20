@@ -4,7 +4,7 @@ import type {
   MarkdownLink,
 } from '@vuepress/markdown'
 import { path } from '@vuepress/utils'
-import type { App } from '../types'
+import type { App, PageFrontmatter } from '../types'
 
 /**
  * Resolve page component and related info
@@ -12,12 +12,14 @@ import type { App } from '../types'
 export const resolvePageComponentInfo = async ({
   app,
   content,
+  frontmatter,
   filePathRelative,
   htmlFilePathRelative,
   key,
 }: {
   app: App
   content: string
+  frontmatter: PageFrontmatter
   filePathRelative: string | null
   htmlFilePathRelative: string | null
   key: string
@@ -32,6 +34,7 @@ export const resolvePageComponentInfo = async ({
   const markdownEnv: MarkdownEnv = {
     base: app.options.base,
     filePathRelative,
+    frontmatter,
   }
 
   const rendered = app.markdown.render(content, markdownEnv)

@@ -39,7 +39,12 @@ export const createPage = async (
   const frontmatter = resolvePageFrontmatter({ frontmatterRaw, options })
 
   // resolve excerpt from raw excerpt
-  const excerpt = resolvePageExcerpt({ excerptRaw, app, filePathRelative })
+  const excerpt = resolvePageExcerpt({
+    app,
+    excerptRaw,
+    filePathRelative,
+    frontmatter,
+  })
 
   // resolve slug from file path
   const slug = resolvePageSlug({ filePathRelative })
@@ -86,6 +91,7 @@ export const createPage = async (
     app,
     content,
     filePathRelative,
+    frontmatter,
     htmlFilePathRelative,
     key,
   })

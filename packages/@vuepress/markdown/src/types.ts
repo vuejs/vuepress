@@ -1,5 +1,5 @@
 import * as MarkdownIt from 'markdown-it'
-import type { PageHeader } from '@vuepress/shared'
+import type { PageFrontmatter, PageHeader } from '@vuepress/shared'
 import type {
   AnchorPluginOptions,
   AssetsPluginOptions,
@@ -60,6 +60,11 @@ export interface MarkdownEnv {
    * Relative file path of the markdown file
    */
   filePathRelative?: string | null
+
+  /**
+   * Frontmatter of the markdown file
+   */
+  frontmatter?: PageFrontmatter
 
   // Output
 
