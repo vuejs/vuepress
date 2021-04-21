@@ -53,11 +53,20 @@ export const build = async (
     await fs.remove(app.dir.cache())
   }
 
+  // empty dest directory
+  await fs.emptyDir(app.dir.dest())
+
   // initialize and prepare
   logger.info('Initializing VuePress and preparing data...')
+
   await app.init()
   await app.prepare()
 
   // build
   await app.build()
+
+  // plugin hook: onGenerated
+  await app.pluginApi.hooks.onGenerated.process(app)
+
+  logger.success('VuePress build successfully!')
 }
