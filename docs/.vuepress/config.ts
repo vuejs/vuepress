@@ -179,14 +179,7 @@ export default defineUserConfig<DefaultThemeOptions>({
       },
     ],
     // only enable shiki plugin in production mode
-    [
-      '@vuepress/plugin-shiki',
-      isProd
-        ? {
-            theme: 'dark-plus',
-          }
-        : false,
-    ],
+    ['@vuepress/plugin-shiki', isProd],
   ],
 
   onWatched: (_, watchers, restart) => {
