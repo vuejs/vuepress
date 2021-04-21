@@ -4,6 +4,12 @@
 
 该插件使用 [Shiki](https://shiki.matsu.io/) 来为 Markdown 代码块启用代码高亮。
 
+::: tip
+[Shiki](https://shiki.matsu.io/) 是 VSCode 正在使用的代码高亮器。它具有更高的保真度，但比 [Prism.js](https://prismjs.com/) 要慢一些，特别是在有大量代码块需要处理的时候。
+
+你可以考虑在 `dev` 模式下禁用该插件来获取更好的开发体验。
+:::
+
 ## 配置项
 
 ### theme
