@@ -29,6 +29,7 @@ export const createPlugin = ({
       base: app.options.base,
       mode: isBuild ? 'production' : 'development',
       publicDir: app.dir.public(),
+      cacheDir: app.dir.cache(),
       define: resolveDefine({ app, isServer }),
       resolve: {
         alias: resolveAlias({ app }),
