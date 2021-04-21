@@ -286,7 +286,12 @@ const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
 1 + 2 + 3 = {{ 1 + 2 + 3 }}
 ```
 
-```js:no-v-pre
+<!--
+在 JS 代码块上使用 :no-v-pre 的话，会在使用 shiki 时遇到一些潜在的问题，所以这里
+我们实际上没有使用 :no-v-pre ，只是作为一个错误用法的示例。
+-->
+
+```js
 // 由于 JS 代码高亮，这里不会被正确编译
 const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
 ```
