@@ -6,7 +6,7 @@ import { removeEndingSlash } from '@vuepress/shared'
 import { clientAppEnhances } from '@internal/clientAppEnhances'
 import { clientAppRootComponents } from '@internal/clientAppRootComponents'
 import { clientAppSetups } from '@internal/clientAppSetups'
-import { pagesComponent } from '@internal/pagesComponent'
+import { pagesComponents } from '@internal/pagesComponents'
 import { pagesRoutes } from '@internal/pagesRoutes'
 import {
   siteData,
@@ -93,7 +93,7 @@ export const createVueApp = async ({
       // ensure page data and page component have been loaded
       ;[pageData.value] = await Promise.all([
         resolvePageData(to.path),
-        pagesComponent[to.path]?.__asyncLoader(),
+        pagesComponents[to.path]?.__asyncLoader(),
       ])
     }
   })

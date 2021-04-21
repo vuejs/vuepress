@@ -1,1 +1,1 @@
-export const pagesComponent = {}
+export const pagesComponents = {}

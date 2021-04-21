@@ -14,7 +14,7 @@
       "@internal/layoutComponents": [
         "src/types/internal/layoutComponents.d.ts"
       ],
-      "@internal/pagesComponent": ["src/types/internal/pagesComponent.d.ts"],
+      "@internal/pagesComponents": ["src/types/internal/pagesComponents.d.ts"],
       "@internal/pagesData": ["src/types/internal/pagesData.d.ts"],
       "@internal/pagesRoutes": ["src/types/internal/pagesRoutes.d.ts"],
       "@internal/siteData": ["src/types/internal/siteData.d.ts"]

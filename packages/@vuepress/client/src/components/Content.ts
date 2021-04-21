@@ -1,6 +1,6 @@
 import { h } from 'vue'
 import type { FunctionalComponent } from 'vue'
-import { pagesComponent } from '@internal/pagesComponent'
+import { pagesComponents } from '@internal/pagesComponents'
 import { usePageData } from '../injections'
 
 /**
@@ -20,7 +20,7 @@ export const Content: FunctionalComponent<{
     key = page.value.path
   }
 
-  const component = pagesComponent[key]
+  const component = pagesComponents[key]
 
   // use page component
   if (component) {

@@ -3,7 +3,7 @@ import {
   preparePageComponent,
   preparePageData,
   preparePageRoutes,
-  preparePagesComponent,
+  preparePagesComponents,
   preparePagesData,
   preparePagesRoutes,
 } from '@vuepress/core'
@@ -40,7 +40,7 @@ export const handlePageChange = async (
 
   // if the key is also changed, we also need to prepare pages entry
   if (oldPage.key !== changedPage.key) {
-    await preparePagesComponent(app)
+    await preparePagesComponents(app)
     await preparePagesData(app)
     await preparePagesRoutes(app)
   }
