@@ -13,11 +13,17 @@
 $accentColor: #3eaf7c !default;
 $textColor: #2c3e50 !default;
 $borderColor: #eaecef !default;
-$codeBgColor: #282c34 !default;
 $arrowBgColor: #ccc !default;
 $tipColor: #42b983 !default;
 $warningColor: #e7c000 !default;
 $dangerColor: #cc0000 !default;
+
+// code colors
+$codeBgColor: #282c34 !default;
+$highlightLineBgColor: rgba(0, 0, 0, 66%) !default;
+$lineNumbersColor: rgba(255, 255, 255, 0.3) !default;
+
+// badge component colors
 $badgeTipColor: $tipColor !default;
 $badgeWarningColor: $warningColor !default;
 $badgeDangerColor: $dangerColor !default;

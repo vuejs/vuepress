@@ -140,7 +140,6 @@ pre[class*='language-'] {
     line-height: 1.4;
     padding: 1.25rem 1.5rem;
     margin: 0.85rem 0;
-    background-color: $codeBgColor;
     border-radius: 6px;
     overflow: auto;
 
@@ -171,7 +170,7 @@ div[class*='language-'] {
     top: 0.8em;
     right: 1em;
     font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.4);
+    color: $lineNumbersColor;
   }
 
   pre,
@@ -192,7 +191,7 @@ div[class*='language-'] {
     line-height: 1.4;
 
     .highlight-line {
-      background-color: rgba(0, 0, 0, 66%);
+      background-color: $highlightLineBgColor;
     }
   }
 
@@ -215,7 +214,6 @@ div[class*='language-'] {
         display: block;
         width: $lineNumbersWrapperWidth;
         height: 100%;
-        background-color: rgba(0, 0, 0, 66%);
       }
     }
 
@@ -230,7 +228,7 @@ div[class*='language-'] {
       top: 0;
       width: $lineNumbersWrapperWidth;
       text-align: center;
-      color: rgba(255, 255, 255, 0.3);
+      color: $lineNumbersColor;
       padding-top: 1.25rem;
       line-height: 1.4;
 
@@ -254,8 +252,7 @@ div[class*='language-'] {
       width: $lineNumbersWrapperWidth;
       height: 100%;
       border-radius: 6px 0 0 6px;
-      border-right: 1px solid rgba(0, 0, 0, 66%);
-      background-color: $codeBgColor;
+      border-right: 1px solid $highlightLineBgColor;
     }
   }
 }
