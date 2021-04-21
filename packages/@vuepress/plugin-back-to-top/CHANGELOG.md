@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.9](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.8...v2.0.0-beta.9) (2021-04-21)
+
+
+### Bug Fixes
+
+* **plugin-back-to-top:** fix back-to-top styles ([933643a](https://github.com/vuepress/vuepress-next/commit/933643aa9c24458eb914429b21f5ec22f6b23f9a))
+
+
+
+
+
 # [2.0.0-beta.8](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.7...v2.0.0-beta.8) (2021-04-11)
 
 

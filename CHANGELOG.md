@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.9](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.8...v2.0.0-beta.9) (2021-04-21)
+
+
+### Bug Fixes
+
+* **core:** allow plugin itself as an item of plugin config array ([1fa8903](https://github.com/vuepress/vuepress-next/commit/1fa8903549d8f9eba3fc49e3117ee2018993b496))
+* **core:** ensure trailing slash of page path (close [#114](https://github.com/vuepress/vuepress-next/issues/114)) ([cbcf166](https://github.com/vuepress/vuepress-next/commit/cbcf16624602e37c17935211ac4076c72db22507))
+* **markdown:** do not escape extracted headers (close [#117](https://github.com/vuepress/vuepress-next/issues/117)) ([81b1336](https://github.com/vuepress/vuepress-next/commit/81b133622a00e6474f0bfe4a58e35bfab9fe3e49))
+* **plugin-back-to-top:** fix back-to-top styles ([933643a](https://github.com/vuepress/vuepress-next/commit/933643aa9c24458eb914429b21f5ec22f6b23f9a))
+* **theme-default:** remove font-smothing in code block ([41c281e](https://github.com/vuepress/vuepress-next/commit/41c281e016c77dc5f1d9d12e8917814e48af1424))
+
+
+### Code Refactoring
+
+* **core:** move evergreen option to bundler-webpack ([58c30c1](https://github.com/vuepress/vuepress-next/commit/58c30c1207f0f6e09e9d68096786ef189c67e9db))
+
+
+### Features
+
+* **client:** provide client types file ([89a32b5](https://github.com/vuepress/vuepress-next/commit/89a32b50767ef82556f5ae3300ec016e0acaf0e5))
+* **core:** make frontmatter available in markdown env ([f977192](https://github.com/vuepress/vuepress-next/commit/f97719237db9d14c94716bf6b18fe52519a008cf))
+* **plugin-palette:** add watchers for palette and style files ([0cf1b9b](https://github.com/vuepress/vuepress-next/commit/0cf1b9b346de2bc62789a940699298ee9e2873db))
+* **plugin-register-components:** add register components plugin (close [#112](https://github.com/vuepress/vuepress-next/issues/112)) ([6af204d](https://github.com/vuepress/vuepress-next/commit/6af204df76b8f6969aef0fc061a64a796deb24ab))
+* **theme-default:** add more palette variables for code styles ([db8e0f4](https://github.com/vuepress/vuepress-next/commit/db8e0f4870b051184a4d4b3c5b17497e302b0b11))
+
+
+### BREAKING CHANGES
+
+* **core:** `evergreen` option is moved to `bundlerConfig.evergreen` for bundler-webpack
+
+
+
+
+
 # [2.0.0-beta.8](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.7...v2.0.0-beta.8) (2021-04-11)
 
 

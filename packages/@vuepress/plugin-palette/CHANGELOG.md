@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.9](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.8...v2.0.0-beta.9) (2021-04-21)
+
+
+### Features
+
+* **plugin-palette:** add watchers for palette and style files ([0cf1b9b](https://github.com/vuepress/vuepress-next/commit/0cf1b9b346de2bc62789a940699298ee9e2873db))
+
+
+
+
+
 # [2.0.0-beta.8](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.7...v2.0.0-beta.8) (2021-04-11)
 
 
