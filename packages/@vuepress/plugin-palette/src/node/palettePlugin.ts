@@ -1,5 +1,8 @@
+import * as chokidar from 'chokidar'
 import type { Plugin } from '@vuepress/core'
-import { fs } from '@vuepress/utils'
+import { preparePaletteFile } from './preparePaletteFile'
+import { prepareStyleFile } from './prepareStyleFile'
+import { presetOptions } from './presetOptions'
 
 /**
  * Options of @vuepress/plugin-palette
@@ -36,43 +39,6 @@ export interface PalettePluginOptions {
   importCode?: (filePath: string) => string
 }
 
-/**
- * Default options for different palette preset
- */
-export const presetOptions: Record<
-  Required<PalettePluginOptions>['preset'],
-  Omit<Required<PalettePluginOptions>, 'preset'>
-> = {
-  css: {
-    userPaletteFile: '.vuepress/styles/palette.css',
-    tempPaletteFile: 'styles/palette.css',
-    userStyleFile: '.vuepress/styles/index.css',
-    tempStyleFile: 'styles/index.css',
-    importCode: (filePath) => `@import '${filePath}';\n`,
-  },
-  sass: {
-    userPaletteFile: '.vuepress/styles/palette.scss',
-    tempPaletteFile: 'styles/palette.scss',
-    userStyleFile: '.vuepress/styles/index.scss',
-    tempStyleFile: 'styles/index.scss',
-    importCode: (filePath) => `@forward '${filePath}';\n`,
-  },
-  less: {
-    userPaletteFile: '.vuepress/styles/palette.less',
-    tempPaletteFile: 'styles/palette.less',
-    userStyleFile: '.vuepress/styles/index.less',
-    tempStyleFile: 'styles/index.less',
-    importCode: (filePath) => `@import '${filePath}';\n`,
-  },
-  stylus: {
-    userPaletteFile: '.vuepress/styles/palette.styl',
-    tempPaletteFile: 'styles/palette.styl',
-    userStyleFile: '.vuepress/styles/index.styl',
-    tempStyleFile: 'styles/index.styl',
-    importCode: (filePath) => `@require '${filePath}';\n`,
-  },
-}
-
 export const palettePlugin: Plugin<PalettePluginOptions> = (
   {
     preset = 'css',
@@ -83,34 +49,69 @@ export const palettePlugin: Plugin<PalettePluginOptions> = (
     importCode = presetOptions[preset].importCode,
   },
   app
-) => {
-  const userPalette = app.dir.source(userPaletteFile)
-  const userStyle = app.dir.source(userStyleFile)
+) => ({
+  name: '@vuepress/plugin-palette',
 
-  return {
-    name: '@vuepress/plugin-palette',
+  alias: {
+    '@vuepress/plugin-palette/palette': app.dir.temp(tempPaletteFile),
+    '@vuepress/plugin-palette/style': app.dir.temp(tempStyleFile),
+  },
 
-    alias: {
-      '@vuepress/plugin-palette/palette': app.dir.temp(tempPaletteFile),
-      '@vuepress/plugin-palette/style': app.dir.temp(tempStyleFile),
-    },
+  onPrepared: () =>
+    Promise.all([
+      preparePaletteFile(app, {
+        userPaletteFile,
+        tempPaletteFile,
+        importCode,
+      }),
+      prepareStyleFile(app, {
+        userStyleFile,
+        tempStyleFile,
+        importCode,
+      }),
+    ]),
 
-    onPrepared: async () => {
-      let paletteContent = ''
-      let styleContent = ''
+  onWatched: (app, watchers) => {
+    const paletteWatcher = chokidar.watch(userPaletteFile, {
+      cwd: app.dir.source(),
+      ignoreInitial: true,
+    })
+    paletteWatcher.on('add', () => {
+      preparePaletteFile(app, {
+        userPaletteFile,
+        tempPaletteFile,
+        importCode,
+      })
+    })
+    paletteWatcher.on('unlink', () => {
+      preparePaletteFile(app, {
+        userPaletteFile,
+        tempPaletteFile,
+        importCode,
+      })
+    })
+    watchers.push(paletteWatcher)
 
-      if (await fs.pathExists(userPalette)) {
-        paletteContent += importCode(userPalette)
-      }
-
-      if (await fs.pathExists(userStyle)) {
-        styleContent += importCode(userStyle)
-      }
-
-      await app.writeTemp(tempPaletteFile, paletteContent)
-      await app.writeTemp(tempStyleFile, styleContent)
-    },
-  }
-}
+    const styleWatcher = chokidar.watch(userStyleFile, {
+      cwd: app.dir.source(),
+      ignoreInitial: true,
+    })
+    styleWatcher.on('add', () => {
+      prepareStyleFile(app, {
+        userStyleFile,
+        tempStyleFile,
+        importCode,
+      })
+    })
+    styleWatcher.on('unlink', () => {
+      prepareStyleFile(app, {
+        userStyleFile,
+        tempStyleFile,
+        importCode,
+      })
+    })
+    watchers.push(styleWatcher)
+  },
+})
 
 export default palettePlugin
