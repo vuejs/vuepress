@@ -1,24 +1,24 @@
 import type * as Config from 'webpack-chain'
-import type { App } from '@vuepress/core'
+import type { WebpackBundlerOptions } from '../types'
 import { resolveEsbuildJsxOptions } from './resolveEsbuildJsxOptions'
 
 /**
  * Set webpack module to handle js files
  */
 export const handleModuleJs = ({
-  app,
+  options,
   config,
   isServer,
   isBuild,
 }: {
-  app: App
+  options: WebpackBundlerOptions
   config: Config
   isServer: boolean
   isBuild: boolean
 }): void => {
   // only enable transpilation in production client bundle
   // when `evergreen` option is set to `false`
-  if (app.options.evergreen === true || !isBuild || isServer) {
+  if (options.evergreen !== false || !isBuild || isServer) {
     return
   }
 

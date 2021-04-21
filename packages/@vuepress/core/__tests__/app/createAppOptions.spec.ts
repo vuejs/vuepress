@@ -25,7 +25,6 @@ describe('core > app > createAppOptions', () => {
       host: '0.0.0.0',
       port: 8080,
       open: false,
-      evergreen: true,
       pagePatterns: ['**/*.md', '!.vuepress', '!node_modules'],
       templateDev: path.normalize(
         require.resolve('@vuepress/client/templates/index.dev.html')

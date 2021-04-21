@@ -37,7 +37,6 @@ export interface AppOptions<
   host: string
   port: number
   open: boolean
-  evergreen: boolean
   pagePatterns: string[]
   templateDev: string
   templateSSR: string

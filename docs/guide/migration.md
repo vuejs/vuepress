@@ -78,10 +78,6 @@ Changed.
 
 See [Config > markdown.extractHeaders](../reference/config.md#markdown-extractheaders)
 
-#### evergreen
-
-Default value is changed from `false` to `true`.
-
 #### Webpack Related Configs
 
 All webpack related configs are moved to options of `@vuepress/bundler-webpack`, so you should set them in [bundlerConfig](../reference/config.md#bundlerconfig):
@@ -93,6 +89,7 @@ All webpack related configs are moved to options of `@vuepress/bundler-webpack`,
 - `less`: moved to `bundlerConfig.less`
 - `chainWebpack`: moved to `bundlerConfig.chainWebpack`
 - `configureWebpack`: moved to `bundlerConfig.configureWebpack`
+- `evergreen`: moved to `bundlerConfig.evergreen`, and default value is changed from `false` to `true`.
 
 See [Bundlers > Webpack](../reference/bundler/webpack.md)
 

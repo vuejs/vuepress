@@ -62,6 +62,11 @@ export interface WebpackBundlerOptions {
    * less-loader options
    */
   less?: LessLoaderOptions
+
+  /**
+   * only target evergreen browsers or not
+   */
+  evergreen?: boolean
 }
 
 /**

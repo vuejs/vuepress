@@ -36,7 +36,6 @@ export const createAppOptions = ({
   port = 8080,
   debug = false,
   open = false,
-  evergreen = true,
   pagePatterns = ['**/*.md', '!.vuepress', '!node_modules'],
   templateDev = path.normalize(
     require.resolve('@vuepress/client/templates/index.dev.html')
@@ -67,7 +66,6 @@ export const createAppOptions = ({
   host,
   port,
   open,
-  evergreen,
   pagePatterns,
   templateDev,
   templateSSR,

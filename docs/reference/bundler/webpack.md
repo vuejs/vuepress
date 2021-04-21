@@ -100,3 +100,13 @@
 
 - Also see:
   - [less-loader > Options](https://github.com/webpack-contrib/less-loader#options)
+
+### evergreen
+
+- Type: `boolean`
+
+- Default: `true`
+
+- Details:
+
+  Set to `true` if you are only targeting evergreen browsers. This will disable some transpilation and polyfills, and result in faster builds and smaller files.

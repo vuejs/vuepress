@@ -78,10 +78,6 @@ VuePress v2 的核心思想和流程是和 v1 一致的，但 v2 API 经过了�
 
 参考 [配置 > markdown.extractHeaders](../reference/config.md#markdown-extractheaders)
 
-#### evergreen
-
-默认值从 `false` 更改为 `true` 。
-
 #### Webpack 相关配置
 
 所有 Webpack 相关的配置都移动至 `@vuepress/bundler-webpack` 的配置项中，所以你需要在 [bundlerConfig](../reference/config.md#bundlerconfig) 中设置它们：
@@ -93,6 +89,7 @@ VuePress v2 的核心思想和流程是和 v1 一致的，但 v2 API 经过了�
 - `less`：移动至 `bundlerConfig.less`
 - `chainWebpack`：移动至 `bundlerConfig.chainWebpack`
 - `configureWebpack`：移动至 `bundlerConfig.configureWebpack`
+- `evergreen`：移动至 `bundlerConfig.evergreen` ，且默认值从 `false` 更改为 `true` 。
 
 参考 [打包工具 > Webpack](../reference/bundler/webpack.md)
 

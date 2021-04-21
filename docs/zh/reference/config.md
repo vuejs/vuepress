@@ -495,16 +495,6 @@ module.exports = {
 
   是否在开发服务器启动后打开浏览器。
 
-### evergreen
-
-- 类型： `boolean`
-
-- 默认值： `true`
-
-- 详情：
-
-  如果你的对象只有那些 “常青树” 浏览器，你可以将其设置成 `true` 。这将会禁用一些转译过程和 Polyfills ，带来更快的构建速度和更小的文件体积。
-
 ### pagePatterns
 
 - 类型： `string[]`

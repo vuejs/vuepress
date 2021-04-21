@@ -496,16 +496,6 @@ You should not configure it unless you understand what it is for.
 
   Whether to open the browser after dev-server had been started.
 
-### evergreen
-
-- Type: `boolean`
-
-- Default: `true`
-
-- Details:
-
-  Set to `true` if you are only targeting evergreen browsers. This will disable some transpilation and polyfills, and result in faster builds and smaller files.
-
 ### pagePatterns
 
 - Type: `string[]`
