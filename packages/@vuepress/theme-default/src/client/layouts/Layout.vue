@@ -114,11 +114,14 @@ export default defineComponent({
     }
 
     // classes
-    const containerClass = computed(() => ({
-      'no-navbar': !shouldShowNavbar.value,
-      'no-sidebar': !sidebarItems.value.length,
-      'sidebar-open': isSidebarOpen.value,
-    }))
+    const containerClass = computed(() => [
+      {
+        'no-navbar': !shouldShowNavbar.value,
+        'no-sidebar': !sidebarItems.value.length,
+        'sidebar-open': isSidebarOpen.value,
+      },
+      frontmatter.value.pageClass,
+    ])
 
     // close sidebar after navigation
     let unregisterRouterHook

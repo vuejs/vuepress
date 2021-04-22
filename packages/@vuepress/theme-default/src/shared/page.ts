@@ -8,6 +8,7 @@ export interface DefaultThemePageData extends GitPluginPageData {
 export interface DefaultThemePageFrontmatter {
   home?: boolean
   navbar?: boolean
+  pageClass?: string
 }
 
 export interface DefaultThemeHomePageFrontmatter
