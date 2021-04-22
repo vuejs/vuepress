@@ -17,8 +17,9 @@ import type {
   DefaultThemeData,
   DefaultThemeLocaleData,
   DefaultThemePageData,
-  DefaultThemeHomePageFrontmatter,
   DefaultThemePageFrontmatter,
+  DefaultThemeHomePageFrontmatter,
+  DefaultThemeNormalPageFrontmatter,
 } from '../shared'
 
 export type {
@@ -40,8 +41,9 @@ export type {
   DefaultThemeData,
   DefaultThemeLocaleData,
   DefaultThemePageData,
-  DefaultThemeHomePageFrontmatter,
   DefaultThemePageFrontmatter,
+  DefaultThemeHomePageFrontmatter,
+  DefaultThemeNormalPageFrontmatter,
 }
 export * from './composables'
 export * from './utils'

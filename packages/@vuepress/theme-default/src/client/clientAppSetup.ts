@@ -5,13 +5,13 @@ import {
   sidebarItemsSymbol,
   useThemeLocaleData,
 } from './composables'
-import type { DefaultThemePageFrontmatter } from '../shared'
+import type { DefaultThemeNormalPageFrontmatter } from '../shared'
 
 export default defineClientAppSetup(() => {
   // we need to access sidebar items in multiple components
   // so we make it global computed
   const themeLocale = useThemeLocaleData()
-  const frontmatter = usePageFrontmatter<DefaultThemePageFrontmatter>()
+  const frontmatter = usePageFrontmatter<DefaultThemeNormalPageFrontmatter>()
   const sidebarItems = computed(() =>
     resolveSidebarItems(frontmatter.value, themeLocale.value)
   )

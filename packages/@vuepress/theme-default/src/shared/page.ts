@@ -5,7 +5,13 @@ export interface DefaultThemePageData extends GitPluginPageData {
   filePathRelative: string
 }
 
-export interface DefaultThemeHomePageFrontmatter {
+export interface DefaultThemePageFrontmatter {
+  home?: boolean
+  navbar?: boolean
+}
+
+export interface DefaultThemeHomePageFrontmatter
+  extends DefaultThemePageFrontmatter {
   home: true
   heroImage?: string
   heroAlt?: string
@@ -24,12 +30,13 @@ export interface DefaultThemeHomePageFrontmatter {
   footerHtml?: boolean
 }
 
-export interface DefaultThemePageFrontmatter {
-  home?: boolean
+export interface DefaultThemeNormalPageFrontmatter
+  extends DefaultThemePageFrontmatter {
+  home?: false
   editLink?: boolean
   lastUpdated?: boolean
   contributors?: boolean
+  sidebar?: 'auto' | false | SidebarConfig
   prev?: string | NavLink
   next?: string | NavLink
-  sidebar?: 'auto' | false | SidebarConfig
 }

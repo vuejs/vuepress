@@ -34,7 +34,11 @@ import {
   usePageFrontmatter,
   useSiteLocaleData,
 } from '@vuepress/client'
-import type { DefaultThemePageData, NavLink as NavLinkType } from '../../shared'
+import type {
+  DefaultThemePageData,
+  DefaultThemeNormalPageFrontmatter,
+  NavLink as NavLinkType,
+} from '../../shared'
 import { useThemeLocaleData } from '../composables'
 import { resolveEditLink } from '../utils'
 import NavLink from './NavLink.vue'
@@ -42,7 +46,7 @@ import NavLink from './NavLink.vue'
 const useEditNavLink = (): ComputedRef<null | NavLinkType> => {
   const themeLocale = useThemeLocaleData()
   const page = usePageData<DefaultThemePageData>()
-  const frontmatter = usePageFrontmatter()
+  const frontmatter = usePageFrontmatter<DefaultThemeNormalPageFrontmatter>()
 
   return computed(() => {
     const showEditLink =
@@ -82,7 +86,7 @@ const useLastUpdated = (): ComputedRef<null | string> => {
   const siteLocale = useSiteLocaleData()
   const themeLocale = useThemeLocaleData()
   const page = usePageData<DefaultThemePageData>()
-  const frontmatter = usePageFrontmatter()
+  const frontmatter = usePageFrontmatter<DefaultThemeNormalPageFrontmatter>()
 
   return computed(() => {
     const showLastUpdated =
@@ -103,7 +107,7 @@ const useContributors = (): ComputedRef<
 > => {
   const themeLocale = useThemeLocaleData()
   const page = usePageData<DefaultThemePageData>()
-  const frontmatter = usePageFrontmatter()
+  const frontmatter = usePageFrontmatter<DefaultThemeNormalPageFrontmatter>()
 
   return computed(() => {
     const showContributors =
