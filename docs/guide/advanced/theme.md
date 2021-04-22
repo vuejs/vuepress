@@ -4,6 +4,8 @@
 Before reading this guide, you'd better learn the guide of [Writing a Plugin](./plugin.md) first.
 :::
 
+## Create a Theme
+
 A VuePress theme is a special plugin, which should satisfy the [Theme API](../../reference/theme-api.md). Like plugins, a theme can also be a *Theme Object* or a *Theme Function*.
 
 <CodeGroup>
@@ -40,7 +42,31 @@ const fooTheme = (options, app) => {
   </CodeGroupItem>
 </CodeGroup>
 
-## Creating a Theme Package
+The `layouts` field declares the layouts provided by your theme.
+
+A theme must provide at least two layouts: `Layout` and `404`.
+
+The `Layout` layout should contain the [Content](../../reference/components.md#content) component to display the markdown content:
+
+```vue
+<template>
+  <div>
+    <Content />
+  </div>
+</template>
+```
+
+The `404` layout will be used for the `404.html` page:
+
+```vue
+<template>
+  <div>404 Not Found</div>
+</template>
+```
+
+You can provide more layouts, and users can change layout via [layout](../../reference/frontmatter.md#layout) frontmatter.
+
+## Publish to NPM
 
 The typical structure of a theme package is as follow:
 
@@ -104,27 +130,3 @@ The [package.json](https://docs.npmjs.com/cli/v6/configuring-npm/package-json) f
 - Set `keywords` to include `vuepress-theme`, so that users can search your theme on NPM.
 - Set `main` to the theme entry file.
 - Set `files` to only publish those files inside `lib` directory.
-
-### Layouts
-
-A theme must provide at least two layouts: `Layout` and `404`.
-
-The `Layout` layout should contain the [Content](../../reference/components.md#content) component to display the markdown content:
-
-```vue
-<template>
-  <div>
-    <Content />
-  </div>
-</template>
-```
-
-The `404` layout will be used for the `404.html` page:
-
-```vue
-<template>
-  <div>404 Not Found</div>
-</template>
-```
-
-You can provide more layouts, and users can change layout via [layout](../../reference/frontmatter.md#layout) frontmatter.

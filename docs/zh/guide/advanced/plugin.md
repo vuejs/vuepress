@@ -4,6 +4,8 @@
 在阅读该指南之前，你最好先了解一下 VuePress 的 [架构](./architecture.md) 。
 :::
 
+## 创建一个插件
+
 VuePress 插件是一个符合 [Plugin API](../../reference/plugin-api.md) 的普通 JavaScript 对象，称之为 *插件对象* 。
 
 如果插件想要接收用户配置项，那么它可以是一个返回值为 *插件对象* 的函数，称之为 *插件函数* 。
@@ -34,7 +36,7 @@ const fooPlugin = (options, app) => {
   </CodeGroupItem>
 </CodeGroup>
 
-## 创建一个插件 Package
+## 发布到 NPM
 
 一个典型的插件 Package 的结构如下所示：
 

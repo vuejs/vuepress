@@ -4,6 +4,8 @@
 在阅读该指南之前，你最好先了解一下 [开发插件](./plugin.md) 指南。
 :::
 
+## 创建一个主题
+
 VuePress 主题是一个特殊的插件，它应该符合 [主题 API](../../reference/theme-api.md) 。和插件一样，主题可以是一个 *主题对象* 或一个 *主题函数* 。
 
 <CodeGroup>
@@ -40,7 +42,31 @@ const fooTheme = (options, app) => {
   </CodeGroupItem>
 </CodeGroup>
 
-## 创建一个主题 Package
+`layouts` 字段声明了你的主题提供的布局。
+
+一个主题必须提供至少两个布局：`Layout` 和 `404` 。
+
+`Layout` 布局应该包含 [Content](../../reference/components.md#content) 组件来展示 Markdown 内容：
+
+```vue
+<template>
+  <div>
+    <Content />
+  </div>
+</template>
+```
+
+`404` 布局会被用于 `404.html` 页面：
+
+```vue
+<template>
+  <div>404 Not Found</div>
+</template>
+```
+
+你可以提供多个布局，用户可以通过 [layout](../../reference/frontmatter.md#layout) Frontmatter 来修改布局。
+
+## 发布到 NPM
 
 一个典型的主题 Package 的结构如下所示：
 
@@ -104,27 +130,3 @@ export default fooTheme
 - 在 `keywords` 中包含 `vuepress-theme` ，这样用户可以在 NPM 上搜索到你的主题。
 - 将 `main` 设为主题入口文件。
 - 设置 `files` ，仅发布 `lib` 目录下的文件。
-
-### 布局
-
-主题必须提供至少两个布局：`Layout` 和 `404` 。
-
-`Layout` 布局应该包含 [Content](../../reference/components.md#content) 组件来展示 Markdown 内容。
-
-```vue
-<template>
-  <div>
-    <Content />
-  </div>
-</template>
-```
-
-`404` 布局会被用于 `404.html` 页面：
-
-```vue
-<template>
-  <div>404 Not Found</div>
-</template>
-```
-
-你可以提供多个布局，用户可以通过 [layout](../../reference/frontmatter.md#layout) Frontmatter 来修改布局。

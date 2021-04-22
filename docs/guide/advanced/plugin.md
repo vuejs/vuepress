@@ -4,6 +4,8 @@
 Before reading this guide, you'd better learn the VuePress [architecture](./architecture.md) first.
 :::
 
+## Create a Plugin
+
 A VuePress plugin is a plain JavaScript object that satisfies the [Plugin API](../../reference/plugin-api.md), which is called a *Plugin Object*.
 
 If a plugin wants to receive user options, it could be a function that returns a *Plugin Object*, which is called a *Plugin Function*.
@@ -34,7 +36,7 @@ const fooPlugin = (options, app) => {
   </CodeGroupItem>
 </CodeGroup>
 
-## Creating a Plugin Package
+## Publish to NPM
 
 The typical structure of a plugin package is as follow:
 
