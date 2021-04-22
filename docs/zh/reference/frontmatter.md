@@ -162,4 +162,27 @@ permalinkPattern: :year/:month/:day/:slug.html
 
   页面的布局。
 
-  布局是由主题提供的。如果你不指定该 Frontmatter ，则会使用默认布局。主题可能会提供其他布局，你应该参考主题文档来获取详细指引。
+  布局是由主题提供的。如果你不指定该 Frontmatter ，则会使用默认布局。你应该参考主题自身的文档来了解其提供了哪些布局。
+
+  如果主题布局无法满足你的需求，你可以使用自定义布局组件。
+
+- 示例：
+
+在 `.vuepress/clientAppEnhance.ts` 文件中注册一个布局组件：
+
+```ts
+import { defineClientAppEnhance } from '@vuepress/client'
+import CustomLayout from './CustomLayout.vue'
+
+export default defineClientAppEnhance(({ app }) => {
+  app.component('CustomLayout', CustomLayout)
+})
+```
+
+在 Frontmatter 中设置自定义布局：
+
+```md
+---
+layout: CustomLayout
+---
+```

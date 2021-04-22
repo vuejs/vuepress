@@ -1,9 +1,8 @@
-import { h } from 'vue'
+import { h, resolveComponent } from 'vue'
 import type { FunctionalComponent } from 'vue'
 import { isString } from '@vuepress/shared'
 import { layoutComponents } from '@internal/layoutComponents'
 import { usePageData } from '../injections'
-import { Content } from './Content'
 
 /**
  * Global Layout
@@ -28,15 +27,14 @@ export const Vuepress: FunctionalComponent = () => {
     }
   }
 
-  const layoutComponent = layoutComponents[layoutName]
+  // resolve layout component
+  const layoutComponent =
+    // theme layout
+    layoutComponents[layoutName] ||
+    // custom layout
+    resolveComponent(layoutName, false)
 
-  // use layout component
-  if (layoutComponent) {
-    return h(layoutComponent)
-  }
-
-  // fallback to Content
-  return h(Content)
+  return h(layoutComponent)
 }
 
 Vuepress.displayName = 'Vuepress'
