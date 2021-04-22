@@ -1,5 +1,22 @@
 # Frontmatter
 
+## 所有页面
+
+本章节中的 Frontmatter 会在所有类型的页面中生效。
+
+### navbar
+
+- 类型： `boolean`
+
+- 详情：
+
+  是否在当前页面展示导航栏。
+
+  如果你在主题配置中禁用了导航栏，那么该 Frontmatter 将不会生效。
+
+- 参考：
+  - [默认主题 > 配置 > navbar](./config.md#navbar)
+
 ## 首页
 
 本章节中的 Frontmatter 只会在首页中生效。

@@ -1,5 +1,22 @@
 # Frontmatter
 
+## All Pages
+
+Frontmatter in this section will take effect in all types of pages.
+
+### navbar
+
+- Type: `boolean`
+
+- Details:
+
+  Show navbar on this page or not.
+
+  If you disable navbar in theme config, this frontmatter will not take effect.
+
+- Also see:
+  - [Default Theme > Config > navbar](./config.md#navbar)
+
 ## Home Page
 
 Frontmatter in this section will only take effect in home pages.
@@ -16,11 +33,11 @@ Frontmatter in this section will only take effect in home pages.
 
 - Example:
 
-  ```md
-  ---
-  home: true
-  ---
-  ```
+```md
+---
+home: true
+---
+```
 
 ### heroImage
 
@@ -32,14 +49,14 @@ Frontmatter in this section will only take effect in home pages.
 
 - Example:
 
-  ```md
-  ---
-  # public file path
-  heroImage: /images/hero.png
-  # url
-  heroImage: https://vuejs.org/images/logo.png
-  ---
-  ```
+```md
+---
+# public file path
+heroImage: /images/hero.png
+# url
+heroImage: https://vuejs.org/images/logo.png
+---
+```
 
 - Also see:
   - [Guide > Assets > Public Files](../../guide/assets.md#public-files)
