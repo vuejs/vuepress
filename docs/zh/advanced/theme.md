@@ -6,7 +6,7 @@
 
 ## 创建一个主题
 
-VuePress 主题是一个特殊的插件，它应该符合 [主题 API](../../reference/theme-api.md) 。和插件一样，主题可以是一个 *主题对象* 或一个 *主题函数* 。
+VuePress 主题是一个特殊的插件，它应该符合 [主题 API](../reference/theme-api.md) 。和插件一样，主题可以是一个 *主题对象* 或一个 *主题函数* 。
 
 <CodeGroup>
   <CodeGroupItem title="主题对象" active>
@@ -46,7 +46,7 @@ const fooTheme = (options, app) => {
 
 一个主题必须提供至少两个布局：`Layout` 和 `404` 。
 
-`Layout` 布局应该包含 [Content](../../reference/components.md#content) 组件来展示 Markdown 内容：
+`Layout` 布局应该包含 [Content](../reference/components.md#content) 组件来展示 Markdown 内容：
 
 ```vue
 <template>
@@ -64,7 +64,7 @@ const fooTheme = (options, app) => {
 </template>
 ```
 
-你可以提供多个布局，用户可以通过 [layout](../../reference/frontmatter.md#layout) Frontmatter 来修改布局。
+你可以提供多个布局，用户可以通过 [layout](../reference/frontmatter.md#layout) Frontmatter 来修改布局。
 
 ## 发布到 NPM
 

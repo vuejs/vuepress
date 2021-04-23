@@ -6,6 +6,18 @@ export const zh: NavbarConfig = [
     link: '/zh/guide/',
   },
   {
+    text: '深入',
+    children: [
+      '/zh/advanced/architecture.md',
+      '/zh/advanced/plugin.md',
+      '/zh/advanced/theme.md',
+      {
+        text: 'Cookbook',
+        link: '/zh/advanced/cookbook/',
+      },
+    ],
+  },
+  {
     text: '参考',
     children: [
       {

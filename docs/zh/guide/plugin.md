@@ -48,4 +48,4 @@ module.exports = {
 }
 ```
 
-前往 [深入 > 开发插件](./advanced/plugin.md) 学习如何开发你自己的插件。
+前往 [深入 > 开发插件](../advanced/plugin.md) 学习如何开发你自己的插件。

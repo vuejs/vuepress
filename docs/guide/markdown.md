@@ -303,7 +303,7 @@ Config reference: [markdown.code.vPre](../reference/config.md#markdown-vpre)
 
 This section will introduce some basic usage of Vue in Markdown.
 
-Check out [Advanced > Markdown and Vue SFC](./advanced/markdown.md) for more details.
+Check out [Cookbook > Markdown and Vue SFC](../advanced/cookbook/markdown-and-vue-sfc.md) for more details.
 
 ### Template Syntax
 

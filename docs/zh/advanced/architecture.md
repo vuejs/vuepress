@@ -18,13 +18,13 @@
 
 ![vuepress-core-process](/images/guide/vuepress-core-process.png)
 
-上图展示了 VuePress 的核心流程以及 [Plugin API](../../reference/plugin-api.md) 的 Hooks ：
+上图展示了 VuePress 的核心流程以及 [Plugin API](../reference/plugin-api.md) 的 Hooks ：
 
 - 在 **init** 阶段：
   - 主题和插件会被加载。这意味着插件需要在初始化之前使用。
-  - 由于我们要使用 markdown-it 来解析 Markdown 文件，因此 [extendsMarkdown](../../reference/plugin-api.md#extendsmarkdown) 会在加载页面文件之前调用。
-  - 页面文件会被加载，因此 [extendsPageOptions](../../reference/plugin-api.md#extendspageoptions) Hook 会被调用，用以创建页面。
+  - 由于我们要使用 markdown-it 来解析 Markdown 文件，因此 [extendsMarkdown](../reference/plugin-api.md#extendsmarkdown) 会在加载页面文件之前调用。
+  - 页面文件会被加载，因此 [extendsPageOptions](../reference/plugin-api.md#extendspageoptions) Hook 会被调用，用以创建页面。
 - 在 **prepare** 阶段：
   - 临时文件会被生成，因此所有和客户端文件相关的 Hooks 会在此处调用。
 - 在 **dev / build** 阶段：
-  - Bundler 会被加载。由于 [alias](../../reference/plugin-api.md#alias) 和 [define](../../reference/plugin-api.md#define) 依赖于 Bundler 的配置，所以它们会在此处调用。
+  - Bundler 会被加载。由于 [alias](../reference/plugin-api.md#alias) 和 [define](../reference/plugin-api.md#define) 依赖于 Bundler 的配置，所以它们会在此处调用。

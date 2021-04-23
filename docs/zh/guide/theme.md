@@ -49,4 +49,4 @@ module.exports = {
 }
 ```
 
-接下来，前往 [深入 > 开发主题](./advanced/theme.md) 学习如何开发你自己的主题。
+接下来，前往 [深入 > 开发主题](../advanced/theme.md) 学习如何开发你自己的主题。

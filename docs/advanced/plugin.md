@@ -6,7 +6,7 @@ Before reading this guide, you'd better learn the VuePress [architecture](./arch
 
 ## Create a Plugin
 
-A VuePress plugin is a plain JavaScript object that satisfies the [Plugin API](../../reference/plugin-api.md), which is called a *Plugin Object*.
+A VuePress plugin is a plain JavaScript object that satisfies the [Plugin API](../reference/plugin-api.md), which is called a *Plugin Object*.
 
 If a plugin wants to receive user options, it could be a function that returns a *Plugin Object*, which is called a *Plugin Function*.
 

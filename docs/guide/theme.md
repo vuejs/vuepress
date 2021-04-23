@@ -49,4 +49,4 @@ module.exports = {
 }
 ```
 
-Next, refer to [Advanced > Writing a Theme](./advanced/theme.md) for how to write your own theme.
+Next, refer to [Advanced > Writing a Theme](../advanced/theme.md) for how to write your own theme.

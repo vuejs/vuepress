@@ -422,7 +422,7 @@ You should not configure it unless you understand what it is for.
   Set to `false` to disable this plugin.
 
 - Also see:
-  - [Advanced > Markdown and Vue SFC](../guide/advanced/markdown.md)
+  - [Cookbook > Markdown and Vue SFC](../advanced/cookbook/markdown-and-vue-sfc.md)
 
 #### markdown.links
 

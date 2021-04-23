@@ -6,6 +6,18 @@ export const en: NavbarConfig = [
     link: '/guide/',
   },
   {
+    text: 'Advanced',
+    children: [
+      '/advanced/architecture.md',
+      '/advanced/plugin.md',
+      '/advanced/theme.md',
+      {
+        text: 'Cookbook',
+        link: '/advanced/cookbook/',
+      },
+    ],
+  },
+  {
     text: 'Reference',
     children: [
       {

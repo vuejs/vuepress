@@ -6,7 +6,7 @@ Before reading this guide, you'd better learn the guide of [Writing a Plugin](./
 
 ## Create a Theme
 
-A VuePress theme is a special plugin, which should satisfy the [Theme API](../../reference/theme-api.md). Like plugins, a theme can also be a *Theme Object* or a *Theme Function*.
+A VuePress theme is a special plugin, which should satisfy the [Theme API](../reference/theme-api.md). Like plugins, a theme can also be a *Theme Object* or a *Theme Function*.
 
 <CodeGroup>
   <CodeGroupItem title="Theme Object" active>
@@ -46,7 +46,7 @@ The `layouts` field declares the layouts provided by your theme.
 
 A theme must provide at least two layouts: `Layout` and `404`.
 
-The `Layout` layout should contain the [Content](../../reference/components.md#content) component to display the markdown content:
+The `Layout` layout should contain the [Content](../reference/components.md#content) component to display the markdown content:
 
 ```vue
 <template>
@@ -64,7 +64,7 @@ The `404` layout will be used for the `404.html` page:
 </template>
 ```
 
-You can provide more layouts, and users can change layout via [layout](../../reference/frontmatter.md#layout) frontmatter.
+You can provide more layouts, and users can change layout via [layout](../reference/frontmatter.md#layout) frontmatter.
 
 ## Publish to NPM
 

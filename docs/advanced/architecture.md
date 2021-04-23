@@ -18,13 +18,13 @@ As a developer, you must be aware of that VuePress has two main parts: **Node Ap
 
 ![vuepress-core-process](/images/guide/vuepress-core-process.png)
 
-The above figure shows the core process of VuePress Node App and the hooks of [Plugin API](../../reference/plugin-api.md):
+The above figure shows the core process of VuePress Node App and the hooks of [Plugin API](../reference/plugin-api.md):
 
 - In the **init** stage:
   - Theme and plugins will be loaded. That means all the plugins should be used before initialization.
-  - As we are using markdown-it to parse the markdown file, the [extendsMarkdown](../../reference/plugin-api.md#extendsmarkdown) hook will be processed before loading page files.
-  - Page files will be loaded, and [extendsPageOptions](../../reference/plugin-api.md#extendspageoptions) hook will be processed to create pages.
+  - As we are using markdown-it to parse the markdown file, the [extendsMarkdown](../reference/plugin-api.md#extendsmarkdown) hook will be processed before loading page files.
+  - Page files will be loaded, and [extendsPageOptions](../reference/plugin-api.md#extendspageoptions) hook will be processed to create pages.
 - In the **prepare** stage:
   - Temp files will be generated, so all hooks related to client files will be processed here.
 - In the **dev / build** stage:
-  - Bundler will be resolved. The [alias](../../reference/plugin-api.md#alias) and [define](../../reference/plugin-api.md#define) hooks depend on bundler configuration, so they will be processed here.
+  - Bundler will be resolved. The [alias](../reference/plugin-api.md#alias) and [define](../reference/plugin-api.md#define) hooks depend on bundler configuration, so they will be processed here.

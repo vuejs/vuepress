@@ -20,14 +20,23 @@ export const en: SidebarConfig = {
         '/guide/migration.md',
       ],
     },
+  ],
+  '/advanced/': [
     {
       isGroup: true,
       text: 'Advanced',
       children: [
-        '/guide/advanced/architecture.md',
-        '/guide/advanced/plugin.md',
-        '/guide/advanced/theme.md',
-        '/guide/advanced/markdown.md',
+        '/advanced/architecture.md',
+        '/advanced/plugin.md',
+        '/advanced/theme.md',
+      ],
+    },
+    {
+      isGroup: true,
+      text: 'Cookbook',
+      children: [
+        '/advanced/cookbook/README.md',
+        '/advanced/cookbook/markdown-and-vue-sfc.md',
       ],
     },
   ],

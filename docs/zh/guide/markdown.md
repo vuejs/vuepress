@@ -306,7 +306,7 @@ v-pre 扩展是由我们的内置插件支持的。
 
 这一章节会介绍 Vue 在 Markdown 中一些基本用法。
 
-可以前往 [深入 > Markdown 和 Vue SFC](./advanced/markdown.md) 来了解更多内容。
+可以前往 [Cookbook > Markdown 和 Vue SFC](../advanced/cookbook/markdown-and-vue-sfc.md) 来了解更多内容。
 
 ### 模板语法
 

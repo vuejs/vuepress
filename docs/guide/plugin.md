@@ -48,4 +48,4 @@ module.exports = {
 }
 ```
 
-You can refer to [Advanced > Writing a Plugin](./advanced/plugin.md) for how to write your own plugin.
+You can refer to [Advanced > Writing a Plugin](../advanced/plugin.md) for how to write your own plugin.
