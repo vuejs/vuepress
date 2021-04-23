@@ -110,3 +110,41 @@ export default defineClientAppSetup(() => {
 
 - Also see:
   - [Guide > Assets > Base Helper](../guide/assets.md#base-helper)
+
+## Constants
+
+There are some constants that available in the client side code.
+
+To shim the types of these constants in client side code, add `@vuepress/client/types` to your `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "types": ["@vuepress/client/types"]
+  }
+}
+```
+
+### `__VERSION__`
+
+- Type: `string`
+
+- Details:
+
+  Version of VuePress core package.
+
+### `__DEV__`
+
+- Type: `boolean`
+
+- Details:
+
+  An environment flag indicating whether it is currently running in `dev` mode.
+
+### `__SSR__`
+
+- Type: `boolean`
+
+- Details:
+
+  An environment flag indicating whether it is currently running in server-side-rendering (SSR) build.

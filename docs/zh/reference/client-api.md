@@ -110,3 +110,42 @@ export default defineClientAppSetup(() => {
 
 - 参考：
   - [指南 > 静态资源 > Base Helper](../guide/assets.md#base-helper)
+
+
+## 常量
+
+在客户端代码中有一些常量可以使用。
+
+如果想要把这些常量的类型定义补充到你的代码环境中，请将 `@vuepress/client/types` 添加到你的 `tsconfig.json` 里：
+
+```json
+{
+  "compilerOptions": {
+    "types": ["@vuepress/client/types"]
+  }
+}
+```
+
+### `__VERSION__`
+
+- 类型： `string`
+
+- 详情：
+
+  VuePress Core 的版本号。
+
+### `__DEV__`
+
+- 类型： `boolean`
+
+- 详情：
+
+  一个环境标记，用于标识当前是否运行在 `dev` 模式下。
+
+### `__SSR__`
+
+- 类型： `boolean`
+
+- 详情：
+
+  一个环境标记，用于标识当前是否运行在服务端渲染 (SSR) 环境下。
