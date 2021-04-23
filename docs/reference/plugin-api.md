@@ -257,6 +257,7 @@ module.exports = {
 
 - Also see:
   - [Client API > defineClientAppEnhance](./client-api.md#defineclientappenhance)
+  - [Cookbook > Usage of Client App Enhance](../advanced/cookbook/usage-of-client-app-enhance.md)
 
 ### clientAppRootComponentFiles
 

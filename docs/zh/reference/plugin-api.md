@@ -257,6 +257,7 @@ module.exports = {
 
 - 参考：
   - [客户端 API > defineClientAppEnhance](./client-api.md#defineclientappenhance)
+  - [Cookbook > Client App Enhance 的使用方法](../advanced/cookbook/usage-of-client-app-enhance.md)
 
 ### clientAppRootComponentFiles
 

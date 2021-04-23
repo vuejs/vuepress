@@ -36,6 +36,7 @@ export const en: SidebarConfig = {
       text: 'Cookbook',
       children: [
         '/advanced/cookbook/README.md',
+        '/advanced/cookbook/usage-of-client-app-enhance.md',
         '/advanced/cookbook/markdown-and-vue-sfc.md',
       ],
     },

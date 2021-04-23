@@ -84,6 +84,9 @@ export default defineClientAppEnhance(({ app, router, siteData }) => {
 })
 ```
 
+- Also see:
+  - [Cookbook > Usage of Client App Enhance](../advanced/cookbook/usage-of-client-app-enhance.md)
+
 ### defineClientAppSetup
 
 - Details:
