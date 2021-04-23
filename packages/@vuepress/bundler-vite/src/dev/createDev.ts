@@ -23,6 +23,7 @@ export const createDev = (
             isBuild: false,
           }),
         ],
+        clearScreen: false,
       },
       options.viteOptions ?? {}
     )
