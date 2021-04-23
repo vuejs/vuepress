@@ -2,10 +2,10 @@ module.exports = {
   root: true,
   extends: 'vuepress',
   globals: {
+    __VERSION__: 'readonly',
     __DEV__: 'readonly',
     __SSR__: 'readonly',
-    __VERSION__: 'readonly',
-    __VUE_HMR_RUNTIME__: 'readonly',
+    __VUE_HMR_RUNTIME__: 'writable',
   },
   overrides: [
     {
