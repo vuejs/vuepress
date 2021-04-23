@@ -83,7 +83,12 @@ export const dev = async (
       close(),
     ])
     // restart dev command
-    await dev(sourceDir, commandOptions)
+    await dev(sourceDir, {
+      ...commandOptions,
+      // do not clean cache and temp on restart
+      cleanCache: false,
+      cleanTemp: false,
+    })
     logger.tip(`dev server has restarted, please refresh your browser`)
   }
 
