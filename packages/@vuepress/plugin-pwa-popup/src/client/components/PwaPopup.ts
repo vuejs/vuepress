@@ -17,7 +17,7 @@ export const PwaPopup = defineComponent({
   props: {
     locales: {
       type: Object as PropType<PwaPopupLocales>,
-      required: true,
+      required: false,
       default: () => ({}),
     },
   },
