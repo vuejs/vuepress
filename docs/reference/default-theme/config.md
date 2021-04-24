@@ -307,6 +307,27 @@ module.exports = {
 }
 ```
 
+### sidebarDepth
+
+- Type: `number`
+
+- Default: `2`
+
+- Details:
+
+  Set the maximum depth of the sidebar children which are automatically generated from the page headers.
+
+  - Set to `0` to disable all levels of headers.
+  - Set to `1` to include `<h2>` headers.
+  - Set to `2` to include `<h2>` and `<h3>` headers.
+  - ...
+
+  The max value depends on which levels of headers you have extracted via [markdown.extractHeaders.level](../config.md#markdown-extractheaders).
+
+  The default value of `markdown.extractHeaders.level` is `[2, 3]`, so the default max value of `sidebarDepth` is `2`.
+
+  You can override this global option via [sidebarDepth](./frontmatter.md#sidebardepth) frontmatter in your pages.
+
 ### editLink
 
 - Type: `boolean`

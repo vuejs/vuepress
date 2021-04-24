@@ -247,6 +247,17 @@ features:
 - 参考：
   - [默认主题 > 配置 > sidebar](./config.md#sidebar)
 
+### sidebarDepth
+
+- 类型： `number`
+
+- 详情：
+
+  配置本页面的侧边栏深度。
+
+- 参考：
+  - [默认主题 > 配置 > sidebarDepth](./config.md#sidebardepth)
+
 ### prev
 
 - 类型： `NavLink | string`

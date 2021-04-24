@@ -13,6 +13,7 @@ const defaultLocaleOptions: DefaultThemeLocaleOptions = {
 
   // sidebar
   sidebar: 'auto',
+  sidebarDepth: 2,
 
   // page meta
   editLink: true,

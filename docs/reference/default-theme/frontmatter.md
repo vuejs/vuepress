@@ -246,6 +246,17 @@ Frontmatter in this section will only take effect in normal pages.
 - Also see:
   - [Default Theme > Config > sidebar](./config.md#sidebar)
 
+### sidebarDepth
+
+- Type: `number`
+
+- Details:
+
+  Configure the sidebar depth of this page.
+
+- Also see:
+  - [Default Theme > Config > sidebarDepth](./config.md#sidebardepth)
+
 ### prev
 
 - Type: `NavLink | string`

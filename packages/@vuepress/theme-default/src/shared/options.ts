@@ -117,6 +117,22 @@ export interface DefaultThemeLocaleData extends LocaleData {
   sidebar?: 'auto' | false | SidebarConfig
 
   /**
+   * Sidebar depth
+   *
+   * - Set to `0` to disable all levels
+   * - Set to `1` to include `<h2>`
+   * - Set to `2` to include `<h2>` and `<h3>`
+   * - ...
+   *
+   * The max value depends on which headers you have extracted
+   * via `markdown.extractHeaders.level`.
+   *
+   * The default value of `markdown.extractHeaders.level` is `[2, 3]`,
+   * so the default max value of `sidebarDepth` is `2`
+   */
+  sidebarDepth?: number
+
+  /**
    * Page meta - edit link config
    *
    * Whether to show "Edit this page" or not

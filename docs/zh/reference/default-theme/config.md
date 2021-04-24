@@ -307,6 +307,27 @@ module.exports = {
 }
 ```
 
+### sidebarDepth
+
+- 类型： `number`
+
+- 默认值： `2`
+
+- 详情：
+
+  设置根据页面标题自动生成的侧边栏的最大深度。
+
+  - 设为 `0` 来禁用所有级别的页面标题。
+  - 设为 `1` 来包含 `<h2>` 标题。
+  - 设为 `2` 来包含 `<h2>` 和 `<h3>` 标题。
+  - ...
+
+  最大值取决于你通过 [markdown.extractHeaders.level](../config.md#markdown-extractheaders) 提取了哪些级别的标题。
+
+  由于 `markdown.extractHeaders.level` 的默认值是 `[2, 3]` ，因此 `sidebarDepth` 的默认最大值是 `2` 。
+
+  你可以通过页面的 [sidebarDepth](./frontmatter.md#sidebardepth) frontmatter 来覆盖这个全局配置。
+
 ### editLink
 
 - 类型： `boolean`
