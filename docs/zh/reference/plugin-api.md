@@ -149,7 +149,7 @@ module.exports = {
 
 ### extendsMarkdown
 
-- 类型： `(md: Markdown, app: App) => void`
+- 类型： `(md: Markdown, app: App) => void | Promise<void>`
 
 - 详情：
 

@@ -149,7 +149,7 @@ module.exports = {
 
 ### extendsMarkdown
 
-- Type: `(md: Markdown, app: App) => void`
+- Type: `(md: Markdown, app: App) => void | Promise<void>`
 
 - Details:
 

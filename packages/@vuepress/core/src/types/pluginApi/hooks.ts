@@ -39,7 +39,9 @@ export type ReturnObjectHook = Hook<
 >
 
 // markdown hook
-export type ExtendsMarkdownHook = Hook<(md: Markdown, app: App) => void>
+export type ExtendsMarkdownHook = Hook<
+  (md: Markdown, app: App) => PromiseOrNot<void>
+>
 
 // page hook
 export type ExtendsPageOptionsHook = Hook<
