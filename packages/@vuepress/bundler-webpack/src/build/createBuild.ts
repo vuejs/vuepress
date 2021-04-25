@@ -1,5 +1,5 @@
 import * as webpack from 'webpack'
-import type { ServerEntry } from '@vuepress/client'
+import type { CreateVueAppFunction } from '@vuepress/client'
 import type { App, Bundler } from '@vuepress/core'
 import { chalk, fs, ora, withSpinner } from '@vuepress/utils'
 import type { WebpackBundlerOptions } from '../types'
@@ -73,12 +73,12 @@ export const createBuild = (
     } = resolveClientManifestMeta(clientManifest)
 
     // load the compiled server bundle
-    const { createServerApp } = require(app.dir.dest(
-      '.server/app'
-    )) as ServerEntry
+    const { createVueApp } = require(app.dir.dest('.server/app')) as {
+      createVueApp: CreateVueAppFunction
+    }
 
     // create vue ssr app
-    const { app: vueApp, router: vueRouter } = await createServerApp()
+    const { app: vueApp, router: vueRouter } = await createVueApp()
 
     // pre-render pages to html files
     const spinner = ora()

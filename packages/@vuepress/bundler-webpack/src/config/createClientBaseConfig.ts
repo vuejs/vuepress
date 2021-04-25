@@ -19,9 +19,6 @@ export const createClientBaseConfig = ({
     isBuild,
   })
 
-  // client entry
-  config.entry('app').add(app.dir.client('lib/client.js'))
-
   // client output
   config.output
     .path(app.dir.dest())

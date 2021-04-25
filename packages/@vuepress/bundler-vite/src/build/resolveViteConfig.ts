@@ -22,9 +22,7 @@ export const resolveViteConfig = ({
         cssCodeSplit: false,
         polyfillDynamicImport: false,
         rollupOptions: {
-          input: isServer
-            ? app.dir.client('lib/server.js')
-            : app.dir.client('lib/client.js'),
+          input: app.dir.client('lib/app.js'),
           preserveEntrySignatures: 'allow-extension',
         },
         minify: isServer ? false : !app.env.isDebug,

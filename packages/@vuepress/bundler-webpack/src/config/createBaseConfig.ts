@@ -2,6 +2,7 @@ import * as Config from 'webpack-chain'
 import type { App } from '@vuepress/core'
 import type { WebpackBundlerOptions } from '../types'
 import { handleDevtool } from './handleDevtool'
+import { handleEntry } from './handleEntry'
 import { handleMode } from './handleMode'
 import { handleModule } from './handleModule'
 import { handleNode } from './handleNode'
@@ -22,6 +23,11 @@ export const createBaseConfig = ({
 }): Config => {
   // create new webpack-chain config
   const config = new Config()
+
+  /**
+   * entry
+   */
+  handleEntry({ app, config })
 
   /**
    * mode

@@ -47,9 +47,13 @@ export const createPlugin = ({
           if (req.url!.endsWith('.html')) {
             res.statusCode = 200
             const template = fs.readFileSync(app.options.templateDev).toString()
+
+            // here we use `lib/index.js` instead of `lib/app.js` as the client entry to
+            // ensure all client files are loaded correctly (might be an issue of vite)
             const clientEntrySrc = `/@fs/${removeLeadingSlash(
-              app.dir.client('lib/client.js')
+              app.dir.client('lib/index.js')
             )}`
+
             res.end(
               template.replace(
                 /<\/body>/,

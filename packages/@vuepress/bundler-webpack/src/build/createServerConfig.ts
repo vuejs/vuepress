@@ -17,9 +17,6 @@ export const createServerConfig = (
     isBuild,
   })
 
-  // server entry
-  config.entry('app').add(app.dir.client('lib/server.js'))
-
   // server output
   // remove after pages rendered
   config.output
