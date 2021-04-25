@@ -275,7 +275,7 @@ module.exports = {
   - [markdown-it > Init with presets and options](https://github.com/markdown-it/markdown-it#init-with-presets-and-options)
   - [Guide > Markdown > Syntax Extensions](../guide/markdown.md#syntax-extensions)
 
-#### markdown.anchor
+### markdown.anchor
 
 - Type: `AnchorPluginOptions | false`
 
@@ -288,7 +288,7 @@ module.exports = {
 - Also see:
   - [Guide > Markdown > Syntax Extensions > Header Anchors](../guide/markdown.md#header-anchors)
 
-#### markdown.assets
+### markdown.assets
 
 - Type: `AssetsPluginOptions | false`
 
@@ -302,7 +302,7 @@ module.exports = {
 You should not configure it unless you understand what it is for.
 :::
 
-#### markdown.code
+### markdown.code
 
 - Type: `CodePluginOptions | false`
 
@@ -315,7 +315,7 @@ You should not configure it unless you understand what it is for.
 - Also see:
   - [Guide > Markdown > Syntax Extensions > Code Blocks](../guide/markdown.md#code-blocks)
 
-##### markdown.code.highlightLines
+#### markdown.code.highlightLines
 
 - Type: `boolean`
 
@@ -328,7 +328,7 @@ You should not configure it unless you understand what it is for.
 - Also see:
   - [Guide > Markdown > Syntax Extensions > Code Blocks > Line Highlighting](../guide/markdown.md#line-highlighting)
 
-##### markdown.code.lineNumbers
+#### markdown.code.lineNumbers
 
 - Type: `boolean`
 
@@ -341,7 +341,7 @@ You should not configure it unless you understand what it is for.
 - Also see:
   - [Guide > Markdown > Syntax Extensions > Code Blocks > Line Numbers](../guide/markdown.md#line-numbers)
 
-##### markdown.code.preWrapper
+#### markdown.code.preWrapper
 
 - Type: `boolean`
 
@@ -357,7 +357,7 @@ You should not configure it unless you understand what it is for.
 You can disable it if you want to implement them in client side. For example, [Prismjs Line Highlight](https://prismjs.com/plugins/line-highlight/) or [Prismjs Line Numbers](https://prismjs.com/plugins/line-numbers/).
 :::
 
-##### markdown.code.vPre
+#### markdown.code.vPre
 
 - Type: `boolean`
 
@@ -370,7 +370,7 @@ You can disable it if you want to implement them in client side. For example, [P
 - Also see:
   - [Guide > Markdown > Syntax Extensions > Code Blocks > Wrap with v-pre](../guide/markdown.md#wrap-with-v-pre)
 
-#### markdown.customComponent
+### markdown.customComponent
 
 - Type: `undefined | false`
 
@@ -384,7 +384,7 @@ You can disable it if you want to implement them in client side. For example, [P
 You should not configure it unless you understand what it is for.
 :::
 
-#### markdown.emoji
+### markdown.emoji
 
 - Type: `EmojiPluginOptions | false`
 
@@ -397,7 +397,7 @@ You should not configure it unless you understand what it is for.
 - Also see:
   - [Guide > Markdown > Syntax Extensions > Emoji](../guide/markdown.md#emoji)
 
-#### markdown.extractHeaders
+### markdown.extractHeaders
 
 - Type: `ExtractHeadersPluginOptions | false`
 
@@ -409,7 +409,7 @@ You should not configure it unless you understand what it is for.
 
   Set to `false` to disable this plugin.
 
-#### markdown.hoistTags
+### markdown.hoistTags
 
 - Type: `HoistTagsPluginOptions | false`
 
@@ -424,7 +424,7 @@ You should not configure it unless you understand what it is for.
 - Also see:
   - [Cookbook > Markdown and Vue SFC](../advanced/cookbook/markdown-and-vue-sfc.md)
 
-#### markdown.links
+### markdown.links
 
 - Type: `LinksPluginOptions | false`
 
@@ -439,7 +439,7 @@ You should not configure it unless you understand what it is for.
 - Also see:
   - [Guide > Markdown > Syntax Extensions > Links](../guide/markdown.md#links)
 
-#### markdown.toc
+### markdown.toc
 
 - Type: `TocPluginOptions | false`
 

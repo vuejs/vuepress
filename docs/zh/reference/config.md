@@ -274,7 +274,7 @@ module.exports = {
   - [markdown-it > Init with presets and options](https://github.com/markdown-it/markdown-it#init-with-presets-and-options)
   - [指南 > Markdown > 语法扩展](../guide/markdown.md#语法扩展)
 
-#### markdown.anchor
+### markdown.anchor
 
 - 类型： `AnchorPluginOptions | false`
 
@@ -287,7 +287,7 @@ module.exports = {
 - 参考：
   - [指南 > Markdown > 语法扩展 > 标题锚点](../guide/markdown.md#标题锚点)
 
-#### markdown.assets
+### markdown.assets
 
 - 类型： `AssetsPluginOptions | false`
 
@@ -301,7 +301,7 @@ module.exports = {
 除非你了解它的用途，否则你不应该设置该配置项。
 :::
 
-#### markdown.code
+### markdown.code
 
 - 类型： `CodePluginOptions | false`
 
@@ -314,7 +314,7 @@ module.exports = {
 - 参考：
   - [指南 > Markdown > 语法扩展 > 代码块](../guide/markdown.md#代码块)
 
-##### markdown.code.highlightLines
+#### markdown.code.highlightLines
 
 - 类型： `boolean`
 
@@ -327,7 +327,7 @@ module.exports = {
 - 参考：
   - [指南 > Markdown > 语法扩展 > 代码块 > 行高亮](../guide/markdown.md#行高亮)
 
-##### markdown.code.lineNumbers
+#### markdown.code.lineNumbers
 
 - 类型： `boolean`
 
@@ -340,7 +340,7 @@ module.exports = {
 - 参考：
   - [指南 > Markdown > 语法扩展 > 代码块 > 行号](../guide/markdown.md#行号)
 
-##### markdown.code.preWrapper
+#### markdown.code.preWrapper
 
 - 类型： `boolean`
 
@@ -356,7 +356,7 @@ module.exports = {
 如果你想要在客户端来实现这些功能时，可以禁用该配置项。比如使用 [Prismjs Line Highlight](https://prismjs.com/plugins/line-highlight/) 或者 [Prismjs Line Numbers](https://prismjs.com/plugins/line-numbers/)。
 :::
 
-##### markdown.code.vPre
+#### markdown.code.vPre
 
 - 类型： `boolean`
 
@@ -369,7 +369,7 @@ module.exports = {
 - 参考：
   - [指南 > Markdown > 语法扩展 > 代码块 > 添加 v-pre](../guide/markdown.md#添加-v-pre)
 
-#### markdown.customComponent
+### markdown.customComponent
 
 - 类型： `undefined | false`
 
@@ -383,7 +383,7 @@ module.exports = {
 除非你了解它的用途，否则你不应该设置该配置项。
 :::
 
-#### markdown.emoji
+### markdown.emoji
 
 - 类型： `EmojiPluginOptions | false`
 
@@ -396,7 +396,7 @@ module.exports = {
 - 参考：
   - [指南 > Markdown > 语法扩展 > Emoji](../guide/markdown.md#emoji)
 
-#### markdown.extractHeaders
+### markdown.extractHeaders
 
 - 类型： `ExtractHeadersPluginOptions | false`
 
@@ -408,7 +408,7 @@ module.exports = {
 
   设置为 `false` 可以禁用该插件。
 
-#### markdown.hoistTags
+### markdown.hoistTags
 
 - 类型： `HoistTagsPluginOptions | false`
 
@@ -423,7 +423,7 @@ module.exports = {
 - 参考：
   - [Cookbook > Markdown 与 Vue SFC](../advanced/cookbook/markdown-and-vue-sfc.md)
 
-#### markdown.links
+### markdown.links
 
 - 类型： `LinksPluginOptions | false`
 
@@ -438,7 +438,7 @@ module.exports = {
 - 参考：
   - [指南 > Markdown > 语法扩展 > 链接](../guide/markdown.md#链接)
 
-#### markdown.toc
+### markdown.toc
 
 - 类型： `TocPluginOptions | false`
 
