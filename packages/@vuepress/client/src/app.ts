@@ -32,7 +32,7 @@ import {
   resolveSiteLocaleData,
   useUpdateHead,
 } from './injections'
-import { Content, OutboundLink } from './components'
+import { ClientOnly, Content, OutboundLink } from './components'
 import { withBase } from './utils'
 
 /**
@@ -176,10 +176,7 @@ export const createVueApp: CreateVueAppFunction = async () => {
 
   // register built-in components
   /* eslint-disable vue/match-component-file-name */
-  app.component(
-    'ClientOnly',
-    __SSR__ ? () => null : (_, ctx) => ctx.slots.default?.()
-  )
+  app.component('ClientOnly', ClientOnly)
   app.component('Content', Content)
   app.component('OutboundLink', OutboundLink)
   /* eslint-enable vue/match-component-file-name */
