@@ -55,6 +55,8 @@ export type CreateVueAppFunction = () => Promise<{
 export const createVueApp: CreateVueAppFunction = async () => {
   // options to create vue app
   const appOptions: ComponentOptions = {
+    name: 'VuepressApp',
+
     setup() {
       // auto update head
       useUpdateHead()
