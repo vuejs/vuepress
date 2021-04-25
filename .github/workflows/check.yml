@@ -55,5 +55,13 @@ jobs:
       - name: Test
         run: yarn test
 
-      - name: Docs build
+      - name: Build docs with webpack
         run: yarn docs:build
+        env:
+          DOCS_BUNDLER: '@vuepress/webpack'
+
+      # TODO: vite will statically replace global defined constants even in markdown files
+      # - name: Build docs with vite
+      #   run: yarn docs:build
+      #   env:
+      #     DOCS_BUNDLER: '@vuepress/vite'

@@ -65,8 +65,11 @@ export default defineUserConfig<DefaultThemeOptions>({
     },
   },
 
-  // use vite in dev, use webpack in prod
-  bundler: isProd ? '@vuepress/webpack' : '@vuepress/vite',
+  bundler:
+    // specify bundler via environment variable
+    process.env.DOCS_BUNDLER ??
+    // use vite in dev, use webpack in prod
+    (isProd ? '@vuepress/webpack' : '@vuepress/vite'),
 
   themeConfig: {
     logo: '/images/hero.png',
@@ -157,7 +160,8 @@ export default defineUserConfig<DefaultThemeOptions>({
     [
       '@vuepress/plugin-google-analytics',
       {
-        id: process.env.GA_ID,
+        // we have multiple deployments, which would use different id
+        id: process.env.DOCS_GA_ID,
       },
     ],
     ['@vuepress/plugin-pwa'],
