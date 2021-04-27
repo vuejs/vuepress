@@ -2,7 +2,6 @@ import {
   createPage,
   preparePageComponent,
   preparePageData,
-  preparePageRoutes,
   preparePagesComponents,
   preparePagesData,
   preparePagesRoutes,
@@ -36,12 +35,18 @@ export const handlePageChange = async (
   // prepare page files
   await preparePageComponent(app, changedPage)
   await preparePageData(app, changedPage)
-  await preparePageRoutes(app, changedPage)
 
-  // if the key is also changed, we also need to prepare pages entry
-  if (oldPage.key !== changedPage.key) {
+  const isPathChanged = oldPage.path !== changedPage.path
+  const isTitleChanged = oldPage.title !== changedPage.title
+
+  // prepare pages entry if the path is changed
+  if (isPathChanged) {
     await preparePagesComponents(app)
     await preparePagesData(app)
+  }
+
+  // prepare pages routes if the path or title is changed
+  if (isPathChanged || isTitleChanged) {
     await preparePagesRoutes(app)
   }
 }

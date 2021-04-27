@@ -42,12 +42,6 @@ describe('core > page > createPage', () => {
     )
     expect(page.dataFilePathRelative).toBe(`internal/pageData/${page.key}.js`)
     expect(page.dataFileChunkName).toBe(page.key)
-    expect(page.routesFilePath).toBe(
-      app.dir.temp(`internal/pageRoutes/${page.key}.js`)
-    )
-    expect(page.routesFilePathRelative).toBe(
-      `internal/pageRoutes/${page.key}.js`
-    )
     expect(page.title).toBe('')
     expect(page.content).toBe('')
     expect(page.frontmatter).toEqual({})

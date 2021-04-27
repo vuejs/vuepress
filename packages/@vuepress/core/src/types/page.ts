@@ -87,16 +87,6 @@ export interface Page extends PageData {
   dataFileChunkName: string
 
   /**
-   * Page routes file path
-   */
-  routesFilePath: string
-
-  /**
-   * Page routes file path relative to temp directory
-   */
-  routesFilePathRelative: string
-
-  /**
    * Content of the page
    */
   content: string

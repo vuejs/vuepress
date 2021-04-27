@@ -13,7 +13,6 @@ import { resolvePageKey } from './resolvePageKey'
 import { resolvePageLang } from './resolvePageLang'
 import { resolvePagePath } from './resolvePagePath'
 import { resolvePagePermalink } from './resolvePagePermalink'
-import { resolvePageRoutesInfo } from './resolvePageRoutesInfo'
 import { resolvePageSlug } from './resolvePageSlug'
 import { resolvePageTitle } from './resolvePageTitle'
 
@@ -102,11 +101,6 @@ export const createPage = async (
     dataFileChunkName,
   } = resolvePageDataInfo({ app, key })
 
-  const { routesFilePath, routesFilePathRelative } = resolvePageRoutesInfo({
-    app,
-    key,
-  })
-
   // resolve title from frontmatter and headers
   const title = resolvePageTitle({ content, frontmatter, headers })
 
@@ -124,8 +118,6 @@ export const createPage = async (
     dataFilePath,
     dataFilePathRelative,
     dataFileChunkName,
-    routesFilePath,
-    routesFilePathRelative,
     htmlFilePath,
     htmlFilePathRelative,
     title,
