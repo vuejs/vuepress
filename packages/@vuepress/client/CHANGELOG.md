@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.10](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.9...v2.0.0-beta.10) (2021-04-27)
+
+
+### Bug Fixes
+
+* **client:** implement ClientOnly correctly ([e27872d](https://github.com/vuepress/vuepress-next/commit/e27872d89f1e6894ebc734e2e26c800bea82e162))
+* **client:** make hydration work properly (close [#123](https://github.com/vuepress/vuepress-next/issues/123)) ([34a5364](https://github.com/vuepress/vuepress-next/commit/34a5364ad6005e64a3e726296b9b8b73318fcbd4))
+
+
+### Features
+
+* **client:** support custom layout ([c32866d](https://github.com/vuepress/vuepress-next/commit/c32866d769cb5a29fb811fd2f00e06d7b94e1508))
+
+
+
+
+
 # [2.0.0-beta.9](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.8...v2.0.0-beta.9) (2021-04-21)
 
 

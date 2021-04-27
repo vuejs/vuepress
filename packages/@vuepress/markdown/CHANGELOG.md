@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.10](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.9...v2.0.0-beta.10) (2021-04-27)
+
+
+### Features
+
+* **markdown:** support externalIcon in config and frontmatter ([#122](https://github.com/vuepress/vuepress-next/issues/122)) ([d1389bc](https://github.com/vuepress/vuepress-next/commit/d1389bc6c0eee3ad2fe83d5636fd293d0710e0fb))
+
+
+
+
+
 # [2.0.0-beta.9](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.8...v2.0.0-beta.9) (2021-04-21)
 
 

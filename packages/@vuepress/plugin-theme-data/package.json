@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-theme-data",
-  "version": "2.0.0-beta.9",
+  "version": "2.0.0-beta.10",
   "description": "VuePress plugin - theme data",
   "keywords": [
     "vuepress-plugin",
@@ -29,8 +29,8 @@
     "copy": "cpx \"src/**/*.d.ts\" lib"
   },
   "dependencies": {
-    "@vuepress/client": "2.0.0-beta.9",
-    "@vuepress/core": "2.0.0-beta.9",
+    "@vuepress/client": "2.0.0-beta.10",
+    "@vuepress/core": "2.0.0-beta.10",
     "@vuepress/shared": "2.0.0-beta.7",
     "@vuepress/utils": "2.0.0-beta.8"
   },

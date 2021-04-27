@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.10](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.9...v2.0.0-beta.10) (2021-04-27)
+
+
+### Bug Fixes
+
+* **bundler-vite:** avoid client code to be optimized or externalized ([f8a088d](https://github.com/vuepress/vuepress-next/commit/f8a088db5f428087a58dec4823627a9e3b447a75))
+* **bundler-vite:** disable clearScreen in dev by default ([e7bfe49](https://github.com/vuepress/vuepress-next/commit/e7bfe49d10aa8d3c5121120435ed5076fbe80a27))
+* **cli:** do not clean cache and temp on restart ([047a52c](https://github.com/vuepress/vuepress-next/commit/047a52c265db355de3aaa298c14150779e9182f4))
+* **client:** implement ClientOnly correctly ([e27872d](https://github.com/vuepress/vuepress-next/commit/e27872d89f1e6894ebc734e2e26c800bea82e162))
+* **client:** make hydration work properly (close [#123](https://github.com/vuepress/vuepress-next/issues/123)) ([34a5364](https://github.com/vuepress/vuepress-next/commit/34a5364ad6005e64a3e726296b9b8b73318fcbd4))
+* **core:** allow extendsMarkdown to return a promise ([a4be2fd](https://github.com/vuepress/vuepress-next/commit/a4be2fda5952f64da2db6ba837b94bfb4e1315ce))
+
+
+### Features
+
+* **bundler-vite:** bump vite to 2.2.1 to support cacheDir ([d7f685b](https://github.com/vuepress/vuepress-next/commit/d7f685b5d729d9f8c9f858673355a37cb22fc90e))
+* **client:** support custom layout ([c32866d](https://github.com/vuepress/vuepress-next/commit/c32866d769cb5a29fb811fd2f00e06d7b94e1508))
+* **markdown:** support externalIcon in config and frontmatter ([#122](https://github.com/vuepress/vuepress-next/issues/122)) ([d1389bc](https://github.com/vuepress/vuepress-next/commit/d1389bc6c0eee3ad2fe83d5636fd293d0710e0fb))
+* **plugin-search:** add search plugin (close [#35](https://github.com/vuepress/vuepress-next/issues/35)) ([70bb066](https://github.com/vuepress/vuepress-next/commit/70bb0668c53b984f17bdbf7b95ac8e3258034e73))
+* **theme-default:** compat with docsearch and search plugin ([cb00182](https://github.com/vuepress/vuepress-next/commit/cb0018257c2c6b4b21e2add5f73e7213b537fb6f))
+* **theme-default:** support pageClass frontmatter (close [#118](https://github.com/vuepress/vuepress-next/issues/118)) ([809d575](https://github.com/vuepress/vuepress-next/commit/809d5750c36662e894be566c0ff53c2f2a700da0))
+* **theme-default:** support sidebarDepth ([b79ba90](https://github.com/vuepress/vuepress-next/commit/b79ba90f8e4cb93d76dac1f284131cf618aee784))
+
+
+
+
+
 # [2.0.0-beta.9](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.8...v2.0.0-beta.9) (2021-04-21)
 
 

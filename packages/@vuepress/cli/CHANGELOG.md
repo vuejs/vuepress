@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.10](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.9...v2.0.0-beta.10) (2021-04-27)
+
+
+### Bug Fixes
+
+* **cli:** do not clean cache and temp on restart ([047a52c](https://github.com/vuepress/vuepress-next/commit/047a52c265db355de3aaa298c14150779e9182f4))
+
+
+
+
+
 # [2.0.0-beta.9](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.8...v2.0.0-beta.9) (2021-04-21)
 
 **Note:** Version bump only for package @vuepress/cli

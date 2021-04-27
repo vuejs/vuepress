@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.10](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.9...v2.0.0-beta.10) (2021-04-27)
+
+
+### Features
+
+* **theme-default:** compat with docsearch and search plugin ([cb00182](https://github.com/vuepress/vuepress-next/commit/cb0018257c2c6b4b21e2add5f73e7213b537fb6f))
+* **theme-default:** support pageClass frontmatter (close [#118](https://github.com/vuepress/vuepress-next/issues/118)) ([809d575](https://github.com/vuepress/vuepress-next/commit/809d5750c36662e894be566c0ff53c2f2a700da0))
+* **theme-default:** support sidebarDepth ([b79ba90](https://github.com/vuepress/vuepress-next/commit/b79ba90f8e4cb93d76dac1f284131cf618aee784))
+
+
+
+
+
 # [2.0.0-beta.9](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.8...v2.0.0-beta.9) (2021-04-21)
 
 
