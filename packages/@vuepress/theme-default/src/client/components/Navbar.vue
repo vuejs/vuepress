@@ -25,7 +25,7 @@
       <slot name="before" />
       <NavbarLinks class="can-hide" />
       <slot name="after" />
-      <Docsearch />
+      <NavbarSearch />
     </div>
   </header>
 </template>
