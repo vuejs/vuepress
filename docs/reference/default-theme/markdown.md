@@ -1,5 +1,7 @@
 # Markdown
 
+<NpmBadge package="@vuepress/theme-default" />
+
 ## Custom Containers
 
 - Usage:

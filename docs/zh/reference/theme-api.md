@@ -1,5 +1,7 @@
 # 主题 API
 
+<NpmBadge package="@vuepress/core" />
+
 VuePress 主题同样是一个插件，因此主题 API 可以接收 [插件 API](./plugin-api.md) 的所有选项，但存在以下差别：
 
 ## 基础配置项

@@ -1,5 +1,7 @@
 # 样式
 
+<NpmBadge package="@vuepress/theme-default" />
+
 默认主题使用 [SASS](https://sass-lang.com/) 作为 CSS 预处理器。
 
 用户可以通过 [palette 文件](#palette-文件) 来自定义样式变量，还可以通过 [style 文件](#style-文件) 来添加额外的样式。

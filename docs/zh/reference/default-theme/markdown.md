@@ -1,5 +1,7 @@
 # Markdown
 
+<NpmBadge package="@vuepress/theme-default" />
+
 ## 自定义容器
 
 - 使用：

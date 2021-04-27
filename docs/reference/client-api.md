@@ -1,5 +1,7 @@
 # Client API
 
+<NpmBadge package="@vuepress/client" />
+
 Client API is provided by [@vuepress/client](https://www.npmjs.com/package/@vuepress/client) package, which is used for developing client files.
 
 ## Composition API

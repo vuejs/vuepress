@@ -1,5 +1,7 @@
 # 配置
 
+<NpmBadge package="@vuepress/theme-default" />
+
 默认主题配置的参考文档，可以通过 [themeConfig](../config.md#themeconfig) 来设置这些配置。
 
 ## 基础配置

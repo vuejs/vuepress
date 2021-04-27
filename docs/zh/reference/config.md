@@ -1,5 +1,8 @@
 # 配置
 
+<NpmBadge package="@vuepress/cli" />
+<NpmBadge package="@vuepress/core" />
+
 VuePress 配置的参考文档，可以通过配置文件来设置这些配置。 VuePress 约定的配置文件为（按照优先顺序）：
 
 - 当前工作目录 `cwd` 下：

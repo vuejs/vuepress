@@ -1,5 +1,7 @@
 # 客户端 API
 
+<NpmBadge package="@vuepress/client" />
+
 客户端 API 是由 [@vuepress/client](https://www.npmjs.com/package/@vuepress/client) Package 提供的，用于开发客户端文件。
 
 ## Composition API

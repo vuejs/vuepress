@@ -1,5 +1,7 @@
 # Vite
 
+<NpmBadge package="@vuepress/bundler-vite" />
+
 ## viteOptions
 
 - Details:

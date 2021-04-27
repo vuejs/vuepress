@@ -1,5 +1,6 @@
 <template>
   <a
+    class="npm-badge"
     :href="badgeLink"
     :title="package"
     target="_blank"
@@ -23,20 +24,28 @@ const props = defineProps({
     required: false,
     default: 'next',
   },
-  label: {
-    type: String,
-    required: false,
-    default: '',
-  },
 })
 
 const badgeLink = computed(
   () => `https://www.npmjs.com/package/${props.package}`
 )
+const badgeLabel = computed(() => {
+  if (props.distTag) {
+    return `${props.package}@${props.distTag}`
+  }
+
+  return props.package
+})
 const badgeImg = computed(
   () =>
-    `https://badgen.net/npm/v/${props.package}/${props.distTag}${
-      props.label ? `label=${props.label}` : ''
-    }`
+    `https://badgen.net/npm/v/${props.package}/${
+      props.distTag
+    }?label=${encodeURIComponent(badgeLabel.value)}`
 )
 </script>
+
+<style scoped>
+.npm-badge {
+  margin-right: 0.5rem;
+}
+</style>

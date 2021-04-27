@@ -1,5 +1,7 @@
 # Config
 
+<NpmBadge package="@vuepress/theme-default" />
+
 Reference of default theme config, which can be set via [themeConfig](../config.md#themeconfig).
 
 ## Basic Config

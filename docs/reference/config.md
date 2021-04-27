@@ -1,5 +1,8 @@
 # Config
 
+<NpmBadge package="@vuepress/cli" />
+<NpmBadge package="@vuepress/core" />
+
 Reference of VuePress config, which can be set via config file. The conventional config files are (in order of precedence):
 
 - In current working directory `cwd`:

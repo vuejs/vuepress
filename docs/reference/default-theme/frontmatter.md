@@ -1,5 +1,7 @@
 # Frontmatter
 
+<NpmBadge package="@vuepress/theme-default" />
+
 ## All Pages
 
 Frontmatter in this section will take effect in all types of pages.

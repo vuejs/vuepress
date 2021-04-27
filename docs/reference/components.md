@@ -1,5 +1,7 @@
 # Built-in Components
 
+<NpmBadge package="@vuepress/client" />
+
 ## ClientOnly
 
 - Usage:

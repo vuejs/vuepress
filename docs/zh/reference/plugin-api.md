@@ -1,5 +1,7 @@
 # 插件 API
 
+<NpmBadge package="@vuepress/core" />
+
 插件需要在初始化之前使用。基础配置项会在使用插件时立即被处理：
 
 - [name](#name)

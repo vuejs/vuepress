@@ -1,5 +1,7 @@
 # Webpack
 
+<NpmBadge package="@vuepress/bundler-webpack" />
+
 ## configureWebpack
 
 - 类型： `(config: WebpackConfiguration, isServer: boolean, isBuild: boolean) => WebpackConfiguration`
