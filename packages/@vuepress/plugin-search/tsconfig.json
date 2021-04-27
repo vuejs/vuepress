@@ -1,0 +1,12 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "ES2020",
+    "baseUrl": ".",
+    "paths": {
+      "@internal/searchIndex": ["src/client/searchIndex.d.ts"]
+    },
+    "types": ["webpack-env", "vite/client"]
+  },
+  "include": ["./src", "./__tests__"]
+}

@@ -7,6 +7,8 @@
   - [google-analytics](./google-analytics.md)
   - [medium-zoom](./medium-zoom.md)
   - [nprogress](./nprogress.md)
+  - [register-components](./register-components.md)
+  - [search](./search.md)
 - Syntax Highlighting
   - [prismjs](./prismjs.md)
   - [shiki](./shiki.md)

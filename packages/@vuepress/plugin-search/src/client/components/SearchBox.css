@@ -1,0 +1,104 @@
+:root {
+  --search-accent-color: #3eaf7c;
+  --search-text-color: #2c3e50;
+  --search-border-color: #eaecef;
+
+  --search-item-text-color: #5d81a5;
+  --search-item-focus-bg-color: #f3f4f5;
+
+  --search-input-width: 8rem;
+  --search-result-width: 20rem;
+}
+
+.search-box {
+  display: inline-block;
+  position: relative;
+  margin-left: 1rem;
+}
+
+.search-box input {
+  cursor: text;
+  width: var(--search-input-width);
+  height: 2rem;
+  color: var(--search-text-color);
+  display: inline-block;
+  border: 1px solid var(--search-border-color);
+  border-radius: 2rem;
+  font-size: 0.9rem;
+  line-height: 2rem;
+  padding: 0 0.5rem 0 2rem;
+  outline: none;
+  transition: all 0.2s ease;
+  background: #fff url('search.svg') 0.6rem 0.5rem no-repeat;
+  background-size: 1rem;
+}
+
+.search-box input:focus {
+  cursor: auto;
+  border-color: var(--search-accent-color);
+}
+
+.search-box .suggestions {
+  background: #fff;
+  width: var(--search-result-width);
+  position: absolute;
+  top: 2rem;
+  right: 0;
+  border: 1px solid var(--search-border-color);
+  border-radius: 6px;
+  padding: 0.4rem;
+  list-style-type: none;
+}
+
+.search-box .suggestion {
+  line-height: 1.4;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-box .suggestion.focus {
+  background-color: var(--search-item-focus-bg-color);
+}
+
+.search-box .suggestion.focus a {
+  color: var(--search-accent-color);
+}
+
+.search-box .suggestion a {
+  white-space: normal;
+  color: var(--search-item-text-color);
+}
+
+.search-box .suggestion .page-title {
+  font-weight: 600;
+}
+
+.search-box .suggestion .page-header {
+  font-size: 0.9em;
+  margin-left: 0.25em;
+}
+
+@media (max-width: 720px) {
+  .search-box input {
+    cursor: pointer;
+    width: 0;
+    border-color: transparent;
+    position: relative;
+  }
+  .search-box input:focus {
+    cursor: text;
+    left: 0;
+    width: 10rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .search-box input:focus {
+    width: 8rem;
+  }
+  .search-box .suggestions {
+    width: calc(100vw - 4rem);
+    right: -0.5rem;
+  }
+}

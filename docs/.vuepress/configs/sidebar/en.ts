@@ -93,6 +93,7 @@ export const en: SidebarConfig = {
             '/reference/plugin/medium-zoom.md',
             '/reference/plugin/nprogress.md',
             '/reference/plugin/register-components.md',
+            '/reference/plugin/search.md',
           ],
         },
         {

@@ -96,6 +96,7 @@ export const zh: SidebarConfig = {
             '/zh/reference/plugin/medium-zoom.md',
             '/zh/reference/plugin/nprogress.md',
             '/zh/reference/plugin/register-components.md',
+            '/zh/reference/plugin/search.md',
           ],
         },
         {
