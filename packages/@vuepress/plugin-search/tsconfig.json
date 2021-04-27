@@ -6,7 +6,7 @@
     "paths": {
       "@internal/searchIndex": ["src/client/searchIndex.d.ts"]
     },
-    "types": ["webpack-env", "vite/client"]
+    "types": ["@vuepress/client/types", "webpack-env", "vite/client"]
   },
   "include": ["./src", "./__tests__"]
 }
