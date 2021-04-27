@@ -8,7 +8,7 @@ declare const __PWA_POPUP_LOCALES__: PwaPopupLocales
 const locales = __PWA_POPUP_LOCALES__
 
 export const PwaPopupWrapper: FunctionalComponent = () => {
-  if (__DEV__ || __SSR__) return null
+  if (__SSR__) return null
 
   return h(PwaPopup, {
     locales,

@@ -5,15 +5,20 @@ export interface GoogleAnalyticsPluginOptions {
   id: string
 }
 
-export const googleAnalyticsPlugin: Plugin<GoogleAnalyticsPluginOptions> = ({
-  id,
-}) => {
+export const googleAnalyticsPlugin: Plugin<GoogleAnalyticsPluginOptions> = (
+  { id },
+  app
+) => {
   const plugin: PluginObject = {
     name: '@vuepress/plugin-google-analytics',
   }
 
   if (!id) {
     logger.warn(`[${plugin.name}] 'id' is required`)
+    return plugin
+  }
+
+  if (app.env.isDev) {
     return plugin
   }
 

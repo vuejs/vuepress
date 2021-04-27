@@ -1,4 +1,4 @@
-import type { Plugin } from '@vuepress/core'
+import type { Plugin, PluginObject } from '@vuepress/core'
 import { path, withSpinner } from '@vuepress/utils'
 import type { GenerateSWConfig } from 'workbox-build'
 import { generateServiceWorker } from './generateServiceWorker'
@@ -19,20 +19,30 @@ export interface PwaPluginOptions
   serviceWorkerFilename?: string
 }
 
-export const pwaPlugin: Plugin<PwaPluginOptions> = ({
-  serviceWorkerFilename = 'service-worker.js',
-  ...generateSWConfig
-}) => ({
-  name: '@vuepress/plugin-pwa',
+export const pwaPlugin: Plugin<PwaPluginOptions> = (
+  { serviceWorkerFilename = 'service-worker.js', ...generateSWConfig },
+  app
+) => {
+  const plugin: PluginObject = {
+    name: '@vuepress/plugin-pwa',
+  }
 
-  clientAppSetupFiles: path.resolve(__dirname, '../client/clientAppSetup.js'),
+  if (app.env.isDev) {
+    return plugin
+  }
 
-  define: {
-    __PWA_SW_FILENAME__: serviceWorkerFilename,
-  },
+  return {
+    ...plugin,
 
-  onGenerated: (app) =>
-    withSpinner('Generating service worker')(() =>
-      generateServiceWorker(app, serviceWorkerFilename, generateSWConfig)
-    ),
-})
+    clientAppSetupFiles: path.resolve(__dirname, '../client/clientAppSetup.js'),
+
+    define: {
+      __PWA_SW_FILENAME__: serviceWorkerFilename,
+    },
+
+    onGenerated: (app) =>
+      withSpinner('Generating service worker')(() =>
+        generateServiceWorker(app, serviceWorkerFilename, generateSWConfig)
+      ),
+  }
+}

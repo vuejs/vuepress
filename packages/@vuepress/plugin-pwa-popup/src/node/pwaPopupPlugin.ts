@@ -1,4 +1,4 @@
-import type { Plugin } from '@vuepress/core'
+import type { Plugin, PluginObject } from '@vuepress/core'
 import type { LocaleConfig } from '@vuepress/shared'
 import { path } from '@vuepress/utils'
 
@@ -12,17 +12,28 @@ export interface PwaPopupPluginOptions {
   }>
 }
 
-export const pwaPopupPlugin: Plugin<PwaPopupPluginOptions> = ({
-  locales = {},
-}) => ({
-  name: '@vuepress/plugin-pwa-popup',
+export const pwaPopupPlugin: Plugin<PwaPopupPluginOptions> = (
+  { locales = {} },
+  app
+) => {
+  const plugin: PluginObject = {
+    name: '@vuepress/plugin-pwa-popup',
+  }
 
-  clientAppRootComponentFiles: path.resolve(
-    __dirname,
-    '../client/components/PwaPopupWrapper.js'
-  ),
+  if (app.env.isDev) {
+    return plugin
+  }
 
-  define: {
-    __PWA_POPUP_LOCALES__: locales,
-  },
-})
+  return {
+    ...plugin,
+
+    clientAppRootComponentFiles: path.resolve(
+      __dirname,
+      '../client/components/PwaPopupWrapper.js'
+    ),
+
+    define: {
+      __PWA_POPUP_LOCALES__: locales,
+    },
+  }
+}
