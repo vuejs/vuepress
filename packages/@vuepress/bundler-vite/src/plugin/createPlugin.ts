@@ -8,6 +8,32 @@ import { createWorkaroundPlugin } from './createWorkaroundPlugin'
 import { resolveAlias } from './resolveAlias'
 import { resolveDefine } from './resolveDefine'
 
+// packages that include client code, which should not
+// be optimized nor externalized
+const clientPackages = [
+  '@vuepress/client',
+  '@vuepress/plugin-active-header-links',
+  '@vuepress/plugin-back-to-top',
+  '@vuepress/plugin-container',
+  '@vuepress/plugin-debug',
+  '@vuepress/plugin-docsearch',
+  '@vuepress/plugin-git',
+  '@vuepress/plugin-google-analytics',
+  '@vuepress/plugin-medium-zoom',
+  '@vuepress/plugin-nprogress',
+  '@vuepress/plugin-palette',
+  '@vuepress/plugin-prismjs',
+  '@vuepress/plugin-pwa',
+  '@vuepress/plugin-pwa-popup',
+  '@vuepress/plugin-register-components',
+  '@vuepress/plugin-search',
+  '@vuepress/plugin-shiki',
+  '@vuepress/plugin-theme-data',
+  '@vuepress/plugin-toc',
+  '@vuepress/theme-default',
+  '@vuepress/theme-vue',
+]
+
 export const createPlugin = ({
   app,
   options,
@@ -28,15 +54,35 @@ export const createPlugin = ({
       root: app.dir.source(),
       base: app.options.base,
       mode: isBuild ? 'production' : 'development',
+      define: resolveDefine({ app, isServer }),
       publicDir: app.dir.public(),
       cacheDir: app.dir.cache(),
-      define: resolveDefine({ app, isServer }),
       resolve: {
         alias: resolveAlias({ app }),
       },
+      server: {
+        host: app.options.host,
+        port: app.options.port,
+        open: app.options.open,
+      },
+      build: {
+        ssr: isServer,
+        outDir: isServer ? app.dir.dest('.server') : app.dir.dest(),
+        cssCodeSplit: false,
+        // TODO: may need to add this polyfill
+        polyfillDynamicImport: false,
+        rollupOptions: {
+          input: app.dir.client('lib/app.js'),
+          preserveEntrySignatures: 'allow-extension',
+        },
+        minify: isServer ? false : !app.env.isDebug,
+      },
       optimizeDeps: {
         include: ['@vuepress/shared'],
-        exclude: ['@vuepress/client'],
+        exclude: clientPackages,
+      },
+      ssr: {
+        noExternal: clientPackages,
       },
     }),
 

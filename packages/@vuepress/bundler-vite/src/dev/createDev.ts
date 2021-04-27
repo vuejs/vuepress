@@ -6,28 +6,24 @@ import type { ViteBundlerOptions } from '../types'
 export const createDev = (
   options: ViteBundlerOptions
 ): Bundler['dev'] => async (app: App) => {
-  const server = await createServer(
-    mergeConfig(
-      {
-        configFile: false,
-        server: {
-          host: app.options.host,
-          port: app.options.port,
-          open: app.options.open,
-        },
-        plugins: [
-          createPlugin({
-            app,
-            options,
-            isServer: false,
-            isBuild: false,
-          }),
-        ],
-        clearScreen: false,
-      },
-      options.viteOptions ?? {}
-    )
+  const viteConfig = mergeConfig(
+    {
+      configFile: false,
+      plugins: [
+        createPlugin({
+          app,
+          options,
+          isServer: false,
+          isBuild: false,
+        }),
+      ],
+      // `clearScreen` won't take effect in `config` hook of plugin API
+      clearScreen: false,
+    },
+    options.viteOptions ?? {}
   )
+
+  const server = await createServer(viteConfig)
 
   await server.listen()
 
