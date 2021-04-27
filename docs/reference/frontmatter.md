@@ -186,3 +186,14 @@ Set custom layout in frontmatter:
 layout: CustomLayout
 ---
 ```
+
+## externalIcon
+
+- Type: `boolean`
+
+- Details:
+
+  Whether to append an <OutboundLink /> icon to external links in current page.
+
+- Also see:
+  - [Config > markdown.links.externalIcon](./config.md#markdown-links-externalicon)

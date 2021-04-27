@@ -83,7 +83,7 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
         expect(env.links).toBeUndefined()
       })
 
-      it('should not render `<OutboundLink/>`', () => {
+      it('should not render `<OutboundLink/>` with self target', () => {
         const md = MarkdownIt({ html: true }).use(linksPlugin, {
           externalAttrs: {
             target: '_self',
@@ -100,6 +100,70 @@ describe('@vuepress/markdown > plugins > linksPlugin', () => {
             '<a href="//github.com" target="_self" rel="noopener noreferrer">github</a>',
             '<a href="https://github.com" target="_self" rel="noopener noreferrer">https://github.com</a>',
             '<a href="http://github.com" target="_self" rel="noopener noreferrer">http://github.com</a>',
+          ]
+            .map((a) => `<p>${a}</p>`)
+            .join('\n') + '\n'
+        )
+        expect(env.links).toBeUndefined()
+      })
+
+      it('should not render `<OutboundLink/>` with `externalIcon = false', () => {
+        const md = MarkdownIt({ html: true }).use(linksPlugin, {
+          externalIcon: false,
+        })
+        const env: MarkdownEnv = {}
+
+        const rendered = md.render(source, env)
+
+        expect(rendered).toEqual(
+          [
+            '<a href="https://github.com" target="_blank" rel="noopener noreferrer">https-github</a>',
+            '<a href="http://github.com" target="_blank" rel="noopener noreferrer">http-github</a>',
+            '<a href="//github.com" target="_blank" rel="noopener noreferrer">github</a>',
+            '<a href="https://github.com" target="_blank" rel="noopener noreferrer">https://github.com</a>',
+            '<a href="http://github.com" target="_blank" rel="noopener noreferrer">http://github.com</a>',
+          ]
+            .map((a) => `<p>${a}</p>`)
+            .join('\n') + '\n'
+        )
+        expect(env.links).toBeUndefined()
+      })
+
+      it('should not render `<OutboundLink/>` with `frontmatter.externalIcon = false`', () => {
+        const md = MarkdownIt({ html: true }).use(linksPlugin)
+        const env: MarkdownEnv = { frontmatter: { externalIcon: false } }
+
+        const rendered = md.render(source, env)
+
+        expect(rendered).toEqual(
+          [
+            '<a href="https://github.com" target="_blank" rel="noopener noreferrer">https-github</a>',
+            '<a href="http://github.com" target="_blank" rel="noopener noreferrer">http-github</a>',
+            '<a href="//github.com" target="_blank" rel="noopener noreferrer">github</a>',
+            '<a href="https://github.com" target="_blank" rel="noopener noreferrer">https://github.com</a>',
+            '<a href="http://github.com" target="_blank" rel="noopener noreferrer">http://github.com</a>',
+          ]
+            .map((a) => `<p>${a}</p>`)
+            .join('\n') + '\n'
+        )
+        expect(env.links).toBeUndefined()
+      })
+
+      it('`frontmatter.externalIcon` should override `externalIcon` option', () => {
+        const md = MarkdownIt({ html: true }).use(linksPlugin, {
+          externalIcon: false,
+        })
+        const env: MarkdownEnv = { frontmatter: { externalIcon: true } }
+
+        const rendered = md.render(source, env)
+
+        expect(rendered).toEqual(
+          [
+            '<a href="https://github.com" target="_blank" rel="noopener noreferrer">https-github<OutboundLink/></a>',
+            '<a href="http://github.com" target="_blank" rel="noopener noreferrer">http-github<OutboundLink/></a>',
+            '<a href="//github.com" target="_blank" rel="noopener noreferrer">github<OutboundLink/></a>',
+            '<a href="https://github.com" target="_blank" rel="noopener noreferrer">https://github.com<OutboundLink/></a>',
+            '<a href="http://github.com" target="_blank" rel="noopener noreferrer">http://github.com<OutboundLink/></a>',
           ]
             .map((a) => `<p>${a}</p>`)
             .join('\n') + '\n'

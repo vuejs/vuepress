@@ -432,12 +432,46 @@ You should not configure it unless you understand what it is for.
 
   Options for VuePress built-in markdown-it links plugin.
 
-  It will convert internal links to `<RouterLink>`, and add extra attributes to external links.
+  It will convert internal links to `<RouterLink>`, and add extra attributes and icon to external links.
 
   Set to `false` to disable this plugin.
 
 - Also see:
   - [Guide > Markdown > Syntax Extensions > Links](../guide/markdown.md#links)
+
+### markdown.links.internalTag
+
+- Type: `'a' | 'RouterLink'`
+
+- Default: `'RouterLink'`
+
+- Details:
+
+  Tag for internal links.
+
+  By default, this plugin will transform internal links to `<RouterLink>`. You can set this option to `'a'` to disable this feature.
+
+### markdown.links.externalAttrs
+
+- Type: `Record<string, string>`
+
+- Default: `{ target: '_blank', rel: 'noopener noreferrer' }`
+
+- Details:
+
+  Additional attributes for external links.
+
+### markdown.links.externalIcon
+
+- Type: `boolean`
+
+- Default: `true`
+
+- Details:
+
+  Whether to append an <OutboundLink /> icon to external links.
+
+  You can override this global option via [externalIcon](./frontmatter.md#externalicon) frontmatter in your pages.
 
 ### markdown.toc
 
