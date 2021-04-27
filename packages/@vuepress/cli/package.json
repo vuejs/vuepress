@@ -32,9 +32,9 @@
   "dependencies": {
     "@vuepress/core": "2.0.0-beta.10",
     "@vuepress/utils": "2.0.0-beta.8",
-    "cac": "^6.7.2",
+    "cac": "^6.7.3",
     "chokidar": "^3.5.1",
-    "envinfo": "^7.7.4",
+    "envinfo": "^7.8.1",
     "esbuild": "^0.9.6"
   },
   "publishConfig": {
