@@ -1,99 +1,13 @@
-import { createElement } from 'preact'
-import { computed, h } from 'vue'
-import { useRouter } from 'vue-router'
-import {
-  defineClientAppEnhance,
-  usePageLang,
-  useRouteLocale,
-  useSiteData,
-} from '@vuepress/client'
-import { resolveRoutePathFromUrl } from '@vuepress/shared'
-import type { LocaleConfig } from '@vuepress/shared'
+import { h } from 'vue'
+import { defineClientAppEnhance } from '@vuepress/client'
 import { Docsearch } from './components/Docsearch'
-import type { DocsearchProps } from './components/Docsearch'
+import type { DocsearchOptions } from '../shared'
 
-declare const __DOCSEARCH_PROPS__: DocsearchProps
-declare const __DOCSEARCH_LOCALES__: LocaleConfig<DocsearchProps>
+declare const __DOCSEARCH_OPTIONS__: DocsearchOptions
 
-const props = __DOCSEARCH_PROPS__
-const locales = __DOCSEARCH_LOCALES__
-
-const isSpecialClick = (event: MouseEvent): boolean => {
-  return (
-    event.button === 1 ||
-    event.altKey ||
-    event.ctrlKey ||
-    event.metaKey ||
-    event.shiftKey
-  )
-}
+const options = __DOCSEARCH_OPTIONS__
 
 export default defineClientAppEnhance(({ app }) => {
   // wrap the `<Docsearch />` component with plugin options
-  app.component('Docsearch', {
-    setup() {
-      const router = useRouter()
-      const routeLocale = useRouteLocale()
-      const lang = usePageLang()
-      const site = useSiteData()
-
-      const propsLocale = computed(() => ({
-        ...props,
-        ...locales[routeLocale.value],
-      }))
-
-      // resolve options for docsearch
-      const options = computed(
-        () =>
-          ({
-            ...propsLocale.value,
-
-            searchParameters: {
-              ...propsLocale.value.searchParameters,
-              facetFilters: [`lang:${lang.value}`].concat(
-                propsLocale.value.searchParameters?.facetFilters || []
-              ),
-            },
-
-            // navigation behavior triggered by `onKeyDown` internally
-            navigator: {
-              // when pressing Enter without metaKey
-              navigate: ({ itemUrl }) => {
-                router.push(itemUrl)
-              },
-            },
-
-            // transform full url to route path
-            transformItems: (items) =>
-              items.map((item) => {
-                // the `item.url` is full url with protocol and hostname
-                // so we have to transform it to vue-router path
-                return {
-                  ...item,
-                  url: resolveRoutePathFromUrl(item.url, site.value.base),
-                }
-              }),
-
-            // handle `onClick` by `router.push`
-            hitComponent: ({ hit, children }) =>
-              createElement(
-                'a',
-                {
-                  href: hit.url,
-                  onClick: (event: MouseEvent) => {
-                    if (isSpecialClick(event)) {
-                      return
-                    }
-                    event.preventDefault()
-                    router.push(hit.url)
-                  },
-                },
-                children
-              ),
-          } as DocsearchProps)
-      )
-
-      return () => h(Docsearch, { options: options.value })
-    },
-  })
+  app.component('Docsearch', () => h(Docsearch, { options }))
 })

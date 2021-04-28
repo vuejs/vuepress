@@ -1,58 +1,87 @@
-import { defineComponent, getCurrentInstance, h, onMounted, watch } from 'vue'
+import { computed, defineComponent, h, onMounted, watch } from 'vue'
 import type { PropType } from 'vue'
 // @ts-ignore: docsearch type issue
 import docsearch from '@docsearch/js'
-import type { DocSearchProps } from '@docsearch/react'
+import { usePageLang, useRouteLocale } from '@vuepress/client'
+import type { DocsearchOptions } from '../../shared'
+import { useDocsearchShim } from '../composables'
 
 import '@docsearch/css'
-
-export type DocsearchProps = DocSearchProps
 
 export const Docsearch = defineComponent({
   name: 'Docsearch',
 
   props: {
     options: {
-      type: Object as PropType<DocsearchProps>,
+      type: Object as PropType<DocsearchOptions>,
       required: true,
     },
   },
 
   setup(props) {
-    const vm = getCurrentInstance()
+    const routeLocale = useRouteLocale()
+    const lang = usePageLang()
+    const docsearchShim = useDocsearchShim()
 
-    const initialize = (options: DocsearchProps): void => {
+    // resolve docsearch props for current locale
+    const propsLocale = computed(() => ({
+      ...props.options,
+      ...props.options.locales?.[routeLocale.value],
+    }))
+
+    const facetFilters: string[] = []
+
+    const initialize = (): void => {
+      facetFilters.splice(
+        0,
+        facetFilters.length,
+        `lang:${lang.value}`,
+        ...(propsLocale.value.searchParameters?.facetFilters ?? [])
+      )
       docsearch({
-        ...options,
-        // the container selector
-        container: '#docsearch',
+        ...docsearchShim,
+        ...propsLocale.value,
+        container: '#docsearch-container',
+        searchParameters: {
+          ...propsLocale.value.searchParameters,
+          facetFilters,
+        },
       })
     }
 
-    const update = (options: DocsearchProps): void => {
-      if (vm && vm.vnode.el) {
-        vm.vnode.el.innerHTML = '<div id="docsearch"></div>'
-        initialize(options)
-      }
-    }
+    onMounted(() => {
+      initialize()
 
-    watch(
-      () => props.options,
-      (val, prevVal) => {
-        // check if the options are modified
-        const keys = Object.keys(val)
-        const prevKeys = Object.keys(prevVal)
-        if (
-          keys.length !== prevKeys.length ||
-          keys.some((key) => val[key] !== prevVal[key])
-        ) {
-          update(val)
+      // re-initialize if the options is changed
+      watch(
+        [routeLocale, propsLocale],
+        (
+          [curRouteLocale, curPropsLocale],
+          [prevRouteLocale, prevPropsLocale]
+        ) => {
+          if (curRouteLocale === prevRouteLocale) return
+          if (
+            JSON.stringify(curPropsLocale) !== JSON.stringify(prevPropsLocale)
+          ) {
+            initialize()
+          }
         }
-      }
-    )
+      )
 
-    onMounted(() => initialize(props.options))
+      // modify the facetFilters in place to avoid re-initializing docsearch
+      // when page lang is changed
+      watch(lang, (curLang, prevLang) => {
+        if (curLang !== prevLang) {
+          const prevIndex = facetFilters.findIndex(
+            (item) => item === `lang:${prevLang}`
+          )
+          if (prevIndex > -1) {
+            facetFilters.splice(prevIndex, 1, `lang:${curLang}`)
+          }
+        }
+      })
+    })
 
-    return () => h('div', { id: 'docsearch' })
+    return () => h('div', { id: 'docsearch-container' })
   },
 })

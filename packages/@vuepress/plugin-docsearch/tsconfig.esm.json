@@ -5,5 +5,5 @@
     "rootDir": "./src",
     "outDir": "./lib"
   },
-  "include": ["./src/client"]
+  "include": ["./src/client", "./src/shared"]
 }

@@ -1,40 +1,26 @@
-import type { DocSearchProps } from '@docsearch/react'
-import type { Plugin, PluginObject } from '@vuepress/core'
-import type { LocaleConfig } from '@vuepress/shared'
-import { logger, path } from '@vuepress/utils'
+import type { Plugin } from '@vuepress/core'
+import { path } from '@vuepress/utils'
+import type { DocsearchOptions } from '../shared'
 
-export type DocsearchPluginLocaleData = Pick<
-  DocSearchProps,
-  | 'appId'
-  | 'apiKey'
-  | 'indexName'
-  | 'placeholder'
-  | 'searchParameters'
-  | 'disableUserPersonalization'
-  | 'initialQuery'
->
+export type DocsearchPluginOptions = DocsearchOptions
 
-export interface DocsearchPluginOptions extends DocsearchPluginLocaleData {
-  locales?: LocaleConfig<DocsearchPluginLocaleData>
-}
-
-export const docsearchPlugin: Plugin<DocsearchPluginOptions> = ({
-  locales = {},
-  ...props
-}) => {
-  const plugin: PluginObject = {
-    name: '@vuepress/plugin-docsearch',
-  }
-
-  // if the required options are not set
-  // print warning and return a noop plugin
-  if (!props.apiKey || !props.indexName) {
-    logger.warn(`[${plugin.name}] 'apiKey' and 'indexName' are required`)
-    return plugin
+export const docsearchPlugin: Plugin<DocsearchPluginOptions> = (
+  options,
+  app
+) => {
+  if (app.env.isDev && app.options.bundler.endsWith('vite')) {
+    app.options.bundlerConfig.viteOptions = require('vite').mergeConfig(
+      app.options.bundlerConfig.viteOptions,
+      {
+        optimizeDeps: {
+          exclude: ['@docsearch/js', 'preact'],
+        },
+      }
+    )
   }
 
   return {
-    ...plugin,
+    name: '@vuepress/plugin-docsearch',
 
     clientAppEnhanceFiles: path.resolve(
       __dirname,
@@ -42,8 +28,7 @@ export const docsearchPlugin: Plugin<DocsearchPluginOptions> = ({
     ),
 
     define: {
-      __DOCSEARCH_PROPS__: props,
-      __DOCSEARCH_LOCALES__: locales,
+      __DOCSEARCH_OPTIONS__: options,
     },
   }
 }
