@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - '**/__tests__/**'
   workflow_dispatch:
 
 jobs:
