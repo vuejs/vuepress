@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-pwa",
-  "version": "2.0.0-beta.10",
+  "version": "2.0.0-beta.11",
   "description": "VuePress plugin - progressive web application",
   "keywords": [
     "vuepress-plugin",
@@ -29,8 +29,8 @@
   },
   "dependencies": {
     "@vuepress/client": "2.0.0-beta.10",
-    "@vuepress/core": "2.0.0-beta.10",
-    "@vuepress/utils": "2.0.0-beta.8",
+    "@vuepress/core": "2.0.0-beta.11",
+    "@vuepress/utils": "2.0.0-beta.11",
     "mitt": "^2.1.0",
     "register-service-worker": "^1.7.2",
     "vue": "^3.0.11",

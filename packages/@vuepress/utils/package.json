@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/utils",
-  "version": "2.0.0-beta.8",
+  "version": "2.0.0-beta.11",
   "description": "Utils package of VuePress",
   "keywords": [
     "vuepress",

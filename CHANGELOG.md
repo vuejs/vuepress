@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.11](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.10...v2.0.0-beta.11) (2021-04-28)
+
+
+### Bug Fixes
+
+* **bundler-vite:** make the timestamp of client entry consistent ([4bbff4c](https://github.com/vuepress/vuepress-next/commit/4bbff4c22f67c456a0f4dcfe3ddf5724902a4d2a))
+
+
+### Performance Improvements
+
+* do not register hooks in dev mode for prod-only plugins ([d5af139](https://github.com/vuepress/vuepress-next/commit/d5af1398f059c075783c0c58456cef7b41bcaaf9))
+* specify optimizeDeps for vite dev ([0d77331](https://github.com/vuepress/vuepress-next/commit/0d773312181380114cba16f61b633a5266dd1cf3))
+* **core:** merge page routes to reduce requests in vite dev ([fa2a614](https://github.com/vuepress/vuepress-next/commit/fa2a61413c70afd426f74e57e6e5d2a4900c6568))
+
+
+
+
+
 # [2.0.0-beta.10](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.9...v2.0.0-beta.10) (2021-04-27)
 
 

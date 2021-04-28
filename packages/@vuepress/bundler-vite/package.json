@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/bundler-vite",
-  "version": "2.0.0-beta.10",
+  "version": "2.0.0-beta.11",
   "description": "Bundler vite package of VuePress",
   "keywords": [
     "vuepress-bundler",
@@ -32,9 +32,9 @@
     "@vue/compiler-sfc": "^3.0.11",
     "@vue/server-renderer": "^3.0.11",
     "@vuepress/client": "2.0.0-beta.10",
-    "@vuepress/core": "2.0.0-beta.10",
+    "@vuepress/core": "2.0.0-beta.11",
     "@vuepress/shared": "2.0.0-beta.7",
-    "@vuepress/utils": "2.0.0-beta.8",
+    "@vuepress/utils": "2.0.0-beta.11",
     "rollup": "^2.45.2",
     "vite": "^2.2.3",
     "vue": "^3.0.11",
