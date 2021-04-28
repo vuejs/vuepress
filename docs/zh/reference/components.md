@@ -24,22 +24,21 @@
 ## Content
 
 - Props:
-  - pagePath
+  - pageKey
     - 类型： `string`
     - 是否必须： `false`
 
 - 使用：
 
 ```md
-<Content page-path="/" />
-<Content page-path="/foo.html" />
+<Content page-key="v-xxxxxx" />
 ```
 
 - 详情：
 
   该组件会渲染页面的 Markdown 内容。
 
-  如果没有传入 `pagePath` Prop ，它会渲染当前路由路径下的页面。
+  页面 Key 是页面路由的 [name](https://next.router.vuejs.org/zh/api/#name-2) 。如果没有传入 `pageKey` Prop ，它会渲染当前路由下的页面。
 
   该组件主要是为了开发主题时使用。在绝大多数情况下你不会用到它。
 

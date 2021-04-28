@@ -6,15 +6,16 @@ import type { App } from '../../types'
 export const preparePagesData = async (app: App): Promise<void> => {
   // generate page data map
   const content = `\
-export const pagesData = {
+export const pagesData = {\
 ${app.pages
   .map(
-    ({ path, dataFilePath, dataFileChunkName }) => `\
-  ${JSON.stringify(path)}: () => import(${
+    ({ key, path, dataFilePath, dataFileChunkName }) => `
+  // path: ${path}
+  ${JSON.stringify(key)}: () => import(${
       dataFileChunkName ? `/* webpackChunkName: "${dataFileChunkName}" */` : ''
     }${JSON.stringify(dataFilePath)}).then(({ data }) => data),`
   )
-  .join('\n')}
+  .join('')}
 }
 `
 

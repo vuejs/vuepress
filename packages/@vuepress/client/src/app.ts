@@ -98,8 +98,8 @@ export const createVueApp: CreateVueAppFunction = async () => {
     if (to.path !== from.path || from === START_LOCATION) {
       // ensure page data and page component have been loaded
       ;[pageData.value] = await Promise.all([
-        resolvePageData(to.path),
-        pagesComponents[to.path]?.__asyncLoader(),
+        resolvePageData(to.name as string),
+        pagesComponents[to.name as string]?.__asyncLoader(),
       ])
     }
   })

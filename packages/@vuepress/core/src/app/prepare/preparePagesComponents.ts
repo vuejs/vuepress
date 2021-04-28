@@ -11,8 +11,9 @@ import { defineAsyncComponent } from 'vue'
 export const pagesComponents = {\
 ${app.pages
   .map(
-    ({ path, componentFilePath, componentFileChunkName }) => `
-  ${JSON.stringify(path)}: defineAsyncComponent(() => import(${
+    ({ key, path, componentFilePath, componentFileChunkName }) => `
+  // path: ${path}
+  ${JSON.stringify(key)}: defineAsyncComponent(() => import(${
       componentFileChunkName
         ? `/* webpackChunkName: "${componentFileChunkName}" */`
         : ''

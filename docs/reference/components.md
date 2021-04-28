@@ -24,22 +24,21 @@
 ## Content
 
 - Props:
-  - pagePath
+  - pageKey
     - Type: `string`
     - Required: `false`
 
 - Usage:
 
 ```md
-<Content page-path="/" />
-<Content page-path="/foo.html" />
+<Content page-key="v-xxxxxx" />
 ```
 
 - Details:
 
   This component will render the Markdown content of a page.
 
-  If the `pagePath` prop is not provided, it will render the page of current route path.
+  The page key is the [name](https://next.router.vuejs.org/api/#name-2) of the page route. If the `pageKey` prop is not provided, it will render the page of current route.
 
   This component is mainly for developing themes. You won't need it in most cases.
 
