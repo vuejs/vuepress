@@ -17,7 +17,7 @@ export const resolvePageHtmlInfo = ({
   // /foo.html -> foo.html
   // /foo/ -> foo/index.html
   const htmlFilePathRelative = removeLeadingSlash(
-    pagePath.replace(/\/$/, '/index.html')
+    decodeURI(pagePath.replace(/\/$/, '/index.html'))
   )
   const htmlFilePath = app.dir.dest(htmlFilePathRelative)
 
