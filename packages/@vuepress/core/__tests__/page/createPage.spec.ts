@@ -38,9 +38,11 @@ describe('core > page > createPage', () => {
     expect(page.componentFileContent).toBe(`<template></template>`)
     expect(page.componentFileChunkName).toBe(page.key)
     expect(page.dataFilePath).toBe(
-      app.dir.temp(`internal/pageData/${page.key}.js`)
+      app.dir.temp(`pages/${page.htmlFilePathRelative}.js`)
     )
-    expect(page.dataFilePathRelative).toBe(`internal/pageData/${page.key}.js`)
+    expect(page.dataFilePathRelative).toBe(
+      `pages/${page.htmlFilePathRelative}.js`
+    )
     expect(page.dataFileChunkName).toBe(page.key)
     expect(page.title).toBe('')
     expect(page.content).toBe('')

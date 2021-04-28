@@ -9,11 +9,13 @@ const app = createApp({
 describe('core > page > resolvePageDataInfo', () => {
   it('should resolve page data file path correctly', () => {
     const key = 'foobar'
-    const expectedFilePath = app.dir.temp(`internal/pageData/${key}.js`)
+    const htmlFilePathRelative = 'foobar.html'
+    const expectedFilePath = app.dir.temp(`pages/${htmlFilePathRelative}.js`)
     expect(
       resolvePageDataInfo({
         app,
         key,
+        htmlFilePathRelative,
       })
     ).toEqual({
       dataFilePath: expectedFilePath,
