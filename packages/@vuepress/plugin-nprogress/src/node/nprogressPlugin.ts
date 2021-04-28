@@ -3,21 +3,21 @@ import { path } from '@vuepress/utils'
 
 export type NprogressPluginOptions = Record<never, never>
 
-export const nprogressPlugin: Plugin<NprogressPluginOptions> = {
-  name: '@vuepress/plugin-nprogress',
+export const nprogressPlugin: Plugin<NprogressPluginOptions> = (_, app) => {
+  if (app.env.isDev && app.options.bundler.endsWith('vite')) {
+    app.options.bundlerConfig.viteOptions = require('vite').mergeConfig(
+      app.options.bundlerConfig.viteOptions,
+      {
+        optimizeDeps: {
+          include: ['nprogress'],
+        },
+      }
+    )
+  }
 
-  clientAppSetupFiles: path.resolve(__dirname, '../client/clientAppSetup.js'),
+  return {
+    name: '@vuepress/plugin-nprogress',
 
-  onInitialized(app) {
-    if (app.options.bundler.endsWith('vite')) {
-      app.options.bundlerConfig.viteOptions = require('vite').mergeConfig(
-        app.options.bundlerConfig.viteOptions,
-        {
-          optimizeDeps: {
-            include: ['nprogress'],
-          },
-        }
-      )
-    }
-  },
+    clientAppSetupFiles: path.resolve(__dirname, '../client/clientAppSetup.js'),
+  }
 }

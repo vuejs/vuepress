@@ -3,11 +3,24 @@ import { path } from '@vuepress/utils'
 
 export type BackToTopPluginOptions = Record<never, never>
 
-export const backToTopPlugin: Plugin<BackToTopPluginOptions> = {
-  name: '@vuepress/plugin-back-to-top',
+export const backToTopPlugin: Plugin<BackToTopPluginOptions> = (_, app) => {
+  if (app.env.isDev && app.options.bundler.endsWith('vite')) {
+    app.options.bundlerConfig.viteOptions = require('vite').mergeConfig(
+      app.options.bundlerConfig.viteOptions,
+      {
+        optimizeDeps: {
+          exclude: ['ts-debounce'],
+        },
+      }
+    )
+  }
 
-  clientAppRootComponentFiles: path.resolve(
-    __dirname,
-    '../client/BackToTop.vue'
-  ),
+  return {
+    name: '@vuepress/plugin-back-to-top',
+
+    clientAppRootComponentFiles: path.resolve(
+      __dirname,
+      '../client/BackToTop.vue'
+    ),
+  }
 }
