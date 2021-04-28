@@ -99,7 +99,7 @@ export const createPage = async (
     dataFilePath,
     dataFilePathRelative,
     dataFileChunkName,
-  } = resolvePageDataInfo({ app, key })
+  } = resolvePageDataInfo({ app, htmlFilePathRelative, key })
 
   // resolve title from frontmatter and headers
   const title = resolvePageTitle({ content, frontmatter, headers })

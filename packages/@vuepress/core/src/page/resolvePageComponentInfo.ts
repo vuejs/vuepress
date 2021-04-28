@@ -21,7 +21,7 @@ export const resolvePageComponentInfo = async ({
   content: string
   frontmatter: PageFrontmatter
   filePathRelative: string | null
-  htmlFilePathRelative: string | null
+  htmlFilePathRelative: string
   key: string
 }): Promise<{
   headers: MarkdownHeader[]
