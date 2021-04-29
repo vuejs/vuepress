@@ -8,15 +8,18 @@ export const resolvePageExcerpt = ({
   app,
   excerptRaw,
   frontmatter,
+  filePath,
   filePathRelative,
 }: {
   app: App
   excerptRaw: string
   frontmatter: PageFrontmatter
+  filePath: string | null
   filePathRelative: string | null
 }): string => {
   const markdownEnv: MarkdownEnv = {
     base: app.options.base,
+    filePath,
     filePathRelative,
     frontmatter,
   }

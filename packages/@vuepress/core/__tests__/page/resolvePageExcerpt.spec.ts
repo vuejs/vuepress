@@ -12,6 +12,7 @@ describe('core > page > resolvePageExcerpt', () => {
       app,
       excerptRaw: 'foobar',
       frontmatter: {},
+      filePath: null,
       filePathRelative: null,
     })
 

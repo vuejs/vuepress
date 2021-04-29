@@ -13,6 +13,7 @@ export const resolvePageComponentInfo = async ({
   app,
   content,
   frontmatter,
+  filePath,
   filePathRelative,
   htmlFilePathRelative,
   key,
@@ -20,6 +21,7 @@ export const resolvePageComponentInfo = async ({
   app: App
   content: string
   frontmatter: PageFrontmatter
+  filePath: string | null
   filePathRelative: string | null
   htmlFilePathRelative: string
   key: string
@@ -33,6 +35,7 @@ export const resolvePageComponentInfo = async ({
 }> => {
   const markdownEnv: MarkdownEnv = {
     base: app.options.base,
+    filePath,
     filePathRelative,
     frontmatter,
   }

@@ -41,6 +41,7 @@ export const createPage = async (
   const excerpt = resolvePageExcerpt({
     app,
     excerptRaw,
+    filePath,
     filePathRelative,
     frontmatter,
   })
@@ -89,6 +90,7 @@ export const createPage = async (
   } = await resolvePageComponentInfo({
     app,
     content,
+    filePath,
     filePathRelative,
     frontmatter,
     htmlFilePathRelative,

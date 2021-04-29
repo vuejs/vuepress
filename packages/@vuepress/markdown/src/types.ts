@@ -57,6 +57,11 @@ export interface MarkdownEnv {
   base?: string
 
   /**
+   * Absolute file path of the markdown file
+   */
+  filePath?: string | null
+
+  /**
    * Relative file path of the markdown file
    */
   filePathRelative?: string | null
