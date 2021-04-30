@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`@vuepress/markdown > plugins > importCodePlugin compatibility with codePlugin should terminate paragraph 1`] = `
+exports[`@vuepress/markdown > plugins > importCodePlugin compatibility with codePlugin should work with syntax supported by codePlugin 1`] = `
 <div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code>const msg = 'hello from js'
 
 console.log(msg)
