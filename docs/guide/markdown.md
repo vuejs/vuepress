@@ -299,6 +299,71 @@ This v-pre extension is supported by our built-in plugin.
 Config reference: [markdown.code.vPre](../reference/config.md#markdown-vpre)
 :::
 
+### Import Code Blocks
+
+You can import code blocks from files with following syntax:
+
+```md
+<!-- minimal syntax -->
+@[code](../foo.js)
+```
+
+If you want to partially import the file:
+
+```md
+<!-- partial import, from line 1 to line 10 -->
+@[code{1-10}](../foo.js)
+```
+
+The code language is inferred from the file extension, while it is recommended to specify it explicitly:
+
+```md
+<!-- specify the code language -->
+@[code js](../foo.js)
+```
+
+In fact, the second part inside the `[]` will be treated as the mark of the code fence, so it supports all the syntax mentioned in the above [Code Blocks](#code-blocks) section:
+
+```md
+<!-- line highlighting -->
+@[code js{2,4-5}](../foo.js)
+```
+
+Here is a complex example:
+
+- import line 3 to line 10 of the `'../foo.js'` file
+- specify the language as `'js'`
+- highlight line 3 of the imported code, i.e. line 5 of the `'../foo.js'` file
+- disable line numbers
+
+```md
+@[code{3-10} js{3}:no-line-numbers](../foo.js)
+```
+
+Notice that path aliases are not available in import code syntax. You can use following config to handle path alias yourself:
+
+```js
+module.exports = {
+  markdown: {
+    importCode: {
+      handleImportPath: (str) =>
+        str.replace(/^@src/, path.resolve(__dirname, 'path/to/src')),
+    },
+  },
+}
+```
+
+```md
+<!-- it will be resolved to 'path/to/src/foo.js' -->
+@[code](@src/foo.js)
+```
+
+::: tip
+This import code extension is supported by our built-in plugin.
+
+Config reference: [markdown.importCode](../reference/config.md#markdown-importcode)
+:::
+
 ## Using Vue in Markdown
 
 This section will introduce some basic usage of Vue in Markdown.

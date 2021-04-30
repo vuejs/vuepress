@@ -426,6 +426,29 @@ module.exports = {
 - 参考：
   - [Cookbook > Markdown 与 Vue SFC](../advanced/cookbook/markdown-and-vue-sfc.md)
 
+### markdown.importCode
+
+- 类型： `ImportCodePluginOptions | false`
+
+- 详情：
+
+  VuePress 内置的 markdown-it 导入代码插件的配置项。
+
+  设置为 `false` 可以禁用该插件。
+
+- 参考：
+  - [指南 > Markdown > 语法扩展 > 导入代码块](../guide/markdown.md#导入代码块)
+
+#### markdown.importCode.handleImportPath
+
+- 类型： `(str: string) => string`
+
+- 默认值： `(str) => str`
+
+- 详情：
+
+  一个函数，用于处理导入代码语法中的文件导入路径。
+
 ### markdown.links
 
 - 类型： `LinkPluginOptions | false`
@@ -441,7 +464,7 @@ module.exports = {
 - 参考：
   - [指南 > Markdown > 语法扩展 > 链接](../guide/markdown.md#链接)
 
-### markdown.links.internalTag
+#### markdown.links.internalTag
 
 - 类型： `string`
 
@@ -453,7 +476,7 @@ module.exports = {
 
   默认情况下，该插件会把内部链接转换为 `<RouterLink>` 。你可以把该选项设置为 `'a'` 来禁用这个功能。
 
-### markdown.links.externalAttrs
+#### markdown.links.externalAttrs
 
 - 类型： `Record<string, string>`
 
@@ -463,7 +486,7 @@ module.exports = {
 
   为外部链接添加额外的属性。
 
-### markdown.links.externalIcon
+#### markdown.links.externalIcon
 
 - 类型： `boolean`
 

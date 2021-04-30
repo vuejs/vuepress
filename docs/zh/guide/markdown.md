@@ -302,6 +302,71 @@ v-pre 扩展是由我们的内置插件支持的。
 配置参考： [markdown.code.vPre](../reference/config.md#markdown-vpre)
 :::
 
+### 导入代码块
+
+你可以使用下面的语法，从文件中导入代码块：
+
+```md
+<!-- 最简单的语法 -->
+@[code](../foo.js)
+```
+
+如果你只想导入这个文件的一部分：
+
+```md
+<!-- 仅导入第 1 行至第 10 行 -->
+@[code{1-10}](../foo.js)
+```
+
+代码语言会根据文件扩展名进行推断，但我们建议你显式指定：
+
+```md
+<!-- 指定代码语言 -->
+@[code js](../foo.js)
+```
+
+实际上，`[]` 内的第二部分会被作为代码块标记来处理，因此在上面 [代码块](#代码块) 章节中提到的语法在这里都可以支持：
+
+```md
+<!-- 行高亮 -->
+@[code js{2,4-5}](../foo.js)
+```
+
+下面是一个复杂的例子：
+
+- 导入 `'../foo.js'` 文件的第 3 行至第 10 行
+- 指定语言为 `'js'`
+- 对导入代码的第 3 行进行高亮，即 `'../foo.js'` 文件的第 5 行
+- 禁用行号
+
+```md
+@[code{3-10} js{3}:no-line-numbers](../foo.js)
+```
+
+需要注意的是，路径别名在导入代码语法中不会生效。你可以通过下面的配置来自行处理路径别名：
+
+```js
+module.exports = {
+  markdown: {
+    importCode: {
+      handleImportPath: (str) =>
+        str.replace(/^@src/, path.resolve(__dirname, 'path/to/src')),
+    },
+  },
+}
+```
+
+```md
+<!-- 会被解析至 'path/to/src/foo.js' -->
+@[code](@src/foo.js)
+```
+
+::: tip
+导入代码扩展是由我们的内置插件支持的。
+
+配置参考： [markdown.importCode](../reference/config.md#markdown-importcode)
+:::
+
 ## 在 Markdown 中使用 Vue
 
 这一章节会介绍 Vue 在 Markdown 中一些基本用法。

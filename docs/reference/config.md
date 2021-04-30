@@ -427,6 +427,29 @@ You should not configure it unless you understand what it is for.
 - Also see:
   - [Cookbook > Markdown and Vue SFC](../advanced/cookbook/markdown-and-vue-sfc.md)
 
+### markdown.importCode
+
+- Type: `ImportCodePluginOptions | false`
+
+- Details:
+
+  Options for VuePress built-in markdown-it import-code plugin.
+
+  Set to `false` to disable this plugin.
+
+- Also see:
+  - [Guide > Markdown > Syntax Extensions > Import Code Blocks](../guide/markdown.md#import-code-blocks)
+
+#### markdown.importCode.handleImportPath
+
+- Type: `(str: string) => string`
+
+- Default: `(str) => str`
+
+- Details:
+
+  A function to handle the import path of the import code syntax.
+
 ### markdown.links
 
 - Type: `LinksPluginOptions | false`
@@ -442,7 +465,7 @@ You should not configure it unless you understand what it is for.
 - Also see:
   - [Guide > Markdown > Syntax Extensions > Links](../guide/markdown.md#links)
 
-### markdown.links.internalTag
+#### markdown.links.internalTag
 
 - Type: `'a' | 'RouterLink'`
 
@@ -454,7 +477,7 @@ You should not configure it unless you understand what it is for.
 
   By default, this plugin will transform internal links to `<RouterLink>`. You can set this option to `'a'` to disable this feature.
 
-### markdown.links.externalAttrs
+#### markdown.links.externalAttrs
 
 - Type: `Record<string, string>`
 
@@ -464,7 +487,7 @@ You should not configure it unless you understand what it is for.
 
   Additional attributes for external links.
 
-### markdown.links.externalIcon
+#### markdown.links.externalIcon
 
 - Type: `boolean`
 

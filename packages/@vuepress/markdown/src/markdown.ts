@@ -7,6 +7,7 @@ import {
   emojiPlugin,
   extractHeadersPlugin,
   hoistTagsPlugin,
+  importCodePlugin,
   linksPlugin,
   tocPlugin,
 } from './plugins'
@@ -24,6 +25,7 @@ export const createMarkdown = ({
   emoji,
   extractHeaders,
   hoistTags,
+  importCode,
   links,
   toc,
   ...markdownItOptions
@@ -102,6 +104,11 @@ export const createMarkdown = ({
   // process code fence
   if (code !== false) {
     md.use(codePlugin, code)
+  }
+
+  // handle import_code syntax
+  if (importCode !== false) {
+    md.use(importCodePlugin, importCode)
   }
 
   return md

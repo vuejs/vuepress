@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`@vuepress/markdown > plugins > importCodePlugin compatibility with codePlugin should terminate paragraph 1`] = `
+<div class="language-javascript ext-js line-numbers-mode"><pre v-pre class="language-javascript"><code>const msg = 'hello from js'
+
+console.log(msg)
+
+console.log('foo bar')
+</code></pre>
+  <div class="highlight-lines">
+    <div class="highlight-line">&nbsp;</div><br>
+    <div class="highlight-line">&nbsp;</div>
+    <div class="highlight-line">&nbsp;</div><br>
+  </div>
+  <div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div>
+</div>
+<div class="language-markdown ext-md"><pre v-pre class="language-markdown"><code># msg
+
+hello from md
+
+## foo bar
+</code></pre>
+</div>
+`;
