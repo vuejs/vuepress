@@ -87,9 +87,13 @@ export const createPlugin = ({
     }),
 
     async configureServer(server) {
+      // here we need to import vite client script explicitly because we do not
+      // have the `index.html` file as a normal vite app
+      const viteClient = `${app.options.base}@vite/client`
+
       // resolve the url path of the client entry file
       // use `removeLeadingSlash` to compat with windows file path
-      const clientEntry = `/@fs/${removeLeadingSlash(
+      const clientEntry = `${app.options.base}@fs/${removeLeadingSlash(
         app.dir.client('lib/app.js')
       )}`
 
@@ -117,7 +121,7 @@ export const createPlugin = ({
               template.replace(
                 /<\/body>/,
                 `${[
-                  `<script type="module" src="/@vite/client"></script>`,
+                  `<script type="module" src="${viteClient}"></script>`,
                   `<script type="module" src="${clientEntrySrc}"></script>`,
                 ].join('')}</body>`
               )
