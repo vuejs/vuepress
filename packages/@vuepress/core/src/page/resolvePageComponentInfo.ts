@@ -26,6 +26,7 @@ export const resolvePageComponentInfo = async ({
   htmlFilePathRelative: string
   key: string
 }): Promise<{
+  deps: string[]
   headers: MarkdownHeader[]
   links: MarkdownLink[]
   componentFilePath: string
@@ -43,9 +44,12 @@ export const resolvePageComponentInfo = async ({
   const rendered = app.markdown.render(content, markdownEnv)
 
   /* istanbul ignore next */
-  const { headers = [], links = [], hoistedTags = [] } = markdownEnv
-
-  // TODO: links check
+  const {
+    headers = [],
+    hoistedTags = [],
+    importedFiles = [],
+    links = [],
+  } = markdownEnv
 
   // resolve component file content
   // take the rendered markdown content as <template>
@@ -64,6 +68,7 @@ export const resolvePageComponentInfo = async ({
   const componentFileChunkName = key
 
   return {
+    deps: importedFiles,
     headers,
     links,
     componentFilePath,

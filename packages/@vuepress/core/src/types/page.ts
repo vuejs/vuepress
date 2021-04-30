@@ -92,11 +92,6 @@ export interface Page extends PageData {
   content: string
 
   /**
-   * Links of the page
-   */
-  links: MarkdownLink[]
-
-  /**
    * Slug of the page
    */
   slug: string
@@ -107,6 +102,16 @@ export interface Page extends PageData {
    * @example '2020-09-09'
    */
   date: string
+
+  /**
+   * Dependencies of the page
+   */
+  deps: string[]
+
+  /**
+   * Links of the page
+   */
+  links: MarkdownLink[]
 }
 
 /**

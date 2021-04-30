@@ -19,6 +19,7 @@ describe('core > page > resolvePageComponentInfo', () => {
     })
 
     expect(resolved).toEqual({
+      deps: [],
       headers: [],
       links: [],
       componentFilePath: app.dir.temp('pages/foo.html.vue'),
@@ -40,6 +41,7 @@ describe('core > page > resolvePageComponentInfo', () => {
     })
 
     expect(resolved).toEqual({
+      deps: [],
       headers: [],
       links: [],
       componentFilePath: app.dir.temp('pages/foo.html.vue'),
