@@ -14,7 +14,7 @@ export const resolvePagePath = ({
   pathInferred: string | null
   options: PageOptions
 }): string => {
-  let pagePath = permalink || pathInferred || options.path
+  let pagePath = options.path || permalink || pathInferred
 
   if (!pagePath) {
     throw logger.createError(

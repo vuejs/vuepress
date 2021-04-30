@@ -4,6 +4,7 @@ const testCases: [
   Parameters<typeof resolvePagePath>,
   ReturnType<typeof resolvePagePath>
 ][] = [
+  // use options.path
   [
     [
       {
@@ -14,7 +15,7 @@ const testCases: [
         },
       },
     ],
-    '/permalink/',
+    '/options/',
   ],
   [
     [
@@ -26,7 +27,7 @@ const testCases: [
         },
       },
     ],
-    '/permalink/',
+    '/options/',
   ],
   [
     [
@@ -38,16 +39,36 @@ const testCases: [
         },
       },
     ],
-    '/permalink.html',
+    '/options.html',
   ],
+  // use permalink
+  [
+    [
+      {
+        permalink: '/permalink',
+        pathInferred: '/inferred',
+        options: {},
+      },
+    ],
+    '/permalink/',
+  ],
+  [
+    [
+      {
+        permalink: '/permalink/',
+        pathInferred: '/inferred/',
+        options: {},
+      },
+    ],
+    '/permalink/',
+  ],
+  // user pathInferred
   [
     [
       {
         permalink: null,
         pathInferred: '/inferred',
-        options: {
-          path: '/options',
-        },
+        options: {},
       },
     ],
     '/inferred/',
@@ -57,9 +78,7 @@ const testCases: [
       {
         permalink: null,
         pathInferred: '/inferred/',
-        options: {
-          path: '/options/',
-        },
+        options: {},
       },
     ],
     '/inferred/',
@@ -68,37 +87,11 @@ const testCases: [
     [
       {
         permalink: null,
-        pathInferred: null,
-        options: {
-          path: '/options',
-        },
+        pathInferred: '/inferred.html',
+        options: {},
       },
     ],
-    '/options/',
-  ],
-  [
-    [
-      {
-        permalink: null,
-        pathInferred: null,
-        options: {
-          path: '/options/',
-        },
-      },
-    ],
-    '/options/',
-  ],
-  [
-    [
-      {
-        permalink: null,
-        pathInferred: null,
-        options: {
-          path: '/options.html',
-        },
-      },
-    ],
-    '/options.html',
+    '/inferred.html',
   ],
 ]
 
