@@ -18,7 +18,7 @@
 
 ![vuepress-core-process](/images/guide/vuepress-core-process.png)
 
-上图展示了 VuePress 的核心流程以及 [Plugin API](../reference/plugin-api.md) 的 Hooks ：
+上图展示了 VuePress 的核心流程以及 [插件 API](../reference/plugin-api.md) 的 Hooks ：
 
 - 在 **init** 阶段：
   - 主题和插件会被加载。这意味着插件需要在初始化之前使用。

@@ -6,7 +6,7 @@
 
 ## 创建一个插件
 
-VuePress 插件是一个符合 [Plugin API](../reference/plugin-api.md) 的普通 JavaScript 对象，称之为 *插件对象* 。
+VuePress 插件是一个符合 [插件 API](../reference/plugin-api.md) 的普通 JavaScript 对象，称之为 *插件对象* 。
 
 如果插件想要接收用户配置项，那么它可以是一个返回值为 *插件对象* 的函数，称之为 *插件函数* 。
 

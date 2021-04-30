@@ -1,6 +1,6 @@
 # 插件
 
-借助于 [Plugin API](../reference/plugin-api.md) ， VuePress 插件可以为你提供各种不同的功能。
+借助于 [插件 API](../reference/plugin-api.md) ， VuePress 插件可以为你提供各种不同的功能。
 
 ## 社区插件
 
