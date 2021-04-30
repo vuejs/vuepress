@@ -241,7 +241,7 @@ foo
   })
 
   describe('compatibility with codePlugin', () => {
-    it('should terminate paragraph', () => {
+    it('should work with syntax supported by codePlugin', () => {
       const source = `\
 @[code js{1,3-4}](${jsFixturePathRelative})
 @[code md:no-line-numbers](${mdFixturePathRelative})
