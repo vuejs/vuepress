@@ -69,16 +69,16 @@ ${mdFixtureContent}\
 
       const expected = `\
 <pre><code class="language-js">\
-${jsFixtureContent.split('\n').slice(0, 2).join('\n')}\
+${jsFixtureContent.split('\n').slice(0, 2).join('\n').replace(/\n?$/, '\n')}\
 </code></pre>
 <pre><code class="language-js">\
-${jsFixtureContent.split('\n').slice(0).join('\n')}\
+${jsFixtureContent.split('\n').slice(0).join('\n').replace(/\n?$/, '\n')}\
 </code></pre>
 <pre><code class="language-md">\
-${mdFixtureContent.split('\n').slice(3, 5).join('\n')}\
+${mdFixtureContent.split('\n').slice(3, 5).join('\n').replace(/\n?$/, '\n')}\
 </code></pre>
 <pre><code class="language-md">\
-${mdFixtureContent.split('\n').slice(0, 5).join('\n')}\
+${mdFixtureContent.split('\n').slice(0, 5).join('\n').replace(/\n?$/, '\n')}\
 </code></pre>
 `
 

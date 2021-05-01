@@ -40,6 +40,7 @@ export const resolveImportCode = (
     importCode: fileContent
       .split('\n')
       .slice(lineStart ? lineStart - 1 : lineStart, lineEnd)
-      .join('\n'),
+      .join('\n')
+      .replace(/\n?$/, '\n'),
   }
 }
