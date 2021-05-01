@@ -37,6 +37,7 @@ export const zh: SidebarConfig = {
       children: [
         '/zh/advanced/cookbook/README.md',
         '/zh/advanced/cookbook/usage-of-client-app-enhance.md',
+        '/zh/advanced/cookbook/adding-extra-pages.md',
         '/zh/advanced/cookbook/markdown-and-vue-sfc.md',
       ],
     },
