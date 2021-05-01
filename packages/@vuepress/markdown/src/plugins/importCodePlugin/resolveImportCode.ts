@@ -34,19 +34,12 @@ export const resolveImportCode = (
   // read file content
   const fileContent = fs.readFileSync(importFilePath).toString()
 
-  if (lineStart < 1 || lineEnd < 1 || lineStart > lineEnd) {
-    return {
-      importFilePath,
-      importCode: fileContent,
-    }
-  }
-
   // resolve partial import
   return {
     importFilePath,
     importCode: fileContent
       .split('\n')
-      .slice(lineStart - 1, lineEnd)
+      .slice(lineStart ? lineStart - 1 : lineStart, lineEnd)
       .join('\n'),
   }
 }
