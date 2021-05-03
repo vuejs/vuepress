@@ -123,7 +123,7 @@ pre[class*='language-'] {
 
 // ===============================
 
-#{$contentClass} {
+.theme-default-content {
   code {
     color: color.scale($textColor, $lightness: 20%);
     padding: 0.25rem 0.5rem;
@@ -134,7 +134,7 @@ pre[class*='language-'] {
   }
 }
 
-#{$contentClass} {
+.theme-default-content {
   pre,
   pre[class*='language-'] {
     line-height: 1.4;
@@ -266,7 +266,7 @@ div[class*='language-'] {
 
 // narrow mobile
 @media (max-width: $MQMobileNarrow) {
-  #{$contentClass} {
+  .theme-default-content {
     div[class*='language-'] {
       margin: 0.85rem -1.5rem;
       border-radius: 0;

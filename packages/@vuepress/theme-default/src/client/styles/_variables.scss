@@ -1,6 +1,6 @@
 @import '@vuepress/plugin-palette/palette';
 
-// colors
+// base colors
 $accentColor: #3eaf7c !default;
 $textColor: #2c3e50 !default;
 $borderColor: #eaecef !default;
@@ -8,11 +8,6 @@ $arrowBgColor: #ccc !default;
 $tipColor: #42b983 !default;
 $warningColor: #e7c000 !default;
 $dangerColor: #cc0000 !default;
-
-// code colors
-$codeBgColor: #282c34 !default;
-$highlightLineBgColor: rgba(0, 0, 0, 66%) !default;
-$lineNumbersColor: rgba(255, 255, 255, 0.3) !default;
 
 // badge component colors
 $badgeTipColor: $tipColor !default;
@@ -22,6 +17,7 @@ $badgeDangerColor: $dangerColor !default;
 // layout
 $navbarHeight: 3.6rem !default;
 $sidebarWidth: 20rem !default;
+$mobileSidebarWidth: $sidebarWidth * 0.82 !default;
 $contentWidth: 740px !default;
 $homePageWidth: 960px !default;
 
@@ -30,11 +26,11 @@ $MQNarrow: 959px !default;
 $MQMobile: 719px !default;
 $MQMobileNarrow: 419px !default;
 
-// code
+// code blocks
+$codeBgColor: #282c34 !default;
+$highlightLineBgColor: rgba(0, 0, 0, 66%) !default;
+$lineNumbersColor: rgba(255, 255, 255, 0.3) !default;
 $lineNumbersWrapperWidth: 3.5rem !default;
 $codeLang: 'c' 'cpp' 'cs' 'css' 'dart' 'docker' 'fs' 'go' 'html' 'java' 'js'
   'json' 'kt' 'less' 'makefile' 'md' 'php' 'py' 'rb' 'rs' 'sass' 'scss' 'sh'
   'styl' 'ts' 'toml' 'vue' 'yml' !default;
-
-// other
-$contentClass: '.theme-default-content' !default;
