@@ -140,6 +140,16 @@ export default defineUserConfig<DefaultThemeOptions>({
     },
   },
 
+  markdown: {
+    importCode: {
+      handleImportPath: (str) =>
+        str.replace(
+          /^@vuepress/,
+          path.resolve(__dirname, '../../packages/@vuepress')
+        ),
+    },
+  },
+
   plugins: [
     ['@vuepress/plugin-debug'],
     [
