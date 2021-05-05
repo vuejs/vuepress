@@ -73,7 +73,9 @@ npm install -D vuepress@next
 - **步骤5**: 将默认的临时目录和缓存目录添加到 `.gitignore` 文件中
 
 ```bash
-echo 'node_modules\n.temp\n.cache' >> .gitignore
+echo 'node_modules' >> .gitignore
+echo '.temp' >> .gitignore
+echo '.cache' >> .gitignore
 ```
 
 - **步骤6**: 创建你的第一篇文档

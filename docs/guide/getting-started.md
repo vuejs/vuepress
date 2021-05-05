@@ -72,7 +72,9 @@ npm install -D vuepress@next
 - **Step 5**: Add the default temp and cache directory to `.gitignore` file
 
 ```bash
-echo 'node_modules\n.temp\n.cache' >> .gitignore
+echo 'node_modules' >> .gitignore
+echo '.temp' >> .gitignore
+echo '.cache' >> .gitignore
 ```
 
 - **Step 6**: Create your first document
