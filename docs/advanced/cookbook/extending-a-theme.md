@@ -37,7 +37,7 @@ module.exports = {
 
 You local theme will extends default theme, and override the `Layout` layout.
 
-Next, create `.vuepress/layouts/Layout.vue`, and make use of the slots that provided by the `Layout` of default theme:
+Next, create `.vuepress/theme/layouts/Layout.vue`, and make use of the slots that provided by the `Layout` of default theme:
 
 ```vue
 <template>

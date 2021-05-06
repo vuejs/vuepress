@@ -37,7 +37,7 @@ module.exports = {
 
 你的本地主题将会继承默认主题，并且覆盖 `Layout` 布局。
 
-接下来，创建 `.vuepress/layouts/Layout.vue` ，并使用由默认主题的 `Layout` 提供的插槽：
+接下来，创建 `.vuepress/theme/layouts/Layout.vue` ，并使用由默认主题的 `Layout` 提供的插槽：
 
 ```vue
 <template>
