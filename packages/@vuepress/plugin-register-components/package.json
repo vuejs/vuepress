@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-register-components",
-  "version": "2.0.0-beta.12",
+  "version": "2.0.0-beta.13",
   "description": "VuePress plugin - register-components",
   "keywords": [
     "vuepress-plugin",
@@ -29,7 +29,7 @@
     "copy": "cpx \"src/**/*.{css,svg}\" lib"
   },
   "dependencies": {
-    "@vuepress/core": "2.0.0-beta.12",
+    "@vuepress/core": "2.0.0-beta.13",
     "@vuepress/utils": "2.0.0-beta.11",
     "chokidar": "^3.5.1"
   },

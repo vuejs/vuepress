@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-prismjs",
-  "version": "2.0.0-beta.12",
+  "version": "2.0.0-beta.13",
   "description": "VuePress plugin - prismjs",
   "keywords": [
     "vuepress-plugin",
@@ -29,7 +29,7 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@vuepress/core": "2.0.0-beta.12",
+    "@vuepress/core": "2.0.0-beta.13",
     "prismjs": "^1.23.0"
   },
   "devDependencies": {

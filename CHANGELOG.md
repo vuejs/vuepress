@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.13](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.12...v2.0.0-beta.13) (2021-05-06)
+
+
+### Bug Fixes
+
+* **bundler-vite:** make site base work in vite dev (close [#126](https://github.com/vuepress/vuepress-next/issues/126)) ([d257e01](https://github.com/vuepress/vuepress-next/commit/d257e01b69a8b4d0032b75be233b1c381289b529))
+* **core:** path of page options should have the highest priority ([0fc6fd3](https://github.com/vuepress/vuepress-next/commit/0fc6fd38225816b6bfc59fb12de837634c7ffb5d))
+* **markdown:** ensure ending newline in import code ([160df2d](https://github.com/vuepress/vuepress-next/commit/160df2de1567a3b6b3e889b86e6bd7b95a3cc77b))
+
+
+### Features
+
+* **markdown:** allow omitting start or end of import code lines range ([21bba5c](https://github.com/vuepress/vuepress-next/commit/21bba5c86bc8e8dec1c86f820e9de27cf15919b2))
+
+
+
+
+
 # [2.0.0-beta.12](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.11...v2.0.0-beta.12) (2021-04-30)
 
 

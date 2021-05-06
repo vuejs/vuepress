@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-search",
-  "version": "2.0.0-beta.12",
+  "version": "2.0.0-beta.13",
   "description": "VuePress plugin - built-in search",
   "keywords": [
     "vuepress-plugin",
@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@vuepress/client": "2.0.0-beta.12",
-    "@vuepress/core": "2.0.0-beta.12",
+    "@vuepress/core": "2.0.0-beta.13",
     "@vuepress/shared": "2.0.0-beta.7",
     "@vuepress/utils": "2.0.0-beta.11",
     "chokidar": "^3.5.1",
