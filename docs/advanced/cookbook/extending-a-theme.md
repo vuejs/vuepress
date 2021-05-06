@@ -19,7 +19,7 @@ module.exports = {
 
 In this case, your `vuepress-theme-foo` will inherit all configuration, plugins and layouts from `vuepress-theme-bar`, and you can override corresponding layouts as needed.
 
-## Extending Default Theme
+## Extend Default Theme
 
 First, create the theme directory and theme entry `.vuepress/theme/index.js`:
 
@@ -78,7 +78,7 @@ Here are all the slots that provided by the `Layout` of default theme:
 - `page-top`
 - `page-bottom`
 
-## Making Your Theme Extendable
+## Make Your Theme Extendable
 
 As a theme author, you might want to make your theme extendable, allowing users to use your theme with their own customization.
 

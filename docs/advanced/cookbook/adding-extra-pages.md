@@ -4,7 +4,7 @@ Sometimes you might want to add some extra pages without creating a markdown fil
 
 With the help of [Plugin API](../../reference/plugin-api.md) and [Node API](../../reference/node-api.md), we can do that with ease.
 
-## Adding Default Homepage
+## Add a Default Homepage
 
 As a theme author, you may not require users to create a `/README.md` file as the homepage, but you want to provide a default one:
 
