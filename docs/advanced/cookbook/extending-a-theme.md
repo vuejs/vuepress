@@ -77,3 +77,71 @@ Here are all the slots that provided by the `Layout` of default theme:
 - `sidebar-bottom`
 - `page-top`
 - `page-bottom`
+
+## Making Your Theme Extendable
+
+As a theme author, you might want to make your theme extendable, allowing users to use your theme with their own customization.
+
+You can provide slots in your layouts, just like how default theme does. This approach requires you to determine which parts of your theme could be extended. It is more suitable for those common customizations like page footer or header:
+
+```vue
+<template>
+  <div class="my-theme-layout">
+    <slot name="page-header" />
+    <Content />
+    <slot name="page-footer" />
+  </div>
+</template>
+```
+
+If you think it is not flexible enough, you can try some more aggressive approaches to make each components of you theme replaceable.
+
+For example, set `alias` for each components of you theme:
+
+```js
+module.exports = {
+  name: 'vuepress-theme-foo',
+  alias: {
+    // set alias for replaceable components
+    '@theme/Navbar.vue': path.resolve(__dirname, 'components/Navbar.vue'),
+    '@theme/Sidebar.vue': path.resolve(__dirname, 'components/Sidebar.vue'),
+  },
+}
+```
+
+Next, use those components via aliases in your theme:
+
+```vue
+<template>
+  <div class="my-theme-layout">
+    <Navbar />
+    <Sidebar />
+    <Content />
+  </div>
+</template>
+
+<script>
+import Navbar from '@theme/Navbar.vue'
+import Sidebar from '@theme/Sidebar.vue'
+
+export default {
+  components: {
+    Navbar,
+    Sidebar,
+  },
+}
+</script>
+```
+
+Then, users can replace specific components by overriding the `alias` when extending your theme:
+
+```js
+module.exports = {
+  name: 'vuepress-theme-foobar',
+  extends: 'vuepress-theme-foo'
+  alias: {
+    // replace the Navbar component
+    '@theme/Navbar.vue': path.resolve(__dirname, 'components/CustomNavbar.vue'),
+  },
+}
+```
