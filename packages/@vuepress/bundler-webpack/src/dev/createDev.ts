@@ -16,7 +16,7 @@ export const createDev = (options: WebpackBundlerOptions): BundlerDev => async (
   const port = await resolvePort(app.options.port)
 
   // create webpack config
-  const config = createDevConfig(app, options)
+  const config = await createDevConfig(app, options)
   const webpackConfig = resolveWebpackConfig({
     config,
     options,

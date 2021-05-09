@@ -1,13 +1,13 @@
 import type { UserConfig } from 'vite'
 import type { App } from '@vuepress/core'
 
-export const resolveDefine = ({
+export const resolveDefine = async ({
   app,
   isServer,
 }: {
   app: App
   isServer: boolean
-}): UserConfig['define'] => {
+}): Promise<UserConfig['define']> => {
   const define: UserConfig['define'] = {
     __VERSION__: JSON.stringify(app.version),
     __DEV__: JSON.stringify(app.env.isDev),
@@ -19,7 +19,7 @@ export const resolveDefine = ({
   }
 
   // plugin hook: define
-  const defineResult = app.pluginApi.hooks.define.processSync(app)
+  const defineResult = await app.pluginApi.hooks.define.process(app)
 
   defineResult.forEach((defineObject) =>
     Object.entries(defineObject).forEach(([key, value]) => {

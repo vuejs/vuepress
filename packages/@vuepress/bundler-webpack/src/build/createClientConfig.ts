@@ -10,11 +10,11 @@ import { createClientPlugin } from './ssr'
  */
 export const clientManifestFilename = '.server/client-manifest.json'
 
-export const createClientConfig = (
+export const createClientConfig = async (
   app: App,
   options: WebpackBundlerOptions
-): Config => {
-  const config = createClientBaseConfig({
+): Promise<Config> => {
+  const config = await createClientBaseConfig({
     app,
     options,
     isBuild: true,

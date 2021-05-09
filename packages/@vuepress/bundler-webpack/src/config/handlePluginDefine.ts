@@ -5,7 +5,7 @@ import type { App } from '@vuepress/core'
 /**
  * Set webpack DefinePlugin
  */
-export const handlePluginDefine = ({
+export const handlePluginDefine = async ({
   app,
   config,
   isServer,
@@ -13,7 +13,7 @@ export const handlePluginDefine = ({
   app: App
   config: Config
   isServer: boolean
-}): void => {
+}): Promise<void> => {
   // define plugin
   config.plugin('define').use(DefinePlugin, [
     {
@@ -29,7 +29,7 @@ export const handlePluginDefine = ({
   ])
 
   // plugin hook: define
-  const defineResult = app.pluginApi.hooks.define.processSync(app)
+  const defineResult = await app.pluginApi.hooks.define.process(app)
 
   // tap the arguments of DefinePlugin
   config.plugin('define').tap(([options]) => {

@@ -4,11 +4,11 @@ import { App } from '@vuepress/core'
 import { createClientBaseConfig } from '../config'
 import type { WebpackBundlerOptions } from '../types'
 
-export const createDevConfig = (
+export const createDevConfig = async (
   app: App,
   options: WebpackBundlerOptions
-): Config => {
-  const config = createClientBaseConfig({
+): Promise<Config> => {
+  const config = await createClientBaseConfig({
     app,
     options,
     isBuild: false,

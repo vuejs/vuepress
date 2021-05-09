@@ -34,8 +34,8 @@ export type ClientFilesHook = Hook<
 
 // hook that returns an object
 export type ReturnObjectHook = Hook<
-  Record<string, any> | ((app: App) => Record<string, any>),
-  (app: App) => Record<string, any>
+  Record<string, any> | ((app: App) => PromiseOrNot<Record<string, any>>),
+  (app: App) => Promise<Record<string, any>>
 >
 
 // markdown hook
@@ -115,5 +115,4 @@ export interface HookQueue<T extends HooksName> {
   process: (
     ...args: Parameters<HooksNormalized[T]>
   ) => Promise<HooksResult[T][]>
-  processSync: (...args: Parameters<HooksNormalized[T]>) => HooksResult[T][]
 }

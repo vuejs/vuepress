@@ -1,7 +1,11 @@
 import type { AliasOptions } from 'vite'
 import type { App } from '@vuepress/core'
 
-export const resolveAlias = ({ app }: { app: App }): AliasOptions => {
+export const resolveAlias = async ({
+  app,
+}: {
+  app: App
+}): Promise<AliasOptions> => {
   const alias: AliasOptions = {
     '@internal': app.dir.temp('internal'),
     '@temp': app.dir.temp(),
@@ -9,7 +13,7 @@ export const resolveAlias = ({ app }: { app: App }): AliasOptions => {
   }
 
   // plugin hook: alias
-  const aliasResult = app.pluginApi.hooks.alias.processSync(app)
+  const aliasResult = await app.pluginApi.hooks.alias.process(app)
 
   aliasResult.forEach((aliasObject) =>
     Object.entries(aliasObject).forEach(([key, value]) => {

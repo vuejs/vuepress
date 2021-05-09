@@ -20,13 +20,13 @@ export const createBuild = (
   await withSpinner('Compiling with webpack')(async () => {
     // create webpack config
     const clientConfig = resolveWebpackConfig({
-      config: createClientConfig(app, options),
+      config: await createClientConfig(app, options),
       options,
       isServer: false,
       isBuild: true,
     })
     const serverConfig = resolveWebpackConfig({
-      config: createServerConfig(app, options),
+      config: await createServerConfig(app, options),
       options,
       isServer: true,
       isBuild: true,

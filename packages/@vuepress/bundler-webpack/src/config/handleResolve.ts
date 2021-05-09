@@ -4,13 +4,13 @@ import type { App } from '@vuepress/core'
 /**
  * Set webpack resolve
  */
-export const handleResolve = ({
+export const handleResolve = async ({
   app,
   config,
 }: {
   app: App
   config: Config
-}): void => {
+}): Promise<void> => {
   // aliases
   config.resolve.alias
     .set('@source', app.dir.source())
@@ -28,7 +28,7 @@ export const handleResolve = ({
   ])
 
   // plugin hook: alias
-  const aliasResult = app.pluginApi.hooks.alias.processSync(app)
+  const aliasResult = await app.pluginApi.hooks.alias.process(app)
 
   // set aliases
   aliasResult.forEach((aliasObject) =>

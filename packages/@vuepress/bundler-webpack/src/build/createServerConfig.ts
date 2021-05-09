@@ -3,14 +3,14 @@ import type { App } from '@vuepress/core'
 import { createBaseConfig } from '../config'
 import type { WebpackBundlerOptions } from '../types'
 
-export const createServerConfig = (
+export const createServerConfig = async (
   app: App,
   options: WebpackBundlerOptions
-): Config => {
+): Promise<Config> => {
   const isServer = true
   const isBuild = true
 
-  const config = createBaseConfig({
+  const config = await createBaseConfig({
     app,
     options,
     isServer,

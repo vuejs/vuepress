@@ -50,15 +50,15 @@ export const createPlugin = ({
   {
     name: 'vuepress',
 
-    config: () => ({
+    config: async () => ({
       root: app.dir.source(),
       base: app.options.base,
       mode: isBuild ? 'production' : 'development',
-      define: resolveDefine({ app, isServer }),
+      define: await resolveDefine({ app, isServer }),
       publicDir: app.dir.public(),
       cacheDir: app.dir.cache(),
       resolve: {
-        alias: resolveAlias({ app }),
+        alias: await resolveAlias({ app }),
       },
       server: {
         host: app.options.host,

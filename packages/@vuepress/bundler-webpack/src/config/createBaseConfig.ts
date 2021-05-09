@@ -10,7 +10,7 @@ import { handleOtherOptions } from './handleOtherOptions'
 import { handlePluginDefine } from './handlePluginDefine'
 import { handleResolve } from './handleResolve'
 
-export const createBaseConfig = ({
+export const createBaseConfig = async ({
   app,
   options,
   isServer,
@@ -20,7 +20,7 @@ export const createBaseConfig = ({
   options: WebpackBundlerOptions
   isServer: boolean
   isBuild: boolean
-}): Config => {
+}): Promise<Config> => {
   // create new webpack-chain config
   const config = new Config()
 
@@ -47,7 +47,7 @@ export const createBaseConfig = ({
   /**
    * resolve
    */
-  handleResolve({ app, config })
+  await handleResolve({ app, config })
 
   /**
    * module
@@ -57,7 +57,7 @@ export const createBaseConfig = ({
   /**
    * plugins
    */
-  handlePluginDefine({ app, config, isServer })
+  await handlePluginDefine({ app, config, isServer })
 
   /**
    * other options
