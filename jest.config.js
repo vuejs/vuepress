@@ -1,5 +1,6 @@
 const { resolve } = require('path')
 const { readdirSync } = require('fs')
+const { compilerOptions } = require('./tsconfig.base.json')
 
 const packagesDir = 'packages/@vuepress'
 const packages = readdirSync(resolve(__dirname, packagesDir), {
@@ -21,7 +22,10 @@ module.exports = {
   preset: 'ts-jest',
   globals: {
     'ts-jest': {
-      tsconfig: '<rootDir>/tsconfig.json',
+      tsconfig: {
+        ...compilerOptions,
+        sourceMap: true,
+      },
     },
     '__VERSION__': '',
     '__DEV__': false,
