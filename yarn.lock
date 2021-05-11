@@ -4825,22 +4825,22 @@ es-to-primitive@^1.2.1:
     is-date-object "^1.0.1"
     is-symbol "^1.0.2"
 
-esbuild-loader@~2.10.0:
-  version "2.10.0"
-  resolved "https://registry.yarnpkg.com/esbuild-loader/-/esbuild-loader-2.10.0.tgz#35b570187aee0036b2f4b37db66870f7407f3d40"
-  integrity sha512-BRWmc/7gU6/FmI+MP+E+9Zb/CE0BA1XMOQkdvJ7B/T2gad1Mlim8aMhvvRdS9on5S8JzkC+uNHGQmt/WmbbXbQ==
+esbuild-loader@~2.13.0:
+  version "2.13.0"
+  resolved "https://registry.yarnpkg.com/esbuild-loader/-/esbuild-loader-2.13.0.tgz#f5a3602a89a3b728506ae3e1887304fffeef9270"
+  integrity sha512-gC9lML8RGkTSWG2pJVEOZRLMoIluq1Jd7OzzVkOZKMzbMDMWDhXEwXLs60n+aglnAYa9GVrD/UXjTHkM51nBsg==
   dependencies:
-    esbuild "^0.9.2"
-    joycon "^2.2.5"
+    esbuild "^0.11.19"
+    joycon "^3.0.1"
     json5 "^2.2.0"
     loader-utils "^2.0.0"
-    type-fest "^0.21.3"
+    type-fest "^1.0.1"
     webpack-sources "^2.2.0"
 
-esbuild@^0.9.2, esbuild@^0.9.3, esbuild@^0.9.6:
-  version "0.9.6"
-  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.9.6.tgz#2cae519e7ce2328ecf57ae738090d07ce7245850"
-  integrity sha512-F6vASxU0wT/Davt9aj2qtDwDNSkQxh9VbyO56M7PDWD+D/Vgq/rmUDGDQo7te76W5auauVojjnQr/wTu3vpaUA==
+esbuild@^0.11.19, esbuild@^0.11.20:
+  version "0.11.20"
+  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.11.20.tgz#7cefa1aee8b372c184e42457885f7ce5d3e62a1e"
+  integrity sha512-QOZrVpN/Yz74xfat0H6euSgn3RnwLevY1mJTEXneukz1ln9qB+ieaerRMzSeETpz/UJWsBMzRVR/andBht5WKw==
 
 escalade@^3.1.1:
   version "3.1.1"
@@ -7082,10 +7082,10 @@ jest@^26.6.3:
     import-local "^3.0.2"
     jest-cli "^26.6.3"
 
-joycon@^2.2.5:
-  version "2.2.5"
-  resolved "https://registry.yarnpkg.com/joycon/-/joycon-2.2.5.tgz#8d4cf4cbb2544d7b7583c216fcdfec19f6be1615"
-  integrity sha512-YqvUxoOcVPnCp0VU1/56f+iKSdvIRJYPznH22BdXV3xMk75SFXhWeJkZ8C9XxUWt1b5x2X1SxuFygW1U0FmkEQ==
+joycon@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/joycon/-/joycon-3.0.1.tgz#9074c9b08ccf37a6726ff74a18485f85efcaddaf"
+  integrity sha512-SJcJNBg32dGgxhPtM0wQqxqV0ax9k/9TaUskGDSJkSFSQOEWWvQ3zzWdGQRIUry2j1zA5+ReH13t0Mf3StuVZA==
 
 js-beautify@^1.6.12:
   version "1.13.5"
@@ -8824,7 +8824,7 @@ performance-now@^2.1.0:
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
   integrity sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=
 
-picomatch@^2.0.4, picomatch@^2.0.5, picomatch@^2.2.1, picomatch@^2.2.2, picomatch@^2.2.3:
+picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.2.2, picomatch@^2.2.3:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.2.3.tgz#465547f359ccc206d3c48e46a1bcb89bf7ee619d"
   integrity sha512-KpELjfwcCDUb9PeigTs2mBJzXUPzAuP2oPcA989He8Rte0+YUAjw1JVedDhuTKPkHjSYzMN3npC9luThGYEKdg==
@@ -10839,11 +10839,6 @@ type-fest@^0.20.2:
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.20.2.tgz#1bf207f4b28f91583666cb5fbd327887301cd5f4"
   integrity sha512-Ne+eE4r0/iWnpAxD852z3A+N0Bt5RN//NjJwRd2VFHEmrywxf5vsZlh4R6lixl6B+wz/8d+maTSAkN1FIkI3LQ==
 
-type-fest@^0.21.3:
-  version "0.21.3"
-  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.21.3.tgz#d260a24b0198436e133fa26a524a6d65fa3b2e37"
-  integrity sha512-t0rzBq87m3fVcduHDUFhKmyyX+9eo6WQjZvf51Ea/M0Q7+T374Jp1aUiyUl0GKxp8M/OETVHSDvmkyPgvX+X2w==
-
 type-fest@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.4.1.tgz#8bdf77743385d8a4f13ba95f610f5ccd68c728f8"
@@ -10858,6 +10853,11 @@ type-fest@^0.8.1:
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.8.1.tgz#09e249ebde851d3b1e48d27c105444667f17b83d"
   integrity sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==
+
+type-fest@^1.0.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-1.1.1.tgz#210251e7f57357a1457269e6b34837fed067ac2c"
+  integrity sha512-RPDKc5KrIyKTP7Fk75LruUagqG6b+OTgXlCR2Z0aQDJFeIvL4/mhahSEtHmmVzXu4gmA0srkF/8FCH3WOWxTWA==
 
 type-is@~1.6.17, type-is@~1.6.18:
   version "1.6.18"
@@ -11105,12 +11105,12 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-vite@^2.2.3:
-  version "2.2.3"
-  resolved "https://registry.yarnpkg.com/vite/-/vite-2.2.3.tgz#1acbdfa56ac00e00e7ccb6988f63f130c2f99dbb"
-  integrity sha512-PtjyBL4GtACM+uT5q5hi2+AlMBbb6YI2b2bam6QI8ZdZt4FezseF0yZHQx0G+b3po9jIJ/GS5N9gc5Yq9Rue7g==
+vite@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-2.3.0.tgz#02b007c7aa4ac88cc18f854b9c68e4fbe76e3ef4"
+  integrity sha512-gsCy0t3X9nGGYDoNiE2NJgYq6BPxrtKeo6FkpMXdMvtUluYxnRhl7xfpHaYDmQLCnMbYTWhvWS1L/Hpw/V9L5w==
   dependencies:
-    esbuild "^0.9.3"
+    esbuild "^0.11.19"
     postcss "^8.2.1"
     resolve "^1.19.0"
     rollup "^2.38.5"
