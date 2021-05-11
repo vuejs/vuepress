@@ -23,16 +23,8 @@ export const resolveThemeInfo = (app: App, themeName: string): ThemeInfo => {
     app.options.themeConfig
   )
 
-  // get theme path
-  const themePath = themeEntry.match(/.(js|ts)$/)
-    ? path.dirname(themeEntry)
-    : themeEntry
-
   // resolve theme layouts
-  const layouts = resolveThemeLayouts({
-    themePath,
-    themePlugin,
-  })
+  const layouts = resolveThemeLayouts(themePlugin.layouts)
 
   return {
     plugin: themePlugin,
