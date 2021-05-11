@@ -1,20 +1,21 @@
 <template>
   <div class="search-box">
-    <input
-      ref="input"
-      aria-label="Search"
-      :value="query"
-      :class="{ 'focused': focused }"
-      :placeholder="placeholder"
-      autocomplete="off"
-      spellcheck="false"
-      @input="query = $event.target.value"
-      @focus="focused = true"
-      @blur="focused = false"
-      @keyup.enter="go(focusIndex)"
-      @keyup.up="onUp"
-      @keyup.down="onDown"
-    >
+    <form @submit.prevent="go(focusIndex)">
+      <input
+        ref="input"
+        aria-label="Search"
+        :value="query"
+        :class="{ 'focused': focused }"
+        :placeholder="placeholder"
+        autocomplete="off"
+        spellcheck="false"
+        @input="query = $event.target.value"
+        @focus="focused = true"
+        @blur="focused = false"
+        @keyup.up="onUp"
+        @keyup.down="onDown"
+      >
+    </form>
     <ul
       v-if="showSuggestions"
       class="suggestions"
