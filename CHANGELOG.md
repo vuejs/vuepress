@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.14](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.13...v2.0.0-beta.14) (2021-05-12)
+
+
+### Bug Fixes
+
+* **bundler-vite:** compat with vite 2.3 changes (close [#134](https://github.com/vuepress/vuepress-next/issues/134)) ([1370984](https://github.com/vuepress/vuepress-next/commit/13709840080d17c6c239af53a212258d9157ffae))
+* **core:** avoid mutating theme layouts array ([fe27a57](https://github.com/vuepress/vuepress-next/commit/fe27a57c57bd92623ef4c3df6ce4282b8eda6f71))
+
+
+### Features
+
+* **core:** allow alias and define hook to return a promise ([3b3d289](https://github.com/vuepress/vuepress-next/commit/3b3d2893c58115de65606ffc508fdc7a9cf96f79))
+
+
+
+
+
 # [2.0.0-beta.13](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.12...v2.0.0-beta.13) (2021-05-06)
 
 
