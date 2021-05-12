@@ -12,6 +12,9 @@ export const createWorkaroundPlugin = (): Plugin => {
     },
     resolveId() {
       // workaround for https://github.com/vitejs/vite/issues/2503
+      // although the issue was closed in vite 2.3.0, there are still
+      // some problems with the version hash and we need to keep the
+      // workaround for now
       if (server?._optimizeDepsMetadata?.browserHash) {
         server._optimizeDepsMetadata.browserHash = ''
       }
