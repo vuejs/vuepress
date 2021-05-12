@@ -5,6 +5,10 @@
 - [Node.js v12+](https://nodejs.org/)
 - [Yarn v1 classic](https://classic.yarnpkg.com/en/) (Optional)
 
+::: tip
+If you are using [pnpm](https://pnpm.io/), you may need to enable [shamefully-hoist](https://pnpm.io/npmrc#shamefully-hoist) to avoid potential issues.
+:::
+
 ## Manual Installation
 
 This section will help you build a basic VuePress documentation site from ground up. If you already have an existing project and would like to keep documentation inside the project, start from Step 3.
