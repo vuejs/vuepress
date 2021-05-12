@@ -16,7 +16,7 @@ export const createThemeApi = (app: App): ThemeApi => {
     : null
 
   // resolve theme layouts
-  const layouts = theme.layouts
+  const layouts = [...theme.layouts]
 
   // layouts in child theme will override
   // those with the same name in parent theme
