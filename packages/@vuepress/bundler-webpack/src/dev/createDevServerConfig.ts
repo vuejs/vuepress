@@ -12,11 +12,8 @@ export const createDevServerConfig = (
 ): WebpackDevServer.Configuration => {
   // TODO: add types for webpack-dev-server 4
   const serverConfig: WebpackOptionsNormalized['devServer'] = {
-    client: {
-      overlay: false,
-    },
     compress: true,
-    dev: {
+    devMiddleware: {
       publicPath: app.options.base,
       writeToDisk: false,
       stats: app.env.isDebug ? 'normal' : 'errors-warnings',
