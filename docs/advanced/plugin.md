@@ -55,7 +55,7 @@ The `lib/index.js` file is the plugin entry, which should export the plugin dire
   <CodeGroupItem title="CJS" active>
 
 ```js
-module.export = fooPlugin
+module.exports = fooPlugin
 ```
 
   </CodeGroupItem>

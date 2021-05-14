@@ -88,7 +88,7 @@ vuepress-theme-foo
   <CodeGroupItem title="CJS" active>
 
 ```js
-module.export = fooTheme
+module.exports = fooTheme
 ```
 
   </CodeGroupItem>

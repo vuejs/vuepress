@@ -55,7 +55,7 @@ vuepress-plugin-foo
   <CodeGroupItem title="CJS" active>
 
 ```js
-module.export = fooPlugin
+module.exports = fooPlugin
 ```
 
   </CodeGroupItem>

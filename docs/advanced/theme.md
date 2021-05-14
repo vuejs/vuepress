@@ -88,7 +88,7 @@ The `lib/index.js` file is the theme entry, which should export the theme direct
   <CodeGroupItem title="CJS" active>
 
 ```js
-module.export = fooTheme
+module.exports = fooTheme
 ```
 
   </CodeGroupItem>
