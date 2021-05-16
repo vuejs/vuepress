@@ -8,9 +8,23 @@ VuePress 一直以来都在使用 [webpack](https://webpack.js.org/) 作为打�
 
 在使用 [vuepress](https://www.npmjs.com/package/vuepress) Package 时，安装的是 webpack 打包工具：
 
-```sh
-npm install -D vuepress
+<CodeGroup>
+  <CodeGroupItem title="YARN" active>
+
+```bash
+yarn add -D vuepress@next
 ```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="NPM">
+
+```bash
+npm install -D vuepress@next
+```
+
+  </CodeGroupItem>
+</CodeGroup>
 
 你可以在 [bundler](../reference/config.md#bundler) 配置项中设置你要使用的打包工具名称，或者不设置它，因为 webpack 是默认的打包工具。此时你可以通过 [bundlerConfig](../reference/config.md#bundlerconfig) 配置项来设置 [webpack 打包工具的选项](../reference/bundler/webpack.md) ：
 
@@ -49,9 +63,23 @@ export default defineUserConfig<DefaultThemeOptions, WebpackBundlerOptions>({
 
 如果想要改为使用 Vite ，你可以切换成 [vuepress-vite](https://www.npmjs.com/package/vuepress-vite) Package ：
 
-```sh
-npm install -D vuepress-vite
+<CodeGroup>
+  <CodeGroupItem title="YARN" active>
+
+```bash
+yarn add -D vuepress-vite@next
 ```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="NPM">
+
+```bash
+npm install -D vuepress-vite@next
+```
+
+  </CodeGroupItem>
+</CodeGroup>
 
 接下来，你需要在 [bundler](../reference/config.md#bundler) 配置项中设置你要使用的打包工具名称。此时你可以通过 [bundlerConfig](../reference/config.md#bundlerconfig) 配置项来设置 [vite 打包工具的选项](../reference/bundler/vite.md) ：
 

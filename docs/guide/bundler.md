@@ -8,9 +8,23 @@ Although it is possible to create other bundler packages by community users, cur
 
 When using the [vuepress](https://www.npmjs.com/package/vuepress) package, the webpack bundler is installed:
 
-```sh
-npm install -D vuepress
+<CodeGroup>
+  <CodeGroupItem title="YARN" active>
+
+```bash
+yarn add -D vuepress@next
 ```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="NPM">
+
+```bash
+npm install -D vuepress@next
+```
+
+  </CodeGroupItem>
+</CodeGroup>
 
 You can specify the name of the bundler to use in [bundler](../reference/config.md#bundler) option, or omit it because webpack is the default bundler. Then you can set [options of webpack bundler](../reference/bundler/webpack.md) via [bundlerConfig](../reference/config.md#bundlerconfig) option:
 
@@ -49,9 +63,23 @@ export default defineUserConfig<DefaultThemeOptions, WebpackBundlerOptions>({
 
 If you want to use Vite instead, you can switch to [vuepress-vite](https://www.npmjs.com/package/vuepress-vite) package:
 
-```sh
-npm install -D vuepress-vite
+<CodeGroup>
+  <CodeGroupItem title="YARN" active>
+
+```bash
+yarn add -D vuepress-vite@next
 ```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="NPM">
+
+```bash
+npm install -D vuepress-vite@next
+```
+
+  </CodeGroupItem>
+</CodeGroup>
 
 Next, you need to specify the name of the bundler to use in [bundler](../reference/config.md#bundler) option. Then you can set [options of vite bundler](../reference/bundler/vite.md) via [bundlerConfig](../reference/config.md#bundlerconfig) option:
 
