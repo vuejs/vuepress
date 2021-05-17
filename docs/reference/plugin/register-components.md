@@ -23,6 +23,8 @@ Register Vue components from component files or directory automatically.
 - Example:
 
 ```js
+const { path } = require('@vuepress/utils')
+
 module.exports = {
   plugins: [
     [

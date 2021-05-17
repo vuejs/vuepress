@@ -23,6 +23,8 @@
 - 示例：
 
 ```js
+const { path } = require('@vuepress/utils')
+
 module.exports = {
   plugins: [
     [

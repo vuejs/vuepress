@@ -5,6 +5,8 @@ Sometimes you might want make some minor changes to a theme, but you may not wan
 With the help of [Theme API](../../reference/theme-api.md), you can extend a theme and make your own modifications:
 
 ```js
+const { path } = require('@vuepress/utils')
+
 module.exports = {
   // your theme
   name: 'vuepress-theme-foo',

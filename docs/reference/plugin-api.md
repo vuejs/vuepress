@@ -252,6 +252,8 @@ export default {
 - Example:
 
 ```js
+const { path } = require('@vuepress/utils')
+
 module.exports = {
   clientAppEnhanceFiles: path.resolve(__dirname, './path/to/clientAppEnhance.js'),
 }
@@ -276,6 +278,8 @@ module.exports = {
 - Example:
 
 ```js
+const { path } = require('@vuepress/utils')
+
 module.exports = {
   clientAppRootComponentFiles: path.resolve(__dirname, './path/to/RootComponent.vue'),
 }
@@ -296,6 +300,8 @@ module.exports = {
 - Example:
 
 ```js
+const { path } = require('@vuepress/utils')
+
 module.exports = {
   clientAppSetupFiles: path.resolve(__dirname, './path/to/clientAppSetup.js'),
 }

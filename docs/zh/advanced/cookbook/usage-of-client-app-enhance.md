@@ -3,6 +3,8 @@
 插件 API 提供的 [clientAppEnhanceFiles](../../reference/plugin-api.md#clientappenhancefiles) Hook 允许你设置 Client App Enhance 文件的路径。你可以在你的插件或者主题中使用它：
 
 ```ts
+import { path } from '@vuepress/utils'
+
 const pluginOrTheme = {
   clientAppEnhanceFiles: path.resolve(__dirname, './path/to/clientAppEnhance.ts'),
 }

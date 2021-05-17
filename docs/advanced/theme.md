@@ -12,6 +12,8 @@ A VuePress theme is a special plugin, which should satisfy the [Theme API](../re
   <CodeGroupItem title="Theme Object" active>
 
 ```js
+const { path } = require('@vuepress/utils')
+
 const fooTheme = {
   name: 'vuepress-theme-foo',
   layouts: {
@@ -27,6 +29,8 @@ const fooTheme = {
   <CodeGroupItem title="Theme Function">
 
 ```js
+const { path } = require('@vuepress/utils')
+
 const fooTheme = (options, app) => {
   return {
     name: 'vuepress-theme-foo',

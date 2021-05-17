@@ -4,8 +4,10 @@
 
 借助于 [主题 API](../../reference/theme-api.md) ，你可以继承一个主题并添加你自己的改动：
 
-```ts
-export default {
+```js
+const { path } = require('@vuepress/utils')
+
+module.exports = {
   // 你的主题
   name: 'vuepress-theme-foo',
   // 要继承的父主题
@@ -14,7 +16,7 @@ export default {
   layouts: {
     Layout: path.resolve(__dirname, 'layouts/Layout.vue'),
   },
-};
+}
 ```
 
 在这个例子中，你的 `vuepress-theme-foo` 将会继承 `vuepress-theme-bar` 的全部配置、插件和布局，并且你可以按照需要来覆盖对应的布局。

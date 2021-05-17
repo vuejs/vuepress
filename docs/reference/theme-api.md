@@ -55,6 +55,8 @@ layouts
 Using the absolute path of layout directory:
 
 ```js
+const { path } = require('@vuepress/utils')
+
 module.exports = {
   layouts: path.resolve(__dirname, 'path/to/layouts'),
 }
@@ -63,6 +65,8 @@ module.exports = {
 Using a plain object is equivalent:
 
 ```js
+const { path } = require('@vuepress/utils')
+
 module.exports = {
   layouts: {
     Layout: path.resolve(__dirname, 'path/to/layouts/Layout.vue'),
@@ -89,6 +93,8 @@ module.exports = {
 - Example:
 
 ```js
+const { path } = require('@vuepress/utils')
+
 module.exports = {
   // inherit the default theme
   extends: '@vuepress/theme-default',

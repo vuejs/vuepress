@@ -55,6 +55,8 @@ layouts
 使用布局目录的绝对路径：
 
 ```js
+const { path } = require('@vuepress/utils')
+
 module.exports = {
   layouts: path.resolve(__dirname, 'path/to/layouts'),
 }
@@ -63,6 +65,8 @@ module.exports = {
 使用普通对象是等效的：
 
 ```js
+const { path } = require('@vuepress/utils')
+
 module.exports = {
   layouts: {
     Layout: path.resolve(__dirname, 'path/to/layouts/Layout.vue'),
@@ -89,6 +93,8 @@ module.exports = {
 - 示例：
 
 ```js
+const { path } = require('@vuepress/utils')
+
 module.exports = {
   // 继承默认主题
   extends: '@vuepress/theme-default',

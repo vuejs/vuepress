@@ -12,6 +12,8 @@ VuePress 主题是一个特殊的插件，它应该符合 [主题 API](../refere
   <CodeGroupItem title="主题对象" active>
 
 ```js
+const { path } = require('@vuepress/utils')
+
 const fooTheme = {
   name: 'vuepress-theme-foo',
   layouts: {
@@ -27,6 +29,8 @@ const fooTheme = {
   <CodeGroupItem title="主题函数">
 
 ```js
+const { path } = require('@vuepress/utils')
+
 const fooTheme = (options, app) => {
   return {
     name: 'vuepress-theme-foo',

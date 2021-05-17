@@ -3,6 +3,8 @@
 The [clientAppEnhanceFiles](../../reference/plugin-api.md#clientappenhancefiles) hook of Plugin API allows you to set the path to the client app enhance files. You can use it in your plugin or theme:
 
 ```ts
+import { path } from '@vuepress/utils'
+
 const pluginOrTheme = {
   clientAppEnhanceFiles: path.resolve(__dirname, './path/to/clientAppEnhance.ts'),
 }
