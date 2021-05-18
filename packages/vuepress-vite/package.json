@@ -21,7 +21,8 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "bin": {
-    "vuepress": "bin/vuepress.js"
+    "vuepress": "bin/vuepress.js",
+    "vuepress-vite": "bin/vuepress.js"
   },
   "files": [
     "bin",

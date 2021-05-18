@@ -1,3 +1,6 @@
 #!/usr/bin/env node
 
-require('@vuepress/cli/bin/vuepress')
+const { cli } = require('@vuepress/cli')
+
+// set default bundler
+cli({ bundler: '@vuepress/bundler-webpack' })

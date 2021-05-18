@@ -1,4 +1,4 @@
-export * from './dev'
+export * from './createDev'
 export * from './handlePageAdd'
 export * from './handlePageChange'
 export * from './handlePageUnlink'

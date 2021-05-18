@@ -1,6 +1,7 @@
 import { cac } from 'cac'
+import type { AppConfig } from '@vuepress/core'
 import { chalk } from '@vuepress/utils'
-import { build, dev, info } from './commands'
+import { createBuild, createDev, info } from './commands'
 import { allowTs } from './utils'
 
 /**
@@ -18,7 +19,7 @@ const wrapCommand = (cmd: (...args: any[]) => Promise<void>): typeof cmd => {
 /**
  * Vuepress cli
  */
-export const cli = (): void => {
+export const cli = (defaultAppConfig: Partial<AppConfig> = {}): void => {
   // allow ts files globally
   allowTs()
 
@@ -46,7 +47,7 @@ export const cli = (): void => {
     .option('--open', 'Open browser when ready')
     .option('--debug', 'Enable debug mode')
     .option('--no-watch', 'Disable watching page and config files')
-    .action(wrapCommand(dev))
+    .action(wrapCommand(createDev(defaultAppConfig)))
 
   // register `build` command
   program
@@ -61,7 +62,7 @@ export const cli = (): void => {
     .option('--clean-temp', 'Clean the temporary files before build')
     .option('--clean-cache', 'Clean the cache files before build')
     .option('--debug', 'Enable debug mode')
-    .action(wrapCommand(build))
+    .action(wrapCommand(createBuild(defaultAppConfig)))
 
   // register `info` command
   program

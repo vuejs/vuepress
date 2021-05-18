@@ -1,4 +1,5 @@
 import { createApp } from '@vuepress/core'
+import type { AppConfig } from '@vuepress/core'
 import { debug, fs, logger } from '@vuepress/utils'
 import {
   loadUserConfig,
@@ -11,9 +12,16 @@ import type { BuildCommandOptions } from './types'
 
 const log = debug('vuepress:cli/build')
 
-export const build = async (
+export type BuildCommand = (
+  sourceDir?: string,
+  commandOptions?: BuildCommandOptions
+) => Promise<void>
+
+export const createBuild = (
+  defaultAppConfig: Partial<AppConfig>
+): BuildCommand => async (
   sourceDir = '.',
-  commandOptions: BuildCommandOptions = {}
+  commandOptions = {}
 ): Promise<void> => {
   log(`commandOptions:`, commandOptions)
 
@@ -22,12 +30,12 @@ export const build = async (
   }
 
   // resolve base app config
-  const appConfig = resolveBuildAppConfig(sourceDir, commandOptions)
+  const cliAppConfig = resolveBuildAppConfig(sourceDir, commandOptions)
 
   // resolve user config file
   const userConfigPath = commandOptions.config
     ? resolveUserConfigPath(commandOptions.config)
-    : resolveUserConfigConventionalPath(appConfig.source)
+    : resolveUserConfigConventionalPath(cliAppConfig.source)
 
   log(`userConfigPath:`, userConfigPath)
 
@@ -35,9 +43,12 @@ export const build = async (
 
   // create vuepress app
   const app = createApp({
+    // allow setting default app config via `cli()`
+    // for example, set different default bundler in `vuepress` and `vuepress-vite` package
+    ...defaultAppConfig,
     // use cli options to override config file
     ...userConfig,
-    ...appConfig,
+    ...cliAppConfig,
   })
 
   // use user-config plugin
