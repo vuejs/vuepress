@@ -26,7 +26,7 @@ npm install -D vuepress@next
   </CodeGroupItem>
 </CodeGroup>
 
-你可以在 [bundler](../reference/config.md#bundler) 配置项中设置你要使用的打包工具名称，或者不设置它，因为 webpack 是默认的打包工具。此时你可以通过 [bundlerConfig](../reference/config.md#bundlerconfig) 配置项来设置 [webpack 打包工具的选项](../reference/bundler/webpack.md) ：
+你可以在 [bundler](../reference/config.md#bundler) 配置项中设置你要使用的打包工具名称，或者不设置它，因为在使用 `vuepress` Package 时， webpack 是默认的打包工具。此时你可以通过 [bundlerConfig](../reference/config.md#bundlerconfig) 配置项来设置 [webpack 打包工具的选项](../reference/bundler/webpack.md) ：
 
 <CodeGroup>
   <CodeGroupItem title="JS" active>
@@ -81,7 +81,7 @@ npm install -D vuepress-vite@next
   </CodeGroupItem>
 </CodeGroup>
 
-接下来，你需要在 [bundler](../reference/config.md#bundler) 配置项中设置你要使用的打包工具名称。此时你可以通过 [bundlerConfig](../reference/config.md#bundlerconfig) 配置项来设置 [vite 打包工具的选项](../reference/bundler/vite.md) ：
+你可以在 [bundler](../reference/config.md#bundler) 配置项中设置你要使用的打包工具名称，或者不设置它，因为在使用 `vuepress-vite` Package 时， vite 是默认的打包工具。此时你可以通过 [bundlerConfig](../reference/config.md#bundlerconfig) 配置项来设置 [vite 打包工具的选项](../reference/bundler/vite.md) ：
 
 <CodeGroup>
   <CodeGroupItem title="JS" active>

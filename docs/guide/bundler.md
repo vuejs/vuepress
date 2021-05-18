@@ -26,7 +26,7 @@ npm install -D vuepress@next
   </CodeGroupItem>
 </CodeGroup>
 
-You can specify the name of the bundler to use in [bundler](../reference/config.md#bundler) option, or omit it because webpack is the default bundler. Then you can set [options of webpack bundler](../reference/bundler/webpack.md) via [bundlerConfig](../reference/config.md#bundlerconfig) option:
+You can specify the name of the bundler to use in [bundler](../reference/config.md#bundler) option, or omit it because webpack is the default bundler when using `vuepress` package. Then you can set [options of webpack bundler](../reference/bundler/webpack.md) via [bundlerConfig](../reference/config.md#bundlerconfig) option:
 
 <CodeGroup>
   <CodeGroupItem title="JS" active>
@@ -81,7 +81,7 @@ npm install -D vuepress-vite@next
   </CodeGroupItem>
 </CodeGroup>
 
-Next, you need to specify the name of the bundler to use in [bundler](../reference/config.md#bundler) option. Then you can set [options of vite bundler](../reference/bundler/vite.md) via [bundlerConfig](../reference/config.md#bundlerconfig) option:
+You can specify the name of the bundler to use in [bundler](../reference/config.md#bundler) option, or omit it because vite is the default bundler when using `vuepress-vite` package. Then you can set [options of vite bundler](../reference/bundler/vite.md) via [bundlerConfig](../reference/config.md#bundlerconfig) option:
 
 <CodeGroup>
   <CodeGroupItem title="JS" active>
