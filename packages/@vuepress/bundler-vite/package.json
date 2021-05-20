@@ -35,8 +35,8 @@
     "@vuepress/core": "2.0.0-beta.14",
     "@vuepress/shared": "2.0.0-beta.7",
     "@vuepress/utils": "2.0.0-beta.11",
-    "rollup": "^2.47.0",
-    "vite": "^2.3.1",
+    "rollup": "^2.48.0",
+    "vite": "^2.3.3",
     "vue": "^3.0.11",
     "vue-router": "^4.0.6"
   },
