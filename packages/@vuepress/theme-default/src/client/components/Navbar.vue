@@ -89,6 +89,7 @@ export default defineComponent({
       }
       handleLinksWrapWidth()
       window.addEventListener('resize', handleLinksWrapWidth, false)
+      window.addEventListener('orientationchange', handleLinksWrapWidth, false)
     })
 
     return {
