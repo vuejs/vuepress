@@ -1,4 +1,5 @@
 import type { PluginWithOptions } from 'markdown-it'
+import { decode } from 'mdurl'
 import { path } from '@vuepress/utils'
 import type { MarkdownEnv } from '../types'
 
@@ -24,17 +25,24 @@ export const assetsPlugin: PluginWithOptions<AssetsPluginOptions> = (
     // get the image link
     const link = token.attrGet('src')
 
-    // if the link is relative path, and the `env.filePathRelative` exists
-    if (link && /^\.{1,2}\//.test(link) && env.filePathRelative) {
-      // add `@source` alias to the link
-      const resolvedLink = `${relativePathPrefix}/${path.join(
-        path.dirname(env.filePathRelative),
-        link
-      )}`
-
-      // replace the original link with absolute path
-      token.attrSet('src', resolvedLink)
+    if (!link) {
+      return rawRule(tokens, idx, options, env, self)
     }
+
+    // decode link to ensure bundler can find the file correctly
+    let resolvedLink = decode(link)
+
+    // if the link is relative path, and the `env.filePathRelative` exists
+    // add `@source` alias to the link
+    if (/^\.{1,2}\//.test(link) && env.filePathRelative) {
+      resolvedLink = `${relativePathPrefix}/${path.join(
+        path.dirname(env.filePathRelative),
+        resolvedLink
+      )}`
+    }
+
+    // replace the original link with resolved link
+    token.attrSet('src', resolvedLink)
 
     return rawRule(tokens, idx, options, env, self)
   }
