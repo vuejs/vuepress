@@ -1,13 +1,9 @@
 <template>
   <nav v-if="navbarLinks.length" class="navbar-links">
     <div v-for="item in navbarLinks" :key="item.link" class="navbar-links-item">
-      <template v-if="item.children">
-        <DropdownLink :item="item" />
-      </template>
+      <DropdownLink v-if="item.children" :item="item" />
 
-      <template v-else>
-        <NavLink :item="item" />
-      </template>
+      <NavLink v-else :item="item" />
     </div>
   </nav>
 </template>
