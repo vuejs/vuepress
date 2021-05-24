@@ -37,6 +37,10 @@
     "vue": "^3.0.11",
     "vue-router": "^4.0.6"
   },
+  "devDependencies": {
+    "@types/webpack-env": "^1.16.0",
+    "vite": "^2.3.3"
+  },
   "publishConfig": {
     "access": "public"
   }
