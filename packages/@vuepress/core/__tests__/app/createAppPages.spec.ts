@@ -19,7 +19,7 @@ describe('core > app > createAppPages', () => {
     expect(notFoundPage?.frontmatter.layout).toEqual('404')
   })
 
-  it('should create two pages with default 404 page', async () => {
+  it('should create two pages with custom 404 page', async () => {
     const app = createApp({
       source: path.resolve(__dirname, '../__fixtures__/pages-with-404'),
     })
