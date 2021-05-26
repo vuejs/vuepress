@@ -24,9 +24,9 @@ export interface PwaEvent extends Emitter {
 export const pwaEventSymbol: InjectionKey<PwaEvent> = Symbol('pwaEvent')
 
 export const usePwaEvent = (): PwaEvent => {
-  const pawEvent = inject(pwaEventSymbol)
-  if (!pawEvent) {
+  const pwaEvent = inject(pwaEventSymbol)
+  if (!pwaEvent) {
     throw new Error('usePwaEvent() is called without provider.')
   }
-  return pawEvent
+  return pwaEvent
 }
