@@ -13,7 +13,7 @@ import { computed, defineComponent } from 'vue'
 import type { ComputedRef } from 'vue'
 import { useRouter } from 'vue-router'
 import { useRouteLocale, useSiteLocaleData } from '@vuepress/client'
-import { isString } from '@vuepress/shared'
+import { isLinkHttp, isString } from '@vuepress/shared'
 import type { NavbarItem, NavbarGroup, ResolvedNavbarItem } from '../../shared'
 import { useNavLink, useThemeLocaleData } from '../composables'
 import { resolveRepoType } from '../utils'
@@ -96,9 +96,10 @@ const useNavbarRepo = (): ComputedRef<ResolvedNavbarItem[]> => {
   )
 
   const repoLink = computed(() => {
-    if (repoType.value === 'GitHub') {
+    if (repo.value && !isLinkHttp(repo.value)) {
       return `https://github.com/${repo.value}`
     }
+
     return repo.value
   })
 

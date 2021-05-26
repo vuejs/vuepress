@@ -146,7 +146,7 @@ module.exports = {
     // 如果你按照 `organization/repository` 的格式设置它
     // 我们会将它作为一个 GitHub 仓库
     repo: 'vuejs/vuepress',
-    // 如果你使用的不是 GitHub ，可以直接使用 URL
+    // 你也可以直接将它设置为一个 URL
     repo: 'https://gitlab.com/foo/bar',
   },
 }
@@ -362,7 +362,7 @@ module.exports = {
 
   它将会用于生成 _编辑此页_ 的链接。
 
-  如果你不设置该选项，则会根据 [docsRepo](#docsrepo) 配置项来推断 Pattern 。但是如果你的文档仓库没有托管在常用的平台上，比如 GitHub 、 GitLab 、 Bitbucket 等，那么你必须设置该选项才能使 _编辑此页_ 链接正常工作。
+  如果你不设置该选项，则会根据 [docsRepo](#docsrepo) 配置项来推断 Pattern 。但是如果你的文档仓库没有托管在常用的平台上，比如 GitHub 、 GitLab 、 Bitbucket 、 Gitee 等，那么你必须设置该选项才能使 _编辑此页_ 链接正常工作。
 
 - 用法：
 

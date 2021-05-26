@@ -1,4 +1,8 @@
-import { removeLeadingSlash, removeEndingSlash } from '@vuepress/shared'
+import {
+  isLinkHttp,
+  removeLeadingSlash,
+  removeEndingSlash,
+} from '@vuepress/shared'
 import { resolveRepoType } from './resolveRepoType'
 import type { RepoType } from './resolveRepoType'
 
@@ -38,7 +42,7 @@ export const resolveEditLink = ({
   return pattern
     .replace(
       /:repo/,
-      repoType === 'GitHub' ? `https://github.com/${docsRepo}` : docsRepo
+      isLinkHttp(docsRepo) ? docsRepo : `https://github.com/${docsRepo}`
     )
     .replace(/:branch/, docsBranch)
     .replace(
