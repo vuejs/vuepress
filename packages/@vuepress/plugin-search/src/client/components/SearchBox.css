@@ -1,4 +1,5 @@
 :root {
+  --search-bg-color: #ffffff;
   --search-accent-color: #3eaf7c;
   --search-text-color: #2c3e50;
   --search-border-color: #eaecef;
@@ -29,7 +30,7 @@
   padding: 0 0.5rem 0 2rem;
   outline: none;
   transition: all 0.2s ease;
-  background: #fff url('search.svg') 0.6rem 0.5rem no-repeat;
+  background: var(--search-bg-color) url('search.svg') 0.6rem 0.5rem no-repeat;
   background-size: 1rem;
 }
 
@@ -39,7 +40,7 @@
 }
 
 .search-box .suggestions {
-  background: #fff;
+  background: var(--search-bg-color);
   width: var(--search-result-width);
   position: absolute;
   top: 2rem;
