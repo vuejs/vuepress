@@ -18,6 +18,7 @@ export const activeHeaderLinksPlugin: Plugin<ActiveHeaderLinksPluginOptions> = (
   app
 ) => {
   if (app.env.isDev && app.options.bundler.endsWith('vite')) {
+    // eslint-disable-next-line import/no-extraneous-dependencies
     app.options.bundlerConfig.viteOptions = require('vite').mergeConfig(
       app.options.bundlerConfig.viteOptions,
       {

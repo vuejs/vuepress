@@ -19,6 +19,20 @@ module.exports = {
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/no-non-null-assertion': 'off',
         '@typescript-eslint/no-var-requires': 'off',
+        'import/no-extraneous-dependencies': [
+          'error',
+          {
+            devDependencies: false,
+            optionalDependencies: false,
+          },
+        ],
+      },
+    },
+    {
+      files: ['*.vue'],
+      rules: {
+        // disable for setup script
+        '@typescript-eslint/no-unused-vars': 'off',
       },
     },
     {
@@ -35,6 +49,13 @@ module.exports = {
       rules: {
         '@typescript-eslint/explicit-function-return-type': 'off',
         'vue/one-component-per-file': 'off',
+        'import/no-extraneous-dependencies': 'off',
+      },
+    },
+    {
+      files: ['docs/**'],
+      rules: {
+        'import/no-extraneous-dependencies': 'off',
       },
     },
   ],
