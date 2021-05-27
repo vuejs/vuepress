@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.15](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.14...v2.0.0-beta.15) (2021-05-27)
+
+
+### Bug Fixes
+
+* **theme-default:** handle rotate events on iPad ([#150](https://github.com/vuepress/vuepress-next/issues/150)) ([bbdda60](https://github.com/vuepress/vuepress-next/commit/bbdda60bba0a56590535f3e762dec55767ec031c))
+* **theme-default:** show header anchors when being focused ([#164](https://github.com/vuepress/vuepress-next/issues/164)) ([8de5f0f](https://github.com/vuepress/vuepress-next/commit/8de5f0fa2873f64be0622aced46e1512c7f4fac5))
+
+
+### Features
+
+* **theme-default:** support dark mode (close [#29](https://github.com/vuepress/vuepress-next/issues/29)) ([680e429](https://github.com/vuepress/vuepress-next/commit/680e4298a80ddb06b0381af48644124ffb0b0c4c))
+* **theme-default:** support full link for github repo ([#152](https://github.com/vuepress/vuepress-next/issues/152)) ([8a5055b](https://github.com/vuepress/vuepress-next/commit/8a5055b57d2068e73b4a1c52601c94bdbbc1a7c5))
+* **theme-default:** support Gitee repo ([5cad664](https://github.com/vuepress/vuepress-next/commit/5cad664bd7224a08e679dc06f61f17af6c790b97))
+
+
+### BREAKING CHANGES
+
+* **theme-default:** most sass variables are migrated to css variables
+
+
+
+
+
 # [2.0.0-beta.14](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.13...v2.0.0-beta.14) (2021-05-12)
 
 **Note:** Version bump only for package @vuepress/theme-default

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.15](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.14...v2.0.0-beta.15) (2021-05-27)
+
+
+### Bug Fixes
+
+* **markdown:** decode assets link to ensure bundler can find the file ([#144](https://github.com/vuepress/vuepress-next/issues/144)) ([d3e5409](https://github.com/vuepress/vuepress-next/commit/d3e5409246a47edae93209c9ce5dd2614e14c936))
+
+
+
+
+
 # [2.0.0-beta.13](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.12...v2.0.0-beta.13) (2021-05-06)
 
 

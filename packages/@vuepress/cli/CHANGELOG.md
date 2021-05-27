@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.15](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.14...v2.0.0-beta.15) (2021-05-27)
+
+
+### Features
+
+* **cli:** allow setting default app config ([41f9dc6](https://github.com/vuepress/vuepress-next/commit/41f9dc612d65a7aae777a75ee00715f0b7bab7c6))
+
+
+
+
+
 # [2.0.0-beta.14](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.13...v2.0.0-beta.14) (2021-05-12)
 
 **Note:** Version bump only for package @vuepress/cli

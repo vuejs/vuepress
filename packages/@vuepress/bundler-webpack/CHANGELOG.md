@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.15](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.14...v2.0.0-beta.15) (2021-05-27)
+
+
+### Features
+
+* **bundler-webpack:** bump webpack-dev-server to 4.0.0-beta.3 ([2e86826](https://github.com/vuepress/vuepress-next/commit/2e8682680eba7736bcf3325014a927a87503ba0b))
+
+
+
+
+
 # [2.0.0-beta.14](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.13...v2.0.0-beta.14) (2021-05-12)
 
 
