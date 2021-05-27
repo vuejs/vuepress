@@ -1,7 +1,3 @@
-@use 'sass:color';
-
-@import '_variables';
-
 .custom-container {
   .custom-container-title {
     font-weight: 600;
@@ -18,35 +14,44 @@
   }
 
   &.tip {
-    background-color: #f3f5f7;
-    border-color: $tipColor;
-  }
-
-  &.warning {
-    background-color: color.scale($warningColor, $lightness: 90%);
-    border-color: $warningColor;
-    color: color.scale($warningColor, $lightness: -50%);
+    border-color: var(--c-tip);
+    background-color: var(--c-tip-bg);
+    color: var(--c-tip-text);
 
     .custom-container-title {
-      color: color.scale($warningColor, $lightness: -25%);
+      color: var(--c-tip-title);
     }
 
     a {
-      color: $textColor;
+      color: var(--c-tip-text-accent);
+    }
+  }
+
+  &.warning {
+    border-color: var(--c-warning);
+    background-color: var(--c-warning-bg);
+    color: var(--c-warning-text);
+
+    .custom-container-title {
+      color: var(--c-warning-title);
+    }
+
+    a {
+      color: var(--c-warning-text-accent);
     }
   }
 
   &.danger {
-    background-color: color.scale($dangerColor, $lightness: 90%);
-    border-color: $dangerColor;
-    color: color.scale($dangerColor, $lightness: -50%);
+    border-color: var(--c-danger);
+    background-color: var(--c-danger-bg);
+    color: var(--c-danger-text);
 
     .custom-container-title {
-      color: color.scale($dangerColor, $lightness: -25%);
+      color: var(--c-danger-title);
     }
 
     a {
-      color: $textColor;
+      color: var(--c-danger-text-accent);
     }
   }
 
@@ -56,7 +61,7 @@
     border-radius: 2px;
     margin: 1.6em 0;
     padding: 1.6em;
-    background-color: #eee;
+    background-color: var(--c-details-bg);
 
     h4 {
       margin-top: 0;

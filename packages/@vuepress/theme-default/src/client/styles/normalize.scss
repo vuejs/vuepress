@@ -1,44 +1,53 @@
-@import '_variables';
-
 html,
 body {
   padding: 0;
   margin: 0;
-  background-color: #fff;
+  background-color: var(--c-bg);
+  transition: background-color ease 0.3s;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-family);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
-  color: $textColor;
+  color: var(--c-text);
 }
 
 a {
   font-weight: 500;
-  color: $accentColor;
+  color: var(--c-text-accent);
   text-decoration: none;
 }
 
 p a code {
   font-weight: 400;
-  color: $accentColor;
+  color: var(--c-text-accent);
 }
 
 kbd {
-  background: #eee;
-  border: solid 0.15rem #ddd;
-  border-bottom: solid 0.25rem #ddd;
+  font-family: var(--font-family-code);
+  background: var(--c-bg-lighter);
+  border: solid 0.15rem var(--c-border-dark);
+  border-bottom: solid 0.25rem var(--c-border-dark);
   border-radius: 0.15rem;
   padding: 0 0.15em;
 }
 
+code {
+  font-family: var(--font-family-code);
+  color: var(--c-text-lighter);
+  padding: 0.25rem 0.5rem;
+  margin: 0;
+  font-size: 0.85em;
+  background-color: var(--c-bg-light);
+  border-radius: 3px;
+}
+
 blockquote {
   font-size: 1rem;
-  color: #999;
-  border-left: 0.2rem solid #dfe2e5;
+  color: var(--c-text-quote);
+  border-left: 0.2rem solid var(--c-border-dark);
   margin: 1rem 0;
   padding: 0.25rem 0 0.25rem 1rem;
 
@@ -77,7 +86,7 @@ h1 {
 h2 {
   font-size: 1.65rem;
   padding-bottom: 0.3rem;
-  border-bottom: 1px solid $borderColor;
+  border-bottom: 1px solid var(--c-border);
 }
 
 h3 {
@@ -113,12 +122,6 @@ a.header-anchor {
   }
 }
 
-code,
-kbd {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 p,
 ul,
 ol {
@@ -127,7 +130,7 @@ ol {
 
 hr {
   border: 0;
-  border-top: 1px solid $borderColor;
+  border-top: 1px solid var(--c-border);
 }
 
 table {
@@ -138,15 +141,15 @@ table {
 }
 
 tr {
-  border-top: 1px solid #dfe2e5;
+  border-top: 1px solid var(--c-border-dark);
 
   &:nth-child(2n) {
-    background-color: #f6f8fa;
+    background-color: var(--c-bg-light);
   }
 }
 
 th,
 td {
-  border: 1px solid #dfe2e5;
+  border: 1px solid var(--c-border-dark);
   padding: 0.6em 1em;
 }

@@ -8,16 +8,32 @@
 
 ## Palette 文件
 
-你可以创建一个 `.vuepress/styles/palette.scss` 文件来覆盖默认主题的预定义变量：
+Palette 文件的路径是 `.vuepress/styles/palette.scss` 。
 
+你可以利用它来覆盖默认主题的预定义 SASS 变量。
+
+::: details 点击查看 SASS 变量
 @[code{3-} scss](@vuepress/theme-default/src/client/styles/_variables.scss)
+:::
 
 ## Style 文件
 
-你可以在 `.vuepress/styles/index.scss` 文件中覆盖默认样式或者添加额外样式。例如：
+Style 文件的路径是 `.vuepress/styles/index.scss` 。
+
+你可以在这里添加额外的样式，或者覆盖默认样式：
 
 ```scss
 :root {
   scroll-behavior: smooth;
 }
 ```
+
+你也可以利用它来覆盖默认主题的预定义 CSS 变量。
+
+::: details 点击查看 CSS 变量
+@[code scss](@vuepress/theme-default/src/client/styles/vars.scss)
+:::
+
+::: details 点击查看暗黑模式 CSS 变量
+@[code scss](@vuepress/theme-default/src/client/styles/vars-dark.scss)
+:::

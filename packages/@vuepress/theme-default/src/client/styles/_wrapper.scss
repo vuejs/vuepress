@@ -1,7 +1,7 @@
 @import '_variables';
 
 %wrapper {
-  max-width: $contentWidth;
+  max-width: var(--content-width);
   margin: 0 auto;
   padding: 2rem 2.5rem;
 

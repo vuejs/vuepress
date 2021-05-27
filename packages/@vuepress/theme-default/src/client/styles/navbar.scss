@@ -1,17 +1,12 @@
-@use 'sass:color';
-
 @import '_variables';
 
-$navbar-vertical-padding: 0.7rem;
-$navbar-horizontal-padding: 1.5rem;
-
 .navbar {
-  padding: $navbar-vertical-padding $navbar-horizontal-padding;
-  line-height: $navbarHeight - 1.4rem;
+  padding: var(--navbar-padding-v) var(--navbar-padding-h);
+  line-height: calc(var(--navbar-height) - 1.4rem);
 
   .logo {
-    height: $navbarHeight - 1.4rem;
-    min-width: $navbarHeight - 1.4rem;
+    height: calc(var(--navbar-height) - 1.4rem);
+    min-width: calc(var(--navbar-height) - 1.4rem);
     margin-right: 0.8rem;
     vertical-align: top;
   }
@@ -19,19 +14,18 @@ $navbar-horizontal-padding: 1.5rem;
   .site-name {
     font-size: 1.3rem;
     font-weight: 600;
-    color: $textColor;
+    color: var(--c-text);
     position: relative;
   }
 
   .navbar-links-wrapper {
     padding-left: 1.5rem;
     box-sizing: border-box;
-    background-color: white;
     white-space: nowrap;
     font-size: 0.9rem;
     position: absolute;
-    right: $navbar-horizontal-padding;
-    top: $navbar-vertical-padding;
+    right: var(--navbar-padding-h);
+    top: var(--navbar-padding-v);
     display: flex;
 
     .search-box {
@@ -75,7 +69,7 @@ $navbar-horizontal-padding: 1.5rem;
 
     &:hover,
     &.router-link-active {
-      color: $accentColor;
+      color: var(--c-text-accent);
     }
   }
 
@@ -103,7 +97,7 @@ $navbar-horizontal-padding: 1.5rem;
   .navbar-links a {
     &:hover,
     &.router-link-active {
-      color: $textColor;
+      color: var(--c-text);
     }
   }
 
@@ -111,7 +105,7 @@ $navbar-horizontal-padding: 1.5rem;
     &:hover,
     &.router-link-active {
       margin-bottom: -2px;
-      border-bottom: 2px solid color.scale($accentColor, $lightness: 8%);
+      border-bottom: 2px solid var(--c-text-accent);
     }
   }
 }
@@ -137,5 +131,27 @@ $navbar-horizontal-padding: 1.5rem;
 @media screen and (max-width: $MQMobile) {
   .toggle-sidebar-button {
     display: block;
+  }
+}
+
+/**
+ * toggle dark button
+ */
+.toggle-dark-button {
+  display: flex;
+  margin: auto;
+  margin-left: 1rem;
+  border: 0;
+  outline: none;
+  background: none;
+  color: var(--c-text);
+  opacity: 0.8;
+  cursor: pointer;
+  &:hover {
+    opacity: 1;
+  }
+  .icon {
+    width: 1.25rem;
+    height: 1.25rem;
   }
 }

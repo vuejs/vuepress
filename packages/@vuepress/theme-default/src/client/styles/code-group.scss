@@ -1,5 +1,8 @@
 @import '_variables';
 
+/**
+ * code-group
+ */
 .code-group__nav {
   margin-top: 0.85rem;
   // 2 * margin + border-radius of <pre> tag
@@ -9,7 +12,7 @@
   padding-top: 10px;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
-  background-color: $codeBgColor;
+  background-color: var(--code-bg-color);
 }
 
 .code-group__ul {
@@ -35,7 +38,7 @@
 }
 
 .code-group__nav-tab-active {
-  border-bottom: $accentColor 1px solid;
+  border-bottom: var(--c-brand) 1px solid;
 }
 
 @media (max-width: $MQMobileNarrow) {

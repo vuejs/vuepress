@@ -13,7 +13,7 @@
 
   .navbar-links {
     display: none;
-    border-bottom: 1px solid $borderColor;
+    border-bottom: 1px solid var(--c-border);
     padding: 0.5rem 0 0.75rem 0;
 
     a {
@@ -81,7 +81,7 @@
 }
 
 .sidebar-heading {
-  color: $textColor;
+  color: var(--c-text);
   transition: color 0.15s ease;
   cursor: default;
   font-size: 1.1em;
@@ -113,7 +113,7 @@
   font-size: 1em;
   font-weight: 400;
   display: inline-block;
-  color: $textColor;
+  color: var(--c-text);
   border-left: 0.25rem solid transparent;
   margin: 0;
   padding: 0.35rem 1rem 0.35rem 1.25rem;
@@ -142,11 +142,11 @@ a.sidebar-link {
 
   &.active {
     font-weight: 600;
-    color: $accentColor;
-    border-left-color: $accentColor;
+    color: var(--c-text-accent);
+    border-left-color: var(--c-text-accent);
   }
 
   &:hover {
-    color: $accentColor;
+    color: var(--c-text-accent);
   }
 }

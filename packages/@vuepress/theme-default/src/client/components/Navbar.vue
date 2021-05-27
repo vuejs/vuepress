@@ -23,8 +23,13 @@
 
     <div class="navbar-links-wrapper" :style="linksWrapperStyle">
       <slot name="before" />
+
       <NavbarLinks class="can-hide" />
+
       <slot name="after" />
+
+      <ToggleDarkButton />
+
       <NavbarSearch />
     </div>
   </header>
@@ -35,6 +40,7 @@ import { computed, defineComponent, onMounted, ref } from 'vue'
 import { useRouteLocale, useSiteLocaleData, withBase } from '@vuepress/client'
 import { useThemeLocaleData } from '../composables'
 import NavbarLinks from './NavbarLinks.vue'
+import ToggleDarkButton from './ToggleDarkButton.vue'
 import ToggleSidebarButton from './ToggleSidebarButton.vue'
 
 export default defineComponent({
@@ -42,6 +48,7 @@ export default defineComponent({
 
   components: {
     NavbarLinks,
+    ToggleDarkButton,
     ToggleSidebarButton,
   },
 

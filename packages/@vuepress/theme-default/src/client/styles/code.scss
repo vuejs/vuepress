@@ -1,5 +1,3 @@
-@use 'sass:color';
-
 @import '_variables';
 
 // ===============================
@@ -9,7 +7,7 @@ code[class*='language-'],
 pre[class*='language-'] {
   color: #ccc;
   background: none;
-  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-family: var(--font-family-code);
   font-size: 1em;
   text-align: left;
   white-space: pre;
@@ -118,21 +116,10 @@ pre[class*='language-'] {
 }
 
 .token.inserted {
-  color: $accentColor;
+  color: var(--c-text-accent);
 }
 
 // ===============================
-
-.theme-default-content {
-  code {
-    color: color.scale($textColor, $lightness: 20%);
-    padding: 0.25rem 0.5rem;
-    margin: 0;
-    font-size: 0.85em;
-    background-color: rgba(27, 31, 35, 0.05);
-    border-radius: 3px;
-  }
-}
 
 .theme-default-content {
   pre,
@@ -154,13 +141,13 @@ pre[class*='language-'] {
   }
 
   .line-number {
-    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-family: var(--font-family-code);
   }
 }
 
 div[class*='language-'] {
   position: relative;
-  background-color: $codeBgColor;
+  background-color: var(--code-bg-color);
   border-radius: 6px;
 
   &::before {
@@ -169,7 +156,7 @@ div[class*='language-'] {
     top: 0.8em;
     right: 1em;
     font-size: 0.75rem;
-    color: $lineNumbersColor;
+    color: var(--code-ln-color);
   }
 
   pre,
@@ -190,7 +177,7 @@ div[class*='language-'] {
     line-height: 1.4;
 
     .highlight-line {
-      background-color: $highlightLineBgColor;
+      background-color: var(--code-hl-bg-color);
     }
   }
 
@@ -211,13 +198,13 @@ div[class*='language-'] {
         left: 0;
         top: 0;
         display: block;
-        width: $lineNumbersWrapperWidth;
+        width: var(--code-ln-wrapper-width);
         height: 100%;
       }
     }
 
     pre {
-      margin-left: $lineNumbersWrapperWidth;
+      margin-left: var(--code-ln-wrapper-width);
       padding-left: 1rem;
       vertical-align: middle;
     }
@@ -225,9 +212,9 @@ div[class*='language-'] {
     .line-numbers {
       position: absolute;
       top: 0;
-      width: $lineNumbersWrapperWidth;
+      width: var(--code-ln-wrapper-width);
       text-align: center;
-      color: $lineNumbersColor;
+      color: var(--code-ln-color);
       padding-top: 1.25rem;
       line-height: 1.4;
 
@@ -248,10 +235,10 @@ div[class*='language-'] {
       position: absolute;
       top: 0;
       left: 0;
-      width: $lineNumbersWrapperWidth;
+      width: var(--code-ln-wrapper-width);
       height: 100%;
       border-radius: 6px 0 0 6px;
-      border-right: 1px solid $highlightLineBgColor;
+      border-right: 1px solid var(--code-hl-bg-color);
     }
   }
 }

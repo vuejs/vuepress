@@ -1,5 +1,3 @@
-@use 'sass:color';
-
 @import '_variables';
 @import '_wrapper';
 
@@ -20,12 +18,12 @@
 
     .meta-item-label {
       font-weight: 500;
-      color: color.scale($textColor, $lightness: 25%);
+      color: var(--c-text-lighter);
     }
 
     .meta-item-info {
       font-weight: 400;
-      color: #767676;
+      color: var(--c-text-quote);
     }
   }
 
@@ -60,7 +58,7 @@
   .inner {
     min-height: 2rem;
     margin-top: 0;
-    border-top: 1px solid $borderColor;
+    border-top: 1px solid var(--c-border);
     padding-top: 1rem;
     overflow: auto;
   }

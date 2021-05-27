@@ -1,4 +1,6 @@
-@use '_normalize';
+@use 'vars';
+@use 'vars-dark';
+@use 'normalize';
 
 @use 'arrow';
 @use 'badge';
@@ -10,7 +12,6 @@
 @use 'layout';
 @use 'navbar';
 @use 'page';
-@use 'plugins';
 @use 'sidebar';
 @use 'sr-only';
 @use 'toc';

@@ -2,8 +2,8 @@
 @import '_wrapper';
 
 .page {
-  padding-top: $navbarHeight;
-  padding-left: $sidebarWidth;
+  padding-top: var(--navbar-height);
+  padding-left: var(--sidebar-width);
 }
 
 .navbar {
@@ -12,35 +12,37 @@
   top: 0;
   left: 0;
   right: 0;
-  height: $navbarHeight;
-  background-color: #fff;
+  height: var(--navbar-height);
   box-sizing: border-box;
-  border-bottom: 1px solid $borderColor;
+  border-bottom: 1px solid var(--c-border);
+  background-color: var(--c-bg-navbar);
+  transition: background-color ease 0.3s;
 }
 
 .sidebar {
   font-size: 16px;
-  background-color: #fff;
-  width: $sidebarWidth;
+  width: var(--sidebar-width);
   position: fixed;
   z-index: 10;
   margin: 0;
-  top: $navbarHeight;
+  top: var(--navbar-height);
   left: 0;
   bottom: 0;
   box-sizing: border-box;
-  border-right: 1px solid $borderColor;
+  border-right: 1px solid var(--c-border);
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: $accentColor $borderColor;
+  scrollbar-color: var(--c-brand) var(--c-border);
+  background-color: var(--c-bg-sidebar);
+  transition: background-color ease 0.3s;
   &::-webkit-scrollbar {
     width: 7px;
   }
   &::-webkit-scrollbar-track {
-    background-color: $borderColor;
+    background-color: var(--c-border);
   }
   &::-webkit-scrollbar-thumb {
-    background-color: $accentColor;
+    background-color: var(--c-brand);
   }
 }
 
@@ -101,8 +103,8 @@ h4,
 h5,
 h6 {
   .theme-default-content:not(.custom) > & {
-    margin-top: 0.5rem - $navbarHeight;
-    padding-top: ($navbarHeight + 1rem);
+    margin-top: calc(0.5rem - var(--navbar-height));
+    padding-top: calc(1rem + var(--navbar-height));
     margin-bottom: 0;
 
     &:first-child {
@@ -126,12 +128,6 @@ h6 {
     text-decoration: underline;
   }
 
-  p.demo {
-    padding: 1rem 1.5rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-
   img {
     max-width: 100%;
   }
@@ -150,11 +146,11 @@ h6 {
 @media (max-width: $MQNarrow) {
   .sidebar {
     font-size: 15px;
-    width: $mobileSidebarWidth;
+    width: var(--sidebar-width-mobile);
   }
 
   .page {
-    padding-left: $mobileSidebarWidth;
+    padding-left: var(--sidebar-width-mobile);
   }
 }
 
@@ -162,7 +158,7 @@ h6 {
 @media (max-width: $MQMobile) {
   .sidebar {
     top: 0;
-    padding-top: $navbarHeight;
+    padding-top: var(--navbar-height);
     transform: translateX(-100%);
     transition: transform 0.2s ease;
   }
