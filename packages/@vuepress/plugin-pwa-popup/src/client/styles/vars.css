@@ -1,5 +1,5 @@
 :root {
-  --pwa-popup-z-index: 3;
+  --pwa-popup-z-index: 10;
 
   --pwa-popup-text-color: #2c3e50;
   --pwa-popup-bg-color: #ffffff;
