@@ -81,7 +81,7 @@ export default defineClientAppEnhance(({ app, router, siteData }) => {
 ```
 
 ::: warning
-It not recommended to use `addRoute` method to add dynamic routes here, because those routes will **NOT** be pre-rendered in build mode.
+It's not recommended to use `addRoute` method to add dynamic routes here, because those routes will **NOT** be pre-rendered in build mode.
 
 But you can still do that if you understand the drawback.
 :::
