@@ -1,23 +1,27 @@
-:root {
-  --pwa-popup-color: #3eaf7c;
-}
-
 .pwa-popup {
   position: fixed;
   right: 1em;
   bottom: 1em;
   padding: 1em;
-  border: 1px solid #3eaf7c;
+  border: 1px solid var(--pwa-popup-border-color);
   border-radius: 3px;
-  background: #fff;
-  box-shadow: 0 4px 16px var(--pwa-popup-color);
+  background-color: var(--pwa-popup-bg-color);
+  box-shadow: var(--pwa-popup-shadow);
   text-align: center;
-  z-index: 3;
+  z-index: var(--pwa-popup-z-index);
 }
 
 .pwa-popup > button {
+  cursor: pointer;
   margin-top: 0.5em;
   padding: 0.25em 2em;
+  border: none;
+  color: var(--pwa-popup-btn-text-color);
+  background-color: var(--pwa-popup-btn-bg-color);
+}
+
+.pwa-popup > button:hover {
+  background-color: var(--pwa-popup-btn-hover-bg-color);
 }
 
 .pwa-popup-enter-active,

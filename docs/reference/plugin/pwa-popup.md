@@ -52,8 +52,4 @@ module.exports = {
 
 You can customize the style of the popup via CSS variables:
 
-```css
-:root {
-  --pwa-popup-color: #3eaf7c;
-}
-```
+@[code css](@vuepress/plugin-pwa-popup/src/client/styles/vars.css)

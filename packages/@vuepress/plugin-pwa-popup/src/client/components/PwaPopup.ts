@@ -4,7 +4,8 @@ import { useRouteLocale } from '@vuepress/client'
 import { usePwaEvent, useSkipWaiting } from '@vuepress/plugin-pwa/lib/client'
 import type { LocaleConfig } from '@vuepress/shared'
 
-import './PwaPopup.css'
+import '../styles/vars.css'
+import '../styles/pwa-popup.css'
 
 export type PwaPopupLocales = LocaleConfig<{
   message: string

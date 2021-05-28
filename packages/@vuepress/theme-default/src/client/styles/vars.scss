@@ -106,3 +106,14 @@
   --docsearch-hit-shadow: 0 1px 3px 0 var(--c-border-dark);
   --docsearch-footer-background: var(--c-bg);
 }
+
+// plugin-pwa-popup
+.pwa-popup {
+  --pwa-popup-text-color: var(--c-text);
+  --pwa-popup-bg-color: var(--c-bg);
+  --pwa-popup-border-color: var(--c-brand);
+  --pwa-popup-shadow: 0 4px 16px var(--c-brand);
+  --pwa-popup-btn-text-color: var(--c-bg);
+  --pwa-popup-btn-bg-color: var(--c-brand);
+  --pwa-popup-btn-hover-bg-color: var(--c-brand-light);
+}

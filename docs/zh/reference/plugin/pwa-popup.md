@@ -52,8 +52,4 @@ module.exports = {
 
 你可以通过 CSS 变量来自定义弹窗的样式：
 
-```css
-:root {
-  --pwa-popup-color: #3eaf7c;
-}
-```
+@[code css](@vuepress/plugin-pwa-popup/src/client/styles/vars.css)
