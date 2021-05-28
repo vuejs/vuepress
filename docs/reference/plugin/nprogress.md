@@ -16,8 +16,4 @@ Integrate [nprogress](https://github.com/rstacruz/nprogress) into VuePress, whic
 
 You can customize the style of the progress bar via CSS variables:
 
-```css
-:root {
-  --nprogress-color: #29d;
-}
-```
+@[code css](@vuepress/plugin-nprogress/src/client/styles/vars.css)

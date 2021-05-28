@@ -16,8 +16,4 @@ title: nprogress
 
 你可以通过 CSS 变量来自定义进度条的样式：
 
-```css
-:root {
-  --nprogress-color: #29d;
-}
-```
+@[code css](@vuepress/plugin-nprogress/src/client/styles/vars.css)

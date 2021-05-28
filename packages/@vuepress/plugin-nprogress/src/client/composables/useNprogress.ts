@@ -2,6 +2,7 @@ import * as nprogress from 'nprogress'
 import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 
+import '../styles/vars.css'
 import '../styles/nprogress.css'
 
 export const useNprogress = (): void => {
