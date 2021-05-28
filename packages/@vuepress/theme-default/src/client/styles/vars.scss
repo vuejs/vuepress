@@ -73,22 +73,6 @@
   --back-to-top-color-hover: var(--c-brand-light);
 }
 
-// plugin-nprogress
-#nprogress {
-  --nprogress-color: var(--c-brand);
-}
-
-// plugin-search
-.search-box {
-  --search-bg-color: var(--c-bg);
-  --search-accent-color: var(--c-brand);
-  --search-text-color: var(--c-text);
-  --search-border-color: var(--c-border);
-
-  --search-item-text-color: var(--c-text-lighter);
-  --search-item-focus-bg-color: var(--c-bg-light);
-}
-
 // plugin-docsearch
 .DocSearch {
   --docsearch-primary-color: var(--c-brand);
@@ -107,6 +91,16 @@
   --docsearch-footer-background: var(--c-bg);
 }
 
+// plugin-medium-zoom
+.medium-zoom-overlay {
+  --medium-zoom-bg-color: var(--c-bg);
+}
+
+// plugin-nprogress
+#nprogress {
+  --nprogress-color: var(--c-brand);
+}
+
 // plugin-pwa-popup
 .pwa-popup {
   --pwa-popup-text-color: var(--c-text);
@@ -116,4 +110,15 @@
   --pwa-popup-btn-text-color: var(--c-bg);
   --pwa-popup-btn-bg-color: var(--c-brand);
   --pwa-popup-btn-hover-bg-color: var(--c-brand-light);
+}
+
+// plugin-search
+.search-box {
+  --search-bg-color: var(--c-bg);
+  --search-accent-color: var(--c-brand);
+  --search-text-color: var(--c-text);
+  --search-border-color: var(--c-border);
+
+  --search-item-text-color: var(--c-text-lighter);
+  --search-item-focus-bg-color: var(--c-bg-light);
 }

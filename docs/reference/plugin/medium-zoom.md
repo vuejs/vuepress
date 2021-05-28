@@ -45,12 +45,7 @@ Integrate [medium-zoom](https://github.com/francoischalifour/medium-zoom#readme)
 
 You can customize most of the zoom styles via [zoomOptions](#zoomoptions), while this plugin also provides some CSS variables for additional customization:
 
-```css
-:root {
-  /* z-index of the zoom overlay */
-  --medium-zoom-z-index: 100;
-}
-```
+@[code css](@vuepress/plugin-medium-zoom/src/client/styles/vars.css)
 
 ## Composition API
 

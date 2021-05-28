@@ -45,12 +45,7 @@
 
 你可以通过 [zoomOptions](#zoomoptions) 对大部分的缩放样式进行自定义，不过作为补充，该插件同样提供了一些 CSS 变量：
 
-```css
-:root {
-  /* zoom 遮罩的 z-index */
-  --medium-zoom-z-index: 100;
-}
-```
+@[code css](@vuepress/plugin-medium-zoom/src/client/styles/vars.css)
 
 ## Composition API
 
