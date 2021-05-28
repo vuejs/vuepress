@@ -1,0 +1,31 @@
+.back-to-top {
+  cursor: pointer;
+  position: fixed;
+  bottom: 2rem;
+  right: 2.5rem;
+  width: 2rem;
+  height: 1.2rem;
+  background-color: var(--back-to-top-color);
+  mask: url('back-to-top.svg') no-repeat;
+  z-index: var(--back-to-top-z-index);
+}
+
+.back-to-top:hover {
+  background-color: var(--back-to-top-color-hover);
+}
+
+@media (max-width: 959px) {
+  .back-to-top {
+    display: none;
+  }
+}
+
+.back-to-top-enter-active,
+.back-to-top-leave-active {
+  transition: opacity 0.3s;
+}
+
+.back-to-top-enter-from,
+.back-to-top-leave-to {
+  opacity: 0;
+}

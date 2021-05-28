@@ -8,11 +8,4 @@
 
 你可以通过 CSS 变量来自定义 _返回顶部_ 按钮的样式：
 
-```css
-:root {
-  /* 颜色 */
-  --back-to-top-color: #3eaf7c;
-  /* 鼠标悬停时的颜色 */
-  --back-to-top-color-hover: #71cda3;
-}
-```
+@[code css](@vuepress/plugin-back-to-top/src/client/styles/vars.css)

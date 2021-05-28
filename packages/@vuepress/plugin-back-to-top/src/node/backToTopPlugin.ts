@@ -21,7 +21,7 @@ export const backToTopPlugin: Plugin<BackToTopPluginOptions> = (_, app) => {
 
     clientAppRootComponentFiles: path.resolve(
       __dirname,
-      '../client/BackToTop.vue'
+      '../client/components/BackToTop.js'
     ),
   }
 }

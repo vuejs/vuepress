@@ -8,11 +8,4 @@ This plugin will add a _back to top_ button to your site. The button will be dis
 
 You can customize the style of the _back to top_ button via CSS variables:
 
-```css
-:root {
-  /* color */
-  --back-to-top-color: #3eaf7c;
-  /* color on mouse hover */
-  --back-to-top-color-hover: #71cda3;
-}
-```
+@[code css](@vuepress/plugin-back-to-top/src/client/styles/vars.css)

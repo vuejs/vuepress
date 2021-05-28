@@ -1,4 +1,4 @@
 {
   "extends": "../../../tsconfig.base.json",
-  "include": ["./src/**/*.ts", "./src/**/*.vue", "./__tests__"]
+  "include": ["./src/**/*.ts", "./__tests__"]
 }
