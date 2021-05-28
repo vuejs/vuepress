@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.16](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.15...v2.0.0-beta.16) (2021-05-28)
+
+
+### Bug Fixes
+
+* **plugin-pwa-popup:** increase default z-index ([67242e8](https://github.com/vuepress/vuepress-next/commit/67242e896f52c09c1e42566a32ae10291d0fb648))
+
+
+### Features
+
+* **plugin-pwa-popup:** add more css variables ([3ae6f72](https://github.com/vuepress/vuepress-next/commit/3ae6f72a1fb981ff132325637d5996c5c07b52f2))
+
+
+
+
+
 # [2.0.0-beta.15](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.14...v2.0.0-beta.15) (2021-05-27)
 
 **Note:** Version bump only for package @vuepress/plugin-pwa-popup

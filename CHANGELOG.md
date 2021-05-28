@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.16](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.15...v2.0.0-beta.16) (2021-05-28)
+
+
+### Bug Fixes
+
+* **plugin-pwa-popup:** increase default z-index ([67242e8](https://github.com/vuepress/vuepress-next/commit/67242e896f52c09c1e42566a32ae10291d0fb648))
+* **theme-default:** increase medium-zoom delay ([9c92443](https://github.com/vuepress/vuepress-next/commit/9c9244385f4fe6f65115cab6ba08f47dffc1580a))
+
+
+### Features
+
+* **bundler-vite:** configure postcss by default ([6197578](https://github.com/vuepress/vuepress-next/commit/61975781151ace783f3021bd6a3c55c4fa7b12bd))
+* **plugin-back-to-top:** add z-index variable ([3d7d4a4](https://github.com/vuepress/vuepress-next/commit/3d7d4a4ba173dab4c3ad80abea5ac96cc1eb0bde))
+* **plugin-medium-zoom:** add more css variables (close [#174](https://github.com/vuepress/vuepress-next/issues/174)) ([d717800](https://github.com/vuepress/vuepress-next/commit/d71780094839db02424b60f3a2877871e34eaf64))
+* **plugin-nprogress:** add z-index variable ([151e087](https://github.com/vuepress/vuepress-next/commit/151e087c289a387d7ff77654059de9d71910263a))
+* **plugin-pwa-popup:** add more css variables ([3ae6f72](https://github.com/vuepress/vuepress-next/commit/3ae6f72a1fb981ff132325637d5996c5c07b52f2))
+
+
+
+
+
 # [2.0.0-beta.15](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.14...v2.0.0-beta.15) (2021-05-27)
 
 

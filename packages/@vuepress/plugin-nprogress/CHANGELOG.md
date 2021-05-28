@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.16](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.15...v2.0.0-beta.16) (2021-05-28)
+
+
+### Features
+
+* **plugin-nprogress:** add z-index variable ([151e087](https://github.com/vuepress/vuepress-next/commit/151e087c289a387d7ff77654059de9d71910263a))
+
+
+
+
+
 # [2.0.0-beta.15](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.14...v2.0.0-beta.15) (2021-05-27)
 
 **Note:** Version bump only for package @vuepress/plugin-nprogress

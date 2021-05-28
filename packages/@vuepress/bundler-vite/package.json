@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/bundler-vite",
-  "version": "2.0.0-beta.15",
+  "version": "2.0.0-beta.16",
   "description": "Bundler vite package of VuePress",
   "keywords": [
     "vuepress-bundler",

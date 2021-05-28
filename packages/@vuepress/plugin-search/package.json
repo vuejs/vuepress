@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-search",
-  "version": "2.0.0-beta.15",
+  "version": "2.0.0-beta.16",
   "description": "VuePress plugin - built-in search",
   "keywords": [
     "vuepress-plugin",
