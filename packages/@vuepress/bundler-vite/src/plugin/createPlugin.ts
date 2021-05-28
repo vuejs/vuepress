@@ -60,6 +60,14 @@ export const createPlugin = ({
       resolve: {
         alias: await resolveAlias({ app }),
       },
+      css: {
+        postcss: {
+          plugins: [
+            require('autoprefixer'),
+            ...(isBuild ? [require('postcss-csso')] : []),
+          ],
+        },
+      },
       server: {
         host: app.options.host,
         port: app.options.port,
