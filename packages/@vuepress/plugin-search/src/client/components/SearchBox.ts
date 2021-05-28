@@ -9,7 +9,6 @@ import {
   useSearchSuggestions,
   useSuggestionsFocus,
 } from '../composables'
-import './SearchBox.css'
 
 export type SearchBoxLocales = LocaleConfig<{
   placeholder: string

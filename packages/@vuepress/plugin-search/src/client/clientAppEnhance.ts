@@ -3,6 +3,9 @@ import { defineClientAppEnhance } from '@vuepress/client'
 import { SearchBox } from './components/SearchBox'
 import type { SearchBoxLocales } from './components/SearchBox'
 
+import './styles/vars.css'
+import './styles/search.css'
+
 declare const __SEARCH_LOCALES__: SearchBoxLocales
 declare const __SEARCH_HOT_KEYS__: string[]
 declare const __SEARCH_MAX_SUGGESTIONS__: number

@@ -140,19 +140,7 @@ module.exports = {
 
 你可以通过 CSS 变量来自定义搜索框的样式：
 
-```css
-:root {
-  --search-accent-color: #3eaf7c;
-  --search-text-color: #2c3e50;
-  --search-border-color: #eaecef;
-
-  --search-item-text-color: #5d81a5;
-  --search-item-focus-bg-color: #f3f4f5;
-
-  --search-input-width: 8rem;
-  --search-result-width: 20rem;
-}
-```
+@[code css](@vuepress/plugin-search/src/client/styles/vars.css)
 
 ## 组件
 
