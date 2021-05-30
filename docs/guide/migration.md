@@ -147,7 +147,7 @@ The palette system is extracted to [@vuepress/plugin-palette](../reference/plugi
 
 Theme authors can use their own way to allow users to custom styles, and not be limited with stylus.
 
-If you are using default theme, the palette system is still available but migrated to SASS. See [Default Theme > Styles](../reference/default-theme/styles.md).
+If you are using default theme, the palette system is still available but migrated to SASS, while most variables have been migrated to CSS variables. See [Default Theme > Styles](../reference/default-theme/styles.md).
 
 ### Conventional Files Change
 
@@ -228,7 +228,7 @@ Removed.
 
 #### Palette System
 
-The palette system of default theme has migrated to SASS.
+The palette system of default theme has migrated to SASS and CSS variables.
 
 See [Default Theme > Styles](../reference/default-theme/styles.md).
 

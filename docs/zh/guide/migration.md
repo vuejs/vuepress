@@ -147,7 +147,7 @@ VuePress v1 的 Stylus 调色板系统 （即 `styles/palette.styl` 和 `styles/
 
 主题作者可以使用自己的方式来为用户提供自定义样式的能力，而不必被限制在 Stylus 当中。
 
-如果你使用的是默认主题，那么调色板系统仍然存在，但改为使用 SASS 。参考 [默认主题 > 样式](../reference/default-theme/styles.md) 。
+如果你使用的是默认主题，那么调色板系统仍然存在，但改为使用 SASS ，并且大部分变量都迁移为 CSS 变量。参考 [默认主题 > 样式](../reference/default-theme/styles.md) 。
 
 ### 约定文件变更
 
@@ -228,7 +228,7 @@ VuePress v1 的 Stylus 调色板系统 （即 `styles/palette.styl` 和 `styles/
 
 #### 调色板系统
 
-默认主题的调色板系统迁移为 SASS 。
+默认主题的调色板系统迁移为 SASS 和 CSS 变量。
 
 参考 [默认主题 > 样式](../reference/default-theme/styles.md) 。
 
