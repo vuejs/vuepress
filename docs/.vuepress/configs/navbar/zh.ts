@@ -6,18 +6,6 @@ export const zh: NavbarConfig = [
     link: '/zh/guide/',
   },
   {
-    text: '深入',
-    children: [
-      '/zh/advanced/architecture.md',
-      '/zh/advanced/plugin.md',
-      '/zh/advanced/theme.md',
-      {
-        text: 'Cookbook',
-        link: '/zh/advanced/cookbook/',
-      },
-    ],
-  },
-  {
     text: '参考',
     children: [
       {
@@ -61,6 +49,18 @@ export const zh: NavbarConfig = [
     text: '了解更多',
     children: [
       {
+        text: '深入',
+        children: [
+          '/zh/advanced/architecture.md',
+          '/zh/advanced/plugin.md',
+          '/zh/advanced/theme.md',
+          {
+            text: 'Cookbook',
+            link: '/zh/advanced/cookbook/',
+          },
+        ],
+      },
+      {
         text: '其他资源',
         children: [
           '/zh/contributing.md',
@@ -75,18 +75,18 @@ export const zh: NavbarConfig = [
           },
         ],
       },
+    ],
+  },
+  {
+    text: 'v2.x',
+    children: [
       {
-        text: '旧版本',
-        children: [
-          {
-            text: 'v1 文档',
-            link: 'https://v1.vuepress.vuejs.org/zh/',
-          },
-          {
-            text: 'v0 文档',
-            link: 'https://v0.vuepress.vuejs.org/zh/',
-          },
-        ],
+        text: 'v1.x',
+        link: 'https://v1.vuepress.vuejs.org',
+      },
+      {
+        text: 'v0.x',
+        link: 'https://v0.vuepress.vuejs.org',
       },
     ],
   },

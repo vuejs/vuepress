@@ -6,18 +6,6 @@ export const en: NavbarConfig = [
     link: '/guide/',
   },
   {
-    text: 'Advanced',
-    children: [
-      '/advanced/architecture.md',
-      '/advanced/plugin.md',
-      '/advanced/theme.md',
-      {
-        text: 'Cookbook',
-        link: '/advanced/cookbook/',
-      },
-    ],
-  },
-  {
     text: 'Reference',
     children: [
       {
@@ -64,6 +52,18 @@ export const en: NavbarConfig = [
     text: 'Learn More',
     children: [
       {
+        text: 'Advanced',
+        children: [
+          '/advanced/architecture.md',
+          '/advanced/plugin.md',
+          '/advanced/theme.md',
+          {
+            text: 'Cookbook',
+            link: '/advanced/cookbook/',
+          },
+        ],
+      },
+      {
         text: 'Resources',
         children: [
           '/contributing.md',
@@ -78,18 +78,18 @@ export const en: NavbarConfig = [
           },
         ],
       },
+    ],
+  },
+  {
+    text: 'v2.x',
+    children: [
       {
-        text: 'Legacy Version',
-        children: [
-          {
-            text: 'v1 docs',
-            link: 'https://v1.vuepress.vuejs.org',
-          },
-          {
-            text: 'v0 docs',
-            link: 'https://v0.vuepress.vuejs.org',
-          },
-        ],
+        text: 'v1.x',
+        link: 'https://v1.vuepress.vuejs.org',
+      },
+      {
+        text: 'v0.x',
+        link: 'https://v0.vuepress.vuejs.org',
       },
     ],
   },
