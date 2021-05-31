@@ -1,5 +1,5 @@
 <template>
-  <main class="home" :aria-labelledby="heroText ? 'main-title' : null">
+  <main class="home" :aria-labelledby="heroText ? 'main-title' : undefined">
     <header class="hero">
       <img v-if="heroImage" :src="heroImage" :alt="heroAlt" />
 
