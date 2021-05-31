@@ -2,6 +2,10 @@
 
 <NpmBadge package="@vuepress/core" />
 
+Plugin API is supported by [@vuepress/core](https://www.npmjs.com/package/@vuepress/core) package. You could check out [Node API](./node-api.md) for how to use the VuePress app instance in plugin hooks.
+
+## Overview
+
 Plugins should be used before initialization. The basic options will be handled once the plugin is used:
 
 - [name](#name)
@@ -28,6 +32,8 @@ The following hooks will be processed in dev / build:
 - [define](#define)
 - [onWatched](#onwatched)
 - [onGenerated](#ongenerated)
+
+> Check out [Advanced > Architecture > Core Process and Hooks](../advanced/architecture.md#core-process-and-hooks) to understand the process better.
 
 ## Basic Options
 
