@@ -17,11 +17,8 @@ export const resolveContainerPluginOptions = (
 
   const locales = Object.entries(localeOptions.locales || {}).reduce(
     (result, [key, value]) => {
-      const defaultInfo = value?.[type]
-      if (defaultInfo) {
-        result[key] = {
-          defaultInfo,
-        }
+      result[key] = {
+        defaultInfo: value?.[type] ?? localeOptions[type],
       }
       return result
     },

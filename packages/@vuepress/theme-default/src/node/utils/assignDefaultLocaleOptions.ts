@@ -39,9 +39,6 @@ const defaultLocaleOptions: DefaultThemeLocaleOptions = {
 const defaultLocaleData: DefaultThemeLocaleData = {
   // navbar
   selectLanguageName: 'English',
-
-  // custom block
-  danger: 'WARNING',
 }
 
 /**
