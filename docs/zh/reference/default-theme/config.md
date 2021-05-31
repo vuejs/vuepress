@@ -495,7 +495,7 @@ module.exports = {
 
 - 类型： `string`
 
-- 默认值： `'WARNING'`
+- 默认值： `'DANGER'`
 
 - 详情：
 

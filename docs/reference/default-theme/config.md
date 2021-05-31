@@ -495,7 +495,7 @@ module.exports = {
 
 - Type: `string`
 
-- Default: `'WARNING'`
+- Default: `'DANGER'`
 
 - Details:
 
