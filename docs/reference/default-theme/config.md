@@ -535,7 +535,7 @@ module.exports = {
 
   This is mainly for a11y purpose.
 
-## Plugins
+## Plugins Config
 
 ### themePlugins
 
@@ -545,7 +545,7 @@ module.exports = {
 
   Default theme is using some plugins by default. You can disable a plugin if you really do not want to use it. Make sure you understand what the plugin is for before disabling it.
 
-#### themePlugins.activeHeaderLinks
+### themePlugins.activeHeaderLinks
 
 - Type: `boolean`
 
@@ -555,7 +555,7 @@ module.exports = {
 
   Enable [@vuepress/plugin-active-header-links](../plugin/active-header-links.md) or not.
 
-#### themePlugins.backToTop
+### themePlugins.backToTop
 
 - Type: `boolean`
 
@@ -565,7 +565,7 @@ module.exports = {
 
   Enable [@vuepress/plugin-back-to-top](../plugin/back-to-top.md) or not.
 
-#### themePlugins.container
+### themePlugins.container
 
 - Type: `Record<ContainerType, boolean>`
 
@@ -585,7 +585,7 @@ module.exports = {
 - Also see:
   - [Default Theme > Markdown > Custom Containers](./markdown.md#custom-containers)
 
-#### themePlugins.git
+### themePlugins.git
 
 - Type: `boolean`
 
@@ -595,7 +595,7 @@ module.exports = {
 
   Enable [@vuepress/plugin-git](../plugin/git.md) or not.
 
-#### themePlugins.mediumZoom
+### themePlugins.mediumZoom
 
 - Type: `boolean`
 
@@ -605,7 +605,7 @@ module.exports = {
 
   Enable [@vuepress/plugin-medium-zoom](../plugin/medium-zoom.md) or not.
 
-#### themePlugins.nprogress
+### themePlugins.nprogress
 
 - Type: `boolean`
 

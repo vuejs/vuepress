@@ -535,7 +535,7 @@ module.exports = {
 
   它主要是为了站点的可访问性 (a11y) 。
 
-## 插件
+## 插件配置
 
 ### themePlugins
 
@@ -545,7 +545,7 @@ module.exports = {
 
   默认主题使用了一些插件，如果你确实不需要该插件，你可以选择禁用它。在禁用插件之前，请确保你已了解它的用途。
 
-#### themePlugins.activeHeaderLinks
+### themePlugins.activeHeaderLinks
 
 - 类型： `boolean`
 
@@ -565,7 +565,7 @@ module.exports = {
 
   是否启用 [@vuepress/plugin-back-to-top](../plugin/back-to-top.md) 。
 
-#### themePlugins.container
+### themePlugins.container
 
 - 类型： `Record<ContainerType, boolean>`
 
@@ -585,7 +585,7 @@ module.exports = {
 - 参考：
   - [默认主题 > Markdown > 自定义容器](./markdown.md#自定义容器)
 
-#### themePlugins.git
+### themePlugins.git
 
 - 类型： `boolean`
 
@@ -595,7 +595,7 @@ module.exports = {
 
   是否启用 [@vuepress/plugin-git](../plugin/git.md) 。
 
-#### themePlugins.mediumZoom
+### themePlugins.mediumZoom
 
 - 类型： `boolean`
 
@@ -605,7 +605,7 @@ module.exports = {
 
   是否启用 [@vuepress/plugin-medium-zoom](../plugin/medium-zoom.md) 。
 
-#### themePlugins.nprogress
+### themePlugins.nprogress
 
 - 类型： `boolean`
 
