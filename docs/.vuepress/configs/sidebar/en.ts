@@ -95,6 +95,8 @@ export const en: SidebarConfig = {
             '/reference/plugin/google-analytics.md',
             '/reference/plugin/medium-zoom.md',
             '/reference/plugin/nprogress.md',
+            '/reference/plugin/pwa.md',
+            '/reference/plugin/pwa-popup.md',
             '/reference/plugin/register-components.md',
             '/reference/plugin/search.md',
           ],
@@ -105,14 +107,6 @@ export const en: SidebarConfig = {
           children: [
             '/reference/plugin/prismjs.md',
             '/reference/plugin/shiki.md',
-          ],
-        },
-        {
-          isGroup: true,
-          text: 'Progressive Web App',
-          children: [
-            '/reference/plugin/pwa.md',
-            '/reference/plugin/pwa-popup.md',
           ],
         },
         {

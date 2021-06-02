@@ -98,6 +98,8 @@ export const zh: SidebarConfig = {
             '/zh/reference/plugin/google-analytics.md',
             '/zh/reference/plugin/medium-zoom.md',
             '/zh/reference/plugin/nprogress.md',
+            '/zh/reference/plugin/pwa.md',
+            '/zh/reference/plugin/pwa-popup.md',
             '/zh/reference/plugin/register-components.md',
             '/zh/reference/plugin/search.md',
           ],
@@ -108,14 +110,6 @@ export const zh: SidebarConfig = {
           children: [
             '/zh/reference/plugin/prismjs.md',
             '/zh/reference/plugin/shiki.md',
-          ],
-        },
-        {
-          isGroup: true,
-          text: 'Progressive Web App',
-          children: [
-            '/zh/reference/plugin/pwa.md',
-            '/zh/reference/plugin/pwa-popup.md',
           ],
         },
         {

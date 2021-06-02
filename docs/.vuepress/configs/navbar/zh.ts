@@ -38,10 +38,43 @@ export const zh: NavbarConfig = [
           '/zh/reference/default-theme/styles.md',
         ],
       },
+    ],
+  },
+  {
+    text: '插件',
+    children: [
       {
-        text: '官方插件',
-        link: '/zh/reference/plugin/',
-        children: [],
+        text: '常用功能',
+        children: [
+          '/zh/reference/plugin/back-to-top.md',
+          '/zh/reference/plugin/container.md',
+          '/zh/reference/plugin/docsearch.md',
+          '/zh/reference/plugin/google-analytics.md',
+          '/zh/reference/plugin/medium-zoom.md',
+          '/zh/reference/plugin/nprogress.md',
+          '/zh/reference/plugin/pwa.md',
+          '/zh/reference/plugin/pwa-popup.md',
+          '/zh/reference/plugin/register-components.md',
+          '/zh/reference/plugin/search.md',
+        ],
+      },
+      {
+        text: '语法高亮',
+        children: [
+          '/zh/reference/plugin/prismjs.md',
+          '/zh/reference/plugin/shiki.md',
+        ],
+      },
+      {
+        text: '主题开发',
+        children: [
+          '/zh/reference/plugin/active-header-links.md',
+          '/zh/reference/plugin/debug.md',
+          '/zh/reference/plugin/git.md',
+          '/zh/reference/plugin/palette.md',
+          '/zh/reference/plugin/theme-data.md',
+          '/zh/reference/plugin/toc.md',
+        ],
       },
     ],
   },
