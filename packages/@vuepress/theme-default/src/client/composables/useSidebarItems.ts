@@ -127,16 +127,16 @@ export const resolveArraySidebarItems = (
       childItem = item as ResolvedSidebarItem
     }
 
-    if (childItem.isGroup && childItem.children) {
+    if (childItem.children) {
       return {
         ...childItem,
-        children: childItem.children.map(handleChildItem),
+        children: childItem.children.map((item) => handleChildItem(item)),
       }
     }
 
     // if the sidebar item is current page and children is not set
     // use headers of current page as children
-    if (childItem.link === route.path && childItem.children === undefined) {
+    if (childItem.link === route.path) {
       return {
         ...childItem,
         children: headersToSidebarItemChildren(
@@ -149,21 +149,7 @@ export const resolveArraySidebarItems = (
     return childItem
   }
 
-  return sidebarConfig.map(
-    (item): ResolvedSidebarItem => {
-      if (isString(item)) {
-        return useNavLink(item)
-      }
-      if (!item.isGroup) {
-        return item as ResolvedSidebarItem
-      }
-
-      return {
-        ...item,
-        children: item.children.map(handleChildItem),
-      }
-    }
-  )
+  return sidebarConfig.map((item) => handleChildItem(item))
 }
 
 /**

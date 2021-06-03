@@ -89,7 +89,12 @@ const renderChildren = (
 export const SidebarChild: FunctionalComponent<{
   item: ResolvedSidebarItem
   depth?: number
-}> = ({ item, depth = 0 }) => {
+}> = ({
+  item,
+  // group depth should start from 0
+  // otherwise start from 1
+  depth = item.isGroup ? 0 : 1,
+}) => {
   const route = useRoute()
   const active = isActiveItem(route, item)
 
@@ -134,6 +139,5 @@ SidebarChild.props = {
   depth: {
     type: Number,
     required: false,
-    default: 0,
   },
 }
