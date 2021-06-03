@@ -1,5 +1,9 @@
 <template>
-  <div class="code-group-item" :class="{ 'code-group-item__active': active }">
+  <div
+    class="code-group-item"
+    :class="{ 'code-group-item__active': active }"
+    :aria-selected="active"
+  >
     <slot />
   </div>
 </template>
