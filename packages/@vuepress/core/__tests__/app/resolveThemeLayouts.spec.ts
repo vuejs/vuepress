@@ -9,45 +9,31 @@ const testCases: [
   ReturnType<typeof resolveThemeLayouts>
 ][] = [
   // `layouts` is not provided
-  [undefined, []],
+  [undefined, {}],
   // `layouts` is an object
   [
     {
       Layout: fixtures('Layout.vue'),
       404: fixtures('404.vue'),
     },
-    [
-      {
-        name: '404',
-        path: fixtures('404.vue'),
-      },
-      {
-        name: 'Layout',
-        path: fixtures('Layout.vue'),
-      },
-    ],
+    {
+      Layout: fixtures('Layout.vue'),
+      404: fixtures('404.vue'),
+    },
   ],
   // `layouts` is an absolute path
   [
     fixtures(),
-    [
-      {
-        name: '404',
-        path: fixtures('404.vue'),
-      },
-      {
-        name: 'Foo',
-        path: fixtures('Foo.vue'),
-      },
-      {
-        name: 'Layout',
-        path: fixtures('Layout.vue'),
-      },
-    ],
+    {
+      Layout: fixtures('Layout.vue'),
+      Foo: fixtures('Foo.vue'),
+      Bar: fixtures('Bar.vue'),
+      404: fixtures('404.vue'),
+    },
   ],
 ]
 
-describe('core > themeApi > resolveThemeLayouts', () => {
+describe('core > app > resolveThemeLayouts', () => {
   describe('should resolve theme layouts correctly', () => {
     testCases.forEach(([source, expected]) => {
       it(`${typeof source}`, () => {

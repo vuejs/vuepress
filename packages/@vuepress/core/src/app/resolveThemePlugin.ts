@@ -1,10 +1,15 @@
 import { normalizePackageName } from '@vuepress/shared'
 import { chalk, logger, path, requireResolve } from '@vuepress/utils'
 import { normalizePlugin } from '../app'
-import type { App, ThemeInfo, ThemeObject, ThemeConfig } from '../types'
-import { resolveThemeLayouts } from './resolveThemeLayouts'
+import type { App, ThemeObject, ThemeConfig } from '../types'
 
-export const resolveThemeInfo = (app: App, themeName: string): ThemeInfo => {
+/**
+ * Resolve theme plugin according to theme name
+ */
+export const resolveThemePlugin = (
+  app: App,
+  themeName: string
+): ThemeObject => {
   // resolve theme entry according to theme name
   const themeEntry = requireResolve(
     path.isAbsolute(themeName)
@@ -23,11 +28,5 @@ export const resolveThemeInfo = (app: App, themeName: string): ThemeInfo => {
     app.options.themeConfig
   )
 
-  // resolve theme layouts
-  const layouts = resolveThemeLayouts(themePlugin.layouts)
-
-  return {
-    plugin: themePlugin,
-    layouts,
-  }
+  return themePlugin
 }

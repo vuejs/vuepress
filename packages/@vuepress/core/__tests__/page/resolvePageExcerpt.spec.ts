@@ -1,9 +1,9 @@
 import { createApp, resolvePageExcerpt } from '@vuepress/core'
 import { path } from '@vuepress/utils'
 
-const source = path.resolve(__dirname, 'fake-source')
 const app = createApp({
-  source,
+  source: path.resolve(__dirname, 'fake-source'),
+  theme: path.resolve(__dirname, '../__fixtures__/themes/no-layouts.js'),
 })
 
 describe('core > page > resolvePageExcerpt', () => {

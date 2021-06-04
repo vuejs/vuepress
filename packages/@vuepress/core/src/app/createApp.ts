@@ -1,6 +1,5 @@
 import { createMarkdown } from '@vuepress/markdown'
 import { createPluginApi } from '../pluginApi'
-import { createThemeApi } from '../themeApi'
 import type { App, AppConfig } from '../types'
 import { appInit } from './appInit'
 import { appPrepare } from './appPrepare'
@@ -13,6 +12,7 @@ import { createAppSiteData } from './createAppSiteData'
 import { createAppVersion } from './createAppVersion'
 import { createAppWriteTemp } from './createAppWriteTemp'
 import { resolveBundler } from './resolveBundler'
+import { resolveTheme } from './resolveTheme'
 
 /**
  * Create vuepress app
@@ -45,14 +45,10 @@ export const createApp = (config: AppConfig): App => {
     build: () => resolveBundler(options).build(app),
   } as App
 
-  // create theme api, resolve themes and layouts
-  app.themeApi = createThemeApi(app)
-
-  // use theme plugin
-  if (app.themeApi.parentTheme) {
-    app.use(app.themeApi.parentTheme.plugin)
-  }
-  app.use(app.themeApi.theme.plugin)
+  // resolve theme plugins and layouts
+  const theme = resolveTheme(app, options.theme)
+  theme.plugins.forEach((plugin) => app.use(plugin))
+  app.layouts = theme.layouts
 
   return app
 }

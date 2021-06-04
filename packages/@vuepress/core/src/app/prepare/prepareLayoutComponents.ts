@@ -8,9 +8,9 @@ export const prepareLayoutComponents = async (app: App): Promise<void> => {
 import { defineAsyncComponent } from 'vue'
 
 export const layoutComponents = {\
-${app.themeApi.layouts
+${Object.entries(app.layouts)
   .map(
-    ({ name, path }) => `
+    ([name, path]) => `
   ${JSON.stringify(name)}: defineAsyncComponent(() => import(${
       app.env.isDebug ? `/* webpackChunkName: "layout-${name}" */` : ''
     }${JSON.stringify(path)})),`

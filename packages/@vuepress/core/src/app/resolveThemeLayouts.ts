@@ -1,20 +1,17 @@
 import { isPlainObject } from '@vuepress/shared'
 import { chalk, fs, path, logger } from '@vuepress/utils'
-import type { ThemeObject, ThemeLayout } from '../types'
+import type { ThemeObject } from '../types'
 
 export const resolveThemeLayouts = (
   layouts: ThemeObject['layouts']
-): ThemeLayout[] => {
+): Record<string, string> => {
   if (!layouts) {
-    return []
+    return {}
   }
 
   // use the layouts component map directly
   if (isPlainObject(layouts)) {
-    return Object.entries(layouts).map(([name, file]) => ({
-      name,
-      path: file,
-    }))
+    return layouts
   }
 
   // resolve the layouts directory
@@ -26,11 +23,10 @@ export const resolveThemeLayouts = (
 
   // load all files in layouts directory, then take matched files
   // as theme layouts
-  return fs
-    .readdirSync(layouts)
-    .filter((file) => /\.(vue|ts|js)$/.test(file))
-    .map((file) => ({
-      name: path.trimExt(file),
-      path: path.resolve(layouts, file),
-    }))
+  return Object.fromEntries(
+    fs
+      .readdirSync(layouts)
+      .filter((file) => /\.(vue|ts|js)$/.test(file))
+      .map((file) => [path.trimExt(file), path.resolve(layouts, file)])
+  )
 }

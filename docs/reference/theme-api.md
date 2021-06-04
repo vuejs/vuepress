@@ -88,7 +88,7 @@ module.exports = {
 
   If a layout with the same name is registered in both the child theme and the parent theme, the layout of the child theme will have a higher priority.
 
-  Multi-level inheritance is not supported.
+  Multi-level inheritance is supported.
 
 - Example:
 

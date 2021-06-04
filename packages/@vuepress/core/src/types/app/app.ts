@@ -4,7 +4,6 @@ import type { BundlerDev, BundlerBuild } from '../bundler'
 import type { Page } from '../page'
 import type { Plugin, PluginOptions, PluginConfig } from '../plugin'
 import type { PluginApi } from '../pluginApi'
-import type { ThemeApi } from '../themeApi'
 import type { AppOptions } from './options'
 import type { AppDir, AppEnv, AppWriteTemp } from './utils'
 
@@ -19,7 +18,7 @@ export interface App {
   siteData: SiteData
   markdown: Markdown
   pluginApi: PluginApi
-  themeApi: ThemeApi
+  layouts: Record<string, string>
   pages: Page[]
   writeTemp: AppWriteTemp
   use: <T extends PluginOptions>(

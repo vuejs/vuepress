@@ -1,9 +1,9 @@
 import { createApp, resolvePageComponentInfo } from '@vuepress/core'
 import { path } from '@vuepress/utils'
 
-const source = path.resolve(__dirname, 'fake-source')
 const app = createApp({
-  source,
+  source: path.resolve(__dirname, 'fake-source'),
+  theme: path.resolve(__dirname, '../__fixtures__/themes/no-layouts.js'),
 })
 
 describe('core > page > resolvePageComponentInfo', () => {
@@ -12,7 +12,7 @@ describe('core > page > resolvePageComponentInfo', () => {
       app,
       content: 'foobar',
       frontmatter: {},
-      filePath: path.resolve(source, 'foo.md'),
+      filePath: app.dir.source('foo.md'),
       filePathRelative: 'foo.md',
       htmlFilePathRelative: 'foo.html',
       key: 'key',
