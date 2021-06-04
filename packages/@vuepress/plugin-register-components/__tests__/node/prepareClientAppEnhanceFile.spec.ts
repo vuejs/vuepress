@@ -2,11 +2,9 @@ import { createApp } from '@vuepress/core'
 import { prepareClientAppEnhanceFile } from '@vuepress/plugin-register-components'
 import { fs, path } from '@vuepress/utils'
 
-const source = path.resolve(__dirname, 'fake-source')
-const temp = path.resolve(__dirname, '../__fixtures__/.temp')
 const app = createApp({
-  source,
-  temp,
+  source: path.resolve(__dirname, 'fake-source'),
+  temp: path.resolve(__dirname, '../__fixtures__/.temp'),
 })
 let identifier = 0
 
