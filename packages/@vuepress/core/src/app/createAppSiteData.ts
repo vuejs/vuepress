@@ -5,13 +5,11 @@ import type { AppOptions, SiteData } from '../types'
  *
  * Site data will also be used in client
  */
-export const createAppSiteData = (options: AppOptions): SiteData => {
-  return {
-    base: options.base,
-    lang: options.lang,
-    title: options.title,
-    description: options.description,
-    head: options.head,
-    locales: options.locales,
-  }
-}
+export const createAppSiteData = (options: AppOptions): SiteData => ({
+  base: options.base,
+  lang: options.lang,
+  title: options.title,
+  description: options.description,
+  head: options.head,
+  locales: options.locales,
+})

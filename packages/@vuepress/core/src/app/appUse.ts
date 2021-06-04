@@ -34,8 +34,6 @@ export const appUse = <T extends PluginOptions>(
   // use plugin
   app.pluginApi.plugins.push(plugin)
 
-  // TODO: nested plugins with `multiple` may cause potential problems
-
   // if the plugin uses other plugins
   if (plugin.plugins) {
     plugin.plugins.forEach(app.useByConfig)
