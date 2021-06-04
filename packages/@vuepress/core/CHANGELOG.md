@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.17](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.16...v2.0.0-beta.17) (2021-06-04)
+
+
+### Features
+
+* **core:** support multi-level theme inheritance ([5df8662](https://github.com/vuepress/vuepress-next/commit/5df86621cfcd7b138e473d40dc622e6ff8e0795f))
+
+
+### BREAKING CHANGES
+
+* **core:** `app.themeApi` is removed
+
+
+
+
+
 # [2.0.0-beta.15](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.14...v2.0.0-beta.15) (2021-05-27)
 
 **Note:** Version bump only for package @vuepress/core

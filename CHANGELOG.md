@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.17](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.16...v2.0.0-beta.17) (2021-06-04)
+
+
+### Bug Fixes
+
+* **theme-default:** avoid long inline code breaking the layout ([#180](https://github.com/vuepress/vuepress-next/issues/180)) ([ada2e2a](https://github.com/vuepress/vuepress-next/commit/ada2e2a884749d9654c3550c4bb92611ea29906c))
+* **theme-default:** fix error of sidebar resolving (close [#185](https://github.com/vuepress/vuepress-next/issues/185)) ([6a96af0](https://github.com/vuepress/vuepress-next/commit/6a96af0b480b04a3c2564739e87a0ae786756581))
+* **theme-default:** respect root-level custom container config (close [#175](https://github.com/vuepress/vuepress-next/issues/175)) ([f2ad5f0](https://github.com/vuepress/vuepress-next/commit/f2ad5f0e988b075cfa37726d67feb8fa54f6176b))
+
+
+### Features
+
+* **core:** support multi-level theme inheritance ([5df8662](https://github.com/vuepress/vuepress-next/commit/5df86621cfcd7b138e473d40dc622e6ff8e0795f))
+* **theme-default:** improve a11y of CodeGroup ([#163](https://github.com/vuepress/vuepress-next/issues/163)) ([2b76463](https://github.com/vuepress/vuepress-next/commit/2b7646399116114a967a5df64266c6879babb10f))
+
+
+### BREAKING CHANGES
+
+* **core:** `app.themeApi` is removed
+* **theme-default:** default title of danger container is changed to "DANGER"
+
+
+
+
+
 # [2.0.0-beta.16](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.15...v2.0.0-beta.16) (2021-05-28)
 
 
