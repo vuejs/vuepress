@@ -62,10 +62,12 @@ export const createPlugin = ({
       },
       css: {
         postcss: {
-          plugins: [
-            require('autoprefixer'),
-            ...(isBuild ? [require('postcss-csso')] : []),
-          ],
+          plugins: isServer
+            ? []
+            : [
+                require('autoprefixer'),
+                ...(isBuild ? [require('postcss-csso')] : []),
+              ],
         },
       },
       server: {
@@ -139,6 +141,17 @@ export const createPlugin = ({
             return
           }
           next()
+        })
+      }
+    },
+
+    generateBundle(_, bundle) {
+      // delete all asset outputs in server build
+      if (isServer) {
+        Object.keys(bundle).forEach((key) => {
+          if (bundle[key].type === 'asset') {
+            delete bundle[key]
+          }
         })
       }
     },
