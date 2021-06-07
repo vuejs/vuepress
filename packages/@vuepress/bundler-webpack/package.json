@@ -28,7 +28,7 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@types/express": "^4.17.11",
+    "@types/express": "^4.17.12",
     "@types/webpack-env": "^1.16.0",
     "@vue/compiler-sfc": "^3.0.11",
     "@vue/server-renderer": "^3.0.11",
@@ -36,7 +36,7 @@
     "@vuepress/core": "2.0.0-beta.17",
     "@vuepress/shared": "2.0.0-beta.7",
     "@vuepress/utils": "2.0.0-beta.15",
-    "autoprefixer": "^10.2.5",
+    "autoprefixer": "^10.2.6",
     "copy-webpack-plugin": "^9.0.0",
     "css-loader": "^5.2.6",
     "esbuild-loader": "~2.13.1",
@@ -53,10 +53,10 @@
     "vue": "^3.0.11",
     "vue-loader": "^16.2.0",
     "vue-router": "^4.0.8",
-    "webpack": "^5.37.1",
+    "webpack": "^5.38.1",
     "webpack-chain": "^6.5.1",
     "webpack-dev-server": "4.0.0-beta.3",
-    "webpack-merge": "^5.7.3"
+    "webpack-merge": "^5.8.0"
   },
   "publishConfig": {
     "access": "public"

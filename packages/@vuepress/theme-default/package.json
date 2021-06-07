@@ -42,8 +42,8 @@
     "@vuepress/plugin-theme-data": "2.0.0-beta.17",
     "@vuepress/shared": "2.0.0-beta.7",
     "@vuepress/utils": "2.0.0-beta.15",
-    "sass": "^1.32.11",
-    "sass-loader": "^11.0.1",
+    "sass": "^1.34.1",
+    "sass-loader": "^12.0.0",
     "vue": "^3.0.11",
     "vue-router": "^4.0.8"
   },

@@ -28,18 +28,18 @@
     "clean": "rimraf lib *.tsbuildinfo"
   },
   "dependencies": {
-    "@vitejs/plugin-vue": "^1.2.2",
+    "@vitejs/plugin-vue": "^1.2.3",
     "@vue/compiler-sfc": "^3.0.11",
     "@vue/server-renderer": "^3.0.11",
     "@vuepress/client": "2.0.0-beta.15",
     "@vuepress/core": "2.0.0-beta.17",
     "@vuepress/shared": "2.0.0-beta.7",
     "@vuepress/utils": "2.0.0-beta.15",
-    "autoprefixer": "^10.2.5",
+    "autoprefixer": "^10.2.6",
     "postcss": "^8.3.0",
     "postcss-csso": "^5.0.1",
     "rollup": "^2.50.1",
-    "vite": "^2.3.4",
+    "vite": "^2.3.6",
     "vue": "^3.0.11",
     "vue-router": "^4.0.8"
   },

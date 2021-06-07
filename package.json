@@ -36,11 +36,11 @@
     "chokidar": "^3.5.1",
     "cpx2": "^3.0.0",
     "cross-env": "^7.0.3",
-    "eslint": "^7.27.0",
+    "eslint": "^7.28.0",
     "eslint-config-vuepress": "^3.2.1",
     "eslint-config-vuepress-typescript": "^2.2.1",
     "husky": "^6.0.0",
-    "jest": "^27.0.1",
+    "jest": "^27.0.4",
     "jest-serializer-vue": "^2.0.2",
     "lerna": "^4.0.0",
     "lint-staged": "^11.0.0",
@@ -48,7 +48,7 @@
     "prettier-config-vuepress": "^1.2.0",
     "rimraf": "^3.0.2",
     "sort-package-json": "^1.50.0",
-    "ts-jest": "^27.0.0",
-    "typescript": "^4.2.4"
+    "ts-jest": "^27.0.3",
+    "typescript": "^4.3.2"
   }
 }

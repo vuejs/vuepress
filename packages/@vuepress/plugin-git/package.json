@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@vuepress/core": "2.0.0-beta.17",
-    "execa": "^5.0.0"
+    "execa": "^5.1.1"
   },
   "publishConfig": {
     "access": "public"
