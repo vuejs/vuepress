@@ -120,6 +120,7 @@ export const SearchBox = defineComponent({
                   break
                 }
                 case 'Enter': {
+                  event.preventDefault()
                   goTo(focusIndex.value)
                   break
                 }
