@@ -112,9 +112,14 @@ export const Toc = defineComponent({
 
     const route = useRoute()
     const page = usePageData()
-    const headers = computed<TocPropsHeaders>(
-      () => propsHeaders.value || page.value.headers
-    )
+    const headers = computed<TocPropsHeaders>(() => {
+      const headersToUse = propsHeaders.value || page.value.headers
+
+      // skip h1 header
+      return headersToUse[0]?.level === 1
+        ? headersToUse[0].children
+        : headersToUse
+    })
     const options = computed<TocPropsOptions>(() => ({
       containerTag: 'nav',
       containerClass: 'vuepress-toc',
