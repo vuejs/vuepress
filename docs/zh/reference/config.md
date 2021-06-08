@@ -407,9 +407,25 @@ module.exports = {
 
   VuePress 内置的 markdown-it extract-headers 插件的配置项。
 
-  它将会把页面的标题提取到 Page Data 中，可以用于生成侧边栏、目录等。比如当前页面的侧边栏，就是由这个插件提取出的标题来自动生成的。
+  它将会把页面的子标题提取到 Page Data 中，可以用于生成侧边栏、目录等。比如当前页面的侧边栏，就是由这个插件提取出的标题来自动生成的。
 
   设置为 `false` 可以禁用该插件。
+
+### markdown.extractTitle
+
+- 类型： `undefined | false`
+
+- 详情：
+
+  VuePress 内置的 markdown-it extract-title 插件的配置项。
+
+  它将会把大标题提取到 Page Data 中，将会被用作页面标题。
+
+  设置为 `false` 可以禁用该插件。
+
+::: danger
+除非你了解它的用途，否则你不应该设置该配置项。
+:::
 
 ### markdown.hoistTags
 

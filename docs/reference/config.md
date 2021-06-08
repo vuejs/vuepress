@@ -408,9 +408,25 @@ You should not configure it unless you understand what it is for.
 
   Options for VuePress built-in markdown-it extract-headers plugin.
 
-  It will extract page headers to page data, which will be used for generating sidebar, table of contents, etc. For example, the sidebar of current page is auto generated from the headers that extracted by this plugin.
+  It will extract page headers to page data, which would be used for generating sidebar, table of contents, etc. For example, the sidebar of current page is auto generated from the headers that extracted by this plugin.
 
   Set to `false` to disable this plugin.
+
+### markdown.extractTitle
+
+- Type: `undefined | false`
+
+- Details:
+
+  Options for VuePress built-in markdown-it extract-title plugin.
+
+  It will extract title to page data, which will be used as the page title.
+
+  Set to `false` to disable this plugin.
+
+::: danger
+You should not configure it unless you understand what it is for.
+:::
 
 ### markdown.hoistTags
 

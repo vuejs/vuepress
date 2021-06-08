@@ -1,6 +1,7 @@
 import * as Token from 'markdown-it/lib/token'
-import { htmlEscape, isFunction } from '@vuepress/shared'
-import { MarkdownHeader } from '../types'
+import { isFunction } from '@vuepress/shared'
+import type { MarkdownHeader } from '../types'
+import { resolveTitleFromToken } from './resolveTitleFromToken'
 
 /**
  * Resolve headers from markdown-it tokens
@@ -45,7 +46,7 @@ export const resolveHeadersFromTokens = (
   tokens.forEach((_, idx) => {
     const token = tokens[idx]
 
-    // if the token type is not matched, skip
+    // if the token type does not match, skip
     if (token?.type !== 'heading_open') {
       return
     }
@@ -66,37 +67,10 @@ export const resolveHeadersFromTokens = (
       return
     }
 
-    // children of the next token contains the parsed result of the heading title
-    const nextTokenChildren = nextToken.children ?? []
-
-    // filter tokens for generating heading title
-    // 'text' and 'code_inline' should be escaped to avoid being treated as html
-    // 'emoji' and 'html_inline' should be used directly
-    const titleTokenTypes = ['text', 'emoji', 'code_inline']
-
-    // include 'html_inline' or not
-    if (allowHtml) {
-      titleTokenTypes.push('html_inline')
-    }
-
-    const titleTokens = nextTokenChildren.filter((item) =>
-      titleTokenTypes.includes(item.type)
-    )
-
-    // get title from tokens
-    const title = titleTokens
-      .reduce((result, item) => {
-        if (escapeText) {
-          // escape the content of 'code_inline' and 'text'
-          if (item.type === 'code_inline' || item.type === 'text') {
-            return `${result}${htmlEscape(item.content)}`
-          }
-        }
-
-        // keep the content of 'emoji' and 'html_inline'
-        return `${result}${item.content}`
-      }, '')
-      .trim()
+    const title = resolveTitleFromToken(nextToken, {
+      allowHtml,
+      escapeText,
+    })
 
     // the id of the heading anchor is the slugify result of markdown-it-anchor
     // if the id does not exist, slugify the title ourselves

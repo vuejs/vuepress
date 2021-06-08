@@ -57,7 +57,7 @@ export const extractHeadersPlugin: PluginWithOptions<ExtractHeadersPluginOptions
   const render = md.render.bind(md)
   md.render = (src, env: MarkdownEnv = {}) => {
     const result = render(src, env)
-    env.headers = headers ?? []
+    env.headers = headers
     return result
   }
 }

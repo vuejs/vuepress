@@ -6,6 +6,7 @@ import {
   customComponentPlugin,
   emojiPlugin,
   extractHeadersPlugin,
+  extractTitlePlugin,
   hoistTagsPlugin,
   importCodePlugin,
   linksPlugin,
@@ -24,6 +25,7 @@ export const createMarkdown = ({
   customComponent,
   emoji,
   extractHeaders,
+  extractTitle,
   hoistTags,
   importCode,
   links,
@@ -41,7 +43,7 @@ export const createMarkdown = ({
   // following plugins push rules to the end of chain, so
   // the order to use them is important
 
-  // parse emoji (before anchor and toc plugin)
+  // parse emoji
   if (emoji !== false) {
     md.use(emojiPlugin, emoji)
   }
@@ -58,7 +60,7 @@ export const createMarkdown = ({
     })
   }
 
-  // allow toc syntax (after anchor plugin)
+  // allow toc syntax
   if (toc !== false) {
     md.use(tocPlugin, {
       level: [2, 3],
@@ -68,13 +70,18 @@ export const createMarkdown = ({
     })
   }
 
-  // extract headers into env (after anchor plugin)
+  // extract headers into env
   if (extractHeaders !== false) {
     md.use(extractHeadersPlugin, {
       level: [2, 3],
       slugify,
       ...extractHeaders,
     })
+  }
+
+  // extract title into env
+  if (extractTitle !== false) {
+    md.use(extractTitlePlugin)
   }
 
   // =====================================================

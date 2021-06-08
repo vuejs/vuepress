@@ -21,6 +21,7 @@ export interface MarkdownOptions extends MarkdownIt.Options {
   customComponent?: false
   emoji?: false | EmojiPluginOptions
   extractHeaders?: false | ExtractHeadersPluginOptions
+  extractTitle?: false
   hoistTags?: false | HoistTagsPluginOptions
   importCode?: false | ImportCodePluginOptions
   links?: false | LinksPluginOptions
@@ -94,4 +95,9 @@ export interface MarkdownEnv {
    * Links that extracted by linksPlugin
    */
   links?: MarkdownLink[]
+
+  /**
+   * Title that extracted by extractTitlePlugin
+   */
+  title?: string
 }
