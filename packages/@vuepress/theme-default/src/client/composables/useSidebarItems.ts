@@ -137,12 +137,14 @@ export const resolveArraySidebarItems = (
     // if the sidebar item is current page and children is not set
     // use headers of current page as children
     if (childItem.link === route.path) {
+      // skip h1 header
+      const headers =
+        page.value.headers[0]?.level === 1
+          ? page.value.headers[0].children
+          : page.value.headers
       return {
         ...childItem,
-        children: headersToSidebarItemChildren(
-          page.value.headers,
-          sidebarDepth
-        ),
+        children: headersToSidebarItemChildren(headers, sidebarDepth),
       }
     }
 
