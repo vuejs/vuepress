@@ -1,10 +1,11 @@
 import type { App, Page, PageOptions } from '../types'
 import { inferPagePath } from './inferPagePath'
+import { renderPageContent } from './renderPageContent'
+import { renderPageExcerpt } from './renderPageExcerpt'
 import { resolvePageComponentInfo } from './resolvePageComponentInfo'
 import { resolvePageContent } from './resolvePageContent'
 import { resolvePageDataInfo } from './resolvePageDataInfo'
 import { resolvePageDate } from './resolvePageDate'
-import { resolvePageExcerpt } from './resolvePageExcerpt'
 import { resolvePageFileContent } from './resolvePageFileContent'
 import { resolvePageFilePath } from './resolvePageFilePath'
 import { resolvePageFrontmatter } from './resolvePageFrontmatter'
@@ -14,7 +15,6 @@ import { resolvePageLang } from './resolvePageLang'
 import { resolvePagePath } from './resolvePagePath'
 import { resolvePagePermalink } from './resolvePagePermalink'
 import { resolvePageSlug } from './resolvePageSlug'
-import { resolvePageTitle } from './resolvePageTitle'
 
 export const createPage = async (
   app: App,
@@ -37,10 +37,26 @@ export const createPage = async (
   // resolve frontmatter from raw frontmatter and page options
   const frontmatter = resolvePageFrontmatter({ frontmatterRaw, options })
 
-  // resolve excerpt from raw excerpt
-  const excerpt = resolvePageExcerpt({
+  // render excerpt
+  const excerpt = renderPageExcerpt({
     app,
     excerptRaw,
+    filePath,
+    filePathRelative,
+    frontmatter,
+  })
+
+  // render page content and extract information
+  const {
+    renderedContent,
+    deps,
+    headers,
+    hoistedTags,
+    links,
+    title,
+  } = await renderPageContent({
+    app,
+    content,
     filePath,
     filePathRelative,
     frontmatter,
@@ -81,19 +97,14 @@ export const createPage = async (
 
   // resolve page component and extract headers & links
   const {
-    deps,
-    headers,
-    links,
     componentFilePath,
     componentFilePathRelative,
     componentFileContent,
     componentFileChunkName,
   } = await resolvePageComponentInfo({
     app,
-    content,
-    filePath,
-    filePathRelative,
-    frontmatter,
+    renderedContent,
+    hoistedTags,
     htmlFilePathRelative,
     key,
   })
@@ -103,9 +114,6 @@ export const createPage = async (
     dataFilePathRelative,
     dataFileChunkName,
   } = resolvePageDataInfo({ app, htmlFilePathRelative, key })
-
-  // resolve title from frontmatter and headers
-  const title = resolvePageTitle({ content, frontmatter, headers })
 
   return {
     // page data

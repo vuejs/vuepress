@@ -1,61 +1,32 @@
-import type {
-  MarkdownEnv,
-  MarkdownHeader,
-  MarkdownLink,
-} from '@vuepress/markdown'
 import { path } from '@vuepress/utils'
-import type { App, PageFrontmatter } from '../types'
+import type { App } from '../types'
 
 /**
  * Resolve page component and related info
  */
 export const resolvePageComponentInfo = async ({
   app,
-  content,
-  frontmatter,
-  filePath,
-  filePathRelative,
+  renderedContent,
+  hoistedTags,
   htmlFilePathRelative,
   key,
 }: {
   app: App
-  content: string
-  frontmatter: PageFrontmatter
-  filePath: string | null
-  filePathRelative: string | null
+  renderedContent: string
+  hoistedTags: string[]
   htmlFilePathRelative: string
   key: string
 }): Promise<{
-  deps: string[]
-  headers: MarkdownHeader[]
-  links: MarkdownLink[]
   componentFilePath: string
   componentFilePathRelative: string
   componentFileContent: string
   componentFileChunkName: string
 }> => {
-  const markdownEnv: MarkdownEnv = {
-    base: app.options.base,
-    filePath,
-    filePathRelative,
-    frontmatter,
-  }
-
-  const rendered = app.markdown.render(content, markdownEnv)
-
-  /* istanbul ignore next */
-  const {
-    headers = [],
-    hoistedTags = [],
-    importedFiles = [],
-    links = [],
-  } = markdownEnv
-
   // resolve component file content
   // take the rendered markdown content as <template>
   // hoist `<script>`, `<style>` and other custom blocks
   const componentFileContent = [
-    `<template>${rendered}</template>`,
+    `<template>${renderedContent}</template>`,
     ...hoistedTags,
   ].join('\n\n')
 
@@ -68,9 +39,6 @@ export const resolvePageComponentInfo = async ({
   const componentFileChunkName = key
 
   return {
-    deps: importedFiles,
-    headers,
-    links,
     componentFilePath,
     componentFilePathRelative,
     componentFileContent,

@@ -1,4 +1,4 @@
-import { createApp, resolvePageExcerpt } from '@vuepress/core'
+import { createApp, renderPageExcerpt } from '@vuepress/core'
 import { path } from '@vuepress/utils'
 
 const app = createApp({
@@ -6,9 +6,9 @@ const app = createApp({
   theme: path.resolve(__dirname, '../__fixtures__/themes/no-layouts.js'),
 })
 
-describe('core > page > resolvePageExcerpt', () => {
-  it('should resolve page excerpt correctly', () => {
-    const resolved = resolvePageExcerpt({
+describe('core > page > renderPageExcerpt', () => {
+  it('should render page excerpt correctly', () => {
+    const resolved = renderPageExcerpt({
       app,
       excerptRaw: 'foobar',
       frontmatter: {},

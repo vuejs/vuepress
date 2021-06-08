@@ -7,43 +7,16 @@ const app = createApp({
 })
 
 describe('core > page > resolvePageComponentInfo', () => {
-  it('should resolve page component', async () => {
+  it('should resolve page component info correctly', async () => {
     const resolved = await resolvePageComponentInfo({
       app,
-      content: 'foobar',
-      frontmatter: {},
-      filePath: app.dir.source('foo.md'),
-      filePathRelative: 'foo.md',
+      renderedContent: '<p>foobar</p>\n',
+      hoistedTags: [],
       htmlFilePathRelative: 'foo.html',
       key: 'key',
     })
 
     expect(resolved).toEqual({
-      deps: [],
-      headers: [],
-      links: [],
-      componentFilePath: app.dir.temp('pages/foo.html.vue'),
-      componentFilePathRelative: 'pages/foo.html.vue',
-      componentFileContent: '<template><p>foobar</p>\n</template>',
-      componentFileChunkName: 'key',
-    })
-  })
-
-  it('should use html file path if the relative file path is null', async () => {
-    const resolved = await resolvePageComponentInfo({
-      app,
-      content: 'foobar',
-      frontmatter: {},
-      filePath: null,
-      filePathRelative: null,
-      htmlFilePathRelative: 'foo.html',
-      key: 'key',
-    })
-
-    expect(resolved).toEqual({
-      deps: [],
-      headers: [],
-      links: [],
       componentFilePath: app.dir.temp('pages/foo.html.vue'),
       componentFilePathRelative: 'pages/foo.html.vue',
       componentFileContent: '<template><p>foobar</p>\n</template>',

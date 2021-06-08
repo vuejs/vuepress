@@ -2,9 +2,9 @@ import type { MarkdownEnv } from '@vuepress/markdown'
 import type { App, PageFrontmatter } from '../types'
 
 /**
- * Resolve page excerpt from raw excerpt
+ * Render page excerpt from raw excerpt
  */
-export const resolvePageExcerpt = ({
+export const renderPageExcerpt = ({
   app,
   excerptRaw,
   frontmatter,
@@ -23,6 +23,6 @@ export const resolvePageExcerpt = ({
     filePathRelative,
     frontmatter,
   }
-  const html = app.markdown.render(excerptRaw, markdownEnv)
-  return html
+  const renderedExcerpt = app.markdown.render(excerptRaw, markdownEnv)
+  return renderedExcerpt
 }
