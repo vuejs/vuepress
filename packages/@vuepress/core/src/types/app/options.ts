@@ -1,6 +1,7 @@
 import type { MarkdownOptions } from '@vuepress/markdown'
 import type { SiteLocaleConfig, SiteLocaleData } from '@vuepress/shared'
 import type { BundlerConfig } from '../bundler'
+import type { PluginConfig } from '../plugin'
 import type { ThemeConfig } from '../theme'
 
 /**
@@ -42,6 +43,9 @@ export interface AppOptions<
   templateSSR: string
   shouldPreload: ((file: string, type: string) => boolean) | boolean
   shouldPrefetch: ((file: string, type: string) => boolean) | boolean
+
+  // plugin options
+  plugins: PluginConfig[]
 }
 
 export type AppConfig = Partial<AppOptions> & Pick<AppOptions, 'source'>

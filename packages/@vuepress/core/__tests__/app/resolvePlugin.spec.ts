@@ -1,20 +1,20 @@
-import { createApp, normalizePlugin } from '@vuepress/core'
+import { createApp, resolvePlugin } from '@vuepress/core'
 import type { PluginFunction, PluginObject } from '@vuepress/core'
 import { path } from '@vuepress/utils'
 
 const app = createApp({
   source: path.resolve(__dirname, 'fake-source'),
-  theme: path.resolve(__dirname, '../__fixtures__/themes/no-layouts.js'),
+  theme: path.resolve(__dirname, '../__fixtures__/themes/empty.js'),
 })
 
-describe('core > app > normalizePlugin', () => {
+describe('core > app > resolvePlugin', () => {
   describe('plugin object', () => {
     it('should work without options', () => {
       const pluginObject: PluginObject = {
         name: 'plugin-object',
       }
 
-      const result = normalizePlugin(app, pluginObject)
+      const result = resolvePlugin(app, pluginObject)
       expect(result.name).toEqual('plugin-object')
     })
 
@@ -23,7 +23,7 @@ describe('core > app > normalizePlugin', () => {
         name: 'plugin-object',
       }
 
-      const result = normalizePlugin(app, pluginObject, { foo: 'bar' })
+      const result = resolvePlugin(app, pluginObject, { foo: 'bar' })
       expect(result.name).toEqual('plugin-object')
     })
   })
@@ -34,7 +34,7 @@ describe('core > app > normalizePlugin', () => {
         name: 'plugin-function',
       }))
 
-      const result = normalizePlugin(app, pluginFunction)
+      const result = resolvePlugin(app, pluginFunction)
 
       expect(pluginFunction).toHaveBeenCalledTimes(1)
       expect(pluginFunction).toHaveBeenCalledWith({}, app)
@@ -46,7 +46,7 @@ describe('core > app > normalizePlugin', () => {
         name: options.pluginName,
       }))
 
-      const result = normalizePlugin(app, pluginFunction, {
+      const result = resolvePlugin(app, pluginFunction, {
         pluginName: 'foobar',
       })
 
@@ -64,7 +64,7 @@ describe('core > app > normalizePlugin', () => {
       console.error = jest.fn()
 
       expect(() => {
-        normalizePlugin(app, '4-0-4')
+        resolvePlugin(app, '4-0-4')
       }).toThrow()
       expect(console.error).toHaveBeenCalled()
 
@@ -74,7 +74,7 @@ describe('core > app > normalizePlugin', () => {
 
   describe('plugin path', () => {
     it('should work with plugin object', () => {
-      const result = normalizePlugin(
+      const result = resolvePlugin(
         app,
         path.resolve(__dirname, '../__fixtures__/plugins/obj.js')
       )
@@ -82,7 +82,7 @@ describe('core > app > normalizePlugin', () => {
     })
 
     it('should work with plugin function', () => {
-      const result = normalizePlugin(
+      const result = resolvePlugin(
         app,
         path.resolve(__dirname, '../__fixtures__/plugins/func.js'),
         { pluginName: 'foobar' }
@@ -95,7 +95,7 @@ describe('core > app > normalizePlugin', () => {
       console.error = jest.fn()
 
       expect(() => {
-        normalizePlugin(app, './4-0-4')
+        resolvePlugin(app, './4-0-4')
       }).toThrow()
       expect(console.error).toHaveBeenCalled()
 

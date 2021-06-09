@@ -45,6 +45,9 @@ export const createAppOptions = ({
   ),
   shouldPreload = true,
   shouldPrefetch = false,
+
+  // plugin config
+  plugins = [],
 }: AppConfig): AppOptions => ({
   base,
   lang,
@@ -71,4 +74,5 @@ export const createAppOptions = ({
   templateSSR,
   shouldPreload,
   shouldPrefetch,
+  plugins,
 })

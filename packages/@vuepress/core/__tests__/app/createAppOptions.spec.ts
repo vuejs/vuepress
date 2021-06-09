@@ -35,6 +35,7 @@ describe('core > app > createAppOptions', () => {
       shouldPreload: true,
       shouldPrefetch: false,
       markdown: {},
+      plugins: [],
     })
   })
 })

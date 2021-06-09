@@ -5,7 +5,7 @@ describe('core > app > createAppPages', () => {
   it('should create two pages with default 404 page', async () => {
     const app = createApp({
       source: path.resolve(__dirname, '../__fixtures__/pages'),
-      theme: path.resolve(__dirname, '../__fixtures__/themes/no-layouts.js'),
+      theme: path.resolve(__dirname, '../__fixtures__/themes/empty.js'),
     })
 
     const pages = await createAppPages(app)
@@ -23,7 +23,7 @@ describe('core > app > createAppPages', () => {
   it('should create two pages with custom 404 page', async () => {
     const app = createApp({
       source: path.resolve(__dirname, '../__fixtures__/pages-with-404'),
-      theme: path.resolve(__dirname, '../__fixtures__/themes/no-layouts.js'),
+      theme: path.resolve(__dirname, '../__fixtures__/themes/empty.js'),
     })
 
     const pages = await createAppPages(app)
@@ -40,7 +40,7 @@ describe('core > app > createAppPages', () => {
   it('should process extendsPageOptions hook correctly', async () => {
     const app = createApp({
       source: path.resolve(__dirname, '../__fixtures__/pages-with-404'),
-      theme: path.resolve(__dirname, '../__fixtures__/themes/no-layouts.js'),
+      theme: path.resolve(__dirname, '../__fixtures__/themes/empty.js'),
     })
 
     app.use({

@@ -171,6 +171,7 @@ You need to set the path to the local theme explicitly via [theme](../reference/
 
 ### Plugin API Change
 
+- `plugins`: removed
 - `ready`: renamed to `onPrepared`
 - `updated`: renamed to `onWatched`
 - `generated`: renamed to `onGenerated`
@@ -254,12 +255,15 @@ Read the [Plugin API Change](#plugin-api-change) first.
 
 Some major breaking changes:
 
+- You cannot use other plugins in your plugin anymore, which avoids lots of potential issues caused by plugin nesting. If your plugin depends on other plugins, you should list them in the docs.
 - Most of the v1 hooks have equivalents in v2. The only exception is `extendsCli`, which has been removed.
-- Webpack related hooks are removed, because VuePress Core has decoupled with webpack. If you still want to modify webpack config in plugin, try to handle `app.options.bundlerConfig` in `onInitialized` hook.
+- Webpack related hooks are removed, because VuePress Core has decoupled with webpack. If you still want to modify webpack config in plugin, try modifying `app.options.bundlerConfig` directly.
 
 ## For Theme Authors
 
 Read the [Plugin API Change](#plugin-api-change) and [Theme API Change](#theme-api-change) first.
+
+Although we do not allow using other plugins in a plugin, you can still use plugins in your theme.
 
 Some major breaking changes:
 

@@ -10,7 +10,6 @@ Plugins should be used before initialization. The basic options will be handled 
 
 - [name](#name)
 - [multiple](#multiple)
-- [plugins](#plugins)
 
 The following hooks will be processed when initializing app:
 
@@ -71,43 +70,6 @@ The following hooks will be processed in dev / build:
 
 - Also see:
   - [Plugin API > name](#name)
-
-### plugins
-
-- Type: `PluginConfig[]`
-
-- Details:
-
-  Plugins to use.
-
-  A plugin can use other plugins via this option.
-
-  This option accepts an array, each item of which is a two-element tuple:
-
-  - The first element is the plugin name or the plugin itself. It accepts plugin name, plugin name shorthand, absolute path to plugin, or the plugin object.
-  - The second element is the plugin options. It accepts boolean or object. Set it to `false` to disable the plugin. Set it to `true` to enable the plugin without any options. Use object to enable the plugin with options.
-
-  For simplicity, you can use the first element of the tuple that described above as the array item, which equals enabling the plugin without any options.
-
-- Example:
-
-```js
-module.exports = {
-  plugins: [
-    // two-element tuple
-    ['vuepress-plugin-foo', false],
-    ['bar', true],
-    [path.resolve(__dirname, './path/to/local/plugin'), { /* options */ }],
-    [require('vuepress-plugin-baz'), true],
-
-    // only use the first element
-    'foobar', // equals to ['foobar', true]
-  ],
-}
-```
-
-- Also see:
-  - [Guide > Plugin](../guide/plugin.md)
 
 ## Development Hooks
 

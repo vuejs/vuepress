@@ -76,6 +76,17 @@ module.exports = {
 }
 ```
 
+### plugins
+
+- Type: `PluginConfig[]`
+
+- Details:
+
+  Plugins to use in the theme.
+
+- Also see:
+  - [Config > plugins](./config.md#plugins)
+
 ### extends
 
 - Type: `string`
@@ -86,7 +97,9 @@ module.exports = {
 
   All of the Theme API of the parent theme will be inherited, but the child theme will not override the parent theme.
 
-  If a layout with the same name is registered in both the child theme and the parent theme, the layout of the child theme will have a higher priority.
+  When a layout with the same name is registered in both child and parent theme, the layout of the child theme will have a higher priority.
+
+  When a same plugin is used in both child and parent theme, if the plugin does not support to be used multiple times, only the one used in the child theme will take effect.
 
   Multi-level inheritance is supported.
 

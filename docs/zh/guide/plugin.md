@@ -6,7 +6,7 @@
 
 社区用户创建了很多插件，并将它们发布到了 [NPM](https://www.npmjs.com/search?q=keywords:vuepress-plugin) 上。 VuePress 团队也在 [@vuepress](https://www.npmjs.com/search?q=%40vuepress%20keywords%3Aplugin) Scope 下维护了一些官方插件。查看插件本身的文档可以获取更详细的指引。
 
-一般而言，你需要在 [plugins](../reference/plugin-api.md#plugins) 配置项中设置你要使用的插件名称：
+一般而言，你需要在 [plugins](../reference/config.md#plugins) 配置项中设置你要使用的插件名称：
 
 ```js
 module.exports = {

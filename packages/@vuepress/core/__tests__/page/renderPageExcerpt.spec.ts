@@ -3,7 +3,7 @@ import { path } from '@vuepress/utils'
 
 const app = createApp({
   source: path.resolve(__dirname, 'fake-source'),
-  theme: path.resolve(__dirname, '../__fixtures__/themes/no-layouts.js'),
+  theme: path.resolve(__dirname, '../__fixtures__/themes/empty.js'),
 })
 
 describe('core > page > renderPageExcerpt', () => {

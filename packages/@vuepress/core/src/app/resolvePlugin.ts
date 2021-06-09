@@ -1,26 +1,30 @@
-import { normalizePackageName } from '@vuepress/shared'
-import { hasExportDefault, path, requireResolve } from '@vuepress/utils'
-import type { Plugin, PluginObject, PluginOptions } from '../types'
+import { isFunction, isString } from '@vuepress/shared'
+import { chalk, logger } from '@vuepress/utils'
+import type { App, Plugin, PluginObject, PluginOptions } from '../types'
+import { resolvePluginModule } from './resolvePluginModule'
 
 /**
- * Resolve a plugin according to name or path
+ * Resolve a plugin according to name / path / module and config
  */
 export const resolvePlugin = <
   T extends PluginOptions = PluginOptions,
   U extends PluginObject = PluginObject
 >(
-  pluginName: string
-): Plugin<T, U> | null => {
-  const pluginEntry = path.isAbsolute(pluginName)
-    ? pluginName
-    : requireResolve(normalizePackageName(pluginName, 'vuepress', 'plugin'))
+  app: App,
+  plugin: Plugin<T, U> | string,
+  config: Partial<T> = {}
+): U => {
+  const pluginModule = isString(plugin)
+    ? resolvePluginModule<T, U>(plugin)
+    : plugin
 
-  if (pluginEntry === null) {
-    return null
+  if (pluginModule === null) {
+    throw logger.createError(`plugin is not found: ${chalk.magenta(plugin)}`)
   }
 
-  const required = require(pluginEntry)
+  const pluginObject = isFunction(pluginModule)
+    ? pluginModule(config, app)
+    : pluginModule
 
-  // allow default export
-  return hasExportDefault(required) ? required.default : required
+  return pluginObject as U
 }

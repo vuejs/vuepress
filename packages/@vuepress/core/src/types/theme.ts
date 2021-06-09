@@ -1,4 +1,9 @@
-import type { Plugin, PluginFunction, PluginObject } from './plugin'
+import type {
+  Plugin,
+  PluginConfig,
+  PluginFunction,
+  PluginObject,
+} from './plugin'
 
 /**
  * Vuepress theme
@@ -31,6 +36,9 @@ export interface ThemeObject extends PluginObject {
 
   // specify the layouts directory or components map
   layouts?: string | Record<string, string>
+
+  // allow using plugins in theme
+  plugins?: PluginConfig[]
 }
 
 /**

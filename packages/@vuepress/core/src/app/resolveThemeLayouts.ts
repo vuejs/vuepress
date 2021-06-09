@@ -2,13 +2,12 @@ import { isPlainObject } from '@vuepress/shared'
 import { chalk, fs, path, logger } from '@vuepress/utils'
 import type { ThemeObject } from '../types'
 
+/**
+ * Resolve layouts from `layouts` option
+ */
 export const resolveThemeLayouts = (
-  layouts: ThemeObject['layouts']
+  layouts: ThemeObject['layouts'] = {}
 ): Record<string, string> => {
-  if (!layouts) {
-    return {}
-  }
-
   // use the layouts component map directly
   if (isPlainObject(layouts)) {
     return layouts

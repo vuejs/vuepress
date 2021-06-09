@@ -626,6 +626,43 @@ You should not configure it unless you understand what it is for.
 
   If you set it to `true`, all files that required by other pages will be prefetched. This is good for small sites, which will speed up the navigation, but it might not be a good idea if you have lots of pages in your site.
 
+## Plugin Config
+
+### plugins
+
+- Type: `PluginConfig[]`
+
+- Details:
+
+  Plugins to use.
+
+  This option accepts an array, each item of which is a two-element tuple:
+
+  - The first element is the plugin name or the plugin itself. It accepts plugin name, plugin name shorthand, absolute path to plugin, or the plugin object.
+  - The second element is the plugin options. It accepts boolean or object. Set it to `false` to skip the plugin. Set it to `true` to enable the plugin without any options. Use object to enable the plugin with options.
+
+  For simplicity, you can use the first element of the tuple that described above as the array item, which equals enabling the plugin without any options.
+
+- Example:
+
+```js
+module.exports = {
+  plugins: [
+    // two-element tuple
+    ['vuepress-plugin-foo', false],
+    ['bar', true],
+    [path.resolve(__dirname, './path/to/local/plugin'), { /* options */ }],
+    [require('vuepress-plugin-baz'), true],
+
+    // only use the first element
+    'foobar', // equals to ['foobar', true]
+  ],
+}
+```
+
+- Also see:
+  - [Guide > Plugin](../guide/plugin.md)
+
 ## Plugin API
 
 User config file also works as a VuePress plugin, so all of the Plugin APIs are available except the `name` and `multiple` options.
