@@ -1,7 +1,7 @@
-import { createApp, inferPagePath } from '@vuepress/core'
+import { createBaseApp, inferPagePath } from '@vuepress/core'
 import { path } from '@vuepress/utils'
 
-const app = createApp({
+const app = createBaseApp({
   source: path.resolve(__dirname, 'fake-source'),
   theme: path.resolve(__dirname, '../__fixtures__/themes/empty.js'),
   locales: {
@@ -10,7 +10,7 @@ const app = createApp({
     '/zh/': {},
   },
 })
-const appWithoutLocales = createApp({
+const appWithoutLocales = createBaseApp({
   source: path.resolve(__dirname, 'fake-source'),
   theme: path.resolve(__dirname, '../__fixtures__/themes/empty.js'),
 })

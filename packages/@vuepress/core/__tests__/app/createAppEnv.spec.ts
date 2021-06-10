@@ -1,88 +1,43 @@
 import { createAppEnv, createAppOptions } from '@vuepress/core'
-import type { AppEnv, AppOptions } from '@vuepress/core'
 
 const source = '/foo'
-let appOptions: AppOptions
 
-const testCases: [() => void, AppEnv][] = [
+const testCases: [
+  Parameters<typeof createAppEnv>,
+  ReturnType<typeof createAppEnv>
+][] = [
   [
-    () => {
-      appOptions = createAppOptions({ source })
-      process.env.NODE_ENV = 'development'
-    },
+    [createAppOptions({ source }), false],
     {
-      isProd: false,
-      isTest: false,
+      isBuild: false,
       isDev: true,
       isDebug: false,
-      nodeEnv: 'development',
     },
   ],
   [
-    () => {
-      appOptions = createAppOptions({ source, debug: true })
-      process.env.NODE_ENV = 'development'
-    },
+    [createAppOptions({ source, debug: true }), false],
     {
-      isProd: false,
-      isTest: false,
+      isBuild: false,
       isDev: true,
       isDebug: true,
-      nodeEnv: 'development',
     },
   ],
   [
-    () => {
-      appOptions = createAppOptions({ source })
-      process.env.NODE_ENV = 'production'
-    },
+    [createAppOptions({ source }), true],
     {
-      isProd: true,
-      isTest: false,
+      isBuild: true,
       isDev: false,
       isDebug: false,
-      nodeEnv: 'production',
-    },
-  ],
-  [
-    () => {
-      appOptions = createAppOptions({ source })
-      process.env.NODE_ENV = 'test'
-    },
-    {
-      isProd: false,
-      isTest: true,
-      isDev: false,
-      isDebug: false,
-      nodeEnv: 'test',
-    },
-  ],
-  [
-    () => {
-      appOptions = createAppOptions({ source })
-      process.env.NODE_ENV = 'foo'
-    },
-    {
-      isProd: false,
-      isTest: false,
-      isDev: false,
-      isDebug: false,
-      nodeEnv: 'foo',
     },
   ],
 ]
 
 describe('core > app > createAppEnv', () => {
-  const savedNodeEnv = process.env.NODE_ENV
-
   describe('should create app env correctly', () => {
-    testCases.forEach(([preHandler, expected], i) => {
+    testCases.forEach(([params, expected], i) => {
       it(`case ${i}`, () => {
-        preHandler()
-        expect(createAppEnv(appOptions)).toEqual(expected)
+        expect(createAppEnv(...params)).toEqual(expected)
       })
     })
   })
-
-  process.env.NODE_ENV = savedNodeEnv
 })

@@ -1,5 +1,5 @@
 import type { FSWatcher } from 'chokidar'
-import { createApp } from '@vuepress/core'
+import { createDevApp } from '@vuepress/core'
 import type { AppConfig } from '@vuepress/core'
 import { debug, fs, logger } from '@vuepress/utils'
 import {
@@ -46,7 +46,7 @@ export const createDev = (defaultAppConfig: Partial<AppConfig>): DevCommand => {
     )
 
     // create vuepress app
-    const app = createApp({
+    const app = createDevApp({
       // allow setting default app config via `cli()`
       // for example, set different default bundler in `vuepress` and `vuepress-vite` package
       ...defaultAppConfig,

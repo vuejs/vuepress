@@ -8,7 +8,7 @@ export const appUse = <T extends PluginOptions>(
   app: App,
   rawPlugin: Plugin<T> | string,
   config?: Partial<T>
-): void => {
+): App => {
   const plugin = resolvePlugin(app, rawPlugin, config)
 
   log(`use plugin ${chalk.magenta(plugin.name)}`)
@@ -32,4 +32,6 @@ export const appUse = <T extends PluginOptions>(
 
   // use plugin
   app.pluginApi.plugins.push(plugin)
+
+  return app
 }

@@ -1,4 +1,4 @@
-import { createApp } from '@vuepress/core'
+import { createBuildApp } from '@vuepress/core'
 import type { AppConfig } from '@vuepress/core'
 import { debug, fs, logger } from '@vuepress/utils'
 import {
@@ -42,7 +42,7 @@ export const createBuild = (
   const userConfig = await loadUserConfig(userConfigPath)
 
   // create vuepress app
-  const app = createApp({
+  const app = createBuildApp({
     // allow setting default app config via `cli()`
     // for example, set different default bundler in `vuepress` and `vuepress-vite` package
     ...defaultAppConfig,

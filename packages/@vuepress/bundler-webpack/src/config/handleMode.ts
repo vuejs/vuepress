@@ -11,5 +11,5 @@ export const handleMode = ({
   app: App
   config: Config
 }): void => {
-  config.mode(app.env.isProd ? 'production' : 'development')
+  config.mode(app.env.isBuild ? 'production' : 'development')
 }

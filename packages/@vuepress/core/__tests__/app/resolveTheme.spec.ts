@@ -1,9 +1,9 @@
-import { createApp, resolveTheme } from '@vuepress/core'
+import { createBaseApp, resolveTheme } from '@vuepress/core'
 import { path } from '@vuepress/utils'
 
 const fixtures = (...args: string[]) =>
   path.resolve(__dirname, '../__fixtures__/', ...args)
-const app = createApp({
+const app = createBaseApp({
   source: path.resolve(__dirname, 'fake-source'),
   theme: fixtures('themes/empty.js'),
 })

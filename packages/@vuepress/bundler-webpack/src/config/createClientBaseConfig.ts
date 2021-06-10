@@ -23,7 +23,7 @@ export const createClientBaseConfig = async ({
   config.output
     .path(app.dir.dest())
     .filename(
-      app.env.isProd
+      app.env.isBuild
         ? 'assets/js/[name].[chunkhash:8].js'
         : 'assets/js/[name].js'
     )

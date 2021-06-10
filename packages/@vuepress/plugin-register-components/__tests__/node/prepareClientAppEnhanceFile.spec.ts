@@ -1,8 +1,8 @@
-import { createApp } from '@vuepress/core'
+import { createBaseApp } from '@vuepress/core'
 import { prepareClientAppEnhanceFile } from '@vuepress/plugin-register-components'
 import { fs, path } from '@vuepress/utils'
 
-const app = createApp({
+const app = createBaseApp({
   source: path.resolve(__dirname, 'fake-source'),
   temp: path.resolve(__dirname, '../__fixtures__/.temp'),
 })

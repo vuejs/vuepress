@@ -10,18 +10,17 @@ import { createAppOptions } from './createAppOptions'
 import { createAppSiteData } from './createAppSiteData'
 import { createAppVersion } from './createAppVersion'
 import { createAppWriteTemp } from './createAppWriteTemp'
-import { resolveBundler } from './resolveBundler'
 import { resolvePluginsFromConfig } from './resolvePluginsFromConfig'
 import { resolveThemeApi } from './resolveThemeApi'
 
 /**
  * Create vuepress app
  */
-export const createApp = (config: AppConfig): App => {
+export const createBaseApp = (config: AppConfig, isBuild = false): App => {
   const version = createAppVersion()
   const options = createAppOptions(config)
   const dir = createAppDir(options)
-  const env = createAppEnv(options)
+  const env = createAppEnv(options, isBuild)
   const siteData = createAppSiteData(options)
   const markdown = createMarkdown(options.markdown)
   const pluginApi = createPluginApi()
@@ -35,13 +34,10 @@ export const createApp = (config: AppConfig): App => {
     siteData,
     markdown,
     pluginApi,
-
     writeTemp,
     use: (...args) => appUse(app, ...args),
     init: () => appInit(app),
     prepare: () => appPrepare(app),
-    dev: () => resolveBundler(options).dev(app),
-    build: () => resolveBundler(options).build(app),
   } as App
 
   // resolve theme plugins and layouts

@@ -48,7 +48,7 @@ export const createClientConfig = async (
   // extract-css
   config.plugin('extract-css').use(require('mini-css-extract-plugin'), [
     {
-      filename: app.env.isProd
+      filename: app.env.isBuild
         ? 'assets/css/styles.[chunkhash:8].css'
         : 'assets/css/styles.css',
     },

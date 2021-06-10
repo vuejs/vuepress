@@ -19,11 +19,20 @@ export interface AppDir {
  * Environment flags
  */
 export interface AppEnv {
-  isProd: boolean
-  isTest: boolean
+  /**
+   * Is running in build mode or not
+   */
+  isBuild: boolean
+
+  /**
+   * Is running in dev mode or not
+   */
   isDev: boolean
+
+  /**
+   * Is debug mode enabled or not
+   */
   isDebug: boolean
-  nodeEnv: string | undefined
 }
 
 /**

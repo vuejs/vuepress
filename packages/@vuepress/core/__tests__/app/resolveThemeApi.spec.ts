@@ -1,4 +1,4 @@
-import { createApp, resolveThemeApi } from '@vuepress/core'
+import { createBaseApp, resolveThemeApi } from '@vuepress/core'
 import { path } from '@vuepress/utils'
 
 const fixtures = (...args: string[]) =>
@@ -7,7 +7,7 @@ const fixtures = (...args: string[]) =>
 describe('core > app > resolveThemeApi', () => {
   describe('layouts', () => {
     it('should resolve theme api without layouts correctly', () => {
-      const app = createApp({
+      const app = createBaseApp({
         source: path.resolve(__dirname, 'fake-source'),
         theme: fixtures('themes/empty.js'),
       })
@@ -16,7 +16,7 @@ describe('core > app > resolveThemeApi', () => {
     })
 
     it('should resolve theme api with layouts correctly', () => {
-      const app = createApp({
+      const app = createBaseApp({
         source: path.resolve(__dirname, 'fake-source'),
         theme: fixtures('themes/has-layouts.js'),
       })
@@ -30,7 +30,7 @@ describe('core > app > resolveThemeApi', () => {
 
   describe('plugins', () => {
     it('should resolve theme api without plugins correctly', () => {
-      const app = createApp({
+      const app = createBaseApp({
         source: path.resolve(__dirname, 'fake-source'),
         theme: fixtures('themes/empty.js'),
       })
@@ -41,7 +41,7 @@ describe('core > app > resolveThemeApi', () => {
     })
 
     it('should resolve theme api with plugins correctly', () => {
-      const app = createApp({
+      const app = createBaseApp({
         source: path.resolve(__dirname, 'fake-source'),
         theme: fixtures('themes/has-plugins.js'),
       })
@@ -55,7 +55,7 @@ describe('core > app > resolveThemeApi', () => {
 
   describe('extends', () => {
     it('should resolve theme api with parent theme correctly', () => {
-      const app = createApp({
+      const app = createBaseApp({
         source: path.resolve(__dirname, 'fake-source'),
         theme: fixtures('themes/extends-parent.js'),
       })
@@ -76,7 +76,7 @@ describe('core > app > resolveThemeApi', () => {
     })
 
     it('should resolve theme api with grandparent theme correctly', () => {
-      const app = createApp({
+      const app = createBaseApp({
         source: path.resolve(__dirname, 'fake-source'),
         theme: fixtures('themes/extends-grandparent.js'),
       })

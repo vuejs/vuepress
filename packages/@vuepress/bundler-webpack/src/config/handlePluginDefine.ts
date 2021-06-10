@@ -17,14 +17,13 @@ export const handlePluginDefine = async ({
   // define plugin
   config.plugin('define').use(DefinePlugin, [
     {
-      'process.env.NODE_ENV': JSON.stringify(app.env.nodeEnv),
-      '__VERSION__': JSON.stringify(app.version),
-      '__DEV__': JSON.stringify(app.env.isDev),
-      '__SSR__': JSON.stringify(isServer),
+      __VERSION__: JSON.stringify(app.version),
+      __DEV__: JSON.stringify(app.env.isDev),
+      __SSR__: JSON.stringify(isServer),
       // @see http://link.vuejs.org/feature-flags
       // enable options API by default
-      '__VUE_OPTIONS_API__': JSON.stringify(true),
-      '__VUE_PROD_DEVTOOLS__': JSON.stringify(false),
+      __VUE_OPTIONS_API__: JSON.stringify(true),
+      __VUE_PROD_DEVTOOLS__: JSON.stringify(false),
     },
   ])
 
