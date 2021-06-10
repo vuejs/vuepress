@@ -21,7 +21,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### BREAKING CHANGES
 
-* **core:** `app.themeApi` is removed
 * **theme-default:** default title of danger container is changed to "DANGER"
 
 
