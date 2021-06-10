@@ -1,19 +1,17 @@
-import * as chokidar from 'chokidar'
 import type { FSWatcher } from 'chokidar'
 import { createApp } from '@vuepress/core'
 import type { AppConfig } from '@vuepress/core'
-import { chalk, debug, fs, logger } from '@vuepress/utils'
+import { debug, fs, logger } from '@vuepress/utils'
 import {
-  loadUserConfig,
   resolveUserConfigConventionalPath,
   resolveUserConfigPath,
   transformUserConfigToPlugin,
 } from '../../config'
-import { handlePageAdd } from './handlePageAdd'
-import { handlePageChange } from './handlePageChange'
-import { handlePageUnlink } from './handlePageUnlink'
 import { resolveDevAppConfig } from './resolveDevAppConfig'
+import { resolveDevUserConfig } from './resolveDevUserConfig'
 import type { DevCommandOptions } from './types'
+import { watchPageFiles } from './watchPageFiles'
+import { watchUserConfigFile } from './watchUserConfigFile'
 
 const log = debug('vuepress:cli/dev')
 
@@ -43,7 +41,9 @@ export const createDev = (defaultAppConfig: Partial<AppConfig>): DevCommand => {
 
     log(`userConfigPath:`, userConfigPath)
 
-    const userConfig = await loadUserConfig(userConfigPath)
+    const { userConfig, userConfigDeps } = await resolveDevUserConfig(
+      userConfigPath
+    )
 
     // create vuepress app
     const app = createApp({
@@ -103,35 +103,17 @@ export const createDev = (defaultAppConfig: Partial<AppConfig>): DevCommand => {
     }
 
     // watch page files
-    const pagesWatcher = chokidar.watch(app.options.pagePatterns, {
-      cwd: app.dir.source(),
-      ignoreInitial: true,
-    })
-    pagesWatcher.on('add', (filePathRelative) => {
-      logger.info(`page ${chalk.magenta(filePathRelative)} is created`)
-      handlePageAdd(app, app.dir.source(filePathRelative))
-    })
-    pagesWatcher.on('change', (filePathRelative) => {
-      logger.info(`page ${chalk.magenta(filePathRelative)} is modified`)
-      handlePageChange(app, app.dir.source(filePathRelative))
-    })
-    pagesWatcher.on('unlink', (filePathRelative) => {
-      logger.info(`page ${chalk.magenta(filePathRelative)} is removed`)
-      handlePageUnlink(app, app.dir.source(filePathRelative))
-    })
-    watchers.push(pagesWatcher)
+    watchers.push(watchPageFiles(app))
 
     // watch user config file
     if (userConfigPath) {
-      const configWatcher = chokidar.watch(userConfigPath, {
-        cwd: process.cwd(),
-        ignoreInitial: true,
-      })
-      configWatcher.on('change', (configFile) => {
-        logger.info(`config ${chalk.magenta(configFile)} is modified`)
-        restart()
-      })
-      watchers.push(configWatcher)
+      watchers.push(
+        ...watchUserConfigFile({
+          userConfigPath,
+          userConfigDeps,
+          restart,
+        })
+      )
     }
 
     await app.pluginApi.hooks.onWatched.process(app, watchers, restart)

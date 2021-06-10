@@ -1,33 +1,12 @@
-import { build, buildSync } from 'esbuild'
-import type { BuildOptions } from 'esbuild'
+import { transformSync } from 'esbuild'
+import { fs } from '@vuepress/utils'
 
 /**
- * Create esbuild `BuildOptions` for `buildToCode`
+ * Transform a ts file to cjs code
  */
-export const createBuildToCodeOptions = (
-  filePath: string
-): BuildOptions & { write: false } => ({
-  entryPoints: [filePath],
-  format: 'cjs',
-  platform: 'node',
-  target: 'node12',
-  bundle: true,
-  write: false,
-  external: ['fsevents', 'vuepress', '@vuepress/*'],
-})
-
-/**
- * Take a file as entry point, and build it to cjs code
- */
-export const buildToCode = async (filePath: string): Promise<string> => {
-  const buildResult = await build(createBuildToCodeOptions(filePath))
-  return buildResult.outputFiles[0].text
-}
-
-/**
- * Sync version fo `buildToCode`
- */
-export const buildToCodeSync = (filePath: string): string => {
-  const buildResult = buildSync(createBuildToCodeOptions(filePath))
-  return buildResult.outputFiles[0].text
-}
+export const transformTsFileToCodeSync = (filename: string): string =>
+  transformSync(fs.readFileSync(filename).toString(), {
+    loader: 'ts',
+    format: 'cjs',
+    target: 'node12',
+  }).code
