@@ -115,11 +115,11 @@ export const zh: NavbarConfig = [
     children: [
       {
         text: 'v1.x',
-        link: 'https://v1.vuepress.vuejs.org',
+        link: 'https://v1.vuepress.vuejs.org/zh/',
       },
       {
         text: 'v0.x',
-        link: 'https://v0.vuepress.vuejs.org',
+        link: 'https://v0.vuepress.vuejs.org/zh/',
       },
     ],
   },
