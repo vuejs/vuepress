@@ -122,5 +122,5 @@ VuePress 的文档是由 VuePress 自己驱动的，是由该仓库中的源码�
 
 我们部署了两套站点：
 
-- 在 [Netlify](https://www.netlify.com) 部署的 Release 版本。该站点是从最新发布的版本中构建而来，因此用户不会看到未发布的改动。域名为 [https://vuepress2.netlify.app](https://vuepress2.netlify.app)。
+- 在 [Netlify](https://www.netlify.com) 部署的 Release 版本。该站点是从最新发布的版本中构建而来，因此用户不会看到未发布的改动。域名为 [https://v2.vuepress.vuejs.org](https://v2.vuepress.vuejs.org)。
 - 在 [GitHub Pages](https://pages.github.com) 部署的 Developer 版本。该站点是从最新的提交中构建而来，因此开发者可以预览最新的改动。域名为 [https://vuepress.github.io](https://vuepress.github.io)。

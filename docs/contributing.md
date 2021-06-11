@@ -122,5 +122,5 @@ All the markdown source files are placed in `docs` directory. We are maintaining
 
 We have two different deployments:
 
-- Release deployment powered by [Netlify](https://www.netlify.com). This deployment is built from the latest released version, so users will not see unreleased changes. The domain name is [https://vuepress2.netlify.app](https://vuepress2.netlify.app).
+- Release deployment powered by [Netlify](https://www.netlify.com). This deployment is built from the latest released version, so users will not see unreleased changes. The domain name is [https://v2.vuepress.vuejs.org](https://v2.vuepress.vuejs.org).
 - Developer deployment powered by [GitHub Pages](https://pages.github.com). This deployment is built from the latest commit, so developers could preview the latest changes. The domain name is [https://vuepress.github.io](https://vuepress.github.io).
