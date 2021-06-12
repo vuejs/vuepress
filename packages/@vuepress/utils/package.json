@@ -35,7 +35,7 @@
     "fs-extra": "^10.0.0",
     "globby": "^11.0.3",
     "hash-sum": "^2.0.0",
-    "ora": "^5.4.0",
+    "ora": "^5.4.1",
     "upath": "^2.0.1"
   },
   "publishConfig": {
