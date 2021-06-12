@@ -43,7 +43,7 @@
     "@vuepress/shared": "2.0.0-beta.7",
     "@vuepress/utils": "2.0.0-beta.15",
     "sass": "^1.34.1",
-    "sass-loader": "^12.0.0",
+    "sass-loader": "^12.1.0",
     "vue": "^3.1.1",
     "vue-router": "^4.0.8"
   },

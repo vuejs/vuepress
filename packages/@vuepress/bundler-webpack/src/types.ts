@@ -95,6 +95,7 @@ export type StylePreprocessorOptions<
 export interface PostcssLoaderOptions extends Pick<LoaderOptions, 'sourceMap'> {
   execute?: boolean
   postcssOptions?: StylePreprocessorOptions
+  implementation?: ((...args: any) => any) | string
 }
 
 /**
@@ -112,7 +113,7 @@ export interface StylusLoaderOptions extends LoaderOptions {
  * @see https://github.com/webpack-contrib/sass-loader#options
  */
 export interface SassLoaderOptions extends LoaderOptions {
-  implementation?: any
+  implementation?: Record<string, any> | string
   sassOptions?: StylePreprocessorOptions
 }
 
