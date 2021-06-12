@@ -6,7 +6,8 @@
 - [Yarn v1 classic](https://classic.yarnpkg.com/en/) (Optional)
 
 ::: tip
-If you are using [pnpm](https://pnpm.io/), you may need to enable [shamefully-hoist](https://pnpm.io/npmrc#shamefully-hoist) to avoid potential issues.
+- With [pnpm](https://pnpm.io/), you need to set `shamefully-hoist=true` in your [`.npmrc`](https://pnpm.io/npmrc#shamefully-hoist) file.
+- With [yarn 2](https://yarnpkg.com/), you need to set `nodeLinker: 'node-modules'` in your [`.yarnrc.yml`](https://yarnpkg.com/configuration/yarnrc#nodeLinker) file.
 :::
 
 ## Manual Installation

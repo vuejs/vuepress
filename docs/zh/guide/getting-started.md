@@ -6,7 +6,8 @@
 - [Yarn v1 classic](https://classic.yarnpkg.com/zh-Hans/) （可选）
 
 ::: tip
-如果你使用的是 [pnpm](https://pnpm.io/) ，你可能需要启用 [shamefully-hoist](https://pnpm.io/npmrc#shamefully-hoist) 来避免一些潜在的问题。
+- 使用 [pnpm](https://pnpm.io/zh/) 时，你需要在 [`.npmrc`](https://pnpm.io/zh/npmrc#shamefully-hoist) 文件中设置 `shamefully-hoist=true` 。
+- 使用 [yarn 2](https://yarnpkg.com/) 时，你需要在 [`.yarnrc.yml`](https://yarnpkg.com/configuration/yarnrc#nodeLinker) 文件中设置 `nodeLinker: 'node-modules'` 。
 :::
 
 ## 手动安装
