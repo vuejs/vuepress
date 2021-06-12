@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.18](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.17...v2.0.0-beta.18) (2021-06-12)
+
+
+### Performance Improvements
+
+* **bundler-vite:** make server build lighter ([a6ddea5](https://github.com/vuepress/vuepress-next/commit/a6ddea5fd1a1979f5d3a7cc460e1602cb5254f08))
+
+
+
+
+
 # [2.0.0-beta.17](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.16...v2.0.0-beta.17) (2021-06-04)
 
 **Note:** Version bump only for package @vuepress/bundler-vite

@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0-beta.18](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.17...v2.0.0-beta.18) (2021-06-12)
+
+
+### Bug Fixes
+
+* **plugin-search:** disable default form action on Enter key ([#189](https://github.com/vuepress/vuepress-next/issues/189)) ([81b5b24](https://github.com/vuepress/vuepress-next/commit/81b5b24379c44ddcf83b38b086f6f2905453f58b))
+* **plugin-toc:** exclude h1 header in toc ([5e96641](https://github.com/vuepress/vuepress-next/commit/5e96641b8d2dd947372222e0af2ea47729afbada))
+* **theme-default:** exclude h1 header in sidebar ([280626d](https://github.com/vuepress/vuepress-next/commit/280626dd33f5006d6611f6e121eb5edfad8a258e))
+* **theme-default:** show outline of toggle-dark-button ([bc94de0](https://github.com/vuepress/vuepress-next/commit/bc94de0cb3a9454ac0a3e72f3df07326568057d2))
+
+
+### Code Refactoring
+
+* **core:** drop support for plugin nesting ([f7da97f](https://github.com/vuepress/vuepress-next/commit/f7da97f7f0ff24984cc6a2d0926b5fdf3af274c5))
+* **core:** resolve page title from markdown env ([09d08a4](https://github.com/vuepress/vuepress-next/commit/09d08a4b89af16fcb833774e902b4d5404181689))
+
+
+### Features
+
+* **cli:** watch dependencies of user config file ([b220524](https://github.com/vuepress/vuepress-next/commit/b220524f1534a1ada3b896854dba181e8ea36221))
+* **markdown:** add extract-title plugin ([e0a1556](https://github.com/vuepress/vuepress-next/commit/e0a1556a1469cd71469f5c81e2d058a5e9b9d801))
+
+
+### Performance Improvements
+
+* **bundler-vite:** make server build lighter ([a6ddea5](https://github.com/vuepress/vuepress-next/commit/a6ddea5fd1a1979f5d3a7cc460e1602cb5254f08))
+
+
+### BREAKING CHANGES
+
+* **core:** a plugin cannot use other plugins anymore
+* **core:** markdown emoji syntax is not supported in frontmatter title
+
+
+
+
+
 # [2.0.0-beta.17](https://github.com/vuepress/vuepress-next/compare/v2.0.0-beta.16...v2.0.0-beta.17) (2021-06-04)
 
 
