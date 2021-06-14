@@ -53,6 +53,10 @@
 注意 `selectors.lang` 和 `custom_settings.attributesForFaceting` 字段，它们是**必须**的，否则该插件将无法正常工作。
 :::
 
+::: tip
+如果你使用的不是默认主题，或者在使用 Docsearch 的时候遇到了任何问题，你也可以检查上述的爬虫配置示例，然后前往 [docsearch-configs](https://github.com/algolia/docsearch-configs) 仓库，向你的网站的对应配置提交 PR 。
+:::
+
 ## 配置项
 
 ### apiKey

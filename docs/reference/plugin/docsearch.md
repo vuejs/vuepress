@@ -53,6 +53,10 @@ The above `selectors` is the configuration used for the default theme. You can m
 Notice that the `selectors.lang` and the `custom_settings.attributesForFaceting` fields are **required** to make this plugin work properly.
 :::
 
+::: tip
+If you are not using default theme, or you meet any problems when using docsearch, you can also check the above example crawler config, and submit a PR to the config file of your site in the [docsearch-configs](https://github.com/algolia/docsearch-configs) repo.
+:::
+
 ## Options
 
 ### apiKey
