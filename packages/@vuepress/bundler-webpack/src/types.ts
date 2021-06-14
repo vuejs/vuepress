@@ -1,8 +1,7 @@
-import type { Application } from 'express'
 import type { Configuration as WebpackConfiguration } from 'webpack'
 import type * as WebpackChainConfig from 'webpack-chain'
-import type * as WebpackDevServer from 'webpack-dev-server'
 import type { LoaderContext } from './types.webpack'
+import type { WebpackDevServer } from './types.webpack-dev-server'
 
 export type { WebpackConfiguration, WebpackChainConfig, WebpackDevServer }
 
@@ -31,12 +30,12 @@ export interface WebpackBundlerOptions {
   /**
    * hook that to be called in `devServer.before`
    */
-  beforeDevServer?: (expressApp: Application, server: WebpackDevServer) => void
+  beforeDevServer?: (server: WebpackDevServer) => void
 
   /**
    * hook that to be called in `devServer.after`
    */
-  afterDevServer?: (expressApp: Application, server: WebpackDevServer) => void
+  afterDevServer?: (server: WebpackDevServer) => void
 
   /**
    * postcss-loader options
