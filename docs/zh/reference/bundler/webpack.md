@@ -24,7 +24,7 @@
 
 ## beforeDevServer
 
-- 类型： `(expressApp: Application, server: WebpackDevServer) => void`
+- 类型： `(server: WebpackDevServer) => void`
 
 - 详情：
 
@@ -37,7 +37,7 @@
 
 ## afterDevServer
 
-- 类型： `(expressApp: Application, server: WebpackDevServer) => void`
+- 类型： `(server: WebpackDevServer) => void`
 
 - 详情：
 

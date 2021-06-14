@@ -24,7 +24,7 @@
 
 ## beforeDevServer
 
-- Type: `(expressApp: Application, server: WebpackDevServer) => void`
+- Type: `(server: WebpackDevServer) => void`
 
 - Details:
 
@@ -37,7 +37,7 @@
 
 ## afterDevServer
 
-- Type: `(expressApp: Application, server: WebpackDevServer) => void`
+- Type: `(server: WebpackDevServer) => void`
 
 - Details:
 
