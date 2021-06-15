@@ -31,7 +31,6 @@ const clientPackages = [
   '@vuepress/plugin-theme-data',
   '@vuepress/plugin-toc',
   '@vuepress/theme-default',
-  '@vuepress/theme-vue',
 ]
 
 export const createPlugin = ({

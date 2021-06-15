@@ -38,7 +38,6 @@ export const info = async (): Promise<void> => {
         '@vuepress/plugin-toc',
         '@vuepress/shared',
         '@vuepress/theme-default',
-        '@vuepress/theme-vue',
         '@vuepress/utils',
         'vuepress',
         'vuepress-vite',
