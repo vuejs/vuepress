@@ -2,7 +2,7 @@
   <RouterLink
     v-if="isRouterLink"
     class="nav-link"
-    :class="{ 'router-link-active': isActiveInSubpath }"
+    :class="{ 'router-link-active': isActive }"
     :to="item.link"
     :aria-label="linkAriaLabel"
     v-bind="$attrs"
@@ -96,14 +96,25 @@ export default defineComponent({
     })
     // if this link is active in subpath
     const isActiveInSubpath = computed(() => {
-      if (!isRouterLink.value || !shouldBeActiveInSubpath.value) {
+      if (!shouldBeActiveInSubpath.value) {
         return false
       }
       return route.path.startsWith(item.value.link)
     })
 
+    // if this link is active
+    const isActive = computed(() => {
+      if (!isRouterLink.value) {
+        return false
+      }
+      if (item.value.activeMatch) {
+        return new RegExp(item.value.activeMatch).test(route.path)
+      }
+      return isActiveInSubpath.value
+    })
+
     return {
-      isActiveInSubpath,
+      isActive,
       isBlankTarget,
       isRouterLink,
       linkRel,

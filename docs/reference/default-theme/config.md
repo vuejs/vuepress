@@ -56,7 +56,7 @@ Config of this section can be used as normal config, and can also be used in the
 
   To configure the navbar items, you can set it to a _navbar array_, each item of which could be a `NavbarItem` object, a `NavbarGroup` object, or a string:
 
-  - A `NavbarItem` object should have a `text` field and a `link` field.
+  - A `NavbarItem` object should have a `text` field and a `link` field, could have an optional `activeMatch` field.
   - A `NavbarGroup` object should have a `text` field and a `children` field. The `children` field should be a _navbar array_, too.
   - A string should be the path to the target page file. It will be converted to a `NavbarItem` object, using the page title as `text`, and the page route path as `link`.
 
@@ -96,6 +96,25 @@ module.exports = {
           {
             text: 'SubGroup',
             children: ['/group/sub/foo.md', '/group/sub/bar.md'],
+          },
+        ],
+      },
+      // control when should the item be active
+      {
+        text: 'Group 2',
+        children: [
+          {
+            text: 'Always active',
+            link: '/',
+            // this item will always be active
+            activeMatch: '/',
+          },
+          {
+            text: 'Active on /foo/',
+            link: '/not-foo/',
+            // this item will be active when current route path starts with /foo/
+            // regular expression is supported
+            activeMatch: '^/foo/',
           },
         ],
       },

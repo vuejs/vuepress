@@ -20,6 +20,7 @@ export interface NavLink extends NavItem {
   link: string
   rel?: string
   target?: string
+  activeMatch?: string
 }
 
 /**

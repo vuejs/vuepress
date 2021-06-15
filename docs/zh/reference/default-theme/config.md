@@ -56,7 +56,7 @@
 
   为了配置导航栏元素，你可以将其设置为 _导航栏数组_ ，其中的每个元素是 `NavbarItem` 对象、 `NavbarGroup` 对象、或者字符串：
 
-  - `NavbarItem` 对象应该有一个 `text` 字段和一个 `link` 字段。
+  - `NavbarItem` 对象应该有一个 `text` 字段和一个 `link` 字段，还有一个可选的 `activeMatch` 字段。
   - `NavbarGroup` 对象应该有一个 `text` 字段和一个 `children` 字段。 `children` 字段同样是一个 _导航栏数组_ 。
   - 字符串应为目标页面文件的路径。它将会被转换为 `NavbarItem` 对象，将页面标题作为 `text` ，将页面路由路径作为 `link` 。
 
@@ -96,6 +96,25 @@ module.exports = {
           {
             text: 'SubGroup',
             children: ['/group/sub/foo.md', '/group/sub/bar.md'],
+          },
+        ],
+      },
+      // 控制元素何时被激活
+      {
+        text: 'Group 2',
+        children: [
+          {
+            text: 'Always active',
+            link: '/',
+            // 该元素将一直处于激活状态
+            activeMatch: '/',
+          },
+          {
+            text: 'Active on /foo/',
+            link: '/not-foo/',
+            // 该元素在当前路由路径是 /foo/ 开头时激活
+            // 支持正则表达式
+            activeMatch: '^/foo/',
           },
         ],
       },
