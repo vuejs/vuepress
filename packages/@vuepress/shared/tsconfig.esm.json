@@ -3,7 +3,8 @@
   "compilerOptions": {
     "module": "ES2020",
     "rootDir": "./src",
-    "outDir": "./lib/esm"
+    "outDir": "./lib/esm",
+    "tsBuildInfoFile": "./tsconfig.esm.tsbuildinfo"
   },
   "include": ["./src"]
 }
