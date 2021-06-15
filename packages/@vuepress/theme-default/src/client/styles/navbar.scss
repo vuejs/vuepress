@@ -1,13 +1,17 @@
 @import '_variables';
 
 .navbar {
+  --navbar-line-height: calc(
+    var(--navbar-height) - 2 * var(--navbar-padding-v)
+  );
+
   padding: var(--navbar-padding-v) var(--navbar-padding-h);
-  line-height: calc(var(--navbar-height) - 1.4rem);
+  line-height: var(--navbar-line-height);
 
   .logo {
-    height: calc(var(--navbar-height) - 1.4rem);
-    min-width: calc(var(--navbar-height) - 1.4rem);
-    margin-right: 0.8rem;
+    height: var(--navbar-line-height);
+    min-width: var(--navbar-line-height);
+    margin-right: var(--navbar-padding-v);
     vertical-align: top;
   }
 
@@ -19,14 +23,15 @@
   }
 
   .navbar-links-wrapper {
-    padding-left: 1.5rem;
+    display: flex;
+    position: absolute;
     box-sizing: border-box;
+    top: var(--navbar-padding-v);
+    right: var(--navbar-padding-h);
+    height: var(--navbar-line-height);
+    padding-left: var(--navbar-padding-h);
     white-space: nowrap;
     font-size: 0.9rem;
-    position: absolute;
-    right: var(--navbar-padding-h);
-    top: var(--navbar-padding-v);
-    display: flex;
 
     .search-box {
       flex: 0 0 auto;
@@ -41,10 +46,6 @@
 
     .can-hide {
       display: none;
-    }
-
-    .navbar-links-wrapper {
-      padding-left: 1.5rem;
     }
 
     .site-name {
@@ -77,7 +78,7 @@
     position: relative;
     display: inline-block;
     margin-left: 1.5rem;
-    line-height: 2rem;
+    line-height: var(--navbar-line-height);
 
     &:first-child {
       margin-left: 0;
