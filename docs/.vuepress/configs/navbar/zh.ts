@@ -1,4 +1,5 @@
 import type { NavbarConfig } from '@vuepress/theme-default'
+import { version } from '../../../../lerna.json'
 
 export const zh: NavbarConfig = [
   {
@@ -98,11 +99,6 @@ export const zh: NavbarConfig = [
         children: [
           '/zh/contributing.md',
           {
-            text: '更新日志',
-            link:
-              'https://github.com/vuepress/vuepress-next/blob/main/CHANGELOG.md',
-          },
-          {
             text: 'Awesome VuePress',
             link: 'https://github.com/vuepress/awesome-vuepress',
           },
@@ -111,8 +107,13 @@ export const zh: NavbarConfig = [
     ],
   },
   {
-    text: 'v2.x',
+    text: `v${version}`,
     children: [
+      {
+        text: '更新日志',
+        link:
+          'https://github.com/vuepress/vuepress-next/blob/main/CHANGELOG.md',
+      },
       {
         text: 'v1.x',
         link: 'https://v1.vuepress.vuejs.org/zh/',

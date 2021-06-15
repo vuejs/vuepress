@@ -1,4 +1,5 @@
 import type { NavbarConfig } from '@vuepress/theme-default'
+import { version } from '../../../../lerna.json'
 
 export const en: NavbarConfig = [
   {
@@ -101,11 +102,6 @@ export const en: NavbarConfig = [
         children: [
           '/contributing.md',
           {
-            text: 'Changelog',
-            link:
-              'https://github.com/vuepress/vuepress-next/blob/main/CHANGELOG.md',
-          },
-          {
             text: 'Awesome VuePress',
             link: 'https://github.com/vuepress/awesome-vuepress',
           },
@@ -114,8 +110,13 @@ export const en: NavbarConfig = [
     ],
   },
   {
-    text: 'v2.x',
+    text: `v${version}`,
     children: [
+      {
+        text: 'Changelog',
+        link:
+          'https://github.com/vuepress/vuepress-next/blob/main/CHANGELOG.md',
+      },
       {
         text: 'v1.x',
         link: 'https://v1.vuepress.vuejs.org',
