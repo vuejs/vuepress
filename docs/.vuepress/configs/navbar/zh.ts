@@ -1,5 +1,5 @@
 import type { NavbarConfig } from '@vuepress/theme-default'
-import { version } from '../../../../lerna.json'
+import { version } from '../meta'
 
 export const zh: NavbarConfig = [
   {
