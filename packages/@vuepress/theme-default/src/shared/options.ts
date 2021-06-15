@@ -73,6 +73,13 @@ export interface DefaultThemeLocaleData extends LocaleData {
   logo?: null | string
 
   /**
+   * Navbar dark mode button config
+   *
+   * Enable dark mode switching and display a button in navbar or not
+   */
+  darkMode?: boolean
+
+  /**
    * Navbar repository config
    *
    * Used for the repository link of navbar

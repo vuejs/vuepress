@@ -7,6 +7,7 @@ const defaultLocaleOptions: DefaultThemeLocaleOptions = {
   // navbar
   navbar: [],
   logo: null,
+  darkMode: true,
   repo: null,
   selectLanguageText: 'Languages',
   selectLanguageAriaLabel: 'Select language',

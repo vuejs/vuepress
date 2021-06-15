@@ -1,3 +1,4 @@
+export * from './useDarkMode'
 export * from './useNavLink'
 export * from './useResolveRouteWithRedirect'
 export * from './useScrollPromise'

@@ -149,6 +149,18 @@ module.exports = {
 - Also see:
   - [Guide > Assets > Public Files](../../guide/assets.md#public-files)
 
+### darkMode
+
+- Type: `boolean`
+
+- Default: `true`
+
+- Details:
+
+  Enable dark mode switching or not.
+  
+  If set to `true`, a button to switch dark mode will be displayed in the navbar, and the initial mode will be automatically set according to [prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme).
+
 ### repo
 
 - Type: `string`

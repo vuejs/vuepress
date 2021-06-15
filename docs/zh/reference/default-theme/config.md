@@ -149,6 +149,18 @@ module.exports = {
 - 参考：
   - [指南 > 静态资源 > Public 文件](../../guide/assets.md#public-文件)
 
+### darkMode
+
+- 类型： `boolean`
+
+- 默认值： `true`
+
+- 详情：
+
+  是否启用切换夜间模式的功能。
+
+  如果设置为 `true` ，将会在导航栏展示一个切换夜间模式的按钮，并会根据 [prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme) 自动设置初始模式。
+
 ### repo
 
 - 类型： `string`
