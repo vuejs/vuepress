@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "chalk": "^2.3.2",
+    "dayjs": "^1.10.5",
     "escape-html": "^1.0.3",
     "fs-extra": "^7.0.1",
     "globby": "^9.2.0",
