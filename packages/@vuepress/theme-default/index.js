@@ -44,7 +44,7 @@ module.exports = (options, ctx) => {
       ['container', {
         type: 'danger',
         defaultTitle: {
-          '/': 'WARNING',
+          '/': 'DANGER',
           '/zh/': '警告'
         }
       }],
