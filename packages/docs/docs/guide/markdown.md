@@ -323,7 +323,7 @@ export default { // Highlighted
 
 ## Line Numbers
 
-You can enable line numbers for each code blocks via config:
+You can enable line numbers for each code block via config:
 
 ``` js
 module.exports = {
