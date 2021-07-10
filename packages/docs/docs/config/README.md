@@ -380,12 +380,26 @@ VuePress comes with built-in webpack config for the CSS pre-processors listed be
 
 Options for [postcss-loader](https://github.com/postcss/postcss-loader). Note specifying this value will overwrite autoprefixer and you will need to include it yourself.
 
-### Stylus
+<!-- textlint-disable terminology -->
+
+### stylus
+
+<!-- textlint-enable -->
 
 - Type: `Object`
 - Default: `{ preferPathResolver: 'webpack' }`
 
-Options for [stylus-loader](https://github.com/shama/stylus-loader).
+Options for [stylus-loader](https://github.com/webpack-contrib/stylus-loader). For example, to forward variables to stylus:
+
+``` js
+module.exports = {
+  stylus: {
+    define: {
+      '$ASSET_PATH': process.env.ASSET_PATH
+    }
+  }
+}
+```
 
 ### scss
 
