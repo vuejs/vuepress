@@ -17,6 +17,8 @@ const snippetPlugin = require('./lib/snippet')
 const emojiPlugin = require('markdown-it-emoji')
 const anchorPlugin = require('markdown-it-anchor')
 const tocPlugin = require('markdown-it-table-of-contents')
+const imgSizePlugin = require('markdown-it-imsize')
+
 const {
   slugify: _slugify,
   parseHeaders,
@@ -34,6 +36,7 @@ module.exports = (markdown = {}) => {
     pageSuffix,
     anchor,
     toc,
+    imgSize,
     plugins,
     lineNumbers,
     beforeInstantiate,
@@ -101,6 +104,14 @@ module.exports = (markdown = {}) => {
         format: parseHeaders
       }, toc)])
       .end()
+
+    .plugin(PLUGINS.IMG_SIZE)
+      .use(imgSizePlugin, [Object.assign({
+        html: true,
+        linkify: true,
+        typography: true
+      }, imgSize)])
+    .end()
 
   if (lineNumbers) {
     config
