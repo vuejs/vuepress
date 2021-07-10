@@ -17,6 +17,12 @@ You can also use the `~` prefix to explicitly specify this is a webpack module r
 ![Image from dependency](~some-dependency/image.png)
 ```
 
+One alias that is added by default is `@source`, if you follow the recommended [Directory Structure](./directory-structure.md) this is the `docs` folder. 
+
+``` md
+![Image from images folder](~@source/images/image.png)
+```
+
 Webpack aliases can be configured via [configureWebpack](../config/README.md#configurewebpack) in `.vuepress/config.js`. Example:
 
 ``` js
