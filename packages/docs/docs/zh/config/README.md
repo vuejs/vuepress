@@ -67,9 +67,9 @@ module.exports = {
 ### temp
 
 - Type: `string`
-- Default: `/path/to/@vuepress/core/.temp`
+- Default: `/tmp/vuepress-SUFFIX`
 
-指定客户端文件的临时目录。
+指定客户端文件的临时目录。`SUFFIX` 是 `fs.mkdtemp` 产生的随机后缀。
 
 ### dest
 

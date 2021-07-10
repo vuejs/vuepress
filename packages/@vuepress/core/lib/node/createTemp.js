@@ -1,4 +1,6 @@
 const { fs, path, chalk, logger } = require('@vuepress/shared-utils')
+const os = require('os')
+const process = require('process')
 
 // Only empty the `.temp` directory at most once per run to avoid
 // compilation errors caused by removed files.
@@ -22,7 +24,10 @@ let alreadyEmptied = false
 
 module.exports = function createTemp (tempPath) {
   if (!tempPath) {
-    tempPath = path.resolve(__dirname, '../../.temp')
+    tempPath = fs.mkdtempSync(path.join(os.tmpdir(), 'vuepress-'))
+    process.on('exit', _code => {
+      fs.removeSync(tempPath)
+    })
   } else {
     tempPath = path.resolve(tempPath)
   }
