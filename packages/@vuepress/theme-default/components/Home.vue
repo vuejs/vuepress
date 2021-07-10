@@ -46,6 +46,9 @@
       >
         <h2>{{ feature.title }}</h2>
         <p>{{ feature.details }}</p>
+        <p v-if="feature.actionText && feature.actionLink">
+          <NavLink :item="{ link: feature.actionLink, text: feature.actionText}" />
+        </p>
       </div>
     </div>
 
