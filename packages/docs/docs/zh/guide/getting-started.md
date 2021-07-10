@@ -4,6 +4,8 @@
 VuePress 需要 [Node.js](https://nodejs.org/en/) >= 8.6
 :::
 
+xxxxxxxxxxxxxxx
+
 本文会帮助你从头搭建一个简单的 VuePress 文档。如果你想在一个现有项目中使用 VuePress 管理文档，从步骤 3 开始。
 
 1. 创建并进入一个新目录
