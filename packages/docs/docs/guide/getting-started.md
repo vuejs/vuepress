@@ -57,6 +57,21 @@ npm run dev
 </code-block>
 </code-group>
 
+Install the dependencies
+
+```bash
+   npm install
+```
+
+Serve the site in the local server
+
+```bash
+   npm run dev
+```
+
+VuePress will start a hot-reloading development server at [http://localhost:8080](http://localhost:8080).
+
+
 ## Manual Installation
 
 If you prefer, you can build a basic VuePress documentation site from ground up instead of using the generator mentioned above.
