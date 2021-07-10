@@ -215,3 +215,23 @@ heroku open
 ## Vercel
 
 See [Creating and Deploying a VuePress App with Vercel](https://vercel.com/guides/deploying-vuepress-to-vercel).
+
+## QuantCDN
+
+1. Install [Quant CLI](https://docs.quantcdn.io/docs/cli/get-started)
+
+2. Create a QuantCDN account by [signing up](https://dashboard.quantcdn.io/register)
+
+3. Initialize your project with `quant init` and fill in your credentials:
+
+  ``` bash
+  quant init
+  ```
+
+4. Deploy your site
+
+  ``` bash
+  quant deploy
+  ```
+
+See [docs](https://docs.quantcdn.io/docs/cli/continuous-integration) and [blog](https://www.quantcdn.io/blog) for more examples and use cases for deploying to QuantCDN.
