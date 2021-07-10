@@ -35,7 +35,7 @@
     "cache-loader": "^3.0.0",
     "chokidar": "^2.0.3",
     "connect-history-api-fallback": "^1.5.0",
-    "copy-webpack-plugin": "^5.0.2",
+    "copy-webpack-plugin": "^6.3.0",
     "core-js": "^3.6.4",
     "cross-spawn": "^6.0.5",
     "css-loader": "^2.1.1",

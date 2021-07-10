@@ -40,9 +40,9 @@ module.exports = function createServerConfig (ctx) {
   if (fs.existsSync(publicDir)) {
     config
       .plugin('copy')
-      .use(CopyPlugin, [[
+      .use(CopyPlugin, [{ patterns: [
         { from: publicDir, to: outDir }
-      ]])
+      ] }])
   }
 
   if (!env.isDebug) {
