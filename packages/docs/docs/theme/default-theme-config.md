@@ -35,6 +35,8 @@ Any extra content after the `YAML front matter` will be parsed as normal Markdow
 
 To use a fully custom homepage layout, you can also use a [Custom Layout](#custom-layout-for-specific-pages).
 
+For the 'heroImage: /hero.png' it is located in [public folder](../guide/assets.md#public-files).
+
 ## Navbar
 
 The Navbar may contain your page title, [Search Box](#search-box), [Navbar Links](#navbar-links), [Languages](../guide/i18n.md) and [Repository Link](#git-repo-and-edit-links), they all depend on your configuration.
