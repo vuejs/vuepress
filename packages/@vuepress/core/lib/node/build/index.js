@@ -72,6 +72,7 @@ module.exports = class Build extends EventEmitter {
       clientManifest,
       runInNewContext: false,
       inject: false,
+      cache: this.context.siteConfig.componentCache || false,
       shouldPrefetch: this.context.siteConfig.shouldPrefetch || (() => true),
       template: await fs.readFile(this.context.ssrTemplate, 'utf-8')
     })
