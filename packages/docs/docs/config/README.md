@@ -9,6 +9,8 @@ sidebar: auto
 
 ## Basic Config
 
+This configuration keys are to put in `module.exports` section of `.vuepress/config.js` file.
+
 ### base
 
 - Type: `string`
