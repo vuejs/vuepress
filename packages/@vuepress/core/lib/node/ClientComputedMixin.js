@@ -87,10 +87,12 @@ module.exports = siteData => {
         page.frontmatter.title // explicit title
         || page.title // inferred title
       )
+      const description = this.$description.trim()
+      const siteTitleAndDescription = description.length > 0 ? siteTitle + ' | ' + description : siteTitle
       return siteTitle
         ? selfTitle
           ? (selfTitle + ' | ' + siteTitle)
-          : siteTitle
+          : siteTitleAndDescription
         : selfTitle || 'VuePress'
     }
 
