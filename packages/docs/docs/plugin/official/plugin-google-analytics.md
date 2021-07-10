@@ -46,3 +46,10 @@ Please be aware of [GDPR (2018 reform of EU data protection rules)](https://ec.e
 - Default: `undefined`
 
 Provide the Google Analytics ID to enable integration.
+
+### gaStorage
+
+- Type: `string`
+- Default: `undefined`
+
+Allows you to disable cookies. More information can be found in the [official documentation of google analytics](https://developers.google.com/analytics/devguides/collection/analyticsjs/cookies-user-id#disabling_cookies).
