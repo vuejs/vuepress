@@ -6,7 +6,7 @@ We have two main reasons to support this feature:
 
 1. VuePress provides users with a [default theme](./default-theme-config.md), which meets the needs of document writers in most scenarios, even so, there are still many users who choose to `eject` and edit it, even if they may only need to make minor changes to one of the components.
 
-2. In [0.x](https://vuepress.vuejs.org/guide/custom-themes.html#site-and-page-metadata), only one `Layout.vue` is needed for a theme, so we can achieve simple expansion by directly wrapping `Layout.vue` of another theme.
+2. In [0.x](https://web.archive.org/web/20180915084828/https://vuepress.vuejs.org/guide/custom-themes.html), only one `Layout.vue` is needed for a theme, so we can achieve simple expansion by directly wrapping `Layout.vue` of another theme.
 
    By 1.x, the elements of a theme has become more complex, we have started to have [theme level configuration](./option-api.md), which supports plugins, custom global layout, etc. We have also introduced the [directory structure conventions](./writing-a-theme.md#directory-structure) on theme development, such as `styles/index.styl`, under this background, we can not achieve inheritance as 0.x did.
 
