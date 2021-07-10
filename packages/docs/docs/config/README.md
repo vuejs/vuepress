@@ -203,9 +203,9 @@ As there’s an [alias](../plugin/option-api.html#alias) option out there, using
 
 ```js
 // config.js
- alias: {
-    'styles': path.resolve(__dirname, './styles')
-  }
+alias: {
+  'styles': path.resolve(__dirname, './styles')
+}
 ```
 
 ``` stylus
