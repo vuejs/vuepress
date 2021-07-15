@@ -9,6 +9,8 @@ const rCombining = /[\u0300-\u036F]/g
 export = function slugify (str: string): string {
   // Split accented characters into components
   return str.normalize('NFKD')
+    // Remove links, just leave hyperlink's text
+    .replace(/\[(.*)?]\(.*?\)/g,'$1')
     // Remove accents
     .replace(rCombining, '')
     // Remove control characters
