@@ -13,7 +13,7 @@ metaTitle: 博客插件 | VuePress
 
 ## 安装
 
-在使用这个插件之前，我们强烈建议你先阅读 [Getting Started](https://vuepress-plugin-blog.ulivz.com/guide/getting-started.html)。
+在使用这个插件之前，我们强烈建议你先阅读 [Getting Started](https://vuepress-plugin-blog.billyyyyy3320.com/guide/getting-started.html)。
 
 ```bash
 yarn add -D @vuepress/plugin-blog
@@ -28,4 +28,4 @@ module.exports = {
 }
 ```
 
-参考 [文档](https://vuepress-theme-blog.ulivz.com/) 来查看所有可用的选项。
+参考 [文档](https://vuepress-plugin-blog.billyyyyy3320.com) 来查看所有可用的选项。
