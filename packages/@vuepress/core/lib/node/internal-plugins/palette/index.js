@@ -37,9 +37,11 @@ module.exports = (options, ctx) => ({
       ? `@import(${JSON.stringify(userVariables.replace(/[\\]+/g, '/'))})`
       : (fs.existsSync(userPalette)
         ? `@import(${JSON.stringify(userPalette.replace(/[\\]+/g, '/'))})`
-        : '')(fs.existsSync(userPalette) || fs.existsSync(themePalette))
-        ? logger.warn('palette.style is deprecation')
-        : ''
+        : '')
+
+    fs.existsSync(userPalette) || fs.existsSync(themePalette)
+      ? logger.warn('palette.style is deprecation')
+      : ''
 
     const nullComment = '// null'
 
