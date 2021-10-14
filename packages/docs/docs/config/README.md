@@ -140,9 +140,9 @@ Specify which pattern of files you want to be resolved.
 
 ## Styling
 
-### palette.styl
+### variables.styl
 
-To apply simple overrides to the styling of the [default preset](https://github.com/vuejs/vuepress/blob/master/packages/@vuepress/core/lib/client/style/config.styl) or define some variables to use later, you can create a `.vuepress/styles/palette.styl` file.
+To apply simple overrides to the styling of the [default preset](https://github.com/vuejs/vuepress/blob/master/packages/@vuepress/core/lib/client/style/config.styl) or define some variables to use later, you can create a `.vuepress/styles/variables.styl` file.
 
 There are some predefined variables you can tweak:
 
@@ -170,7 +170,7 @@ $MQMobileNarrow = 419px
 ```
 
 ::: danger Note
-You should ONLY define variables in this file. Since `palette.styl` will be imported at the end of the root Stylus config file, as a config, several files will use it, so once you wrote styles here, your style would be duplicated by multiple times.
+You should ONLY define variables in this file. Since `variables.styl` will be imported at the end of the root Stylus config file, as a config, several files will use it, so once you wrote styles here, your style would be duplicated by multiple times.
 :::
 
 ### index.styl
@@ -184,7 +184,7 @@ VuePress provides a convenient way to add extra styles. You can create a `.vuepr
 ```
 
 ::: warning
-Because of the behavior behind the scenes, in both `palette.styl` and `index.styl`, the normal `.css` style sheets are not allowed to be imported by [@import / @require](https://stylus-lang.com/docs/import.html) from **relative paths**.
+Because of the behavior behind the scenes, in both `variables.styl` and `index.styl`, the normal `.css` style sheets are not allowed to be imported by [@import / @require](https://stylus-lang.com/docs/import.html) from **relative paths**.
 :::
 
 ::: details What if you have to import / require normal `css` style sheets?
@@ -215,7 +215,7 @@ As there’s an [alias](../plugin/option-api.html#alias) option out there, using
 
 **Also see:**
 
-- [Why can’t `palette.styl` and `index.styl` merge into one API?](../faq/README.md#why-can-t-palette-styl-and-index-styl-merge-into-one-api)
+- [Why can’t `variables.styl` and `index.styl` merge into one API?](../faq/README.md#why-can-t-palette-styl-and-index-styl-merge-into-one-api)
 
 ## Theming
 

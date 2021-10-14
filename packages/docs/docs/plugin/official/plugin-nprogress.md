@@ -24,12 +24,12 @@ module.exports = {
 
 ## Custom color
 
-Set `$nprogressColor` in your __site__ or __theme__ `palette.styl` file to change the color of the progress bar (default is `$accentColor`).
+Set `$nprogressColor` in your __site__ or __theme__ `variables.styl` file to change the color of the progress bar (default is `$accentColor`).
 
 ```stylus
-// .vuepress/styles/palette.styl
+// .vuepress/styles/variables.styl
 // or
-// .vuepress/theme/styles/palette.styl
+// .vuepress/theme/styles/variables.styl
 
 $nprogressColor = red
 ```

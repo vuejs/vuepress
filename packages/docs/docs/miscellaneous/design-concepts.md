@@ -114,19 +114,19 @@ When customizing `templates/ssr.html`, or `templates/dev.html`, it’s best to e
 
 ### Overriding
 
-For `palette.styl`, `index.styl` and `plugins`, follow the principles of overriding:
+For `variables.styl`, `index.styl` and `plugins`, follow the principles of overriding:
 
-#### palette.styl
+#### variables.styl
 
-User’s `styles/palette.styl` has a higher priority than the theme’s `styles/palette.styl`, so the theme can define its own palette and the user can tweak it. For example:
+User’s `styles/variables.styl` has a higher priority than the theme’s `styles/variables.styl`, so the theme can define its own palette and the user can tweak it. For example:
 
 ```stylus
-// theme/styles/palette.styl
+// theme/styles/variables.styl
 $accentColor = #0f0
 ```
 
 ```stylus
-// .vuepress/styles/palette.styl
+// .vuepress/styles/variables.styl
 $accentColor = #f00
 ```
 

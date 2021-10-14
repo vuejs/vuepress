@@ -42,7 +42,7 @@ The [file-level conventions](./writing-a-theme.md#directory-structure) are as fo
 
 - **Global Components**，that is the Vue components under `theme/global-components`.
 - **Components**，that is the Vue components under `theme/components`.
-- **Global Style and Palette**，that is `index.styl` and `palette.styl` under `theme/styles`.
+- **Global Style and Palette**，that is `index.styl` and `variables.styl` under `theme/styles`.
 - **HTML Template**, that is `dev.html` and `ssr.html` under `theme/templates`.
 - **Theme-Level App Enhancement File**，that is `theme/enhanceApp.js`
 

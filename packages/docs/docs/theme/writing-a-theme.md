@@ -44,7 +44,7 @@ theme
 │   └── 404.vue
 ├── `styles`
 │   ├── index.styl
-│   └── palette.styl
+│   └── variables.styl
 ├── `templates`
 │   ├── dev.html
 │   └── ssr.html

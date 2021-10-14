@@ -106,7 +106,7 @@ Configure the hotkeys which when pressed will focus the search box. Set to an em
 
 ### Tweak the default colors.
 
-Since the Search component leverages the built-in palette, you can tweak the default colors via `styles/palette.styl`:
+Since the Search component leverages the built-in palette, you can tweak the default colors via `styles/variables.styl`:
 
 ```stylus
 // colors of the searchbox you see now:

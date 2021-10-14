@@ -14,7 +14,8 @@ VuePress follows the principle of **"Convention is better than configuration"**.
 │   │   ├── `public` _(**Optional**)_
 │   │   ├── `styles` _(**Optional**)_
 │   │   │   ├── index.styl
-│   │   │   └── palette.styl
+│   │   │   └── variables.styl
+│   │   │   └── palette.styl _(**Deprecation**)_
 │   │   ├── `templates` _(**Optional, Danger Zone**)_
 │   │   │   ├── dev.html
 │   │   │   └── ssr.html
@@ -40,7 +41,7 @@ Please note the capitalization of the directory name.
 - `docs/.vuepress/theme`: Used to store local theme.
 - `docs/.vuepress/styles`: Stores style related files.
 - `docs/.vuepress/styles/index.styl`: Automatically applied global style files, generated at the ending of the CSS file, have a higher priority than the default style.
-- `docs/.vuepress/styles/palette.styl`: The palette is used to override the default color constants and to set the color constants of Stylus.
+- `docs/.vuepress/styles/variables.styl`: The palette is used to override the default color constants and to set the color constants of Stylus.
 - `docs/.vuepress/public`: Static resource directory.
 - `docs/.vuepress/templates`: Store HTML template files.
 - `docs/.vuepress/templates/dev.html`: HTML template file for development environment.
@@ -78,4 +79,3 @@ For the above directory structure, the default page routing paths are as follows
 - [Config](../config/README.md)
 - [Theme](../theme/)
 - [Default Theme Config](../theme/default-theme-config.md)
-
