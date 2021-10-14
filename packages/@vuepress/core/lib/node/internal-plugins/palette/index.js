@@ -1,5 +1,5 @@
 const {
-  fs, path,
+  fs, path, logger,
   datatypes: { isPlainObject }
 } = require('@vuepress/shared-utils')
 
@@ -17,38 +17,48 @@ module.exports = (options, ctx) => ({
       ctx.siteConfig.stylus.import = (ctx.siteConfig.stylus.import || []).concat([configFile])
     }
 
-    // 2. write palette.styl
+    // 2. write variables.styl
     const { sourceDir, writeTemp } = ctx
 
+    const themeVariables = path.resolve(ctx.themeAPI.theme.path, 'styles/variables.styl')
+    const userVariables = path.resolve(sourceDir, '.vuepress/styles/variables.styl')
+
+    // Deprecation
     const themePalette = path.resolve(ctx.themeAPI.theme.path, 'styles/palette.styl')
     const userPalette = path.resolve(sourceDir, '.vuepress/styles/palette.styl')
 
-    const themePaletteContent = fs.existsSync(themePalette)
-      ? `@import(${JSON.stringify(themePalette.replace(/[\\]+/g, '/'))})`
-      : ''
+    const themeVariablesContent = fs.existsSync(themeVariables)
+      ? `@import(${JSON.stringify(themeVariables.replace(/[\\]+/g, '/'))})`
+      : (fs.existsSync(themePalette)
+        ? `@import(${JSON.stringify(themePalette.replace(/[\\]+/g, '/'))})`
+        : '')
 
-    const userPaletteContent = fs.existsSync(userPalette)
-      ? `@import(${JSON.stringify(userPalette.replace(/[\\]+/g, '/'))})`
-      : ''
+    const userVariablesContent = fs.existsSync(userVariables)
+      ? `@import(${JSON.stringify(userVariables.replace(/[\\]+/g, '/'))})`
+      : (fs.existsSync(userPalette)
+        ? `@import(${JSON.stringify(userPalette.replace(/[\\]+/g, '/'))})`
+        : '')(fs.existsSync(userPalette) || fs.existsSync(themePalette))
+        ? logger.warn('palette.style is deprecation')
+        : ''
 
     const nullComment = '// null'
 
     // user's palette can override theme's palette.
-    let paletteContent = '// Theme\'s Palette\n'
-      + (themePaletteContent || nullComment)
+    let variablesContent = '// Theme\'s Palette\n'
+      + (themeVariablesContent || nullComment)
       + '\n\n// User\'s Palette\n'
-      + (userPaletteContent || nullComment)
+      + (userVariablesContent || nullComment)
 
     if (ctx.themeAPI.existsParentTheme) {
-      const parentThemePalette = path.resolve(ctx.themeAPI.parentTheme.path, 'styles/palette.styl')
+      const parentThemePalette = path.resolve(ctx.themeAPI.parentTheme.path, 'styles/variables.styl')
       const parentThemePaletteContent = fs.existsSync(parentThemePalette)
         ? `@import(${JSON.stringify(parentThemePalette.replace(/[\\]+/g, '/'))})`
         : ''
-      paletteContent = '// Parent Theme\'s Palette\n'
+      variablesContent = '// Parent Theme\'s Palette\n'
         + (parentThemePaletteContent || nullComment)
-        + '\n\n' + paletteContent
+        + '\n\n' + variablesContent
     }
 
-    await writeTemp('palette.styl', paletteContent)
+    await writeTemp('variables.styl', variablesContent)
   }
 })

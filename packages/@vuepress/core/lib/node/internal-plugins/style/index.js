@@ -16,7 +16,7 @@ module.exports = (options, ctx) => ({
     const hasUserOverride = fs.existsSync(overridePath)
 
     if (hasUserOverride) {
-      logger.tip(`${chalk.magenta('override.styl')} has been deprecated from v1.0.0, using ${chalk.cyan('.vuepress/styles/palette.styl')} instead.\n`)
+      logger.tip(`${chalk.magenta('override.styl')} has been deprecated from v1.0.0, using ${chalk.cyan('.vuepress/styles/variables.styl')} instead.\n`)
     }
 
     const themeStyle = path.resolve(themeAPI.theme.path, 'styles/index.styl')
