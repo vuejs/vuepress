@@ -18,7 +18,7 @@ yarn add -D @vuepress/plugin-pwa
 
 ```javascript
 module.exports = {
-  plugins: ['@vuepress/pwa']
+  plugins: ['@vuepress/plugin-pwa']
 }
 ```
 
