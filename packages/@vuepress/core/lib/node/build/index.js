@@ -20,6 +20,7 @@ module.exports = class Build extends EventEmitter {
   constructor (context) {
     super()
     this.context = context
+    this.maxConcurrency = this.context.options.maxConcurrency
     this.outDir = this.context.outDir
   }
 
@@ -90,10 +91,17 @@ module.exports = class Build extends EventEmitter {
 
     // render pages
     logger.wait('Rendering static HTML...')
+    if (this.maxConcurrency) logger.info(`max concurrency set: ${this.maxConcurrency}`)
 
-    const pagePaths = await Promise.all(
-      this.context.pages.map(page => this.renderPage(page))
-    )
+    const pagePaths = []
+    while (this.context.pages.length) {
+      // 100 at a time
+      const segmentPaths = await Promise.all(
+        this.context.pages.splice(0, this.maxConcurrency || 100000)
+        .map(page => this.renderPage(page))
+      )
+      pagePaths.push(...segmentPaths)
+    }
 
     readline.clearLine(process.stdout, 0)
     readline.cursorTo(process.stdout, 0)
