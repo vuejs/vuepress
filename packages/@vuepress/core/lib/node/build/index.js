@@ -95,7 +95,6 @@ module.exports = class Build extends EventEmitter {
 
     const pagePaths = []
     while (this.context.pages.length) {
-      // 100 at a time
       const segmentPaths = await Promise.all(
         this.context.pages.splice(0, this.maxConcurrency || 100000)
         .map(page => this.renderPage(page))
