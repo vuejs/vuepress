@@ -385,7 +385,7 @@ It seems no any changes here.
   * A VuePress Blog Theme implemented in around 70 lines**: https://github.com/ulivz/70-lines-of-vuepress-blog-theme
 
 * **Default Blog Theme**: [@vuepress/plugin-blog](https://github.com/ulivz/vuepress-theme-blog)
-  * Live Example: http://example.vuepress-theme-blog.ulivz.com
+  * Live Example: http://example.vuepress-theme-blog.billyyyyy3320.com
 
 ### BREAKING CHANGES
 
@@ -597,7 +597,7 @@ It seems no any changes here.
 
 * **$core:** cannot read property 'globalLayout' of null (close: [#1304](https://github.com/vuejs/vuepress/issues/1304)) ([94dab12](https://github.com/vuejs/vuepress/commit/94dab12))
 * **$core:** cannot use relative path in a permalink page (close: [#1227](https://github.com/vuejs/vuepress/issues/1227))([#1298](https://github.com/vuejs/vuepress/issues/1298)) ([d560e22](https://github.com/vuejs/vuepress/commit/d560e22))
-  - Check out the [blog post](https://vuepress-relative-paths.ulivz.com/) for more details.
+  - Check out the [blog post](https://vuepress-relative-paths.billyyyyy3320.com/) for more details.
 
 
 <a name="1.0.0-alpha.38"></a>
