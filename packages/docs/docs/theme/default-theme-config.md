@@ -394,6 +394,8 @@ module.exports = {
     algolia: {
       apiKey: '<API_KEY>',
       indexName: '<INDEX_NAME>'
+      // If Algolia did not provided you any `appId`, use `BH4D9OD16A` or remove this option
+      appId: '<APP_ID>',
     }
   }
 }
