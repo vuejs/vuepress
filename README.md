@@ -11,7 +11,9 @@
   <a href="https://discordapp.com/invite/HBherRA"><img src="https://img.shields.io/badge/Discord-join%20chat-738bd7.svg" alt="VuePress channel on Discord"></a>
 </p>
 
-> VuePress 2 is coming! Please check out [vuepress-next](https://github.com/vuepress/vuepress-next).
+## Status
+
+> VuePress is now in maintenance mode. For a next-gen Vue-based SSG built on top of Vue 3 + Vite, check out [VitePress](https://vitepress.vuejs.org/).
 
 ## Documentation
 
