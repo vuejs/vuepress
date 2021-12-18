@@ -43,11 +43,11 @@ VuePress 支持重定向到干净链接。如果一个链接 `/foo` 找不到，
 无论是否使用了 permalink 和 clean-urls 插件，你的相对路径都应该依赖于当前的文件结构来定义。在上面的例子中，即使你将 `/foo/one.md` 的路径设为了 `/foo/one/`，你依然应该通过 `./two.md` 来访问 `/foo/two.md`。
 :::
 
-### Page Suffix
+### 页面后缀
 
-Pages and internal links get generated with the `.html` suffix by default.
+生成页面和内部链接时，默认使用 `.html ` 作为后缀。
 
-You can customize this by setting [config.markdown.pageSuffix](../config/README.md#markdown-pagesuffix).
+你可以通过 [config.markdown.pageSuffix](../config/README.md#markdown-pagesuffix) 进行自定义配置.
 
 ### 外部链接
 
