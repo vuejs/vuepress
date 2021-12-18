@@ -386,6 +386,8 @@ module.exports = {
     algolia: {
       apiKey: '<API_KEY>',
       indexName: '<INDEX_NAME>'
+      // 如果 Algolia 没有为你提供 `appId` ，使用 `BH4D9OD16A` 或者移除该配置项
+      appId: '<APP_ID>',
     }
   }
 }
