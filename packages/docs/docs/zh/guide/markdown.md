@@ -191,7 +191,7 @@ console.log('你好，VuePress！')
 
 **参考:**
 
-- [vuepress-plugin-container](https://vuepress.github.io/plugins/container/)
+- [vuepress-plugin-container](https://vuepress-community.netlify.app/en/plugins/container/#vuepress-plugin-container)
 
 ## 代码块中的语法高亮
 
