@@ -81,6 +81,35 @@ cd -
 你可以在你的持续集成的设置中，设置在每次 push 代码时自动运行上述脚本。
 :::
 
+### GitHub Pages and Github Actions
+
+1. 创建 [Github access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token);
+2. 在你 github 仓库下，创建一个 [secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) ，填入刚创建的 `token`
+3. 在项目根目录下的 `.github/workflows` 目录（没有的话，请手动创建一个）下创建一个 `.yml` 或者 `.yaml` 文件，如:`vuepress-deploy.yml`;
+
+```yml
+name: Build and Deploy
+on: [push]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: vuepress-deploy
+      uses: jenkey2011/vuepress-deploy@master
+      env:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        TARGET_REPO: username/repo
+        TARGET_BRANCH: master
+        BUILD_SCRIPT: yarn && yarn build
+        BUILD_DIR: docs/.vuepress/dist
+        CNAME: https://www.xxx.com
+```
+
+详细使用方法，可以看[jenkey2011/vuepress-deploy](https://github.com/jenkey2011/vuepress-deploy/)
+
 ### GitHub Pages and Travis CI
 
 1. 在 `docs/.vuepress/config.js` 中设置正确的 `base`。
