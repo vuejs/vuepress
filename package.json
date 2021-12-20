@@ -19,7 +19,7 @@
     "packages:diff": "lerna diff",
     "packages:list": "lerna ls -l",
     "register-vuepress": "lerna exec --scope vuepress -- yarn link",
-    "release": "yarn lint && yarn build && yarn test && node scripts/release.js",
+    "release": "yarn lint && yarn build && mono release",
     "remote-version": "node scripts/remote-version.js",
     "show-help": "yarn workspace docs show-help",
     "test": "node scripts/test.js",
@@ -47,6 +47,7 @@
   "devDependencies": {
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
+    "@nomadland/mono": "0.3.3",
     "@types/escape-html": "^0.0.20",
     "@types/fs-extra": "^5.0.4",
     "@types/globby": "^9.1.0",
