@@ -1,3 +1,18 @@
+## [1.8.3](https://github.com/vuejs/vuepress/compare/v1.8.2...v1.8.3) (2021-12-20)
+
+
+### Bug Fixes
+
+* **$core:** escape meta tags correctly (fix [#2831](https://github.com/vuejs/vuepress/issues/2831)) ([#2832](https://github.com/vuejs/vuepress/issues/2832)) ([b877b3b](https://github.com/vuejs/vuepress/commit/b877b3b)) [@Sangeeth&nbsp;Sudheer](https://github.com/Sangeeth&nbsp;Sudheer)
+* **theme-default:** fix display text for danger container ([#2849](https://github.com/vuejs/vuepress/issues/2849)) ([6d15511](https://github.com/vuejs/vuepress/commit/6d15511)) [@Taiga](https://github.com/Taiga)
+
+
+### Features
+
+* **plugin-last-updated:** inject `lastUpdatedTimestamp` to `$page` ([#1778](https://github.com/vuejs/vuepress/issues/1778)) ([2345902](https://github.com/vuejs/vuepress/commit/2345902)) [@Christoph&nbsp;Wiechert](https://github.com/Christoph&nbsp;Wiechert)
+
+
+
 ## [1.8.2](https://github.com/vuejs/vuepress/compare/v1.8.1...v1.8.2) (2021-02-18)
 
 
