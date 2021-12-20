@@ -59,8 +59,8 @@ cd -
 ### GitHub Pages and Github Actions
 
 1. 创建 `Github access token`
-2. 在你github仓库下，创建一个 `secrets` ，填入刚创建的 `token`
-3. 在项目根目录下的`.github/workflows`目录（没有的话，请手动创建一个）下创建一个 `.yml` 或者 `.yaml` 文件，如:`vuepress-deploy.yml`;
+2. 在你 github 仓库下，创建一个 `secrets` ，填入刚创建的 `token`
+3. 在项目根目录下的 `.github/workflows` 目录（没有的话，请手动创建一个）下创建一个 `.yml` 或者 `.yaml` 文件，如:`vuepress-deploy.yml`;
 
 ```yml
 name: Build and Deploy
