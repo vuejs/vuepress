@@ -56,6 +56,11 @@ cd -
 You can also run the above script in your CI setup to enable automatic deployment on each push.
 :::
 
+::: tip
+When you use a **Custom Domain name**, you MUST add the CNAME file into /docs/.vuepress/public folder (Create the folder if it isn't there). Otherwise, your CNAME file will always be removed with each deploy and never work.
+:::
+
+
 ### GitHub Pages and GitHub Actions
 
 1. [Create a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token);
