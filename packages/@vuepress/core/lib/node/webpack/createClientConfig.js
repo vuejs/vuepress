@@ -15,6 +15,16 @@ module.exports = function createClientConfig (ctx) {
     .entry('app')
       .add(ctx.getLibFilePath('client/clientEntry.js'))
 
+  // https://github.com/webpack/webpack-dev-server/pull/3714/files
+  if (process.env.NODE_ENV !== 'production') {
+    config
+      .entry('app')
+        // Runtime code for hot module replacement
+        .add('webpack/hot/dev-server.js')
+        // Dev server client for web socket transport, hot and live reload logic
+        .add('webpack-dev-server/client/index.js?hot=true&live-reload=true')
+  }
+
   config.node
     .merge({
       // prevent webpack from injecting useless setImmediate polyfill because Vue

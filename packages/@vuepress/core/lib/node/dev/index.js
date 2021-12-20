@@ -195,25 +195,13 @@ module.exports = class DevProcess extends EventEmitter {
     const contentBase = path.resolve(this.context.sourceDir, '.vuepress/public')
 
     const serverConfig = Object.assign({
-      disableHostCheck: true,
-      compress: true,
-      clientLogLevel: 'error',
-      hot: true,
-      quiet: true,
+      allowedHosts: 'all',
       headers: {
         'access-control-allow-origin': '*'
       },
       open: this.context.options.open,
-      publicPath: this.context.base,
-      watchOptions: {
-        ignored: [
-          (x) => {
-            if (x.includes(this.context.tempPath)) {
-              return false
-            }
-            return /node_modules/.test(x)
-          }
-        ]
+      devMiddleware: {
+        publicPath: this.context.base
       },
       historyApiFallback: {
         disableDotRule: true,
@@ -221,25 +209,38 @@ module.exports = class DevProcess extends EventEmitter {
           { from: /./, to: path.posix.join(this.context.base, 'index.html') }
         ]
       },
-      overlay: false,
+      client: {
+        logging: 'error',
+        overlay: true
+      },
       host: this.host,
-      contentBase,
-      before: (app, server) => {
+      static: {
+        directory: contentBase,
+        watch: {
+          ignored: [
+            (x) => {
+              if (x.includes(this.context.tempPath)) {
+                return false
+              }
+              return /node_modules/.test(x)
+            }
+          ]
+        }
+      },
+      onBeforeSetupMiddleware: (devServer) => {
         if (fs.existsSync(contentBase)) {
-          app.use(this.context.base, require('express').static(contentBase))
+          devServer.app.use(this.context.base, require('express').static(contentBase))
         }
 
-        this.context.pluginAPI.applySyncOption('beforeDevServer', app, server)
+        this.context.pluginAPI.applySyncOption('beforeDevServer', devServer.app, devServer)
       },
-      after: (app, server) => {
-        this.context.pluginAPI.applySyncOption('afterDevServer', app, server)
+      onAfterSetupMiddleware: (devServer) => {
+        this.context.pluginAPI.applySyncOption('afterDevServer', devServer.app, devServer)
       }
     }, this.context.siteConfig.devServer || {})
 
-    WebpackDevServer.addDevServerEntrypoints(this.webpackConfig, serverConfig)
-
     const compiler = webpack(this.webpackConfig)
-    this.server = new WebpackDevServer(compiler, serverConfig)
+    this.server = new WebpackDevServer(serverConfig, compiler)
     return this
   }
 

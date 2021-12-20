@@ -18,6 +18,12 @@
   },
   "license": "MIT",
   "author": "Evan You",
+  "maintainers": [
+    {
+      "name": "ULIVZ",
+      "email": "chl814@foxmail.com"
+    }
+  ],
   "main": "lib/index.js",
   "browserslist": [
     ">1%"
@@ -53,12 +59,13 @@
     "vue-loader": "^15.7.1",
     "vue-router": "^3.4.5",
     "vue-server-renderer": "^2.6.10",
+    "vue-style-loader": "4.1.3",
     "vue-template-compiler": "^2.6.10",
     "vuepress-html-webpack-plugin": "^3.2.0",
     "vuepress-plugin-container": "^2.0.2",
-    "webpack": "^4.8.1",
+    "webpack": "^4.37.0",
     "webpack-chain": "^6.0.0",
-    "webpack-dev-server": "^3.5.1",
+    "webpack-dev-server": "4.6.0",
     "webpack-merge": "^4.1.2",
     "webpackbar": "3.2.0"
   },
@@ -67,11 +74,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "maintainers": [
-    {
-      "name": "ULIVZ",
-      "email": "chl814@foxmail.com"
-    }
-  ]
+  }
 }
