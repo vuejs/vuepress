@@ -47,7 +47,7 @@
   "devDependencies": {
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
-    "@nomadland/mono": "0.3.2",
+    "@nomadland/mono": "0.3.3",
     "@types/escape-html": "^0.0.20",
     "@types/fs-extra": "^5.0.4",
     "@types/globby": "^9.1.0",

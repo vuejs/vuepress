@@ -2640,10 +2640,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@nomadland/mono@0.3.2":
-  version "0.3.2"
-  resolved "https://registry.npmjs.org/@nomadland/mono/-/mono-0.3.2.tgz#fd4f365256d206c830a8ec95f4532a31fd97e356"
-  integrity sha512-SfEqFnCxpnrm2BZtgI7YTA+dFtWbSihcBQ2QedYzGYSpcVsoof9WTPqIZGhS9xm7PAcV6Y7kc5zbnkQxbYNh+A==
+"@nomadland/mono@0.3.3":
+  version "0.3.3"
+  resolved "https://registry.npmjs.org/@nomadland/mono/-/mono-0.3.3.tgz#d035d85c20e12407eb26e5ef24be0373d1038bcc"
+  integrity sha512-OgXsuLQSBrUmbULcAExSL786ab7EerlQ1b3fv/vOgpOLXxUXkQQTqHWaGgLczgzXvkN5gizdldcitEgEIX04hQ==
   dependencies:
     "@speedy-js/config-loader" "0.1.3"
     boxen "^4.1.0"
