@@ -1,7 +1,13 @@
 const fs = require('fs')
 const path = require('path')
 
-const VuepressPackages = fs.readdirSync(path.resolve(__dirname, 'packages/@vuepress'))
+const vuepressPackages = fs.readdirSync(path.resolve(__dirname, 'packages/@vuepress'))
+const availableScopes = [
+  'all',
+  'cli',
+  'zh',
+  ...vuepressPackages
+]
 
 module.exports = {
   extends: [
@@ -12,10 +18,9 @@ module.exports = {
       2,
       'always',
       [
-        'cli',
-        'zh',
-        ...VuepressPackages
-      ].map(name => `$${name}`)
+        ...availableScopes,
+        ...availableScopes.map(name => `$${name}`)
+      ]
     ]
   }
 }
