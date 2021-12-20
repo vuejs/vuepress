@@ -58,9 +58,9 @@ You can also run the above script in your CI setup to enable automatic deploymen
 
 ### GitHub Pages and GitHub Actions
 
-1. Create a personal access token
-2. Create encrypted secrets under your repository
-3. Create a `.yml` or `.yaml` file in the `.github/workflows` directory in the root of your repository. E.g:`vuepress-deploy.yml`;
+1. Create a personal access token;
+2. Create encrypted secrets under your repository;
+3. Create a `.yml` or `.yaml` file in the `.github/workflows` directory in the root of your repository. e.g:`vuepress-deploy.yml`:
 
 ```yml
 name: Build and Deploy
