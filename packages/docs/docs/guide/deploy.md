@@ -83,7 +83,7 @@ jobs:
         CNAME: https://www.xxx.com
 ```
 
-For more information, you can see [jenkey2011/vuepress-deploy](https://github.com/jenkey2011/vuepress-deploy/)
+For more information, you can checkout [jenkey2011/vuepress-deploy](https://github.com/jenkey2011/vuepress-deploy/).
 
 ### GitHub Pages and Travis CI
 
