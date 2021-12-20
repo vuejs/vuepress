@@ -34,7 +34,8 @@
     "cac": "^6.5.6",
     "envinfo": "^7.2.0",
     "opencollective-postinstall": "^2.0.2",
-    "update-notifier": "^4.0.0"
+    "update-notifier": "^4.0.0",
+    "webpack-chain": "^6.0.0"
   },
   "engines": {
     "node": ">=8.6"
@@ -42,6 +43,10 @@
   "collective": {
     "type": "opencollective",
     "url": "https://opencollective.com/vuepress"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./config": "./config.js"
   },
   "maintainers": [
     {

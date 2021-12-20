@@ -7,6 +7,17 @@ sidebar: auto
 
 <Bit/>
 
+## Overview
+
+VuePress only supported these configurations
+
+- `.vuepress/config.js`
+- `.vuepress/config.yml`
+- `.vuepress/config.toml`
+- `.vuepress/config.ts` <Badge text="1.9.0+" />
+
+Noted that `.vuepress/config.ts` is supported from `1.9`, for more information, please head [TypeScript as Config](../guide/typescript-as-config.md)
+
 ## Basic Config
 
 ### base
@@ -380,7 +391,7 @@ VuePress comes with built-in webpack config for the CSS pre-processors listed be
 
 Options for [postcss-loader](https://github.com/postcss/postcss-loader). Note specifying this value will overwrite autoprefixer and you will need to include it yourself.
 
-### Stylus
+### stylus
 
 - Type: `Object`
 - Default: `{ preferPathResolver: 'webpack' }`
@@ -394,7 +405,7 @@ Options for [stylus-loader](https://github.com/shama/stylus-loader).
 
 Options for [sass-loader](https://github.com/webpack-contrib/sass-loader) to load `*.scss` files.
 
-### Sass
+### sass
 
 - Type: `Object`
 - Default: `{ indentedSyntax: true }`

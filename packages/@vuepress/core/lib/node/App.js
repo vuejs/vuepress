@@ -61,7 +61,7 @@ module.exports = class App {
     if (this.options.siteConfig) {
       this.siteConfig = this.options.siteConfig
     } else {
-      let siteConfig = loadConfig(this.vuepressDir)
+      let siteConfig = await loadConfig(this.vuepressDir)
       if (isFunction(siteConfig)) {
         siteConfig = await siteConfig(this)
       }
