@@ -29,9 +29,9 @@ Check out our docs at https://vuepress.vuejs.org/.
 Want to contribute? Check our [Contributing Guide](.github/CONTRIBUTING.md) and [issues for beginners](https://github.com/vuejs/vuepress/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22)!
 
 ```bash
-yarn install # install all dependencies
-yarn dev  # serves VuePress' own docs with itself
-yarn test # make sure your code change pass the test
+npm run bootstrap # install all dependencies
+npm run dev          # serves VuePress' own docs with itself
+npm run test         # make sure your code change pass the test
 ```
 
 If you don't have a local checkout, you can also open [VuePress in Gitpod](https://gitpod.io/#https://github.com/vuejs/vuepress/blob/master/packages/docs/docs/README.md), a free online IDE for GitHub.

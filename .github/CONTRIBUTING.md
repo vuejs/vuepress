@@ -1,22 +1,22 @@
 ## Development Setup
 
-This project uses a monorepo setup that requires using [Yarn](https://yarnpkg.com) because it relies on [Yarn workspaces](https://yarnpkg.com/blog/2017/08/02/introducing-workspaces/).
+This project uses a monorepo setup that requires using [pnpm](https://pnpm.io/) because it relies on [pnpm workspaces](https://pnpm.io/workspaces).
 
 ``` sh
-# Install all dependencies.
-yarn
+# Install all dependencies, i.e. pnpm install --prefer-offline
+npm run bootstrap
 
 # Serves VuePress' own docs with itself.
-yarn dev
+npm run dev
 
 # Build VuePress' own docs with itself.
-yarn build
+npm run build
 
 # Clean dependencies.
-yarn clean
+npm run clean
 
 # Useful when creating new a package.
-yarn boot
+npm run boot
 ```
 
 ## Testing Setup
@@ -25,10 +25,10 @@ VuePress leverages [jest](https://jestjs.io/) for its tests, testing process dep
 
 ```bash
 # Execute all the test suites.
-yarn test
+npm run test
 
 # Execute tests under specfic package. 
-yarn test -p=core ## OR --package=core
+npm run test -p=core ## OR --package=core
 ```
 
 ## Core Packages

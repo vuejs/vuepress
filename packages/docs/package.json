@@ -21,7 +21,7 @@
   "scripts": {
     "build": "vuepress build docs --temp .temp",
     "dev": "vuepress dev docs --temp .temp",
-    "lint-md": "yarn lint-md:style && yarn lint-md:wording",
+    "lint-md": "npm run lint-md:style && npm run lint-md:wording",
     "lint-md:style": "remark --quiet --frail .",
     "lint-md:wording": "textlint ./docs/**/*.md",
     "show-help": "vuepress --help",

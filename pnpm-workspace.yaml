@@ -1,0 +1,4 @@
+packages:
+  - "packages/@vuepress/*"
+  - "packages/vuepress"
+  - "packages/docs"

@@ -1,7 +1,10 @@
 {
-  "npmClient": "yarn",
-  "useWorkspaces": true,
   "version": "1.8.2",
+  "packages": [
+    "packages/@vuepress/*",
+    "packages/vuepress",
+    "packages/docs"
+  ],
   "command": {
     "version": {
       "allowBranch": "master",

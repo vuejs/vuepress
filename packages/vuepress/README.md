@@ -32,9 +32,9 @@ The docs are available at <https://vuepress.vuejs.org>
 Want to contribute? Check our [issues for beginners](https://github.com/vuejs/vuepress/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22)!
 
 ```bash
-yarn # Install and link dependencies for this monorepo
-yarn dev  # serves VuePress' own docs with itself
-yarn test # make sure your code change pass the test
+npm run bootstrap # Install and link dependencies for this monorepo
+npm run dev       # serves VuePress' own docs with itself
+npm run test      # make sure your code change pass the test
 ```
 
 If you don't have a local checkout, you can also open [VuePress in Gitpod](https://gitpod.io/#https://github.com/vuejs/vuepress/blob/master/packages/docs/docs/README.md), a free online IDE for GitHub.

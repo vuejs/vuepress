@@ -24,7 +24,7 @@ about: Create a report to help us improve
 
 <!-- If you are reporting a bug that can ONLY be reproduced on your repository, PLEASE provide this repo link. That takes guessing work out of the way and saves us time. -->
 
-<!-- If your repo isn't public, you can use `codesandbox` or `yarn create vuepress` to create a minimal reproduction -->
+<!-- If your repo isn't public, you can use `codesandbox` or `npm create vuepress` to create a minimal reproduction -->
 
 #### What is expected?
 
