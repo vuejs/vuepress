@@ -25,6 +25,12 @@ describe('snippet', () => {
     expect(output).toMatchSnapshot()
   })
 
+  test('import snippet with highlight single and multiple lines', () => {
+    const input = getFragment(__dirname, 'code-snippet-highlightLines-single-and-multiple.md')
+    const output = mdH.render(input)
+    expect(output).toMatchSnapshot()
+  })
+
   test('import snippets when the file has a space in the file path', () => {
     const input = getFragment(__dirname, 'code-snippet-with-space-in-path.md')
     const output = mdH.render(input)

@@ -1,7 +1,7 @@
 <template>
   <main
     class="home"
-    aria-labelledby="main-title"
+    :aria-labelledby="data.heroText !== null ? 'main-title' : null"
   >
     <header class="hero">
       <img

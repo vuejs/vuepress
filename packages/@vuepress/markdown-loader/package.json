@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/markdown-loader",
-  "version": "1.5.0",
+  "version": "1.8.2",
   "description": "markdown-loader for vuepress",
   "keywords": [
     "documentation",
@@ -8,7 +8,7 @@
     "vue",
     "vuepress"
   ],
-  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/markdown-loader#readme",
+  "homepage": "https://github.com/vuejs/vuepress/blob/master/packages/@vuepress/markdown-loader#readme",
   "bugs": {
     "url": "https://github.com/vuejs/vuepress/issues"
   },
@@ -21,7 +21,7 @@
   "author": "Evan You",
   "main": "index.js",
   "dependencies": {
-    "@vuepress/markdown": "1.5.0",
+    "@vuepress/markdown": "1.8.2",
     "loader-utils": "^1.1.0",
     "lru-cache": "^5.1.1"
   },

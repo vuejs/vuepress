@@ -16,13 +16,13 @@ The following guides are based on some shared assumptions:
 
 ## GitHub Pages
 
-1. Set correct `base` in `docs/.vuepress/config.js`.
+1. Set the correct `base` in `docs/.vuepress/config.js`.
 
    If you are deploying to `https://<USERNAME>.github.io/`, you can omit `base` as it defaults to `"/"`.
 
-   If you are deploying to `https://<USERNAME>.github.io/<REPO>/`, (that is your repository is at `https://github.com/<USERNAME>/<REPO>`), set `base` to `"/<REPO>/"`.
+   If you are deploying to `https://<USERNAME>.github.io/<REPO>/`, for example your repository is at `https://github.com/<USERNAME>/<REPO>`, then set `base` to `"/<REPO>/"`.
 
-2. Inside your project, create `deploy.sh` with the following content (with highlighted lines uncommented appropriately) and run it to deploy:
+2. Inside your project, create `deploy.sh` with the following content (with highlighted lines uncommented appropriately), and run it to deploy:
 
 ``` bash{13,20,23}
 #!/usr/bin/env sh
@@ -61,19 +61,48 @@ When you use a **Custom Domain name**, you MUST add the CNAME file into /docs/.v
 :::
 
 
+### GitHub Pages and GitHub Actions
+
+1. [Create a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token);
+2. Create [encrypted secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) under your repository;
+3. Create a `.yml` or `.yaml` file in the `.github/workflows` directory in the root of your repository. e.g:`vuepress-deploy.yml`:
+
+```yml
+name: Build and Deploy
+on: [push]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: vuepress-deploy
+      uses: jenkey2011/vuepress-deploy@master
+      env:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        TARGET_REPO: username/repo
+        TARGET_BRANCH: master
+        BUILD_SCRIPT: yarn && yarn build
+        BUILD_DIR: docs/.vuepress/dist
+        CNAME: https://www.xxx.com
+```
+
+For more information, you can checkout [jenkey2011/vuepress-deploy](https://github.com/jenkey2011/vuepress-deploy/).
+
 ### GitHub Pages and Travis CI
 
-1. Set correct `base` in `docs/.vuepress/config.js`.
+1. Set the correct `base` in `docs/.vuepress/config.js`.
 
    If you are deploying to `https://<USERNAME or GROUP>.github.io/`, you can omit `base` as it defaults to `"/"`.
 
-   If you are deploying to `https://<USERNAME or GROUP>.github.io/<REPO>/`, (that is your repository is at `https://github.com/<USERNAME>/<REPO>`), set `base` to `"/<REPO>/"`.
+   If you are deploying to `https://<USERNAME or GROUP>.github.io/<REPO>/`, for example your repository is at `https://github.com/<USERNAME>/<REPO>`, then set `base` to `"/<REPO>/"`.
 
 2. Create a file named `.travis.yml` in the root of your project.
 
-3. Run `yarn` or `npm install` locally and commit the generated lockfile (i.e. `yarn.lock` or `package-lock.json`).
+3. Run `yarn` or `npm install` locally and commit the generated lockfile (that is `yarn.lock` or `package-lock.json`).
 
-4. Use GitHub Pages deploy provider template and follow the [travis documentation](https://docs.travis-ci.com/user/deployment/pages/).
+4. Use the GitHub Pages deploy provider template, and follow the [Travis CI documentation](https://docs.travis-ci.com/user/deployment/pages/).
 
 ``` yaml
 language: node_js
@@ -95,19 +124,18 @@ deploy:
 
 ### GitLab Pages and GitLab CI
 
-1. Set correct `base` in `docs/.vuepress/config.js`.
+1. Set the correct `base` in `docs/.vuepress/config.js`.
 
    If you are deploying to `https://<USERNAME or GROUP>.gitlab.io/`, you can omit `base` as it defaults to `"/"`.
 
-   If you are deploying to `https://<USERNAME or GROUP>.gitlab.io/<REPO>/`, (that is your repository is at `https://gitlab.com/<USERNAME>/<REPO>`), set `base` to `"/<REPO>/"`.
+   If you are deploying to `https://<USERNAME or GROUP>.gitlab.io/<REPO>/`, for example your repository is at `https://gitlab.com/<USERNAME>/<REPO>`, then set `base` to `"/<REPO>/"`.
 
 2. Set `dest` in `.vuepress/config.js` to `public`.
 
-3. Create a file called `.gitlab-ci.yml` in the root of your project with the content below. This will build and deploy your site whenever you make changes to your content.
+3. Create a file called `.gitlab-ci.yml` in the root of your project with the content below. This will build and deploy your site whenever you make changes to your content:
 
 ``` yaml
-image: node:9.11.1
-
+image: node:10.22.0
 pages:
   cache:
     paths:
@@ -128,10 +156,10 @@ pages:
 
 1. On [Netlify](https://netlify.com), setup up a new project from GitHub with the following settings:
 
-- **Build Command:** `yarn docs:build` or `npm run docs:build`
+- **Build Command:** `vuepress build docs` or `yarn docs:build` or `npm run docs:build`
 - **Publish directory:** `docs/.vuepress/dist`
 
-2. Hit the deploy button!
+2. Hit the deploy button.
 
 ## Google Firebase
 
@@ -158,7 +186,7 @@ pages:
 }
 ```
 
-3. After running `yarn docs:build` or `npm run docs:build`, deploy with the command `firebase deploy`.
+3. After running `yarn docs:build` or `npm run docs:build`, deploy using the command `firebase deploy`.
 
 ## Surge
 
@@ -166,15 +194,15 @@ pages:
 
 2. Run `yarn docs:build` or `npm run docs:build`.
 
-3. Deploy to surge, by typing `surge docs/.vuepress/dist`.
+3. Deploy to surge by typing `surge docs/.vuepress/dist`.
 
 You can also deploy to a [custom domain](http://surge.sh/help/adding-a-custom-domain) by adding `surge docs/.vuepress/dist yourdomain.com`.
 
 ## Heroku
 
-1. First install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
+1. Install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
 
-2. Create a Heroku account [here](https://signup.heroku.com).
+2. Create a Heroku account by [signing up](https://signup.heroku.com).
 
 3. Run `heroku login` and fill in your Heroku credentials:
 
@@ -182,7 +210,7 @@ You can also deploy to a [custom domain](http://surge.sh/help/adding-a-custom-do
    heroku login
    ```
 
-4. Create a file called `static.json` in the root of your project with the content below:
+4. Create a file called `static.json` in the root of your project with the below content:
 
    `static.json`:
    ```json
@@ -191,7 +219,7 @@ You can also deploy to a [custom domain](http://surge.sh/help/adding-a-custom-do
    }
    ```
 
-This is the configuration of your site. See more at [heroku-buildpack-static](https://github.com/heroku/heroku-buildpack-static).
+This is the configuration of your site; read more at [heroku-buildpack-static](https://github.com/heroku/heroku-buildpack-static).
 
 5. Set up your Heroku git remote:
 
@@ -208,7 +236,7 @@ heroku apps:create example
 heroku buildpacks:set https://github.com/heroku/heroku-buildpack-static.git
 ```
 
-6. Deploying Your Site
+6. Deploy your site:
 
 ``` bash
 # publish site
@@ -220,4 +248,4 @@ heroku open
 
 ## Vercel
 
-Please check out [Creating and Deploying a VuePress App with Vercel](https://vercel.com/guides/deploying-vuepress-to-vercel).
+See [Creating and Deploying a VuePress App with Vercel](https://vercel.com/guides/deploying-vuepress-to-vercel).

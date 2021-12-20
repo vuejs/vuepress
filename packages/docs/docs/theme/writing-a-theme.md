@@ -104,6 +104,7 @@ Each layout component may render distinct pages. To apply some global UI (for ex
 You can apply some plugins to the theme via `theme/index.js`.
 
 ```js
+// .vuepress/theme/index.js
 module.exports = {
   plugins: [
     ['@vuepress/pwa', {

@@ -37,12 +37,13 @@ export default {
   props: [
     'items',
     'depth',  // depth of current sidebar links
-    'sidebarDepth' // depth of headers to be extracted
+    'sidebarDepth', // depth of headers to be extracted
+    'initialOpenGroupIndex'
   ],
 
   data () {
     return {
-      openGroupIndex: 0
+      openGroupIndex: this.initialOpenGroupIndex || 0
     }
   },
 
@@ -89,13 +90,16 @@ function resolveOpenGroupIndex (route, items) {
 
 function descendantIsActive (route, item) {
   if (item.type === 'group') {
-    return item.children.some(child => {
+    const childIsActive = item.path && isActive(route, item.path)
+    const grandChildIsActive = item.children.some(child => {
       if (child.type === 'group') {
         return descendantIsActive(route, child)
       } else {
         return child.type === 'page' && isActive(route, child.path)
       }
     })
+
+    return childIsActive || grandChildIsActive
   }
   return false
 }

@@ -11,7 +11,7 @@
 3. 注入全局的 UI, 如：[@vuepress/plugin-back-to-top](./official/plugin-back-to-top.md);
 4. 拓展 CLI 的指令，如：[vuepress-plugin-export](https://github.com/ulivz/vuepress-plugin-export)。
 
-这里也有一个略微复杂的插件案例 [@vuepress/plugin-blog](https://vuepress-plugin-blog.ulivz.com)，其使用了编译器的元数据来生成了一些动态模块，并在客户端使用 `enhanceAppFiles` 来初始化他们。
+这里也有一个略微复杂的插件案例 [@vuepress/plugin-blog](https://vuepress-plugin-blog.billyyyyy3320.com)，其使用了编译期的元数据来生成了一些动态模块，并在客户端使用 `enhanceAppFiles` 来初始化他们。
 
 ## 开箱即用
 
@@ -27,8 +27,8 @@
 - [@vuepress/plugin-active-header-links](./official/plugin-active-header-links.md)
 - [@vuepress/plugin-nprogress](./official/plugin-nprogress.md)
 - [@vuepress/plugin-search](./official/plugin-search.md)
-- [vuepress-plugin-container](https://vuepress.github.io/zh/plugins/container/)
-- [vuepress-plugin-smooth-scroll](https://vuepress.github.io/zh/plugins/smooth-scroll/)
+- [vuepress-plugin-container](https://vuepress-community.netlify.app/zh/plugins/container/#vuepress-plugin-container)
+- [vuepress-plugin-smooth-scroll](https://vuepress-community.netlify.app/zh/plugins/smooth-scroll/#vuepress-plugin-smooth-scroll)
 
 ## 架构
 

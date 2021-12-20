@@ -11,44 +11,6 @@
   "commitConvention": "none",
   "contributors": [
     {
-      "login": "yyx990803",
-      "name": "Evan You",
-      "avatar_url": "https://avatars1.githubusercontent.com/u/499550?v=4",
-      "profile": "http://evanyou.me",
-      "contributions": [
-        "code"
-      ]
-    },
-    {
-      "login": "ulivz",
-      "name": "ULIVZ",
-      "avatar_url": "https://avatars1.githubusercontent.com/u/23133919?v=4",
-      "profile": "http://ulivz.com",
-      "contributions": [
-        "code",
-        "doc"
-      ]
-    },
-    {
-      "login": "kefranabg",
-      "name": "Franck Abgrall",
-      "avatar_url": "https://avatars3.githubusercontent.com/u/9840435?v=4",
-      "profile": "https://www.franck-abgrall.me/",
-      "contributions": [
-        "code",
-        "question"
-      ]
-    },
-    {
-      "login": "f3ltron",
-      "name": "Giraud Florent",
-      "avatar_url": "https://avatars1.githubusercontent.com/u/11556276?v=4",
-      "profile": "https://github.com/f3ltron",
-      "contributions": [
-        "code"
-      ]
-    },
-    {
       "login": "newsbielt703",
       "name": "Billyyyyy3320",
       "avatar_url": "https://avatars0.githubusercontent.com/u/38957202?v=4",
@@ -64,45 +26,17 @@
       "profile": "http://www.bencodezen.io",
       "contributions": [
         "code",
-        "blog"
-      ]
-    },
-    {
-      "login": "vicbergquist",
-      "name": "Victoria Bergquist",
-      "avatar_url": "https://avatars0.githubusercontent.com/u/25737281?v=4",
-      "profile": "https://twitter.com/vicbergquist",
-      "contributions": [
-        "code",
-        "design"
-      ]
-    },
-    {
-      "login": "sarahdayan",
-      "name": "Sarah Dayan",
-      "avatar_url": "https://avatars0.githubusercontent.com/u/5370675?v=4",
-      "profile": "https://frontstuff.io/",
-      "contributions": [
-        "code",
-        "doc"
+        "doc",
+        "question"
       ]
     },
     {
       "login": "meteorlxy",
       "name": "meteorlxy",
       "avatar_url": "https://avatars0.githubusercontent.com/u/18205362?s=400&v=4",
+      "profile": "https://github.com/meteorlxy",
       "contributions": [
         "code"
-      ]
-    },
-    {
-      "login": "sobolevn",
-      "name": "Nikita Sobolev",
-      "avatar_url": "https://avatars1.githubusercontent.com/u/4660275?v=4",
-      "profile": "https://sobolevn.me",
-      "contributions": [
-        "code",
-        "doc"
       ]
     },
     {
@@ -111,36 +45,18 @@
       "avatar_url": "https://avatars0.githubusercontent.com/u/945186?v=4",
       "profile": "https://twitter.com/CodesOfRa",
       "contributions": [
-        "code"
-      ]
-    },
-    {
-      "login": "fatihacet",
-      "name": "Fatih Acet",
-      "avatar_url": "https://avatars3.githubusercontent.com/u/712419?v=4",
-      "profile": "https://fatihacet.com",
-      "contributions": [
-        "code"
-      ]
-    },
-    {
-      "login": "farcaller",
-      "name": "Vladimir Pouzanov",
-      "avatar_url": "https://avatars2.githubusercontent.com/u/693?v=4",
-      "profile": "http://farcaller.net/",
-      "contributions": [
-        "code"
-      ]
-    },
-    {
-      "login": "vinayakkulkarni",
-      "name": "Vinayak Kulkarni",
-      "avatar_url": "https://avatars2.githubusercontent.com/u/19776877?v=4",
-      "profile": "https://twitter.com/_vinayak_k",
-      "contributions": [
-        "plugin",
         "code",
-        "blog"
+        "doc"
+      ]
+    },
+        {
+      "login": "kefranabg",
+      "name": "Franck Abgrall",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/9840435?v=4",
+      "profile": "https://www.franck-abgrall.me/",
+      "contributions": [
+        "code",
+        "question"
       ]
     }
   ],

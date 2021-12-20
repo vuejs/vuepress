@@ -7,6 +7,7 @@ metaTitle: Configuration | Theme
 和插件几乎一样，主题的配置文件 `themeEntry` 应该导出一个普通的 JavaScript 对象（`#1`），它也可以是一个返回对象的函数（`#2`），这个函数接受用户在 `siteConfig.themeConfig` 为第一个参数、包含编译期上下文的 [ctx](../plugin/context-api.md) 对象作为第二个参数。
 
 ``` js
+// .vuepress/theme/index.js
 // #1
 module.exports = {
    // ...
@@ -14,6 +15,7 @@ module.exports = {
 ```
 
 ``` js
+// .vuepress/theme/index.js
 // #2
 module.exports = (themeConfig, ctx) => {
    return {
@@ -67,6 +69,7 @@ build 模式下使用的 HTML 模板路径，默认模板见 [这里](https://gi
 - 默认值: undefined
 
 ```js
+// .vuepress/theme/index.js
 module.exports = {
   extend: '@vuepress/theme-default'
 }
@@ -85,7 +88,7 @@ VuePress 支持一个主题继承于另一个主题。VuePress 将遵循 `overri
 - 默认值: undefined
 
 ```js
-// themePath/index.js
+// .vuepress/theme/index.js
 module.exports = {
   globalLayout: '/path/to/your/global/vue/sfc'
 }
@@ -97,7 +100,7 @@ module.exports = {
 
 
 ```vue
-<!-- themePath/layouts/GlobalLayout.vue -->
+<!-- .vuepress/theme/layouts/GlobalLayout.vue -->
 <template>
   <div id="global-layout">
     <header><h1>Header</h1></header>

@@ -165,7 +165,7 @@ $MQMobile = 719px
 $MQMobileNarrow = 419px
 ```
 
-::: danger Note
+::: danger
 你应该**只在**这个文件中定义变量。因为 `palette.styl` 将在根的 stylus 配置文件的末尾引入，作为配置，它将被多个文件使用，所以一旦你在这里写了样式，你的样式就会被多次复制。
 :::
 
@@ -178,6 +178,36 @@ VuePress 提供了一种添加额外样式的简便方法。你可以创建一�
   font-size 30px
 }
 ```
+
+::: warning
+由于背后的行为，不论是在 `palette.styl` 或是 `index.styl` ，都不能透过 [@import / @require](https://stylus-lang.com/docs/import.html) 從**相对路径**引用一般的 `.css` 样式表。
+:::
+
+::: details 那如果你非得要 import / require 一般的 `.css` 样式表呢？
+
+使用**绝对路径**。
+
+1. 从 npm package 引用档案：
+
+``` stylus
+@require '~my-css-package/style.css'
+```
+
+2. 引用本地档案：
+
+因为已经有 [alias](../plugin/option-api.html#alias) 这个选项，使用 webpack 别名会是最简单的方式，举例如下：
+
+```js
+// config.js
+ alias: {
+    'styles': path.resolve(__dirname, './styles')
+  }
+```
+
+``` stylus
+@require '~styles/style.css'
+```
+:::
 
 **参考:**
 
@@ -242,6 +272,13 @@ VuePress 提供了一种添加额外样式的简便方法。你可以创建一�
 - 默认值: `{ permalink: true, permalinkBefore: true, permalinkSymbol: '#' }`
 
 [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor) 的选项。
+
+### markdown.pageSuffix
+
+- 类型: `string`
+- 默认值: `.html`
+
+Option to customize internal links to be compatible when using the [vuepress-plugin-clean-urls](https://vuepress.github.io/en/plugins/clean-urls/).
 
 ### markdown.externalLinks
 
@@ -317,7 +354,7 @@ module.exports = {
 - 默认值: `['h2', 'h3']`
 
 Markdown 文件的 headers (标题 & 小标题) 会在准备阶段被提取出来，并存储在 `this.$page.headers` 中。默认情况下，VuePress 会提取 `h2` 和 `h3` 标题。你可以通过这个选项来修改提取出的标题级别。
- 
+
 ``` js
 module.exports = {
   markdown: {

@@ -14,6 +14,31 @@
 }
 ```
 
+## 云开发 CloudBase
+
+[云开发 CloudBase](https://cloudbase.net/?site=vuepress) 是一个云原生一体化的 Serverless 云平台，支持静态网站、容器等多种托管能力，并提供简便的部署工具 [CloudBase Framework](https://cloudbase.net/framework.html?site=vuepress) 来一键部署应用。
+
+1. 全局安装 CloudBase  CLI
+
+```
+npm install -g @cloudbase/cli
+```
+
+2. 在项目根目录运行以下命令一键部署 VuePress 应用，在部署之前可以先 [开通环境](https://console.cloud.tencent.com/tcb/env/index?tdl_anchor=ad&tdl_site=vuejs)：
+
+```
+cloudbase init --without-template
+cloudbase framework:deploy
+```
+
+   CloudBase CLI 首先会跳转到控制台进行登录授权，然后将会交互式进行确认
+
+   确认信息后会立即进行部署，部署完成后，可以获得一个自动 SSL，CDN 加速的网站应用，你也可以搭配使用 Github Action 来持续部署 Github 上的 VuePress 应用。
+
+   也可以使用 `cloudbase init --template vuepress` 快速创建和部署一个新的 VuePress 应用
+
+   更多详细信息请查看 CloudBase Framework 的[部署项目示例](https://github.com/TencentCloudBase/cloudbase-framework?site=vuepress#%E9%A1%B9%E7%9B%AE%E7%A4%BA%E4%BE%8B)
+
 ## GitHub Pages
 
 1. 在 `docs/.vuepress/config.js` 中设置正确的 `base`。
@@ -55,6 +80,35 @@ cd -
 ::: tip
 你可以在你的持续集成的设置中，设置在每次 push 代码时自动运行上述脚本。
 :::
+
+### GitHub Pages and Github Actions
+
+1. 创建 [Github access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token);
+2. 在你 github 仓库下，创建一个 [secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) ，填入刚创建的 `token`
+3. 在项目根目录下的 `.github/workflows` 目录（没有的话，请手动创建一个）下创建一个 `.yml` 或者 `.yaml` 文件，如:`vuepress-deploy.yml`;
+
+```yml
+name: Build and Deploy
+on: [push]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: vuepress-deploy
+      uses: jenkey2011/vuepress-deploy@master
+      env:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        TARGET_REPO: username/repo
+        TARGET_BRANCH: master
+        BUILD_SCRIPT: yarn && yarn build
+        BUILD_DIR: docs/.vuepress/dist
+        CNAME: https://www.xxx.com
+```
+
+详细使用方法，可以看[jenkey2011/vuepress-deploy](https://github.com/jenkey2011/vuepress-deploy/)
 
 ### GitHub Pages and Travis CI
 

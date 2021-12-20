@@ -1,6 +1,6 @@
 {
   "name": "docs",
-  "version": "1.5.0",
+  "version": "1.8.2",
   "private": true,
   "description": "docs of VuePress",
   "keywords": [
@@ -29,12 +29,12 @@
   },
   "devDependencies": {
     "@textlint-rule/textlint-rule-no-unmatched-pair": "^1.0.7",
-    "@vuepress/plugin-back-to-top": "1.5.0",
-    "@vuepress/plugin-google-analytics": "1.5.0",
-    "@vuepress/plugin-medium-zoom": "1.5.0",
-    "@vuepress/plugin-pwa": "1.5.0",
-    "@vuepress/theme-vue": "1.5.0",
-    "remark-cli": "^7.0.0",
+    "@vuepress/plugin-back-to-top": "1.8.2",
+    "@vuepress/plugin-google-analytics": "1.8.2",
+    "@vuepress/plugin-medium-zoom": "1.8.2",
+    "@vuepress/plugin-pwa": "1.8.2",
+    "@vuepress/theme-vue": "1.8.2",
+    "remark-cli": "^9.0.0",
     "remark-lint": "^6.0.5",
     "remark-preset-lint-consistent": "^2.0.3",
     "remark-preset-lint-recommended": "^3.0.3",
@@ -44,11 +44,11 @@
     "textlint-rule-common-misspellings": "^1.0.1",
     "textlint-rule-diacritics": "^1.0.0",
     "textlint-rule-en-capitalization": "^2.0.2",
-    "textlint-rule-stop-words": "^1.0.17",
-    "textlint-rule-terminology": "^1.1.30",
+    "textlint-rule-stop-words": "^2.0.8",
+    "textlint-rule-terminology": "^2.1.4",
     "textlint-rule-write-good": "^1.6.2",
     "vue-toasted": "^1.1.25",
-    "vuepress": "1.5.0",
+    "vuepress": "1.8.2",
     "vuepress-plugin-flowchart": "^1.4.2"
   }
 }

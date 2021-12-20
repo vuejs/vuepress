@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/theme-default",
-  "version": "1.5.0",
+  "version": "1.8.2",
   "description": "Default theme for VuePress",
   "keywords": [
     "documentation",
@@ -8,7 +8,7 @@
     "vue",
     "vuepress"
   ],
-  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/theme-default#readme",
+  "homepage": "https://github.com/vuejs/vuepress/blob/master/packages/@vuepress/theme-default#readme",
   "bugs": {
     "url": "https://github.com/vuejs/vuepress/issues"
   },
@@ -21,12 +21,12 @@
   "author": "Evan You",
   "main": "index.js",
   "dependencies": {
-    "@vuepress/plugin-active-header-links": "1.5.0",
-    "@vuepress/plugin-nprogress": "1.5.0",
-    "@vuepress/plugin-search": "1.5.0",
+    "@vuepress/plugin-active-header-links": "1.8.2",
+    "@vuepress/plugin-nprogress": "1.8.2",
+    "@vuepress/plugin-search": "1.8.2",
     "docsearch.js": "^2.5.2",
     "lodash": "^4.17.15",
-    "stylus": "^0.54.5",
+    "stylus": "^0.54.8",
     "stylus-loader": "^3.0.2",
     "vuepress-plugin-container": "^2.0.2",
     "vuepress-plugin-smooth-scroll": "^0.0.3"

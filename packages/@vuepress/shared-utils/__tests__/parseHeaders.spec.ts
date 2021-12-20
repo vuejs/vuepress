@@ -2,8 +2,8 @@ import parseHeaders from '../src/parseHeaders'
 
 describe('parseHeaders', () => {
   test('should unescape html', () => {
-    const input = '&lt;div&gt;'
-    expect(parseHeaders(input)).toBe('<div>')
+    const input = `&lt;div :id=&quot;&#39;app&#39;&quot;&gt;`
+    expect(parseHeaders(input)).toBe(`<div :id="'app'">`)
   })
 
   test('should remove markdown tokens correctly', () => {
@@ -18,6 +18,10 @@ describe('parseHeaders', () => {
       '\\_vue\\_': '_vue_',
       '\\*vue\\*': '*vue*',
       '\\!vue\\!': '!vue!',
+
+      // #2688
+      '[vue](vuejs.org) / [vue](vuejs.org)': 'vue / vue',
+      '[\\<ins>](vuejs.org)': '<ins>',
 
       // #564 For multiple markdown tokens
       '`a` and `b`': 'a and b',

@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-last-updated",
-  "version": "1.5.0",
+  "version": "1.8.2",
   "description": "last-updated plugin for vuepress",
   "keywords": [
     "documentation",
@@ -8,7 +8,7 @@
     "vue",
     "vuepress"
   ],
-  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/plugin-last-updated#readme",
+  "homepage": "https://github.com/vuejs/vuepress/blob/master/packages/@vuepress/plugin-last-updated#readme",
   "bugs": {
     "url": "https://github.com/vuejs/vuepress/issues"
   },

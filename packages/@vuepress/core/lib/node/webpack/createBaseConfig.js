@@ -230,7 +230,7 @@ module.exports = function createBaseConfig (context, isServer) {
         })
 
   function createCSSRule (lang, test, loader, options) {
-    const baseRule = config.module.rule(lang).test(test)
+    const baseRule = config.module.rule(lang).test(test).sideEffects(true)
     const modulesRule = baseRule.oneOf('modules').resourceQuery(/module/)
     const normalRule = baseRule.oneOf('normal')
 

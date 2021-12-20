@@ -9,7 +9,8 @@ export default context => new Promise((resolve, reject) => {
       return reject({ url: fullPath })
     }
 
-    router.push(url)
-    router.onReady(() => resolve(app))
+    // error handled in onReady
+    router.push(url).catch(() => {})
+    router.onReady(() => resolve(app), reject)
   })
 })

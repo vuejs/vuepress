@@ -207,8 +207,12 @@ module.exports = class DevProcess extends EventEmitter {
       publicPath: this.context.base,
       watchOptions: {
         ignored: [
-          /node_modules/,
-          `!${this.context.tempPath}/**`
+          (x) => {
+            if (x.includes(this.context.tempPath)) {
+              return false
+            }
+            return /node_modules/.test(x)
+          }
         ]
       },
       historyApiFallback: {

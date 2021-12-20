@@ -31,6 +31,7 @@ const {
 module.exports = (markdown = {}) => {
   const {
     externalLinks,
+    pageSuffix,
     anchor,
     toc,
     plugins,
@@ -73,7 +74,7 @@ module.exports = (markdown = {}) => {
       .use(convertRouterLinkPlugin, [Object.assign({
         target: '_blank',
         rel: 'noopener noreferrer'
-      }, externalLinks)])
+      }, externalLinks), pageSuffix])
       .end()
 
     .plugin(PLUGINS.HOIST_SCRIPT_STYLE)

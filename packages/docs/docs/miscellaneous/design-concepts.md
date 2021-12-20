@@ -16,11 +16,11 @@ VuePress 1.0 has been rewritten extensively, and the most important one is the i
 
 ### Decoupling
 
-With plugins, we can implement many of the core functions with plugins, and you can see many built-in plugins [here](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/core/lib/node/internal-plugins) that cover many of the core functions of VuePress, which used to blend in all parts of the code base, but now they’re clear at a glance.
+With plugins, we can implement many of the core functions with plugins, and you can see many built-in plugins [here](https://github.com/vuejs/vuepress/tree/master/packages/%40vuepress/core/lib/node/internal-plugins) that cover many of the core functions of VuePress, which used to blend in all parts of the codebase, but now they’re clear at a glance.
 
 ### Configuration management
 
-In the past, when we came across some less common requirements, we had some doubts: if we wanted to not support it, VuePress usage scenarios were limited; but if we wanted to support it, we had to write it into the core code base and set up a separate configuration API for it. For the maintainers, apart from not conducive to long-term maintenance, this sometimes makes us feel exhausted. We must think of some better solutions. Yes, this is plugin.
+In the past, when we came across some less common requirements, we had some doubts: if we wanted to not support it, VuePress usage scenarios were limited; but if we wanted to support it, we had to write it into the core codebase and set up a separate configuration API for it. For the maintainers, apart from not conducive to long-term maintenance, this sometimes makes us feel exhausted. We must think of some better solutions. Yes, this is plugin.
 
 ### `.vuepress/config.js` is also a plugin
 

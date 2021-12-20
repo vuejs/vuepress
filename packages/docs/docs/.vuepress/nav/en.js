@@ -54,7 +54,7 @@ module.exports = [
         ]
       },
       {
-        text: 'Miscellaneous',
+        text: 'Resources',
         items: [
           {
             text: 'Migrate from 0.x',
@@ -69,7 +69,16 @@ module.exports = [
     ]
   },
   {
-    text: '0.x',
-    link: 'https://v0.vuepress.vuejs.org/'
+    text: 'v1.x',
+    items: [
+      {
+        text: 'v2.x',
+        link: 'https://v2.vuepress.vuejs.org'
+      },
+      {
+        text: 'v0.x',
+        link: 'https://v0.vuepress.vuejs.org'
+      }
+    ]
   }
 ]

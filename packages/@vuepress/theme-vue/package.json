@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/theme-vue",
-  "version": "1.5.0",
+  "version": "1.8.2",
   "description": "VuePress theme for official Vue projects",
   "keywords": [
     "documentation",
@@ -8,7 +8,7 @@
     "vue",
     "vuepress"
   ],
-  "homepage": "https://github.com/vuejs/vuepress/packages/@vuepress/theme-vue#readme",
+  "homepage": "https://github.com/vuejs/vuepress/blob/master/packages/@vuepress/theme-vue#readme",
   "bugs": {
     "url": "https://github.com/vuejs/vuepress/issues"
   },
@@ -21,7 +21,7 @@
   "author": "Evan You",
   "main": "index.js",
   "dependencies": {
-    "@vuepress/theme-default": "1.5.0"
+    "@vuepress/theme-default": "1.8.2"
   },
   "publishConfig": {
     "access": "public"

@@ -6,7 +6,7 @@ const url = require('url')
 
 const indexRE = /(^|.*\/)(index|readme).md(#?.*)$/i
 
-module.exports = (md, externalAttrs) => {
+module.exports = (md, externalAttrs, pageSuffix = '.html') => {
   let hasOpenRouterLink = false
   let hasOpenExternalLink = false
 
@@ -28,13 +28,13 @@ module.exports = (md, externalAttrs) => {
         }
       } else if (isSourceLink) {
         hasOpenRouterLink = true
-        tokens[idx] = toRouterLink(token, link, relativePath)
+        tokens[idx] = toRouterLink(token, link, relativePath, pageSuffix)
       }
     }
     return self.renderToken(tokens, idx, options)
   }
 
-  function toRouterLink (token, link, relativePath) {
+  function toRouterLink (token, link, relativePath, suffix) {
     link[0] = 'to'
     let to = link[1]
 
@@ -55,8 +55,8 @@ module.exports = (md, externalAttrs) => {
       to = path + hash
     } else {
       to = to
-        .replace(/\.md$/, '.html')
-        .replace(/\.md(#.*)$/, '.html$1')
+        .replace(/\.md$/, suffix)
+        .replace(/\.md(#.*)$/, `${suffix}$1`)
     }
 
     // markdown-it encodes the uri

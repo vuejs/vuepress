@@ -71,10 +71,13 @@ export default {
       if (this.isNonHttpURI) {
         return null
       }
+      if (this.item.rel === false) {
+        return null
+      }
       if (this.item.rel) {
         return this.item.rel
       }
-      return this.isBlankTarget ? 'noopener noreferrer' : ''
+      return this.isBlankTarget ? 'noopener noreferrer' : null
     }
   },
 

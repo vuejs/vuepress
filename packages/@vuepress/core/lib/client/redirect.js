@@ -50,5 +50,6 @@ export function handleRedirectForCleanUrls (router) {
 }
 
 function isRouteExists (router, path) {
-  return router.options.routes.filter(route => route.path.toLowerCase() === path.toLowerCase()).length > 0
+  const pathLower = path.toLowerCase()
+  return router.options.routes.some(route => route.path.toLowerCase() === pathLower)
 }

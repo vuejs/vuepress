@@ -47,6 +47,7 @@
         class="sidebar-group-items"
         :items="item.children"
         :sidebar-depth="item.sidebarDepth"
+        :initial-open-group-index="item.initialOpenGroupIndex"
         :depth="depth + 1"
       />
     </DropdownTransition>

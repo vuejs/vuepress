@@ -80,8 +80,8 @@ export default {
   methods: {
     createEditLink (repo, docsRepo, docsDir, docsBranch, path) {
       const bitbucket = /bitbucket.org/
-      if (bitbucket.test(repo)) {
-        const base = outboundRE.test(docsRepo) ? docsRepo : repo
+      if (bitbucket.test(docsRepo)) {
+        const base = docsRepo
         return (
           base.replace(endingSlashRE, '')
           + `/src`
@@ -92,12 +92,24 @@ export default {
         )
       }
 
+      const gitlab = /gitlab.com/
+      if (gitlab.test(docsRepo)) {
+        const base = docsRepo
+        return (
+          base.replace(endingSlashRE, '')
+          + `/-/edit`
+          + `/${docsBranch}/`
+          + (docsDir ? docsDir.replace(endingSlashRE, '') + '/' : '')
+          + path
+        )
+      }
+
       const base = outboundRE.test(docsRepo)
         ? docsRepo
         : `https://github.com/${docsRepo}`
       return (
         base.replace(endingSlashRE, '')
-        + `/edit`
+        + '/edit'
         + `/${docsBranch}/`
         + (docsDir ? docsDir.replace(endingSlashRE, '') + '/' : '')
         + path
@@ -129,7 +141,7 @@ export default {
       color lighten($textColor, 25%)
     .time
       font-weight 400
-      color #aaa
+      color #767676
 
 @media (max-width: $MQMobile)
   .page-edit
