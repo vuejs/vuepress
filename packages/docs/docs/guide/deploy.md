@@ -249,3 +249,7 @@ heroku open
 ## Vercel
 
 See [Creating and Deploying a VuePress App with Vercel](https://vercel.com/guides/deploying-vuepress-to-vercel).
+
+## Azure
+
+See [Publish a VuePress site to Azure Static Web Apps](https://docs.microsoft.com/azure/static-web-apps/publish-vuepress?WT.mc_id=javascript-26007-aapowell).
