@@ -2,7 +2,7 @@
 
 ## Overview
 
-VuePress 1.9 introduced full TypeScript Support for Config file:
+VuePress 1.9 introduced full TypeScript Support for Config File:
 
 ![](./assets/1.9-overview.png)
 
@@ -71,7 +71,9 @@ export default defineConfig4CustomTheme<MyThemeConfig>(
 
 From now, you’ll be able to enjoy the type prompt of the official plugins:
 
-![](./assets/1.9-official-plugin-tuple-usage.png)
+<p align="center">
+  <img src="./assets/1.9-official-plugin-tuple-usage.png" width="700">
+</p>
 
 Options of the official plugins certainly have type prompts, **Both [Tuple Style](https://vuepress.vuejs.org/plugin/using-a-plugin.html#plugin-options) and [Object Style](https://vuepress.vuejs.org/plugin/using-a-plugin.html#plugin-options), and [Plugin Shorthand](https://vuepress.vuejs.org/plugin/using-a-plugin.html#plugin-shorthand) support type inference**:
 
@@ -115,7 +117,9 @@ The illustration snapshot is omitted here, you can try it yourself.
 
 Type inference supports [ISO Language Code](http://www.lingoes.net/en/translator/langcode.htm)
 
-![](./assets/1.9-lang.png)
+<p align="center">
+  <img src="./assets/1.9-lang.png" width="600">
+</p>
 
 
 ### Context API
@@ -142,4 +146,4 @@ By default, only officially maintained and plugins under [VuePress Community](ht
 ## Credits
 
 - [bundle-require](https://github.com/egoist/bundle-require) (by [@egoist](https://github.com/egoist)): we leverage it under the hood to resolve user's config, which is powered by `esbuild`.
-- [vscode-ts-in-markdown](https://github.com/Amour1688/vscode-ts-in-markdown) (by [@Amour1688](https://github.com/Amour1688)): this documentation is powered by this plugin, which make type checking possible in markdown.
+- [vscode-ts-in-markdown](https://github.com/Amour1688/vscode-ts-in-markdown) (by [@Amour1688](https://github.com/Amour1688)): this documentation is powered by this plugin, which makes type checking possible in markdown.
