@@ -1,3 +1,12 @@
+## [1.9.1](https://github.com/vuejs/vuepress/compare/v1.9.0...v1.9.1) (2021-12-22)
+
+
+### Bug Fixes
+
+* **types:** support plain string usage for known third-party plugins ([dd6e3ef](https://github.com/vuejs/vuepress/commit/dd6e3ef)) [@chenhaoli](https://github.com/chenhaoli)
+
+
+
 # [1.9.0](https://github.com/vuejs/vuepress/compare/v1.8.3...v1.9.0) (2021-12-22)
 
 
