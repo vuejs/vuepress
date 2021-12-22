@@ -22,7 +22,7 @@ console.log(isRequiredPlugin(PLUGINS.HIGHLIGHT_LINES)) // false
 
 Remove the specified built-in markdown-it plugin in VuePress.
 
-It's needed to use with VuePress's [Plugin API > chainMarkdown](https://vuepress.vuejs.org/plugin/option-api.html#chainmarkdown).
+It's needed to use with VuePress’s [Plugin API > chainMarkdown](https://vuepress.vuejs.org/plugin/option-api.html#chainmarkdown).
 
 - **Usage**:
 

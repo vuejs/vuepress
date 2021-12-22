@@ -101,7 +101,7 @@ The illustration snapshot is omitted here, you can try it yourself.
 
 ## Third Plugins
 
-It is worth noting that third-party plugins do not support [Plugin Shorthand](../plugin/using-a-plugin.md#plugin-shorthand) if you're using [Tuple Style](../plugin/using-a-plugin.md#plugin-options) to write your config, this is because from the perspective of the type system, the unknown shortcut is equivalent to `string`, which results in the failure of type inference.
+It is worth noting that third-party plugins do not support [Plugin Shorthand](../plugin/using-a-plugin.md#plugin-shorthand) if you’re using [Tuple Style](../plugin/using-a-plugin.md#plugin-options) to write your config, this is because from the perspective of the type system, the unknown shortcut is equivalent to `string`, which results in the failure of type inference.
 
 By default, only officially maintained and plugins under [VuePress Community](https://vuepress-community.netlify.app/en/) support shortcut, feel free to submit pull request to add your plugin at this [file](https://github.com/vuejs/vuepress/blob/master/packages/vuepress/types/third-party-plugins.ts).
 
@@ -113,7 +113,7 @@ Type inference supports [ISO Language Code](http://www.lingoes.net/en/translator
 
 ## Context API
 
-VuePress's configuration can also be a function, while its first parameter is the current [app context](../plugin/context-api.md#context-api):
+VuePress’s configuration can also be a function, while its first parameter is the current [app context](../plugin/context-api.md#context-api):
 
 ```ts
 import { defineConfig } from "vuepress/config";
