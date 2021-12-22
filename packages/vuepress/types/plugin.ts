@@ -42,13 +42,20 @@ export type KnownThirdPartyPluginTuple = {
   [K in KnownThirdPartyPlugins]?: [K | ShortcutName4ThirdPartyPluginName<K>, AllowBoolean<Record<string, any>>?]
 }[KnownThirdPartyPlugins];
 
+/**
+ * Final plugin tuple
+ */
 export type PluginTuple = 
   | OfficialPluginName 
   | KnownThirdPartyPlugins
+  | ShortcutName4ThirdPartyPluginName<KnownThirdPartyPlugins>
   | OfficialPluginTuple 
   | ThirdPartyPluginTuple 
   | KnownThirdPartyPluginTuple;
 
+/**
+ * Object config
+ */
 export type PluginObject = Partial<PluginConfigMap>
     & {
     [T in OfficialPluginName as ShortcutName4OfficialPluginName<T>]?: PluginConfigMap[T]
