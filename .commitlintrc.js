@@ -6,6 +6,7 @@ const availableScopes = [
   'all',
   'cli',
   'zh',
+  'types',
   ...vuepressPackages
 ]
 
