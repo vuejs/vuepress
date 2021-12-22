@@ -1,6 +1,8 @@
-# TypeScript Support for Config file
+# VuePress 1.9
 
 ## Overview
+
+VuePress 1.9 introduced full TypeScript Support for Config file:
 
 ![](./assets/1.9-overview.png)
 
@@ -30,7 +32,7 @@ export default defineConfig({
 });
 ```
 
-### `Typed` Theme Config
+### Type Inferences for `Theme`
 
 By default, `defineConfig` helper leverages the theme config type from default theme:
 
@@ -65,7 +67,7 @@ export default defineConfig4CustomTheme<MyThemeConfig>(
   },
 ```
 
-### Type Inferences for Official Plugins
+### Type Inferences for `Official Plugins`
 
 From now, you’ll be able to enjoy the type prompt of the official plugins:
 
@@ -74,8 +76,6 @@ From now, you’ll be able to enjoy the type prompt of the official plugins:
 Options of the official plugins certainly have type prompts, **Both [Tuple Style](https://vuepress.vuejs.org/plugin/using-a-plugin.html#plugin-options) and [Object Style](https://vuepress.vuejs.org/plugin/using-a-plugin.html#plugin-options), and [Plugin Shorthand](https://vuepress.vuejs.org/plugin/using-a-plugin.html#plugin-shorthand) support type inference**:
 
 - Tuple Style:
-
-![](./assets/1.9-official-plugin-options.png)
 
 ```ts
 import { defineConfig } from 'vuepress/config'
@@ -91,6 +91,8 @@ export default defineConfig({
   ]
 })
 ```
+
+![](./assets/1.9-official-plugin-options.png)
 
 - Object Style:
 

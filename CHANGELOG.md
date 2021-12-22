@@ -3,8 +3,9 @@
 
 ### Features
 
-* typescript support for config file ([#2973](https://github.com/vuejs/vuepress/issues/2973)) ([daa6404](https://github.com/vuejs/vuepress/commit/daa6404)) [@ULIVZ](https://github.com/ULIVZ)
+* Typescript Support for Config File ([#2973](https://github.com/vuejs/vuepress/issues/2973)) ([daa6404](https://github.com/vuejs/vuepress/commit/daa6404)) [@ULIVZ](https://github.com/ULIVZ)
 
+> For more information please head [VuePress 1.9](./changelog/1.9/index.md).
 
 
 ## [1.8.3](https://github.com/vuejs/vuepress/compare/v1.8.2...v1.8.3) (2021-12-20)
