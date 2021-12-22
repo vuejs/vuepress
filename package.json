@@ -45,6 +45,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "7",
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
     "@nomadland/mono": "0.3.3",
@@ -68,6 +69,6 @@
     "lint-staged": "^9.3.0",
     "minimist": "^1.2.0",
     "sort-package-json": "^1.24.0",
-    "typescript": "^3.6.3"
+    "typescript": "4.5.2"
   }
 }
