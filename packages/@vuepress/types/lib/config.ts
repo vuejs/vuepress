@@ -2,7 +2,7 @@ import ChainWebpackConfig from "webpack-chain";
 import { PostCssLoaderOptions } from "./style";
 import { MarkdownConfig } from "./markdown";
 import { LocaleConfig } from "./locale";
-import { ThemeConfig } from "./default-theme";
+import { ThemeConfig } from "./theme";
 import { PluginTuple, PluginObject } from "./plugin";
 
 /**

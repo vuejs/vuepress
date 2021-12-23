@@ -255,8 +255,3 @@ export type DefaultThemeConfig = {
    */
   selectText?: string;
 };
-
-/**
- * Default theme config type
- */
-export type ThemeConfig = any;
