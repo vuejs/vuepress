@@ -1,7 +1,7 @@
 const path = require('path')
 
 /**
- * @type {import('@vuepress/types').Theme)}
+ * @type {import('@vuepress/types').Theme<import('@vuepress/types').DefaultThemeConfig>}
  */
 module.exports = (options, ctx) => {
   const { themeConfig, siteConfig } = ctx
