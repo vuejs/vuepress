@@ -209,7 +209,7 @@ module.exports = class Page {
   }
 
   /**
-   * get date of a page.
+   * date of current page.
    *
    * @returns {null|string}
    * @api public

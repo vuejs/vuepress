@@ -1,10 +1,10 @@
-import ChainWebpackConfig from "webpack-chain";
 import { PostCssLoaderOptions } from "./style";
 import { MarkdownConfig } from "./markdown";
 import { LocaleConfig } from "./locale";
 import { ThemeConfig } from "./theme";
-import { Plugins } from "./plugin";
+import { UserPlugins } from "./plugin";
 import { Context } from "./context";
+import { ChainWebpack } from "./shared";
 
 /**
  * HTML tag name
@@ -124,7 +124,7 @@ export interface Config<T extends ThemeConfig> {
    *
    * @see https://vuepress.vuejs.org/config/#plugins
    */
-  plugins?: Plugins;
+  plugins?: UserPlugins;
   /**
    * Markdown options.
    *
@@ -180,7 +180,7 @@ export interface Config<T extends ThemeConfig> {
    *
    * @see https://vuepress.vuejs.org/config/#chainwebpack
    */
-  chainWebpack?: (config: ChainWebpackConfig, isServer: boolean) => void;
+  chainWebpack?: ChainWebpack;
   /**
    * Set to true if you are only targeting evergreen browsers.
    *

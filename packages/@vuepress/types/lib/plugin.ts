@@ -1,11 +1,22 @@
 import { PluginConfigMap } from "./official-plugins";
 import { KnownThirdPartyPlugins } from "./third-party-plugins";
 
+/**
+ * General plugin options type.
+ */
+export type PluginOptions = Record<string, any>;
+
+/**
+ * Plugin name.
+ */
 export type OfficialPluginName = keyof PluginConfigMap;
 export type ThirdPartyStandardPluginName = `vuepress-plugin-${string}`;
 export type ThirdPartyScopedPluginName = `${string}/vuepress-plugin-${string}`;
 export type ThirdPartyPluginName = ThirdPartyStandardPluginName | ThirdPartyScopedPluginName;
 
+/**
+ * Plugin name shortcut.
+ */
 export type ShortcutName4OfficialPluginName<T extends string> = 
   T extends `@vuepress/plugin-${infer S}` 
     ? `@vuepress/${S}` 
@@ -32,14 +43,14 @@ export type OfficialPluginTuple = {
  */
 export type ThirdPartyPluginTuple = [
   ThirdPartyPluginName, 
-  AllowBoolean<Record<string, any>>
+  AllowBoolean<PluginOptions>
 ]
 
 /**
  * Known third-party plugin tuple, shortcut is allowed.
  */
 export type KnownThirdPartyPluginTuple = {
-  [K in KnownThirdPartyPlugins]?: [K | ShortcutName4ThirdPartyPluginName<K>, AllowBoolean<Record<string, any>>?]
+  [K in KnownThirdPartyPlugins]?: [K | ShortcutName4ThirdPartyPluginName<K>, AllowBoolean<PluginOptions>?]
 }[KnownThirdPartyPlugins];
 
 /**
@@ -60,7 +71,7 @@ export type PluginObject = Partial<PluginConfigMap>
     & {
     [T in OfficialPluginName as ShortcutName4OfficialPluginName<T>]?: PluginConfigMap[T]
   } & {
-    [k: string]: Record<string, any>;
+    [k: string]: PluginOptions;
   }
 
 /**
@@ -68,4 +79,4 @@ export type PluginObject = Partial<PluginConfigMap>
  *
  * @see https://vuepress.vuejs.org/config/#plugins
  */
-export type Plugins= PluginObject | Array<PluginTuple>;
+export type UserPlugins= PluginObject | Array<PluginTuple>;

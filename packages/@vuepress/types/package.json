@@ -23,6 +23,8 @@
   "main": "index.js",
   "types": "index.d.ts",
   "dependencies": {
+    "@types/markdown-it": "^10.0.0",
+    "@types/webpack-dev-server": "^3",
     "webpack-chain": "^6.0.0"
   },
   "publishConfig": {

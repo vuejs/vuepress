@@ -1,3 +1,8 @@
+import MarkdownIt from "markdown-it";
+import { Hook } from "./shared";
+
+export type ExtendMarkdown = Hook<[MarkdownIt], unknown>;
+
 /**
  * Markdown config.
  */
@@ -74,7 +79,7 @@ export interface MarkdownConfig {
    *
    * @see https://vuepress.vuejs.org/config/#markdown-extendmarkdown
    */
-  extendMarkdown?: Function;
+  extendMarkdown?: ExtendMarkdown;
   /**
    * @see https://vuepress.vuejs.org/config/#markdown-extractheaders
    */

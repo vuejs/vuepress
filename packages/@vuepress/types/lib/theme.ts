@@ -1,6 +1,7 @@
-import { Plugins } from "./plugin";
+import { UserPlugins } from "./plugin";
 import { Context } from "./context";
 import { Config } from "./config";
+import { PluginEntryOptions } from "./plugin-api";
 
 /**
  * Default theme config type
@@ -12,11 +13,11 @@ export type ThemeConfig = any;
  *
  * @see https://vuepress.vuejs.org/theme/option-api.html
  */
-export type ThemeEntry = {
+export type ThemeEntry = PluginEntryOptions & {
   /**
    * plugins
    */
-  plugins?: Plugins;
+  plugins?: UserPlugins;
   /**
    * HTML template path used in dev mode.
    *
