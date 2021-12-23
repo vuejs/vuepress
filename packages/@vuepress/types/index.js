@@ -1,5 +1,5 @@
 function define(config) {
-  config;
+  return config;
 }
 exports.defineConfig = define;
 exports.defineConfig4CustomTheme = define;
