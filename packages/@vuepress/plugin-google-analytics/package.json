@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/plugin-google-analytics",
-  "version": "1.9.1",
+  "version": "1.9.2",
   "description": "google-analytics plugin for vuepress",
   "keywords": [
     "documentation",
@@ -21,7 +21,7 @@
   "author": "ULIVZ <chl814@foxmail.com>",
   "main": "index.js",
   "dependencies": {
-    "@vuepress/types": "1.9.1"
+    "@vuepress/types": "1.9.2"
   },
   "publishConfig": {
     "access": "public"
