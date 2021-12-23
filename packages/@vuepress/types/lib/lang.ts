@@ -13,718 +13,718 @@
  */
 export type Lang =
   /* Afrikaans */
-  | "af"
+  | 'af'
 
   /* Afrikaans (South Africa) */
-  | "af-ZA"
+  | 'af-ZA'
 
   /* Arabic */
-  | "ar"
+  | 'ar'
 
   /* Arabic (U.A.E.) */
-  | "ar-AE"
+  | 'ar-AE'
 
   /* Arabic (Bahrain) */
-  | "ar-BH"
+  | 'ar-BH'
 
   /* Arabic (Algeria) */
-  | "ar-DZ"
+  | 'ar-DZ'
 
   /* Arabic (Egypt) */
-  | "ar-EG"
+  | 'ar-EG'
 
   /* Arabic (Iraq) */
-  | "ar-IQ"
+  | 'ar-IQ'
 
   /* Arabic (Jordan) */
-  | "ar-JO"
+  | 'ar-JO'
 
   /* Arabic (Kuwait) */
-  | "ar-KW"
+  | 'ar-KW'
 
   /* Arabic (Lebanon) */
-  | "ar-LB"
+  | 'ar-LB'
 
   /* Arabic (Libya) */
-  | "ar-LY"
+  | 'ar-LY'
 
   /* Arabic (Morocco) */
-  | "ar-MA"
+  | 'ar-MA'
 
   /* Arabic (Oman) */
-  | "ar-OM"
+  | 'ar-OM'
 
   /* Arabic (Qatar) */
-  | "ar-QA"
+  | 'ar-QA'
 
   /* Arabic (Saudi Arabia) */
-  | "ar-SA"
+  | 'ar-SA'
 
   /* Arabic (Syria) */
-  | "ar-SY"
+  | 'ar-SY'
 
   /* Arabic (Tunisia) */
-  | "ar-TN"
+  | 'ar-TN'
 
   /* Arabic (Yemen) */
-  | "ar-YE"
+  | 'ar-YE'
 
   /* Azeri (Latin) */
-  | "az"
+  | 'az'
 
   /* Azeri (Latin) (Azerbaijan) */
-  | "az-AZ"
+  | 'az-AZ'
 
   /* Azeri (Cyrillic) (Azerbaijan) */
-  | "az-AZ"
+  | 'az-AZ'
 
   /* Belarusian */
-  | "be"
+  | 'be'
 
   /* Belarusian (Belarus) */
-  | "be-BY"
+  | 'be-BY'
 
   /* Bulgarian */
-  | "bg"
+  | 'bg'
 
   /* Bulgarian (Bulgaria) */
-  | "bg-BG"
+  | 'bg-BG'
 
   /* Bosnian (Bosnia and Herzegovina) */
-  | "bs-BA"
+  | 'bs-BA'
 
   /* Catalan */
-  | "ca"
+  | 'ca'
 
   /* Catalan (Spain) */
-  | "ca-ES"
+  | 'ca-ES'
 
   /* Czech */
-  | "cs"
+  | 'cs'
 
   /* Czech (Czech Republic) */
-  | "cs-CZ"
+  | 'cs-CZ'
 
   /* Welsh */
-  | "cy"
+  | 'cy'
 
   /* Welsh (United Kingdom) */
-  | "cy-GB"
+  | 'cy-GB'
 
   /* Danish */
-  | "da"
+  | 'da'
 
   /* Danish (Denmark) */
-  | "da-DK"
+  | 'da-DK'
 
   /* German */
-  | "de"
+  | 'de'
 
   /* German (Austria) */
-  | "de-AT"
+  | 'de-AT'
 
   /* German (Switzerland) */
-  | "de-CH"
+  | 'de-CH'
 
   /* German (Germany) */
-  | "de-DE"
+  | 'de-DE'
 
   /* German (Liechtenstein) */
-  | "de-LI"
+  | 'de-LI'
 
   /* German (Luxembourg) */
-  | "de-LU"
+  | 'de-LU'
 
   /* Divehi */
-  | "dv"
+  | 'dv'
 
   /* Divehi (Maldives) */
-  | "dv-MV"
+  | 'dv-MV'
 
   /* Greek */
-  | "el"
+  | 'el'
 
   /* Greek (Greece) */
-  | "el-GR"
+  | 'el-GR'
 
   /* English */
-  | "en"
+  | 'en'
 
   /* English (Australia) */
-  | "en-AU"
+  | 'en-AU'
 
   /* English (Belize) */
-  | "en-BZ"
+  | 'en-BZ'
 
   /* English (Canada) */
-  | "en-CA"
+  | 'en-CA'
 
   /* English (Caribbean) */
-  | "en-CB"
+  | 'en-CB'
 
   /* English (United Kingdom) */
-  | "en-GB"
+  | 'en-GB'
 
   /* English (Ireland) */
-  | "en-IE"
+  | 'en-IE'
 
   /* English (Jamaica) */
-  | "en-JM"
+  | 'en-JM'
 
   /* English (New Zealand) */
-  | "en-NZ"
+  | 'en-NZ'
 
   /* English (Republic of the Philippines) */
-  | "en-PH"
+  | 'en-PH'
 
   /* English (Trinidad and Tobago) */
-  | "en-TT"
+  | 'en-TT'
 
   /* English (United States) */
-  | "en-US"
+  | 'en-US'
 
   /* English (South Africa) */
-  | "en-ZA"
+  | 'en-ZA'
 
   /* English (Zimbabwe) */
-  | "en-ZW"
+  | 'en-ZW'
 
   /* Esperanto */
-  | "eo"
+  | 'eo'
 
   /* Spanish */
-  | "es"
+  | 'es'
 
   /* Spanish (Argentina) */
-  | "es-AR"
+  | 'es-AR'
 
   /* Spanish (Bolivia) */
-  | "es-BO"
+  | 'es-BO'
 
   /* Spanish (Chile) */
-  | "es-CL"
+  | 'es-CL'
 
   /* Spanish (Colombia) */
-  | "es-CO"
+  | 'es-CO'
 
   /* Spanish (Costa Rica) */
-  | "es-CR"
+  | 'es-CR'
 
   /* Spanish (Dominican Republic) */
-  | "es-DO"
+  | 'es-DO'
 
   /* Spanish (Ecuador) */
-  | "es-EC"
+  | 'es-EC'
 
   /* Spanish (Castilian) */
-  | "es-ES"
+  | 'es-ES'
 
   /* Spanish (Spain) */
-  | "es-ES"
+  | 'es-ES'
 
   /* Spanish (Guatemala) */
-  | "es-GT"
+  | 'es-GT'
 
   /* Spanish (Honduras) */
-  | "es-HN"
+  | 'es-HN'
 
   /* Spanish (Mexico) */
-  | "es-MX"
+  | 'es-MX'
 
   /* Spanish (Nicaragua) */
-  | "es-NI"
+  | 'es-NI'
 
   /* Spanish (Panama) */
-  | "es-PA"
+  | 'es-PA'
 
   /* Spanish (Peru) */
-  | "es-PE"
+  | 'es-PE'
 
   /* Spanish (Puerto Rico) */
-  | "es-PR"
+  | 'es-PR'
 
   /* Spanish (Paraguay) */
-  | "es-PY"
+  | 'es-PY'
 
   /* Spanish (El Salvador) */
-  | "es-SV"
+  | 'es-SV'
 
   /* Spanish (Uruguay) */
-  | "es-UY"
+  | 'es-UY'
 
   /* Spanish (Venezuela) */
-  | "es-VE"
+  | 'es-VE'
 
   /* Estonian */
-  | "et"
+  | 'et'
 
   /* Estonian (Estonia) */
-  | "et-EE"
+  | 'et-EE'
 
   /* Basque */
-  | "eu"
+  | 'eu'
 
   /* Basque (Spain) */
-  | "eu-ES"
+  | 'eu-ES'
 
   /* Farsi */
-  | "fa"
+  | 'fa'
 
   /* Farsi (Iran) */
-  | "fa-IR"
+  | 'fa-IR'
 
   /* Finnish */
-  | "fi"
+  | 'fi'
 
   /* Finnish (Finland) */
-  | "fi-FI"
+  | 'fi-FI'
 
   /* Faroese */
-  | "fo"
+  | 'fo'
 
   /* Faroese (Faroe Islands) */
-  | "fo-FO"
+  | 'fo-FO'
 
   /* French */
-  | "fr"
+  | 'fr'
 
   /* French (Belgium) */
-  | "fr-BE"
+  | 'fr-BE'
 
   /* French (Canada) */
-  | "fr-CA"
+  | 'fr-CA'
 
   /* French (Switzerland) */
-  | "fr-CH"
+  | 'fr-CH'
 
   /* French (France) */
-  | "fr-FR"
+  | 'fr-FR'
 
   /* French (Luxembourg) */
-  | "fr-LU"
+  | 'fr-LU'
 
   /* French (Principality of Monaco) */
-  | "fr-MC"
+  | 'fr-MC'
 
   /* Galician */
-  | "gl"
+  | 'gl'
 
   /* Galician (Spain) */
-  | "gl-ES"
+  | 'gl-ES'
 
   /* Gujarati */
-  | "gu"
+  | 'gu'
 
   /* Gujarati (India) */
-  | "gu-IN"
+  | 'gu-IN'
 
   /* Hebrew */
-  | "he"
+  | 'he'
 
   /* Hebrew (Israel) */
-  | "he-IL"
+  | 'he-IL'
 
   /* Hindi */
-  | "hi"
+  | 'hi'
 
   /* Hindi (India) */
-  | "hi-IN"
+  | 'hi-IN'
 
   /* Croatian */
-  | "hr"
+  | 'hr'
 
   /* Croatian (Bosnia and Herzegovina) */
-  | "hr-BA"
+  | 'hr-BA'
 
   /* Croatian (Croatia) */
-  | "hr-HR"
+  | 'hr-HR'
 
   /* Hungarian */
-  | "hu"
+  | 'hu'
 
   /* Hungarian (Hungary) */
-  | "hu-HU"
+  | 'hu-HU'
 
   /* Armenian */
-  | "hy"
+  | 'hy'
 
   /* Armenian (Armenia) */
-  | "hy-AM"
+  | 'hy-AM'
 
   /* Indonesian */
-  | "id"
+  | 'id'
 
   /* Indonesian (Indonesia) */
-  | "id-ID"
+  | 'id-ID'
 
   /* Icelandic */
-  | "is"
+  | 'is'
 
   /* Icelandic (Iceland) */
-  | "is-IS"
+  | 'is-IS'
 
   /* Italian */
-  | "it"
+  | 'it'
 
   /* Italian (Switzerland) */
-  | "it-CH"
+  | 'it-CH'
 
   /* Italian (Italy) */
-  | "it-IT"
+  | 'it-IT'
 
   /* Japanese */
-  | "ja"
+  | 'ja'
 
   /* Japanese (Japan) */
-  | "ja-JP"
+  | 'ja-JP'
 
   /* Georgian */
-  | "ka"
+  | 'ka'
 
   /* Georgian (Georgia) */
-  | "ka-GE"
+  | 'ka-GE'
 
   /* Kazakh */
-  | "kk"
+  | 'kk'
 
   /* Kazakh (Kazakhstan) */
-  | "kk-KZ"
+  | 'kk-KZ'
 
   /* Kannada */
-  | "kn"
+  | 'kn'
 
   /* Kannada (India) */
-  | "kn-IN"
+  | 'kn-IN'
 
   /* Korean */
-  | "ko"
+  | 'ko'
 
   /* Korean (Korea) */
-  | "ko-KR"
+  | 'ko-KR'
 
   /* Konkani */
-  | "kok"
+  | 'kok'
 
   /* Konkani (India) */
-  | "kok-IN"
+  | 'kok-IN'
 
   /* Kyrgyz */
-  | "ky"
+  | 'ky'
 
   /* Kyrgyz (Kyrgyzstan) */
-  | "ky-KG"
+  | 'ky-KG'
 
   /* Lithuanian */
-  | "lt"
+  | 'lt'
 
   /* Lithuanian (Lithuania) */
-  | "lt-LT"
+  | 'lt-LT'
 
   /* Latvian */
-  | "lv"
+  | 'lv'
 
   /* Latvian (Latvia) */
-  | "lv-LV"
+  | 'lv-LV'
 
   /* Maori */
-  | "mi"
+  | 'mi'
 
   /* Maori (New Zealand) */
-  | "mi-NZ"
+  | 'mi-NZ'
 
   /* FYRO Macedonian */
-  | "mk"
+  | 'mk'
 
   /* FYRO Macedonian (Former Yugoslav Republic of Macedonia) */
-  | "mk-MK"
+  | 'mk-MK'
 
   /* Mongolian */
-  | "mn"
+  | 'mn'
 
   /* Mongolian (Mongolia) */
-  | "mn-MN"
+  | 'mn-MN'
 
   /* Marathi */
-  | "mr"
+  | 'mr'
 
   /* Marathi (India) */
-  | "mr-IN"
+  | 'mr-IN'
 
   /* Malay */
-  | "ms"
+  | 'ms'
 
   /* Malay (Brunei Darussalam) */
-  | "ms-BN"
+  | 'ms-BN'
 
   /* Malay (Malaysia) */
-  | "ms-MY"
+  | 'ms-MY'
 
   /* Maltese */
-  | "mt"
+  | 'mt'
 
   /* Maltese (Malta) */
-  | "mt-MT"
+  | 'mt-MT'
 
   /* Norwegian (Bokm?l) */
-  | "nb"
+  | 'nb'
 
   /* Norwegian (Bokm?l) (Norway) */
-  | "nb-NO"
+  | 'nb-NO'
 
   /* Dutch */
-  | "nl"
+  | 'nl'
 
   /* Dutch (Belgium) */
-  | "nl-BE"
+  | 'nl-BE'
 
   /* Dutch (Netherlands) */
-  | "nl-NL"
+  | 'nl-NL'
 
   /* Norwegian (Nynorsk) (Norway) */
-  | "nn-NO"
+  | 'nn-NO'
 
   /* Northern Sotho */
-  | "ns"
+  | 'ns'
 
   /* Northern Sotho (South Africa) */
-  | "ns-ZA"
+  | 'ns-ZA'
 
   /* Punjabi */
-  | "pa"
+  | 'pa'
 
   /* Punjabi (India) */
-  | "pa-IN"
+  | 'pa-IN'
 
   /* Polish */
-  | "pl"
+  | 'pl'
 
   /* Polish (Poland) */
-  | "pl-PL"
+  | 'pl-PL'
 
   /* Pashto */
-  | "ps"
+  | 'ps'
 
   /* Pashto (Afghanistan) */
-  | "ps-AR"
+  | 'ps-AR'
 
   /* Portuguese */
-  | "pt"
+  | 'pt'
 
   /* Portuguese (Brazil) */
-  | "pt-BR"
+  | 'pt-BR'
 
   /* Portuguese (Portugal) */
-  | "pt-PT"
+  | 'pt-PT'
 
   /* Quechua */
-  | "qu"
+  | 'qu'
 
   /* Quechua (Bolivia) */
-  | "qu-BO"
+  | 'qu-BO'
 
   /* Quechua (Ecuador) */
-  | "qu-EC"
+  | 'qu-EC'
 
   /* Quechua (Peru) */
-  | "qu-PE"
+  | 'qu-PE'
 
   /* Romanian */
-  | "ro"
+  | 'ro'
 
   /* Romanian (Romania) */
-  | "ro-RO"
+  | 'ro-RO'
 
   /* Russian */
-  | "ru"
+  | 'ru'
 
   /* Russian (Russia) */
-  | "ru-RU"
+  | 'ru-RU'
 
   /* Sanskrit */
-  | "sa"
+  | 'sa'
 
   /* Sanskrit (India) */
-  | "sa-IN"
+  | 'sa-IN'
 
   /* Sami (Northern) */
-  | "se"
+  | 'se'
 
   /* Sami (Northern) (Finland) */
-  | "se-FI"
+  | 'se-FI'
 
   /* Sami (Skolt) (Finland) */
-  | "se-FI"
+  | 'se-FI'
 
   /* Sami (Inari) (Finland) */
-  | "se-FI"
+  | 'se-FI'
 
   /* Sami (Northern) (Norway) */
-  | "se-NO"
+  | 'se-NO'
 
   /* Sami (Lule) (Norway) */
-  | "se-NO"
+  | 'se-NO'
 
   /* Sami (Southern) (Norway) */
-  | "se-NO"
+  | 'se-NO'
 
   /* Sami (Northern) (Sweden) */
-  | "se-SE"
+  | 'se-SE'
 
   /* Sami (Lule) (Sweden) */
-  | "se-SE"
+  | 'se-SE'
 
   /* Sami (Southern) (Sweden) */
-  | "se-SE"
+  | 'se-SE'
 
   /* Slovak */
-  | "sk"
+  | 'sk'
 
   /* Slovak (Slovakia) */
-  | "sk-SK"
+  | 'sk-SK'
 
   /* Slovenian */
-  | "sl"
+  | 'sl'
 
   /* Slovenian (Slovenia) */
-  | "sl-SI"
+  | 'sl-SI'
 
   /* Albanian */
-  | "sq"
+  | 'sq'
 
   /* Albanian (Albania) */
-  | "sq-AL"
+  | 'sq-AL'
 
   /* Serbian (Latin) (Bosnia and Herzegovina) */
-  | "sr-BA"
+  | 'sr-BA'
 
   /* Serbian (Cyrillic) (Bosnia and Herzegovina) */
-  | "sr-BA"
+  | 'sr-BA'
 
   /* Serbian (Latin) (Serbia and Montenegro) */
-  | "sr-SP"
+  | 'sr-SP'
 
   /* Serbian (Cyrillic) (Serbia and Montenegro) */
-  | "sr-SP"
+  | 'sr-SP'
 
   /* Swedish */
-  | "sv"
+  | 'sv'
 
   /* Swedish (Finland) */
-  | "sv-FI"
+  | 'sv-FI'
 
   /* Swedish (Sweden) */
-  | "sv-SE"
+  | 'sv-SE'
 
   /* Swahili */
-  | "sw"
+  | 'sw'
 
   /* Swahili (Kenya) */
-  | "sw-KE"
+  | 'sw-KE'
 
   /* Syriac */
-  | "syr"
+  | 'syr'
 
   /* Syriac (Syria) */
-  | "syr-SY"
+  | 'syr-SY'
 
   /* Tamil */
-  | "ta"
+  | 'ta'
 
   /* Tamil (India) */
-  | "ta-IN"
+  | 'ta-IN'
 
   /* Telugu */
-  | "te"
+  | 'te'
 
   /* Telugu (India) */
-  | "te-IN"
+  | 'te-IN'
 
   /* Thai */
-  | "th"
+  | 'th'
 
   /* Thai (Thailand) */
-  | "th-TH"
+  | 'th-TH'
 
   /* Tagalog */
-  | "tl"
+  | 'tl'
 
   /* Tagalog (Philippines) */
-  | "tl-PH"
+  | 'tl-PH'
 
   /* Tswana */
-  | "tn"
+  | 'tn'
 
   /* Tswana (South Africa) */
-  | "tn-ZA"
+  | 'tn-ZA'
 
   /* Turkish */
-  | "tr"
+  | 'tr'
 
   /* Turkish (Turkey) */
-  | "tr-TR"
+  | 'tr-TR'
 
   /* Tatar */
-  | "tt"
+  | 'tt'
 
   /* Tatar (Russia) */
-  | "tt-RU"
+  | 'tt-RU'
 
   /* Tsonga */
-  | "ts"
+  | 'ts'
 
   /* Ukrainian */
-  | "uk"
+  | 'uk'
 
   /* Ukrainian (Ukraine) */
-  | "uk-UA"
+  | 'uk-UA'
 
   /* Urdu */
-  | "ur"
+  | 'ur'
 
   /* Urdu (Islamic Republic of Pakistan) */
-  | "ur-PK"
+  | 'ur-PK'
 
   /* Uzbek (Latin) */
-  | "uz"
+  | 'uz'
 
   /* Uzbek (Latin) (Uzbekistan) */
-  | "uz-UZ"
+  | 'uz-UZ'
 
   /* Uzbek (Cyrillic) (Uzbekistan) */
-  | "uz-UZ"
+  | 'uz-UZ'
 
   /* Vietnamese */
-  | "vi"
+  | 'vi'
 
   /* Vietnamese (Viet Nam) */
-  | "vi-VN"
+  | 'vi-VN'
 
   /* Xhosa */
-  | "xh"
+  | 'xh'
 
   /* Xhosa (South Africa) */
-  | "xh-ZA"
+  | 'xh-ZA'
 
   /* Chinese */
-  | "zh"
+  | 'zh'
 
   /* Chinese (S) */
-  | "zh-CN"
+  | 'zh-CN'
 
   /* Chinese (Hong Kong) */
-  | "zh-HK"
+  | 'zh-HK'
 
   /* Chinese (Macau) */
-  | "zh-MO"
+  | 'zh-MO'
 
   /* Chinese (Singapore) */
-  | "zh-SG"
+  | 'zh-SG'
 
   /* Chinese (T) */
-  | "zh-TW"
+  | 'zh-TW'
 
   /* Zulu */
-  | "zu"
+  | 'zu'
 
   /* Zulu (South Africa) */
-  | "zu-ZA";
+  | 'zu-ZA';

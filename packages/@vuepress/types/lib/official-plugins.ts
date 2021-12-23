@@ -135,13 +135,13 @@ export interface PluginConfig4RegisterComponents {
 }
 
 export interface PluginConfigMap {
-  "@vuepress/plugin-active-header-links": PluginConfig4ActiveHeadLinks;
-  "@vuepress/plugin-back-to-top": PluginConfig4BackToTop;
-  "@vuepress/plugin-blog": PluginConfig4Blog;
-  "@vuepress/plugin-google-analytics": PluginConfig4GoogleAnalytics;
-  "@vuepress/plugin-last-updated": PluginConfig4LastUpdated;
-  "@vuepress/plugin-medium-zoom": PluginConfig4MediumZoom;
-  "@vuepress/plugin-nprogress": PluginConfig4Nprogress;
-  "@vuepress/plugin-pwa": PluginConfig4PWA;
-  "@vuepress/plugin-register-components": PluginConfig4RegisterComponents;
+  '@vuepress/plugin-active-header-links': PluginConfig4ActiveHeadLinks;
+  '@vuepress/plugin-back-to-top': PluginConfig4BackToTop;
+  '@vuepress/plugin-blog': PluginConfig4Blog;
+  '@vuepress/plugin-google-analytics': PluginConfig4GoogleAnalytics;
+  '@vuepress/plugin-last-updated': PluginConfig4LastUpdated;
+  '@vuepress/plugin-medium-zoom': PluginConfig4MediumZoom;
+  '@vuepress/plugin-nprogress': PluginConfig4Nprogress;
+  '@vuepress/plugin-pwa': PluginConfig4PWA;
+  '@vuepress/plugin-register-components': PluginConfig4RegisterComponents;
 }

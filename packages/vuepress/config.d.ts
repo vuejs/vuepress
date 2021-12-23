@@ -1,6 +1,6 @@
-import { Context, Config, ThemeConfig, DefaultThemeConfig } from './types'
+import { Context, Config, ThemeConfig, DefaultThemeConfig } from '@vuepress/types'
 
-export * from './types'
+export * from '@vuepress/types'
 
 export type UserConfig<T extends ThemeConfig> =
   | Config<T>
