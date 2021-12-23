@@ -20,7 +20,8 @@
   },
   "license": "MIT",
   "author": "ULIVZ",
-  "types": "lib/index.ts",
+  "main": "index.js",
+  "types": "index.d.ts",
   "dependencies": {
     "webpack-chain": "^6.0.0"
   },
