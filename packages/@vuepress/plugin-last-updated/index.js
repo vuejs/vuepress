@@ -1,6 +1,9 @@
 const path = require('path')
 const spawn = require('cross-spawn')
 
+/**
+ * @type {import('@vuepress/types').Plugin}
+ */
 module.exports = (options = {}, context) => ({
   extendPageData ($page) {
     const { transformer, dateOptions } = options

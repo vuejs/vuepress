@@ -51,6 +51,6 @@ export type ThemeEntry = PluginEntryOptions & {
  *
  * @see https://vuepress.vuejs.org/theme/option-api.html
  */
-export type UserThemeEntry<T extends ThemeConfig = ThemeConfig> =
+export type Theme<T extends ThemeConfig = ThemeConfig> =
   | ThemeEntry
   | ((themeConfig: T, ctx: Context<T, Config<T>>) => ThemeEntry);

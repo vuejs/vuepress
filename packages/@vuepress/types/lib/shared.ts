@@ -8,3 +8,5 @@ export type AsyncHook<U extends unknown[], R extends unknown> = Hook<
   U,
   Promise<R>
 >;
+
+export type PluginObject = Record<string, any>;

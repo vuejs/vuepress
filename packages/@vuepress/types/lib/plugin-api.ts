@@ -1,7 +1,7 @@
 import { Application } from "express";
 import WebpackDevServer from "webpack-dev-server";
 import { UserPlugins, PluginOptions } from "./plugin";
-import { ChainWebpack, Hook, AsyncHook } from "./shared";
+import { ChainWebpack, Hook, AsyncHook, PluginObject } from "./shared";
 import { Page, Context } from "./context";
 import { ExtendMarkdown } from "./markdown";
 
@@ -14,6 +14,8 @@ export type LifeCycleHook$Ready = AsyncHook<[], unknown>;
 export type LifeCycleHook$Updated = Hook<[], unknown>;
 export type LifeCycleHook$Generated = Hook<[], unknown>;
 
+export type FileDescriptor = { name: string; content: string };
+
 /**
  * Plugin Options API
  */
@@ -22,6 +24,10 @@ export type PluginEntryOptions = {
    * Current name
    */
   name: string;
+  /**
+   * Specify whether current plugin can be applied multiple times.
+   */
+  multiple?: boolean;
   /**
    * Sub plugins
    */
@@ -76,19 +82,19 @@ export type PluginEntryOptions = {
   enhanceAppFiles?:
     | string
     | string[]
-    | AsyncHook<[], { name: string; content: string }>;
+    | AsyncHook<[], FileDescriptor | FileDescriptor[]>;
   /**
    * Generate some client modules at compile time.
    *
    * @see https://vuepress.vuejs.org/plugin/option-api.html#clientdynamicmodules
    */
-  clientDynamicModules?: AsyncHook<[], { name: string; content: string }>;
+  clientDynamicModules?: AsyncHook<[], FileDescriptor | FileDescriptor[]>;
   /**
    * A function used to extend or edit the $page object
    *
    * @see https://vuepress.vuejs.org/plugin/option-api.html#extendpagedata
    */
-  extendPageData: Hook<[Page], unknown>;
+  extendPageData: <T extends PluginObject = PluginObject>(page: Page & T) => void;
   /**
    * A path to the mixin file which allows you to control the lifecycle of root component.
    *
@@ -155,6 +161,6 @@ export type PluginEntry = PluginEntryOptions & {
  *
  * @see https://vuepress.vuejs.org/plugin/writing-a-plugin.html
  */
-export type UserPluginEntry<T extends PluginOptions = PluginOptions> =
+export type Plugin<T extends PluginOptions = PluginOptions> =
   | PluginEntry
   | ((options: T, ctx: Context) => PluginEntry);

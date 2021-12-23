@@ -3,8 +3,8 @@ import {
   ThemeConfig,
   PluginOptions,
   DefaultThemeConfig,
-  UserThemeEntry,
-  UserPluginEntry,
+  Theme,
+  Plugin,
 } from './lib'
 
 export * from './lib'
@@ -30,11 +30,11 @@ export function defineConfig4CustomTheme<T extends ThemeConfig = ThemeConfig>(
  *
  * @see https://vuepress.vuejs.org/theme/option-api.html
  */
-export function defineThemeEntry<T extends ThemeConfig = ThemeConfig>(config: UserThemeEntry<T>): void;
+export function defineTheme<T extends ThemeConfig = ThemeConfig>(config: Theme<T>): void;
 
 /**
  * A helper function to define VuePress theme entry file.
  *
  * @see https://vuepress.vuejs.org/plugin/writing-a-plugin.html
  */
-export function definePluginEntry<T extends PluginOptions = PluginOptions>(config: UserPluginEntry<T>): void;
+export function definePlugin<T extends PluginOptions = PluginOptions>(config: Plugin<T>): void;

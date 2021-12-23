@@ -20,6 +20,9 @@
   "license": "MIT",
   "author": "ULIVZ <chl814@foxmail.com>",
   "main": "index.js",
+  "dependencies": {
+    "@vuepress/types": "1.9.1"
+  },
   "publishConfig": {
     "access": "public"
   }

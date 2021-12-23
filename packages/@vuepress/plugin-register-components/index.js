@@ -16,6 +16,9 @@ async function resolveComponents (componentDir) {
 // overwritten.
 let moduleId = 0
 
+/**
+ * @type {import('@vuepress/types').Plugin}
+ */
 module.exports = (options, context) => ({
   multiple: true,
 
