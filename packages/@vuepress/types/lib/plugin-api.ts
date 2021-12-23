@@ -31,7 +31,7 @@ export type PluginEntryOptions = {
   /**
    * Sub plugins
    */
-  plugins: UserPlugins;
+  plugins?: UserPlugins;
   /**
    * Edit the internal webpack config with webpack-chain.
    *
@@ -94,19 +94,19 @@ export type PluginEntryOptions = {
    *
    * @see https://vuepress.vuejs.org/plugin/option-api.html#extendpagedata
    */
-  extendPageData: <T extends PluginObject = PluginObject>(page: Page & T) => void;
+  extendPageData?: <T extends PluginObject = PluginObject>(page: Page & T) => void;
   /**
    * A path to the mixin file which allows you to control the lifecycle of root component.
    *
    * @see https://vuepress.vuejs.org/plugin/option-api.html#clientrootmixin
    */
-  clientRootMixin: string;
+  clientRootMixin?: string;
   /**
    * Add extra pages pointing to a Markdown file:
    *
    * @see https://vuepress.vuejs.org/plugin/option-api.html#additionalpages
    */
-  additionalPages:
+  additionalPages?:
     | Array<{ path: string; filePath: string }>
     | AsyncHook<
         [],
@@ -141,19 +141,19 @@ export type PluginEntry = PluginEntryOptions & {
    *
    * @see https://vuepress.vuejs.org/plugin/life-cycle.html#ready
    */
-  ready: AsyncHook<[], unknown>;
+  ready?: AsyncHook<[], unknown>;
   /**
    * Trigger when a new compilation is triggered
    *
    * @see https://vuepress.vuejs.org/plugin/life-cycle.html#updated
    */
-  updated: Hook<[], unknown>;
+  updated?: Hook<[], unknown>;
   /**
    * Called when a (production) build finishes, with an array of generated page HTML paths.
    *
    * @see https://vuepress.vuejs.org/plugin/life-cycle.html#generated
    */
-  generated: AsyncHook<[string[]], unknown>;
+  generated?: AsyncHook<[string[]], unknown>;
 };
 
 /**
