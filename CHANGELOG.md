@@ -1,3 +1,19 @@
+## [1.9.2](https://github.com/vuejs/vuepress/compare/v1.9.1...v1.9.2) (2021-12-23)
+
+
+### Bug Fixes
+
+* **types:** regression issue of reusing define helpers ([f0ba93c](https://github.com/vuejs/vuepress/commit/f0ba93c)) [@chenhaoli](https://github.com/chenhaoli)
+
+
+### Features
+
+* **types:** `definePluginEntry` helper to infer type for plugin entry ([cb07377](https://github.com/vuejs/vuepress/commit/cb07377)) [@chenhaoli](https://github.com/chenhaoli)
+* **types:** `defineThemeEntry` helper to infer type for theme entry ([84250cc](https://github.com/vuejs/vuepress/commit/84250cc)) [@chenhaoli](https://github.com/chenhaoli)
+* **types:** init `@vuepress/types` ([7ac6aa8](https://github.com/vuejs/vuepress/commit/7ac6aa8)) [@chenhaoli](https://github.com/chenhaoli)
+
+
+
 ## [1.9.1](https://github.com/vuejs/vuepress/compare/v1.9.0...v1.9.1) (2021-12-22)
 
 
