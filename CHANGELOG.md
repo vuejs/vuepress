@@ -1,3 +1,12 @@
+## [1.9.3](https://github.com/vuejs/vuepress/compare/v1.9.2...v1.9.3) (2021-12-23)
+
+
+### Bug Fixes
+
+* **types:** all plugin option api should be optional ([b5c4744](https://github.com/vuejs/vuepress/commit/b5c4744)) [@chenhaoli](https://github.com/chenhaoli)
+
+
+
 ## [1.9.2](https://github.com/vuejs/vuepress/compare/v1.9.1...v1.9.2) (2021-12-23)
 
 
