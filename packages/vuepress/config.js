@@ -1,6 +1,6 @@
-exports.defineConfig = function (config) {
-  return config
+function define (config) {
+  config
 }
-exports.defineConfig4CustomTheme = function (config) {
-  return config
-}
+exports.defineConfig = define
+exports.defineConfig4CustomTheme = define
+exports.defineThemeEntry = define

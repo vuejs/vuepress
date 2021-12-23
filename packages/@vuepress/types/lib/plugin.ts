@@ -63,3 +63,9 @@ export type PluginObject = Partial<PluginConfigMap>
     [k: string]: Record<string, any>;
   }
 
+/**
+ * Specify plugins.
+ *
+ * @see https://vuepress.vuejs.org/config/#plugins
+ */
+export type Plugins= PluginObject | Array<PluginTuple>;

@@ -1,15 +1,31 @@
-import { Context, Config, ThemeConfig, DefaultThemeConfig } from '@vuepress/types'
+import {
+  UserConfig,
+  ThemeConfig,
+  DefaultThemeConfig,
+  ThemeEntry
+} from '@vuepress/types'
 
 export * from '@vuepress/types'
 
-export type UserConfig<T extends ThemeConfig> =
-  | Config<T>
-  | ((ctx: Context) => Config<T>);
-
 /**
- * Helper for type prompt and type checking.
+ * A helper function to define VuePress config file.
+ *
+ * @see https://vuepress.vuejs.org/config/
  */
 export function defineConfig(config: UserConfig<DefaultThemeConfig>): void;
+
+/**
+ * A helper function to define VuePress config file, for custom theme.
+ *
+ * @see https://vuepress.vuejs.org/config/
+ */
 export function defineConfig4CustomTheme<T extends ThemeConfig = ThemeConfig>(
   config: UserConfig<T>
 ): void;
+
+/**
+ * A helper function to define VuePress theme entry file.
+ *
+ * @see https://vuepress.vuejs.org/theme/option-api.html
+ */
+export function defineThemeEntry(config: ThemeEntry): void;

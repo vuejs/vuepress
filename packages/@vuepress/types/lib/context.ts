@@ -1,3 +1,6 @@
+import { ThemeConfig } from "./theme";
+import { Config } from "./config";
+
 /**
  * Page instance.
  *
@@ -24,7 +27,10 @@ export interface Page {
  *
  * @see https://vuepress.vuejs.org/plugin/context-api.html
  */
-export interface Context {
+export interface Context<
+T extends ThemeConfig = ThemeConfig,
+C extends Config<T> = Config<ThemeConfig>
+> {
   /**
    * Whether VuePress run in production environment mode.
    */
@@ -53,4 +59,12 @@ export interface Context {
    * A utility for writing temporary files to tempPath.
    */
   writeTemp(filename: string, content: string): Promise<void>;
+  /**
+   * Current theme config.
+   */
+  themeConfig: T;
+  /**
+   * VuePress Config.
+   */
+  siteConfig: C;
 }

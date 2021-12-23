@@ -3,7 +3,8 @@ import { PostCssLoaderOptions } from "./style";
 import { MarkdownConfig } from "./markdown";
 import { LocaleConfig } from "./locale";
 import { ThemeConfig } from "./theme";
-import { PluginTuple, PluginObject } from "./plugin";
+import { Plugins } from "./plugin";
+import { Context } from "./context";
 
 /**
  * HTML tag name
@@ -123,7 +124,7 @@ export interface Config<T extends ThemeConfig> {
    *
    * @see https://vuepress.vuejs.org/config/#plugins
    */
-  plugins?: PluginObject | Array<PluginTuple>;
+  plugins?: Plugins;
   /**
    * Markdown options.
    *
@@ -187,3 +188,10 @@ export interface Config<T extends ThemeConfig> {
    */
   evergreen?: boolean;
 }
+
+/**
+ * Expose `VuePress` config with function support
+ */
+export type UserConfig<T extends ThemeConfig> =
+  | Config<T>
+  | ((ctx: Context<T, Config<T>>) => Config<T>);

@@ -1,6 +1,8 @@
 const path = require('path')
 
-// Theme API.
+/**
+ * @type {import('@vuepress/types'.UserThemeEntry)}
+ */
 module.exports = (options, ctx) => {
   const { themeConfig, siteConfig } = ctx
 
