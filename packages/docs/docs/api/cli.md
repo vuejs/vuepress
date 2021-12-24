@@ -54,6 +54,10 @@ Start development server in debug mode.
 
 Start development server in silent mode.
 
+#### --max-concurrency
+
+Set the max concurrency for rendering pages, to prevent OOM when rendering massive docs.
+
 ### dev
 
 Start a development server. All options from `vuepress build` are available. And there are several options specifically for dev:
