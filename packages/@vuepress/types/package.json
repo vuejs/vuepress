@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/types",
-  "version": "1.9.3",
+  "version": "1.9.4",
   "description": "Types for VuePress",
   "keywords": [
     "documentation",

@@ -1,6 +1,6 @@
 {
   "name": "vuepress",
-  "version": "1.9.3",
+  "version": "1.9.4",
   "description": "Minimalistic doc generator with Vue component based layout system",
   "keywords": [
     "documentation",
@@ -29,9 +29,9 @@
     ">1%"
   ],
   "dependencies": {
-    "@vuepress/core": "1.9.3",
-    "@vuepress/theme-default": "1.9.3",
-    "@vuepress/types": "1.9.3",
+    "@vuepress/core": "1.9.4",
+    "@vuepress/theme-default": "1.9.4",
+    "@vuepress/types": "1.9.4",
     "cac": "^6.5.6",
     "envinfo": "^7.2.0",
     "opencollective-postinstall": "^2.0.2",
