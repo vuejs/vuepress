@@ -1,3 +1,19 @@
+## [1.9.4](https://github.com/vuejs/vuepress/compare/v1.9.3...v1.9.4) (2021-12-24)
+
+
+### Bug Fixes
+
+* **types:** '_filePath' implicitly has an 'any' type ([66a6c27](https://github.com/vuejs/vuepress/commit/66a6c27)) [@chenhaoli](https://github.com/chenhaoli)
+* **types:** add missing default theme config `activeHeaderLinks` ([075ec62](https://github.com/vuejs/vuepress/commit/075ec62)) [@chenhaoli](https://github.com/chenhaoli)
+* **types:** cannot find module '../../shared-utils/src/datatypes' ([e919d14](https://github.com/vuejs/vuepress/commit/e919d14)) [@chenhaoli](https://github.com/chenhaoli)
+
+
+### Features
+
+* **types:** expose all plugin types ([7aeff34](https://github.com/vuejs/vuepress/commit/7aeff34)) [@chenhaoli](https://github.com/chenhaoli)
+
+
+
 ## [1.9.3](https://github.com/vuejs/vuepress/compare/v1.9.2...v1.9.3) (2021-12-23)
 
 
