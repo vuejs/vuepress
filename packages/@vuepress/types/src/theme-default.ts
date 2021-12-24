@@ -1,3 +1,5 @@
+import { PluginConfig4ActiveHeadLinks } from "./official-plugins";
+
 /**
  * Navbar link item.
  */
@@ -254,4 +256,8 @@ export type DefaultThemeConfig = {
    * Locale's select text.
    */
   selectText?: string;
+  /**
+   * Options for  @vuepress/plugin-active-header-links.
+   */
+  activeHeaderLinks?: boolean | PluginConfig4ActiveHeadLinks;
 };
