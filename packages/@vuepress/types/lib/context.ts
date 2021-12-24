@@ -1,7 +1,6 @@
 import { ThemeConfig } from "./theme";
 import { Config } from "./config";
 import { Lang } from "./lang";
-import { isString } from "../../shared-utils/src/datatypes";
 
 /**
  * Page instance.
