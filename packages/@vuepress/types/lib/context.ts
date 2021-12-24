@@ -15,7 +15,7 @@ export interface Page<
   /**
    * file's absolute path
    */
-  _filePath;
+  _filePath: string;
   /**
    * Access the client global computed mixins at build time, e.g _computed.$localePath.
    */
