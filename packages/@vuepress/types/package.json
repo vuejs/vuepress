@@ -22,6 +22,9 @@
   "author": "ULIVZ",
   "main": "index.js",
   "types": "index.d.ts",
+  "scripts": {
+    "tsc": "tsc"
+  },
   "dependencies": {
     "@types/markdown-it": "^10.0.0",
     "@types/webpack-dev-server": "^3",

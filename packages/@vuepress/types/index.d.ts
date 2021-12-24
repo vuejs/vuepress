@@ -5,9 +5,9 @@ import {
   DefaultThemeConfig,
   Theme,
   Plugin,
-} from './lib'
+} from './src'
 
-export * from './lib'
+export * from './src'
 
 /**
  * A helper function to define VuePress config file.

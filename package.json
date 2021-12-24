@@ -23,7 +23,7 @@
     "remote-version": "node scripts/remote-version.js",
     "show-help": "yarn workspace docs show-help",
     "test": "node scripts/test.js",
-    "tsc": "yarn workspace @vuepress/shared-utils tsc",
+    "tsc": "lerna run tsc --stream",
     "unregister-vuepress": "lerna exec --scope vuepress -- yarn unlink",
     "update-core-team": "all-contributors generate",
     "view-info": "yarn tsc && yarn workspace docs view-info"

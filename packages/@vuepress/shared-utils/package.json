@@ -24,7 +24,7 @@
     "types"
   ],
   "main": "lib/index.js",
-  "types": "types/index.d.ts",
+  "types": "lib/index.d.ts",
   "scripts": {
     "tsc": "tsc",
     "update-index": "node scripts/update-index.js"
