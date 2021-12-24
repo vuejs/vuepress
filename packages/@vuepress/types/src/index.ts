@@ -7,3 +7,5 @@ export * from './theme-default'
 export * from './theme'
 export * from './plugin'
 export * from './plugin-api'
+export * from "./third-party-plugins"
+export * from "./official-plugins"
