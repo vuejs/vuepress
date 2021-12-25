@@ -1,15 +1,27 @@
 import { PostCssLoaderOptions } from "./style";
 import { MarkdownConfig } from "./markdown";
-import { LocaleConfig } from "./locale";
+import { Locales } from "./locale";
 import { ThemeConfig } from "./theme";
 import { UserPlugins } from "./plugin";
 import { Context } from "./context";
 import { ChainWebpack } from "./shared";
 
+
 /**
  * HTML tag name
  */
 export type HTMLTagName = keyof HTMLElementTagNameMap;
+
+/**
+ * Expose `HeadTags`
+ */
+export type HeadTags = Array<
+[
+  HTMLTagName,
+  Partial<HTMLElementTagNameMap[HTMLTagName]>,
+  string? /* innerHTML */
+]
+>;
 
 /**
  * Expose `VuePress` config.
@@ -39,13 +51,7 @@ export interface Config<T extends ThemeConfig> {
    *
    * @see https://vuepress.vuejs.org/config/#head
    */
-  head?: Array<
-    [
-      HTMLTagName,
-      Partial<HTMLElementTagNameMap[HTMLTagName]>,
-      string? /* innerHTML */
-    ]
-  >;
+  head?: HeadTags;
   /**
    * Specify the host to use for the dev server.
    *
@@ -77,7 +83,7 @@ export interface Config<T extends ThemeConfig> {
    *
    * @see https://vuepress.vuejs.org/config/#locales
    */
-  locales?: { [path: string]: LocaleConfig };
+  locales?: Locales;
   /**
    * A function to control what files should have <link rel="prefetch"> resource hints generated.
    *

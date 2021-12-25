@@ -16,3 +16,5 @@ export interface LocaleConfig {
    */
   description: string;
 }
+
+export type Locales = { [path: string]: LocaleConfig };

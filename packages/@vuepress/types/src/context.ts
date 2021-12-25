@@ -1,6 +1,7 @@
 import { ThemeConfig } from "./theme";
 import { Config } from "./config";
 import { Lang } from "./lang";
+import { SiteData } from "./site-data";
 
 /**
  * Page instance.
@@ -173,4 +174,8 @@ export interface Context<
    * Theme API.
    */
   themeAPI: ThemeAPI;
+  /**
+   * Get site data.
+   */
+  getSiteData(): SiteData;
 }
