@@ -92,6 +92,39 @@ export interface Page<
 }
 
 /**
+ * Resolve theme.
+ */
+export interface ResolvedTheme {
+  /**
+   * Theme's directory
+   */
+  path: string;
+  /**
+   * Theme's full name
+   */
+  name: string;
+  /**
+   * Theme's short name
+   */
+  shortcut: string;
+  /**
+   * Theme entry path.
+   */
+  entry: string;
+}
+
+/**
+ * Theme API.
+ */
+export interface ThemeAPI {
+  theme: ResolvedTheme;
+  parentTheme: ResolvedTheme;
+  existsParentTheme: boolean;
+  componentMap: Record<string, any>;
+  layoutComponentMap: Record<string, any>;
+}
+
+/**
  * Context API
  *
  * @see https://vuepress.vuejs.org/plugin/context-api.html
@@ -136,4 +169,8 @@ export interface Context<
    * VuePress Config.
    */
   siteConfig: C;
+  /**
+   * Theme API.
+   */
+  themeAPI: ThemeAPI;
 }
