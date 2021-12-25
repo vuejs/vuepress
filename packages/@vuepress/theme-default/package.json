@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/theme-default",
-  "version": "1.9.4",
+  "version": "1.9.5",
   "description": "Default theme for VuePress",
   "keywords": [
     "documentation",
@@ -21,10 +21,10 @@
   "author": "Evan You",
   "main": "index.js",
   "dependencies": {
-    "@vuepress/plugin-active-header-links": "1.9.4",
-    "@vuepress/plugin-nprogress": "1.9.4",
-    "@vuepress/plugin-search": "1.9.4",
-    "@vuepress/types": "1.9.4",
+    "@vuepress/plugin-active-header-links": "1.9.5",
+    "@vuepress/plugin-nprogress": "1.9.5",
+    "@vuepress/plugin-search": "1.9.5",
+    "@vuepress/types": "1.9.5",
     "docsearch.js": "^2.5.2",
     "lodash": "^4.17.15",
     "stylus": "^0.54.8",

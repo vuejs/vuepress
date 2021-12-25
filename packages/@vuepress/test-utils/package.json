@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/test-utils",
-  "version": "1.9.4",
+  "version": "1.9.5",
   "description": "test-utils for vuepress",
   "keywords": [
     "documentation",
@@ -25,8 +25,8 @@
     "@babel/preset-env": "^7.0.0",
     "@types/jest": "^24.0.9",
     "@vue/test-utils": "^1.0.0-beta.29",
-    "@vuepress/core": "1.9.4",
-    "@vuepress/shared-utils": "1.9.4",
+    "@vuepress/core": "1.9.5",
+    "@vuepress/shared-utils": "1.9.5",
     "babel-jest": "^24.7.1",
     "execa": "^1.0.0",
     "jest": "^24.7.1",
