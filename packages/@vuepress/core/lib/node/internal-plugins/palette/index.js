@@ -3,6 +3,9 @@ const {
   datatypes: { isPlainObject }
 } = require('@vuepress/shared-utils')
 
+/**
+ * @type {import('@vuepress/types').Plugin<{}, import('@vuepress/types').DefaultThemeConfig>}
+ */
 module.exports = (options, ctx) => ({
   name: '@vuepress/internal-palette',
 

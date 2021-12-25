@@ -30,6 +30,7 @@
     "@vuepress/plugin-last-updated": "1.9.4",
     "@vuepress/plugin-register-components": "1.9.4",
     "@vuepress/shared-utils": "1.9.4",
+    "@vuepress/types": "1.9.4",
     "autoprefixer": "^9.5.1",
     "babel-loader": "^8.0.4",
     "bundle-require": "2.1.8",

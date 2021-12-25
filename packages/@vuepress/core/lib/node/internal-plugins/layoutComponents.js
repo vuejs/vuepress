@@ -1,3 +1,6 @@
+/**
+ * @type {import('@vuepress/types').Plugin<{}, import('@vuepress/types').DefaultThemeConfig>}
+ */
 module.exports = (options, ctx) => {
   return {
     name: '@vuepress/internal-layout-components',

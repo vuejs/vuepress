@@ -1,12 +1,15 @@
 const { codegen: { pathsToModuleCode }} = require('@vuepress/shared-utils')
 
-module.exports = (options, context, api) => ({
+/**
+ * @type {import('@vuepress/types').Plugin<{}, import('@vuepress/types').DefaultThemeConfig>}
+ */
+module.exports = (options, ctx, api) => ({
   name: '@vuepress/internal-root-mixins',
 
   // @internal/root-mixins
   async clientDynamicModules () {
     const builtInRootMixins = [
-      context.getLibFilePath('client/root-mixins/updateMeta.js')
+      ctx.getLibFilePath('client/root-mixins/updateMeta.js')
     ]
 
     const rootMixins = [
