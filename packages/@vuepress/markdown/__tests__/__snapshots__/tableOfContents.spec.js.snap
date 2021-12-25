@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tableOfContents should generate unique and valid links with html and emoji 1`] = `
+<h1 id="h1"><a class="header-anchor" href="#h1" aria-hidden="true">#</a> H1</h1>
+<p></p>
+<div class="table-of-contents">
+  <ul>
+    <li><a href="#h2">H2</a>
+      <ul>
+        <li><a href="#h3">H3 😄</a></li>
+      </ul>
+    </li>
+    <li><a href="#h2-2">H2</a>
+      <ul>
+        <li><a href="#h3-2">H3
+            <Badge /></a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<p></p>
+<h2 id="h2"><a class="header-anchor" href="#h2" aria-hidden="true">#</a> H2</h2>
+<h3 id="h3"><a class="header-anchor" href="#h3" aria-hidden="true">#</a> H3 😄</h3>
+<h2 id="h2-2"><a class="header-anchor" href="#h2-2" aria-hidden="true">#</a> H2</h2>
+<h3 id="h3-2"><a class="header-anchor" href="#h3-2" aria-hidden="true">#</a> H3
+  <Badge />
+</h3>
+`;
