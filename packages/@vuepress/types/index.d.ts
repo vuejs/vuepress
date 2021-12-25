@@ -4,10 +4,10 @@ import {
   PluginOptions,
   DefaultThemeConfig,
   Theme,
-  Plugin,
-} from './src'
+  Plugin
+} from "./src";
 
-export * from './src'
+export * from "./src";
 
 /**
  * A helper function to define VuePress config file.
@@ -30,11 +30,16 @@ export function defineConfig4CustomTheme<T extends ThemeConfig = ThemeConfig>(
  *
  * @see https://vuepress.vuejs.org/theme/option-api.html
  */
-export function defineTheme<T extends ThemeConfig = ThemeConfig>(config: Theme<T>): void;
+export function defineTheme<T extends ThemeConfig = ThemeConfig>(
+  config: Theme<T>
+): void;
 
 /**
  * A helper function to define VuePress theme entry file.
  *
  * @see https://vuepress.vuejs.org/plugin/writing-a-plugin.html
  */
-export function definePlugin<T extends PluginOptions = PluginOptions>(config: Plugin<T>): void;
+export function definePlugin<
+  T extends PluginOptions = PluginOptions,
+  U extends ThemeConfig = ThemeConfig
+>(config: Plugin<T, U>): void;

@@ -4,6 +4,8 @@ import { UserPlugins, PluginOptions } from "./plugin";
 import { ChainWebpack, Hook, AsyncHook, PluginObject } from "./shared";
 import { Page, Context } from "./context";
 import { ExtendMarkdown } from "./markdown";
+import { ThemeConfig } from "./theme";
+import { Config } from "./config";
 
 export type PlainObjectWithStringValue = Record<string, string>;
 
@@ -82,6 +84,7 @@ export type PluginEntryOptions = {
   enhanceAppFiles?:
     | string
     | string[]
+    | Hook<[], FileDescriptor | FileDescriptor[]>
     | AsyncHook<[], FileDescriptor | FileDescriptor[]>;
   /**
    * Generate some client modules at compile time.
@@ -94,7 +97,9 @@ export type PluginEntryOptions = {
    *
    * @see https://vuepress.vuejs.org/plugin/option-api.html#extendpagedata
    */
-  extendPageData?: <T extends PluginObject = PluginObject>(page: Page & T) => void;
+  extendPageData?: <T extends PluginObject = PluginObject>(
+    page: Page & T
+  ) => void;
   /**
    * A path to the mixin file which allows you to control the lifecycle of root component.
    *
@@ -161,6 +166,7 @@ export type PluginEntry = PluginEntryOptions & {
  *
  * @see https://vuepress.vuejs.org/plugin/writing-a-plugin.html
  */
-export type Plugin<T extends PluginOptions = PluginOptions> =
-  | PluginEntry
-  | ((options: T, ctx: Context) => PluginEntry);
+export type Plugin<
+  T extends PluginOptions = PluginOptions,
+  U extends ThemeConfig = ThemeConfig
+> = PluginEntry | ((options: T, ctx: Context<U, Config<U>>) => PluginEntry);
