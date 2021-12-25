@@ -1,3 +1,15 @@
+## [1.9.5](https://github.com/vuejs/vuepress/compare/v1.9.4...v1.9.5) (2021-12-25)
+
+
+### Features
+
+* **types:** `ctx.getLibFilePath` ([17c8fe4](https://github.com/vuejs/vuepress/commit/17c8fe4)) [@chenhaoli](https://github.com/chenhaoli)
+* **types:** `ctx.getSiteData` ([332dac7](https://github.com/vuejs/vuepress/commit/332dac7)) [@chenhaoli](https://github.com/chenhaoli)
+* **types:** `ctx.themeAPI` ([4269714](https://github.com/vuejs/vuepress/commit/4269714)) [@chenhaoli](https://github.com/chenhaoli)
+* **types:** `definePlugin` supports declare theme config type ([5f1e3b0](https://github.com/vuejs/vuepress/commit/5f1e3b0)) [@chenhaoli](https://github.com/chenhaoli)
+
+
+
 ## [1.9.4](https://github.com/vuejs/vuepress/compare/v1.9.3...v1.9.4) (2021-12-24)
 
 
