@@ -114,6 +114,13 @@ export interface ResolvedTheme {
   entry: string;
 }
 
+export interface LayoutComponent {
+  filename: string;
+  componentName: string;
+  path: string;
+  isInternal: string;
+}
+
 /**
  * Theme API.
  */
@@ -122,7 +129,7 @@ export interface ThemeAPI {
   parentTheme: ResolvedTheme;
   existsParentTheme: boolean;
   componentMap: Record<string, any>;
-  layoutComponentMap: Record<string, any>;
+  layoutComponentMap: Record<string, LayoutComponent>;
 }
 
 /**
@@ -178,4 +185,8 @@ export interface Context<
    * Get site data.
    */
   getSiteData(): SiteData;
+  /**
+   * Get internal file path
+   */
+  getLibFilePath(string: string): string;
 }
