@@ -28,7 +28,7 @@
     "markdown-it-chain": "^1.3.0",
     "markdown-it-emoji": "^1.4.0",
     "markdown-it-table-of-contents": "^0.4.0",
-    "prismjs": "^1.13.0"
+    "prismjs": "^1.25.0"
   },
   "publishConfig": {
     "access": "public"
