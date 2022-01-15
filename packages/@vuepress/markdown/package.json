@@ -23,7 +23,7 @@
   "main": "index.js",
   "dependencies": {
     "@vuepress/shared-utils": "1.9.5",
-    "markdown-it": "^8.4.1",
+    "markdown-it": "^12.3.2",
     "markdown-it-anchor": "^5.0.2",
     "markdown-it-chain": "^1.3.0",
     "markdown-it-emoji": "^1.4.0",
