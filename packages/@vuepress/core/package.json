@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/core",
-  "version": "1.9.5",
+  "version": "1.9.6",
   "description": "Minimalistic doc generator with Vue component based layout system",
   "keywords": [
     "documentation",
@@ -18,6 +18,12 @@
   },
   "license": "MIT",
   "author": "Evan You",
+  "maintainers": [
+    {
+      "name": "ULIVZ",
+      "email": "chl814@foxmail.com"
+    }
+  ],
   "main": "lib/index.js",
   "browserslist": [
     ">1%"
@@ -25,12 +31,12 @@
   "dependencies": {
     "@babel/core": "^7.8.4",
     "@vue/babel-preset-app": "^4.1.2",
-    "@vuepress/markdown": "1.9.5",
-    "@vuepress/markdown-loader": "1.9.5",
-    "@vuepress/plugin-last-updated": "1.9.5",
-    "@vuepress/plugin-register-components": "1.9.5",
-    "@vuepress/shared-utils": "1.9.5",
-    "@vuepress/types": "1.9.5",
+    "@vuepress/markdown": "1.9.6",
+    "@vuepress/markdown-loader": "1.9.6",
+    "@vuepress/plugin-last-updated": "1.9.6",
+    "@vuepress/plugin-register-components": "1.9.6",
+    "@vuepress/shared-utils": "1.9.6",
+    "@vuepress/types": "1.9.6",
     "autoprefixer": "^9.5.1",
     "babel-loader": "^8.0.4",
     "bundle-require": "2.1.8",
@@ -70,11 +76,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "maintainers": [
-    {
-      "name": "ULIVZ",
-      "email": "chl814@foxmail.com"
-    }
-  ]
+  }
 }

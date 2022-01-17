@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/shared-utils",
-  "version": "1.9.5",
+  "version": "1.9.6",
   "description": "shared-utils for vuepress",
   "keywords": [
     "documentation",
@@ -19,12 +19,12 @@
   },
   "license": "MIT",
   "author": "ULIVZ <chl814@foxmail.com>",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "files": [
     "lib",
     "types"
   ],
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
   "scripts": {
     "tsc": "tsc",
     "update-index": "node scripts/update-index.js"

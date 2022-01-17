@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/markdown-loader",
-  "version": "1.9.5",
+  "version": "1.9.6",
   "description": "markdown-loader for vuepress",
   "keywords": [
     "documentation",
@@ -19,19 +19,19 @@
   },
   "license": "MIT",
   "author": "Evan You",
-  "main": "index.js",
-  "dependencies": {
-    "@vuepress/markdown": "1.9.5",
-    "loader-utils": "^1.1.0",
-    "lru-cache": "^5.1.1"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
   "maintainers": [
     {
       "name": "ULIVZ",
       "email": "chl814@foxmail.com"
     }
-  ]
+  ],
+  "main": "index.js",
+  "dependencies": {
+    "@vuepress/markdown": "1.9.6",
+    "loader-utils": "^1.1.0",
+    "lru-cache": "^5.1.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

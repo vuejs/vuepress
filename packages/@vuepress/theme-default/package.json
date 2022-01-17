@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/theme-default",
-  "version": "1.9.5",
+  "version": "1.9.6",
   "description": "Default theme for VuePress",
   "keywords": [
     "documentation",
@@ -19,12 +19,18 @@
   },
   "license": "MIT",
   "author": "Evan You",
+  "maintainers": [
+    {
+      "name": "ULIVZ",
+      "email": "chl814@foxmail.com"
+    }
+  ],
   "main": "index.js",
   "dependencies": {
-    "@vuepress/plugin-active-header-links": "1.9.5",
-    "@vuepress/plugin-nprogress": "1.9.5",
-    "@vuepress/plugin-search": "1.9.5",
-    "@vuepress/types": "1.9.5",
+    "@vuepress/plugin-active-header-links": "1.9.6",
+    "@vuepress/plugin-nprogress": "1.9.6",
+    "@vuepress/plugin-search": "1.9.6",
+    "@vuepress/types": "1.9.6",
     "docsearch.js": "^2.5.2",
     "lodash": "^4.17.15",
     "stylus": "^0.54.8",
@@ -34,11 +40,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "maintainers": [
-    {
-      "name": "ULIVZ",
-      "email": "chl814@foxmail.com"
-    }
-  ]
+  }
 }

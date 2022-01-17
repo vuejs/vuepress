@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/theme-vue",
-  "version": "1.9.5",
+  "version": "1.9.6",
   "description": "VuePress theme for official Vue projects",
   "keywords": [
     "documentation",
@@ -19,17 +19,17 @@
   },
   "license": "MIT",
   "author": "Evan You",
-  "main": "index.js",
-  "dependencies": {
-    "@vuepress/theme-default": "1.9.5"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
   "maintainers": [
     {
       "name": "ULIVZ",
       "email": "chl814@foxmail.com"
     }
-  ]
+  ],
+  "main": "index.js",
+  "dependencies": {
+    "@vuepress/theme-default": "1.9.6"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }
