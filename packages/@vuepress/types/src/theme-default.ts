@@ -134,6 +134,12 @@ export type DefaultThemeConfig = {
     | SidebarConfigArray
     | SidebarConfig4Multiple;
   /**
+   * Sidebar's depth, set to 0 to disable collapsable sidebar links.
+   * 
+   * @default 1
+   */
+  sidebarDepth?: number;
+  /**
    * Enable built-in search
    *
    * @default true
