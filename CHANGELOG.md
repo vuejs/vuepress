@@ -1,3 +1,19 @@
+## [1.9.6](https://github.com/vuejs/vuepress/compare/v1.9.5...v1.9.6) (2022-01-17)
+
+
+### Bug Fixes
+
+* **core:** compatibility with node 10 (close: [#2981](https://github.com/vuejs/vuepress/issues/2981)) ([#2992](https://github.com/vuejs/vuepress/issues/2992)) ([f59598a](https://github.com/vuejs/vuepress/commit/f59598a2ae1c788ac01e7c23edc0d9a8bddd6911)) [@ULIVZ](https://github.com/ULIVZ)
+* **types:** missing `sidebarDepth` at default theme config ([5c6a16c](https://github.com/vuejs/vuepress/commit/5c6a16c3afe97311dc90ca8f18013240f6144a69)) [@chenhaoli](https://github.com/chenhaoli)
+
+
+### Features
+
+* add build concurrency control (close: [#1819](https://github.com/vuejs/vuepress/issues/1819)) ([#2953](https://github.com/vuejs/vuepress/issues/2953)) ([2f9a394](https://github.com/vuejs/vuepress/commit/2f9a3941d72d6cf920733e9f5de37fa26f9b78b4)) [@Troy&nbsp;Eagle](https://github.com/Troy&nbsp;Eagle)
+* **theme-default:** set home footer with markdown slot (close: [#2993](https://github.com/vuejs/vuepress/issues/2993)) ([#2994](https://github.com/vuejs/vuepress/issues/2994)) ([753df05](https://github.com/vuejs/vuepress/commit/753df0567ea10c41124ae7c6c2616a74ca1032f5)) [@ULIVZ](https://github.com/ULIVZ)
+
+
+
 ## [1.9.5](https://github.com/vuejs/vuepress/compare/v1.9.4...v1.9.5) (2021-12-25)
 
 
