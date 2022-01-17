@@ -3,7 +3,6 @@ home: true
 heroImage: /hero.png
 actionText: Get Started →
 actionLink: /guide/getting-started.html
-footer: MIT Licensed | Copyright © 2018-present Evan You
 ---
 
 <div class="features">
@@ -20,3 +19,7 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
     <p>VuePress generates pre-rendered static HTML for each page, and runs as an SPA once a page is loaded.</p>
   </div>
 </div>
+
+::: slot footer
+MIT Licensed | Copyright © 2018-present [Evan You](https://github.com/yyx990803)
+:::
