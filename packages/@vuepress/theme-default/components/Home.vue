@@ -57,6 +57,12 @@
     >
       {{ data.footer }}
     </div>
+
+    <Content
+      v-else
+      slot-key="footer"
+      class="footer"
+    />
   </main>
 </template>
 

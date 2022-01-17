@@ -35,6 +35,20 @@ Any extra content after the `YAML front matter` will be parsed as normal Markdow
 
 To use a fully custom homepage layout, you can also use a [Custom Layout](#custom-layout-for-specific-pages).
 
+## Rich-text footer
+
+Note that you can also set `footer` with [Markdown Slot Syntax](../guide/markdown-slot.md) to support rich text:
+
+```md
+---
+home: true
+---
+
+::: slot footer
+MIT Licensed | Copyright © 2018-present [Evan You](https://github.com/yyx990803)
+:::
+```
+
 ## Navbar
 
 The Navbar may contain your page title, [Search Box](#search-box), [Navbar Links](#navbar-links), [Languages](../guide/i18n.md) and [Repository Link](#git-repo-and-edit-links), they all depend on your configuration.

@@ -31,6 +31,20 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 
 任何 `YAML front matter` 之后额外的内容将会以普通的 markdown 被渲染，并插入到 `features` 的后面。
 
+## 富文本 footer
+
+你还可以使用 [Markdown Slot Syntax](../guide/markdown-slot.md) 来设置 `footer`，以支持富文本：
+
+```md
+---
+home: true
+---
+
+::: slot footer
+MIT Licensed | Copyright © 2018-present [Evan You](https://github.com/yyx990803)
+:::
+```
+
 ## 导航栏
 
 导航栏可能包含你的页面标题、[搜索框](#搜索框)、 [导航栏链接](#导航栏链接)、[多语言切换](../guide/i18n.md)、[仓库链接](#git-仓库和编辑链接)，它们均取决于你的配置。
