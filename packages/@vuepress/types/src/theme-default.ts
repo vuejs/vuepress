@@ -263,6 +263,10 @@ export type DefaultThemeConfig = {
    */
   selectText?: string;
   /**
+   * aria label 
+   */
+  ariaLabel?: string;
+  /**
    * Options for  @vuepress/plugin-active-header-links.
    */
   activeHeaderLinks?: boolean | PluginConfig4ActiveHeadLinks;
