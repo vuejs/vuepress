@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/theme-vue",
-  "version": "1.9.6",
+  "version": "1.9.7",
   "description": "VuePress theme for official Vue projects",
   "keywords": [
     "documentation",
@@ -27,7 +27,7 @@
   ],
   "main": "index.js",
   "dependencies": {
-    "@vuepress/theme-default": "1.9.6"
+    "@vuepress/theme-default": "1.9.7"
   },
   "publishConfig": {
     "access": "public"
