@@ -1,3 +1,12 @@
+## [1.9.7](https://github.com/vuejs/vuepress/compare/v1.9.6...v1.9.7) (2022-01-18)
+
+
+### Bug Fixes
+
+* **types:** missing `ariaLabel` at default theme config ([a7b12bf](https://github.com/vuejs/vuepress/commit/a7b12bf267c0c3a1f5756a1a88f870ddbbd7a005)) [@chenhaoli](https://github.com/chenhaoli)
+
+
+
 ## [1.9.6](https://github.com/vuejs/vuepress/compare/v1.9.5...v1.9.6) (2022-01-17)
 
 
