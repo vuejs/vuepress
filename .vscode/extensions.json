@@ -1,0 +1,15 @@
+{
+    "recommendations": [
+        "kiteco.kite",
+        "redhat.fabric8-analytics",
+        "iceworks-team.iceworks",
+        "ms-vscode-remote.remote-containers",
+        "ms-azuretools.vscode-docker",
+        "editorconfig.editorconfig",
+        "dbaeumer.jshint",
+        "christian-kohler.npm-intellisense",
+        "googlecloudtools.cloudcode",
+        "hookyqr.beautify",
+        "github.vscode-pull-request-github"
+    ]
+}

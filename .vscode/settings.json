@@ -1,0 +1,24 @@
+{
+    "dependencyAnalyticsServer.trace.server": "verbose",
+    "cSpell.enableFiletypes": [
+        "Log",
+        "git-rebase",
+        "jsx-tags",
+        "makefile",
+        "markdown-math",
+        "objective-c",
+        "objective-cpp",
+        "powershell",
+        "r",
+        "scminput",
+        "search-result",
+        "security",
+        "shaderlab",
+        "shellscript",
+        "vb",
+        "xml"
+    ],
+    "kite.codefinder.enableLineDecoration": true,
+    "kite.developerMode": true,
+    "kite.enableOptionalCompletionsTriggers": true
+}
