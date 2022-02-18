@@ -259,7 +259,7 @@ Specify a specific slot for a specific page (.md) for rendering. This is useful 
 - **Props**:
 
   - `text` - string
-  - `type` - string, optional value: `"tip"|"warning"|"error"`, defaults to `"tip"`.
+  - `type` - string, optional value: `"tip"|"warning"|"danger"`, defaults to `"tip"`.
   - `vertical` - string, optional value: `"top"|"middle"`, defaults to `"top"`.
 
 - **Usage**:
