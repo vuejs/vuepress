@@ -407,9 +407,9 @@ module.exports = {
   themeConfig: {
     algolia: {
       apiKey: '<API_KEY>',
-      indexName: '<INDEX_NAME>'
+      indexName: '<INDEX_NAME>',
       // If Algolia did not provided you any `appId`, use `BH4D9OD16A` or remove this option
-      appId: '<APP_ID>',
+      appId: '<APP_ID>'
     }
   }
 }
