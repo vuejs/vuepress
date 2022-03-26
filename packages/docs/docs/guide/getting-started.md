@@ -35,9 +35,9 @@ The command will interactively ask for details to configure your VuePress siteâ€
 - Maintainer Name
 - Repository URL
 
-Once this done, a scaffolded documentation site will be created in the `docs` directory (or custom directory name, if passed) under the current directory.
+Once this is done, a scaffolded documentation site will be created in the `docs` directory (or custom directory name, if passed) under the current directory.
 
-To see it in action, navigate into newly scaffolded directory, install the dependencies and start the local server:
+To see it in action, navigate into the newly scaffolded directory, install the dependencies and start the local server:
 
 <code-group>
 <code-block title="YARN" active>
@@ -59,7 +59,7 @@ npm run dev
 
 ## Manual Installation
 
-If you prefer, you can build a basic VuePress documentation site from ground up instead of using the generator mentioned above.
+If you prefer, you can build a basic VuePress documentation site from the ground up instead of using the generator mentioned above.
 
 Note: If you already have an existing project and would like to keep documentation inside the project, start from Step 3.
 
@@ -109,7 +109,7 @@ Note: If you already have an existing project and would like to keep documentati
 
 5. Add helper [scripts](https://classic.yarnpkg.com/en/docs/package-json#toc-scripts) to `package.json`
 
-   This step is optional but highly recommended, as the rest of the documentation will assume those scripts being present.
+   This step is optional but highly recommended, as the rest of the documentation will assume those scripts are present.
 
    ```json
    {
