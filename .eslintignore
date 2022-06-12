@@ -4,3 +4,4 @@
 !.vuepress
 packages/@vuepress/shared-utils/lib
 packages/@vuepress/shared-utils/types
+packages/@vuepress/types

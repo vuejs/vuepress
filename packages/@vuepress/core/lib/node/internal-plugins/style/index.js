@@ -1,8 +1,7 @@
 const { fs, path, logger, chalk } = require('@vuepress/shared-utils')
 
 /**
- * @param options
- * @param {AppContext} ctx
+ * @type {import('@vuepress/types').Plugin<{}, import('@vuepress/types').DefaultThemeConfig>}
  */
 module.exports = (options, ctx) => ({
   name: '@vuepress/internal-style',

@@ -1,0 +1,36 @@
+{
+  "name": "@vuepress/types",
+  "version": "1.9.7",
+  "description": "Types for VuePress",
+  "keywords": [
+    "documentation",
+    "generator",
+    "types",
+    "vue",
+    "vuepress"
+  ],
+  "homepage": "https://github.com/vuejs/vuepress/blob/master/packages/@vuepress/types#readme",
+  "bugs": {
+    "url": "https://github.com/vuejs/vuepress/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuejs/vuepress.git",
+    "directory": "packages/@vuepress/types"
+  },
+  "license": "MIT",
+  "author": "ULIVZ",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "tsc": "tsc"
+  },
+  "dependencies": {
+    "@types/markdown-it": "^10.0.0",
+    "@types/webpack-dev-server": "^3",
+    "webpack-chain": "^6.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -51,6 +51,7 @@ module.exports = function (cli, options) {
     .option('--no-cache', 'clean the cache before build')
     .option('--debug', 'build in development mode for debugging')
     .option('--silent', 'build static site in silent mode')
+    .option('--max-concurrency', 'set the max docs concurrently processed when build static site')
     .action((sourceDir = '.', commandOptions) => {
       const { debug, silent } = commandOptions
 

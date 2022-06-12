@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "es2018",
     "declaration": true,
     "esModuleInterop": true,
     "pretty": true,
     "moduleResolution": "node",
-    "lib": ["es2015", "es2016.array.include"],
+    "lib": ["es2015", "es2016.array.include","DOM"],
     "allowSyntheticDefaultImports": true,
     "stripInternal": true,
     "noImplicitAny": false,

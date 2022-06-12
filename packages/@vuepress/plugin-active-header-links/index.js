@@ -1,6 +1,9 @@
 const { path } = require('@vuepress/shared-utils')
 
-module.exports = (options) => ({
+/**
+ * @type {import('@vuepress/types').Plugin}
+ */
+module.exports = options => ({
   clientRootMixin: path.resolve(__dirname, 'clientRootMixin.js'),
   define: {
     AHL_SIDEBAR_LINK_SELECTOR: options.sidebarLinkSelector || '.sidebar-link',

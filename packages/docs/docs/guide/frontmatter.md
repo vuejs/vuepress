@@ -21,7 +21,7 @@ lang: en-US
 
 # {{ $frontmatter.title }}
 
-My blog post is written in {{ $frontmatter.language }}.
+My blog post is written in {{ $frontmatter.lang }}.
 ```
 
 ## Alternative frontmatter Formats

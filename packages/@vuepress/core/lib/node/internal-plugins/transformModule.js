@@ -2,6 +2,9 @@ const { fs, path } = require('@vuepress/shared-utils')
 
 const DIR = 'transform'
 
+/**
+ * @type {import('@vuepress/types').Plugin<{}, import('@vuepress/types').DefaultThemeConfig>}
+ */
 module.exports = (options, ctx) => ({
   name: '@vuepress/internal-transform-modules',
 

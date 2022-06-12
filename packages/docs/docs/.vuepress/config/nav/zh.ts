@@ -1,4 +1,6 @@
-module.exports = [
+import { NavItem } from 'vuepress/config'
+
+export const NavItems4ZH: NavItem[] = [
   {
     text: '指南',
     link: '/zh/guide/'
@@ -69,7 +71,16 @@ module.exports = [
     ]
   },
   {
-    text: '0.x',
-    link: 'https://v0.vuepress.vuejs.org/'
+    text: 'v1.x',
+    items: [
+      {
+        text: 'v2.x',
+        link: 'https://v2.vuepress.vuejs.org/zh/'
+      },
+      {
+        text: 'v0.x',
+        link: 'https://v0.vuepress.vuejs.org/zh/'
+      }
+    ]
   }
 ]

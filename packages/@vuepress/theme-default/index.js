@@ -1,6 +1,8 @@
 const path = require('path')
 
-// Theme API.
+/**
+ * @type {import('@vuepress/types').Theme<import('@vuepress/types').DefaultThemeConfig>}
+ */
 module.exports = (options, ctx) => {
   const { themeConfig, siteConfig } = ctx
 
@@ -44,7 +46,7 @@ module.exports = (options, ctx) => {
       ['container', {
         type: 'danger',
         defaultTitle: {
-          '/': 'WARNING',
+          '/': 'DANGER',
           '/zh/': '警告'
         }
       }],

@@ -48,14 +48,14 @@ Each Markdown file is compiled into HTML with [markdown-it](https://github.com/m
 
 **Blog theme**
 
-* [Documentation](https://vuepress-theme-blog.ulivz.com/)
-* [Live Example](https://ulivz.com/)
+* [Documentation](https://vuepress-theme-blog.billyyyyy3320.com/)
+* [Live Example](https://billyyyyy3320.com/)
 
 
 **Plugin**
 
 * [Powerful Plugin API](../plugin/README.md)
-* [Blog Plugin](https://vuepress-plugin-blog.ulivz.com/)
+* [Blog Plugin](https://vuepress-plugin-blog.billyyyyy3320.com/)
 * [Search Plugin](../plugin/official/plugin-search.md)
 * [PWA Plugin](../plugin/official/plugin-pwa.md)
 * [Google Analytics Plugin](../plugin/official/plugin-google-analytics.md)

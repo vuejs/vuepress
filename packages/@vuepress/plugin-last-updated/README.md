@@ -2,4 +2,4 @@
 
 > last-updated plugin for VuePress
 
-See [documentation](https://v1.vuepress.vuejs.org/plugin/official/plugin-last-updated.html).
+See [documentation](https://vuepress.vuejs.org/plugin/official/plugin-last-updated.html).

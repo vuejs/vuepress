@@ -1,6 +1,9 @@
 const path = require('path')
 const spawn = require('cross-spawn')
 
+/**
+ * @type {import('@vuepress/types').Plugin}
+ */
 module.exports = (options = {}, context) => ({
   extendPageData ($page) {
     const { transformer, dateOptions } = options
@@ -11,6 +14,7 @@ module.exports = (options = {}, context) => ({
         ? transformer(timestamp, $lang)
         : defaultTransformer(timestamp, $lang, dateOptions)
       $page.lastUpdated = lastUpdated
+      $page.lastUpdatedTimestamp = timestamp
     }
   }
 })

@@ -1,4 +1,6 @@
-module.exports = [
+import { NavItem } from 'vuepress/config'
+
+export const NavItems4EN: NavItem[] = [
   {
     text: 'Guide',
     link: '/guide/'
@@ -57,10 +59,6 @@ module.exports = [
         text: 'Resources',
         items: [
           {
-            text: '0.x Docs',
-            link: 'https://v0.vuepress.vuejs.org/'
-          },
-          {
             text: 'Migrate from 0.x',
             link: '/miscellaneous/migration-guide.html'
           },
@@ -69,6 +67,19 @@ module.exports = [
             link: 'https://github.com/vuejs/vuepress/blob/master/CHANGELOG.md'
           }
         ]
+      }
+    ]
+  },
+  {
+    text: 'v1.x',
+    items: [
+      {
+        text: 'v2.x',
+        link: 'https://v2.vuepress.vuejs.org'
+      },
+      {
+        text: 'v0.x',
+        link: 'https://v0.vuepress.vuejs.org'
       }
     ]
   }

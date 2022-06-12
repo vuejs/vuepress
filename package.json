@@ -19,11 +19,11 @@
     "packages:diff": "lerna diff",
     "packages:list": "lerna ls -l",
     "register-vuepress": "lerna exec --scope vuepress -- yarn link",
-    "release": "yarn lint && yarn build && yarn test && node scripts/release.js",
+    "release": "yarn lint && yarn build && mono release",
     "remote-version": "node scripts/remote-version.js",
     "show-help": "yarn workspace docs show-help",
     "test": "node scripts/test.js",
-    "tsc": "yarn workspace @vuepress/shared-utils tsc",
+    "tsc": "lerna run tsc --stream",
     "unregister-vuepress": "lerna exec --scope vuepress -- yarn unlink",
     "update-core-team": "all-contributors generate",
     "view-info": "yarn tsc && yarn workspace docs view-info"
@@ -45,8 +45,10 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "7",
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
+    "@nomadland/mono": "0.3.3",
     "@types/escape-html": "^0.0.20",
     "@types/fs-extra": "^5.0.4",
     "@types/globby": "^9.1.0",
@@ -67,6 +69,6 @@
     "lint-staged": "^9.3.0",
     "minimist": "^1.2.0",
     "sort-package-json": "^1.24.0",
-    "typescript": "^3.6.3"
+    "typescript": "4.5.2"
   }
 }

@@ -29,6 +29,9 @@ vuepress <command> targetDir [options]
 ### --silent
 以安静模式启动开发服务器。
 
+### --max-concurrency
+设置渲染文档的最大并发量，当渲染大量文档，可能造成内存溢出时使用
+
 ## dev
 
 启动一个开发服务器。来自 `vuepress build` 的所有选项都可用。除此以外，还有几个专门针对 dev 的选项：

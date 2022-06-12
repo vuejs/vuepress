@@ -197,7 +197,7 @@ console.log('Hello, VuePress!')
 
 **Also see:**
 
-- [vuepress-plugin-container](https://vuepress.github.io/plugins/container/)
+- [vuepress-plugin-container](https://vuepress-community.netlify.app/en/plugins/container/#vuepress-plugin-container)
 
 ## Syntax Highlighting in Code Blocks
 
@@ -323,7 +323,7 @@ export default { // Highlighted
 
 ## Line Numbers
 
-You can enable line numbers for each code blocks via config:
+You can enable line numbers for each code block via config:
 
 ``` js
 module.exports = {
