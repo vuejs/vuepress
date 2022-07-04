@@ -293,7 +293,7 @@ Options for [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-
 - Type: `string`
 - Default: `.html`
 
-Option to customize internal links to be compatible when using the [vuepress-plugin-clean-urls](https://vuepress.github.io/en/plugins/clean-urls/).
+Option to customize internal links to be compatible when using the [vuepress-plugin-clean-urls](https://vuepress-community.netlify.app/en/plugins/clean-urls/).
 
 ### markdown.externalLinks
 
