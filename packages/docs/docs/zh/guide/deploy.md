@@ -103,7 +103,7 @@ jobs:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         TARGET_REPO: username/repo
         TARGET_BRANCH: master
-        BUILD_SCRIPT: yarn && yarn build
+        BUILD_SCRIPT: yarn && yarn docs:build
         BUILD_DIR: docs/.vuepress/dist
         CNAME: https://www.xxx.com
 ```
