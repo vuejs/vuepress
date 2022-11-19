@@ -1,14 +1,14 @@
-# TypeScript as Config <Badge text="1.9.0+" />
+# TypeScript 配置 <Badge text="1.9.0+" />
 
-## Overview
+## 概述
 
-VuePress supports type prompt and type checking for config file, as well as type prompt for default theme or custom theme.
+VuePress 支持配置文件的类型提示和类型检查，以及默认主题或自定义主题的类型提示。
 
 ![](/assets/1.9-overview.png)
 
-## Quick Start
+## 快速开始
 
-Creating `.vuepress/config.ts` with following contents:
+创建 `.vuepress/config.ts`，内容如下:
 
 ```ts
 import { defineConfig } from "vuepress/config";
@@ -18,9 +18,9 @@ export default defineConfig({
 });
 ```
 
-## Type Inferences for Theme
+## 主题的类型推断
 
-By default, `defineConfig` helper leverages the theme config type from default theme:
+默认情况下，`defineConfig` 帮助程序使用默认主题的配置类型：
 
 ```js
 import { defineConfig } from "vuepress/config";
@@ -37,7 +37,7 @@ export default defineConfig({
 });
 ```
 
-If you use a custom theme, you can use the `defineConfig4CustomTheme` helper with ability to pass generic type for your theme:
+如果你使用自定义主题，可以使用  `defineConfig4CustomTheme`帮助器，为你的主题传递通用类型：
 
 ```ts
 import { defineConfig4CustomTheme } from "vuepress/config";
@@ -56,15 +56,15 @@ export default defineConfig4CustomTheme<MyThemeConfig>({
 });
 ```
 
-## Type Inferences for Official Plugins
+## 官方插件的类型推断
 
-You’ll be able to enjoy the type prompt of the official plugins:
+你可以享受官方插件的类型提示：
 
 ![](/assets/1.9-official-plugin-tuple-usage.png)
 
-Options of the official plugins certainly have type prompts, **Both [Tuple Style](../plugin/using-a-plugin.md#plugin-options), [Object Style](../plugin/using-a-plugin.md#plugin-options), and [Plugin Shorthand](../plugin/using-a-plugin.md#plugin-shorthand) support type inference!**:
+官方插件的选项有确定的类型提示，** [元组样式](../plugin/using-a-plugin.md#plugin-options), [对象样式](../plugin/using-a-plugin.md#plugin-options), 和 [插件速记](../plugin/using-a-plugin.md#plugin-shorthand) 都支持类型推断!**:
 
-- Tuple Style:
+- 元组样式:
 
 ![](/assets/1.9-official-plugin-options.png)
 
@@ -83,7 +83,7 @@ export default defineConfig({
 });
 ```
 
-- Object Style:
+- 对象样式:
 
 ```ts
 import { defineConfig } from "vuepress/config";
@@ -97,23 +97,23 @@ export default defineConfig({
 });
 ```
 
-The illustration snapshot is omitted here, you can try it yourself.
+这里省略了插图快照，您可以自己尝试。
 
-## Third Plugins
+## 第三方插件
 
-It is worth noting that third-party plugins do not support [Plugin Shorthand](../plugin/using-a-plugin.md#plugin-shorthand) if you’re using [Tuple Style](../plugin/using-a-plugin.md#plugin-options) to write your config, this is because from the perspective of the type system, the unknown shortcut is equivalent to `string`, which results in the failure of type inference.
+值得注意的是，如果你使用 [元组样式](../plugin/using-a-plugin.md#plugin-options) 配置，第三方插件可能不支持 [插件速记](../plugin/using-a-plugin.md#plugin-shorthand) 。这是因为从类型系统的角度来看，未知的快捷方式相当于 `string`，导致类型推断失败。
 
-By default, only officially maintained and plugins under [VuePress Community](https://vuepress-community.netlify.app/en/) support shortcut, feel free to submit pull request to add your plugin at this [file](https://github.com/vuejs/vuepress/blob/master/packages/@vuepress/types/lib/third-party-plugins.ts).
+默认情况下，只有官方维护和 [VuePress 社区](https://vuepress-community.netlify.app/en/) 下的插件支持快捷方式，请随时提交拉取请求，以在此[文件](https://github.com/vuejs/vuepress/blob/master/packages/@vuepress/types/lib/third-party-plugins.ts)中添加您的插件。
 
-## ISO Language Code
+## ISO语言代码
 
-Type inference supports [ISO Language Code](http://www.lingoes.net/en/translator/langcode.htm) for [i18n](http://localhost:8080/guide/i18n.html).
+类型推断支持 [i18n](http://localhost:8080/guide/i18n.html) 的 [ISO语言代码](http://www.lingoes.net/en/translator/langcode.htm) 。
 
 ![](/assets/1.9-lang.png)
 
-## Context API
+## 上下文API
 
-VuePress’s configuration can also be a function, while its first parameter is the current [app context](../plugin/context-api.md#context-api):
+VuePress 的配置也可以是一个函数，它的第一个参数是当前的 [APP 上下文](../plugin/context-api.md#context-api):
 
 ```ts
 import { defineConfig } from "vuepress/config";
@@ -123,3 +123,4 @@ export default defineConfig(ctx => ({
   evergreen: ctx.isProd
 }));
 ```
+
