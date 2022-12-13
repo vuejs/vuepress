@@ -200,6 +200,7 @@ export function resolveMatchingConfig (regularPath, config) {
       config: config
     }
   }
+
   for (const base in config) {
     if (ensureEndingSlash(regularPath).indexOf(encodeURI(base)) === 0) {
       return {
@@ -215,6 +216,29 @@ function ensureEndingSlash (path) {
   return /(\.html|\/)$/.test(path)
     ? path
     : path + '/'
+}
+
+const baseMap = new Map()
+/**
+ * handle multilevel sidebar base config
+ * @param {*} item
+ * @param {*} base
+ * @param {*} groupDepth
+ * @returns
+ */
+function resolveBase (item, base, groupDepth) {
+  if (groupDepth <= 2) {
+    !baseMap.has(groupDepth.toString()) && baseMap.set(groupDepth.toString(), base)
+    return base
+  }
+
+  if (!baseMap.has(groupDepth.toString())) {
+    const prev = baseMap.get((groupDepth - 1).toString())
+    baseMap.set(groupDepth.toString(), `${prev + item.title}\/`)
+    return baseMap.get(groupDepth.toString())
+  } else {
+    return baseMap.get(groupDepth.toString())
+  }
 }
 
 function resolveItem (item, pages, base, groupDepth = 1) {
@@ -237,7 +261,7 @@ function resolveItem (item, pages, base, groupDepth = 1) {
       title: item.title,
       sidebarDepth: item.sidebarDepth,
       initialOpenGroupIndex: item.initialOpenGroupIndex,
-      children: children.map(child => resolveItem(child, pages, base, groupDepth + 1)),
+      children: children.map(child => resolveItem(child, pages, resolveBase(item, base, groupDepth + 1), groupDepth + 1)),
       collapsable: item.collapsable !== false
     }
   }

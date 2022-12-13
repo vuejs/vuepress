@@ -84,7 +84,7 @@ export type SidebarItem4Group = {
   /**
    * Sidebar children.
    */
-  children?: Array<SidebarItem4Shortcut>;
+  children?: Array<SidebarItem4Shortcut | SidebarItem4Group>;
 };
 
 /**
