@@ -54,7 +54,7 @@ module.exports = async function (cli, options) {
 
 async function inferUserDocsDirectory (cwd) {
   const paths = await globby([
-    '**/.vuepress/config.js',
+    '**/.vuepress/config.(js|ts)',
     '!**/node_modules/**'
   ], {
     cwd,
@@ -64,7 +64,7 @@ async function inferUserDocsDirectory (cwd) {
   if (siteConfigPath) {
     return path.resolve(
       cwd,
-      siteConfigPath.replace('.vuepress/config.js', '')
+      siteConfigPath.replace(/\.vuepress\/config.(js|ts)/, '')
     )
   }
   return null
