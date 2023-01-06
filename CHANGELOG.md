@@ -1,3 +1,12 @@
+## [1.9.8](https://github.com/vuejs/vuepress/compare/v1.9.7...v1.9.8) (2023-01-06)
+
+
+### Bug Fixes
+
+* **cli:** `.vuepress/config.ts` does not respect custom command (close: [#3113](https://github.com/vuejs/vuepress/issues/3113)) ([#3114](https://github.com/vuejs/vuepress/issues/3114)) ([7cd8b30](https://github.com/vuejs/vuepress/commit/7cd8b3052d12db637ca4c8d839364d6e3f4932f7)) [@ULIVZ](https://github.com/ULIVZ)
+
+
+
 ## [1.9.7](https://github.com/vuejs/vuepress/compare/v1.9.6...v1.9.7) (2022-01-18)
 
 
