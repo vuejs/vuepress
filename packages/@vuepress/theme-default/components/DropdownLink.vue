@@ -229,8 +229,6 @@ export default {
     &.open .nav-dropdown
       // override the inline style.
       display block !important
-    &.open:blur
-      display none
     .nav-dropdown
       display none
       // Avoid height shaked by clicking
