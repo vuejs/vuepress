@@ -39,6 +39,10 @@
         "strings": true
       }
     },
-    "eslint.trace.server": "verbose"
+    "eslint.trace.server": "verbose",
+    "cSpell.words": [
+      "commitlint",
+      "monoo"
+    ]
   }
   
