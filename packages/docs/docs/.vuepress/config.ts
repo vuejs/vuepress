@@ -6,7 +6,7 @@ import {
   NavItems4ZH
 } from './config/index'
 
-export = defineConfig(ctx => ({
+export default defineConfig(ctx => ({
   theme: '@vuepress/vue',
   dest: '../../vuepress',
   head: [
@@ -123,4 +123,4 @@ export = defineConfig(ctx => ({
   ],
   extraWatchFiles: ['.vuepress/config/**'],
   evergreen: !ctx.isProd
-}));
+}))
