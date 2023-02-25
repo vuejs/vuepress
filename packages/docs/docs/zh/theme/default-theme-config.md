@@ -465,7 +465,7 @@ next: false
 
 ## Git 仓库和编辑链接
 
-当你提供了 `themeConfig.repo` 选项，将会自动在每个页面的导航栏生成生成一个 GitHub 链接，以及在页面的底部生成一个 `"Edit this page"` 链接。
+当你提供了 `themeConfig.repo` 选项，将会自动在每个页面的导航栏生成一个 GitHub 链接，以及在页面的底部生成一个 `"Edit this page"` 链接。
 
 ``` js
 // .vuepress/config.js
