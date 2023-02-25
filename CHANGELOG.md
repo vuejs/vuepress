@@ -1,3 +1,15 @@
+## [1.9.9](https://github.com/vuejs/vuepress/compare/v1.9.8...v1.9.9) (2023-02-25)
+
+
+### Bug Fixes
+
+* remove non-existing :blur css pseudo selector ([#3118](https://github.com/vuejs/vuepress/issues/3118)) ([5e3a5a0](https://github.com/vuejs/vuepress/commit/5e3a5a098b5619f41c68b1e8daf6421d56194e77)) [@Niko&nbsp;Strijbol](https://github.com/Niko&nbsp;Strijbol)
+* **theme-default:** headings anchor should not be selectable ([#3063](https://github.com/vuejs/vuepress/issues/3063)) ([e5915a8](https://github.com/vuejs/vuepress/commit/e5915a85a6a5955f7aa7fa5ad208ccdd2a998f68)) [@Rami&nbsp;Yushuvaev](https://github.com/Rami&nbsp;Yushuvaev)
+* **types:** missing types for `initialOpenGroupIndex` (close: [#3129](https://github.com/vuejs/vuepress/issues/3129)) ([#3130](https://github.com/vuejs/vuepress/issues/3130)) ([9049d48](https://github.com/vuejs/vuepress/commit/9049d480ab176d0e53da3c1b859d28851703c13a)) [@ULIVZ](https://github.com/ULIVZ)
+* **types:** missing types for nested sidebar group (close: [#3127](https://github.com/vuejs/vuepress/issues/3127)) ([#3128](https://github.com/vuejs/vuepress/issues/3128)) ([74d5eec](https://github.com/vuejs/vuepress/commit/74d5eecf42226d297c05820b4c60b96da24e58cd)) [@ULIVZ](https://github.com/ULIVZ)
+
+
+
 ## [1.9.8](https://github.com/vuejs/vuepress/compare/v1.9.7...v1.9.8) (2023-01-06)
 
 

@@ -48,7 +48,7 @@
     "@babel/plugin-proposal-class-properties": "7",
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
-    "@nomadland/mono": "0.3.3",
+    "@nomadland/mono": "0.3.4",
     "@types/escape-html": "^0.0.20",
     "@types/fs-extra": "^5.0.4",
     "@types/globby": "^9.1.0",
