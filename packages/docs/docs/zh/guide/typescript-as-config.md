@@ -105,13 +105,13 @@ export default defineConfig({
 
 默认情况下，只有官方维护和 [VuePress 社区](https://vuepress-community.netlify.app/en/) 下的插件支持快捷方式，请随时提交拉取请求，以在此[文件](https://github.com/vuejs/vuepress/blob/master/packages/@vuepress/types/lib/third-party-plugins.ts)中添加您的插件。
 
-## ISO语言代码
+## ISO 语言代码
 
-类型推断支持 [i18n](http://localhost:8080/guide/i18n.html) 的 [ISO语言代码](http://www.lingoes.net/en/translator/langcode.htm) 。
+类型推断支持 [i18n](http://localhost:8080/guide/i18n.html) 的 [ISO 语言代码](http://www.lingoes.net/en/translator/langcode.htm) 。
 
 ![](/assets/1.9-lang.png)
 
-## 上下文API
+## 上下文 API
 
 VuePress 的配置也可以是一个函数，它的第一个参数是当前的 [APP 上下文](../plugin/context-api.md#context-api):
 
