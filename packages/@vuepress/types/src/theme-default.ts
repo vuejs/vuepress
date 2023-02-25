@@ -82,6 +82,14 @@ export type SidebarItem4Group = {
    */
   sidebarDepth?: number;
   /**
+   * By default the first subgroup is opened initially.
+   * You can change this using the `initialOpenGroupIndex`:
+   * Specify an index to open another subgroup or use `-1` for no open group.
+   *
+   * @default 0
+   */
+  initialOpenGroupIndex?: number;
+  /**
    * Sidebar children.
    */
   children?: Array<SidebarItem4Shortcut | SidebarItem4Group>;
