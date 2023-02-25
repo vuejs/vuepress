@@ -143,7 +143,7 @@ export type DefaultThemeConfig = {
     | SidebarConfig4Multiple;
   /**
    * Sidebar's depth, set to 0 to disable collapsable sidebar links.
-   * 
+   *
    * @default 1
    */
   sidebarDepth?: number;
@@ -185,7 +185,7 @@ export type DefaultThemeConfig = {
      * @see https://docsearch.algolia.com/docs/legacy/behavior/#algoliaoptions
      */
     algoliaOptions?: Record<string, any>;
-  };
+  } | null;
   /**
    * Display text for last updated.
    *
@@ -271,7 +271,7 @@ export type DefaultThemeConfig = {
    */
   selectText?: string;
   /**
-   * aria label 
+   * aria label
    */
   ariaLabel?: string;
   /**
