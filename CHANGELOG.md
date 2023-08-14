@@ -1,3 +1,13 @@
+## [1.9.10](https://github.com/vuejs/vuepress/compare/v1.9.9...v1.9.10) (2023-08-14)
+
+
+### Bug Fixes
+
+* **core:** failed to resolve theme components when using theme inheritance (close: [#3163](https://github.com/vuejs/vuepress/issues/3163)) ([#3164](https://github.com/vuejs/vuepress/issues/3164)) ([546499b](https://github.com/vuejs/vuepress/commit/546499ba47a73c22e94c6237e8268fbce7459b6d))
+* **markdown:** replace double quotation marks in classname(fix [#3152](https://github.com/vuejs/vuepress/issues/3152)) ([#3154](https://github.com/vuejs/vuepress/issues/3154)) ([cef64e6](https://github.com/vuejs/vuepress/commit/cef64e642fb26076d42ca1342c0cf23a1b3384b7))
+
+
+
 ## [1.9.9](https://github.com/vuejs/vuepress/compare/v1.9.8...v1.9.9) (2023-02-25)
 
 
