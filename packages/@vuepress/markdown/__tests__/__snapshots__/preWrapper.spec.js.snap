@@ -1,5 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`preWrapper should wrap code with double quotation marks 1`] = `
+<!--beforebegin-->
+<div class="language-js name='marks' extra-class">
+  <!--afterbegin--><pre><code class="language-js">new Vue()
+</code></pre>
+  <!--beforeend-->
+</div>
+<!--afterend-->
+`;
+
 exports[`preWrapper should wrap code with quadruple space 1`] = `
 <!--beforebegin-->
 <div class="language- extra-class">

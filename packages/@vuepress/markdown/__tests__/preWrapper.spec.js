@@ -21,4 +21,10 @@ describe('preWrapper', () => {
     expect(output1 === output2).toBe(false)
     expect(output2).toMatchSnapshot()
   })
+
+  test('should wrap code with double quotation marks', () => {
+    const input = getFragment(__dirname, 'code-prewrapper-with-double-quotation-marks.md')
+    const output2 = mdP.render(input)
+    expect(output2).toMatchSnapshot()
+  })
 })

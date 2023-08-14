@@ -12,7 +12,8 @@ module.exports = md => {
     const [tokens, idx] = args
     const token = tokens[idx]
     const rawCode = wrapped(...args)
-    return `<!--beforebegin--><div class="language-${token.info.trim()} extra-class">`
+    const tokenInfo = token.info.trim().replace(/\"/g, '\'')
+    return `<!--beforebegin--><div class="language-${tokenInfo} extra-class">`
     + `<!--afterbegin-->${rawCode}<!--beforeend--></div><!--afterend-->`
   }
   const { fence, code_block: codeBlock } = md.renderer.rules
