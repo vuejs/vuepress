@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/shared-utils",
-  "version": "1.9.9",
+  "version": "1.9.10",
   "description": "shared-utils for vuepress",
   "keywords": [
     "documentation",

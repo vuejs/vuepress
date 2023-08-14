@@ -1,6 +1,6 @@
 {
   "name": "@vuepress/markdown-loader",
-  "version": "1.9.9",
+  "version": "1.9.10",
   "description": "markdown-loader for vuepress",
   "keywords": [
     "documentation",
@@ -27,7 +27,7 @@
   ],
   "main": "index.js",
   "dependencies": {
-    "@vuepress/markdown": "1.9.9",
+    "@vuepress/markdown": "1.9.10",
     "loader-utils": "^1.1.0",
     "lru-cache": "^5.1.1"
   },
