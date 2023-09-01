@@ -1,3 +1,4 @@
+import dayjs from 'dayjs'
 import ensureEndingSlash from './ensureEndingSlash'
 import ensureLeadingSlash from './ensureLeadingSlash'
 
@@ -11,37 +12,6 @@ interface PermalinkOption {
 
 function removeLeadingSlash (path: string) {
   return path.replace(/^\//, '')
-}
-
-function toUtcTime (date: string | Date): number {
-  let year = 1970
-  let month = 0
-  let day = 1
-
-  if (typeof date === 'string') {
-    const [
-      yearStr,
-      monthStr,
-      dayStr
-    ] = date.split('-')
-
-    year = parseInt(yearStr, 10)
-    month = parseInt(monthStr, 10) - 1
-    day = parseInt(dayStr, 10)
-  } else if (date instanceof Date) {
-    // If `date` is an instance of Date,
-    // it's because it was parsed from the frontmatter
-    // by js-yaml, which always assumes UTC
-    return date.getTime()
-  }
-
-  return Date.UTC(year, month, day)
-}
-
-function addTzOffset (utc: number): Date {
-  const utcDate = new Date(utc)
-
-  return new Date(utc + utcDate.getTimezoneOffset() * 60 * 1000)
 }
 
 // e.g.
@@ -65,12 +35,12 @@ export = function getPermalink ({
   }
   slug = encodeURI(slug)
 
-  const d = addTzOffset(toUtcTime(date))
-  const year = d.getFullYear()
-  const iMonth = d.getMonth() + 1
-  const iDay = d.getDate()
-  const minutes = d.getMinutes()
-  const seconds = d.getSeconds()
+  const d = dayjs(date)
+  const year = d.year()
+  const iMonth = d.month() + 1
+  const iDay = d.date()
+  const minutes = d.minute()
+  const seconds = d.second()
   const month = iMonth < 10 ? `0${iMonth}` : iMonth
   const day = iDay < 10 ? `0${iDay}` : iDay
 
