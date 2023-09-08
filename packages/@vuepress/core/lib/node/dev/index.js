@@ -175,7 +175,8 @@ module.exports = class DevProcess extends EventEmitter {
         port: this.port,
         displayHost: this.displayHost,
         publicPath: this.context.base,
-        clearScreen: !(this.context.options.debug || !this.context.options.clearScreen)
+        clearScreen: !(this.context.options.debug || !this.context.options.clearScreen),
+        isHttps: (this.context.siteConfig.devServer || {}).https
       }])
 
     config = config.toConfig()
