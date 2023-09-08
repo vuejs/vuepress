@@ -20,6 +20,8 @@ Noted that `.vuepress/config.ts` is supported from `1.9`, for more information, 
 
 ## Basic Config
 
+This configuration keys are to put in `module.exports` section of `.vuepress/config.js` file.
+
 ### base
 
 - Type: `string`
