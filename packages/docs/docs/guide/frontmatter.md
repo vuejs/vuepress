@@ -24,6 +24,18 @@ lang: en-US
 My blog post is written in {{ $frontmatter.lang }}.
 ```
 
+If you want to add frontmatter variables to a Vue component, you can put them into a custom block like this:
+
+```vue
+<frontmatter>
+title: Blogging Like a Hacker
+lang: en-US
+</frontmatter>
+
+<template>
+...
+```
+
 ## Alternative frontmatter Formats
 
 VuePress also supports JSON and [TOML](https://github.com/toml-lang/toml) frontmatter syntax.
