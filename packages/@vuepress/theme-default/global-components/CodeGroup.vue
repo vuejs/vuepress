@@ -45,10 +45,16 @@ export default {
   },
   mounted () {
     this.loadTabs()
+    this.$root.$on('changeAllCodeTab', (index) => {
+      if (this.activeCodeTabIndex !== index) {
+        this.changeCodeTab(index)
+      }
+    })
   },
   methods: {
     changeCodeTab (index) {
       this.activeCodeTabIndex = index
+      this.$root.$emit('changeAllCodeTab', index)
     },
     loadTabs () {
       this.codeTabs = (this.$slots.default || []).filter(slot => Boolean(slot.componentOptions)).map((slot, index) => {
