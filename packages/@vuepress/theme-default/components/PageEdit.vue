@@ -152,4 +152,7 @@ export default {
       float none
       text-align left
 
+@media print
+  .page-edit
+    display none
 </style>

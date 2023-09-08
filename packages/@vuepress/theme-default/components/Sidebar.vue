@@ -61,4 +61,8 @@ export default {
         top calc(1rem - 2px)
     & > .sidebar-links
       padding 1rem 0
+
+@media print
+  .sidebar
+    display none
 </style>
