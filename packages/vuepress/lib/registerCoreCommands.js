@@ -52,6 +52,7 @@ module.exports = function (cli, options) {
     .option('--debug', 'build in development mode for debugging')
     .option('--silent', 'build static site in silent mode')
     .option('--max-concurrency', 'set the max docs concurrently processed when build static site')
+    .option('--no-ssr', 'no SSR build')
     .action((sourceDir = '.', commandOptions) => {
       const { debug, silent } = commandOptions
 

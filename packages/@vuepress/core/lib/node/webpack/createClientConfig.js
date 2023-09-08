@@ -1,4 +1,5 @@
 'use strict'
+const path = require('path')
 
 /**
  * Expose createClientConfig method.
@@ -39,11 +40,23 @@ module.exports = function createClientConfig (ctx) {
     // 1. Include CSS in preload files
     // 2. filter out useless styles.xxxxx.js chunk from mini-css-extract-plugin
     // https://github.com/webpack-contrib/mini-css-extract-plugin/issues/85
-    config
-      .plugin('ssr-client')
-      .use(require('./ClientPlugin'), [{
-        filename: 'manifest/client.json'
-      }])
+    if (process.argv.includes('--no-ssr')) {
+      config
+        .plugin('html')
+        .use(require('html-webpack-plugin'))
+        .tap(() => {
+          return [{
+            title: '',
+            template: path.resolve(__dirname, '../../client/index.dev.html')
+          }]
+        })
+    } else {
+      config
+        .plugin('ssr-client')
+        .use(require('./ClientPlugin'), [{
+          filename: 'manifest/client.json'
+        }])
+    }
 
     config
       .plugin('optimize-css')

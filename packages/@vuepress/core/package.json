@@ -71,6 +71,9 @@
     "webpack-merge": "^4.1.2",
     "webpackbar": "3.2.0"
   },
+  "devDependencies": {
+    "html-webpack-plugin": "4"
+  },
   "engines": {
     "node": ">=8.6"
   },
