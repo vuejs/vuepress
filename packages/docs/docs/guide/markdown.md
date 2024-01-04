@@ -62,7 +62,7 @@ You can customize the attributes added to external links by setting [config.mark
 
 [YAML frontmatter](https://jekyllrb.com/docs/frontmatter/) is supported out of the box:
 
-``` yaml
+```yaml
 ---
 title: Blogging Like a Hacker
 lang: en-US
@@ -87,11 +87,11 @@ For more details, see [Frontmatter](./frontmatter.md).
 
 **Output**
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
+| Tables        |      Are      |  Cool |
+| ------------- | :-----------: | ----: |
 | col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+| col 2 is      |   centered    |   $12 |
+| zebra stripes |   are neat    |    $1 |
 
 ## Emoji :tada:
 
@@ -105,7 +105,7 @@ For more details, see [Frontmatter](./frontmatter.md).
 
 :tada: :100:
 
-A [list of all emojis](https://github.com/markdown-it/markdown-it-emoji/blob/master/lib/data/full.json) is available.
+A [list of all emojis](https://github.com/markdown-it/markdown-it-emoji/blob/master/lib/data/full.mjs) is available.
 
 ## Table of Contents
 
@@ -130,6 +130,7 @@ Rendering of the TOC can be configured using the [`markdown.toc`](../config/READ
 Custom containers can be defined by their types, titles, and contents.
 
 ### Default Title
+
 **Input**
 
 ```md
@@ -169,6 +170,7 @@ This is a details block, which does not work in Internet Explorer or Edge.
 :::
 
 ### Custom Title
+
 **Input**
 
 ````md
@@ -177,9 +179,11 @@ Danger zone, do not proceed
 :::
 
 ::: details Click me to view the code
+
 ```js
-console.log('Hello, VuePress!')
+console.log("Hello, VuePress!");
 ```
+
 :::
 ````
 
@@ -190,9 +194,11 @@ Danger zone, do not proceed
 :::
 
 ::: details Click me to view the code
+
 ```js
-console.log('Hello, VuePress!')
+console.log("Hello, VuePress!");
 ```
+
 :::
 
 **Also see:**
@@ -216,11 +222,11 @@ export default {
 
 **Output**
 
-``` js
+```js
 export default {
-  name: 'MyComponent',
+  name: "MyComponent",
   // ...
-}
+};
 ```
 
 **Input**
@@ -240,14 +246,9 @@ export default {
 
 **Output**
 
-``` html
+```html
 <ul>
-  <li
-    v-for="todo in todos"
-    :key="todo.id"
-  >
-    {{ todo.text }}
-  </li>
+  <li v-for="todo in todos" :key="todo.id">{{ todo.text }}</li>
 </ul>
 ```
 
@@ -271,7 +272,7 @@ export default {
 
 **Output**
 
-``` js{4}
+```js{4}
 export default {
   data () {
     return {
@@ -307,7 +308,7 @@ export default { // Highlighted
 
 **Output**
 
-``` js{1,4,6-8}
+```js{1,4,6-8}
 export default { // Highlighted
   data () {
     return {
@@ -325,12 +326,12 @@ export default { // Highlighted
 
 You can enable line numbers for each code block via config:
 
-``` js
+```js
 module.exports = {
   markdown: {
-    lineNumbers: true
-  }
-}
+    lineNumbers: true,
+  },
+};
 ```
 
 <!-- TODO Support line numbers for specific fence block -->
@@ -369,27 +370,27 @@ module.exports = {
 
 You can import code snippets from existing files via following syntax:
 
-``` md
+```md
 <<< @/filepath
 ```
 
 It also supports [line highlighting](#line-highlighting-in-code-blocks):
 
-``` md
+```md
 <<< @/filepath{highlightLines}
 ```
 
 **Input**
 
-``` md
-<<< @/../@vuepress/markdown/__tests__/fragments/snippet.js{2}
+```md
+<<< @/../@vuepress/markdown/**tests**/fragments/snippet.js{2}
 ```
 
 **Output**
 
 <!--lint disable strong-marker-->
 
-<<< @/../@vuepress/markdown/__tests__/fragments/snippet.js{2}
+<<< @/../@vuepress/markdown/**tests**/fragments/snippet.js{2}
 
 <!--lint enable strong-marker-->
 
@@ -401,15 +402,15 @@ You can also use a [VS Code region](https://code.visualstudio.com/docs/editor/co
 
 **Input**
 
-``` md
-<<< @/../@vuepress/markdown/__tests__/fragments/snippet-with-region.js#snippet{1}
+```md
+<<< @/../@vuepress/markdown/**tests**/fragments/snippet-with-region.js#snippet{1}
 ```
 
 **Code file**
 
 <!--lint disable strong-marker-->
 
-<<< @/../@vuepress/markdown/__tests__/fragments/snippet-with-region.js
+<<< @/../@vuepress/markdown/**tests**/fragments/snippet-with-region.js
 
 <!--lint enable strong-marker-->
 
@@ -417,7 +418,7 @@ You can also use a [VS Code region](https://code.visualstudio.com/docs/editor/co
 
 <!--lint disable strong-marker-->
 
-<<< @/../@vuepress/markdown/__tests__/fragments/snippet-with-region.js#snippet{1}
+<<< @/../@vuepress/markdown/**tests**/fragments/snippet-with-region.js#snippet{1}
 
 <!--lint enable strong-marker-->
 
@@ -425,17 +426,17 @@ You can also use a [VS Code region](https://code.visualstudio.com/docs/editor/co
 
 VuePress uses [markdown-it](https://github.com/markdown-it/markdown-it) as the Markdown renderer. A lot of the extensions above are implemented via custom plugins. You can further customize the `markdown-it` instance using the `markdown` option in `.vuepress/config.js`:
 
-``` js
+```js
 module.exports = {
   markdown: {
     // options for markdown-it-anchor
     anchor: { permalink: false },
     // options for markdown-it-toc
     toc: { includeLevel: [1, 2] },
-    extendMarkdown: md => {
+    extendMarkdown: (md) => {
       // use more markdown-it plugins!
-      md.use(require('markdown-it-xxx'))
-    }
-  }
-}
+      md.use(require("markdown-it-xxx"));
+    },
+  },
+};
 ```
