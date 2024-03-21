@@ -62,7 +62,8 @@ module.exports = siteData => {
     }
 
     get $siteTitle () {
-      return this.$localeConfig.title || this.$site.title || ''
+      const { siteTitle } = this.$page.frontmatter
+      return siteTitle || this.$localeConfig.title || this.$site.title || ''
     }
 
     get $canonicalUrl () {
