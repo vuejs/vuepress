@@ -13,7 +13,7 @@
 
 ## Status
 
-> VuePress is now in maintenance mode. For a next-gen Vue-based SSG built on top of Vue 3 + Vite, check out [VitePress](https://vitepress.vuejs.org/).
+> ### VuePress is now in maintenance mode. For a next-gen Vue-based SSG built on top of Vue 3 + Vite, check out [VitePress](https://vitepress.vuejs.org/).
 
 ## Documentation
 
