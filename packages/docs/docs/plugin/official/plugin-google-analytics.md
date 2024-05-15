@@ -46,3 +46,7 @@ Please be aware of [GDPR (2018 reform of EU data protection rules)](https://ec.e
 - Default: `undefined`
 
 Provide the Google Analytics ID to enable integration.
+
+::: tip
+Note that the Google Analytics script will only be available in the production build, not when running the site in dev mode.
+:::
