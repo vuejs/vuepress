@@ -43,6 +43,10 @@
     "cSpell.words": [
       "commitlint",
       "monoo"
-    ]
+    ],
+    "editor.wordWrap": "on",
+    "files.associations": {
+      "./": "jonson"
+    }
   }
   
