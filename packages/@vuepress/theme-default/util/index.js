@@ -1,5 +1,6 @@
 export const hashRE = /#.*$/
 export const extRE = /\.(md|html)$/
+export const mdRE = /\.md$/
 export const endingSlashRE = /\/$/
 export const outboundRE = /^[a-z]+:/i
 
@@ -7,6 +8,11 @@ export function normalize (path) {
   return decodeURI(path)
     .replace(hashRE, '')
     .replace(extRE, '')
+}
+
+export function getPath (path) {
+  return decodeURI(path)
+    .replace(hashRE, '')
 }
 
 export function getHash (path) {
@@ -34,12 +40,12 @@ export function ensureExt (path) {
   }
   const hashMatch = path.match(hashRE)
   const hash = hashMatch ? hashMatch[0] : ''
-  const normalized = normalize(path)
+  const route = getPath(path)
 
-  if (endingSlashRE.test(normalized)) {
+  if (endingSlashRE.test(route)) {
     return path
   }
-  return normalized + '.html' + hash
+  return route + hash
 }
 
 export function isActive (route, path) {
