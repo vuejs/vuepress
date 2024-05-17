@@ -42,6 +42,11 @@ export default {
   position: relative;
   top: -1px;
 }
+@media print {
+  .icon.outbound {
+    display: none;
+  }
+}
 </style>
 
 <style lang="stylus">
