@@ -56,8 +56,22 @@ export default {
   created () {
     this.refreshIndex()
   },
+  
+  mounted() {
+    this.activationAnchor()
+  },
 
   methods: {
+    activationAnchor() {
+      let anchors = [].slice.call(document.querySelectorAll(AHL_HEADER_ANCHOR_SELECTOR))
+                      .filter(anchor => decodeURIComponent(this.$route.hash) == decodeURIComponent(anchor.hash))
+      if(anchors == null || anchors.length<1 || anchors[0].offsetTop == undefined) return
+
+      setTimeout(function () {
+        window.scrollTo(0, anchors[0].offsetTop - 70)
+      }, 100)
+    },
+    
     refreshIndex () {
       const index = resolveOpenGroupIndex(
         this.$route,

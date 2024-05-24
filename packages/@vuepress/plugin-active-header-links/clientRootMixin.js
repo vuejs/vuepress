@@ -4,10 +4,45 @@ import debounce from 'lodash.debounce'
 
 export default {
   mounted () {
+    this.activationLink()
+    this.isInViewPortOfOne()
     window.addEventListener('scroll', this.onScroll)
+  },
+  
+  updated: function () {
+    this.isInViewPortOfOne()
   },
 
   methods: {
+    activationLink() {
+      const subtitles = [].slice.call(document.querySelectorAll(AHL_SIDEBAR_LINK_SELECTOR))
+        .filter(subtitle => decodeURIComponent(this.$route.hash) == decodeURIComponent(subtitle.hash))
+      if (subtitles == null || subtitles.length < 1 || subtitles[0].offsetTop == undefined) return
+      subtitles[0].click()
+    },
+
+    isInViewPortOfOne() {
+      let siderbarScroll = document.getElementsByClassName("sidebar")[0]
+      let el = document.getElementsByClassName("active sidebar-link")[1]
+      if (el == null || el == undefined || el.offsetTop == undefined) {
+        el = document.getElementsByClassName("active sidebar-link")[0]
+      }
+      if (el == null || el == undefined || el.offsetTop == undefined) return
+
+      const viewPortHeight = siderbarScroll.clientHeight || window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+      let offsetTop = el.offsetTop
+      let offsetBottom = el.offsetTop + el.offsetHeight
+      let scrollTop = siderbarScroll.scrollTop
+      let bottomVisible = (offsetBottom <= viewPortHeight + scrollTop)
+      if (!bottomVisible) {
+        siderbarScroll.scrollTop = (offsetBottom + 5 - viewPortHeight)
+      }
+      let topVisible = (offsetTop >= scrollTop)
+      if (!topVisible) {
+        siderbarScroll.scrollTop = (offsetTop - 5)
+      }
+    },
+    
     onScroll: debounce(function () {
       this.setActiveHash()
     }, 300),
