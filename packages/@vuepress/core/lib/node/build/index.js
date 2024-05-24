@@ -52,6 +52,10 @@ module.exports = class Build extends EventEmitter {
 
   async render () {
     // compile!
+    if (process.argv.includes('--no-ssr')) {
+      compile(this.clientConfig)
+      return
+    }
     const stats = await compile([this.clientConfig, this.serverConfig])
     const serverBundle = require(path.resolve(this.outDir, 'manifest/server.json'))
     const clientManifest = require(path.resolve(this.outDir, 'manifest/client.json'))
