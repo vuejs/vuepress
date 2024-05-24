@@ -14,6 +14,7 @@ const tomlParser = require('toml')
 
 module.exports = async function loadConfig (vuepressDir, bustCache = true) {
   const configPath = path.resolve(vuepressDir, 'config.js')
+  const configCjsPath = path.resolve(vuepressDir, 'config.cjs')
   const configYmlPath = path.resolve(vuepressDir, 'config.yml')
   const configTomlPath = path.resolve(vuepressDir, 'config.toml')
   const configTsPath = path.resolve(vuepressDir, 'config.ts')
@@ -35,6 +36,8 @@ module.exports = async function loadConfig (vuepressDir, bustCache = true) {
     siteConfig = parseConfig(configTomlPath)
   } else if (fs.existsSync(configPath)) {
     siteConfig = require(configPath)
+  } else if (fs.existsSync(configCjsPath)) {
+    siteConfig = require(configCjsPath)
   }
 
   return siteConfig
