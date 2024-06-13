@@ -23,6 +23,10 @@ For a next-gen Vue-based SSG:
 
 Check out our docs at https://vuepress.vuejs.org/.
 
+## Demo 
+
+[![Runme](https://svc.runme.io/static/button.svg)](https://runme.io/run?app_id=8121a479-50a8-45f3-a60f-c1532d6d98b4)
+
 ## Showcase
 
 - [Awesome VuePress](https://github.com/vuepressjs/awesome-vuepress)
