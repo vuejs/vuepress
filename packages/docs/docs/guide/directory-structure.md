@@ -22,6 +22,7 @@ VuePress follows the principle of **"Convention is better than configuration"**.
 │   │   └── `enhanceApp.js` _(**Optional**)_
 │   │ 
 │   ├── README.md
+|   ├── index.md _(**Optional**)_
 │   ├── guide
 │   │   └── README.md
 │   └── config.md
