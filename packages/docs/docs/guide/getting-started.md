@@ -57,6 +57,44 @@ npm run dev
 </code-block>
 </code-group>
 
+The scaffold creates a `<project-name>/docs` directory containing a `package.json`.
+
+To install the package dependencies, run the following:
+
+<code-group>
+<code-block title="YARN" active>
+```bash
+cd <project-name>/docs
+yarn install
+```
+</code-block>
+
+<code-block title="NPM">
+```bash
+cd <project-name>/docs
+npm install
+```
+</code-block>
+</code-group>
+
+With the dependencies installed you can now run the development server:
+
+<code-group>
+<code-block title="YARN" active>
+```bash
+npm run dev
+```
+</code-block>
+
+<code-block title="NPM">
+```bash
+yarn run dev
+```
+</code-block>
+</code-group>
+
+Browse to http://localhost:8081 to view the live development server.
+
 ## Manual Installation
 
 If you prefer, you can build a basic VuePress documentation site from ground up instead of using the generator mentioned above.
