@@ -32,7 +32,7 @@ VuePress follows the principle of **"Convention is better than configuration"**.
 <!-- textlint-enable -->
 
 ::: warning Note
-Please note the capitalization of the directory name.
+Please note the capitalization of the directory name. Use all capital letters for the README.md file name. You can use both upper and lower case letters in the names of other files. Don't use capital letters in the file extensions: .png, .jpg, .html, etc. 
 :::
 
 - `docs/.vuepress`: Used to store global configuration, components, static resources, etc.
