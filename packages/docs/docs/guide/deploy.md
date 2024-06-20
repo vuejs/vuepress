@@ -44,10 +44,10 @@ git add -A
 git commit -m 'deploy'
 
 # if you are deploying to https://<USERNAME>.github.io
-# git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
+# git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git main
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
-# git push -f git@github.com:<USERNAME>/<REPO>.git master:gh-pages
+# git push -f git@github.com:<USERNAME>/<REPO>.git main:gh-pages
 
 cd -
 ```
@@ -119,7 +119,7 @@ deploy:
   github_token: $GITHUB_TOKEN # A token generated on GitHub allowing Travis to push code on you repository. Set in the Travis settings page of your repository, as a secure variable
   keep_history: true
   on:
-    branch: master
+    branch: main
 ```
 
 ### GitLab Pages and GitLab CI
@@ -148,7 +148,7 @@ pages:
     paths:
     - public
   only:
-  - master
+  - main
 ```
 
 
@@ -240,7 +240,7 @@ heroku buildpacks:set https://github.com/heroku/heroku-buildpack-static.git
 
 ``` bash
 # publish site
-git push heroku master
+git push heroku main
 
 # opens a browser to view the Dashboard version of Heroku CI
 heroku open
