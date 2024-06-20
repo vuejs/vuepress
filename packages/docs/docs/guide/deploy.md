@@ -13,6 +13,16 @@ The following guides are based on some shared assumptions:
   }
 }
 ```
+- You have a `.vuepress/config.js`, with a `base` set per your desired deployment platform, example file syntax as follows.
+```javascript
+module.exports = {
+    title: "VuePress Generated",
+    //description : "use for meta description",
+    base: "/"
+};
+
+```
+
 
 ## GitHub Pages
 
