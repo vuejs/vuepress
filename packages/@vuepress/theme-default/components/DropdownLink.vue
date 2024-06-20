@@ -153,7 +153,7 @@ export default {
       margin-top -1px
       margin-left 0.4rem
   .mobile-dropdown-title
-    @extends .dropdown-title
+    @extends .dropdown-wrapper .dropdown-title
     display none
     font-weight 600
     font-size inherit
