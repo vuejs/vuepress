@@ -24,7 +24,8 @@ function getLangCodeFromExtension (extension) {
     yml: 'yaml',
     styl: 'stylus',
     kt: 'kotlin',
-    rs: 'rust'
+    rs: 'rust',
+    sbt: 'scala'
   }
 
   return extensionMap[extension] || extension
