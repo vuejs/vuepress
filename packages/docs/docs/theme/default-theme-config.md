@@ -399,24 +399,23 @@ If you need full text search, you can use [Algolia Search](#algolia-search).
 
 ### Algolia Search
 
-The `themeConfig.algolia` option allows you to use [Algolia DocSearch](https://docsearch.algolia.com/) to replace the simple built-in search. To enable it, you need to provide at least `apiKey` and `indexName`:
+The `themeConfig.algolia` option allows you to use [Algolia DocSearch](https://docsearch.algolia.com/) to replace the simple built-in search. To enable it, you need to provide `apiKey`, `indexName`, and `appId`:
 
 ``` js
 // .vuepress/config.js
 module.exports = {
   themeConfig: {
     algolia: {
+      appId: '<APP_ID>',
       apiKey: '<API_KEY>',
-      indexName: '<INDEX_NAME>',
-      // If Algolia did not provided you any `appId`, use `BH4D9OD16A` or remove this option
-      appId: '<APP_ID>'
+      indexName: '<INDEX_NAME>'
     }
   }
 }
 ```
 
 ::: warning Note
-Unlike the [built-in search](#built-in-search) engine which works out of the box, [Algolia DocSearch](https://docsearch.algolia.com/) requires you to submit your site to them for indexing before it starts working.
+Unlike the [built-in search](#built-in-search) engine which works out of the box, [Algolia DocSearch](https://docsearch.algolia.com/) requires you to submit your site to them for indexing before it starts working. After submitting the form, upon approval you will get the credentials to be entered above.
 :::
 
 For more options, check out [Algolia DocSearch’s documentation](https://github.com/algolia/docsearch#docsearch-options).
