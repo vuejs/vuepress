@@ -116,8 +116,13 @@ export default {
   },
 
   mounted () {
-    this.$router.afterEach(() => {
+    this.$router.afterEach((to, from) => {
       this.isSidebarOpen = false
+      if (to.path !== from.path) {
+        this.$nextTick(() => {
+          window.scrollTo(0, 0)
+        })
+      }
     })
   },
 
